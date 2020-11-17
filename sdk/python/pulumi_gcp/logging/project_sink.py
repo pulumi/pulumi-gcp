@@ -42,7 +42,7 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
                ```python
                import pulumi
                ```
@@ -112,7 +112,7 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
                ```python
                import pulumi
                ```
@@ -157,7 +157,7 @@ class ProjectSink(pulumi.CustomResource):
     def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
         ```python
         import pulumi
         ```

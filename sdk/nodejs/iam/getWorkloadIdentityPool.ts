@@ -15,9 +15,6 @@ export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", {
-        "description": args.description,
-        "disabled": args.disabled,
-        "displayName": args.displayName,
         "project": args.project,
         "workloadIdentityPoolId": args.workloadIdentityPoolId,
     }, opts);
@@ -27,9 +24,6 @@ export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?
  * A collection of arguments for invoking getWorkloadIdentityPool.
  */
 export interface GetWorkloadIdentityPoolArgs {
-    readonly description?: string;
-    readonly disabled?: boolean;
-    readonly displayName?: string;
     /**
      * The project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -46,9 +40,9 @@ export interface GetWorkloadIdentityPoolArgs {
  * A collection of values returned by getWorkloadIdentityPool.
  */
 export interface GetWorkloadIdentityPoolResult {
-    readonly description?: string;
-    readonly disabled?: boolean;
-    readonly displayName?: string;
+    readonly description: string;
+    readonly disabled: boolean;
+    readonly displayName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

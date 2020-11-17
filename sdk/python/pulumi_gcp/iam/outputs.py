@@ -12,6 +12,8 @@ __all__ = [
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
     'GetTestablePermissionsPermissionResult',
+    'GetWorkloadIdentityPoolProviderAwResult',
+    'GetWorkloadIdentityPoolProviderOidcResult',
 ]
 
 @pulumi.output_type
@@ -146,5 +148,36 @@ class GetTestablePermissionsPermissionResult(dict):
         Human readable title of the permission.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolProviderAwResult(dict):
+    def __init__(__self__, *,
+                 account_id: str):
+        pulumi.set(__self__, "account_id", account_id)
+
+    @property
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> str:
+        return pulumi.get(self, "account_id")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolProviderOidcResult(dict):
+    def __init__(__self__, *,
+                 allowed_audiences: Sequence[str],
+                 issuer_uri: str):
+        pulumi.set(__self__, "allowed_audiences", allowed_audiences)
+        pulumi.set(__self__, "issuer_uri", issuer_uri)
+
+    @property
+    @pulumi.getter(name="allowedAudiences")
+    def allowed_audiences(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_audiences")
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> str:
+        return pulumi.get(self, "issuer_uri")
 
 

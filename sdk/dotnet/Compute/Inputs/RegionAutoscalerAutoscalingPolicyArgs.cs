@@ -89,6 +89,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("scaleDownControl")]
         public Input<Inputs.RegionAutoscalerAutoscalingPolicyScaleDownControlArgs>? ScaleDownControl { get; set; }
 
+        /// <summary>
+        /// Defines scale in controls to reduce the risk of response latency
+        /// and outages due to abrupt scale-in events
+        /// Structure is documented below.
+        /// </summary>
+        [Input("scaleInControl")]
+        public Input<Inputs.RegionAutoscalerAutoscalingPolicyScaleInControlArgs>? ScaleInControl { get; set; }
+
         public RegionAutoscalerAutoscalingPolicyArgs()
         {
         }

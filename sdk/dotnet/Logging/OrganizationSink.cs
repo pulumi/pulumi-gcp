@@ -27,7 +27,19 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
-        /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        /// ```csharp
+        /// using Pulumi;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
@@ -127,7 +139,19 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
-        /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        /// ```csharp
+        /// using Pulumi;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
@@ -187,7 +211,19 @@ namespace Pulumi.Gcp.Logging
 
         /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
-        /// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        /// ```csharp
+        /// using Pulumi;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// The writer associated with the sink must have access to write to the above resource.
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }

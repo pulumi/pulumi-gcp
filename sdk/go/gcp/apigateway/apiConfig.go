@@ -17,6 +17,9 @@ type ApiConfig struct {
 	Api pulumi.StringOutput `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringOutput `pulumi:"apiConfigId"`
+	// Creates a unique name beginning with the
+	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+	ApiConfigIdPrefix pulumi.StringOutput `pulumi:"apiConfigIdPrefix"`
 	// A user-visible name for the API.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Immutable. Gateway specific configuration.
@@ -42,9 +45,6 @@ func NewApiConfig(ctx *pulumi.Context,
 	name string, args *ApiConfigArgs, opts ...pulumi.ResourceOption) (*ApiConfig, error) {
 	if args == nil || args.Api == nil {
 		return nil, errors.New("missing required argument 'Api'")
-	}
-	if args == nil || args.ApiConfigId == nil {
-		return nil, errors.New("missing required argument 'ApiConfigId'")
 	}
 	if args == nil || args.OpenapiDocuments == nil {
 		return nil, errors.New("missing required argument 'OpenapiDocuments'")
@@ -78,6 +78,9 @@ type apiConfigState struct {
 	Api *string `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId *string `pulumi:"apiConfigId"`
+	// Creates a unique name beginning with the
+	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+	ApiConfigIdPrefix *string `pulumi:"apiConfigIdPrefix"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. Gateway specific configuration.
@@ -103,6 +106,9 @@ type ApiConfigState struct {
 	Api pulumi.StringPtrInput
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
 	ApiConfigId pulumi.StringPtrInput
+	// Creates a unique name beginning with the
+	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+	ApiConfigIdPrefix pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. Gateway specific configuration.
@@ -131,7 +137,10 @@ type apiConfigArgs struct {
 	// The API to attach the config to.
 	Api string `pulumi:"api"`
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
-	ApiConfigId string `pulumi:"apiConfigId"`
+	ApiConfigId *string `pulumi:"apiConfigId"`
+	// Creates a unique name beginning with the
+	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+	ApiConfigIdPrefix *string `pulumi:"apiConfigIdPrefix"`
 	// A user-visible name for the API.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. Gateway specific configuration.
@@ -153,7 +162,10 @@ type ApiConfigArgs struct {
 	// The API to attach the config to.
 	Api pulumi.StringInput
 	// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
-	ApiConfigId pulumi.StringInput
+	ApiConfigId pulumi.StringPtrInput
+	// Creates a unique name beginning with the
+	// specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+	ApiConfigIdPrefix pulumi.StringPtrInput
 	// A user-visible name for the API.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. Gateway specific configuration.

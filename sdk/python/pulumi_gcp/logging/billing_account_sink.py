@@ -41,7 +41,7 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
                ```python
                import pulumi
                ```
@@ -108,7 +108,7 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
                ```python
                import pulumi
                ```
@@ -156,7 +156,7 @@ class BillingAccountSink(pulumi.CustomResource):
     def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
         ```python
         import pulumi
         ```

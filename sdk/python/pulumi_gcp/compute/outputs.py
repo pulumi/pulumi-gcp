@@ -16,12 +16,16 @@ __all__ = [
     'AutoscalarAutoscalingPolicyMetric',
     'AutoscalarAutoscalingPolicyScaleDownControl',
     'AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas',
+    'AutoscalarAutoscalingPolicyScaleInControl',
+    'AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas',
     'AutoscalerAutoscalingPolicy',
     'AutoscalerAutoscalingPolicyCpuUtilization',
     'AutoscalerAutoscalingPolicyLoadBalancingUtilization',
     'AutoscalerAutoscalingPolicyMetric',
     'AutoscalerAutoscalingPolicyScaleDownControl',
     'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas',
+    'AutoscalerAutoscalingPolicyScaleInControl',
+    'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
     'BackendBucketCdnPolicy',
     'BackendServiceBackend',
     'BackendServiceCdnPolicy',
@@ -144,6 +148,8 @@ __all__ = [
     'RegionAutoscalerAutoscalingPolicyMetric',
     'RegionAutoscalerAutoscalingPolicyScaleDownControl',
     'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas',
+    'RegionAutoscalerAutoscalingPolicyScaleInControl',
+    'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
     'RegionBackendServiceBackend',
     'RegionBackendServiceCircuitBreakers',
     'RegionBackendServiceCircuitBreakersConnectTimeout',
@@ -388,7 +394,8 @@ class AutoscalarAutoscalingPolicy(dict):
                  load_balancing_utilization: Optional['outputs.AutoscalarAutoscalingPolicyLoadBalancingUtilization'] = None,
                  metrics: Optional[Sequence['outputs.AutoscalarAutoscalingPolicyMetric']] = None,
                  mode: Optional[str] = None,
-                 scale_down_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl'] = None):
+                 scale_down_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl'] = None,
+                 scale_in_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControl'] = None):
         """
         :param int max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -421,6 +428,9 @@ class AutoscalarAutoscalingPolicy(dict):
         :param 'AutoscalarAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param 'AutoscalarAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -436,6 +446,8 @@ class AutoscalarAutoscalingPolicy(dict):
             pulumi.set(__self__, "mode", mode)
         if scale_down_control is not None:
             pulumi.set(__self__, "scale_down_control", scale_down_control)
+        if scale_in_control is not None:
+            pulumi.set(__self__, "scale_in_control", scale_in_control)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -523,6 +535,16 @@ class AutoscalarAutoscalingPolicy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "scale_down_control")
+
+    @property
+    @pulumi.getter(name="scaleInControl")
+    def scale_in_control(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleInControl']:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_in_control")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -814,6 +836,82 @@ class AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
 
 
 @pulumi.output_type
+class AutoscalarAutoscalingPolicyScaleInControl(dict):
+    def __init__(__self__, *,
+                 max_scaled_in_replicas: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas'] = None,
+                 time_window_sec: Optional[int] = None):
+        """
+        :param 'AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs' max_scaled_in_replicas: A nested object resource
+               Structure is documented below.
+        :param int time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_in_replicas is not None:
+            pulumi.set(__self__, "max_scaled_in_replicas", max_scaled_in_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledInReplicas")
+    def max_scaled_in_replicas(self) -> Optional['outputs.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_in_replicas")
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[int]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
+    def __init__(__self__, *,
+                 fixed: Optional[int] = None,
+                 percent: Optional[int] = None):
+        """
+        :param int fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[int]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[int]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class AutoscalerAutoscalingPolicy(dict):
     def __init__(__self__, *,
                  max_replicas: int,
@@ -823,7 +921,8 @@ class AutoscalerAutoscalingPolicy(dict):
                  load_balancing_utilization: Optional['outputs.AutoscalerAutoscalingPolicyLoadBalancingUtilization'] = None,
                  metrics: Optional[Sequence['outputs.AutoscalerAutoscalingPolicyMetric']] = None,
                  mode: Optional[str] = None,
-                 scale_down_control: Optional['outputs.AutoscalerAutoscalingPolicyScaleDownControl'] = None):
+                 scale_down_control: Optional['outputs.AutoscalerAutoscalingPolicyScaleDownControl'] = None,
+                 scale_in_control: Optional['outputs.AutoscalerAutoscalingPolicyScaleInControl'] = None):
         """
         :param int max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -856,6 +955,9 @@ class AutoscalerAutoscalingPolicy(dict):
         :param 'AutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param 'AutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -871,6 +973,8 @@ class AutoscalerAutoscalingPolicy(dict):
             pulumi.set(__self__, "mode", mode)
         if scale_down_control is not None:
             pulumi.set(__self__, "scale_down_control", scale_down_control)
+        if scale_in_control is not None:
+            pulumi.set(__self__, "scale_in_control", scale_in_control)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -958,6 +1062,16 @@ class AutoscalerAutoscalingPolicy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "scale_down_control")
+
+    @property
+    @pulumi.getter(name="scaleInControl")
+    def scale_in_control(self) -> Optional['outputs.AutoscalerAutoscalingPolicyScaleInControl']:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_in_control")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1212,6 +1326,82 @@ class AutoscalerAutoscalingPolicyScaleDownControl(dict):
 
 @pulumi.output_type
 class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
+    def __init__(__self__, *,
+                 fixed: Optional[int] = None,
+                 percent: Optional[int] = None):
+        """
+        :param int fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[int]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[int]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class AutoscalerAutoscalingPolicyScaleInControl(dict):
+    def __init__(__self__, *,
+                 max_scaled_in_replicas: Optional['outputs.AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas'] = None,
+                 time_window_sec: Optional[int] = None):
+        """
+        :param 'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs' max_scaled_in_replicas: A nested object resource
+               Structure is documented below.
+        :param int time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_in_replicas is not None:
+            pulumi.set(__self__, "max_scaled_in_replicas", max_scaled_in_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledInReplicas")
+    def max_scaled_in_replicas(self) -> Optional['outputs.AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_in_replicas")
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[int]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):
@@ -2594,7 +2784,7 @@ class ExternalVpnGatewayInterface(dict):
                  id: Optional[int] = None,
                  ip_address: Optional[str] = None):
         """
-        :param int id: The numberic ID for this interface. Allowed values are based on the redundancy type
+        :param int id: The numeric ID for this interface. Allowed values are based on the redundancy type
                of this external VPN gateway
                * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
                * `0, 1 - TWO_IPS_REDUNDANCY`
@@ -2613,7 +2803,7 @@ class ExternalVpnGatewayInterface(dict):
     @pulumi.getter
     def id(self) -> Optional[int]:
         """
-        The numberic ID for this interface. Allowed values are based on the redundancy type
+        The numeric ID for this interface. Allowed values are based on the redundancy type
         of this external VPN gateway
         * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
         * `0, 1 - TWO_IPS_REDUNDANCY`
@@ -7500,7 +7690,8 @@ class RegionAutoscalerAutoscalingPolicy(dict):
                  load_balancing_utilization: Optional['outputs.RegionAutoscalerAutoscalingPolicyLoadBalancingUtilization'] = None,
                  metrics: Optional[Sequence['outputs.RegionAutoscalerAutoscalingPolicyMetric']] = None,
                  mode: Optional[str] = None,
-                 scale_down_control: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl'] = None):
+                 scale_down_control: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl'] = None,
+                 scale_in_control: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleInControl'] = None):
         """
         :param int max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -7533,6 +7724,9 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         :param 'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs' scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param 'RegionAutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -7548,6 +7742,8 @@ class RegionAutoscalerAutoscalingPolicy(dict):
             pulumi.set(__self__, "mode", mode)
         if scale_down_control is not None:
             pulumi.set(__self__, "scale_down_control", scale_down_control)
+        if scale_in_control is not None:
+            pulumi.set(__self__, "scale_in_control", scale_in_control)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -7635,6 +7831,16 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "scale_down_control")
+
+    @property
+    @pulumi.getter(name="scaleInControl")
+    def scale_in_control(self) -> Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleInControl']:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_in_control")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -7889,6 +8095,82 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControl(dict):
 
 @pulumi.output_type
 class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas(dict):
+    def __init__(__self__, *,
+                 fixed: Optional[int] = None,
+                 percent: Optional[int] = None):
+        """
+        :param int fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param int percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[int]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[int]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RegionAutoscalerAutoscalingPolicyScaleInControl(dict):
+    def __init__(__self__, *,
+                 max_scaled_in_replicas: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas'] = None,
+                 time_window_sec: Optional[int] = None):
+        """
+        :param 'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs' max_scaled_in_replicas: A nested object resource
+               Structure is documented below.
+        :param int time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_in_replicas is not None:
+            pulumi.set(__self__, "max_scaled_in_replicas", max_scaled_in_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledInReplicas")
+    def max_scaled_in_replicas(self) -> Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas']:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_in_replicas")
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[int]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
     def __init__(__self__, *,
                  fixed: Optional[int] = None,
                  percent: Optional[int] = None):

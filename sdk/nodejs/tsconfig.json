@@ -364,6 +364,7 @@
         "iam/getRule.ts",
         "iam/getTestablePermissions.ts",
         "iam/getWorkloadIdentityPool.ts",
+        "iam/getWorkloadIdentityPoolProvider.ts",
         "iam/index.ts",
         "iam/workloadIdentityPool.ts",
         "iam/workloadIdentityPoolProvider.ts",

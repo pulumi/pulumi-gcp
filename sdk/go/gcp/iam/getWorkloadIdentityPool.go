@@ -18,9 +18,6 @@ func LookupWorkloadIdentityPool(ctx *pulumi.Context, args *LookupWorkloadIdentit
 
 // A collection of arguments for invoking getWorkloadIdentityPool.
 type LookupWorkloadIdentityPoolArgs struct {
-	Description *string `pulumi:"description"`
-	Disabled    *bool   `pulumi:"disabled"`
-	DisplayName *string `pulumi:"displayName"`
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -31,9 +28,9 @@ type LookupWorkloadIdentityPoolArgs struct {
 
 // A collection of values returned by getWorkloadIdentityPool.
 type LookupWorkloadIdentityPoolResult struct {
-	Description *string `pulumi:"description"`
-	Disabled    *bool   `pulumi:"disabled"`
-	DisplayName *string `pulumi:"displayName"`
+	Description string `pulumi:"description"`
+	Disabled    bool   `pulumi:"disabled"`
+	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                     string  `pulumi:"id"`
 	Name                   string  `pulumi:"name"`

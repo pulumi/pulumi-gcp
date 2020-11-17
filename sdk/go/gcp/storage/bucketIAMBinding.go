@@ -28,7 +28,15 @@ type BucketIAMBinding struct {
 	// Structure is documented below.
 	Condition BucketIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag    pulumi.StringOutput      `pulumi:"etag"`
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -79,7 +87,15 @@ type bucketIAMBindingState struct {
 	// Structure is documented below.
 	Condition *BucketIAMBindingCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
-	Etag    *string  `pulumi:"etag"`
+	Etag *string `pulumi:"etag"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -94,7 +110,15 @@ type BucketIAMBindingState struct {
 	// Structure is documented below.
 	Condition BucketIAMBindingConditionPtrInput
 	// (Computed) The etag of the IAM policy.
-	Etag    pulumi.StringPtrInput
+	Etag pulumi.StringPtrInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
 	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
@@ -112,7 +136,15 @@ type bucketIAMBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *BucketIAMBindingCondition `pulumi:"condition"`
-	Members   []string                   `pulumi:"members"`
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members []string `pulumi:"members"`
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.
@@ -126,7 +158,15 @@ type BucketIAMBindingArgs struct {
 	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition BucketIAMBindingConditionPtrInput
-	Members   pulumi.StringArrayInput
+	// Identities that will be granted the privilege in `role`.
+	// Each entry can have one of the following values:
+	// * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account.
+	// * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account.
+	// * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com or joe@example.com.
+	// * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
+	// * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
+	// * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
+	Members pulumi.StringArrayInput
 	// The role that should be applied. Only one
 	// `storage.BucketIAMBinding` can be used per role. Note that custom roles must be of the format
 	// `[projects|organizations]/{parent-name}/roles/{role-name}`.

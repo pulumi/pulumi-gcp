@@ -18,15 +18,6 @@ namespace Pulumi.Gcp.Iam
 
     public sealed class GetWorkloadIdentityPoolArgs : Pulumi.InvokeArgs
     {
-        [Input("description")]
-        public string? Description { get; set; }
-
-        [Input("disabled")]
-        public bool? Disabled { get; set; }
-
-        [Input("displayName")]
-        public string? DisplayName { get; set; }
-
         /// <summary>
         /// The project in which the resource belongs. If it
         /// is not provided, the provider project is used.
@@ -50,9 +41,9 @@ namespace Pulumi.Gcp.Iam
     [OutputType]
     public sealed class GetWorkloadIdentityPoolResult
     {
-        public readonly string? Description;
-        public readonly bool? Disabled;
-        public readonly string? DisplayName;
+        public readonly string Description;
+        public readonly bool Disabled;
+        public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -64,11 +55,11 @@ namespace Pulumi.Gcp.Iam
 
         [OutputConstructor]
         private GetWorkloadIdentityPoolResult(
-            string? description,
+            string description,
 
-            bool? disabled,
+            bool disabled,
 
-            string? displayName,
+            string displayName,
 
             string id,
 

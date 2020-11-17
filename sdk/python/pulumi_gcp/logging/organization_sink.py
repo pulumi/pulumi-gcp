@@ -39,7 +39,11 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+               ```python
+               import pulumi
+               ```
+               The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
                one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -106,7 +110,11 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+               ```python
+               import pulumi
+               ```
+               The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['OrganizationSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
                one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -146,7 +154,11 @@ class OrganizationSink(pulumi.CustomResource):
     def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        ```python
+        import pulumi
+        ```
+        The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
 

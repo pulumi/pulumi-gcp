@@ -15,12 +15,16 @@ __all__ = [
     'AutoscalarAutoscalingPolicyMetricArgs',
     'AutoscalarAutoscalingPolicyScaleDownControlArgs',
     'AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
+    'AutoscalarAutoscalingPolicyScaleInControlArgs',
+    'AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
     'AutoscalerAutoscalingPolicyArgs',
     'AutoscalerAutoscalingPolicyCpuUtilizationArgs',
     'AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs',
     'AutoscalerAutoscalingPolicyMetricArgs',
     'AutoscalerAutoscalingPolicyScaleDownControlArgs',
     'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
+    'AutoscalerAutoscalingPolicyScaleInControlArgs',
+    'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
     'BackendBucketCdnPolicyArgs',
     'BackendServiceBackendArgs',
     'BackendServiceCdnPolicyArgs',
@@ -143,6 +147,8 @@ __all__ = [
     'RegionAutoscalerAutoscalingPolicyMetricArgs',
     'RegionAutoscalerAutoscalingPolicyScaleDownControlArgs',
     'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs',
+    'RegionAutoscalerAutoscalingPolicyScaleInControlArgs',
+    'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
     'RegionBackendServiceBackendArgs',
     'RegionBackendServiceCircuitBreakersArgs',
     'RegionBackendServiceCircuitBreakersConnectTimeoutArgs',
@@ -352,7 +358,8 @@ class AutoscalarAutoscalingPolicyArgs:
                  load_balancing_utilization: Optional[pulumi.Input['AutoscalarAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalarAutoscalingPolicyMetricArgs']]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 scale_down_control: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs']] = None):
+                 scale_down_control: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs']] = None,
+                 scale_in_control: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs']] = None):
         """
         :param pulumi.Input[int] max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -385,6 +392,9 @@ class AutoscalarAutoscalingPolicyArgs:
         :param pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -400,6 +410,8 @@ class AutoscalarAutoscalingPolicyArgs:
             pulumi.set(__self__, "mode", mode)
         if scale_down_control is not None:
             pulumi.set(__self__, "scale_down_control", scale_down_control)
+        if scale_in_control is not None:
+            pulumi.set(__self__, "scale_in_control", scale_in_control)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -519,6 +531,20 @@ class AutoscalarAutoscalingPolicyArgs:
     @scale_down_control.setter
     def scale_down_control(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleDownControlArgs']]):
         pulumi.set(self, "scale_down_control", value)
+
+    @property
+    @pulumi.getter(name="scaleInControl")
+    def scale_in_control(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs']]:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_in_control")
+
+    @scale_in_control.setter
+    def scale_in_control(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlArgs']]):
+        pulumi.set(self, "scale_in_control", value)
 
 
 @pulumi.input_type
@@ -836,6 +862,92 @@ class AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
 
 
 @pulumi.input_type
+class AutoscalarAutoscalingPolicyScaleInControlArgs:
+    def __init__(__self__, *,
+                 max_scaled_in_replicas: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
+                 time_window_sec: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_in_replicas is not None:
+            pulumi.set(__self__, "max_scaled_in_replicas", max_scaled_in_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledInReplicas")
+    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_in_replicas")
+
+    @max_scaled_in_replicas.setter
+    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]):
+        pulumi.set(self, "max_scaled_in_replicas", value)
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    @time_window_sec.setter
+    def time_window_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_window_sec", value)
+
+
+@pulumi.input_type
+class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
+    def __init__(__self__, *,
+                 fixed: Optional[pulumi.Input[int]] = None,
+                 percent: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @fixed.setter
+    def fixed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fixed", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
 class AutoscalerAutoscalingPolicyArgs:
     def __init__(__self__, *,
                  max_replicas: pulumi.Input[int],
@@ -845,7 +957,8 @@ class AutoscalerAutoscalingPolicyArgs:
                  load_balancing_utilization: Optional[pulumi.Input['AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['AutoscalerAutoscalingPolicyMetricArgs']]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 scale_down_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs']] = None):
+                 scale_down_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs']] = None,
+                 scale_in_control: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs']] = None):
         """
         :param pulumi.Input[int] max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -878,6 +991,9 @@ class AutoscalerAutoscalingPolicyArgs:
         :param pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -893,6 +1009,8 @@ class AutoscalerAutoscalingPolicyArgs:
             pulumi.set(__self__, "mode", mode)
         if scale_down_control is not None:
             pulumi.set(__self__, "scale_down_control", scale_down_control)
+        if scale_in_control is not None:
+            pulumi.set(__self__, "scale_in_control", scale_in_control)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -1012,6 +1130,20 @@ class AutoscalerAutoscalingPolicyArgs:
     @scale_down_control.setter
     def scale_down_control(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleDownControlArgs']]):
         pulumi.set(self, "scale_down_control", value)
+
+    @property
+    @pulumi.getter(name="scaleInControl")
+    def scale_in_control(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs']]:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_in_control")
+
+    @scale_in_control.setter
+    def scale_in_control(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlArgs']]):
+        pulumi.set(self, "scale_in_control", value)
 
 
 @pulumi.input_type
@@ -1287,6 +1419,92 @@ class AutoscalerAutoscalingPolicyScaleDownControlArgs:
 
 @pulumi.input_type
 class AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
+    def __init__(__self__, *,
+                 fixed: Optional[pulumi.Input[int]] = None,
+                 percent: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @fixed.setter
+    def fixed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fixed", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
+class AutoscalerAutoscalingPolicyScaleInControlArgs:
+    def __init__(__self__, *,
+                 max_scaled_in_replicas: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
+                 time_window_sec: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_in_replicas is not None:
+            pulumi.set(__self__, "max_scaled_in_replicas", max_scaled_in_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledInReplicas")
+    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_in_replicas")
+
+    @max_scaled_in_replicas.setter
+    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]):
+        pulumi.set(self, "max_scaled_in_replicas", value)
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    @time_window_sec.setter
+    def time_window_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_window_sec", value)
+
+
+@pulumi.input_type
+class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):
@@ -2905,7 +3123,7 @@ class ExternalVpnGatewayInterfaceArgs:
                  id: Optional[pulumi.Input[int]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] id: The numberic ID for this interface. Allowed values are based on the redundancy type
+        :param pulumi.Input[int] id: The numeric ID for this interface. Allowed values are based on the redundancy type
                of this external VPN gateway
                * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
                * `0, 1 - TWO_IPS_REDUNDANCY`
@@ -2924,7 +3142,7 @@ class ExternalVpnGatewayInterfaceArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[int]]:
         """
-        The numberic ID for this interface. Allowed values are based on the redundancy type
+        The numeric ID for this interface. Allowed values are based on the redundancy type
         of this external VPN gateway
         * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
         * `0, 1 - TWO_IPS_REDUNDANCY`
@@ -8772,7 +8990,8 @@ class RegionAutoscalerAutoscalingPolicyArgs:
                  load_balancing_utilization: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs']] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RegionAutoscalerAutoscalingPolicyMetricArgs']]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 scale_down_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs']] = None):
+                 scale_down_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs']] = None,
+                 scale_in_control: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs']] = None):
         """
         :param pulumi.Input[int] max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -8805,6 +9024,9 @@ class RegionAutoscalerAutoscalingPolicyArgs:
         :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs'] scale_down_control: Defines scale down controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs'] scale_in_control: Defines scale in controls to reduce the risk of response latency
+               and outages due to abrupt scale-in events
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -8820,6 +9042,8 @@ class RegionAutoscalerAutoscalingPolicyArgs:
             pulumi.set(__self__, "mode", mode)
         if scale_down_control is not None:
             pulumi.set(__self__, "scale_down_control", scale_down_control)
+        if scale_in_control is not None:
+            pulumi.set(__self__, "scale_in_control", scale_in_control)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -8939,6 +9163,20 @@ class RegionAutoscalerAutoscalingPolicyArgs:
     @scale_down_control.setter
     def scale_down_control(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleDownControlArgs']]):
         pulumi.set(self, "scale_down_control", value)
+
+    @property
+    @pulumi.getter(name="scaleInControl")
+    def scale_in_control(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs']]:
+        """
+        Defines scale in controls to reduce the risk of response latency
+        and outages due to abrupt scale-in events
+        Structure is documented below.
+        """
+        return pulumi.get(self, "scale_in_control")
+
+    @scale_in_control.setter
+    def scale_in_control(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlArgs']]):
+        pulumi.set(self, "scale_in_control", value)
 
 
 @pulumi.input_type
@@ -9214,6 +9452,92 @@ class RegionAutoscalerAutoscalingPolicyScaleDownControlArgs:
 
 @pulumi.input_type
 class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicasArgs:
+    def __init__(__self__, *,
+                 fixed: Optional[pulumi.Input[int]] = None,
+                 percent: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] fixed: Specifies a fixed number of VM instances. This must be a positive
+               integer.
+        :param pulumi.Input[int] percent: Specifies a percentage of instances between 0 to 100%, inclusive.
+               For example, specify 80 for 80%.
+        """
+        if fixed is not None:
+            pulumi.set(__self__, "fixed", fixed)
+        if percent is not None:
+            pulumi.set(__self__, "percent", percent)
+
+    @property
+    @pulumi.getter
+    def fixed(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a fixed number of VM instances. This must be a positive
+        integer.
+        """
+        return pulumi.get(self, "fixed")
+
+    @fixed.setter
+    def fixed(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "fixed", value)
+
+    @property
+    @pulumi.getter
+    def percent(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies a percentage of instances between 0 to 100%, inclusive.
+        For example, specify 80 for 80%.
+        """
+        return pulumi.get(self, "percent")
+
+    @percent.setter
+    def percent(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "percent", value)
+
+
+@pulumi.input_type
+class RegionAutoscalerAutoscalingPolicyScaleInControlArgs:
+    def __init__(__self__, *,
+                 max_scaled_in_replicas: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']] = None,
+                 time_window_sec: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs'] max_scaled_in_replicas: A nested object resource
+               Structure is documented below.
+        :param pulumi.Input[int] time_window_sec: How long back autoscaling should look when computing recommendations
+               to include directives regarding slower scale down, as described above.
+        """
+        if max_scaled_in_replicas is not None:
+            pulumi.set(__self__, "max_scaled_in_replicas", max_scaled_in_replicas)
+        if time_window_sec is not None:
+            pulumi.set(__self__, "time_window_sec", time_window_sec)
+
+    @property
+    @pulumi.getter(name="maxScaledInReplicas")
+    def max_scaled_in_replicas(self) -> Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]:
+        """
+        A nested object resource
+        Structure is documented below.
+        """
+        return pulumi.get(self, "max_scaled_in_replicas")
+
+    @max_scaled_in_replicas.setter
+    def max_scaled_in_replicas(self, value: Optional[pulumi.Input['RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs']]):
+        pulumi.set(self, "max_scaled_in_replicas", value)
+
+    @property
+    @pulumi.getter(name="timeWindowSec")
+    def time_window_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        How long back autoscaling should look when computing recommendations
+        to include directives regarding slower scale down, as described above.
+        """
+        return pulumi.get(self, "time_window_sec")
+
+    @time_window_sec.setter
+    def time_window_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "time_window_sec", value)
+
+
+@pulumi.input_type
+class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
     def __init__(__self__, *,
                  fixed: Optional[pulumi.Input[int]] = None,
                  percent: Optional[pulumi.Input[int]] = None):

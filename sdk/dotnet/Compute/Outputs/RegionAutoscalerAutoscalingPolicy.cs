@@ -68,6 +68,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl? ScaleDownControl;
+        /// <summary>
+        /// Defines scale in controls to reduce the risk of response latency
+        /// and outages due to abrupt scale-in events
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RegionAutoscalerAutoscalingPolicyScaleInControl? ScaleInControl;
 
         [OutputConstructor]
         private RegionAutoscalerAutoscalingPolicy(
@@ -85,7 +91,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? mode,
 
-            Outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl? scaleDownControl)
+            Outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl? scaleDownControl,
+
+            Outputs.RegionAutoscalerAutoscalingPolicyScaleInControl? scaleInControl)
         {
             CooldownPeriod = cooldownPeriod;
             CpuUtilization = cpuUtilization;
@@ -95,6 +103,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             MinReplicas = minReplicas;
             Mode = mode;
             ScaleDownControl = scaleDownControl;
+            ScaleInControl = scaleInControl;
         }
     }
 }
