@@ -2,12 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 4.4.0 (2020-11-18)
 * Upgrade to v3.48.0 of the Google Beta Terraform Provider
 * Upgrade to pulumi-terraform-provider v2.13.2  
   * This adds import examples to the SDK
   * This fixes the examples as part of the SDK documentation
-
----
 
 ## 4.3.0 (2020-11-11)
 * Upgrade to v3.47.0 of the Google Beta Terraform Provider
