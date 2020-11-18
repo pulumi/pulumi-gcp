@@ -14,6 +14,86 @@ namespace Pulumi.Gcp.Dataproc
     /// [the official dataproc documentation](https://cloud.google.com/dataproc/).
     /// 
     /// !&gt; **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var mycluster = new Gcp.Dataproc.Cluster("mycluster", new Gcp.Dataproc.ClusterArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///         });
+    ///         // Submit an example spark job to a dataproc cluster
+    ///         var spark = new Gcp.Dataproc.Job("spark", new Gcp.Dataproc.JobArgs
+    ///         {
+    ///             Region = mycluster.Region,
+    ///             ForceDelete = true,
+    ///             Placement = new Gcp.Dataproc.Inputs.JobPlacementArgs
+    ///             {
+    ///                 ClusterName = mycluster.Name,
+    ///             },
+    ///             SparkConfig = new Gcp.Dataproc.Inputs.JobSparkConfigArgs
+    ///             {
+    ///                 MainClass = "org.apache.spark.examples.SparkPi",
+    ///                 JarFileUris = 
+    ///                 {
+    ///                     "file:///usr/lib/spark/examples/jars/spark-examples.jar",
+    ///                 },
+    ///                 Args = 
+    ///                 {
+    ///                     "1000",
+    ///                 },
+    ///                 Properties = 
+    ///                 {
+    ///                     { "spark.logConf", "true" },
+    ///                 },
+    ///                 LoggingConfig = new Gcp.Dataproc.Inputs.JobSparkConfigLoggingConfigArgs
+    ///                 {
+    ///                     DriverLogLevels = 
+    ///                     {
+    ///                         { "root", "INFO" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         // Submit an example pyspark job to a dataproc cluster
+    ///         var pyspark = new Gcp.Dataproc.Job("pyspark", new Gcp.Dataproc.JobArgs
+    ///         {
+    ///             Region = mycluster.Region,
+    ///             ForceDelete = true,
+    ///             Placement = new Gcp.Dataproc.Inputs.JobPlacementArgs
+    ///             {
+    ///                 ClusterName = mycluster.Name,
+    ///             },
+    ///             PysparkConfig = new Gcp.Dataproc.Inputs.JobPysparkConfigArgs
+    ///             {
+    ///                 MainPythonFileUri = "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
+    ///                 Properties = 
+    ///                 {
+    ///                     { "spark.logConf", "true" },
+    ///                 },
+    ///             },
+    ///         });
+    ///         this.SparkStatus = spark.Statuses.Apply(statuses =&gt; statuses[0].State);
+    ///         this.PysparkStatus = pyspark.Statuses.Apply(statuses =&gt; statuses[0].State);
+    ///     }
+    /// 
+    ///     [Output("sparkStatus")]
+    ///     public Output&lt;string&gt; SparkStatus { get; set; }
+    ///     [Output("pysparkStatus")]
+    ///     public Output&lt;string&gt; PysparkStatus { get; set; }
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     public partial class Job : Pulumi.CustomResource
     {

@@ -2,14 +2,68 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * A named resource to which messages are sent by publishers.
  *
  * ## Example Usage
+ * ### Queue Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultQueue = new gcp.cloudtasks.Queue("default", {
+ *     location: "us-central1",
+ * });
+ * ```
+ * ### Cloud Tasks Queue Advanced
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const advancedConfiguration = new gcp.cloudtasks.Queue("advanced_configuration", {
+ *     appEngineRoutingOverride: {
+ *         instance: "test",
+ *         service: "worker",
+ *         version: "1.0",
+ *     },
+ *     location: "us-central1",
+ *     rateLimits: {
+ *         maxConcurrentDispatches: 3,
+ *         maxDispatchesPerSecond: 2,
+ *     },
+ *     retryConfig: {
+ *         maxAttempts: 5,
+ *         maxBackoff: "3s",
+ *         maxDoublings: 1,
+ *         maxRetryDuration: "4s",
+ *         minBackoff: "2s",
+ *     },
+ *     stackdriverLoggingConfig: {
+ *         samplingRatio: 0.9,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Queue can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudtasks/queue:Queue default {{project}}/{{location}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
+ * ```
  */
 export class Queue extends pulumi.CustomResource {
     /**

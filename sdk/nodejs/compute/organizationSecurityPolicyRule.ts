@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,18 @@ import * as utilities from "../utilities";
  *     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * OrganizationSecurityPolicyRule can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/{{priority}}
+ * ```
  */
 export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     /**

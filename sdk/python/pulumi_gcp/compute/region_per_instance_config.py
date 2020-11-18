@@ -41,6 +41,26 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        RegionPerInstanceConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region}}/{{region_instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] minimal_action: The minimal action to perform on the instance during an update.

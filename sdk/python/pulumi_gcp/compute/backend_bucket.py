@@ -42,6 +42,34 @@ class BackendBucket(pulumi.CustomResource):
             * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 
         ## Example Usage
+        ### Backend Bucket Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_bucket = gcp.storage.Bucket("imageBucket", location="EU")
+        image_backend = gcp.compute.BackendBucket("imageBackend",
+            description="Contains beautiful images",
+            bucket_name=image_bucket.name,
+            enable_cdn=True)
+        ```
+
+        ## Import
+
+        BackendBucket can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -15,6 +15,30 @@ import * as utilities from "../utilities";
  *     * [Reserving a Static External IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
  *
  * ## Example Usage
+ * ### Global Address Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultGlobalAddress = new gcp.compute.GlobalAddress("default", {});
+ * ```
+ *
+ * ## Import
+ *
+ * GlobalAddress can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
+ * ```
  */
 export class GlobalAddress extends pulumi.CustomResource {
     /**

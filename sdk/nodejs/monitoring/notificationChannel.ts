@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -32,6 +31,45 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ * ### Notification Channel Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.monitoring.NotificationChannel("basic", {
+ *     displayName: "Test Notification Channel",
+ *     labels: {
+ *         email_address: "fake_email@blahblah.com",
+ *     },
+ *     type: "email",
+ * });
+ * ```
+ * ### Notification Channel Sensitive
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNotificationChannel = new gcp.monitoring.NotificationChannel("default", {
+ *     displayName: "Test Slack Channel",
+ *     labels: {
+ *         channel_name: "#foobar",
+ *     },
+ *     sensitiveLabels: {
+ *         authToken: "one",
+ *     },
+ *     type: "slack",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * NotificationChannel can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
+ * ```
  */
 export class NotificationChannel extends pulumi.CustomResource {
     /**

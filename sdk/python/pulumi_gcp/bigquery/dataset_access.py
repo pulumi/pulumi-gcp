@@ -30,7 +30,10 @@ class DatasetAccess(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a DatasetAccess resource with the given unique name, props, and options.
+        ## Import
+
+        This resource does not support import.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this table.

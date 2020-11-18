@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,135 @@ import (
 //     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 //
 // ## Example Usage
+// ### Compute Packet Mirroring Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		mirror, err := compute.NewInstance(ctx, "mirror", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-9"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: defaultNetwork.ID(),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+// 			Network:     defaultNetwork.ID(),
+// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHealthCheck.ID(),
+// 			}),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultForwardingRule, err := compute.NewForwardingRule(ctx, "defaultForwardingRule", &compute.ForwardingRuleArgs{
+// 			IsMirroringCollector: pulumi.Bool(true),
+// 			IpProtocol:           pulumi.String("TCP"),
+// 			LoadBalancingScheme:  pulumi.String("INTERNAL"),
+// 			BackendService:       defaultRegionBackendService.ID(),
+// 			AllPorts:             pulumi.Bool(true),
+// 			Network:              defaultNetwork.ID(),
+// 			Subnetwork:           defaultSubnetwork.ID(),
+// 			NetworkTier:          pulumi.String("PREMIUM"),
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			defaultSubnetwork,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewPacketMirroring(ctx, "foobar", &compute.PacketMirroringArgs{
+// 			Description: pulumi.String("bar"),
+// 			Network: &compute.PacketMirroringNetworkArgs{
+// 				Url: defaultNetwork.ID(),
+// 			},
+// 			CollectorIlb: &compute.PacketMirroringCollectorIlbArgs{
+// 				Url: defaultForwardingRule.ID(),
+// 			},
+// 			MirroredResources: &compute.PacketMirroringMirroredResourcesArgs{
+// 				Tags: pulumi.StringArray{
+// 					pulumi.String("foo"),
+// 				},
+// 				Instances: compute.PacketMirroringMirroredResourcesInstanceArray{
+// 					&compute.PacketMirroringMirroredResourcesInstanceArgs{
+// 						Url: mirror.ID(),
+// 					},
+// 				},
+// 			},
+// 			Filter: &compute.PacketMirroringFilterArgs{
+// 				IpProtocols: pulumi.StringArray{
+// 					pulumi.String("tcp"),
+// 				},
+// 				CidrRanges: pulumi.StringArray{
+// 					pulumi.String("0.0.0.0/0"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// PacketMirroring can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
+// ```
 type PacketMirroring struct {
 	pulumi.CustomResourceState
 
@@ -236,4 +366,43 @@ type PacketMirroringArgs struct {
 
 func (PacketMirroringArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*packetMirroringArgs)(nil)).Elem()
+}
+
+type PacketMirroringInput interface {
+	pulumi.Input
+
+	ToPacketMirroringOutput() PacketMirroringOutput
+	ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput
+}
+
+func (PacketMirroring) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroring)(nil)).Elem()
+}
+
+func (i PacketMirroring) ToPacketMirroringOutput() PacketMirroringOutput {
+	return i.ToPacketMirroringOutputWithContext(context.Background())
+}
+
+func (i PacketMirroring) ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringOutput)
+}
+
+type PacketMirroringOutput struct {
+	*pulumi.OutputState
+}
+
+func (PacketMirroringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroringOutput)(nil)).Elem()
+}
+
+func (o PacketMirroringOutput) ToPacketMirroringOutput() PacketMirroringOutput {
+	return o
+}
+
+func (o PacketMirroringOutput) ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PacketMirroringOutput{})
 }

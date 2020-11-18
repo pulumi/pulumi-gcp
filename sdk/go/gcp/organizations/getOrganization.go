@@ -8,6 +8,35 @@ import (
 )
 
 // Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "example.com"
+// 		org, err := organizations.GetOrganization(ctx, &organizations.GetOrganizationArgs{
+// 			Domain: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = organizations.NewFolder(ctx, "sales", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("Sales"),
+// 			Parent:      pulumi.String(org.Name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetOrganization(ctx *pulumi.Context, args *GetOrganizationArgs, opts ...pulumi.InvokeOption) (*GetOrganizationResult, error) {
 	var rv GetOrganizationResult
 	err := ctx.Invoke("gcp:organizations/getOrganization:getOrganization", args, &rv, opts...)

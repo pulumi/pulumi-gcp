@@ -4,6 +4,7 @@
 package runtimeconfig
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -14,6 +15,20 @@ import (
 // [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
 // or the
 // [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+//
+// ## Import
+//
+// Runtime Config Variables can be imported using the `name` or full variable name, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+// ```
+//
+//  When importing using only the name, the provider project must be set.
 type Variable struct {
 	pulumi.CustomResourceState
 
@@ -155,4 +170,43 @@ type VariableArgs struct {
 
 func (VariableArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*variableArgs)(nil)).Elem()
+}
+
+type VariableInput interface {
+	pulumi.Input
+
+	ToVariableOutput() VariableOutput
+	ToVariableOutputWithContext(ctx context.Context) VariableOutput
+}
+
+func (Variable) ElementType() reflect.Type {
+	return reflect.TypeOf((*Variable)(nil)).Elem()
+}
+
+func (i Variable) ToVariableOutput() VariableOutput {
+	return i.ToVariableOutputWithContext(context.Background())
+}
+
+func (i Variable) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VariableOutput)
+}
+
+type VariableOutput struct {
+	*pulumi.OutputState
+}
+
+func (VariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VariableOutput)(nil)).Elem()
+}
+
+func (o VariableOutput) ToVariableOutput() VariableOutput {
+	return o
+}
+
+func (o VariableOutput) ToVariableOutputWithContext(ctx context.Context) VariableOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VariableOutput{})
 }

@@ -16,6 +16,66 @@ namespace Pulumi.Gcp.ML
     /// ready to receive prediction requests. The model itself is just a container.
     /// 
     /// ## Example Usage
+    /// ### Ml Model Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.ML.EngineModel("default", new Gcp.ML.EngineModelArgs
+    ///         {
+    ///             Description = "My model",
+    ///             Regions = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Ml Model Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.ML.EngineModel("default", new Gcp.ML.EngineModelArgs
+    ///         {
+    ///             Description = "My model",
+    ///             Labels = 
+    ///             {
+    ///                 { "my_model", "foo" },
+    ///             },
+    ///             OnlinePredictionConsoleLogging = true,
+    ///             OnlinePredictionLogging = true,
+    ///             Regions = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Model can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:ml/engineModel:EngineModel default projects/{{project}}/models/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:ml/engineModel:EngineModel default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
+    /// ```
     /// </summary>
     public partial class EngineModel : Pulumi.CustomResource
     {

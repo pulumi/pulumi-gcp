@@ -4,6 +4,7 @@
 package accesscontextmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -32,6 +33,60 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+// ### Access Context Manager Service Perimeter Resource Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/accesscontextmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access_policy", &accesscontextmanager.AccessPolicyArgs{
+// 			Parent: pulumi.String("organizations/123456789"),
+// 			Title:  pulumi.String("my policy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewServicePerimeter(ctx, "service_perimeter_resourceServicePerimeter", &accesscontextmanager.ServicePerimeterArgs{
+// 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Title: pulumi.String("restrict_all"),
+// 			Status: &accesscontextmanager.ServicePerimeterStatusArgs{
+// 				RestrictedServices: pulumi.StringArray{
+// 					pulumi.String("storage.googleapis.com"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewServicePerimeterResource(ctx, "service_perimeter_resourceServicePerimeterResource", &accesscontextmanager.ServicePerimeterResourceArgs{
+// 			PerimeterName: service_perimeter_resourceServicePerimeter.Name,
+// 			Resource:      pulumi.String("projects/987654321"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ServicePerimeterResource can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
+// ```
 type ServicePerimeterResource struct {
 	pulumi.CustomResourceState
 
@@ -119,4 +174,43 @@ type ServicePerimeterResourceArgs struct {
 
 func (ServicePerimeterResourceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePerimeterResourceArgs)(nil)).Elem()
+}
+
+type ServicePerimeterResourceInput interface {
+	pulumi.Input
+
+	ToServicePerimeterResourceOutput() ServicePerimeterResourceOutput
+	ToServicePerimeterResourceOutputWithContext(ctx context.Context) ServicePerimeterResourceOutput
+}
+
+func (ServicePerimeterResource) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterResource)(nil)).Elem()
+}
+
+func (i ServicePerimeterResource) ToServicePerimeterResourceOutput() ServicePerimeterResourceOutput {
+	return i.ToServicePerimeterResourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterResource) ToServicePerimeterResourceOutputWithContext(ctx context.Context) ServicePerimeterResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceOutput)
+}
+
+type ServicePerimeterResourceOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePerimeterResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterResourceOutput)(nil)).Elem()
+}
+
+func (o ServicePerimeterResourceOutput) ToServicePerimeterResourceOutput() ServicePerimeterResourceOutput {
+	return o
+}
+
+func (o ServicePerimeterResourceOutput) ToServicePerimeterResourceOutputWithContext(ctx context.Context) ServicePerimeterResourceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServicePerimeterResourceOutput{})
 }

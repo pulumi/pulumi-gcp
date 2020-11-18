@@ -19,6 +19,135 @@ namespace Pulumi.Gcp.Iot
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
+    /// ### Cloudiot Device Registry Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test_registry = new Gcp.Iot.Registry("test-registry", new Gcp.Iot.RegistryArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloudiot Device Registry Single Event Notification Configs
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var default_telemetry = new Gcp.PubSub.Topic("default-telemetry", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var test_registry = new Gcp.Iot.Registry("test-registry", new Gcp.Iot.RegistryArgs
+    ///         {
+    ///             EventNotificationConfigs = 
+    ///             {
+    ///                 new Gcp.Iot.Inputs.RegistryEventNotificationConfigItemArgs
+    ///                 {
+    ///                     PubsubTopicName = default_telemetry.Id,
+    ///                     SubfolderMatches = "",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloudiot Device Registry Full
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var default_devicestatus = new Gcp.PubSub.Topic("default-devicestatus", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var default_telemetry = new Gcp.PubSub.Topic("default-telemetry", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var additional_telemetry = new Gcp.PubSub.Topic("additional-telemetry", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var test_registry = new Gcp.Iot.Registry("test-registry", new Gcp.Iot.RegistryArgs
+    ///         {
+    ///             EventNotificationConfigs = 
+    ///             {
+    ///                 new Gcp.Iot.Inputs.RegistryEventNotificationConfigItemArgs
+    ///                 {
+    ///                     PubsubTopicName = additional_telemetry.Id,
+    ///                     SubfolderMatches = "test/path",
+    ///                 },
+    ///                 new Gcp.Iot.Inputs.RegistryEventNotificationConfigItemArgs
+    ///                 {
+    ///                     PubsubTopicName = default_telemetry.Id,
+    ///                     SubfolderMatches = "",
+    ///                 },
+    ///             },
+    ///             StateNotificationConfig = 
+    ///             {
+    ///                 { "pubsub_topic_name", default_devicestatus.Id },
+    ///             },
+    ///             MqttConfig = 
+    ///             {
+    ///                 { "mqtt_enabled_state", "MQTT_ENABLED" },
+    ///             },
+    ///             HttpConfig = 
+    ///             {
+    ///                 { "http_enabled_state", "HTTP_ENABLED" },
+    ///             },
+    ///             LogLevel = "INFO",
+    ///             Credentials = 
+    ///             {
+    ///                 new Gcp.Iot.Inputs.RegistryCredentialArgs
+    ///                 {
+    ///                     PublicKeyCertificate = 
+    ///                     {
+    ///                         { "format", "X509_CERTIFICATE_PEM" },
+    ///                         { "certificate", File.ReadAllText("test-fixtures/rsa_cert.pem") },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DeviceRegistry can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iot/registry:Registry default {{project}}/locations/{{region}}/registries/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iot/registry:Registry default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iot/registry:Registry default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iot/registry:Registry default {{name}}
+    /// ```
     /// </summary>
     public partial class Registry : Pulumi.CustomResource
     {

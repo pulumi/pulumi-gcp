@@ -41,6 +41,89 @@ class PacketMirroring(pulumi.CustomResource):
             * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
 
         ## Example Usage
+        ### Compute Packet Mirroring Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork", opts=ResourceOptions(provider=google_beta))
+        mirror = gcp.compute.Instance("mirror",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network=default_network.id,
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )],
+            opts=ResourceOptions(provider=google_beta))
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            network=default_network.id,
+            ip_cidr_range="10.2.0.0/16",
+            opts=ResourceOptions(provider=google_beta))
+        default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
+            check_interval_sec=1,
+            timeout_sec=1,
+            tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
+                port=80,
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService", health_checks=[default_health_check.id],
+        opts=ResourceOptions(provider=google_beta))
+        default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
+            is_mirroring_collector=True,
+            ip_protocol="TCP",
+            load_balancing_scheme="INTERNAL",
+            backend_service=default_region_backend_service.id,
+            all_ports=True,
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            network_tier="PREMIUM",
+            opts=ResourceOptions(provider=google_beta,
+                depends_on=[default_subnetwork]))
+        foobar = gcp.compute.PacketMirroring("foobar",
+            description="bar",
+            network=gcp.compute.PacketMirroringNetworkArgs(
+                url=default_network.id,
+            ),
+            collector_ilb=gcp.compute.PacketMirroringCollectorIlbArgs(
+                url=default_forwarding_rule.id,
+            ),
+            mirrored_resources=gcp.compute.PacketMirroringMirroredResourcesArgs(
+                tags=["foo"],
+                instances=[gcp.compute.PacketMirroringMirroredResourcesInstanceArgs(
+                    url=mirror.id,
+                )],
+            ),
+            filter=gcp.compute.PacketMirroringFilterArgs(
+                ip_protocols=["tcp"],
+                cidr_ranges=["0.0.0.0/0"],
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        PacketMirroring can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

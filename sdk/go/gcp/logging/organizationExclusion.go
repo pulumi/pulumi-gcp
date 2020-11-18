@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,39 @@ import (
 //
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := logging.NewOrganizationExclusion(ctx, "my_exclusion", &logging.OrganizationExclusionArgs{
+// 			Description: pulumi.String("Exclude GCE instance debug logs"),
+// 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
+// 			OrgId:       pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Organization-level logging exclusions can be imported using their URI, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion my_exclusion organizations/{{organization}}/exclusions/{{name}}
+// ```
 type OrganizationExclusion struct {
 	pulumi.CustomResourceState
 
@@ -138,4 +172,43 @@ type OrganizationExclusionArgs struct {
 
 func (OrganizationExclusionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationExclusionArgs)(nil)).Elem()
+}
+
+type OrganizationExclusionInput interface {
+	pulumi.Input
+
+	ToOrganizationExclusionOutput() OrganizationExclusionOutput
+	ToOrganizationExclusionOutputWithContext(ctx context.Context) OrganizationExclusionOutput
+}
+
+func (OrganizationExclusion) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationExclusion)(nil)).Elem()
+}
+
+func (i OrganizationExclusion) ToOrganizationExclusionOutput() OrganizationExclusionOutput {
+	return i.ToOrganizationExclusionOutputWithContext(context.Background())
+}
+
+func (i OrganizationExclusion) ToOrganizationExclusionOutputWithContext(ctx context.Context) OrganizationExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionOutput)
+}
+
+type OrganizationExclusionOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationExclusionOutput)(nil)).Elem()
+}
+
+func (o OrganizationExclusionOutput) ToOrganizationExclusionOutput() OrganizationExclusionOutput {
+	return o
+}
+
+func (o OrganizationExclusionOutput) ToOrganizationExclusionOutputWithContext(ctx context.Context) OrganizationExclusionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationExclusionOutput{})
 }

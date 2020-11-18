@@ -2,12 +2,25 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Get info about a Region Google Compute SSL Certificate from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myCert = gcp.compute.getRegionSslCertificate({
+ *     name: "my-cert",
+ * });
+ * export const certificate = myCert.then(myCert => myCert.certificate);
+ * export const certificateId = myCert.then(myCert => myCert.certificateId);
+ * export const selfLink = myCert.then(myCert => myCert.selfLink);
+ * ```
  */
 export function getRegionSslCertificate(args: GetRegionSslCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionSslCertificateResult> {
     if (!opts) {

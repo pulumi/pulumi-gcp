@@ -17,6 +17,131 @@ namespace Pulumi.Gcp.Compute
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/externalVpnGateways)
     /// 
     /// ## Example Usage
+    /// ### External Vpn Gateway
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var network = new Gcp.Compute.Network("network", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             RoutingMode = "GLOBAL",
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var haGateway = new Gcp.Compute.HaVpnGateway("haGateway", new Gcp.Compute.HaVpnGatewayArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Network = network.Id,
+    ///         });
+    ///         var externalGateway = new Gcp.Compute.ExternalVpnGateway("externalGateway", new Gcp.Compute.ExternalVpnGatewayArgs
+    ///         {
+    ///             RedundancyType = "SINGLE_IP_INTERNALLY_REDUNDANT",
+    ///             Description = "An externally managed VPN gateway",
+    ///             Interfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.ExternalVpnGatewayInterfaceArgs
+    ///                 {
+    ///                     Id = 0,
+    ///                     IpAddress = "8.8.8.8",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var networkSubnet1 = new Gcp.Compute.Subnetwork("networkSubnet1", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.1.0/24",
+    ///             Region = "us-central1",
+    ///             Network = network.Id,
+    ///         });
+    ///         var networkSubnet2 = new Gcp.Compute.Subnetwork("networkSubnet2", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.2.0/24",
+    ///             Region = "us-west1",
+    ///             Network = network.Id,
+    ///         });
+    ///         var router1 = new Gcp.Compute.Router("router1", new Gcp.Compute.RouterArgs
+    ///         {
+    ///             Network = network.Name,
+    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///             {
+    ///                 Asn = 64514,
+    ///             },
+    ///         });
+    ///         var tunnel1 = new Gcp.Compute.VPNTunnel("tunnel1", new Gcp.Compute.VPNTunnelArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             VpnGateway = haGateway.Id,
+    ///             PeerExternalGateway = externalGateway.Id,
+    ///             PeerExternalGatewayInterface = 0,
+    ///             SharedSecret = "a secret message",
+    ///             Router = router1.Id,
+    ///             VpnGatewayInterface = 0,
+    ///         });
+    ///         var tunnel2 = new Gcp.Compute.VPNTunnel("tunnel2", new Gcp.Compute.VPNTunnelArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             VpnGateway = haGateway.Id,
+    ///             PeerExternalGateway = externalGateway.Id,
+    ///             PeerExternalGatewayInterface = 0,
+    ///             SharedSecret = "a secret message",
+    ///             Router = router1.Id.Apply(id =&gt; $" {id}"),
+    ///             VpnGatewayInterface = 1,
+    ///         });
+    ///         var router1Interface1 = new Gcp.Compute.RouterInterface("router1Interface1", new Gcp.Compute.RouterInterfaceArgs
+    ///         {
+    ///             Router = router1.Name,
+    ///             Region = "us-central1",
+    ///             IpRange = "169.254.0.1/30",
+    ///             VpnTunnel = tunnel1.Name,
+    ///         });
+    ///         var router1Peer1 = new Gcp.Compute.RouterPeer("router1Peer1", new Gcp.Compute.RouterPeerArgs
+    ///         {
+    ///             Router = router1.Name,
+    ///             Region = "us-central1",
+    ///             PeerIpAddress = "169.254.0.2",
+    ///             PeerAsn = 64515,
+    ///             AdvertisedRoutePriority = 100,
+    ///             Interface = router1Interface1.Name,
+    ///         });
+    ///         var router1Interface2 = new Gcp.Compute.RouterInterface("router1Interface2", new Gcp.Compute.RouterInterfaceArgs
+    ///         {
+    ///             Router = router1.Name,
+    ///             Region = "us-central1",
+    ///             IpRange = "169.254.1.1/30",
+    ///             VpnTunnel = tunnel2.Name,
+    ///         });
+    ///         var router1Peer2 = new Gcp.Compute.RouterPeer("router1Peer2", new Gcp.Compute.RouterPeerArgs
+    ///         {
+    ///             Router = router1.Name,
+    ///             Region = "us-central1",
+    ///             PeerIpAddress = "169.254.1.2",
+    ///             PeerAsn = 64515,
+    ///             AdvertisedRoutePriority = 100,
+    ///             Interface = router1Interface2.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ExternalVpnGateway can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default projects/{{project}}/global/externalVpnGateways/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
+    /// ```
     /// </summary>
     public partial class ExternalVpnGateway : Pulumi.CustomResource
     {

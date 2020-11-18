@@ -35,6 +35,25 @@ class Domain(pulumi.CustomResource):
             * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
 
         ## Example Usage
+        ### Active Directory Domain Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain = gcp.activedirectory.Domain("ad-domain",
+            domain_name="tfgen.org.com",
+            locations=["us-central1"],
+            reserved_ip_range="192.168.255.0/24")
+        ```
+
+        ## Import
+
+        Domain can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

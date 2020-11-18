@@ -19,6 +19,43 @@ namespace Pulumi.Gcp.GameServices
     ///     * [Official Documentation](https://cloud.google.com/game-servers/docs)
     /// 
     /// ## Example Usage
+    /// ### Game Service Realm Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.GameServices.Realm("default", new Gcp.GameServices.RealmArgs
+    ///         {
+    ///             Description = "one of the nine",
+    ///             Location = "global",
+    ///             RealmId = "tf-test-realm",
+    ///             TimeZone = "EST",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Realm can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gameservices/realm:Realm default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gameservices/realm:Realm default {{project}}/{{location}}/{{realm_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:gameservices/realm:Realm default {{location}}/{{realm_id}}
+    /// ```
     /// </summary>
     public partial class Realm : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,18 @@ import (
 //     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
+// ```
 type OrganizationSecurityPolicyAssociation struct {
 	pulumi.CustomResourceState
 
@@ -112,4 +125,43 @@ type OrganizationSecurityPolicyAssociationArgs struct {
 
 func (OrganizationSecurityPolicyAssociationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSecurityPolicyAssociationArgs)(nil)).Elem()
+}
+
+type OrganizationSecurityPolicyAssociationInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyAssociationOutput() OrganizationSecurityPolicyAssociationOutput
+	ToOrganizationSecurityPolicyAssociationOutputWithContext(ctx context.Context) OrganizationSecurityPolicyAssociationOutput
+}
+
+func (OrganizationSecurityPolicyAssociation) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyAssociation)(nil)).Elem()
+}
+
+func (i OrganizationSecurityPolicyAssociation) ToOrganizationSecurityPolicyAssociationOutput() OrganizationSecurityPolicyAssociationOutput {
+	return i.ToOrganizationSecurityPolicyAssociationOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyAssociation) ToOrganizationSecurityPolicyAssociationOutputWithContext(ctx context.Context) OrganizationSecurityPolicyAssociationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyAssociationOutput)
+}
+
+type OrganizationSecurityPolicyAssociationOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationSecurityPolicyAssociationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyAssociationOutput)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyAssociationOutput) ToOrganizationSecurityPolicyAssociationOutput() OrganizationSecurityPolicyAssociationOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyAssociationOutput) ToOrganizationSecurityPolicyAssociationOutputWithContext(ctx context.Context) OrganizationSecurityPolicyAssociationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyAssociationOutput{})
 }

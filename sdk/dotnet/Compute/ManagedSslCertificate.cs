@@ -37,6 +37,148 @@ namespace Pulumi.Gcp.Compute
     /// In conclusion: Be extremely cautious.
     /// 
     /// ## Example Usage
+    /// ### Managed Ssl Certificate Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultManagedSslCertificate = new Gcp.Compute.ManagedSslCertificate("defaultManagedSslCertificate", new Gcp.Compute.ManagedSslCertificateArgs
+    ///         {
+    ///             Managed = new Gcp.Compute.Inputs.ManagedSslCertificateManagedArgs
+    ///             {
+    ///                 Domains = 
+    ///                 {
+    ///                     "sslcert.tf-test.club.",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("defaultHttpHealthCheck", new Gcp.Compute.HttpHealthCheckArgs
+    ///         {
+    ///             RequestPath = "/",
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             PortName = "http",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHttpHealthCheck.Id,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new Gcp.Compute.URLMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = defaultBackendService.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "sslcert.tf-test.club",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = defaultBackendService.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/*",
+    ///                             },
+    ///                             Service = defaultBackendService.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("defaultTargetHttpsProxy", new Gcp.Compute.TargetHttpsProxyArgs
+    ///         {
+    ///             UrlMap = defaultURLMap.Id,
+    ///             SslCertificates = 
+    ///             {
+    ///                 defaultManagedSslCertificate.Id,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var zone = new Gcp.Dns.ManagedZone("zone", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "sslcert.tf-test.club.",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
+    ///         {
+    ///             Target = defaultTargetHttpsProxy.Id,
+    ///             PortRange = "443",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @set = new Gcp.Dns.RecordSet("set", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             Type = "A",
+    ///             Ttl = 3600,
+    ///             ManagedZone = zone.Name,
+    ///             Rrdatas = 
+    ///             {
+    ///                 defaultGlobalForwardingRule.IpAddress,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ManagedSslCertificate can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{name}}
+    /// ```
     /// </summary>
     public partial class ManagedSslCertificate : Pulumi.CustomResource
     {

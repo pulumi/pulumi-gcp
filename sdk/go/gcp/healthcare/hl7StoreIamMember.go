@@ -4,6 +4,7 @@
 package healthcare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,122 @@ import (
 // > **Note:** `healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `healthcare.Hl7StoreIamBinding` and `healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/editor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewHl7StoreIamPolicy(ctx, "hl7V2Store", &healthcare.Hl7StoreIamPolicyArgs{
+// 			Hl7V2StoreId: pulumi.String("your-hl7-v2-store-id"),
+// 			PolicyData:   pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := healthcare.NewHl7StoreIamBinding(ctx, "hl7V2Store", &healthcare.Hl7StoreIamBindingArgs{
+// 			Hl7V2StoreId: pulumi.String("your-hl7-v2-store-id"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_healthcare\_hl7\_v2\_store\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := healthcare.NewHl7StoreIamMember(ctx, "hl7V2Store", &healthcare.Hl7StoreIamMemberArgs{
+// 			Hl7V2StoreId: pulumi.String("your-hl7-v2-store-id"),
+// 			Member:       pulumi.String("user:jane@example.com"),
+// 			Role:         pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+//
+// This member resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer user:foo@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//
+// This binding resource can be imported using the `hl7_v2_store_id` and role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question.
+//
+// This policy resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
+// ```
 type Hl7StoreIamMember struct {
 	pulumi.CustomResourceState
 
@@ -140,4 +257,43 @@ type Hl7StoreIamMemberArgs struct {
 
 func (Hl7StoreIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreIamMemberArgs)(nil)).Elem()
+}
+
+type Hl7StoreIamMemberInput interface {
+	pulumi.Input
+
+	ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput
+	ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput
+}
+
+func (Hl7StoreIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7StoreIamMember)(nil)).Elem()
+}
+
+func (i Hl7StoreIamMember) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput {
+	return i.ToHl7StoreIamMemberOutputWithContext(context.Background())
+}
+
+func (i Hl7StoreIamMember) ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberOutput)
+}
+
+type Hl7StoreIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (Hl7StoreIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7StoreIamMemberOutput)(nil)).Elem()
+}
+
+func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput {
+	return o
+}
+
+func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(Hl7StoreIamMemberOutput{})
 }

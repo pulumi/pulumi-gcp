@@ -29,6 +29,54 @@ class SecurityPolicy(pulumi.CustomResource):
         see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
         and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy", rules=[
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="deny(403)",
+                description="Deny access to IPs in 9.9.9.0/24",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["9.9.9.0/24"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=1000,
+            ),
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="allow",
+                description="default rule",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["*"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=2147483647,
+            ),
+        ])
+        ```
+
+        ## Import
+
+        Security policies can be imported using any of the following formats
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.

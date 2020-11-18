@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,42 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
  *
  * ## Example Usage
+ * ### Datastore Index
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDataStoreIndex = new gcp.datastore.DataStoreIndex("default", {
+ *     kind: "foo",
+ *     properties: [
+ *         {
+ *             direction: "ASCENDING",
+ *             name: "property_a",
+ *         },
+ *         {
+ *             direction: "ASCENDING",
+ *             name: "property_b",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Index can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
+ * ```
  */
 export class DataStoreIndex extends pulumi.CustomResource {
     /**

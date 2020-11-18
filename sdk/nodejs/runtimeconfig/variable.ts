@@ -9,6 +9,20 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
  * or the
  * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+ *
+ * ## Import
+ *
+ * Runtime Config Variables can be imported using the `name` or full variable name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable myconfig/myvariable
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:runtimeconfig/variable:Variable myvariable projects/my-gcp-project/configs/myconfig/variables/myvariable
+ * ```
+ *
+ *  When importing using only the name, the provider project must be set.
  */
 export class Variable extends pulumi.CustomResource {
     /**

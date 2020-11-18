@@ -4,6 +4,7 @@
 package identityplatform
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,55 @@ import (
 // the marketplace prior to using this resource.
 //
 // ## Example Usage
+// ### Identity Platform Tenant Oauth Idp Config Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/identityplatform"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
+// 			DisplayName: pulumi.String("tenant"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = identityplatform.NewTenantOauthIdpConfig(ctx, "tenantOauthIdpConfig", &identityplatform.TenantOauthIdpConfigArgs{
+// 			Tenant:       tenant.Name,
+// 			DisplayName:  pulumi.String("Display Name"),
+// 			ClientId:     pulumi.String("client-id"),
+// 			Issuer:       pulumi.String("issuer"),
+// 			Enabled:      pulumi.Bool(true),
+// 			ClientSecret: pulumi.String("secret"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// TenantOauthIdpConfig can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{project}}/{{tenant}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
+// ```
 type TenantOauthIdpConfig struct {
 	pulumi.CustomResourceState
 
@@ -165,4 +215,43 @@ type TenantOauthIdpConfigArgs struct {
 
 func (TenantOauthIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantOauthIdpConfigArgs)(nil)).Elem()
+}
+
+type TenantOauthIdpConfigInput interface {
+	pulumi.Input
+
+	ToTenantOauthIdpConfigOutput() TenantOauthIdpConfigOutput
+	ToTenantOauthIdpConfigOutputWithContext(ctx context.Context) TenantOauthIdpConfigOutput
+}
+
+func (TenantOauthIdpConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantOauthIdpConfig)(nil)).Elem()
+}
+
+func (i TenantOauthIdpConfig) ToTenantOauthIdpConfigOutput() TenantOauthIdpConfigOutput {
+	return i.ToTenantOauthIdpConfigOutputWithContext(context.Background())
+}
+
+func (i TenantOauthIdpConfig) ToTenantOauthIdpConfigOutputWithContext(ctx context.Context) TenantOauthIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantOauthIdpConfigOutput)
+}
+
+type TenantOauthIdpConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (TenantOauthIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantOauthIdpConfigOutput)(nil)).Elem()
+}
+
+func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigOutput() TenantOauthIdpConfigOutput {
+	return o
+}
+
+func (o TenantOauthIdpConfigOutput) ToTenantOauthIdpConfigOutputWithContext(ctx context.Context) TenantOauthIdpConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TenantOauthIdpConfigOutput{})
 }

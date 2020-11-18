@@ -43,6 +43,42 @@ class AccessLevel(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Access Level Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy={
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                        "requireScreenLock": True,
+                    },
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ),
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="chromeos_no_lock")
+        ```
+
+        ## Import
+
+        AccessLevel can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

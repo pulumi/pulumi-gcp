@@ -2,14 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Get information about a Google Cloud Pub/Sub Topic. For more information see
  * the [official documentation](https://cloud.google.com/pubsub/docs/)
  * and [API](https://cloud.google.com/pubsub/docs/apis).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_pubsub_topic = pulumi.output(gcp.pubsub.getTopic({
+ *     name: "my-pubsub-topic",
+ * }, { async: true }));
+ * ```
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
     if (!opts) {

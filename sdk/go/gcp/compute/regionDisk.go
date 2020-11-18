@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -36,6 +37,71 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+// ### Region Disk Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+// 			Image: pulumi.String("debian-cloud/debian-9"),
+// 			Size:  pulumi.Int(50),
+// 			Type:  pulumi.String("pd-ssd"),
+// 			Zone:  pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+// 			SourceDisk: disk.Name,
+// 			Zone:       pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionDisk(ctx, "regiondisk", &compute.RegionDiskArgs{
+// 			Snapshot:               snapdisk.ID(),
+// 			Type:                   pulumi.String("pd-ssd"),
+// 			Region:                 pulumi.String("us-central1"),
+// 			PhysicalBlockSizeBytes: pulumi.Int(4096),
+// 			ReplicaZones: pulumi.StringArray{
+// 				pulumi.String("us-central1-a"),
+// 				pulumi.String("us-central1-f"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// RegionDisk can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
+// ```
 type RegionDisk struct {
 	pulumi.CustomResourceState
 
@@ -443,4 +509,43 @@ type RegionDiskArgs struct {
 
 func (RegionDiskArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskArgs)(nil)).Elem()
+}
+
+type RegionDiskInput interface {
+	pulumi.Input
+
+	ToRegionDiskOutput() RegionDiskOutput
+	ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput
+}
+
+func (RegionDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDisk)(nil)).Elem()
+}
+
+func (i RegionDisk) ToRegionDiskOutput() RegionDiskOutput {
+	return i.ToRegionDiskOutputWithContext(context.Background())
+}
+
+func (i RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskOutput)
+}
+
+type RegionDiskOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskOutput)(nil)).Elem()
+}
+
+func (o RegionDiskOutput) ToRegionDiskOutput() RegionDiskOutput {
+	return o
+}
+
+func (o RegionDiskOutput) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegionDiskOutput{})
 }

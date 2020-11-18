@@ -31,6 +31,65 @@ class AppProfile(pulumi.CustomResource):
         App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
 
         ## Example Usage
+        ### Bigtable App Profile Multicluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="bt-instance",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            multi_cluster_routing_use_any=True,
+            ignore_warnings=True)
+        ```
+        ### Bigtable App Profile Singlecluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="bt-instance",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+                cluster_id="bt-instance",
+                allow_transactional_writes=True,
+            ),
+            ignore_warnings=True)
+        ```
+
+        ## Import
+
+        AppProfile can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

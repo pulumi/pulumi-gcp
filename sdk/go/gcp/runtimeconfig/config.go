@@ -4,6 +4,7 @@
 package runtimeconfig
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -13,6 +14,45 @@ import (
 // [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
 // or the
 // [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+//
+// ## Example Usage
+//
+// Example creating a RuntimeConfig resource.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/runtimeconfig"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := runtimeconfig.NewConfig(ctx, "my_runtime_config", &runtimeconfig.ConfigArgs{
+// 			Description: pulumi.String("Runtime configuration values for my service"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Runtime Configs can be imported using the `name` or full config name, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:runtimeconfig/config:Config myconfig myconfig
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
+// ```
+//
+//  When importing using only the name, the provider project must be set.
 type Config struct {
 	pulumi.CustomResourceState
 
@@ -104,4 +144,43 @@ type ConfigArgs struct {
 
 func (ConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*configArgs)(nil)).Elem()
+}
+
+type ConfigInput interface {
+	pulumi.Input
+
+	ToConfigOutput() ConfigOutput
+	ToConfigOutputWithContext(ctx context.Context) ConfigOutput
+}
+
+func (Config) ElementType() reflect.Type {
+	return reflect.TypeOf((*Config)(nil)).Elem()
+}
+
+func (i Config) ToConfigOutput() ConfigOutput {
+	return i.ToConfigOutputWithContext(context.Background())
+}
+
+func (i Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput)
+}
+
+type ConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigOutput)(nil)).Elem()
+}
+
+func (o ConfigOutput) ToConfigOutput() ConfigOutput {
+	return o
+}
+
+func (o ConfigOutput) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConfigOutput{})
 }

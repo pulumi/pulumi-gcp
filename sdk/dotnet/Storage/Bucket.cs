@@ -24,6 +24,103 @@ namespace Pulumi.Gcp.Storage
     /// determined which will require enabling the compute api.
     /// 
     /// ## Example Usage
+    /// ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var static_site = new Gcp.Storage.Bucket("static-site", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             Cors = 
+    ///             {
+    ///                 new Gcp.Storage.Inputs.BucketCorArgs
+    ///                 {
+    ///                     MaxAgeSeconds = 3600,
+    ///                     Methods = 
+    ///                     {
+    ///                         "GET",
+    ///                         "HEAD",
+    ///                         "PUT",
+    ///                         "POST",
+    ///                         "DELETE",
+    ///                     },
+    ///                     Origins = 
+    ///                     {
+    ///                         "http://image-store.com",
+    ///                     },
+    ///                     ResponseHeaders = 
+    ///                     {
+    ///                         "*",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ForceDestroy = true,
+    ///             Location = "EU",
+    ///             UniformBucketLevelAccess = true,
+    ///             Website = new Gcp.Storage.Inputs.BucketWebsiteArgs
+    ///             {
+    ///                 MainPageSuffix = "index.html",
+    ///                 NotFoundPage = "404.html",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Life Cycle Settings For Storage Bucket Objects
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var auto_expire = new Gcp.Storage.Bucket("auto-expire", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             ForceDestroy = true,
+    ///             LifecycleRules = 
+    ///             {
+    ///                 new Gcp.Storage.Inputs.BucketLifecycleRuleArgs
+    ///                 {
+    ///                     Action = new Gcp.Storage.Inputs.BucketLifecycleRuleActionArgs
+    ///                     {
+    ///                         Type = "Delete",
+    ///                     },
+    ///                     Condition = new Gcp.Storage.Inputs.BucketLifecycleRuleConditionArgs
+    ///                     {
+    ///                         Age = 3,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Location = "US",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Storage buckets can be imported using the `name` or
+    /// 
+    /// `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+    /// ```
+    /// 
+    ///  `false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
     /// </summary>
     public partial class Bucket : Pulumi.CustomResource
     {

@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -12,6 +11,84 @@ import * as utilities from "../utilities";
  * and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
  *
  * ## Example Usage
+ * ### Using A Separately Managed Node Pool (Recommended)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     removeDefaultNodePool: true,
+ *     initialNodeCount: 1,
+ * });
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ *     location: "us-central1",
+ *     cluster: primary.name,
+ *     nodeCount: 1,
+ *     nodeConfig: {
+ *         preemptible: true,
+ *         machineType: "e2-medium",
+ *         oauthScopes: [
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring",
+ *         ],
+ *     },
+ * });
+ * ```
+ * ### 2 Node Pools, 1 Separately Managed + The Default Node Pool
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 3,
+ *     nodeLocations: ["us-central1-c"],
+ *     masterAuth: {
+ *         username: "",
+ *         password: "",
+ *         clientCertificateConfig: {
+ *             issueClientCertificate: false,
+ *         },
+ *     },
+ *     nodeConfig: {
+ *         oauthScopes: [
+ *             "https://www.googleapis.com/auth/logging.write",
+ *             "https://www.googleapis.com/auth/monitoring",
+ *         ],
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
+ *         guestAccelerators: [{
+ *             type: "nvidia-tesla-k80",
+ *             count: 1,
+ *         }],
+ *     },
+ * });
+ * const np = new gcp.container.NodePool("np", {
+ *     location: "us-central1-a",
+ *     cluster: primary.name,
+ *     nodeCount: 3,
+ *     timeouts: [{
+ *         create: "30m",
+ *         update: "20m",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+ * ```
  */
 export class NodePool extends pulumi.CustomResource {
     /**

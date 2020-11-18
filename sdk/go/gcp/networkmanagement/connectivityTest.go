@@ -4,6 +4,7 @@
 package networkmanagement
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,166 @@ import (
 //     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
 //
 // ## Example Usage
+// ### Network Management Connectivity Test Instances
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/networkmanagement"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		vpc, err := compute.NewNetwork(ctx, "vpc", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		source, err := compute.NewInstance(ctx, "source", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String(debian9.Id),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: vpc.ID(),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		destination, err := compute.NewInstance(ctx, "destination", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String(debian9.Id),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: vpc.ID(),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networkmanagement.NewConnectivityTest(ctx, "instance_test", &networkmanagement.ConnectivityTestArgs{
+// 			Source: &networkmanagement.ConnectivityTestSourceArgs{
+// 				Instance: source.ID(),
+// 			},
+// 			Destination: &networkmanagement.ConnectivityTestDestinationArgs{
+// 				Instance: destination.ID(),
+// 			},
+// 			Protocol: pulumi.String("TCP"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Network Management Connectivity Test Addresses
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/networkmanagement"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		vpc, err := compute.NewNetwork(ctx, "vpc", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     vpc.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewAddress(ctx, "source_addr", &compute.AddressArgs{
+// 			Subnetwork:  subnet.ID(),
+// 			AddressType: pulumi.String("INTERNAL"),
+// 			Address:     pulumi.String("10.0.42.42"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewAddress(ctx, "dest_addr", &compute.AddressArgs{
+// 			Subnetwork:  subnet.ID(),
+// 			AddressType: pulumi.String("INTERNAL"),
+// 			Address:     pulumi.String("10.0.43.43"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = networkmanagement.NewConnectivityTest(ctx, "address_test", &networkmanagement.ConnectivityTestArgs{
+// 			Source: &networkmanagement.ConnectivityTestSourceArgs{
+// 				IpAddress:   source_addr.Address,
+// 				ProjectId:   source_addr.Project,
+// 				Network:     vpc.ID(),
+// 				NetworkType: pulumi.String("GCP_NETWORK"),
+// 			},
+// 			Destination: &networkmanagement.ConnectivityTestDestinationArgs{
+// 				IpAddress: dest_addr.Address,
+// 				ProjectId: dest_addr.Project,
+// 				Network:   vpc.ID(),
+// 			},
+// 			Protocol: pulumi.String("UDP"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ConnectivityTest can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
+// ```
 type ConnectivityTest struct {
 	pulumi.CustomResourceState
 
@@ -338,4 +499,43 @@ type ConnectivityTestArgs struct {
 
 func (ConnectivityTestArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectivityTestArgs)(nil)).Elem()
+}
+
+type ConnectivityTestInput interface {
+	pulumi.Input
+
+	ToConnectivityTestOutput() ConnectivityTestOutput
+	ToConnectivityTestOutputWithContext(ctx context.Context) ConnectivityTestOutput
+}
+
+func (ConnectivityTest) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTest)(nil)).Elem()
+}
+
+func (i ConnectivityTest) ToConnectivityTestOutput() ConnectivityTestOutput {
+	return i.ToConnectivityTestOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTest) ToConnectivityTestOutputWithContext(ctx context.Context) ConnectivityTestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestOutput)
+}
+
+type ConnectivityTestOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectivityTestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectivityTestOutput)(nil)).Elem()
+}
+
+func (o ConnectivityTestOutput) ToConnectivityTestOutput() ConnectivityTestOutput {
+	return o
+}
+
+func (o ConnectivityTestOutput) ToConnectivityTestOutputWithContext(ctx context.Context) ConnectivityTestOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectivityTestOutput{})
 }

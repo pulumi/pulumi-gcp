@@ -93,6 +93,22 @@ def get_keys(managed_zone: Optional[str] = None,
     [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
     and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.dns.ManagedZone("foo",
+        dns_name="foo.bar.",
+        dnssec_config=gcp.dns.ManagedZoneDnssecConfigArgs(
+            state="on",
+            non_existence="nsec3",
+        ))
+    foo_dns_keys = foo.id.apply(lambda id: gcp.dns.get_keys(managed_zone=id))
+    pulumi.export("fooDnsDsRecord", foo_dns_keys.key_signing_keys[0].ds_record)
+    ```
+
 
     :param str managed_zone: The name or id of the Cloud DNS managed zone.
     :param str project: The ID of the project in which the resource belongs. If `project` is not provided, the provider project is used.

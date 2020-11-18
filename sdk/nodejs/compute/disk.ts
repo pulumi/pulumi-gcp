@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -33,6 +32,42 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ * ### Disk Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDisk = new gcp.compute.Disk("default", {
+ *     image: "debian-8-jessie-v20170523",
+ *     labels: {
+ *         environment: "dev",
+ *     },
+ *     physicalBlockSizeBytes: 4096,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Disk can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/disk:Disk default {{name}}
+ * ```
  */
 export class Disk extends pulumi.CustomResource {
     /**

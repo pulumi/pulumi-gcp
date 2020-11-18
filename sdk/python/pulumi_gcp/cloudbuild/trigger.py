@@ -42,6 +42,108 @@ class Trigger(pulumi.CustomResource):
             * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 
         ## Example Usage
+        ### Cloudbuild Trigger Filename
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        filename_trigger = gcp.cloudbuild.Trigger("filename-trigger",
+            filename="cloudbuild.yaml",
+            substitutions={
+                "_BAZ": "qux",
+                "_FOO": "bar",
+            },
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="master",
+                repo_name="my-repo",
+            ))
+        ```
+        ### Cloudbuild Trigger Build
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        build_trigger = gcp.cloudbuild.Trigger("build-trigger",
+            build=gcp.cloudbuild.TriggerBuildArgs(
+                artifacts=gcp.cloudbuild.TriggerBuildArtifactsArgs(
+                    images=["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+                    objects=gcp.cloudbuild.TriggerBuildArtifactsObjectsArgs(
+                        location="gs://bucket/path/to/somewhere/",
+                        paths=["path"],
+                    ),
+                ),
+                logs_bucket="gs://mybucket/logs",
+                options=gcp.cloudbuild.TriggerBuildOptionsArgs(
+                    disk_size_gb=100,
+                    dynamic_substitutions=True,
+                    env=["ekey = evalue"],
+                    log_streaming_option="STREAM_OFF",
+                    logging="LEGACY",
+                    machine_type="N1_HIGHCPU_8",
+                    requested_verify_option="VERIFIED",
+                    secret_env=["secretenv = svalue"],
+                    source_provenance_hash=["MD5"],
+                    substitution_option="ALLOW_LOOSE",
+                    volumes=[gcp.cloudbuild.TriggerBuildOptionsVolumeArgs(
+                        name="v1",
+                        path="v1",
+                    )],
+                    worker_pool="pool",
+                ),
+                queue_ttl="20s",
+                secrets=[gcp.cloudbuild.TriggerBuildSecretArgs(
+                    kms_key_name="projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+                    secret_env={
+                        "PASSWORD": "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+                    },
+                )],
+                source=gcp.cloudbuild.TriggerBuildSourceArgs(
+                    storage_source=gcp.cloudbuild.TriggerBuildSourceStorageSourceArgs(
+                        bucket="mybucket",
+                        object="source_code.tar.gz",
+                    ),
+                ),
+                steps=[gcp.cloudbuild.TriggerBuildStepArgs(
+                    args=[
+                        "cp",
+                        "gs://mybucket/remotefile.zip",
+                        "localfile.zip",
+                    ],
+                    name="gcr.io/cloud-builders/gsutil",
+                    timeout="120s",
+                )],
+                substitutions={
+                    "_BAZ": "qux",
+                    "_FOO": "bar",
+                },
+                tags=[
+                    "build",
+                    "newFeature",
+                ],
+            ),
+            trigger_template=gcp.cloudbuild.TriggerTriggerTemplateArgs(
+                branch_name="master",
+                repo_name="my-repo",
+            ))
+        ```
+
+        ## Import
+
+        Trigger can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudbuild/trigger:Trigger default {{project}}/{{trigger_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

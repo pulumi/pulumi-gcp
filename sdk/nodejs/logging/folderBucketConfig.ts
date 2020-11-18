@@ -10,6 +10,32 @@ import * as utilities from "../utilities";
  * [Storing Logs](https://cloud.google.com/logging/docs/storage).
  *
  * > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.organizations.Folder("default", {
+ *     displayName: "some-folder-name",
+ *     parent: "organizations/123456789",
+ * });
+ * const basic = new gcp.logging.FolderBucketConfig("basic", {
+ *     folder: _default.name,
+ *     location: "global",
+ *     retentionDays: 30,
+ *     bucketId: "_Default",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported using the following format
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
+ * ```
  */
 export class FolderBucketConfig extends pulumi.CustomResource {
     /**

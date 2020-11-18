@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
  * and [Dataflow](https://cloud.google.com/dataflow/).
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bigDataJob = new gcp.dataflow.FlexTemplateJob("bigDataJob", {
+ *     containerSpecGcsPath: "gs://my-bucket/templates/template.json",
+ *     parameters: {
+ *         inputSubscription: "messages",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ## Note on "destroy" / "apply"
  *
  * There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -31,6 +46,10 @@ import * as utilities from "../utilities";
  * is "cancelled", but if a user sets `onDelete` to `"drain"` in the
  * configuration, you may experience a long wait for your `pulumi destroy` to
  * complete.
+ *
+ * ## Import
+ *
+ * This resource does not support import.
  */
 export class FlexTemplateJob extends pulumi.CustomResource {
     /**

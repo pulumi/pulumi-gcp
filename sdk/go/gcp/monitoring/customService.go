@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -22,6 +23,40 @@ import (
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+// ### Monitoring Service Custom
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewCustomService(ctx, "custom", &monitoring.CustomServiceArgs{
+// 			DisplayName: pulumi.String("My Custom Service custom-srv"),
+// 			ServiceId:   pulumi.String("custom-srv"),
+// 			Telemetry: &monitoring.CustomServiceTelemetryArgs{
+// 				ResourceName: pulumi.String("//product.googleapis.com/foo/foo/services/test"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Service can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
+// ```
 type CustomService struct {
 	pulumi.CustomResourceState
 
@@ -134,4 +169,43 @@ type CustomServiceArgs struct {
 
 func (CustomServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*customServiceArgs)(nil)).Elem()
+}
+
+type CustomServiceInput interface {
+	pulumi.Input
+
+	ToCustomServiceOutput() CustomServiceOutput
+	ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput
+}
+
+func (CustomService) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomService)(nil)).Elem()
+}
+
+func (i CustomService) ToCustomServiceOutput() CustomServiceOutput {
+	return i.ToCustomServiceOutputWithContext(context.Background())
+}
+
+func (i CustomService) ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceOutput)
+}
+
+type CustomServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomServiceOutput)(nil)).Elem()
+}
+
+func (o CustomServiceOutput) ToCustomServiceOutput() CustomServiceOutput {
+	return o
+}
+
+func (o CustomServiceOutput) ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(CustomServiceOutput{})
 }

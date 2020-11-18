@@ -4,6 +4,7 @@
 package projects
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,59 @@ import (
 // this is not recommended for production environments as per [Google's documentation](https://cloud.google.com/iam/docs/service-accounts#default).
 // See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
 // > This resource works on a best-effort basis, as no API formally describes the default service accounts. If the default service accounts change their name or additional service accounts are added, this resource will need to be updated.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
+// 			Action:  pulumi.String("DELETE"),
+// 			Project: pulumi.String("my-project-id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// To enable the default service accounts on the resource destroy:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewDefaultServiceAccounts(ctx, "myProject", &projects.DefaultServiceAccountsArgs{
+// 			Action:        pulumi.String("DISABLE"),
+// 			Project:       pulumi.String("my-project-id"),
+// 			RestorePolicy: pulumi.String("REVERT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import
 type DefaultServiceAccounts struct {
 	pulumi.CustomResourceState
 
@@ -109,4 +163,43 @@ type DefaultServiceAccountsArgs struct {
 
 func (DefaultServiceAccountsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultServiceAccountsArgs)(nil)).Elem()
+}
+
+type DefaultServiceAccountsInput interface {
+	pulumi.Input
+
+	ToDefaultServiceAccountsOutput() DefaultServiceAccountsOutput
+	ToDefaultServiceAccountsOutputWithContext(ctx context.Context) DefaultServiceAccountsOutput
+}
+
+func (DefaultServiceAccounts) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultServiceAccounts)(nil)).Elem()
+}
+
+func (i DefaultServiceAccounts) ToDefaultServiceAccountsOutput() DefaultServiceAccountsOutput {
+	return i.ToDefaultServiceAccountsOutputWithContext(context.Background())
+}
+
+func (i DefaultServiceAccounts) ToDefaultServiceAccountsOutputWithContext(ctx context.Context) DefaultServiceAccountsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultServiceAccountsOutput)
+}
+
+type DefaultServiceAccountsOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultServiceAccountsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultServiceAccountsOutput)(nil)).Elem()
+}
+
+func (o DefaultServiceAccountsOutput) ToDefaultServiceAccountsOutput() DefaultServiceAccountsOutput {
+	return o
+}
+
+func (o DefaultServiceAccountsOutput) ToDefaultServiceAccountsOutputWithContext(ctx context.Context) DefaultServiceAccountsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefaultServiceAccountsOutput{})
 }

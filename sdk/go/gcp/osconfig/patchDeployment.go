@@ -4,6 +4,7 @@
 package osconfig
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,135 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 //
 // ## Example Usage
+// ### Os Config Patch Deployment Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/osconfig"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := osconfig.NewPatchDeployment(ctx, "patch", &osconfig.PatchDeploymentArgs{
+// 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
+// 				All: pulumi.Bool(true),
+// 			},
+// 			OneTimeSchedule: &osconfig.PatchDeploymentOneTimeScheduleArgs{
+// 				ExecuteTime: pulumi.String("2999-10-10T10:10:10.045123456Z"),
+// 			},
+// 			PatchDeploymentId: pulumi.String("patch-deploy-inst"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Os Config Patch Deployment Instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/osconfig"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobar, err := compute.NewInstance(ctx, "foobar", &compute.InstanceArgs{
+// 			MachineType:  pulumi.String("e2-medium"),
+// 			Zone:         pulumi.String("us-central1-a"),
+// 			CanIpForward: pulumi.Bool(false),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 				pulumi.String("bar"),
+// 			},
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String(myImage.SelfLink),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = osconfig.NewPatchDeployment(ctx, "patch", &osconfig.PatchDeploymentArgs{
+// 			PatchDeploymentId: pulumi.String("patch-deploy-inst"),
+// 			InstanceFilter: &osconfig.PatchDeploymentInstanceFilterArgs{
+// 				Instances: pulumi.StringArray{
+// 					foobar.ID(),
+// 				},
+// 			},
+// 			PatchConfig: &osconfig.PatchDeploymentPatchConfigArgs{
+// 				Yum: &osconfig.PatchDeploymentPatchConfigYumArgs{
+// 					Security: pulumi.Bool(true),
+// 					Minimal:  pulumi.Bool(true),
+// 					Excludes: pulumi.StringArray{
+// 						pulumi.String("bash"),
+// 					},
+// 				},
+// 			},
+// 			RecurringSchedule: &osconfig.PatchDeploymentRecurringScheduleArgs{
+// 				TimeZone: &osconfig.PatchDeploymentRecurringScheduleTimeZoneArgs{
+// 					Id: pulumi.String("America/New_York"),
+// 				},
+// 				TimeOfDay: &osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs{
+// 					Hours:   pulumi.Int(0),
+// 					Minutes: pulumi.Int(30),
+// 					Seconds: pulumi.Int(30),
+// 					Nanos:   pulumi.Int(20),
+// 				},
+// 				Monthly: &osconfig.PatchDeploymentRecurringScheduleMonthlyArgs{
+// 					MonthDay: pulumi.Int(1),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// PatchDeployment can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
+// ```
 type PatchDeployment struct {
 	pulumi.CustomResourceState
 
@@ -266,4 +396,43 @@ type PatchDeploymentArgs struct {
 
 func (PatchDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*patchDeploymentArgs)(nil)).Elem()
+}
+
+type PatchDeploymentInput interface {
+	pulumi.Input
+
+	ToPatchDeploymentOutput() PatchDeploymentOutput
+	ToPatchDeploymentOutputWithContext(ctx context.Context) PatchDeploymentOutput
+}
+
+func (PatchDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchDeployment)(nil)).Elem()
+}
+
+func (i PatchDeployment) ToPatchDeploymentOutput() PatchDeploymentOutput {
+	return i.ToPatchDeploymentOutputWithContext(context.Background())
+}
+
+func (i PatchDeployment) ToPatchDeploymentOutputWithContext(ctx context.Context) PatchDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PatchDeploymentOutput)
+}
+
+type PatchDeploymentOutput struct {
+	*pulumi.OutputState
+}
+
+func (PatchDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchDeploymentOutput)(nil)).Elem()
+}
+
+func (o PatchDeploymentOutput) ToPatchDeploymentOutput() PatchDeploymentOutput {
+	return o
+}
+
+func (o PatchDeploymentOutput) ToPatchDeploymentOutputWithContext(ctx context.Context) PatchDeploymentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PatchDeploymentOutput{})
 }

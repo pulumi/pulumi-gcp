@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -26,6 +27,73 @@ import (
 //
 // > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
 // making this resource dependent on those IAM resources via `dependsOn`. This will safeguard against errors due to IAM race conditions.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		binding, err := pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+// 			Topic: topic.ID(),
+// 			Role:  pulumi.String("roles/pubsub.publisher"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", gcsAccount.EmailAddress)),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewNotification(ctx, "notification", &storage.NotificationArgs{
+// 			Bucket:        bucket.Name,
+// 			PayloadFormat: pulumi.String("JSON_API_V1"),
+// 			Topic:         topic.ID(),
+// 			EventTypes: pulumi.StringArray{
+// 				pulumi.String("OBJECT_FINALIZE"),
+// 				pulumi.String("OBJECT_METADATA_UPDATE"),
+// 			},
+// 			CustomAttributes: pulumi.StringMap{
+// 				"new-attribute": pulumi.String("new-attribute-value"),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			binding,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Storage notifications can be imported using the notification `id` in the format `<bucket_name>/notificationConfigs/<id>` e.g.
+//
+// ```sh
+//  $ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
+// ```
 type Notification struct {
 	pulumi.CustomResourceState
 
@@ -173,4 +241,43 @@ type NotificationArgs struct {
 
 func (NotificationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationArgs)(nil)).Elem()
+}
+
+type NotificationInput interface {
+	pulumi.Input
+
+	ToNotificationOutput() NotificationOutput
+	ToNotificationOutputWithContext(ctx context.Context) NotificationOutput
+}
+
+func (Notification) ElementType() reflect.Type {
+	return reflect.TypeOf((*Notification)(nil)).Elem()
+}
+
+func (i Notification) ToNotificationOutput() NotificationOutput {
+	return i.ToNotificationOutputWithContext(context.Background())
+}
+
+func (i Notification) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationOutput)
+}
+
+type NotificationOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotificationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationOutput)(nil)).Elem()
+}
+
+func (o NotificationOutput) ToNotificationOutput() NotificationOutput {
+	return o
+}
+
+func (o NotificationOutput) ToNotificationOutputWithContext(ctx context.Context) NotificationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NotificationOutput{})
 }

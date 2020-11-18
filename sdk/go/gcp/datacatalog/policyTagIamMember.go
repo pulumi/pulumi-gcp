@@ -4,12 +4,36 @@
 package datacatalog
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* {{policy_tag}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog policytag IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/policyTagIamMember:PolicyTagIamMember editor "{{policy_tag}} roles/viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/policyTagIamMember:PolicyTagIamMember editor "{{policy_tag}} roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/policyTagIamMember:PolicyTagIamMember editor {{policy_tag}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type PolicyTagIamMember struct {
 	pulumi.CustomResourceState
 
@@ -116,4 +140,43 @@ type PolicyTagIamMemberArgs struct {
 
 func (PolicyTagIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyTagIamMemberArgs)(nil)).Elem()
+}
+
+type PolicyTagIamMemberInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput
+	ToPolicyTagIamMemberOutputWithContext(ctx context.Context) PolicyTagIamMemberOutput
+}
+
+func (PolicyTagIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagIamMember)(nil)).Elem()
+}
+
+func (i PolicyTagIamMember) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput {
+	return i.ToPolicyTagIamMemberOutputWithContext(context.Background())
+}
+
+func (i PolicyTagIamMember) ToPolicyTagIamMemberOutputWithContext(ctx context.Context) PolicyTagIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberOutput)
+}
+
+type PolicyTagIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyTagIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagIamMemberOutput)(nil)).Elem()
+}
+
+func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberOutputWithContext(ctx context.Context) PolicyTagIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicyTagIamMemberOutput{})
 }

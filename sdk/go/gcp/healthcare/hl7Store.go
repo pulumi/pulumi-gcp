@@ -4,6 +4,7 @@
 package healthcare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,127 @@ import (
 //     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
 //
 // ## Example Usage
+// ### Healthcare Hl7 V2 Store Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+// 			Dataset: dataset.ID(),
+// 			NotificationConfigs: healthcare.Hl7StoreNotificationConfigsArray{
+// 				&healthcare.Hl7StoreNotificationConfigsArgs{
+// 					PubsubTopic: topic.ID(),
+// 				},
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"label1": pulumi.String("labelvalue1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Healthcare Hl7 V2 Store Parser Config
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+// 			Dataset: dataset.ID(),
+// 			ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
+// 				AllowNullHeader:   pulumi.Bool(false),
+// 				SegmentTerminator: pulumi.String("Jw=="),
+// 				Schema:            pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "{\n", "  \"schemas\": [{\n", "    \"messageSchemaConfigs\": {\n", "      \"ADT_A01\": {\n", "        \"name\": \"ADT_A01\",\n", "        \"minOccurs\": 1,\n", "        \"maxOccurs\": 1,\n", "        \"members\": [{\n", "            \"segment\": {\n", "              \"type\": \"MSH\",\n", "              \"minOccurs\": 1,\n", "              \"maxOccurs\": 1\n", "            }\n", "          },\n", "          {\n", "            \"segment\": {\n", "              \"type\": \"EVN\",\n", "              \"minOccurs\": 1,\n", "              \"maxOccurs\": 1\n", "            }\n", "          },\n", "          {\n", "            \"segment\": {\n", "              \"type\": \"PID\",\n", "              \"minOccurs\": 1,\n", "              \"maxOccurs\": 1\n", "            }\n", "          },\n", "          {\n", "            \"segment\": {\n", "              \"type\": \"ZPD\",\n", "              \"minOccurs\": 1,\n", "              \"maxOccurs\": 1\n", "            }\n", "          },\n", "          {\n", "            \"segment\": {\n", "              \"type\": \"OBX\"\n", "            }\n", "          },\n", "          {\n", "            \"group\": {\n", "              \"name\": \"PROCEDURE\",\n", "              \"members\": [{\n", "                  \"segment\": {\n", "                    \"type\": \"PR1\",\n", "                    \"minOccurs\": 1,\n", "                    \"maxOccurs\": 1\n", "                  }\n", "                },\n", "                {\n", "                  \"segment\": {\n", "                    \"type\": \"ROL\"\n", "                  }\n", "                }\n", "              ]\n", "            }\n", "          },\n", "          {\n", "            \"segment\": {\n", "              \"type\": \"PDA\",\n", "              \"maxOccurs\": 1\n", "            }\n", "          }\n", "        ]\n", "      }\n", "    }\n", "  }],\n", "  \"types\": [{\n", "    \"type\": [{\n", "        \"name\": \"ZPD\",\n", "        \"primitive\": \"VARIES\"\n", "      }\n", "\n", "    ]\n", "  }],\n", "  \"ignoreMinOccurs\": true\n", "}\n")),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Healthcare Hl7 V2 Store Unschematized
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewHl7Store(ctx, "store", &healthcare.Hl7StoreArgs{
+// 			Dataset: dataset.ID(),
+// 			ParserConfig: &healthcare.Hl7StoreParserConfigArgs{
+// 				AllowNullHeader:   pulumi.Bool(false),
+// 				SegmentTerminator: pulumi.String("Jw=="),
+// 				Version:           pulumi.String("V2"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Hl7V2Store can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/{{name}}
+// ```
 type Hl7Store struct {
 	pulumi.CustomResourceState
 
@@ -230,4 +352,43 @@ type Hl7StoreArgs struct {
 
 func (Hl7StoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hl7StoreArgs)(nil)).Elem()
+}
+
+type Hl7StoreInput interface {
+	pulumi.Input
+
+	ToHl7StoreOutput() Hl7StoreOutput
+	ToHl7StoreOutputWithContext(ctx context.Context) Hl7StoreOutput
+}
+
+func (Hl7Store) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7Store)(nil)).Elem()
+}
+
+func (i Hl7Store) ToHl7StoreOutput() Hl7StoreOutput {
+	return i.ToHl7StoreOutputWithContext(context.Background())
+}
+
+func (i Hl7Store) ToHl7StoreOutputWithContext(ctx context.Context) Hl7StoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreOutput)
+}
+
+type Hl7StoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (Hl7StoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7StoreOutput)(nil)).Elem()
+}
+
+func (o Hl7StoreOutput) ToHl7StoreOutput() Hl7StoreOutput {
+	return o
+}
+
+func (o Hl7StoreOutput) ToHl7StoreOutputWithContext(ctx context.Context) Hl7StoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(Hl7StoreOutput{})
 }

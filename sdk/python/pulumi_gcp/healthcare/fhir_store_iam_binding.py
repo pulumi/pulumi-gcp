@@ -35,6 +35,71 @@ class FhirStoreIamBinding(pulumi.CustomResource):
 
         > **Note:** `healthcare.FhirStoreIamBinding` resources **can be** used in conjunction with `healthcare.FhirStoreIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_healthcare\_fhir\_store\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        fhir_store = gcp.healthcare.FhirStoreIamPolicy("fhirStore",
+            fhir_store_id="your-fhir-store-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_healthcare\_fhir\_store\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamBinding("fhirStore",
+            fhir_store_id="your-fhir-store-id",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\_healthcare\_fhir\_store\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        fhir_store = gcp.healthcare.FhirStoreIamMember("fhirStore",
+            fhir_store_id="your-fhir-store-id",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
+        ## Import
+
+        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+
+        This member resource can be imported using the `fhir_store_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer user:foo@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiers; the resource in question and the role.
+
+        This binding resource can be imported using the `fhir_store_id` and role, e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding fhir_store_iam "your-project-id/location-name/dataset-name/fhir-store-name roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question.
+
+        This policy resource can be imported using the `fhir_store_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding fhir_store_iam your-project-id/location-name/dataset-name/fhir-store-name
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] fhir_store_id: The FHIR store ID, in the form

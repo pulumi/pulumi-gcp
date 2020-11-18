@@ -15,6 +15,43 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
  *
  * ## Example Usage
+ * ### App Engine Firewall Rule Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "ae-project",
+ *     orgId: "123456789",
+ * });
+ * const app = new gcp.appengine.Application("app", {
+ *     project: myProject.projectId,
+ *     locationId: "us-central",
+ * });
+ * const rule = new gcp.appengine.FirewallRule("rule", {
+ *     project: app.project,
+ *     priority: 1000,
+ *     action: "ALLOW",
+ *     sourceRange: "*",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * FirewallRule can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
+ * ```
  */
 export class FirewallRule extends pulumi.CustomResource {
     /**

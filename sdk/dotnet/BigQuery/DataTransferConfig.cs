@@ -23,6 +23,67 @@ namespace Pulumi.Gcp.BigQuery
     /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// 
     /// ## Example Usage
+    /// ### Bigquerydatatransfer Config Scheduled Query
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var permissions = new Gcp.Projects.IAMMember("permissions", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Role = "roles/iam.serviceAccountShortTermTokenMinter",
+    ///             Member = project.Apply(project =&gt; $"serviceAccount:service-{project.Number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com"),
+    ///         });
+    ///         var myDataset = new Gcp.BigQuery.Dataset("myDataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "my_dataset",
+    ///             FriendlyName = "foo",
+    ///             Description = "bar",
+    ///             Location = "asia-northeast1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 permissions,
+    ///             },
+    ///         });
+    ///         var queryConfig = new Gcp.BigQuery.DataTransferConfig("queryConfig", new Gcp.BigQuery.DataTransferConfigArgs
+    ///         {
+    ///             DisplayName = "my-query",
+    ///             Location = "asia-northeast1",
+    ///             DataSourceId = "scheduled_query",
+    ///             Schedule = "first sunday of quarter 00:00",
+    ///             DestinationDatasetId = myDataset.DatasetId,
+    ///             Params = 
+    ///             {
+    ///                 { "destination_table_name_template", "my_table" },
+    ///                 { "write_disposition", "WRITE_APPEND" },
+    ///                 { "query", "SELECT name FROM tabl WHERE x = 'y'" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 permissions,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Config can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
+    /// ```
     /// </summary>
     public partial class DataTransferConfig : Pulumi.CustomResource
     {

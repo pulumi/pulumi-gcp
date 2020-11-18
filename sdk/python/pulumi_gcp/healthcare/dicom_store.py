@@ -35,6 +35,35 @@ class DicomStore(pulumi.CustomResource):
             * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 
         ## Example Usage
+        ### Healthcare Dicom Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic")
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        default = gcp.healthcare.DicomStore("default",
+            dataset=dataset.id,
+            notification_config=gcp.healthcare.DicomStoreNotificationConfigArgs(
+                pubsub_topic=topic.id,
+            ),
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+
+        ## Import
+
+        DicomStore can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

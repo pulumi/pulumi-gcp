@@ -14,6 +14,45 @@ import * as utilities from "../utilities";
  *     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
  *
  * ## Example Usage
+ * ### Service Directory Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
+ *     namespaceId: "example-namespace",
+ *     location: "us-central1",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const exampleService = new gcp.servicedirectory.Service("exampleService", {
+ *     serviceId: "example-service",
+ *     namespace: exampleNamespace.id,
+ *     metadata: {
+ *         stage: "prod",
+ *         region: "us-central1",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Service can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicedirectory/service:Service default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicedirectory/service:Service default {{location}}/{{namespace_id}}/{{service_id}}
+ * ```
  */
 export class Service extends pulumi.CustomResource {
     /**

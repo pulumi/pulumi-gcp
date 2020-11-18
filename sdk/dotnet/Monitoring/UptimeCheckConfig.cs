@@ -22,6 +22,132 @@ namespace Pulumi.Gcp.Monitoring
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Uptime Check Config Http
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var http = new Gcp.Monitoring.UptimeCheckConfig("http", new Gcp.Monitoring.UptimeCheckConfigArgs
+    ///         {
+    ///             ContentMatchers = 
+    ///             {
+    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///                 {
+    ///                     Content = "example",
+    ///                 },
+    ///             },
+    ///             DisplayName = "http-uptime-check",
+    ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///             {
+    ///                 Body = "Zm9vJTI1M0RiYXI=",
+    ///                 ContentType = "URL_ENCODED",
+    ///                 Path = "/some-path",
+    ///                 Port = 8010,
+    ///                 RequestMethod = "POST",
+    ///             },
+    ///             MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///             {
+    ///                 Labels = 
+    ///                 {
+    ///                     { "host", "192.168.1.1" },
+    ///                     { "projectId", "my-project-name" },
+    ///                 },
+    ///                 Type = "uptime_url",
+    ///             },
+    ///             Timeout = "60s",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Uptime Check Config Https
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var https = new Gcp.Monitoring.UptimeCheckConfig("https", new Gcp.Monitoring.UptimeCheckConfigArgs
+    ///         {
+    ///             ContentMatchers = 
+    ///             {
+    ///                 new Gcp.Monitoring.Inputs.UptimeCheckConfigContentMatcherArgs
+    ///                 {
+    ///                     Content = "example",
+    ///                 },
+    ///             },
+    ///             DisplayName = "https-uptime-check",
+    ///             HttpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigHttpCheckArgs
+    ///             {
+    ///                 Path = "/some-path",
+    ///                 Port = 443,
+    ///                 UseSsl = true,
+    ///                 ValidateSsl = true,
+    ///             },
+    ///             MonitoredResource = new Gcp.Monitoring.Inputs.UptimeCheckConfigMonitoredResourceArgs
+    ///             {
+    ///                 Labels = 
+    ///                 {
+    ///                     { "host", "192.168.1.1" },
+    ///                     { "projectId", "my-project-name" },
+    ///                 },
+    ///                 Type = "uptime_url",
+    ///             },
+    ///             Timeout = "60s",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Uptime Check Tcp
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var check = new Gcp.Monitoring.Group("check", new Gcp.Monitoring.GroupArgs
+    ///         {
+    ///             DisplayName = "uptime-check-group",
+    ///             Filter = "resource.metadata.name=has_substring(\"foo\")",
+    ///         });
+    ///         var tcpGroup = new Gcp.Monitoring.UptimeCheckConfig("tcpGroup", new Gcp.Monitoring.UptimeCheckConfigArgs
+    ///         {
+    ///             DisplayName = "tcp-uptime-check",
+    ///             Timeout = "60s",
+    ///             TcpCheck = new Gcp.Monitoring.Inputs.UptimeCheckConfigTcpCheckArgs
+    ///             {
+    ///                 Port = 888,
+    ///             },
+    ///             ResourceGroup = new Gcp.Monitoring.Inputs.UptimeCheckConfigResourceGroupArgs
+    ///             {
+    ///                 ResourceType = "INSTANCE",
+    ///                 GroupId = check.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// UptimeCheckConfig can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
+    /// ```
     /// </summary>
     public partial class UptimeCheckConfig : Pulumi.CustomResource
     {

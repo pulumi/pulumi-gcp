@@ -20,6 +20,280 @@ namespace Pulumi.Gcp.Compute
     ///     * [Internal TCP/UDP Load Balancing](https://cloud.google.com/compute/docs/load-balancing/internal/)
     /// 
     /// ## Example Usage
+    /// ### Region Backend Service Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///             TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHealthCheck.Id,
+    ///             },
+    ///             ConnectionDrainingTimeoutSec = 10,
+    ///             SessionAffinity = "CLIENT_IP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Backend Service Ilb Round Robin
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var healthCheck = new Gcp.Compute.HealthCheck("healthCheck", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var @default = new Gcp.Compute.RegionBackendService("default", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HealthChecks = 
+    ///             {
+    ///                 healthCheck.Id,
+    ///             },
+    ///             Protocol = "HTTP",
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///             LocalityLbPolicy = "ROUND_ROBIN",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Backend Service External
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var healthCheck = new Gcp.Compute.RegionHealthCheck("healthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             TcpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckTcpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @default = new Gcp.Compute.RegionBackendService("default", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HealthChecks = 
+    ///             {
+    ///                 healthCheck.Id,
+    ///             },
+    ///             Protocol = "TCP",
+    ///             LoadBalancingScheme = "EXTERNAL",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Backend Service Ilb Ring Hash
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var healthCheck = new Gcp.Compute.HealthCheck("healthCheck", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var @default = new Gcp.Compute.RegionBackendService("default", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HealthChecks = 
+    ///             {
+    ///                 healthCheck.Id,
+    ///             },
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///             LocalityLbPolicy = "RING_HASH",
+    ///             SessionAffinity = "HTTP_COOKIE",
+    ///             Protocol = "HTTP",
+    ///             CircuitBreakers = new Gcp.Compute.Inputs.RegionBackendServiceCircuitBreakersArgs
+    ///             {
+    ///                 MaxConnections = 10,
+    ///             },
+    ///             ConsistentHash = new Gcp.Compute.Inputs.RegionBackendServiceConsistentHashArgs
+    ///             {
+    ///                 HttpCookie = new Gcp.Compute.Inputs.RegionBackendServiceConsistentHashHttpCookieArgs
+    ///                 {
+    ///                     Ttl = new Gcp.Compute.Inputs.RegionBackendServiceConsistentHashHttpCookieTtlArgs
+    ///                     {
+    ///                         Seconds = 11,
+    ///                         Nanos = 1111,
+    ///                     },
+    ///                     Name = "mycookie",
+    ///                 },
+    ///             },
+    ///             OutlierDetection = new Gcp.Compute.Inputs.RegionBackendServiceOutlierDetectionArgs
+    ///             {
+    ///                 ConsecutiveErrors = 2,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Backend Service Balancing Mode
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var debianImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///             RoutingMode = "REGIONAL",
+    ///         });
+    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.1.2.0/24",
+    ///             Region = "us-central1",
+    ///             Network = defaultNetwork.Id,
+    ///         });
+    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = defaultNetwork.Id,
+    ///                     Subnetwork = defaultSubnetwork.Id,
+    ///                 },
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = debianImage.Apply(debianImage =&gt; debianImage.SelfLink),
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 "allow-ssh",
+    ///                 "load-balanced-backend",
+    ///             },
+    ///         });
+    ///         var rigm = new Gcp.Compute.RegionInstanceGroupManager("rigm", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = instanceTemplate.Id,
+    ///                     Name = "primary",
+    ///                 },
+    ///             },
+    ///             BaseInstanceName = "internal-glb",
+    ///             TargetSize = 1,
+    ///         });
+    ///         var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("defaultRegionHealthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 PortSpecification = "USE_SERVING_PORT",
+    ///             },
+    ///         });
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionBackendServiceBackendArgs
+    ///                 {
+    ///                     Group = rigm.InstanceGroup,
+    ///                     BalancingMode = "UTILIZATION",
+    ///                     CapacityScaler = 1,
+    ///                 },
+    ///             },
+    ///             Region = "us-central1",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultRegionHealthCheck.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RegionBackendService can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
+    /// ```
     /// </summary>
     public partial class RegionBackendService : Pulumi.CustomResource
     {

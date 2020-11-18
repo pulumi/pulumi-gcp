@@ -4,6 +4,7 @@
 package vpcaccess
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,50 @@ import (
 //     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
 //
 // ## Example Usage
+// ### VPC Access Connector
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/vpcaccess"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+// 			IpCidrRange: pulumi.String("10.8.0.0/28"),
+// 			Network:     pulumi.String("default"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Connector can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:vpcaccess/connector:Connector default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:vpcaccess/connector:Connector default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:vpcaccess/connector:Connector default {{name}}
+// ```
 type Connector struct {
 	pulumi.CustomResourceState
 
@@ -166,4 +211,43 @@ type ConnectorArgs struct {
 
 func (ConnectorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectorArgs)(nil)).Elem()
+}
+
+type ConnectorInput interface {
+	pulumi.Input
+
+	ToConnectorOutput() ConnectorOutput
+	ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput
+}
+
+func (Connector) ElementType() reflect.Type {
+	return reflect.TypeOf((*Connector)(nil)).Elem()
+}
+
+func (i Connector) ToConnectorOutput() ConnectorOutput {
+	return i.ToConnectorOutputWithContext(context.Background())
+}
+
+func (i Connector) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOutput)
+}
+
+type ConnectorOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectorOutput)(nil)).Elem()
+}
+
+func (o ConnectorOutput) ToConnectorOutput() ConnectorOutput {
+	return o
+}
+
+func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) ConnectorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectorOutput{})
 }

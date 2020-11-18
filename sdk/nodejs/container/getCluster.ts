@@ -2,12 +2,29 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Get info about a GKE cluster from its name and location.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myCluster = gcp.container.getCluster({
+ *     name: "my-cluster",
+ *     location: "us-east1-a",
+ * });
+ * export const clusterUsername = myCluster.then(myCluster => myCluster.masterAuths[0].username);
+ * export const clusterPassword = myCluster.then(myCluster => myCluster.masterAuths[0].password);
+ * export const endpoint = myCluster.then(myCluster => myCluster.endpoint);
+ * export const instanceGroupUrls = myCluster.then(myCluster => myCluster.instanceGroupUrls);
+ * export const nodeConfig = myCluster.then(myCluster => myCluster.nodeConfigs);
+ * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
+ * ```
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
     if (!opts) {

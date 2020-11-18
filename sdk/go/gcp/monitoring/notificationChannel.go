@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -35,6 +36,69 @@ import (
 //     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 //
 // ## Example Usage
+// ### Notification Channel Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewNotificationChannel(ctx, "basic", &monitoring.NotificationChannelArgs{
+// 			DisplayName: pulumi.String("Test Notification Channel"),
+// 			Labels: pulumi.StringMap{
+// 				"email_address": pulumi.String("fake_email@blahblah.com"),
+// 			},
+// 			Type: pulumi.String("email"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Notification Channel Sensitive
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewNotificationChannel(ctx, "_default", &monitoring.NotificationChannelArgs{
+// 			DisplayName: pulumi.String("Test Slack Channel"),
+// 			Labels: pulumi.StringMap{
+// 				"channel_name": pulumi.String("#foobar"),
+// 			},
+// 			SensitiveLabels: &monitoring.NotificationChannelSensitiveLabelsArgs{
+// 				AuthToken: pulumi.String("one"),
+// 			},
+// 			Type: pulumi.String("slack"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// NotificationChannel can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
+// ```
 type NotificationChannel struct {
 	pulumi.CustomResourceState
 
@@ -262,4 +326,43 @@ type NotificationChannelArgs struct {
 
 func (NotificationChannelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*notificationChannelArgs)(nil)).Elem()
+}
+
+type NotificationChannelInput interface {
+	pulumi.Input
+
+	ToNotificationChannelOutput() NotificationChannelOutput
+	ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput
+}
+
+func (NotificationChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannel)(nil)).Elem()
+}
+
+func (i NotificationChannel) ToNotificationChannelOutput() NotificationChannelOutput {
+	return i.ToNotificationChannelOutputWithContext(context.Background())
+}
+
+func (i NotificationChannel) ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelOutput)
+}
+
+type NotificationChannelOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotificationChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannelOutput)(nil)).Elem()
+}
+
+func (o NotificationChannelOutput) ToNotificationChannelOutput() NotificationChannelOutput {
+	return o
+}
+
+func (o NotificationChannelOutput) ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NotificationChannelOutput{})
 }

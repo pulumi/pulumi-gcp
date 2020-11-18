@@ -152,6 +152,14 @@ def get_instance_group(name: Optional[str] = None,
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
     and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    all = gcp.compute.get_instance_group(name="instance-group-name",
+        zone="us-central1-a")
+    ```
+
 
     :param str name: The name of the instance group. Either `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs. If it

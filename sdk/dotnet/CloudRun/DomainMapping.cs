@@ -19,6 +19,73 @@ namespace Pulumi.Gcp.CloudRun
     ///     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
     /// 
     /// ## Example Usage
+    /// ### Cloud Run Domain Mapping Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultService = new Gcp.CloudRun.Service("defaultService", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Namespace = "my-project-name",
+    ///             },
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultDomainMapping = new Gcp.CloudRun.DomainMapping("defaultDomainMapping", new Gcp.CloudRun.DomainMappingArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Metadata = new Gcp.CloudRun.Inputs.DomainMappingMetadataArgs
+    ///             {
+    ///                 Namespace = "my-project-name",
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "run.googleapis.com/launch-stage", "BETA" },
+    ///                 },
+    ///             },
+    ///             Spec = new Gcp.CloudRun.Inputs.DomainMappingSpecArgs
+    ///             {
+    ///                 RouteName = defaultService.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DomainMapping can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
+    /// ```
     /// </summary>
     public partial class DomainMapping : Pulumi.CustomResource
     {

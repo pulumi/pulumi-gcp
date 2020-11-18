@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,75 @@ import (
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 //
 // ## Example Usage
+// ### Network Peering Routes Config Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		networkPrimary, err := compute.NewNetwork(ctx, "networkPrimary", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		networkSecondary, err := compute.NewNetwork(ctx, "networkSecondary", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		peeringPrimary, err := compute.NewNetworkPeering(ctx, "peeringPrimary", &compute.NetworkPeeringArgs{
+// 			Network:            networkPrimary.ID(),
+// 			PeerNetwork:        networkSecondary.ID(),
+// 			ImportCustomRoutes: pulumi.Bool(true),
+// 			ExportCustomRoutes: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkPeeringRoutesConfig(ctx, "peeringPrimaryRoutes", &compute.NetworkPeeringRoutesConfigArgs{
+// 			Peering:            peeringPrimary.Name,
+// 			Network:            networkPrimary.Name,
+// 			ImportCustomRoutes: pulumi.Bool(true),
+// 			ExportCustomRoutes: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkPeering(ctx, "peeringSecondary", &compute.NetworkPeeringArgs{
+// 			Network:     networkSecondary.ID(),
+// 			PeerNetwork: networkPrimary.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// NetworkPeeringRoutesConfig can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
+// ```
 type NetworkPeeringRoutesConfig struct {
 	pulumi.CustomResourceState
 
@@ -140,4 +210,43 @@ type NetworkPeeringRoutesConfigArgs struct {
 
 func (NetworkPeeringRoutesConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkPeeringRoutesConfigArgs)(nil)).Elem()
+}
+
+type NetworkPeeringRoutesConfigInput interface {
+	pulumi.Input
+
+	ToNetworkPeeringRoutesConfigOutput() NetworkPeeringRoutesConfigOutput
+	ToNetworkPeeringRoutesConfigOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigOutput
+}
+
+func (NetworkPeeringRoutesConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPeeringRoutesConfig)(nil)).Elem()
+}
+
+func (i NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutput() NetworkPeeringRoutesConfigOutput {
+	return i.ToNetworkPeeringRoutesConfigOutputWithContext(context.Background())
+}
+
+func (i NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigOutput)
+}
+
+type NetworkPeeringRoutesConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkPeeringRoutesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPeeringRoutesConfigOutput)(nil)).Elem()
+}
+
+func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigOutput() NetworkPeeringRoutesConfigOutput {
+	return o
+}
+
+func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkPeeringRoutesConfigOutput{})
 }

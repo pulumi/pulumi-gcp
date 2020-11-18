@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -11,6 +10,89 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setOrgPolicy).
+ *
+ * ## Example Usage
+ *
+ * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serialPortPolicy = new gcp.projects.OrganizationPolicy("serial_port_policy", {
+ *     booleanPolicy: {
+ *         enforced: true,
+ *     },
+ *     constraint: "compute.disableSerialPortAccess",
+ *     project: "your-project-id",
+ * });
+ * ```
+ *
+ * To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     listPolicy: {
+ *         allow: {
+ *             all: true,
+ *         },
+ *     },
+ *     project: "your-project-id",
+ * });
+ * ```
+ *
+ * Or to deny some services, use the following instead:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     listPolicy: {
+ *         deny: {
+ *             values: ["cloudresourcemanager.googleapis.com"],
+ *         },
+ *         suggestedValue: "compute.googleapis.com",
+ *     },
+ *     project: "your-project-id",
+ * });
+ * ```
+ *
+ * To restore the default project organization policy, use the following instead:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const servicesPolicy = new gcp.projects.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     project: "your-project-id",
+ *     restorePolicy: {
+ *         default: true,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Project organization policies can be imported using any of the follow formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy policy projects/test-project:constraints/serviceuser.services
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy policy test-project:constraints/serviceuser.services
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy policy test-project:serviceuser.services
+ * ```
  */
 export class OrganizationPolicy extends pulumi.CustomResource {
     /**

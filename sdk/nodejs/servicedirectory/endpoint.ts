@@ -14,6 +14,53 @@ import * as utilities from "../utilities";
  *     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
  *
  * ## Example Usage
+ * ### Service Directory Endpoint Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleNamespace = new gcp.servicedirectory.Namespace("exampleNamespace", {
+ *     namespaceId: "example-namespace",
+ *     location: "us-central1",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const exampleService = new gcp.servicedirectory.Service("exampleService", {
+ *     serviceId: "example-service",
+ *     namespace: exampleNamespace.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const exampleEndpoint = new gcp.servicedirectory.Endpoint("exampleEndpoint", {
+ *     endpointId: "example-endpoint",
+ *     service: exampleService.id,
+ *     metadata: {
+ *         stage: "prod",
+ *         region: "us-central1",
+ *     },
+ *     address: "1.2.3.4",
+ *     port: 5353,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Endpoint can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+ * ```
  */
 export class Endpoint extends pulumi.CustomResource {
     /**

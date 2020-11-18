@@ -34,6 +34,32 @@ class Tenant(pulumi.CustomResource):
         the Cloud Console prior to creating tenants.
 
         ## Example Usage
+        ### Identity Platform Tenant Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant",
+            allow_password_signup=True,
+            display_name="tenant")
+        ```
+
+        ## Import
+
+        Tenant can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

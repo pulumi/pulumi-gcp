@@ -2,14 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Use this data source to get the rollout state.
  *
  * https://cloud.google.com/game-servers/docs/reference/rest/v1beta/GameServerDeploymentRollout
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const qa = pulumi.output(gcp.gameservices.getGameServerDeploymentRollout({
+ *     deploymentId: "tf-test-deployment-s8sn12jt2c",
+ * }, { async: true }));
+ * ```
  */
 export function getGameServerDeploymentRollout(args: GetGameServerDeploymentRolloutArgs, opts?: pulumi.InvokeOptions): Promise<GetGameServerDeploymentRolloutResult> {
     if (!opts) {

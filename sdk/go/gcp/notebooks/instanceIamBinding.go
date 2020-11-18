@@ -4,12 +4,36 @@
 package notebooks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/instances/{{instance_name}} * {{project}}/{{location}}/{{instance_name}} * {{location}}/{{instance_name}} * {{instance_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud AI Notebooks instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/instanceIamBinding:InstanceIamBinding editor "projects/{{project}}/locations/{{location}}/instances/{{instance_name}} roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/instanceIamBinding:InstanceIamBinding editor projects/{{project}}/locations/{{location}}/instances/{{instance_name}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -141,4 +165,43 @@ type InstanceIamBindingArgs struct {
 
 func (InstanceIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamBindingArgs)(nil)).Elem()
+}
+
+type InstanceIamBindingInput interface {
+	pulumi.Input
+
+	ToInstanceIamBindingOutput() InstanceIamBindingOutput
+	ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput
+}
+
+func (InstanceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamBinding)(nil)).Elem()
+}
+
+func (i InstanceIamBinding) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
+	return i.ToInstanceIamBindingOutputWithContext(context.Background())
+}
+
+func (i InstanceIamBinding) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingOutput)
+}
+
+type InstanceIamBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamBindingOutput)(nil)).Elem()
+}
+
+func (o InstanceIamBindingOutput) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
+	return o
+}
+
+func (o InstanceIamBindingOutput) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceIamBindingOutput{})
 }

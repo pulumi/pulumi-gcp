@@ -37,6 +37,62 @@ class TagTemplate(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Tag Template Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_tag_template = gcp.datacatalog.TagTemplate("basicTagTemplate",
+            display_name="Demo Tag Template",
+            fields=[
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    display_name="Source of data asset",
+                    field_id="source",
+                    is_required=True,
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="STRING",
+                    ),
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    display_name="Number of rows in the data asset",
+                    field_id="num_rows",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="DOUBLE",
+                    ),
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    display_name="PII type",
+                    field_id="pii_type",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                            allowed_values=[
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="EMAIL",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="SOCIAL SECURITY NUMBER",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="NONE",
+                                ),
+                            ],
+                        ),
+                    ),
+                ),
+            ],
+            force_delete=False,
+            region="us-central1",
+            tag_template_id="my_template")
+        ```
+
+        ## Import
+
+        TagTemplate can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

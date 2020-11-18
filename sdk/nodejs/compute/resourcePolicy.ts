@@ -2,14 +2,94 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * A policy that can be attached to a resource to specify or schedule actions on that resource.
  *
  * ## Example Usage
+ * ### Resource Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = new gcp.compute.ResourcePolicy("foo", {
+ *     region: "us-central1",
+ *     snapshotSchedulePolicy: {
+ *         schedule: {
+ *             dailySchedule: {
+ *                 daysInCycle: 1,
+ *                 startTime: "04:00",
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Resource Policy Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bar = new gcp.compute.ResourcePolicy("bar", {
+ *     region: "us-central1",
+ *     snapshotSchedulePolicy: {
+ *         retentionPolicy: {
+ *             maxRetentionDays: 10,
+ *             onSourceDiskDelete: "KEEP_AUTO_SNAPSHOTS",
+ *         },
+ *         schedule: {
+ *             hourlySchedule: {
+ *                 hoursInCycle: 20,
+ *                 startTime: "23:00",
+ *             },
+ *         },
+ *         snapshotProperties: {
+ *             guestFlush: true,
+ *             labels: {
+ *                 my_label: "value",
+ *             },
+ *             storageLocations: "us",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Resource Policy Placement Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const baz = new gcp.compute.ResourcePolicy("baz", {
+ *     groupPlacementPolicy: {
+ *         collocation: "COLLOCATED",
+ *         vmCount: 2,
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ResourcePolicy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
+ * ```
  */
 export class ResourcePolicy extends pulumi.CustomResource {
     /**

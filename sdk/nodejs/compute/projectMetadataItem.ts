@@ -9,6 +9,26 @@ import * as utilities from "../utilities";
  * a project in GCE. Using `gcp.compute.ProjectMetadataItem` lets you
  * manage a single key/value setting in the provider rather than the entire
  * project metadata map.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultProjectMetadataItem = new gcp.compute.ProjectMetadataItem("default", {
+ *     key: "my_metadata",
+ *     value: "my_value",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Project metadata items can be imported using the `key`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default my_metadata
+ * ```
  */
 export class ProjectMetadataItem extends pulumi.CustomResource {
     /**

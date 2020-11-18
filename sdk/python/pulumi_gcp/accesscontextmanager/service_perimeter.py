@@ -52,6 +52,68 @@ class ServicePerimeter(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Access Context Manager Service Perimeter Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+                restricted_services=["storage.googleapis.com"],
+            ),
+            title="restrict_storage")
+        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy={
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                        "requireScreenLock": False,
+                    },
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ),
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="chromeos_no_lock")
+        ```
+        ### Access Context Manager Service Perimeter Dry Run
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        service_perimeter = gcp.accesscontextmanager.ServicePerimeter("service-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            spec=gcp.accesscontextmanager.ServicePerimeterSpecArgs(
+                restricted_services=["storage.googleapis.com"],
+            ),
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+                restricted_services=["bigquery.googleapis.com"],
+            ),
+            title="restrict_bigquery_dryrun_storage",
+            use_explicit_dry_run_spec=True)
+        ```
+
+        ## Import
+
+        ServicePerimeter can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/servicePerimeter:ServicePerimeter default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

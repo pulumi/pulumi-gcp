@@ -36,6 +36,51 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Disk Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.Disk("default", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Image = "debian-8-jessie-v20170523",
+    ///             Labels = 
+    ///             {
+    ///                 { "environment", "dev" },
+    ///             },
+    ///             PhysicalBlockSizeBytes = 4096,
+    ///             Type = "pd-ssd",
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Disk can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/disk:Disk default projects/{{project}}/zones/{{zone}}/disks/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/disk:Disk default {{project}}/{{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/disk:Disk default {{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/disk:Disk default {{name}}
+    /// ```
     /// </summary>
     public partial class Disk : Pulumi.CustomResource
     {

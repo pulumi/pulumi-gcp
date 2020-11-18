@@ -21,6 +21,55 @@ namespace Pulumi.Gcp.Spanner
     /// &gt; **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
     /// 
     /// ## Example Usage
+    /// ### Spanner Database Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var main = new Gcp.Spanner.Instance("main", new Gcp.Spanner.InstanceArgs
+    ///         {
+    ///             Config = "regional-europe-west1",
+    ///             DisplayName = "main-instance",
+    ///         });
+    ///         var database = new Gcp.Spanner.Database("database", new Gcp.Spanner.DatabaseArgs
+    ///         {
+    ///             Instance = main.Name,
+    ///             Ddls = 
+    ///             {
+    ///                 "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+    ///                 "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+    ///             },
+    ///             DeletionProtection = false,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Database can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
+    /// ```
     /// </summary>
     public partial class Database : Pulumi.CustomResource
     {

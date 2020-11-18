@@ -15,6 +15,30 @@ namespace Pulumi.Gcp.CloudRun
         /// Get information about a Google Cloud Run. For more information see
         /// the [official documentation](https://cloud.google.com/run/docs/)
         /// and [API](https://cloud.google.com/run/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var run_service = Output.Create(Gcp.CloudRun.GetService.InvokeAsync(new Gcp.CloudRun.GetServiceArgs
+        ///         {
+        ///             Location = "us-central1",
+        ///             Name = "my-service",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("gcp:cloudrun/getService:getService", args ?? new GetServiceArgs(), options.WithVersion());

@@ -20,6 +20,70 @@ namespace Pulumi.Gcp.Spanner
     ///     * [Official Documentation](https://cloud.google.com/spanner/)
     /// 
     /// ## Example Usage
+    /// ### Spanner Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Spanner.Instance("example", new Gcp.Spanner.InstanceArgs
+    ///         {
+    ///             Config = "regional-us-central1",
+    ///             DisplayName = "Test Spanner Instance",
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             NumNodes = 2,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Spanner Instance Multi Regional
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Spanner.Instance("example", new Gcp.Spanner.InstanceArgs
+    ///         {
+    ///             Config = "nam-eur-asia1",
+    ///             DisplayName = "Multi Regional Instance",
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             NumNodes = 2,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:spanner/instance:Instance default {{name}}
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

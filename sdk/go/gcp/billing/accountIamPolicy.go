@@ -4,6 +4,7 @@
 package billing
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -80,4 +81,43 @@ type AccountIamPolicyArgs struct {
 
 func (AccountIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamPolicyArgs)(nil)).Elem()
+}
+
+type AccountIamPolicyInput interface {
+	pulumi.Input
+
+	ToAccountIamPolicyOutput() AccountIamPolicyOutput
+	ToAccountIamPolicyOutputWithContext(ctx context.Context) AccountIamPolicyOutput
+}
+
+func (AccountIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamPolicy)(nil)).Elem()
+}
+
+func (i AccountIamPolicy) ToAccountIamPolicyOutput() AccountIamPolicyOutput {
+	return i.ToAccountIamPolicyOutputWithContext(context.Background())
+}
+
+func (i AccountIamPolicy) ToAccountIamPolicyOutputWithContext(ctx context.Context) AccountIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamPolicyOutput)
+}
+
+type AccountIamPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamPolicyOutput)(nil)).Elem()
+}
+
+func (o AccountIamPolicyOutput) ToAccountIamPolicyOutput() AccountIamPolicyOutput {
+	return o
+}
+
+func (o AccountIamPolicyOutput) ToAccountIamPolicyOutputWithContext(ctx context.Context) AccountIamPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountIamPolicyOutput{})
 }

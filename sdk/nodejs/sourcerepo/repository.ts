@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,43 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/source-repositories/)
  *
  * ## Example Usage
+ * ### Sourcerepo Repository Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.sourcerepo.Repository("my-repo", {});
+ * ```
+ * ### Sourcerepo Repository Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test_account = new gcp.serviceAccount.Account("test-account", {
+ *     accountId: "my-account",
+ *     displayName: "Test Service Account",
+ * });
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const my_repo = new gcp.sourcerepo.Repository("my-repo", {pubsubConfigs: [{
+ *     topic: topic.id,
+ *     messageFormat: "JSON",
+ *     serviceAccountEmail: test_account.email,
+ * }]});
+ * ```
+ *
+ * ## Import
+ *
+ * Repository can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
+ * ```
  */
 export class Repository extends pulumi.CustomResource {
     /**

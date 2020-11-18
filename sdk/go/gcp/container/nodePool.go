@@ -4,6 +4,7 @@
 package container
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -15,6 +16,58 @@ import (
 // and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
 //
 // ## Example Usage
+// ### Using A Separately Managed Node Pool (Recommended)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/container"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+// 			Location:              pulumi.String("us-central1"),
+// 			RemoveDefaultNodePool: pulumi.Bool(true),
+// 			InitialNodeCount:      pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
+// 			Location:  pulumi.String("us-central1"),
+// 			Cluster:   primary.Name,
+// 			NodeCount: pulumi.Int(1),
+// 			NodeConfig: &container.NodePoolNodeConfigArgs{
+// 				Preemptible: pulumi.Bool(true),
+// 				MachineType: pulumi.String("e2-medium"),
+// 				OauthScopes: pulumi.StringArray{
+// 					pulumi.String("https://www.googleapis.com/auth/logging.write"),
+// 					pulumi.String("https://www.googleapis.com/auth/monitoring"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+//
+// ```sh
+//  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+// ```
 type NodePool struct {
 	pulumi.CustomResourceState
 
@@ -350,4 +403,43 @@ type NodePoolArgs struct {
 
 func (NodePoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nodePoolArgs)(nil)).Elem()
+}
+
+type NodePoolInput interface {
+	pulumi.Input
+
+	ToNodePoolOutput() NodePoolOutput
+	ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput
+}
+
+func (NodePool) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePool)(nil)).Elem()
+}
+
+func (i NodePool) ToNodePoolOutput() NodePoolOutput {
+	return i.ToNodePoolOutputWithContext(context.Background())
+}
+
+func (i NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
+}
+
+type NodePoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodePoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolOutput)(nil)).Elem()
+}
+
+func (o NodePoolOutput) ToNodePoolOutput() NodePoolOutput {
+	return o
+}
+
+func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NodePoolOutput{})
 }

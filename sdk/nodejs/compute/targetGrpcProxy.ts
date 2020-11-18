@@ -17,6 +17,110 @@ import * as utilities from "../utilities";
  *     * [Using Target gRPC Proxies](https://cloud.google.com/traffic-director/docs/proxyless-overview)
  *
  * ## Example Usage
+ * ### Target Grpc Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     grpcHealthCheck: {
+ *         portName: "health-check-port",
+ *         portSpecification: "USE_NAMED_PORT",
+ *         grpcServiceName: "testservice",
+ *     },
+ * });
+ * const home = new gcp.compute.BackendService("home", {
+ *     portName: "grpc",
+ *     protocol: "GRPC",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHealthCheck.id],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ * });
+ * const urlmap = new gcp.compute.URLMap("urlmap", {
+ *     description: "a description",
+ *     defaultService: home.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: home.id,
+ *         routeRules: [{
+ *             priority: 1,
+ *             headerAction: {
+ *                 requestHeadersToRemoves: ["RemoveMe2"],
+ *                 requestHeadersToAdds: [{
+ *                     headerName: "AddSomethingElse",
+ *                     headerValue: "MyOtherValue",
+ *                     replace: true,
+ *                 }],
+ *                 responseHeadersToRemoves: ["RemoveMe3"],
+ *                 responseHeadersToAdds: [{
+ *                     headerName: "AddMe",
+ *                     headerValue: "MyValue",
+ *                     replace: false,
+ *                 }],
+ *             },
+ *             matchRules: [{
+ *                 fullPathMatch: "a full path",
+ *                 headerMatches: [{
+ *                     headerName: "someheader",
+ *                     exactMatch: "match this exactly",
+ *                     invertMatch: true,
+ *                 }],
+ *                 ignoreCase: true,
+ *                 metadataFilters: [{
+ *                     filterMatchCriteria: "MATCH_ANY",
+ *                     filterLabels: [{
+ *                         name: "PLANET",
+ *                         value: "MARS",
+ *                     }],
+ *                 }],
+ *                 queryParameterMatches: [{
+ *                     name: "a query parameter",
+ *                     presentMatch: true,
+ *                 }],
+ *             }],
+ *             urlRedirect: {
+ *                 hostRedirect: "A host",
+ *                 httpsRedirect: false,
+ *                 pathRedirect: "some/path",
+ *                 redirectResponseCode: "TEMPORARY_REDIRECT",
+ *                 stripQuery: true,
+ *             },
+ *         }],
+ *     }],
+ *     tests: [{
+ *         service: home.id,
+ *         host: "hi.com",
+ *         path: "/home",
+ *     }],
+ * });
+ * const defaultTargetGrpcProxy = new gcp.compute.TargetGrpcProxy("defaultTargetGrpcProxy", {
+ *     urlMap: urlmap.id,
+ *     validateForProxyless: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * TargetGrpcProxy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default projects/{{project}}/global/targetGrpcProxies/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetGrpcProxy:TargetGrpcProxy default {{name}}
+ * ```
  */
 export class TargetGrpcProxy extends pulumi.CustomResource {
     /**

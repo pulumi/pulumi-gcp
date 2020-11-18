@@ -18,6 +18,61 @@ namespace Pulumi.Gcp.Compute
     /// This resource is specifically to create a compute instance from a given
     /// `source_instance_template`. To create an instance without a template, use the
     /// `gcp.compute.Instance` resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tplInstanceTemplate = new Gcp.Compute.InstanceTemplate("tplInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = "debian-cloud/debian-9",
+    ///                     AutoDelete = true,
+    ///                     DiskSizeGb = 100,
+    ///                     Boot = true,
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             CanIpForward = true,
+    ///         });
+    ///         var tplInstanceFromTemplate = new Gcp.Compute.InstanceFromTemplate("tplInstanceFromTemplate", new Gcp.Compute.InstanceFromTemplateArgs
+    ///         {
+    ///             Zone = "us-central1-a",
+    ///             SourceInstanceTemplate = tplInstanceTemplate.Id,
+    ///             CanIpForward = false,
+    ///             Labels = 
+    ///             {
+    ///                 { "my_key", "my_value" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     public partial class InstanceFromTemplate : Pulumi.CustomResource
     {

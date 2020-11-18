@@ -16,6 +16,139 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.serviceAccount.IAMPolicy` **cannot** be used in conjunction with `gcp.serviceAccount.IAMBinding` and `gcp.serviceAccount.IAMMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.serviceAccount.IAMBinding` resources **can be** used in conjunction with `gcp.serviceAccount.IAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_service\_account\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/iam.serviceAccountUser",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that only Jane can interact with",
+ * });
+ * const admin_account_iam = new gcp.serviceAccount.IAMPolicy("admin-account-iam", {
+ *     serviceAccountId: sa.name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_service\_account\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that only Jane can use",
+ * });
+ * const admin_account_iam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
+ *     serviceAccountId: sa.name,
+ *     role: "roles/iam.serviceAccountUser",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that only Jane can use",
+ * });
+ * const admin_account_iam = new gcp.serviceAccount.IAMBinding("admin-account-iam", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/iam.serviceAccountUser",
+ *     serviceAccountId: sa.name,
+ * });
+ * ```
+ *
+ * ## google\_service\_account\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.compute.getDefaultServiceAccount({});
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that Jane can use",
+ * });
+ * const admin_account_iam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
+ *     serviceAccountId: sa.name,
+ *     role: "roles/iam.serviceAccountUser",
+ *     member: "user:jane@example.com",
+ * });
+ * // Allow SA service account use the default GCE account
+ * const gce_default_account_iam = new gcp.serviceAccount.IAMMember("gce-default-account-iam", {
+ *     serviceAccountId: _default.then(_default => _default.name),
+ *     role: "roles/iam.serviceAccountUser",
+ *     member: pulumi.interpolate`serviceAccount:${sa.email}`,
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const sa = new gcp.serviceAccount.Account("sa", {
+ *     accountId: "my-service-account",
+ *     displayName: "A service account that Jane can use",
+ * });
+ * const admin_account_iam = new gcp.serviceAccount.IAMMember("admin-account-iam", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     member: "user:jane@example.com",
+ *     role: "roles/iam.serviceAccountUser",
+ *     serviceAccountId: sa.name,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Service account IAM resources can be imported using the project, service account email, role, member identity, and condition (beta).
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam projects/{your-project-id}/serviceAccounts/{your-service-account-email}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} iam.serviceAccountUser"
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/editor user:foo@example.com"
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} iam.serviceAccountUser expires_after_2019_12_31"
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+ * ```
  */
 export class IAMPolicy extends pulumi.CustomResource {
     /**

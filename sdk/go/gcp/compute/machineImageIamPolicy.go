@@ -4,12 +4,36 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/machineImages/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImageIamPolicy:MachineImageIamPolicy editor projects/{{project}}/global/machineImages/{{machine_image}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type MachineImageIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -113,4 +137,43 @@ type MachineImageIamPolicyArgs struct {
 
 func (MachineImageIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineImageIamPolicyArgs)(nil)).Elem()
+}
+
+type MachineImageIamPolicyInput interface {
+	pulumi.Input
+
+	ToMachineImageIamPolicyOutput() MachineImageIamPolicyOutput
+	ToMachineImageIamPolicyOutputWithContext(ctx context.Context) MachineImageIamPolicyOutput
+}
+
+func (MachineImageIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamPolicy)(nil)).Elem()
+}
+
+func (i MachineImageIamPolicy) ToMachineImageIamPolicyOutput() MachineImageIamPolicyOutput {
+	return i.ToMachineImageIamPolicyOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamPolicy) ToMachineImageIamPolicyOutputWithContext(ctx context.Context) MachineImageIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamPolicyOutput)
+}
+
+type MachineImageIamPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (MachineImageIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamPolicyOutput)(nil)).Elem()
+}
+
+func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyOutput() MachineImageIamPolicyOutput {
+	return o
+}
+
+func (o MachineImageIamPolicyOutput) ToMachineImageIamPolicyOutputWithContext(ctx context.Context) MachineImageIamPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MachineImageIamPolicyOutput{})
 }

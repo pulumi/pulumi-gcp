@@ -48,6 +48,43 @@ class DataTransferConfig(pulumi.CustomResource):
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
+        ### Bigquerydatatransfer Config Scheduled Query
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        permissions = gcp.projects.IAMMember("permissions",
+            role="roles/iam.serviceAccountShortTermTokenMinter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com")
+        my_dataset = gcp.bigquery.Dataset("myDataset",
+            dataset_id="my_dataset",
+            friendly_name="foo",
+            description="bar",
+            location="asia-northeast1",
+            opts=ResourceOptions(depends_on=[permissions]))
+        query_config = gcp.bigquery.DataTransferConfig("queryConfig",
+            display_name="my-query",
+            location="asia-northeast1",
+            data_source_id="scheduled_query",
+            schedule="first sunday of quarter 00:00",
+            destination_dataset_id=my_dataset.dataset_id,
+            params={
+                "destination_table_name_template": "my_table",
+                "write_disposition": "WRITE_APPEND",
+                "query": "SELECT name FROM tabl WHERE x = 'y'",
+            },
+            opts=ResourceOptions(depends_on=[permissions]))
+        ```
+
+        ## Import
+
+        Config can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

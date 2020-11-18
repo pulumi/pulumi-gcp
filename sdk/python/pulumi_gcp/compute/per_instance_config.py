@@ -40,6 +40,26 @@ class PerInstanceConfig(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        PerInstanceConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{project}}/{{zone}}/{{instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{zone}}/{{instance_group_manager}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance_group_manager: The instance group manager this instance config is part of.

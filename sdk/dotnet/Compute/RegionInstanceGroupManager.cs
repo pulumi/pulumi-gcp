@@ -18,6 +18,109 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
     /// 
     /// ## Example Usage
+    /// ### With Top Level Instance Template (`Google` Provider)
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var autohealing = new Gcp.Compute.HealthCheck("autohealing", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             CheckIntervalSec = 5,
+    ///             TimeoutSec = 5,
+    ///             HealthyThreshold = 2,
+    ///             UnhealthyThreshold = 10,
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 RequestPath = "/healthz",
+    ///                 Port = 8080,
+    ///             },
+    ///         });
+    ///         var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         {
+    ///             BaseInstanceName = "app",
+    ///             Region = "us-central1",
+    ///             DistributionPolicyZones = 
+    ///             {
+    ///                 "us-central1-a",
+    ///                 "us-central1-f",
+    ///             },
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = google_compute_instance_template.Appserver.Id,
+    ///                 },
+    ///             },
+    ///             TargetPools = 
+    ///             {
+    ///                 google_compute_target_pool.Appserver.Id,
+    ///             },
+    ///             TargetSize = 2,
+    ///             NamedPorts = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerNamedPortArgs
+    ///                 {
+    ///                     Name = "custom",
+    ///                     Port = 8888,
+    ///                 },
+    ///             },
+    ///             AutoHealingPolicies = new Gcp.Compute.Inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs
+    ///             {
+    ///                 HealthCheck = autohealing.Id,
+    ///                 InitialDelaySec = 300,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### With Multiple Versions
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var appserver = new Gcp.Compute.RegionInstanceGroupManager("appserver", new Gcp.Compute.RegionInstanceGroupManagerArgs
+    ///         {
+    ///             BaseInstanceName = "app",
+    ///             Region = "us-central1",
+    ///             TargetSize = 5,
+    ///             Versions = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = google_compute_instance_template.Appserver.Id,
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionArgs
+    ///                 {
+    ///                     InstanceTemplate = google_compute_instance_template.Appserver_canary.Id,
+    ///                     TargetSize = new Gcp.Compute.Inputs.RegionInstanceGroupManagerVersionTargetSizeArgs
+    ///                     {
+    ///                         Fixed = 1,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance group managers can be imported using the `name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager appserver appserver-igm
+    /// ```
     /// </summary>
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {

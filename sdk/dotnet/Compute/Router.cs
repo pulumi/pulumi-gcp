@@ -19,6 +19,68 @@ namespace Pulumi.Gcp.Compute
     ///     * [Google Cloud Router](https://cloud.google.com/router/docs/)
     /// 
     /// ## Example Usage
+    /// ### Router Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobarNetwork = new Gcp.Compute.Network("foobarNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var foobarRouter = new Gcp.Compute.Router("foobarRouter", new Gcp.Compute.RouterArgs
+    ///         {
+    ///             Network = foobarNetwork.Name,
+    ///             Bgp = new Gcp.Compute.Inputs.RouterBgpArgs
+    ///             {
+    ///                 Asn = 64514,
+    ///                 AdvertiseMode = "CUSTOM",
+    ///                 AdvertisedGroups = 
+    ///                 {
+    ///                     "ALL_SUBNETS",
+    ///                 },
+    ///                 AdvertisedIpRanges = 
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
+    ///                     {
+    ///                         Range = "1.2.3.4",
+    ///                     },
+    ///                     new Gcp.Compute.Inputs.RouterBgpAdvertisedIpRangeArgs
+    ///                     {
+    ///                         Range = "6.7.0.0/16",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Router can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/router:Router default {{name}}
+    /// ```
     /// </summary>
     public partial class Router : Pulumi.CustomResource
     {

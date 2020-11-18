@@ -9,6 +9,45 @@ import * as utilities from "../utilities";
  * Google's cloud.
  *
  * ## Example Usage
+ * ### Sql Database Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: "true",
+ * });
+ * const database = new gcp.sql.Database("database", {instance: instance.name});
+ * ```
+ *
+ * ## Import
+ *
+ * Database can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/database:Database default {{name}}
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**

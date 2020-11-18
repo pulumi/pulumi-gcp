@@ -19,6 +19,67 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
     /// 
     /// ## Example Usage
+    /// ### Service Directory Endpoint Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new Gcp.ServiceDirectory.NamespaceArgs
+    ///         {
+    ///             NamespaceId = "example-namespace",
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new Gcp.ServiceDirectory.ServiceArgs
+    ///         {
+    ///             ServiceId = "example-service",
+    ///             Namespace = exampleNamespace.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var exampleEndpoint = new Gcp.ServiceDirectory.Endpoint("exampleEndpoint", new Gcp.ServiceDirectory.EndpointArgs
+    ///         {
+    ///             EndpointId = "example-endpoint",
+    ///             Service = exampleService.Id,
+    ///             Metadata = 
+    ///             {
+    ///                 { "stage", "prod" },
+    ///                 { "region", "us-central1" },
+    ///             },
+    ///             Address = "1.2.3.4",
+    ///             Port = 5353,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Endpoint can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+    /// ```
     /// </summary>
     public partial class Endpoint : Pulumi.CustomResource
     {

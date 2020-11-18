@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,58 @@ import (
 // state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
 //
 // ## Example Usage
+// ### Scan Config Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		scannerStaticIp, err := compute.NewAddress(ctx, "scannerStaticIp", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSecurityScanConfig(ctx, "scan_config", &compute.SecurityScanConfigArgs{
+// 			DisplayName: pulumi.String("scan-config"),
+// 			StartingUrls: pulumi.StringArray{
+// 				scannerStaticIp.Address.ApplyT(func(address string) (string, error) {
+// 					return fmt.Sprintf("%v%v", "http://", address), nil
+// 				}).(pulumi.StringOutput),
+// 			},
+// 			TargetPlatforms: pulumi.StringArray{
+// 				pulumi.String("COMPUTE"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ScanConfig can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
+// ```
 type SecurityScanConfig struct {
 	pulumi.CustomResourceState
 
@@ -240,4 +293,43 @@ type SecurityScanConfigArgs struct {
 
 func (SecurityScanConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityScanConfigArgs)(nil)).Elem()
+}
+
+type SecurityScanConfigInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigOutput() SecurityScanConfigOutput
+	ToSecurityScanConfigOutputWithContext(ctx context.Context) SecurityScanConfigOutput
+}
+
+func (SecurityScanConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityScanConfig)(nil)).Elem()
+}
+
+func (i SecurityScanConfig) ToSecurityScanConfigOutput() SecurityScanConfigOutput {
+	return i.ToSecurityScanConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityScanConfig) ToSecurityScanConfigOutputWithContext(ctx context.Context) SecurityScanConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigOutput)
+}
+
+type SecurityScanConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityScanConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityScanConfigOutput)(nil)).Elem()
+}
+
+func (o SecurityScanConfigOutput) ToSecurityScanConfigOutput() SecurityScanConfigOutput {
+	return o
+}
+
+func (o SecurityScanConfigOutput) ToSecurityScanConfigOutputWithContext(ctx context.Context) SecurityScanConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecurityScanConfigOutput{})
 }

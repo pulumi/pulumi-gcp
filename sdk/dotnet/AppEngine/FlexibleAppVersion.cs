@@ -25,6 +25,127 @@ namespace Pulumi.Gcp.AppEngine
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
     /// 
     /// ## Example Usage
+    /// ### App Engine Flexible App Version
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "appeng-flex",
+    ///             OrgId = "123456789",
+    ///             BillingAccount = "000000-0000000-0000000-000000",
+    ///         });
+    ///         var app = new Gcp.AppEngine.Application("app", new Gcp.AppEngine.ApplicationArgs
+    ///         {
+    ///             Project = myProject.ProjectId,
+    ///             LocationId = "us-central",
+    ///         });
+    ///         var service = new Gcp.Projects.Service("service", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             Project = myProject.ProjectId,
+    ///             Service = "appengineflex.googleapis.com",
+    ///             DisableDependentServices = false,
+    ///         });
+    ///         var gaeApi = new Gcp.Projects.IAMMember("gaeApi", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Project = service.Project,
+    ///             Role = "roles/compute.networkUser",
+    ///             Member = myProject.Number.Apply(number =&gt; $"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"),
+    ///         });
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             Project = myProject.ProjectId,
+    ///         });
+    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///         });
+    ///         var myappV1 = new Gcp.AppEngine.FlexibleAppVersion("myappV1", new Gcp.AppEngine.FlexibleAppVersionArgs
+    ///         {
+    ///             VersionId = "v1",
+    ///             Project = gaeApi.Project,
+    ///             Service = "default",
+    ///             Runtime = "nodejs",
+    ///             Entrypoint = new Gcp.AppEngine.Inputs.FlexibleAppVersionEntrypointArgs
+    ///             {
+    ///                 Shell = "node ./app.js",
+    ///             },
+    ///             Deployment = new Gcp.AppEngine.Inputs.FlexibleAppVersionDeploymentArgs
+    ///             {
+    ///                 Zip = new Gcp.AppEngine.Inputs.FlexibleAppVersionDeploymentZipArgs
+    ///                 {
+    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var objectName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             LivenessCheck = new Gcp.AppEngine.Inputs.FlexibleAppVersionLivenessCheckArgs
+    ///             {
+    ///                 Path = "/",
+    ///             },
+    ///             ReadinessCheck = new Gcp.AppEngine.Inputs.FlexibleAppVersionReadinessCheckArgs
+    ///             {
+    ///                 Path = "/",
+    ///             },
+    ///             EnvVariables = 
+    ///             {
+    ///                 { "port", "8080" },
+    ///             },
+    ///             Handlers = 
+    ///             {
+    ///                 new Gcp.AppEngine.Inputs.FlexibleAppVersionHandlerArgs
+    ///                 {
+    ///                     UrlRegex = ".*\\/my-path\\/*",
+    ///                     SecurityLevel = "SECURE_ALWAYS",
+    ///                     Login = "LOGIN_REQUIRED",
+    ///                     AuthFailAction = "AUTH_FAIL_ACTION_REDIRECT",
+    ///                     StaticFiles = new Gcp.AppEngine.Inputs.FlexibleAppVersionHandlerStaticFilesArgs
+    ///                     {
+    ///                         Path = "my-other-path",
+    ///                         UploadPathRegex = ".*\\/my-path\\/*",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             AutomaticScaling = new Gcp.AppEngine.Inputs.FlexibleAppVersionAutomaticScalingArgs
+    ///             {
+    ///                 CoolDownPeriod = "120s",
+    ///                 CpuUtilization = new Gcp.AppEngine.Inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs
+    ///                 {
+    ///                     TargetUtilization = 0.5,
+    ///                 },
+    ///             },
+    ///             NoopOnDestroy = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// FlexibleAppVersion can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
+    /// ```
     /// </summary>
     public partial class FlexibleAppVersion : Pulumi.CustomResource
     {

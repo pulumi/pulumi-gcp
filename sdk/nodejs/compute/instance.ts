@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -11,6 +10,64 @@ import * as utilities from "../utilities";
  * [the official documentation](https://cloud.google.com/compute/docs/instances)
  * and
  * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultInstance = new gcp.compute.Instance("default", {
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     machineType: "e2-medium",
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ *     metadataStartupScript: "echo hi > /test.txt",
+ *     networkInterfaces: [{
+ *         accessConfigs: [{}],
+ *         network: "default",
+ *     }],
+ *     // Local SSD disk
+ *     scratchDisks: [{
+ *         interface: "SCSI",
+ *     }],
+ *     serviceAccount: {
+ *         scopes: [
+ *             "userinfo-email",
+ *             "compute-ro",
+ *             "storage-ro",
+ *         ],
+ *     },
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instances can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instance:Instance default {{name}}
+ * ```
+ *
+ *  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
  */
 export class Instance extends pulumi.CustomResource {
     /**

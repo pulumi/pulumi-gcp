@@ -18,6 +18,42 @@ import * as utilities from "../utilities";
  *     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
  *
  * **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attachedDisk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultInstance = new gcp.compute.Instance("defaultInstance", {
+ *     machineType: "e2-medium",
+ *     zone: "us-west1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const defaultAttachedDisk = new gcp.compute.AttachedDisk("defaultAttachedDisk", {
+ *     disk: google_compute_disk["default"].id,
+ *     instance: defaultInstance.id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Attached Disk can be imported the following ways
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
+ * ```
  */
 export class AttachedDisk extends pulumi.CustomResource {
     /**

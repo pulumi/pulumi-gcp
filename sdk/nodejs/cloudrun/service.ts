@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -28,6 +27,175 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/run/docs/)
  *
  * ## Example Usage
+ * ### Cloud Run Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         latestRevision: true,
+ *         percent: 100,
+ *     }],
+ * });
+ * ```
+ *
+ * {{% /example %}}
+ * ### Cloud Run Service Sql
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     deletionProtection: true,
+ *     region: "us-east1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     autogenerateRevisionName: true,
+ *     location: "us-central1",
+ *     template: {
+ *         metadata: {
+ *             annotations: {
+ *                 "autoscaling.knative.dev/maxScale": "1000",
+ *                 "run.googleapis.com/client-name": "demo",
+ *                 "run.googleapis.com/cloudsql-instances": pulumi.interpolate`my-project-name:us-central1:${instance.name}`,
+ *             },
+ *         },
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ###Cloud Run Service Noauth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const noauthIAMPolicy = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/run.invoker",
+ *         members: ["allUsers"],
+ *     }],
+ * });
+ * const noauthIamPolicy = new gcp.cloudrun.IamPolicy("noauthIamPolicy", {
+ *     location: _default.location,
+ *     project: _default.project,
+ *     service: _default.name,
+ *     policyData: noauthIAMPolicy.then(noauthIAMPolicy => noauthIAMPolicy.policyData),
+ * });
+ * ```
+ * ### Cloud Run Service Multiple Environment Variables
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     autogenerateRevisionName: true,
+ *     location: "us-central1",
+ *     metadata: {
+ *         annotations: {
+ *             "generated-by": "magic-modules",
+ *         },
+ *     },
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 envs: [
+ *                     {
+ *                         name: "SOURCE",
+ *                         value: "remote",
+ *                     },
+ *                     {
+ *                         name: "TARGET",
+ *                         value: "home",
+ *                     },
+ *                 ],
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         latestRevision: true,
+ *         percent: 100,
+ *     }],
+ * });
+ * ```
+ * ### Cloud Run Service Traffic Split
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("default", {
+ *     location: "us-central1",
+ *     template: {
+ *         metadata: {
+ *             name: "cloudrun-srv-green",
+ *         },
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [
+ *         {
+ *             percent: 25,
+ *             revisionName: "cloudrun-srv-green",
+ *         },
+ *         {
+ *             percent: 75,
+ *             // This revision needs to already exist
+ *             revisionName: "cloudrun-srv-blue",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Service can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{name}}
+ * ```
  */
 export class Service extends pulumi.CustomResource {
     /**

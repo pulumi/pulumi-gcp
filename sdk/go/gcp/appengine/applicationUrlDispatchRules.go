@@ -4,6 +4,7 @@
 package appengine
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,85 @@ import (
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
 //
 // ## Example Usage
+// ### App Engine Application Url Dispatch Rules Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		adminV3, err := appengine.NewStandardAppVersion(ctx, "adminV3", &appengine.StandardAppVersionArgs{
+// 			VersionId: pulumi.String("v3"),
+// 			Service:   pulumi.String("admin"),
+// 			Runtime:   pulumi.String("nodejs10"),
+// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+// 				Shell: pulumi.String("node ./app.js"),
+// 			},
+// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
+// 				Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// 						bucketName := _args[0].(string)
+// 						objectName := _args[1].(string)
+// 						return fmt.Sprintf("%v%v%v%v", "https://storage.googleapis.com/", bucketName, "/", objectName), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			EnvVariables: pulumi.StringMap{
+// 				"port": pulumi.String("8080"),
+// 			},
+// 			NoopOnDestroy: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewApplicationUrlDispatchRules(ctx, "webService", &appengine.ApplicationUrlDispatchRulesArgs{
+// 			DispatchRules: appengine.ApplicationUrlDispatchRulesDispatchRuleArray{
+// 				&appengine.ApplicationUrlDispatchRulesDispatchRuleArgs{
+// 					Domain:  pulumi.String("*"),
+// 					Path:    pulumi.String("/*"),
+// 					Service: pulumi.String("default"),
+// 				},
+// 				&appengine.ApplicationUrlDispatchRulesDispatchRuleArgs{
+// 					Domain:  pulumi.String("*"),
+// 					Path:    pulumi.String("/admin/*"),
+// 					Service: adminV3.Service,
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ApplicationUrlDispatchRules can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
+// ```
 type ApplicationUrlDispatchRules struct {
 	pulumi.CustomResourceState
 
@@ -101,4 +181,43 @@ type ApplicationUrlDispatchRulesArgs struct {
 
 func (ApplicationUrlDispatchRulesArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationUrlDispatchRulesArgs)(nil)).Elem()
+}
+
+type ApplicationUrlDispatchRulesInput interface {
+	pulumi.Input
+
+	ToApplicationUrlDispatchRulesOutput() ApplicationUrlDispatchRulesOutput
+	ToApplicationUrlDispatchRulesOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesOutput
+}
+
+func (ApplicationUrlDispatchRules) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUrlDispatchRules)(nil)).Elem()
+}
+
+func (i ApplicationUrlDispatchRules) ToApplicationUrlDispatchRulesOutput() ApplicationUrlDispatchRulesOutput {
+	return i.ToApplicationUrlDispatchRulesOutputWithContext(context.Background())
+}
+
+func (i ApplicationUrlDispatchRules) ToApplicationUrlDispatchRulesOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationUrlDispatchRulesOutput)
+}
+
+type ApplicationUrlDispatchRulesOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationUrlDispatchRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationUrlDispatchRulesOutput)(nil)).Elem()
+}
+
+func (o ApplicationUrlDispatchRulesOutput) ToApplicationUrlDispatchRulesOutput() ApplicationUrlDispatchRulesOutput {
+	return o
+}
+
+func (o ApplicationUrlDispatchRulesOutput) ToApplicationUrlDispatchRulesOutputWithContext(ctx context.Context) ApplicationUrlDispatchRulesOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationUrlDispatchRulesOutput{})
 }

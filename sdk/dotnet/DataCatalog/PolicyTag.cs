@@ -9,6 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.DataCatalog
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// PolicyTag can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
+    /// ```
+    /// </summary>
     public partial class PolicyTag : Pulumi.CustomResource
     {
         /// <summary>

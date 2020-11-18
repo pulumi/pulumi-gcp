@@ -8,6 +8,37 @@ import (
 )
 
 // Use this data source to get information about a Google Cloud Folder.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		myFolder1, err := organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
+// 			Folder:             "folders/12345",
+// 			LookupOrganization: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		myFolder2, err := organizations.LookupFolder(ctx, &organizations.LookupFolderArgs{
+// 			Folder: "folders/23456",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("myFolder1Organization", myFolder1.Organization)
+// 		ctx.Export("myFolder2Parent", myFolder2.Parent)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
 	var rv LookupFolderResult
 	err := ctx.Invoke("gcp:organizations/getFolder:getFolder", args, &rv, opts...)

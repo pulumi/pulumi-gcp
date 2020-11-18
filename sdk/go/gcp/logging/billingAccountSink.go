@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -18,6 +19,57 @@ import (
 // [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
 // the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
 // typical IAM roles granted on a project.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucket(ctx, "log_bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewBillingAccountSink(ctx, "my_sink", &logging.BillingAccountSinkArgs{
+// 			BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
+// 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMBinding(ctx, "log_writer", &projects.IAMBindingArgs{
+// 			Role: pulumi.String("roles/storage.objectCreator"),
+// 			Members: pulumi.StringArray{
+// 				my_sink.WriterIdentity,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Billing account logging sinks can be imported using this format
+//
+// ```sh
+//  $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink my_sink billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
+// ```
 type BillingAccountSink struct {
 	pulumi.CustomResourceState
 
@@ -234,4 +286,43 @@ type BillingAccountSinkArgs struct {
 
 func (BillingAccountSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountSinkArgs)(nil)).Elem()
+}
+
+type BillingAccountSinkInput interface {
+	pulumi.Input
+
+	ToBillingAccountSinkOutput() BillingAccountSinkOutput
+	ToBillingAccountSinkOutputWithContext(ctx context.Context) BillingAccountSinkOutput
+}
+
+func (BillingAccountSink) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountSink)(nil)).Elem()
+}
+
+func (i BillingAccountSink) ToBillingAccountSinkOutput() BillingAccountSinkOutput {
+	return i.ToBillingAccountSinkOutputWithContext(context.Background())
+}
+
+func (i BillingAccountSink) ToBillingAccountSinkOutputWithContext(ctx context.Context) BillingAccountSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkOutput)
+}
+
+type BillingAccountSinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (BillingAccountSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountSinkOutput)(nil)).Elem()
+}
+
+func (o BillingAccountSinkOutput) ToBillingAccountSinkOutput() BillingAccountSinkOutput {
+	return o
+}
+
+func (o BillingAccountSinkOutput) ToBillingAccountSinkOutputWithContext(ctx context.Context) BillingAccountSinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BillingAccountSinkOutput{})
 }

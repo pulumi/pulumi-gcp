@@ -253,6 +253,15 @@ def get_database_instance(name: Optional[str] = None,
     """
     Use this data source to get information about a Cloud SQL instance
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    qa = gcp.sql.get_database_instance(name=google_sql_database_instance["master"]["name"])
+    ```
+
 
     :param str name: The name of the instance.
     :param str project: The ID of the project in which the resource belongs.

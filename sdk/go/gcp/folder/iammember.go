@@ -4,6 +4,7 @@
 package folder
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -93,4 +94,43 @@ type IAMMemberArgs struct {
 
 func (IAMMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iammemberArgs)(nil)).Elem()
+}
+
+type IAMMemberInput interface {
+	pulumi.Input
+
+	ToIAMMemberOutput() IAMMemberOutput
+	ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput
+}
+
+func (IAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMMember)(nil)).Elem()
+}
+
+func (i IAMMember) ToIAMMemberOutput() IAMMemberOutput {
+	return i.ToIAMMemberOutputWithContext(context.Background())
+}
+
+func (i IAMMember) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberOutput)
+}
+
+type IAMMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (IAMMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMMemberOutput)(nil)).Elem()
+}
+
+func (o IAMMemberOutput) ToIAMMemberOutput() IAMMemberOutput {
+	return o
+}
+
+func (o IAMMemberOutput) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IAMMemberOutput{})
 }

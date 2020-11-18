@@ -4,6 +4,7 @@
 package accesscontextmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,103 @@ import (
 //     * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 //
 // ## Example Usage
+// ### Access Context Manager Access Levels Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/accesscontextmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access_policy", &accesscontextmanager.AccessPolicyArgs{
+// 			Parent: pulumi.String("organizations/123456789"),
+// 			Title:  pulumi.String("my policy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewAccessLevels(ctx, "access_levels", &accesscontextmanager.AccessLevelsArgs{
+// 			AccessLevels: accesscontextmanager.AccessLevelsAccessLevelArray{
+// 				&accesscontextmanager.AccessLevelsAccessLevelArgs{
+// 					Basic: &accesscontextmanager.AccessLevelsAccessLevelBasicArgs{
+// 						Conditions: accesscontextmanager.AccessLevelsAccessLevelBasicConditionArray{
+// 							&accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs{
+// 								DevicePolicy: &accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{
+// 									OsConstraints: accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{
+// 										&accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{
+// 											OsType: pulumi.String("DESKTOP_CHROME_OS"),
+// 										},
+// 									},
+// 									RequireScreenLock: pulumi.Bool(true),
+// 								},
+// 								Regions: pulumi.StringArray{
+// 									pulumi.String("CH"),
+// 									pulumi.String("IT"),
+// 									pulumi.String("US"),
+// 								},
+// 							},
+// 						},
+// 					},
+// 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/accessLevels/chromeos_no_lock"), nil
+// 					}).(pulumi.StringOutput),
+// 					Title: pulumi.String("chromeos_no_lock"),
+// 				},
+// 				&accesscontextmanager.AccessLevelsAccessLevelArgs{
+// 					Basic: &accesscontextmanager.AccessLevelsAccessLevelBasicArgs{
+// 						Conditions: accesscontextmanager.AccessLevelsAccessLevelBasicConditionArray{
+// 							&accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs{
+// 								DevicePolicy: &accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyArgs{
+// 									OsConstraints: accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArray{
+// 										&accesscontextmanager.AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraintArgs{
+// 											OsType: pulumi.String("DESKTOP_MAC"),
+// 										},
+// 									},
+// 									RequireScreenLock: pulumi.Bool(true),
+// 								},
+// 								Regions: pulumi.StringArray{
+// 									pulumi.String("CH"),
+// 									pulumi.String("IT"),
+// 									pulumi.String("US"),
+// 								},
+// 							},
+// 						},
+// 					},
+// 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/accessLevels/mac_no_lock"), nil
+// 					}).(pulumi.StringOutput),
+// 					Title: pulumi.String("mac_no_lock"),
+// 				},
+// 			},
+// 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// AccessLevels can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
+// ```
 type AccessLevels struct {
 	pulumi.CustomResourceState
 
@@ -105,4 +203,43 @@ type AccessLevelsArgs struct {
 
 func (AccessLevelsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLevelsArgs)(nil)).Elem()
+}
+
+type AccessLevelsInput interface {
+	pulumi.Input
+
+	ToAccessLevelsOutput() AccessLevelsOutput
+	ToAccessLevelsOutputWithContext(ctx context.Context) AccessLevelsOutput
+}
+
+func (AccessLevels) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevels)(nil)).Elem()
+}
+
+func (i AccessLevels) ToAccessLevelsOutput() AccessLevelsOutput {
+	return i.ToAccessLevelsOutputWithContext(context.Background())
+}
+
+func (i AccessLevels) ToAccessLevelsOutputWithContext(ctx context.Context) AccessLevelsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelsOutput)
+}
+
+type AccessLevelsOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessLevelsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelsOutput)(nil)).Elem()
+}
+
+func (o AccessLevelsOutput) ToAccessLevelsOutput() AccessLevelsOutput {
+	return o
+}
+
+func (o AccessLevelsOutput) ToAccessLevelsOutputWithContext(ctx context.Context) AccessLevelsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessLevelsOutput{})
 }

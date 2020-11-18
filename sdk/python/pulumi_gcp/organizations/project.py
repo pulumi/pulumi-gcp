@@ -37,6 +37,39 @@ class Project(pulumi.CustomResource):
         [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
         doc for more information.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            org_id="1234567",
+            project_id="your-project-id")
+        ```
+
+        To create a project under a specific folder
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        department1 = gcp.organizations.Folder("department1",
+            display_name="Department 1",
+            parent="organizations/1234567")
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
+            project_id="your-project-id",
+            folder_id=department1.name)
+        ```
+
+        ## Import
+
+        Projects can be imported using the `project_id`, e.g.
+
+        ```sh
+         $ pulumi import gcp:organizations/project:Project my_project your-project-id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically.  Default `true`.

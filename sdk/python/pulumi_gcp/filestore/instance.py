@@ -40,6 +40,77 @@ class Instance(pulumi.CustomResource):
             * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 
         ## Example Usage
+        ### Filestore Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2660,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                modes=["MODE_IPV4"],
+                network="default",
+            )],
+            tier="PREMIUM",
+            zone="us-central1-b")
+        ```
+        ### Filestore Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.filestore.Instance("instance",
+            zone="us-central1-b",
+            tier="BASIC_SSD",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=2660,
+                name="share1",
+                nfs_export_options=[
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        ip_ranges=["10.0.0.0/24"],
+                        access_mode="READ_WRITE",
+                        squash_mode="NO_ROOT_SQUASH",
+                    ),
+                    gcp.filestore.InstanceFileSharesNfsExportOptionArgs(
+                        ip_ranges=["10.10.0.0/24"],
+                        access_mode="READ_ONLY",
+                        squash_mode="ROOT_SQUASH",
+                        anon_uid=123,
+                        anon_gid=456,
+                    ),
+                ],
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )],
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Instance can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:filestore/instance:Instance default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

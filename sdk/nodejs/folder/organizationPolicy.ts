@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -11,6 +10,85 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
  * [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
+ *
+ * ## Example Usage
+ *
+ * To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const serialPortPolicy = new gcp.folder.OrganizationPolicy("serial_port_policy", {
+ *     booleanPolicy: {
+ *         enforced: true,
+ *     },
+ *     constraint: "compute.disableSerialPortAccess",
+ *     folder: "folders/123456789",
+ * });
+ * ```
+ *
+ * To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     folder: "folders/123456789",
+ *     listPolicy: {
+ *         allow: {
+ *             all: true,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * Or to deny some services, use the following instead:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     folder: "folders/123456789",
+ *     listPolicy: {
+ *         deny: {
+ *             values: ["cloudresourcemanager.googleapis.com"],
+ *         },
+ *         suggestedValue: "compute.googleapis.com",
+ *     },
+ * });
+ * ```
+ *
+ * To restore the default folder organization policy, use the following instead:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const servicesPolicy = new gcp.folder.OrganizationPolicy("services_policy", {
+ *     constraint: "serviceuser.services",
+ *     folder: "folders/123456789",
+ *     restorePolicy: {
+ *         default: true,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Folder organization policies can be imported using any of the follow formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy policy folders/folder-1234/constraints/serviceuser.services
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy policy folder-1234/serviceuser.services
+ * ```
  */
 export class OrganizationPolicy extends pulumi.CustomResource {
     /**

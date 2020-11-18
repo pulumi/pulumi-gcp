@@ -36,6 +36,44 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
 
         ## Example Usage
+        ### Network Peering Routes Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network_primary = gcp.compute.Network("networkPrimary", auto_create_subnetworks=False)
+        network_secondary = gcp.compute.Network("networkSecondary", auto_create_subnetworks=False)
+        peering_primary = gcp.compute.NetworkPeering("peeringPrimary",
+            network=network_primary.id,
+            peer_network=network_secondary.id,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_primary_routes = gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes",
+            peering=peering_primary.name,
+            network=network_primary.name,
+            import_custom_routes=True,
+            export_custom_routes=True)
+        peering_secondary = gcp.compute.NetworkPeering("peeringSecondary",
+            network=network_secondary.id,
+            peer_network=network_primary.id)
+        ```
+
+        ## Import
+
+        NetworkPeeringRoutesConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

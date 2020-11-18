@@ -16,6 +16,45 @@ import * as utilities from "../utilities";
  * > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
  *
  * ## Example Usage
+ * ### Spanner Database Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const main = new gcp.spanner.Instance("main", {
+ *     config: "regional-europe-west1",
+ *     displayName: "main-instance",
+ * });
+ * const database = new gcp.spanner.Database("database", {
+ *     instance: main.name,
+ *     ddls: [
+ *         "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+ *         "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+ *     ],
+ *     deletionProtection: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Database can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
+ * ```
  */
 export class Database extends pulumi.CustomResource {
     /**

@@ -35,6 +35,38 @@ class Network(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
 
         ## Example Usage
+        ### Network Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork")
+        ```
+        ### Network Custom Mtu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vpc_network = gcp.compute.Network("vpcNetwork", mtu=1500)
+        ```
+
+        ## Import
+
+        Network can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/network:Network default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

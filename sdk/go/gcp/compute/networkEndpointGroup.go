@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -32,6 +33,65 @@ import (
 //     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
+// ### Network Endpoint Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpointGroup(ctx, "neg", &compute.NetworkEndpointGroupArgs{
+// 			Network:     defaultNetwork.ID(),
+// 			Subnetwork:  defaultSubnetwork.ID(),
+// 			DefaultPort: pulumi.Int(90),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// NetworkEndpointGroup can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{project}}/{{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
+// ```
 type NetworkEndpointGroup struct {
 	pulumi.CustomResourceState
 
@@ -238,4 +298,43 @@ type NetworkEndpointGroupArgs struct {
 
 func (NetworkEndpointGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkEndpointGroupArgs)(nil)).Elem()
+}
+
+type NetworkEndpointGroupInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupOutput() NetworkEndpointGroupOutput
+	ToNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupOutput
+}
+
+func (NetworkEndpointGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroup)(nil)).Elem()
+}
+
+func (i NetworkEndpointGroup) ToNetworkEndpointGroupOutput() NetworkEndpointGroupOutput {
+	return i.ToNetworkEndpointGroupOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroup) ToNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupOutput)
+}
+
+type NetworkEndpointGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkEndpointGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupOutput)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupOutput() NetworkEndpointGroupOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupOutputWithContext(ctx context.Context) NetworkEndpointGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkEndpointGroupOutput{})
 }

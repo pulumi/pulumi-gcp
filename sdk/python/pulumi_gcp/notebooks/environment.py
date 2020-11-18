@@ -38,6 +38,35 @@ class Environment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+        ### Notebook Environment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        environment = gcp.notebooks.Environment("environment",
+            location="us-west1-a",
+            container_image=gcp.notebooks.EnvironmentContainerImageArgs(
+                repository="gcr.io/deeplearning-platform-release/base-cpu",
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Environment can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

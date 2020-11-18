@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -22,6 +21,35 @@ import * as utilities from "../utilities";
  *     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
  *
  * ## Example Usage
+ * ### Backend Bucket Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const imageBucket = new gcp.storage.Bucket("imageBucket", {location: "EU"});
+ * const imageBackend = new gcp.compute.BackendBucket("imageBackend", {
+ *     description: "Contains beautiful images",
+ *     bucketName: imageBucket.name,
+ *     enableCdn: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * BackendBucket can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
+ * ```
  */
 export class BackendBucket extends pulumi.CustomResource {
     /**

@@ -35,6 +35,31 @@ class Group(pulumi.CustomResource):
         `billing_project` you defined.
 
         ## Example Usage
+        ### Cloud Identity Groups Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cloud_identity_group_basic = gcp.cloudidentity.Group("cloudIdentityGroupBasic",
+            display_name="my-identity-group",
+            parent="customers/A01b123xz",
+            group_key=gcp.cloudidentity.GroupGroupKeyArgs(
+                id="my-identity-group@example.com",
+            ),
+            labels={
+                "cloudidentity.googleapis.com/groups.discussion_forum": "",
+            },
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Group can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:cloudidentity/group:Group default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -34,6 +34,34 @@ class Realm(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/game-servers/docs)
 
         ## Example Usage
+        ### Game Service Realm Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.gameservices.Realm("default",
+            description="one of the nine",
+            location="global",
+            realm_id="tf-test-realm",
+            time_zone="EST")
+        ```
+
+        ## Import
+
+        Realm can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:gameservices/realm:Realm default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:gameservices/realm:Realm default {{project}}/{{location}}/{{realm_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:gameservices/realm:Realm default {{location}}/{{realm_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

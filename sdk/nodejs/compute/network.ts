@@ -14,6 +14,40 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc)
  *
  * ## Example Usage
+ * ### Network Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {});
+ * ```
+ * ### Network Custom Mtu
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vpcNetwork = new gcp.compute.Network("vpc_network", {
+ *     mtu: 1500,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Network can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/network:Network default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/network:Network default {{name}}
+ * ```
  */
 export class Network extends pulumi.CustomResource {
     /**

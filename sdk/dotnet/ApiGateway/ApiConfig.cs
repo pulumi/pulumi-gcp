@@ -9,6 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ApiGateway
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// ApiConfig can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{name}}
+    /// ```
+    /// </summary>
     public partial class ApiConfig : Pulumi.CustomResource
     {
         /// <summary>

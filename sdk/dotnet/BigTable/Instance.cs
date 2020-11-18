@@ -15,6 +15,53 @@ namespace Pulumi.Gcp.BigTable
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
     /// 
     /// ## Example Usage
+    /// ### Development Instance
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var development_instance = new Gcp.BigTable.Instance("development-instance", new Gcp.BigTable.InstanceArgs
+    ///         {
+    ///             Clusters = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "tf-instance-cluster",
+    ///                     StorageType = "HDD",
+    ///                     Zone = "us-central1-b",
+    ///                 },
+    ///             },
+    ///             InstanceType = "DEVELOPMENT",
+    ///             Labels = 
+    ///             {
+    ///                 { "my-label", "dev-label" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Bigtable Instances can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigtable/instance:Instance default projects/{{project}}/instances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigtable/instance:Instance default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigtable/instance:Instance default {{name}}
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

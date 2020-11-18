@@ -14,6 +14,36 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
+ * ### Data Catalog Entry Group Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
+ *     entryGroupId: "my_group",
+ * });
+ * ```
+ * ### Data Catalog Entry Group Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicEntryGroup = new gcp.datacatalog.EntryGroup("basic_entry_group", {
+ *     description: "example entry group",
+ *     displayName: "entry group",
+ *     entryGroupId: "my_group",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * EntryGroup can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
+ * ```
  */
 export class EntryGroup extends pulumi.CustomResource {
     /**

@@ -15,6 +15,52 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/spanner/)
  *
  * ## Example Usage
+ * ### Spanner Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     config: "regional-us-central1",
+ *     displayName: "Test Spanner Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     numNodes: 2,
+ * });
+ * ```
+ * ### Spanner Instance Multi Regional
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     config: "nam-eur-asia1",
+ *     displayName: "Multi Regional Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     numNodes: 2,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instance can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/instance:Instance default {{name}}
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

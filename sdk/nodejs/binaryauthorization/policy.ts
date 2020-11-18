@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,71 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
  *
  * ## Example Usage
+ * ### Binary Authorization Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
+ *     hint: {
+ *         humanReadableName: "My attestor",
+ *     },
+ * }});
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
+ *     noteReference: note.name,
+ * }});
+ * const policy = new gcp.binaryauthorization.Policy("policy", {
+ *     admissionWhitelistPatterns: [{
+ *         namePattern: "gcr.io/google_containers/*",
+ *     }],
+ *     defaultAdmissionRule: {
+ *         evaluationMode: "ALWAYS_ALLOW",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *     },
+ *     clusterAdmissionRules: [{
+ *         cluster: "us-central1-a.prod-cluster",
+ *         evaluationMode: "REQUIRE_ATTESTATION",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         requireAttestationsBies: [attestor.name],
+ *     }],
+ * });
+ * ```
+ * ### Binary Authorization Policy Global Evaluation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const note = new gcp.containeranalysis.Note("note", {attestationAuthority: {
+ *     hint: {
+ *         humanReadableName: "My attestor",
+ *     },
+ * }});
+ * const attestor = new gcp.binaryauthorization.Attestor("attestor", {attestationAuthorityNote: {
+ *     noteReference: note.name,
+ * }});
+ * const policy = new gcp.binaryauthorization.Policy("policy", {
+ *     defaultAdmissionRule: {
+ *         evaluationMode: "REQUIRE_ATTESTATION",
+ *         enforcementMode: "ENFORCED_BLOCK_AND_AUDIT_LOG",
+ *         requireAttestationsBies: [attestor.name],
+ *     },
+ *     globalPolicyEvaluationMode: "ENABLE",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Policy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:binaryauthorization/policy:Policy default {{project}}
+ * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**

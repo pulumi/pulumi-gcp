@@ -4,6 +4,7 @@
 package iap
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,235 @@ import (
 // > **Note:** `iap.AppEngineServiceIamPolicy` **cannot** be used in conjunction with `iap.AppEngineServiceIamBinding` and `iap.AppEngineServiceIamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `iap.AppEngineServiceIamBinding` resources **can be** used in conjunction with `iap.AppEngineServiceIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_iap\_app\_engine\_service\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/iap.httpsResourceAccessor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iap.NewAppEngineServiceIamPolicy(ctx, "policy", &iap.AppEngineServiceIamPolicyArgs{
+// 			Project:    pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			AppId:      pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Service:    pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/iap.httpsResourceAccessor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 					Condition: organizations.GetIAMPolicyBindingCondition{
+// 						Title:       "expires_after_2019_12_31",
+// 						Description: "Expiring at midnight of 2019-12-31",
+// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iap.NewAppEngineServiceIamPolicy(ctx, "policy", &iap.AppEngineServiceIamPolicyArgs{
+// 			Project:    pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			AppId:      pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Service:    pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## google\_iap\_app\_engine\_service\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineServiceIamBinding(ctx, "binding", &iap.AppEngineServiceIamBindingArgs{
+// 			AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Project: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service: pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineServiceIamBinding(ctx, "binding", &iap.AppEngineServiceIamBindingArgs{
+// 			AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Condition: &iap.AppEngineServiceIamBindingConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Project: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service: pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## google\_iap\_app\_engine\_service\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineServiceIamMember(ctx, "member", &iap.AppEngineServiceIamMemberArgs{
+// 			AppId:   pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 			Project: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service: pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iap.NewAppEngineServiceIamMember(ctx, "member", &iap.AppEngineServiceIamMemberArgs{
+// 			AppId: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Condition: &iap.AppEngineServiceIamMemberConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 			Project: pulumi.Any(google_app_engine_standard_app_version.Version.Project),
+// 			Role:    pulumi.String("roles/iap.httpsResourceAccessor"),
+// 			Service: pulumi.Any(google_app_engine_standard_app_version.Version.Service),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}} * {{project}}/{{appId}}/{{service}} * {{appId}}/{{service}} * {{service}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy appengineservice IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}} roles/iap.httpsResourceAccessor user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy editor "projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}} roles/iap.httpsResourceAccessor"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy editor projects/{{project}}/iap_web/appengine-{{appId}}/services/{{service}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type AppEngineServiceIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -135,4 +365,43 @@ type AppEngineServiceIamPolicyArgs struct {
 
 func (AppEngineServiceIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*appEngineServiceIamPolicyArgs)(nil)).Elem()
+}
+
+type AppEngineServiceIamPolicyInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput
+	ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput
+}
+
+func (AppEngineServiceIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineServiceIamPolicy)(nil)).Elem()
+}
+
+func (i AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput {
+	return i.ToAppEngineServiceIamPolicyOutputWithContext(context.Background())
+}
+
+func (i AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyOutput)
+}
+
+type AppEngineServiceIamPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppEngineServiceIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineServiceIamPolicyOutput)(nil)).Elem()
+}
+
+func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput {
+	return o
+}
+
+func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AppEngineServiceIamPolicyOutput{})
 }

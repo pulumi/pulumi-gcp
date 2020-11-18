@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,74 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.bigtable.TableIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.TableIamBinding` and `gcp.bigtable.TableIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the table as `gcp.bigtable.TableIamPolicy` replaces the entire policy.
  *
  * > **Note:** `gcp.bigtable.TableIamBinding` resources **can be** used in conjunction with `gcp.bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_bigtable\_instance\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/bigtable.user",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const editor = new gcp.bigtable.TableIamPolicy("editor", {
+ *     project: "your-project",
+ *     instance: "your-bigtable-instance",
+ *     table: "your-bigtable-table",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_bigtable\_instance\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.bigtable.TableIamBinding("editor", {
+ *     instance: "your-bigtable-instance",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/bigtable.user",
+ *     table: "your-bigtable-table",
+ * });
+ * ```
+ *
+ * ## google\_bigtable\_instance\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const editor = new gcp.bigtable.TableIamMember("editor", {
+ *     instance: "your-bigtable-instance",
+ *     member: "user:jane@example.com",
+ *     role: "roles/bigtable.user",
+ *     table: "your-bigtable-table",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instance IAM resources can be imported using the project, table name, role and/or member.
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigtable/tableIamBinding:TableIamBinding editor "projects/{project}/tables/{table}"
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigtable/tableIamBinding:TableIamBinding editor "projects/{project}/tables/{table} roles/editor"
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigtable/tableIamBinding:TableIamBinding editor "projects/{project}/tables/{table} roles/editor user:jane@example.com"
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class TableIamBinding extends pulumi.CustomResource {
     /**

@@ -19,6 +19,44 @@ namespace Pulumi.Gcp.Container
         /// the datasource. A region can have a different set of supported versions than
         /// its component zones, and not all zones in a region are guaranteed to
         /// support the same version.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var central1b = Output.Create(Gcp.Container.GetEngineVersions.InvokeAsync(new Gcp.Container.GetEngineVersionsArgs
+        ///         {
+        ///             Location = "us-central1-b",
+        ///             VersionPrefix = "1.12.",
+        ///         }));
+        ///         var foo = new Gcp.Container.Cluster("foo", new Gcp.Container.ClusterArgs
+        ///         {
+        ///             Location = "us-central1-b",
+        ///             NodeVersion = central1b.Apply(central1b =&gt; central1b.LatestNodeVersion),
+        ///             InitialNodeCount = 1,
+        ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
+        ///             {
+        ///                 Username = "mr.yoda",
+        ///                 Password = "adoy.rm",
+        ///             },
+        ///         });
+        ///         this.StableChannelVersion = central1b.Apply(central1b =&gt; central1b.ReleaseChannelDefaultVersion.STABLE);
+        ///     }
+        /// 
+        ///     [Output("stableChannelVersion")]
+        ///     public Output&lt;string&gt; StableChannelVersion { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetEngineVersionsResult> InvokeAsync(GetEngineVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? new GetEngineVersionsArgs(), options.WithVersion());

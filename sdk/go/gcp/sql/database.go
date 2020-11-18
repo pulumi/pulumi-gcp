@@ -4,6 +4,7 @@
 package sql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -14,6 +15,62 @@ import (
 // Google's cloud.
 //
 // ## Example Usage
+// ### Sql Database Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 			},
+// 			DeletionProtection: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sql.NewDatabase(ctx, "database", &sql.DatabaseArgs{
+// 			Instance: instance.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Database can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/database:Database default {{name}}
+// ```
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -179,4 +236,43 @@ type DatabaseArgs struct {
 
 func (DatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseArgs)(nil)).Elem()
+}
+
+type DatabaseInput interface {
+	pulumi.Input
+
+	ToDatabaseOutput() DatabaseOutput
+	ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput
+}
+
+func (Database) ElementType() reflect.Type {
+	return reflect.TypeOf((*Database)(nil)).Elem()
+}
+
+func (i Database) ToDatabaseOutput() DatabaseOutput {
+	return i.ToDatabaseOutputWithContext(context.Background())
+}
+
+func (i Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
+}
+
+type DatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseOutput)(nil)).Elem()
+}
+
+func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
+	return o
+}
+
+func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseOutput{})
 }

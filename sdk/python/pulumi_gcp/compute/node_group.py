@@ -43,6 +43,62 @@ class NodeGroup(pulumi.CustomResource):
         the provider to delete and recreate the node group.
 
         ## Example Usage
+        ### Node Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for the Google Provider",
+            size=1,
+            node_template=soletenant_tmpl.id)
+        ```
+        ### Node Group Autoscaling Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
+            region="us-central1",
+            node_type="n1-node-96-624")
+        nodes = gcp.compute.NodeGroup("nodes",
+            zone="us-central1-a",
+            description="example google_compute_node_group for Google Provider",
+            maintenance_policy="RESTART_IN_PLACE",
+            size=1,
+            node_template=soletenant_tmpl.id,
+            autoscaling_policy=gcp.compute.NodeGroupAutoscalingPolicyArgs(
+                mode="ONLY_SCALE_OUT",
+                min_nodes=1,
+                max_nodes=10,
+            ))
+        ```
+
+        ## Import
+
+        NodeGroup can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

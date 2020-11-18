@@ -14,6 +14,675 @@ namespace Pulumi.Gcp.Compute
     /// that you define for the host and path of an incoming URL.
     /// 
     /// ## Example Usage
+    /// ### Region Url Map Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.RegionHealthCheck("default", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///                 RequestPath = "/",
+    ///             },
+    ///         });
+    ///         var login = new Gcp.Compute.RegionBackendService("login", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 @default.Id,
+    ///             },
+    ///         });
+    ///         var home = new Gcp.Compute.RegionBackendService("home", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 @default.Id,
+    ///             },
+    ///         });
+    ///         var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Description = "a description",
+    ///             DefaultService = home.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = home.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/home",
+    ///                             },
+    ///                             Service = home.Id,
+    ///                         },
+    ///                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/login",
+    ///                             },
+    ///                             Service = login.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Tests = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapTestArgs
+    ///                 {
+    ///                     Service = home.Id,
+    ///                     Host = "hi.com",
+    ///                     Path = "/home",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Url Map L7 Ilb Path
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.RegionHealthCheck("default", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var home = new Gcp.Compute.RegionBackendService("home", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 @default.Id,
+    ///             },
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         });
+    ///         var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = home.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = home.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/home",
+    ///                             },
+    ///                             RouteAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs
+    ///                             {
+    ///                                 CorsPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs
+    ///                                 {
+    ///                                     AllowCredentials = true,
+    ///                                     AllowHeaders = 
+    ///                                     {
+    ///                                         "Allowed content",
+    ///                                     },
+    ///                                     AllowMethods = 
+    ///                                     {
+    ///                                         "GET",
+    ///                                     },
+    ///                                     AllowOrigins = 
+    ///                                     {
+    ///                                         "Allowed origin",
+    ///                                     },
+    ///                                     ExposeHeaders = 
+    ///                                     {
+    ///                                         "Exposed header",
+    ///                                     },
+    ///                                     MaxAge = 30,
+    ///                                     Disabled = false,
+    ///                                 },
+    ///                                 FaultInjectionPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs
+    ///                                 {
+    ///                                     Abort = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs
+    ///                                     {
+    ///                                         HttpStatus = 234,
+    ///                                         Percentage = 5.6,
+    ///                                     },
+    ///                                     Delay = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs
+    ///                                     {
+    ///                                         FixedDelay = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs
+    ///                                         {
+    ///                                             Seconds = "0",
+    ///                                             Nanos = 50000,
+    ///                                         },
+    ///                                         Percentage = 7.8,
+    ///                                     },
+    ///                                 },
+    ///                                 RequestMirrorPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs
+    ///                                 {
+    ///                                     BackendService = home.Id,
+    ///                                 },
+    ///                                 RetryPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs
+    ///                                 {
+    ///                                     NumRetries = 4,
+    ///                                     PerTryTimeout = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs
+    ///                                     {
+    ///                                         Seconds = "30",
+    ///                                     },
+    ///                                     RetryConditions = 
+    ///                                     {
+    ///                                         "5xx",
+    ///                                         "deadline-exceeded",
+    ///                                     },
+    ///                                 },
+    ///                                 Timeout = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs
+    ///                                 {
+    ///                                     Seconds = "20",
+    ///                                     Nanos = 750000000,
+    ///                                 },
+    ///                                 UrlRewrite = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs
+    ///                                 {
+    ///                                     HostRewrite = "A replacement header",
+    ///                                     PathPrefixRewrite = "A replacement path",
+    ///                                 },
+    ///                                 WeightedBackendServices = 
+    ///                                 {
+    ///                                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs
+    ///                                     {
+    ///                                         BackendService = home.Id,
+    ///                                         Weight = 400,
+    ///                                         HeaderAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
+    ///                                         {
+    ///                                             RequestHeadersToRemoves = 
+    ///                                             {
+    ///                                                 "RemoveMe",
+    ///                                             },
+    ///                                             RequestHeadersToAdds = 
+    ///                                             {
+    ///                                                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionRequestHeadersToAddArgs
+    ///                                                 {
+    ///                                                     HeaderName = "AddMe",
+    ///                                                     HeaderValue = "MyValue",
+    ///                                                     Replace = true,
+    ///                                                 },
+    ///                                             },
+    ///                                             ResponseHeadersToRemoves = 
+    ///                                             {
+    ///                                                 "RemoveMe",
+    ///                                             },
+    ///                                             ResponseHeadersToAdds = 
+    ///                                             {
+    ///                                                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs
+    ///                                                 {
+    ///                                                     HeaderName = "AddMe",
+    ///                                                     HeaderValue = "MyValue",
+    ///                                                     Replace = false,
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Tests = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapTestArgs
+    ///                 {
+    ///                     Service = home.Id,
+    ///                     Host = "hi.com",
+    ///                     Path = "/home",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Url Map L7 Ilb Path Partial
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.RegionHealthCheck("default", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var home = new Gcp.Compute.RegionBackendService("home", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 @default.Id,
+    ///             },
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         });
+    ///         var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = home.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = home.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/home",
+    ///                             },
+    ///                             RouteAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs
+    ///                             {
+    ///                                 RetryPolicy = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyArgs
+    ///                                 {
+    ///                                     NumRetries = 4,
+    ///                                     PerTryTimeout = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeoutArgs
+    ///                                     {
+    ///                                         Seconds = "30",
+    ///                                     },
+    ///                                     RetryConditions = 
+    ///                                     {
+    ///                                         "5xx",
+    ///                                         "deadline-exceeded",
+    ///                                     },
+    ///                                 },
+    ///                                 Timeout = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs
+    ///                                 {
+    ///                                     Seconds = "20",
+    ///                                     Nanos = 750000000,
+    ///                                 },
+    ///                                 UrlRewrite = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs
+    ///                                 {
+    ///                                     HostRewrite = "A replacement header",
+    ///                                     PathPrefixRewrite = "A replacement path",
+    ///                                 },
+    ///                                 WeightedBackendServices = 
+    ///                                 {
+    ///                                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs
+    ///                                     {
+    ///                                         BackendService = home.Id,
+    ///                                         Weight = 400,
+    ///                                         HeaderAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs
+    ///                                         {
+    ///                                             ResponseHeadersToAdds = 
+    ///                                             {
+    ///                                                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAddArgs
+    ///                                                 {
+    ///                                                     HeaderName = "AddMe",
+    ///                                                     HeaderValue = "MyValue",
+    ///                                                     Replace = false,
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Tests = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapTestArgs
+    ///                 {
+    ///                     Service = home.Id,
+    ///                     Host = "hi.com",
+    ///                     Path = "/home",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Url Map L7 Ilb Route
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.RegionHealthCheck("default", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var home = new Gcp.Compute.RegionBackendService("home", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 @default.Id,
+    ///             },
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         });
+    ///         var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = home.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = home.Id,
+    ///                     RouteRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleArgs
+    ///                         {
+    ///                             Priority = 1,
+    ///                             HeaderAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs
+    ///                             {
+    ///                                 RequestHeadersToRemoves = 
+    ///                                 {
+    ///                                     "RemoveMe2",
+    ///                                 },
+    ///                                 RequestHeadersToAdds = 
+    ///                                 {
+    ///                                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionRequestHeadersToAddArgs
+    ///                                     {
+    ///                                         HeaderName = "AddSomethingElse",
+    ///                                         HeaderValue = "MyOtherValue",
+    ///                                         Replace = true,
+    ///                                     },
+    ///                                 },
+    ///                                 ResponseHeadersToRemoves = 
+    ///                                 {
+    ///                                     "RemoveMe3",
+    ///                                 },
+    ///                                 ResponseHeadersToAdds = 
+    ///                                 {
+    ///                                     new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArgs
+    ///                                     {
+    ///                                         HeaderName = "AddMe",
+    ///                                         HeaderValue = "MyValue",
+    ///                                         Replace = false,
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             MatchRules = 
+    ///                             {
+    ///                                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs
+    ///                                 {
+    ///                                     FullPathMatch = "a full path",
+    ///                                     HeaderMatches = 
+    ///                                     {
+    ///                                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs
+    ///                                         {
+    ///                                             HeaderName = "someheader",
+    ///                                             ExactMatch = "match this exactly",
+    ///                                             InvertMatch = true,
+    ///                                         },
+    ///                                     },
+    ///                                     IgnoreCase = true,
+    ///                                     MetadataFilters = 
+    ///                                     {
+    ///                                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs
+    ///                                         {
+    ///                                             FilterMatchCriteria = "MATCH_ANY",
+    ///                                             FilterLabels = 
+    ///                                             {
+    ///                                                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs
+    ///                                                 {
+    ///                                                     Name = "PLANET",
+    ///                                                     Value = "MARS",
+    ///                                                 },
+    ///                                             },
+    ///                                         },
+    ///                                     },
+    ///                                     QueryParameterMatches = 
+    ///                                     {
+    ///                                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs
+    ///                                         {
+    ///                                             Name = "a query parameter",
+    ///                                             PresentMatch = true,
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                             UrlRedirect = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs
+    ///                             {
+    ///                                 HostRedirect = "A host",
+    ///                                 HttpsRedirect = false,
+    ///                                 PathRedirect = "some/path",
+    ///                                 RedirectResponseCode = "TEMPORARY_REDIRECT",
+    ///                                 StripQuery = true,
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Tests = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapTestArgs
+    ///                 {
+    ///                     Service = home.Id,
+    ///                     Host = "hi.com",
+    ///                     Path = "/home",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Url Map L7 Ilb Route Partial
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.RegionHealthCheck("default", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var home = new Gcp.Compute.RegionBackendService("home", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 @default.Id,
+    ///             },
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
+    ///         });
+    ///         var regionurlmap = new Gcp.Compute.RegionUrlMap("regionurlmap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = home.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = home.Id,
+    ///                     RouteRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleArgs
+    ///                         {
+    ///                             Priority = 1,
+    ///                             Service = home.Id,
+    ///                             HeaderAction = new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleHeaderActionArgs
+    ///                             {
+    ///                                 RequestHeadersToRemoves = 
+    ///                                 {
+    ///                                     "RemoveMe2",
+    ///                                 },
+    ///                             },
+    ///                             MatchRules = 
+    ///                             {
+    ///                                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs
+    ///                                 {
+    ///                                     FullPathMatch = "a full path",
+    ///                                     HeaderMatches = 
+    ///                                     {
+    ///                                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs
+    ///                                         {
+    ///                                             HeaderName = "someheader",
+    ///                                             ExactMatch = "match this exactly",
+    ///                                             InvertMatch = true,
+    ///                                         },
+    ///                                     },
+    ///                                     QueryParameterMatches = 
+    ///                                     {
+    ///                                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs
+    ///                                         {
+    ///                                             Name = "a query parameter",
+    ///                                             PresentMatch = true,
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Tests = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapTestArgs
+    ///                 {
+    ///                     Service = home.Id,
+    ///                     Host = "hi.com",
+    ///                     Path = "/home",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RegionUrlMap can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
+    /// ```
     /// </summary>
     public partial class RegionUrlMap : Pulumi.CustomResource
     {

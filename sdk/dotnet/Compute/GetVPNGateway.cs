@@ -13,6 +13,29 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get a VPN gateway within GCE from its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_vpn_gateway = Output.Create(Gcp.Compute.GetVPNGateway.InvokeAsync(new Gcp.Compute.GetVPNGatewayArgs
+        ///         {
+        ///             Name = "vpn-gateway-us-east1",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetVPNGatewayResult> InvokeAsync(GetVPNGatewayArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args ?? new GetVPNGatewayArgs(), options.WithVersion());

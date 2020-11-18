@@ -4,12 +4,36 @@
 package datacatalog
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} * {{project}}/{{region}}/{{taxonomy}} * {{region}}/{{taxonomy}} * {{taxonomy}} Any variables not passed in the import command will be taken from the provider configuration. Data catalog taxonomy IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding editor "projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} roles/viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding editor "projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}} roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding editor projects/{{project}}/locations/{{region}}/taxonomies/{{taxonomy}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type TaxonomyIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -136,4 +160,43 @@ type TaxonomyIamBindingArgs struct {
 
 func (TaxonomyIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*taxonomyIamBindingArgs)(nil)).Elem()
+}
+
+type TaxonomyIamBindingInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput
+	ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput
+}
+
+func (TaxonomyIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyIamBinding)(nil)).Elem()
+}
+
+func (i TaxonomyIamBinding) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput {
+	return i.ToTaxonomyIamBindingOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamBinding) ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingOutput)
+}
+
+type TaxonomyIamBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (TaxonomyIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyIamBindingOutput)(nil)).Elem()
+}
+
+func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TaxonomyIamBindingOutput{})
 }

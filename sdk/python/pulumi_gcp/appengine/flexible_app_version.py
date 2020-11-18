@@ -64,6 +64,87 @@ class FlexibleAppVersion(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
 
         ## Example Usage
+        ### App Engine Flexible App Version
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="appeng-flex",
+            org_id="123456789",
+            billing_account="000000-0000000-0000000-000000")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        service = gcp.projects.Service("service",
+            project=my_project.project_id,
+            service="appengineflex.googleapis.com",
+            disable_dependent_services=False)
+        gae_api = gcp.projects.IAMMember("gaeApi",
+            project=service.project,
+            role="roles/compute.networkUser",
+            member=my_project.number.apply(lambda number: f"serviceAccount:service-{number}@gae-api-prod.google.com.iam.gserviceaccount.com"))
+        bucket = gcp.storage.Bucket("bucket", project=my_project.project_id)
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/appengine/hello-world.zip"))
+        myapp_v1 = gcp.appengine.FlexibleAppVersion("myappV1",
+            version_id="v1",
+            project=gae_api.project,
+            service="default",
+            runtime="nodejs",
+            entrypoint=gcp.appengine.FlexibleAppVersionEntrypointArgs(
+                shell="node ./app.js",
+            ),
+            deployment=gcp.appengine.FlexibleAppVersionDeploymentArgs(
+                zip=gcp.appengine.FlexibleAppVersionDeploymentZipArgs(
+                    source_url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"https://storage.googleapis.com/{bucket_name}/{object_name}"),
+                ),
+            ),
+            liveness_check=gcp.appengine.FlexibleAppVersionLivenessCheckArgs(
+                path="/",
+            ),
+            readiness_check=gcp.appengine.FlexibleAppVersionReadinessCheckArgs(
+                path="/",
+            ),
+            env_variables={
+                "port": "8080",
+            },
+            handlers=[gcp.appengine.FlexibleAppVersionHandlerArgs(
+                url_regex=".*\\/my-path\\/*",
+                security_level="SECURE_ALWAYS",
+                login="LOGIN_REQUIRED",
+                auth_fail_action="AUTH_FAIL_ACTION_REDIRECT",
+                static_files=gcp.appengine.FlexibleAppVersionHandlerStaticFilesArgs(
+                    path="my-other-path",
+                    upload_path_regex=".*\\/my-path\\/*",
+                ),
+            )],
+            automatic_scaling=gcp.appengine.FlexibleAppVersionAutomaticScalingArgs(
+                cool_down_period="120s",
+                cpu_utilization=gcp.appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs(
+                    target_utilization=0.5,
+                ),
+            ),
+            noop_on_destroy=True)
+        ```
+
+        ## Import
+
+        FlexibleAppVersion can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -53,6 +53,43 @@ class Snapshot(pulumi.CustomResource):
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
+        ### Snapshot Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        persistent = gcp.compute.Disk("persistent",
+            image=debian.self_link,
+            size=10,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapshot = gcp.compute.Snapshot("snapshot",
+            source_disk=persistent.name,
+            zone="us-central1-a",
+            labels={
+                "my_label": "value",
+            },
+            storage_locations=["us-central1"])
+        ```
+
+        ## Import
+
+        Snapshot can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

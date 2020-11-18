@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -20,6 +19,48 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * ## Example Usage
+ * ### Bigquerydatatransfer Config Scheduled Query
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const permissions = new gcp.projects.IAMMember("permissions", {
+ *     role: "roles/iam.serviceAccountShortTermTokenMinter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`),
+ * });
+ * const myDataset = new gcp.bigquery.Dataset("myDataset", {
+ *     datasetId: "my_dataset",
+ *     friendlyName: "foo",
+ *     description: "bar",
+ *     location: "asia-northeast1",
+ * }, {
+ *     dependsOn: [permissions],
+ * });
+ * const queryConfig = new gcp.bigquery.DataTransferConfig("queryConfig", {
+ *     displayName: "my-query",
+ *     location: "asia-northeast1",
+ *     dataSourceId: "scheduled_query",
+ *     schedule: "first sunday of quarter 00:00",
+ *     destinationDatasetId: myDataset.datasetId,
+ *     params: {
+ *         destination_table_name_template: "my_table",
+ *         write_disposition: "WRITE_APPEND",
+ *         query: "SELECT name FROM tabl WHERE x = 'y'",
+ *     },
+ * }, {
+ *     dependsOn: [permissions],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Config can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
+ * ```
  */
 export class DataTransferConfig extends pulumi.CustomResource {
     /**

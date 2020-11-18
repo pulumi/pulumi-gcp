@@ -35,6 +35,75 @@ class DatasetIamMember(pulumi.CustomResource):
 
         > **Note:** `healthcare.DatasetIamBinding` resources **can be** used in conjunction with `healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_healthcare\_dataset\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        dataset = gcp.healthcare.DatasetIamPolicy("dataset",
+            dataset_id="your-dataset-id",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_healthcare\_dataset\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamBinding("dataset",
+            dataset_id="your-dataset-id",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\_healthcare\_dataset\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.DatasetIamMember("dataset",
+            dataset_id="your-dataset-id",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
+        ## Import
+
+        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+
+        This member resource can be imported using the `dataset_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam "your-project-id/location-name/dataset-name roles/viewer user:foo@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiers; the resource in question and the role.
+
+        This binding resource can be imported using the `dataset_id` and role, e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam "your-project-id/location-name/dataset-name roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question.
+
+        This policy resource can be imported using the `dataset_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam your-project-id/location-name/dataset-name
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset_id: The dataset ID, in the form

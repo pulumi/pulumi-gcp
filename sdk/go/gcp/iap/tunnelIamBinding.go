@@ -4,12 +4,36 @@
 package iap
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_tunnel * {{project}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/tunnelIamBinding:TunnelIamBinding editor projects/{{project}}/iap_tunnel
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type TunnelIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -128,4 +152,43 @@ type TunnelIamBindingArgs struct {
 
 func (TunnelIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelIamBindingArgs)(nil)).Elem()
+}
+
+type TunnelIamBindingInput interface {
+	pulumi.Input
+
+	ToTunnelIamBindingOutput() TunnelIamBindingOutput
+	ToTunnelIamBindingOutputWithContext(ctx context.Context) TunnelIamBindingOutput
+}
+
+func (TunnelIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelIamBinding)(nil)).Elem()
+}
+
+func (i TunnelIamBinding) ToTunnelIamBindingOutput() TunnelIamBindingOutput {
+	return i.ToTunnelIamBindingOutputWithContext(context.Background())
+}
+
+func (i TunnelIamBinding) ToTunnelIamBindingOutputWithContext(ctx context.Context) TunnelIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingOutput)
+}
+
+type TunnelIamBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (TunnelIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelIamBindingOutput)(nil)).Elem()
+}
+
+func (o TunnelIamBindingOutput) ToTunnelIamBindingOutput() TunnelIamBindingOutput {
+	return o
+}
+
+func (o TunnelIamBindingOutput) ToTunnelIamBindingOutputWithContext(ctx context.Context) TunnelIamBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TunnelIamBindingOutput{})
 }

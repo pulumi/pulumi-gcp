@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,54 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
  *
  * ## Example Usage
+ * ### Cloud Run Domain Mapping Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultService = new gcp.cloudrun.Service("defaultService", {
+ *     location: "us-central1",
+ *     metadata: {
+ *         namespace: "my-project-name",
+ *     },
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ * });
+ * const defaultDomainMapping = new gcp.cloudrun.DomainMapping("defaultDomainMapping", {
+ *     location: "us-central1",
+ *     metadata: {
+ *         namespace: "my-project-name",
+ *         annotations: {
+ *             "run.googleapis.com/launch-stage": "BETA",
+ *         },
+ *     },
+ *     spec: {
+ *         routeName: defaultService.name,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DomainMapping can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
+ * ```
  */
 export class DomainMapping extends pulumi.CustomResource {
     /**

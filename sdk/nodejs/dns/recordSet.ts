@@ -14,6 +14,113 @@ import * as utilities from "../utilities";
  * will not actually remove NS records during destroy but will report that it did.
  *
  * ## Example Usage
+ * ### Binding a DNS name to the ephemeral IP of a new instance:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const frontendInstance = new gcp.compute.Instance("frontendInstance", {
+ *     machineType: "g1-small",
+ *     zone: "us-central1-b",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: "debian-cloud/debian-9",
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{}],
+ *     }],
+ * });
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const frontendRecordSet = new gcp.dns.RecordSet("frontendRecordSet", {
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: prod.name,
+ *     rrdatas: [frontendInstance.networkInterfaces.apply(networkInterfaces => networkInterfaces[0].accessConfigs?[0]?.natIp)],
+ * });
+ * ```
+ * ### Adding an A record
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const recordSet = new gcp.dns.RecordSet("recordSet", {
+ *     managedZone: prod.name,
+ *     type: "A",
+ *     ttl: 300,
+ *     rrdatas: ["8.8.8.8"],
+ * });
+ * ```
+ * ### Adding an MX record
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const mx = new gcp.dns.RecordSet("mx", {
+ *     managedZone: prod.name,
+ *     type: "MX",
+ *     ttl: 3600,
+ *     rrdatas: [
+ *         "1 aspmx.l.google.com.",
+ *         "5 alt1.aspmx.l.google.com.",
+ *         "5 alt2.aspmx.l.google.com.",
+ *         "10 alt3.aspmx.l.google.com.",
+ *         "10 alt4.aspmx.l.google.com.",
+ *     ],
+ * });
+ * ```
+ * ### Adding an SPF record
+ *
+ * Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const spf = new gcp.dns.RecordSet("spf", {
+ *     managedZone: prod.name,
+ *     type: "TXT",
+ *     ttl: 300,
+ *     rrdatas: ["\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\""],
+ * });
+ * ```
+ * ### Adding a CNAME record
+ *
+ *  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const cname = new gcp.dns.RecordSet("cname", {
+ *     managedZone: prod.name,
+ *     type: "CNAME",
+ *     ttl: 300,
+ *     rrdatas: ["frontend.mydomain.com."],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DNS record sets can be imported using either of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
+ * ```
+ *
+ *  NoteThe record name must include the trailing dot at the end.
  */
 export class RecordSet extends pulumi.CustomResource {
     /**

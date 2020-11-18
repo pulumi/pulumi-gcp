@@ -4,12 +4,16 @@
 package bigquery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// This resource does not support import.
 type DatasetAccess struct {
 	pulumi.CustomResourceState
 
@@ -233,4 +237,43 @@ type DatasetAccessArgs struct {
 
 func (DatasetAccessArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetAccessArgs)(nil)).Elem()
+}
+
+type DatasetAccessInput interface {
+	pulumi.Input
+
+	ToDatasetAccessOutput() DatasetAccessOutput
+	ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput
+}
+
+func (DatasetAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccess)(nil)).Elem()
+}
+
+func (i DatasetAccess) ToDatasetAccessOutput() DatasetAccessOutput {
+	return i.ToDatasetAccessOutputWithContext(context.Background())
+}
+
+func (i DatasetAccess) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessOutput)
+}
+
+type DatasetAccessOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessOutput)(nil)).Elem()
+}
+
+func (o DatasetAccessOutput) ToDatasetAccessOutput() DatasetAccessOutput {
+	return o
+}
+
+func (o DatasetAccessOutput) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetAccessOutput{})
 }

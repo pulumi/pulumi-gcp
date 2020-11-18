@@ -14,6 +14,49 @@ namespace Pulumi.Gcp.Compute
     /// information, see Creating VLAN Attachments.
     /// 
     /// ## Example Usage
+    /// ### Interconnect Attachment Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new Gcp.Compute.Router("foobar", new Gcp.Compute.RouterArgs
+    ///         {
+    ///             Network = google_compute_network.Foobar.Name,
+    ///         });
+    ///         var onPrem = new Gcp.Compute.InterconnectAttachment("onPrem", new Gcp.Compute.InterconnectAttachmentArgs
+    ///         {
+    ///             Interconnect = "my-interconnect-id",
+    ///             Router = foobar.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// InterconnectAttachment can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
+    /// ```
     /// </summary>
     public partial class InterconnectAttachment : Pulumi.CustomResource
     {

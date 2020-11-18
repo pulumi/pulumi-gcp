@@ -4,6 +4,7 @@
 package appengine
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,22 @@ import (
 // * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// ServiceSplitTraffic can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
+// ```
 type EngineSplitTraffic struct {
 	pulumi.CustomResourceState
 
@@ -124,4 +141,43 @@ type EngineSplitTrafficArgs struct {
 
 func (EngineSplitTrafficArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*engineSplitTrafficArgs)(nil)).Elem()
+}
+
+type EngineSplitTrafficInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficOutput() EngineSplitTrafficOutput
+	ToEngineSplitTrafficOutputWithContext(ctx context.Context) EngineSplitTrafficOutput
+}
+
+func (EngineSplitTraffic) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineSplitTraffic)(nil)).Elem()
+}
+
+func (i EngineSplitTraffic) ToEngineSplitTrafficOutput() EngineSplitTrafficOutput {
+	return i.ToEngineSplitTrafficOutputWithContext(context.Background())
+}
+
+func (i EngineSplitTraffic) ToEngineSplitTrafficOutputWithContext(ctx context.Context) EngineSplitTrafficOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficOutput)
+}
+
+type EngineSplitTrafficOutput struct {
+	*pulumi.OutputState
+}
+
+func (EngineSplitTrafficOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineSplitTrafficOutput)(nil)).Elem()
+}
+
+func (o EngineSplitTrafficOutput) ToEngineSplitTrafficOutput() EngineSplitTrafficOutput {
+	return o
+}
+
+func (o EngineSplitTrafficOutput) ToEngineSplitTrafficOutputWithContext(ctx context.Context) EngineSplitTrafficOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EngineSplitTrafficOutput{})
 }

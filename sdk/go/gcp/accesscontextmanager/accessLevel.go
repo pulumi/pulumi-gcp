@@ -4,6 +4,7 @@
 package accesscontextmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -26,6 +27,67 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+// ### Access Context Manager Access Level Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/accesscontextmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access_policy", &accesscontextmanager.AccessPolicyArgs{
+// 			Parent: pulumi.String("organizations/123456789"),
+// 			Title:  pulumi.String("my policy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewAccessLevel(ctx, "access_level", &accesscontextmanager.AccessLevelArgs{
+// 			Basic: &accesscontextmanager.AccessLevelBasicArgs{
+// 				Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
+// 					&accesscontextmanager.AccessLevelBasicConditionArgs{
+// 						DevicePolicy: &accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs{
+// 							OsConstraints: accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArray{
+// 								&accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs{
+// 									OsType: pulumi.String("DESKTOP_CHROME_OS"),
+// 								},
+// 							},
+// 							RequireScreenLock: pulumi.Bool(true),
+// 						},
+// 						Regions: pulumi.StringArray{
+// 							pulumi.String("CH"),
+// 							pulumi.String("IT"),
+// 							pulumi.String("US"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Title: pulumi.String("chromeos_no_lock"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// AccessLevel can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
+// ```
 type AccessLevel struct {
 	pulumi.CustomResourceState
 
@@ -173,4 +235,43 @@ type AccessLevelArgs struct {
 
 func (AccessLevelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLevelArgs)(nil)).Elem()
+}
+
+type AccessLevelInput interface {
+	pulumi.Input
+
+	ToAccessLevelOutput() AccessLevelOutput
+	ToAccessLevelOutputWithContext(ctx context.Context) AccessLevelOutput
+}
+
+func (AccessLevel) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevel)(nil)).Elem()
+}
+
+func (i AccessLevel) ToAccessLevelOutput() AccessLevelOutput {
+	return i.ToAccessLevelOutputWithContext(context.Background())
+}
+
+func (i AccessLevel) ToAccessLevelOutputWithContext(ctx context.Context) AccessLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelOutput)
+}
+
+type AccessLevelOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelOutput)(nil)).Elem()
+}
+
+func (o AccessLevelOutput) ToAccessLevelOutput() AccessLevelOutput {
+	return o
+}
+
+func (o AccessLevelOutput) ToAccessLevelOutputWithContext(ctx context.Context) AccessLevelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessLevelOutput{})
 }

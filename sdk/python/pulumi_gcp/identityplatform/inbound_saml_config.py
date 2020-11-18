@@ -34,6 +34,43 @@ class InboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Inbound Saml Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        saml_config = gcp.identityplatform.InboundSamlConfig("samlConfig",
+            display_name="Display Name",
+            idp_config=gcp.identityplatform.InboundSamlConfigIdpConfigArgs(
+                idp_entity_id="tf-idp",
+                sign_request=True,
+                sso_url="https://example.com",
+                idp_certificates=[gcp.identityplatform.InboundSamlConfigIdpConfigIdpCertificateArgs(
+                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                )],
+            ),
+            sp_config=gcp.identityplatform.InboundSamlConfigSpConfigArgs(
+                sp_entity_id="tf-sp",
+                callback_uri="https://example.com",
+            ))
+        ```
+
+        ## Import
+
+        InboundSamlConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

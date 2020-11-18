@@ -34,6 +34,18 @@ class Project(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        Project can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:firebase/project:Project default projects/{{project}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:firebase/project:Project default {{project}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.

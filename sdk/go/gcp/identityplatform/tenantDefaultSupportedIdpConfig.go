@@ -4,6 +4,7 @@
 package identityplatform
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,54 @@ import (
 // the marketplace prior to using this resource.
 //
 // ## Example Usage
+// ### Identity Platform Tenant Default Supported Idp Config Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/identityplatform"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tenant, err := identityplatform.NewTenant(ctx, "tenant", &identityplatform.TenantArgs{
+// 			DisplayName: pulumi.String("tenant"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = identityplatform.NewTenantDefaultSupportedIdpConfig(ctx, "idpConfig", &identityplatform.TenantDefaultSupportedIdpConfigArgs{
+// 			Enabled:      pulumi.Bool(true),
+// 			Tenant:       tenant.Name,
+// 			IdpId:        pulumi.String("playgames.google.com"),
+// 			ClientId:     pulumi.String("my-client-id"),
+// 			ClientSecret: pulumi.String("secret"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
+// ```
 type TenantDefaultSupportedIdpConfig struct {
 	pulumi.CustomResourceState
 
@@ -201,4 +250,43 @@ type TenantDefaultSupportedIdpConfigArgs struct {
 
 func (TenantDefaultSupportedIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantDefaultSupportedIdpConfigArgs)(nil)).Elem()
+}
+
+type TenantDefaultSupportedIdpConfigInput interface {
+	pulumi.Input
+
+	ToTenantDefaultSupportedIdpConfigOutput() TenantDefaultSupportedIdpConfigOutput
+	ToTenantDefaultSupportedIdpConfigOutputWithContext(ctx context.Context) TenantDefaultSupportedIdpConfigOutput
+}
+
+func (TenantDefaultSupportedIdpConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultSupportedIdpConfig)(nil)).Elem()
+}
+
+func (i TenantDefaultSupportedIdpConfig) ToTenantDefaultSupportedIdpConfigOutput() TenantDefaultSupportedIdpConfigOutput {
+	return i.ToTenantDefaultSupportedIdpConfigOutputWithContext(context.Background())
+}
+
+func (i TenantDefaultSupportedIdpConfig) ToTenantDefaultSupportedIdpConfigOutputWithContext(ctx context.Context) TenantDefaultSupportedIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantDefaultSupportedIdpConfigOutput)
+}
+
+type TenantDefaultSupportedIdpConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (TenantDefaultSupportedIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantDefaultSupportedIdpConfigOutput)(nil)).Elem()
+}
+
+func (o TenantDefaultSupportedIdpConfigOutput) ToTenantDefaultSupportedIdpConfigOutput() TenantDefaultSupportedIdpConfigOutput {
+	return o
+}
+
+func (o TenantDefaultSupportedIdpConfigOutput) ToTenantDefaultSupportedIdpConfigOutputWithContext(ctx context.Context) TenantDefaultSupportedIdpConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TenantDefaultSupportedIdpConfigOutput{})
 }

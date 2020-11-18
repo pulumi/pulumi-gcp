@@ -38,6 +38,42 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/internet-neg-concepts)
 
         ## Example Usage
+        ### Global Network Endpoint Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_FQDN_PORT")
+        ```
+        ### Global Network Endpoint Group Ip Address
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        neg = gcp.compute.GlobalNetworkEndpointGroup("neg",
+            default_port=90,
+            network_endpoint_type="INTERNET_IP_PORT")
+        ```
+
+        ## Import
+
+        GlobalNetworkEndpointGroup can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default projects/{{project}}/global/networkEndpointGroups/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

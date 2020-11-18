@@ -41,6 +41,39 @@ class Node(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/tpu/docs/)
 
         ## Example Usage
+        ### TPU Node Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        available = gcp.tpu.get_tensorflow_versions()
+        tpu = gcp.tpu.Node("tpu",
+            zone="us-central1-b",
+            accelerator_type="v3-8",
+            tensorflow_version=available.versions[0],
+            cidr_block="10.2.0.0/29")
+        ```
+
+        ## Import
+
+        Node can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:tpu/node:Node default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:tpu/node:Node default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:tpu/node:Node default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

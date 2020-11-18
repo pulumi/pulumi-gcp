@@ -19,6 +19,47 @@ namespace Pulumi.Gcp.Notebooks
     ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
     /// 
     /// ## Example Usage
+    /// ### Notebook Environment Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var environment = new Gcp.Notebooks.Environment("environment", new Gcp.Notebooks.EnvironmentArgs
+    ///         {
+    ///             Location = "us-west1-a",
+    ///             ContainerImage = new Gcp.Notebooks.Inputs.EnvironmentContainerImageArgs
+    ///             {
+    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Environment can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
+    /// ```
     /// </summary>
     public partial class Environment : Pulumi.CustomResource
     {

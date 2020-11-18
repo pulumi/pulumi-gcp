@@ -9,6 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BigQuery
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Dataset can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
+    /// ```
+    /// </summary>
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>

@@ -16,6 +16,89 @@ namespace Pulumi.Gcp.Compute
     /// &gt; **Note:** This resource does not support zonal disks (`gcp.compute.Disk`). For zonal disks, please refer to the `gcp.compute.DiskResourcePolicyAttachment` resource.
     /// 
     /// ## Example Usage
+    /// ### Region Disk Resource Policy Attachment Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var disk = new Gcp.Compute.Disk("disk", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Image = "debian-cloud/debian-9",
+    ///             Size = 50,
+    ///             Type = "pd-ssd",
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///         var snapdisk = new Gcp.Compute.Snapshot("snapdisk", new Gcp.Compute.SnapshotArgs
+    ///         {
+    ///             SourceDisk = disk.Name,
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///         var ssd = new Gcp.Compute.RegionDisk("ssd", new Gcp.Compute.RegionDiskArgs
+    ///         {
+    ///             ReplicaZones = 
+    ///             {
+    ///                 "us-central1-a",
+    ///                 "us-central1-f",
+    ///             },
+    ///             Snapshot = snapdisk.Id,
+    ///             Size = 50,
+    ///             Type = "pd-ssd",
+    ///             Region = "us-central1",
+    ///         });
+    ///         var attachment = new Gcp.Compute.RegionDiskResourcePolicyAttachment("attachment", new Gcp.Compute.RegionDiskResourcePolicyAttachmentArgs
+    ///         {
+    ///             Disk = ssd.Name,
+    ///             Region = "us-central1",
+    ///         });
+    ///         var policy = new Gcp.Compute.ResourcePolicy("policy", new Gcp.Compute.ResourcePolicyArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///             {
+    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///                 {
+    ///                     DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+    ///                     {
+    ///                         DaysInCycle = 1,
+    ///                         StartTime = "04:00",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{project}}/{{region}}/{{disk}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
+    /// ```
     /// </summary>
     public partial class RegionDiskResourcePolicyAttachment : Pulumi.CustomResource
     {

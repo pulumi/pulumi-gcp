@@ -33,6 +33,61 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Snapshot Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var debian = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var persistent = new Gcp.Compute.Disk("persistent", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Image = debian.Apply(debian =&gt; debian.SelfLink),
+    ///             Size = 10,
+    ///             Type = "pd-ssd",
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///         var snapshot = new Gcp.Compute.Snapshot("snapshot", new Gcp.Compute.SnapshotArgs
+    ///         {
+    ///             SourceDisk = persistent.Name,
+    ///             Zone = "us-central1-a",
+    ///             Labels = 
+    ///             {
+    ///                 { "my_label", "value" },
+    ///             },
+    ///             StorageLocations = 
+    ///             {
+    ///                 "us-central1",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Snapshot can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
+    /// ```
     /// </summary>
     public partial class Snapshot : Pulumi.CustomResource
     {

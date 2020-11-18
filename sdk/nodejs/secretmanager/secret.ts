@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -14,6 +13,47 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
  *
  * ## Example Usage
+ * ### Secret Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const secret_basic = new gcp.secretmanager.Secret("secret-basic", {
+ *     labels: {
+ *         label: "my-label",
+ *     },
+ *     replication: {
+ *         userManaged: {
+ *             replicas: [
+ *                 {
+ *                     location: "us-central1",
+ *                 },
+ *                 {
+ *                     location: "us-east1",
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     secretId: "secret",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Secret can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
+ * ```
  */
 export class Secret extends pulumi.CustomResource {
     /**

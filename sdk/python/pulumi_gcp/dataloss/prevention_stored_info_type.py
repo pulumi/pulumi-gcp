@@ -36,6 +36,75 @@ class PreventionStoredInfoType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 
         ## Example Usage
+        ### Dlp Stored Info Type Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.dataloss.PreventionStoredInfoType("basic",
+            description="Description",
+            display_name="Displayname",
+            parent="projects/my-project-name",
+            regex=gcp.dataloss.PreventionStoredInfoTypeRegexArgs(
+                group_indexes=[2],
+                pattern="patient",
+            ))
+        ```
+        ### Dlp Stored Info Type Dictionary
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dictionary = gcp.dataloss.PreventionStoredInfoType("dictionary",
+            description="Description",
+            dictionary=gcp.dataloss.PreventionStoredInfoTypeDictionaryArgs(
+                word_list=gcp.dataloss.PreventionStoredInfoTypeDictionaryWordListArgs(
+                    words=[
+                        "word",
+                        "word2",
+                    ],
+                ),
+            ),
+            display_name="Displayname",
+            parent="projects/my-project-name")
+        ```
+        ### Dlp Stored Info Type Large Custom Dictionary
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket", force_destroy=True)
+        object = gcp.storage.BucketObject("object",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("./test-fixtures/dlp/words.txt"))
+        large = gcp.dataloss.PreventionStoredInfoType("large",
+            parent="projects/my-project-name",
+            description="Description",
+            display_name="Displayname",
+            large_custom_dictionary=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs(
+                cloud_storage_file_set=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs(
+                    url=pulumi.Output.all(bucket.name, object.name).apply(lambda bucketName, objectName: f"gs://{bucket_name}/{object_name}"),
+                ),
+                output_path=gcp.dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs(
+                    path=bucket.name.apply(lambda name: f"gs://{name}/output/dictionary.txt"),
+                ),
+            ))
+        ```
+
+        ## Import
+
+        StoredInfoType can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

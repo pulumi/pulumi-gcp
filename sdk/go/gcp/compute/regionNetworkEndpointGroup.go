@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,216 @@ import (
 //     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
 //
 // ## Example Usage
+// ### Region Network Endpoint Group Functions
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudfunctions"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("path/to/index.zip"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		functionNegFunction, err := cloudfunctions.NewFunction(ctx, "functionNegFunction", &cloudfunctions.FunctionArgs{
+// 			Description:         pulumi.String("My function"),
+// 			Runtime:             pulumi.String("nodejs10"),
+// 			AvailableMemoryMb:   pulumi.Int(128),
+// 			SourceArchiveBucket: bucket.Name,
+// 			SourceArchiveObject: archive.Name,
+// 			TriggerHttp:         pulumi.Bool(true),
+// 			Timeout:             pulumi.Int(60),
+// 			EntryPoint:          pulumi.String("helloGET"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "functionNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
+// 			NetworkEndpointType: pulumi.String("SERVERLESS"),
+// 			Region:              pulumi.String("us-central1"),
+// 			CloudFunction: &compute.RegionNetworkEndpointGroupCloudFunctionArgs{
+// 				Function: functionNegFunction.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Region Network Endpoint Group Cloudrun
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		cloudrunNegService, err := cloudrun.NewService(ctx, "cloudrunNegService", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "cloudrunNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
+// 			NetworkEndpointType: pulumi.String("SERVERLESS"),
+// 			Region:              pulumi.String("us-central1"),
+// 			CloudRun: &compute.RegionNetworkEndpointGroupCloudRunArgs{
+// 				Service: cloudrunNegService.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Region Network Endpoint Group Appengine
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		appengineNegBucket, err := storage.NewBucket(ctx, "appengineNegBucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		appengineNegBucketObject, err := storage.NewBucketObject(ctx, "appengineNegBucketObject", &storage.BucketObjectArgs{
+// 			Bucket: appengineNegBucket.Name,
+// 			Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		appengineNegFlexibleAppVersion, err := appengine.NewFlexibleAppVersion(ctx, "appengineNegFlexibleAppVersion", &appengine.FlexibleAppVersionArgs{
+// 			VersionId: pulumi.String("v1"),
+// 			Service:   pulumi.String("default"),
+// 			Runtime:   pulumi.String("nodejs"),
+// 			Entrypoint: &appengine.FlexibleAppVersionEntrypointArgs{
+// 				Shell: pulumi.String("node ./app.js"),
+// 			},
+// 			Deployment: &appengine.FlexibleAppVersionDeploymentArgs{
+// 				Zip: &appengine.FlexibleAppVersionDeploymentZipArgs{
+// 					SourceUrl: pulumi.All(appengineNegBucket.Name, appengineNegBucketObject.Name).ApplyT(func(_args []interface{}) (string, error) {
+// 						appengineNegBucketName := _args[0].(string)
+// 						appengineNegBucketObjectName := _args[1].(string)
+// 						return fmt.Sprintf("%v%v%v%v", "https://storage.googleapis.com/", appengineNegBucketName, "/", appengineNegBucketObjectName), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			LivenessCheck: &appengine.FlexibleAppVersionLivenessCheckArgs{
+// 				Path: pulumi.String("/"),
+// 			},
+// 			ReadinessCheck: &appengine.FlexibleAppVersionReadinessCheckArgs{
+// 				Path: pulumi.String("/"),
+// 			},
+// 			EnvVariables: pulumi.StringMap{
+// 				"port": pulumi.String("8080"),
+// 			},
+// 			Handlers: appengine.FlexibleAppVersionHandlerArray{
+// 				&appengine.FlexibleAppVersionHandlerArgs{
+// 					UrlRegex:       pulumi.String(".*\\/my-path\\/*"),
+// 					SecurityLevel:  pulumi.String("SECURE_ALWAYS"),
+// 					Login:          pulumi.String("LOGIN_REQUIRED"),
+// 					AuthFailAction: pulumi.String("AUTH_FAIL_ACTION_REDIRECT"),
+// 					StaticFiles: &appengine.FlexibleAppVersionHandlerStaticFilesArgs{
+// 						Path:            pulumi.String("my-other-path"),
+// 						UploadPathRegex: pulumi.String(".*\\/my-path\\/*"),
+// 					},
+// 				},
+// 			},
+// 			AutomaticScaling: &appengine.FlexibleAppVersionAutomaticScalingArgs{
+// 				CoolDownPeriod: pulumi.String("120s"),
+// 				CpuUtilization: &appengine.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs{
+// 					TargetUtilization: pulumi.Float64(0.5),
+// 				},
+// 			},
+// 			NoopOnDestroy: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionNetworkEndpointGroup(ctx, "appengineNegRegionNetworkEndpointGroup", &compute.RegionNetworkEndpointGroupArgs{
+// 			NetworkEndpointType: pulumi.String("SERVERLESS"),
+// 			Region:              pulumi.String("us-central1"),
+// 			AppEngine: &compute.RegionNetworkEndpointGroupAppEngineArgs{
+// 				Service: appengineNegFlexibleAppVersion.Service,
+// 				Version: appengineNegFlexibleAppVersion.VersionId,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// RegionNetworkEndpointGroup can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
+// ```
 type RegionNetworkEndpointGroup struct {
 	pulumi.CustomResourceState
 
@@ -239,4 +450,43 @@ type RegionNetworkEndpointGroupArgs struct {
 
 func (RegionNetworkEndpointGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionNetworkEndpointGroupArgs)(nil)).Elem()
+}
+
+type RegionNetworkEndpointGroupInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput
+	ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput
+}
+
+func (RegionNetworkEndpointGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroup)(nil)).Elem()
+}
+
+func (i RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput {
+	return i.ToRegionNetworkEndpointGroupOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupOutput)
+}
+
+type RegionNetworkEndpointGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionNetworkEndpointGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroupOutput)(nil)).Elem()
+}
+
+func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupOutput{})
 }

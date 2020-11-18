@@ -13,6 +13,38 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get info about a Region Google Compute SSL Certificate from its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myCert = Output.Create(Gcp.Compute.GetRegionSslCertificate.InvokeAsync(new Gcp.Compute.GetRegionSslCertificateArgs
+        ///         {
+        ///             Name = "my-cert",
+        ///         }));
+        ///         this.Certificate = myCert.Apply(myCert =&gt; myCert.Certificate);
+        ///         this.CertificateId = myCert.Apply(myCert =&gt; myCert.CertificateId);
+        ///         this.SelfLink = myCert.Apply(myCert =&gt; myCert.SelfLink);
+        ///     }
+        /// 
+        ///     [Output("certificate")]
+        ///     public Output&lt;string&gt; Certificate { get; set; }
+        ///     [Output("certificateId")]
+        ///     public Output&lt;string&gt; CertificateId { get; set; }
+        ///     [Output("selfLink")]
+        ///     public Output&lt;string&gt; SelfLink { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRegionSslCertificateResult> InvokeAsync(GetRegionSslCertificateArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRegionSslCertificateResult>("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args ?? new GetRegionSslCertificateArgs(), options.WithVersion());

@@ -57,6 +57,104 @@ class BackendService(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
 
         ## Example Usage
+        ### Backend Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService", health_checks=[default_http_health_check.id])
+        ```
+        ### Backend Service Traffic Director Round Robin
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("healthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port=80,
+        ),
+        opts=ResourceOptions(provider=google_beta))
+        default = gcp.compute.BackendService("default",
+            health_checks=[health_check.id],
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            locality_lb_policy="ROUND_ROBIN",
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Backend Service Traffic Director Ring Hash
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        health_check = gcp.compute.HealthCheck("healthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+            port=80,
+        ),
+        opts=ResourceOptions(provider=google_beta))
+        default = gcp.compute.BackendService("default",
+            health_checks=[health_check.id],
+            load_balancing_scheme="INTERNAL_SELF_MANAGED",
+            locality_lb_policy="RING_HASH",
+            session_affinity="HTTP_COOKIE",
+            circuit_breakers=gcp.compute.BackendServiceCircuitBreakersArgs(
+                max_connections=10,
+            ),
+            consistent_hash=gcp.compute.BackendServiceConsistentHashArgs(
+                http_cookie=gcp.compute.BackendServiceConsistentHashHttpCookieArgs(
+                    ttl=gcp.compute.BackendServiceConsistentHashHttpCookieTtlArgs(
+                        seconds=11,
+                        nanos=1111,
+                    ),
+                    name="mycookie",
+                ),
+            ),
+            outlier_detection=gcp.compute.BackendServiceOutlierDetectionArgs(
+                consecutive_errors=2,
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Backend Service Network Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
+            network_endpoint_type="INTERNET_FQDN_PORT",
+            default_port=443)
+        proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
+            global_network_endpoint_group=external_proxy.id,
+            fqdn="test.example.com",
+            port=external_proxy.default_port)
+        default = gcp.compute.BackendService("default",
+            enable_cdn=True,
+            timeout_sec=10,
+            connection_draining_timeout_sec=10,
+            custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=external_proxy.id,
+            )])
+        ```
+
+        ## Import
+
+        BackendService can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/backendService:BackendService default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

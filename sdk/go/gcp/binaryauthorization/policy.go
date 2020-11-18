@@ -4,6 +4,7 @@
 package binaryauthorization
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,125 @@ import (
 //     * [Official Documentation](https://cloud.google.com/binary-authorization/)
 //
 // ## Example Usage
+// ### Binary Authorization Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("My attestor"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		attestor, err := binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+// 			AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
+// 				NoteReference: note.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = binaryauthorization.NewPolicy(ctx, "policy", &binaryauthorization.PolicyArgs{
+// 			AdmissionWhitelistPatterns: binaryauthorization.PolicyAdmissionWhitelistPatternArray{
+// 				&binaryauthorization.PolicyAdmissionWhitelistPatternArgs{
+// 					NamePattern: pulumi.String("gcr.io/google_containers/*"),
+// 				},
+// 			},
+// 			DefaultAdmissionRule: &binaryauthorization.PolicyDefaultAdmissionRuleArgs{
+// 				EvaluationMode:  pulumi.String("ALWAYS_ALLOW"),
+// 				EnforcementMode: pulumi.String("ENFORCED_BLOCK_AND_AUDIT_LOG"),
+// 			},
+// 			ClusterAdmissionRules: binaryauthorization.PolicyClusterAdmissionRuleArray{
+// 				&binaryauthorization.PolicyClusterAdmissionRuleArgs{
+// 					Cluster:         pulumi.String("us-central1-a.prod-cluster"),
+// 					EvaluationMode:  pulumi.String("REQUIRE_ATTESTATION"),
+// 					EnforcementMode: pulumi.String("ENFORCED_BLOCK_AND_AUDIT_LOG"),
+// 					RequireAttestationsBies: pulumi.StringArray{
+// 						attestor.Name,
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Binary Authorization Policy Global Evaluation
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		note, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("My attestor"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		attestor, err := binaryauthorization.NewAttestor(ctx, "attestor", &binaryauthorization.AttestorArgs{
+// 			AttestationAuthorityNote: &binaryauthorization.AttestorAttestationAuthorityNoteArgs{
+// 				NoteReference: note.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = binaryauthorization.NewPolicy(ctx, "policy", &binaryauthorization.PolicyArgs{
+// 			DefaultAdmissionRule: &binaryauthorization.PolicyDefaultAdmissionRuleArgs{
+// 				EvaluationMode:  pulumi.String("REQUIRE_ATTESTATION"),
+// 				EnforcementMode: pulumi.String("ENFORCED_BLOCK_AND_AUDIT_LOG"),
+// 				RequireAttestationsBies: pulumi.StringArray{
+// 					attestor.Name,
+// 				},
+// 			},
+// 			GlobalPolicyEvaluationMode: pulumi.String("ENABLE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Policy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:binaryauthorization/policy:Policy default {{project}}
+// ```
 type Policy struct {
 	pulumi.CustomResourceState
 
@@ -198,4 +318,43 @@ type PolicyArgs struct {
 
 func (PolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyArgs)(nil)).Elem()
+}
+
+type PolicyInput interface {
+	pulumi.Input
+
+	ToPolicyOutput() PolicyOutput
+	ToPolicyOutputWithContext(ctx context.Context) PolicyOutput
+}
+
+func (Policy) ElementType() reflect.Type {
+	return reflect.TypeOf((*Policy)(nil)).Elem()
+}
+
+func (i Policy) ToPolicyOutput() PolicyOutput {
+	return i.ToPolicyOutputWithContext(context.Background())
+}
+
+func (i Policy) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyOutput)
+}
+
+type PolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyOutput)(nil)).Elem()
+}
+
+func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
+	return o
+}
+
+func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicyOutput{})
 }

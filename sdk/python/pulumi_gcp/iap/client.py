@@ -38,6 +38,18 @@ class Client(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        Client can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] brand: Identifier of the brand to which this client

@@ -26,6 +26,85 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Slo Appengine
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = Output.Create(Gcp.Monitoring.GetAppEngineService.InvokeAsync(new Gcp.Monitoring.GetAppEngineServiceArgs
+    ///         {
+    ///             ModuleId = "default",
+    ///         }));
+    ///         var appengSlo = new Gcp.Monitoring.Slo("appengSlo", new Gcp.Monitoring.SloArgs
+    ///         {
+    ///             Service = @default.Apply(@default =&gt; @default.ServiceId),
+    ///             SloId = "ae-slo",
+    ///             DisplayName = "Test SLO for App Engine",
+    ///             Goal = 0.9,
+    ///             CalendarPeriod = "DAY",
+    ///             BasicSli = new Gcp.Monitoring.Inputs.SloBasicSliArgs
+    ///             {
+    ///                 Latency = new Gcp.Monitoring.Inputs.SloBasicSliLatencyArgs
+    ///                 {
+    ///                     Threshold = "1s",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Monitoring Slo Request Based
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var customsrv = new Gcp.Monitoring.CustomService("customsrv", new Gcp.Monitoring.CustomServiceArgs
+    ///         {
+    ///             ServiceId = "custom-srv-request-slos",
+    ///             DisplayName = "My Custom Service",
+    ///         });
+    ///         var requestBasedSlo = new Gcp.Monitoring.Slo("requestBasedSlo", new Gcp.Monitoring.SloArgs
+    ///         {
+    ///             Service = customsrv.ServiceId,
+    ///             SloId = "consumed-api-slo",
+    ///             DisplayName = "Test SLO with request based SLI (good total ratio)",
+    ///             Goal = 0.9,
+    ///             RollingPeriodDays = 30,
+    ///             RequestBasedSli = new Gcp.Monitoring.Inputs.SloRequestBasedSliArgs
+    ///             {
+    ///                 DistributionCut = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutArgs
+    ///                 {
+    ///                     DistributionFilter = "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ",
+    ///                     Range = new Gcp.Monitoring.Inputs.SloRequestBasedSliDistributionCutRangeArgs
+    ///                     {
+    ///                         Max = 0.5,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Slo can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:monitoring/slo:Slo default {{name}}
+    /// ```
     /// </summary>
     public partial class Slo : Pulumi.CustomResource
     {

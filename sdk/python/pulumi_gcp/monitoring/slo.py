@@ -47,6 +47,57 @@ class Slo(pulumi.CustomResource):
             * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
 
         ## Example Usage
+        ### Monitoring Slo Appengine
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.monitoring.get_app_engine_service(module_id="default")
+        appeng_slo = gcp.monitoring.Slo("appengSlo",
+            service=default.service_id,
+            slo_id="ae-slo",
+            display_name="Test SLO for App Engine",
+            goal=0.9,
+            calendar_period="DAY",
+            basic_sli=gcp.monitoring.SloBasicSliArgs(
+                latency=gcp.monitoring.SloBasicSliLatencyArgs(
+                    threshold="1s",
+                ),
+            ))
+        ```
+        ### Monitoring Slo Request Based
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        customsrv = gcp.monitoring.CustomService("customsrv",
+            service_id="custom-srv-request-slos",
+            display_name="My Custom Service")
+        request_based_slo = gcp.monitoring.Slo("requestBasedSlo",
+            service=customsrv.service_id,
+            slo_id="consumed-api-slo",
+            display_name="Test SLO with request based SLI (good total ratio)",
+            goal=0.9,
+            rolling_period_days=30,
+            request_based_sli=gcp.monitoring.SloRequestBasedSliArgs(
+                distribution_cut=gcp.monitoring.SloRequestBasedSliDistributionCutArgs(
+                    distribution_filter="metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ",
+                    range=gcp.monitoring.SloRequestBasedSliDistributionCutRangeArgs(
+                        max=0.5,
+                    ),
+                ),
+            ))
+        ```
+
+        ## Import
+
+        Slo can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:monitoring/slo:Slo default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

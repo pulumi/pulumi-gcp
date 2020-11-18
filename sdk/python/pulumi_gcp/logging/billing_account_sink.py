@@ -36,6 +36,29 @@ class BillingAccountSink(pulumi.CustomResource):
         the credentials used with this provider. [IAM roles granted on a billing account](https://cloud.google.com/billing/docs/how-to/billing-access) are separate from the
         typical IAM roles granted on a project.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket")
+        my_sink = gcp.logging.BillingAccountSink("my-sink",
+            billing_account="ABCDEF-012345-GHIJKL",
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
+        log_writer = gcp.projects.IAMBinding("log-writer",
+            role="roles/storage.objectCreator",
+            members=[my_sink.writer_identity])
+        ```
+
+        ## Import
+
+        Billing account logging sinks can be imported using this format
+
+        ```sh
+         $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink my_sink billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.

@@ -24,6 +24,25 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Access Context Manager Access Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * AccessPolicy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
+ * ```
  */
 export class AccessPolicy extends pulumi.CustomResource {
     /**

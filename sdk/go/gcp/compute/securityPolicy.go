@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -12,6 +13,72 @@ import (
 // A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
 // see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
 // and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewSecurityPolicy(ctx, "policy", &compute.SecurityPolicyArgs{
+// 			Rules: compute.SecurityPolicyRuleArray{
+// 				&compute.SecurityPolicyRuleArgs{
+// 					Action:      pulumi.String("deny(403)"),
+// 					Description: pulumi.String("Deny access to IPs in 9.9.9.0/24"),
+// 					Match: &compute.SecurityPolicyRuleMatchArgs{
+// 						Config: &compute.SecurityPolicyRuleMatchConfigArgs{
+// 							SrcIpRanges: pulumi.StringArray{
+// 								pulumi.String("9.9.9.0/24"),
+// 							},
+// 						},
+// 						VersionedExpr: pulumi.String("SRC_IPS_V1"),
+// 					},
+// 					Priority: pulumi.Int(1000),
+// 				},
+// 				&compute.SecurityPolicyRuleArgs{
+// 					Action:      pulumi.String("allow"),
+// 					Description: pulumi.String("default rule"),
+// 					Match: &compute.SecurityPolicyRuleMatchArgs{
+// 						Config: &compute.SecurityPolicyRuleMatchConfigArgs{
+// 							SrcIpRanges: pulumi.StringArray{
+// 								pulumi.String("*"),
+// 							},
+// 						},
+// 						VersionedExpr: pulumi.String("SRC_IPS_V1"),
+// 					},
+// 					Priority: pulumi.Int(2147483647),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Security policies can be imported using any of the following formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+// ```
 type SecurityPolicy struct {
 	pulumi.CustomResourceState
 
@@ -130,4 +197,43 @@ type SecurityPolicyArgs struct {
 
 func (SecurityPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityPolicyArgs)(nil)).Elem()
+}
+
+type SecurityPolicyInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyOutput() SecurityPolicyOutput
+	ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput
+}
+
+func (SecurityPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicy)(nil)).Elem()
+}
+
+func (i SecurityPolicy) ToSecurityPolicyOutput() SecurityPolicyOutput {
+	return i.ToSecurityPolicyOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyOutput)
+}
+
+type SecurityPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyOutput)(nil)).Elem()
+}
+
+func (o SecurityPolicyOutput) ToSecurityPolicyOutput() SecurityPolicyOutput {
+	return o
+}
+
+func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Context) SecurityPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecurityPolicyOutput{})
 }

@@ -4,12 +4,28 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// ApiConfig can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{name}}
+// ```
 type ApiConfig struct {
 	pulumi.CustomResourceState
 
@@ -184,4 +200,43 @@ type ApiConfigArgs struct {
 
 func (ApiConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiConfigArgs)(nil)).Elem()
+}
+
+type ApiConfigInput interface {
+	pulumi.Input
+
+	ToApiConfigOutput() ApiConfigOutput
+	ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput
+}
+
+func (ApiConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiConfig)(nil)).Elem()
+}
+
+func (i ApiConfig) ToApiConfigOutput() ApiConfigOutput {
+	return i.ToApiConfigOutputWithContext(context.Background())
+}
+
+func (i ApiConfig) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOutput)
+}
+
+type ApiConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiConfigOutput)(nil)).Elem()
+}
+
+func (o ApiConfigOutput) ToApiConfigOutput() ApiConfigOutput {
+	return o
+}
+
+func (o ApiConfigOutput) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiConfigOutput{})
 }

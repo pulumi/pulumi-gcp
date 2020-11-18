@@ -20,6 +20,51 @@ namespace Pulumi.Gcp.Healthcare
     ///     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
     /// 
     /// ## Example Usage
+    /// ### Healthcare Dicom Store Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         });
+    ///         var @default = new Gcp.Healthcare.DicomStore("default", new Gcp.Healthcare.DicomStoreArgs
+    ///         {
+    ///             Dataset = dataset.Id,
+    ///             NotificationConfig = new Gcp.Healthcare.Inputs.DicomStoreNotificationConfigArgs
+    ///             {
+    ///                 PubsubTopic = topic.Id,
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "label1", "labelvalue1" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DicomStore can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
+    /// ```
     /// </summary>
     public partial class DicomStore : Pulumi.CustomResource
     {

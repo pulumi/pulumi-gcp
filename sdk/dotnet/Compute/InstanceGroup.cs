@@ -15,6 +15,161 @@ namespace Pulumi.Gcp.Compute
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
     /// 
     /// ## Example Usage
+    /// ### Empty Instance Group
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Gcp.Compute.InstanceGroup("test", new Gcp.Compute.InstanceGroupArgs
+    ///         {
+    ///             Description = "Test instance group",
+    ///             Zone = "us-central1-a",
+    ///             Network = google_compute_network.Default.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Example Usage - With instances and named ports
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var webservers = new Gcp.Compute.InstanceGroup("webservers", new Gcp.Compute.InstanceGroupArgs
+    ///         {
+    ///             Description = "Test instance group",
+    ///             Instances = 
+    ///             {
+    ///                 google_compute_instance.Test.Id,
+    ///                 google_compute_instance.Test2.Id,
+    ///             },
+    ///             NamedPorts = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+    ///                 {
+    ///                     Name = "http",
+    ///                     Port = 8080,
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+    ///                 {
+    ///                     Name = "https",
+    ///                     Port = 8443,
+    ///                 },
+    ///             },
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Example Usage - Recreating an instance group in use
+    /// Recreating an instance group that's in use by another resource will give a
+    /// `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+    /// as shown in this example to avoid this type of error.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var debianImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var stagingVm = new Gcp.Compute.Instance("stagingVm", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             Zone = "us-central1-c",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = debianImage.Apply(debianImage =&gt; debianImage.SelfLink),
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var stagingGroup = new Gcp.Compute.InstanceGroup("stagingGroup", new Gcp.Compute.InstanceGroupArgs
+    ///         {
+    ///             Zone = "us-central1-c",
+    ///             Instances = 
+    ///             {
+    ///                 stagingVm.Id,
+    ///             },
+    ///             NamedPorts = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+    ///                 {
+    ///                     Name = "http",
+    ///                     Port = 8080,
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.InstanceGroupNamedPortArgs
+    ///                 {
+    ///                     Name = "https",
+    ///                     Port = 8443,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var stagingHealth = new Gcp.Compute.HttpsHealthCheck("stagingHealth", new Gcp.Compute.HttpsHealthCheckArgs
+    ///         {
+    ///             RequestPath = "/health_check",
+    ///         });
+    ///         var stagingService = new Gcp.Compute.BackendService("stagingService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             PortName = "https",
+    ///             Protocol = "HTTPS",
+    ///             Backends = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
+    ///                 {
+    ///                     Group = stagingGroup.Id,
+    ///                 },
+    ///             },
+    ///             HealthChecks = 
+    ///             {
+    ///                 stagingHealth.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers us-central1-a/terraform-webservers
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers big-project/us-central1-a/terraform-webservers
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
+    /// ```
     /// </summary>
     public partial class InstanceGroup : Pulumi.CustomResource
     {

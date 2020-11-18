@@ -4,6 +4,27 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Gateway can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/gateway:Gateway default {{name}}
+ * ```
+ */
 export class Gateway extends pulumi.CustomResource {
     /**
      * Get an existing Gateway resource's state with the given name, ID, and optional extra

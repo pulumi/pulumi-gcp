@@ -34,6 +34,29 @@ class Source(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/binary-authorization/)
 
         ## Example Usage
+        ### Scc Source Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        custom_source = gcp.securitycenter.Source("customSource",
+            description="My custom Cloud Security Command Center Finding Source",
+            display_name="My Source",
+            organization="123456789")
+        ```
+
+        ## Import
+
+        Source can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:securitycenter/source:Source default organizations/{{organization}}/sources/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:securitycenter/source:Source default {{organization}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

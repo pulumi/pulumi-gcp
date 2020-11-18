@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,64 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
  *
  * ## Example Usage
+ * ### Data Fusion Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicInstance = new gcp.datafusion.Instance("basicInstance", {
+ *     region: "us-central1",
+ *     type: "BASIC",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Data Fusion Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const extendedInstance = new gcp.datafusion.Instance("extendedInstance", {
+ *     description: "My Data Fusion instance",
+ *     region: "us-central1",
+ *     type: "BASIC",
+ *     enableStackdriverLogging: true,
+ *     enableStackdriverMonitoring: true,
+ *     labels: {
+ *         example_key: "example_value",
+ *     },
+ *     privateInstance: true,
+ *     networkConfig: {
+ *         network: "default",
+ *         ipAllocation: "10.89.48.0/22",
+ *     },
+ *     version: "6.1.1",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instance can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:datafusion/instance:Instance default {{name}}
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

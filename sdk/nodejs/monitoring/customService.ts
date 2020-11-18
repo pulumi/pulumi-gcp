@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -20,6 +19,28 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ * ### Monitoring Service Custom
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom = new gcp.monitoring.CustomService("custom", {
+ *     displayName: "My Custom Service custom-srv",
+ *     serviceId: "custom-srv",
+ *     telemetry: {
+ *         resourceName: "//product.googleapis.com/foo/foo/services/test",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Service can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
+ * ```
  */
 export class CustomService extends pulumi.CustomResource {
     /**

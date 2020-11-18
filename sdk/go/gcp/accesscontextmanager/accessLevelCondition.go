@@ -4,6 +4,7 @@
 package accesscontextmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -32,6 +33,10 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// This resource does not support import.
 type AccessLevelCondition struct {
 	pulumi.CustomResourceState
 
@@ -286,4 +291,43 @@ type AccessLevelConditionArgs struct {
 
 func (AccessLevelConditionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessLevelConditionArgs)(nil)).Elem()
+}
+
+type AccessLevelConditionInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionOutput() AccessLevelConditionOutput
+	ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput
+}
+
+func (AccessLevelCondition) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelCondition)(nil)).Elem()
+}
+
+func (i AccessLevelCondition) ToAccessLevelConditionOutput() AccessLevelConditionOutput {
+	return i.ToAccessLevelConditionOutputWithContext(context.Background())
+}
+
+func (i AccessLevelCondition) ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionOutput)
+}
+
+type AccessLevelConditionOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessLevelConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelConditionOutput)(nil)).Elem()
+}
+
+func (o AccessLevelConditionOutput) ToAccessLevelConditionOutput() AccessLevelConditionOutput {
+	return o
+}
+
+func (o AccessLevelConditionOutput) ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessLevelConditionOutput{})
 }

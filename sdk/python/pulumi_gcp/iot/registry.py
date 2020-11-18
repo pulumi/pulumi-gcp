@@ -39,6 +39,83 @@ class Registry(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/iot/docs/)
 
         ## Example Usage
+        ### Cloudiot Device Registry Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_registry = gcp.iot.Registry("test-registry")
+        ```
+        ### Cloudiot Device Registry Single Event Notification Configs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_telemetry = gcp.pubsub.Topic("default-telemetry")
+        test_registry = gcp.iot.Registry("test-registry", event_notification_configs=[gcp.iot.RegistryEventNotificationConfigItemArgs(
+            pubsub_topic_name=default_telemetry.id,
+            subfolder_matches="",
+        )])
+        ```
+        ### Cloudiot Device Registry Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_devicestatus = gcp.pubsub.Topic("default-devicestatus")
+        default_telemetry = gcp.pubsub.Topic("default-telemetry")
+        additional_telemetry = gcp.pubsub.Topic("additional-telemetry")
+        test_registry = gcp.iot.Registry("test-registry",
+            event_notification_configs=[
+                gcp.iot.RegistryEventNotificationConfigItemArgs(
+                    pubsub_topic_name=additional_telemetry.id,
+                    subfolder_matches="test/path",
+                ),
+                gcp.iot.RegistryEventNotificationConfigItemArgs(
+                    pubsub_topic_name=default_telemetry.id,
+                    subfolder_matches="",
+                ),
+            ],
+            state_notification_config={
+                "pubsub_topic_name": default_devicestatus.id,
+            },
+            mqtt_config={
+                "mqtt_enabled_state": "MQTT_ENABLED",
+            },
+            http_config={
+                "http_enabled_state": "HTTP_ENABLED",
+            },
+            log_level="INFO",
+            credentials=[gcp.iot.RegistryCredentialArgs(
+                public_key_certificate={
+                    "format": "X509_CERTIFICATE_PEM",
+                    "certificate": (lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                },
+            )])
+        ```
+
+        ## Import
+
+        DeviceRegistry can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iot/registry:Registry default {{project}}/locations/{{region}}/registries/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iot/registry:Registry default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iot/registry:Registry default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iot/registry:Registry default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

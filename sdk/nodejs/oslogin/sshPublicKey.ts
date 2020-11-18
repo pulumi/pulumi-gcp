@@ -14,6 +14,31 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
  *
  * ## Example Usage
+ * ### Os Login Ssh Key Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const me = gcp.organizations.getClientOpenIdUserInfo({});
+ * const cache = new gcp.oslogin.SshPublicKey("cache", {
+ *     user: me.then(me => me.email),
+ *     key: fs.readFileSync("path/to/id_rsa.pub"),
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * SSHPublicKey can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
+ * ```
  */
 export class SshPublicKey extends pulumi.CustomResource {
     /**

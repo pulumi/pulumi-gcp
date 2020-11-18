@@ -35,6 +35,40 @@ class SSLPolicy(pulumi.CustomResource):
             * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 
         ## Example Usage
+        ### Ssl Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prod_ssl_policy = gcp.compute.SSLPolicy("prod-ssl-policy", profile="MODERN")
+        nonprod_ssl_policy = gcp.compute.SSLPolicy("nonprod-ssl-policy",
+            min_tls_version="TLS_1_2",
+            profile="MODERN")
+        custom_ssl_policy = gcp.compute.SSLPolicy("custom-ssl-policy",
+            custom_features=[
+                "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+            ],
+            min_tls_version="TLS_1_2",
+            profile="CUSTOM")
+        ```
+
+        ## Import
+
+        SslPolicy can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

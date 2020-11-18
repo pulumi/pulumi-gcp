@@ -36,6 +36,55 @@ class InstanceGroupNamedPort(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
 
         ## Example Usage
+        ### Instance Group Named Port Gke
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        container_network = gcp.compute.Network("containerNetwork", auto_create_subnetworks=False)
+        container_subnetwork = gcp.compute.Subnetwork("containerSubnetwork",
+            region="us-central1",
+            network=container_network.name,
+            ip_cidr_range="10.0.36.0/24")
+        my_cluster = gcp.container.Cluster("myCluster",
+            location="us-central1-a",
+            initial_node_count=1,
+            network=container_network.name,
+            subnetwork=container_subnetwork.name,
+            ip_allocation_policy=gcp.container.ClusterIpAllocationPolicyArgs(
+                cluster_ipv4_cidr_block="/19",
+                services_ipv4_cidr_block="/22",
+            ))
+        my_port = gcp.compute.InstanceGroupNamedPort("myPort",
+            group=my_cluster.instance_group_urls[0],
+            zone="us-central1-a",
+            port=8080)
+        my_ports = gcp.compute.InstanceGroupNamedPort("myPorts",
+            group=my_cluster.instance_group_urls[0],
+            zone="us-central1-a",
+            port=4443)
+        ```
+
+        ## Import
+
+        InstanceGroupNamedPort can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{project}}/{{zone}}/{{group}}/{{port}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{zone}}/{{group}}/{{port}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

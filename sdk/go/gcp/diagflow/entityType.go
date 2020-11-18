@@ -4,6 +4,7 @@
 package diagflow
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,63 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
+// ### Dialogflow Entity Type Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/diagflow"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		basicAgent, err := diagflow.NewAgent(ctx, "basicAgent", &diagflow.AgentArgs{
+// 			DisplayName:         pulumi.String("example_agent"),
+// 			DefaultLanguageCode: pulumi.String("en"),
+// 			TimeZone:            pulumi.String("America/New_York"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = diagflow.NewEntityType(ctx, "basicEntityType", &diagflow.EntityTypeArgs{
+// 			DisplayName: pulumi.String(""),
+// 			Kind:        pulumi.String("KIND_MAP"),
+// 			Entities: diagflow.EntityTypeEntityArray{
+// 				&diagflow.EntityTypeEntityArgs{
+// 					Value: pulumi.String("value1"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym1"),
+// 						pulumi.String("synonym2"),
+// 					},
+// 				},
+// 				&diagflow.EntityTypeEntityArgs{
+// 					Value: pulumi.String("value2"),
+// 					Synonyms: pulumi.StringArray{
+// 						pulumi.String("synonym3"),
+// 						pulumi.String("synonym4"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			basicAgent,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// EntityType can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
+// ```
 type EntityType struct {
 	pulumi.CustomResourceState
 
@@ -167,4 +225,43 @@ type EntityTypeArgs struct {
 
 func (EntityTypeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*entityTypeArgs)(nil)).Elem()
+}
+
+type EntityTypeInput interface {
+	pulumi.Input
+
+	ToEntityTypeOutput() EntityTypeOutput
+	ToEntityTypeOutputWithContext(ctx context.Context) EntityTypeOutput
+}
+
+func (EntityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityType)(nil)).Elem()
+}
+
+func (i EntityType) ToEntityTypeOutput() EntityTypeOutput {
+	return i.ToEntityTypeOutputWithContext(context.Background())
+}
+
+func (i EntityType) ToEntityTypeOutputWithContext(ctx context.Context) EntityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntityTypeOutput)
+}
+
+type EntityTypeOutput struct {
+	*pulumi.OutputState
+}
+
+func (EntityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeOutput)(nil)).Elem()
+}
+
+func (o EntityTypeOutput) ToEntityTypeOutput() EntityTypeOutput {
+	return o
+}
+
+func (o EntityTypeOutput) ToEntityTypeOutputWithContext(ctx context.Context) EntityTypeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EntityTypeOutput{})
 }

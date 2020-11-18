@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,147 @@ import * as utilities from "../utilities";
  *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
  *
  * ## Example Usage
+ * ### Billing Budget Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [{
+ *         thresholdPercent: 0.5,
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Billing Budget Lastperiod
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: ["projects/my-project-name"],
+ *     },
+ *     amount: {
+ *         lastPeriodAmount: true,
+ *     },
+ *     thresholdRules: [{
+ *         thresholdPercent: 10,
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Billing Budget Filter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: ["projects/my-project-name"],
+ *         creditTypesTreatment: "EXCLUDE_ALL_CREDITS",
+ *         services: ["services/24E6-581D-38E5"],
+ *     },
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [
+ *         {
+ *             thresholdPercent: 0.5,
+ *         },
+ *         {
+ *             thresholdPercent: 0.9,
+ *             spendBasis: "FORECASTED_SPEND",
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Billing Budget Notify
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const account = gcp.organizations.getBillingAccount({
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const notificationChannel = new gcp.monitoring.NotificationChannel("notificationChannel", {
+ *     displayName: "Example Notification Channel",
+ *     type: "email",
+ *     labels: {
+ *         email_address: "address@example.com",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const budget = new gcp.billing.Budget("budget", {
+ *     billingAccount: account.then(account => account.id),
+ *     displayName: "Example Billing Budget",
+ *     budgetFilter: {
+ *         projects: ["projects/my-project-name"],
+ *     },
+ *     amount: {
+ *         specifiedAmount: {
+ *             currencyCode: "USD",
+ *             units: "100000",
+ *         },
+ *     },
+ *     thresholdRules: [
+ *         {
+ *             thresholdPercent: 1,
+ *         },
+ *         {
+ *             thresholdPercent: 1,
+ *             spendBasis: "FORECASTED_SPEND",
+ *         },
+ *     ],
+ *     allUpdatesRule: {
+ *         monitoringNotificationChannels: [notificationChannel.id],
+ *         disableDefaultIamRecipients: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Budget can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:billing/budget:Budget default {{name}}
+ * ```
  */
 export class Budget extends pulumi.CustomResource {
     /**

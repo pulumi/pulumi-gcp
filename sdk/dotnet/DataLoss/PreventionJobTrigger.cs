@@ -19,6 +19,79 @@ namespace Pulumi.Gcp.DataLoss
     ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
     /// 
     /// ## Example Usage
+    /// ### Dlp Job Trigger Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new Gcp.DataLoss.PreventionJobTrigger("basic", new Gcp.DataLoss.PreventionJobTriggerArgs
+    ///         {
+    ///             Description = "Description",
+    ///             DisplayName = "Displayname",
+    ///             InspectJob = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobArgs
+    ///             {
+    ///                 Actions = 
+    ///                 {
+    ///                     new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionArgs
+    ///                     {
+    ///                         SaveFindings = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsArgs
+    ///                         {
+    ///                             OutputConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs
+    ///                             {
+    ///                                 Table = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs
+    ///                                 {
+    ///                                     DatasetId = "asdf",
+    ///                                     ProjectId = "asdf",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 InspectTemplateName = "fake",
+    ///                 StorageConfig = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigArgs
+    ///                 {
+    ///                     CloudStorageOptions = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs
+    ///                     {
+    ///                         FileSet = new Gcp.DataLoss.Inputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs
+    ///                         {
+    ///                             Url = "gs://mybucket/directory/",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Parent = "projects/my-project-name",
+    ///             Triggers = 
+    ///             {
+    ///                 new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerArgs
+    ///                 {
+    ///                     Schedule = new Gcp.DataLoss.Inputs.PreventionJobTriggerTriggerScheduleArgs
+    ///                     {
+    ///                         RecurrencePeriodDuration = "86400s",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// JobTrigger can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
+    /// ```
     /// </summary>
     public partial class PreventionJobTrigger : Pulumi.CustomResource
     {

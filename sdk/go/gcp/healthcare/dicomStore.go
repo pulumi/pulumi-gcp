@@ -4,6 +4,7 @@
 package healthcare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,57 @@ import (
 //     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
 //
 // ## Example Usage
+// ### Healthcare Dicom Store Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewDicomStore(ctx, "_default", &healthcare.DicomStoreArgs{
+// 			Dataset: dataset.ID(),
+// 			NotificationConfig: &healthcare.DicomStoreNotificationConfigArgs{
+// 				PubsubTopic: topic.ID(),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"label1": pulumi.String("labelvalue1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// DicomStore can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
+// ```
 type DicomStore struct {
 	pulumi.CustomResourceState
 
@@ -170,4 +222,43 @@ type DicomStoreArgs struct {
 
 func (DicomStoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dicomStoreArgs)(nil)).Elem()
+}
+
+type DicomStoreInput interface {
+	pulumi.Input
+
+	ToDicomStoreOutput() DicomStoreOutput
+	ToDicomStoreOutputWithContext(ctx context.Context) DicomStoreOutput
+}
+
+func (DicomStore) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStore)(nil)).Elem()
+}
+
+func (i DicomStore) ToDicomStoreOutput() DicomStoreOutput {
+	return i.ToDicomStoreOutputWithContext(context.Background())
+}
+
+func (i DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreOutput)
+}
+
+type DicomStoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (DicomStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreOutput)(nil)).Elem()
+}
+
+func (o DicomStoreOutput) ToDicomStoreOutput() DicomStoreOutput {
+	return o
+}
+
+func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) DicomStoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DicomStoreOutput{})
 }

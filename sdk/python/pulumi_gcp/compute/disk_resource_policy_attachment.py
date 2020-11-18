@@ -29,6 +29,53 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
         > **Note:** This resource does not support regional disks (`compute.RegionDisk`). For regional disks, please refer to the `compute.RegionDiskResourcePolicyAttachment` resource.
 
         ## Example Usage
+        ### Disk Resource Policy Attachment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        ssd = gcp.compute.Disk("ssd",
+            image=my_image.self_link,
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        attachment = gcp.compute.DiskResourcePolicyAttachment("attachment",
+            disk=ssd.name,
+            zone="us-central1-a")
+        policy = gcp.compute.ResourcePolicy("policy",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
+        ```
+
+        ## Import
+
+        DiskResourcePolicyAttachment can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{project}}/{{zone}}/{{disk}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{zone}}/{{disk}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

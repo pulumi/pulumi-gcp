@@ -4,6 +4,7 @@
 package filestore
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,114 @@ import (
 //     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
 //
 // ## Example Usage
+// ### Filestore Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/filestore"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+// 			FileShares: &filestore.InstanceFileSharesArgs{
+// 				CapacityGb: pulumi.Int(2660),
+// 				Name:       pulumi.String("share1"),
+// 			},
+// 			Networks: filestore.InstanceNetworkArray{
+// 				&filestore.InstanceNetworkArgs{
+// 					Modes: pulumi.StringArray{
+// 						pulumi.String("MODE_IPV4"),
+// 					},
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Tier: pulumi.String("PREMIUM"),
+// 			Zone: pulumi.String("us-central1-b"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Filestore Instance Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/filestore"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := filestore.NewInstance(ctx, "instance", &filestore.InstanceArgs{
+// 			Zone: pulumi.String("us-central1-b"),
+// 			Tier: pulumi.String("BASIC_SSD"),
+// 			FileShares: &filestore.InstanceFileSharesArgs{
+// 				CapacityGb: pulumi.Int(2660),
+// 				Name:       pulumi.String("share1"),
+// 				NfsExportOptions: filestore.InstanceFileSharesNfsExportOptionArray{
+// 					&filestore.InstanceFileSharesNfsExportOptionArgs{
+// 						IpRanges: pulumi.StringArray{
+// 							pulumi.String("10.0.0.0/24"),
+// 						},
+// 						AccessMode: pulumi.String("READ_WRITE"),
+// 						SquashMode: pulumi.String("NO_ROOT_SQUASH"),
+// 					},
+// 					&filestore.InstanceFileSharesNfsExportOptionArgs{
+// 						IpRanges: pulumi.StringArray{
+// 							pulumi.String("10.10.0.0/24"),
+// 						},
+// 						AccessMode: pulumi.String("READ_ONLY"),
+// 						SquashMode: pulumi.String("ROOT_SQUASH"),
+// 						AnonUid:    pulumi.Int(123),
+// 						AnonGid:    pulumi.Int(456),
+// 					},
+// 				},
+// 			},
+// 			Networks: filestore.InstanceNetworkArray{
+// 				&filestore.InstanceNetworkArgs{
+// 					Network: pulumi.String("default"),
+// 					Modes: pulumi.StringArray{
+// 						pulumi.String("MODE_IPV4"),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:filestore/instance:Instance default {{name}}
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -206,4 +315,43 @@ type InstanceArgs struct {
 
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
+}
+
+type InstanceInput interface {
+	pulumi.Input
+
+	ToInstanceOutput() InstanceOutput
+	ToInstanceOutputWithContext(ctx context.Context) InstanceOutput
+}
+
+func (Instance) ElementType() reflect.Type {
+	return reflect.TypeOf((*Instance)(nil)).Elem()
+}
+
+func (i Instance) ToInstanceOutput() InstanceOutput {
+	return i.ToInstanceOutputWithContext(context.Background())
+}
+
+func (i Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceOutput)
+}
+
+type InstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceOutput)(nil)).Elem()
+}
+
+func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
+	return o
+}
+
+func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceOutput{})
 }

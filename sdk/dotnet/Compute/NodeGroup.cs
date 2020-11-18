@@ -24,6 +24,85 @@ namespace Pulumi.Gcp.Compute
     /// the provider to delete and recreate the node group.
     /// 
     /// ## Example Usage
+    /// ### Node Group Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new Gcp.Compute.NodeTemplateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NodeType = "n1-node-96-624",
+    ///         });
+    ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
+    ///         {
+    ///             Zone = "us-central1-a",
+    ///             Description = "example google_compute_node_group for the Google Provider",
+    ///             Size = 1,
+    ///             NodeTemplate = soletenant_tmpl.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Node Group Autoscaling Policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var soletenant_tmpl = new Gcp.Compute.NodeTemplate("soletenant-tmpl", new Gcp.Compute.NodeTemplateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NodeType = "n1-node-96-624",
+    ///         });
+    ///         var nodes = new Gcp.Compute.NodeGroup("nodes", new Gcp.Compute.NodeGroupArgs
+    ///         {
+    ///             Zone = "us-central1-a",
+    ///             Description = "example google_compute_node_group for Google Provider",
+    ///             MaintenancePolicy = "RESTART_IN_PLACE",
+    ///             Size = 1,
+    ///             NodeTemplate = soletenant_tmpl.Id,
+    ///             AutoscalingPolicy = new Gcp.Compute.Inputs.NodeGroupAutoscalingPolicyArgs
+    ///             {
+    ///                 Mode = "ONLY_SCALE_OUT",
+    ///                 MinNodes = 1,
+    ///                 MaxNodes = 10,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// NodeGroup can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{project}}/{{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
+    /// ```
     /// </summary>
     public partial class NodeGroup : Pulumi.CustomResource
     {

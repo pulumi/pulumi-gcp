@@ -4,6 +4,7 @@
 package kms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -27,6 +28,70 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+// ### Kms Secret Ciphertext Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
+// 			Location: pulumi.String("global"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
+// 			KeyRing:        keyring.ID(),
+// 			RotationPeriod: pulumi.String("100000s"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		myPassword, err := kms.NewSecretCiphertext(ctx, "myPassword", &kms.SecretCiphertextArgs{
+// 			CryptoKey: cryptokey.ID(),
+// 			Plaintext: pulumi.String("my-secret-password"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstance(ctx, "instance", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-9"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"password": myPassword.Ciphertext,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type SecretCiphertext struct {
 	pulumi.CustomResourceState
 
@@ -135,4 +200,43 @@ type SecretCiphertextArgs struct {
 
 func (SecretCiphertextArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretCiphertextArgs)(nil)).Elem()
+}
+
+type SecretCiphertextInput interface {
+	pulumi.Input
+
+	ToSecretCiphertextOutput() SecretCiphertextOutput
+	ToSecretCiphertextOutputWithContext(ctx context.Context) SecretCiphertextOutput
+}
+
+func (SecretCiphertext) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretCiphertext)(nil)).Elem()
+}
+
+func (i SecretCiphertext) ToSecretCiphertextOutput() SecretCiphertextOutput {
+	return i.ToSecretCiphertextOutputWithContext(context.Background())
+}
+
+func (i SecretCiphertext) ToSecretCiphertextOutputWithContext(ctx context.Context) SecretCiphertextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextOutput)
+}
+
+type SecretCiphertextOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretCiphertextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretCiphertextOutput)(nil)).Elem()
+}
+
+func (o SecretCiphertextOutput) ToSecretCiphertextOutput() SecretCiphertextOutput {
+	return o
+}
+
+func (o SecretCiphertextOutput) ToSecretCiphertextOutputWithContext(ctx context.Context) SecretCiphertextOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretCiphertextOutput{})
 }

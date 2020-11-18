@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,6 +16,54 @@ import * as utilities from "../utilities";
  *     * [Using DNS server policies](https://cloud.google.com/dns/zones/#using-dns-server-policies)
  *
  * ## Example Usage
+ * ### Dns Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network_1 = new gcp.compute.Network("network-1", {autoCreateSubnetworks: false});
+ * const network_2 = new gcp.compute.Network("network-2", {autoCreateSubnetworks: false});
+ * const example_policy = new gcp.dns.Policy("example-policy", {
+ *     enableInboundForwarding: true,
+ *     enableLogging: true,
+ *     alternativeNameServerConfig: {
+ *         targetNameServers: [
+ *             {
+ *                 ipv4Address: "172.16.1.10",
+ *                 forwardingPath: "private",
+ *             },
+ *             {
+ *                 ipv4Address: "172.16.1.20",
+ *             },
+ *         ],
+ *     },
+ *     networks: [
+ *         {
+ *             networkUrl: network_1.id,
+ *         },
+ *         {
+ *             networkUrl: network_2.id,
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Policy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:dns/policy:Policy default projects/{{project}}/policies/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dns/policy:Policy default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dns/policy:Policy default {{name}}
+ * ```
  */
 export class Policy extends pulumi.CustomResource {
     /**

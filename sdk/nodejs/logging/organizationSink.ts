@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -13,6 +12,32 @@ import * as utilities from "../utilities";
  *
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with this provider.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
+ * const my_sink = new gcp.logging.OrganizationSink("my-sink", {
+ *     orgId: "123456789",
+ *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
+ *     filter: "resource.type = gce_instance AND severity >= WARNING",
+ * });
+ * const log_writer = new gcp.projects.IAMMember("log-writer", {
+ *     role: "roles/storage.objectCreator",
+ *     member: my_sink.writerIdentity,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Organization-level logging sinks can be imported using this format
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/organizationSink:OrganizationSink my_sink organizations/{{organization_id}}/sinks/{{sink_id}}
+ * ```
  */
 export class OrganizationSink extends pulumi.CustomResource {
     /**

@@ -15,6 +15,54 @@ namespace Pulumi.Gcp.Container
     /// and [the API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters.nodePools).
     /// 
     /// ## Example Usage
+    /// ### Using A Separately Managed Node Pool (Recommended)
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             RemoveDefaultNodePool = true,
+    ///             InitialNodeCount = 1,
+    ///         });
+    ///         var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new Gcp.Container.NodePoolArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Cluster = primary.Name,
+    ///             NodeCount = 1,
+    ///             NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
+    ///             {
+    ///                 Preemptible = true,
+    ///                 MachineType = "e2-medium",
+    ///                 OauthScopes = 
+    ///                 {
+    ///                     "https://www.googleapis.com/auth/logging.write",
+    ///                     "https://www.googleapis.com/auth/monitoring",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Node pools can be imported using the `project`, `zone`, `cluster` and `name`. If the project is omitted, the default provider value will be used. Examples
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:container/nodePool:NodePool mainpool my-gcp-project/us-east1-a/my-cluster/main-pool
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
+    /// ```
     /// </summary>
     public partial class NodePool : Pulumi.CustomResource
     {

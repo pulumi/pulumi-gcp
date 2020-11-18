@@ -19,6 +19,44 @@ namespace Pulumi.Gcp.CloudIdentity
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// ### Cloud Identity Groups Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cloudIdentityGroupBasic = new Gcp.CloudIdentity.Group("cloudIdentityGroupBasic", new Gcp.CloudIdentity.GroupArgs
+    ///         {
+    ///             DisplayName = "my-identity-group",
+    ///             Parent = "customers/A01b123xz",
+    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
+    ///             {
+    ///                 Id = "my-identity-group@example.com",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Group can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudidentity/group:Group default {{name}}
+    /// ```
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

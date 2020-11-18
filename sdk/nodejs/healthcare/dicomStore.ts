@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,6 +16,36 @@ import * as utilities from "../utilities";
  *     * [Creating a DICOM store](https://cloud.google.com/healthcare/docs/how-tos/dicom)
  *
  * ## Example Usage
+ * ### Healthcare Dicom Store Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const _default = new gcp.healthcare.DicomStore("default", {
+ *     dataset: dataset.id,
+ *     notificationConfig: {
+ *         pubsubTopic: topic.id,
+ *     },
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DicomStore can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
+ * ```
  */
 export class DicomStore extends pulumi.CustomResource {
     /**

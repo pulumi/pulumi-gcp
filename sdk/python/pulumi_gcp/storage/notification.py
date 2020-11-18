@@ -42,6 +42,43 @@ class Notification(pulumi.CustomResource):
         > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
         making this resource dependent on those IAM resources via `depends_on`. This will safeguard against errors due to IAM race conditions.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        gcs_account = gcp.storage.get_project_service_account()
+        topic = gcp.pubsub.Topic("topic")
+        binding = gcp.pubsub.TopicIAMBinding("binding",
+            topic=topic.id,
+            role="roles/pubsub.publisher",
+            members=[f"serviceAccount:{gcs_account.email_address}"])
+        # End enabling notifications
+        bucket = gcp.storage.Bucket("bucket")
+        notification = gcp.storage.Notification("notification",
+            bucket=bucket.name,
+            payload_format="JSON_API_V1",
+            topic=topic.id,
+            event_types=[
+                "OBJECT_FINALIZE",
+                "OBJECT_METADATA_UPDATE",
+            ],
+            custom_attributes={
+                "new-attribute": "new-attribute-value",
+            },
+            opts=ResourceOptions(depends_on=[binding]))
+        # Enable notifications by giving the correct IAM permission to the unique service account.
+        ```
+
+        ## Import
+
+        Storage notifications can be imported using the notification `id` in the format `<bucket_name>/notificationConfigs/<id>` e.g.
+
+        ```sh
+         $ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket.

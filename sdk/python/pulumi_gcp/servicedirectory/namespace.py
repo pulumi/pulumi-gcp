@@ -33,6 +33,37 @@ class Namespace(pulumi.CustomResource):
             * [Configuring a namespace](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_namespace)
 
         ## Example Usage
+        ### Service Directory Namespace Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.servicedirectory.Namespace("example",
+            namespace_id="example-namespace",
+            location="us-central1",
+            labels={
+                "key": "value",
+                "foo": "bar",
+            },
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Namespace can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/namespace:Namespace default {{project}}/{{location}}/{{namespace_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

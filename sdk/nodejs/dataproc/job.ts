@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -11,6 +10,56 @@ import * as utilities from "../utilities";
  * [the official dataproc documentation](https://cloud.google.com/dataproc/).
  *
  * !> **Note:** This resource does not support 'update' and changing any attributes will cause the resource to be recreated.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const mycluster = new gcp.dataproc.Cluster("mycluster", {region: "us-central1"});
+ * // Submit an example spark job to a dataproc cluster
+ * const spark = new gcp.dataproc.Job("spark", {
+ *     region: mycluster.region,
+ *     forceDelete: true,
+ *     placement: {
+ *         clusterName: mycluster.name,
+ *     },
+ *     sparkConfig: {
+ *         mainClass: "org.apache.spark.examples.SparkPi",
+ *         jarFileUris: ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+ *         args: ["1000"],
+ *         properties: {
+ *             "spark.logConf": "true",
+ *         },
+ *         loggingConfig: {
+ *             driverLogLevels: {
+ *                 root: "INFO",
+ *             },
+ *         },
+ *     },
+ * });
+ * // Submit an example pyspark job to a dataproc cluster
+ * const pyspark = new gcp.dataproc.Job("pyspark", {
+ *     region: mycluster.region,
+ *     forceDelete: true,
+ *     placement: {
+ *         clusterName: mycluster.name,
+ *     },
+ *     pysparkConfig: {
+ *         mainPythonFileUri: "gs://dataproc-examples-2f10d78d114f6aaec76462e3c310f31f/src/pyspark/hello-world/hello-world.py",
+ *         properties: {
+ *             "spark.logConf": "true",
+ *         },
+ *     },
+ * });
+ * export const sparkStatus = spark.statuses.apply(statuses => statuses[0].state);
+ * export const pysparkStatus = pyspark.statuses.apply(statuses => statuses[0].state);
+ * ```
+ *
+ * ## Import
+ *
+ * This resource does not support import.
  */
 export class Job extends pulumi.CustomResource {
     /**

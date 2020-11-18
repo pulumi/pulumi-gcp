@@ -19,6 +19,84 @@ import * as utilities from "../utilities";
  *     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
  *
  * ## Example Usage
+ * ### Target Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const vmimage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const target_vm = new gcp.compute.Instance("target-vm", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: vmimage.then(vmimage => vmimage.selfLink),
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const _default = new gcp.compute.TargetInstance("default", {instance: target_vm.id});
+ * ```
+ * ### Target Instance Custom Network
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const target-vmNetwork = gcp.compute.getNetwork({
+ *     name: "default",
+ * });
+ * const vmimage = gcp.compute.getImage({
+ *     family: "debian-10",
+ *     project: "debian-cloud",
+ * });
+ * const target_vmInstance = new gcp.compute.Instance("target-vmInstance", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: vmimage.then(vmimage => vmimage.selfLink),
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const customNetwork = new gcp.compute.TargetInstance("customNetwork", {
+ *     instance: target_vmInstance.id,
+ *     network: target_vmNetwork.then(target_vmNetwork => target_vmNetwork.selfLink),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * TargetInstance can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
+ * ```
  */
 export class TargetInstance extends pulumi.CustomResource {
     /**

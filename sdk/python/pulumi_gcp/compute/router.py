@@ -36,6 +36,49 @@ class Router(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+        ### Router Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foobar_network = gcp.compute.Network("foobarNetwork", auto_create_subnetworks=False)
+        foobar_router = gcp.compute.Router("foobarRouter",
+            network=foobar_network.name,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+                advertise_mode="CUSTOM",
+                advertised_groups=["ALL_SUBNETS"],
+                advertised_ip_ranges=[
+                    {
+                        "range": "1.2.3.4",
+                    },
+                    {
+                        "range": "6.7.0.0/16",
+                    },
+                ],
+            ))
+        ```
+
+        ## Import
+
+        Router can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/router:Router default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

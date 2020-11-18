@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -23,6 +22,62 @@ import * as utilities from "../utilities";
  *     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
  *
  * ## Example Usage
+ * ### Monitoring Slo Appengine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.monitoring.getAppEngineService({
+ *     moduleId: "default",
+ * });
+ * const appengSlo = new gcp.monitoring.Slo("appengSlo", {
+ *     service: _default.then(_default => _default.serviceId),
+ *     sloId: "ae-slo",
+ *     displayName: "Test SLO for App Engine",
+ *     goal: 0.9,
+ *     calendarPeriod: "DAY",
+ *     basicSli: {
+ *         latency: {
+ *             threshold: "1s",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Monitoring Slo Request Based
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customsrv = new gcp.monitoring.CustomService("customsrv", {
+ *     serviceId: "custom-srv-request-slos",
+ *     displayName: "My Custom Service",
+ * });
+ * const requestBasedSlo = new gcp.monitoring.Slo("requestBasedSlo", {
+ *     service: customsrv.serviceId,
+ *     sloId: "consumed-api-slo",
+ *     displayName: "Test SLO with request based SLI (good total ratio)",
+ *     goal: 0.9,
+ *     rollingPeriodDays: 30,
+ *     requestBasedSli: {
+ *         distributionCut: {
+ *             distributionFilter: "metric.type=\"serviceruntime.googleapis.com/api/request_latencies\" resource.type=\"api\"  ",
+ *             range: {
+ *                 max: 0.5,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Slo can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:monitoring/slo:Slo default {{name}}
+ * ```
  */
 export class Slo extends pulumi.CustomResource {
     /**

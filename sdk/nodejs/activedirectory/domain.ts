@@ -14,6 +14,26 @@ import * as utilities from "../utilities";
  *     * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
  *
  * ## Example Usage
+ * ### Active Directory Domain Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ad_domain = new gcp.activedirectory.Domain("ad-domain", {
+ *     domainName: "tfgen.org.com",
+ *     locations: ["us-central1"],
+ *     reservedIpRange: "192.168.255.0/24",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Domain can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
+ * ```
  */
 export class Domain extends pulumi.CustomResource {
     /**

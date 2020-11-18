@@ -2,13 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Get the IP address from a static address. For more information see
  * the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myAddress = gcp.compute.getAddress({
+ *     name: "foobar",
+ * });
+ * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
+ * const frontend = new gcp.dns.RecordSet("frontend", {
+ *     type: "A",
+ *     ttl: 300,
+ *     managedZone: prod.name,
+ *     rrdatas: [myAddress.then(myAddress => myAddress.address)],
+ * });
+ * ```
  */
 export function getAddress(args: GetAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressResult> {
     if (!opts) {

@@ -49,6 +49,165 @@ class Service(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/run/docs/)
 
         ## Example Usage
+        ### Cloud Run Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
+
+        {{% /example %}}
+        ### Cloud Run Service Sql
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            deletion_protection=True,
+            region="us-east1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ))
+        default = gcp.cloudrun.Service("default",
+            autogenerate_revision_name=True,
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    annotations={
+                        "autoscaling.knative.dev/maxScale": "1000",
+                        "run.googleapis.com/client-name": "demo",
+                        "run.googleapis.com/cloudsql-instances": instance.name.apply(lambda name: f"my-project-name:us-central1:{name}"),
+                    },
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ))
+        ```
+
+        ###Cloud Run Service Noauth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ))
+        noauth_iam_policy = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/run.invoker",
+            members=["allUsers"],
+        )])
+        noauth_iam_policy = gcp.cloudrun.IamPolicy("noauthIamPolicy",
+            location=default.location,
+            project=default.project,
+            service=default.name,
+            policy_data=noauth_iam_policy.policy_data)
+        ```
+        ### Cloud Run Service Multiple Environment Variables
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            autogenerate_revision_name=True,
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                annotations={
+                    "generated-by": "magic-modules",
+                },
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        env=[
+                            {
+                                "name": "SOURCE",
+                                "value": "remote",
+                            },
+                            {
+                                "name": "TARGET",
+                                "value": "home",
+                            },
+                        ],
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                latest_revision=True,
+                percent=100,
+            )])
+        ```
+        ### Cloud Run Service Traffic Split
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
+                    name="cloudrun-srv-green",
+                ),
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                    )],
+                ),
+            ),
+            traffics=[
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=25,
+                    revision_name="cloudrun-srv-green",
+                ),
+                gcp.cloudrun.ServiceTrafficArgs(
+                    percent=75,
+                    revision_name="cloudrun-srv-blue",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Service can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

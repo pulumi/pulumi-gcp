@@ -28,6 +28,18 @@ namespace Pulumi.Gcp.Firebase
     ///     * [Official Documentation](https://firebase.google.com/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ProjectLocation can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firebase/projectLocation:ProjectLocation default projects/{{project}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firebase/projectLocation:ProjectLocation default {{project}}
+    /// ```
     /// </summary>
     public partial class ProjectLocation : Pulumi.CustomResource
     {

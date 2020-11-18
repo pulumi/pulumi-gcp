@@ -19,6 +19,26 @@ namespace Pulumi.Gcp.Memcache
     ///     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// Instance can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:memcache/instance:Instance default {{name}}
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

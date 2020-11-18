@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -11,6 +10,38 @@ import * as utilities from "../utilities";
  * information, see Creating VLAN Attachments.
  *
  * ## Example Usage
+ * ### Interconnect Attachment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foobar = new gcp.compute.Router("foobar", {network: google_compute_network.foobar.name});
+ * const onPrem = new gcp.compute.InterconnectAttachment("onPrem", {
+ *     interconnect: "my-interconnect-id",
+ *     router: foobar.id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * InterconnectAttachment can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
+ * ```
  */
 export class InterconnectAttachment extends pulumi.CustomResource {
     /**

@@ -28,6 +28,44 @@ class Database(pulumi.CustomResource):
         Google's cloud.
 
         ## Example Usage
+        ### Sql Database Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True)
+        database = gcp.sql.Database("database", instance=instance.name)
+        ```
+
+        ## Import
+
+        Database can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default instances/{{instance}}/databases/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default {{project}}/{{instance}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default {{instance}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/database:Database default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

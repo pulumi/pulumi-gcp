@@ -33,6 +33,133 @@ class TunnelInstanceIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `iap.TunnelInstanceIAMBinding` resources **can be** used in conjunction with `iap.TunnelInstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_iap\_tunnel\_instance\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.iap.TunnelInstanceIAMPolicy("policy",
+            project=google_compute_instance["tunnelvm"]["project"],
+            zone=google_compute_instance["tunnelvm"]["zone"],
+            instance=google_compute_instance["tunnelvm"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ),
+        )])
+        policy = gcp.iap.TunnelInstanceIAMPolicy("policy",
+            project=google_compute_instance["tunnelvm"]["project"],
+            zone=google_compute_instance["tunnelvm"]["zone"],
+            instance=google_compute_instance["tunnelvm"]["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\_iap\_tunnel\_instance\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.TunnelInstanceIAMBinding("binding",
+            project=google_compute_instance["tunnelvm"]["project"],
+            zone=google_compute_instance["tunnelvm"]["zone"],
+            instance=google_compute_instance["tunnelvm"]["name"],
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.iap.TunnelInstanceIAMBinding("binding",
+            project=google_compute_instance["tunnelvm"]["project"],
+            zone=google_compute_instance["tunnelvm"]["zone"],
+            instance=google_compute_instance["tunnelvm"]["name"],
+            role="roles/iap.tunnelResourceAccessor",
+            members=["user:jane@example.com"],
+            condition=gcp.iap.TunnelInstanceIAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ))
+        ```
+        ## google\_iap\_tunnel\_instance\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.TunnelInstanceIAMMember("member",
+            project=google_compute_instance["tunnelvm"]["project"],
+            zone=google_compute_instance["tunnelvm"]["zone"],
+            instance=google_compute_instance["tunnelvm"]["name"],
+            role="roles/iap.tunnelResourceAccessor",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.iap.TunnelInstanceIAMMember("member",
+            project=google_compute_instance["tunnelvm"]["project"],
+            zone=google_compute_instance["tunnelvm"]["zone"],
+            instance=google_compute_instance["tunnelvm"]["name"],
+            role="roles/iap.tunnelResourceAccessor",
+            member="user:jane@example.com",
+            condition=gcp.iap.TunnelInstanceIAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ))
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{name}} * projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy tunnelinstance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy editor "projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}} roles/iap.tunnelResourceAccessor"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy editor projects/{{project}}/iap_tunnel/zones/{{zone}}/instances/{{tunnel_instance}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: Used to find the parent resource to bind the IAM policy to

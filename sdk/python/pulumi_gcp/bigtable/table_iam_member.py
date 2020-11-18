@@ -37,6 +37,69 @@ class TableIamMember(pulumi.CustomResource):
 
         > **Note:** `bigtable.TableIamBinding` resources **can be** used in conjunction with `bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_bigtable\_instance\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/bigtable.user",
+            members=["user:jane@example.com"],
+        )])
+        editor = gcp.bigtable.TableIamPolicy("editor",
+            project="your-project",
+            instance="your-bigtable-instance",
+            table="your-bigtable-table",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_bigtable\_instance\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.bigtable.TableIamBinding("editor",
+            instance="your-bigtable-instance",
+            members=["user:jane@example.com"],
+            role="roles/bigtable.user",
+            table="your-bigtable-table")
+        ```
+
+        ## google\_bigtable\_instance\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.bigtable.TableIamMember("editor",
+            instance="your-bigtable-instance",
+            member="user:jane@example.com",
+            role="roles/bigtable.user",
+            table="your-bigtable-table")
+        ```
+
+        ## Import
+
+        Instance IAM resources can be imported using the project, table name, role and/or member.
+
+        ```sh
+         $ pulumi import gcp:bigtable/tableIamMember:TableIamMember editor "projects/{project}/tables/{table}"
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigtable/tableIamMember:TableIamMember editor "projects/{project}/tables/{table} roles/editor"
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigtable/tableIamMember:TableIamMember editor "projects/{project}/tables/{table} roles/editor user:jane@example.com"
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] instance: The name or relative resource id of the instance that owns the table.

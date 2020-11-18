@@ -19,6 +19,120 @@ namespace Pulumi.Gcp.Container
     /// plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### With A Separately Managed Node Pool (Recommended)
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             RemoveDefaultNodePool = true,
+    ///             InitialNodeCount = 1,
+    ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
+    ///             {
+    ///                 Username = "",
+    ///                 Password = "",
+    ///                 ClientCertificateConfig = new Gcp.Container.Inputs.ClusterMasterAuthClientCertificateConfigArgs
+    ///                 {
+    ///                     IssueClientCertificate = false,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new Gcp.Container.NodePoolArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Cluster = primary.Name,
+    ///             NodeCount = 1,
+    ///             NodeConfig = new Gcp.Container.Inputs.NodePoolNodeConfigArgs
+    ///             {
+    ///                 Preemptible = true,
+    ///                 MachineType = "e2-medium",
+    ///                 Metadata = 
+    ///                 {
+    ///                     { "disable-legacy-endpoints", "true" },
+    ///                 },
+    ///                 OauthScopes = 
+    ///                 {
+    ///                     "https://www.googleapis.com/auth/cloud-platform",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### With The Default Node Pool
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             InitialNodeCount = 3,
+    ///             Location = "us-central1-a",
+    ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
+    ///             {
+    ///                 ClientCertificateConfig = new Gcp.Container.Inputs.ClusterMasterAuthClientCertificateConfigArgs
+    ///                 {
+    ///                     IssueClientCertificate = false,
+    ///                 },
+    ///                 Password = "",
+    ///                 Username = "",
+    ///             },
+    ///             NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
+    ///             {
+    ///                 Labels = 
+    ///                 {
+    ///                     { "foo", "bar" },
+    ///                 },
+    ///                 Metadata = 
+    ///                 {
+    ///                     { "disable-legacy-endpoints", "true" },
+    ///                 },
+    ///                 OauthScopes = 
+    ///                 {
+    ///                     "https://www.googleapis.com/auth/cloud-platform",
+    ///                 },
+    ///                 Tags = 
+    ///                 {
+    ///                     "foo",
+    ///                     "bar",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+    /// ```
+    /// 
+    ///  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
     /// </summary>
     public partial class Cluster : Pulumi.CustomResource
     {

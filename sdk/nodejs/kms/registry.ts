@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,85 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/iot/docs/)
  *
  * ## Example Usage
+ * ### Cloudiot Device Registry Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test_registry = new gcp.iot.Registry("test-registry", {});
+ * ```
+ * ### Cloudiot Device Registry Single Event Notification Configs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const test_registry = new gcp.iot.Registry("test-registry", {eventNotificationConfigs: [{
+ *     pubsubTopicName: default_telemetry.id,
+ *     subfolderMatches: "",
+ * }]});
+ * ```
+ * ### Cloudiot Device Registry Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const default_devicestatus = new gcp.pubsub.Topic("default-devicestatus", {});
+ * const default_telemetry = new gcp.pubsub.Topic("default-telemetry", {});
+ * const additional_telemetry = new gcp.pubsub.Topic("additional-telemetry", {});
+ * const test_registry = new gcp.iot.Registry("test-registry", {
+ *     eventNotificationConfigs: [
+ *         {
+ *             pubsubTopicName: additional_telemetry.id,
+ *             subfolderMatches: "test/path",
+ *         },
+ *         {
+ *             pubsubTopicName: default_telemetry.id,
+ *             subfolderMatches: "",
+ *         },
+ *     ],
+ *     stateNotificationConfig: {
+ *         pubsub_topic_name: default_devicestatus.id,
+ *     },
+ *     mqttConfig: {
+ *         mqtt_enabled_state: "MQTT_ENABLED",
+ *     },
+ *     httpConfig: {
+ *         http_enabled_state: "HTTP_ENABLED",
+ *     },
+ *     logLevel: "INFO",
+ *     credentials: [{
+ *         publicKeyCertificate: {
+ *             format: "X509_CERTIFICATE_PEM",
+ *             certificate: fs.readFileSync("test-fixtures/rsa_cert.pem"),
+ *         },
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DeviceRegistry can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/registry:Registry default {{project}}/locations/{{region}}/registries/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/registry:Registry default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/registry:Registry default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/registry:Registry default {{name}}
+ * ```
  *
  * @deprecated gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry
  */

@@ -14,6 +14,70 @@ namespace Pulumi.Gcp.Dataflow
     /// the official documentation for
     /// [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bigDataJob = new Gcp.Dataflow.Job("bigDataJob", new Gcp.Dataflow.JobArgs
+    ///         {
+    ///             Parameters = 
+    ///             {
+    ///                 { "baz", "qux" },
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             TempGcsLocation = "gs://my-bucket/tmp_dir",
+    ///             TemplateGcsPath = "gs://my-bucket/templates/template_file",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Streaming Job
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var bucket1 = new Gcp.Storage.Bucket("bucket1", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             ForceDestroy = true,
+    ///         });
+    ///         var bucket2 = new Gcp.Storage.Bucket("bucket2", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             ForceDestroy = true,
+    ///         });
+    ///         var pubsubStream = new Gcp.Dataflow.Job("pubsubStream", new Gcp.Dataflow.JobArgs
+    ///         {
+    ///             TemplateGcsPath = "gs://my-bucket/templates/template_file",
+    ///             TempGcsLocation = "gs://my-bucket/tmp_dir",
+    ///             Parameters = 
+    ///             {
+    ///                 { "inputFilePattern", bucket1.Url.Apply(url =&gt; $"{url}/*.json") },
+    ///                 { "outputTopic", topic.Id },
+    ///             },
+    ///             TransformNameMapping = 
+    ///             {
+    ///                 { "name", "test_job" },
+    ///                 { "env", "test" },
+    ///             },
+    ///             OnDelete = "cancel",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Note on "destroy" / "apply"
     /// 
     /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
@@ -21,6 +85,10 @@ namespace Pulumi.Gcp.Dataflow
     /// The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
     /// 
     /// A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `on_delete` to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     public partial class Job : Pulumi.CustomResource
     {

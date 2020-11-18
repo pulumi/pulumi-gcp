@@ -23,6 +23,22 @@ class Location(pulumi.CustomResource):
         """
         Represents a Location resource.
 
+        ## Import
+
+        Location can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:notebooks/location:Location default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Name of the Location resource.

@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -23,6 +24,101 @@ import (
 // determined which will require enabling the compute api.
 //
 // ## Example Usage
+// ### Creating A Private Bucket In Standard Storage, In The EU Region. Bucket Configured As Static Website And CORS Configurations
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucket(ctx, "static_site", &storage.BucketArgs{
+// 			Cors: storage.BucketCorArray{
+// 				&storage.BucketCorArgs{
+// 					MaxAgeSeconds: pulumi.Int(3600),
+// 					Methods: pulumi.StringArray{
+// 						pulumi.String("GET"),
+// 						pulumi.String("HEAD"),
+// 						pulumi.String("PUT"),
+// 						pulumi.String("POST"),
+// 						pulumi.String("DELETE"),
+// 					},
+// 					Origins: pulumi.StringArray{
+// 						pulumi.String("http://image-store.com"),
+// 					},
+// 					ResponseHeaders: pulumi.StringArray{
+// 						pulumi.String("*"),
+// 					},
+// 				},
+// 			},
+// 			ForceDestroy:             pulumi.Bool(true),
+// 			Location:                 pulumi.String("EU"),
+// 			UniformBucketLevelAccess: pulumi.Bool(true),
+// 			Website: &storage.BucketWebsiteArgs{
+// 				MainPageSuffix: pulumi.String("index.html"),
+// 				NotFoundPage:   pulumi.String("404.html"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Life Cycle Settings For Storage Bucket Objects
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucket(ctx, "auto_expire", &storage.BucketArgs{
+// 			ForceDestroy: pulumi.Bool(true),
+// 			LifecycleRules: storage.BucketLifecycleRuleArray{
+// 				&storage.BucketLifecycleRuleArgs{
+// 					Action: &storage.BucketLifecycleRuleActionArgs{
+// 						Type: pulumi.String("Delete"),
+// 					},
+// 					Condition: &storage.BucketLifecycleRuleConditionArgs{
+// 						Age: pulumi.Int(3),
+// 					},
+// 				},
+// 			},
+// 			Location: pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Storage buckets can be imported using the `name` or
+//
+// `project/name`. If the project is not passed to the import command it will be inferred from the provider block or environment variables. If it cannot be inferred it will be queried from the Compute API (this will fail if the API is not enabled). e.g.
+//
+// ```sh
+//  $ pulumi import gcp:storage/bucket:Bucket image-store image-store-bucket
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:storage/bucket:Bucket image-store tf-test-project/image-store-bucket
+// ```
+//
+//  `false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
 type Bucket struct {
 	pulumi.CustomResourceState
 
@@ -276,4 +372,43 @@ type BucketArgs struct {
 
 func (BucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketArgs)(nil)).Elem()
+}
+
+type BucketInput interface {
+	pulumi.Input
+
+	ToBucketOutput() BucketOutput
+	ToBucketOutputWithContext(ctx context.Context) BucketOutput
+}
+
+func (Bucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*Bucket)(nil)).Elem()
+}
+
+func (i Bucket) ToBucketOutput() BucketOutput {
+	return i.ToBucketOutputWithContext(context.Background())
+}
+
+func (i Bucket) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketOutput)
+}
+
+type BucketOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketOutput)(nil)).Elem()
+}
+
+func (o BucketOutput) ToBucketOutput() BucketOutput {
+	return o
+}
+
+func (o BucketOutput) ToBucketOutputWithContext(ctx context.Context) BucketOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketOutput{})
 }

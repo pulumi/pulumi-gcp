@@ -40,6 +40,196 @@ class PatchDeployment(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/os-patch-management)
 
         ## Example Usage
+        ### Os Config Patch Deployment Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        patch = gcp.osconfig.PatchDeployment("patch",
+            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
+                all=True,
+            ),
+            one_time_schedule=gcp.osconfig.PatchDeploymentOneTimeScheduleArgs(
+                execute_time="2999-10-10T10:10:10.045123456Z",
+            ),
+            patch_deployment_id="patch-deploy-inst")
+        ```
+        ### Os Config Patch Deployment Instance
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        foobar = gcp.compute.Instance("foobar",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+            )],
+            metadata={
+                "foo": "bar",
+            })
+        patch = gcp.osconfig.PatchDeployment("patch",
+            patch_deployment_id="patch-deploy-inst",
+            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
+                instances=[foobar.id],
+            ),
+            patch_config=gcp.osconfig.PatchDeploymentPatchConfigArgs(
+                yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
+                    security=True,
+                    minimal=True,
+                    excludes=["bash"],
+                ),
+            ),
+            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
+                time_zone={
+                    "id": "America/New_York",
+                },
+                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
+                    hours=0,
+                    minutes=30,
+                    seconds=30,
+                    nanos=20,
+                ),
+                monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
+                    month_day=1,
+                ),
+            ))
+        ```
+        ### Os Config Patch Deployment Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        patch = gcp.osconfig.PatchDeployment("patch",
+            duration="10s",
+            instance_filter=gcp.osconfig.PatchDeploymentInstanceFilterArgs(
+                group_labels=[gcp.osconfig.PatchDeploymentInstanceFilterGroupLabelArgs(
+                    labels={
+                        "app": "web",
+                        "env": "dev",
+                    },
+                )],
+                instance_name_prefixes=["test-"],
+                zones=[
+                    "us-central1-a",
+                    "us-central-1c",
+                ],
+            ),
+            patch_config=gcp.osconfig.PatchDeploymentPatchConfigArgs(
+                apt=gcp.osconfig.PatchDeploymentPatchConfigAptArgs(
+                    excludes=["python"],
+                    type="DIST",
+                ),
+                goo=gcp.osconfig.PatchDeploymentPatchConfigGooArgs(
+                    enabled=True,
+                ),
+                post_step=gcp.osconfig.PatchDeploymentPatchConfigPostStepArgs(
+                    linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigArgs(
+                        gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepLinuxExecStepConfigGcsObjectArgs(
+                            bucket="my-patch-scripts",
+                            generation_number="1523477886880",
+                            object="linux/post_patch_script",
+                        ),
+                    ),
+                    windows_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigArgs(
+                        gcs_object=gcp.osconfig.PatchDeploymentPatchConfigPostStepWindowsExecStepConfigGcsObjectArgs(
+                            bucket="my-patch-scripts",
+                            generation_number="135920493447",
+                            object="windows/post_patch_script.ps1",
+                        ),
+                        interpreter="POWERSHELL",
+                    ),
+                ),
+                pre_step=gcp.osconfig.PatchDeploymentPatchConfigPreStepArgs(
+                    linux_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPreStepLinuxExecStepConfigArgs(
+                        allowed_success_codes=[
+                            0,
+                            3,
+                        ],
+                        local_path="/tmp/pre_patch_script.sh",
+                    ),
+                    windows_exec_step_config=gcp.osconfig.PatchDeploymentPatchConfigPreStepWindowsExecStepConfigArgs(
+                        allowed_success_codes=[
+                            0,
+                            2,
+                        ],
+                        interpreter="SHELL",
+                        local_path="C:\\Users\\user\\pre-patch-script.cmd",
+                    ),
+                ),
+                reboot_config="ALWAYS",
+                windows_update=gcp.osconfig.PatchDeploymentPatchConfigWindowsUpdateArgs(
+                    classifications=[
+                        "CRITICAL",
+                        "SECURITY",
+                        "UPDATE",
+                    ],
+                ),
+                yum=gcp.osconfig.PatchDeploymentPatchConfigYumArgs(
+                    excludes=["bash"],
+                    minimal=True,
+                    security=True,
+                ),
+                zypper=gcp.osconfig.PatchDeploymentPatchConfigZypperArgs(
+                    categories=["security"],
+                ),
+            ),
+            patch_deployment_id="patch-deploy-inst",
+            recurring_schedule=gcp.osconfig.PatchDeploymentRecurringScheduleArgs(
+                monthly=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyArgs(
+                    week_day_of_month=gcp.osconfig.PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs(
+                        day_of_week="TUESDAY",
+                        week_ordinal=-1,
+                    ),
+                ),
+                time_of_day=gcp.osconfig.PatchDeploymentRecurringScheduleTimeOfDayArgs(
+                    hours=0,
+                    minutes=30,
+                    nanos=20,
+                    seconds=30,
+                ),
+                time_zone={
+                    "id": "America/New_York",
+                },
+            ),
+            rollout=gcp.osconfig.PatchDeploymentRolloutArgs(
+                disruption_budget=gcp.osconfig.PatchDeploymentRolloutDisruptionBudgetArgs(
+                    fixed=1,
+                ),
+                mode="ZONE_BY_ZONE",
+            ))
+        ```
+
+        ## Import
+
+        PatchDeployment can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default projects/{{project}}/patchDeployments/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

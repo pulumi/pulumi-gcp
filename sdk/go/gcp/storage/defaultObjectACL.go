@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,6 +24,45 @@ import (
 //
 // > Want fine-grained control over default object ACLs? Use `storage.DefaultObjectAccessControl`
 // to control individual role entity pairs.
+//
+// ## Example Usage
+//
+// Example creating a default object ACL on a bucket with one owner, and one reader.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucket(ctx, "image_store", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewDefaultObjectACL(ctx, "image_store_default_acl", &storage.DefaultObjectACLArgs{
+// 			Bucket: image_store.Name,
+// 			RoleEntities: pulumi.StringArray{
+// 				pulumi.String("OWNER:user-my.email@gmail.com"),
+// 				pulumi.String("READER:group-mygroup"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type DefaultObjectACL struct {
 	pulumi.CustomResourceState
 
@@ -107,4 +147,43 @@ type DefaultObjectACLArgs struct {
 
 func (DefaultObjectACLArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*defaultObjectACLArgs)(nil)).Elem()
+}
+
+type DefaultObjectACLInput interface {
+	pulumi.Input
+
+	ToDefaultObjectACLOutput() DefaultObjectACLOutput
+	ToDefaultObjectACLOutputWithContext(ctx context.Context) DefaultObjectACLOutput
+}
+
+func (DefaultObjectACL) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultObjectACL)(nil)).Elem()
+}
+
+func (i DefaultObjectACL) ToDefaultObjectACLOutput() DefaultObjectACLOutput {
+	return i.ToDefaultObjectACLOutputWithContext(context.Background())
+}
+
+func (i DefaultObjectACL) ToDefaultObjectACLOutputWithContext(ctx context.Context) DefaultObjectACLOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLOutput)
+}
+
+type DefaultObjectACLOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultObjectACLOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultObjectACLOutput)(nil)).Elem()
+}
+
+func (o DefaultObjectACLOutput) ToDefaultObjectACLOutput() DefaultObjectACLOutput {
+	return o
+}
+
+func (o DefaultObjectACLOutput) ToDefaultObjectACLOutputWithContext(ctx context.Context) DefaultObjectACLOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DefaultObjectACLOutput{})
 }

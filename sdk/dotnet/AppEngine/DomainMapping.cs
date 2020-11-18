@@ -19,6 +19,44 @@ namespace Pulumi.Gcp.AppEngine
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/mapping-custom-domains)
     /// 
     /// ## Example Usage
+    /// ### App Engine Domain Mapping Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var domainMapping = new Gcp.AppEngine.DomainMapping("domainMapping", new Gcp.AppEngine.DomainMappingArgs
+    ///         {
+    ///             DomainName = "verified-domain.com",
+    ///             SslSettings = new Gcp.AppEngine.Inputs.DomainMappingSslSettingsArgs
+    ///             {
+    ///                 SslManagementType = "AUTOMATIC",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DomainMapping can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default apps/{{project}}/domainMappings/{{domain_name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{project}}/{{domain_name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
+    /// ```
     /// </summary>
     public partial class DomainMapping : Pulumi.CustomResource
     {

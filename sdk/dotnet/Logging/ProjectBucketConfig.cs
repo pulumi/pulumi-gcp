@@ -15,6 +15,63 @@ namespace Pulumi.Gcp.Logging
     /// [Storing Logs](https://cloud.google.com/logging/docs/storage).
     /// 
     /// &gt; **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Organizations.Project("default", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "your-project-id",
+    ///             OrgId = "123456789",
+    ///         });
+    ///         var basic = new Gcp.Logging.ProjectBucketConfig("basic", new Gcp.Logging.ProjectBucketConfigArgs
+    ///         {
+    ///             Project = @default.Name,
+    ///             Location = "global",
+    ///             RetentionDays = 30,
+    ///             BucketId = "_Default",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Create logging bucket with customId
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new Gcp.Logging.ProjectBucketConfig("basic", new Gcp.Logging.ProjectBucketConfigArgs
+    ///         {
+    ///             BucketId = "custom-bucket",
+    ///             Location = "global",
+    ///             Project = "project_id",
+    ///             RetentionDays = 30,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported using the following format
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
+    /// ```
     /// </summary>
     public partial class ProjectBucketConfig : Pulumi.CustomResource
     {

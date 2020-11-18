@@ -13,6 +13,30 @@ namespace Pulumi.Gcp.Compute
     {
         /// <summary>
         /// Get a router within GCE from its name and VPC.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_router = Output.Create(Gcp.Compute.GetRouter.InvokeAsync(new Gcp.Compute.GetRouterArgs
+        ///         {
+        ///             Name = "myrouter-us-east1",
+        ///             Network = "my-network",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterArgs(), options.WithVersion());

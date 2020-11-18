@@ -4,6 +4,7 @@
 package cloudbuild
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -18,6 +19,152 @@ import (
 //     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
 //
 // ## Example Usage
+// ### Cloudbuild Trigger Filename
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudbuild.NewTrigger(ctx, "filename_trigger", &cloudbuild.TriggerArgs{
+// 			Filename: pulumi.String("cloudbuild.yaml"),
+// 			Substitutions: pulumi.StringMap{
+// 				"_BAZ": pulumi.String("qux"),
+// 				"_FOO": pulumi.String("bar"),
+// 			},
+// 			TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
+// 				BranchName: pulumi.String("master"),
+// 				RepoName:   pulumi.String("my-repo"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Cloudbuild Trigger Build
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudbuild"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudbuild.NewTrigger(ctx, "build_trigger", &cloudbuild.TriggerArgs{
+// 			Build: &cloudbuild.TriggerBuildArgs{
+// 				Artifacts: &cloudbuild.TriggerBuildArtifactsArgs{
+// 					Images: pulumi.StringArray{
+// 						pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v", "gcr.io/", "$", "PROJECT_ID/", "$", "REPO_NAME:", "$", "COMMIT_SHA")),
+// 					},
+// 					Objects: &cloudbuild.TriggerBuildArtifactsObjectsArgs{
+// 						Location: pulumi.String("gs://bucket/path/to/somewhere/"),
+// 						Paths: pulumi.StringArray{
+// 							pulumi.String("path"),
+// 						},
+// 					},
+// 				},
+// 				LogsBucket: pulumi.String("gs://mybucket/logs"),
+// 				Options: &cloudbuild.TriggerBuildOptionsArgs{
+// 					DiskSizeGb:           pulumi.Int(100),
+// 					DynamicSubstitutions: pulumi.Bool(true),
+// 					Env: pulumi.StringArray{
+// 						pulumi.String("ekey = evalue"),
+// 					},
+// 					LogStreamingOption:    pulumi.String("STREAM_OFF"),
+// 					Logging:               pulumi.String("LEGACY"),
+// 					MachineType:           pulumi.String("N1_HIGHCPU_8"),
+// 					RequestedVerifyOption: pulumi.String("VERIFIED"),
+// 					SecretEnv: pulumi.StringArray{
+// 						pulumi.String("secretenv = svalue"),
+// 					},
+// 					SourceProvenanceHash: pulumi.StringArray{
+// 						pulumi.String("MD5"),
+// 					},
+// 					SubstitutionOption: pulumi.String("ALLOW_LOOSE"),
+// 					Volumes: cloudbuild.TriggerBuildOptionsVolumeArray{
+// 						&cloudbuild.TriggerBuildOptionsVolumeArgs{
+// 							Name: pulumi.String("v1"),
+// 							Path: pulumi.String("v1"),
+// 						},
+// 					},
+// 					WorkerPool: pulumi.String("pool"),
+// 				},
+// 				QueueTtl: pulumi.String("20s"),
+// 				Secrets: cloudbuild.TriggerBuildSecretArray{
+// 					&cloudbuild.TriggerBuildSecretArgs{
+// 						KmsKeyName: pulumi.String("projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name"),
+// 						SecretEnv: pulumi.StringMap{
+// 							"PASSWORD": pulumi.String("ZW5jcnlwdGVkLXBhc3N3b3JkCg=="),
+// 						},
+// 					},
+// 				},
+// 				Source: &cloudbuild.TriggerBuildSourceArgs{
+// 					StorageSource: &cloudbuild.TriggerBuildSourceStorageSourceArgs{
+// 						Bucket: pulumi.String("mybucket"),
+// 						Object: pulumi.String("source_code.tar.gz"),
+// 					},
+// 				},
+// 				Steps: cloudbuild.TriggerBuildStepArray{
+// 					&cloudbuild.TriggerBuildStepArgs{
+// 						Args: pulumi.StringArray{
+// 							pulumi.String("cp"),
+// 							pulumi.String("gs://mybucket/remotefile.zip"),
+// 							pulumi.String("localfile.zip"),
+// 						},
+// 						Name:    pulumi.String("gcr.io/cloud-builders/gsutil"),
+// 						Timeout: pulumi.String("120s"),
+// 					},
+// 				},
+// 				Substitutions: pulumi.StringMap{
+// 					"_BAZ": pulumi.String("qux"),
+// 					"_FOO": pulumi.String("bar"),
+// 				},
+// 				Tags: pulumi.StringArray{
+// 					pulumi.String("build"),
+// 					pulumi.String("newFeature"),
+// 				},
+// 			},
+// 			TriggerTemplate: &cloudbuild.TriggerTriggerTemplateArgs{
+// 				BranchName: pulumi.String("master"),
+// 				RepoName:   pulumi.String("my-repo"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Trigger can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudbuild/trigger:Trigger default {{project}}/{{trigger_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
+// ```
 type Trigger struct {
 	pulumi.CustomResourceState
 
@@ -326,4 +473,43 @@ type TriggerArgs struct {
 
 func (TriggerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*triggerArgs)(nil)).Elem()
+}
+
+type TriggerInput interface {
+	pulumi.Input
+
+	ToTriggerOutput() TriggerOutput
+	ToTriggerOutputWithContext(ctx context.Context) TriggerOutput
+}
+
+func (Trigger) ElementType() reflect.Type {
+	return reflect.TypeOf((*Trigger)(nil)).Elem()
+}
+
+func (i Trigger) ToTriggerOutput() TriggerOutput {
+	return i.ToTriggerOutputWithContext(context.Background())
+}
+
+func (i Trigger) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggerOutput)
+}
+
+type TriggerOutput struct {
+	*pulumi.OutputState
+}
+
+func (TriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggerOutput)(nil)).Elem()
+}
+
+func (o TriggerOutput) ToTriggerOutput() TriggerOutput {
+	return o
+}
+
+func (o TriggerOutput) ToTriggerOutputWithContext(ctx context.Context) TriggerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TriggerOutput{})
 }

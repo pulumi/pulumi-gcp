@@ -4,6 +4,7 @@
 package accesscontextmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,103 @@ import (
 //     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 //
 // ## Example Usage
+// ### Access Context Manager Service Perimeters Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/accesscontextmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := accesscontextmanager.NewAccessPolicy(ctx, "access_policy", &accesscontextmanager.AccessPolicyArgs{
+// 			Parent: pulumi.String("organizations/123456789"),
+// 			Title:  pulumi.String("my policy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewServicePerimeters(ctx, "service_perimeter", &accesscontextmanager.ServicePerimetersArgs{
+// 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			ServicePerimeters: accesscontextmanager.ServicePerimetersServicePerimeterArray{
+// 				&accesscontextmanager.ServicePerimetersServicePerimeterArgs{
+// 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/servicePerimeters/"), nil
+// 					}).(pulumi.StringOutput),
+// 					Status: &accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs{
+// 						RestrictedServices: pulumi.StringArray{
+// 							pulumi.String("storage.googleapis.com"),
+// 						},
+// 					},
+// 					Title: pulumi.String(""),
+// 				},
+// 				&accesscontextmanager.ServicePerimetersServicePerimeterArgs{
+// 					Name: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 						return fmt.Sprintf("%v%v%v", "accessPolicies/", name, "/servicePerimeters/"), nil
+// 					}).(pulumi.StringOutput),
+// 					Status: &accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs{
+// 						RestrictedServices: pulumi.StringArray{
+// 							pulumi.String("bigtable.googleapis.com"),
+// 						},
+// 					},
+// 					Title: pulumi.String(""),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = accesscontextmanager.NewAccessLevel(ctx, "access_level", &accesscontextmanager.AccessLevelArgs{
+// 			Basic: &accesscontextmanager.AccessLevelBasicArgs{
+// 				Conditions: accesscontextmanager.AccessLevelBasicConditionArray{
+// 					&accesscontextmanager.AccessLevelBasicConditionArgs{
+// 						DevicePolicy: &accesscontextmanager.AccessLevelBasicConditionDevicePolicyArgs{
+// 							OsConstraints: accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArray{
+// 								&accesscontextmanager.AccessLevelBasicConditionDevicePolicyOsConstraintArgs{
+// 									OsType: pulumi.String("DESKTOP_CHROME_OS"),
+// 								},
+// 							},
+// 							RequireScreenLock: pulumi.Bool(false),
+// 						},
+// 						Regions: pulumi.StringArray{
+// 							pulumi.String("CH"),
+// 							pulumi.String("IT"),
+// 							pulumi.String("US"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "accessPolicies/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Title: pulumi.String("chromeos_no_lock"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ServicePerimeters can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
+// ```
 type ServicePerimeters struct {
 	pulumi.CustomResourceState
 
@@ -105,4 +203,43 @@ type ServicePerimetersArgs struct {
 
 func (ServicePerimetersArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePerimetersArgs)(nil)).Elem()
+}
+
+type ServicePerimetersInput interface {
+	pulumi.Input
+
+	ToServicePerimetersOutput() ServicePerimetersOutput
+	ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput
+}
+
+func (ServicePerimeters) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeters)(nil)).Elem()
+}
+
+func (i ServicePerimeters) ToServicePerimetersOutput() ServicePerimetersOutput {
+	return i.ToServicePerimetersOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeters) ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersOutput)
+}
+
+type ServicePerimetersOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePerimetersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersOutput)(nil)).Elem()
+}
+
+func (o ServicePerimetersOutput) ToServicePerimetersOutput() ServicePerimetersOutput {
+	return o
+}
+
+func (o ServicePerimetersOutput) ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServicePerimetersOutput{})
 }

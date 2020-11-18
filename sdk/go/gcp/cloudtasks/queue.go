@@ -4,6 +4,7 @@
 package cloudtasks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -13,6 +14,85 @@ import (
 // A named resource to which messages are sent by publishers.
 //
 // ## Example Usage
+// ### Queue Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudtasks"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudtasks.NewQueue(ctx, "_default", &cloudtasks.QueueArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Cloud Tasks Queue Advanced
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudtasks"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudtasks.NewQueue(ctx, "advancedConfiguration", &cloudtasks.QueueArgs{
+// 			AppEngineRoutingOverride: &cloudtasks.QueueAppEngineRoutingOverrideArgs{
+// 				Instance: pulumi.String("test"),
+// 				Service:  pulumi.String("worker"),
+// 				Version:  pulumi.String("1.0"),
+// 			},
+// 			Location: pulumi.String("us-central1"),
+// 			RateLimits: &cloudtasks.QueueRateLimitsArgs{
+// 				MaxConcurrentDispatches: pulumi.Int(3),
+// 				MaxDispatchesPerSecond:  pulumi.Float64(2),
+// 			},
+// 			RetryConfig: &cloudtasks.QueueRetryConfigArgs{
+// 				MaxAttempts:      pulumi.Int(5),
+// 				MaxBackoff:       pulumi.String("3s"),
+// 				MaxDoublings:     pulumi.Int(1),
+// 				MaxRetryDuration: pulumi.String("4s"),
+// 				MinBackoff:       pulumi.String("2s"),
+// 			},
+// 			StackdriverLoggingConfig: &cloudtasks.QueueStackdriverLoggingConfigArgs{
+// 				SamplingRatio: pulumi.Float64(0.9),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Queue can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudtasks/queue:Queue default {{project}}/{{location}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
+// ```
 type Queue struct {
 	pulumi.CustomResourceState
 
@@ -197,4 +277,43 @@ type QueueArgs struct {
 
 func (QueueArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*queueArgs)(nil)).Elem()
+}
+
+type QueueInput interface {
+	pulumi.Input
+
+	ToQueueOutput() QueueOutput
+	ToQueueOutputWithContext(ctx context.Context) QueueOutput
+}
+
+func (Queue) ElementType() reflect.Type {
+	return reflect.TypeOf((*Queue)(nil)).Elem()
+}
+
+func (i Queue) ToQueueOutput() QueueOutput {
+	return i.ToQueueOutputWithContext(context.Background())
+}
+
+func (i Queue) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueueOutput)
+}
+
+type QueueOutput struct {
+	*pulumi.OutputState
+}
+
+func (QueueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueueOutput)(nil)).Elem()
+}
+
+func (o QueueOutput) ToQueueOutput() QueueOutput {
+	return o
+}
+
+func (o QueueOutput) ToQueueOutputWithContext(ctx context.Context) QueueOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(QueueOutput{})
 }

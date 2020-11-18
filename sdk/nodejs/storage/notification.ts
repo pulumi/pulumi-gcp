@@ -21,6 +21,46 @@ import * as utilities from "../utilities";
  *
  * > **NOTE**: This resource can affect your storage IAM policy. If you are using this in the same config as your storage IAM policy resources, consider
  * making this resource dependent on those IAM resources via `dependsOn`. This will safeguard against errors due to IAM race conditions.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gcsAccount = gcp.storage.getProjectServiceAccount({});
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const binding = new gcp.pubsub.TopicIAMBinding("binding", {
+ *     topic: topic.id,
+ *     role: "roles/pubsub.publisher",
+ *     members: [gcsAccount.then(gcsAccount => `serviceAccount:${gcsAccount.emailAddress}`)],
+ * });
+ * // End enabling notifications
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const notification = new gcp.storage.Notification("notification", {
+ *     bucket: bucket.name,
+ *     payloadFormat: "JSON_API_V1",
+ *     topic: topic.id,
+ *     eventTypes: [
+ *         "OBJECT_FINALIZE",
+ *         "OBJECT_METADATA_UPDATE",
+ *     ],
+ *     customAttributes: {
+ *         "new-attribute": "new-attribute-value",
+ *     },
+ * }, {
+ *     dependsOn: [binding],
+ * });
+ * // Enable notifications by giving the correct IAM permission to the unique service account.
+ * ```
+ *
+ * ## Import
+ *
+ * Storage notifications can be imported using the notification `id` in the format `<bucket_name>/notificationConfigs/<id>` e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
+ * ```
  */
 export class Notification extends pulumi.CustomResource {
     /**

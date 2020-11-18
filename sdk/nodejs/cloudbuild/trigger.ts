@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,110 @@ import * as utilities from "../utilities";
  *     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
  *
  * ## Example Usage
+ * ### Cloudbuild Trigger Filename
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const filename_trigger = new gcp.cloudbuild.Trigger("filename-trigger", {
+ *     filename: "cloudbuild.yaml",
+ *     substitutions: {
+ *         _BAZ: "qux",
+ *         _FOO: "bar",
+ *     },
+ *     triggerTemplate: {
+ *         branchName: "master",
+ *         repoName: "my-repo",
+ *     },
+ * });
+ * ```
+ * ### Cloudbuild Trigger Build
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const build_trigger = new gcp.cloudbuild.Trigger("build-trigger", {
+ *     build: {
+ *         artifacts: {
+ *             images: ["gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"],
+ *             objects: {
+ *                 location: "gs://bucket/path/to/somewhere/",
+ *                 paths: ["path"],
+ *             },
+ *         },
+ *         logsBucket: "gs://mybucket/logs",
+ *         options: {
+ *             diskSizeGb: 100,
+ *             dynamicSubstitutions: true,
+ *             envs: ["ekey = evalue"],
+ *             logStreamingOption: "STREAM_OFF",
+ *             logging: "LEGACY",
+ *             machineType: "N1_HIGHCPU_8",
+ *             requestedVerifyOption: "VERIFIED",
+ *             secretEnvs: ["secretenv = svalue"],
+ *             sourceProvenanceHashes: ["MD5"],
+ *             substitutionOption: "ALLOW_LOOSE",
+ *             volumes: [{
+ *                 name: "v1",
+ *                 path: "v1",
+ *             }],
+ *             workerPool: "pool",
+ *         },
+ *         queueTtl: "20s",
+ *         secrets: [{
+ *             kmsKeyName: "projects/myProject/locations/global/keyRings/keyring-name/cryptoKeys/key-name",
+ *             secretEnv: {
+ *                 PASSWORD: "ZW5jcnlwdGVkLXBhc3N3b3JkCg==",
+ *             },
+ *         }],
+ *         source: {
+ *             storageSource: {
+ *                 bucket: "mybucket",
+ *                 object: "source_code.tar.gz",
+ *             },
+ *         },
+ *         steps: [{
+ *             args: [
+ *                 "cp",
+ *                 "gs://mybucket/remotefile.zip",
+ *                 "localfile.zip",
+ *             ],
+ *             name: "gcr.io/cloud-builders/gsutil",
+ *             timeout: "120s",
+ *         }],
+ *         substitutions: {
+ *             _BAZ: "qux",
+ *             _FOO: "bar",
+ *         },
+ *         tags: [
+ *             "build",
+ *             "newFeature",
+ *         ],
+ *     },
+ *     triggerTemplate: {
+ *         branchName: "master",
+ *         repoName: "my-repo",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Trigger can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudbuild/trigger:Trigger default projects/{{project}}/triggers/{{trigger_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudbuild/trigger:Trigger default {{project}}/{{trigger_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
+ * ```
  */
 export class Trigger extends pulumi.CustomResource {
     /**

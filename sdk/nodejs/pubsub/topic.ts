@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,56 @@ import * as utilities from "../utilities";
  *     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
  *
  * ## Example Usage
+ * ### Pubsub Topic Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ * ### Pubsub Topic Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "global"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const example = new gcp.pubsub.Topic("example", {kmsKeyName: cryptoKey.id});
+ * ```
+ * ### Pubsub Topic Geo Restricted
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     messageStoragePolicy: {
+ *         allowedPersistenceRegions: ["europe-west3"],
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Topic can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:pubsub/topic:Topic default {{name}}
+ * ```
  */
 export class Topic extends pulumi.CustomResource {
     /**

@@ -23,6 +23,165 @@ namespace Pulumi.Gcp.Notebooks
     ///     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
     /// 
     /// ## Example Usage
+    /// ### Notebook Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
+    ///         {
+    ///             Location = "us-west1-a",
+    ///             MachineType = "e2-medium",
+    ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///             {
+    ///                 Project = "deeplearning-platform-release",
+    ///                 ImageFamily = "tf-latest-cpu",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Notebook Instance Basic Container
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
+    ///         {
+    ///             Location = "us-west1-a",
+    ///             MachineType = "e2-medium",
+    ///             Metadata = 
+    ///             {
+    ///                 { "proxy-mode", "service_account" },
+    ///             },
+    ///             ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
+    ///             {
+    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///                 Tag = "latest",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Notebook Instance Basic Gpu
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
+    ///         {
+    ///             Location = "us-west1-a",
+    ///             MachineType = "n1-standard-1",
+    ///             InstallGpuDriver = true,
+    ///             AcceleratorConfig = new Gcp.Notebooks.Inputs.InstanceAcceleratorConfigArgs
+    ///             {
+    ///                 Type = "NVIDIA_TESLA_T4",
+    ///                 CoreCount = 1,
+    ///             },
+    ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///             {
+    ///                 Project = "deeplearning-platform-release",
+    ///                 ImageFamily = "tf-latest-gpu",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Notebook Instance Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myNetwork = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "default",
+    ///         }));
+    ///         var mySubnetwork = Output.Create(Gcp.Compute.GetSubnetwork.InvokeAsync(new Gcp.Compute.GetSubnetworkArgs
+    ///         {
+    ///             Name = "default",
+    ///             Region = "us-central1",
+    ///         }));
+    ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
+    ///         {
+    ///             Location = "us-central1-a",
+    ///             MachineType = "e2-medium",
+    ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
+    ///             {
+    ///                 Project = "deeplearning-platform-release",
+    ///                 ImageFamily = "tf-latest-cpu",
+    ///             },
+    ///             InstanceOwners = 
+    ///             {
+    ///                 "admin@hashicorptest.com",
+    ///             },
+    ///             ServiceAccount = "emailAddress:my@service-account.com",
+    ///             InstallGpuDriver = true,
+    ///             BootDiskType = "PD_SSD",
+    ///             BootDiskSizeGb = 110,
+    ///             NoPublicIp = true,
+    ///             NoProxyAccess = true,
+    ///             Network = myNetwork.Apply(myNetwork =&gt; myNetwork.Id),
+    ///             Subnet = mySubnetwork.Apply(mySubnetwork =&gt; mySubnetwork.Id),
+    ///             Labels = 
+    ///             {
+    ///                 { "k", "val" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

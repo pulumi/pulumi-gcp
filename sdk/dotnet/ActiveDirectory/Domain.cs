@@ -19,6 +19,37 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///     * [Managed Microsoft Active Directory Quickstart](https://cloud.google.com/managed-microsoft-ad/docs/quickstarts)
     /// 
     /// ## Example Usage
+    /// ### Active Directory Domain Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ad_domain = new Gcp.ActiveDirectory.Domain("ad-domain", new Gcp.ActiveDirectory.DomainArgs
+    ///         {
+    ///             DomainName = "tfgen.org.com",
+    ///             Locations = 
+    ///             {
+    ///                 "us-central1",
+    ///             },
+    ///             ReservedIpRange = "192.168.255.0/24",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Domain can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
+    /// ```
     /// </summary>
     public partial class Domain : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -15,6 +16,48 @@ import (
 // [Storing Logs](https://cloud.google.com/logging/docs/storage).
 //
 // > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "00AA00-000AAA-00AA0A"
+// 		_default, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+// 			BillingAccount: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewBillingAccountBucketConfig(ctx, "basic", &logging.BillingAccountBucketConfigArgs{
+// 			BillingAccount: pulumi.String(_default.BillingAccount),
+// 			Location:       pulumi.String("global"),
+// 			RetentionDays:  pulumi.Int(30),
+// 			BucketId:       pulumi.String("_Default"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource can be imported using the following format
+//
+// ```sh
+//  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
+// ```
 type BillingAccountBucketConfig struct {
 	pulumi.CustomResourceState
 
@@ -137,4 +180,43 @@ type BillingAccountBucketConfigArgs struct {
 
 func (BillingAccountBucketConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*billingAccountBucketConfigArgs)(nil)).Elem()
+}
+
+type BillingAccountBucketConfigInput interface {
+	pulumi.Input
+
+	ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput
+	ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput
+}
+
+func (BillingAccountBucketConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountBucketConfig)(nil)).Elem()
+}
+
+func (i BillingAccountBucketConfig) ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput {
+	return i.ToBillingAccountBucketConfigOutputWithContext(context.Background())
+}
+
+func (i BillingAccountBucketConfig) ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigOutput)
+}
+
+type BillingAccountBucketConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (BillingAccountBucketConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountBucketConfigOutput)(nil)).Elem()
+}
+
+func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput {
+	return o
+}
+
+func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BillingAccountBucketConfigOutput{})
 }

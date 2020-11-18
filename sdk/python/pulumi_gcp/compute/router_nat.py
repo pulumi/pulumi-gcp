@@ -45,6 +45,81 @@ class RouterNat(pulumi.CustomResource):
             * [Google Cloud Router](https://cloud.google.com/router/docs/)
 
         ## Example Usage
+        ### Router Nat Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net")
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.id,
+            bgp=gcp.compute.RouterBgpArgs(
+                asn=64514,
+            ))
+        nat = gcp.compute.RouterNat("nat",
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option="AUTO_ONLY",
+            source_subnetwork_ip_ranges_to_nat="ALL_SUBNETWORKS_ALL_IP_RANGES",
+            log_config=gcp.compute.RouterNatLogConfigArgs(
+                enable=True,
+                filter="ERRORS_ONLY",
+            ))
+        ```
+        ### Router Nat Manual Ips
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net")
+        subnet = gcp.compute.Subnetwork("subnet",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1")
+        router = gcp.compute.Router("router",
+            region=subnet.region,
+            network=net.id)
+        address = []
+        for range in [{"value": i} for i in range(0, 2)]:
+            address.append(gcp.compute.Address(f"address-{range['value']}", region=subnet.region))
+        nat_manual = gcp.compute.RouterNat("natManual",
+            router=router.name,
+            region=router.region,
+            nat_ip_allocate_option="MANUAL_ONLY",
+            nat_ips=[__item.self_link for __item in address],
+            source_subnetwork_ip_ranges_to_nat="LIST_OF_SUBNETWORKS",
+            subnetworks=[gcp.compute.RouterNatSubnetworkArgs(
+                name=subnet.id,
+                source_ip_ranges_to_nats=["ALL_IP_RANGES"],
+            )])
+        ```
+
+        ## Import
+
+        RouterNat can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/routerNat:RouterNat default {{project}}/{{region}}/{{router}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/routerNat:RouterNat default {{region}}/{{router}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/routerNat:RouterNat default {{router}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -29,6 +29,33 @@ class DefaultServiceAccounts(pulumi.CustomResource):
         See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
         > This resource works on a best-effort basis, as no API formally describes the default service accounts. If the default service accounts change their name or additional service accounts are added, this resource will need to be updated.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DELETE",
+            project="my-project-id")
+        ```
+
+        To enable the default service accounts on the resource destroy:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.projects.DefaultServiceAccounts("myProject",
+            action="DISABLE",
+            project="my-project-id",
+            restore_policy="REVERT")
+        ```
+
+        ## Import
+
+        This resource does not support import
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] action: The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy

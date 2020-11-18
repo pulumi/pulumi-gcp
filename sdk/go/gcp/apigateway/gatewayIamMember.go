@@ -4,12 +4,36 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/gateways/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway gateway IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/gatewayIamMember:GatewayIamMember editor "projects/{{project}}/locations/{{region}}/gateways/{{gateway}} roles/apigateway.viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/gatewayIamMember:GatewayIamMember editor "projects/{{project}}/locations/{{region}}/gateways/{{gateway}} roles/apigateway.viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/gatewayIamMember:GatewayIamMember editor projects/{{project}}/locations/{{region}}/gateways/{{gateway}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type GatewayIamMember struct {
 	pulumi.CustomResourceState
 
@@ -151,4 +175,43 @@ type GatewayIamMemberArgs struct {
 
 func (GatewayIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gatewayIamMemberArgs)(nil)).Elem()
+}
+
+type GatewayIamMemberInput interface {
+	pulumi.Input
+
+	ToGatewayIamMemberOutput() GatewayIamMemberOutput
+	ToGatewayIamMemberOutputWithContext(ctx context.Context) GatewayIamMemberOutput
+}
+
+func (GatewayIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIamMember)(nil)).Elem()
+}
+
+func (i GatewayIamMember) ToGatewayIamMemberOutput() GatewayIamMemberOutput {
+	return i.ToGatewayIamMemberOutputWithContext(context.Background())
+}
+
+func (i GatewayIamMember) ToGatewayIamMemberOutputWithContext(ctx context.Context) GatewayIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamMemberOutput)
+}
+
+type GatewayIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIamMemberOutput)(nil)).Elem()
+}
+
+func (o GatewayIamMemberOutput) ToGatewayIamMemberOutput() GatewayIamMemberOutput {
+	return o
+}
+
+func (o GatewayIamMemberOutput) ToGatewayIamMemberOutputWithContext(ctx context.Context) GatewayIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GatewayIamMemberOutput{})
 }

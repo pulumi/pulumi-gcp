@@ -4,6 +4,7 @@
 package iap
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -26,6 +27,18 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+//
+// ## Import
+//
+// Client can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
+// ```
 type Client struct {
 	pulumi.CustomResourceState
 
@@ -125,4 +138,43 @@ type ClientArgs struct {
 
 func (ClientArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clientArgs)(nil)).Elem()
+}
+
+type ClientInput interface {
+	pulumi.Input
+
+	ToClientOutput() ClientOutput
+	ToClientOutputWithContext(ctx context.Context) ClientOutput
+}
+
+func (Client) ElementType() reflect.Type {
+	return reflect.TypeOf((*Client)(nil)).Elem()
+}
+
+func (i Client) ToClientOutput() ClientOutput {
+	return i.ToClientOutputWithContext(context.Background())
+}
+
+func (i Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientOutput)
+}
+
+type ClientOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientOutput)(nil)).Elem()
+}
+
+func (o ClientOutput) ToClientOutput() ClientOutput {
+	return o
+}
+
+func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClientOutput{})
 }

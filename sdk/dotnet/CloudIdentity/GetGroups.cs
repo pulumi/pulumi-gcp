@@ -15,6 +15,29 @@ namespace Pulumi.Gcp.CloudIdentity
         /// Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#groups
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var groups = Output.Create(Gcp.CloudIdentity.GetGroups.InvokeAsync(new Gcp.CloudIdentity.GetGroupsArgs
+        ///         {
+        ///             Parent = "customers/A01b123xz",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("gcp:cloudidentity/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());

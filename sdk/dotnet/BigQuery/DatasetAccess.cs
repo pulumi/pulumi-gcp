@@ -9,6 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.BigQuery
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// This resource does not support import.
+    /// </summary>
     public partial class DatasetAccess : Pulumi.CustomResource
     {
         /// <summary>

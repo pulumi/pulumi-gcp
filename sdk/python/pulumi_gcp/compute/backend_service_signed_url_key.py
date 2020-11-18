@@ -35,6 +35,54 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
         state as plain-text.
 
         ## Example Usage
+        ### Backend Service Signed Url Key
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        url_signature = random.RandomId("urlSignature", byte_length=16)
+        webserver = gcp.compute.InstanceTemplate("webserver",
+            machine_type="e2-medium",
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image="debian-cloud/debian-9",
+                auto_delete=True,
+                boot=True,
+            )])
+        webservers = gcp.compute.InstanceGroupManager("webservers",
+            versions=[gcp.compute.InstanceGroupManagerVersionArgs(
+                instance_template=webserver.id,
+                name="primary",
+            )],
+            base_instance_name="webserver",
+            zone="us-central1-f",
+            target_size=1)
+        default = gcp.compute.HttpHealthCheck("default",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        example_backend = gcp.compute.BackendService("exampleBackend",
+            description="Our company website",
+            port_name="http",
+            protocol="HTTP",
+            timeout_sec=10,
+            enable_cdn=True,
+            backends=[gcp.compute.BackendServiceBackendArgs(
+                group=webservers.instance_group,
+            )],
+            health_checks=[default.id])
+        backend_key = gcp.compute.BackendServiceSignedUrlKey("backendKey",
+            key_value=url_signature.b64_url,
+            backend_service=example_backend.name)
+        ```
+
+        ## Import
+
+        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

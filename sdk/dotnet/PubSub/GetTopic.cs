@@ -15,6 +15,29 @@ namespace Pulumi.Gcp.PubSub
         /// Get information about a Google Cloud Pub/Sub Topic. For more information see
         /// the [official documentation](https://cloud.google.com/pubsub/docs/)
         /// and [API](https://cloud.google.com/pubsub/docs/apis).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var my_pubsub_topic = Output.Create(Gcp.PubSub.GetTopic.InvokeAsync(new Gcp.PubSub.GetTopicArgs
+        ///         {
+        ///             Name = "my-pubsub-topic",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTopicResult> InvokeAsync(GetTopicArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTopicResult>("gcp:pubsub/getTopic:getTopic", args ?? new GetTopicArgs(), options.WithVersion());

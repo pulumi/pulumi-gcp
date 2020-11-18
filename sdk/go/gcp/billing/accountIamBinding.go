@@ -4,6 +4,7 @@
 package billing
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -93,4 +94,43 @@ type AccountIamBindingArgs struct {
 
 func (AccountIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamBindingArgs)(nil)).Elem()
+}
+
+type AccountIamBindingInput interface {
+	pulumi.Input
+
+	ToAccountIamBindingOutput() AccountIamBindingOutput
+	ToAccountIamBindingOutputWithContext(ctx context.Context) AccountIamBindingOutput
+}
+
+func (AccountIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamBinding)(nil)).Elem()
+}
+
+func (i AccountIamBinding) ToAccountIamBindingOutput() AccountIamBindingOutput {
+	return i.ToAccountIamBindingOutputWithContext(context.Background())
+}
+
+func (i AccountIamBinding) ToAccountIamBindingOutputWithContext(ctx context.Context) AccountIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingOutput)
+}
+
+type AccountIamBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamBindingOutput)(nil)).Elem()
+}
+
+func (o AccountIamBindingOutput) ToAccountIamBindingOutput() AccountIamBindingOutput {
+	return o
+}
+
+func (o AccountIamBindingOutput) ToAccountIamBindingOutputWithContext(ctx context.Context) AccountIamBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountIamBindingOutput{})
 }

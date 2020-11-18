@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,6 +16,37 @@ import * as utilities from "../utilities";
  * > **Note:** On create, this resource will overwrite members of any existing roles.
  *     Use `pulumi import` and inspect the output to ensure
  *     your existing members are preserved.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const department1 = new gcp.organizations.Folder("department1", {
+ *     displayName: "Department 1",
+ *     parent: "organizations/1234567",
+ * });
+ * const admin = new gcp.folder.IAMBinding("admin", {
+ *     folder: department1.name,
+ *     role: "roles/editor",
+ *     members: ["user:alice@gmail.com"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
+ *
+ * These bindings can be imported using the `folder` and role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class IAMBinding extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -15,6 +16,48 @@ import (
 // [Storing Logs](https://cloud.google.com/logging/docs/storage).
 //
 // > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.NewFolder(ctx, "_default", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("some-folder-name"),
+// 			Parent:      pulumi.String("organizations/123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewFolderBucketConfig(ctx, "basic", &logging.FolderBucketConfigArgs{
+// 			Folder:        _default.Name,
+// 			Location:      pulumi.String("global"),
+// 			RetentionDays: pulumi.Int(30),
+// 			BucketId:      pulumi.String("_Default"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource can be imported using the following format
+//
+// ```sh
+//  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
+// ```
 type FolderBucketConfig struct {
 	pulumi.CustomResourceState
 
@@ -137,4 +180,43 @@ type FolderBucketConfigArgs struct {
 
 func (FolderBucketConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderBucketConfigArgs)(nil)).Elem()
+}
+
+type FolderBucketConfigInput interface {
+	pulumi.Input
+
+	ToFolderBucketConfigOutput() FolderBucketConfigOutput
+	ToFolderBucketConfigOutputWithContext(ctx context.Context) FolderBucketConfigOutput
+}
+
+func (FolderBucketConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderBucketConfig)(nil)).Elem()
+}
+
+func (i FolderBucketConfig) ToFolderBucketConfigOutput() FolderBucketConfigOutput {
+	return i.ToFolderBucketConfigOutputWithContext(context.Background())
+}
+
+func (i FolderBucketConfig) ToFolderBucketConfigOutputWithContext(ctx context.Context) FolderBucketConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigOutput)
+}
+
+type FolderBucketConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (FolderBucketConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderBucketConfigOutput)(nil)).Elem()
+}
+
+func (o FolderBucketConfigOutput) ToFolderBucketConfigOutput() FolderBucketConfigOutput {
+	return o
+}
+
+func (o FolderBucketConfigOutput) ToFolderBucketConfigOutputWithContext(ctx context.Context) FolderBucketConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FolderBucketConfigOutput{})
 }

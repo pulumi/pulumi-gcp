@@ -31,6 +31,19 @@ class FlexTemplateJob(pulumi.CustomResource):
         Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
         and [Dataflow](https://cloud.google.com/dataflow/).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        big_data_job = gcp.dataflow.FlexTemplateJob("bigDataJob",
+            container_spec_gcs_path="gs://my-bucket/templates/template.json",
+            parameters={
+                "inputSubscription": "messages",
+            },
+            opts=ResourceOptions(provider=google_beta))
+        ```
         ## Note on "destroy" / "apply"
 
         There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -52,6 +65,10 @@ class FlexTemplateJob(pulumi.CustomResource):
         is "cancelled", but if a user sets `on_delete` to `"drain"` in the
         configuration, you may experience a long wait for your `pulumi destroy` to
         complete.
+
+        ## Import
+
+        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -87,7 +104,7 @@ class FlexTemplateJob(pulumi.CustomResource):
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
             __props__['container_spec_gcs_path'] = container_spec_gcs_path
             if labels is not None:
-                warnings.warn("Deprecated until the API supports this field", DeprecationWarning)
+                warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
                 pulumi.log.warn("labels is deprecated: Deprecated until the API supports this field")
             __props__['labels'] = labels
             __props__['name'] = name

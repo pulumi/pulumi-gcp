@@ -43,6 +43,71 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
 
         ## Example Usage
+        ### With Top Level Instance Template (`Google` Provider)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        autohealing = gcp.compute.HealthCheck("autohealing",
+            check_interval_sec=5,
+            timeout_sec=5,
+            healthy_threshold=2,
+            unhealthy_threshold=10,
+            http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
+                request_path="/healthz",
+                port=8080,
+            ))
+        appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            base_instance_name="app",
+            region="us-central1",
+            distribution_policy_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ],
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=google_compute_instance_template["appserver"]["id"],
+            )],
+            target_pools=[google_compute_target_pool["appserver"]["id"]],
+            target_size=2,
+            named_ports=[gcp.compute.RegionInstanceGroupManagerNamedPortArgs(
+                name="custom",
+                port=8888,
+            )],
+            auto_healing_policies=gcp.compute.RegionInstanceGroupManagerAutoHealingPoliciesArgs(
+                health_check=autohealing.id,
+                initial_delay_sec=300,
+            ))
+        ```
+        ### With Multiple Versions
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        appserver = gcp.compute.RegionInstanceGroupManager("appserver",
+            base_instance_name="app",
+            region="us-central1",
+            target_size=5,
+            versions=[
+                gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                    instance_template=google_compute_instance_template["appserver"]["id"],
+                ),
+                gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                    instance_template=google_compute_instance_template["appserver-canary"]["id"],
+                    target_size={
+                        "fixed": 1,
+                    },
+                ),
+            ])
+        ```
+
+        ## Import
+
+        Instance group managers can be imported using the `name`, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager appserver appserver-igm
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

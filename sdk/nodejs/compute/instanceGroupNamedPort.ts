@@ -17,6 +17,59 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
  *
  * ## Example Usage
+ * ### Instance Group Named Port Gke
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const containerNetwork = new gcp.compute.Network("containerNetwork", {autoCreateSubnetworks: false});
+ * const containerSubnetwork = new gcp.compute.Subnetwork("containerSubnetwork", {
+ *     region: "us-central1",
+ *     network: containerNetwork.name,
+ *     ipCidrRange: "10.0.36.0/24",
+ * });
+ * const myCluster = new gcp.container.Cluster("myCluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ *     network: containerNetwork.name,
+ *     subnetwork: containerSubnetwork.name,
+ *     ipAllocationPolicy: {
+ *         clusterIpv4CidrBlock: "/19",
+ *         servicesIpv4CidrBlock: "/22",
+ *     },
+ * });
+ * const myPort = new gcp.compute.InstanceGroupNamedPort("myPort", {
+ *     group: myCluster.instanceGroupUrls[0],
+ *     zone: "us-central1-a",
+ *     port: 8080,
+ * });
+ * const myPorts = new gcp.compute.InstanceGroupNamedPort("myPorts", {
+ *     group: myCluster.instanceGroupUrls[0],
+ *     zone: "us-central1-a",
+ *     port: 4443,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * InstanceGroupNamedPort can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{project}}/{{zone}}/{{group}}/{{port}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{zone}}/{{group}}/{{port}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
+ * ```
  */
 export class InstanceGroupNamedPort extends pulumi.CustomResource {
     /**

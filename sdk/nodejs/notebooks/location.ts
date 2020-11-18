@@ -6,6 +6,22 @@ import * as utilities from "../utilities";
 
 /**
  * Represents a Location resource.
+ *
+ * ## Import
+ *
+ * Location can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:notebooks/location:Location default {{name}}
+ * ```
  */
 export class Location extends pulumi.CustomResource {
     /**

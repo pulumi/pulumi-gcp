@@ -19,6 +19,66 @@ namespace Pulumi.Gcp.CloudIdentity
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// ### Cloud Identity Group Membership User
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @group = new Gcp.CloudIdentity.Group("group", new Gcp.CloudIdentity.GroupArgs
+    ///         {
+    ///             DisplayName = "my-identity-group",
+    ///             Parent = "customers/A01b123xz",
+    ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
+    ///             {
+    ///                 Id = "my-identity-group@example.com",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new Gcp.CloudIdentity.GroupMembershipArgs
+    ///         {
+    ///             Group = @group.Id,
+    ///             MemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipMemberKeyArgs
+    ///             {
+    ///                 Id = "cloud_identity_user@example.com",
+    ///             },
+    ///             Roles = 
+    ///             {
+    ///                 new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
+    ///                 {
+    ///                     Name = "MEMBER",
+    ///                 },
+    ///                 new Gcp.CloudIdentity.Inputs.GroupMembershipRoleArgs
+    ///                 {
+    ///                     Name = "MANAGER",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// GroupMembership can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
+    /// ```
     /// </summary>
     public partial class GroupMembership : Pulumi.CustomResource
     {

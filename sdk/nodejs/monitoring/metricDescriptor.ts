@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,66 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
  *
  * ## Example Usage
+ * ### Monitoring Metric Descriptor Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.monitoring.MetricDescriptor("basic", {
+ *     description: "Daily sales records from all branch stores.",
+ *     displayName: "metric-descriptor",
+ *     labels: [{
+ *         description: "The ID of the store.",
+ *         key: "store_id",
+ *         valueType: "STRING",
+ *     }],
+ *     launchStage: "BETA",
+ *     metadata: {
+ *         ingestDelay: "30s",
+ *         samplePeriod: "60s",
+ *     },
+ *     metricKind: "GAUGE",
+ *     type: "custom.googleapis.com/stores/daily_sales",
+ *     unit: "{USD}",
+ *     valueType: "DOUBLE",
+ * });
+ * ```
+ * ### Monitoring Metric Descriptor Alert
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const withAlert = new gcp.monitoring.MetricDescriptor("with_alert", {
+ *     description: "Daily sales records from all branch stores.",
+ *     displayName: "metric-descriptor",
+ *     metricKind: "GAUGE",
+ *     type: "custom.googleapis.com/stores/daily_sales",
+ *     unit: "{USD}",
+ *     valueType: "DOUBLE",
+ * });
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     combiner: "OR",
+ *     conditions: [{
+ *         conditionThreshold: {
+ *             comparison: "COMPARISON_GT",
+ *             duration: "60s",
+ *             filter: pulumi.interpolate`metric.type="${withAlert.type}" AND resource.type="gce_instance"`,
+ *         },
+ *         displayName: "test condition",
+ *     }],
+ *     displayName: "metric-descriptor",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * MetricDescriptor can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
+ * ```
  */
 export class MetricDescriptor extends pulumi.CustomResource {
     /**

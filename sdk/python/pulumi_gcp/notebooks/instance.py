@@ -61,6 +61,105 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 
         ## Example Usage
+        ### Notebook Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.notebooks.Instance("instance",
+            location="us-west1-a",
+            machine_type="e2-medium",
+            vm_image=gcp.notebooks.InstanceVmImageArgs(
+                project="deeplearning-platform-release",
+                image_family="tf-latest-cpu",
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Notebook Instance Basic Container
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.notebooks.Instance("instance",
+            location="us-west1-a",
+            machine_type="e2-medium",
+            metadata={
+                "proxy-mode": "service_account",
+            },
+            container_image=gcp.notebooks.InstanceContainerImageArgs(
+                repository="gcr.io/deeplearning-platform-release/base-cpu",
+                tag="latest",
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Notebook Instance Basic Gpu
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.notebooks.Instance("instance",
+            location="us-west1-a",
+            machine_type="n1-standard-1",
+            install_gpu_driver=True,
+            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArgs(
+                type="NVIDIA_TESLA_T4",
+                core_count=1,
+            ),
+            vm_image=gcp.notebooks.InstanceVmImageArgs(
+                project="deeplearning-platform-release",
+                image_family="tf-latest-gpu",
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Notebook Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_network = gcp.compute.get_network(name="default")
+        my_subnetwork = gcp.compute.get_subnetwork(name="default",
+            region="us-central1")
+        instance = gcp.notebooks.Instance("instance",
+            location="us-central1-a",
+            machine_type="e2-medium",
+            vm_image=gcp.notebooks.InstanceVmImageArgs(
+                project="deeplearning-platform-release",
+                image_family="tf-latest-cpu",
+            ),
+            instance_owners=["admin@hashicorptest.com"],
+            service_account="emailAddress:my@service-account.com",
+            install_gpu_driver=True,
+            boot_disk_type="PD_SSD",
+            boot_disk_size_gb=110,
+            no_public_ip=True,
+            no_proxy_access=True,
+            network=my_network.id,
+            subnet=my_subnetwork.id,
+            labels={
+                "k": "val",
+            },
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Instance can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:notebooks/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:notebooks/instance:Instance default {{project}}/{{location}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

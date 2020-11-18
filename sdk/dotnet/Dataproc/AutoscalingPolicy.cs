@@ -13,6 +13,65 @@ namespace Pulumi.Gcp.Dataproc
     /// Describes an autoscaling policy for Dataproc cluster autoscaler.
     /// 
     /// ## Example Usage
+    /// ### Dataproc Autoscaling Policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var asp = new Gcp.Dataproc.AutoscalingPolicy("asp", new Gcp.Dataproc.AutoscalingPolicyArgs
+    ///         {
+    ///             PolicyId = "dataproc-policy",
+    ///             Location = "us-central1",
+    ///             WorkerConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyWorkerConfigArgs
+    ///             {
+    ///                 MaxInstances = 3,
+    ///             },
+    ///             BasicAlgorithm = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmArgs
+    ///             {
+    ///                 YarnConfig = new Gcp.Dataproc.Inputs.AutoscalingPolicyBasicAlgorithmYarnConfigArgs
+    ///                 {
+    ///                     GracefulDecommissionTimeout = "30s",
+    ///                     ScaleUpFactor = 0.5,
+    ///                     ScaleDownFactor = 0.5,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var basic = new Gcp.Dataproc.Cluster("basic", new Gcp.Dataproc.ClusterArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///             {
+    ///                 AutoscalingConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigAutoscalingConfigArgs
+    ///                 {
+    ///                     PolicyUri = asp.Name,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// AutoscalingPolicy can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
+    /// ```
     /// </summary>
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {

@@ -13,6 +13,29 @@ namespace Pulumi.Gcp.AppEngine
     {
         /// <summary>
         /// Use this data source to retrieve the default App Engine service account for the specified project.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var @default = Output.Create(Gcp.AppEngine.GetDefaultServiceAccount.InvokeAsync());
+        ///         this.DefaultAccount = @default.Apply(@default =&gt; @default.Email);
+        ///     }
+        /// 
+        ///     [Output("defaultAccount")]
+        ///     public Output&lt;string&gt; DefaultAccount { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDefaultServiceAccountResult> InvokeAsync(GetDefaultServiceAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDefaultServiceAccountResult>("gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountArgs(), options.WithVersion());

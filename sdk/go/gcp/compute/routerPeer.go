@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,53 @@ import (
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
+// ### Router Peer Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+// 			AdvertisedRoutePriority: pulumi.Int(100),
+// 			Interface:               pulumi.String("interface-1"),
+// 			PeerAsn:                 pulumi.Int(65513),
+// 			PeerIpAddress:           pulumi.String("169.254.1.2"),
+// 			Region:                  pulumi.String("us-central1"),
+// 			Router:                  pulumi.String("my-router"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// RouterBgpPeer can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerPeer:RouterPeer default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerPeer:RouterPeer default {{project}}/{{region}}/{{router}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerPeer:RouterPeer default {{region}}/{{router}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
+// ```
 type RouterPeer struct {
 	pulumi.CustomResourceState
 
@@ -331,4 +379,43 @@ type RouterPeerArgs struct {
 
 func (RouterPeerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerPeerArgs)(nil)).Elem()
+}
+
+type RouterPeerInput interface {
+	pulumi.Input
+
+	ToRouterPeerOutput() RouterPeerOutput
+	ToRouterPeerOutputWithContext(ctx context.Context) RouterPeerOutput
+}
+
+func (RouterPeer) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeer)(nil)).Elem()
+}
+
+func (i RouterPeer) ToRouterPeerOutput() RouterPeerOutput {
+	return i.ToRouterPeerOutputWithContext(context.Background())
+}
+
+func (i RouterPeer) ToRouterPeerOutputWithContext(ctx context.Context) RouterPeerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterPeerOutput)
+}
+
+type RouterPeerOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterPeerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterPeerOutput)(nil)).Elem()
+}
+
+func (o RouterPeerOutput) ToRouterPeerOutput() RouterPeerOutput {
+	return o
+}
+
+func (o RouterPeerOutput) ToRouterPeerOutputWithContext(ctx context.Context) RouterPeerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouterPeerOutput{})
 }

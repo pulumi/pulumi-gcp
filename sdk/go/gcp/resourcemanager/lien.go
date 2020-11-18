@@ -4,6 +4,7 @@
 package resourcemanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -13,6 +14,52 @@ import (
 // A Lien represents an encumbrance on the actions that can be performed on a resource.
 //
 // ## Example Usage
+// ### Resource Manager Lien
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/resourcemanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.NewProject(ctx, "project", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("staging-project"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = resourcemanager.NewLien(ctx, "lien", &resourcemanager.LienArgs{
+// 			Origin: pulumi.String("machine-readable-explanation"),
+// 			Parent: project.Number.ApplyT(func(number string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "projects/", number), nil
+// 			}).(pulumi.StringOutput),
+// 			Reason: pulumi.String("This project is an important environment"),
+// 			Restrictions: pulumi.StringArray{
+// 				pulumi.String("resourcemanager.projects.delete"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Lien can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
+// ```
 type Lien struct {
 	pulumi.CustomResourceState
 
@@ -178,4 +225,43 @@ type LienArgs struct {
 
 func (LienArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lienArgs)(nil)).Elem()
+}
+
+type LienInput interface {
+	pulumi.Input
+
+	ToLienOutput() LienOutput
+	ToLienOutputWithContext(ctx context.Context) LienOutput
+}
+
+func (Lien) ElementType() reflect.Type {
+	return reflect.TypeOf((*Lien)(nil)).Elem()
+}
+
+func (i Lien) ToLienOutput() LienOutput {
+	return i.ToLienOutputWithContext(context.Background())
+}
+
+func (i Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LienOutput)
+}
+
+type LienOutput struct {
+	*pulumi.OutputState
+}
+
+func (LienOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LienOutput)(nil)).Elem()
+}
+
+func (o LienOutput) ToLienOutput() LienOutput {
+	return o
+}
+
+func (o LienOutput) ToLienOutputWithContext(ctx context.Context) LienOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LienOutput{})
 }

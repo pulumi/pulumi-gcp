@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,89 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
  *
  * ## Example Usage
+ * ### Dlp Deidentify Template Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionDeidentifyTemplate("basic", {
+ *     deidentifyConfig: {
+ *         infoTypeTransformations: {
+ *             transformations: [
+ *                 {
+ *                     infoTypes: [
+ *                         {
+ *                             name: "PHONE_NUMBER",
+ *                         },
+ *                         {
+ *                             name: "CREDIT_CARD_NUMBER",
+ *                         },
+ *                     ],
+ *                     primitiveTransformation: {
+ *                         replaceConfig: {
+ *                             newValue: {
+ *                                 integerValue: 9,
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     infoTypes: [
+ *                         {
+ *                             name: "EMAIL_ADDRESS",
+ *                         },
+ *                         {
+ *                             name: "LAST_NAME",
+ *                         },
+ *                     ],
+ *                     primitiveTransformation: {
+ *                         characterMaskConfig: {
+ *                             charactersToIgnores: [{
+ *                                 commonCharactersToIgnore: "PUNCTUATION",
+ *                             }],
+ *                             maskingCharacter: "X",
+ *                             numberToMask: 4,
+ *                             reverseOrder: true,
+ *                         },
+ *                     },
+ *                 },
+ *                 {
+ *                     infoTypes: [{
+ *                         name: "DATE_OF_BIRTH",
+ *                     }],
+ *                     primitiveTransformation: {
+ *                         replaceConfig: {
+ *                             newValue: {
+ *                                 dateValue: {
+ *                                     day: 1,
+ *                                     month: 1,
+ *                                     year: 2020,
+ *                                 },
+ *                             },
+ *                         },
+ *                     },
+ *                 },
+ *             ],
+ *         },
+ *     },
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     parent: "projects/my-project-name",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DeidentifyTemplate can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
+ * ```
  */
 export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     /**

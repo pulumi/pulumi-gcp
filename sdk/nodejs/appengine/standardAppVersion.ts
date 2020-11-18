@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -19,6 +18,84 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
  *
  * ## Example Usage
+ * ### App Engine Standard App Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const myappV1 = new gcp.appengine.StandardAppVersion("myappV1", {
+ *     versionId: "v1",
+ *     service: "myapp",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     automaticScaling: {
+ *         maxConcurrentRequests: 10,
+ *         minIdleInstances: 1,
+ *         maxIdleInstances: 3,
+ *         minPendingLatency: "1s",
+ *         maxPendingLatency: "5s",
+ *         standardSchedulerSettings: {
+ *             targetCpuUtilization: 0.5,
+ *             targetThroughputUtilization: 0.75,
+ *             minInstances: 2,
+ *             maxInstances: 10,
+ *         },
+ *     },
+ *     deleteServiceOnDestroy: true,
+ * });
+ * const myappV2 = new gcp.appengine.StandardAppVersion("myappV2", {
+ *     versionId: "v2",
+ *     service: "myapp",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     basicScaling: {
+ *         maxInstances: 5,
+ *     },
+ *     noopOnDestroy: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * StandardAppVersion can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{project}}/{{service}}/{{version_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
+ * ```
  */
 export class StandardAppVersion extends pulumi.CustomResource {
     /**

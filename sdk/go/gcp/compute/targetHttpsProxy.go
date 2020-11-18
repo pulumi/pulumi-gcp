@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,22 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// TargetHttpsProxy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default projects/{{project}}/global/targetHttpsProxies/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetHttpsProxy:TargetHttpsProxy default {{name}}
+// ```
 type TargetHttpsProxy struct {
 	pulumi.CustomResourceState
 
@@ -255,4 +272,43 @@ type TargetHttpsProxyArgs struct {
 
 func (TargetHttpsProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetHttpsProxyArgs)(nil)).Elem()
+}
+
+type TargetHttpsProxyInput interface {
+	pulumi.Input
+
+	ToTargetHttpsProxyOutput() TargetHttpsProxyOutput
+	ToTargetHttpsProxyOutputWithContext(ctx context.Context) TargetHttpsProxyOutput
+}
+
+func (TargetHttpsProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetHttpsProxy)(nil)).Elem()
+}
+
+func (i TargetHttpsProxy) ToTargetHttpsProxyOutput() TargetHttpsProxyOutput {
+	return i.ToTargetHttpsProxyOutputWithContext(context.Background())
+}
+
+func (i TargetHttpsProxy) ToTargetHttpsProxyOutputWithContext(ctx context.Context) TargetHttpsProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyOutput)
+}
+
+type TargetHttpsProxyOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetHttpsProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetHttpsProxyOutput)(nil)).Elem()
+}
+
+func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutput() TargetHttpsProxyOutput {
+	return o
+}
+
+func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutputWithContext(ctx context.Context) TargetHttpsProxyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetHttpsProxyOutput{})
 }

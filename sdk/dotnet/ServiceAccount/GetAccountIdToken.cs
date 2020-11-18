@@ -33,7 +33,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///   }
         ///   ```
         /// 
-        /// 
         /// ### Service Account Impersonation.
         ///   `gcp.serviceAccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceAccount.getAccountAccessToken`.
         /// 
@@ -66,7 +65,6 @@ namespace Pulumi.Gcp.ServiceAccount
         ///     value = data.google_service_account_id_token.oidc.id_token
         ///   }
         ///   ```
-        /// 
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAccountIdTokenResult> InvokeAsync(GetAccountIdTokenArgs args, InvokeOptions? options = null)

@@ -18,6 +18,18 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://firebase.google.com/)
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * Project can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:firebase/project:Project default projects/{{project}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:firebase/project:Project default {{project}}
+ * ```
  */
 export class Project extends pulumi.CustomResource {
     /**

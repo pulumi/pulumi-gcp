@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,6 +17,166 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/os-config-management)
  *
  * ## Example Usage
+ * ### Os Config Guest Policies Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const foobar = new gcp.compute.Instance("foobar", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-a",
+ *     canIpForward: false,
+ *     tags: [
+ *         "foo",
+ *         "bar",
+ *     ],
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: myImage.then(myImage => myImage.selfLink),
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ *     metadata: {
+ *         foo: "bar",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const guestPolicies = new gcp.osconfig.GuestPolicies("guestPolicies", {
+ *     guestPolicyId: "guest-policy",
+ *     assignment: {
+ *         instances: [foobar.id],
+ *     },
+ *     packages: [{
+ *         name: "my-package",
+ *         desiredState: "UPDATED",
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Os Config Guest Policies Packages
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const guestPolicies = new gcp.osconfig.GuestPolicies("guestPolicies", {
+ *     guestPolicyId: "guest-policy",
+ *     assignment: {
+ *         groupLabels: [
+ *             {
+ *                 labels: {
+ *                     color: "red",
+ *                     env: "test",
+ *                 },
+ *             },
+ *             {
+ *                 labels: {
+ *                     color: "blue",
+ *                     env: "test",
+ *                 },
+ *             },
+ *         ],
+ *     },
+ *     packages: [
+ *         {
+ *             name: "my-package",
+ *             desiredState: "INSTALLED",
+ *         },
+ *         {
+ *             name: "bad-package-1",
+ *             desiredState: "REMOVED",
+ *         },
+ *         {
+ *             name: "bad-package-2",
+ *             desiredState: "REMOVED",
+ *             manager: "APT",
+ *         },
+ *     ],
+ *     packageRepositories: [
+ *         {
+ *             apt: {
+ *                 uri: "https://packages.cloud.google.com/apt",
+ *                 archiveType: "DEB",
+ *                 distribution: "cloud-sdk-stretch",
+ *                 components: ["main"],
+ *             },
+ *         },
+ *         {
+ *             yum: {
+ *                 id: "google-cloud-sdk",
+ *                 displayName: "Google Cloud SDK",
+ *                 baseUrl: "https://packages.cloud.google.com/yum/repos/cloud-sdk-el7-x86_64",
+ *                 gpgKeys: [
+ *                     "https://packages.cloud.google.com/yum/doc/yum-key.gpg",
+ *                     "https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg",
+ *                 ],
+ *             },
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Os Config Guest Policies Recipes
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const guestPolicies = new gcp.osconfig.GuestPolicies("guestPolicies", {
+ *     guestPolicyId: "guest-policy",
+ *     assignment: {
+ *         zones: [
+ *             "us-east1-b",
+ *             "us-east1-d",
+ *         ],
+ *     },
+ *     recipes: [{
+ *         name: "guest-policy-recipe",
+ *         desiredState: "INSTALLED",
+ *         artifacts: [{
+ *             id: "guest-policy-artifact-id",
+ *             gcs: {
+ *                 bucket: "my-bucket",
+ *                 object: "executable.msi",
+ *                 generation: 1546030865175603,
+ *             },
+ *         }],
+ *         installSteps: [{
+ *             msiInstallation: {
+ *                 artifactId: "guest-policy-artifact-id",
+ *             },
+ *         }],
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * GuestPolicies can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{name}}
+ * ```
  */
 export class GuestPolicies extends pulumi.CustomResource {
     /**

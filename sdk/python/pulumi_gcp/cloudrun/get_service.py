@@ -124,6 +124,16 @@ def get_service(location: Optional[str] = None,
     the [official documentation](https://cloud.google.com/run/docs/)
     and [API](https://cloud.google.com/run/docs/apis).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    run_service = gcp.cloudrun.get_service(location="us-central1",
+        name="my-service")
+    ```
+
 
     :param str location: The location of the cloud run instance. eg us-central1
     :param str name: The name of the Cloud Run Service.

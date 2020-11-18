@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -14,6 +13,55 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
  *
  * ## Example Usage
+ * ### App Engine Application Url Dispatch Rules Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const adminV3 = new gcp.appengine.StandardAppVersion("adminV3", {
+ *     versionId: "v3",
+ *     service: "admin",
+ *     runtime: "nodejs10",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     noopOnDestroy: true,
+ * });
+ * const webService = new gcp.appengine.ApplicationUrlDispatchRules("webService", {dispatchRules: [
+ *     {
+ *         domain: "*",
+ *         path: "/*",
+ *         service: "default",
+ *     },
+ *     {
+ *         domain: "*",
+ *         path: "/admin/*",
+ *         service: adminV3.service,
+ *     },
+ * ]});
+ * ```
+ *
+ * ## Import
+ *
+ * ApplicationUrlDispatchRules can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
+ * ```
  */
 export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
     /**

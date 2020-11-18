@@ -31,6 +31,34 @@ class DefaultSupportedIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Default Supported Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        idp_config = gcp.identityplatform.DefaultSupportedIdpConfig("idpConfig",
+            client_id="client-id",
+            client_secret="secret",
+            enabled=True,
+            idp_id="playgames.google.com")
+        ```
+
+        ## Import
+
+        DefaultSupportedIdpConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{project}}/{{idp_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{idp_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

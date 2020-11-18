@@ -21,6 +21,51 @@ namespace Pulumi.Gcp.Firestore
     ///     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
     /// 
     /// ## Example Usage
+    /// ### Firestore Index Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_index = new Gcp.Firestore.Index("my-index", new Gcp.Firestore.IndexArgs
+    ///         {
+    ///             Collection = "chatrooms",
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///                 {
+    ///                     FieldPath = "name",
+    ///                     Order = "ASCENDING",
+    ///                 },
+    ///                 new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///                 {
+    ///                     FieldPath = "description",
+    ///                     Order = "DESCENDING",
+    ///                 },
+    ///                 new Gcp.Firestore.Inputs.IndexFieldArgs
+    ///                 {
+    ///                     FieldPath = "__name__",
+    ///                     Order = "DESCENDING",
+    ///                 },
+    ///             },
+    ///             Project = "my-project-name",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Index can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:firestore/index:Index default {{name}}
+    /// ```
     /// </summary>
     public partial class Index : Pulumi.CustomResource
     {

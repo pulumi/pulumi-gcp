@@ -19,6 +19,39 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// &gt; **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
     /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "your-project-id",
+    ///             OrgId = "1234567",
+    ///         });
+    ///         var app = new Gcp.AppEngine.Application("app", new Gcp.AppEngine.ApplicationArgs
+    ///         {
+    ///             Project = myProject.ProjectId,
+    ///             LocationId = "us-central",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Applications can be imported using the ID of the project the application belongs to, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/application:Application app your-project-id
+    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package container
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -18,6 +19,118 @@ import (
 // plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+// ### With A Separately Managed Node Pool (Recommended)
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/container"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+// 			Location:              pulumi.String("us-central1"),
+// 			RemoveDefaultNodePool: pulumi.Bool(true),
+// 			InitialNodeCount:      pulumi.Int(1),
+// 			MasterAuth: &container.ClusterMasterAuthArgs{
+// 				Username: pulumi.String(""),
+// 				Password: pulumi.String(""),
+// 				ClientCertificateConfig: &container.ClusterMasterAuthClientCertificateConfigArgs{
+// 					IssueClientCertificate: pulumi.Bool(false),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = container.NewNodePool(ctx, "primaryPreemptibleNodes", &container.NodePoolArgs{
+// 			Location:  pulumi.String("us-central1"),
+// 			Cluster:   primary.Name,
+// 			NodeCount: pulumi.Int(1),
+// 			NodeConfig: &container.NodePoolNodeConfigArgs{
+// 				Preemptible: pulumi.Bool(true),
+// 				MachineType: pulumi.String("e2-medium"),
+// 				Metadata: pulumi.StringMap{
+// 					"disable-legacy-endpoints": pulumi.String("true"),
+// 				},
+// 				OauthScopes: pulumi.StringArray{
+// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### With The Default Node Pool
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/container"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
+// 			InitialNodeCount: pulumi.Int(3),
+// 			Location:         pulumi.String("us-central1-a"),
+// 			MasterAuth: &container.ClusterMasterAuthArgs{
+// 				ClientCertificateConfig: &container.ClusterMasterAuthClientCertificateConfigArgs{
+// 					IssueClientCertificate: pulumi.Bool(false),
+// 				},
+// 				Password: pulumi.String(""),
+// 				Username: pulumi.String(""),
+// 			},
+// 			NodeConfig: &container.ClusterNodeConfigArgs{
+// 				Labels: pulumi.StringMap{
+// 					"foo": pulumi.String("bar"),
+// 				},
+// 				Metadata: pulumi.StringMap{
+// 					"disable-legacy-endpoints": pulumi.String("true"),
+// 				},
+// 				OauthScopes: pulumi.StringArray{
+// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
+// 				},
+// 				Tags: pulumi.StringArray{
+// 					pulumi.String("foo"),
+// 					pulumi.String("bar"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+//
+// ```sh
+//  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+// ```
+//
+//  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
 type Cluster struct {
 	pulumi.CustomResourceState
 
@@ -1123,4 +1236,43 @@ type ClusterArgs struct {
 
 func (ClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterArgs)(nil)).Elem()
+}
+
+type ClusterInput interface {
+	pulumi.Input
+
+	ToClusterOutput() ClusterOutput
+	ToClusterOutputWithContext(ctx context.Context) ClusterOutput
+}
+
+func (Cluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*Cluster)(nil)).Elem()
+}
+
+func (i Cluster) ToClusterOutput() ClusterOutput {
+	return i.ToClusterOutputWithContext(context.Background())
+}
+
+func (i Cluster) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterOutput)
+}
+
+type ClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterOutput)(nil)).Elem()
+}
+
+func (o ClusterOutput) ToClusterOutput() ClusterOutput {
+	return o
+}
+
+func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ClusterOutput{})
 }

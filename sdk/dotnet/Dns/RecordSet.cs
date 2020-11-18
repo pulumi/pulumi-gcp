@@ -19,6 +19,191 @@ namespace Pulumi.Gcp.Dns
     /// will not actually remove NS records during destroy but will report that it did.
     /// 
     /// ## Example Usage
+    /// ### Binding a DNS name to the ephemeral IP of a new instance:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var frontendInstance = new Gcp.Compute.Instance("frontendInstance", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "g1-small",
+    ///             Zone = "us-central1-b",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-9",
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var frontendRecordSet = new Gcp.Dns.RecordSet("frontendRecordSet", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             Type = "A",
+    ///             Ttl = 300,
+    ///             ManagedZone = prod.Name,
+    ///             Rrdatas = 
+    ///             {
+    ///                 frontendInstance.NetworkInterfaces.Apply(networkInterfaces =&gt; networkInterfaces[0].AccessConfigs?[0]?.NatIp),
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Adding an A record
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var recordSet = new Gcp.Dns.RecordSet("recordSet", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "A",
+    ///             Ttl = 300,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "8.8.8.8",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Adding an MX record
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var mx = new Gcp.Dns.RecordSet("mx", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "MX",
+    ///             Ttl = 3600,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "1 aspmx.l.google.com.",
+    ///                 "5 alt1.aspmx.l.google.com.",
+    ///                 "5 alt2.aspmx.l.google.com.",
+    ///                 "10 alt3.aspmx.l.google.com.",
+    ///                 "10 alt4.aspmx.l.google.com.",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Adding an SPF record
+    /// 
+    /// Quotes (`""`) must be added around your `rrdatas` for a SPF record. Otherwise `rrdatas` string gets split on spaces.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var spf = new Gcp.Dns.RecordSet("spf", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "TXT",
+    ///             Ttl = 300,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "\"v=spf1 ip4:111.111.111.111 include:backoff.email-example.com -all\"",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Adding a CNAME record
+    /// 
+    ///  The list of `rrdatas` should only contain a single string corresponding to the Canonical Name intended.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod = new Gcp.Dns.ManagedZone("prod", new Gcp.Dns.ManagedZoneArgs
+    ///         {
+    ///             DnsName = "prod.mydomain.com.",
+    ///         });
+    ///         var cname = new Gcp.Dns.RecordSet("cname", new Gcp.Dns.RecordSetArgs
+    ///         {
+    ///             ManagedZone = prod.Name,
+    ///             Type = "CNAME",
+    ///             Ttl = 300,
+    ///             Rrdatas = 
+    ///             {
+    ///                 "frontend.mydomain.com.",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DNS record sets can be imported using either of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{project}}/{{zone}}/{{name}}/{{type}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dns/recordSet:RecordSet frontend {{zone}}/{{name}}/{{type}}
+    /// ```
+    /// 
+    ///  NoteThe record name must include the trailing dot at the end.
     /// </summary>
     public partial class RecordSet : Pulumi.CustomResource
     {

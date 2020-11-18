@@ -29,6 +29,84 @@ class ResourcePolicy(pulumi.CustomResource):
         A policy that can be attached to a resource to specify or schedule actions on that resource.
 
         ## Example Usage
+        ### Resource Policy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        foo = gcp.compute.ResourcePolicy("foo",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
+        ```
+        ### Resource Policy Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bar = gcp.compute.ResourcePolicy("bar",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                retention_policy={
+                    "maxRetentionDays": 10,
+                    "onSourceDiskDelete": "KEEP_AUTO_SNAPSHOTS",
+                },
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    hourly_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs(
+                        hours_in_cycle=20,
+                        start_time="23:00",
+                    ),
+                ),
+                snapshot_properties=gcp.compute.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs(
+                    guest_flush=True,
+                    labels={
+                        "myLabel": "value",
+                    },
+                    storage_locations="us",
+                ),
+            ))
+        ```
+        ### Resource Policy Placement Policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        baz = gcp.compute.ResourcePolicy("baz",
+            group_placement_policy=gcp.compute.ResourcePolicyGroupPlacementPolicyArgs(
+                collocation="COLLOCATED",
+                vm_count=2,
+            ),
+            region="us-central1")
+        ```
+
+        ## Import
+
+        ResourcePolicy can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default projects/{{project}}/regions/{{region}}/resourcePolicies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

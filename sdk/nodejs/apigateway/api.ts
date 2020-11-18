@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Api can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/api:Api default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/api:Api default {{name}}
+ * ```
+ */
 export class Api extends pulumi.CustomResource {
     /**
      * Get an existing Api resource's state with the given name, ID, and optional extra

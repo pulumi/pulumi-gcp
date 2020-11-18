@@ -15,6 +15,42 @@ namespace Pulumi.Gcp.Dns
         /// Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
         /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
         /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+        /// 
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = new Gcp.Dns.ManagedZone("foo", new Gcp.Dns.ManagedZoneArgs
+        ///         {
+        ///             DnsName = "foo.bar.",
+        ///             DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
+        ///             {
+        ///                 State = "on",
+        ///                 NonExistence = "nsec3",
+        ///             },
+        ///         });
+        ///         var fooDnsKeys = foo.Id.Apply(id =&gt; Gcp.Dns.GetKeys.InvokeAsync(new Gcp.Dns.GetKeysArgs
+        ///         {
+        ///             ManagedZone = id,
+        ///         }));
+        ///         this.FooDnsDsRecord = fooDnsKeys.Apply(fooDnsKeys =&gt; fooDnsKeys.KeySigningKeys[0].DsRecord);
+        ///     }
+        /// 
+        ///     [Output("fooDnsDsRecord")]
+        ///     public Output&lt;string&gt; FooDnsDsRecord { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKeysResult> InvokeAsync(GetKeysArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysArgs(), options.WithVersion());

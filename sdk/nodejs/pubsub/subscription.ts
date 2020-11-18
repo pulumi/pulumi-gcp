@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,6 +16,95 @@ import * as utilities from "../utilities";
  *     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
  *
  * ## Example Usage
+ * ### Pubsub Subscription Push
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     ackDeadlineSeconds: 20,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     pushConfig: {
+ *         pushEndpoint: "https://example.com/push",
+ *         attributes: {
+ *             "x-goog-version": "v1",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Pubsub Subscription Pull
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     messageRetentionDuration: "1200s",
+ *     retainAckedMessages: true,
+ *     ackDeadlineSeconds: 20,
+ *     expirationPolicy: {
+ *         ttl: "300000.5s",
+ *     },
+ *     retryPolicy: {
+ *         minimumBackoff: "10s",
+ *     },
+ *     enableMessageOrdering: false,
+ * });
+ * ```
+ * ### Pubsub Subscription Different Project
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {project: "topic-project"});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     project: "subscription-project",
+ *     topic: exampleTopic.name,
+ * });
+ * ```
+ * ### Pubsub Subscription Dead Letter
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
+ * const exampleDeadLetter = new gcp.pubsub.Topic("exampleDeadLetter", {});
+ * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
+ *     topic: exampleTopic.name,
+ *     deadLetterPolicy: {
+ *         deadLetterTopic: exampleDeadLetter.id,
+ *         maxDeliveryAttempts: 10,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Subscription can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
+ * ```
  */
 export class Subscription extends pulumi.CustomResource {
     /**

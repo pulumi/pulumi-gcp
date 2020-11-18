@@ -4,6 +4,7 @@
 package projects
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,280 @@ import (
 // > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
 //
 // > **Note:** It is not possible to grant the `roles/owner` role using any of these resources due to this being disallowed by the underlying `projects.setIamPolicy` API method. See the method [documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy) for full details. It is, however, possible to remove all owners from the project by passing in an empty `members = []` list to the `projects.IAMBinding` resource. This is useful for removing the owner role from a project upon creation, however, precautions should be taken to avoid inadvertently locking oneself out of a project such as by granting additional roles to alternate entities.
+//
+// ## google\_project\_iam\_policy
+//
+// > **Be careful!** You can accidentally lock yourself out of your project
+//    using this resource. Deleting a `projects.IAMPolicy` removes access
+//    from anyone without organization-level access to the project. Proceed with caution.
+//    It's not recommended to use `projects.IAMPolicy` with your provider project
+//    to avoid locking yourself out, and it should generally only be used with projects
+//    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+//    applying the change.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/editor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+// 			Project:    pulumi.String("your-project-id"),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Condition: organizations.GetIAMPolicyBindingCondition{
+// 						Description: "Expiring at midnight of 2019-12-31",
+// 						Expression:  "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+// 						Title:       "expires_after_2019_12_31",
+// 					},
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 					Role: "roles/editor",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMPolicy(ctx, "project", &projects.IAMPolicyArgs{
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 			Project:    pulumi.String("your-project-id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_project\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewIAMBinding(ctx, "project", &projects.IAMBindingArgs{
+// 			Condition: &projects.IAMBindingConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_project\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// With IAM Conditions:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewIAMMember(ctx, "project", &projects.IAMMemberArgs{
+// 			Condition: &projects.IAMMemberConditionArgs{
+// 				Description: pulumi.String("Expiring at midnight of 2019-12-31"),
+// 				Expression:  pulumi.String("request.time < timestamp(\"2020-01-01T00:00:00Z\")"),
+// 				Title:       pulumi.String("expires_after_2019_12_31"),
+// 			},
+// 			Member:  pulumi.String("user:jane@example.com"),
+// 			Project: pulumi.String("your-project-id"),
+// 			Role:    pulumi.String("roles/editor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_project\_iam\_audit\_config
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewIAMAuditConfig(ctx, "project", &projects.IAMAuditConfigArgs{
+// 			AuditLogConfigs: projects.IAMAuditConfigAuditLogConfigArray{
+// 				&projects.IAMAuditConfigAuditLogConfigArgs{
+// 					LogType: pulumi.String("ADMIN_READ"),
+// 				},
+// 				&projects.IAMAuditConfigAuditLogConfigArgs{
+// 					ExemptedMembers: pulumi.StringArray{
+// 						pulumi.String("user:joebloggs@hashicorp.com"),
+// 					},
+// 					LogType: pulumi.String("DATA_READ"),
+// 				},
+// 			},
+// 			Project: pulumi.String("your-project-id"),
+// 			Service: pulumi.String("allServices"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+//
+// This member resource can be imported using the `project_id`, role, and member e.g.
+//
+// ```sh
+//  $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project "your-project-id roles/viewer user:foo@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//
+// This binding resource can be imported using the `project_id` and role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project "your-project-id roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question.
+//
+// This policy resource can be imported using the `project_id`.
+//
+// ```sh
+//  $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project your-project-id
+// ```
+//
+//  IAM audit config imports use the identifier of the resource in question and the service, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:projects/iAMAuditConfig:IAMAuditConfig my_project "your-project-id foo.googleapis.com"
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IAMAuditConfig struct {
 	pulumi.CustomResourceState
 
@@ -125,4 +400,43 @@ type IAMAuditConfigArgs struct {
 
 func (IAMAuditConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamauditConfigArgs)(nil)).Elem()
+}
+
+type IAMAuditConfigInput interface {
+	pulumi.Input
+
+	ToIAMAuditConfigOutput() IAMAuditConfigOutput
+	ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput
+}
+
+func (IAMAuditConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMAuditConfig)(nil)).Elem()
+}
+
+func (i IAMAuditConfig) ToIAMAuditConfigOutput() IAMAuditConfigOutput {
+	return i.ToIAMAuditConfigOutputWithContext(context.Background())
+}
+
+func (i IAMAuditConfig) ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigOutput)
+}
+
+type IAMAuditConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (IAMAuditConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMAuditConfigOutput)(nil)).Elem()
+}
+
+func (o IAMAuditConfigOutput) ToIAMAuditConfigOutput() IAMAuditConfigOutput {
+	return o
+}
+
+func (o IAMAuditConfigOutput) ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IAMAuditConfigOutput{})
 }

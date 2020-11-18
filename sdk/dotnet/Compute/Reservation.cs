@@ -26,6 +26,53 @@ namespace Pulumi.Gcp.Compute
     ///     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
     /// 
     /// ## Example Usage
+    /// ### Reservation Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var gceReservation = new Gcp.Compute.Reservation("gceReservation", new Gcp.Compute.ReservationArgs
+    ///         {
+    ///             SpecificReservation = new Gcp.Compute.Inputs.ReservationSpecificReservationArgs
+    ///             {
+    ///                 Count = 1,
+    ///                 InstanceProperties = new Gcp.Compute.Inputs.ReservationSpecificReservationInstancePropertiesArgs
+    ///                 {
+    ///                     MachineType = "n2-standard-2",
+    ///                     MinCpuPlatform = "Intel Cascade Lake",
+    ///                 },
+    ///             },
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Reservation can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/reservation:Reservation default projects/{{project}}/zones/{{zone}}/reservations/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/reservation:Reservation default {{project}}/{{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/reservation:Reservation default {{name}}
+    /// ```
     /// </summary>
     public partial class Reservation : Pulumi.CustomResource
     {

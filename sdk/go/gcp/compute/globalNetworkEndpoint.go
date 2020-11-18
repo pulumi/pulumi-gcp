@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,54 @@ import (
 //     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
+// ### Global Network Endpoint
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		neg, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
+// 			DefaultPort:         pulumi.Int(90),
+// 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewGlobalNetworkEndpoint(ctx, "default_endpoint", &compute.GlobalNetworkEndpointArgs{
+// 			GlobalNetworkEndpointGroup: neg.Name,
+// 			Fqdn:                       pulumi.String("www.example.com"),
+// 			Port:                       pulumi.Int(90),
+// 			IpAddress:                  pulumi.String("8.8.8.8"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// GlobalNetworkEndpoint can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
+// ```
 type GlobalNetworkEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -138,4 +187,43 @@ type GlobalNetworkEndpointArgs struct {
 
 func (GlobalNetworkEndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalNetworkEndpointArgs)(nil)).Elem()
+}
+
+type GlobalNetworkEndpointInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointOutput() GlobalNetworkEndpointOutput
+	ToGlobalNetworkEndpointOutputWithContext(ctx context.Context) GlobalNetworkEndpointOutput
+}
+
+func (GlobalNetworkEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalNetworkEndpoint)(nil)).Elem()
+}
+
+func (i GlobalNetworkEndpoint) ToGlobalNetworkEndpointOutput() GlobalNetworkEndpointOutput {
+	return i.ToGlobalNetworkEndpointOutputWithContext(context.Background())
+}
+
+func (i GlobalNetworkEndpoint) ToGlobalNetworkEndpointOutputWithContext(ctx context.Context) GlobalNetworkEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointOutput)
+}
+
+type GlobalNetworkEndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalNetworkEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalNetworkEndpointOutput)(nil)).Elem()
+}
+
+func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutput() GlobalNetworkEndpointOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointOutput) ToGlobalNetworkEndpointOutputWithContext(ctx context.Context) GlobalNetworkEndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalNetworkEndpointOutput{})
 }

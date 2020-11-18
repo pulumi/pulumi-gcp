@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,6 +17,80 @@ import * as utilities from "../utilities";
  *     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
  *
  * ## Example Usage
+ * ### Filestore Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     fileShares: {
+ *         capacityGb: 2660,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         modes: ["MODE_IPV4"],
+ *         network: "default",
+ *     }],
+ *     tier: "PREMIUM",
+ *     zone: "us-central1-b",
+ * });
+ * ```
+ * ### Filestore Instance Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.filestore.Instance("instance", {
+ *     zone: "us-central1-b",
+ *     tier: "BASIC_SSD",
+ *     fileShares: {
+ *         capacityGb: 2660,
+ *         name: "share1",
+ *         nfsExportOptions: [
+ *             {
+ *                 ipRanges: ["10.0.0.0/24"],
+ *                 accessMode: "READ_WRITE",
+ *                 squashMode: "NO_ROOT_SQUASH",
+ *             },
+ *             {
+ *                 ipRanges: ["10.10.0.0/24"],
+ *                 accessMode: "READ_ONLY",
+ *                 squashMode: "ROOT_SQUASH",
+ *                 anonUid: 123,
+ *                 anonGid: 456,
+ *             },
+ *         ],
+ *     },
+ *     networks: [{
+ *         network: "default",
+ *         modes: ["MODE_IPV4"],
+ *     }],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instance can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:filestore/instance:Instance default {{name}}
+ * ```
  */
 export class Instance extends pulumi.CustomResource {
     /**

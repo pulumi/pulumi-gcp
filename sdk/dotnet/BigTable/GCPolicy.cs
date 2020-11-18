@@ -13,6 +13,98 @@ namespace Pulumi.Gcp.BigTable
     /// Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
     /// [the official documentation](https://cloud.google.com/bigtable/) and
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         {
+    ///             Clusters = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "tf-instance-cluster",
+    ///                     Zone = "us-central1-b",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var table = new Gcp.BigTable.Table("table", new Gcp.BigTable.TableArgs
+    ///         {
+    ///             InstanceName = instance.Name,
+    ///             ColumnFamilies = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.TableColumnFamilyArgs
+    ///                 {
+    ///                     Family = "name",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var policy = new Gcp.BigTable.GCPolicy("policy", new Gcp.BigTable.GCPolicyArgs
+    ///         {
+    ///             InstanceName = instance.Name,
+    ///             Table = table.Name,
+    ///             ColumnFamily = "name",
+    ///             MaxAges = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
+    ///                 {
+    ///                     Days = 7,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var policy = new Gcp.BigTable.GCPolicy("policy", new Gcp.BigTable.GCPolicyArgs
+    ///         {
+    ///             InstanceName = google_bigtable_instance.Instance.Name,
+    ///             Table = google_bigtable_table.Table.Name,
+    ///             ColumnFamily = "name",
+    ///             Mode = "UNION",
+    ///             MaxAges = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
+    ///                 {
+    ///                     Days = 7,
+    ///                 },
+    ///             },
+    ///             MaxVersions = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.GCPolicyMaxVersionArgs
+    ///                 {
+    ///                     Number = 10,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     public partial class GCPolicy : Pulumi.CustomResource
     {

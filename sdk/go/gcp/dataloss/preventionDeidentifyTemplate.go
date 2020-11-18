@@ -4,6 +4,7 @@
 package dataloss
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,105 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dlp/docs/concepts-templates)
 //
 // ## Example Usage
+// ### Dlp Deidentify Template Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataloss.NewPreventionDeidentifyTemplate(ctx, "basic", &dataloss.PreventionDeidentifyTemplateArgs{
+// 			DeidentifyConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigArgs{
+// 				InfoTypeTransformations: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsArgs{
+// 					Transformations: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArray{
+// 						&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+// 							InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+// 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+// 									Name: pulumi.String("PHONE_NUMBER"),
+// 								},
+// 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+// 									Name: pulumi.String("CREDIT_CARD_NUMBER"),
+// 								},
+// 							},
+// 							PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+// 								ReplaceConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{
+// 									NewValue: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{
+// 										IntegerValue: pulumi.Int(9),
+// 									},
+// 								},
+// 							},
+// 						},
+// 						&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+// 							InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+// 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+// 									Name: pulumi.String("EMAIL_ADDRESS"),
+// 								},
+// 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+// 									Name: pulumi.String("LAST_NAME"),
+// 								},
+// 							},
+// 							PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+// 								CharacterMaskConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs{
+// 									CharactersToIgnore: pulumi.StringMapArray{
+// 										pulumi.StringMap{
+// 											"commonCharactersToIgnore": pulumi.String("PUNCTUATION"),
+// 										},
+// 									},
+// 									MaskingCharacter: pulumi.String("X"),
+// 									NumberToMask:     pulumi.Int(4),
+// 									ReverseOrder:     pulumi.Bool(true),
+// 								},
+// 							},
+// 						},
+// 						&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationArgs{
+// 							InfoTypes: dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArray{
+// 								&dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationInfoTypeArgs{
+// 									Name: pulumi.String("DATE_OF_BIRTH"),
+// 								},
+// 							},
+// 							PrimitiveTransformation: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationArgs{
+// 								ReplaceConfig: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigArgs{
+// 									NewValue: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueArgs{
+// 										DateValue: &dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValueArgs{
+// 											Day:   pulumi.Int(1),
+// 											Month: pulumi.Int(1),
+// 											Year:  pulumi.Int(2020),
+// 										},
+// 									},
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Description: pulumi.String("Description"),
+// 			DisplayName: pulumi.String("Displayname"),
+// 			Parent:      pulumi.String("projects/my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// DeidentifyTemplate can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/deidentifyTemplates/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
+// ```
 type PreventionDeidentifyTemplate struct {
 	pulumi.CustomResourceState
 
@@ -147,4 +247,43 @@ type PreventionDeidentifyTemplateArgs struct {
 
 func (PreventionDeidentifyTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionDeidentifyTemplateArgs)(nil)).Elem()
+}
+
+type PreventionDeidentifyTemplateInput interface {
+	pulumi.Input
+
+	ToPreventionDeidentifyTemplateOutput() PreventionDeidentifyTemplateOutput
+	ToPreventionDeidentifyTemplateOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateOutput
+}
+
+func (PreventionDeidentifyTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplate)(nil)).Elem()
+}
+
+func (i PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutput() PreventionDeidentifyTemplateOutput {
+	return i.ToPreventionDeidentifyTemplateOutputWithContext(context.Background())
+}
+
+func (i PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateOutput)
+}
+
+type PreventionDeidentifyTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (PreventionDeidentifyTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplateOutput)(nil)).Elem()
+}
+
+func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplateOutput() PreventionDeidentifyTemplateOutput {
+	return o
+}
+
+func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplateOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PreventionDeidentifyTemplateOutput{})
 }

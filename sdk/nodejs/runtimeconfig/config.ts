@@ -9,6 +9,33 @@ import * as utilities from "../utilities";
  * [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
  * or the
  * [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+ *
+ * ## Example Usage
+ *
+ * Example creating a RuntimeConfig resource.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {
+ *     description: "Runtime configuration values for my service",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Runtime Configs can be imported using the `name` or full config name, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:runtimeconfig/config:Config myconfig myconfig
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
+ * ```
+ *
+ *  When importing using only the name, the provider project must be set.
  */
 export class Config extends pulumi.CustomResource {
     /**

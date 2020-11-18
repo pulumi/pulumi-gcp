@@ -4,12 +4,28 @@
 package iam
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// WorkloadIdentityPool can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
+// ```
 type WorkloadIdentityPool struct {
 	pulumi.CustomResourceState
 
@@ -166,4 +182,43 @@ type WorkloadIdentityPoolArgs struct {
 
 func (WorkloadIdentityPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*workloadIdentityPoolArgs)(nil)).Elem()
+}
+
+type WorkloadIdentityPoolInput interface {
+	pulumi.Input
+
+	ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput
+	ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput
+}
+
+func (WorkloadIdentityPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPool)(nil)).Elem()
+}
+
+func (i WorkloadIdentityPool) ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput {
+	return i.ToWorkloadIdentityPoolOutputWithContext(context.Background())
+}
+
+func (i WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolOutput)
+}
+
+type WorkloadIdentityPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (WorkloadIdentityPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolOutput)(nil)).Elem()
+}
+
+func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput {
+	return o
+}
+
+func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkloadIdentityPoolOutput{})
 }

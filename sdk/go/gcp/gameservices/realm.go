@@ -4,6 +4,7 @@
 package gameservices
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,47 @@ import (
 //     * [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
+// ### Game Service Realm Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/gameservices"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gameservices.NewRealm(ctx, "_default", &gameservices.RealmArgs{
+// 			Description: pulumi.String("one of the nine"),
+// 			Location:    pulumi.String("global"),
+// 			RealmId:     pulumi.String("tf-test-realm"),
+// 			TimeZone:    pulumi.String("EST"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Realm can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/realm:Realm default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/realm:Realm default {{project}}/{{location}}/{{realm_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/realm:Realm default {{location}}/{{realm_id}}
+// ```
 type Realm struct {
 	pulumi.CustomResourceState
 
@@ -166,4 +208,43 @@ type RealmArgs struct {
 
 func (RealmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*realmArgs)(nil)).Elem()
+}
+
+type RealmInput interface {
+	pulumi.Input
+
+	ToRealmOutput() RealmOutput
+	ToRealmOutputWithContext(ctx context.Context) RealmOutput
+}
+
+func (Realm) ElementType() reflect.Type {
+	return reflect.TypeOf((*Realm)(nil)).Elem()
+}
+
+func (i Realm) ToRealmOutput() RealmOutput {
+	return i.ToRealmOutputWithContext(context.Background())
+}
+
+func (i Realm) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RealmOutput)
+}
+
+type RealmOutput struct {
+	*pulumi.OutputState
+}
+
+func (RealmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RealmOutput)(nil)).Elem()
+}
+
+func (o RealmOutput) ToRealmOutput() RealmOutput {
+	return o
+}
+
+func (o RealmOutput) ToRealmOutputWithContext(ctx context.Context) RealmOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RealmOutput{})
 }

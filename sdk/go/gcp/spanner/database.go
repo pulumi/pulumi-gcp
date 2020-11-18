@@ -4,6 +4,7 @@
 package spanner
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,60 @@ import (
 // > **Warning:** It is strongly recommended to set `lifecycle { preventDestroy = true }` on databases in order to prevent accidental data loss.
 //
 // ## Example Usage
+// ### Spanner Database Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		main, err := spanner.NewInstance(ctx, "main", &spanner.InstanceArgs{
+// 			Config:      pulumi.String("regional-europe-west1"),
+// 			DisplayName: pulumi.String("main-instance"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = spanner.NewDatabase(ctx, "database", &spanner.DatabaseArgs{
+// 			Instance: main.Name,
+// 			Ddls: pulumi.StringArray{
+// 				pulumi.String("CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)"),
+// 				pulumi.String("CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)"),
+// 			},
+// 			DeletionProtection: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Database can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
+// ```
 type Database struct {
 	pulumi.CustomResourceState
 
@@ -151,4 +206,43 @@ type DatabaseArgs struct {
 
 func (DatabaseArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseArgs)(nil)).Elem()
+}
+
+type DatabaseInput interface {
+	pulumi.Input
+
+	ToDatabaseOutput() DatabaseOutput
+	ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput
+}
+
+func (Database) ElementType() reflect.Type {
+	return reflect.TypeOf((*Database)(nil)).Elem()
+}
+
+func (i Database) ToDatabaseOutput() DatabaseOutput {
+	return i.ToDatabaseOutputWithContext(context.Background())
+}
+
+func (i Database) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseOutput)
+}
+
+type DatabaseOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseOutput)(nil)).Elem()
+}
+
+func (o DatabaseOutput) ToDatabaseOutput() DatabaseOutput {
+	return o
+}
+
+func (o DatabaseOutput) ToDatabaseOutputWithContext(ctx context.Context) DatabaseOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseOutput{})
 }

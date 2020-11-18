@@ -2,14 +2,76 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Creates a table resource in a dataset for Google BigQuery. For more information see
  * [the official documentation](https://cloud.google.com/bigquery/docs/) and
  * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDataset = new gcp.bigquery.Dataset("defaultDataset", {
+ *     datasetId: "foo",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "EU",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ * });
+ * const defaultTable = new gcp.bigquery.Table("defaultTable", {
+ *     datasetId: defaultDataset.datasetId,
+ *     tableId: "bar",
+ *     timePartitioning: {
+ *         type: "DAY",
+ *     },
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     schema: `[
+ *   {
+ *     "name": "permalink",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The Permalink"
+ *   },
+ *   {
+ *     "name": "state",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "State where the head office is located"
+ *   }
+ * ]
+ * `,
+ * });
+ * const sheet = new gcp.bigquery.Table("sheet", {
+ *     datasetId: defaultDataset.datasetId,
+ *     tableId: "sheet",
+ *     externalDataConfiguration: {
+ *         autodetect: true,
+ *         sourceFormat: "GOOGLE_SHEETS",
+ *         googleSheetsOptions: {
+ *             skipLeadingRows: 1,
+ *         },
+ *         sourceUris: ["https://docs.google.com/spreadsheets/d/123456789012345"],
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
+ * ```
  */
 export class Table extends pulumi.CustomResource {
     /**

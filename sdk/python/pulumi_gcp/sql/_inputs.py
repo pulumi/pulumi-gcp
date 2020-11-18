@@ -387,7 +387,7 @@ class DatabaseInstanceSettingsArgs:
         if activation_policy is not None:
             pulumi.set(__self__, "activation_policy", activation_policy)
         if authorized_gae_applications is not None:
-            warnings.warn("This property is only applicable to First Generation instances, and First Generation instances are now deprecated.", DeprecationWarning)
+            warnings.warn("""This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""", DeprecationWarning)
             pulumi.log.warn("authorized_gae_applications is deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.")
         if authorized_gae_applications is not None:
             pulumi.set(__self__, "authorized_gae_applications", authorized_gae_applications)
@@ -396,7 +396,7 @@ class DatabaseInstanceSettingsArgs:
         if backup_configuration is not None:
             pulumi.set(__self__, "backup_configuration", backup_configuration)
         if crash_safe_replication is not None:
-            warnings.warn("This property is only applicable to First Generation instances, and First Generation instances are now deprecated.", DeprecationWarning)
+            warnings.warn("""This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""", DeprecationWarning)
             pulumi.log.warn("crash_safe_replication is deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.")
         if crash_safe_replication is not None:
             pulumi.set(__self__, "crash_safe_replication", crash_safe_replication)
@@ -417,7 +417,7 @@ class DatabaseInstanceSettingsArgs:
         if pricing_plan is not None:
             pulumi.set(__self__, "pricing_plan", pricing_plan)
         if replication_type is not None:
-            warnings.warn("This property is only applicable to First Generation instances, and First Generation instances are now deprecated.", DeprecationWarning)
+            warnings.warn("""This property is only applicable to First Generation instances, and First Generation instances are now deprecated.""", DeprecationWarning)
             pulumi.log.warn("replication_type is deprecated: This property is only applicable to First Generation instances, and First Generation instances are now deprecated.")
         if replication_type is not None:
             pulumi.set(__self__, "replication_type", replication_type)

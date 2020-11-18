@@ -2,14 +2,76 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
  *
  * ## Example Usage
+ * ### Bigtable App Profile Multicluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     clusters: [{
+ *         clusterId: "bt-instance",
+ *         zone: "us-central1-b",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *     }],
+ *     deletionProtection: "true",
+ * });
+ * const ap = new gcp.bigquery.AppProfile("ap", {
+ *     instance: instance.name,
+ *     appProfileId: "bt-profile",
+ *     multiClusterRoutingUseAny: true,
+ *     ignoreWarnings: true,
+ * });
+ * ```
+ * ### Bigtable App Profile Singlecluster
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {
+ *     clusters: [{
+ *         clusterId: "bt-instance",
+ *         zone: "us-central1-b",
+ *         numNodes: 3,
+ *         storageType: "HDD",
+ *     }],
+ *     deletionProtection: "true",
+ * });
+ * const ap = new gcp.bigquery.AppProfile("ap", {
+ *     instance: instance.name,
+ *     appProfileId: "bt-profile",
+ *     singleClusterRouting: {
+ *         clusterId: "bt-instance",
+ *         allowTransactionalWrites: true,
+ *     },
+ *     ignoreWarnings: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * AppProfile can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
+ * ```
  */
 export class AppProfile extends pulumi.CustomResource {
     /**

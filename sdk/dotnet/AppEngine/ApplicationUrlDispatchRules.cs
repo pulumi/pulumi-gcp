@@ -17,6 +17,81 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps#UrlDispatchRule)
     /// 
     /// ## Example Usage
+    /// ### App Engine Application Url Dispatch Rules Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///         });
+    ///         var adminV3 = new Gcp.AppEngine.StandardAppVersion("adminV3", new Gcp.AppEngine.StandardAppVersionArgs
+    ///         {
+    ///             VersionId = "v3",
+    ///             Service = "admin",
+    ///             Runtime = "nodejs10",
+    ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///             {
+    ///                 Shell = "node ./app.js",
+    ///             },
+    ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///             {
+    ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///                 {
+    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var objectName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             EnvVariables = 
+    ///             {
+    ///                 { "port", "8080" },
+    ///             },
+    ///             NoopOnDestroy = true,
+    ///         });
+    ///         var webService = new Gcp.AppEngine.ApplicationUrlDispatchRules("webService", new Gcp.AppEngine.ApplicationUrlDispatchRulesArgs
+    ///         {
+    ///             DispatchRules = 
+    ///             {
+    ///                 new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
+    ///                 {
+    ///                     Domain = "*",
+    ///                     Path = "/*",
+    ///                     Service = "default",
+    ///                 },
+    ///                 new Gcp.AppEngine.Inputs.ApplicationUrlDispatchRulesDispatchRuleArgs
+    ///                 {
+    ///                     Domain = "*",
+    ///                     Path = "/admin/*",
+    ///                     Service = adminV3.Service,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ApplicationUrlDispatchRules can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
+    /// ```
     /// </summary>
     public partial class ApplicationUrlDispatchRules : Pulumi.CustomResource
     {

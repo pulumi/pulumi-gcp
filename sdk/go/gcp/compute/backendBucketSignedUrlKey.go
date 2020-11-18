@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,55 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Backend Bucket Signed Url Key
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		urlSignature, err := random.NewRandomId(ctx, "urlSignature", &random.RandomIdArgs{
+// 			ByteLength: pulumi.Int(16),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		testBackend, err := compute.NewBackendBucket(ctx, "testBackend", &compute.BackendBucketArgs{
+// 			Description: pulumi.String("Contains beautiful images"),
+// 			BucketName:  bucket.Name,
+// 			EnableCdn:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendBucketSignedUrlKey(ctx, "backendKey", &compute.BackendBucketSignedUrlKeyArgs{
+// 			KeyValue:      urlSignature.B64Url,
+// 			BackendBucket: testBackend.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type BackendBucketSignedUrlKey struct {
 	pulumi.CustomResourceState
 
@@ -134,4 +184,43 @@ type BackendBucketSignedUrlKeyArgs struct {
 
 func (BackendBucketSignedUrlKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendBucketSignedUrlKeyArgs)(nil)).Elem()
+}
+
+type BackendBucketSignedUrlKeyInput interface {
+	pulumi.Input
+
+	ToBackendBucketSignedUrlKeyOutput() BackendBucketSignedUrlKeyOutput
+	ToBackendBucketSignedUrlKeyOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyOutput
+}
+
+func (BackendBucketSignedUrlKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketSignedUrlKey)(nil)).Elem()
+}
+
+func (i BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyOutput() BackendBucketSignedUrlKeyOutput {
+	return i.ToBackendBucketSignedUrlKeyOutputWithContext(context.Background())
+}
+
+func (i BackendBucketSignedUrlKey) ToBackendBucketSignedUrlKeyOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketSignedUrlKeyOutput)
+}
+
+type BackendBucketSignedUrlKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendBucketSignedUrlKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketSignedUrlKeyOutput)(nil)).Elem()
+}
+
+func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyOutput() BackendBucketSignedUrlKeyOutput {
+	return o
+}
+
+func (o BackendBucketSignedUrlKeyOutput) ToBackendBucketSignedUrlKeyOutputWithContext(ctx context.Context) BackendBucketSignedUrlKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackendBucketSignedUrlKeyOutput{})
 }

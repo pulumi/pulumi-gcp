@@ -4,6 +4,7 @@
 package cloudasset
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,22 @@ import (
 //     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// ProjectFeed can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
+// ```
 type ProjectFeed struct {
 	pulumi.CustomResourceState
 
@@ -252,4 +269,43 @@ type ProjectFeedArgs struct {
 
 func (ProjectFeedArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectFeedArgs)(nil)).Elem()
+}
+
+type ProjectFeedInput interface {
+	pulumi.Input
+
+	ToProjectFeedOutput() ProjectFeedOutput
+	ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput
+}
+
+func (ProjectFeed) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeed)(nil)).Elem()
+}
+
+func (i ProjectFeed) ToProjectFeedOutput() ProjectFeedOutput {
+	return i.ToProjectFeedOutputWithContext(context.Background())
+}
+
+func (i ProjectFeed) ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedOutput)
+}
+
+type ProjectFeedOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectFeedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeedOutput)(nil)).Elem()
+}
+
+func (o ProjectFeedOutput) ToProjectFeedOutput() ProjectFeedOutput {
+	return o
+}
+
+func (o ProjectFeedOutput) ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectFeedOutput{})
 }
