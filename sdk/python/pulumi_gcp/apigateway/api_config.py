@@ -19,6 +19,7 @@ class ApiConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[str]] = None,
                  api_config_id: Optional[pulumi.Input[str]] = None,
+                 api_config_id_prefix: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -33,6 +34,8 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api: The API to attach the config to.
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
+        :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
+               specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
@@ -63,9 +66,8 @@ class ApiConfig(pulumi.CustomResource):
             if api is None:
                 raise TypeError("Missing required property 'api'")
             __props__['api'] = api
-            if api_config_id is None:
-                raise TypeError("Missing required property 'api_config_id'")
             __props__['api_config_id'] = api_config_id
+            __props__['api_config_id_prefix'] = api_config_id_prefix
             __props__['display_name'] = display_name
             __props__['gateway_config'] = gateway_config
             __props__['labels'] = labels
@@ -87,6 +89,7 @@ class ApiConfig(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: Optional[pulumi.Input[str]] = None,
             api_config_id: Optional[pulumi.Input[str]] = None,
+            api_config_id_prefix: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             gateway_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -103,6 +106,8 @@ class ApiConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api: The API to attach the config to.
         :param pulumi.Input[str] api_config_id: Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
+        :param pulumi.Input[str] api_config_id_prefix: Creates a unique name beginning with the
+               specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[pulumi.InputType['ApiConfigGatewayConfigArgs']] gateway_config: Immutable. Gateway specific configuration.
                If not specified, backend authentication will be set to use OIDC authentication using the default compute service account
@@ -121,6 +126,7 @@ class ApiConfig(pulumi.CustomResource):
 
         __props__["api"] = api
         __props__["api_config_id"] = api_config_id
+        __props__["api_config_id_prefix"] = api_config_id_prefix
         __props__["display_name"] = display_name
         __props__["gateway_config"] = gateway_config
         __props__["labels"] = labels
@@ -145,6 +151,15 @@ class ApiConfig(pulumi.CustomResource):
         Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         """
         return pulumi.get(self, "api_config_id")
+
+    @property
+    @pulumi.getter(name="apiConfigIdPrefix")
+    def api_config_id_prefix(self) -> pulumi.Output[str]:
+        """
+        Creates a unique name beginning with the
+        specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+        """
+        return pulumi.get(self, "api_config_id_prefix")
 
     @property
     @pulumi.getter(name="displayName")

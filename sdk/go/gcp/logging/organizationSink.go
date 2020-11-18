@@ -22,7 +22,21 @@ type OrganizationSink struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
@@ -80,7 +94,21 @@ type organizationSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
@@ -105,7 +133,21 @@ type OrganizationSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
@@ -134,7 +176,21 @@ type organizationSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
@@ -157,7 +213,21 @@ type OrganizationSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.

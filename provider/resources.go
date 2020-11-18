@@ -1982,7 +1982,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_iam_testable_permissions.html.markdown",
 				},
 			},
-			"google_iam_workload_identity_pool": {Tok: gcpDataSource(gcpIAM, "getWorkloadIdentityPool")},
+			"google_iam_workload_identity_pool":          {Tok: gcpDataSource(gcpIAM, "getWorkloadIdentityPool")},
+			"google_iam_workload_identity_pool_provider": {Tok: gcpDataSource(gcpIAM, "getWorkloadIdentityPoolProvider")},
 			"google_netblock_ip_ranges": {
 				Tok: gcpDataSource(gcpCompute, "getNetblockIPRanges"),
 				Docs: &tfbridge.DocInfo{

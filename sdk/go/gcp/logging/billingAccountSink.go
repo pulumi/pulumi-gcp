@@ -26,7 +26,7 @@ type BillingAccountSink struct {
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
 	// package main
 	//
@@ -95,7 +95,7 @@ type billingAccountSinkState struct {
 	// The billing account exported to the sink.
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
 	// package main
 	//
@@ -131,7 +131,7 @@ type BillingAccountSinkState struct {
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
 	// package main
 	//
@@ -171,7 +171,7 @@ type billingAccountSinkArgs struct {
 	// The billing account exported to the sink.
 	BillingAccount string `pulumi:"billingAccount"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
 	// package main
 	//
@@ -205,7 +205,7 @@ type BillingAccountSinkArgs struct {
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
 	// package main
 	//

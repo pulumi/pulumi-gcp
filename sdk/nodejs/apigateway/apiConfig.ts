@@ -43,6 +43,11 @@ export class ApiConfig extends pulumi.CustomResource {
      */
     public readonly apiConfigId!: pulumi.Output<string>;
     /**
+     * Creates a unique name beginning with the
+     * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+     */
+    public readonly apiConfigIdPrefix!: pulumi.Output<string>;
+    /**
      * A user-visible name for the API.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -89,6 +94,7 @@ export class ApiConfig extends pulumi.CustomResource {
             const state = argsOrState as ApiConfigState | undefined;
             inputs["api"] = state ? state.api : undefined;
             inputs["apiConfigId"] = state ? state.apiConfigId : undefined;
+            inputs["apiConfigIdPrefix"] = state ? state.apiConfigIdPrefix : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["gatewayConfig"] = state ? state.gatewayConfig : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -101,14 +107,12 @@ export class ApiConfig extends pulumi.CustomResource {
             if (!args || args.api === undefined) {
                 throw new Error("Missing required property 'api'");
             }
-            if (!args || args.apiConfigId === undefined) {
-                throw new Error("Missing required property 'apiConfigId'");
-            }
             if (!args || args.openapiDocuments === undefined) {
                 throw new Error("Missing required property 'openapiDocuments'");
             }
             inputs["api"] = args ? args.api : undefined;
             inputs["apiConfigId"] = args ? args.apiConfigId : undefined;
+            inputs["apiConfigIdPrefix"] = args ? args.apiConfigIdPrefix : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -140,6 +144,11 @@ export interface ApiConfigState {
      * Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
      */
     readonly apiConfigId?: pulumi.Input<string>;
+    /**
+     * Creates a unique name beginning with the
+     * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+     */
+    readonly apiConfigIdPrefix?: pulumi.Input<string>;
     /**
      * A user-visible name for the API.
      */
@@ -185,7 +194,12 @@ export interface ApiConfigArgs {
     /**
      * Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
      */
-    readonly apiConfigId: pulumi.Input<string>;
+    readonly apiConfigId?: pulumi.Input<string>;
+    /**
+     * Creates a unique name beginning with the
+     * specified prefix. If this and apiConfigId are unspecified, a random value is chosen for the name.
+     */
+    readonly apiConfigIdPrefix?: pulumi.Input<string>;
     /**
      * A user-visible name for the API.
      */

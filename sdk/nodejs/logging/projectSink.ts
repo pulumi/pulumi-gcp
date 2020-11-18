@@ -51,7 +51,7 @@ export class ProjectSink extends pulumi.CustomResource {
     public readonly bigqueryOptions!: pulumi.Output<outputs.logging.ProjectSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -144,7 +144,7 @@ export interface ProjectSinkState {
     readonly bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -193,7 +193,7 @@ export interface ProjectSinkArgs {
     readonly bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```

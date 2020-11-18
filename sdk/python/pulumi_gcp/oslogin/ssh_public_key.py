@@ -27,7 +27,7 @@ class SshPublicKey(pulumi.CustomResource):
 
         To get more information about SSHPublicKey, see:
 
-        * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest)
+        * [API documentation](https://cloud.google.com/compute/docs/oslogin/rest/v1/users.sshPublicKeys)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/compute/docs/oslogin)
 

@@ -24,6 +24,13 @@ namespace Pulumi.Gcp.ApiGateway
         public Output<string> ApiConfigId { get; private set; } = null!;
 
         /// <summary>
+        /// Creates a unique name beginning with the
+        /// specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+        /// </summary>
+        [Output("apiConfigIdPrefix")]
+        public Output<string> ApiConfigIdPrefix { get; private set; } = null!;
+
+        /// <summary>
         /// A user-visible name for the API.
         /// </summary>
         [Output("displayName")]
@@ -124,8 +131,15 @@ namespace Pulumi.Gcp.ApiGateway
         /// <summary>
         /// Identifier to assign to the API Config. Must be unique within scope of the parent resource(api).
         /// </summary>
-        [Input("apiConfigId", required: true)]
-        public Input<string> ApiConfigId { get; set; } = null!;
+        [Input("apiConfigId")]
+        public Input<string>? ApiConfigId { get; set; }
+
+        /// <summary>
+        /// Creates a unique name beginning with the
+        /// specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+        /// </summary>
+        [Input("apiConfigIdPrefix")]
+        public Input<string>? ApiConfigIdPrefix { get; set; }
 
         /// <summary>
         /// A user-visible name for the API.
@@ -191,6 +205,13 @@ namespace Pulumi.Gcp.ApiGateway
         /// </summary>
         [Input("apiConfigId")]
         public Input<string>? ApiConfigId { get; set; }
+
+        /// <summary>
+        /// Creates a unique name beginning with the
+        /// specified prefix. If this and api_config_id are unspecified, a random value is chosen for the name.
+        /// </summary>
+        [Input("apiConfigIdPrefix")]
+        public Input<string>? ApiConfigIdPrefix { get; set; }
 
         /// <summary>
         /// A user-visible name for the API.

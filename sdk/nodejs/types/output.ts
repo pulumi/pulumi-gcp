@@ -4863,6 +4863,12 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleDownControl: outputs.compute.AutoscalarAutoscalingPolicyScaleDownControl;
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
+        scaleInControl?: outputs.compute.AutoscalarAutoscalingPolicyScaleInControl;
     }
 
     export interface AutoscalarAutoscalingPolicyCpuUtilization {
@@ -4977,6 +4983,32 @@ export namespace compute {
         percent?: number;
     }
 
+    export interface AutoscalarAutoscalingPolicyScaleInControl {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        maxScaledInReplicas?: outputs.compute.AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: number;
+    }
+
+    export interface AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: number;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: number;
+    }
+
     export interface AutoscalerAutoscalingPolicy {
         /**
          * The number of seconds that the autoscaler should wait before it
@@ -5033,6 +5065,12 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleDownControl: outputs.compute.AutoscalerAutoscalingPolicyScaleDownControl;
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
+        scaleInControl?: outputs.compute.AutoscalerAutoscalingPolicyScaleInControl;
     }
 
     export interface AutoscalerAutoscalingPolicyCpuUtilization {
@@ -5135,6 +5173,32 @@ export namespace compute {
     }
 
     export interface AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: number;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: number;
+    }
+
+    export interface AutoscalerAutoscalingPolicyScaleInControl {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        maxScaledInReplicas?: outputs.compute.AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: number;
+    }
+
+    export interface AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas {
         /**
          * Specifies a fixed number of VM instances. This must be a positive
          * integer.
@@ -5639,7 +5703,7 @@ export namespace compute {
 
     export interface ExternalVpnGatewayInterface {
         /**
-         * The numberic ID for this interface. Allowed values are based on the redundancy type
+         * The numeric ID for this interface. Allowed values are based on the redundancy type
          * of this external VPN gateway
          * * `0 - SINGLE_IP_INTERNALLY_REDUNDANT`
          * * `0, 1 - TWO_IPS_REDUNDANCY`
@@ -7660,6 +7724,12 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleDownControl?: outputs.compute.RegionAutoscalerAutoscalingPolicyScaleDownControl;
+        /**
+         * Defines scale in controls to reduce the risk of response latency
+         * and outages due to abrupt scale-in events
+         * Structure is documented below.
+         */
+        scaleInControl?: outputs.compute.RegionAutoscalerAutoscalingPolicyScaleInControl;
     }
 
     export interface RegionAutoscalerAutoscalingPolicyCpuUtilization {
@@ -7762,6 +7832,32 @@ export namespace compute {
     }
 
     export interface RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas {
+        /**
+         * Specifies a fixed number of VM instances. This must be a positive
+         * integer.
+         */
+        fixed?: number;
+        /**
+         * Specifies a percentage of instances between 0 to 100%, inclusive.
+         * For example, specify 80 for 80%.
+         */
+        percent?: number;
+    }
+
+    export interface RegionAutoscalerAutoscalingPolicyScaleInControl {
+        /**
+         * A nested object resource
+         * Structure is documented below.
+         */
+        maxScaledInReplicas?: outputs.compute.RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas;
+        /**
+         * How long back autoscaling should look when computing recommendations
+         * to include directives regarding slower scale down, as described above.
+         */
+        timeWindowSec?: number;
+    }
+
+    export interface RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas {
         /**
          * Specifies a fixed number of VM instances. This must be a positive
          * integer.
@@ -16763,6 +16859,15 @@ export namespace iam {
          * Human readable title of the permission.
          */
         title: string;
+    }
+
+    export interface GetWorkloadIdentityPoolProviderAw {
+        accountId: string;
+    }
+
+    export interface GetWorkloadIdentityPoolProviderOidc {
+        allowedAudiences: string[];
+        issuerUri: string;
     }
 
     export interface WorkloadIdentityPoolProviderAws {

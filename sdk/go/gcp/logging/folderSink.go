@@ -22,10 +22,20 @@ type FolderSink struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
@@ -85,10 +95,20 @@ type folderSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
@@ -115,10 +135,20 @@ type FolderSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
@@ -149,10 +179,20 @@ type folderSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
@@ -177,10 +217,20 @@ type FolderSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-	// "storage.googleapis.com/[GCS_BUCKET]"
-	// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-	// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		return nil
+	// 	})
+	// }
+	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and

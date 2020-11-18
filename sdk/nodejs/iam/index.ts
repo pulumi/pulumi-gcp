@@ -5,5 +5,6 @@
 export * from "./getRule";
 export * from "./getTestablePermissions";
 export * from "./getWorkloadIdentityPool";
+export * from "./getWorkloadIdentityPoolProvider";
 export * from "./workloadIdentityPool";
 export * from "./workloadIdentityPoolProvider";

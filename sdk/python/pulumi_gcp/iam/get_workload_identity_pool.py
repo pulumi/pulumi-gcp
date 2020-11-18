@@ -47,17 +47,17 @@ class GetWorkloadIdentityPoolResult:
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> str:
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
-    def disabled(self) -> Optional[bool]:
+    def disabled(self) -> bool:
         return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[str]:
+    def display_name(self) -> str:
         return pulumi.get(self, "display_name")
 
     @property
@@ -105,10 +105,7 @@ class AwaitableGetWorkloadIdentityPoolResult(GetWorkloadIdentityPoolResult):
             workload_identity_pool_id=self.workload_identity_pool_id)
 
 
-def get_workload_identity_pool(description: Optional[str] = None,
-                               disabled: Optional[bool] = None,
-                               display_name: Optional[str] = None,
-                               project: Optional[str] = None,
+def get_workload_identity_pool(project: Optional[str] = None,
                                workload_identity_pool_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkloadIdentityPoolResult:
     """
@@ -120,9 +117,6 @@ def get_workload_identity_pool(description: Optional[str] = None,
            final component of the resource name.
     """
     __args__ = dict()
-    __args__['description'] = description
-    __args__['disabled'] = disabled
-    __args__['displayName'] = display_name
     __args__['project'] = project
     __args__['workloadIdentityPoolId'] = workload_identity_pool_id
     if opts is None:

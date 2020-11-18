@@ -48,10 +48,10 @@ export class FolderSink extends pulumi.CustomResource {
     public readonly bigqueryOptions!: pulumi.Output<outputs.logging.FolderSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
     public readonly destination!: pulumi.Output<string>;
@@ -144,10 +144,10 @@ export interface FolderSinkState {
     readonly bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination?: pulumi.Input<string>;
@@ -193,10 +193,10 @@ export interface FolderSinkArgs {
     readonly bigqueryOptions?: pulumi.Input<inputs.logging.FolderSinkBigqueryOptions>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
-     * "storage.googleapis.com/[GCS_BUCKET]"
-     * "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-     * "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * ```
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination: pulumi.Input<string>;

@@ -54,7 +54,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
     public readonly billingAccount!: pulumi.Output<string>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -142,7 +142,7 @@ export interface BillingAccountSinkState {
     readonly billingAccount?: pulumi.Input<string>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```
@@ -185,7 +185,7 @@ export interface BillingAccountSinkArgs {
     readonly billingAccount: pulumi.Input<string>;
     /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * ```

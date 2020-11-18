@@ -25,7 +25,7 @@ type ProjectSink struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
 	// package main
 	//
@@ -95,7 +95,7 @@ type projectSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
 	// package main
 	//
@@ -135,7 +135,7 @@ type ProjectSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
 	// package main
 	//
@@ -179,7 +179,7 @@ type projectSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
 	// package main
 	//
@@ -217,7 +217,7 @@ type ProjectSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, or a BigQuery dataset. Examples:
+	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
 	// package main
 	//
