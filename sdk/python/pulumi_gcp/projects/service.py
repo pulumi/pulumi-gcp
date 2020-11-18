@@ -30,6 +30,28 @@ class Service(pulumi.CustomResource):
 
         Requires [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.projects.Service("project",
+            disable_dependent_services=True,
+            project="your-project-id",
+            service="iam.googleapis.com")
+        ```
+
+        ## Import
+
+        Project services can be imported using the `project_id` and `service`, e.g.
+
+        ```sh
+         $ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
+        ```
+
+         Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disable_dependent_services: If `true`, services that are enabled and which depend on this service should also be disabled when this service is destroyed.

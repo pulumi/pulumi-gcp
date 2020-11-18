@@ -15,6 +15,59 @@ namespace Pulumi.Gcp.Compute
     /// [the official
     /// documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
     /// and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("defaultHttpHealthCheck", new Gcp.Compute.HttpHealthCheckArgs
+    ///         {
+    ///             RequestPath = "/",
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///         });
+    ///         var defaultTargetPool = new Gcp.Compute.TargetPool("defaultTargetPool", new Gcp.Compute.TargetPoolArgs
+    ///         {
+    ///             Instances = 
+    ///             {
+    ///                 "us-central1-a/myinstance1",
+    ///                 "us-central1-b/myinstance2",
+    ///             },
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHttpHealthCheck.Name,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Target pools can be imported using any of the following formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
+    /// ```
     /// </summary>
     public partial class TargetPool : Pulumi.CustomResource
     {

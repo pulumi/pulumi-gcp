@@ -35,6 +35,33 @@ class FolderSink(pulumi.CustomResource):
         Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
         granted to the credentials used with this provider.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        log_bucket = gcp.storage.Bucket("log-bucket")
+        my_folder = gcp.organizations.Folder("my-folder",
+            display_name="My folder",
+            parent="organizations/123456")
+        my_sink = gcp.logging.FolderSink("my-sink",
+            folder=my_folder.name,
+            destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"),
+            filter="resource.type = gce_instance AND severity >= WARNING")
+        log_writer = gcp.projects.IAMBinding("log-writer",
+            role="roles/storage.objectCreator",
+            members=[my_sink.writer_identity])
+        ```
+
+        ## Import
+
+        Folder-level logging sinks can be imported using this format
+
+        ```sh
+         $ pulumi import gcp:logging/folderSink:FolderSink my_sink folders/{{folder_id}}/sinks/{{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['FolderSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.

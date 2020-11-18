@@ -35,6 +35,74 @@ import * as utilities from "../utilities";
  *     * [Using Routes](https://cloud.google.com/vpc/docs/using-routes)
  *
  * ## Example Usage
+ * ### Route Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultRoute = new gcp.compute.Route("defaultRoute", {
+ *     destRange: "15.0.0.0/24",
+ *     network: defaultNetwork.name,
+ *     nextHopIp: "10.132.1.5",
+ *     priority: 100,
+ * });
+ * ```
+ * ### Route Ilb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {autoCreateSubnetworks: false});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.1.0/24",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * });
+ * const hc = new gcp.compute.HealthCheck("hc", {
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ *     tcpHealthCheck: {
+ *         port: "80",
+ *     },
+ * });
+ * const backend = new gcp.compute.RegionBackendService("backend", {
+ *     region: "us-central1",
+ *     healthChecks: [hc.id],
+ * });
+ * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
+ *     region: "us-central1",
+ *     loadBalancingScheme: "INTERNAL",
+ *     backendService: backend.id,
+ *     allPorts: true,
+ *     network: defaultNetwork.name,
+ *     subnetwork: defaultSubnetwork.name,
+ * });
+ * const route_ilb = new gcp.compute.Route("route-ilb", {
+ *     destRange: "0.0.0.0/0",
+ *     network: defaultNetwork.name,
+ *     nextHopIlb: defaultForwardingRule.id,
+ *     priority: 2000,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Route can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/route:Route default projects/{{project}}/global/routes/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/route:Route default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/route:Route default {{name}}
+ * ```
  */
 export class Route extends pulumi.CustomResource {
     /**

@@ -22,6 +22,63 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
     /// 
     /// ## Example Usage
+    /// ### Network Peering Routes Config Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var networkPrimary = new Gcp.Compute.Network("networkPrimary", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var networkSecondary = new Gcp.Compute.Network("networkSecondary", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var peeringPrimary = new Gcp.Compute.NetworkPeering("peeringPrimary", new Gcp.Compute.NetworkPeeringArgs
+    ///         {
+    ///             Network = networkPrimary.Id,
+    ///             PeerNetwork = networkSecondary.Id,
+    ///             ImportCustomRoutes = true,
+    ///             ExportCustomRoutes = true,
+    ///         });
+    ///         var peeringPrimaryRoutes = new Gcp.Compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes", new Gcp.Compute.NetworkPeeringRoutesConfigArgs
+    ///         {
+    ///             Peering = peeringPrimary.Name,
+    ///             Network = networkPrimary.Name,
+    ///             ImportCustomRoutes = true,
+    ///             ExportCustomRoutes = true,
+    ///         });
+    ///         var peeringSecondary = new Gcp.Compute.NetworkPeering("peeringSecondary", new Gcp.Compute.NetworkPeeringArgs
+    ///         {
+    ///             Network = networkSecondary.Id,
+    ///             PeerNetwork = networkPrimary.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// NetworkPeeringRoutesConfig can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
+    /// ```
     /// </summary>
     public partial class NetworkPeeringRoutesConfig : Pulumi.CustomResource
     {

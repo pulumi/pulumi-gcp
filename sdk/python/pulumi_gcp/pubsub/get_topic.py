@@ -96,6 +96,15 @@ def get_topic(name: Optional[str] = None,
     the [official documentation](https://cloud.google.com/pubsub/docs/)
     and [API](https://cloud.google.com/pubsub/docs/apis).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_pubsub_topic = gcp.pubsub.get_topic(name="my-pubsub-topic")
+    ```
+
 
     :param str name: The name of the Cloud Pub/Sub Topic.
     :param str project: The project in which the resource belongs. If it

@@ -11,6 +11,44 @@ namespace Pulumi.Gcp.Sql
 {
     /// <summary>
     /// Creates a new Google SQL SSL Cert on a Google SQL Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/mysql/admin-api/v1beta4/sslCerts).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Example creating a SQL Client Certificate.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
+    ///         {
+    ///             ByteLength = 4,
+    ///         });
+    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         {
+    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///             {
+    ///                 Tier = "db-f1-micro",
+    ///             },
+    ///         });
+    ///         var clientCert = new Gcp.Sql.SslCert("clientCert", new Gcp.Sql.SslCertArgs
+    ///         {
+    ///             CommonName = "client-name",
+    ///             Instance = master.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
     /// </summary>
     public partial class SslCert : Pulumi.CustomResource
     {

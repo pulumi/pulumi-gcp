@@ -4,6 +4,7 @@
 package appengine
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,46 @@ import (
 //
 // > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
 // state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("your-project-id"),
+// 			OrgId:     pulumi.String("1234567"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
+// 			Project:    myProject.ProjectId,
+// 			LocationId: pulumi.String("us-central"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Applications can be imported using the ID of the project the application belongs to, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:appengine/application:Application app your-project-id
+// ```
 type Application struct {
 	pulumi.CustomResourceState
 
@@ -215,4 +256,43 @@ type ApplicationArgs struct {
 
 func (ApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationArgs)(nil)).Elem()
+}
+
+type ApplicationInput interface {
+	pulumi.Input
+
+	ToApplicationOutput() ApplicationOutput
+	ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput
+}
+
+func (Application) ElementType() reflect.Type {
+	return reflect.TypeOf((*Application)(nil)).Elem()
+}
+
+func (i Application) ToApplicationOutput() ApplicationOutput {
+	return i.ToApplicationOutputWithContext(context.Background())
+}
+
+func (i Application) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOutput)
+}
+
+type ApplicationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOutput)(nil)).Elem()
+}
+
+func (o ApplicationOutput) ToApplicationOutput() ApplicationOutput {
+	return o
+}
+
+func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) ApplicationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationOutput{})
 }

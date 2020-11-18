@@ -31,7 +31,24 @@ class DatabaseInstance(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a DatabaseInstance resource with the given unique name, props, and options.
+        ## Import
+
+        Database instances can be imported using one of any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master projects/{{project}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{name}}
+        ```
+
+         config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -18,6 +19,62 @@ import (
 // > **Note:** Use [compute.RegionInstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_region_instance_group_manager.html) to create a regional (multi-zone) instance group manager.
 //
 // ## Example Usage
+// ### With Multiple Versions (`Google-Beta` Provider)
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstanceGroupManager(ctx, "appserver", &compute.InstanceGroupManagerArgs{
+// 			BaseInstanceName: pulumi.String("app"),
+// 			Zone:             pulumi.String("us-central1-a"),
+// 			TargetSize:       pulumi.Int(5),
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					Name:             pulumi.String("appserver"),
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+// 				},
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					Name:             pulumi.String("appserver-canary"),
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver - canary.Id),
+// 					TargetSize: &compute.InstanceGroupManagerVersionTargetSizeArgs{
+// 						Fixed: pulumi.Int(1),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance group managers can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{name}}
+// ```
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 
@@ -306,4 +363,43 @@ type InstanceGroupManagerArgs struct {
 
 func (InstanceGroupManagerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGroupManagerArgs)(nil)).Elem()
+}
+
+type InstanceGroupManagerInput interface {
+	pulumi.Input
+
+	ToInstanceGroupManagerOutput() InstanceGroupManagerOutput
+	ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput
+}
+
+func (InstanceGroupManager) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManager)(nil)).Elem()
+}
+
+func (i InstanceGroupManager) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {
+	return i.ToInstanceGroupManagerOutputWithContext(context.Background())
+}
+
+func (i InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerOutput)
+}
+
+type InstanceGroupManagerOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceGroupManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManagerOutput)(nil)).Elem()
+}
+
+func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {
+	return o
+}
+
+func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceGroupManagerOutput{})
 }

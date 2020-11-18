@@ -4,6 +4,7 @@
 package binaryauthorization
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,123 @@ import (
 // > **Note:** `binaryauthorization.AttestorIamPolicy` **cannot** be used in conjunction with `binaryauthorization.AttestorIamBinding` and `binaryauthorization.AttestorIamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `binaryauthorization.AttestorIamBinding` resources **can be** used in conjunction with `binaryauthorization.AttestorIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_binary\_authorization\_attestor\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = binaryauthorization.NewAttestorIamPolicy(ctx, "policy", &binaryauthorization.AttestorIamPolicyArgs{
+// 			Project:    pulumi.Any(google_binary_authorization_attestor.Attestor.Project),
+// 			Attestor:   pulumi.Any(google_binary_authorization_attestor.Attestor.Name),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_binary\_authorization\_attestor\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := binaryauthorization.NewAttestorIamBinding(ctx, "binding", &binaryauthorization.AttestorIamBindingArgs{
+// 			Project:  pulumi.Any(google_binary_authorization_attestor.Attestor.Project),
+// 			Attestor: pulumi.Any(google_binary_authorization_attestor.Attestor.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_binary\_authorization\_attestor\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/binaryauthorization"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := binaryauthorization.NewAttestorIamMember(ctx, "member", &binaryauthorization.AttestorIamMemberArgs{
+// 			Project:  pulumi.Any(google_binary_authorization_attestor.Attestor.Project),
+// 			Attestor: pulumi.Any(google_binary_authorization_attestor.Attestor.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/attestors/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Binary Authorization attestor IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:binaryauthorization/attestorIamMember:AttestorIamMember editor "projects/{{project}}/attestors/{{attestor}} roles/viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:binaryauthorization/attestorIamMember:AttestorIamMember editor "projects/{{project}}/attestors/{{attestor}} roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:binaryauthorization/attestorIamMember:AttestorIamMember editor projects/{{project}}/attestors/{{attestor}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type AttestorIamMember struct {
 	pulumi.CustomResourceState
 
@@ -140,4 +258,43 @@ type AttestorIamMemberArgs struct {
 
 func (AttestorIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*attestorIamMemberArgs)(nil)).Elem()
+}
+
+type AttestorIamMemberInput interface {
+	pulumi.Input
+
+	ToAttestorIamMemberOutput() AttestorIamMemberOutput
+	ToAttestorIamMemberOutputWithContext(ctx context.Context) AttestorIamMemberOutput
+}
+
+func (AttestorIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestorIamMember)(nil)).Elem()
+}
+
+func (i AttestorIamMember) ToAttestorIamMemberOutput() AttestorIamMemberOutput {
+	return i.ToAttestorIamMemberOutputWithContext(context.Background())
+}
+
+func (i AttestorIamMember) ToAttestorIamMemberOutputWithContext(ctx context.Context) AttestorIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberOutput)
+}
+
+type AttestorIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttestorIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestorIamMemberOutput)(nil)).Elem()
+}
+
+func (o AttestorIamMemberOutput) ToAttestorIamMemberOutput() AttestorIamMemberOutput {
+	return o
+}
+
+func (o AttestorIamMemberOutput) ToAttestorIamMemberOutputWithContext(ctx context.Context) AttestorIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AttestorIamMemberOutput{})
 }

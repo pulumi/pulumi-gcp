@@ -4,6 +4,7 @@
 package gameservices
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,45 @@ import (
 //     * [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
+// ### Game Service Deployment Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/gameservices"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := gameservices.NewGameServerDeployment(ctx, "_default", &gameservices.GameServerDeploymentArgs{
+// 			DeploymentId: pulumi.String("tf-test-deployment"),
+// 			Description:  pulumi.String("a deployment description"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// GameServerDeployment can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default projects/{{project}}/locations/{{location}}/gameServerDeployments/{{deployment_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{project}}/{{location}}/{{deployment_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{location}}/{{deployment_id}}
+// ```
 type GameServerDeployment struct {
 	pulumi.CustomResourceState
 
@@ -145,4 +185,43 @@ type GameServerDeploymentArgs struct {
 
 func (GameServerDeploymentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gameServerDeploymentArgs)(nil)).Elem()
+}
+
+type GameServerDeploymentInput interface {
+	pulumi.Input
+
+	ToGameServerDeploymentOutput() GameServerDeploymentOutput
+	ToGameServerDeploymentOutputWithContext(ctx context.Context) GameServerDeploymentOutput
+}
+
+func (GameServerDeployment) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerDeployment)(nil)).Elem()
+}
+
+func (i GameServerDeployment) ToGameServerDeploymentOutput() GameServerDeploymentOutput {
+	return i.ToGameServerDeploymentOutputWithContext(context.Background())
+}
+
+func (i GameServerDeployment) ToGameServerDeploymentOutputWithContext(ctx context.Context) GameServerDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentOutput)
+}
+
+type GameServerDeploymentOutput struct {
+	*pulumi.OutputState
+}
+
+func (GameServerDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerDeploymentOutput)(nil)).Elem()
+}
+
+func (o GameServerDeploymentOutput) ToGameServerDeploymentOutput() GameServerDeploymentOutput {
+	return o
+}
+
+func (o GameServerDeploymentOutput) ToGameServerDeploymentOutputWithContext(ctx context.Context) GameServerDeploymentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GameServerDeploymentOutput{})
 }

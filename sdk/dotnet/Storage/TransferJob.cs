@@ -18,6 +18,113 @@ namespace Pulumi.Gcp.Storage
     /// * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
     /// * How-to Guides
     ///     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = Output.Create(Gcp.Storage.GetTransferProjectServieAccount.InvokeAsync(new Gcp.Storage.GetTransferProjectServieAccountArgs
+    ///         {
+    ///             Project = @var.Project,
+    ///         }));
+    ///         var s3_backup_bucketBucket = new Gcp.Storage.Bucket("s3-backup-bucketBucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             StorageClass = "NEARLINE",
+    ///             Project = @var.Project,
+    ///         });
+    ///         var s3_backup_bucketBucketIAMMember = new Gcp.Storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", new Gcp.Storage.BucketIAMMemberArgs
+    ///         {
+    ///             Bucket = s3_backup_bucketBucket.Name,
+    ///             Role = "roles/storage.admin",
+    ///             Member = @default.Apply(@default =&gt; $"serviceAccount:{@default.Email}"),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 s3_backup_bucketBucket,
+    ///             },
+    ///         });
+    ///         var s3_bucket_nightly_backup = new Gcp.Storage.TransferJob("s3-bucket-nightly-backup", new Gcp.Storage.TransferJobArgs
+    ///         {
+    ///             Description = "Nightly backup of S3 bucket",
+    ///             Project = @var.Project,
+    ///             TransferSpec = new Gcp.Storage.Inputs.TransferJobTransferSpecArgs
+    ///             {
+    ///                 ObjectConditions = new Gcp.Storage.Inputs.TransferJobTransferSpecObjectConditionsArgs
+    ///                 {
+    ///                     MaxTimeElapsedSinceLastModification = "600s",
+    ///                     ExcludePrefixes = 
+    ///                     {
+    ///                         "requests.gz",
+    ///                     },
+    ///                 },
+    ///                 TransferOptions = new Gcp.Storage.Inputs.TransferJobTransferSpecTransferOptionsArgs
+    ///                 {
+    ///                     DeleteObjectsUniqueInSink = false,
+    ///                 },
+    ///                 AwsS3DataSource = new Gcp.Storage.Inputs.TransferJobTransferSpecAwsS3DataSourceArgs
+    ///                 {
+    ///                     BucketName = @var.Aws_s3_bucket,
+    ///                     AwsAccessKey = new Gcp.Storage.Inputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs
+    ///                     {
+    ///                         AccessKeyId = @var.Aws_access_key,
+    ///                         SecretAccessKey = @var.Aws_secret_key,
+    ///                     },
+    ///                 },
+    ///                 GcsDataSink = new Gcp.Storage.Inputs.TransferJobTransferSpecGcsDataSinkArgs
+    ///                 {
+    ///                     BucketName = s3_backup_bucketBucket.Name,
+    ///                 },
+    ///             },
+    ///             Schedule = new Gcp.Storage.Inputs.TransferJobScheduleArgs
+    ///             {
+    ///                 ScheduleStartDate = new Gcp.Storage.Inputs.TransferJobScheduleScheduleStartDateArgs
+    ///                 {
+    ///                     Year = 2018,
+    ///                     Month = 10,
+    ///                     Day = 1,
+    ///                 },
+    ///                 ScheduleEndDate = new Gcp.Storage.Inputs.TransferJobScheduleScheduleEndDateArgs
+    ///                 {
+    ///                     Year = 2019,
+    ///                     Month = 1,
+    ///                     Day = 15,
+    ///                 },
+    ///                 StartTimeOfDay = new Gcp.Storage.Inputs.TransferJobScheduleStartTimeOfDayArgs
+    ///                 {
+    ///                     Hours = 23,
+    ///                     Minutes = 30,
+    ///                     Seconds = 0,
+    ///                     Nanos = 0,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 s3_backup_bucketBucketIAMMember,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Storage buckets can be imported using the Transfer Job's `project` and `name` without the `transferJob/` prefix, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
+    /// ```
     /// </summary>
     public partial class TransferJob : Pulumi.CustomResource
     {

@@ -16,6 +16,35 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
     /// granted to the credentials used with the provider.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_exclusion = new Gcp.Logging.BillingAccountExclusion("my-exclusion", new Gcp.Logging.BillingAccountExclusionArgs
+    ///         {
+    ///             BillingAccount = "ABCDEF-012345-GHIJKL",
+    ///             Description = "Exclude GCE instance debug logs",
+    ///             Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Billing account logging exclusions can be imported using their URI, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion my_exclusion billingAccounts/my-billing_account/exclusions/my-exclusion
+    /// ```
     /// </summary>
     public partial class BillingAccountExclusion : Pulumi.CustomResource
     {

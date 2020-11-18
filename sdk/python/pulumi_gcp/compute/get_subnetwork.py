@@ -164,6 +164,16 @@ def get_subnetwork(name: Optional[str] = None,
     """
     Get a subnetwork within GCE from its name and region.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_subnetwork = gcp.compute.get_subnetwork(name="default-us-east1",
+        region="us-east1")
+    ```
+
 
     :param str name: The name of the subnetwork. One of `name` or `self_link`
            must be specified.

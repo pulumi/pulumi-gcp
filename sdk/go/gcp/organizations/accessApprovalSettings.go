@@ -4,6 +4,7 @@
 package organizations
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -134,4 +135,43 @@ type AccessApprovalSettingsArgs struct {
 
 func (AccessApprovalSettingsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessApprovalSettingsArgs)(nil)).Elem()
+}
+
+type AccessApprovalSettingsInput interface {
+	pulumi.Input
+
+	ToAccessApprovalSettingsOutput() AccessApprovalSettingsOutput
+	ToAccessApprovalSettingsOutputWithContext(ctx context.Context) AccessApprovalSettingsOutput
+}
+
+func (AccessApprovalSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApprovalSettings)(nil)).Elem()
+}
+
+func (i AccessApprovalSettings) ToAccessApprovalSettingsOutput() AccessApprovalSettingsOutput {
+	return i.ToAccessApprovalSettingsOutputWithContext(context.Background())
+}
+
+func (i AccessApprovalSettings) ToAccessApprovalSettingsOutputWithContext(ctx context.Context) AccessApprovalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsOutput)
+}
+
+type AccessApprovalSettingsOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessApprovalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApprovalSettingsOutput)(nil)).Elem()
+}
+
+func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutput() AccessApprovalSettingsOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutputWithContext(ctx context.Context) AccessApprovalSettingsOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccessApprovalSettingsOutput{})
 }

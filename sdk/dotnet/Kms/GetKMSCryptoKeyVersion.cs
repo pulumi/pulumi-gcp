@@ -18,6 +18,39 @@ namespace Pulumi.Gcp.Kms
         /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
         /// 
         /// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var myKeyRing = Output.Create(Gcp.Kms.GetKMSKeyRing.InvokeAsync(new Gcp.Kms.GetKMSKeyRingArgs
+        ///         {
+        ///             Name = "my-key-ring",
+        ///             Location = "us-central1",
+        ///         }));
+        ///         var myCryptoKey = myKeyRing.Apply(myKeyRing =&gt; Output.Create(Gcp.Kms.GetKMSCryptoKey.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyArgs
+        ///         {
+        ///             Name = "my-crypto-key",
+        ///             KeyRing = myKeyRing.SelfLink,
+        ///         })));
+        ///         var myCryptoKeyVersion = Output.Create(Gcp.Kms.GetKMSCryptoKeyVersion.InvokeAsync(new Gcp.Kms.GetKMSCryptoKeyVersionArgs
+        ///         {
+        ///             CryptoKey = data.Google_kms_key.My_key.Self_link,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetKMSCryptoKeyVersionResult> InvokeAsync(GetKMSCryptoKeyVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionArgs(), options.WithVersion());

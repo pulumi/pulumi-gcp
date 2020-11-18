@@ -4,6 +4,7 @@
 package bigquery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -27,6 +28,126 @@ import (
 // > **Note:** `bigquery.DatasetIamPolicy` **cannot** be used in conjunction with `bigquery.DatasetIamBinding` and `bigquery.DatasetIamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_bigquery\_dataset\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		owner, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/dataOwner",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewDatasetIamPolicy(ctx, "dataset", &bigquery.DatasetIamPolicyArgs{
+// 			DatasetId:  pulumi.String("your-dataset-id"),
+// 			PolicyData: pulumi.String(owner.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_bigquery\_dataset\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigquery.NewDatasetIamBinding(ctx, "reader", &bigquery.DatasetIamBindingArgs{
+// 			DatasetId: pulumi.String("your-dataset-id"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/bigquery.dataViewer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_bigquery\_dataset\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigquery.NewDatasetIamMember(ctx, "editor", &bigquery.DatasetIamMemberArgs{
+// 			DatasetId: pulumi.String("your-dataset-id"),
+// 			Member:    pulumi.String("user:jane@example.com"),
+// 			Role:      pulumi.String("roles/bigquery.dataEditor"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+//
+// This member resource can be imported using the `dataset_id`, role, and account e.g.
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer user:foo@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+//
+// This binding resource can be imported using the `dataset_id` and role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question.
+//
+// This policy resource can be imported using the `dataset_id`, role, and account e.g.
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/datasetIamMember:DatasetIamMember dataset_iam projects/your-project-id/datasets/dataset-id
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type DatasetIamMember struct {
 	pulumi.CustomResourceState
 
@@ -138,4 +259,43 @@ type DatasetIamMemberArgs struct {
 
 func (DatasetIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetIamMemberArgs)(nil)).Elem()
+}
+
+type DatasetIamMemberInput interface {
+	pulumi.Input
+
+	ToDatasetIamMemberOutput() DatasetIamMemberOutput
+	ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput
+}
+
+func (DatasetIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamMember)(nil)).Elem()
+}
+
+func (i DatasetIamMember) ToDatasetIamMemberOutput() DatasetIamMemberOutput {
+	return i.ToDatasetIamMemberOutputWithContext(context.Background())
+}
+
+func (i DatasetIamMember) ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberOutput)
+}
+
+type DatasetIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamMemberOutput)(nil)).Elem()
+}
+
+func (o DatasetIamMemberOutput) ToDatasetIamMemberOutput() DatasetIamMemberOutput {
+	return o
+}
+
+func (o DatasetIamMemberOutput) ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetIamMemberOutput{})
 }

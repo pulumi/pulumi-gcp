@@ -9,6 +9,47 @@ import (
 
 // Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
 // the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myAddress, err := compute.LookupGlobalAddress(ctx, &compute.LookupGlobalAddressArgs{
+// 			Name: "foobar",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
+// 			Type:        pulumi.String("A"),
+// 			Ttl:         pulumi.Int(300),
+// 			ManagedZone: prod.Name,
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String(myAddress.Address),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupGlobalAddress(ctx *pulumi.Context, args *LookupGlobalAddressArgs, opts ...pulumi.InvokeOption) (*LookupGlobalAddressResult, error) {
 	var rv LookupGlobalAddressResult
 	err := ctx.Invoke("gcp:compute/getGlobalAddress:getGlobalAddress", args, &rv, opts...)

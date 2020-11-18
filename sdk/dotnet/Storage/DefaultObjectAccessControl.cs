@@ -31,6 +31,37 @@ namespace Pulumi.Gcp.Storage
     ///     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
     /// 
     /// ## Example Usage
+    /// ### Storage Default Object Access Control Public
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var publicRule = new Gcp.Storage.DefaultObjectAccessControl("publicRule", new Gcp.Storage.DefaultObjectAccessControlArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Role = "READER",
+    ///             Entity = "allUsers",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DefaultObjectAccessControl can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
+    /// ```
     /// </summary>
     public partial class DefaultObjectAccessControl : Pulumi.CustomResource
     {

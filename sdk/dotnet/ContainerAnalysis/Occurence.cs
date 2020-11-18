@@ -20,6 +20,22 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///     * [Official Documentation](https://cloud.google.com/container-analysis/)
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// Occurrence can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
+    /// ```
     /// </summary>
     public partial class Occurence : Pulumi.CustomResource
     {

@@ -28,6 +28,44 @@ namespace Pulumi.Gcp.Storage
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Storage Hmac Key
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "my-svc-acc",
+    ///         });
+    ///         var key = new Gcp.Storage.HmacKey("key", new Gcp.Storage.HmacKeyArgs
+    ///         {
+    ///             ServiceAccountEmail = serviceAccount.Email,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// HmacKey can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/hmacKey:HmacKey default {{project}}/{{access_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
+    /// ```
     /// </summary>
     public partial class HmacKey : Pulumi.CustomResource
     {

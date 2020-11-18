@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,6 +17,59 @@ import * as utilities from "../utilities";
  *     * [Sole-Tenant Nodes](https://cloud.google.com/compute/docs/nodes/)
  *
  * ## Example Usage
+ * ### Node Template Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const template = new gcp.compute.NodeTemplate("template", {
+ *     nodeType: "n1-node-96-624",
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### Node Template Server Binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1a = gcp.compute.getNodeTypes({
+ *     zone: "us-central1-a",
+ * });
+ * const template = new gcp.compute.NodeTemplate("template", {
+ *     region: "us-central1",
+ *     nodeType: "n1-node-96-624",
+ *     nodeAffinityLabels: {
+ *         foo: "baz",
+ *     },
+ *     serverBinding: {
+ *         type: "RESTART_NODE_ON_MINIMAL_SERVERS",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * NodeTemplate can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default projects/{{project}}/regions/{{region}}/nodeTemplates/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
+ * ```
  */
 export class NodeTemplate extends pulumi.CustomResource {
     /**

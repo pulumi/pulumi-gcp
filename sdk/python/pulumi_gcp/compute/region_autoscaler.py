@@ -40,6 +40,78 @@ class RegionAutoscaler(pulumi.CustomResource):
             * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 
         ## Example Usage
+        ### Region Autoscaler Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        debian9 = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        foobar_instance_template = gcp.compute.InstanceTemplate("foobarInstanceTemplate",
+            machine_type="e2-medium",
+            can_ip_forward=False,
+            tags=[
+                "foo",
+                "bar",
+            ],
+            disks=[gcp.compute.InstanceTemplateDiskArgs(
+                source_image=debian9.id,
+            )],
+            network_interfaces=[gcp.compute.InstanceTemplateNetworkInterfaceArgs(
+                network="default",
+            )],
+            metadata={
+                "foo": "bar",
+            },
+            service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ))
+        foobar_target_pool = gcp.compute.TargetPool("foobarTargetPool")
+        foobar_region_instance_group_manager = gcp.compute.RegionInstanceGroupManager("foobarRegionInstanceGroupManager",
+            region="us-central1",
+            versions=[gcp.compute.RegionInstanceGroupManagerVersionArgs(
+                instance_template=foobar_instance_template.id,
+                name="primary",
+            )],
+            target_pools=[foobar_target_pool.id],
+            base_instance_name="foobar")
+        foobar_region_autoscaler = gcp.compute.RegionAutoscaler("foobarRegionAutoscaler",
+            region="us-central1",
+            target=foobar_region_instance_group_manager.id,
+            autoscaling_policy=gcp.compute.RegionAutoscalerAutoscalingPolicyArgs(
+                max_replicas=5,
+                min_replicas=1,
+                cooldown_period=60,
+                cpu_utilization=gcp.compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs(
+                    target=0.5,
+                ),
+            ))
+        ```
+
+        ## Import
+
+        RegionAutoscaler can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -14,6 +15,63 @@ import (
 // [the official
 // documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
 // and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
+// 			RequestPath:      pulumi.String("/"),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewTargetPool(ctx, "defaultTargetPool", &compute.TargetPoolArgs{
+// 			Instances: pulumi.StringArray{
+// 				pulumi.String("us-central1-a/myinstance1"),
+// 				pulumi.String("us-central1-b/myinstance2"),
+// 			},
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHttpHealthCheck.Name,
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Target pools can be imported using any of the following formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
+// ```
 type TargetPool struct {
 	pulumi.CustomResourceState
 
@@ -221,4 +279,43 @@ type TargetPoolArgs struct {
 
 func (TargetPoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetPoolArgs)(nil)).Elem()
+}
+
+type TargetPoolInput interface {
+	pulumi.Input
+
+	ToTargetPoolOutput() TargetPoolOutput
+	ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput
+}
+
+func (TargetPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetPool)(nil)).Elem()
+}
+
+func (i TargetPool) ToTargetPoolOutput() TargetPoolOutput {
+	return i.ToTargetPoolOutputWithContext(context.Background())
+}
+
+func (i TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolOutput)
+}
+
+type TargetPoolOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetPoolOutput)(nil)).Elem()
+}
+
+func (o TargetPoolOutput) ToTargetPoolOutput() TargetPoolOutput {
+	return o
+}
+
+func (o TargetPoolOutput) ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetPoolOutput{})
 }

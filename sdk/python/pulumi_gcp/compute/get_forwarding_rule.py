@@ -256,6 +256,15 @@ def get_forwarding_rule(name: Optional[str] = None,
     """
     Get a forwarding rule within GCE from its name.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_forwarding_rule = gcp.compute.get_forwarding_rule(name="forwarding-rule-us-east1")
+    ```
+
 
     :param str name: The name of the forwarding rule.
     :param str project: The project in which the resource belongs. If it

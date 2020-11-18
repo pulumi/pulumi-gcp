@@ -4,6 +4,7 @@
 package dataproc
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -13,6 +14,66 @@ import (
 // Describes an autoscaling policy for Dataproc cluster autoscaler.
 //
 // ## Example Usage
+// ### Dataproc Autoscaling Policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		asp, err := dataproc.NewAutoscalingPolicy(ctx, "asp", &dataproc.AutoscalingPolicyArgs{
+// 			PolicyId: pulumi.String("dataproc-policy"),
+// 			Location: pulumi.String("us-central1"),
+// 			WorkerConfig: &dataproc.AutoscalingPolicyWorkerConfigArgs{
+// 				MaxInstances: pulumi.Int(3),
+// 			},
+// 			BasicAlgorithm: &dataproc.AutoscalingPolicyBasicAlgorithmArgs{
+// 				YarnConfig: &dataproc.AutoscalingPolicyBasicAlgorithmYarnConfigArgs{
+// 					GracefulDecommissionTimeout: pulumi.String("30s"),
+// 					ScaleUpFactor:               pulumi.Float64(0.5),
+// 					ScaleDownFactor:             pulumi.Float64(0.5),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewCluster(ctx, "basic", &dataproc.ClusterArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
+// 				AutoscalingConfig: &dataproc.ClusterClusterConfigAutoscalingConfigArgs{
+// 					PolicyUri: asp.Name,
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// AutoscalingPolicy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
+// ```
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 
@@ -168,4 +229,43 @@ type AutoscalingPolicyArgs struct {
 
 func (AutoscalingPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoscalingPolicyArgs)(nil)).Elem()
+}
+
+type AutoscalingPolicyInput interface {
+	pulumi.Input
+
+	ToAutoscalingPolicyOutput() AutoscalingPolicyOutput
+	ToAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyOutput
+}
+
+func (AutoscalingPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicy)(nil)).Elem()
+}
+
+func (i AutoscalingPolicy) ToAutoscalingPolicyOutput() AutoscalingPolicyOutput {
+	return i.ToAutoscalingPolicyOutputWithContext(context.Background())
+}
+
+func (i AutoscalingPolicy) ToAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalingPolicyOutput)
+}
+
+type AutoscalingPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutoscalingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalingPolicyOutput)(nil)).Elem()
+}
+
+func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutput() AutoscalingPolicyOutput {
+	return o
+}
+
+func (o AutoscalingPolicyOutput) ToAutoscalingPolicyOutputWithContext(ctx context.Context) AutoscalingPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AutoscalingPolicyOutput{})
 }

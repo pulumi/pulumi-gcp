@@ -4,6 +4,7 @@
 package servicedirectory
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,65 @@ import (
 //     * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 //
 // ## Example Usage
+// ### Service Directory Endpoint Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/servicedirectory"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleNamespace, err := servicedirectory.NewNamespace(ctx, "exampleNamespace", &servicedirectory.NamespaceArgs{
+// 			NamespaceId: pulumi.String("example-namespace"),
+// 			Location:    pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleService, err := servicedirectory.NewService(ctx, "exampleService", &servicedirectory.ServiceArgs{
+// 			ServiceId: pulumi.String("example-service"),
+// 			Namespace: exampleNamespace.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = servicedirectory.NewEndpoint(ctx, "exampleEndpoint", &servicedirectory.EndpointArgs{
+// 			EndpointId: pulumi.String("example-endpoint"),
+// 			Service:    exampleService.ID(),
+// 			Metadata: pulumi.StringMap{
+// 				"stage":  pulumi.String("prod"),
+// 				"region": pulumi.String("us-central1"),
+// 			},
+// 			Address: pulumi.String("1.2.3.4"),
+// 			Port:    pulumi.Int(5353),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Endpoint can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+// ```
 type Endpoint struct {
 	pulumi.CustomResourceState
 
@@ -157,4 +217,43 @@ type EndpointArgs struct {
 
 func (EndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*endpointArgs)(nil)).Elem()
+}
+
+type EndpointInput interface {
+	pulumi.Input
+
+	ToEndpointOutput() EndpointOutput
+	ToEndpointOutputWithContext(ctx context.Context) EndpointOutput
+}
+
+func (Endpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*Endpoint)(nil)).Elem()
+}
+
+func (i Endpoint) ToEndpointOutput() EndpointOutput {
+	return i.ToEndpointOutputWithContext(context.Background())
+}
+
+func (i Endpoint) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EndpointOutput)
+}
+
+type EndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (EndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointOutput)(nil)).Elem()
+}
+
+func (o EndpointOutput) ToEndpointOutput() EndpointOutput {
+	return o
+}
+
+func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) EndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EndpointOutput{})
 }

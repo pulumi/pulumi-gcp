@@ -14,6 +14,36 @@ namespace Pulumi.Gcp.Compute
     /// [the official documentation](https://cloud.google.com/compute/docs/cloudrouter)
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/routers).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var foobar = new Gcp.Compute.RouterInterface("foobar", new Gcp.Compute.RouterInterfaceArgs
+    ///         {
+    ///             IpRange = "169.254.1.1/30",
+    ///             Region = "us-central1",
+    ///             Router = "router-1",
+    ///             VpnTunnel = "tunnel-1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Router interfaces can be imported using the `region`, `router`, and `name`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/routerInterface:RouterInterface foobar us-central1/router-1/interface-1
+    /// ```
     /// </summary>
     public partial class RouterInterface : Pulumi.CustomResource
     {

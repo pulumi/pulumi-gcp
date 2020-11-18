@@ -14,6 +14,59 @@ import (
 // See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
 // for a list of these restrictions.
 //
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			AuditConfigs: []organizations.GetIAMPolicyAuditConfig{
+// 				organizations.GetIAMPolicyAuditConfig{
+// 					AuditLogConfigs: []organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+// 							ExemptedMembers: []string{
+// 								"user:you@domain.com",
+// 							},
+// 							LogType: "DATA_READ",
+// 						},
+// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+// 							LogType: "DATA_WRITE",
+// 						},
+// 						organizations.GetIAMPolicyAuditConfigAuditLogConfig{
+// 							LogType: "ADMIN_READ",
+// 						},
+// 					},
+// 					Service: "cloudkms.googleapis.com",
+// 				},
+// 			},
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Members: []string{
+// 						"serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com",
+// 					},
+// 					Role: "roles/compute.instanceAdmin",
+// 				},
+// 				organizations.GetIAMPolicyBinding{
+// 					Members: []string{
+// 						"user:alice@gmail.com",
+// 					},
+// 					Role: "roles/storage.objectViewer",
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // This data source is used to define IAM policies to apply to other resources.
 // Currently, defining a policy through a datasource and referencing that policy
 // from another resource is the only way to apply an IAM policy to a resource.

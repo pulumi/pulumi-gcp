@@ -14,6 +14,33 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
+ * ### Game Service Deployment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultGameServerDeployment = new gcp.gameservices.GameServerDeployment("default", {
+ *     deploymentId: "tf-test-deployment",
+ *     description: "a deployment description",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * GameServerDeployment can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default projects/{{project}}/locations/{{location}}/gameServerDeployments/{{deployment_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{project}}/{{location}}/{{deployment_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{location}}/{{deployment_id}}
+ * ```
  */
 export class GameServerDeployment extends pulumi.CustomResource {
     /**

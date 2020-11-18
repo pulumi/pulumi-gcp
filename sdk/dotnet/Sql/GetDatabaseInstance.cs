@@ -13,6 +13,29 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// Use this data source to get information about a Cloud SQL instance
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var qa = Output.Create(Gcp.Sql.GetDatabaseInstance.InvokeAsync(new Gcp.Sql.GetDatabaseInstanceArgs
+        ///         {
+        ///             Name = google_sql_database_instance.Master.Name,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetDatabaseInstanceResult> InvokeAsync(GetDatabaseInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDatabaseInstanceResult>("gcp:sql/getDatabaseInstance:getDatabaseInstance", args ?? new GetDatabaseInstanceArgs(), options.WithVersion());

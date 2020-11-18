@@ -12,6 +12,37 @@ import * as utilities from "../utilities";
  * the marketplace prior to using this resource.
  *
  * ## Example Usage
+ * ### Identity Platform Tenant Default Supported Idp Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tenant = new gcp.identityplatform.Tenant("tenant", {displayName: "tenant"});
+ * const idpConfig = new gcp.identityplatform.TenantDefaultSupportedIdpConfig("idpConfig", {
+ *     enabled: true,
+ *     tenant: tenant.name,
+ *     idpId: "playgames.google.com",
+ *     clientId: "my-client-id",
+ *     clientSecret: "secret",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
+ * ```
  */
 export class TenantDefaultSupportedIdpConfig extends pulumi.CustomResource {
     /**

@@ -33,6 +33,35 @@ class OauthIdpConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Oauth Idp Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        oauth_idp_config = gcp.identityplatform.OauthIdpConfig("oauthIdpConfig",
+            client_id="client-id",
+            client_secret="secret",
+            display_name="Display Name",
+            enabled=True,
+            issuer="issuer")
+        ```
+
+        ## Import
+
+        OauthIdpConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

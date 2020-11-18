@@ -21,6 +21,99 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
     /// 
     /// ## Example Usage
+    /// ### Access Context Manager Service Perimeters Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///         var service_perimeter = new Gcp.AccessContextManager.ServicePerimeters("service-perimeter", new Gcp.AccessContextManager.ServicePerimetersArgs
+    ///         {
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             ServicePerimeters = 
+    ///             {
+    ///                 new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
+    ///                 {
+    ///                     Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/"),
+    ///                     Status = new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterStatusArgs
+    ///                     {
+    ///                         RestrictedServices = 
+    ///                         {
+    ///                             "storage.googleapis.com",
+    ///                         },
+    ///                     },
+    ///                     Title = "",
+    ///                 },
+    ///                 new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
+    ///                 {
+    ///                     Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/"),
+    ///                     Status = new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterStatusArgs
+    ///                     {
+    ///                         RestrictedServices = 
+    ///                         {
+    ///                             "bigtable.googleapis.com",
+    ///                         },
+    ///                     },
+    ///                     Title = "",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new Gcp.AccessContextManager.AccessLevelArgs
+    ///         {
+    ///             Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///             {
+    ///                 Conditions = 
+    ///                 {
+    ///                     new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                     {
+    ///                         DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                         {
+    ///                             OsConstraints = 
+    ///                             {
+    ///                                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                 {
+    ///                                     OsType = "DESKTOP_CHROME_OS",
+    ///                                 },
+    ///                             },
+    ///                             RequireScreenLock = false,
+    ///                         },
+    ///                         Regions = 
+    ///                         {
+    ///                             "CH",
+    ///                             "IT",
+    ///                             "US",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Title = "chromeos_no_lock",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ServicePerimeters can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
+    /// ```
     /// </summary>
     public partial class ServicePerimeters : Pulumi.CustomResource
     {

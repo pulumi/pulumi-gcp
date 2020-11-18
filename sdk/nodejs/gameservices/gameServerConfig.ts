@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,90 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
+ * ### Game Service Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultGameServerDeployment = new gcp.gameservices.GameServerDeployment("defaultGameServerDeployment", {
+ *     deploymentId: "tf-test-deployment",
+ *     description: "a deployment description",
+ * });
+ * const defaultGameServerConfig = new gcp.gameservices.GameServerConfig("defaultGameServerConfig", {
+ *     configId: "tf-test-config",
+ *     deploymentId: defaultGameServerDeployment.deploymentId,
+ *     description: "a config description",
+ *     fleetConfigs: [{
+ *         name: "something-unique",
+ *         fleetSpec: JSON.stringify({
+ *             replicas: 1,
+ *             scheduling: "Packed",
+ *             template: {
+ *                 metadata: {
+ *                     name: "tf-test-game-server-template",
+ *                 },
+ *                 spec: {
+ *                     ports: [{
+ *                         name: "default",
+ *                         portPolicy: "Dynamic",
+ *                         containerPort: 7654,
+ *                         protocol: "UDP",
+ *                     }],
+ *                     template: {
+ *                         spec: {
+ *                             containers: [{
+ *                                 name: "simple-udp-server",
+ *                                 image: "gcr.io/agones-images/udp-server:0.14",
+ *                             }],
+ *                         },
+ *                     },
+ *                 },
+ *             },
+ *         }),
+ *     }],
+ *     scalingConfigs: [{
+ *         name: "scaling-config-name",
+ *         fleetAutoscalerSpec: JSON.stringify({
+ *             policy: {
+ *                 type: "Webhook",
+ *                 webhook: {
+ *                     service: {
+ *                         name: "autoscaler-webhook-service",
+ *                         namespace: "default",
+ *                         path: "scale",
+ *                     },
+ *                 },
+ *             },
+ *         }),
+ *         selectors: [{
+ *             labels: {
+ *                 one: "two",
+ *             },
+ *         }],
+ *         schedules: [{
+ *             cronJobDuration: "3.500s",
+ *             cronSpec: "0 0 * * 0",
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * GameServerConfig can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerConfig:GameServerConfig default projects/{{project}}/locations/{{location}}/gameServerDeployments/{{deployment_id}}/configs/{{config_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerConfig:GameServerConfig default {{project}}/{{location}}/{{deployment_id}}/{{config_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerConfig:GameServerConfig default {{location}}/{{deployment_id}}/{{config_id}}
+ * ```
  */
 export class GameServerConfig extends pulumi.CustomResource {
     /**

@@ -36,6 +36,129 @@ class Budget(pulumi.CustomResource):
             * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
 
         ## Example Usage
+        ### Billing Budget Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        budget = gcp.billing.Budget("budget",
+            billing_account=account.id,
+            display_name="Example Billing Budget",
+            amount=gcp.billing.BudgetAmountArgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+                    currency_code="USD",
+                    units="100000",
+                ),
+            ),
+            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
+                threshold_percent=0.5,
+            )],
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Billing Budget Lastperiod
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        budget = gcp.billing.Budget("budget",
+            billing_account=account.id,
+            display_name="Example Billing Budget",
+            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+                projects=["projects/my-project-name"],
+            ),
+            amount=gcp.billing.BudgetAmountArgs(
+                last_period_amount=True,
+            ),
+            threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
+                threshold_percent=10,
+            )],
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Billing Budget Filter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        budget = gcp.billing.Budget("budget",
+            billing_account=account.id,
+            display_name="Example Billing Budget",
+            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+                projects=["projects/my-project-name"],
+                credit_types_treatment="EXCLUDE_ALL_CREDITS",
+                services=["services/24E6-581D-38E5"],
+            ),
+            amount=gcp.billing.BudgetAmountArgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+                    currency_code="USD",
+                    units="100000",
+                ),
+            ),
+            threshold_rules=[
+                gcp.billing.BudgetThresholdRuleArgs(
+                    threshold_percent=0.5,
+                ),
+                gcp.billing.BudgetThresholdRuleArgs(
+                    threshold_percent=0.9,
+                    spend_basis="FORECASTED_SPEND",
+                ),
+            ],
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Billing Budget Notify
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        notification_channel = gcp.monitoring.NotificationChannel("notificationChannel",
+            display_name="Example Notification Channel",
+            type="email",
+            labels={
+                "email_address": "address@example.com",
+            },
+            opts=ResourceOptions(provider=google_beta))
+        budget = gcp.billing.Budget("budget",
+            billing_account=account.id,
+            display_name="Example Billing Budget",
+            budget_filter=gcp.billing.BudgetBudgetFilterArgs(
+                projects=["projects/my-project-name"],
+            ),
+            amount=gcp.billing.BudgetAmountArgs(
+                specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
+                    currency_code="USD",
+                    units="100000",
+                ),
+            ),
+            threshold_rules=[
+                gcp.billing.BudgetThresholdRuleArgs(
+                    threshold_percent=1,
+                ),
+                gcp.billing.BudgetThresholdRuleArgs(
+                    threshold_percent=1,
+                    spend_basis="FORECASTED_SPEND",
+                ),
+            ],
+            all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
+                monitoring_notification_channels=[notification_channel.id],
+                disable_default_iam_recipients=True,
+            ),
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Budget can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:billing/budget:Budget default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

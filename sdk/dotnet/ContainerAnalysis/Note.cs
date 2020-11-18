@@ -21,6 +21,85 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
     /// 
     /// ## Example Usage
+    /// ### Container Analysis Note Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         {
+    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             {
+    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///                 {
+    ///                     HumanReadableName = "Attestor Note",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Container Analysis Note Attestation Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var note = new Gcp.ContainerAnalysis.Note("note", new Gcp.ContainerAnalysis.NoteArgs
+    ///         {
+    ///             AttestationAuthority = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityArgs
+    ///             {
+    ///                 Hint = new Gcp.ContainerAnalysis.Inputs.NoteAttestationAuthorityHintArgs
+    ///                 {
+    ///                     HumanReadableName = "Attestor Note",
+    ///                 },
+    ///             },
+    ///             ExpirationTime = "2120-10-02T15:01:23.045123456Z",
+    ///             LongDescription = "a longer description of test note",
+    ///             RelatedUrls = 
+    ///             {
+    ///                 new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
+    ///                 {
+    ///                     Label = "foo",
+    ///                     Url = "some.url",
+    ///                 },
+    ///                 new Gcp.ContainerAnalysis.Inputs.NoteRelatedUrlArgs
+    ///                 {
+    ///                     Url = "google.com",
+    ///                 },
+    ///             },
+    ///             ShortDescription = "test note",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Note can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:containeranalysis/note:Note default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:containeranalysis/note:Note default {{name}}
+    /// ```
     /// </summary>
     public partial class Note : Pulumi.CustomResource
     {

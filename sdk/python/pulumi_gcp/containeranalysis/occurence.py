@@ -37,6 +37,22 @@ class Occurence(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        Occurrence can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OccurenceAttestationArgs']] attestation: Occurrence that represents a single "attestation". The authenticity

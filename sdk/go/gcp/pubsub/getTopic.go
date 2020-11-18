@@ -10,6 +10,29 @@ import (
 // Get information about a Google Cloud Pub/Sub Topic. For more information see
 // the [official documentation](https://cloud.google.com/pubsub/docs/)
 // and [API](https://cloud.google.com/pubsub/docs/apis).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := pubsub.LookupTopic(ctx, &pubsub.LookupTopicArgs{
+// 			Name: "my-pubsub-topic",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupTopic(ctx *pulumi.Context, args *LookupTopicArgs, opts ...pulumi.InvokeOption) (*LookupTopicResult, error) {
 	var rv LookupTopicResult
 	err := ctx.Invoke("gcp:pubsub/getTopic:getTopic", args, &rv, opts...)

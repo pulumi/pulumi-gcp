@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,145 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts)
  *
  * ## Example Usage
+ * ### Region Network Endpoint Group Functions
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const archive = new gcp.storage.BucketObject("archive", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("path/to/index.zip"),
+ * });
+ * const functionNegFunction = new gcp.cloudfunctions.Function("functionNegFunction", {
+ *     description: "My function",
+ *     runtime: "nodejs10",
+ *     availableMemoryMb: 128,
+ *     sourceArchiveBucket: bucket.name,
+ *     sourceArchiveObject: archive.name,
+ *     triggerHttp: true,
+ *     timeout: 60,
+ *     entryPoint: "helloGET",
+ * });
+ * // Cloud Functions Example
+ * const functionNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("functionNegRegionNetworkEndpointGroup", {
+ *     networkEndpointType: "SERVERLESS",
+ *     region: "us-central1",
+ *     cloudFunction: {
+ *         "function": functionNegFunction.name,
+ *     },
+ * });
+ * ```
+ * ### Region Network Endpoint Group Cloudrun
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cloudrunNegService = new gcp.cloudrun.Service("cloudrunNegService", {
+ *     location: "us-central1",
+ *     template: {
+ *         spec: {
+ *             containers: [{
+ *                 image: "gcr.io/cloudrun/hello",
+ *             }],
+ *         },
+ *     },
+ *     traffics: [{
+ *         percent: 100,
+ *         latestRevision: true,
+ *     }],
+ * });
+ * // Cloud Run Example
+ * const cloudrunNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("cloudrunNegRegionNetworkEndpointGroup", {
+ *     networkEndpointType: "SERVERLESS",
+ *     region: "us-central1",
+ *     cloudRun: {
+ *         service: cloudrunNegService.name,
+ *     },
+ * });
+ * ```
+ * ### Region Network Endpoint Group Appengine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const appengineNegBucket = new gcp.storage.Bucket("appengineNegBucket", {});
+ * const appengineNegBucketObject = new gcp.storage.BucketObject("appengineNegBucketObject", {
+ *     bucket: appengineNegBucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const appengineNegFlexibleAppVersion = new gcp.appengine.FlexibleAppVersion("appengineNegFlexibleAppVersion", {
+ *     versionId: "v1",
+ *     service: "default",
+ *     runtime: "nodejs",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${appengineNegBucket.name}/${appengineNegBucketObject.name}`,
+ *         },
+ *     },
+ *     livenessCheck: {
+ *         path: "/",
+ *     },
+ *     readinessCheck: {
+ *         path: "/",
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     handlers: [{
+ *         urlRegex: ".*\\/my-path\\/*",
+ *         securityLevel: "SECURE_ALWAYS",
+ *         login: "LOGIN_REQUIRED",
+ *         authFailAction: "AUTH_FAIL_ACTION_REDIRECT",
+ *         staticFiles: {
+ *             path: "my-other-path",
+ *             uploadPathRegex: ".*\\/my-path\\/*",
+ *         },
+ *     }],
+ *     automaticScaling: {
+ *         coolDownPeriod: "120s",
+ *         cpuUtilization: {
+ *             targetUtilization: 0.5,
+ *         },
+ *     },
+ *     noopOnDestroy: true,
+ * });
+ * // App Engine Example
+ * const appengineNegRegionNetworkEndpointGroup = new gcp.compute.RegionNetworkEndpointGroup("appengineNegRegionNetworkEndpointGroup", {
+ *     networkEndpointType: "SERVERLESS",
+ *     region: "us-central1",
+ *     appEngine: {
+ *         service: appengineNegFlexibleAppVersion.service,
+ *         version: appengineNegFlexibleAppVersion.versionId,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * RegionNetworkEndpointGroup can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
+ * ```
  */
 export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     /**

@@ -38,6 +38,28 @@ class Application(pulumi.CustomResource):
         > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="your-project-id",
+            org_id="1234567")
+        app = gcp.appengine.Application("app",
+            project=my_project.project_id,
+            location_id="us-central")
+        ```
+
+        ## Import
+
+        Applications can be imported using the ID of the project the application belongs to, e.g.
+
+        ```sh
+         $ pulumi import gcp:appengine/application:Application app your-project-id
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auth_domain: The domain to authenticate users with when using App Engine's User API.

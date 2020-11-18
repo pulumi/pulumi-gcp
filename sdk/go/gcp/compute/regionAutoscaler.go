@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,6 +24,117 @@ import (
 //     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 //
 // ## Example Usage
+// ### Region Autoscaler Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobarInstanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType:  pulumi.String("e2-medium"),
+// 			CanIpForward: pulumi.Bool(false),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 				pulumi.String("bar"),
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String(debian9.Id),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("userinfo-email"),
+// 					pulumi.String("compute-ro"),
+// 					pulumi.String("storage-ro"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarTargetPool, err := compute.NewTargetPool(ctx, "foobarTargetPool", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarRegionInstanceGroupManager, err := compute.NewRegionInstanceGroupManager(ctx, "foobarRegionInstanceGroupManager", &compute.RegionInstanceGroupManagerArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: foobarInstanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			TargetPools: pulumi.StringArray{
+// 				foobarTargetPool.ID(),
+// 			},
+// 			BaseInstanceName: pulumi.String("foobar"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionAutoscaler(ctx, "foobarRegionAutoscaler", &compute.RegionAutoscalerArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Target: foobarRegionInstanceGroupManager.ID(),
+// 			AutoscalingPolicy: &compute.RegionAutoscalerAutoscalingPolicyArgs{
+// 				MaxReplicas:    pulumi.Int(5),
+// 				MinReplicas:    pulumi.Int(1),
+// 				CooldownPeriod: pulumi.Int(60),
+// 				CpuUtilization: &compute.RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs{
+// 					Target: pulumi.Float64(0.5),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// RegionAutoscaler can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default projects/{{project}}/regions/{{region}}/autoscalers/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
+// ```
 type RegionAutoscaler struct {
 	pulumi.CustomResourceState
 
@@ -202,4 +314,43 @@ type RegionAutoscalerArgs struct {
 
 func (RegionAutoscalerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionAutoscalerArgs)(nil)).Elem()
+}
+
+type RegionAutoscalerInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerOutput() RegionAutoscalerOutput
+	ToRegionAutoscalerOutputWithContext(ctx context.Context) RegionAutoscalerOutput
+}
+
+func (RegionAutoscaler) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscaler)(nil)).Elem()
+}
+
+func (i RegionAutoscaler) ToRegionAutoscalerOutput() RegionAutoscalerOutput {
+	return i.ToRegionAutoscalerOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscaler) ToRegionAutoscalerOutputWithContext(ctx context.Context) RegionAutoscalerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerOutput)
+}
+
+type RegionAutoscalerOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionAutoscalerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscalerOutput)(nil)).Elem()
+}
+
+func (o RegionAutoscalerOutput) ToRegionAutoscalerOutput() RegionAutoscalerOutput {
+	return o
+}
+
+func (o RegionAutoscalerOutput) ToRegionAutoscalerOutputWithContext(ctx context.Context) RegionAutoscalerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegionAutoscalerOutput{})
 }

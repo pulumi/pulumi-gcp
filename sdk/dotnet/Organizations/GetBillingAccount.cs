@@ -13,6 +13,30 @@ namespace Pulumi.Gcp.Organizations
     {
         /// <summary>
         /// Use this data source to get information about a Google Billing Account.
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var acct = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
+        ///         {
+        ///             DisplayName = "My Billing Account",
+        ///             Open = true,
+        ///         }));
+        ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+        ///         {
+        ///             ProjectId = "your-project-id",
+        ///             OrgId = "1234567",
+        ///             BillingAccount = acct.Apply(acct =&gt; acct.Id),
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
         /// </summary>
         public static Task<GetBillingAccountResult> InvokeAsync(GetBillingAccountArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetBillingAccountResult>("gcp:organizations/getBillingAccount:getBillingAccount", args ?? new GetBillingAccountArgs(), options.WithVersion());

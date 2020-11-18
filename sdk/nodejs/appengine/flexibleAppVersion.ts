@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -22,6 +21,93 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/appengine/docs/flexible)
  *
  * ## Example Usage
+ * ### App Engine Flexible App Version
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "appeng-flex",
+ *     orgId: "123456789",
+ *     billingAccount: "000000-0000000-0000000-000000",
+ * });
+ * const app = new gcp.appengine.Application("app", {
+ *     project: myProject.projectId,
+ *     locationId: "us-central",
+ * });
+ * const service = new gcp.projects.Service("service", {
+ *     project: myProject.projectId,
+ *     service: "appengineflex.googleapis.com",
+ *     disableDependentServices: false,
+ * });
+ * const gaeApi = new gcp.projects.IAMMember("gaeApi", {
+ *     project: service.project,
+ *     role: "roles/compute.networkUser",
+ *     member: pulumi.interpolate`serviceAccount:service-${myProject.number}@gae-api-prod.google.com.iam.gserviceaccount.com`,
+ * });
+ * const bucket = new gcp.storage.Bucket("bucket", {project: myProject.projectId});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/appengine/hello-world.zip"),
+ * });
+ * const myappV1 = new gcp.appengine.FlexibleAppVersion("myappV1", {
+ *     versionId: "v1",
+ *     project: gaeApi.project,
+ *     service: "default",
+ *     runtime: "nodejs",
+ *     entrypoint: {
+ *         shell: "node ./app.js",
+ *     },
+ *     deployment: {
+ *         zip: {
+ *             sourceUrl: pulumi.interpolate`https://storage.googleapis.com/${bucket.name}/${object.name}`,
+ *         },
+ *     },
+ *     livenessCheck: {
+ *         path: "/",
+ *     },
+ *     readinessCheck: {
+ *         path: "/",
+ *     },
+ *     envVariables: {
+ *         port: "8080",
+ *     },
+ *     handlers: [{
+ *         urlRegex: ".*\\/my-path\\/*",
+ *         securityLevel: "SECURE_ALWAYS",
+ *         login: "LOGIN_REQUIRED",
+ *         authFailAction: "AUTH_FAIL_ACTION_REDIRECT",
+ *         staticFiles: {
+ *             path: "my-other-path",
+ *             uploadPathRegex: ".*\\/my-path\\/*",
+ *         },
+ *     }],
+ *     automaticScaling: {
+ *         coolDownPeriod: "120s",
+ *         cpuUtilization: {
+ *             targetUtilization: 0.5,
+ *         },
+ *     },
+ *     noopOnDestroy: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * FlexibleAppVersion can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{project}}/{{service}}/{{version_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default {{service}}/{{version_id}}
+ * ```
  */
 export class FlexibleAppVersion extends pulumi.CustomResource {
     /**

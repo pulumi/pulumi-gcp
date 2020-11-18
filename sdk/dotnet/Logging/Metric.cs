@@ -21,6 +21,132 @@ namespace Pulumi.Gcp.Logging
     ///     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
     /// 
     /// ## Example Usage
+    /// ### Logging Metric Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new Gcp.Logging.MetricArgs
+    ///         {
+    ///             BucketOptions = new Gcp.Logging.Inputs.MetricBucketOptionsArgs
+    ///             {
+    ///                 LinearBuckets = new Gcp.Logging.Inputs.MetricBucketOptionsLinearBucketsArgs
+    ///                 {
+    ///                     NumFiniteBuckets = 3,
+    ///                     Offset = 1,
+    ///                     Width = 1,
+    ///                 },
+    ///             },
+    ///             Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///             LabelExtractors = 
+    ///             {
+    ///                 { "mass", "EXTRACT(jsonPayload.request)" },
+    ///                 { "sku", "EXTRACT(jsonPayload.id)" },
+    ///             },
+    ///             MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///             {
+    ///                 DisplayName = "My metric",
+    ///                 Labels = 
+    ///                 {
+    ///                     new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
+    ///                     {
+    ///                         Description = "amount of matter",
+    ///                         Key = "mass",
+    ///                         ValueType = "STRING",
+    ///                     },
+    ///                     new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
+    ///                     {
+    ///                         Description = "Identifying number for item",
+    ///                         Key = "sku",
+    ///                         ValueType = "INT64",
+    ///                     },
+    ///                 },
+    ///                 MetricKind = "DELTA",
+    ///                 Unit = "1",
+    ///                 ValueType = "DISTRIBUTION",
+    ///             },
+    ///             ValueExtractor = "EXTRACT(jsonPayload.request)",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Logging Metric Counter Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new Gcp.Logging.MetricArgs
+    ///         {
+    ///             Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///             MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///             {
+    ///                 MetricKind = "DELTA",
+    ///                 ValueType = "INT64",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Logging Metric Counter Labels
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var loggingMetric = new Gcp.Logging.Metric("loggingMetric", new Gcp.Logging.MetricArgs
+    ///         {
+    ///             Filter = "resource.type=gae_app AND severity&gt;=ERROR",
+    ///             LabelExtractors = 
+    ///             {
+    ///                 { "mass", "EXTRACT(jsonPayload.request)" },
+    ///             },
+    ///             MetricDescriptor = new Gcp.Logging.Inputs.MetricMetricDescriptorArgs
+    ///             {
+    ///                 Labels = 
+    ///                 {
+    ///                     new Gcp.Logging.Inputs.MetricMetricDescriptorLabelArgs
+    ///                     {
+    ///                         Description = "amount of matter",
+    ///                         Key = "mass",
+    ///                         ValueType = "STRING",
+    ///                     },
+    ///                 },
+    ///                 MetricKind = "DELTA",
+    ///                 ValueType = "INT64",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Metric can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/metric:Metric default {{project}} {{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/metric:Metric default {{name}}
+    /// ```
     /// </summary>
     public partial class Metric : Pulumi.CustomResource
     {

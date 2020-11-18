@@ -21,6 +21,154 @@ namespace Pulumi.Gcp.NetworkManagement
     ///     * [Official Documentation](https://cloud.google.com/network-intelligence-center/docs)
     /// 
     /// ## Example Usage
+    /// ### Network Management Connectivity Test Instances
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vpc = new Gcp.Compute.Network("vpc", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var debian9 = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var source = new Gcp.Compute.Instance("source", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = debian9.Apply(debian9 =&gt; debian9.Id),
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = vpc.Id,
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var destination = new Gcp.Compute.Instance("destination", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = debian9.Apply(debian9 =&gt; debian9.Id),
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = vpc.Id,
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var instance_test = new Gcp.NetworkManagement.ConnectivityTest("instance-test", new Gcp.NetworkManagement.ConnectivityTestArgs
+    ///         {
+    ///             Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
+    ///             {
+    ///                 Instance = source.Id,
+    ///             },
+    ///             Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
+    ///             {
+    ///                 Instance = destination.Id,
+    ///             },
+    ///             Protocol = "TCP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Network Management Connectivity Test Addresses
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vpc = new Gcp.Compute.Network("vpc", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         });
+    ///         var subnet = new Gcp.Compute.Subnetwork("subnet", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.0.0.0/16",
+    ///             Region = "us-central1",
+    ///             Network = vpc.Id,
+    ///         });
+    ///         var source_addr = new Gcp.Compute.Address("source-addr", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             Subnetwork = subnet.Id,
+    ///             AddressType = "INTERNAL",
+    ///             Address = "10.0.42.42",
+    ///             Region = "us-central1",
+    ///         });
+    ///         var dest_addr = new Gcp.Compute.Address("dest-addr", new Gcp.Compute.AddressArgs
+    ///         {
+    ///             Subnetwork = subnet.Id,
+    ///             AddressType = "INTERNAL",
+    ///             Address = "10.0.43.43",
+    ///             Region = "us-central1",
+    ///         });
+    ///         var address_test = new Gcp.NetworkManagement.ConnectivityTest("address-test", new Gcp.NetworkManagement.ConnectivityTestArgs
+    ///         {
+    ///             Source = new Gcp.NetworkManagement.Inputs.ConnectivityTestSourceArgs
+    ///             {
+    ///                 IpAddress = source_addr.IPAddress,
+    ///                 ProjectId = source_addr.Project,
+    ///                 Network = vpc.Id,
+    ///                 NetworkType = "GCP_NETWORK",
+    ///             },
+    ///             Destination = new Gcp.NetworkManagement.Inputs.ConnectivityTestDestinationArgs
+    ///             {
+    ///                 IpAddress = dest_addr.IPAddress,
+    ///                 ProjectId = dest_addr.Project,
+    ///                 Network = vpc.Id,
+    ///             },
+    ///             Protocol = "UDP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ConnectivityTest can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
+    /// ```
     /// </summary>
     public partial class ConnectivityTest : Pulumi.CustomResource
     {

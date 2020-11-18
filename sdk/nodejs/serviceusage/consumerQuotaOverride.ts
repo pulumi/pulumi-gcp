@@ -16,6 +16,45 @@ import * as utilities from "../utilities";
  *     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
  *
  * ## Example Usage
+ * ### Consumer Quota Override
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "quota",
+ *     orgId: "123456789",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
+ *     project: myProject.projectId,
+ *     service: "servicemanagement.googleapis.com",
+ *     metric: `servicemanagement.googleapis.com%2Fdefault_requests`,
+ *     limit: `%2Fmin%2Fproject`,
+ *     overrideValue: "95",
+ *     force: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ConsumerQuotaOverride can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{project}}/{{service}}/{{metric}}/{{limit}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
+ * ```
  */
 export class ConsumerQuotaOverride extends pulumi.CustomResource {
     /**

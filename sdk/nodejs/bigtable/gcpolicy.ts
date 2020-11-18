@@ -2,14 +2,65 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Creates a Google Cloud Bigtable GC Policy inside a family. For more information see
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {clusters: [{
+ *     clusterId: "tf-instance-cluster",
+ *     zone: "us-central1-b",
+ *     numNodes: 3,
+ *     storageType: "HDD",
+ * }]});
+ * const table = new gcp.bigtable.Table("table", {
+ *     instanceName: instance.name,
+ *     columnFamilies: [{
+ *         family: "name",
+ *     }],
+ * });
+ * const policy = new gcp.bigtable.GCPolicy("policy", {
+ *     instanceName: instance.name,
+ *     table: table.name,
+ *     columnFamily: "name",
+ *     maxAges: [{
+ *         days: 7,
+ *     }],
+ * });
+ * ```
+ *
+ * Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = new gcp.bigtable.GCPolicy("policy", {
+ *     instanceName: google_bigtable_instance.instance.name,
+ *     table: google_bigtable_table.table.name,
+ *     columnFamily: "name",
+ *     mode: "UNION",
+ *     maxAges: [{
+ *         days: 7,
+ *     }],
+ *     maxVersions: [{
+ *         number: 10,
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource does not support import.
  */
 export class GCPolicy extends pulumi.CustomResource {
     /**

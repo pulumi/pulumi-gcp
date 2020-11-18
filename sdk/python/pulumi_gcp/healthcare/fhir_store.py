@@ -41,6 +41,74 @@ class FhirStore(pulumi.CustomResource):
             * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 
         ## Example Usage
+        ### Healthcare Fhir Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic")
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        default = gcp.healthcare.FhirStore("default",
+            dataset=dataset.id,
+            version="R4",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            notification_config=gcp.healthcare.FhirStoreNotificationConfigArgs(
+                pubsub_topic=topic.id,
+            ),
+            labels={
+                "label1": "labelvalue1",
+            })
+        ```
+        ### Healthcare Fhir Store Streaming Config
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        bq_dataset = gcp.bigquery.Dataset("bqDataset",
+            dataset_id="bq_example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="US",
+            delete_contents_on_destroy=True)
+        default = gcp.healthcare.FhirStore("default",
+            dataset=dataset.id,
+            version="R4",
+            enable_update_create=False,
+            disable_referential_integrity=False,
+            disable_resource_versioning=False,
+            enable_history_import=False,
+            labels={
+                "label1": "labelvalue1",
+            },
+            stream_configs=[gcp.healthcare.FhirStoreStreamConfigArgs(
+                resource_types=["Observation"],
+                bigquery_destination=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationArgs(
+                    dataset_uri=pulumi.Output.all(bq_dataset.project, bq_dataset.dataset_id).apply(lambda project, dataset_id: f"bq://{project}.{dataset_id}"),
+                    schema_config=gcp.healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs(
+                        recursive_structure_depth=3,
+                    ),
+                ),
+            )])
+        topic = gcp.pubsub.Topic("topic")
+        ```
+
+        ## Import
+
+        FhirStore can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

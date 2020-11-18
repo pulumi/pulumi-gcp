@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,6 +24,183 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Vpn Tunnel Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := compute.NewNetwork(ctx, "network1", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		targetGateway, err := compute.NewVPNGateway(ctx, "targetGateway", &compute.VPNGatewayArgs{
+// 			Network: network1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpnStaticIp, err := compute.NewAddress(ctx, "vpnStaticIp", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frEsp, err := compute.NewForwardingRule(ctx, "frEsp", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("ESP"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp500, err := compute.NewForwardingRule(ctx, "frUdp500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp4500, err := compute.NewForwardingRule(ctx, "frUdp4500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("4500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+// 			PeerIp:           pulumi.String("15.0.0.120"),
+// 			SharedSecret:     pulumi.String("a secret message"),
+// 			TargetVpnGateway: targetGateway.ID(),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			frEsp,
+// 			frUdp500,
+// 			frUdp4500,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+// 			Network:          network1.Name,
+// 			DestRange:        pulumi.String("15.0.0.0/24"),
+// 			Priority:         pulumi.Int(1000),
+// 			NextHopVpnTunnel: tunnel1.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Vpn Tunnel Beta
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		network1, err := compute.NewNetwork(ctx, "network1", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		targetGateway, err := compute.NewVPNGateway(ctx, "targetGateway", &compute.VPNGatewayArgs{
+// 			Network: network1.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		vpnStaticIp, err := compute.NewAddress(ctx, "vpnStaticIp", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frEsp, err := compute.NewForwardingRule(ctx, "frEsp", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("ESP"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp500, err := compute.NewForwardingRule(ctx, "frUdp500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		frUdp4500, err := compute.NewForwardingRule(ctx, "frUdp4500", &compute.ForwardingRuleArgs{
+// 			IpProtocol: pulumi.String("UDP"),
+// 			PortRange:  pulumi.String("4500"),
+// 			IpAddress:  vpnStaticIp.Address,
+// 			Target:     targetGateway.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		tunnel1, err := compute.NewVPNTunnel(ctx, "tunnel1", &compute.VPNTunnelArgs{
+// 			PeerIp:           pulumi.String("15.0.0.120"),
+// 			SharedSecret:     pulumi.String("a secret message"),
+// 			TargetVpnGateway: targetGateway.ID(),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			frEsp,
+// 			frUdp500,
+// 			frUdp4500,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRoute(ctx, "route1", &compute.RouteArgs{
+// 			Network:          network1.Name,
+// 			DestRange:        pulumi.String("15.0.0.0/24"),
+// 			Priority:         pulumi.Int(1000),
+// 			NextHopVpnTunnel: tunnel1.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// VpnTunnel can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default projects/{{project}}/regions/{{region}}/vpnTunnels/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
+// ```
 type VPNTunnel struct {
 	pulumi.CustomResourceState
 
@@ -398,4 +576,43 @@ type VPNTunnelArgs struct {
 
 func (VPNTunnelArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpntunnelArgs)(nil)).Elem()
+}
+
+type VPNTunnelInput interface {
+	pulumi.Input
+
+	ToVPNTunnelOutput() VPNTunnelOutput
+	ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput
+}
+
+func (VPNTunnel) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPNTunnel)(nil)).Elem()
+}
+
+func (i VPNTunnel) ToVPNTunnelOutput() VPNTunnelOutput {
+	return i.ToVPNTunnelOutputWithContext(context.Background())
+}
+
+func (i VPNTunnel) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelOutput)
+}
+
+type VPNTunnelOutput struct {
+	*pulumi.OutputState
+}
+
+func (VPNTunnelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPNTunnelOutput)(nil)).Elem()
+}
+
+func (o VPNTunnelOutput) ToVPNTunnelOutput() VPNTunnelOutput {
+	return o
+}
+
+func (o VPNTunnelOutput) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(VPNTunnelOutput{})
 }

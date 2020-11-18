@@ -31,6 +31,26 @@ class ServiceIdentity(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 
         ## Example Usage
+        ### Service Identity Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        hc_sa = gcp.projects.ServiceIdentity("hcSa",
+            project=project.project_id,
+            service="healthcare.googleapis.com",
+            opts=ResourceOptions(provider=google_beta))
+        hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
+            project=project.project_id,
+            role="roles/bigquery.jobUser",
+            member=hc_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        ```
+
+        ## Import
+
+        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

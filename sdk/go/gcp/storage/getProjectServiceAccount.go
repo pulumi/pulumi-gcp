@@ -41,6 +41,82 @@ import (
 // [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
 //
 // ## Example Usage
+// ### Pub/Sub Notifications
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopicIAMBinding(ctx, "binding", &pubsub.TopicIAMBindingArgs{
+// 			Topic: pulumi.Any(google_pubsub_topic.Topic.Name),
+// 			Role:  pulumi.String("roles/pubsub.publisher"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", gcsAccount.EmailAddress)),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Cloud KMS Keys
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/kms"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		gcsAccount, err := storage.GetProjectServiceAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		binding, err := kms.NewCryptoKeyIAMBinding(ctx, "binding", &kms.CryptoKeyIAMBindingArgs{
+// 			CryptoKeyId: pulumi.String("your-crypto-key-id"),
+// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", gcsAccount.EmailAddress)),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			Encryption: &storage.BucketEncryptionArgs{
+// 				DefaultKmsKeyName: pulumi.String("your-crypto-key-id"),
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			binding,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetProjectServiceAccount(ctx *pulumi.Context, args *GetProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceAccountResult, error) {
 	var rv GetProjectServiceAccountResult
 	err := ctx.Invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args, &rv, opts...)

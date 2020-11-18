@@ -13,6 +13,81 @@ namespace Pulumi.Gcp.CloudTasks
     /// A named resource to which messages are sent by publishers.
     /// 
     /// ## Example Usage
+    /// ### Queue Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudTasks.Queue("default", new Gcp.CloudTasks.QueueArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloud Tasks Queue Advanced
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var advancedConfiguration = new Gcp.CloudTasks.Queue("advancedConfiguration", new Gcp.CloudTasks.QueueArgs
+    ///         {
+    ///             AppEngineRoutingOverride = new Gcp.CloudTasks.Inputs.QueueAppEngineRoutingOverrideArgs
+    ///             {
+    ///                 Instance = "test",
+    ///                 Service = "worker",
+    ///                 Version = "1.0",
+    ///             },
+    ///             Location = "us-central1",
+    ///             RateLimits = new Gcp.CloudTasks.Inputs.QueueRateLimitsArgs
+    ///             {
+    ///                 MaxConcurrentDispatches = 3,
+    ///                 MaxDispatchesPerSecond = 2,
+    ///             },
+    ///             RetryConfig = new Gcp.CloudTasks.Inputs.QueueRetryConfigArgs
+    ///             {
+    ///                 MaxAttempts = 5,
+    ///                 MaxBackoff = "3s",
+    ///                 MaxDoublings = 1,
+    ///                 MaxRetryDuration = "4s",
+    ///                 MinBackoff = "2s",
+    ///             },
+    ///             StackdriverLoggingConfig = new Gcp.CloudTasks.Inputs.QueueStackdriverLoggingConfigArgs
+    ///             {
+    ///                 SamplingRatio = 0.9,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Queue can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudtasks/queue:Queue default projects/{{project}}/locations/{{location}}/queues/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudtasks/queue:Queue default {{project}}/{{location}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
+    /// ```
     /// </summary>
     public partial class Queue : Pulumi.CustomResource
     {

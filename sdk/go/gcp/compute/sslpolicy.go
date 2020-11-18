@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -19,6 +20,62 @@ import (
 //     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
 //
 // ## Example Usage
+// ### Ssl Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewSSLPolicy(ctx, "prod_ssl_policy", &compute.SSLPolicyArgs{
+// 			Profile: pulumi.String("MODERN"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSSLPolicy(ctx, "nonprod_ssl_policy", &compute.SSLPolicyArgs{
+// 			MinTlsVersion: pulumi.String("TLS_1_2"),
+// 			Profile:       pulumi.String("MODERN"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSSLPolicy(ctx, "custom_ssl_policy", &compute.SSLPolicyArgs{
+// 			CustomFeatures: pulumi.StringArray{
+// 				pulumi.String("TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384"),
+// 				pulumi.String("TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"),
+// 			},
+// 			MinTlsVersion: pulumi.String("TLS_1_2"),
+// 			Profile:       pulumi.String("CUSTOM"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// SslPolicy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
+// ```
 type SSLPolicy struct {
 	pulumi.CustomResourceState
 
@@ -284,4 +341,43 @@ type SSLPolicyArgs struct {
 
 func (SSLPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslpolicyArgs)(nil)).Elem()
+}
+
+type SSLPolicyInput interface {
+	pulumi.Input
+
+	ToSSLPolicyOutput() SSLPolicyOutput
+	ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput
+}
+
+func (SSLPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SSLPolicy)(nil)).Elem()
+}
+
+func (i SSLPolicy) ToSSLPolicyOutput() SSLPolicyOutput {
+	return i.ToSSLPolicyOutputWithContext(context.Background())
+}
+
+func (i SSLPolicy) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyOutput)
+}
+
+type SSLPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (SSLPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SSLPolicyOutput)(nil)).Elem()
+}
+
+func (o SSLPolicyOutput) ToSSLPolicyOutput() SSLPolicyOutput {
+	return o
+}
+
+func (o SSLPolicyOutput) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SSLPolicyOutput{})
 }

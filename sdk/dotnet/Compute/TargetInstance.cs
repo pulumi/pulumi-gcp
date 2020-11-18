@@ -24,6 +24,121 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using Protocol Forwarding](https://cloud.google.com/compute/docs/protocol-forwarding)
     /// 
     /// ## Example Usage
+    /// ### Target Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var vmimage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var target_vm = new Gcp.Compute.Instance("target-vm", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             Zone = "us-central1-a",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = vmimage.Apply(vmimage =&gt; vmimage.SelfLink),
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var @default = new Gcp.Compute.TargetInstance("default", new Gcp.Compute.TargetInstanceArgs
+    ///         {
+    ///             Instance = target_vm.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Target Instance Custom Network
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var target_vmNetwork = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "default",
+    ///         }));
+    ///         var vmimage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-10",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var target_vmInstance = new Gcp.Compute.Instance("target-vmInstance", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             Zone = "us-central1-a",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = vmimage.Apply(vmimage =&gt; vmimage.SelfLink),
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var customNetwork = new Gcp.Compute.TargetInstance("customNetwork", new Gcp.Compute.TargetInstanceArgs
+    ///         {
+    ///             Instance = target_vmInstance.Id,
+    ///             Network = target_vmNetwork.Apply(target_vmNetwork =&gt; target_vmNetwork.SelfLink),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// TargetInstance can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{project}}/{{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
+    /// ```
     /// </summary>
     public partial class TargetInstance : Pulumi.CustomResource
     {

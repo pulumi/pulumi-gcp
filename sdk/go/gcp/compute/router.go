@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,69 @@ import (
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
+// ### Router Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+// 			Network: foobarNetwork.Name,
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn:           pulumi.Int(64514),
+// 				AdvertiseMode: pulumi.String("CUSTOM"),
+// 				AdvertisedGroups: pulumi.StringArray{
+// 					pulumi.String("ALL_SUBNETS"),
+// 				},
+// 				AdvertisedIpRanges: compute.RouterBgpAdvertisedIpRangeArray{
+// 					&compute.RouterBgpAdvertisedIpRangeArgs{
+// 						Range: pulumi.String("1.2.3.4"),
+// 					},
+// 					&compute.RouterBgpAdvertisedIpRangeArgs{
+// 						Range: pulumi.String("6.7.0.0/16"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Router can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/router:Router default projects/{{project}}/regions/{{region}}/routers/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/router:Router default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/router:Router default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/router:Router default {{name}}
+// ```
 type Router struct {
 	pulumi.CustomResourceState
 
@@ -180,4 +244,43 @@ type RouterArgs struct {
 
 func (RouterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerArgs)(nil)).Elem()
+}
+
+type RouterInput interface {
+	pulumi.Input
+
+	ToRouterOutput() RouterOutput
+	ToRouterOutputWithContext(ctx context.Context) RouterOutput
+}
+
+func (Router) ElementType() reflect.Type {
+	return reflect.TypeOf((*Router)(nil)).Elem()
+}
+
+func (i Router) ToRouterOutput() RouterOutput {
+	return i.ToRouterOutputWithContext(context.Background())
+}
+
+func (i Router) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterOutput)
+}
+
+type RouterOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterOutput)(nil)).Elem()
+}
+
+func (o RouterOutput) ToRouterOutput() RouterOutput {
+	return o
+}
+
+func (o RouterOutput) ToRouterOutputWithContext(ctx context.Context) RouterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouterOutput{})
 }

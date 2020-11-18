@@ -162,6 +162,15 @@ def get_ssl_policy(name: Optional[str] = None,
     Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
         For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_ssl_policy = gcp.compute.get_ssl_policy(name="production-ssl-policy")
+    ```
+
 
     :param str name: The name of the SSL Policy.
     :param str project: The ID of the project in which the resource belongs. If it

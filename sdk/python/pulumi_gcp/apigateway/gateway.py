@@ -25,7 +25,26 @@ class Gateway(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Gateway resource with the given unique name, props, and options.
+        ## Import
+
+        Gateway can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigateway/gateway:Gateway default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}

@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -14,6 +13,28 @@ import * as utilities from "../utilities";
  * the datasource. A region can have a different set of supported versions than
  * its component zones, and not all zones in a region are guaranteed to
  * support the same version.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const central1b = gcp.container.getEngineVersions({
+ *     location: "us-central1-b",
+ *     versionPrefix: "1.12.",
+ * });
+ * const foo = new gcp.container.Cluster("foo", {
+ *     location: "us-central1-b",
+ *     nodeVersion: central1b.then(central1b => central1b.latestNodeVersion),
+ *     initialNodeCount: 1,
+ *     masterAuth: {
+ *         username: "mr.yoda",
+ *         password: "adoy.rm",
+ *     },
+ * });
+ * export const stableChannelVersion = central1b.then(central1b => central1b.releaseChannelDefaultVersion.STABLE);
+ * ```
  */
 export function getEngineVersions(args?: GetEngineVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetEngineVersionsResult> {
     args = args || {};

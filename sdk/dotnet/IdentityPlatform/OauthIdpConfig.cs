@@ -17,6 +17,44 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Oauth Idp Config Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var oauthIdpConfig = new Gcp.IdentityPlatform.OauthIdpConfig("oauthIdpConfig", new Gcp.IdentityPlatform.OauthIdpConfigArgs
+    ///         {
+    ///             ClientId = "client-id",
+    ///             ClientSecret = "secret",
+    ///             DisplayName = "Display Name",
+    ///             Enabled = true,
+    ///             Issuer = "issuer",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// OauthIdpConfig can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
+    /// ```
     /// </summary>
     public partial class OauthIdpConfig : Pulumi.CustomResource
     {

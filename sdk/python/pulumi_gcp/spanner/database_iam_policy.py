@@ -36,6 +36,72 @@ class DatabaseIAMPolicy(pulumi.CustomResource):
 
         > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_spanner\_database\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        database = gcp.spanner.DatabaseIAMPolicy("database",
+            instance="your-instance-name",
+            database="your-database-name",
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_spanner\_database\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMBinding("database",
+            database="your-database-name",
+            instance="your-instance-name",
+            members=["user:jane@example.com"],
+            role="roles/compute.networkUser")
+        ```
+
+        ## google\_spanner\_database\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.spanner.DatabaseIAMMember("database",
+            database="your-database-name",
+            instance="your-instance-name",
+            member="user:jane@example.com",
+            role="roles/compute.networkUser")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database project-name/instance-name/database-name
+        ```
+
+         -> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database: The name of the Spanner database.

@@ -26,6 +26,39 @@ class User(pulumi.CustomResource):
         """
         Creates a new Google SQL User on a Google SQL User Instance. For more information, see the [official documentation](https://cloud.google.com/sql/), or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/users).
 
+        ## Example Usage
+
+        Example creating a SQL User.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
+        master = gcp.sql.DatabaseInstance("master", settings=gcp.sql.DatabaseInstanceSettingsArgs(
+            tier="db-f1-micro",
+        ))
+        users = gcp.sql.User("users",
+            instance=master.name,
+            host="me.com",
+            password="changeme")
+        ```
+
+        ## Import
+
+        SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
+
+        ```sh
+         $ pulumi import gcp:sql/user:User users my-project/master-instance/my-domain.com/me
+        ```
+
+         SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g.
+
+        ```sh
+         $ pulumi import gcp:sql/user:User users my-project/master-instance/me
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported

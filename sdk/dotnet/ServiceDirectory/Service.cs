@@ -19,6 +19,57 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///     * [Configuring a service](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_a_service)
     /// 
     /// ## Example Usage
+    /// ### Service Directory Service Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleNamespace = new Gcp.ServiceDirectory.Namespace("exampleNamespace", new Gcp.ServiceDirectory.NamespaceArgs
+    ///         {
+    ///             NamespaceId = "example-namespace",
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var exampleService = new Gcp.ServiceDirectory.Service("exampleService", new Gcp.ServiceDirectory.ServiceArgs
+    ///         {
+    ///             ServiceId = "example-service",
+    ///             Namespace = exampleNamespace.Id,
+    ///             Metadata = 
+    ///             {
+    ///                 { "stage", "prod" },
+    ///                 { "region", "us-central1" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Service can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicedirectory/service:Service default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicedirectory/service:Service default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:servicedirectory/service:Service default {{location}}/{{namespace_id}}/{{service_id}}
+    /// ```
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

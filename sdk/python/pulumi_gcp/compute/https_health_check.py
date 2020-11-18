@@ -45,6 +45,33 @@ class HttpsHealthCheck(pulumi.CustomResource):
             * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 
         ## Example Usage
+        ### Https Health Check Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.HttpsHealthCheck("default",
+            check_interval_sec=1,
+            request_path="/health_check",
+            timeout_sec=1)
+        ```
+
+        ## Import
+
+        HttpsHealthCheck can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default projects/{{project}}/global/httpsHealthChecks/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

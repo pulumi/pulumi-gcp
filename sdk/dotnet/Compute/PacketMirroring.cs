@@ -21,6 +21,159 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using Packet Mirroring](https://cloud.google.com/vpc/docs/using-packet-mirroring#creating)
     /// 
     /// ## Example Usage
+    /// ### Compute Packet Mirroring Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var mirror = new Gcp.Compute.Instance("mirror", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-9",
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = defaultNetwork.Id,
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             Network = defaultNetwork.Id,
+    ///             IpCidrRange = "10.2.0.0/16",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
+    ///         {
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///             TcpHealthCheck = new Gcp.Compute.Inputs.HealthCheckTcpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHealthCheck.Id,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new Gcp.Compute.ForwardingRuleArgs
+    ///         {
+    ///             IsMirroringCollector = true,
+    ///             IpProtocol = "TCP",
+    ///             LoadBalancingScheme = "INTERNAL",
+    ///             BackendService = defaultRegionBackendService.Id,
+    ///             AllPorts = true,
+    ///             Network = defaultNetwork.Id,
+    ///             Subnetwork = defaultSubnetwork.Id,
+    ///             NetworkTier = "PREMIUM",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 defaultSubnetwork,
+    ///             },
+    ///         });
+    ///         var foobar = new Gcp.Compute.PacketMirroring("foobar", new Gcp.Compute.PacketMirroringArgs
+    ///         {
+    ///             Description = "bar",
+    ///             Network = new Gcp.Compute.Inputs.PacketMirroringNetworkArgs
+    ///             {
+    ///                 Url = defaultNetwork.Id,
+    ///             },
+    ///             CollectorIlb = new Gcp.Compute.Inputs.PacketMirroringCollectorIlbArgs
+    ///             {
+    ///                 Url = defaultForwardingRule.Id,
+    ///             },
+    ///             MirroredResources = new Gcp.Compute.Inputs.PacketMirroringMirroredResourcesArgs
+    ///             {
+    ///                 Tags = 
+    ///                 {
+    ///                     "foo",
+    ///                 },
+    ///                 Instances = 
+    ///                 {
+    ///                     new Gcp.Compute.Inputs.PacketMirroringMirroredResourcesInstanceArgs
+    ///                     {
+    ///                         Url = mirror.Id,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Filter = new Gcp.Compute.Inputs.PacketMirroringFilterArgs
+    ///             {
+    ///                 IpProtocols = 
+    ///                 {
+    ///                     "tcp",
+    ///                 },
+    ///                 CidrRanges = 
+    ///                 {
+    ///                     "0.0.0.0/0",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// PacketMirroring can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default projects/{{project}}/regions/{{region}}/packetMirrorings/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
+    /// ```
     /// </summary>
     public partial class PacketMirroring : Pulumi.CustomResource
     {

@@ -50,6 +50,86 @@ class Environment(pulumi.CustomResource):
             deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
 
         ## Example Usage
+        ### Basic Usage
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test", region="us-central1")
+        ```
+        ### With GKE and Compute Resource Dependencies
+
+        **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
+        (i.e. at a project level). This will probably require an explicit dependency
+        on the IAM policy binding (see `projects.IAMMember` below).
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_network = gcp.compute.Network("testNetwork", auto_create_subnetworks=False)
+        test_subnetwork = gcp.compute.Subnetwork("testSubnetwork",
+            ip_cidr_range="10.2.0.0/16",
+            region="us-central1",
+            network=test_network.id)
+        test_account = gcp.service_account.Account("testAccount",
+            account_id="composer-env-account",
+            display_name="Test Service Account for Composer Environment")
+        composer_worker = gcp.projects.IAMMember("composer-worker",
+            role="roles/composer.worker",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        test_environment = gcp.composer.Environment("testEnvironment",
+            region="us-central1",
+            config=gcp.composer.EnvironmentConfigArgs(
+                node_count=4,
+                node_config={
+                    "zone": "us-central1-a",
+                    "machine_type": "e2-medium",
+                    "network": test_network.id,
+                    "subnetwork": test_subnetwork.id,
+                    "service_account": test_account.name,
+                },
+            ),
+            opts=ResourceOptions(depends_on=[composer_worker]))
+        ```
+        ### With Software (Airflow) Config
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.composer.Environment("test",
+            config=gcp.composer.EnvironmentConfigArgs(
+                software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
+                    airflow_config_overrides={
+                        "core-loadExample": "True",
+                    },
+                    env_variables={
+                        "FOO": "bar",
+                    },
+                    pypi_packages={
+                        "numpy": "",
+                        "scipy": "==1.1.0",
+                    },
+                ),
+            ),
+            region="us-central1")
+        ```
+
+        ## Import
+
+        Environment can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:composer/environment:Environment default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

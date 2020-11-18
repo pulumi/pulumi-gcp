@@ -17,6 +17,117 @@ namespace Pulumi.Gcp.AppEngine
     /// * [API documentation](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services)
     /// 
     /// ## Example Usage
+    /// ### App Engine Service Split Traffic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///         });
+    ///         var liveappV1 = new Gcp.AppEngine.StandardAppVersion("liveappV1", new Gcp.AppEngine.StandardAppVersionArgs
+    ///         {
+    ///             VersionId = "v1",
+    ///             Service = "liveapp",
+    ///             DeleteServiceOnDestroy = true,
+    ///             Runtime = "nodejs10",
+    ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///             {
+    ///                 Shell = "node ./app.js",
+    ///             },
+    ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///             {
+    ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///                 {
+    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var objectName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             EnvVariables = 
+    ///             {
+    ///                 { "port", "8080" },
+    ///             },
+    ///         });
+    ///         var liveappV2 = new Gcp.AppEngine.StandardAppVersion("liveappV2", new Gcp.AppEngine.StandardAppVersionArgs
+    ///         {
+    ///             VersionId = "v2",
+    ///             Service = "liveapp",
+    ///             NoopOnDestroy = true,
+    ///             Runtime = "nodejs10",
+    ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///             {
+    ///                 Shell = "node ./app.js",
+    ///             },
+    ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///             {
+    ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///                 {
+    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var objectName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             EnvVariables = 
+    ///             {
+    ///                 { "port", "8080" },
+    ///             },
+    ///         });
+    ///         var liveapp = new Gcp.AppEngine.EngineSplitTraffic("liveapp", new Gcp.AppEngine.EngineSplitTrafficArgs
+    ///         {
+    ///             Service = liveappV2.Service,
+    ///             MigrateTraffic = false,
+    ///             Split = new Gcp.AppEngine.Inputs.EngineSplitTrafficSplitArgs
+    ///             {
+    ///                 ShardBy = "IP",
+    ///                 Allocations = Output.Tuple(liveappV1.VersionId, liveappV2.VersionId).Apply(values =&gt;
+    ///                 {
+    ///                     var liveappV1VersionId = values.Item1;
+    ///                     var liveappV2VersionId = values.Item2;
+    ///                     return 
+    ///                     {
+    ///                         { liveappV1VersionId, 0.75 },
+    ///                         { liveappV2VersionId, 0.25 },
+    ///                     };
+    ///                 }),
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ServiceSplitTraffic can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{project}}/{{service}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
+    /// ```
     /// </summary>
     public partial class EngineSplitTraffic : Pulumi.CustomResource
     {

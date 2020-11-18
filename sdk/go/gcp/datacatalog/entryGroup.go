@@ -4,6 +4,7 @@
 package datacatalog
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,60 @@ import (
 //     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 //
 // ## Example Usage
+// ### Data Catalog Entry Group Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
+// 			EntryGroupId: pulumi.String("my_group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Data Catalog Entry Group Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/datacatalog"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datacatalog.NewEntryGroup(ctx, "basicEntryGroup", &datacatalog.EntryGroupArgs{
+// 			Description:  pulumi.String("example entry group"),
+// 			DisplayName:  pulumi.String("entry group"),
+// 			EntryGroupId: pulumi.String("my_group"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// EntryGroup can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
+// ```
 type EntryGroup struct {
 	pulumi.CustomResourceState
 
@@ -142,4 +197,43 @@ type EntryGroupArgs struct {
 
 func (EntryGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*entryGroupArgs)(nil)).Elem()
+}
+
+type EntryGroupInput interface {
+	pulumi.Input
+
+	ToEntryGroupOutput() EntryGroupOutput
+	ToEntryGroupOutputWithContext(ctx context.Context) EntryGroupOutput
+}
+
+func (EntryGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryGroup)(nil)).Elem()
+}
+
+func (i EntryGroup) ToEntryGroupOutput() EntryGroupOutput {
+	return i.ToEntryGroupOutputWithContext(context.Background())
+}
+
+func (i EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupOutput)
+}
+
+type EntryGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (EntryGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryGroupOutput)(nil)).Elem()
+}
+
+func (o EntryGroupOutput) ToEntryGroupOutput() EntryGroupOutput {
+	return o
+}
+
+func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) EntryGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EntryGroupOutput{})
 }

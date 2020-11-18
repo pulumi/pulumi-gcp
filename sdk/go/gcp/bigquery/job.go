@@ -4,6 +4,7 @@
 package bigquery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,263 @@ import (
 //     * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
 //
 // ## Example Usage
+// ### Bigquery Job Query
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bar, err := bigquery.NewDataset(ctx, "bar", &bigquery.DatasetArgs{
+// 			DatasetId:    pulumi.String("job_query_dataset"),
+// 			FriendlyName: pulumi.String("test"),
+// 			Description:  pulumi.String("This is a test description"),
+// 			Location:     pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
+// 			DatasetId: bar.DatasetId,
+// 			TableId:   pulumi.String("job_query_table"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+// 			JobId: pulumi.String("job_query"),
+// 			Labels: pulumi.StringMap{
+// 				"example-label": pulumi.String("example-value"),
+// 			},
+// 			Query: &bigquery.JobQueryArgs{
+// 				Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
+// 				DestinationTable: &bigquery.JobQueryDestinationTableArgs{
+// 					ProjectId: foo.Project,
+// 					DatasetId: foo.DatasetId,
+// 					TableId:   foo.TableId,
+// 				},
+// 				AllowLargeResults: pulumi.Bool(true),
+// 				FlattenResults:    pulumi.Bool(true),
+// 				ScriptOptions: &bigquery.JobQueryScriptOptionsArgs{
+// 					KeyResultStatement: pulumi.String("LAST"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Bigquery Job Query Table Reference
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bar, err := bigquery.NewDataset(ctx, "bar", &bigquery.DatasetArgs{
+// 			DatasetId:    pulumi.String("job_query_dataset"),
+// 			FriendlyName: pulumi.String("test"),
+// 			Description:  pulumi.String("This is a test description"),
+// 			Location:     pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
+// 			DatasetId: bar.DatasetId,
+// 			TableId:   pulumi.String("job_query_table"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+// 			JobId: pulumi.String("job_query"),
+// 			Labels: pulumi.StringMap{
+// 				"example-label": pulumi.String("example-value"),
+// 			},
+// 			Query: &bigquery.JobQueryArgs{
+// 				Query: pulumi.String("SELECT state FROM [lookerdata:cdc.project_tycho_reports]"),
+// 				DestinationTable: &bigquery.JobQueryDestinationTableArgs{
+// 					TableId: foo.ID(),
+// 				},
+// 				DefaultDataset: &bigquery.JobQueryDefaultDatasetArgs{
+// 					DatasetId: bar.ID(),
+// 				},
+// 				AllowLargeResults: pulumi.Bool(true),
+// 				FlattenResults:    pulumi.Bool(true),
+// 				ScriptOptions: &bigquery.JobQueryScriptOptionsArgs{
+// 					KeyResultStatement: pulumi.String("LAST"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Bigquery Job Load
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bar, err := bigquery.NewDataset(ctx, "bar", &bigquery.DatasetArgs{
+// 			DatasetId:    pulumi.String("job_load_dataset"),
+// 			FriendlyName: pulumi.String("test"),
+// 			Description:  pulumi.String("This is a test description"),
+// 			Location:     pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
+// 			DatasetId: bar.DatasetId,
+// 			TableId:   pulumi.String("job_load_table"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+// 			JobId: pulumi.String("job_load"),
+// 			Labels: pulumi.StringMap{
+// 				"my_job": pulumi.String("load"),
+// 			},
+// 			Load: &bigquery.JobLoadArgs{
+// 				SourceUris: pulumi.StringArray{
+// 					pulumi.String("gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv"),
+// 				},
+// 				DestinationTable: &bigquery.JobLoadDestinationTableArgs{
+// 					ProjectId: foo.Project,
+// 					DatasetId: foo.DatasetId,
+// 					TableId:   foo.TableId,
+// 				},
+// 				SkipLeadingRows: pulumi.Int(1),
+// 				SchemaUpdateOptions: pulumi.StringArray{
+// 					pulumi.String("ALLOW_FIELD_RELAXATION"),
+// 					pulumi.String("ALLOW_FIELD_ADDITION"),
+// 				},
+// 				WriteDisposition: pulumi.String("WRITE_APPEND"),
+// 				Autodetect:       pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Bigquery Job Extract
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigquery.NewDataset(ctx, "source_oneDataset", &bigquery.DatasetArgs{
+// 			DatasetId:    pulumi.String("job_extract_dataset"),
+// 			FriendlyName: pulumi.String("test"),
+// 			Description:  pulumi.String("This is a test description"),
+// 			Location:     pulumi.String("US"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewTable(ctx, "source_oneTable", &bigquery.TableArgs{
+// 			DatasetId: source_oneDataset.DatasetId,
+// 			TableId:   pulumi.String("job_extract_table"),
+// 			Schema:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "[\n", "  {\n", "    \"name\": \"name\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"post_abbr\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"date\",\n", "    \"type\": \"DATE\",\n", "    \"mode\": \"NULLABLE\"\n", "  }\n", "]\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		dest, err := storage.NewBucket(ctx, "dest", &storage.BucketArgs{
+// 			ForceDestroy: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewJob(ctx, "job", &bigquery.JobArgs{
+// 			JobId: pulumi.String("job_extract"),
+// 			Extract: &bigquery.JobExtractArgs{
+// 				DestinationUris: pulumi.StringArray{
+// 					dest.Url.ApplyT(func(url string) (string, error) {
+// 						return fmt.Sprintf("%v%v", url, "/extract"), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 				SourceTable: &bigquery.JobExtractSourceTableArgs{
+// 					ProjectId: source_oneTable.Project,
+// 					DatasetId: source_oneTable.DatasetId,
+// 					TableId:   source_oneTable.TableId,
+// 				},
+// 				DestinationFormat: pulumi.String("NEWLINE_DELIMITED_JSON"),
+// 				Compression:       pulumi.String("GZIP"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Job can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/job:Job default {{job_id}}
+// ```
 type Job struct {
 	pulumi.CustomResourceState
 
@@ -201,4 +459,43 @@ type JobArgs struct {
 
 func (JobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*jobArgs)(nil)).Elem()
+}
+
+type JobInput interface {
+	pulumi.Input
+
+	ToJobOutput() JobOutput
+	ToJobOutputWithContext(ctx context.Context) JobOutput
+}
+
+func (Job) ElementType() reflect.Type {
+	return reflect.TypeOf((*Job)(nil)).Elem()
+}
+
+func (i Job) ToJobOutput() JobOutput {
+	return i.ToJobOutputWithContext(context.Background())
+}
+
+func (i Job) ToJobOutputWithContext(ctx context.Context) JobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobOutput)
+}
+
+type JobOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobOutput)(nil)).Elem()
+}
+
+func (o JobOutput) ToJobOutput() JobOutput {
+	return o
+}
+
+func (o JobOutput) ToJobOutputWithContext(ctx context.Context) JobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(JobOutput{})
 }

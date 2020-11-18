@@ -4,12 +4,20 @@
 package datacatalog
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// PolicyTag can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
+// ```
 type PolicyTag struct {
 	pulumi.CustomResourceState
 
@@ -157,4 +165,43 @@ type PolicyTagArgs struct {
 
 func (PolicyTagArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*policyTagArgs)(nil)).Elem()
+}
+
+type PolicyTagInput interface {
+	pulumi.Input
+
+	ToPolicyTagOutput() PolicyTagOutput
+	ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput
+}
+
+func (PolicyTag) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTag)(nil)).Elem()
+}
+
+func (i PolicyTag) ToPolicyTagOutput() PolicyTagOutput {
+	return i.ToPolicyTagOutputWithContext(context.Background())
+}
+
+func (i PolicyTag) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagOutput)
+}
+
+type PolicyTagOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagOutput)(nil)).Elem()
+}
+
+func (o PolicyTagOutput) ToPolicyTagOutput() PolicyTagOutput {
+	return o
+}
+
+func (o PolicyTagOutput) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PolicyTagOutput{})
 }

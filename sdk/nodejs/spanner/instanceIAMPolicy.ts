@@ -17,6 +17,74 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.spanner.InstanceIAMPolicy` **cannot** be used in conjunction with `gcp.spanner.InstanceIAMBinding` and `gcp.spanner.InstanceIAMMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.spanner.InstanceIAMBinding` resources **can be** used in conjunction with `gcp.spanner.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_spanner\_instance\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const instance = new gcp.spanner.InstanceIAMPolicy("instance", {
+ *     instance: "your-instance-name",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_spanner\_instance\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.spanner.InstanceIAMBinding("instance", {
+ *     instance: "your-instance-name",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/compute.networkUser",
+ * });
+ * ```
+ *
+ * ## google\_spanner\_instance\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.spanner.InstanceIAMMember("instance", {
+ *     instance: "your-instance-name",
+ *     member: "user:jane@example.com",
+ *     role: "roles/compute.networkUser",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{name}} * {{name}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the account, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance "project-name/instance-name roles/viewer user:foo@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance "project-name/instance-name roles/viewer"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy instance project-name/instance-name
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class InstanceIAMPolicy extends pulumi.CustomResource {
     /**

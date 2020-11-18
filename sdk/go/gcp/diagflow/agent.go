@@ -4,6 +4,7 @@
 package diagflow
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,50 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 //
 // ## Example Usage
+// ### Dialogflow Agent Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/diagflow"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := diagflow.NewAgent(ctx, "fullAgent", &diagflow.AgentArgs{
+// 			ApiVersion:              pulumi.String("API_VERSION_V2_BETA_1"),
+// 			AvatarUri:               pulumi.String("https://cloud.google.com/_static/images/cloud/icons/favicons/onecloud/super_cloud.png"),
+// 			ClassificationThreshold: pulumi.Float64(0.3),
+// 			DefaultLanguageCode:     pulumi.String("en"),
+// 			Description:             pulumi.String("Example description."),
+// 			DisplayName:             pulumi.String("dialogflow-agent"),
+// 			EnableLogging:           pulumi.Bool(true),
+// 			MatchMode:               pulumi.String("MATCH_MODE_ML_ONLY"),
+// 			SupportedLanguageCodes: pulumi.StringArray{
+// 				pulumi.String("fr"),
+// 				pulumi.String("de"),
+// 				pulumi.String("es"),
+// 			},
+// 			Tier:     pulumi.String("TIER_STANDARD"),
+// 			TimeZone: pulumi.String("America/New_York"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Agent can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:diagflow/agent:Agent default {{project}}
+// ```
 type Agent struct {
 	pulumi.CustomResourceState
 
@@ -336,4 +381,43 @@ type AgentArgs struct {
 
 func (AgentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*agentArgs)(nil)).Elem()
+}
+
+type AgentInput interface {
+	pulumi.Input
+
+	ToAgentOutput() AgentOutput
+	ToAgentOutputWithContext(ctx context.Context) AgentOutput
+}
+
+func (Agent) ElementType() reflect.Type {
+	return reflect.TypeOf((*Agent)(nil)).Elem()
+}
+
+func (i Agent) ToAgentOutput() AgentOutput {
+	return i.ToAgentOutputWithContext(context.Background())
+}
+
+func (i Agent) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AgentOutput)
+}
+
+type AgentOutput struct {
+	*pulumi.OutputState
+}
+
+func (AgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AgentOutput)(nil)).Elem()
+}
+
+func (o AgentOutput) ToAgentOutput() AgentOutput {
+	return o
+}
+
+func (o AgentOutput) ToAgentOutputWithContext(ctx context.Context) AgentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AgentOutput{})
 }

@@ -19,6 +19,52 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
+    /// ### Data Catalog Entry Group Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new Gcp.DataCatalog.EntryGroupArgs
+    ///         {
+    ///             EntryGroupId = "my_group",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Data Catalog Entry Group Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basicEntryGroup = new Gcp.DataCatalog.EntryGroup("basicEntryGroup", new Gcp.DataCatalog.EntryGroupArgs
+    ///         {
+    ///             Description = "example entry group",
+    ///             DisplayName = "entry group",
+    ///             EntryGroupId = "my_group",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// EntryGroup can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
+    /// ```
     /// </summary>
     public partial class EntryGroup : Pulumi.CustomResource
     {

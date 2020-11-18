@@ -35,6 +35,67 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 
         ## Example Usage
+        ### Region Target Https Proxy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("defaultRegionSslCertificate",
+            region="us-central1",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.id])
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default_region_target_https_proxy = gcp.compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy",
+            region="us-central1",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
+        ```
+
+        ## Import
+
+        RegionTargetHttpsProxy can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default projects/{{project}}/regions/{{region}}/targetHttpsProxies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

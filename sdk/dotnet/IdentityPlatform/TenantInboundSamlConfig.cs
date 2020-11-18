@@ -17,6 +17,64 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Tenant Inbound Saml Config Basic
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new Gcp.IdentityPlatform.TenantArgs
+    ///         {
+    ///             DisplayName = "tenant",
+    ///         });
+    ///         var tenantSamlConfig = new Gcp.IdentityPlatform.TenantInboundSamlConfig("tenantSamlConfig", new Gcp.IdentityPlatform.TenantInboundSamlConfigArgs
+    ///         {
+    ///             DisplayName = "Display Name",
+    ///             Tenant = tenant.Name,
+    ///             IdpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigArgs
+    ///             {
+    ///                 IdpEntityId = "tf-idp",
+    ///                 SignRequest = true,
+    ///                 SsoUrl = "https://example.com",
+    ///                 IdpCertificates = 
+    ///                 {
+    ///                     new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigIdpConfigIdpCertificateArgs
+    ///                     {
+    ///                         X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SpConfig = new Gcp.IdentityPlatform.Inputs.TenantInboundSamlConfigSpConfigArgs
+    ///             {
+    ///                 SpEntityId = "tf-sp",
+    ///                 CallbackUri = "https://example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// TenantInboundSamlConfig can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{project}}/{{tenant}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
+    /// ```
     /// </summary>
     public partial class TenantInboundSamlConfig : Pulumi.CustomResource
     {

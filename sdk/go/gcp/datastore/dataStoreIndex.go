@@ -4,6 +4,7 @@
 package datastore
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,54 @@ import (
 //     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 //
 // ## Example Usage
+// ### Datastore Index
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/datastore"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datastore.NewDataStoreIndex(ctx, "_default", &datastore.DataStoreIndexArgs{
+// 			Kind: pulumi.String("foo"),
+// 			Properties: datastore.DataStoreIndexPropertyArray{
+// 				&datastore.DataStoreIndexPropertyArgs{
+// 					Direction: pulumi.String("ASCENDING"),
+// 					Name:      pulumi.String("property_a"),
+// 				},
+// 				&datastore.DataStoreIndexPropertyArgs{
+// 					Direction: pulumi.String("ASCENDING"),
+// 					Name:      pulumi.String("property_b"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Index can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default projects/{{project}}/indexes/{{index_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{project}}/{{index_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
+// ```
 type DataStoreIndex struct {
 	pulumi.CustomResourceState
 
@@ -139,4 +188,43 @@ type DataStoreIndexArgs struct {
 
 func (DataStoreIndexArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*dataStoreIndexArgs)(nil)).Elem()
+}
+
+type DataStoreIndexInput interface {
+	pulumi.Input
+
+	ToDataStoreIndexOutput() DataStoreIndexOutput
+	ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput
+}
+
+func (DataStoreIndex) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreIndex)(nil)).Elem()
+}
+
+func (i DataStoreIndex) ToDataStoreIndexOutput() DataStoreIndexOutput {
+	return i.ToDataStoreIndexOutputWithContext(context.Background())
+}
+
+func (i DataStoreIndex) ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexOutput)
+}
+
+type DataStoreIndexOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataStoreIndexOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreIndexOutput)(nil)).Elem()
+}
+
+func (o DataStoreIndexOutput) ToDataStoreIndexOutput() DataStoreIndexOutput {
+	return o
+}
+
+func (o DataStoreIndexOutput) ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataStoreIndexOutput{})
 }

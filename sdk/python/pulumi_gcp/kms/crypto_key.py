@@ -45,6 +45,43 @@ class CryptoKey(pulumi.CustomResource):
             * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
 
         ## Example Usage
+        ### Kms Crypto Key Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        example_key = gcp.kms.CryptoKey("example-key",
+            key_ring=keyring.id,
+            rotation_period="100000s")
+        ```
+        ### Kms Crypto Key Asymmetric Sign
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        example_asymmetric_sign_key = gcp.kms.CryptoKey("example-asymmetric-sign-key",
+            key_ring=keyring.id,
+            purpose="ASYMMETRIC_SIGN",
+            version_template=gcp.kms.CryptoKeyVersionTemplateArgs(
+                algorithm="EC_SIGN_P384_SHA384",
+            ))
+        ```
+
+        ## Import
+
+        CryptoKey can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

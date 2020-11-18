@@ -57,6 +57,51 @@ class Image(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/compute/docs/images)
 
         ## Example Usage
+        ### Image Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
+            source="https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+        ))
+        ```
+        ### Image Guest Os
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.compute.Image("example",
+            guest_os_features=[
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="SECURE_BOOT",
+                ),
+                gcp.compute.ImageGuestOsFeatureArgs(
+                    type="MULTI_IP_SUBNET",
+                ),
+            ],
+            raw_disk=gcp.compute.ImageRawDiskArgs(
+                source="https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+            ))
+        ```
+
+        ## Import
+
+        Image can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/image:Image default projects/{{project}}/global/images/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/image:Image default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/image:Image default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

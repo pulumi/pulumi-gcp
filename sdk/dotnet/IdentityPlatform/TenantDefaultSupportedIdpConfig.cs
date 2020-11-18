@@ -17,6 +17,48 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Tenant Default Supported Idp Config Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new Gcp.IdentityPlatform.TenantArgs
+    ///         {
+    ///             DisplayName = "tenant",
+    ///         });
+    ///         var idpConfig = new Gcp.IdentityPlatform.TenantDefaultSupportedIdpConfig("idpConfig", new Gcp.IdentityPlatform.TenantDefaultSupportedIdpConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///             Tenant = tenant.Name,
+    ///             IdpId = "playgames.google.com",
+    ///             ClientId = "my-client-id",
+    ///             ClientSecret = "secret",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{project}}/{{tenant}}/{{idp_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
+    /// ```
     /// </summary>
     public partial class TenantDefaultSupportedIdpConfig : Pulumi.CustomResource
     {

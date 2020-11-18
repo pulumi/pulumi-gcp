@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -15,6 +14,81 @@ import * as utilities from "../utilities";
  * * [API documentation](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/transferJobs#TransferJob)
  * * How-to Guides
  *     * [Configuring Access to Data Sources and Sinks](https://cloud.google.com/storage-transfer/docs/configure-access)
+ *
+ * ## Example Usage
+ *
+ * Example creating a nightly Transfer Job from an AWS S3 Bucket to a GCS bucket.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.storage.getTransferProjectServieAccount({
+ *     project: _var.project,
+ * });
+ * const s3_backup_bucketBucket = new gcp.storage.Bucket("s3-backup-bucketBucket", {
+ *     storageClass: "NEARLINE",
+ *     project: _var.project,
+ * });
+ * const s3_backup_bucketBucketIAMMember = new gcp.storage.BucketIAMMember("s3-backup-bucketBucketIAMMember", {
+ *     bucket: s3_backup_bucketBucket.name,
+ *     role: "roles/storage.admin",
+ *     member: _default.then(_default => `serviceAccount:${_default.email}`),
+ * }, {
+ *     dependsOn: [s3_backup_bucketBucket],
+ * });
+ * const s3_bucket_nightly_backup = new gcp.storage.TransferJob("s3-bucket-nightly-backup", {
+ *     description: "Nightly backup of S3 bucket",
+ *     project: _var.project,
+ *     transferSpec: {
+ *         objectConditions: {
+ *             maxTimeElapsedSinceLastModification: "600s",
+ *             excludePrefixes: ["requests.gz"],
+ *         },
+ *         transferOptions: {
+ *             deleteObjectsUniqueInSink: false,
+ *         },
+ *         awsS3DataSource: {
+ *             bucketName: _var.aws_s3_bucket,
+ *             awsAccessKey: {
+ *                 accessKeyId: _var.aws_access_key,
+ *                 secretAccessKey: _var.aws_secret_key,
+ *             },
+ *         },
+ *         gcsDataSink: {
+ *             bucketName: s3_backup_bucketBucket.name,
+ *         },
+ *     },
+ *     schedule: {
+ *         scheduleStartDate: {
+ *             year: 2018,
+ *             month: 10,
+ *             day: 1,
+ *         },
+ *         scheduleEndDate: {
+ *             year: 2019,
+ *             month: 1,
+ *             day: 15,
+ *         },
+ *         startTimeOfDay: {
+ *             hours: 23,
+ *             minutes: 30,
+ *             seconds: 0,
+ *             nanos: 0,
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [s3_backup_bucketBucketIAMMember],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Storage buckets can be imported using the Transfer Job's `project` and `name` without the `transferJob/` prefix, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
+ * ```
  */
 export class TransferJob extends pulumi.CustomResource {
     /**

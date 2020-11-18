@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,51 @@ import (
 // For more information, see,
 // [the Project API documentation](https://cloud.google.com/compute/docs/reference/latest/projects),
 // where the Shared VPC feature is referred to by its former name "XPN".
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		host, err := compute.NewSharedVPCHostProject(ctx, "host", &compute.SharedVPCHostProjectArgs{
+// 			Project: pulumi.String("host-project-id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSharedVPCServiceProject(ctx, "service1", &compute.SharedVPCServiceProjectArgs{
+// 			HostProject:    host.Project,
+// 			ServiceProject: pulumi.String("service-project-id-1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSharedVPCServiceProject(ctx, "service2", &compute.SharedVPCServiceProjectArgs{
+// 			HostProject:    host.Project,
+// 			ServiceProject: pulumi.String("service-project-id-2"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Google Compute Engine Shared VPC host project feature can be imported using the `project`, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject host host-project-id
+// ```
 type SharedVPCHostProject struct {
 	pulumi.CustomResourceState
 
@@ -81,4 +127,43 @@ type SharedVPCHostProjectArgs struct {
 
 func (SharedVPCHostProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sharedVPCHostProjectArgs)(nil)).Elem()
+}
+
+type SharedVPCHostProjectInput interface {
+	pulumi.Input
+
+	ToSharedVPCHostProjectOutput() SharedVPCHostProjectOutput
+	ToSharedVPCHostProjectOutputWithContext(ctx context.Context) SharedVPCHostProjectOutput
+}
+
+func (SharedVPCHostProject) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedVPCHostProject)(nil)).Elem()
+}
+
+func (i SharedVPCHostProject) ToSharedVPCHostProjectOutput() SharedVPCHostProjectOutput {
+	return i.ToSharedVPCHostProjectOutputWithContext(context.Background())
+}
+
+func (i SharedVPCHostProject) ToSharedVPCHostProjectOutputWithContext(ctx context.Context) SharedVPCHostProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectOutput)
+}
+
+type SharedVPCHostProjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedVPCHostProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedVPCHostProjectOutput)(nil)).Elem()
+}
+
+func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectOutput() SharedVPCHostProjectOutput {
+	return o
+}
+
+func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectOutputWithContext(ctx context.Context) SharedVPCHostProjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SharedVPCHostProjectOutput{})
 }

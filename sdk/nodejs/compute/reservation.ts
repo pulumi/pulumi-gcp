@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -23,6 +22,43 @@ import * as utilities from "../utilities";
  *     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
  *
  * ## Example Usage
+ * ### Reservation Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const gceReservation = new gcp.compute.Reservation("gce_reservation", {
+ *     specificReservation: {
+ *         count: 1,
+ *         instanceProperties: {
+ *             machineType: "n2-standard-2",
+ *             minCpuPlatform: "Intel Cascade Lake",
+ *         },
+ *     },
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Reservation can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/reservation:Reservation default projects/{{project}}/zones/{{zone}}/reservations/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/reservation:Reservation default {{project}}/{{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/reservation:Reservation default {{name}}
+ * ```
  */
 export class Reservation extends pulumi.CustomResource {
     /**

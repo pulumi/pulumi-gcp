@@ -417,6 +417,16 @@ def get_instance(name: Optional[str] = None,
     and
     [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    appserver = gcp.compute.get_instance(name="primary-application-server",
+        zone="us-central1-a")
+    ```
+
 
     :param str name: The name of the instance. One of `name` or `self_link` must be provided.
     :param str project: The ID of the project in which the resource belongs.

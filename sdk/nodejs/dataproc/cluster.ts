@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -15,6 +14,102 @@ import * as utilities from "../utilities";
  * whole cluster!
  *
  * ## Example Usage
+ * ### Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const simplecluster = new gcp.dataproc.Cluster("simplecluster", {
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### Advanced
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const mycluster = new gcp.dataproc.Cluster("mycluster", {
+ *     clusterConfig: {
+ *         gceClusterConfig: {
+ *             serviceAccountScopes: [
+ *                 "https://www.googleapis.com/auth/monitoring",
+ *                 "useraccounts-ro",
+ *                 "storage-rw",
+ *                 "logging-write",
+ *             ],
+ *             tags: [
+ *                 "foo",
+ *                 "bar",
+ *             ],
+ *         },
+ *         // You can define multiple initialization_action blocks
+ *         initializationActions: [{
+ *             script: "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+ *             timeoutSec: 500,
+ *         }],
+ *         masterConfig: {
+ *             diskConfig: {
+ *                 bootDiskSizeGb: 15,
+ *                 bootDiskType: "pd-ssd",
+ *             },
+ *             machineType: "e2-medium",
+ *             numInstances: 1,
+ *         },
+ *         preemptibleWorkerConfig: {
+ *             numInstances: 0,
+ *         },
+ *         // Override or set some custom properties
+ *         softwareConfig: {
+ *             imageVersion: "1.3.7-deb9",
+ *             overrideProperties: {
+ *                 "dataproc:dataproc.allow.zero.workers": "true",
+ *             },
+ *         },
+ *         stagingBucket: "dataproc-staging-bucket",
+ *         workerConfig: {
+ *             diskConfig: {
+ *                 bootDiskSizeGb: 15,
+ *                 numLocalSsds: 1,
+ *             },
+ *             machineType: "e2-medium",
+ *             minCpuPlatform: "Intel Skylake",
+ *             numInstances: 2,
+ *         },
+ *     },
+ *     gracefulDecommissionTimeout: "120s",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### Using A GPU Accelerator
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const acceleratedCluster = new gcp.dataproc.Cluster("accelerated_cluster", {
+ *     clusterConfig: {
+ *         gceClusterConfig: {
+ *             zone: "us-central1-a",
+ *         },
+ *         masterConfig: {
+ *             accelerators: [{
+ *                 acceleratorCount: 1,
+ *                 acceleratorType: "nvidia-tesla-k80",
+ *             }],
+ *         },
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource does not support import.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

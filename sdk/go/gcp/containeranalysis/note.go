@@ -4,6 +4,7 @@
 package containeranalysis
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,86 @@ import (
 //     * [Creating Attestations (Occurrences)](https://cloud.google.com/binary-authorization/docs/making-attestations)
 //
 // ## Example Usage
+// ### Container Analysis Note Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("Attestor Note"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Container Analysis Note Attestation Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/containeranalysis"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := containeranalysis.NewNote(ctx, "note", &containeranalysis.NoteArgs{
+// 			AttestationAuthority: &containeranalysis.NoteAttestationAuthorityArgs{
+// 				Hint: &containeranalysis.NoteAttestationAuthorityHintArgs{
+// 					HumanReadableName: pulumi.String("Attestor Note"),
+// 				},
+// 			},
+// 			ExpirationTime:  pulumi.String("2120-10-02T15:01:23.045123456Z"),
+// 			LongDescription: pulumi.String("a longer description of test note"),
+// 			RelatedUrls: containeranalysis.NoteRelatedUrlArray{
+// 				&containeranalysis.NoteRelatedUrlArgs{
+// 					Label: pulumi.String("foo"),
+// 					Url:   pulumi.String("some.url"),
+// 				},
+// 				&containeranalysis.NoteRelatedUrlArgs{
+// 					Url: pulumi.String("google.com"),
+// 				},
+// 			},
+// 			ShortDescription: pulumi.String("test note"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Note can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:containeranalysis/note:Note default projects/{{project}}/notes/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:containeranalysis/note:Note default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:containeranalysis/note:Note default {{name}}
+// ```
 type Note struct {
 	pulumi.CustomResourceState
 
@@ -228,4 +309,43 @@ type NoteArgs struct {
 
 func (NoteArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*noteArgs)(nil)).Elem()
+}
+
+type NoteInput interface {
+	pulumi.Input
+
+	ToNoteOutput() NoteOutput
+	ToNoteOutputWithContext(ctx context.Context) NoteOutput
+}
+
+func (Note) ElementType() reflect.Type {
+	return reflect.TypeOf((*Note)(nil)).Elem()
+}
+
+func (i Note) ToNoteOutput() NoteOutput {
+	return i.ToNoteOutputWithContext(context.Background())
+}
+
+func (i Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteOutput)
+}
+
+type NoteOutput struct {
+	*pulumi.OutputState
+}
+
+func (NoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NoteOutput)(nil)).Elem()
+}
+
+func (o NoteOutput) ToNoteOutput() NoteOutput {
+	return o
+}
+
+func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NoteOutput{})
 }

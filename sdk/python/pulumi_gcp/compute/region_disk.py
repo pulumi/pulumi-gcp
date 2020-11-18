@@ -59,6 +59,50 @@ class RegionDisk(pulumi.CustomResource):
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
+        ### Region Disk Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        disk = gcp.compute.Disk("disk",
+            image="debian-cloud/debian-9",
+            size=50,
+            type="pd-ssd",
+            zone="us-central1-a")
+        snapdisk = gcp.compute.Snapshot("snapdisk",
+            source_disk=disk.name,
+            zone="us-central1-a")
+        regiondisk = gcp.compute.RegionDisk("regiondisk",
+            snapshot=snapdisk.id,
+            type="pd-ssd",
+            region="us-central1",
+            physical_block_size_bytes=4096,
+            replica_zones=[
+                "us-central1-a",
+                "us-central1-f",
+            ])
+        ```
+
+        ## Import
+
+        RegionDisk can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

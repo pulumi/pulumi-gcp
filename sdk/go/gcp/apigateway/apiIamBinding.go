@@ -4,12 +4,36 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway api IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiIamBinding:ApiIamBinding editor "projects/{{project}}/locations/global/apis/{{api}} roles/apigateway.viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiIamBinding:ApiIamBinding editor "projects/{{project}}/locations/global/apis/{{api}} roles/apigateway.viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiIamBinding:ApiIamBinding editor projects/{{project}}/locations/global/apis/{{api}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ApiIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -126,4 +150,43 @@ type ApiIamBindingArgs struct {
 
 func (ApiIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiIamBindingArgs)(nil)).Elem()
+}
+
+type ApiIamBindingInput interface {
+	pulumi.Input
+
+	ToApiIamBindingOutput() ApiIamBindingOutput
+	ToApiIamBindingOutputWithContext(ctx context.Context) ApiIamBindingOutput
+}
+
+func (ApiIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiIamBinding)(nil)).Elem()
+}
+
+func (i ApiIamBinding) ToApiIamBindingOutput() ApiIamBindingOutput {
+	return i.ToApiIamBindingOutputWithContext(context.Background())
+}
+
+func (i ApiIamBinding) ToApiIamBindingOutputWithContext(ctx context.Context) ApiIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingOutput)
+}
+
+type ApiIamBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiIamBindingOutput)(nil)).Elem()
+}
+
+func (o ApiIamBindingOutput) ToApiIamBindingOutput() ApiIamBindingOutput {
+	return o
+}
+
+func (o ApiIamBindingOutput) ToApiIamBindingOutputWithContext(ctx context.Context) ApiIamBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiIamBindingOutput{})
 }

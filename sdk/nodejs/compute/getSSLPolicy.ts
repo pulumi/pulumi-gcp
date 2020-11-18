@@ -2,13 +2,23 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Gets an SSL Policy within GCE from its name, for use with Target HTTPS and Target SSL Proxies.
  *     For more information see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/ssl-policies).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_ssl_policy = pulumi.output(gcp.compute.getSSLPolicy({
+ *     name: "production-ssl-policy",
+ * }, { async: true }));
+ * ```
  */
 export function getSSLPolicy(args: GetSSLPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSSLPolicyResult> {
     if (!opts) {

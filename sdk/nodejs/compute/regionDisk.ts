@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -33,6 +32,53 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ * ### Region Disk Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const disk = new gcp.compute.Disk("disk", {
+ *     image: "debian-cloud/debian-9",
+ *     size: 50,
+ *     type: "pd-ssd",
+ *     zone: "us-central1-a",
+ * });
+ * const snapdisk = new gcp.compute.Snapshot("snapdisk", {
+ *     sourceDisk: disk.name,
+ *     zone: "us-central1-a",
+ * });
+ * const regiondisk = new gcp.compute.RegionDisk("regiondisk", {
+ *     snapshot: snapdisk.id,
+ *     type: "pd-ssd",
+ *     region: "us-central1",
+ *     physicalBlockSizeBytes: 4096,
+ *     replicaZones: [
+ *         "us-central1-a",
+ *         "us-central1-f",
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * RegionDisk can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionDisk:RegionDisk default projects/{{project}}/regions/{{region}}/disks/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
+ * ```
  */
 export class RegionDisk extends pulumi.CustomResource {
     /**

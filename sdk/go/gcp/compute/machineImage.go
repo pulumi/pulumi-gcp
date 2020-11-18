@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,60 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/machine-images)
 //
 // ## Example Usage
+// ### Machine Image Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		vm, err := compute.NewInstance(ctx, "vm", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String("debian-cloud/debian-9"),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewMachineImage(ctx, "image", &compute.MachineImageArgs{
+// 			SourceInstance: vm.SelfLink,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// MachineImage can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImage:MachineImage default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
+// ```
 type MachineImage struct {
 	pulumi.CustomResourceState
 
@@ -177,4 +232,43 @@ type MachineImageArgs struct {
 
 func (MachineImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineImageArgs)(nil)).Elem()
+}
+
+type MachineImageInput interface {
+	pulumi.Input
+
+	ToMachineImageOutput() MachineImageOutput
+	ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput
+}
+
+func (MachineImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImage)(nil)).Elem()
+}
+
+func (i MachineImage) ToMachineImageOutput() MachineImageOutput {
+	return i.ToMachineImageOutputWithContext(context.Background())
+}
+
+func (i MachineImage) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageOutput)
+}
+
+type MachineImageOutput struct {
+	*pulumi.OutputState
+}
+
+func (MachineImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageOutput)(nil)).Elem()
+}
+
+func (o MachineImageOutput) ToMachineImageOutput() MachineImageOutput {
+	return o
+}
+
+func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MachineImageOutput{})
 }

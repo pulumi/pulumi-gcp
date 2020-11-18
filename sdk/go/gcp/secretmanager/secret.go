@@ -4,6 +4,7 @@
 package secretmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,59 @@ import (
 // * [API documentation](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets)
 //
 // ## Example Usage
+// ### Secret Config Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := secretmanager.NewSecret(ctx, "secret_basic", &secretmanager.SecretArgs{
+// 			Labels: pulumi.StringMap{
+// 				"label": pulumi.String("my-label"),
+// 			},
+// 			Replication: &secretmanager.SecretReplicationArgs{
+// 				UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
+// 					Replicas: secretmanager.SecretReplicationUserManagedReplicaArray{
+// 						&secretmanager.SecretReplicationUserManagedReplicaArgs{
+// 							Location: pulumi.String("us-central1"),
+// 						},
+// 						&secretmanager.SecretReplicationUserManagedReplicaArgs{
+// 							Location: pulumi.String("us-east1"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			SecretId: pulumi.String("secret"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Secret can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:secretmanager/secret:Secret default projects/{{project}}/secrets/{{secret_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:secretmanager/secret:Secret default {{project}}/{{secret_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
+// ```
 type Secret struct {
 	pulumi.CustomResourceState
 
@@ -176,4 +230,43 @@ type SecretArgs struct {
 
 func (SecretArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretArgs)(nil)).Elem()
+}
+
+type SecretInput interface {
+	pulumi.Input
+
+	ToSecretOutput() SecretOutput
+	ToSecretOutputWithContext(ctx context.Context) SecretOutput
+}
+
+func (Secret) ElementType() reflect.Type {
+	return reflect.TypeOf((*Secret)(nil)).Elem()
+}
+
+func (i Secret) ToSecretOutput() SecretOutput {
+	return i.ToSecretOutputWithContext(context.Background())
+}
+
+func (i Secret) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretOutput)
+}
+
+type SecretOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretOutput)(nil)).Elem()
+}
+
+func (o SecretOutput) ToSecretOutput() SecretOutput {
+	return o
+}
+
+func (o SecretOutput) ToSecretOutputWithContext(ctx context.Context) SecretOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretOutput{})
 }

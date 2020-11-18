@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -14,6 +15,131 @@ import (
 // and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
 //
 // ## Example Usage
+// ### Empty Instance Group
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstanceGroup(ctx, "test", &compute.InstanceGroupArgs{
+// 			Description: pulumi.String("Test instance group"),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 			Network:     pulumi.Any(google_compute_network.Default.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Example Usage - Recreating an instance group in use
+// Recreating an instance group that's in use by another resource will give a
+// `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+// as shown in this example to avoid this type of error.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		stagingVm, err := compute.NewInstance(ctx, "stagingVm", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Zone:        pulumi.String("us-central1-c"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String(debianImage.SelfLink),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		stagingGroup, err := compute.NewInstanceGroup(ctx, "stagingGroup", &compute.InstanceGroupArgs{
+// 			Zone: pulumi.String("us-central1-c"),
+// 			Instances: pulumi.StringArray{
+// 				stagingVm.ID(),
+// 			},
+// 			NamedPorts: compute.InstanceGroupNamedPortArray{
+// 				&compute.InstanceGroupNamedPortArgs{
+// 					Name: pulumi.String("http"),
+// 					Port: pulumi.Int(8080),
+// 				},
+// 				&compute.InstanceGroupNamedPortArgs{
+// 					Name: pulumi.String("https"),
+// 					Port: pulumi.Int(8443),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		stagingHealth, err := compute.NewHttpsHealthCheck(ctx, "stagingHealth", &compute.HttpsHealthCheckArgs{
+// 			RequestPath: pulumi.String("/health_check"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendService(ctx, "stagingService", &compute.BackendServiceArgs{
+// 			PortName: pulumi.String("https"),
+// 			Protocol: pulumi.String("HTTPS"),
+// 			Backends: compute.BackendServiceBackendArray{
+// 				&compute.BackendServiceBackendArgs{
+// 					Group: stagingGroup.ID(),
+// 				},
+// 			},
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				stagingHealth.ID(),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers us-central1-a/terraform-webservers
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers big-project/us-central1-a/terraform-webservers
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
+// ```
 type InstanceGroup struct {
 	pulumi.CustomResourceState
 
@@ -187,4 +313,43 @@ type InstanceGroupArgs struct {
 
 func (InstanceGroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceGroupArgs)(nil)).Elem()
+}
+
+type InstanceGroupInput interface {
+	pulumi.Input
+
+	ToInstanceGroupOutput() InstanceGroupOutput
+	ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput
+}
+
+func (InstanceGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroup)(nil)).Elem()
+}
+
+func (i InstanceGroup) ToInstanceGroupOutput() InstanceGroupOutput {
+	return i.ToInstanceGroupOutputWithContext(context.Background())
+}
+
+func (i InstanceGroup) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupOutput)
+}
+
+type InstanceGroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupOutput)(nil)).Elem()
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupOutput() InstanceGroupOutput {
+	return o
+}
+
+func (o InstanceGroupOutput) ToInstanceGroupOutputWithContext(ctx context.Context) InstanceGroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceGroupOutput{})
 }

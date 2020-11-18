@@ -4,6 +4,7 @@
 package cloudasset
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,18 @@ import (
 //     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// OrganizationFeed can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default organizations/{{org_id}}/feeds/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default {{org_id}}/{{name}}
+// ```
 type OrganizationFeed struct {
 	pulumi.CustomResourceState
 
@@ -248,4 +261,43 @@ type OrganizationFeedArgs struct {
 
 func (OrganizationFeedArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationFeedArgs)(nil)).Elem()
+}
+
+type OrganizationFeedInput interface {
+	pulumi.Input
+
+	ToOrganizationFeedOutput() OrganizationFeedOutput
+	ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput
+}
+
+func (OrganizationFeed) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationFeed)(nil)).Elem()
+}
+
+func (i OrganizationFeed) ToOrganizationFeedOutput() OrganizationFeedOutput {
+	return i.ToOrganizationFeedOutputWithContext(context.Background())
+}
+
+func (i OrganizationFeed) ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedOutput)
+}
+
+type OrganizationFeedOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationFeedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationFeedOutput)(nil)).Elem()
+}
+
+func (o OrganizationFeedOutput) ToOrganizationFeedOutput() OrganizationFeedOutput {
+	return o
+}
+
+func (o OrganizationFeedOutput) ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationFeedOutput{})
 }

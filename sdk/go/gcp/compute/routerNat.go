@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,151 @@ import (
 //     * [Google Cloud Router](https://cloud.google.com/router/docs/)
 //
 // ## Example Usage
+// ### Router Nat Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		net, err := compute.NewNetwork(ctx, "net", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+// 			Network:     net.ID(),
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+// 			Region:  subnet.Region,
+// 			Network: net.ID(),
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn: pulumi.Int(64514),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRouterNat(ctx, "nat", &compute.RouterNatArgs{
+// 			Router:                        router.Name,
+// 			Region:                        router.Region,
+// 			NatIpAllocateOption:           pulumi.String("AUTO_ONLY"),
+// 			SourceSubnetworkIpRangesToNat: pulumi.String("ALL_SUBNETWORKS_ALL_IP_RANGES"),
+// 			LogConfig: &compute.RouterNatLogConfigArgs{
+// 				Enable: pulumi.Bool(true),
+// 				Filter: pulumi.String("ERRORS_ONLY"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Router Nat Manual Ips
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		net, err := compute.NewNetwork(ctx, "net", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+// 			Network:     net.ID(),
+// 			IpCidrRange: pulumi.String("10.0.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		router, err := compute.NewRouter(ctx, "router", &compute.RouterArgs{
+// 			Region:  subnet.Region,
+// 			Network: net.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		var address []*compute.Address
+// 		for key0, _ := range 2 {
+// 			__res, err := compute.NewAddress(ctx, fmt.Sprintf("address-%v", key0), &compute.AddressArgs{
+// 				Region: subnet.Region,
+// 			})
+// 			if err != nil {
+// 				return err
+// 			}
+// 			address = append(address, __res)
+// 		}
+// 		var splat0 pulumi.StringArray
+// 		for _, val0 := range address {
+// 			splat0 = append(splat0, val0.SelfLink)
+// 		}
+// 		_, err = compute.NewRouterNat(ctx, "natManual", &compute.RouterNatArgs{
+// 			Router:                        router.Name,
+// 			Region:                        router.Region,
+// 			NatIpAllocateOption:           pulumi.String("MANUAL_ONLY"),
+// 			NatIps:                        toPulumiStringArray(splat0),
+// 			SourceSubnetworkIpRangesToNat: pulumi.String("LIST_OF_SUBNETWORKS"),
+// 			Subnetworks: compute.RouterNatSubnetworkArray{
+// 				&compute.RouterNatSubnetworkArgs{
+// 					Name: subnet.ID(),
+// 					SourceIpRangesToNats: pulumi.StringArray{
+// 						pulumi.String("ALL_IP_RANGES"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// func toPulumiStringArray(arr []string) pulumi.StringArray {
+// 	var pulumiArr pulumi.StringArray
+// 	for _, v := range arr {
+// 		pulumiArr = append(pulumiArr, pulumi.String(v))
+// 	}
+// 	return pulumiArr
+// }
+// ```
+//
+// ## Import
+//
+// RouterNat can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerNat:RouterNat default {{project}}/{{region}}/{{router}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerNat:RouterNat default {{region}}/{{router}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/routerNat:RouterNat default {{router}}/{{name}}
+// ```
 type RouterNat struct {
 	pulumi.CustomResourceState
 
@@ -334,4 +480,43 @@ type RouterNatArgs struct {
 
 func (RouterNatArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*routerNatArgs)(nil)).Elem()
+}
+
+type RouterNatInput interface {
+	pulumi.Input
+
+	ToRouterNatOutput() RouterNatOutput
+	ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput
+}
+
+func (RouterNat) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNat)(nil)).Elem()
+}
+
+func (i RouterNat) ToRouterNatOutput() RouterNatOutput {
+	return i.ToRouterNatOutputWithContext(context.Background())
+}
+
+func (i RouterNat) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatOutput)
+}
+
+type RouterNatOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterNatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNatOutput)(nil)).Elem()
+}
+
+func (o RouterNatOutput) ToRouterNatOutput() RouterNatOutput {
+	return o
+}
+
+func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RouterNatOutput{})
 }

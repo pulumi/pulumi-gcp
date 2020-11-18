@@ -4,6 +4,7 @@
 package healthcare
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,133 @@ import (
 //     * [Creating a FHIR store](https://cloud.google.com/healthcare/docs/how-tos/fhir)
 //
 // ## Example Usage
+// ### Healthcare Fhir Store Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewFhirStore(ctx, "_default", &healthcare.FhirStoreArgs{
+// 			Dataset:                     dataset.ID(),
+// 			Version:                     pulumi.String("R4"),
+// 			EnableUpdateCreate:          pulumi.Bool(false),
+// 			DisableReferentialIntegrity: pulumi.Bool(false),
+// 			DisableResourceVersioning:   pulumi.Bool(false),
+// 			EnableHistoryImport:         pulumi.Bool(false),
+// 			NotificationConfig: &healthcare.FhirStoreNotificationConfigArgs{
+// 				PubsubTopic: topic.ID(),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"label1": pulumi.String("labelvalue1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Healthcare Fhir Store Streaming Config
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		bqDataset, err := bigquery.NewDataset(ctx, "bqDataset", &bigquery.DatasetArgs{
+// 			DatasetId:               pulumi.String("bq_example_dataset"),
+// 			FriendlyName:            pulumi.String("test"),
+// 			Description:             pulumi.String("This is a test description"),
+// 			Location:                pulumi.String("US"),
+// 			DeleteContentsOnDestroy: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewFhirStore(ctx, "_default", &healthcare.FhirStoreArgs{
+// 			Dataset:                     dataset.ID(),
+// 			Version:                     pulumi.String("R4"),
+// 			EnableUpdateCreate:          pulumi.Bool(false),
+// 			DisableReferentialIntegrity: pulumi.Bool(false),
+// 			DisableResourceVersioning:   pulumi.Bool(false),
+// 			EnableHistoryImport:         pulumi.Bool(false),
+// 			Labels: pulumi.StringMap{
+// 				"label1": pulumi.String("labelvalue1"),
+// 			},
+// 			StreamConfigs: healthcare.FhirStoreStreamConfigArray{
+// 				&healthcare.FhirStoreStreamConfigArgs{
+// 					ResourceTypes: pulumi.StringArray{
+// 						pulumi.String("Observation"),
+// 					},
+// 					BigqueryDestination: &healthcare.FhirStoreStreamConfigBigqueryDestinationArgs{
+// 						DatasetUri: pulumi.All(bqDataset.Project, bqDataset.DatasetId).ApplyT(func(_args []interface{}) (string, error) {
+// 							project := _args[0].(string)
+// 							datasetId := _args[1].(string)
+// 							return fmt.Sprintf("%v%v%v%v", "bq://", project, ".", datasetId), nil
+// 						}).(pulumi.StringOutput),
+// 						SchemaConfig: &healthcare.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs{
+// 							RecursiveStructureDepth: pulumi.Int(3),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = pubsub.NewTopic(ctx, "topic", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// FhirStore can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
+// ```
 type FhirStore struct {
 	pulumi.CustomResourceState
 
@@ -370,4 +498,43 @@ type FhirStoreArgs struct {
 
 func (FhirStoreArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*fhirStoreArgs)(nil)).Elem()
+}
+
+type FhirStoreInput interface {
+	pulumi.Input
+
+	ToFhirStoreOutput() FhirStoreOutput
+	ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreOutput
+}
+
+func (FhirStore) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStore)(nil)).Elem()
+}
+
+func (i FhirStore) ToFhirStoreOutput() FhirStoreOutput {
+	return i.ToFhirStoreOutputWithContext(context.Background())
+}
+
+func (i FhirStore) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreOutput)
+}
+
+type FhirStoreOutput struct {
+	*pulumi.OutputState
+}
+
+func (FhirStoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreOutput)(nil)).Elem()
+}
+
+func (o FhirStoreOutput) ToFhirStoreOutput() FhirStoreOutput {
+	return o
+}
+
+func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FhirStoreOutput{})
 }

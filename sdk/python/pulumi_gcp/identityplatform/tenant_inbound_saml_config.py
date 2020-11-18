@@ -35,6 +35,45 @@ class TenantInboundSamlConfig(pulumi.CustomResource):
         the marketplace prior to using this resource.
 
         ## Example Usage
+        ### Identity Platform Tenant Inbound Saml Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tenant = gcp.identityplatform.Tenant("tenant", display_name="tenant")
+        tenant_saml_config = gcp.identityplatform.TenantInboundSamlConfig("tenantSamlConfig",
+            display_name="Display Name",
+            tenant=tenant.name,
+            idp_config=gcp.identityplatform.TenantInboundSamlConfigIdpConfigArgs(
+                idp_entity_id="tf-idp",
+                sign_request=True,
+                sso_url="https://example.com",
+                idp_certificates=[gcp.identityplatform.TenantInboundSamlConfigIdpConfigIdpCertificateArgs(
+                    x509_certificate=(lambda path: open(path).read())("test-fixtures/rsa_cert.pem"),
+                )],
+            ),
+            sp_config=gcp.identityplatform.TenantInboundSamlConfigSpConfigArgs(
+                sp_entity_id="tf-sp",
+                callback_uri="https://example.com",
+            ))
+        ```
+
+        ## Import
+
+        TenantInboundSamlConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{project}}/{{tenant}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

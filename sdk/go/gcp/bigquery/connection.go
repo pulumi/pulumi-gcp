@@ -4,6 +4,7 @@
 package bigquery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,146 @@ import (
 // state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 //
 // ## Example Usage
+// ### Bigquery Connection Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+// 			DatabaseVersion: pulumi.String("POSTGRES_11"),
+// 			Region:          pulumi.String("us-central1"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 			},
+// 			DeletionProtection: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+// 			Instance: instance.Name,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+// 			Length:  pulumi.Int(16),
+// 			Special: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+// 			Instance: instance.Name,
+// 			Password: pwd.Result,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+// 			FriendlyName: pulumi.String("👋"),
+// 			Description:  pulumi.String("a riveting description"),
+// 			CloudSql: &bigquery.ConnectionCloudSqlArgs{
+// 				InstanceId: instance.ConnectionName,
+// 				Database:   db.Name,
+// 				Type:       pulumi.String("POSTGRES"),
+// 				Credential: &bigquery.ConnectionCloudSqlCredentialArgs{
+// 					Username: user.Name,
+// 					Password: user.Password,
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Bigquery Connection Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+// 			DatabaseVersion: pulumi.String("POSTGRES_11"),
+// 			Region:          pulumi.String("us-central1"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 			},
+// 			DeletionProtection: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		db, err := sql.NewDatabase(ctx, "db", &sql.DatabaseArgs{
+// 			Instance: instance.Name,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		pwd, err := random.NewRandomPassword(ctx, "pwd", &random.RandomPasswordArgs{
+// 			Length:  pulumi.Int(16),
+// 			Special: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		user, err := sql.NewUser(ctx, "user", &sql.UserArgs{
+// 			Instance: instance.Name,
+// 			Password: pwd.Result,
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewConnection(ctx, "connection", &bigquery.ConnectionArgs{
+// 			ConnectionId: pulumi.String("my-connection"),
+// 			Location:     pulumi.String("US"),
+// 			FriendlyName: pulumi.String("👋"),
+// 			Description:  pulumi.String("a riveting description"),
+// 			CloudSql: &bigquery.ConnectionCloudSqlArgs{
+// 				InstanceId: instance.ConnectionName,
+// 				Database:   db.Name,
+// 				Type:       pulumi.String("POSTGRES"),
+// 				Credential: &bigquery.ConnectionCloudSqlCredentialArgs{
+// 					Username: user.Name,
+// 					Password: user.Password,
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Connection can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/connection:Connection default {{name}}
+// ```
 type Connection struct {
 	pulumi.CustomResourceState
 
@@ -176,4 +317,43 @@ type ConnectionArgs struct {
 
 func (ConnectionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*connectionArgs)(nil)).Elem()
+}
+
+type ConnectionInput interface {
+	pulumi.Input
+
+	ToConnectionOutput() ConnectionOutput
+	ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput
+}
+
+func (Connection) ElementType() reflect.Type {
+	return reflect.TypeOf((*Connection)(nil)).Elem()
+}
+
+func (i Connection) ToConnectionOutput() ConnectionOutput {
+	return i.ToConnectionOutputWithContext(context.Background())
+}
+
+func (i Connection) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectionOutput)
+}
+
+type ConnectionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionOutput)(nil)).Elem()
+}
+
+func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
+	return o
+}
+
+func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConnectionOutput{})
 }

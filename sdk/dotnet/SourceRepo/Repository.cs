@@ -19,6 +19,69 @@ namespace Pulumi.Gcp.SourceRepo
     ///     * [Official Documentation](https://cloud.google.com/source-repositories/)
     /// 
     /// ## Example Usage
+    /// ### Sourcerepo Repository Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_repo = new Gcp.SourceRepo.Repository("my-repo", new Gcp.SourceRepo.RepositoryArgs
+    ///         {
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Sourcerepo Repository Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test_account = new Gcp.ServiceAccount.Account("test-account", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "my-account",
+    ///             DisplayName = "Test Service Account",
+    ///         });
+    ///         var topic = new Gcp.PubSub.Topic("topic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var my_repo = new Gcp.SourceRepo.Repository("my-repo", new Gcp.SourceRepo.RepositoryArgs
+    ///         {
+    ///             PubsubConfigs = 
+    ///             {
+    ///                 new Gcp.SourceRepo.Inputs.RepositoryPubsubConfigArgs
+    ///                 {
+    ///                     Topic = topic.Id,
+    ///                     MessageFormat = "JSON",
+    ///                     ServiceAccountEmail = test_account.Email,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Repository can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
+    /// ```
     /// </summary>
     public partial class Repository : Pulumi.CustomResource
     {

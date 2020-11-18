@@ -14,6 +14,35 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
+ * ### Game Service Realm Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRealm = new gcp.gameservices.Realm("default", {
+ *     description: "one of the nine",
+ *     location: "global",
+ *     realmId: "tf-test-realm",
+ *     timeZone: "EST",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Realm can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/realm:Realm default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/realm:Realm default {{project}}/{{location}}/{{realm_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/realm:Realm default {{location}}/{{realm_id}}
+ * ```
  */
 export class Realm extends pulumi.CustomResource {
     /**

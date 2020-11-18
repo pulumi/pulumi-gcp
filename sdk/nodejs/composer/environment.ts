@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -31,6 +30,94 @@ import * as utilities from "../utilities";
  *     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
  *
  * ## Example Usage
+ * ### Basic Usage
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.composer.Environment("test", {
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### With GKE and Compute Resource Dependencies
+ *
+ * **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
+ * (i.e. at a project level). This will probably require an explicit dependency
+ * on the IAM policy binding (see `gcp.projects.IAMMember` below).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testNetwork = new gcp.compute.Network("testNetwork", {autoCreateSubnetworks: false});
+ * const testSubnetwork = new gcp.compute.Subnetwork("testSubnetwork", {
+ *     ipCidrRange: "10.2.0.0/16",
+ *     region: "us-central1",
+ *     network: testNetwork.id,
+ * });
+ * const testAccount = new gcp.serviceAccount.Account("testAccount", {
+ *     accountId: "composer-env-account",
+ *     displayName: "Test Service Account for Composer Environment",
+ * });
+ * const composer_worker = new gcp.projects.IAMMember("composer-worker", {
+ *     role: "roles/composer.worker",
+ *     member: pulumi.interpolate`serviceAccount:${testAccount.email}`,
+ * });
+ * const testEnvironment = new gcp.composer.Environment("testEnvironment", {
+ *     region: "us-central1",
+ *     config: {
+ *         nodeCount: 4,
+ *         nodeConfig: {
+ *             zone: "us-central1-a",
+ *             machineType: "e2-medium",
+ *             network: testNetwork.id,
+ *             subnetwork: testSubnetwork.id,
+ *             serviceAccount: testAccount.name,
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [composer_worker],
+ * });
+ * ```
+ * ### With Software (Airflow) Config
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.composer.Environment("test", {
+ *     config: {
+ *         softwareConfig: {
+ *             airflowConfigOverrides: {
+ *                 "core-load_example": "True",
+ *             },
+ *             envVariables: {
+ *                 FOO: "bar",
+ *             },
+ *             pypiPackages: {
+ *                 numpy: "",
+ *                 scipy: "==1.1.0",
+ *             },
+ *         },
+ *     },
+ *     region: "us-central1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Environment can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:composer/environment:Environment default {{name}}
+ * ```
  */
 export class Environment extends pulumi.CustomResource {
     /**

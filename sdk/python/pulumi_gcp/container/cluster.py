@@ -75,6 +75,84 @@ class Cluster(pulumi.CustomResource):
         plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
+        ### With A Separately Managed Node Pool (Recommended)
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            location="us-central1",
+            remove_default_node_pool=True,
+            initial_node_count=1,
+            master_auth=gcp.container.ClusterMasterAuthArgs(
+                username="",
+                password="",
+                client_certificate_config=gcp.container.ClusterMasterAuthClientCertificateConfigArgs(
+                    issue_client_certificate=False,
+                ),
+            ))
+        primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
+            location="us-central1",
+            cluster=primary.name,
+            node_count=1,
+            node_config=gcp.container.NodePoolNodeConfigArgs(
+                preemptible=True,
+                machine_type="e2-medium",
+                metadata={
+                    "disable-legacy-endpoints": "true",
+                },
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+            ))
+        ```
+        ### With The Default Node Pool
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.container.Cluster("primary",
+            initial_node_count=3,
+            location="us-central1-a",
+            master_auth=gcp.container.ClusterMasterAuthArgs(
+                client_certificate_config=gcp.container.ClusterMasterAuthClientCertificateConfigArgs(
+                    issue_client_certificate=False,
+                ),
+                password="",
+                username="",
+            ),
+            node_config=gcp.container.ClusterNodeConfigArgs(
+                labels={
+                    "foo": "bar",
+                },
+                metadata={
+                    "disable-legacy-endpoints": "true",
+                },
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
+                tags=[
+                    "foo",
+                    "bar",
+                ],
+            ))
+        ```
+
+        ## Import
+
+        GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+        ```
+
+        ```sh
+         $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+        ```
+
+         For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,6 +16,154 @@ import * as utilities from "../utilities";
  *     * [Creating a HL7v2 Store](https://cloud.google.com/healthcare/docs/how-tos/hl7v2)
  *
  * ## Example Usage
+ * ### Healthcare Hl7 V2 Store Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const topic = new gcp.pubsub.Topic("topic", {});
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const store = new gcp.healthcare.Hl7Store("store", {
+ *     dataset: dataset.id,
+ *     notificationConfigs: [{
+ *         pubsubTopic: topic.id,
+ *     }],
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ * });
+ * ```
+ * ### Healthcare Hl7 V2 Store Parser Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const store = new gcp.healthcare.Hl7Store("store", {
+ *     dataset: dataset.id,
+ *     parserConfig: {
+ *         allowNullHeader: false,
+ *         segmentTerminator: "Jw==",
+ *         schema: `{
+ *   "schemas": [{
+ *     "messageSchemaConfigs": {
+ *       "ADT_A01": {
+ *         "name": "ADT_A01",
+ *         "minOccurs": 1,
+ *         "maxOccurs": 1,
+ *         "members": [{
+ *             "segment": {
+ *               "type": "MSH",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "EVN",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "PID",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "ZPD",
+ *               "minOccurs": 1,
+ *               "maxOccurs": 1
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "OBX"
+ *             }
+ *           },
+ *           {
+ *             "group": {
+ *               "name": "PROCEDURE",
+ *               "members": [{
+ *                   "segment": {
+ *                     "type": "PR1",
+ *                     "minOccurs": 1,
+ *                     "maxOccurs": 1
+ *                   }
+ *                 },
+ *                 {
+ *                   "segment": {
+ *                     "type": "ROL"
+ *                   }
+ *                 }
+ *               ]
+ *             }
+ *           },
+ *           {
+ *             "segment": {
+ *               "type": "PDA",
+ *               "maxOccurs": 1
+ *             }
+ *           }
+ *         ]
+ *       }
+ *     }
+ *   }],
+ *   "types": [{
+ *     "type": [{
+ *         "name": "ZPD",
+ *         "primitive": "VARIES"
+ *       }
+ *
+ *     ]
+ *   }],
+ *   "ignoreMinOccurs": true
+ * }
+ * `,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Healthcare Hl7 V2 Store Unschematized
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const store = new gcp.healthcare.Hl7Store("store", {
+ *     dataset: dataset.id,
+ *     parserConfig: {
+ *         allowNullHeader: false,
+ *         segmentTerminator: "Jw==",
+ *         version: "V2",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Hl7V2Store can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/{{name}}
+ * ```
  */
 export class Hl7Store extends pulumi.CustomResource {
     /**

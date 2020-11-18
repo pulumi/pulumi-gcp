@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,6 +17,94 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/logging/docs/apis)
  *
  * ## Example Usage
+ * ### Logging Metric Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ *     bucketOptions: {
+ *         linearBuckets: {
+ *             numFiniteBuckets: 3,
+ *             offset: 1,
+ *             width: 1,
+ *         },
+ *     },
+ *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     labelExtractors: {
+ *         mass: "EXTRACT(jsonPayload.request)",
+ *         sku: "EXTRACT(jsonPayload.id)",
+ *     },
+ *     metricDescriptor: {
+ *         displayName: "My metric",
+ *         labels: [
+ *             {
+ *                 description: "amount of matter",
+ *                 key: "mass",
+ *                 valueType: "STRING",
+ *             },
+ *             {
+ *                 description: "Identifying number for item",
+ *                 key: "sku",
+ *                 valueType: "INT64",
+ *             },
+ *         ],
+ *         metricKind: "DELTA",
+ *         unit: "1",
+ *         valueType: "DISTRIBUTION",
+ *     },
+ *     valueExtractor: "EXTRACT(jsonPayload.request)",
+ * });
+ * ```
+ * ### Logging Metric Counter Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     metricDescriptor: {
+ *         metricKind: "DELTA",
+ *         valueType: "INT64",
+ *     },
+ * });
+ * ```
+ * ### Logging Metric Counter Labels
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const loggingMetric = new gcp.logging.Metric("logging_metric", {
+ *     filter: "resource.type=gae_app AND severity>=ERROR",
+ *     labelExtractors: {
+ *         mass: "EXTRACT(jsonPayload.request)",
+ *     },
+ *     metricDescriptor: {
+ *         labels: [{
+ *             description: "amount of matter",
+ *             key: "mass",
+ *             valueType: "STRING",
+ *         }],
+ *         metricKind: "DELTA",
+ *         valueType: "INT64",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Metric can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/metric:Metric default {{project}} {{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/metric:Metric default {{name}}
+ * ```
  */
 export class Metric extends pulumi.CustomResource {
     /**

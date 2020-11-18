@@ -16,6 +16,37 @@ namespace Pulumi.Gcp.Projects
     /// [API library page](https://console.cloud.google.com/apis/library) or run `gcloud services list --available`.
     /// 
     /// Requires [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Projects.Service("project", new Gcp.Projects.ServiceArgs
+    ///         {
+    ///             DisableDependentServices = true,
+    ///             Project = "your-project-id",
+    ///             Service = "iam.googleapis.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Project services can be imported using the `project_id` and `service`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:projects/service:Service my_project your-project-id/iam.googleapis.com
+    /// ```
+    /// 
+    ///  Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
     /// </summary>
     public partial class Service : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,122 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
+// ### Target Http Proxy Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
+// 			RequestPath:      pulumi.String("/"),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			PortName:   pulumi.String("http"),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHttpHealthCheck.ID(),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			DefaultService: defaultBackendService.ID(),
+// 			HostRules: compute.URLMapHostRuleArray{
+// 				&compute.URLMapHostRuleArgs{
+// 					Hosts: pulumi.StringArray{
+// 						pulumi.String("mysite.com"),
+// 					},
+// 					PathMatcher: pulumi.String("allpaths"),
+// 				},
+// 			},
+// 			PathMatchers: compute.URLMapPathMatcherArray{
+// 				&compute.URLMapPathMatcherArgs{
+// 					Name:           pulumi.String("allpaths"),
+// 					DefaultService: defaultBackendService.ID(),
+// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
+// 						&compute.URLMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/*"),
+// 							},
+// 							Service: defaultBackendService.ID(),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			UrlMap: defaultURLMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Target Http Proxy Https Redirect
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			DefaultUrlRedirect: &compute.URLMapDefaultUrlRedirectArgs{
+// 				HttpsRedirect: pulumi.Bool(true),
+// 				StripQuery:    pulumi.Bool(false),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			UrlMap: defaultURLMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// TargetHttpProxy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
+// ```
 type TargetHttpProxy struct {
 	pulumi.CustomResourceState
 
@@ -172,4 +289,43 @@ type TargetHttpProxyArgs struct {
 
 func (TargetHttpProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetHttpProxyArgs)(nil)).Elem()
+}
+
+type TargetHttpProxyInput interface {
+	pulumi.Input
+
+	ToTargetHttpProxyOutput() TargetHttpProxyOutput
+	ToTargetHttpProxyOutputWithContext(ctx context.Context) TargetHttpProxyOutput
+}
+
+func (TargetHttpProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetHttpProxy)(nil)).Elem()
+}
+
+func (i TargetHttpProxy) ToTargetHttpProxyOutput() TargetHttpProxyOutput {
+	return i.ToTargetHttpProxyOutputWithContext(context.Background())
+}
+
+func (i TargetHttpProxy) ToTargetHttpProxyOutputWithContext(ctx context.Context) TargetHttpProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpProxyOutput)
+}
+
+type TargetHttpProxyOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetHttpProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetHttpProxyOutput)(nil)).Elem()
+}
+
+func (o TargetHttpProxyOutput) ToTargetHttpProxyOutput() TargetHttpProxyOutput {
+	return o
+}
+
+func (o TargetHttpProxyOutput) ToTargetHttpProxyOutputWithContext(ctx context.Context) TargetHttpProxyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetHttpProxyOutput{})
 }

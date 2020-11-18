@@ -34,6 +34,64 @@ class ServicePerimeters(pulumi.CustomResource):
             * [Service Perimeter Quickstart](https://cloud.google.com/vpc-service-controls/docs/quickstart)
 
         ## Example Usage
+        ### Access Context Manager Service Perimeters Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        service_perimeter = gcp.accesscontextmanager.ServicePerimeters("service-perimeter",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            service_perimeters=[
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["storage.googleapis.com"],
+                    ),
+                    title="",
+                ),
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["bigtable.googleapis.com"],
+                    ),
+                    title="",
+                ),
+            ])
+        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy={
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                        "requireScreenLock": False,
+                    },
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ),
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="chromeos_no_lock")
+        ```
+
+        ## Import
+
+        ServicePerimeters can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
+        ```
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

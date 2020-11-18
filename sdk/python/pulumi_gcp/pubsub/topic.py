@@ -35,6 +35,52 @@ class Topic(pulumi.CustomResource):
             * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
 
         ## Example Usage
+        ### Pubsub Topic Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", labels={
+            "foo": "bar",
+        })
+        ```
+        ### Pubsub Topic Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="global")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        example = gcp.pubsub.Topic("example", kms_key_name=crypto_key.id)
+        ```
+        ### Pubsub Topic Geo Restricted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example", message_storage_policy=gcp.pubsub.TopicMessageStoragePolicyArgs(
+            allowed_persistence_regions=["europe-west3"],
+        ))
+        ```
+
+        ## Import
+
+        Topic can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/topic:Topic default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

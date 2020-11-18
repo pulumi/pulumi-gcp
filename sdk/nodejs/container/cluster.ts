@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,90 @@ import * as utilities from "../utilities";
  * plaintext. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ * ### With A Separately Managed Node Pool (Recommended)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     location: "us-central1",
+ *     removeDefaultNodePool: true,
+ *     initialNodeCount: 1,
+ *     masterAuth: {
+ *         username: "",
+ *         password: "",
+ *         clientCertificateConfig: {
+ *             issueClientCertificate: false,
+ *         },
+ *     },
+ * });
+ * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
+ *     location: "us-central1",
+ *     cluster: primary.name,
+ *     nodeCount: 1,
+ *     nodeConfig: {
+ *         preemptible: true,
+ *         machineType: "e2-medium",
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *     },
+ * });
+ * ```
+ * ### With The Default Node Pool
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.container.Cluster("primary", {
+ *     initialNodeCount: 3,
+ *     location: "us-central1-a",
+ *     masterAuth: {
+ *         clientCertificateConfig: {
+ *             issueClientCertificate: false,
+ *         },
+ *         password: "",
+ *         username: "",
+ *     },
+ *     nodeConfig: {
+ *         labels: {
+ *             foo: "bar",
+ *         },
+ *         metadata: {
+ *             "disable-legacy-endpoints": "true",
+ *         },
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *         tags: [
+ *             "foo",
+ *             "bar",
+ *         ],
+ *     },
+ * }, { timeouts: {
+ *     create: "30m",
+ *     update: "40m",
+ * } });
+ * ```
+ *
+ * ## Import
+ *
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster mycluster projects/my-gcp-project/locations/us-east1-a/clusters/my-cluster
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster mycluster my-gcp-project/us-east1-a/my-cluster
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:container/cluster:Cluster mycluster us-east1-a/my-cluster
+ * ```
+ *
+ *  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
  */
 export class Cluster extends pulumi.CustomResource {
     /**

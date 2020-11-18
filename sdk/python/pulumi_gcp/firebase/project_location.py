@@ -40,6 +40,18 @@ class ProjectLocation(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        ProjectLocation can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:firebase/projectLocation:ProjectLocation default projects/{{project}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:firebase/projectLocation:ProjectLocation default {{project}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] location_id: The ID of the default GCP resource location for the Project. The location must be one of the available GCP

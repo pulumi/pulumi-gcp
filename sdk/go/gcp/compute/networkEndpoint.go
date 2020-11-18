@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,6 +24,104 @@ import (
 //     * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 //
 // ## Example Usage
+// ### Network Endpoint
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.0.0.1/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     defaultNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstance(ctx, "endpoint_instance", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			BootDisk: &compute.InstanceBootDiskArgs{
+// 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
+// 					Image: pulumi.String(myImage.SelfLink),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Subnetwork: defaultSubnetwork.ID(),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpoint(ctx, "default_endpoint", &compute.NetworkEndpointArgs{
+// 			NetworkEndpointGroup: pulumi.Any(google_compute_network_endpoint_group.Neg.Name),
+// 			Instance:             endpoint_instance.Name,
+// 			Port:                 pulumi.Any(google_compute_network_endpoint_group.Neg.Default_port),
+// 			IpAddress: pulumi.String(endpoint_instance.NetworkInterfaces.ApplyT(func(networkInterfaces []compute.InstanceNetworkInterface) (string, error) {
+// 				return networkInterfaces[0].NetworkIp, nil
+// 			}).(pulumi.StringOutput)),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewNetworkEndpointGroup(ctx, "group", &compute.NetworkEndpointGroupArgs{
+// 			Network:     defaultNetwork.ID(),
+// 			Subnetwork:  defaultSubnetwork.ID(),
+// 			DefaultPort: pulumi.Int(90),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// NetworkEndpoint can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+// ```
 type NetworkEndpoint struct {
 	pulumi.CustomResourceState
 
@@ -171,4 +270,43 @@ type NetworkEndpointArgs struct {
 
 func (NetworkEndpointArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkEndpointArgs)(nil)).Elem()
+}
+
+type NetworkEndpointInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointOutput() NetworkEndpointOutput
+	ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput
+}
+
+func (NetworkEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpoint)(nil)).Elem()
+}
+
+func (i NetworkEndpoint) ToNetworkEndpointOutput() NetworkEndpointOutput {
+	return i.ToNetworkEndpointOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpoint) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointOutput)
+}
+
+type NetworkEndpointOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointOutput)(nil)).Elem()
+}
+
+func (o NetworkEndpointOutput) ToNetworkEndpointOutput() NetworkEndpointOutput {
+	return o
+}
+
+func (o NetworkEndpointOutput) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(NetworkEndpointOutput{})
 }

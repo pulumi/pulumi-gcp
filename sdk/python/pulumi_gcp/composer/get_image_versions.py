@@ -79,6 +79,22 @@ def get_image_versions(project: Optional[str] = None,
     """
     Provides access to available Cloud Composer versions in a region for a given project.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    all = gcp.composer.get_image_versions()
+    test = gcp.composer.Environment("test",
+        region="us-central1",
+        config=gcp.composer.EnvironmentConfigArgs(
+            software_config=gcp.composer.EnvironmentConfigSoftwareConfigArgs(
+                image_version=all.image_versions[0].image_version_id,
+            ),
+        ))
+    ```
+
 
     :param str project: The ID of the project to list versions in.
            If it is not provided, the provider project is used.

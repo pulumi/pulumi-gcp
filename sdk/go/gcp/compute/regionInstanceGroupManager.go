@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -18,6 +19,48 @@ import (
 // > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
 //
 // ## Example Usage
+// ### With Multiple Versions
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewRegionInstanceGroupManager(ctx, "appserver", &compute.RegionInstanceGroupManagerArgs{
+// 			BaseInstanceName: pulumi.String("app"),
+// 			Region:           pulumi.String("us-central1"),
+// 			TargetSize:       pulumi.Int(5),
+// 			Versions: compute.RegionInstanceGroupManagerVersionArray{
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver.Id),
+// 				},
+// 				&compute.RegionInstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: pulumi.Any(google_compute_instance_template.Appserver - canary.Id),
+// 					TargetSize: &compute.RegionInstanceGroupManagerVersionTargetSizeArgs{
+// 						Fixed: pulumi.Int(1),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance group managers can be imported using the `name`, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager appserver appserver-igm
+// ```
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
@@ -316,4 +359,43 @@ type RegionInstanceGroupManagerArgs struct {
 
 func (RegionInstanceGroupManagerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionInstanceGroupManagerArgs)(nil)).Elem()
+}
+
+type RegionInstanceGroupManagerInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerOutput() RegionInstanceGroupManagerOutput
+	ToRegionInstanceGroupManagerOutputWithContext(ctx context.Context) RegionInstanceGroupManagerOutput
+}
+
+func (RegionInstanceGroupManager) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManager)(nil)).Elem()
+}
+
+func (i RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutput() RegionInstanceGroupManagerOutput {
+	return i.ToRegionInstanceGroupManagerOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutputWithContext(ctx context.Context) RegionInstanceGroupManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerOutput)
+}
+
+type RegionInstanceGroupManagerOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionInstanceGroupManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionInstanceGroupManagerOutput)(nil)).Elem()
+}
+
+func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutput() RegionInstanceGroupManagerOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWithContext(ctx context.Context) RegionInstanceGroupManagerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerOutput{})
 }

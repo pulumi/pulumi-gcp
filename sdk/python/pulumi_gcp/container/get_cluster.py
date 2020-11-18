@@ -527,6 +527,22 @@ def get_cluster(location: Optional[str] = None,
     """
     Get info about a GKE cluster from its name and location.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_cluster = gcp.container.get_cluster(name="my-cluster",
+        location="us-east1-a")
+    pulumi.export("clusterUsername", my_cluster.master_auths[0].username)
+    pulumi.export("clusterPassword", my_cluster.master_auths[0].password)
+    pulumi.export("endpoint", my_cluster.endpoint)
+    pulumi.export("instanceGroupUrls", my_cluster.instance_group_urls)
+    pulumi.export("nodeConfig", my_cluster.node_configs)
+    pulumi.export("nodePools", my_cluster.node_pools)
+    ```
+
 
     :param str location: The location (zone or region) this cluster has been
            created in. One of `location`, `region`, `zone`, or a provider-level `zone` must

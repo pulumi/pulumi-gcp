@@ -2,10 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * ApiConfig can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{name}}
+ * ```
+ */
 export class ApiConfig extends pulumi.CustomResource {
     /**
      * Get an existing ApiConfig resource's state with the given name, ID, and optional extra

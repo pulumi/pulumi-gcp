@@ -47,6 +47,72 @@ namespace Pulumi.Gcp.Storage
         /// 
         /// {{% examples %}}
         /// ## Example Usage
+        /// {{% example %}}
+        /// ### Pub/Sub Notifications
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
+        ///         var binding = new Gcp.PubSub.TopicIAMBinding("binding", new Gcp.PubSub.TopicIAMBindingArgs
+        ///         {
+        ///             Topic = google_pubsub_topic.Topic.Name,
+        ///             Role = "roles/pubsub.publisher",
+        ///             Members = 
+        ///             {
+        ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Cloud KMS Keys
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var gcsAccount = Output.Create(Gcp.Storage.GetProjectServiceAccount.InvokeAsync());
+        ///         var binding = new Gcp.Kms.CryptoKeyIAMBinding("binding", new Gcp.Kms.CryptoKeyIAMBindingArgs
+        ///         {
+        ///             CryptoKeyId = "your-crypto-key-id",
+        ///             Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///             Members = 
+        ///             {
+        ///                 gcsAccount.Apply(gcsAccount =&gt; $"serviceAccount:{gcsAccount.EmailAddress}"),
+        ///             },
+        ///         });
+        ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+        ///         {
+        ///             Encryption = new Gcp.Storage.Inputs.BucketEncryptionArgs
+        ///             {
+        ///                 DefaultKmsKeyName = "your-crypto-key-id",
+        ///             },
+        ///         }, new CustomResourceOptions
+        ///         {
+        ///             DependsOn = 
+        ///             {
+        ///                 binding,
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectServiceAccountResult> InvokeAsync(GetProjectServiceAccountArgs? args = null, InvokeOptions? options = null)

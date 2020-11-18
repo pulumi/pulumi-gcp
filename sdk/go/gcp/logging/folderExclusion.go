@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,47 @@ import (
 //
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.NewFolder(ctx, "my_folder", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("My folder"),
+// 			Parent:      pulumi.String("organizations/123456"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewFolderExclusion(ctx, "my_exclusion", &logging.FolderExclusionArgs{
+// 			Folder:      my_folder.Name,
+// 			Description: pulumi.String("Exclude GCE instance debug logs"),
+// 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Folder-level logging exclusions can be imported using their URI, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+// ```
 type FolderExclusion struct {
 	pulumi.CustomResourceState
 
@@ -143,4 +185,43 @@ type FolderExclusionArgs struct {
 
 func (FolderExclusionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*folderExclusionArgs)(nil)).Elem()
+}
+
+type FolderExclusionInput interface {
+	pulumi.Input
+
+	ToFolderExclusionOutput() FolderExclusionOutput
+	ToFolderExclusionOutputWithContext(ctx context.Context) FolderExclusionOutput
+}
+
+func (FolderExclusion) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderExclusion)(nil)).Elem()
+}
+
+func (i FolderExclusion) ToFolderExclusionOutput() FolderExclusionOutput {
+	return i.ToFolderExclusionOutputWithContext(context.Background())
+}
+
+func (i FolderExclusion) ToFolderExclusionOutputWithContext(ctx context.Context) FolderExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionOutput)
+}
+
+type FolderExclusionOutput struct {
+	*pulumi.OutputState
+}
+
+func (FolderExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderExclusionOutput)(nil)).Elem()
+}
+
+func (o FolderExclusionOutput) ToFolderExclusionOutput() FolderExclusionOutput {
+	return o
+}
+
+func (o FolderExclusionOutput) ToFolderExclusionOutputWithContext(ctx context.Context) FolderExclusionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FolderExclusionOutput{})
 }

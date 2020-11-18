@@ -4,6 +4,7 @@
 package identityplatform
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,22 @@ import (
 // the marketplace prior to using this resource.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// TenantInboundSamlConfig can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default projects/{{project}}/tenants/{{tenant}}/inboundSamlConfigs/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{project}}/{{tenant}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
+// ```
 type TenantInboundSamlConfig struct {
 	pulumi.CustomResourceState
 
@@ -180,4 +197,43 @@ type TenantInboundSamlConfigArgs struct {
 
 func (TenantInboundSamlConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tenantInboundSamlConfigArgs)(nil)).Elem()
+}
+
+type TenantInboundSamlConfigInput interface {
+	pulumi.Input
+
+	ToTenantInboundSamlConfigOutput() TenantInboundSamlConfigOutput
+	ToTenantInboundSamlConfigOutputWithContext(ctx context.Context) TenantInboundSamlConfigOutput
+}
+
+func (TenantInboundSamlConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantInboundSamlConfig)(nil)).Elem()
+}
+
+func (i TenantInboundSamlConfig) ToTenantInboundSamlConfigOutput() TenantInboundSamlConfigOutput {
+	return i.ToTenantInboundSamlConfigOutputWithContext(context.Background())
+}
+
+func (i TenantInboundSamlConfig) ToTenantInboundSamlConfigOutputWithContext(ctx context.Context) TenantInboundSamlConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigOutput)
+}
+
+type TenantInboundSamlConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (TenantInboundSamlConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TenantInboundSamlConfigOutput)(nil)).Elem()
+}
+
+func (o TenantInboundSamlConfigOutput) ToTenantInboundSamlConfigOutput() TenantInboundSamlConfigOutput {
+	return o
+}
+
+func (o TenantInboundSamlConfigOutput) ToTenantInboundSamlConfigOutputWithContext(ctx context.Context) TenantInboundSamlConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TenantInboundSamlConfigOutput{})
 }

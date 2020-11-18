@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -24,6 +25,22 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+//
+// ## Import
+//
+// SslCertificate can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
+// ```
 type SSLCertificate struct {
 	pulumi.CustomResourceState
 
@@ -219,4 +236,43 @@ type SSLCertificateArgs struct {
 
 func (SSLCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sslcertificateArgs)(nil)).Elem()
+}
+
+type SSLCertificateInput interface {
+	pulumi.Input
+
+	ToSSLCertificateOutput() SSLCertificateOutput
+	ToSSLCertificateOutputWithContext(ctx context.Context) SSLCertificateOutput
+}
+
+func (SSLCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*SSLCertificate)(nil)).Elem()
+}
+
+func (i SSLCertificate) ToSSLCertificateOutput() SSLCertificateOutput {
+	return i.ToSSLCertificateOutputWithContext(context.Background())
+}
+
+func (i SSLCertificate) ToSSLCertificateOutputWithContext(ctx context.Context) SSLCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateOutput)
+}
+
+type SSLCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (SSLCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SSLCertificateOutput)(nil)).Elem()
+}
+
+func (o SSLCertificateOutput) ToSSLCertificateOutput() SSLCertificateOutput {
+	return o
+}
+
+func (o SSLCertificateOutput) ToSSLCertificateOutputWithContext(ctx context.Context) SSLCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SSLCertificateOutput{})
 }

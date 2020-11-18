@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,46 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/game-servers/docs)
  *
  * ## Example Usage
+ * ### Game Service Cluster Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultGameServerCluster = new gcp.gameservices.GameServerCluster("default", {
+ *     clusterId: "",
+ *     "google_game_services_realm.default.realm_id": [{
+ *         connectionInfo: [{
+ *             gkeClusterReference: [{
+ *                 cluster: "locations/us-west1/clusters/%{agones_cluster}",
+ *             }],
+ *             namespace: "default",
+ *         }],
+ *     }],
+ *     realmId: "",
+ * });
+ * const defaultRealm = new gcp.gameservices.Realm("default", {
+ *     description: "Test Game Realm",
+ *     realmId: "realm",
+ *     timeZone: "PST8PDT",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * GameServerCluster can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}/gameServerClusters/{{cluster_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{project}}/{{location}}/{{realm_id}}/{{cluster_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{location}}/{{realm_id}}/{{cluster_id}}
+ * ```
  */
 export class GameServerCluster extends pulumi.CustomResource {
     /**

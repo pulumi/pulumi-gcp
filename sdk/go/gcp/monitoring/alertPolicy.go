@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,56 @@ import (
 //     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
 //
 // ## Example Usage
+// ### Monitoring Alert Policy Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewAlertPolicy(ctx, "alertPolicy", &monitoring.AlertPolicyArgs{
+// 			Combiner: pulumi.String("OR"),
+// 			Conditions: monitoring.AlertPolicyConditionArray{
+// 				&monitoring.AlertPolicyConditionArgs{
+// 					ConditionThreshold: &monitoring.AlertPolicyConditionConditionThresholdArgs{
+// 						Aggregations: monitoring.AlertPolicyConditionConditionThresholdAggregationArray{
+// 							&monitoring.AlertPolicyConditionConditionThresholdAggregationArgs{
+// 								AlignmentPeriod:  pulumi.String("60s"),
+// 								PerSeriesAligner: pulumi.String("ALIGN_RATE"),
+// 							},
+// 						},
+// 						Comparison: pulumi.String("COMPARISON_GT"),
+// 						Duration:   pulumi.String("60s"),
+// 						Filter:     pulumi.String("metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\""),
+// 					},
+// 					DisplayName: pulumi.String("test condition"),
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("My Alert Policy"),
+// 			UserLabels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// AlertPolicy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
+// ```
 type AlertPolicy struct {
 	pulumi.CustomResourceState
 
@@ -319,4 +370,43 @@ type AlertPolicyArgs struct {
 
 func (AlertPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*alertPolicyArgs)(nil)).Elem()
+}
+
+type AlertPolicyInput interface {
+	pulumi.Input
+
+	ToAlertPolicyOutput() AlertPolicyOutput
+	ToAlertPolicyOutputWithContext(ctx context.Context) AlertPolicyOutput
+}
+
+func (AlertPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicy)(nil)).Elem()
+}
+
+func (i AlertPolicy) ToAlertPolicyOutput() AlertPolicyOutput {
+	return i.ToAlertPolicyOutputWithContext(context.Background())
+}
+
+func (i AlertPolicy) ToAlertPolicyOutputWithContext(ctx context.Context) AlertPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyOutput)
+}
+
+type AlertPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyOutput)(nil)).Elem()
+}
+
+func (o AlertPolicyOutput) ToAlertPolicyOutput() AlertPolicyOutput {
+	return o
+}
+
+func (o AlertPolicyOutput) ToAlertPolicyOutputWithContext(ctx context.Context) AlertPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AlertPolicyOutput{})
 }

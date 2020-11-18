@@ -14,6 +14,184 @@ namespace Pulumi.Gcp.Compute
     /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var foobar = new Gcp.Compute.Disk("foobar", new Gcp.Compute.DiskArgs
+    ///         {
+    ///             Image = myImage.Apply(myImage =&gt; myImage.SelfLink),
+    ///             Size = 10,
+    ///             Type = "pd-ssd",
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///         var @default = new Gcp.Compute.InstanceTemplate("default", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             Description = "This template is used to create app server instances.",
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "environment", "dev" },
+    ///             },
+    ///             InstanceDescription = "description assigned to instances",
+    ///             MachineType = "e2-medium",
+    ///             CanIpForward = false,
+    ///             Scheduling = new Gcp.Compute.Inputs.InstanceTemplateSchedulingArgs
+    ///             {
+    ///                 AutomaticRestart = true,
+    ///                 OnHostMaintenance = "MIGRATE",
+    ///             },
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = "debian-cloud/debian-9",
+    ///                     AutoDelete = true,
+    ///                     Boot = true,
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     Source = foobar.Name,
+    ///                     AutoDelete = false,
+    ///                     Boot = false,
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
+    ///             {
+    ///                 Scopes = 
+    ///                 {
+    ///                     "userinfo-email",
+    ///                     "compute-ro",
+    ///                     "storage-ro",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## Deploying the Latest Image
+    /// 
+    /// A common way to use instance templates and managed instance groups is to deploy the
+    /// latest image in a family, usually the latest build of your application. There are two
+    /// ways to do this in the provider, and they have their pros and cons. The difference ends
+    /// up being in how "latest" is interpreted. You can either deploy the latest image available
+    /// when the provider runs, or you can have each instance check what the latest image is when
+    /// it's being created, either as part of a scaling event or being rebuilt by the instance
+    /// group manager.
+    /// 
+    /// If you're not sure, we recommend deploying the latest image available when the provider runs,
+    /// because this means all the instances in your group will be based on the same image, always,
+    /// and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
+    /// You can achieve this by using the `gcp.compute.Image`
+    /// data source, which will retrieve the latest image on every `pulumi apply`, and will update
+    /// the template to use that specific image:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
+    ///         {
+    ///             Family = "debian-9",
+    ///             Project = "debian-cloud",
+    ///         }));
+    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             NamePrefix = "instance-template-",
+    ///             MachineType = "e2-medium",
+    ///             Region = "us-central1",
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = google_compute_image.My_image.Self_link,
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// To have instances update to the latest on every scaling event or instance re-creation,
+    /// use the family as the image for the disk, and it will use GCP's default behavior, setting
+    /// the image for the template to the family:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instanceTemplate = new Gcp.Compute.InstanceTemplate("instanceTemplate", new Gcp.Compute.InstanceTemplateArgs
+    ///         {
+    ///             Disks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
+    ///                 {
+    ///                     SourceImage = "debian-cloud/debian-9",
+    ///                 },
+    ///             },
+    ///             MachineType = "e2-medium",
+    ///             NamePrefix = "instance-template-",
+    ///             Region = "us-central1",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance templates can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
+    /// ```
+    /// 
+    ///  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
     /// </summary>
     public partial class InstanceTemplate : Pulumi.CustomResource
     {

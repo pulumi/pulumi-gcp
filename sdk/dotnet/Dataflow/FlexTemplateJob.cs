@@ -15,6 +15,31 @@ namespace Pulumi.Gcp.Dataflow
     /// Compute Engine. For more information see the official documentation for [Beam](https://beam.apache.org)
     /// and [Dataflow](https://cloud.google.com/dataflow/).
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bigDataJob = new Gcp.Dataflow.FlexTemplateJob("bigDataJob", new Gcp.Dataflow.FlexTemplateJobArgs
+    ///         {
+    ///             ContainerSpecGcsPath = "gs://my-bucket/templates/template.json",
+    ///             Parameters = 
+    ///             {
+    ///                 { "inputSubscription", "messages" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ## Note on "destroy" / "apply"
     /// 
     /// There are many types of Dataflow jobs.  Some Dataflow jobs run constantly,
@@ -36,6 +61,10 @@ namespace Pulumi.Gcp.Dataflow
     /// is "cancelled", but if a user sets `on_delete` to `"drain"` in the
     /// configuration, you may experience a long wait for your `pulumi destroy` to
     /// complete.
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     public partial class FlexTemplateJob : Pulumi.CustomResource
     {

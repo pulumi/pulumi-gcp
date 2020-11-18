@@ -4,6 +4,7 @@
 package firebase
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,14 @@ import (
 //     * [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// WebApp can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:firebase/webApp:WebApp default {{name}}
+// ```
 type WebApp struct {
 	pulumi.CustomResourceState
 
@@ -113,4 +122,43 @@ type WebAppArgs struct {
 
 func (WebAppArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*webAppArgs)(nil)).Elem()
+}
+
+type WebAppInput interface {
+	pulumi.Input
+
+	ToWebAppOutput() WebAppOutput
+	ToWebAppOutputWithContext(ctx context.Context) WebAppOutput
+}
+
+func (WebApp) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebApp)(nil)).Elem()
+}
+
+func (i WebApp) ToWebAppOutput() WebAppOutput {
+	return i.ToWebAppOutputWithContext(context.Background())
+}
+
+func (i WebApp) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebAppOutput)
+}
+
+type WebAppOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebAppOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebAppOutput)(nil)).Elem()
+}
+
+func (o WebAppOutput) ToWebAppOutput() WebAppOutput {
+	return o
+}
+
+func (o WebAppOutput) ToWebAppOutputWithContext(ctx context.Context) WebAppOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(WebAppOutput{})
 }

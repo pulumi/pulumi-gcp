@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -23,6 +22,44 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Access Context Manager Access Level Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const access_policy = new gcp.accesscontextmanager.AccessPolicy("access-policy", {
+ *     parent: "organizations/123456789",
+ *     title: "my policy",
+ * });
+ * const access_level = new gcp.accesscontextmanager.AccessLevel("access-level", {
+ *     basic: {
+ *         conditions: [{
+ *             devicePolicy: {
+ *                 osConstraints: [{
+ *                     osType: "DESKTOP_CHROME_OS",
+ *                 }],
+ *                 requireScreenLock: true,
+ *             },
+ *             regions: [
+ *                 "CH",
+ *                 "IT",
+ *                 "US",
+ *             ],
+ *         }],
+ *     },
+ *     parent: pulumi.interpolate`accessPolicies/${access_policy.name}`,
+ *     title: "chromeos_no_lock",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * AccessLevel can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
+ * ```
  */
 export class AccessLevel extends pulumi.CustomResource {
     /**

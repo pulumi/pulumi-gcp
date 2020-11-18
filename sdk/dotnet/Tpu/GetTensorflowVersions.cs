@@ -13,6 +13,51 @@ namespace Pulumi.Gcp.Tpu
     {
         /// <summary>
         /// Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
+        /// {{% example %}}
+        /// ### Configure Basic TPU Node With Available Version
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
+        ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
+        ///         {
+        ///             Zone = "us-central1-b",
+        ///             AcceleratorType = "v3-8",
+        ///             TensorflowVersion = available.Apply(available =&gt; available.Versions[0]),
+        ///             CidrBlock = "10.2.0.0/29",
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetTensorflowVersionsResult> InvokeAsync(GetTensorflowVersionsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTensorflowVersionsResult>("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args ?? new GetTensorflowVersionsArgs(), options.WithVersion());

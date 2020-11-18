@@ -2,14 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
  *
  * https://cloud.google.com/identity/docs/concepts/overview#memberships
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const members = pulumi.output(gcp.cloudidentity.getGroupMemberships({
+ *     group: "groups/123eab45c6defghi",
+ * }, { async: true }));
+ * ```
  */
 export function getGroupMemberships(args: GetGroupMembershipsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMembershipsResult> {
     if (!opts) {

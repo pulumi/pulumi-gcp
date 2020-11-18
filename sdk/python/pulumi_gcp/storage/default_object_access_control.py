@@ -46,6 +46,26 @@ class DefaultObjectAccessControl(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/storage/docs/access-control/create-manage-lists)
 
         ## Example Usage
+        ### Storage Default Object Access Control Public
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        bucket = gcp.storage.Bucket("bucket")
+        public_rule = gcp.storage.DefaultObjectAccessControl("publicRule",
+            bucket=bucket.name,
+            role="READER",
+            entity="allUsers")
+        ```
+
+        ## Import
+
+        DefaultObjectAccessControl can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

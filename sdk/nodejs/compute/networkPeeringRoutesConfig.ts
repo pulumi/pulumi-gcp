@@ -17,6 +17,47 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/vpc-peering)
  *
  * ## Example Usage
+ * ### Network Peering Routes Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const networkPrimary = new gcp.compute.Network("networkPrimary", {autoCreateSubnetworks: "false"});
+ * const networkSecondary = new gcp.compute.Network("networkSecondary", {autoCreateSubnetworks: "false"});
+ * const peeringPrimary = new gcp.compute.NetworkPeering("peeringPrimary", {
+ *     network: networkPrimary.id,
+ *     peerNetwork: networkSecondary.id,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * const peeringPrimaryRoutes = new gcp.compute.NetworkPeeringRoutesConfig("peeringPrimaryRoutes", {
+ *     peering: peeringPrimary.name,
+ *     network: networkPrimary.name,
+ *     importCustomRoutes: true,
+ *     exportCustomRoutes: true,
+ * });
+ * const peeringSecondary = new gcp.compute.NetworkPeering("peeringSecondary", {
+ *     network: networkSecondary.id,
+ *     peerNetwork: networkPrimary.id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * NetworkPeeringRoutesConfig can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default projects/{{project}}/global/networks/{{network}}/networkPeerings/{{peering}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{project}}/{{network}}/{{peering}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
+ * ```
  */
 export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package identityplatform
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,48 @@ import (
 // the marketplace prior to using this resource.
 //
 // ## Example Usage
+// ### Identity Platform Oauth Idp Config Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/identityplatform"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := identityplatform.NewOauthIdpConfig(ctx, "oauthIdpConfig", &identityplatform.OauthIdpConfigArgs{
+// 			ClientId:     pulumi.String("client-id"),
+// 			ClientSecret: pulumi.String("secret"),
+// 			DisplayName:  pulumi.String("Display Name"),
+// 			Enabled:      pulumi.Bool(true),
+// 			Issuer:       pulumi.String("issuer"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// OauthIdpConfig can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default projects/{{project}}/oauthIdpConfigs/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
+// ```
 type OauthIdpConfig struct {
 	pulumi.CustomResourceState
 
@@ -149,4 +192,43 @@ type OauthIdpConfigArgs struct {
 
 func (OauthIdpConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*oauthIdpConfigArgs)(nil)).Elem()
+}
+
+type OauthIdpConfigInput interface {
+	pulumi.Input
+
+	ToOauthIdpConfigOutput() OauthIdpConfigOutput
+	ToOauthIdpConfigOutputWithContext(ctx context.Context) OauthIdpConfigOutput
+}
+
+func (OauthIdpConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*OauthIdpConfig)(nil)).Elem()
+}
+
+func (i OauthIdpConfig) ToOauthIdpConfigOutput() OauthIdpConfigOutput {
+	return i.ToOauthIdpConfigOutputWithContext(context.Background())
+}
+
+func (i OauthIdpConfig) ToOauthIdpConfigOutputWithContext(ctx context.Context) OauthIdpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigOutput)
+}
+
+type OauthIdpConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (OauthIdpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OauthIdpConfigOutput)(nil)).Elem()
+}
+
+func (o OauthIdpConfigOutput) ToOauthIdpConfigOutput() OauthIdpConfigOutput {
+	return o
+}
+
+func (o OauthIdpConfigOutput) ToOauthIdpConfigOutputWithContext(ctx context.Context) OauthIdpConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OauthIdpConfigOutput{})
 }

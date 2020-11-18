@@ -4,6 +4,7 @@
 package gameservices
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,22 @@ import (
 //     * [Official Documentation](https://cloud.google.com/game-servers/docs)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// GameServerCluster can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default projects/{{project}}/locations/{{location}}/realms/{{realm_id}}/gameServerClusters/{{cluster_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{project}}/{{location}}/{{realm_id}}/{{cluster_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{location}}/{{realm_id}}/{{cluster_id}}
+// ```
 type GameServerCluster struct {
 	pulumi.CustomResourceState
 
@@ -181,4 +198,43 @@ type GameServerClusterArgs struct {
 
 func (GameServerClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*gameServerClusterArgs)(nil)).Elem()
+}
+
+type GameServerClusterInput interface {
+	pulumi.Input
+
+	ToGameServerClusterOutput() GameServerClusterOutput
+	ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput
+}
+
+func (GameServerCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerCluster)(nil)).Elem()
+}
+
+func (i GameServerCluster) ToGameServerClusterOutput() GameServerClusterOutput {
+	return i.ToGameServerClusterOutputWithContext(context.Background())
+}
+
+func (i GameServerCluster) ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterOutput)
+}
+
+type GameServerClusterOutput struct {
+	*pulumi.OutputState
+}
+
+func (GameServerClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerClusterOutput)(nil)).Elem()
+}
+
+func (o GameServerClusterOutput) ToGameServerClusterOutput() GameServerClusterOutput {
+	return o
+}
+
+func (o GameServerClusterOutput) ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GameServerClusterOutput{})
 }

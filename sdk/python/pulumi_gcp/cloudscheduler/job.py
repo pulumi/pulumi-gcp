@@ -46,6 +46,112 @@ class Job(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/scheduler/)
 
         ## Example Usage
+        ### Scheduler Job Http
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        job = gcp.cloudscheduler.Job("job",
+            attempt_deadline="320s",
+            description="test http job",
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="POST",
+                uri="https://example.com/ping",
+            ),
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                retry_count=1,
+            ),
+            schedule="*/8 * * * *",
+            time_zone="America/New_York")
+        ```
+        ### Scheduler Job App Engine
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        job = gcp.cloudscheduler.Job("job",
+            app_engine_http_target=gcp.cloudscheduler.JobAppEngineHttpTargetArgs(
+                app_engine_routing=gcp.cloudscheduler.JobAppEngineHttpTargetAppEngineRoutingArgs(
+                    instance="my-instance-001",
+                    service="web",
+                    version="prod",
+                ),
+                http_method="POST",
+                relative_uri="/ping",
+            ),
+            attempt_deadline="320s",
+            description="test app engine job",
+            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                max_doublings=2,
+                max_retry_duration="10s",
+                min_backoff_duration="1s",
+                retry_count=3,
+            ),
+            schedule="*/4 * * * *",
+            time_zone="Europe/London")
+        ```
+        ### Scheduler Job Oauth
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        job = gcp.cloudscheduler.Job("job",
+            description="test http job",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="GET",
+                uri="https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
+                oauth_token=gcp.cloudscheduler.JobHttpTargetOauthTokenArgs(
+                    service_account_email=default.email,
+                ),
+            ))
+        ```
+        ### Scheduler Job Oidc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.get_default_service_account()
+        job = gcp.cloudscheduler.Job("job",
+            description="test http job",
+            schedule="*/8 * * * *",
+            time_zone="America/New_York",
+            attempt_deadline="320s",
+            http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                http_method="GET",
+                uri="https://example.com/ping",
+                oidc_token=gcp.cloudscheduler.JobHttpTargetOidcTokenArgs(
+                    service_account_email=default.email,
+                ),
+            ))
+        ```
+
+        ## Import
+
+        Job can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

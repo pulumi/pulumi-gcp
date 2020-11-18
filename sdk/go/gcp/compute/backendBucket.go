@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -25,6 +26,53 @@ import (
 //     * [Using a Cloud Storage bucket as a load balancer backend](https://cloud.google.com/compute/docs/load-balancing/http/backend-bucket)
 //
 // ## Example Usage
+// ### Backend Bucket Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		imageBucket, err := storage.NewBucket(ctx, "imageBucket", &storage.BucketArgs{
+// 			Location: pulumi.String("EU"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendBucket(ctx, "imageBackend", &compute.BackendBucketArgs{
+// 			Description: pulumi.String("Contains beautiful images"),
+// 			BucketName:  imageBucket.Name,
+// 			EnableCdn:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// BackendBucket can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/backendBucket:BackendBucket default projects/{{project}}/global/backendBuckets/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/backendBucket:BackendBucket default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
+// ```
 type BackendBucket struct {
 	pulumi.CustomResourceState
 
@@ -196,4 +244,43 @@ type BackendBucketArgs struct {
 
 func (BackendBucketArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendBucketArgs)(nil)).Elem()
+}
+
+type BackendBucketInput interface {
+	pulumi.Input
+
+	ToBackendBucketOutput() BackendBucketOutput
+	ToBackendBucketOutputWithContext(ctx context.Context) BackendBucketOutput
+}
+
+func (BackendBucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucket)(nil)).Elem()
+}
+
+func (i BackendBucket) ToBackendBucketOutput() BackendBucketOutput {
+	return i.ToBackendBucketOutputWithContext(context.Background())
+}
+
+func (i BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) BackendBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketOutput)
+}
+
+type BackendBucketOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketOutput)(nil)).Elem()
+}
+
+func (o BackendBucketOutput) ToBackendBucketOutput() BackendBucketOutput {
+	return o
+}
+
+func (o BackendBucketOutput) ToBackendBucketOutputWithContext(ctx context.Context) BackendBucketOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackendBucketOutput{})
 }

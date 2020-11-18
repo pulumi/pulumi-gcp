@@ -4,12 +4,28 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Api can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/api:Api default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/api:Api default {{name}}
+// ```
 type Api struct {
 	pulumi.CustomResourceState
 
@@ -136,4 +152,43 @@ type ApiArgs struct {
 
 func (ApiArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiArgs)(nil)).Elem()
+}
+
+type ApiInput interface {
+	pulumi.Input
+
+	ToApiOutput() ApiOutput
+	ToApiOutputWithContext(ctx context.Context) ApiOutput
+}
+
+func (Api) ElementType() reflect.Type {
+	return reflect.TypeOf((*Api)(nil)).Elem()
+}
+
+func (i Api) ToApiOutput() ApiOutput {
+	return i.ToApiOutputWithContext(context.Background())
+}
+
+func (i Api) ToApiOutputWithContext(ctx context.Context) ApiOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiOutput)
+}
+
+type ApiOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiOutput)(nil)).Elem()
+}
+
+func (o ApiOutput) ToApiOutput() ApiOutput {
+	return o
+}
+
+func (o ApiOutput) ToApiOutputWithContext(ctx context.Context) ApiOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiOutput{})
 }

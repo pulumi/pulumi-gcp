@@ -2,14 +2,53 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Creates a Google Cloud Bigtable table inside an instance. For more information see
  * [the official documentation](https://cloud.google.com/bigtable/) and
  * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const instance = new gcp.bigtable.Instance("instance", {clusters: [{
+ *     clusterId: "tf-instance-cluster",
+ *     zone: "us-central1-b",
+ *     numNodes: 3,
+ *     storageType: "HDD",
+ * }]});
+ * const table = new gcp.bigtable.Table("table", {
+ *     instanceName: instance.name,
+ *     splitKeys: [
+ *         "a",
+ *         "b",
+ *         "c",
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Bigtable Tables can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
+ * ```
+ *
+ *  The following fields can't be read and will show diffs if set in config when imported- `split_keys`
  */
 export class Table extends pulumi.CustomResource {
     /**

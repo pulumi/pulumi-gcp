@@ -20,6 +20,41 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the Cloud Console prior to creating tenants.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Tenant Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var tenant = new Gcp.IdentityPlatform.Tenant("tenant", new Gcp.IdentityPlatform.TenantArgs
+    ///         {
+    ///             AllowPasswordSignup = true,
+    ///             DisplayName = "tenant",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Tenant can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenant:Tenant default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
+    /// ```
     /// </summary>
     public partial class Tenant : Pulumi.CustomResource
     {

@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,49 @@ import * as utilities from "../utilities";
  * `billingProject` you defined.
  *
  * ## Example Usage
+ * ### Cloud Identity Group Membership User
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const group = new gcp.cloudidentity.Group("group", {
+ *     displayName: "my-identity-group",
+ *     parent: "customers/A01b123xz",
+ *     groupKey: {
+ *         id: "my-identity-group@example.com",
+ *     },
+ *     labels: {
+ *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic", {
+ *     group: group.id,
+ *     memberKey: {
+ *         id: "cloud_identity_user@example.com",
+ *     },
+ *     roles: [
+ *         {
+ *             name: "MEMBER",
+ *         },
+ *         {
+ *             name: "MANAGER",
+ *         },
+ *     ],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * GroupMembership can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
+ * ```
  */
 export class GroupMembership extends pulumi.CustomResource {
     /**

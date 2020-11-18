@@ -17,6 +17,37 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * ## Example Usage
+ * ### Active Directory Domain Trust Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ad_domain_trust = new gcp.activedirectory.DomainTrust("ad-domain-trust", {
+ *     domain: "test-managed-ad.com",
+ *     targetDnsIpAddresses: ["10.1.0.100"],
+ *     targetDomainName: "example-gcp.com",
+ *     trustDirection: "OUTBOUND",
+ *     trustHandshakeSecret: "Testing1!",
+ *     trustType: "FOREST",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DomainTrust can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{project}}/{{domain}}/{{target_domain_name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
+ * ```
  */
 export class DomainTrust extends pulumi.CustomResource {
     /**

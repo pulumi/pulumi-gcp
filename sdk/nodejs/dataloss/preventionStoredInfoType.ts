@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,79 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
  *
  * ## Example Usage
+ * ### Dlp Stored Info Type Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionStoredInfoType("basic", {
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     parent: "projects/my-project-name",
+ *     regex: {
+ *         groupIndexes: [2],
+ *         pattern: "patient",
+ *     },
+ * });
+ * ```
+ * ### Dlp Stored Info Type Dictionary
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dictionary = new gcp.dataloss.PreventionStoredInfoType("dictionary", {
+ *     description: "Description",
+ *     dictionary: {
+ *         wordList: {
+ *             words: [
+ *                 "word",
+ *                 "word2",
+ *             ],
+ *         },
+ *     },
+ *     displayName: "Displayname",
+ *     parent: "projects/my-project-name",
+ * });
+ * ```
+ * ### Dlp Stored Info Type Large Custom Dictionary
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {forceDestroy: true});
+ * const object = new gcp.storage.BucketObject("object", {
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("./test-fixtures/dlp/words.txt"),
+ * });
+ * const large = new gcp.dataloss.PreventionStoredInfoType("large", {
+ *     parent: "projects/my-project-name",
+ *     description: "Description",
+ *     displayName: "Displayname",
+ *     largeCustomDictionary: {
+ *         cloudStorageFileSet: {
+ *             url: pulumi.interpolate`gs://${bucket.name}/${object.name}`,
+ *         },
+ *         outputPath: {
+ *             path: pulumi.interpolate`gs://${bucket.name}/output/dictionary.txt`,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * StoredInfoType can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
+ * ```
  */
 export class PreventionStoredInfoType extends pulumi.CustomResource {
     /**

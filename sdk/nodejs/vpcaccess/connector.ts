@@ -14,6 +14,38 @@ import * as utilities from "../utilities";
  *     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
  *
  * ## Example Usage
+ * ### VPC Access Connector
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     ipCidrRange: "10.8.0.0/28",
+ *     network: "default",
+ *     region: "us-central1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Connector can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:vpcaccess/connector:Connector default projects/{{project}}/locations/{{region}}/connectors/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:vpcaccess/connector:Connector default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:vpcaccess/connector:Connector default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:vpcaccess/connector:Connector default {{name}}
+ * ```
  */
 export class Connector extends pulumi.CustomResource {
     /**

@@ -19,6 +19,84 @@ namespace Pulumi.Gcp.DataFusion
     ///     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
     /// 
     /// ## Example Usage
+    /// ### Data Fusion Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basicInstance = new Gcp.DataFusion.Instance("basicInstance", new Gcp.DataFusion.InstanceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Type = "BASIC",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Data Fusion Instance Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new Gcp.DataFusion.InstanceArgs
+    ///         {
+    ///             Description = "My Data Fusion instance",
+    ///             Region = "us-central1",
+    ///             Type = "BASIC",
+    ///             EnableStackdriverLogging = true,
+    ///             EnableStackdriverMonitoring = true,
+    ///             Labels = 
+    ///             {
+    ///                 { "example_key", "example_value" },
+    ///             },
+    ///             PrivateInstance = true,
+    ///             NetworkConfig = new Gcp.DataFusion.Inputs.InstanceNetworkConfigArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 IpAllocation = "10.89.48.0/22",
+    ///             },
+    ///             Version = "6.1.1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datafusion/instance:Instance default {{name}}
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

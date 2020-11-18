@@ -4,6 +4,7 @@
 package bigtable
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,117 @@ import (
 // > **Note:** `bigtable.InstanceIamPolicy` **cannot** be used in conjunction with `bigtable.InstanceIamBinding` and `bigtable.InstanceIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the instance as `bigtable.InstanceIamPolicy` replaces the entire policy.
 //
 // > **Note:** `bigtable.InstanceIamBinding` resources **can be** used in conjunction with `bigtable.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_bigtable\_instance\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/bigtable.user",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigtable.NewInstanceIamPolicy(ctx, "editor", &bigtable.InstanceIamPolicyArgs{
+// 			Project:    pulumi.String("your-project"),
+// 			Instance:   pulumi.String("your-bigtable-instance"),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_bigtable\_instance\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigtable.NewInstanceIamBinding(ctx, "editor", &bigtable.InstanceIamBindingArgs{
+// 			Instance: pulumi.String("your-bigtable-instance"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/bigtable.user"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_bigtable\_instance\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := bigtable.NewInstanceIamMember(ctx, "editor", &bigtable.InstanceIamMemberArgs{
+// 			Instance: pulumi.String("your-bigtable-instance"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 			Role:     pulumi.String("roles/bigtable.user"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance IAM resources can be imported using the project, instance name, role and/or member.
+//
+// ```sh
+//  $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance}"
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor"
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigtable/instanceIamMember:InstanceIamMember editor "projects/{project}/instances/{instance} roles/editor user:jane@example.com"
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type InstanceIamMember struct {
 	pulumi.CustomResourceState
 
@@ -140,4 +252,43 @@ type InstanceIamMemberArgs struct {
 
 func (InstanceIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceIamMemberArgs)(nil)).Elem()
+}
+
+type InstanceIamMemberInput interface {
+	pulumi.Input
+
+	ToInstanceIamMemberOutput() InstanceIamMemberOutput
+	ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput
+}
+
+func (InstanceIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamMember)(nil)).Elem()
+}
+
+func (i InstanceIamMember) ToInstanceIamMemberOutput() InstanceIamMemberOutput {
+	return i.ToInstanceIamMemberOutputWithContext(context.Background())
+}
+
+func (i InstanceIamMember) ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamMemberOutput)
+}
+
+type InstanceIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamMemberOutput)(nil)).Elem()
+}
+
+func (o InstanceIamMemberOutput) ToInstanceIamMemberOutput() InstanceIamMemberOutput {
+	return o
+}
+
+func (o InstanceIamMemberOutput) ToInstanceIamMemberOutputWithContext(ctx context.Context) InstanceIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceIamMemberOutput{})
 }

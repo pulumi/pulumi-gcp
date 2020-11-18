@@ -12,11 +12,11 @@ from ._inputs import *
 
 __all__ = ['MangedSslCertificate']
 
-warnings.warn("gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate", DeprecationWarning)
+warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
 
 
 class MangedSslCertificate(pulumi.CustomResource):
-    warnings.warn("gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate", DeprecationWarning)
+    warnings.warn("""gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""", DeprecationWarning)
 
     def __init__(__self__,
                  resource_name: str,

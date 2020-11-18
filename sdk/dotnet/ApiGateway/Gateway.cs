@@ -9,6 +9,27 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ApiGateway
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// Gateway can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigateway/gateway:Gateway default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigateway/gateway:Gateway default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:apigateway/gateway:Gateway default {{name}}
+    /// ```
+    /// </summary>
     public partial class Gateway : Pulumi.CustomResource
     {
         /// <summary>

@@ -13,6 +13,87 @@ namespace Pulumi.Gcp.BigQuery
     /// Creates a table resource in a dataset for Google BigQuery. For more information see
     /// [the official documentation](https://cloud.google.com/bigquery/docs/) and
     /// [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultDataset = new Gcp.BigQuery.Dataset("defaultDataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "foo",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "EU",
+    ///             DefaultTableExpirationMs = 3600000,
+    ///             Labels = 
+    ///             {
+    ///                 { "env", "default" },
+    ///             },
+    ///         });
+    ///         var defaultTable = new Gcp.BigQuery.Table("defaultTable", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DatasetId = defaultDataset.DatasetId,
+    ///             TableId = "bar",
+    ///             TimePartitioning = new Gcp.BigQuery.Inputs.TableTimePartitioningArgs
+    ///             {
+    ///                 Type = "DAY",
+    ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "env", "default" },
+    ///             },
+    ///             Schema = @"[
+    ///   {
+    ///     ""name"": ""permalink"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE"",
+    ///     ""description"": ""The Permalink""
+    ///   },
+    ///   {
+    ///     ""name"": ""state"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE"",
+    ///     ""description"": ""State where the head office is located""
+    ///   }
+    /// ]
+    /// ",
+    ///         });
+    ///         var sheet = new Gcp.BigQuery.Table("sheet", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DatasetId = defaultDataset.DatasetId,
+    ///             TableId = "sheet",
+    ///             ExternalDataConfiguration = new Gcp.BigQuery.Inputs.TableExternalDataConfigurationArgs
+    ///             {
+    ///                 Autodetect = true,
+    ///                 SourceFormat = "GOOGLE_SHEETS",
+    ///                 GoogleSheetsOptions = new Gcp.BigQuery.Inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs
+    ///                 {
+    ///                     SkipLeadingRows = 1,
+    ///                 },
+    ///                 SourceUris = 
+    ///                 {
+    ///                     "https://docs.google.com/spreadsheets/d/123456789012345",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
+    /// ```
     /// </summary>
     public partial class Table : Pulumi.CustomResource
     {

@@ -32,6 +32,32 @@ class Dataset(pulumi.CustomResource):
             * [Creating a dataset](https://cloud.google.com/healthcare/docs/how-tos/datasets)
 
         ## Example Usage
+        ### Healthcare Dataset Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.healthcare.Dataset("default",
+            location="us-central1",
+            time_zone="UTC")
+        ```
+
+        ## Import
+
+        Dataset can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:healthcare/dataset:Dataset default projects/{{project}}/locations/{{location}}/datasets/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:healthcare/dataset:Dataset default {{project}}/{{location}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:healthcare/dataset:Dataset default {{location}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

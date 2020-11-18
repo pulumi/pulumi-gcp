@@ -4,6 +4,7 @@
 package notebooks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,47 @@ import (
 //     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
 //
 // ## Example Usage
+// ### Notebook Environment Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/notebooks"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := notebooks.NewEnvironment(ctx, "environment", &notebooks.EnvironmentArgs{
+// 			Location: pulumi.String("us-west1-a"),
+// 			ContainerImage: &notebooks.EnvironmentContainerImageArgs{
+// 				Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Environment can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
+// ```
 type Environment struct {
 	pulumi.CustomResourceState
 
@@ -184,4 +226,43 @@ type EnvironmentArgs struct {
 
 func (EnvironmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentArgs)(nil)).Elem()
+}
+
+type EnvironmentInput interface {
+	pulumi.Input
+
+	ToEnvironmentOutput() EnvironmentOutput
+	ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput
+}
+
+func (Environment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Environment)(nil)).Elem()
+}
+
+func (i Environment) ToEnvironmentOutput() EnvironmentOutput {
+	return i.ToEnvironmentOutputWithContext(context.Background())
+}
+
+func (i Environment) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentOutput)
+}
+
+type EnvironmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (EnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentOutput)(nil)).Elem()
+}
+
+func (o EnvironmentOutput) ToEnvironmentOutput() EnvironmentOutput {
+	return o
+}
+
+func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EnvironmentOutput{})
 }

@@ -8,6 +8,28 @@ import (
 )
 
 // Use this data source to retrieve Storage Transfer service account for this project
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_default, err := storage.GetTransferProjectServieAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("defaultAccount", _default.Email)
+// 		return nil
+// 	})
+// }
+// ```
 func GetTransferProjectServieAccount(ctx *pulumi.Context, args *GetTransferProjectServieAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServieAccountResult, error) {
 	var rv GetTransferProjectServieAccountResult
 	err := ctx.Invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, opts...)

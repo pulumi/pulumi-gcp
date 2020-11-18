@@ -115,6 +115,15 @@ def get_instance(config: Optional[str] = None,
     """
     Get a spanner instance from Google Cloud by its name.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.spanner.get_instance(name="bar")
+    ```
+
 
     :param str name: The name of the spanner instance.
     :param str project: The project in which the resource belongs. If it

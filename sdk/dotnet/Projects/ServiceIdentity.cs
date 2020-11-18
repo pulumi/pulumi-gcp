@@ -20,6 +20,39 @@ namespace Pulumi.Gcp.Projects
     /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
     /// 
     /// ## Example Usage
+    /// ### Service Identity Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var hcSa = new Gcp.Projects.ServiceIdentity("hcSa", new Gcp.Projects.ServiceIdentityArgs
+    ///         {
+    ///             Project = project.Apply(project =&gt; project.ProjectId),
+    ///             Service = "healthcare.googleapis.com",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var hcSaBqJobuser = new Gcp.Projects.IAMMember("hcSaBqJobuser", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Project = project.Apply(project =&gt; project.ProjectId),
+    ///             Role = "roles/bigquery.jobUser",
+    ///             Member = hcSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     public partial class ServiceIdentity : Pulumi.CustomResource
     {

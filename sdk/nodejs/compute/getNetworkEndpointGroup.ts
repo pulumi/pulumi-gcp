@@ -2,14 +2,28 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Use this data source to access a Network Endpoint Group's attributes.
  *
  * The NEG may be found by providing either a `selfLink`, or a `name` and a `zone`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const neg1 = pulumi.output(gcp.compute.getNetworkEndpointGroup({
+ *     name: "k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ *     zone: "us-central1-a",
+ * }, { async: true }));
+ * const neg2 = pulumi.output(gcp.compute.getNetworkEndpointGroup({
+ *     selfLink: "https://www.googleapis.com/compute/v1/projects/myproject/zones/us-central1-a/networkEndpointGroups/k8s1-abcdef01-myns-mysvc-8080-4b6bac43",
+ * }, { async: true }));
+ * ```
  */
 export function getNetworkEndpointGroup(args?: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> {
     args = args || {};

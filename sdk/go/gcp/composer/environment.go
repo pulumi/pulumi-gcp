@@ -4,6 +4,7 @@
 package composer
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -33,6 +34,151 @@ import (
 //     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
 //
 // ## Example Usage
+// ### Basic Usage
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/composer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### With GKE and Compute Resource Dependencies
+//
+// **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
+// (i.e. at a project level). This will probably require an explicit dependency
+// on the IAM policy binding (see `projects.IAMMember` below).
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/composer"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		testNetwork, err := compute.NewNetwork(ctx, "testNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		testSubnetwork, err := compute.NewSubnetwork(ctx, "testSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.2.0.0/16"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     testNetwork.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("composer-env-account"),
+// 			DisplayName: pulumi.String("Test Service Account for Composer Environment"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMMember(ctx, "composer_worker", &projects.IAMMemberArgs{
+// 			Role: pulumi.String("roles/composer.worker"),
+// 			Member: testAccount.Email.ApplyT(func(email string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = composer.NewEnvironment(ctx, "testEnvironment", &composer.EnvironmentArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Config: &composer.EnvironmentConfigArgs{
+// 				NodeCount: pulumi.Int(4),
+// 				NodeConfig: &composer.EnvironmentConfigNodeConfigArgs{
+// 					Zone:           pulumi.String("us-central1-a"),
+// 					MachineType:    pulumi.String("e2-medium"),
+// 					Network:        testNetwork.ID(),
+// 					Subnetwork:     testSubnetwork.ID(),
+// 					ServiceAccount: testAccount.Name,
+// 				},
+// 			},
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			composer_worker,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### With Software (Airflow) Config
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/composer"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := composer.NewEnvironment(ctx, "test", &composer.EnvironmentArgs{
+// 			Config: &composer.EnvironmentConfigArgs{
+// 				SoftwareConfig: &composer.EnvironmentConfigSoftwareConfigArgs{
+// 					AirflowConfigOverrides: pulumi.StringMap{
+// 						"core-loadExample": pulumi.String("True"),
+// 					},
+// 					EnvVariables: pulumi.StringMap{
+// 						"FOO": pulumi.String("bar"),
+// 					},
+// 					PypiPackages: pulumi.StringMap{
+// 						"numpy": pulumi.String(""),
+// 						"scipy": pulumi.String("==1.1.0"),
+// 					},
+// 				},
+// 			},
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Environment can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:composer/environment:Environment default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:composer/environment:Environment default {{name}}
+// ```
 type Environment struct {
 	pulumi.CustomResourceState
 
@@ -179,4 +325,43 @@ type EnvironmentArgs struct {
 
 func (EnvironmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*environmentArgs)(nil)).Elem()
+}
+
+type EnvironmentInput interface {
+	pulumi.Input
+
+	ToEnvironmentOutput() EnvironmentOutput
+	ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput
+}
+
+func (Environment) ElementType() reflect.Type {
+	return reflect.TypeOf((*Environment)(nil)).Elem()
+}
+
+func (i Environment) ToEnvironmentOutput() EnvironmentOutput {
+	return i.ToEnvironmentOutputWithContext(context.Background())
+}
+
+func (i Environment) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentOutput)
+}
+
+type EnvironmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (EnvironmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentOutput)(nil)).Elem()
+}
+
+func (o EnvironmentOutput) ToEnvironmentOutput() EnvironmentOutput {
+	return o
+}
+
+func (o EnvironmentOutput) ToEnvironmentOutputWithContext(ctx context.Context) EnvironmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(EnvironmentOutput{})
 }

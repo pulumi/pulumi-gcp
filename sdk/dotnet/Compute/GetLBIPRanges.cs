@@ -15,6 +15,46 @@ namespace Pulumi.Gcp.Compute
         /// Use this data source to access IP ranges in your firewall rules.
         /// 
         /// https://cloud.google.com/compute/docs/load-balancing/health-checks#health_check_source_ips_and_firewall_rules
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var ranges = Output.Create(Gcp.Compute.GetLBIPRanges.InvokeAsync());
+        ///         var lb = new Gcp.Compute.Firewall("lb", new Gcp.Compute.FirewallArgs
+        ///         {
+        ///             Network = google_compute_network.Main.Name,
+        ///             Allows = 
+        ///             {
+        ///                 new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///                 {
+        ///                     Protocol = "tcp",
+        ///                     Ports = 
+        ///                     {
+        ///                         "80",
+        ///                     },
+        ///                 },
+        ///             },
+        ///             SourceRanges = ranges.Apply(ranges =&gt; ranges.Networks),
+        ///             TargetTags = 
+        ///             {
+        ///                 "InstanceBehindLoadBalancer",
+        ///             },
+        ///         });
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetLBIPRangesResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetLBIPRangesResult>("gcp:compute/getLBIPRanges:getLBIPRanges", InvokeArgs.Empty, options.WithVersion());

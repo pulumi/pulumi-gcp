@@ -14,6 +14,41 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// [official documentation](https://cloud.google.com/deployment-manager/runtime-configurator/),
     /// or the
     /// [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// Example creating a RuntimeConfig resource.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_runtime_config = new Gcp.RuntimeConfig.Config("my-runtime-config", new Gcp.RuntimeConfig.ConfigArgs
+    ///         {
+    ///             Description = "Runtime configuration values for my service",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Runtime Configs can be imported using the `name` or full config name, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:runtimeconfig/config:Config myconfig myconfig
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
+    /// ```
+    /// 
+    ///  When importing using only the name, the provider project must be set.
     /// </summary>
     public partial class Config : Pulumi.CustomResource
     {

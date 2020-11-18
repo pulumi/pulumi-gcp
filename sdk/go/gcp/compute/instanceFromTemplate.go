@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -18,6 +19,61 @@ import (
 // This resource is specifically to create a compute instance from a given
 // `sourceInstanceTemplate`. To create an instance without a template, use the
 // `compute.Instance` resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tplInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "tplInstanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					DiskSizeGb:  pulumi.Int(100),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			CanIpForward: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstanceFromTemplate(ctx, "tplInstanceFromTemplate", &compute.InstanceFromTemplateArgs{
+// 			Zone:                   pulumi.String("us-central1-a"),
+// 			SourceInstanceTemplate: tplInstanceTemplate.ID(),
+// 			CanIpForward:           pulumi.Bool(false),
+// 			Labels: pulumi.StringMap{
+// 				"my_key": pulumi.String("my_value"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type InstanceFromTemplate struct {
 	pulumi.CustomResourceState
 
@@ -429,4 +485,43 @@ type InstanceFromTemplateArgs struct {
 
 func (InstanceFromTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceFromTemplateArgs)(nil)).Elem()
+}
+
+type InstanceFromTemplateInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateOutput() InstanceFromTemplateOutput
+	ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput
+}
+
+func (InstanceFromTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplate)(nil)).Elem()
+}
+
+func (i InstanceFromTemplate) ToInstanceFromTemplateOutput() InstanceFromTemplateOutput {
+	return i.ToInstanceFromTemplateOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplate) ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateOutput)
+}
+
+type InstanceFromTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceFromTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplateOutput)(nil)).Elem()
+}
+
+func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutput() InstanceFromTemplateOutput {
+	return o
+}
+
+func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceFromTemplateOutput{})
 }

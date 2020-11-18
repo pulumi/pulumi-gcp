@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -12,6 +11,108 @@ import * as utilities from "../utilities";
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
  *
  * ## Example Usage
+ * ### Empty Instance Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const test = new gcp.compute.InstanceGroup("test", {
+ *     description: "Test instance group",
+ *     zone: "us-central1-a",
+ *     network: google_compute_network["default"].id,
+ * });
+ * ```
+ * ### Example Usage - With instances and named ports
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const webservers = new gcp.compute.InstanceGroup("webservers", {
+ *     description: "Test instance group",
+ *     instances: [
+ *         google_compute_instance.test.id,
+ *         google_compute_instance.test2.id,
+ *     ],
+ *     namedPorts: [
+ *         {
+ *             name: "http",
+ *             port: "8080",
+ *         },
+ *         {
+ *             name: "https",
+ *             port: "8443",
+ *         },
+ *     ],
+ *     zone: "us-central1-a",
+ * });
+ * ```
+ * ### Example Usage - Recreating an instance group in use
+ * Recreating an instance group that's in use by another resource will give a
+ * `resourceInUseByAnotherResource` error. Use `lifecycle.create_before_destroy`
+ * as shown in this example to avoid this type of error.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const stagingVm = new gcp.compute.Instance("stagingVm", {
+ *     machineType: "e2-medium",
+ *     zone: "us-central1-c",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: debianImage.then(debianImage => debianImage.selfLink),
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *     }],
+ * });
+ * const stagingGroup = new gcp.compute.InstanceGroup("stagingGroup", {
+ *     zone: "us-central1-c",
+ *     instances: [stagingVm.id],
+ *     namedPorts: [
+ *         {
+ *             name: "http",
+ *             port: "8080",
+ *         },
+ *         {
+ *             name: "https",
+ *             port: "8443",
+ *         },
+ *     ],
+ * });
+ * const stagingHealth = new gcp.compute.HttpsHealthCheck("stagingHealth", {requestPath: "/health_check"});
+ * const stagingService = new gcp.compute.BackendService("stagingService", {
+ *     portName: "https",
+ *     protocol: "HTTPS",
+ *     backends: [{
+ *         group: stagingGroup.id,
+ *     }],
+ *     healthChecks: [stagingHealth.id],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Instance group can be imported using the `zone` and `name` with an optional `project`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers us-central1-a/terraform-webservers
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers big-project/us-central1-a/terraform-webservers
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
+ * ```
  */
 export class InstanceGroup extends pulumi.CustomResource {
     /**

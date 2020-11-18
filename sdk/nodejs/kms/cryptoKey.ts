@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -24,6 +23,45 @@ import * as utilities from "../utilities";
  *     * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
  *
  * ## Example Usage
+ * ### Kms Crypto Key Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const example_key = new gcp.kms.CryptoKey("example-key", {
+ *     keyRing: keyring.id,
+ *     rotationPeriod: "100000s",
+ * });
+ * ```
+ * ### Kms Crypto Key Asymmetric Sign
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const example_asymmetric_sign_key = new gcp.kms.CryptoKey("example-asymmetric-sign-key", {
+ *     keyRing: keyring.id,
+ *     purpose: "ASYMMETRIC_SIGN",
+ *     versionTemplate: {
+ *         algorithm: "EC_SIGN_P384_SHA384",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * CryptoKey can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
+ * ```
  */
 export class CryptoKey extends pulumi.CustomResource {
     /**

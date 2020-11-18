@@ -4,6 +4,7 @@
 package projects
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,50 @@ import (
 // * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services/generateServiceIdentity)
 //
 // ## Example Usage
+// ### Service Identity Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		hcSa, err := projects.NewServiceIdentity(ctx, "hcSa", &projects.ServiceIdentityArgs{
+// 			Project: pulumi.String(project.ProjectId),
+// 			Service: pulumi.String("healthcare.googleapis.com"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMMember(ctx, "hcSaBqJobuser", &projects.IAMMemberArgs{
+// 			Project: pulumi.String(project.ProjectId),
+// 			Role:    pulumi.String("roles/bigquery.jobUser"),
+// 			Member: hcSa.Email.ApplyT(func(email string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type ServiceIdentity struct {
 	pulumi.CustomResourceState
 
@@ -105,4 +150,43 @@ type ServiceIdentityArgs struct {
 
 func (ServiceIdentityArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceIdentityArgs)(nil)).Elem()
+}
+
+type ServiceIdentityInput interface {
+	pulumi.Input
+
+	ToServiceIdentityOutput() ServiceIdentityOutput
+	ToServiceIdentityOutputWithContext(ctx context.Context) ServiceIdentityOutput
+}
+
+func (ServiceIdentity) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIdentity)(nil)).Elem()
+}
+
+func (i ServiceIdentity) ToServiceIdentityOutput() ServiceIdentityOutput {
+	return i.ToServiceIdentityOutputWithContext(context.Background())
+}
+
+func (i ServiceIdentity) ToServiceIdentityOutputWithContext(ctx context.Context) ServiceIdentityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput)
+}
+
+type ServiceIdentityOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceIdentityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIdentityOutput)(nil)).Elem()
+}
+
+func (o ServiceIdentityOutput) ToServiceIdentityOutput() ServiceIdentityOutput {
+	return o
+}
+
+func (o ServiceIdentityOutput) ToServiceIdentityOutputWithContext(ctx context.Context) ServiceIdentityOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceIdentityOutput{})
 }

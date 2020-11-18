@@ -52,6 +52,62 @@ class Instance(pulumi.CustomResource):
         and
         [API](https://cloud.google.com/compute/docs/reference/latest/instances).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Instance("default",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image="debian-cloud/debian-9",
+                ),
+            ),
+            machine_type="e2-medium",
+            metadata={
+                "foo": "bar",
+            },
+            metadata_startup_script="echo hi > /test.txt",
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+                network="default",
+            )],
+            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
+                interface="SCSI",
+            )],
+            service_account=gcp.compute.InstanceServiceAccountArgs(
+                scopes=[
+                    "userinfo-email",
+                    "compute-ro",
+                    "storage-ro",
+                ],
+            ),
+            tags=[
+                "foo",
+                "bar",
+            ],
+            zone="us-central1-a")
+        ```
+
+        ## Import
+
+        Instances can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/instance:Instance default {{name}}
+        ```
+
+         [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows this prvider to stop the instance to update its properties.

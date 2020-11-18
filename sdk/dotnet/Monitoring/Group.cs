@@ -22,6 +22,58 @@ namespace Pulumi.Gcp.Monitoring
     ///     * [Official Documentation](https://cloud.google.com/monitoring/groups/)
     /// 
     /// ## Example Usage
+    /// ### Monitoring Group Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new Gcp.Monitoring.Group("basic", new Gcp.Monitoring.GroupArgs
+    ///         {
+    ///             DisplayName = "tf-test MonitoringGroup",
+    ///             Filter = "resource.metadata.region=\"europe-west2\"",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Monitoring Group Subgroup
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var parent = new Gcp.Monitoring.Group("parent", new Gcp.Monitoring.GroupArgs
+    ///         {
+    ///             DisplayName = "tf-test MonitoringParentGroup",
+    ///             Filter = "resource.metadata.region=\"europe-west2\"",
+    ///         });
+    ///         var subgroup = new Gcp.Monitoring.Group("subgroup", new Gcp.Monitoring.GroupArgs
+    ///         {
+    ///             DisplayName = "tf-test MonitoringSubGroup",
+    ///             Filter = "resource.metadata.region=\"europe-west2\"",
+    ///             ParentName = parent.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Group can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:monitoring/group:Group default {{name}}
+    /// ```
     /// </summary>
     public partial class Group : Pulumi.CustomResource
     {

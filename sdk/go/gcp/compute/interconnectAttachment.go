@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -14,6 +15,55 @@ import (
 // information, see Creating VLAN Attachments.
 //
 // ## Example Usage
+// ### Interconnect Attachment Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foobar, err := compute.NewRouter(ctx, "foobar", &compute.RouterArgs{
+// 			Network: pulumi.Any(google_compute_network.Foobar.Name),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
+// 			Interconnect: pulumi.String("my-interconnect-id"),
+// 			Router:       foobar.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// InterconnectAttachment can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default projects/{{project}}/regions/{{region}}/interconnectAttachments/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
+// ```
 type InterconnectAttachment struct {
 	pulumi.CustomResourceState
 
@@ -409,4 +459,43 @@ type InterconnectAttachmentArgs struct {
 
 func (InterconnectAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*interconnectAttachmentArgs)(nil)).Elem()
+}
+
+type InterconnectAttachmentInput interface {
+	pulumi.Input
+
+	ToInterconnectAttachmentOutput() InterconnectAttachmentOutput
+	ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput
+}
+
+func (InterconnectAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachment)(nil)).Elem()
+}
+
+func (i InterconnectAttachment) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
+	return i.ToInterconnectAttachmentOutputWithContext(context.Background())
+}
+
+func (i InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput)
+}
+
+type InterconnectAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (InterconnectAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachmentOutput)(nil)).Elem()
+}
+
+func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
+	return o
+}
+
+func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InterconnectAttachmentOutput{})
 }

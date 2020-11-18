@@ -23,6 +23,57 @@ namespace Pulumi.Gcp.Compute
     ///     * [Adding a persistent disk](https://cloud.google.com/compute/docs/disks/add-persistent-disk)
     /// 
     /// **Note:** When using `gcp.compute.AttachedDisk` you **must** use `lifecycle.ignore_changes = ["attached_disk"]` on the `gcp.compute.Instance` resource that has the disks attached. Otherwise the two resources will fight for control of the attached disk block.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             Zone = "us-west1-a",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-9",
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultAttachedDisk = new Gcp.Compute.AttachedDisk("defaultAttachedDisk", new Gcp.Compute.AttachedDiskArgs
+    ///         {
+    ///             Disk = google_compute_disk.Default.Id,
+    ///             Instance = defaultInstance.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Attached Disk can be imported the following ways
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default projects/{{project}}/zones/{{zone}}/instances/{{instance.name}}/{{disk.name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
+    /// ```
     /// </summary>
     public partial class AttachedDisk : Pulumi.CustomResource
     {

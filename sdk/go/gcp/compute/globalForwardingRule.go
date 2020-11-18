@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,243 @@ import (
 // https://cloud.google.com/compute/docs/load-balancing/http/
 //
 // ## Example Usage
+// ### Global Forwarding Rule Http
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
+// 			RequestPath:      pulumi.String("/"),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			PortName:   pulumi.String("http"),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHttpHealthCheck.ID(),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			Description:    pulumi.String("a description"),
+// 			DefaultService: defaultBackendService.ID(),
+// 			HostRules: compute.URLMapHostRuleArray{
+// 				&compute.URLMapHostRuleArgs{
+// 					Hosts: pulumi.StringArray{
+// 						pulumi.String("mysite.com"),
+// 					},
+// 					PathMatcher: pulumi.String("allpaths"),
+// 				},
+// 			},
+// 			PathMatchers: compute.URLMapPathMatcherArray{
+// 				&compute.URLMapPathMatcherArgs{
+// 					Name:           pulumi.String("allpaths"),
+// 					DefaultService: defaultBackendService.ID(),
+// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
+// 						&compute.URLMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/*"),
+// 							},
+// 							Service: defaultBackendService.ID(),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			Description: pulumi.String("a description"),
+// 			UrlMap:      defaultURLMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+// 			Target:    defaultTargetHttpProxy.ID(),
+// 			PortRange: pulumi.String("80"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Global Forwarding Rule Internal
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debianImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		instanceTemplate, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String(debianImage.SelfLink),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		igm, err := compute.NewInstanceGroupManager(ctx, "igm", &compute.InstanceGroupManagerArgs{
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: instanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			BaseInstanceName: pulumi.String("internal-glb"),
+// 			Zone:             pulumi.String("us-central1-f"),
+// 			TargetSize:       pulumi.Int(1),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			PortName:            pulumi.String("http"),
+// 			Protocol:            pulumi.String("HTTP"),
+// 			TimeoutSec:          pulumi.Int(10),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+// 			Backends: compute.BackendServiceBackendArray{
+// 				&compute.BackendServiceBackendArgs{
+// 					Group:              igm.InstanceGroup,
+// 					BalancingMode:      pulumi.String("RATE"),
+// 					CapacityScaler:     pulumi.Float64(0.4),
+// 					MaxRatePerInstance: pulumi.Float64(50),
+// 				},
+// 			},
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHealthCheck.ID(),
+// 			}),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			Description:    pulumi.String("a description"),
+// 			DefaultService: defaultBackendService.ID(),
+// 			HostRules: compute.URLMapHostRuleArray{
+// 				&compute.URLMapHostRuleArgs{
+// 					Hosts: pulumi.StringArray{
+// 						pulumi.String("mysite.com"),
+// 					},
+// 					PathMatcher: pulumi.String("allpaths"),
+// 				},
+// 			},
+// 			PathMatchers: compute.URLMapPathMatcherArray{
+// 				&compute.URLMapPathMatcherArgs{
+// 					Name:           pulumi.String("allpaths"),
+// 					DefaultService: defaultBackendService.ID(),
+// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
+// 						&compute.URLMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/*"),
+// 							},
+// 							Service: defaultBackendService.ID(),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTargetHttpProxy, err := compute.NewTargetHttpProxy(ctx, "defaultTargetHttpProxy", &compute.TargetHttpProxyArgs{
+// 			Description: pulumi.String("a description"),
+// 			UrlMap:      defaultURLMap.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+// 			Target:              defaultTargetHttpProxy.ID(),
+// 			PortRange:           pulumi.String("80"),
+// 			LoadBalancingScheme: pulumi.String("INTERNAL_SELF_MANAGED"),
+// 			IpAddress:           pulumi.String("0.0.0.0"),
+// 			MetadataFilters: compute.GlobalForwardingRuleMetadataFilterArray{
+// 				&compute.GlobalForwardingRuleMetadataFilterArgs{
+// 					FilterMatchCriteria: pulumi.String("MATCH_ANY"),
+// 					FilterLabels: compute.GlobalForwardingRuleMetadataFilterFilterLabelArray{
+// 						&compute.GlobalForwardingRuleMetadataFilterFilterLabelArgs{
+// 							Name:  pulumi.String("PLANET"),
+// 							Value: pulumi.String("MARS"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// GlobalForwardingRule can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{name}}
+// ```
 type GlobalForwardingRule struct {
 	pulumi.CustomResourceState
 
@@ -550,4 +788,43 @@ type GlobalForwardingRuleArgs struct {
 
 func (GlobalForwardingRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*globalForwardingRuleArgs)(nil)).Elem()
+}
+
+type GlobalForwardingRuleInput interface {
+	pulumi.Input
+
+	ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput
+	ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput
+}
+
+func (GlobalForwardingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalForwardingRule)(nil)).Elem()
+}
+
+func (i GlobalForwardingRule) ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput {
+	return i.ToGlobalForwardingRuleOutputWithContext(context.Background())
+}
+
+func (i GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
+}
+
+type GlobalForwardingRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalForwardingRuleOutput)(nil)).Elem()
+}
+
+func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput {
+	return o
+}
+
+func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GlobalForwardingRuleOutput{})
 }

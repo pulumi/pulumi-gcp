@@ -4,6 +4,7 @@
 package containeranalysis
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,22 @@ import (
 //     * [Official Documentation](https://cloud.google.com/container-analysis/)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// Occurrence can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:containeranalysis/occurence:Occurence default projects/{{project}}/occurrences/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:containeranalysis/occurence:Occurence default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
+// ```
 type Occurence struct {
 	pulumi.CustomResourceState
 
@@ -222,4 +239,43 @@ type OccurenceArgs struct {
 
 func (OccurenceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*occurenceArgs)(nil)).Elem()
+}
+
+type OccurenceInput interface {
+	pulumi.Input
+
+	ToOccurenceOutput() OccurenceOutput
+	ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput
+}
+
+func (Occurence) ElementType() reflect.Type {
+	return reflect.TypeOf((*Occurence)(nil)).Elem()
+}
+
+func (i Occurence) ToOccurenceOutput() OccurenceOutput {
+	return i.ToOccurenceOutputWithContext(context.Background())
+}
+
+func (i Occurence) ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OccurenceOutput)
+}
+
+type OccurenceOutput struct {
+	*pulumi.OutputState
+}
+
+func (OccurenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OccurenceOutput)(nil)).Elem()
+}
+
+func (o OccurenceOutput) ToOccurenceOutput() OccurenceOutput {
+	return o
+}
+
+func (o OccurenceOutput) ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OccurenceOutput{})
 }

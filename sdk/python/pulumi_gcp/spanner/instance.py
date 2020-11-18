@@ -35,6 +35,50 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/spanner/)
 
         ## Example Usage
+        ### Spanner Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            },
+            num_nodes=2)
+        ```
+        ### Spanner Instance Multi Regional
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            config="nam-eur-asia1",
+            display_name="Multi Regional Instance",
+            labels={
+                "foo": "bar",
+            },
+            num_nodes=2)
+        ```
+
+        ## Import
+
+        Instance can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:spanner/instance:Instance default projects/{{project}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:spanner/instance:Instance default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:spanner/instance:Instance default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

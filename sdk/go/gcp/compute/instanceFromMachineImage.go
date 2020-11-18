@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -409,4 +410,43 @@ type InstanceFromMachineImageArgs struct {
 
 func (InstanceFromMachineImageArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceFromMachineImageArgs)(nil)).Elem()
+}
+
+type InstanceFromMachineImageInput interface {
+	pulumi.Input
+
+	ToInstanceFromMachineImageOutput() InstanceFromMachineImageOutput
+	ToInstanceFromMachineImageOutputWithContext(ctx context.Context) InstanceFromMachineImageOutput
+}
+
+func (InstanceFromMachineImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImage)(nil)).Elem()
+}
+
+func (i InstanceFromMachineImage) ToInstanceFromMachineImageOutput() InstanceFromMachineImageOutput {
+	return i.ToInstanceFromMachineImageOutputWithContext(context.Background())
+}
+
+func (i InstanceFromMachineImage) ToInstanceFromMachineImageOutputWithContext(ctx context.Context) InstanceFromMachineImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromMachineImageOutput)
+}
+
+type InstanceFromMachineImageOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceFromMachineImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromMachineImageOutput)(nil)).Elem()
+}
+
+func (o InstanceFromMachineImageOutput) ToInstanceFromMachineImageOutput() InstanceFromMachineImageOutput {
+	return o
+}
+
+func (o InstanceFromMachineImageOutput) ToInstanceFromMachineImageOutputWithContext(ctx context.Context) InstanceFromMachineImageOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceFromMachineImageOutput{})
 }

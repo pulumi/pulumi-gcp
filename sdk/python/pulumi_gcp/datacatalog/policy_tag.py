@@ -23,7 +23,14 @@ class PolicyTag(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a PolicyTag resource with the given unique name, props, and options.
+        ## Import
+
+        PolicyTag can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description of this policy tag. It must: contain only unicode characters, tabs,

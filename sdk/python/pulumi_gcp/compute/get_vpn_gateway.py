@@ -115,6 +115,15 @@ def get_vpn_gateway(name: Optional[str] = None,
     """
     Get a VPN gateway within GCE from its name.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    my_vpn_gateway = gcp.compute.get_vpn_gateway(name="vpn-gateway-us-east1")
+    ```
+
 
     :param str name: The name of the VPN gateway.
     :param str project: The project in which the resource belongs. If it

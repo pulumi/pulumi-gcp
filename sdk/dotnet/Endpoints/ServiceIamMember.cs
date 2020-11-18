@@ -19,6 +19,109 @@ namespace Pulumi.Gcp.Endpoints
     /// &gt; **Note:** `gcp.endpoints.ServiceIamPolicy` **cannot** be used in conjunction with `gcp.endpoints.ServiceIamBinding` and `gcp.endpoints.ServiceIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.endpoints.ServiceIamBinding` resources **can be** used in conjunction with `gcp.endpoints.ServiceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_endpoints\_service\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/viewer",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Endpoints.ServiceIamPolicy("policy", new Gcp.Endpoints.ServiceIamPolicyArgs
+    ///         {
+    ///             ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_endpoints\_service\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Endpoints.ServiceIamBinding("binding", new Gcp.Endpoints.ServiceIamBindingArgs
+    ///         {
+    ///             ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_endpoints\_service\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.Endpoints.ServiceIamMember("member", new Gcp.Endpoints.ServiceIamMemberArgs
+    ///         {
+    ///             ServiceName = google_endpoints_service.Endpoints_service.Service_name,
+    ///             Role = "roles/viewer",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// For all import syntaxes, the "resource in question" can take any of the following forms* services/{{serviceName}} * {{serviceName}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Endpoints service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:endpoints/serviceIamMember:ServiceIamMember editor "services/{{serviceName}} roles/viewer user:jane@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:endpoints/serviceIamMember:ServiceIamMember editor "services/{{serviceName}} roles/viewer"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:endpoints/serviceIamMember:ServiceIamMember editor services/{{serviceName}}
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     public partial class ServiceIamMember : Pulumi.CustomResource
     {

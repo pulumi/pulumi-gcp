@@ -39,6 +39,36 @@ class DomainTrust(pulumi.CustomResource):
         state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
 
         ## Example Usage
+        ### Active Directory Domain Trust Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ad_domain_trust = gcp.activedirectory.DomainTrust("ad-domain-trust",
+            domain="test-managed-ad.com",
+            target_dns_ip_addresses=["10.1.0.100"],
+            target_domain_name="example-gcp.com",
+            trust_direction="OUTBOUND",
+            trust_handshake_secret="Testing1!",
+            trust_type="FOREST")
+        ```
+
+        ## Import
+
+        DomainTrust can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{project}}/{{domain}}/{{target_domain_name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

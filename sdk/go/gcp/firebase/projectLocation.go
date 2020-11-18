@@ -4,6 +4,7 @@
 package firebase
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -28,6 +29,18 @@ import (
 //     * [Official Documentation](https://firebase.google.com/)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// ProjectLocation can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:firebase/projectLocation:ProjectLocation default projects/{{project}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:firebase/projectLocation:ProjectLocation default {{project}}
+// ```
 type ProjectLocation struct {
 	pulumi.CustomResourceState
 
@@ -112,4 +125,43 @@ type ProjectLocationArgs struct {
 
 func (ProjectLocationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectLocationArgs)(nil)).Elem()
+}
+
+type ProjectLocationInput interface {
+	pulumi.Input
+
+	ToProjectLocationOutput() ProjectLocationOutput
+	ToProjectLocationOutputWithContext(ctx context.Context) ProjectLocationOutput
+}
+
+func (ProjectLocation) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLocation)(nil)).Elem()
+}
+
+func (i ProjectLocation) ToProjectLocationOutput() ProjectLocationOutput {
+	return i.ToProjectLocationOutputWithContext(context.Background())
+}
+
+func (i ProjectLocation) ToProjectLocationOutputWithContext(ctx context.Context) ProjectLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectLocationOutput)
+}
+
+type ProjectLocationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectLocationOutput)(nil)).Elem()
+}
+
+func (o ProjectLocationOutput) ToProjectLocationOutput() ProjectLocationOutput {
+	return o
+}
+
+func (o ProjectLocationOutput) ToProjectLocationOutputWithContext(ctx context.Context) ProjectLocationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectLocationOutput{})
 }

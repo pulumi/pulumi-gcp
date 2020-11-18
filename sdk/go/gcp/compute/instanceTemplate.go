@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -14,6 +15,191 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
 // and
 // [API](https://cloud.google.com/compute/docs/reference/latest/instanceTemplates).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		myImage, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobar, err := compute.NewDisk(ctx, "foobar", &compute.DiskArgs{
+// 			Image: pulumi.String(myImage.SelfLink),
+// 			Size:  pulumi.Int(10),
+// 			Type:  pulumi.String("pd-ssd"),
+// 			Zone:  pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstanceTemplate(ctx, "_default", &compute.InstanceTemplateArgs{
+// 			Description: pulumi.String("This template is used to create app server instances."),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 				pulumi.String("bar"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"environment": pulumi.String("dev"),
+// 			},
+// 			InstanceDescription: pulumi.String("description assigned to instances"),
+// 			MachineType:         pulumi.String("e2-medium"),
+// 			CanIpForward:        pulumi.Bool(false),
+// 			Scheduling: &compute.InstanceTemplateSchedulingArgs{
+// 				AutomaticRestart:  pulumi.Bool(true),
+// 				OnHostMaintenance: pulumi.String("MIGRATE"),
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 				&compute.InstanceTemplateDiskArgs{
+// 					Source:     foobar.Name,
+// 					AutoDelete: pulumi.Bool(false),
+// 					Boot:       pulumi.Bool(false),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("userinfo-email"),
+// 					pulumi.String("compute-ro"),
+// 					pulumi.String("storage-ro"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ## Deploying the Latest Image
+//
+// A common way to use instance templates and managed instance groups is to deploy the
+// latest image in a family, usually the latest build of your application. There are two
+// ways to do this in the provider, and they have their pros and cons. The difference ends
+// up being in how "latest" is interpreted. You can either deploy the latest image available
+// when the provider runs, or you can have each instance check what the latest image is when
+// it's being created, either as part of a scaling event or being rebuilt by the instance
+// group manager.
+//
+// If you're not sure, we recommend deploying the latest image available when the provider runs,
+// because this means all the instances in your group will be based on the same image, always,
+// and means that no upgrades or changes to your instances happen outside of a `pulumi up`.
+// You can achieve this by using the `compute.Image`
+// data source, which will retrieve the latest image on every `pulumi apply`, and will update
+// the template to use that specific image:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		_, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 			NamePrefix:  pulumi.String("instance-template-"),
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.Any(google_compute_image.My_image.Self_link),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// To have instances update to the latest on every scaling event or instance re-creation,
+// use the family as the image for the disk, and it will use GCP's default behavior, setting
+// the image for the template to the family:
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewInstanceTemplate(ctx, "instanceTemplate", &compute.InstanceTemplateArgs{
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
+// 				},
+// 			},
+// 			MachineType: pulumi.String("e2-medium"),
+// 			NamePrefix:  pulumi.String("instance-template-"),
+// 			Region:      pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance templates can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default {{name}}
+// ```
+//
+//  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
 type InstanceTemplate struct {
 	pulumi.CustomResourceState
 
@@ -419,4 +605,43 @@ type InstanceTemplateArgs struct {
 
 func (InstanceTemplateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceTemplateArgs)(nil)).Elem()
+}
+
+type InstanceTemplateInput interface {
+	pulumi.Input
+
+	ToInstanceTemplateOutput() InstanceTemplateOutput
+	ToInstanceTemplateOutputWithContext(ctx context.Context) InstanceTemplateOutput
+}
+
+func (InstanceTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplate)(nil)).Elem()
+}
+
+func (i InstanceTemplate) ToInstanceTemplateOutput() InstanceTemplateOutput {
+	return i.ToInstanceTemplateOutputWithContext(context.Background())
+}
+
+func (i InstanceTemplate) ToInstanceTemplateOutputWithContext(ctx context.Context) InstanceTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceTemplateOutput)
+}
+
+type InstanceTemplateOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTemplateOutput)(nil)).Elem()
+}
+
+func (o InstanceTemplateOutput) ToInstanceTemplateOutput() InstanceTemplateOutput {
+	return o
+}
+
+func (o InstanceTemplateOutput) ToInstanceTemplateOutputWithContext(ctx context.Context) InstanceTemplateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceTemplateOutput{})
 }

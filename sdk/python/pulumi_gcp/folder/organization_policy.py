@@ -32,6 +32,81 @@ class OrganizationPolicy(pulumi.CustomResource):
         documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
         [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
 
+        ## Example Usage
+
+        To set policy with a [boolean constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-boolean-constraints):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        serial_port_policy = gcp.folder.OrganizationPolicy("serialPortPolicy",
+            boolean_policy=gcp.folder.OrganizationPolicyBooleanPolicyArgs(
+                enforced=True,
+            ),
+            constraint="compute.disableSerialPortAccess",
+            folder="folders/123456789")
+        ```
+
+        To set a policy with a [list constraint](https://cloud.google.com/resource-manager/docs/organization-policy/quickstart-list-constraints):
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
+            constraint="serviceuser.services",
+            folder="folders/123456789",
+            list_policy=gcp.folder.OrganizationPolicyListPolicyArgs(
+                allow=gcp.folder.OrganizationPolicyListPolicyAllowArgs(
+                    all=True,
+                ),
+            ))
+        ```
+
+        Or to deny some services, use the following instead:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
+            constraint="serviceuser.services",
+            folder="folders/123456789",
+            list_policy=gcp.folder.OrganizationPolicyListPolicyArgs(
+                deny=gcp.folder.OrganizationPolicyListPolicyDenyArgs(
+                    values=["cloudresourcemanager.googleapis.com"],
+                ),
+                suggested_value="compute.googleapis.com",
+            ))
+        ```
+
+        To restore the default folder organization policy, use the following instead:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        services_policy = gcp.folder.OrganizationPolicy("servicesPolicy",
+            constraint="serviceuser.services",
+            folder="folders/123456789",
+            restore_policy=gcp.folder.OrganizationPolicyRestorePolicyArgs(
+                default=True,
+            ))
+        ```
+
+        ## Import
+
+        Folder organization policies can be imported using any of the follow formats
+
+        ```sh
+         $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy policy folders/folder-1234/constraints/serviceuser.services
+        ```
+
+        ```sh
+         $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy policy folder-1234/serviceuser.services
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OrganizationPolicyBooleanPolicyArgs']] boolean_policy: A boolean policy is a constraint that is either enforced or not. Structure is documented below.

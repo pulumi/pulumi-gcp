@@ -31,6 +31,26 @@ class OrganizationExclusion(pulumi.CustomResource):
         Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
         granted to the credentials used with this provider.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_exclusion = gcp.logging.OrganizationExclusion("my-exclusion",
+            description="Exclude GCE instance debug logs",
+            filter="resource.type = gce_instance AND severity <= DEBUG",
+            org_id="123456789")
+        ```
+
+        ## Import
+
+        Organization-level logging exclusions can be imported using their URI, e.g.
+
+        ```sh
+         $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion my_exclusion organizations/{{organization}}/exclusions/{{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description.

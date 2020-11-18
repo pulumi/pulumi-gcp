@@ -2,10 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * WorkloadIdentityPoolProvider can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+ * ```
+ */
 export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     /**
      * Get an existing WorkloadIdentityPoolProvider resource's state with the given name, ID, and optional extra

@@ -19,6 +19,22 @@ namespace Pulumi.Gcp.CloudAsset
     ///     * [Official Documentation](https://cloud.google.com/asset-inventory/docs)
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// ProjectFeed can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default projects/{{project}}/feeds/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
+    /// ```
     /// </summary>
     public partial class ProjectFeed : Pulumi.CustomResource
     {

@@ -35,6 +35,96 @@ class Cluster(pulumi.CustomResource):
         whole cluster!
 
         ## Example Usage
+        ### Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        simplecluster = gcp.dataproc.Cluster("simplecluster", region="us-central1")
+        ```
+        ### Advanced
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        mycluster = gcp.dataproc.Cluster("mycluster",
+            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
+                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
+                    service_account_scopes=[
+                        "https://www.googleapis.com/auth/monitoring",
+                        "useraccounts-ro",
+                        "storage-rw",
+                        "logging-write",
+                    ],
+                    tags=[
+                        "foo",
+                        "bar",
+                    ],
+                ),
+                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
+                    script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+                    timeout_sec=500,
+                )],
+                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
+                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
+                        boot_disk_size_gb=15,
+                        boot_disk_type="pd-ssd",
+                    ),
+                    machine_type="e2-medium",
+                    num_instances=1,
+                ),
+                preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
+                    num_instances=0,
+                ),
+                software_config=gcp.dataproc.ClusterClusterConfigSoftwareConfigArgs(
+                    image_version="1.3.7-deb9",
+                    override_properties={
+                        "dataproc:dataproc.allow.zero.workers": "true",
+                    },
+                ),
+                staging_bucket="dataproc-staging-bucket",
+                worker_config={
+                    "diskConfig": {
+                        "boot_disk_size_gb": 15,
+                        "numLocalSsds": 1,
+                    },
+                    "machine_type": "e2-medium",
+                    "min_cpu_platform": "Intel Skylake",
+                    "numInstances": 2,
+                },
+            ),
+            graceful_decommission_timeout="120s",
+            labels={
+                "foo": "bar",
+            },
+            region="us-central1")
+        ```
+        ### Using A GPU Accelerator
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        accelerated_cluster = gcp.dataproc.Cluster("acceleratedCluster",
+            cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
+                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
+                    zone="us-central1-a",
+                ),
+                master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
+                    accelerators=[gcp.dataproc.ClusterClusterConfigMasterConfigAcceleratorArgs(
+                        accelerator_count=1,
+                        accelerator_type="nvidia-tesla-k80",
+                    )],
+                ),
+            ),
+            region="us-central1")
+        ```
+
+        ## Import
+
+        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

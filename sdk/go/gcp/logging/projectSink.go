@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,14 @@ import (
 // > **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
 //
 // > **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
+//
+// ## Import
+//
+// Project-level logging sinks can be imported using their URI, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
+// ```
 type ProjectSink struct {
 	pulumi.CustomResourceState
 
@@ -252,4 +261,43 @@ type ProjectSinkArgs struct {
 
 func (ProjectSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectSinkArgs)(nil)).Elem()
+}
+
+type ProjectSinkInput interface {
+	pulumi.Input
+
+	ToProjectSinkOutput() ProjectSinkOutput
+	ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput
+}
+
+func (ProjectSink) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectSink)(nil)).Elem()
+}
+
+func (i ProjectSink) ToProjectSinkOutput() ProjectSinkOutput {
+	return i.ToProjectSinkOutputWithContext(context.Background())
+}
+
+func (i ProjectSink) ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkOutput)
+}
+
+type ProjectSinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectSinkOutput)(nil)).Elem()
+}
+
+func (o ProjectSinkOutput) ToProjectSinkOutput() ProjectSinkOutput {
+	return o
+}
+
+func (o ProjectSinkOutput) ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectSinkOutput{})
 }

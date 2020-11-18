@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -21,6 +20,114 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
  *
  * ## Example Usage
+ * ### Backend Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.id]});
+ * ```
+ * ### Backend Service Traffic Director Round Robin
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {httpHealthCheck: {
+ *     port: 80,
+ * }}, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     healthChecks: [healthCheck.id],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     localityLbPolicy: "ROUND_ROBIN",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Backend Service Traffic Director Ring Hash
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const healthCheck = new gcp.compute.HealthCheck("healthCheck", {httpHealthCheck: {
+ *     port: 80,
+ * }}, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     healthChecks: [healthCheck.id],
+ *     loadBalancingScheme: "INTERNAL_SELF_MANAGED",
+ *     localityLbPolicy: "RING_HASH",
+ *     sessionAffinity: "HTTP_COOKIE",
+ *     circuitBreakers: {
+ *         maxConnections: 10,
+ *     },
+ *     consistentHash: {
+ *         httpCookie: {
+ *             ttl: {
+ *                 seconds: 11,
+ *                 nanos: 1111,
+ *             },
+ *             name: "mycookie",
+ *         },
+ *     },
+ *     outlierDetection: {
+ *         consecutiveErrors: 2,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Backend Service Network Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const externalProxy = new gcp.compute.GlobalNetworkEndpointGroup("externalProxy", {
+ *     networkEndpointType: "INTERNET_FQDN_PORT",
+ *     defaultPort: "443",
+ * });
+ * const proxy = new gcp.compute.GlobalNetworkEndpoint("proxy", {
+ *     globalNetworkEndpointGroup: externalProxy.id,
+ *     fqdn: "test.example.com",
+ *     port: externalProxy.defaultPort,
+ * });
+ * const _default = new gcp.compute.BackendService("default", {
+ *     enableCdn: true,
+ *     timeoutSec: 10,
+ *     connectionDrainingTimeoutSec: 10,
+ *     customRequestHeaders: [pulumi.interpolate`host: ${proxy.fqdn}`],
+ *     backends: [{
+ *         group: externalProxy.id,
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * BackendService can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendService:BackendService default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/backendService:BackendService default {{name}}
+ * ```
  */
 export class BackendService extends pulumi.CustomResource {
     /**

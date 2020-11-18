@@ -21,6 +21,18 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * Client can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/client:Client default {{brand}}/identityAwareProxyClients/{{client_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
+ * ```
  */
 export class Client extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,22 @@ import (
 //     * [Setting Up SSL proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// TargetSslProxy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
+// ```
 type TargetSSLProxy struct {
 	pulumi.CustomResourceState
 
@@ -236,4 +253,43 @@ type TargetSSLProxyArgs struct {
 
 func (TargetSSLProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetSSLProxyArgs)(nil)).Elem()
+}
+
+type TargetSSLProxyInput interface {
+	pulumi.Input
+
+	ToTargetSSLProxyOutput() TargetSSLProxyOutput
+	ToTargetSSLProxyOutputWithContext(ctx context.Context) TargetSSLProxyOutput
+}
+
+func (TargetSSLProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSSLProxy)(nil)).Elem()
+}
+
+func (i TargetSSLProxy) ToTargetSSLProxyOutput() TargetSSLProxyOutput {
+	return i.ToTargetSSLProxyOutputWithContext(context.Background())
+}
+
+func (i TargetSSLProxy) ToTargetSSLProxyOutputWithContext(ctx context.Context) TargetSSLProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyOutput)
+}
+
+type TargetSSLProxyOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetSSLProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetSSLProxyOutput)(nil)).Elem()
+}
+
+func (o TargetSSLProxyOutput) ToTargetSSLProxyOutput() TargetSSLProxyOutput {
+	return o
+}
+
+func (o TargetSSLProxyOutput) ToTargetSSLProxyOutputWithContext(ctx context.Context) TargetSSLProxyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetSSLProxyOutput{})
 }

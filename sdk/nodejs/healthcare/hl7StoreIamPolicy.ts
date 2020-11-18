@@ -14,6 +14,76 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.healthcare.Hl7StoreIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.Hl7StoreIamBinding` and `gcp.healthcare.Hl7StoreIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.healthcare.Hl7StoreIamBinding` resources **can be** used in conjunction with `gcp.healthcare.Hl7StoreIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_healthcare\_hl7\_v2\_store\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamPolicy("hl7V2Store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_healthcare\_hl7\_v2\_store\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamBinding("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_healthcare\_hl7\_v2\_store\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const hl7V2Store = new gcp.healthcare.Hl7StoreIamMember("hl7_v2_store", {
+ *     hl7V2StoreId: "your-hl7-v2-store-id",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ *
+ * This member resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer user:foo@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+ *
+ * This binding resource can be imported using the `hl7_v2_store_id` and role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy hl7_v2_store_iam "your-project-id/location-name/dataset-name/hl7-v2-store-name roles/viewer"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question.
+ *
+ * This policy resource can be imported using the `hl7_v2_store_id`, role, and account e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
+ * ```
  */
 export class Hl7StoreIamPolicy extends pulumi.CustomResource {
     /**

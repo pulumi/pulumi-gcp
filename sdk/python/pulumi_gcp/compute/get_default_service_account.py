@@ -104,6 +104,16 @@ def get_default_service_account(project: Optional[str] = None,
     """
     Use this data source to retrieve default service account for this project
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    default = gcp.compute.get_default_service_account()
+    pulumi.export("defaultAccount", default.email)
+    ```
+
 
     :param str project: The project ID. If it is not provided, the provider project is used.
     """

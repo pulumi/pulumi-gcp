@@ -4,6 +4,7 @@
 package dataloss
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,71 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-job-triggers)
 //
 // ## Example Usage
+// ### Dlp Job Trigger Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataloss.NewPreventionJobTrigger(ctx, "basic", &dataloss.PreventionJobTriggerArgs{
+// 			Description: pulumi.String("Description"),
+// 			DisplayName: pulumi.String("Displayname"),
+// 			InspectJob: &dataloss.PreventionJobTriggerInspectJobArgs{
+// 				Actions: dataloss.PreventionJobTriggerInspectJobActionArray{
+// 					&dataloss.PreventionJobTriggerInspectJobActionArgs{
+// 						SaveFindings: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsArgs{
+// 							OutputConfig: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs{
+// 								Table: &dataloss.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTableArgs{
+// 									DatasetId: pulumi.String("asdf"),
+// 									ProjectId: pulumi.String("asdf"),
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 				InspectTemplateName: pulumi.String("fake"),
+// 				StorageConfig: &dataloss.PreventionJobTriggerInspectJobStorageConfigArgs{
+// 					CloudStorageOptions: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsArgs{
+// 						FileSet: &dataloss.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetArgs{
+// 							Url: pulumi.String("gs://mybucket/directory/"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Parent: pulumi.String("projects/my-project-name"),
+// 			Triggers: dataloss.PreventionJobTriggerTriggerArray{
+// 				&dataloss.PreventionJobTriggerTriggerArgs{
+// 					Schedule: &dataloss.PreventionJobTriggerTriggerScheduleArgs{
+// 						RecurrencePeriodDuration: pulumi.String("86400s"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// JobTrigger can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/jobTriggers/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
+// ```
 type PreventionJobTrigger struct {
 	pulumi.CustomResourceState
 
@@ -173,4 +239,43 @@ type PreventionJobTriggerArgs struct {
 
 func (PreventionJobTriggerArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionJobTriggerArgs)(nil)).Elem()
+}
+
+type PreventionJobTriggerInput interface {
+	pulumi.Input
+
+	ToPreventionJobTriggerOutput() PreventionJobTriggerOutput
+	ToPreventionJobTriggerOutputWithContext(ctx context.Context) PreventionJobTriggerOutput
+}
+
+func (PreventionJobTrigger) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTrigger)(nil)).Elem()
+}
+
+func (i PreventionJobTrigger) ToPreventionJobTriggerOutput() PreventionJobTriggerOutput {
+	return i.ToPreventionJobTriggerOutputWithContext(context.Background())
+}
+
+func (i PreventionJobTrigger) ToPreventionJobTriggerOutputWithContext(ctx context.Context) PreventionJobTriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerOutput)
+}
+
+type PreventionJobTriggerOutput struct {
+	*pulumi.OutputState
+}
+
+func (PreventionJobTriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTriggerOutput)(nil)).Elem()
+}
+
+func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutput() PreventionJobTriggerOutput {
+	return o
+}
+
+func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutputWithContext(ctx context.Context) PreventionJobTriggerOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PreventionJobTriggerOutput{})
 }

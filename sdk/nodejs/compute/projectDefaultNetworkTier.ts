@@ -11,6 +11,25 @@ import * as utilities from "../utilities";
  *
  * For more information, see,
  * [the Project API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/projects/setDefaultNetworkTier).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultProjectDefaultNetworkTier = new gcp.compute.ProjectDefaultNetworkTier("default", {
+ *     networkTier: "PREMIUM",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource can be imported using the project ID
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default project-id`
+ * ```
  */
 export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
     /**

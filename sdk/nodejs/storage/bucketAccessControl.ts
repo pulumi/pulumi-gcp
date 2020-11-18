@@ -29,6 +29,27 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/storage/docs/access-control/lists)
  *
  * ## Example Usage
+ * ### Storage Bucket Access Control Public Bucket
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const bucket = new gcp.storage.Bucket("bucket", {});
+ * const publicRule = new gcp.storage.BucketAccessControl("publicRule", {
+ *     bucket: bucket.name,
+ *     role: "READER",
+ *     entity: "allUsers",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * BucketAccessControl can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}
+ * ```
  */
 export class BucketAccessControl extends pulumi.CustomResource {
     /**

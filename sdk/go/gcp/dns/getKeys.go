@@ -10,6 +10,36 @@ import (
 // Get the DNSKEY and DS records of DNSSEC-signed managed zones. For more information see the
 // [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
 // and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		foo, err := dns.NewManagedZone(ctx, "foo", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("foo.bar."),
+// 			DnssecConfig: &dns.ManagedZoneDnssecConfigArgs{
+// 				State:        pulumi.String("on"),
+// 				NonExistence: pulumi.String("nsec3"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("fooDnsDsRecord", fooDnsKeys.ApplyT(func(fooDnsKeys dns.GetKeysResult) (string, error) {
+// 			return fooDnsKeys.KeySigningKeys[0].DsRecord, nil
+// 		}).(pulumi.StringOutput))
+// 		return nil
+// 	})
+// }
+// ```
 func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption) (*GetKeysResult, error) {
 	var rv GetKeysResult
 	err := ctx.Invoke("gcp:dns/getKeys:getKeys", args, &rv, opts...)

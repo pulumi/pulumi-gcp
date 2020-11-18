@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -27,6 +26,47 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
  *
  * ## Example Usage
+ * ### Firewall Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultFirewall = new gcp.compute.Firewall("defaultFirewall", {
+ *     network: defaultNetwork.name,
+ *     allows: [
+ *         {
+ *             protocol: "icmp",
+ *         },
+ *         {
+ *             protocol: "tcp",
+ *             ports: [
+ *                 "80",
+ *                 "8080",
+ *                 "1000-2000",
+ *             ],
+ *         },
+ *     ],
+ *     sourceTags: ["web"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Firewall can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/firewall:Firewall default {{name}}
+ * ```
  */
 export class Firewall extends pulumi.CustomResource {
     /**

@@ -4,12 +4,20 @@
 package datacatalog
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Taxonomy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
+// ```
 type Taxonomy struct {
 	pulumi.CustomResourceState
 
@@ -160,4 +168,43 @@ type TaxonomyArgs struct {
 
 func (TaxonomyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*taxonomyArgs)(nil)).Elem()
+}
+
+type TaxonomyInput interface {
+	pulumi.Input
+
+	ToTaxonomyOutput() TaxonomyOutput
+	ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutput
+}
+
+func (Taxonomy) ElementType() reflect.Type {
+	return reflect.TypeOf((*Taxonomy)(nil)).Elem()
+}
+
+func (i Taxonomy) ToTaxonomyOutput() TaxonomyOutput {
+	return i.ToTaxonomyOutputWithContext(context.Background())
+}
+
+func (i Taxonomy) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyOutput)
+}
+
+type TaxonomyOutput struct {
+	*pulumi.OutputState
+}
+
+func (TaxonomyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyOutput)(nil)).Elem()
+}
+
+func (o TaxonomyOutput) ToTaxonomyOutput() TaxonomyOutput {
+	return o
+}
+
+func (o TaxonomyOutput) ToTaxonomyOutputWithContext(ctx context.Context) TaxonomyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TaxonomyOutput{})
 }

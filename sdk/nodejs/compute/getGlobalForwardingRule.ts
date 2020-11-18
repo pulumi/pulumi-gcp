@@ -2,12 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Get a global forwarding rule within GCE from its name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_forwarding_rule = pulumi.output(gcp.compute.getGlobalForwardingRule({
+ *     name: "forwarding-rule-global",
+ * }, { async: true }));
+ * ```
  */
 export function getGlobalForwardingRule(args: GetGlobalForwardingRuleArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalForwardingRuleResult> {
     if (!opts) {

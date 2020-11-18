@@ -9,6 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Iam
 {
+    /// <summary>
+    /// ## Import
+    /// 
+    /// WorkloadIdentityPoolProvider can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}/providers/{{workload_identity_pool_provider_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{project}}/{{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iam/workloadIdentityPoolProvider:WorkloadIdentityPoolProvider default {{workload_identity_pool_id}}/{{workload_identity_pool_provider_id}}
+    /// ```
+    /// </summary>
     public partial class WorkloadIdentityPoolProvider : Pulumi.CustomResource
     {
         /// <summary>

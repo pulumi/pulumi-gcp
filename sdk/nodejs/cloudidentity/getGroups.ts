@@ -2,14 +2,24 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
  *
  * https://cloud.google.com/identity/docs/concepts/overview#groups
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const groups = pulumi.output(gcp.cloudidentity.getGroups({
+ *     parent: "customers/A01b123xz",
+ * }, { async: true }));
+ * ```
  */
 export function getGroups(args: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     if (!opts) {

@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,56 @@ import (
 //
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucket(ctx, "log_bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewOrganizationSink(ctx, "my_sink", &logging.OrganizationSinkArgs{
+// 			OrgId: pulumi.String("123456789"),
+// 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
+// 			}).(pulumi.StringOutput),
+// 			Filter: pulumi.String("resource.type = gce_instance AND severity >= WARNING"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMMember(ctx, "log_writer", &projects.IAMMemberArgs{
+// 			Role:   pulumi.String("roles/storage.objectCreator"),
+// 			Member: my_sink.WriterIdentity,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Organization-level logging sinks can be imported using this format
+//
+// ```sh
+//  $ pulumi import gcp:logging/organizationSink:OrganizationSink my_sink organizations/{{organization_id}}/sinks/{{sink_id}}
+// ```
 type OrganizationSink struct {
 	pulumi.CustomResourceState
 
@@ -247,4 +298,43 @@ type OrganizationSinkArgs struct {
 
 func (OrganizationSinkArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSinkArgs)(nil)).Elem()
+}
+
+type OrganizationSinkInput interface {
+	pulumi.Input
+
+	ToOrganizationSinkOutput() OrganizationSinkOutput
+	ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput
+}
+
+func (OrganizationSink) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSink)(nil)).Elem()
+}
+
+func (i OrganizationSink) ToOrganizationSinkOutput() OrganizationSinkOutput {
+	return i.ToOrganizationSinkOutputWithContext(context.Background())
+}
+
+func (i OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkOutput)
+}
+
+type OrganizationSinkOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSinkOutput)(nil)).Elem()
+}
+
+func (o OrganizationSinkOutput) ToOrganizationSinkOutput() OrganizationSinkOutput {
+	return o
+}
+
+func (o OrganizationSinkOutput) ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationSinkOutput{})
 }

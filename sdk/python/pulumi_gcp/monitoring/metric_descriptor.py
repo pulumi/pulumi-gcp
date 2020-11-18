@@ -40,6 +40,63 @@ class MetricDescriptor(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 
         ## Example Usage
+        ### Monitoring Metric Descriptor Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic = gcp.monitoring.MetricDescriptor("basic",
+            description="Daily sales records from all branch stores.",
+            display_name="metric-descriptor",
+            labels=[gcp.monitoring.MetricDescriptorLabelArgs(
+                description="The ID of the store.",
+                key="store_id",
+                value_type="STRING",
+            )],
+            launch_stage="BETA",
+            metadata=gcp.monitoring.MetricDescriptorMetadataArgs(
+                ingest_delay="30s",
+                sample_period="60s",
+            ),
+            metric_kind="GAUGE",
+            type="custom.googleapis.com/stores/daily_sales",
+            unit="{USD}",
+            value_type="DOUBLE")
+        ```
+        ### Monitoring Metric Descriptor Alert
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        with_alert = gcp.monitoring.MetricDescriptor("withAlert",
+            description="Daily sales records from all branch stores.",
+            display_name="metric-descriptor",
+            metric_kind="GAUGE",
+            type="custom.googleapis.com/stores/daily_sales",
+            unit="{USD}",
+            value_type="DOUBLE")
+        alert_policy = gcp.monitoring.AlertPolicy("alertPolicy",
+            combiner="OR",
+            conditions=[gcp.monitoring.AlertPolicyConditionArgs(
+                condition_threshold=gcp.monitoring.AlertPolicyConditionConditionThresholdArgs(
+                    comparison="COMPARISON_GT",
+                    duration="60s",
+                    filter=with_alert.type.apply(lambda type: f"metric.type=\"{type}\" AND resource.type=\"gce_instance\""),
+                ),
+                display_name="test condition",
+            )],
+            display_name="metric-descriptor")
+        ```
+
+        ## Import
+
+        MetricDescriptor can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -19,6 +19,18 @@ namespace Pulumi.Gcp.Compute
     ///     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// OrganizationSecurityPolicyRule can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/{{priority}}
+    /// ```
     /// </summary>
     public partial class OrganizationSecurityPolicyRule : Pulumi.CustomResource
     {

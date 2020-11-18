@@ -33,6 +33,47 @@ class Endpoint(pulumi.CustomResource):
             * [Configuring an endpoint](https://cloud.google.com/service-directory/docs/configuring-service-directory#configuring_an_endpoint)
 
         ## Example Usage
+        ### Service Directory Endpoint Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
+            namespace_id="example-namespace",
+            location="us-central1",
+            opts=ResourceOptions(provider=google_beta))
+        example_service = gcp.servicedirectory.Service("exampleService",
+            service_id="example-service",
+            namespace=example_namespace.id,
+            opts=ResourceOptions(provider=google_beta))
+        example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
+            endpoint_id="example-endpoint",
+            service=example_service.id,
+            metadata={
+                "stage": "prod",
+                "region": "us-central1",
+            },
+            address="1.2.3.4",
+            port=5353,
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Endpoint can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}/services/{{service_id}}/endpoints/{{endpoint_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{project}}/{{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

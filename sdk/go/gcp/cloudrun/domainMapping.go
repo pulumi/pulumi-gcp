@@ -4,6 +4,7 @@
 package cloudrun
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,71 @@ import (
 //     * [Official Documentation](https://cloud.google.com/run/docs/mapping-custom-domains)
 //
 // ## Example Usage
+// ### Cloud Run Domain Mapping Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultService, err := cloudrun.NewService(ctx, "defaultService", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Namespace: pulumi.String("my-project-name"),
+// 			},
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewDomainMapping(ctx, "defaultDomainMapping", &cloudrun.DomainMappingArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.DomainMappingMetadataArgs{
+// 				Namespace: pulumi.String("my-project-name"),
+// 				Annotations: pulumi.StringMap{
+// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
+// 				},
+// 			},
+// 			Spec: &cloudrun.DomainMappingSpecArgs{
+// 				RouteName: defaultService.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// DomainMapping can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default locations/{{location}}/namespaces/{{project}}/domainmappings/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
+// ```
 type DomainMapping struct {
 	pulumi.CustomResourceState
 
@@ -150,4 +216,43 @@ type DomainMappingArgs struct {
 
 func (DomainMappingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainMappingArgs)(nil)).Elem()
+}
+
+type DomainMappingInput interface {
+	pulumi.Input
+
+	ToDomainMappingOutput() DomainMappingOutput
+	ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput
+}
+
+func (DomainMapping) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainMapping)(nil)).Elem()
+}
+
+func (i DomainMapping) ToDomainMappingOutput() DomainMappingOutput {
+	return i.ToDomainMappingOutputWithContext(context.Background())
+}
+
+func (i DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingOutput)
+}
+
+type DomainMappingOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainMappingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainMappingOutput)(nil)).Elem()
+}
+
+func (o DomainMappingOutput) ToDomainMappingOutput() DomainMappingOutput {
+	return o
+}
+
+func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Context) DomainMappingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainMappingOutput{})
 }

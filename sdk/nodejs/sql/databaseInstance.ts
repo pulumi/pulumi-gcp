@@ -2,10 +2,28 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * Database instances can be imported using one of any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master projects/{{project}}/instances/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{name}}
+ * ```
+ *
+ *  config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
+ */
 export class DatabaseInstance extends pulumi.CustomResource {
     /**
      * Get an existing DatabaseInstance resource's state with the given name, ID, and optional extra

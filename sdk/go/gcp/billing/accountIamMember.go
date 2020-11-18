@@ -4,6 +4,7 @@
 package billing
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -93,4 +94,43 @@ type AccountIamMemberArgs struct {
 
 func (AccountIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*accountIamMemberArgs)(nil)).Elem()
+}
+
+type AccountIamMemberInput interface {
+	pulumi.Input
+
+	ToAccountIamMemberOutput() AccountIamMemberOutput
+	ToAccountIamMemberOutputWithContext(ctx context.Context) AccountIamMemberOutput
+}
+
+func (AccountIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamMember)(nil)).Elem()
+}
+
+func (i AccountIamMember) ToAccountIamMemberOutput() AccountIamMemberOutput {
+	return i.ToAccountIamMemberOutputWithContext(context.Background())
+}
+
+func (i AccountIamMember) ToAccountIamMemberOutputWithContext(ctx context.Context) AccountIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberOutput)
+}
+
+type AccountIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamMemberOutput)(nil)).Elem()
+}
+
+func (o AccountIamMemberOutput) ToAccountIamMemberOutput() AccountIamMemberOutput {
+	return o
+}
+
+func (o AccountIamMemberOutput) ToAccountIamMemberOutputWithContext(ctx context.Context) AccountIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AccountIamMemberOutput{})
 }

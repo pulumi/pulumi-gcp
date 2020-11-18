@@ -12,6 +12,35 @@ import * as utilities from "../utilities";
  * the marketplace prior to using this resource.
  *
  * ## Example Usage
+ * ### Identity Platform Default Supported Idp Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const idpConfig = new gcp.identityplatform.DefaultSupportedIdpConfig("idp_config", {
+ *     clientId: "client-id",
+ *     clientSecret: "secret",
+ *     enabled: true,
+ *     idpId: "playgames.google.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * DefaultSupportedIdpConfig can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{project}}/{{idp_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{idp_id}}
+ * ```
  */
 export class DefaultSupportedIdpConfig extends pulumi.CustomResource {
     /**

@@ -20,6 +20,55 @@ namespace Pulumi.Gcp.Compute
     ///     * [Using SSL Policies](https://cloud.google.com/compute/docs/load-balancing/ssl-policies)
     /// 
     /// ## Example Usage
+    /// ### Ssl Policy Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var prod_ssl_policy = new Gcp.Compute.SSLPolicy("prod-ssl-policy", new Gcp.Compute.SSLPolicyArgs
+    ///         {
+    ///             Profile = "MODERN",
+    ///         });
+    ///         var nonprod_ssl_policy = new Gcp.Compute.SSLPolicy("nonprod-ssl-policy", new Gcp.Compute.SSLPolicyArgs
+    ///         {
+    ///             MinTlsVersion = "TLS_1_2",
+    ///             Profile = "MODERN",
+    ///         });
+    ///         var custom_ssl_policy = new Gcp.Compute.SSLPolicy("custom-ssl-policy", new Gcp.Compute.SSLPolicyArgs
+    ///         {
+    ///             CustomFeatures = 
+    ///             {
+    ///                 "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    ///                 "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    ///             },
+    ///             MinTlsVersion = "TLS_1_2",
+    ///             Profile = "CUSTOM",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// SslPolicy can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
+    /// ```
     /// </summary>
     public partial class SSLPolicy : Pulumi.CustomResource
     {

@@ -24,7 +24,22 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a WorkloadIdentityPool resource with the given unique name, props, and options.
+        ## Import
+
+        WorkloadIdentityPool can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description of the pool. Cannot exceed 256 characters.

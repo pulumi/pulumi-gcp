@@ -13,6 +13,29 @@ namespace Pulumi.Gcp.Spanner
     {
         /// <summary>
         /// Get a spanner instance from Google Cloud by its name.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var foo = Output.Create(Gcp.Spanner.GetInstance.InvokeAsync(new Gcp.Spanner.GetInstanceArgs
+        ///         {
+        ///             Name = "bar",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetInstanceResult> InvokeAsync(GetInstanceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetInstanceResult>("gcp:spanner/getInstance:getInstance", args ?? new GetInstanceArgs(), options.WithVersion());

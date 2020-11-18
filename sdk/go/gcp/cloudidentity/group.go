@@ -4,6 +4,7 @@
 package cloudidentity
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,43 @@ import (
 // `billingProject` you defined.
 //
 // ## Example Usage
+// ### Cloud Identity Groups Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudidentity"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudidentity.NewGroup(ctx, "cloudIdentityGroupBasic", &cloudidentity.GroupArgs{
+// 			DisplayName: pulumi.String("my-identity-group"),
+// 			Parent:      pulumi.String("customers/A01b123xz"),
+// 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
+// 				Id: pulumi.String("my-identity-group@example.com"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Group can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:cloudidentity/group:Group default {{name}}
+// ```
 type Group struct {
 	pulumi.CustomResourceState
 
@@ -187,4 +225,43 @@ type GroupArgs struct {
 
 func (GroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupArgs)(nil)).Elem()
+}
+
+type GroupInput interface {
+	pulumi.Input
+
+	ToGroupOutput() GroupOutput
+	ToGroupOutputWithContext(ctx context.Context) GroupOutput
+}
+
+func (Group) ElementType() reflect.Type {
+	return reflect.TypeOf((*Group)(nil)).Elem()
+}
+
+func (i Group) ToGroupOutput() GroupOutput {
+	return i.ToGroupOutputWithContext(context.Background())
+}
+
+func (i Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupOutput)
+}
+
+type GroupOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupOutput)(nil)).Elem()
+}
+
+func (o GroupOutput) ToGroupOutput() GroupOutput {
+	return o
+}
+
+func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupOutput{})
 }

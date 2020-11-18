@@ -14,6 +14,131 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.iap.WebTypeComputeIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebTypeComputeIamBinding` and `gcp.iap.WebTypeComputeIamMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.iap.WebTypeComputeIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeComputeIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_iap\_web\_type\_compute\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/iap.httpsResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.iap.WebTypeComputeIamPolicy("policy", {
+ *     project: google_project_service.project_service.project,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/iap.httpsResourceAccessor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.iap.WebTypeComputeIamPolicy("policy", {
+ *     project: google_project_service.project_service.project,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## google\_iap\_web\_type\_compute\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.iap.WebTypeComputeIamBinding("binding", {
+ *     project: google_project_service.project_service.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.iap.WebTypeComputeIamBinding("binding", {
+ *     project: google_project_service.project_service.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## google\_iap\_web\_type\_compute\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.iap.WebTypeComputeIamMember("member", {
+ *     project: google_project_service.project_service.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.iap.WebTypeComputeIamMember("member", {
+ *     project: google_project_service.project_service.project,
+ *     role: "roles/iap.httpsResourceAccessor",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/compute * {{project}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webtypecompute IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy editor "projects/{{project}}/iap_web/compute roles/iap.httpsResourceAccessor user:jane@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy editor "projects/{{project}}/iap_web/compute roles/iap.httpsResourceAccessor"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy editor projects/{{project}}/iap_web/compute
+ * ```
+ *
+ *  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+ *
+ * full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
  */
 export class WebTypeComputeIamPolicy extends pulumi.CustomResource {
     /**

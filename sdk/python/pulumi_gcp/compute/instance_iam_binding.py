@@ -37,6 +37,133 @@ class InstanceIAMBinding(pulumi.CustomResource):
 
         > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_compute\_instance\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.compute.InstanceIAMPolicy("policy",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ),
+        )])
+        policy = gcp.compute.InstanceIAMPolicy("policy",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\_compute\_instance\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.InstanceIAMBinding("binding",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.InstanceIAMBinding("binding",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"],
+            condition=gcp.compute.InstanceIAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ))
+        ```
+        ## google\_compute\_instance\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.InstanceIAMMember("member",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.InstanceIAMMember("member",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            member="user:jane@example.com",
+            condition=gcp.compute.InstanceIAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ))
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor "projects/{{project}}/zones/{{zone}}/instances/{{instance}} roles/compute.osLogin"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/instanceIAMBinding:InstanceIAMBinding editor projects/{{project}}/zones/{{zone}}/instances/{{instance}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['InstanceIAMBindingConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.

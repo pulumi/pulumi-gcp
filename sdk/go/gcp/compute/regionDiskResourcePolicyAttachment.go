@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,101 @@ import (
 // > **Note:** This resource does not support zonal disks (`compute.Disk`). For zonal disks, please refer to the `compute.DiskResourcePolicyAttachment` resource.
 //
 // ## Example Usage
+// ### Region Disk Resource Policy Attachment Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		disk, err := compute.NewDisk(ctx, "disk", &compute.DiskArgs{
+// 			Image: pulumi.String("debian-cloud/debian-9"),
+// 			Size:  pulumi.Int(50),
+// 			Type:  pulumi.String("pd-ssd"),
+// 			Zone:  pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		snapdisk, err := compute.NewSnapshot(ctx, "snapdisk", &compute.SnapshotArgs{
+// 			SourceDisk: disk.Name,
+// 			Zone:       pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ssd, err := compute.NewRegionDisk(ctx, "ssd", &compute.RegionDiskArgs{
+// 			ReplicaZones: pulumi.StringArray{
+// 				pulumi.String("us-central1-a"),
+// 				pulumi.String("us-central1-f"),
+// 			},
+// 			Snapshot: snapdisk.ID(),
+// 			Size:     pulumi.Int(50),
+// 			Type:     pulumi.String("pd-ssd"),
+// 			Region:   pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionDiskResourcePolicyAttachment(ctx, "attachment", &compute.RegionDiskResourcePolicyAttachmentArgs{
+// 			Disk:   ssd.Name,
+// 			Region: pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewResourcePolicy(ctx, "policy", &compute.ResourcePolicyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+// 					DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
+// 						DaysInCycle: pulumi.Int(1),
+// 						StartTime:   pulumi.String("04:00"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		_, err = compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{project}}/{{region}}/{{disk}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{region}}/{{disk}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
+// ```
 type RegionDiskResourcePolicyAttachment struct {
 	pulumi.CustomResourceState
 
@@ -120,4 +216,43 @@ type RegionDiskResourcePolicyAttachmentArgs struct {
 
 func (RegionDiskResourcePolicyAttachmentArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionDiskResourcePolicyAttachmentArgs)(nil)).Elem()
+}
+
+type RegionDiskResourcePolicyAttachmentInput interface {
+	pulumi.Input
+
+	ToRegionDiskResourcePolicyAttachmentOutput() RegionDiskResourcePolicyAttachmentOutput
+	ToRegionDiskResourcePolicyAttachmentOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentOutput
+}
+
+func (RegionDiskResourcePolicyAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskResourcePolicyAttachment)(nil)).Elem()
+}
+
+func (i RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentOutput() RegionDiskResourcePolicyAttachmentOutput {
+	return i.ToRegionDiskResourcePolicyAttachmentOutputWithContext(context.Background())
+}
+
+func (i RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentOutput)
+}
+
+type RegionDiskResourcePolicyAttachmentOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionDiskResourcePolicyAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDiskResourcePolicyAttachmentOutput)(nil)).Elem()
+}
+
+func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentOutput() RegionDiskResourcePolicyAttachmentOutput {
+	return o
+}
+
+func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentOutput{})
 }

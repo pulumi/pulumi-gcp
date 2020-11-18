@@ -20,6 +20,258 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [BigQuery Jobs Intro](https://cloud.google.com/bigquery/docs/jobs-overview)
     /// 
     /// ## Example Usage
+    /// ### Bigquery Job Query
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bar = new Gcp.BigQuery.Dataset("bar", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "job_query_dataset",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "US",
+    ///         });
+    ///         var foo = new Gcp.BigQuery.Table("foo", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DatasetId = bar.DatasetId,
+    ///             TableId = "job_query_table",
+    ///         });
+    ///         var job = new Gcp.BigQuery.Job("job", new Gcp.BigQuery.JobArgs
+    ///         {
+    ///             JobId = "job_query",
+    ///             Labels = 
+    ///             {
+    ///                 { "example-label", "example-value" },
+    ///             },
+    ///             Query = new Gcp.BigQuery.Inputs.JobQueryArgs
+    ///             {
+    ///                 Query = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+    ///                 DestinationTable = new Gcp.BigQuery.Inputs.JobQueryDestinationTableArgs
+    ///                 {
+    ///                     ProjectId = foo.Project,
+    ///                     DatasetId = foo.DatasetId,
+    ///                     TableId = foo.TableId,
+    ///                 },
+    ///                 AllowLargeResults = true,
+    ///                 FlattenResults = true,
+    ///                 ScriptOptions = new Gcp.BigQuery.Inputs.JobQueryScriptOptionsArgs
+    ///                 {
+    ///                     KeyResultStatement = "LAST",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Bigquery Job Query Table Reference
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bar = new Gcp.BigQuery.Dataset("bar", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "job_query_dataset",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "US",
+    ///         });
+    ///         var foo = new Gcp.BigQuery.Table("foo", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DatasetId = bar.DatasetId,
+    ///             TableId = "job_query_table",
+    ///         });
+    ///         var job = new Gcp.BigQuery.Job("job", new Gcp.BigQuery.JobArgs
+    ///         {
+    ///             JobId = "job_query",
+    ///             Labels = 
+    ///             {
+    ///                 { "example-label", "example-value" },
+    ///             },
+    ///             Query = new Gcp.BigQuery.Inputs.JobQueryArgs
+    ///             {
+    ///                 Query = "SELECT state FROM [lookerdata:cdc.project_tycho_reports]",
+    ///                 DestinationTable = new Gcp.BigQuery.Inputs.JobQueryDestinationTableArgs
+    ///                 {
+    ///                     TableId = foo.Id,
+    ///                 },
+    ///                 DefaultDataset = new Gcp.BigQuery.Inputs.JobQueryDefaultDatasetArgs
+    ///                 {
+    ///                     DatasetId = bar.Id,
+    ///                 },
+    ///                 AllowLargeResults = true,
+    ///                 FlattenResults = true,
+    ///                 ScriptOptions = new Gcp.BigQuery.Inputs.JobQueryScriptOptionsArgs
+    ///                 {
+    ///                     KeyResultStatement = "LAST",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Bigquery Job Load
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bar = new Gcp.BigQuery.Dataset("bar", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "job_load_dataset",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "US",
+    ///         });
+    ///         var foo = new Gcp.BigQuery.Table("foo", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DatasetId = bar.DatasetId,
+    ///             TableId = "job_load_table",
+    ///         });
+    ///         var job = new Gcp.BigQuery.Job("job", new Gcp.BigQuery.JobArgs
+    ///         {
+    ///             JobId = "job_load",
+    ///             Labels = 
+    ///             {
+    ///                 { "my_job", "load" },
+    ///             },
+    ///             Load = new Gcp.BigQuery.Inputs.JobLoadArgs
+    ///             {
+    ///                 SourceUris = 
+    ///                 {
+    ///                     "gs://cloud-samples-data/bigquery/us-states/us-states-by-date.csv",
+    ///                 },
+    ///                 DestinationTable = new Gcp.BigQuery.Inputs.JobLoadDestinationTableArgs
+    ///                 {
+    ///                     ProjectId = foo.Project,
+    ///                     DatasetId = foo.DatasetId,
+    ///                     TableId = foo.TableId,
+    ///                 },
+    ///                 SkipLeadingRows = 1,
+    ///                 SchemaUpdateOptions = 
+    ///                 {
+    ///                     "ALLOW_FIELD_RELAXATION",
+    ///                     "ALLOW_FIELD_ADDITION",
+    ///                 },
+    ///                 WriteDisposition = "WRITE_APPEND",
+    ///                 Autodetect = true,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Bigquery Job Extract
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var source_oneDataset = new Gcp.BigQuery.Dataset("source-oneDataset", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "job_extract_dataset",
+    ///             FriendlyName = "test",
+    ///             Description = "This is a test description",
+    ///             Location = "US",
+    ///         });
+    ///         var source_oneTable = new Gcp.BigQuery.Table("source-oneTable", new Gcp.BigQuery.TableArgs
+    ///         {
+    ///             DatasetId = source_oneDataset.DatasetId,
+    ///             TableId = "job_extract_table",
+    ///             Schema = @"[
+    ///   {
+    ///     ""name"": ""name"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""post_abbr"",
+    ///     ""type"": ""STRING"",
+    ///     ""mode"": ""NULLABLE""
+    ///   },
+    ///   {
+    ///     ""name"": ""date"",
+    ///     ""type"": ""DATE"",
+    ///     ""mode"": ""NULLABLE""
+    ///   }
+    /// ]
+    /// ",
+    ///         });
+    ///         var dest = new Gcp.Storage.Bucket("dest", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             ForceDestroy = true,
+    ///         });
+    ///         var job = new Gcp.BigQuery.Job("job", new Gcp.BigQuery.JobArgs
+    ///         {
+    ///             JobId = "job_extract",
+    ///             Extract = new Gcp.BigQuery.Inputs.JobExtractArgs
+    ///             {
+    ///                 DestinationUris = 
+    ///                 {
+    ///                     dest.Url.Apply(url =&gt; $"{url}/extract"),
+    ///                 },
+    ///                 SourceTable = new Gcp.BigQuery.Inputs.JobExtractSourceTableArgs
+    ///                 {
+    ///                     ProjectId = source_oneTable.Project,
+    ///                     DatasetId = source_oneTable.DatasetId,
+    ///                     TableId = source_oneTable.TableId,
+    ///                 },
+    ///                 DestinationFormat = "NEWLINE_DELIMITED_JSON",
+    ///                 Compression = "GZIP",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Job can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}/location/{{location}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/job:Job default projects/{{project}}/jobs/{{job_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}/{{location}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/job:Job default {{job_id}}/{{location}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/job:Job default {{project}}/{{job_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/job:Job default {{job_id}}
+    /// ```
     /// </summary>
     public partial class Job : Pulumi.CustomResource
     {

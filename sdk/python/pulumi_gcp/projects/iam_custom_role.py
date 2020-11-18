@@ -37,6 +37,33 @@ class IAMCustomRole(pulumi.CustomResource):
          made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
          by the provider, and new roles cannot share that name.
 
+        ## Example Usage
+
+        This snippet creates a customized IAM role.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_custom_role = gcp.projects.IAMCustomRole("my-custom-role",
+            description="A description",
+            permissions=[
+                "iam.roles.list",
+                "iam.roles.create",
+                "iam.roles.delete",
+            ],
+            role_id="myCustomRole",
+            title="My Custom Role")
+        ```
+
+        ## Import
+
+        Customized IAM project role can be imported using their URI, e.g.
+
+        ```sh
+         $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole my-custom-role projects/my-project/roles/myCustomRole
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A human-readable description for the role.

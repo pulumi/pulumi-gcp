@@ -38,6 +38,61 @@ class NetworkEndpoint(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/load-balancing/docs/negs/)
 
         ## Example Usage
+        ### Network Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        default_network = gcp.compute.Network("defaultNetwork", auto_create_subnetworks=False)
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.1/16",
+            region="us-central1",
+            network=default_network.id)
+        endpoint_instance = gcp.compute.Instance("endpoint-instance",
+            machine_type="e2-medium",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=my_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                subnetwork=default_subnetwork.id,
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )])
+        default_endpoint = gcp.compute.NetworkEndpoint("default-endpoint",
+            network_endpoint_group=google_compute_network_endpoint_group["neg"]["name"],
+            instance=endpoint_instance.name,
+            port=google_compute_network_endpoint_group["neg"]["default_port"],
+            ip_address=endpoint_instance.network_interfaces[0].network_ip)
+        group = gcp.compute.NetworkEndpointGroup("group",
+            network=default_network.id,
+            subnetwork=default_subnetwork.id,
+            default_port=90,
+            zone="us-central1-a")
+        ```
+
+        ## Import
+
+        NetworkEndpoint can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default projects/{{project}}/zones/{{zone}}/networkEndpointGroups/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{project}}/{{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{zone}}/{{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

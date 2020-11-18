@@ -22,6 +22,74 @@ namespace Pulumi.Gcp.Compute
     ///     * [Official Documentation](https://cloud.google.com/compute/docs/instance-groups/)
     /// 
     /// ## Example Usage
+    /// ### Instance Group Named Port Gke
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var containerNetwork = new Gcp.Compute.Network("containerNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         });
+    ///         var containerSubnetwork = new Gcp.Compute.Subnetwork("containerSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Network = containerNetwork.Name,
+    ///             IpCidrRange = "10.0.36.0/24",
+    ///         });
+    ///         var myCluster = new Gcp.Container.Cluster("myCluster", new Gcp.Container.ClusterArgs
+    ///         {
+    ///             Location = "us-central1-a",
+    ///             InitialNodeCount = 1,
+    ///             Network = containerNetwork.Name,
+    ///             Subnetwork = containerSubnetwork.Name,
+    ///             IpAllocationPolicy = new Gcp.Container.Inputs.ClusterIpAllocationPolicyArgs
+    ///             {
+    ///                 ClusterIpv4CidrBlock = "/19",
+    ///                 ServicesIpv4CidrBlock = "/22",
+    ///             },
+    ///         });
+    ///         var myPort = new Gcp.Compute.InstanceGroupNamedPort("myPort", new Gcp.Compute.InstanceGroupNamedPortArgs
+    ///         {
+    ///             Group = myCluster.InstanceGroupUrls.Apply(instanceGroupUrls =&gt; instanceGroupUrls[0]),
+    ///             Zone = "us-central1-a",
+    ///             Port = 8080,
+    ///         });
+    ///         var myPorts = new Gcp.Compute.InstanceGroupNamedPort("myPorts", new Gcp.Compute.InstanceGroupNamedPortArgs
+    ///         {
+    ///             Group = myCluster.InstanceGroupUrls.Apply(instanceGroupUrls =&gt; instanceGroupUrls[0]),
+    ///             Zone = "us-central1-a",
+    ///             Port = 4443,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// InstanceGroupNamedPort can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default projects/{{project}}/zones/{{zone}}/instanceGroups/{{group}}/{{port}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{project}}/{{zone}}/{{group}}/{{port}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{zone}}/{{group}}/{{port}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
+    /// ```
     /// </summary>
     public partial class InstanceGroupNamedPort : Pulumi.CustomResource
     {

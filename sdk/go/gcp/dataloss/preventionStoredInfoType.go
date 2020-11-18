@@ -4,6 +4,7 @@
 package dataloss
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,104 @@ import (
 //     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
 //
 // ## Example Usage
+// ### Dlp Stored Info Type Dictionary
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataloss.NewPreventionStoredInfoType(ctx, "dictionary", &dataloss.PreventionStoredInfoTypeArgs{
+// 			Description: pulumi.String("Description"),
+// 			Dictionary: &dataloss.PreventionStoredInfoTypeDictionaryArgs{
+// 				WordList: &dataloss.PreventionStoredInfoTypeDictionaryWordListArgs{
+// 					Words: pulumi.StringArray{
+// 						pulumi.String("word"),
+// 						pulumi.String("word2"),
+// 					},
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("Displayname"),
+// 			Parent:      pulumi.String("projects/my-project-name"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Dlp Stored Info Type Large Custom Dictionary
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dataloss"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+// 			ForceDestroy: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("./test-fixtures/dlp/words.txt"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataloss.NewPreventionStoredInfoType(ctx, "large", &dataloss.PreventionStoredInfoTypeArgs{
+// 			Parent:      pulumi.String("projects/my-project-name"),
+// 			Description: pulumi.String("Description"),
+// 			DisplayName: pulumi.String("Displayname"),
+// 			LargeCustomDictionary: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryArgs{
+// 				CloudStorageFileSet: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs{
+// 					Url: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// 						bucketName := _args[0].(string)
+// 						objectName := _args[1].(string)
+// 						return fmt.Sprintf("%v%v%v%v", "gs://", bucketName, "/", objectName), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 				OutputPath: &dataloss.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs{
+// 					Path: bucket.Name.ApplyT(func(name string) (string, error) {
+// 						return fmt.Sprintf("%v%v%v", "gs://", name, "/output/dictionary.txt"), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// StoredInfoType can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
+// ```
 type PreventionStoredInfoType struct {
 	pulumi.CustomResourceState
 
@@ -174,4 +273,43 @@ type PreventionStoredInfoTypeArgs struct {
 
 func (PreventionStoredInfoTypeArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*preventionStoredInfoTypeArgs)(nil)).Elem()
+}
+
+type PreventionStoredInfoTypeInput interface {
+	pulumi.Input
+
+	ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput
+	ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput
+}
+
+func (PreventionStoredInfoType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionStoredInfoType)(nil)).Elem()
+}
+
+func (i PreventionStoredInfoType) ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput {
+	return i.ToPreventionStoredInfoTypeOutputWithContext(context.Background())
+}
+
+func (i PreventionStoredInfoType) ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypeOutput)
+}
+
+type PreventionStoredInfoTypeOutput struct {
+	*pulumi.OutputState
+}
+
+func (PreventionStoredInfoTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionStoredInfoTypeOutput)(nil)).Elem()
+}
+
+func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput {
+	return o
+}
+
+func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(PreventionStoredInfoTypeOutput{})
 }

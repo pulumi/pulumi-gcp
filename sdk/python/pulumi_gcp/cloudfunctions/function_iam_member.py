@@ -37,6 +37,75 @@ class FunctionIamMember(pulumi.CustomResource):
 
         > **Note:** `cloudfunctions.FunctionIamBinding` resources **can be** used in conjunction with `cloudfunctions.FunctionIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_cloudfunctions\_function\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.cloudfunctions.FunctionIamPolicy("policy",
+            project=google_cloudfunctions_function["function"]["project"],
+            region=google_cloudfunctions_function["function"]["region"],
+            cloud_function=google_cloudfunctions_function["function"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_cloudfunctions\_function\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.cloudfunctions.FunctionIamBinding("binding",
+            project=google_cloudfunctions_function["function"]["project"],
+            region=google_cloudfunctions_function["function"]["region"],
+            cloud_function=google_cloudfunctions_function["function"]["name"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_cloudfunctions\_function\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.cloudfunctions.FunctionIamMember("member",
+            project=google_cloudfunctions_function["function"]["project"],
+            region=google_cloudfunctions_function["function"]["region"],
+            cloud_function=google_cloudfunctions_function["function"]["name"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} * {{project}}/{{region}}/{{cloud_function}} * {{region}}/{{cloud_function}} * {{cloud_function}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Functions cloudfunction IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:cloudfunctions/functionIamMember:FunctionIamMember editor "projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} roles/viewer user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:cloudfunctions/functionIamMember:FunctionIamMember editor "projects/{{project}}/locations/{{region}}/functions/{{cloud_function}} roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:cloudfunctions/functionIamMember:FunctionIamMember editor projects/{{project}}/locations/{{region}}/functions/{{cloud_function}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_function: Used to find the parent resource to bind the IAM policy to

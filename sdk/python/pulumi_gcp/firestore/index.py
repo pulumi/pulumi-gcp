@@ -37,6 +37,38 @@ class Index(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
 
         ## Example Usage
+        ### Firestore Index Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_index = gcp.firestore.Index("my-index",
+            collection="chatrooms",
+            fields=[
+                gcp.firestore.IndexFieldArgs(
+                    field_path="name",
+                    order="ASCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="description",
+                    order="DESCENDING",
+                ),
+                gcp.firestore.IndexFieldArgs(
+                    field_path="__name__",
+                    order="DESCENDING",
+                ),
+            ],
+            project="my-project-name")
+        ```
+
+        ## Import
+
+        Index can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:firestore/index:Index default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

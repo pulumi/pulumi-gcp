@@ -44,6 +44,75 @@ class DatasetIamBinding(pulumi.CustomResource):
 
         > **Note:** `bigquery.DatasetIamBinding` resources **can be** used in conjunction with `bigquery.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_bigquery\_dataset\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        owner = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/dataOwner",
+            members=["user:jane@example.com"],
+        )])
+        dataset = gcp.bigquery.DatasetIamPolicy("dataset",
+            dataset_id="your-dataset-id",
+            policy_data=owner.policy_data)
+        ```
+
+        ## google\_bigquery\_dataset\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        reader = gcp.bigquery.DatasetIamBinding("reader",
+            dataset_id="your-dataset-id",
+            members=["user:jane@example.com"],
+            role="roles/bigquery.dataViewer")
+        ```
+
+        ## google\_bigquery\_dataset\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        editor = gcp.bigquery.DatasetIamMember("editor",
+            dataset_id="your-dataset-id",
+            member="user:jane@example.com",
+            role="roles/bigquery.dataEditor")
+        ```
+
+        ## Import
+
+        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+
+        This member resource can be imported using the `dataset_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:bigquery/datasetIamBinding:DatasetIamBinding dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer user:foo@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiers; the resource in question and the role.
+
+        This binding resource can be imported using the `dataset_id` and role, e.g.
+
+        ```sh
+         $ pulumi import gcp:bigquery/datasetIamBinding:DatasetIamBinding dataset_iam "projects/your-project-id/datasets/dataset-id roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question.
+
+        This policy resource can be imported using the `dataset_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:bigquery/datasetIamBinding:DatasetIamBinding dataset_iam projects/your-project-id/datasets/dataset-id
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset_id: The dataset ID.

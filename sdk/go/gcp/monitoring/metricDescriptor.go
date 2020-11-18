@@ -4,6 +4,7 @@
 package monitoring
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,53 @@ import (
 //     * [Official Documentation](https://cloud.google.com/monitoring/custom-metrics/)
 //
 // ## Example Usage
+// ### Monitoring Metric Descriptor Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := monitoring.NewMetricDescriptor(ctx, "basic", &monitoring.MetricDescriptorArgs{
+// 			Description: pulumi.String("Daily sales records from all branch stores."),
+// 			DisplayName: pulumi.String("metric-descriptor"),
+// 			Labels: monitoring.MetricDescriptorLabelArray{
+// 				&monitoring.MetricDescriptorLabelArgs{
+// 					Description: pulumi.String("The ID of the store."),
+// 					Key:         pulumi.String("store_id"),
+// 					ValueType:   pulumi.String("STRING"),
+// 				},
+// 			},
+// 			LaunchStage: pulumi.String("BETA"),
+// 			Metadata: &monitoring.MetricDescriptorMetadataArgs{
+// 				IngestDelay:  pulumi.String("30s"),
+// 				SamplePeriod: pulumi.String("60s"),
+// 			},
+// 			MetricKind: pulumi.String("GAUGE"),
+// 			Type:       pulumi.String("custom.googleapis.com/stores/daily_sales"),
+// 			Unit:       pulumi.String("{USD}"),
+// 			ValueType:  pulumi.String("DOUBLE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// MetricDescriptor can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
+// ```
 type MetricDescriptor struct {
 	pulumi.CustomResourceState
 
@@ -321,4 +369,43 @@ type MetricDescriptorArgs struct {
 
 func (MetricDescriptorArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*metricDescriptorArgs)(nil)).Elem()
+}
+
+type MetricDescriptorInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorOutput() MetricDescriptorOutput
+	ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput
+}
+
+func (MetricDescriptor) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptor)(nil)).Elem()
+}
+
+func (i MetricDescriptor) ToMetricDescriptorOutput() MetricDescriptorOutput {
+	return i.ToMetricDescriptorOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorOutput)
+}
+
+type MetricDescriptorOutput struct {
+	*pulumi.OutputState
+}
+
+func (MetricDescriptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorOutput)(nil)).Elem()
+}
+
+func (o MetricDescriptorOutput) ToMetricDescriptorOutput() MetricDescriptorOutput {
+	return o
+}
+
+func (o MetricDescriptorOutput) ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MetricDescriptorOutput{})
 }

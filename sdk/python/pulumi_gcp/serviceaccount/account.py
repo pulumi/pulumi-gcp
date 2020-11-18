@@ -29,6 +29,27 @@ class Account(pulumi.CustomResource):
         errors when you try to apply ACLs to service accounts immediately after
         creation.
 
+        ## Example Usage
+
+        This snippet creates a service account in a project.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        service_account = gcp.service_account.Account("serviceAccount",
+            account_id="service_account_id",
+            display_name="Service Account")
+        ```
+
+        ## Import
+
+        Service accounts can be imported using their URI, e.g.
+
+        ```sh
+         $ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account_id: The account id that is used to generate the service

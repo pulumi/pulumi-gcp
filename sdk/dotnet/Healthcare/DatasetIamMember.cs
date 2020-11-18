@@ -19,6 +19,115 @@ namespace Pulumi.Gcp.Healthcare
     /// &gt; **Note:** `gcp.healthcare.DatasetIamPolicy` **cannot** be used in conjunction with `gcp.healthcare.DatasetIamBinding` and `gcp.healthcare.DatasetIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.healthcare.DatasetIamBinding` resources **can be** used in conjunction with `gcp.healthcare.DatasetIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_healthcare\_dataset\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/editor",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var dataset = new Gcp.Healthcare.DatasetIamPolicy("dataset", new Gcp.Healthcare.DatasetIamPolicyArgs
+    ///         {
+    ///             DatasetId = "your-dataset-id",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_healthcare\_dataset\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dataset = new Gcp.Healthcare.DatasetIamBinding("dataset", new Gcp.Healthcare.DatasetIamBindingArgs
+    ///         {
+    ///             DatasetId = "your-dataset-id",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_healthcare\_dataset\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dataset = new Gcp.Healthcare.DatasetIamMember("dataset", new Gcp.Healthcare.DatasetIamMemberArgs
+    ///         {
+    ///             DatasetId = "your-dataset-id",
+    ///             Member = "user:jane@example.com",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+    /// 
+    /// This member resource can be imported using the `dataset_id`, role, and account e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam "your-project-id/location-name/dataset-name roles/viewer user:foo@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+    /// 
+    /// This binding resource can be imported using the `dataset_id` and role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam "your-project-id/location-name/dataset-name roles/viewer"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question.
+    /// 
+    /// This policy resource can be imported using the `dataset_id`, role, and account e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:healthcare/datasetIamMember:DatasetIamMember dataset_iam your-project-id/location-name/dataset-name
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     public partial class DatasetIamMember : Pulumi.CustomResource
     {

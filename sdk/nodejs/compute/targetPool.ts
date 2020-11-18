@@ -10,6 +10,46 @@ import * as utilities from "../utilities";
  * [the official
  * documentation](https://cloud.google.com/compute/docs/load-balancing/network/target-pools)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/targetPools).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultTargetPool = new gcp.compute.TargetPool("defaultTargetPool", {
+ *     instances: [
+ *         "us-central1-a/myinstance1",
+ *         "us-central1-b/myinstance2",
+ *     ],
+ *     healthChecks: [defaultHttpHealthCheck.name],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Target pools can be imported using any of the following formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetPool:TargetPool default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetPool:TargetPool default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
+ * ```
  */
 export class TargetPool extends pulumi.CustomResource {
     /**

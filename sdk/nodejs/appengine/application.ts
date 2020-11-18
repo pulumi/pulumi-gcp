@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,30 @@ import * as utilities from "../utilities";
  *
  * > **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "your-project-id",
+ *     orgId: "1234567",
+ * });
+ * const app = new gcp.appengine.Application("app", {
+ *     project: myProject.projectId,
+ *     locationId: "us-central",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Applications can be imported using the ID of the project the application belongs to, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:appengine/application:Application app your-project-id
+ * ```
  */
 export class Application extends pulumi.CustomResource {
     /**

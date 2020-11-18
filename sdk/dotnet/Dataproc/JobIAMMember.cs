@@ -19,6 +19,107 @@ namespace Pulumi.Gcp.Dataproc
     /// &gt; **Note:** `gcp.dataproc.JobIAMPolicy` **cannot** be used in conjunction with `gcp.dataproc.JobIAMBinding` and `gcp.dataproc.JobIAMMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the job as `gcp.dataproc.JobIAMPolicy` replaces the entire policy.
     /// 
     /// &gt; **Note:** `gcp.dataproc.JobIAMBinding` resources **can be** used in conjunction with `gcp.dataproc.JobIAMMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_dataproc\_job\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/editor",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var editor = new Gcp.Dataproc.JobIAMPolicy("editor", new Gcp.Dataproc.JobIAMPolicyArgs
+    ///         {
+    ///             Project = "your-project",
+    ///             Region = "your-region",
+    ///             JobId = "your-dataproc-job",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_dataproc\_job\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.Dataproc.JobIAMBinding("editor", new Gcp.Dataproc.JobIAMBindingArgs
+    ///         {
+    ///             JobId = "your-dataproc-job",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_dataproc\_job\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.Dataproc.JobIAMMember("editor", new Gcp.Dataproc.JobIAMMemberArgs
+    ///         {
+    ///             JobId = "your-dataproc-job",
+    ///             Member = "user:jane@example.com",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Job IAM resources can be imported using the project, region, job id, role and/or member.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id}"
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor"
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataproc/jobIAMMember:JobIAMMember editor "projects/{project}/regions/{region}/jobs/{job_id} roles/editor user:jane@example.com"
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     public partial class JobIAMMember : Pulumi.CustomResource
     {

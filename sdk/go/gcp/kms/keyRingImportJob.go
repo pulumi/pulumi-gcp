@@ -4,6 +4,7 @@
 package kms
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -26,6 +27,14 @@ import (
 //     * [Importing a key](https://cloud.google.com/kms/docs/importing-a-key)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// KeyRingImportJob can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
+// ```
 type KeyRingImportJob struct {
 	pulumi.CustomResourceState
 
@@ -185,4 +194,43 @@ type KeyRingImportJobArgs struct {
 
 func (KeyRingImportJobArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyRingImportJobArgs)(nil)).Elem()
+}
+
+type KeyRingImportJobInput interface {
+	pulumi.Input
+
+	ToKeyRingImportJobOutput() KeyRingImportJobOutput
+	ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput
+}
+
+func (KeyRingImportJob) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingImportJob)(nil)).Elem()
+}
+
+func (i KeyRingImportJob) ToKeyRingImportJobOutput() KeyRingImportJobOutput {
+	return i.ToKeyRingImportJobOutputWithContext(context.Background())
+}
+
+func (i KeyRingImportJob) ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobOutput)
+}
+
+type KeyRingImportJobOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyRingImportJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingImportJobOutput)(nil)).Elem()
+}
+
+func (o KeyRingImportJobOutput) ToKeyRingImportJobOutput() KeyRingImportJobOutput {
+	return o
+}
+
+func (o KeyRingImportJobOutput) ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyRingImportJobOutput{})
 }

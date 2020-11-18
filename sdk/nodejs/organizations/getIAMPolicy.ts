@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -13,6 +12,39 @@ import * as utilities from "../utilities";
  * **Note:** Several restrictions apply when setting IAM policies through this API.
  * See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
  * for a list of these restrictions.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = pulumi.output(gcp.organizations.getIAMPolicy({
+ *     auditConfigs: [{
+ *         auditLogConfigs: [
+ *             {
+ *                 exemptedMembers: ["user:you@domain.com"],
+ *                 logType: "DATA_READ",
+ *             },
+ *             {
+ *                 logType: "DATA_WRITE",
+ *             },
+ *             {
+ *                 logType: "ADMIN_READ",
+ *             },
+ *         ],
+ *         service: "cloudkms.googleapis.com",
+ *     }],
+ *     bindings: [
+ *         {
+ *             members: ["serviceAccount:your-custom-sa@your-project.iam.gserviceaccount.com"],
+ *             role: "roles/compute.instanceAdmin",
+ *         },
+ *         {
+ *             members: ["user:alice@gmail.com"],
+ *             role: "roles/storage.objectViewer",
+ *         },
+ *     ],
+ * }, { async: true }));
+ * ```
  *
  * This data source is used to define IAM policies to apply to other resources.
  * Currently, defining a policy through a datasource and referencing that policy

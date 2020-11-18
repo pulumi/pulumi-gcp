@@ -42,6 +42,60 @@ class Instance(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 
         ## Example Usage
+        ### Data Fusion Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_instance = gcp.datafusion.Instance("basicInstance",
+            region="us-central1",
+            type="BASIC",
+            opts=ResourceOptions(provider=google_beta))
+        ```
+        ### Data Fusion Instance Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        extended_instance = gcp.datafusion.Instance("extendedInstance",
+            description="My Data Fusion instance",
+            region="us-central1",
+            type="BASIC",
+            enable_stackdriver_logging=True,
+            enable_stackdriver_monitoring=True,
+            labels={
+                "example_key": "example_value",
+            },
+            private_instance=True,
+            network_config=gcp.datafusion.InstanceNetworkConfigArgs(
+                network="default",
+                ip_allocation="10.89.48.0/22",
+            ),
+            version="6.1.1",
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Instance can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:datafusion/instance:Instance default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

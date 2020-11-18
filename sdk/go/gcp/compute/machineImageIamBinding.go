@@ -4,12 +4,36 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/global/machineImages/{{name}} * {{project}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine machineimage IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImageIamBinding:MachineImageIamBinding editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImageIamBinding:MachineImageIamBinding editor "projects/{{project}}/global/machineImages/{{machine_image}} roles/compute.admin"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:compute/machineImageIamBinding:MachineImageIamBinding editor projects/{{project}}/global/machineImages/{{machine_image}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type MachineImageIamBinding struct {
 	pulumi.CustomResourceState
 
@@ -141,4 +165,43 @@ type MachineImageIamBindingArgs struct {
 
 func (MachineImageIamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*machineImageIamBindingArgs)(nil)).Elem()
+}
+
+type MachineImageIamBindingInput interface {
+	pulumi.Input
+
+	ToMachineImageIamBindingOutput() MachineImageIamBindingOutput
+	ToMachineImageIamBindingOutputWithContext(ctx context.Context) MachineImageIamBindingOutput
+}
+
+func (MachineImageIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamBinding)(nil)).Elem()
+}
+
+func (i MachineImageIamBinding) ToMachineImageIamBindingOutput() MachineImageIamBindingOutput {
+	return i.ToMachineImageIamBindingOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamBinding) ToMachineImageIamBindingOutputWithContext(ctx context.Context) MachineImageIamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingOutput)
+}
+
+type MachineImageIamBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (MachineImageIamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamBindingOutput)(nil)).Elem()
+}
+
+func (o MachineImageIamBindingOutput) ToMachineImageIamBindingOutput() MachineImageIamBindingOutput {
+	return o
+}
+
+func (o MachineImageIamBindingOutput) ToMachineImageIamBindingOutputWithContext(ctx context.Context) MachineImageIamBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(MachineImageIamBindingOutput{})
 }

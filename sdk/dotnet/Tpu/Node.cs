@@ -19,6 +19,48 @@ namespace Pulumi.Gcp.Tpu
     ///     * [Official Documentation](https://cloud.google.com/tpu/docs/)
     /// 
     /// ## Example Usage
+    /// ### TPU Node Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var available = Output.Create(Gcp.Tpu.GetTensorflowVersions.InvokeAsync());
+    ///         var tpu = new Gcp.Tpu.Node("tpu", new Gcp.Tpu.NodeArgs
+    ///         {
+    ///             Zone = "us-central1-b",
+    ///             AcceleratorType = "v3-8",
+    ///             TensorflowVersion = available.Apply(available =&gt; available.Versions[0]),
+    ///             CidrBlock = "10.2.0.0/29",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Node can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:tpu/node:Node default projects/{{project}}/locations/{{zone}}/nodes/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:tpu/node:Node default {{project}}/{{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:tpu/node:Node default {{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:tpu/node:Node default {{name}}
+    /// ```
     /// </summary>
     public partial class Node : Pulumi.CustomResource
     {

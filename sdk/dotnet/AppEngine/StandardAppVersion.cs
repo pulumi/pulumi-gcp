@@ -22,6 +22,117 @@ namespace Pulumi.Gcp.AppEngine
     ///     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
     /// 
     /// ## Example Usage
+    /// ### App Engine Standard App Version
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///         });
+    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Source = new FileAsset("./test-fixtures/appengine/hello-world.zip"),
+    ///         });
+    ///         var myappV1 = new Gcp.AppEngine.StandardAppVersion("myappV1", new Gcp.AppEngine.StandardAppVersionArgs
+    ///         {
+    ///             VersionId = "v1",
+    ///             Service = "myapp",
+    ///             Runtime = "nodejs10",
+    ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///             {
+    ///                 Shell = "node ./app.js",
+    ///             },
+    ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///             {
+    ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///                 {
+    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var objectName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             EnvVariables = 
+    ///             {
+    ///                 { "port", "8080" },
+    ///             },
+    ///             AutomaticScaling = new Gcp.AppEngine.Inputs.StandardAppVersionAutomaticScalingArgs
+    ///             {
+    ///                 MaxConcurrentRequests = 10,
+    ///                 MinIdleInstances = 1,
+    ///                 MaxIdleInstances = 3,
+    ///                 MinPendingLatency = "1s",
+    ///                 MaxPendingLatency = "5s",
+    ///                 StandardSchedulerSettings = new Gcp.AppEngine.Inputs.StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs
+    ///                 {
+    ///                     TargetCpuUtilization = 0.5,
+    ///                     TargetThroughputUtilization = 0.75,
+    ///                     MinInstances = 2,
+    ///                     MaxInstances = 10,
+    ///                 },
+    ///             },
+    ///             DeleteServiceOnDestroy = true,
+    ///         });
+    ///         var myappV2 = new Gcp.AppEngine.StandardAppVersion("myappV2", new Gcp.AppEngine.StandardAppVersionArgs
+    ///         {
+    ///             VersionId = "v2",
+    ///             Service = "myapp",
+    ///             Runtime = "nodejs10",
+    ///             Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+    ///             {
+    ///                 Shell = "node ./app.js",
+    ///             },
+    ///             Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+    ///             {
+    ///                 Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+    ///                 {
+    ///                     SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var objectName = values.Item2;
+    ///                         return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+    ///                     }),
+    ///                 },
+    ///             },
+    ///             EnvVariables = 
+    ///             {
+    ///                 { "port", "8080" },
+    ///             },
+    ///             BasicScaling = new Gcp.AppEngine.Inputs.StandardAppVersionBasicScalingArgs
+    ///             {
+    ///                 MaxInstances = 5,
+    ///             },
+    ///             NoopOnDestroy = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// StandardAppVersion can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{project}}/{{service}}/{{version_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
+    /// ```
     /// </summary>
     public partial class StandardAppVersion : Pulumi.CustomResource
     {

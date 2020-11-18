@@ -19,6 +19,122 @@ namespace Pulumi.Gcp.DataLoss
     ///     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-stored-infotypes)
     /// 
     /// ## Example Usage
+    /// ### Dlp Stored Info Type Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var basic = new Gcp.DataLoss.PreventionStoredInfoType("basic", new Gcp.DataLoss.PreventionStoredInfoTypeArgs
+    ///         {
+    ///             Description = "Description",
+    ///             DisplayName = "Displayname",
+    ///             Parent = "projects/my-project-name",
+    ///             Regex = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeRegexArgs
+    ///             {
+    ///                 GroupIndexes = 
+    ///                 {
+    ///                     2,
+    ///                 },
+    ///                 Pattern = "patient",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Dlp Stored Info Type Dictionary
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dictionary = new Gcp.DataLoss.PreventionStoredInfoType("dictionary", new Gcp.DataLoss.PreventionStoredInfoTypeArgs
+    ///         {
+    ///             Description = "Description",
+    ///             Dictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryArgs
+    ///             {
+    ///                 WordList = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeDictionaryWordListArgs
+    ///                 {
+    ///                     Words = 
+    ///                     {
+    ///                         "word",
+    ///                         "word2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             DisplayName = "Displayname",
+    ///             Parent = "projects/my-project-name",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Dlp Stored Info Type Large Custom Dictionary
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var bucket = new Gcp.Storage.Bucket("bucket", new Gcp.Storage.BucketArgs
+    ///         {
+    ///             ForceDestroy = true,
+    ///         });
+    ///         var @object = new Gcp.Storage.BucketObject("object", new Gcp.Storage.BucketObjectArgs
+    ///         {
+    ///             Bucket = bucket.Name,
+    ///             Source = new FileAsset("./test-fixtures/dlp/words.txt"),
+    ///         });
+    ///         var large = new Gcp.DataLoss.PreventionStoredInfoType("large", new Gcp.DataLoss.PreventionStoredInfoTypeArgs
+    ///         {
+    ///             Parent = "projects/my-project-name",
+    ///             Description = "Description",
+    ///             DisplayName = "Displayname",
+    ///             LargeCustomDictionary = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryArgs
+    ///             {
+    ///                 CloudStorageFileSet = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs
+    ///                 {
+    ///                     Url = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///                     {
+    ///                         var bucketName = values.Item1;
+    ///                         var objectName = values.Item2;
+    ///                         return $"gs://{bucketName}/{objectName}";
+    ///                     }),
+    ///                 },
+    ///                 OutputPath = new Gcp.DataLoss.Inputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs
+    ///                 {
+    ///                     Path = bucket.Name.Apply(name =&gt; $"gs://{name}/output/dictionary.txt"),
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// StoredInfoType can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/storedInfoTypes/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
+    /// ```
     /// </summary>
     public partial class PreventionStoredInfoType : Pulumi.CustomResource
     {

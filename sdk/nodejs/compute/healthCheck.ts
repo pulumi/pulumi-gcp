@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -26,6 +25,249 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/load-balancing/docs/health-checks)
  *
  * ## Example Usage
+ * ### Health Check Tcp
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tcp_health_check = new gcp.compute.HealthCheck("tcp-health-check", {
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: 80,
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ * ### Health Check Tcp Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tcp_health_check = new gcp.compute.HealthCheck("tcp-health-check", {
+ *     checkIntervalSec: 1,
+ *     description: "Health check via tcp",
+ *     healthyThreshold: 4,
+ *     tcpHealthCheck: {
+ *         portName: "health-check-port",
+ *         portSpecification: "USE_NAMED_PORT",
+ *         proxyHeader: "NONE",
+ *         request: "ARE YOU HEALTHY?",
+ *         response: "I AM HEALTHY",
+ *     },
+ *     timeoutSec: 1,
+ *     unhealthyThreshold: 5,
+ * });
+ * ```
+ * ### Health Check Ssl
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ssl_health_check = new gcp.compute.HealthCheck("ssl-health-check", {
+ *     checkIntervalSec: 1,
+ *     sslHealthCheck: {
+ *         port: 443,
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ * ### Health Check Ssl Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ssl_health_check = new gcp.compute.HealthCheck("ssl-health-check", {
+ *     checkIntervalSec: 1,
+ *     description: "Health check via ssl",
+ *     healthyThreshold: 4,
+ *     sslHealthCheck: {
+ *         portName: "health-check-port",
+ *         portSpecification: "USE_NAMED_PORT",
+ *         proxyHeader: "NONE",
+ *         request: "ARE YOU HEALTHY?",
+ *         response: "I AM HEALTHY",
+ *     },
+ *     timeoutSec: 1,
+ *     unhealthyThreshold: 5,
+ * });
+ * ```
+ * ### Health Check Http
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http_health_check = new gcp.compute.HealthCheck("http-health-check", {
+ *     checkIntervalSec: 1,
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ * ### Health Check Http Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http_health_check = new gcp.compute.HealthCheck("http-health-check", {
+ *     checkIntervalSec: 1,
+ *     description: "Health check via http",
+ *     healthyThreshold: 4,
+ *     httpHealthCheck: {
+ *         host: "1.2.3.4",
+ *         portName: "health-check-port",
+ *         portSpecification: "USE_NAMED_PORT",
+ *         proxyHeader: "NONE",
+ *         requestPath: "/mypath",
+ *         response: "I AM HEALTHY",
+ *     },
+ *     timeoutSec: 1,
+ *     unhealthyThreshold: 5,
+ * });
+ * ```
+ * ### Health Check Https
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const https_health_check = new gcp.compute.HealthCheck("https-health-check", {
+ *     checkIntervalSec: 1,
+ *     httpsHealthCheck: {
+ *         port: 443,
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ * ### Health Check Https Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const https_health_check = new gcp.compute.HealthCheck("https-health-check", {
+ *     checkIntervalSec: 1,
+ *     description: "Health check via https",
+ *     healthyThreshold: 4,
+ *     httpsHealthCheck: {
+ *         host: "1.2.3.4",
+ *         portName: "health-check-port",
+ *         portSpecification: "USE_NAMED_PORT",
+ *         proxyHeader: "NONE",
+ *         requestPath: "/mypath",
+ *         response: "I AM HEALTHY",
+ *     },
+ *     timeoutSec: 1,
+ *     unhealthyThreshold: 5,
+ * });
+ * ```
+ * ### Health Check Http2
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http2_health_check = new gcp.compute.HealthCheck("http2-health-check", {
+ *     checkIntervalSec: 1,
+ *     http2HealthCheck: {
+ *         port: 443,
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ * ### Health Check Http2 Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http2_health_check = new gcp.compute.HealthCheck("http2-health-check", {
+ *     checkIntervalSec: 1,
+ *     description: "Health check via http2",
+ *     healthyThreshold: 4,
+ *     http2HealthCheck: {
+ *         host: "1.2.3.4",
+ *         portName: "health-check-port",
+ *         portSpecification: "USE_NAMED_PORT",
+ *         proxyHeader: "NONE",
+ *         requestPath: "/mypath",
+ *         response: "I AM HEALTHY",
+ *     },
+ *     timeoutSec: 1,
+ *     unhealthyThreshold: 5,
+ * });
+ * ```
+ * ### Health Check Grpc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const grpc_health_check = new gcp.compute.HealthCheck("grpc-health-check", {
+ *     checkIntervalSec: 1,
+ *     grpcHealthCheck: {
+ *         port: 443,
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ * ### Health Check Grpc Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const grpc_health_check = new gcp.compute.HealthCheck("grpc-health-check", {
+ *     checkIntervalSec: 1,
+ *     grpcHealthCheck: {
+ *         grpcServiceName: "testservice",
+ *         portName: "health-check-port",
+ *         portSpecification: "USE_NAMED_PORT",
+ *     },
+ *     timeoutSec: 1,
+ * });
+ * ```
+ * ### Health Check With Logging
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const health_check_with_logging = new gcp.compute.HealthCheck("health-check-with-logging", {
+ *     timeoutSec: 1,
+ *     checkIntervalSec: 1,
+ *     tcpHealthCheck: {
+ *         port: "22",
+ *     },
+ *     logConfig: {
+ *         enable: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * HealthCheck can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/healthCheck:HealthCheck default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/healthCheck:HealthCheck default {{name}}
+ * ```
  */
 export class HealthCheck extends pulumi.CustomResource {
     /**

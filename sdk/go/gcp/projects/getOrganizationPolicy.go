@@ -10,6 +10,31 @@ import (
 // Allows management of Organization policies for a Google Project. For more information see
 // [the official
 // documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		policy, err := projects.LookupOrganizationPolicy(ctx, &projects.LookupOrganizationPolicyArgs{
+// 			Project:    "project-id",
+// 			Constraint: "constraints/serviceuser.services",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("version", policy.Version)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupOrganizationPolicy(ctx *pulumi.Context, args *LookupOrganizationPolicyArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationPolicyResult, error) {
 	var rv LookupOrganizationPolicyResult
 	err := ctx.Invoke("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", args, &rv, opts...)

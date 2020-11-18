@@ -27,6 +27,31 @@ class Config(pulumi.CustomResource):
         or the
         [JSON API](https://cloud.google.com/deployment-manager/runtime-configurator/reference/rest/).
 
+        ## Example Usage
+
+        Example creating a RuntimeConfig resource.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_runtime_config = gcp.runtimeconfig.Config("my-runtime-config", description="Runtime configuration values for my service")
+        ```
+
+        ## Import
+
+        Runtime Configs can be imported using the `name` or full config name, e.g.
+
+        ```sh
+         $ pulumi import gcp:runtimeconfig/config:Config myconfig myconfig
+        ```
+
+        ```sh
+         $ pulumi import gcp:runtimeconfig/config:Config myconfig projects/my-gcp-project/configs/myconfig
+        ```
+
+         When importing using only the name, the provider project must be set.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description to associate with the runtime

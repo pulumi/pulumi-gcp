@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,197 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/dlp/docs/creating-templates-inspect)
  *
  * ## Example Usage
+ * ### Dlp Inspect Template Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataloss.PreventionInspectTemplate("basic", {
+ *     description: "My description",
+ *     displayName: "display_name",
+ *     inspectConfig: {
+ *         infoTypes: [
+ *             {
+ *                 name: "EMAIL_ADDRESS",
+ *             },
+ *             {
+ *                 name: "PERSON_NAME",
+ *             },
+ *             {
+ *                 name: "LAST_NAME",
+ *             },
+ *             {
+ *                 name: "DOMAIN_NAME",
+ *             },
+ *             {
+ *                 name: "PHONE_NUMBER",
+ *             },
+ *             {
+ *                 name: "FIRST_NAME",
+ *             },
+ *         ],
+ *         limits: {
+ *             maxFindingsPerInfoTypes: [
+ *                 {
+ *                     infoType: {
+ *                         name: "PERSON_NAME",
+ *                     },
+ *                     maxFindings: 75,
+ *                 },
+ *                 {
+ *                     infoType: {
+ *                         name: "LAST_NAME",
+ *                     },
+ *                     maxFindings: 80,
+ *                 },
+ *             ],
+ *             maxFindingsPerItem: 10,
+ *             maxFindingsPerRequest: 50,
+ *         },
+ *         minLikelihood: "UNLIKELY",
+ *         ruleSets: [
+ *             {
+ *                 infoTypes: [{
+ *                     name: "EMAIL_ADDRESS",
+ *                 }],
+ *                 rules: [{
+ *                     exclusionRule: {
+ *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
+ *                         regex: {
+ *                             pattern: ".+@example.com",
+ *                         },
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 infoTypes: [
+ *                     {
+ *                         name: "EMAIL_ADDRESS",
+ *                     },
+ *                     {
+ *                         name: "DOMAIN_NAME",
+ *                     },
+ *                     {
+ *                         name: "PHONE_NUMBER",
+ *                     },
+ *                     {
+ *                         name: "PERSON_NAME",
+ *                     },
+ *                     {
+ *                         name: "FIRST_NAME",
+ *                     },
+ *                 ],
+ *                 rules: [{
+ *                     exclusionRule: {
+ *                         dictionary: {
+ *                             wordList: {
+ *                                 words: ["TEST"],
+ *                             },
+ *                         },
+ *                         matchingType: "MATCHING_TYPE_PARTIAL_MATCH",
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 infoTypes: [{
+ *                     name: "PERSON_NAME",
+ *                 }],
+ *                 rules: [{
+ *                     hotwordRule: {
+ *                         hotwordRegex: {
+ *                             pattern: "patient",
+ *                         },
+ *                         likelihoodAdjustment: {
+ *                             fixedLikelihood: "VERY_LIKELY",
+ *                         },
+ *                         proximity: {
+ *                             windowBefore: 50,
+ *                         },
+ *                     },
+ *                 }],
+ *             },
+ *         ],
+ *     },
+ *     parent: "projects/my-project-name",
+ * });
+ * ```
+ * ### Dlp Inspect Template Custom Type
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const custom = new gcp.dataloss.PreventionInspectTemplate("custom", {
+ *     description: "My description",
+ *     displayName: "display_name",
+ *     inspectConfig: {
+ *         customInfoTypes: [{
+ *             infoType: {
+ *                 name: "MY_CUSTOM_TYPE",
+ *             },
+ *             likelihood: "UNLIKELY",
+ *             regex: {
+ *                 pattern: "test*",
+ *             },
+ *         }],
+ *         infoTypes: [{
+ *             name: "EMAIL_ADDRESS",
+ *         }],
+ *         limits: {
+ *             maxFindingsPerItem: 10,
+ *             maxFindingsPerRequest: 50,
+ *         },
+ *         minLikelihood: "UNLIKELY",
+ *         ruleSets: [
+ *             {
+ *                 infoTypes: [{
+ *                     name: "EMAIL_ADDRESS",
+ *                 }],
+ *                 rules: [{
+ *                     exclusionRule: {
+ *                         matchingType: "MATCHING_TYPE_FULL_MATCH",
+ *                         regex: {
+ *                             pattern: ".+@example.com",
+ *                         },
+ *                     },
+ *                 }],
+ *             },
+ *             {
+ *                 infoTypes: [{
+ *                     name: "MY_CUSTOM_TYPE",
+ *                 }],
+ *                 rules: [{
+ *                     hotwordRule: {
+ *                         hotwordRegex: {
+ *                             pattern: "example*",
+ *                         },
+ *                         likelihoodAdjustment: {
+ *                             fixedLikelihood: "VERY_LIKELY",
+ *                         },
+ *                         proximity: {
+ *                             windowBefore: 50,
+ *                         },
+ *                     },
+ *                 }],
+ *             },
+ *         ],
+ *     },
+ *     parent: "projects/my-project-name",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * InspectTemplate can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
+ * ```
  */
 export class PreventionInspectTemplate extends pulumi.CustomResource {
     /**

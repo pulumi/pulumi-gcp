@@ -40,6 +40,90 @@ class RegionSslCertificate(pulumi.CustomResource):
         state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 
         ## Example Usage
+        ### Region Ssl Certificate Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name_prefix="my-certificate-",
+            description="a description",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        ```
+        ### Region Ssl Certificate Target Https Proxies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Using with Region Target HTTPS Proxies
+        #
+        # SSL certificates cannot be updated after creation. In order to apply
+        # the specified configuration, the provider will destroy the existing
+        # resource and create a replacement. To effectively use an SSL
+        # certificate resource with a Target HTTPS Proxy resource, it's
+        # recommended to specify create_before_destroy in a lifecycle block.
+        # Either omit the Instance Template name attribute, specify a partial
+        # name with name_prefix, or use random_id resource. Example:
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("defaultRegionSslCertificate",
+            region="us-central1",
+            name_prefix="my-certificate-",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.id])
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default_region_target_https_proxy = gcp.compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy",
+            region="us-central1",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
+        ```
+
+        ## Import
+
+        RegionSslCertificate can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

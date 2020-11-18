@@ -31,6 +31,26 @@ class BillingAccountExclusion(pulumi.CustomResource):
         Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
         granted to the credentials used with the provider.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_exclusion = gcp.logging.BillingAccountExclusion("my-exclusion",
+            billing_account="ABCDEF-012345-GHIJKL",
+            description="Exclude GCE instance debug logs",
+            filter="resource.type = gce_instance AND severity <= DEBUG")
+        ```
+
+        ## Import
+
+        Billing account logging exclusions can be imported using their URI, e.g.
+
+        ```sh
+         $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion my_exclusion billingAccounts/my-billing_account/exclusions/my-exclusion
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] billing_account: The billing account to create the exclusion for.

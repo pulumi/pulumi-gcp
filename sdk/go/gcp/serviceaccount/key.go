@@ -4,6 +4,7 @@
 package serviceaccount
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -13,6 +14,40 @@ import (
 // Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
 //
 // ## Example Usage
+// ### Creating A New Key Pair
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myaccount, err := serviceAccount.NewAccount(ctx, "myaccount", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("myaccount"),
+// 			DisplayName: pulumi.String("My Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewKey(ctx, "mykey", &serviceAccount.KeyArgs{
+// 			ServiceAccountId: myaccount.Name,
+// 			PublicKeyType:    pulumi.String("TYPE_X509_PEM_FILE"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type Key struct {
 	pulumi.CustomResourceState
 
@@ -178,4 +213,43 @@ type KeyArgs struct {
 
 func (KeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyArgs)(nil)).Elem()
+}
+
+type KeyInput interface {
+	pulumi.Input
+
+	ToKeyOutput() KeyOutput
+	ToKeyOutputWithContext(ctx context.Context) KeyOutput
+}
+
+func (Key) ElementType() reflect.Type {
+	return reflect.TypeOf((*Key)(nil)).Elem()
+}
+
+func (i Key) ToKeyOutput() KeyOutput {
+	return i.ToKeyOutputWithContext(context.Background())
+}
+
+func (i Key) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyOutput)
+}
+
+type KeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyOutput)(nil)).Elem()
+}
+
+func (o KeyOutput) ToKeyOutput() KeyOutput {
+	return o
+}
+
+func (o KeyOutput) ToKeyOutputWithContext(ctx context.Context) KeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(KeyOutput{})
 }

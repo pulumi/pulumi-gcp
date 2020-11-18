@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -33,6 +34,69 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+// ### Snapshot Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debian, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		persistent, err := compute.NewDisk(ctx, "persistent", &compute.DiskArgs{
+// 			Image: pulumi.String(debian.SelfLink),
+// 			Size:  pulumi.Int(10),
+// 			Type:  pulumi.String("pd-ssd"),
+// 			Zone:  pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewSnapshot(ctx, "snapshot", &compute.SnapshotArgs{
+// 			SourceDisk: persistent.Name,
+// 			Zone:       pulumi.String("us-central1-a"),
+// 			Labels: pulumi.StringMap{
+// 				"my_label": pulumi.String("value"),
+// 			},
+// 			StorageLocations: pulumi.StringArray{
+// 				pulumi.String("us-central1"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Snapshot can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/snapshot:Snapshot default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
+// ```
 type Snapshot struct {
 	pulumi.CustomResourceState
 
@@ -291,4 +355,43 @@ type SnapshotArgs struct {
 
 func (SnapshotArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*snapshotArgs)(nil)).Elem()
+}
+
+type SnapshotInput interface {
+	pulumi.Input
+
+	ToSnapshotOutput() SnapshotOutput
+	ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput
+}
+
+func (Snapshot) ElementType() reflect.Type {
+	return reflect.TypeOf((*Snapshot)(nil)).Elem()
+}
+
+func (i Snapshot) ToSnapshotOutput() SnapshotOutput {
+	return i.ToSnapshotOutputWithContext(context.Background())
+}
+
+func (i Snapshot) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SnapshotOutput)
+}
+
+type SnapshotOutput struct {
+	*pulumi.OutputState
+}
+
+func (SnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SnapshotOutput)(nil)).Elem()
+}
+
+func (o SnapshotOutput) ToSnapshotOutput() SnapshotOutput {
+	return o
+}
+
+func (o SnapshotOutput) ToSnapshotOutputWithContext(ctx context.Context) SnapshotOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SnapshotOutput{})
 }

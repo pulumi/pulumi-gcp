@@ -16,6 +16,34 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
     /// granted to the credentials used with this provider.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var my_exclusion = new Gcp.Logging.ProjectExclusion("my-exclusion", new Gcp.Logging.ProjectExclusionArgs
+    ///         {
+    ///             Description = "Exclude GCE instance debug logs",
+    ///             Filter = "resource.type = gce_instance AND severity &lt;= DEBUG",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Project-level logging exclusions can be imported using their URI, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/projectExclusion:ProjectExclusion my_exclusion projects/my-project/exclusions/my-exclusion
+    /// ```
     /// </summary>
     public partial class ProjectExclusion : Pulumi.CustomResource
     {

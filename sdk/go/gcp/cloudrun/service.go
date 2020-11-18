@@ -4,6 +4,7 @@
 package cloudrun
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -31,6 +32,267 @@ import (
 //     * [Official Documentation](https://cloud.google.com/run/docs/)
 //
 // ## Example Usage
+// ### Cloud Run Service Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					LatestRevision: pulumi.Bool(true),
+// 					Percent:        pulumi.Int(100),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// {{% /example %}}
+// ### Cloud Run Service Sql
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+// 			DeletionProtection: pulumi.Bool(true),
+// 			Region:             pulumi.String("us-east1"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			AutogenerateRevisionName: pulumi.Bool(true),
+// 			Location:                 pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Metadata: &cloudrun.ServiceTemplateMetadataArgs{
+// 					Annotations: pulumi.StringMap{
+// 						"autoscaling.knative.dev/maxScale": pulumi.String("1000"),
+// 						"run.googleapis.com/client-name":   pulumi.String("demo"),
+// 						"run.googleapis.com/cloudsql-instances": instance.Name.ApplyT(func(name string) (string, error) {
+// 							return fmt.Sprintf("%v%v", "my-project-name:us-central1:", name), nil
+// 						}).(pulumi.StringOutput),
+// 					},
+// 				},
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ###Cloud Run Service Noauth
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		noauthIAMPolicy, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/run.invoker",
+// 					Members: []string{
+// 						"allUsers",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewIamPolicy(ctx, "noauthIamPolicy", &cloudrun.IamPolicyArgs{
+// 			Location:   _default.Location,
+// 			Project:    _default.Project,
+// 			Service:    _default.Name,
+// 			PolicyData: pulumi.String(noauthIAMPolicy.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Cloud Run Service Multiple Environment Variables
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			AutogenerateRevisionName: pulumi.Bool(true),
+// 			Location:                 pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Annotations: pulumi.StringMap{
+// 					"generated-by": pulumi.String("magic-modules"),
+// 				},
+// 			},
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Env: pulumi.StringMapArray{
+// 								pulumi.StringMap{
+// 									"name":  pulumi.String("SOURCE"),
+// 									"value": pulumi.String("remote"),
+// 								},
+// 								pulumi.StringMap{
+// 									"name":  pulumi.String("TARGET"),
+// 									"value": pulumi.String("home"),
+// 								},
+// 							},
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					LatestRevision: pulumi.Bool(true),
+// 					Percent:        pulumi.Int(100),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Cloud Run Service Traffic Split
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Metadata: &cloudrun.ServiceTemplateMetadataArgs{
+// 					Name: pulumi.String("cloudrun-srv-green"),
+// 				},
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					Percent:      pulumi.Int(25),
+// 					RevisionName: pulumi.String("cloudrun-srv-green"),
+// 				},
+// 				&cloudrun.ServiceTrafficArgs{
+// 					Percent:      pulumi.Int(75),
+// 					RevisionName: pulumi.String("cloudrun-srv-blue"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Service can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/service:Service default locations/{{location}}/namespaces/{{project}}/services/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{name}}
+// ```
 type Service struct {
 	pulumi.CustomResourceState
 
@@ -251,4 +513,43 @@ type ServiceArgs struct {
 
 func (ServiceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceArgs)(nil)).Elem()
+}
+
+type ServiceInput interface {
+	pulumi.Input
+
+	ToServiceOutput() ServiceOutput
+	ToServiceOutputWithContext(ctx context.Context) ServiceOutput
+}
+
+func (Service) ElementType() reflect.Type {
+	return reflect.TypeOf((*Service)(nil)).Elem()
+}
+
+func (i Service) ToServiceOutput() ServiceOutput {
+	return i.ToServiceOutputWithContext(context.Background())
+}
+
+func (i Service) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceOutput)
+}
+
+type ServiceOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceOutput)(nil)).Elem()
+}
+
+func (o ServiceOutput) ToServiceOutput() ServiceOutput {
+	return o
+}
+
+func (o ServiceOutput) ToServiceOutputWithContext(ctx context.Context) ServiceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServiceOutput{})
 }

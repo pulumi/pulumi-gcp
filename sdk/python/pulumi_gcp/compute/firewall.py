@@ -58,6 +58,46 @@ class Firewall(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 
         ## Example Usage
+        ### Firewall Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_firewall = gcp.compute.Firewall("defaultFirewall",
+            network=default_network.name,
+            allows=[
+                gcp.compute.FirewallAllowArgs(
+                    protocol="icmp",
+                ),
+                gcp.compute.FirewallAllowArgs(
+                    protocol="tcp",
+                    ports=[
+                        "80",
+                        "8080",
+                        "1000-2000",
+                    ],
+                ),
+            ],
+            source_tags=["web"])
+        ```
+
+        ## Import
+
+        Firewall can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/firewall:Firewall default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -166,7 +206,7 @@ class Firewall(pulumi.CustomResource):
             __props__['direction'] = direction
             __props__['disabled'] = disabled
             if enable_logging is not None:
-                warnings.warn("Deprecated in favor of log_config", DeprecationWarning)
+                warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
                 pulumi.log.warn("enable_logging is deprecated: Deprecated in favor of log_config")
             __props__['enable_logging'] = enable_logging
             __props__['log_config'] = log_config

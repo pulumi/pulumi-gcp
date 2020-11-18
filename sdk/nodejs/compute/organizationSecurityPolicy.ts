@@ -14,6 +14,18 @@ import * as utilities from "../utilities";
  *     * [Creating a firewall policy](https://cloud.google.com/vpc/docs/using-firewall-policies#create-policy)
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * OrganizationSecurityPolicy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default {{policy_id}}
+ * ```
  */
 export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     /**

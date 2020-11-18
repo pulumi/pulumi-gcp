@@ -22,6 +22,48 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
     /// 
     /// ## Example Usage
+    /// ### Active Directory Domain Trust Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var ad_domain_trust = new Gcp.ActiveDirectory.DomainTrust("ad-domain-trust", new Gcp.ActiveDirectory.DomainTrustArgs
+    ///         {
+    ///             Domain = "test-managed-ad.com",
+    ///             TargetDnsIpAddresses = 
+    ///             {
+    ///                 "10.1.0.100",
+    ///             },
+    ///             TargetDomainName = "example-gcp.com",
+    ///             TrustDirection = "OUTBOUND",
+    ///             TrustHandshakeSecret = "Testing1!",
+    ///             TrustType = "FOREST",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// DomainTrust can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default projects/{{project}}/locations/global/domains/{{domain}}/{{target_domain_name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{project}}/{{domain}}/{{target_domain_name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
+    /// ```
     /// </summary>
     public partial class DomainTrust : Pulumi.CustomResource
     {

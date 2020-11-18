@@ -36,6 +36,32 @@ class IAMBinding(pulumi.CustomResource):
             Use `pulumi import` and inspect the `output to ensure
             your existing members are preserved.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.organizations.IAMBinding("binding",
+            members=["user:alice@gmail.com"],
+            org_id="123456789",
+            role="roles/browser")
+        ```
+
+        ## Import
+
+        IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
+
+        These bindings can be imported using the `org_id` and role, e.g.
+
+        ```sh
+         $ pulumi import gcp:organizations/iAMBinding:IAMBinding my_org "your-org-id roles/viewer"
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A list of users that the role should apply to. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding

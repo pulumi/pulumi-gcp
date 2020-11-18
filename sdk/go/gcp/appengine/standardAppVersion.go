@@ -4,6 +4,7 @@
 package appengine
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,116 @@ import (
 //     * [Official Documentation](https://cloud.google.com/appengine/docs/standard)
 //
 // ## Example Usage
+// ### App Engine Standard App Version
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("./test-fixtures/appengine/hello-world.zip"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewStandardAppVersion(ctx, "myappV1", &appengine.StandardAppVersionArgs{
+// 			VersionId: pulumi.String("v1"),
+// 			Service:   pulumi.String("myapp"),
+// 			Runtime:   pulumi.String("nodejs10"),
+// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+// 				Shell: pulumi.String("node ./app.js"),
+// 			},
+// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
+// 				Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// 						bucketName := _args[0].(string)
+// 						objectName := _args[1].(string)
+// 						return fmt.Sprintf("%v%v%v%v", "https://storage.googleapis.com/", bucketName, "/", objectName), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			EnvVariables: pulumi.StringMap{
+// 				"port": pulumi.String("8080"),
+// 			},
+// 			AutomaticScaling: &appengine.StandardAppVersionAutomaticScalingArgs{
+// 				MaxConcurrentRequests: pulumi.Int(10),
+// 				MinIdleInstances:      pulumi.Int(1),
+// 				MaxIdleInstances:      pulumi.Int(3),
+// 				MinPendingLatency:     pulumi.String("1s"),
+// 				MaxPendingLatency:     pulumi.String("5s"),
+// 				StandardSchedulerSettings: &appengine.StandardAppVersionAutomaticScalingStandardSchedulerSettingsArgs{
+// 					TargetCpuUtilization:        pulumi.Float64(0.5),
+// 					TargetThroughputUtilization: pulumi.Float64(0.75),
+// 					MinInstances:                pulumi.Int(2),
+// 					MaxInstances:                pulumi.Int(10),
+// 				},
+// 			},
+// 			DeleteServiceOnDestroy: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewStandardAppVersion(ctx, "myappV2", &appengine.StandardAppVersionArgs{
+// 			VersionId: pulumi.String("v2"),
+// 			Service:   pulumi.String("myapp"),
+// 			Runtime:   pulumi.String("nodejs10"),
+// 			Entrypoint: &appengine.StandardAppVersionEntrypointArgs{
+// 				Shell: pulumi.String("node ./app.js"),
+// 			},
+// 			Deployment: &appengine.StandardAppVersionDeploymentArgs{
+// 				Zip: &appengine.StandardAppVersionDeploymentZipArgs{
+// 					SourceUrl: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+// 						bucketName := _args[0].(string)
+// 						objectName := _args[1].(string)
+// 						return fmt.Sprintf("%v%v%v%v", "https://storage.googleapis.com/", bucketName, "/", objectName), nil
+// 					}).(pulumi.StringOutput),
+// 				},
+// 			},
+// 			EnvVariables: pulumi.StringMap{
+// 				"port": pulumi.String("8080"),
+// 			},
+// 			BasicScaling: &appengine.StandardAppVersionBasicScalingArgs{
+// 				MaxInstances: pulumi.Int(5),
+// 			},
+// 			NoopOnDestroy: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// StandardAppVersion can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{project}}/{{service}}/{{version_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
+// ```
 type StandardAppVersion struct {
 	pulumi.CustomResourceState
 
@@ -353,4 +464,43 @@ type StandardAppVersionArgs struct {
 
 func (StandardAppVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*standardAppVersionArgs)(nil)).Elem()
+}
+
+type StandardAppVersionInput interface {
+	pulumi.Input
+
+	ToStandardAppVersionOutput() StandardAppVersionOutput
+	ToStandardAppVersionOutputWithContext(ctx context.Context) StandardAppVersionOutput
+}
+
+func (StandardAppVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersion)(nil)).Elem()
+}
+
+func (i StandardAppVersion) ToStandardAppVersionOutput() StandardAppVersionOutput {
+	return i.ToStandardAppVersionOutputWithContext(context.Background())
+}
+
+func (i StandardAppVersion) ToStandardAppVersionOutputWithContext(ctx context.Context) StandardAppVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StandardAppVersionOutput)
+}
+
+type StandardAppVersionOutput struct {
+	*pulumi.OutputState
+}
+
+func (StandardAppVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StandardAppVersionOutput)(nil)).Elem()
+}
+
+func (o StandardAppVersionOutput) ToStandardAppVersionOutput() StandardAppVersionOutput {
+	return o
+}
+
+func (o StandardAppVersionOutput) ToStandardAppVersionOutputWithContext(ctx context.Context) StandardAppVersionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(StandardAppVersionOutput{})
 }

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -25,6 +26,46 @@ import (
 //     * [Adding Health Checks](https://cloud.google.com/compute/docs/load-balancing/health-checks#legacy_health_checks)
 //
 // ## Example Usage
+// ### Https Health Check Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewHttpsHealthCheck(ctx, "_default", &compute.HttpsHealthCheckArgs{
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			RequestPath:      pulumi.String("/health_check"),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// HttpsHealthCheck can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default projects/{{project}}/global/httpsHealthChecks/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{name}}
+// ```
 type HttpsHealthCheck struct {
 	pulumi.CustomResourceState
 
@@ -273,4 +314,43 @@ type HttpsHealthCheckArgs struct {
 
 func (HttpsHealthCheckArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*httpsHealthCheckArgs)(nil)).Elem()
+}
+
+type HttpsHealthCheckInput interface {
+	pulumi.Input
+
+	ToHttpsHealthCheckOutput() HttpsHealthCheckOutput
+	ToHttpsHealthCheckOutputWithContext(ctx context.Context) HttpsHealthCheckOutput
+}
+
+func (HttpsHealthCheck) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsHealthCheck)(nil)).Elem()
+}
+
+func (i HttpsHealthCheck) ToHttpsHealthCheckOutput() HttpsHealthCheckOutput {
+	return i.ToHttpsHealthCheckOutputWithContext(context.Background())
+}
+
+func (i HttpsHealthCheck) ToHttpsHealthCheckOutputWithContext(ctx context.Context) HttpsHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpsHealthCheckOutput)
+}
+
+type HttpsHealthCheckOutput struct {
+	*pulumi.OutputState
+}
+
+func (HttpsHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsHealthCheckOutput)(nil)).Elem()
+}
+
+func (o HttpsHealthCheckOutput) ToHttpsHealthCheckOutput() HttpsHealthCheckOutput {
+	return o
+}
+
+func (o HttpsHealthCheckOutput) ToHttpsHealthCheckOutputWithContext(ctx context.Context) HttpsHealthCheckOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HttpsHealthCheckOutput{})
 }

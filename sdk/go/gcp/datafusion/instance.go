@@ -4,6 +4,7 @@
 package datafusion
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,84 @@ import (
 //     * [Official Documentation](https://cloud.google.com/data-fusion/docs/)
 //
 // ## Example Usage
+// ### Data Fusion Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datafusion.NewInstance(ctx, "basicInstance", &datafusion.InstanceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Type:   pulumi.String("BASIC"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Data Fusion Instance Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/datafusion"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
+// 			Description:                 pulumi.String("My Data Fusion instance"),
+// 			Region:                      pulumi.String("us-central1"),
+// 			Type:                        pulumi.String("BASIC"),
+// 			EnableStackdriverLogging:    pulumi.Bool(true),
+// 			EnableStackdriverMonitoring: pulumi.Bool(true),
+// 			Labels: pulumi.StringMap{
+// 				"example_key": pulumi.String("example_value"),
+// 			},
+// 			PrivateInstance: pulumi.Bool(true),
+// 			NetworkConfig: &datafusion.InstanceNetworkConfigArgs{
+// 				Network:      pulumi.String("default"),
+// 				IpAllocation: pulumi.String("10.89.48.0/22"),
+// 			},
+// 			Version: pulumi.String("6.1.1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Instance can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:datafusion/instance:Instance default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:datafusion/instance:Instance default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:datafusion/instance:Instance default {{name}}
+// ```
 type Instance struct {
 	pulumi.CustomResourceState
 
@@ -295,4 +374,43 @@ type InstanceArgs struct {
 
 func (InstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*instanceArgs)(nil)).Elem()
+}
+
+type InstanceInput interface {
+	pulumi.Input
+
+	ToInstanceOutput() InstanceOutput
+	ToInstanceOutputWithContext(ctx context.Context) InstanceOutput
+}
+
+func (Instance) ElementType() reflect.Type {
+	return reflect.TypeOf((*Instance)(nil)).Elem()
+}
+
+func (i Instance) ToInstanceOutput() InstanceOutput {
+	return i.ToInstanceOutputWithContext(context.Background())
+}
+
+func (i Instance) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceOutput)
+}
+
+type InstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceOutput)(nil)).Elem()
+}
+
+func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
+	return o
+}
+
+func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceOutput{})
 }

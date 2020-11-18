@@ -4,6 +4,7 @@
 package projects
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,46 @@ import (
 //  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
 //  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
 //  by the provider, and new roles cannot share that name.
+//
+// ## Example Usage
+//
+// This snippet creates a customized IAM role.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := projects.NewIAMCustomRole(ctx, "my_custom_role", &projects.IAMCustomRoleArgs{
+// 			Description: pulumi.String("A description"),
+// 			Permissions: pulumi.StringArray{
+// 				pulumi.String("iam.roles.list"),
+// 				pulumi.String("iam.roles.create"),
+// 				pulumi.String("iam.roles.delete"),
+// 			},
+// 			RoleId: pulumi.String("myCustomRole"),
+// 			Title:  pulumi.String("My Custom Role"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Customized IAM project role can be imported using their URI, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole my-custom-role projects/my-project/roles/myCustomRole
+// ```
 type IAMCustomRole struct {
 	pulumi.CustomResourceState
 
@@ -168,4 +209,43 @@ type IAMCustomRoleArgs struct {
 
 func (IAMCustomRoleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamcustomRoleArgs)(nil)).Elem()
+}
+
+type IAMCustomRoleInput interface {
+	pulumi.Input
+
+	ToIAMCustomRoleOutput() IAMCustomRoleOutput
+	ToIAMCustomRoleOutputWithContext(ctx context.Context) IAMCustomRoleOutput
+}
+
+func (IAMCustomRole) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMCustomRole)(nil)).Elem()
+}
+
+func (i IAMCustomRole) ToIAMCustomRoleOutput() IAMCustomRoleOutput {
+	return i.ToIAMCustomRoleOutputWithContext(context.Background())
+}
+
+func (i IAMCustomRole) ToIAMCustomRoleOutputWithContext(ctx context.Context) IAMCustomRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMCustomRoleOutput)
+}
+
+type IAMCustomRoleOutput struct {
+	*pulumi.OutputState
+}
+
+func (IAMCustomRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMCustomRoleOutput)(nil)).Elem()
+}
+
+func (o IAMCustomRoleOutput) ToIAMCustomRoleOutput() IAMCustomRoleOutput {
+	return o
+}
+
+func (o IAMCustomRoleOutput) ToIAMCustomRoleOutputWithContext(ctx context.Context) IAMCustomRoleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IAMCustomRoleOutput{})
 }

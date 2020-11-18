@@ -22,6 +22,261 @@ namespace Pulumi.Gcp.Projects
     /// &gt; **Note:** `gcp.projects.IAMBinding` resources **can be** used in conjunction with `gcp.projects.IAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
     /// &gt; **Note:** It is not possible to grant the `roles/owner` role using any of these resources due to this being disallowed by the underlying `projects.setIamPolicy` API method. See the method [documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy) for full details. It is, however, possible to remove all owners from the project by passing in an empty `members = []` list to the `gcp.projects.IAMBinding` resource. This is useful for removing the owner role from a project upon creation, however, precautions should be taken to avoid inadvertently locking oneself out of a project such as by granting additional roles to alternate entities.
+    /// 
+    /// ## google\_project\_iam\_policy
+    /// 
+    /// &gt; **Be careful!** You can accidentally lock yourself out of your project
+    ///    using this resource. Deleting a `gcp.projects.IAMPolicy` removes access
+    ///    from anyone without organization-level access to the project. Proceed with caution.
+    ///    It's not recommended to use `gcp.projects.IAMPolicy` with your provider project
+    ///    to avoid locking yourself out, and it should generally only be used with projects
+    ///    fully managed by this provider. If you do use this resource, it is recommended to **import** the policy before
+    ///    applying the change.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/editor",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var project = new Gcp.Projects.IAMPolicy("project", new Gcp.Projects.IAMPolicyArgs
+    ///         {
+    ///             Project = "your-project-id",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
+    ///                     {
+    ///                         Description = "Expiring at midnight of 2019-12-31",
+    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                         Title = "expires_after_2019_12_31",
+    ///                     },
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                     Role = "roles/editor",
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var project = new Gcp.Projects.IAMPolicy("project", new Gcp.Projects.IAMPolicyArgs
+    ///         {
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///             Project = "your-project-id",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_project\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Projects.IAMBinding("project", new Gcp.Projects.IAMBindingArgs
+    ///         {
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Project = "your-project-id",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Projects.IAMBinding("project", new Gcp.Projects.IAMBindingArgs
+    ///         {
+    ///             Condition = new Gcp.Projects.Inputs.IAMBindingConditionArgs
+    ///             {
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 Title = "expires_after_2019_12_31",
+    ///             },
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Project = "your-project-id",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_project\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Projects.IAMMember("project", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Member = "user:jane@example.com",
+    ///             Project = "your-project-id",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Projects.IAMMember("project", new Gcp.Projects.IAMMemberArgs
+    ///         {
+    ///             Condition = new Gcp.Projects.Inputs.IAMMemberConditionArgs
+    ///             {
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                 Title = "expires_after_2019_12_31",
+    ///             },
+    ///             Member = "user:jane@example.com",
+    ///             Project = "your-project-id",
+    ///             Role = "roles/editor",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_project\_iam\_audit\_config
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = new Gcp.Projects.IAMAuditConfig("project", new Gcp.Projects.IAMAuditConfigArgs
+    ///         {
+    ///             AuditLogConfigs = 
+    ///             {
+    ///                 new Gcp.Projects.Inputs.IAMAuditConfigAuditLogConfigArgs
+    ///                 {
+    ///                     LogType = "ADMIN_READ",
+    ///                 },
+    ///                 new Gcp.Projects.Inputs.IAMAuditConfigAuditLogConfigArgs
+    ///                 {
+    ///                     ExemptedMembers = 
+    ///                     {
+    ///                         "user:joebloggs@hashicorp.com",
+    ///                     },
+    ///                     LogType = "DATA_READ",
+    ///                 },
+    ///             },
+    ///             Project = "your-project-id",
+    ///             Service = "allServices",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+    /// 
+    /// This member resource can be imported using the `project_id`, role, and member e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer user:foo@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+    /// 
+    /// This binding resource can be imported using the `project_id` and role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id roles/viewer"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question.
+    /// 
+    /// This policy resource can be imported using the `project_id`.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:projects/iAMMember:IAMMember my_project your-project-id
+    /// ```
+    /// 
+    ///  IAM audit config imports use the identifier of the resource in question and the service, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:projects/iAMMember:IAMMember my_project "your-project-id foo.googleapis.com"
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     public partial class IAMMember : Pulumi.CustomResource
     {

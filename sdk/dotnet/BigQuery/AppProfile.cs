@@ -13,6 +13,96 @@ namespace Pulumi.Gcp.BigQuery
     /// App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
     /// 
     /// ## Example Usage
+    /// ### Bigtable App Profile Multicluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         {
+    ///             Clusters = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "bt-instance",
+    ///                     Zone = "us-central1-b",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///             },
+    ///             DeletionProtection = true,
+    ///         });
+    ///         var ap = new Gcp.BigQuery.AppProfile("ap", new Gcp.BigQuery.AppProfileArgs
+    ///         {
+    ///             Instance = instance.Name,
+    ///             AppProfileId = "bt-profile",
+    ///             MultiClusterRoutingUseAny = true,
+    ///             IgnoreWarnings = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Bigtable App Profile Singlecluster
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.BigTable.Instance("instance", new Gcp.BigTable.InstanceArgs
+    ///         {
+    ///             Clusters = 
+    ///             {
+    ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
+    ///                 {
+    ///                     ClusterId = "bt-instance",
+    ///                     Zone = "us-central1-b",
+    ///                     NumNodes = 3,
+    ///                     StorageType = "HDD",
+    ///                 },
+    ///             },
+    ///             DeletionProtection = true,
+    ///         });
+    ///         var ap = new Gcp.BigQuery.AppProfile("ap", new Gcp.BigQuery.AppProfileArgs
+    ///         {
+    ///             Instance = instance.Name,
+    ///             AppProfileId = "bt-profile",
+    ///             SingleClusterRouting = new Gcp.BigQuery.Inputs.AppProfileSingleClusterRoutingArgs
+    ///             {
+    ///                 ClusterId = "bt-instance",
+    ///                 AllowTransactionalWrites = true,
+    ///             },
+    ///             IgnoreWarnings = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// AppProfile can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
+    /// ```
     /// </summary>
     public partial class AppProfile : Pulumi.CustomResource
     {

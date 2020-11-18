@@ -4,6 +4,15 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * PolicyTag can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
+ * ```
+ */
 export class PolicyTag extends pulumi.CustomResource {
     /**
      * Get an existing PolicyTag resource's state with the given name, ID, and optional extra

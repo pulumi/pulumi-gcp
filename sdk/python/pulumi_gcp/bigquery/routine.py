@@ -41,6 +41,36 @@ class Routine(pulumi.CustomResource):
             * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
 
         ## Example Usage
+        ### Big Query Routine Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test = gcp.bigquery.Dataset("test", dataset_id="dataset_id")
+        sproc = gcp.bigquery.Routine("sproc",
+            dataset_id=test.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="SQL",
+            definition_body="CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);")
+        ```
+
+        ## Import
+
+        Routine can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/routine:Routine default {{project}}/{{dataset_id}}/{{routine_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

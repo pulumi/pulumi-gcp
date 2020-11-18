@@ -4,6 +4,7 @@
 package cloudfunctions
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,125 @@ import (
 // for Cloud Functions.
 //
 // ## Example Usage
+// ### Public Function
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudfunctions"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
+// 			Description:         pulumi.String("My function"),
+// 			Runtime:             pulumi.String("nodejs10"),
+// 			AvailableMemoryMb:   pulumi.Int(128),
+// 			SourceArchiveBucket: bucket.Name,
+// 			SourceArchiveObject: archive.Name,
+// 			TriggerHttp:         pulumi.Bool(true),
+// 			EntryPoint:          pulumi.String("helloGET"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
+// 			Project:       function.Project,
+// 			Region:        function.Region,
+// 			CloudFunction: function.Name,
+// 			Role:          pulumi.String("roles/cloudfunctions.invoker"),
+// 			Member:        pulumi.String("allUsers"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Single User
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudfunctions"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bucket, err := storage.NewBucket(ctx, "bucket", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		archive, err := storage.NewBucketObject(ctx, "archive", &storage.BucketObjectArgs{
+// 			Bucket: bucket.Name,
+// 			Source: pulumi.NewFileAsset("./path/to/zip/file/which/contains/code"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		function, err := cloudfunctions.NewFunction(ctx, "function", &cloudfunctions.FunctionArgs{
+// 			Description:         pulumi.String("My function"),
+// 			Runtime:             pulumi.String("nodejs10"),
+// 			AvailableMemoryMb:   pulumi.Int(128),
+// 			SourceArchiveBucket: bucket.Name,
+// 			SourceArchiveObject: archive.Name,
+// 			TriggerHttp:         pulumi.Bool(true),
+// 			Timeout:             pulumi.Int(60),
+// 			EntryPoint:          pulumi.String("helloGET"),
+// 			Labels: pulumi.StringMap{
+// 				"my-label": pulumi.String("my-label-value"),
+// 			},
+// 			EnvironmentVariables: pulumi.StringMap{
+// 				"MY_ENV_VAR": pulumi.String("my-env-var-value"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudfunctions.NewFunctionIamMember(ctx, "invoker", &cloudfunctions.FunctionIamMemberArgs{
+// 			Project:       function.Project,
+// 			Region:        function.Region,
+// 			CloudFunction: function.Name,
+// 			Role:          pulumi.String("roles/cloudfunctions.invoker"),
+// 			Member:        pulumi.String("user:myFunctionInvoker@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:cloudfunctions/function:Function default function-test
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/function-test
+// ```
 type Function struct {
 	pulumi.CustomResourceState
 
@@ -306,4 +426,43 @@ type FunctionArgs struct {
 
 func (FunctionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*functionArgs)(nil)).Elem()
+}
+
+type FunctionInput interface {
+	pulumi.Input
+
+	ToFunctionOutput() FunctionOutput
+	ToFunctionOutputWithContext(ctx context.Context) FunctionOutput
+}
+
+func (Function) ElementType() reflect.Type {
+	return reflect.TypeOf((*Function)(nil)).Elem()
+}
+
+func (i Function) ToFunctionOutput() FunctionOutput {
+	return i.ToFunctionOutputWithContext(context.Background())
+}
+
+func (i Function) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionOutput)
+}
+
+type FunctionOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionOutput)(nil)).Elem()
+}
+
+func (o FunctionOutput) ToFunctionOutput() FunctionOutput {
+	return o
+}
+
+func (o FunctionOutput) ToFunctionOutputWithContext(ctx context.Context) FunctionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FunctionOutput{})
 }

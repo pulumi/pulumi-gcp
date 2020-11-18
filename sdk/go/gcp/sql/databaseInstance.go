@@ -4,12 +4,30 @@
 package sql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Database instances can be imported using one of any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master projects/{{project}}/instances/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/databaseInstance:DatabaseInstance master {{name}}
+// ```
+//
+//  config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
@@ -322,4 +340,43 @@ type DatabaseInstanceArgs struct {
 
 func (DatabaseInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseInstanceArgs)(nil)).Elem()
+}
+
+type DatabaseInstanceInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceOutput() DatabaseInstanceOutput
+	ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput
+}
+
+func (DatabaseInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstance)(nil)).Elem()
+}
+
+func (i DatabaseInstance) ToDatabaseInstanceOutput() DatabaseInstanceOutput {
+	return i.ToDatabaseInstanceOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstance) ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceOutput)
+}
+
+type DatabaseInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceOutput)(nil)).Elem()
+}
+
+func (o DatabaseInstanceOutput) ToDatabaseInstanceOutput() DatabaseInstanceOutput {
+	return o
+}
+
+func (o DatabaseInstanceOutput) ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseInstanceOutput{})
 }

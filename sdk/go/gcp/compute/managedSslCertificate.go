@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -36,6 +37,130 @@ import (
 // In conclusion: Be extremely cautious.
 //
 // ## Example Usage
+// ### Managed Ssl Certificate Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultManagedSslCertificate, err := compute.NewManagedSslCertificate(ctx, "defaultManagedSslCertificate", &compute.ManagedSslCertificateArgs{
+// 			Managed: &compute.ManagedSslCertificateManagedArgs{
+// 				Domains: pulumi.StringArray{
+// 					pulumi.String("sslcert.tf-test.club."),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
+// 			RequestPath:      pulumi.String("/"),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			PortName:   pulumi.String("http"),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHttpHealthCheck.ID(),
+// 			}),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultURLMap, err := compute.NewURLMap(ctx, "defaultURLMap", &compute.URLMapArgs{
+// 			Description:    pulumi.String("a description"),
+// 			DefaultService: defaultBackendService.ID(),
+// 			HostRules: compute.URLMapHostRuleArray{
+// 				&compute.URLMapHostRuleArgs{
+// 					Hosts: pulumi.StringArray{
+// 						pulumi.String("sslcert.tf-test.club"),
+// 					},
+// 					PathMatcher: pulumi.String("allpaths"),
+// 				},
+// 			},
+// 			PathMatchers: compute.URLMapPathMatcherArray{
+// 				&compute.URLMapPathMatcherArgs{
+// 					Name:           pulumi.String("allpaths"),
+// 					DefaultService: defaultBackendService.ID(),
+// 					PathRules: compute.URLMapPathMatcherPathRuleArray{
+// 						&compute.URLMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/*"),
+// 							},
+// 							Service: defaultBackendService.ID(),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTargetHttpsProxy, err := compute.NewTargetHttpsProxy(ctx, "defaultTargetHttpsProxy", &compute.TargetHttpsProxyArgs{
+// 			UrlMap: defaultURLMap.ID(),
+// 			SslCertificates: pulumi.StringArray{
+// 				defaultManagedSslCertificate.ID(),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		zone, err := dns.NewManagedZone(ctx, "zone", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("sslcert.tf-test.club."),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultGlobalForwardingRule, err := compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
+// 			Target:    defaultTargetHttpsProxy.ID(),
+// 			PortRange: pulumi.String("443"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "set", &dns.RecordSetArgs{
+// 			Type:        pulumi.String("A"),
+// 			Ttl:         pulumi.Int(3600),
+// 			ManagedZone: zone.Name,
+// 			Rrdatas: pulumi.StringArray{
+// 				defaultGlobalForwardingRule.IpAddress,
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ManagedSslCertificate can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{name}}
+// ```
 type ManagedSslCertificate struct {
 	pulumi.CustomResourceState
 
@@ -237,4 +362,43 @@ type ManagedSslCertificateArgs struct {
 
 func (ManagedSslCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*managedSslCertificateArgs)(nil)).Elem()
+}
+
+type ManagedSslCertificateInput interface {
+	pulumi.Input
+
+	ToManagedSslCertificateOutput() ManagedSslCertificateOutput
+	ToManagedSslCertificateOutputWithContext(ctx context.Context) ManagedSslCertificateOutput
+}
+
+func (ManagedSslCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedSslCertificate)(nil)).Elem()
+}
+
+func (i ManagedSslCertificate) ToManagedSslCertificateOutput() ManagedSslCertificateOutput {
+	return i.ToManagedSslCertificateOutputWithContext(context.Background())
+}
+
+func (i ManagedSslCertificate) ToManagedSslCertificateOutputWithContext(ctx context.Context) ManagedSslCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedSslCertificateOutput)
+}
+
+type ManagedSslCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedSslCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedSslCertificateOutput)(nil)).Elem()
+}
+
+func (o ManagedSslCertificateOutput) ToManagedSslCertificateOutput() ManagedSslCertificateOutput {
+	return o
+}
+
+func (o ManagedSslCertificateOutput) ToManagedSslCertificateOutputWithContext(ctx context.Context) ManagedSslCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ManagedSslCertificateOutput{})
 }

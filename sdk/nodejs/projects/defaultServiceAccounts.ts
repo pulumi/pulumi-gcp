@@ -11,6 +11,35 @@ import * as utilities from "../utilities";
  * this is not recommended for production environments as per [Google's documentation](https://cloud.google.com/iam/docs/service-accounts#default).
  * See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
  * > This resource works on a best-effort basis, as no API formally describes the default service accounts. If the default service accounts change their name or additional service accounts are added, this resource will need to be updated.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.projects.DefaultServiceAccounts("my_project", {
+ *     action: "DELETE",
+ *     project: "my-project-id",
+ * });
+ * ```
+ *
+ * To enable the default service accounts on the resource destroy:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.projects.DefaultServiceAccounts("my_project", {
+ *     action: "DISABLE",
+ *     project: "my-project-id",
+ *     restorePolicy: "REVERT",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource does not support import
  */
 export class DefaultServiceAccounts extends pulumi.CustomResource {
     /**

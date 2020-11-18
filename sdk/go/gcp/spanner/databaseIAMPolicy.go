@@ -4,6 +4,7 @@
 package spanner
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,123 @@ import (
 // > **Note:** `spanner.DatabaseIAMPolicy` **cannot** be used in conjunction with `spanner.DatabaseIAMBinding` and `spanner.DatabaseIAMMember` or they will fight over what your policy should be.
 //
 // > **Note:** `spanner.DatabaseIAMBinding` resources **can be** used in conjunction with `spanner.DatabaseIAMMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_spanner\_database\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/editor",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = spanner.NewDatabaseIAMPolicy(ctx, "database", &spanner.DatabaseIAMPolicyArgs{
+// 			Instance:   pulumi.String("your-instance-name"),
+// 			Database:   pulumi.String("your-database-name"),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_spanner\_database\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spanner.NewDatabaseIAMBinding(ctx, "database", &spanner.DatabaseIAMBindingArgs{
+// 			Database: pulumi.String("your-database-name"),
+// 			Instance: pulumi.String("your-instance-name"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 			Role: pulumi.String("roles/compute.networkUser"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_spanner\_database\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/spanner"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := spanner.NewDatabaseIAMMember(ctx, "database", &spanner.DatabaseIAMMemberArgs{
+// 			Database: pulumi.String("your-database-name"),
+// 			Instance: pulumi.String("your-instance-name"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 			Role:     pulumi.String("roles/compute.networkUser"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* {{project}}/{{instance}}/{{database}} * {{instance}}/{{database}} (project is taken from provider project) IAM member imports use space-delimited identifiers; the resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer user:foo@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiers; the resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database "project-name/instance-name/database-name roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy database project-name/instance-name/database-name
+// ```
+//
+//  -> **Custom Roles:** If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type DatabaseIAMPolicy struct {
 	pulumi.CustomResourceState
 
@@ -138,4 +256,43 @@ type DatabaseIAMPolicyArgs struct {
 
 func (DatabaseIAMPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*databaseIAMPolicyArgs)(nil)).Elem()
+}
+
+type DatabaseIAMPolicyInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput
+	ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput
+}
+
+func (DatabaseIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIAMPolicy)(nil)).Elem()
+}
+
+func (i DatabaseIAMPolicy) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput {
+	return i.ToDatabaseIAMPolicyOutputWithContext(context.Background())
+}
+
+func (i DatabaseIAMPolicy) ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyOutput)
+}
+
+type DatabaseIAMPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseIAMPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIAMPolicyOutput)(nil)).Elem()
+}
+
+func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput {
+	return o
+}
+
+func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatabaseIAMPolicyOutput{})
 }

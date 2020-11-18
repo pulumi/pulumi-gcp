@@ -34,6 +34,70 @@ class AccessLevels(pulumi.CustomResource):
             * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
 
         ## Example Usage
+        ### Access Context Manager Access Levels Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
+            access_levels=[
+                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
+                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
+                            device_policy={
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_CHROME_OS",
+                                }],
+                                "requireScreenLock": True,
+                            },
+                            regions=[
+                                "CH",
+                                "IT",
+                                "US",
+                            ],
+                        )],
+                    ),
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+                    title="chromeos_no_lock",
+                ),
+                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
+                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
+                            device_policy={
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_MAC",
+                                }],
+                                "requireScreenLock": True,
+                            },
+                            regions=[
+                                "CH",
+                                "IT",
+                                "US",
+                            ],
+                        )],
+                    ),
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
+                    title="mac_no_lock",
+                ),
+            ],
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"))
+        ```
+
+        ## Import
+
+        AccessLevels can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
+        ```
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

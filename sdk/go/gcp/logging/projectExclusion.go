@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,38 @@ import (
 //
 // Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // granted to the credentials used with this provider.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := logging.NewProjectExclusion(ctx, "my_exclusion", &logging.ProjectExclusionArgs{
+// 			Description: pulumi.String("Exclude GCE instance debug logs"),
+// 			Filter:      pulumi.String("resource.type = gce_instance AND severity <= DEBUG"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Project-level logging exclusions can be imported using their URI, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:logging/projectExclusion:ProjectExclusion my_exclusion projects/my-project/exclusions/my-exclusion
+// ```
 type ProjectExclusion struct {
 	pulumi.CustomResourceState
 
@@ -140,4 +173,43 @@ type ProjectExclusionArgs struct {
 
 func (ProjectExclusionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectExclusionArgs)(nil)).Elem()
+}
+
+type ProjectExclusionInput interface {
+	pulumi.Input
+
+	ToProjectExclusionOutput() ProjectExclusionOutput
+	ToProjectExclusionOutputWithContext(ctx context.Context) ProjectExclusionOutput
+}
+
+func (ProjectExclusion) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectExclusion)(nil)).Elem()
+}
+
+func (i ProjectExclusion) ToProjectExclusionOutput() ProjectExclusionOutput {
+	return i.ToProjectExclusionOutputWithContext(context.Background())
+}
+
+func (i ProjectExclusion) ToProjectExclusionOutputWithContext(ctx context.Context) ProjectExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionOutput)
+}
+
+type ProjectExclusionOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectExclusionOutput)(nil)).Elem()
+}
+
+func (o ProjectExclusionOutput) ToProjectExclusionOutput() ProjectExclusionOutput {
+	return o
+}
+
+func (o ProjectExclusionOutput) ToProjectExclusionOutputWithContext(ctx context.Context) ProjectExclusionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectExclusionOutput{})
 }

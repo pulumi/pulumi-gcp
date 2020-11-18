@@ -19,6 +19,109 @@ namespace Pulumi.Gcp.BigTable
     /// &gt; **Note:** `gcp.bigtable.TableIamPolicy` **cannot** be used in conjunction with `gcp.bigtable.TableIamBinding` and `gcp.bigtable.TableIamMember` or they will fight over what your policy should be. In addition, be careful not to accidentally unset ownership of the table as `gcp.bigtable.TableIamPolicy` replaces the entire policy.
     /// 
     /// &gt; **Note:** `gcp.bigtable.TableIamBinding` resources **can be** used in conjunction with `gcp.bigtable.TableIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_bigtable\_instance\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/bigtable.user",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var editor = new Gcp.BigTable.TableIamPolicy("editor", new Gcp.BigTable.TableIamPolicyArgs
+    ///         {
+    ///             Project = "your-project",
+    ///             Instance = "your-bigtable-instance",
+    ///             Table = "your-bigtable-table",
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_bigtable\_instance\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.BigTable.TableIamBinding("editor", new Gcp.BigTable.TableIamBindingArgs
+    ///         {
+    ///             Instance = "your-bigtable-instance",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Role = "roles/bigtable.user",
+    ///             Table = "your-bigtable-table",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_bigtable\_instance\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var editor = new Gcp.BigTable.TableIamMember("editor", new Gcp.BigTable.TableIamMemberArgs
+    ///         {
+    ///             Instance = "your-bigtable-instance",
+    ///             Member = "user:jane@example.com",
+    ///             Role = "roles/bigtable.user",
+    ///             Table = "your-bigtable-table",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance IAM resources can be imported using the project, table name, role and/or member.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table}"
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table} roles/editor"
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigtable/tableIamPolicy:TableIamPolicy editor "projects/{project}/tables/{table} roles/editor user:jane@example.com"
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     public partial class TableIamPolicy : Pulumi.CustomResource
     {

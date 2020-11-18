@@ -37,6 +37,72 @@ class DiskIamBinding(pulumi.CustomResource):
 
         > **Note:** `compute.DiskIamBinding` resources **can be** used in conjunction with `compute.DiskIamMember` resources **only if** they do not grant privilege to the same role.
 
+        ## google\_compute\_disk\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/viewer",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.compute.DiskIamPolicy("policy",
+            project=google_compute_disk["default"]["project"],
+            zone=google_compute_disk["default"]["zone"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_compute\_disk\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.DiskIamBinding("binding",
+            project=google_compute_disk["default"]["project"],
+            zone=google_compute_disk["default"]["zone"],
+            role="roles/viewer",
+            members=["user:jane@example.com"])
+        ```
+
+        ## google\_compute\_disk\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.DiskIamMember("member",
+            project=google_compute_disk["default"]["project"],
+            zone=google_compute_disk["default"]["zone"],
+            role="roles/viewer",
+            member="user:jane@example.com")
+        ```
+
+        ## Import
+
+        For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/disks/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine disk IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/diskIamBinding:DiskIamBinding editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer user:jane@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/diskIamBinding:DiskIamBinding editor "projects/{{project}}/zones/{{zone}}/disks/{{disk}} roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question, e.g.
+
+        ```sh
+         $ pulumi import gcp:compute/diskIamBinding:DiskIamBinding editor projects/{{project}}/zones/{{zone}}/disks/{{disk}}
+        ```
+
+         -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+
+        full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Used to find the parent resource to bind the IAM policy to

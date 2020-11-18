@@ -17,6 +17,59 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// the marketplace prior to using this resource.
     /// 
     /// ## Example Usage
+    /// ### Identity Platform Inbound Saml Config Basic
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var samlConfig = new Gcp.IdentityPlatform.InboundSamlConfig("samlConfig", new Gcp.IdentityPlatform.InboundSamlConfigArgs
+    ///         {
+    ///             DisplayName = "Display Name",
+    ///             IdpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigArgs
+    ///             {
+    ///                 IdpEntityId = "tf-idp",
+    ///                 SignRequest = true,
+    ///                 SsoUrl = "https://example.com",
+    ///                 IdpCertificates = 
+    ///                 {
+    ///                     new Gcp.IdentityPlatform.Inputs.InboundSamlConfigIdpConfigIdpCertificateArgs
+    ///                     {
+    ///                         X509Certificate = File.ReadAllText("test-fixtures/rsa_cert.pem"),
+    ///                     },
+    ///                 },
+    ///             },
+    ///             SpConfig = new Gcp.IdentityPlatform.Inputs.InboundSamlConfigSpConfigArgs
+    ///             {
+    ///                 SpEntityId = "tf-sp",
+    ///                 CallbackUri = "https://example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// InboundSamlConfig can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default {{name}}
+    /// ```
     /// </summary>
     public partial class InboundSamlConfig : Pulumi.CustomResource
     {

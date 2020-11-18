@@ -19,6 +19,78 @@ namespace Pulumi.Gcp.Iot
     ///     * [Official Documentation](https://cloud.google.com/iot/docs/)
     /// 
     /// ## Example Usage
+    /// ### Cloudiot Device Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var registry = new Gcp.Iot.Registry("registry", new Gcp.Iot.RegistryArgs
+    ///         {
+    ///         });
+    ///         var test_device = new Gcp.Iot.Device("test-device", new Gcp.Iot.DeviceArgs
+    ///         {
+    ///             Registry = registry.Id,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Cloudiot Device Full
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var registry = new Gcp.Iot.Registry("registry", new Gcp.Iot.RegistryArgs
+    ///         {
+    ///         });
+    ///         var test_device = new Gcp.Iot.Device("test-device", new Gcp.Iot.DeviceArgs
+    ///         {
+    ///             Registry = registry.Id,
+    ///             Credentials = 
+    ///             {
+    ///                 new Gcp.Iot.Inputs.DeviceCredentialArgs
+    ///                 {
+    ///                     PublicKey = new Gcp.Iot.Inputs.DeviceCredentialPublicKeyArgs
+    ///                     {
+    ///                         Format = "RSA_PEM",
+    ///                         Key = File.ReadAllText("test-fixtures/rsa_public.pem"),
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Blocked = false,
+    ///             LogLevel = "INFO",
+    ///             Metadata = 
+    ///             {
+    ///                 { "test_key_1", "test_value_1" },
+    ///             },
+    ///             GatewayConfig = new Gcp.Iot.Inputs.DeviceGatewayConfigArgs
+    ///             {
+    ///                 GatewayType = "NON_GATEWAY",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Device can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iot/device:Device default {{registry}}/devices/{{name}}
+    /// ```
     /// </summary>
     public partial class Device : Pulumi.CustomResource
     {

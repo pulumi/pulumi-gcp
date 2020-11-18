@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,64 @@ import (
 //     * [Setting Up TCP proxy for Google Cloud Load Balancing](https://cloud.google.com/compute/docs/load-balancing/tcp-ssl/tcp-proxy)
 //
 // ## Example Usage
+// ### Target Tcp Proxy Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultHealthCheck, err := compute.NewHealthCheck(ctx, "defaultHealthCheck", &compute.HealthCheckArgs{
+// 			TimeoutSec:       pulumi.Int(1),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
+// 				Port: pulumi.Int(443),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultBackendService, err := compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			Protocol:   pulumi.String("TCP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHealthCheck.ID(),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewTargetTCPProxy(ctx, "defaultTargetTCPProxy", &compute.TargetTCPProxyArgs{
+// 			BackendService: defaultBackendService.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// TargetTcpProxy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default projects/{{project}}/global/targetTcpProxies/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{name}}
+// ```
 type TargetTCPProxy struct {
 	pulumi.CustomResourceState
 
@@ -193,4 +252,43 @@ type TargetTCPProxyArgs struct {
 
 func (TargetTCPProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*targetTCPProxyArgs)(nil)).Elem()
+}
+
+type TargetTCPProxyInput interface {
+	pulumi.Input
+
+	ToTargetTCPProxyOutput() TargetTCPProxyOutput
+	ToTargetTCPProxyOutputWithContext(ctx context.Context) TargetTCPProxyOutput
+}
+
+func (TargetTCPProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetTCPProxy)(nil)).Elem()
+}
+
+func (i TargetTCPProxy) ToTargetTCPProxyOutput() TargetTCPProxyOutput {
+	return i.ToTargetTCPProxyOutputWithContext(context.Background())
+}
+
+func (i TargetTCPProxy) ToTargetTCPProxyOutputWithContext(ctx context.Context) TargetTCPProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyOutput)
+}
+
+type TargetTCPProxyOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetTCPProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetTCPProxyOutput)(nil)).Elem()
+}
+
+func (o TargetTCPProxyOutput) ToTargetTCPProxyOutput() TargetTCPProxyOutput {
+	return o
+}
+
+func (o TargetTCPProxyOutput) ToTargetTCPProxyOutputWithContext(ctx context.Context) TargetTCPProxyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TargetTCPProxyOutput{})
 }

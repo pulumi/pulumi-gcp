@@ -19,6 +19,210 @@ namespace Pulumi.Gcp.Iap
     /// &gt; **Note:** `gcp.iap.WebTypeAppEngingIamPolicy` **cannot** be used in conjunction with `gcp.iap.WebTypeAppEngingIamBinding` and `gcp.iap.WebTypeAppEngingIamMember` or they will fight over what your policy should be.
     /// 
     /// &gt; **Note:** `gcp.iap.WebTypeAppEngingIamBinding` resources **can be** used in conjunction with `gcp.iap.WebTypeAppEngingIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_iap\_web\_type\_app\_engine\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/iap.httpsResourceAccessor",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Iap.WebTypeAppEngingIamPolicy("policy", new Gcp.Iap.WebTypeAppEngingIamPolicyArgs
+    ///         {
+    ///             Project = google_app_engine_application.App.Project,
+    ///             AppId = google_app_engine_application.App.App_id,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/iap.httpsResourceAccessor",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
+    ///                     {
+    ///                         Title = "expires_after_2019_12_31",
+    ///                         Description = "Expiring at midnight of 2019-12-31",
+    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Iap.WebTypeAppEngingIamPolicy("policy", new Gcp.Iap.WebTypeAppEngingIamPolicyArgs
+    ///         {
+    ///             Project = google_app_engine_application.App.Project,
+    ///             AppId = google_app_engine_application.App.App_id,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## google\_iap\_web\_type\_app\_engine\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Iap.WebTypeAppEngingIamBinding("binding", new Gcp.Iap.WebTypeAppEngingIamBindingArgs
+    ///         {
+    ///             Project = google_app_engine_application.App.Project,
+    ///             AppId = google_app_engine_application.App.App_id,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Iap.WebTypeAppEngingIamBinding("binding", new Gcp.Iap.WebTypeAppEngingIamBindingArgs
+    ///         {
+    ///             Project = google_app_engine_application.App.Project,
+    ///             AppId = google_app_engine_application.App.App_id,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Condition = new Gcp.Iap.Inputs.WebTypeAppEngingIamBindingConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## google\_iap\_web\_type\_app\_engine\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.Iap.WebTypeAppEngingIamMember("member", new Gcp.Iap.WebTypeAppEngingIamMemberArgs
+    ///         {
+    ///             Project = google_app_engine_application.App.Project,
+    ///             AppId = google_app_engine_application.App.App_id,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.Iap.WebTypeAppEngingIamMember("member", new Gcp.Iap.WebTypeAppEngingIamMemberArgs
+    ///         {
+    ///             Project = google_app_engine_application.App.Project,
+    ///             AppId = google_app_engine_application.App.App_id,
+    ///             Role = "roles/iap.httpsResourceAccessor",
+    ///             Member = "user:jane@example.com",
+    ///             Condition = new Gcp.Iap.Inputs.WebTypeAppEngingIamMemberConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_web/appengine-{{appId}} * {{project}}/{{appId}} * {{appId}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy webtypeappengine IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor "projects/{{project}}/iap_web/appengine-{{appId}} roles/iap.httpsResourceAccessor user:jane@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor "projects/{{project}}/iap_web/appengine-{{appId}} roles/iap.httpsResourceAccessor"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember editor projects/{{project}}/iap_web/appengine-{{appId}}
+    /// ```
+    /// 
+    ///  -&gt; **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+    /// 
+    /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
     public partial class WebTypeAppEngingIamMember : Pulumi.CustomResource
     {

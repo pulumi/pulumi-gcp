@@ -16,6 +16,38 @@ import (
 //
 // For more information see
 // [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/kms"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		bqSa, err := bigquery.GetDefaultServiceAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = kms.NewCryptoKeyIAMMember(ctx, "keySaUser", &kms.CryptoKeyIAMMemberArgs{
+// 			CryptoKeyId: pulumi.Any(google_kms_crypto_key.Key.Id),
+// 			Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+// 			Member:      pulumi.String(fmt.Sprintf("%v%v", "serviceAccount:", bqSa.Email)),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetDefaultServiceAccount(ctx *pulumi.Context, args *GetDefaultServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetDefaultServiceAccountResult, error) {
 	var rv GetDefaultServiceAccountResult
 	err := ctx.Invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args, &rv, opts...)

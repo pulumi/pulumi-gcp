@@ -14,6 +14,18 @@ import * as utilities from "../utilities";
  *     * [Associating a policy with the organization or folder](https://cloud.google.com/vpc/docs/using-firewall-policies#associate)
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * OrganizationSecurityPolicyAssociation can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/association/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation default {{policy_id}}/{{name}}
+ * ```
  */
 export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource {
     /**

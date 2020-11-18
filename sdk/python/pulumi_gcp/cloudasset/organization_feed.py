@@ -39,6 +39,18 @@ class OrganizationFeed(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        OrganizationFeed can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default organizations/{{org_id}}/feeds/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default {{org_id}}/{{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] asset_names: A list of the full names of the assets to receive updates. You must specify either or both of

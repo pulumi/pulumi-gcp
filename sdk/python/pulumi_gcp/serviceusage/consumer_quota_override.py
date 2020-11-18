@@ -37,6 +37,41 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 
         ## Example Usage
+        ### Consumer Quota Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="quota",
+            org_id="123456789",
+            opts=ResourceOptions(provider=google_beta))
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            project=my_project.project_id,
+            service="servicemanagement.googleapis.com",
+            metric="servicemanagement.googleapis.com%2Fdefault_requests",
+            limit="%2Fmin%2Fproject",
+            override_value="95",
+            force=True,
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        ConsumerQuotaOverride can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{project}}/{{service}}/{{metric}}/{{limit}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -9,6 +9,47 @@ import (
 
 // Get the IP address from a static address. For more information see
 // the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myAddress, err := compute.LookupAddress(ctx, &compute.LookupAddressArgs{
+// 			Name: "foobar",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+// 			DnsName: pulumi.String("prod.mydomain.com."),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
+// 			Type:        pulumi.String("A"),
+// 			Ttl:         pulumi.Int(300),
+// 			ManagedZone: prod.Name,
+// 			Rrdatas: pulumi.StringArray{
+// 				pulumi.String(myAddress.Address),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	var rv LookupAddressResult
 	err := ctx.Invoke("gcp:compute/getAddress:getAddress", args, &rv, opts...)

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -23,6 +24,212 @@ import (
 //     * [Autoscaling Groups of Instances](https://cloud.google.com/compute/docs/autoscaler/)
 //
 // ## Example Usage
+// ### Autoscaler Single Instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "defaultInstanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType:  pulumi.String("e2-medium"),
+// 			CanIpForward: pulumi.Bool(false),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 				pulumi.String("bar"),
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String(debian9.Id),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("userinfo-email"),
+// 					pulumi.String("compute-ro"),
+// 					pulumi.String("storage-ro"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultTargetPool, err := compute.NewTargetPool(ctx, "defaultTargetPool", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "defaultInstanceGroupManager", &compute.InstanceGroupManagerArgs{
+// 			Zone: pulumi.String("us-central1-f"),
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: defaultInstanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			TargetPools: pulumi.StringArray{
+// 				defaultTargetPool.ID(),
+// 			},
+// 			BaseInstanceName: pulumi.String("autoscaler-sample"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewAutoscaler(ctx, "defaultAutoscaler", &compute.AutoscalerArgs{
+// 			Zone:   pulumi.String("us-central1-f"),
+// 			Target: defaultInstanceGroupManager.ID(),
+// 			AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{
+// 				MaxReplicas:    pulumi.Int(5),
+// 				MinReplicas:    pulumi.Int(1),
+// 				CooldownPeriod: pulumi.Int(60),
+// 				Metrics: compute.AutoscalerAutoscalingPolicyMetricArray{
+// 					&compute.AutoscalerAutoscalingPolicyMetricArgs{
+// 						Name:                     pulumi.String("pubsub.googleapis.com/subscription/num_undelivered_messages"),
+// 						Filter:                   pulumi.String("resource.type = pubsub_subscription AND resource.label.subscription_id = our-subscription"),
+// 						SingleInstanceAssignment: pulumi.Float64(65535),
+// 					},
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Autoscaler Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "debian-9"
+// 		opt1 := "debian-cloud"
+// 		debian9, err := compute.LookupImage(ctx, &compute.LookupImageArgs{
+// 			Family:  &opt0,
+// 			Project: &opt1,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarInstanceTemplate, err := compute.NewInstanceTemplate(ctx, "foobarInstanceTemplate", &compute.InstanceTemplateArgs{
+// 			MachineType:  pulumi.String("e2-medium"),
+// 			CanIpForward: pulumi.Bool(false),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 				pulumi.String("bar"),
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String(debian9.Id),
+// 				},
+// 			},
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
+// 			ServiceAccount: &compute.InstanceTemplateServiceAccountArgs{
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("userinfo-email"),
+// 					pulumi.String("compute-ro"),
+// 					pulumi.String("storage-ro"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarTargetPool, err := compute.NewTargetPool(ctx, "foobarTargetPool", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarInstanceGroupManager, err := compute.NewInstanceGroupManager(ctx, "foobarInstanceGroupManager", &compute.InstanceGroupManagerArgs{
+// 			Zone: pulumi.String("us-central1-f"),
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: foobarInstanceTemplate.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			TargetPools: pulumi.StringArray{
+// 				foobarTargetPool.ID(),
+// 			},
+// 			BaseInstanceName: pulumi.String("foobar"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewAutoscaler(ctx, "foobarAutoscaler", &compute.AutoscalerArgs{
+// 			Zone:   pulumi.String("us-central1-f"),
+// 			Target: foobarInstanceGroupManager.ID(),
+// 			AutoscalingPolicy: &compute.AutoscalerAutoscalingPolicyArgs{
+// 				MaxReplicas:    pulumi.Int(5),
+// 				MinReplicas:    pulumi.Int(1),
+// 				CooldownPeriod: pulumi.Int(60),
+// 				CpuUtilization: &compute.AutoscalerAutoscalingPolicyCpuUtilizationArgs{
+// 					Target: pulumi.Float64(0.5),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Autoscaler can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/autoscalar:Autoscalar default projects/{{project}}/zones/{{zone}}/autoscalers/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/autoscalar:Autoscalar default {{project}}/{{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/autoscalar:Autoscalar default {{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/autoscalar:Autoscalar default {{name}}
+// ```
 //
 // Deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler
 type Autoscalar struct {
@@ -204,4 +411,43 @@ type AutoscalarArgs struct {
 
 func (AutoscalarArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*autoscalarArgs)(nil)).Elem()
+}
+
+type AutoscalarInput interface {
+	pulumi.Input
+
+	ToAutoscalarOutput() AutoscalarOutput
+	ToAutoscalarOutputWithContext(ctx context.Context) AutoscalarOutput
+}
+
+func (Autoscalar) ElementType() reflect.Type {
+	return reflect.TypeOf((*Autoscalar)(nil)).Elem()
+}
+
+func (i Autoscalar) ToAutoscalarOutput() AutoscalarOutput {
+	return i.ToAutoscalarOutputWithContext(context.Background())
+}
+
+func (i Autoscalar) ToAutoscalarOutputWithContext(ctx context.Context) AutoscalarOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalarOutput)
+}
+
+type AutoscalarOutput struct {
+	*pulumi.OutputState
+}
+
+func (AutoscalarOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalarOutput)(nil)).Elem()
+}
+
+func (o AutoscalarOutput) ToAutoscalarOutput() AutoscalarOutput {
+	return o
+}
+
+func (o AutoscalarOutput) ToAutoscalarOutputWithContext(ctx context.Context) AutoscalarOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(AutoscalarOutput{})
 }

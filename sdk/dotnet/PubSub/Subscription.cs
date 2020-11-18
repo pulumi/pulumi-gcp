@@ -20,6 +20,145 @@ namespace Pulumi.Gcp.PubSub
     ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
     /// 
     /// ## Example Usage
+    /// ### Pubsub Subscription Push
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
+    ///         {
+    ///             Topic = exampleTopic.Name,
+    ///             AckDeadlineSeconds = 20,
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             PushConfig = new Gcp.PubSub.Inputs.SubscriptionPushConfigArgs
+    ///             {
+    ///                 PushEndpoint = "https://example.com/push",
+    ///                 Attributes = 
+    ///                 {
+    ///                     { "x-goog-version", "v1" },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Pubsub Subscription Pull
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
+    ///         {
+    ///             Topic = exampleTopic.Name,
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             MessageRetentionDuration = "1200s",
+    ///             RetainAckedMessages = true,
+    ///             AckDeadlineSeconds = 20,
+    ///             ExpirationPolicy = new Gcp.PubSub.Inputs.SubscriptionExpirationPolicyArgs
+    ///             {
+    ///                 Ttl = "300000.5s",
+    ///             },
+    ///             RetryPolicy = new Gcp.PubSub.Inputs.SubscriptionRetryPolicyArgs
+    ///             {
+    ///                 MinimumBackoff = "10s",
+    ///             },
+    ///             EnableMessageOrdering = false,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Pubsub Subscription Different Project
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///             Project = "topic-project",
+    ///         });
+    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
+    ///         {
+    ///             Project = "subscription-project",
+    ///             Topic = exampleTopic.Name,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Pubsub Subscription Dead Letter
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var exampleDeadLetter = new Gcp.PubSub.Topic("exampleDeadLetter", new Gcp.PubSub.TopicArgs
+    ///         {
+    ///         });
+    ///         var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new Gcp.PubSub.SubscriptionArgs
+    ///         {
+    ///             Topic = exampleTopic.Name,
+    ///             DeadLetterPolicy = new Gcp.PubSub.Inputs.SubscriptionDeadLetterPolicyArgs
+    ///             {
+    ///                 DeadLetterTopic = exampleDeadLetter.Id,
+    ///                 MaxDeliveryAttempts = 10,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Subscription can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
+    /// ```
     /// </summary>
     public partial class Subscription : Pulumi.CustomResource
     {

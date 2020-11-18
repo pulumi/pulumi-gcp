@@ -4,12 +4,29 @@
 package notebooks
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Represents a Location resource.
+//
+// ## Import
+//
+// Location can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/location:Location default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:notebooks/location:Location default {{name}}
+// ```
 type Location struct {
 	pulumi.CustomResourceState
 
@@ -92,4 +109,43 @@ type LocationArgs struct {
 
 func (LocationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*locationArgs)(nil)).Elem()
+}
+
+type LocationInput interface {
+	pulumi.Input
+
+	ToLocationOutput() LocationOutput
+	ToLocationOutputWithContext(ctx context.Context) LocationOutput
+}
+
+func (Location) ElementType() reflect.Type {
+	return reflect.TypeOf((*Location)(nil)).Elem()
+}
+
+func (i Location) ToLocationOutput() LocationOutput {
+	return i.ToLocationOutputWithContext(context.Background())
+}
+
+func (i Location) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
+}
+
+type LocationOutput struct {
+	*pulumi.OutputState
+}
+
+func (LocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocationOutput)(nil)).Elem()
+}
+
+func (o LocationOutput) ToLocationOutput() LocationOutput {
+	return o
+}
+
+func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(LocationOutput{})
 }

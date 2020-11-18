@@ -32,6 +32,34 @@ class SourceRepresentationInstance(pulumi.CustomResource):
         affect billing. You cannot update the source representation instance.
 
         ## Example Usage
+        ### Sql Source Representation Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.sql.SourceRepresentationInstance("instance",
+            database_version="MYSQL_5_7",
+            host="10.20.30.40",
+            port=3306,
+            region="us-central1")
+        ```
+
+        ## Import
+
+        SourceRepresentationInstance can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

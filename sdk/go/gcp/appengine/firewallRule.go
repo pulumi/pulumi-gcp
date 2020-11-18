@@ -4,6 +4,7 @@
 package appengine
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,62 @@ import (
 //     * [Official Documentation](https://cloud.google.com/appengine/docs/standard/python/creating-firewalls#creating_firewall_rules)
 //
 // ## Example Usage
+// ### App Engine Firewall Rule Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("ae-project"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		app, err := appengine.NewApplication(ctx, "app", &appengine.ApplicationArgs{
+// 			Project:    myProject.ProjectId,
+// 			LocationId: pulumi.String("us-central"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = appengine.NewFirewallRule(ctx, "rule", &appengine.FirewallRuleArgs{
+// 			Project:     app.Project,
+// 			Priority:    pulumi.Int(1000),
+// 			Action:      pulumi.String("ALLOW"),
+// 			SourceRange: pulumi.String("*"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// FirewallRule can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{project}}/{{priority}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
+// ```
 type FirewallRule struct {
 	pulumi.CustomResourceState
 
@@ -157,4 +214,43 @@ type FirewallRuleArgs struct {
 
 func (FirewallRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallRuleArgs)(nil)).Elem()
+}
+
+type FirewallRuleInput interface {
+	pulumi.Input
+
+	ToFirewallRuleOutput() FirewallRuleOutput
+	ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput
+}
+
+func (FirewallRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRule)(nil)).Elem()
+}
+
+func (i FirewallRule) ToFirewallRuleOutput() FirewallRuleOutput {
+	return i.ToFirewallRuleOutputWithContext(context.Background())
+}
+
+func (i FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
+}
+
+type FirewallRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRuleOutput)(nil)).Elem()
+}
+
+func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {
+	return o
+}
+
+func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallRuleOutput{})
 }

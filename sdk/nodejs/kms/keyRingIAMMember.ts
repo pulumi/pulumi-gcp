@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,137 @@ import * as utilities from "../utilities";
  * > **Note:** `gcp.kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `gcp.kms.KeyRingIAMBinding` and `gcp.kms.KeyRingIAMMember` or they will fight over what your policy should be.
  *
  * > **Note:** `gcp.kms.KeyRingIAMBinding` resources **can be** used in conjunction with `gcp.kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_kms\_key\_ring\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("keyRing", {
+ *     keyRingId: keyring.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/editor",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const keyRing = new gcp.kms.KeyRingIAMPolicy("keyRing", {
+ *     keyRingId: keyring.id,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## google\_kms\_key\_ring\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMBinding("key_ring", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     keyRingId: "your-key-ring-id",
+ *     members: ["user:jane@example.com"],
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## google\_kms\_key\_ring\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
+ *     keyRingId: "your-key-ring-id",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRingIAMMember("key_ring", {
+ *     condition: {
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         title: "expires_after_2019_12_31",
+ *     },
+ *     keyRingId: "your-key-ring-id",
+ *     member: "user:jane@example.com",
+ *     role: "roles/editor",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+ *
+ * This member resource can be imported using the `key_ring_id`, role, and account e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+ * ```
+ *
+ *  IAM binding imports use space-delimited identifiers; the resource in question and the role.
+ *
+ * This binding resource can be imported using the `key_ring_id` and role, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer"
+ * ```
+ *
+ *  IAM policy imports use the identifier of the resource in question.
+ *
+ * This policy resource can be imported using the `key_ring_id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam your-project-id/location-name/key-ring-name
+ * ```
  */
 export class KeyRingIAMMember extends pulumi.CustomResource {
     /**

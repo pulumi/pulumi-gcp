@@ -4,6 +4,7 @@
 package logging
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -15,6 +16,74 @@ import (
 // [Storing Logs](https://cloud.google.com/logging/docs/storage).
 //
 // > **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.NewProject(ctx, "_default", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("your-project-id"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
+// 			Project:       _default.Name,
+// 			Location:      pulumi.String("global"),
+// 			RetentionDays: pulumi.Int(30),
+// 			BucketId:      pulumi.String("_Default"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// Create logging bucket with customId
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := logging.NewProjectBucketConfig(ctx, "basic", &logging.ProjectBucketConfigArgs{
+// 			BucketId:      pulumi.String("custom-bucket"),
+// 			Location:      pulumi.String("global"),
+// 			Project:       pulumi.String("project_id"),
+// 			RetentionDays: pulumi.Int(30),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource can be imported using the following format
+//
+// ```sh
+//  $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
+// ```
 type ProjectBucketConfig struct {
 	pulumi.CustomResourceState
 
@@ -137,4 +206,43 @@ type ProjectBucketConfigArgs struct {
 
 func (ProjectBucketConfigArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectBucketConfigArgs)(nil)).Elem()
+}
+
+type ProjectBucketConfigInput interface {
+	pulumi.Input
+
+	ToProjectBucketConfigOutput() ProjectBucketConfigOutput
+	ToProjectBucketConfigOutputWithContext(ctx context.Context) ProjectBucketConfigOutput
+}
+
+func (ProjectBucketConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectBucketConfig)(nil)).Elem()
+}
+
+func (i ProjectBucketConfig) ToProjectBucketConfigOutput() ProjectBucketConfigOutput {
+	return i.ToProjectBucketConfigOutputWithContext(context.Background())
+}
+
+func (i ProjectBucketConfig) ToProjectBucketConfigOutputWithContext(ctx context.Context) ProjectBucketConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectBucketConfigOutput)
+}
+
+type ProjectBucketConfigOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectBucketConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectBucketConfigOutput)(nil)).Elem()
+}
+
+func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutput() ProjectBucketConfigOutput {
+	return o
+}
+
+func (o ProjectBucketConfigOutput) ToProjectBucketConfigOutputWithContext(ctx context.Context) ProjectBucketConfigOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectBucketConfigOutput{})
 }

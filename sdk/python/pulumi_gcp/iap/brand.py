@@ -39,6 +39,14 @@ class Brand(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        Brand can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:iap/brand:Brand default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_title: Application name displayed on OAuth consent screen.

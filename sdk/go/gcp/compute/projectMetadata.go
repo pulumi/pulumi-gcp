@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,41 @@ import (
 // Keys unset in config but set on the server will be removed. If you want to manage only single
 // key/value pairs within the project metadata rather than the entire set, then use
 // google_compute_project_metadata_item.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewProjectMetadata(ctx, "_default", &compute.ProjectMetadataArgs{
+// 			Metadata: pulumi.StringMap{
+// 				"13":   pulumi.String("42"),
+// 				"fizz": pulumi.String("buzz"),
+// 				"foo":  pulumi.String("bar"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource can be imported using the project ID
+//
+// ```sh
+//  $ pulumi import gcp:compute/projectMetadata:ProjectMetadata foo my-project-id`
+// ```
 type ProjectMetadata struct {
 	pulumi.CustomResourceState
 
@@ -98,4 +134,43 @@ type ProjectMetadataArgs struct {
 
 func (ProjectMetadataArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectMetadataArgs)(nil)).Elem()
+}
+
+type ProjectMetadataInput interface {
+	pulumi.Input
+
+	ToProjectMetadataOutput() ProjectMetadataOutput
+	ToProjectMetadataOutputWithContext(ctx context.Context) ProjectMetadataOutput
+}
+
+func (ProjectMetadata) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMetadata)(nil)).Elem()
+}
+
+func (i ProjectMetadata) ToProjectMetadataOutput() ProjectMetadataOutput {
+	return i.ToProjectMetadataOutputWithContext(context.Background())
+}
+
+func (i ProjectMetadata) ToProjectMetadataOutputWithContext(ctx context.Context) ProjectMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataOutput)
+}
+
+type ProjectMetadataOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectMetadataOutput)(nil)).Elem()
+}
+
+func (o ProjectMetadataOutput) ToProjectMetadataOutput() ProjectMetadataOutput {
+	return o
+}
+
+func (o ProjectMetadataOutput) ToProjectMetadataOutputWithContext(ctx context.Context) ProjectMetadataOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectMetadataOutput{})
 }

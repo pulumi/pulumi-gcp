@@ -4,6 +4,7 @@
 package folder
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,55 @@ import (
 // > **Note:** On create, this resource will overwrite members of any existing roles.
 //     Use `pulumi import` and inspect the output to ensure
 //     your existing members are preserved.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/folder"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("Department 1"),
+// 			Parent:      pulumi.String("organizations/1234567"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = folder.NewIAMBinding(ctx, "admin", &folder.IAMBindingArgs{
+// 			Folder: department1.Name,
+// 			Role:   pulumi.String("roles/editor"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:alice@gmail.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
+//
+// These bindings can be imported using the `folder` and role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:folder/iAMBinding:IAMBinding viewer "folder-name roles/viewer"
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM binding with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IAMBinding struct {
 	pulumi.CustomResourceState
 
@@ -161,4 +211,43 @@ type IAMBindingArgs struct {
 
 func (IAMBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iambindingArgs)(nil)).Elem()
+}
+
+type IAMBindingInput interface {
+	pulumi.Input
+
+	ToIAMBindingOutput() IAMBindingOutput
+	ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput
+}
+
+func (IAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMBinding)(nil)).Elem()
+}
+
+func (i IAMBinding) ToIAMBindingOutput() IAMBindingOutput {
+	return i.ToIAMBindingOutputWithContext(context.Background())
+}
+
+func (i IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingOutput)
+}
+
+type IAMBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (IAMBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMBindingOutput)(nil)).Elem()
+}
+
+func (o IAMBindingOutput) ToIAMBindingOutput() IAMBindingOutput {
+	return o
+}
+
+func (o IAMBindingOutput) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IAMBindingOutput{})
 }

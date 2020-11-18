@@ -16,6 +16,34 @@ import * as utilities from "../utilities";
  *  after 7 days, but it can take up to 30 more days (i.e. between 7 and 37 days after deletion) before the role name is
  *  made available again. This means a deleted role that has been deleted for more than 7 days cannot be changed at all
  *  by the provider, and new roles cannot share that name.
+ *
+ * ## Example Usage
+ *
+ * This snippet creates a customized IAM role.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_custom_role = new gcp.projects.IAMCustomRole("my-custom-role", {
+ *     description: "A description",
+ *     permissions: [
+ *         "iam.roles.list",
+ *         "iam.roles.create",
+ *         "iam.roles.delete",
+ *     ],
+ *     roleId: "myCustomRole",
+ *     title: "My Custom Role",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Customized IAM project role can be imported using their URI, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole my-custom-role projects/my-project/roles/myCustomRole
+ * ```
  */
 export class IAMCustomRole extends pulumi.CustomResource {
     /**

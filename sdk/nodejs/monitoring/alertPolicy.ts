@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,6 +17,40 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/monitoring/alerts/)
  *
  * ## Example Usage
+ * ### Monitoring Alert Policy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const alertPolicy = new gcp.monitoring.AlertPolicy("alert_policy", {
+ *     combiner: "OR",
+ *     conditions: [{
+ *         conditionThreshold: {
+ *             aggregations: [{
+ *                 alignmentPeriod: "60s",
+ *                 perSeriesAligner: "ALIGN_RATE",
+ *             }],
+ *             comparison: "COMPARISON_GT",
+ *             duration: "60s",
+ *             filter: "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+ *         },
+ *         displayName: "test condition",
+ *     }],
+ *     displayName: "My Alert Policy",
+ *     userLabels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * AlertPolicy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
+ * ```
  */
 export class AlertPolicy extends pulumi.CustomResource {
     /**

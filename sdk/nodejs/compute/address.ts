@@ -27,6 +27,91 @@ import * as utilities from "../utilities";
  *     * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
  *
  * ## Example Usage
+ * ### Address Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const ipAddress = new gcp.compute.Address("ip_address", {});
+ * ```
+ * ### Address With Subnetwork
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
+ * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
+ *     ipCidrRange: "10.0.0.0/16",
+ *     region: "us-central1",
+ *     network: defaultNetwork.id,
+ * });
+ * const internalWithSubnetAndAddress = new gcp.compute.Address("internalWithSubnetAndAddress", {
+ *     subnetwork: defaultSubnetwork.id,
+ *     addressType: "INTERNAL",
+ *     address: "10.0.42.42",
+ *     region: "us-central1",
+ * });
+ * ```
+ * ### Address With Gce Endpoint
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const internalWithGceEndpoint = new gcp.compute.Address("internal_with_gce_endpoint", {
+ *     addressType: "INTERNAL",
+ *     purpose: "GCE_ENDPOINT",
+ * });
+ * ```
+ * ### Instance With Ip
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const static = new gcp.compute.Address("static", {});
+ * const debianImage = gcp.compute.getImage({
+ *     family: "debian-9",
+ *     project: "debian-cloud",
+ * });
+ * const instanceWithIp = new gcp.compute.Instance("instanceWithIp", {
+ *     machineType: "f1-micro",
+ *     zone: "us-central1-a",
+ *     bootDisk: {
+ *         initializeParams: {
+ *             image: debianImage.then(debianImage => debianImage.selfLink),
+ *         },
+ *     },
+ *     networkInterfaces: [{
+ *         network: "default",
+ *         accessConfigs: [{
+ *             natIp: static.address,
+ *         }],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Address can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/address:Address default {{name}}
+ * ```
  */
 export class Address extends pulumi.CustomResource {
     /**

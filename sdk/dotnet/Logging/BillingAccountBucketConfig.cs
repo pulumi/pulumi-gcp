@@ -15,6 +15,40 @@ namespace Pulumi.Gcp.Logging
     /// [Storing Logs](https://cloud.google.com/logging/docs/storage).
     /// 
     /// &gt; **Note:** Logging buckets are automatically created for a given folder, project, organization, billingAccount and cannot be deleted. Creating a resource of this type will acquire and update the resource that already exists at the desired location. These buckets cannot be removed so deleting this resource will remove the bucket config from your state but will leave the logging bucket unchanged. The buckets that are currently automatically created are "_Default" and "_Required".
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = Output.Create(Gcp.Organizations.GetBillingAccount.InvokeAsync(new Gcp.Organizations.GetBillingAccountArgs
+    ///         {
+    ///             BillingAccount = "00AA00-000AAA-00AA0A",
+    ///         }));
+    ///         var basic = new Gcp.Logging.BillingAccountBucketConfig("basic", new Gcp.Logging.BillingAccountBucketConfigArgs
+    ///         {
+    ///             BillingAccount = @default.Apply(@default =&gt; @default.BillingAccount),
+    ///             Location = "global",
+    ///             RetentionDays = 30,
+    ///             BucketId = "_Default",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource can be imported using the following format
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
+    /// ```
     /// </summary>
     public partial class BillingAccountBucketConfig : Pulumi.CustomResource
     {

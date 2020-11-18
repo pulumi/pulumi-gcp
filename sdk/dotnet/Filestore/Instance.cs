@@ -21,6 +21,122 @@ namespace Pulumi.Gcp.Filestore
     ///     * [Copying Data In/Out](https://cloud.google.com/filestore/docs/copying-data)
     /// 
     /// ## Example Usage
+    /// ### Filestore Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
+    ///         {
+    ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///             {
+    ///                 CapacityGb = 2660,
+    ///                 Name = "share1",
+    ///             },
+    ///             Networks = 
+    ///             {
+    ///                 new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///                 {
+    ///                     Modes = 
+    ///                     {
+    ///                         "MODE_IPV4",
+    ///                     },
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             Tier = "PREMIUM",
+    ///             Zone = "us-central1-b",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Filestore Instance Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var instance = new Gcp.Filestore.Instance("instance", new Gcp.Filestore.InstanceArgs
+    ///         {
+    ///             Zone = "us-central1-b",
+    ///             Tier = "BASIC_SSD",
+    ///             FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///             {
+    ///                 CapacityGb = 2660,
+    ///                 Name = "share1",
+    ///                 NfsExportOptions = 
+    ///                 {
+    ///                     new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+    ///                     {
+    ///                         IpRanges = 
+    ///                         {
+    ///                             "10.0.0.0/24",
+    ///                         },
+    ///                         AccessMode = "READ_WRITE",
+    ///                         SquashMode = "NO_ROOT_SQUASH",
+    ///                     },
+    ///                     new Gcp.Filestore.Inputs.InstanceFileSharesNfsExportOptionArgs
+    ///                     {
+    ///                         IpRanges = 
+    ///                         {
+    ///                             "10.10.0.0/24",
+    ///                         },
+    ///                         AccessMode = "READ_ONLY",
+    ///                         SquashMode = "ROOT_SQUASH",
+    ///                         AnonUid = 123,
+    ///                         AnonGid = 456,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Networks = 
+    ///             {
+    ///                 new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                     Modes = 
+    ///                     {
+    ///                         "MODE_IPV4",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instance can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:filestore/instance:Instance default projects/{{project}}/locations/{{zone}}/instances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:filestore/instance:Instance default {{project}}/{{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:filestore/instance:Instance default {{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:filestore/instance:Instance default {{name}}
+    /// ```
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

@@ -4,12 +4,36 @@
 package iap
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/iap_tunnel * {{project}} Any variables not passed in the import command will be taken from the provider configuration. Identity-Aware Proxy tunnel IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/tunnelIamPolicy:TunnelIamPolicy editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/tunnelIamPolicy:TunnelIamPolicy editor "projects/{{project}}/iap_tunnel roles/iap.tunnelResourceAccessor"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:iap/tunnelIamPolicy:TunnelIamPolicy editor projects/{{project}}/iap_tunnel
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type TunnelIamPolicy struct {
 	pulumi.CustomResourceState
 
@@ -100,4 +124,43 @@ type TunnelIamPolicyArgs struct {
 
 func (TunnelIamPolicyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*tunnelIamPolicyArgs)(nil)).Elem()
+}
+
+type TunnelIamPolicyInput interface {
+	pulumi.Input
+
+	ToTunnelIamPolicyOutput() TunnelIamPolicyOutput
+	ToTunnelIamPolicyOutputWithContext(ctx context.Context) TunnelIamPolicyOutput
+}
+
+func (TunnelIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelIamPolicy)(nil)).Elem()
+}
+
+func (i TunnelIamPolicy) ToTunnelIamPolicyOutput() TunnelIamPolicyOutput {
+	return i.ToTunnelIamPolicyOutputWithContext(context.Background())
+}
+
+func (i TunnelIamPolicy) ToTunnelIamPolicyOutputWithContext(ctx context.Context) TunnelIamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamPolicyOutput)
+}
+
+type TunnelIamPolicyOutput struct {
+	*pulumi.OutputState
+}
+
+func (TunnelIamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelIamPolicyOutput)(nil)).Elem()
+}
+
+func (o TunnelIamPolicyOutput) ToTunnelIamPolicyOutput() TunnelIamPolicyOutput {
+	return o
+}
+
+func (o TunnelIamPolicyOutput) ToTunnelIamPolicyOutputWithContext(ctx context.Context) TunnelIamPolicyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(TunnelIamPolicyOutput{})
 }

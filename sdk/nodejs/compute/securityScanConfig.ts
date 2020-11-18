@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -19,6 +18,39 @@ import * as utilities from "../utilities";
  * state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
  *
  * ## Example Usage
+ * ### Scan Config Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const scannerStaticIp = new gcp.compute.Address("scannerStaticIp", {}, {
+ *     provider: google_beta,
+ * });
+ * const scan_config = new gcp.compute.SecurityScanConfig("scan-config", {
+ *     displayName: "scan-config",
+ *     startingUrls: [pulumi.interpolate`http://${scannerStaticIp.address}`],
+ *     targetPlatforms: ["COMPUTE"],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * ScanConfig can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
+ * ```
  */
 export class SecurityScanConfig extends pulumi.CustomResource {
     /**

@@ -4,6 +4,7 @@
 package serviceusage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -21,6 +22,59 @@ import (
 //     * [REST API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1beta1/services.consumerQuotaMetrics.limits.consumerOverrides)
 //
 // ## Example Usage
+// ### Consumer Quota Override
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceusage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("quota"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceusage.NewConsumerQuotaOverride(ctx, "override", &serviceusage.ConsumerQuotaOverrideArgs{
+// 			Project:       myProject.ProjectId,
+// 			Service:       pulumi.String("servicemanagement.googleapis.com"),
+// 			Metric:        pulumi.String(fmt.Sprintf("%v%v%v", "servicemanagement.googleapis.com", "%", "2Fdefault_requests")),
+// 			Limit:         pulumi.String(fmt.Sprintf("%v%v%v%v", "%", "2Fmin", "%", "2Fproject")),
+// 			OverrideValue: pulumi.String("95"),
+// 			Force:         pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// ConsumerQuotaOverride can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default projects/{{project}}/services/{{service}}/consumerQuotaMetrics/{{metric}}/limits/{{limit}}/consumerOverrides/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{project}}/{{service}}/{{metric}}/{{limit}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
+// ```
 type ConsumerQuotaOverride struct {
 	pulumi.CustomResourceState
 
@@ -170,4 +224,43 @@ type ConsumerQuotaOverrideArgs struct {
 
 func (ConsumerQuotaOverrideArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*consumerQuotaOverrideArgs)(nil)).Elem()
+}
+
+type ConsumerQuotaOverrideInput interface {
+	pulumi.Input
+
+	ToConsumerQuotaOverrideOutput() ConsumerQuotaOverrideOutput
+	ToConsumerQuotaOverrideOutputWithContext(ctx context.Context) ConsumerQuotaOverrideOutput
+}
+
+func (ConsumerQuotaOverride) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerQuotaOverride)(nil)).Elem()
+}
+
+func (i ConsumerQuotaOverride) ToConsumerQuotaOverrideOutput() ConsumerQuotaOverrideOutput {
+	return i.ToConsumerQuotaOverrideOutputWithContext(context.Background())
+}
+
+func (i ConsumerQuotaOverride) ToConsumerQuotaOverrideOutputWithContext(ctx context.Context) ConsumerQuotaOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverrideOutput)
+}
+
+type ConsumerQuotaOverrideOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConsumerQuotaOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsumerQuotaOverrideOutput)(nil)).Elem()
+}
+
+func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverrideOutput() ConsumerQuotaOverrideOutput {
+	return o
+}
+
+func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverrideOutputWithContext(ctx context.Context) ConsumerQuotaOverrideOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ConsumerQuotaOverrideOutput{})
 }

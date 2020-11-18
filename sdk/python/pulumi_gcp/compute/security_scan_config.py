@@ -43,6 +43,35 @@ class SecurityScanConfig(pulumi.CustomResource):
         state as plain-text.[Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets)
 
         ## Example Usage
+        ### Scan Config Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        scanner_static_ip = gcp.compute.Address("scannerStaticIp", opts=ResourceOptions(provider=google_beta))
+        scan_config = gcp.compute.SecurityScanConfig("scan-config",
+            display_name="scan-config",
+            starting_urls=[scanner_static_ip.address.apply(lambda address: f"http://{address}")],
+            target_platforms=["COMPUTE"],
+            opts=ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        ScanConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default projects/{{project}}/scanConfigs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

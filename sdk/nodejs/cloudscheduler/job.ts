@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -21,6 +20,116 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/scheduler/)
  *
  * ## Example Usage
+ * ### Scheduler Job Http
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     attemptDeadline: "320s",
+ *     description: "test http job",
+ *     httpTarget: {
+ *         httpMethod: "POST",
+ *         uri: "https://example.com/ping",
+ *     },
+ *     retryConfig: {
+ *         retryCount: 1,
+ *     },
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ * });
+ * ```
+ * ### Scheduler Job App Engine
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     appEngineHttpTarget: {
+ *         appEngineRouting: {
+ *             instance: "my-instance-001",
+ *             service: "web",
+ *             version: "prod",
+ *         },
+ *         httpMethod: "POST",
+ *         relativeUri: "/ping",
+ *     },
+ *     attemptDeadline: "320s",
+ *     description: "test app engine job",
+ *     retryConfig: {
+ *         maxDoublings: 2,
+ *         maxRetryDuration: "10s",
+ *         minBackoffDuration: "1s",
+ *         retryCount: 3,
+ *     },
+ *     schedule: "*&#47;4 * * * *",
+ *     timeZone: "Europe/London",
+ * });
+ * ```
+ * ### Scheduler Job Oauth
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.compute.getDefaultServiceAccount({});
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     description: "test http job",
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ *     attemptDeadline: "320s",
+ *     httpTarget: {
+ *         httpMethod: "GET",
+ *         uri: "https://cloudscheduler.googleapis.com/v1/projects/my-project-name/locations/us-west1/jobs",
+ *         oauthToken: {
+ *             serviceAccountEmail: _default.then(_default => _default.email),
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Scheduler Job Oidc
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const default = gcp.compute.getDefaultServiceAccount({});
+ * const job = new gcp.cloudscheduler.Job("job", {
+ *     description: "test http job",
+ *     schedule: "*&#47;8 * * * *",
+ *     timeZone: "America/New_York",
+ *     attemptDeadline: "320s",
+ *     httpTarget: {
+ *         httpMethod: "GET",
+ *         uri: "https://example.com/ping",
+ *         oidcToken: {
+ *             serviceAccountEmail: _default.then(_default => _default.email),
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Job can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudscheduler/job:Job default projects/{{project}}/locations/{{region}}/jobs/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudscheduler/job:Job default {{project}}/{{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudscheduler/job:Job default {{region}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
+ * ```
  */
 export class Job extends pulumi.CustomResource {
     /**

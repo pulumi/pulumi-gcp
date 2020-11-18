@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -30,6 +31,64 @@ import (
 //     * [Official Documentation](https://cloud.google.com/vpc/docs/firewalls)
 //
 // ## Example Usage
+// ### Firewall Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewFirewall(ctx, "defaultFirewall", &compute.FirewallArgs{
+// 			Network: defaultNetwork.Name,
+// 			Allows: compute.FirewallAllowArray{
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("icmp"),
+// 				},
+// 				&compute.FirewallAllowArgs{
+// 					Protocol: pulumi.String("tcp"),
+// 					Ports: pulumi.StringArray{
+// 						pulumi.String("80"),
+// 						pulumi.String("8080"),
+// 						pulumi.String("1000-2000"),
+// 					},
+// 				},
+// 			},
+// 			SourceTags: pulumi.StringArray{
+// 				pulumi.String("web"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Firewall can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/firewall:Firewall default projects/{{project}}/global/firewalls/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/firewall:Firewall default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/firewall:Firewall default {{name}}
+// ```
 type Firewall struct {
 	pulumi.CustomResourceState
 
@@ -591,4 +650,43 @@ type FirewallArgs struct {
 
 func (FirewallArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*firewallArgs)(nil)).Elem()
+}
+
+type FirewallInput interface {
+	pulumi.Input
+
+	ToFirewallOutput() FirewallOutput
+	ToFirewallOutputWithContext(ctx context.Context) FirewallOutput
+}
+
+func (Firewall) ElementType() reflect.Type {
+	return reflect.TypeOf((*Firewall)(nil)).Elem()
+}
+
+func (i Firewall) ToFirewallOutput() FirewallOutput {
+	return i.ToFirewallOutputWithContext(context.Background())
+}
+
+func (i Firewall) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallOutput)
+}
+
+type FirewallOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallOutput)(nil)).Elem()
+}
+
+func (o FirewallOutput) ToFirewallOutput() FirewallOutput {
+	return o
+}
+
+func (o FirewallOutput) ToFirewallOutputWithContext(ctx context.Context) FirewallOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(FirewallOutput{})
 }

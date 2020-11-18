@@ -40,6 +40,41 @@ class Job(pulumi.CustomResource):
         the official documentation for
         [Beam](https://beam.apache.org) and [Dataflow](https://cloud.google.com/dataflow/).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        big_data_job = gcp.dataflow.Job("bigDataJob",
+            parameters={
+                "baz": "qux",
+                "foo": "bar",
+            },
+            temp_gcs_location="gs://my-bucket/tmp_dir",
+            template_gcs_path="gs://my-bucket/templates/template_file")
+        ```
+        ### Streaming Job
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        topic = gcp.pubsub.Topic("topic")
+        bucket1 = gcp.storage.Bucket("bucket1", force_destroy=True)
+        bucket2 = gcp.storage.Bucket("bucket2", force_destroy=True)
+        pubsub_stream = gcp.dataflow.Job("pubsubStream",
+            template_gcs_path="gs://my-bucket/templates/template_file",
+            temp_gcs_location="gs://my-bucket/tmp_dir",
+            parameters={
+                "inputFilePattern": bucket1.url.apply(lambda url: f"{url}/*.json"),
+                "outputTopic": topic.id,
+            },
+            transform_name_mapping={
+                "name": "test_job",
+                "env": "test",
+            },
+            on_delete="cancel")
+        ```
         ## Note on "destroy" / "apply"
 
         There are many types of Dataflow jobs.  Some Dataflow jobs run constantly, getting new data from (e.g.) a GCS bucket, and outputting data continuously.  Some jobs process a set amount of data then terminate.  All jobs can fail while running due to programming errors or other issues.  In this way, Dataflow jobs are different from most other Google resources.
@@ -47,6 +82,10 @@ class Job(pulumi.CustomResource):
         The Dataflow resource is considered 'existing' while it is in a nonterminal state.  If it reaches a terminal state (e.g. 'FAILED', 'COMPLETE', 'CANCELLED'), it will be recreated on the next 'apply'.  This is as expected for jobs which run continuously, but may surprise users who use this resource for other kinds of Dataflow jobs.
 
         A Dataflow job which is 'destroyed' may be "cancelled" or "drained".  If "cancelled", the job terminates - any data written remains where it is, but no new data will be processed.  If "drained", no new data will enter the pipeline, but any data currently in the pipeline will finish being processed.  The default is "cancelled", but if a user sets `on_delete` to `"drain"` in the configuration, you may experience a long wait for your `pulumi destroy` to complete.
+
+        ## Import
+
+        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

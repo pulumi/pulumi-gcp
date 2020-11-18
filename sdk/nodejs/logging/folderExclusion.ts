@@ -11,6 +11,31 @@ import * as utilities from "../utilities";
  *
  * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * granted to the credentials used with this provider.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_folder = new gcp.organizations.Folder("my-folder", {
+ *     displayName: "My folder",
+ *     parent: "organizations/123456",
+ * });
+ * const my_exclusion = new gcp.logging.FolderExclusion("my-exclusion", {
+ *     folder: my_folder.name,
+ *     description: "Exclude GCE instance debug logs",
+ *     filter: "resource.type = gce_instance AND severity <= DEBUG",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Folder-level logging exclusions can be imported using their URI, e.g.
+ *
+ * ```sh
+ *  $ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+ * ```
  */
 export class FolderExclusion extends pulumi.CustomResource {
     /**

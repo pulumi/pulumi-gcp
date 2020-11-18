@@ -14,7 +14,7 @@ __all__ = [
     'get_secret_version',
 ]
 
-warnings.warn("gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion", DeprecationWarning)
+warnings.warn("""gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""", DeprecationWarning)
 
 @pulumi.output_type
 class GetSecretVersionResult:

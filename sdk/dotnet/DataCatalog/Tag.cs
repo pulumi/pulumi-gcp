@@ -21,6 +21,367 @@ namespace Pulumi.Gcp.DataCatalog
     ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
     /// 
     /// ## Example Usage
+    /// ### Data Catalog Entry Tag Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new Gcp.DataCatalog.EntryGroupArgs
+    ///         {
+    ///             EntryGroupId = "my_entry_group",
+    ///         });
+    ///         var entry = new Gcp.DataCatalog.Entry("entry", new Gcp.DataCatalog.EntryArgs
+    ///         {
+    ///             EntryGroup = entryGroup.Id,
+    ///             EntryId = "my_entry",
+    ///             UserSpecifiedType = "my_custom_type",
+    ///             UserSpecifiedSystem = "SomethingExternal",
+    ///         });
+    ///         var tagTemplate = new Gcp.DataCatalog.TagTemplate("tagTemplate", new Gcp.DataCatalog.TagTemplateArgs
+    ///         {
+    ///             TagTemplateId = "my_template",
+    ///             Region = "us-central1",
+    ///             DisplayName = "Demo Tag Template",
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "source",
+    ///                     DisplayName = "Source of data asset",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "STRING",
+    ///                     },
+    ///                     IsRequired = true,
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "num_rows",
+    ///                     DisplayName = "Number of rows in the data asset",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "DOUBLE",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "pii_type",
+    ///                     DisplayName = "PII type",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         EnumType = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeArgs
+    ///                         {
+    ///                             AllowedValues = 
+    ///                             {
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "EMAIL",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "SOCIAL SECURITY NUMBER",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "NONE",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ForceDelete = false,
+    ///         });
+    ///         var basicTag = new Gcp.DataCatalog.Tag("basicTag", new Gcp.DataCatalog.TagArgs
+    ///         {
+    ///             Parent = entry.Id,
+    ///             Template = tagTemplate.Id,
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagFieldArgs
+    ///                 {
+    ///                     FieldName = "source",
+    ///                     StringValue = "my-string",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Data Catalog Entry Group Tag
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new Gcp.DataCatalog.EntryGroupArgs
+    ///         {
+    ///             EntryGroupId = "my_entry_group",
+    ///         });
+    ///         var firstEntry = new Gcp.DataCatalog.Entry("firstEntry", new Gcp.DataCatalog.EntryArgs
+    ///         {
+    ///             EntryGroup = entryGroup.Id,
+    ///             EntryId = "first_entry",
+    ///             UserSpecifiedType = "my_custom_type",
+    ///             UserSpecifiedSystem = "SomethingExternal",
+    ///         });
+    ///         var secondEntry = new Gcp.DataCatalog.Entry("secondEntry", new Gcp.DataCatalog.EntryArgs
+    ///         {
+    ///             EntryGroup = entryGroup.Id,
+    ///             EntryId = "second_entry",
+    ///             UserSpecifiedType = "another_custom_type",
+    ///             UserSpecifiedSystem = "SomethingElseExternal",
+    ///         });
+    ///         var tagTemplate = new Gcp.DataCatalog.TagTemplate("tagTemplate", new Gcp.DataCatalog.TagTemplateArgs
+    ///         {
+    ///             TagTemplateId = "my_template",
+    ///             Region = "us-central1",
+    ///             DisplayName = "Demo Tag Template",
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "source",
+    ///                     DisplayName = "Source of data asset",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "STRING",
+    ///                     },
+    ///                     IsRequired = true,
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "num_rows",
+    ///                     DisplayName = "Number of rows in the data asset",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "DOUBLE",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "pii_type",
+    ///                     DisplayName = "PII type",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         EnumType = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeArgs
+    ///                         {
+    ///                             AllowedValues = 
+    ///                             {
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "EMAIL",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "SOCIAL SECURITY NUMBER",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "NONE",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ForceDelete = false,
+    ///         });
+    ///         var entryGroupTag = new Gcp.DataCatalog.Tag("entryGroupTag", new Gcp.DataCatalog.TagArgs
+    ///         {
+    ///             Parent = entryGroup.Id,
+    ///             Template = tagTemplate.Id,
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagFieldArgs
+    ///                 {
+    ///                     FieldName = "source",
+    ///                     StringValue = "my-string",
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Data Catalog Entry Tag Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var entryGroup = new Gcp.DataCatalog.EntryGroup("entryGroup", new Gcp.DataCatalog.EntryGroupArgs
+    ///         {
+    ///             EntryGroupId = "my_entry_group",
+    ///         });
+    ///         var entry = new Gcp.DataCatalog.Entry("entry", new Gcp.DataCatalog.EntryArgs
+    ///         {
+    ///             EntryGroup = entryGroup.Id,
+    ///             EntryId = "my_entry",
+    ///             UserSpecifiedType = "my_custom_type",
+    ///             UserSpecifiedSystem = "SomethingExternal",
+    ///             Schema = @"{
+    ///   ""columns"": [
+    ///     {
+    ///       ""column"": ""first_name"",
+    ///       ""description"": ""First name"",
+    ///       ""mode"": ""REQUIRED"",
+    ///       ""type"": ""STRING""
+    ///     },
+    ///     {
+    ///       ""column"": ""last_name"",
+    ///       ""description"": ""Last name"",
+    ///       ""mode"": ""REQUIRED"",
+    ///       ""type"": ""STRING""
+    ///     },
+    ///     {
+    ///       ""column"": ""address"",
+    ///       ""description"": ""Address"",
+    ///       ""mode"": ""REPEATED"",
+    ///       ""subcolumns"": [
+    ///         {
+    ///           ""column"": ""city"",
+    ///           ""description"": ""City"",
+    ///           ""mode"": ""NULLABLE"",
+    ///           ""type"": ""STRING""
+    ///         },
+    ///         {
+    ///           ""column"": ""state"",
+    ///           ""description"": ""State"",
+    ///           ""mode"": ""NULLABLE"",
+    ///           ""type"": ""STRING""
+    ///         }
+    ///       ],
+    ///       ""type"": ""RECORD""
+    ///     }
+    ///   ]
+    /// }
+    /// ",
+    ///         });
+    ///         var tagTemplate = new Gcp.DataCatalog.TagTemplate("tagTemplate", new Gcp.DataCatalog.TagTemplateArgs
+    ///         {
+    ///             TagTemplateId = "my_template",
+    ///             Region = "us-central1",
+    ///             DisplayName = "Demo Tag Template",
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "source",
+    ///                     DisplayName = "Source of data asset",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "STRING",
+    ///                     },
+    ///                     IsRequired = true,
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "num_rows",
+    ///                     DisplayName = "Number of rows in the data asset",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         PrimitiveType = "DOUBLE",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagTemplateFieldArgs
+    ///                 {
+    ///                     FieldId = "pii_type",
+    ///                     DisplayName = "PII type",
+    ///                     Type = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeArgs
+    ///                     {
+    ///                         EnumType = new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeArgs
+    ///                         {
+    ///                             AllowedValues = 
+    ///                             {
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "EMAIL",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "SOCIAL SECURITY NUMBER",
+    ///                                 },
+    ///                                 new Gcp.DataCatalog.Inputs.TagTemplateFieldTypeEnumTypeAllowedValueArgs
+    ///                                 {
+    ///                                     DisplayName = "NONE",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             ForceDelete = false,
+    ///         });
+    ///         var basicTag = new Gcp.DataCatalog.Tag("basicTag", new Gcp.DataCatalog.TagArgs
+    ///         {
+    ///             Parent = entry.Id,
+    ///             Template = tagTemplate.Id,
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagFieldArgs
+    ///                 {
+    ///                     FieldName = "source",
+    ///                     StringValue = "my-string",
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagFieldArgs
+    ///                 {
+    ///                     FieldName = "num_rows",
+    ///                     DoubleValue = 5,
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagFieldArgs
+    ///                 {
+    ///                     FieldName = "pii_type",
+    ///                     EnumValue = "EMAIL",
+    ///                 },
+    ///             },
+    ///             Column = "address",
+    ///         });
+    ///         var second_tag = new Gcp.DataCatalog.Tag("second-tag", new Gcp.DataCatalog.TagArgs
+    ///         {
+    ///             Parent = entry.Id,
+    ///             Template = tagTemplate.Id,
+    ///             Fields = 
+    ///             {
+    ///                 new Gcp.DataCatalog.Inputs.TagFieldArgs
+    ///                 {
+    ///                     FieldName = "source",
+    ///                     StringValue = "my-string",
+    ///                 },
+    ///                 new Gcp.DataCatalog.Inputs.TagFieldArgs
+    ///                 {
+    ///                     FieldName = "pii_type",
+    ///                     EnumValue = "NONE",
+    ///                 },
+    ///             },
+    ///             Column = "first_name",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Tag can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
+    /// ```
     /// </summary>
     public partial class Tag : Pulumi.CustomResource
     {

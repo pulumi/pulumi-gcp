@@ -29,7 +29,22 @@ class ApiConfig(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a ApiConfig resource with the given unique name, props, and options.
+        ## Import
+
+        ApiConfig can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default projects/{{project}}/locations/global/apis/{{api}}/configs/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{project}}/{{api}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api: The API to attach the config to.

@@ -24,6 +24,143 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Region Ssl Certificate Basic
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.RegionSslCertificate("default", new Gcp.Compute.RegionSslCertificateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NamePrefix = "my-certificate-",
+    ///             Description = "a description",
+    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Region Ssl Certificate Target Https Proxies
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Using with Region Target HTTPS Proxies
+    ///         //
+    ///         // SSL certificates cannot be updated after creation. In order to apply
+    ///         // the specified configuration, the provider will destroy the existing
+    ///         // resource and create a replacement. To effectively use an SSL
+    ///         // certificate resource with a Target HTTPS Proxy resource, it's
+    ///         // recommended to specify create_before_destroy in a lifecycle block.
+    ///         // Either omit the Instance Template name attribute, specify a partial
+    ///         // name with name_prefix, or use random_id resource. Example:
+    ///         var defaultRegionSslCertificate = new Gcp.Compute.RegionSslCertificate("defaultRegionSslCertificate", new Gcp.Compute.RegionSslCertificateArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             NamePrefix = "my-certificate-",
+    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         });
+    ///         var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("defaultRegionHealthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         });
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultRegionHealthCheck.Id,
+    ///             },
+    ///         });
+    ///         var defaultRegionUrlMap = new Gcp.Compute.RegionUrlMap("defaultRegionUrlMap", new Gcp.Compute.RegionUrlMapArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             Description = "a description",
+    ///             DefaultService = defaultRegionBackendService.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.RegionUrlMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = defaultRegionBackendService.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.RegionUrlMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/*",
+    ///                             },
+    ///                             Service = defaultRegionBackendService.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultRegionTargetHttpsProxy = new Gcp.Compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy", new Gcp.Compute.RegionTargetHttpsProxyArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             UrlMap = defaultRegionUrlMap.Id,
+    ///             SslCertificates = 
+    ///             {
+    ///                 defaultRegionSslCertificate.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// RegionSslCertificate can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{project}}/{{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{region}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
+    /// ```
     /// </summary>
     public partial class RegionSslCertificate : Pulumi.CustomResource
     {

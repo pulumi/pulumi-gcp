@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -22,6 +23,98 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Backend Service Signed Url Key
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		urlSignature, err := random.NewRandomId(ctx, "urlSignature", &random.RandomIdArgs{
+// 			ByteLength: pulumi.Int(16),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		webserver, err := compute.NewInstanceTemplate(ctx, "webserver", &compute.InstanceTemplateArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			NetworkInterfaces: compute.InstanceTemplateNetworkInterfaceArray{
+// 				&compute.InstanceTemplateNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 				},
+// 			},
+// 			Disks: compute.InstanceTemplateDiskArray{
+// 				&compute.InstanceTemplateDiskArgs{
+// 					SourceImage: pulumi.String("debian-cloud/debian-9"),
+// 					AutoDelete:  pulumi.Bool(true),
+// 					Boot:        pulumi.Bool(true),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		webservers, err := compute.NewInstanceGroupManager(ctx, "webservers", &compute.InstanceGroupManagerArgs{
+// 			Versions: compute.InstanceGroupManagerVersionArray{
+// 				&compute.InstanceGroupManagerVersionArgs{
+// 					InstanceTemplate: webserver.ID(),
+// 					Name:             pulumi.String("primary"),
+// 				},
+// 			},
+// 			BaseInstanceName: pulumi.String("webserver"),
+// 			Zone:             pulumi.String("us-central1-f"),
+// 			TargetSize:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewHttpHealthCheck(ctx, "_default", &compute.HttpHealthCheckArgs{
+// 			RequestPath:      pulumi.String("/"),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleBackend, err := compute.NewBackendService(ctx, "exampleBackend", &compute.BackendServiceArgs{
+// 			Description: pulumi.String("Our company website"),
+// 			PortName:    pulumi.String("http"),
+// 			Protocol:    pulumi.String("HTTP"),
+// 			TimeoutSec:  pulumi.Int(10),
+// 			EnableCdn:   pulumi.Bool(true),
+// 			Backends: compute.BackendServiceBackendArray{
+// 				&compute.BackendServiceBackendArgs{
+// 					Group: webservers.InstanceGroup,
+// 				},
+// 			},
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				_default.ID(),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendServiceSignedUrlKey(ctx, "backendKey", &compute.BackendServiceSignedUrlKeyArgs{
+// 			KeyValue:       urlSignature.B64Url,
+// 			BackendService: exampleBackend.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type BackendServiceSignedUrlKey struct {
 	pulumi.CustomResourceState
 
@@ -134,4 +227,43 @@ type BackendServiceSignedUrlKeyArgs struct {
 
 func (BackendServiceSignedUrlKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*backendServiceSignedUrlKeyArgs)(nil)).Elem()
+}
+
+type BackendServiceSignedUrlKeyInput interface {
+	pulumi.Input
+
+	ToBackendServiceSignedUrlKeyOutput() BackendServiceSignedUrlKeyOutput
+	ToBackendServiceSignedUrlKeyOutputWithContext(ctx context.Context) BackendServiceSignedUrlKeyOutput
+}
+
+func (BackendServiceSignedUrlKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceSignedUrlKey)(nil)).Elem()
+}
+
+func (i BackendServiceSignedUrlKey) ToBackendServiceSignedUrlKeyOutput() BackendServiceSignedUrlKeyOutput {
+	return i.ToBackendServiceSignedUrlKeyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceSignedUrlKey) ToBackendServiceSignedUrlKeyOutputWithContext(ctx context.Context) BackendServiceSignedUrlKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceSignedUrlKeyOutput)
+}
+
+type BackendServiceSignedUrlKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendServiceSignedUrlKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceSignedUrlKeyOutput)(nil)).Elem()
+}
+
+func (o BackendServiceSignedUrlKeyOutput) ToBackendServiceSignedUrlKeyOutput() BackendServiceSignedUrlKeyOutput {
+	return o
+}
+
+func (o BackendServiceSignedUrlKeyOutput) ToBackendServiceSignedUrlKeyOutputWithContext(ctx context.Context) BackendServiceSignedUrlKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BackendServiceSignedUrlKeyOutput{})
 }

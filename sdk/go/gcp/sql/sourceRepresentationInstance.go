@@ -4,6 +4,7 @@
 package sql
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -17,6 +18,47 @@ import (
 // affect billing. You cannot update the source representation instance.
 //
 // ## Example Usage
+// ### Sql Source Representation Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
+// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
+// 			Host:            pulumi.String("10.20.30.40"),
+// 			Port:            pulumi.Int(3306),
+// 			Region:          pulumi.String("us-central1"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// SourceRepresentationInstance can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{project}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
+// ```
 type SourceRepresentationInstance struct {
 	pulumi.CustomResourceState
 
@@ -154,4 +196,43 @@ type SourceRepresentationInstanceArgs struct {
 
 func (SourceRepresentationInstanceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*sourceRepresentationInstanceArgs)(nil)).Elem()
+}
+
+type SourceRepresentationInstanceInput interface {
+	pulumi.Input
+
+	ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput
+	ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput
+}
+
+func (SourceRepresentationInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceRepresentationInstance)(nil)).Elem()
+}
+
+func (i SourceRepresentationInstance) ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput {
+	return i.ToSourceRepresentationInstanceOutputWithContext(context.Background())
+}
+
+func (i SourceRepresentationInstance) ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceOutput)
+}
+
+type SourceRepresentationInstanceOutput struct {
+	*pulumi.OutputState
+}
+
+func (SourceRepresentationInstanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceRepresentationInstanceOutput)(nil)).Elem()
+}
+
+func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput {
+	return o
+}
+
+func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SourceRepresentationInstanceOutput{})
 }

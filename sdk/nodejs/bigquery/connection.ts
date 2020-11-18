@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -19,6 +18,108 @@ import * as utilities from "../utilities";
  * state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
  *
  * ## Example Usage
+ * ### Bigquery Connection Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "POSTGRES_11",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: "true",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name}, {
+ *     provider: google_beta,
+ * });
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     password: pwd.result,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     cloudSql: {
+ *         instanceId: instance.connectionName,
+ *         database: db.name,
+ *         type: "POSTGRES",
+ *         credential: {
+ *             username: user.name,
+ *             password: user.password,
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Bigquery Connection Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     databaseVersion: "POSTGRES_11",
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *     },
+ *     deletionProtection: "true",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const db = new gcp.sql.Database("db", {instance: instance.name}, {
+ *     provider: google_beta,
+ * });
+ * const pwd = new random.RandomPassword("pwd", {
+ *     length: 16,
+ *     special: false,
+ * });
+ * const user = new gcp.sql.User("user", {
+ *     instance: instance.name,
+ *     password: pwd.result,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "US",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     cloudSql: {
+ *         instanceId: instance.connectionName,
+ *         database: db.name,
+ *         type: "POSTGRES",
+ *         credential: {
+ *             username: user.name,
+ *             password: user.password,
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Connection can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:bigquery/connection:Connection default {{name}}
+ * ```
  */
 export class Connection extends pulumi.CustomResource {
     /**

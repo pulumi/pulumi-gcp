@@ -4,6 +4,7 @@
 package secretmanager
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,49 @@ import (
 // state as plain-text.
 //
 // ## Example Usage
+// ### Secret Version Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/secretmanager"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := secretmanager.NewSecret(ctx, "secret_basic", &secretmanager.SecretArgs{
+// 			SecretId: pulumi.String("secret-version"),
+// 			Labels: pulumi.StringMap{
+// 				"label": pulumi.String("my-label"),
+// 			},
+// 			Replication: &secretmanager.SecretReplicationArgs{
+// 				Automatic: pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = secretmanager.NewSecretVersion(ctx, "secret_version_basic", &secretmanager.SecretVersionArgs{
+// 			Secret:     secret_basic.ID(),
+// 			SecretData: pulumi.String("secret-data"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// SecretVersion can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default {{name}}/{{name}}
+// ```
 type SecretVersion struct {
 	pulumi.CustomResourceState
 
@@ -123,4 +167,43 @@ type SecretVersionArgs struct {
 
 func (SecretVersionArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretVersionArgs)(nil)).Elem()
+}
+
+type SecretVersionInput interface {
+	pulumi.Input
+
+	ToSecretVersionOutput() SecretVersionOutput
+	ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput
+}
+
+func (SecretVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersion)(nil)).Elem()
+}
+
+func (i SecretVersion) ToSecretVersionOutput() SecretVersionOutput {
+	return i.ToSecretVersionOutputWithContext(context.Background())
+}
+
+func (i SecretVersion) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretVersionOutput)
+}
+
+type SecretVersionOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretVersionOutput)(nil)).Elem()
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutput() SecretVersionOutput {
+	return o
+}
+
+func (o SecretVersionOutput) ToSecretVersionOutputWithContext(ctx context.Context) SecretVersionOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(SecretVersionOutput{})
 }

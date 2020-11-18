@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -17,6 +16,63 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
  *
  * ## Example Usage
+ * ### Data Catalog Tag Template Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicTagTemplate = new gcp.datacatalog.TagTemplate("basic_tag_template", {
+ *     displayName: "Demo Tag Template",
+ *     fields: [
+ *         {
+ *             displayName: "Source of data asset",
+ *             fieldId: "source",
+ *             isRequired: true,
+ *             type: {
+ *                 primitiveType: "STRING",
+ *             },
+ *         },
+ *         {
+ *             displayName: "Number of rows in the data asset",
+ *             fieldId: "num_rows",
+ *             type: {
+ *                 primitiveType: "DOUBLE",
+ *             },
+ *         },
+ *         {
+ *             displayName: "PII type",
+ *             fieldId: "pii_type",
+ *             type: {
+ *                 enumType: {
+ *                     allowedValues: [
+ *                         {
+ *                             displayName: "EMAIL",
+ *                         },
+ *                         {
+ *                             displayName: "SOCIAL SECURITY NUMBER",
+ *                         },
+ *                         {
+ *                             displayName: "NONE",
+ *                         },
+ *                     ],
+ *                 },
+ *             },
+ *         },
+ *     ],
+ *     forceDelete: false,
+ *     region: "us-central1",
+ *     tagTemplateId: "my_template",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * TagTemplate can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
+ * ```
  */
 export class TagTemplate extends pulumi.CustomResource {
     /**

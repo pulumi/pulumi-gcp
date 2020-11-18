@@ -2,13 +2,21 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Get a Compute Region Instance Group within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const group = pulumi.output(gcp.compute.getRegionInstanceGroup({
+ *     name: "instance-group-name",
+ * }, { async: true }));
+ * ```
  *
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
  */

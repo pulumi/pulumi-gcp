@@ -4,6 +4,7 @@
 package iot
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,40 @@ import (
 //     * [Official Documentation](https://cloud.google.com/iot/docs/)
 //
 // ## Example Usage
+// ### Cloudiot Device Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iot"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		registry, err := iot.NewRegistry(ctx, "registry", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iot.NewDevice(ctx, "test_device", &iot.DeviceArgs{
+// 			Registry: registry.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Device can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:iot/device:Device default {{registry}}/devices/{{name}}
+// ```
 type Device struct {
 	pulumi.CustomResourceState
 
@@ -221,4 +256,43 @@ type DeviceArgs struct {
 
 func (DeviceArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*deviceArgs)(nil)).Elem()
+}
+
+type DeviceInput interface {
+	pulumi.Input
+
+	ToDeviceOutput() DeviceOutput
+	ToDeviceOutputWithContext(ctx context.Context) DeviceOutput
+}
+
+func (Device) ElementType() reflect.Type {
+	return reflect.TypeOf((*Device)(nil)).Elem()
+}
+
+func (i Device) ToDeviceOutput() DeviceOutput {
+	return i.ToDeviceOutputWithContext(context.Background())
+}
+
+func (i Device) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceOutput)
+}
+
+type DeviceOutput struct {
+	*pulumi.OutputState
+}
+
+func (DeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceOutput)(nil)).Elem()
+}
+
+func (o DeviceOutput) ToDeviceOutput() DeviceOutput {
+	return o
+}
+
+func (o DeviceOutput) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeviceOutput{})
 }

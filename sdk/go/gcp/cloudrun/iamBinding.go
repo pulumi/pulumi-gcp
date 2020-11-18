@@ -4,6 +4,7 @@
 package cloudrun
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,126 @@ import (
 // > **Note:** `cloudrun.IamPolicy` **cannot** be used in conjunction with `cloudrun.IamBinding` and `cloudrun.IamMember` or they will fight over what your policy should be.
 //
 // > **Note:** `cloudrun.IamBinding` resources **can be** used in conjunction with `cloudrun.IamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## google\_cloud\_run\_service\_iam\_policy
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+// 			Bindings: []organizations.GetIAMPolicyBinding{
+// 				organizations.GetIAMPolicyBinding{
+// 					Role: "roles/viewer",
+// 					Members: []string{
+// 						"user:jane@example.com",
+// 					},
+// 				},
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = cloudrun.NewIamPolicy(ctx, "policy", &cloudrun.IamPolicyArgs{
+// 			Location:   pulumi.Any(google_cloud_run_service.Default.Location),
+// 			Project:    pulumi.Any(google_cloud_run_service.Default.Project),
+// 			Service:    pulumi.Any(google_cloud_run_service.Default.Name),
+// 			PolicyData: pulumi.String(admin.PolicyData),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_cloud\_run\_service\_iam\_binding
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewIamBinding(ctx, "binding", &cloudrun.IamBindingArgs{
+// 			Location: pulumi.Any(google_cloud_run_service.Default.Location),
+// 			Project:  pulumi.Any(google_cloud_run_service.Default.Project),
+// 			Service:  pulumi.Any(google_cloud_run_service.Default.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Members: pulumi.StringArray{
+// 				pulumi.String("user:jane@example.com"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## google\_cloud\_run\_service\_iam\_member
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewIamMember(ctx, "member", &cloudrun.IamMemberArgs{
+// 			Location: pulumi.Any(google_cloud_run_service.Default.Location),
+// 			Project:  pulumi.Any(google_cloud_run_service.Default.Project),
+// 			Service:  pulumi.Any(google_cloud_run_service.Default.Name),
+// 			Role:     pulumi.String("roles/viewer"),
+// 			Member:   pulumi.String("user:jane@example.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/services/{{service}} * {{project}}/{{location}}/{{service}} * {{location}}/{{service}} * {{service}} Any variables not passed in the import command will be taken from the provider configuration. Cloud Run service IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/iamBinding:IamBinding editor "projects/{{project}}/locations/{{location}}/services/{{service}} roles/viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/iamBinding:IamBinding editor "projects/{{project}}/locations/{{location}}/services/{{service}} roles/viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:cloudrun/iamBinding:IamBinding editor projects/{{project}}/locations/{{location}}/services/{{service}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type IamBinding struct {
 	pulumi.CustomResourceState
 
@@ -150,4 +271,43 @@ type IamBindingArgs struct {
 
 func (IamBindingArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*iamBindingArgs)(nil)).Elem()
+}
+
+type IamBindingInput interface {
+	pulumi.Input
+
+	ToIamBindingOutput() IamBindingOutput
+	ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput
+}
+
+func (IamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamBinding)(nil)).Elem()
+}
+
+func (i IamBinding) ToIamBindingOutput() IamBindingOutput {
+	return i.ToIamBindingOutputWithContext(context.Background())
+}
+
+func (i IamBinding) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IamBindingOutput)
+}
+
+type IamBindingOutput struct {
+	*pulumi.OutputState
+}
+
+func (IamBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamBindingOutput)(nil)).Elem()
+}
+
+func (o IamBindingOutput) ToIamBindingOutput() IamBindingOutput {
+	return o
+}
+
+func (o IamBindingOutput) ToIamBindingOutputWithContext(ctx context.Context) IamBindingOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(IamBindingOutput{})
 }

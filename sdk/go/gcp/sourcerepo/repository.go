@@ -4,6 +4,7 @@
 package sourcerepo
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -18,6 +19,79 @@ import (
 //     * [Official Documentation](https://cloud.google.com/source-repositories/)
 //
 // ## Example Usage
+// ### Sourcerepo Repository Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sourcerepo"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sourcerepo.NewRepository(ctx, "my_repo", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Sourcerepo Repository Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sourcerepo"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := serviceAccount.NewAccount(ctx, "test_account", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("my-account"),
+// 			DisplayName: pulumi.String("Test Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		topic, err := pubsub.NewTopic(ctx, "topic", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sourcerepo.NewRepository(ctx, "my_repo", &sourcerepo.RepositoryArgs{
+// 			PubsubConfigs: sourcerepo.RepositoryPubsubConfigArray{
+// 				&sourcerepo.RepositoryPubsubConfigArgs{
+// 					Topic:               topic.ID(),
+// 					MessageFormat:       pulumi.String("JSON"),
+// 					ServiceAccountEmail: test_account.Email,
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Repository can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
+// ```
 type Repository struct {
 	pulumi.CustomResourceState
 
@@ -131,4 +205,43 @@ type RepositoryArgs struct {
 
 func (RepositoryArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*repositoryArgs)(nil)).Elem()
+}
+
+type RepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryOutput() RepositoryOutput
+	ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput
+}
+
+func (Repository) ElementType() reflect.Type {
+	return reflect.TypeOf((*Repository)(nil)).Elem()
+}
+
+func (i Repository) ToRepositoryOutput() RepositoryOutput {
+	return i.ToRepositoryOutputWithContext(context.Background())
+}
+
+func (i Repository) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryOutput)
+}
+
+type RepositoryOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryOutput)(nil)).Elem()
+}
+
+func (o RepositoryOutput) ToRepositoryOutput() RepositoryOutput {
+	return o
+}
+
+func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) RepositoryOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RepositoryOutput{})
 }

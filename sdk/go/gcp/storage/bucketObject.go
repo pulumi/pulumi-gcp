@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,36 @@ import (
 // [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
 // and
 // [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+//
+// ## Example Usage
+//
+// Example creating a public object in an existing `image-store` bucket.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := storage.NewBucketObject(ctx, "picture", &storage.BucketObjectArgs{
+// 			Bucket: pulumi.String("image-store"),
+// 			Source: pulumi.NewFileAsset("/images/nature/garden-tiger-moth.jpg"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// This resource does not support import.
 type BucketObject struct {
 	pulumi.CustomResourceState
 
@@ -238,4 +269,43 @@ type BucketObjectArgs struct {
 
 func (BucketObjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*bucketObjectArgs)(nil)).Elem()
+}
+
+type BucketObjectInput interface {
+	pulumi.Input
+
+	ToBucketObjectOutput() BucketObjectOutput
+	ToBucketObjectOutputWithContext(ctx context.Context) BucketObjectOutput
+}
+
+func (BucketObject) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObject)(nil)).Elem()
+}
+
+func (i BucketObject) ToBucketObjectOutput() BucketObjectOutput {
+	return i.ToBucketObjectOutputWithContext(context.Background())
+}
+
+func (i BucketObject) ToBucketObjectOutputWithContext(ctx context.Context) BucketObjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOutput)
+}
+
+type BucketObjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketObjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectOutput)(nil)).Elem()
+}
+
+func (o BucketObjectOutput) ToBucketObjectOutput() BucketObjectOutput {
+	return o
+}
+
+func (o BucketObjectOutput) ToBucketObjectOutputWithContext(ctx context.Context) BucketObjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BucketObjectOutput{})
 }

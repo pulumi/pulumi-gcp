@@ -32,6 +32,50 @@ namespace Pulumi.Gcp.AccessContextManager
     /// `billing_project` you defined.
     /// 
     /// ## Example Usage
+    /// ### Access Context Manager Service Perimeter Resource Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///         var service_perimeter_resourceServicePerimeter = new Gcp.AccessContextManager.ServicePerimeter("service-perimeter-resourceServicePerimeter", new Gcp.AccessContextManager.ServicePerimeterArgs
+    ///         {
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Title = "restrict_all",
+    ///             Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
+    ///             {
+    ///                 RestrictedServices = 
+    ///                 {
+    ///                     "storage.googleapis.com",
+    ///                 },
+    ///             },
+    ///         });
+    ///         var service_perimeter_resourceServicePerimeterResource = new Gcp.AccessContextManager.ServicePerimeterResource("service-perimeter-resourceServicePerimeterResource", new Gcp.AccessContextManager.ServicePerimeterResourceArgs
+    ///         {
+    ///             PerimeterName = service_perimeter_resourceServicePerimeter.Name,
+    ///             Resource = "projects/987654321",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ServicePerimeterResource can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
+    /// ```
     /// </summary>
     public partial class ServicePerimeterResource : Pulumi.CustomResource
     {

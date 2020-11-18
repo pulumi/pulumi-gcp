@@ -40,6 +40,66 @@ class Table(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/bigquery/docs/) and
         [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_dataset = gcp.bigquery.Dataset("defaultDataset",
+            dataset_id="foo",
+            friendly_name="test",
+            description="This is a test description",
+            location="EU",
+            default_table_expiration_ms=3600000,
+            labels={
+                "env": "default",
+            })
+        default_table = gcp.bigquery.Table("defaultTable",
+            dataset_id=default_dataset.dataset_id,
+            table_id="bar",
+            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
+                type="DAY",
+            ),
+            labels={
+                "env": "default",
+            },
+            schema=\"\"\"[
+          {
+            "name": "permalink",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "The Permalink"
+          },
+          {
+            "name": "state",
+            "type": "STRING",
+            "mode": "NULLABLE",
+            "description": "State where the head office is located"
+          }
+        ]
+        \"\"\")
+        sheet = gcp.bigquery.Table("sheet",
+            dataset_id=default_dataset.dataset_id,
+            table_id="sheet",
+            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
+                autodetect=True,
+                source_format="GOOGLE_SHEETS",
+                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
+                    skip_leading_rows=1,
+                ),
+                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
+            ))
+        ```
+
+        ## Import
+
+        BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
+
+        ```sh
+         $ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] clusterings: Specifies column names to use for data clustering.

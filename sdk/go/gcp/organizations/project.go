@@ -4,6 +4,7 @@
 package organizations
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,69 @@ import (
 // resource must have `roles/resourcemanager.projectCreator`. See the
 // [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
 // doc for more information.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			OrgId:     pulumi.String("1234567"),
+// 			ProjectId: pulumi.String("your-project-id"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// To create a project under a specific folder
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
+// 			DisplayName: pulumi.String("Department 1"),
+// 			Parent:      pulumi.String("organizations/1234567"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = organizations.NewProject(ctx, "myProject_in_a_folder", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("your-project-id"),
+// 			FolderId:  department1.Name,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Projects can be imported using the `project_id`, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:organizations/project:Project my_project your-project-id
+// ```
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -244,4 +308,43 @@ type ProjectArgs struct {
 
 func (ProjectArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*projectArgs)(nil)).Elem()
+}
+
+type ProjectInput interface {
+	pulumi.Input
+
+	ToProjectOutput() ProjectOutput
+	ToProjectOutputWithContext(ctx context.Context) ProjectOutput
+}
+
+func (Project) ElementType() reflect.Type {
+	return reflect.TypeOf((*Project)(nil)).Elem()
+}
+
+func (i Project) ToProjectOutput() ProjectOutput {
+	return i.ToProjectOutputWithContext(context.Background())
+}
+
+func (i Project) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectOutput)
+}
+
+type ProjectOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectOutput)(nil)).Elem()
+}
+
+func (o ProjectOutput) ToProjectOutput() ProjectOutput {
+	return o
+}
+
+func (o ProjectOutput) ToProjectOutputWithContext(ctx context.Context) ProjectOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProjectOutput{})
 }

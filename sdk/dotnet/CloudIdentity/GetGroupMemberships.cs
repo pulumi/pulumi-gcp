@@ -15,6 +15,29 @@ namespace Pulumi.Gcp.CloudIdentity
         /// Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
         /// 
         /// https://cloud.google.com/identity/docs/concepts/overview#memberships
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var members = Output.Create(Gcp.CloudIdentity.GetGroupMemberships.InvokeAsync(new Gcp.CloudIdentity.GetGroupMembershipsArgs
+        ///         {
+        ///             Group = "groups/123eab45c6defghi",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupMembershipsResult> InvokeAsync(GetGroupMembershipsArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupMembershipsResult>("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args ?? new GetGroupMembershipsArgs(), options.WithVersion());

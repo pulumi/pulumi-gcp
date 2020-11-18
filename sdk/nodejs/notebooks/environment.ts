@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -16,6 +15,37 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/ai-platform-notebooks)
  *
  * ## Example Usage
+ * ### Notebook Environment Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const environment = new gcp.notebooks.Environment("environment", {
+ *     location: "us-west1-a",
+ *     containerImage: {
+ *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Environment can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:notebooks/environment:Environment default projects/{{project}}/locations/{{location}}/environments/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:notebooks/environment:Environment default {{project}}/{{location}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
+ * ```
  */
 export class Environment extends pulumi.CustomResource {
     /**

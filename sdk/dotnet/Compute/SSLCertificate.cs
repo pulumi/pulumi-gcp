@@ -24,6 +24,129 @@ namespace Pulumi.Gcp.Compute
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Ssl Certificate Basic
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.SSLCertificate("default", new Gcp.Compute.SSLCertificateArgs
+    ///         {
+    ///             NamePrefix = "my-certificate-",
+    ///             Description = "a description",
+    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Ssl Certificate Target Https Proxies
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Using with Target HTTPS Proxies
+    ///         //
+    ///         // SSL certificates cannot be updated after creation. In order to apply
+    ///         // the specified configuration, the provider will destroy the existing
+    ///         // resource and create a replacement. Example:
+    ///         var defaultSSLCertificate = new Gcp.Compute.SSLCertificate("defaultSSLCertificate", new Gcp.Compute.SSLCertificateArgs
+    ///         {
+    ///             NamePrefix = "my-certificate-",
+    ///             PrivateKey = File.ReadAllText("path/to/private.key"),
+    ///             Certificate = File.ReadAllText("path/to/certificate.crt"),
+    ///         });
+    ///         var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("defaultHttpHealthCheck", new Gcp.Compute.HttpHealthCheckArgs
+    ///         {
+    ///             RequestPath = "/",
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///         });
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             PortName = "http",
+    ///             Protocol = "HTTP",
+    ///             TimeoutSec = 10,
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHttpHealthCheck.Id,
+    ///             },
+    ///         });
+    ///         var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new Gcp.Compute.URLMapArgs
+    ///         {
+    ///             Description = "a description",
+    ///             DefaultService = defaultBackendService.Id,
+    ///             HostRules = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapHostRuleArgs
+    ///                 {
+    ///                     Hosts = 
+    ///                     {
+    ///                         "mysite.com",
+    ///                     },
+    ///                     PathMatcher = "allpaths",
+    ///                 },
+    ///             },
+    ///             PathMatchers = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.URLMapPathMatcherArgs
+    ///                 {
+    ///                     Name = "allpaths",
+    ///                     DefaultService = defaultBackendService.Id,
+    ///                     PathRules = 
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
+    ///                         {
+    ///                             Paths = 
+    ///                             {
+    ///                                 "/*",
+    ///                             },
+    ///                             Service = defaultBackendService.Id,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var defaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("defaultTargetHttpsProxy", new Gcp.Compute.TargetHttpsProxyArgs
+    ///         {
+    ///             UrlMap = defaultURLMap.Id,
+    ///             SslCertificates = 
+    ///             {
+    ///                 defaultSSLCertificate.Id,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// SslCertificate can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default projects/{{project}}/global/sslCertificates/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
+    /// ```
     /// </summary>
     public partial class SSLCertificate : Pulumi.CustomResource
     {

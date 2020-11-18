@@ -33,6 +33,42 @@ class Repository(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/source-repositories/)
 
         ## Example Usage
+        ### Sourcerepo Repository Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.sourcerepo.Repository("my-repo")
+        ```
+        ### Sourcerepo Repository Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_account = gcp.service_account.Account("test-account",
+            account_id="my-account",
+            display_name="Test Service Account")
+        topic = gcp.pubsub.Topic("topic")
+        my_repo = gcp.sourcerepo.Repository("my-repo", pubsub_configs=[gcp.sourcerepo.RepositoryPubsubConfigArgs(
+            topic=topic.id,
+            message_format="JSON",
+            service_account_email=test_account.email,
+        )])
+        ```
+
+        ## Import
+
+        Repository can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:sourcerepo/repository:Repository default projects/{{project}}/repos/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

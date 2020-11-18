@@ -34,6 +34,27 @@ class BucketACL(pulumi.CustomResource):
 
         **NOTE** This resource will not remove the `project-owners-<project_id>` entity from the `OWNER` role.
 
+        ## Example Usage
+
+        Example creating an ACL on a bucket with one owner, and one reader.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        image_store = gcp.storage.Bucket("image-store", location="EU")
+        image_store_acl = gcp.storage.BucketACL("image-store-acl",
+            bucket=image_store.name,
+            role_entities=[
+                "OWNER:user-my.email@gmail.com",
+                "READER:group-mygroup",
+            ])
+        ```
+
+        ## Import
+
+        This resource does not support import.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket: The name of the bucket it applies to.

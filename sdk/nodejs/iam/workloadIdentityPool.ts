@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * ## Import
+ *
+ * WorkloadIdentityPool can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default projects/{{project}}/locations/global/workloadIdentityPools/{{workload_identity_pool_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{project}}/{{workload_identity_pool_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
+ * ```
+ */
 export class WorkloadIdentityPool extends pulumi.CustomResource {
     /**
      * Get an existing WorkloadIdentityPool resource's state with the given name, ID, and optional extra

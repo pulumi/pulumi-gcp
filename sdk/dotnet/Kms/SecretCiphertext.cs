@@ -27,6 +27,65 @@ namespace Pulumi.Gcp.Kms
     /// state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
     /// 
     /// ## Example Usage
+    /// ### Kms Secret Ciphertext Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "global",
+    ///         });
+    ///         var cryptokey = new Gcp.Kms.CryptoKey("cryptokey", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyring.Id,
+    ///             RotationPeriod = "100000s",
+    ///         });
+    ///         var myPassword = new Gcp.Kms.SecretCiphertext("myPassword", new Gcp.Kms.SecretCiphertextArgs
+    ///         {
+    ///             CryptoKey = cryptokey.Id,
+    ///             Plaintext = "my-secret-password",
+    ///         });
+    ///         var instance = new Gcp.Compute.Instance("instance", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             Zone = "us-central1-a",
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-9",
+    ///                 },
+    ///             },
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     Network = "default",
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Metadata = 
+    ///             {
+    ///                 { "password", myPassword.Ciphertext },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support import.
     /// </summary>
     public partial class SecretCiphertext : Pulumi.CustomResource
     {

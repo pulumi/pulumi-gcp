@@ -19,6 +19,48 @@ namespace Pulumi.Gcp.BigQuery
     ///     * [Routines Intro](https://cloud.google.com/bigquery/docs/reference/rest/v2/routines)
     /// 
     /// ## Example Usage
+    /// ### Big Query Routine Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test = new Gcp.BigQuery.Dataset("test", new Gcp.BigQuery.DatasetArgs
+    ///         {
+    ///             DatasetId = "dataset_id",
+    ///         });
+    ///         var sproc = new Gcp.BigQuery.Routine("sproc", new Gcp.BigQuery.RoutineArgs
+    ///         {
+    ///             DatasetId = test.DatasetId,
+    ///             RoutineId = "routine_id",
+    ///             RoutineType = "PROCEDURE",
+    ///             Language = "SQL",
+    ///             DefinitionBody = "CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Routine can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/routine:Routine default projects/{{project}}/datasets/{{dataset_id}}/routines/{{routine_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/routine:Routine default {{project}}/{{dataset_id}}/{{routine_id}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
+    /// ```
     /// </summary>
     public partial class Routine : Pulumi.CustomResource
     {

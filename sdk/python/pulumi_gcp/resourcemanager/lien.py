@@ -26,6 +26,27 @@ class Lien(pulumi.CustomResource):
         A Lien represents an encumbrance on the actions that can be performed on a resource.
 
         ## Example Usage
+        ### Resource Manager Lien
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.Project("project", project_id="staging-project")
+        lien = gcp.resourcemanager.Lien("lien",
+            origin="machine-readable-explanation",
+            parent=project.number.apply(lambda number: f"projects/{number}"),
+            reason="This project is an important environment",
+            restrictions=["resourcemanager.projects.delete"])
+        ```
+
+        ## Import
+
+        Lien can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

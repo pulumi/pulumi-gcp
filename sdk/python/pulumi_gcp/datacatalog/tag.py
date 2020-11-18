@@ -36,6 +36,264 @@ class Tag(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/data-catalog/docs)
 
         ## Example Usage
+        ### Data Catalog Entry Tag Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
+        entry = gcp.datacatalog.Entry("entry",
+            entry_group=entry_group.id,
+            entry_id="my_entry",
+            user_specified_type="my_custom_type",
+            user_specified_system="SomethingExternal")
+        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+            tag_template_id="my_template",
+            region="us-central1",
+            display_name="Demo Tag Template",
+            fields=[
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="source",
+                    display_name="Source of data asset",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="STRING",
+                    ),
+                    is_required=True,
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="num_rows",
+                    display_name="Number of rows in the data asset",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="DOUBLE",
+                    ),
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="pii_type",
+                    display_name="PII type",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                            allowed_values=[
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="EMAIL",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="SOCIAL SECURITY NUMBER",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="NONE",
+                                ),
+                            ],
+                        ),
+                    ),
+                ),
+            ],
+            force_delete=False)
+        basic_tag = gcp.datacatalog.Tag("basicTag",
+            parent=entry.id,
+            template=tag_template.id,
+            fields=[gcp.datacatalog.TagFieldArgs(
+                field_name="source",
+                string_value="my-string",
+            )])
+        ```
+        ### Data Catalog Entry Group Tag
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
+        first_entry = gcp.datacatalog.Entry("firstEntry",
+            entry_group=entry_group.id,
+            entry_id="first_entry",
+            user_specified_type="my_custom_type",
+            user_specified_system="SomethingExternal")
+        second_entry = gcp.datacatalog.Entry("secondEntry",
+            entry_group=entry_group.id,
+            entry_id="second_entry",
+            user_specified_type="another_custom_type",
+            user_specified_system="SomethingElseExternal")
+        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+            tag_template_id="my_template",
+            region="us-central1",
+            display_name="Demo Tag Template",
+            fields=[
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="source",
+                    display_name="Source of data asset",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="STRING",
+                    ),
+                    is_required=True,
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="num_rows",
+                    display_name="Number of rows in the data asset",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="DOUBLE",
+                    ),
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="pii_type",
+                    display_name="PII type",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                            allowed_values=[
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="EMAIL",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="SOCIAL SECURITY NUMBER",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="NONE",
+                                ),
+                            ],
+                        ),
+                    ),
+                ),
+            ],
+            force_delete=False)
+        entry_group_tag = gcp.datacatalog.Tag("entryGroupTag",
+            parent=entry_group.id,
+            template=tag_template.id,
+            fields=[gcp.datacatalog.TagFieldArgs(
+                field_name="source",
+                string_value="my-string",
+            )])
+        ```
+        ### Data Catalog Entry Tag Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        entry_group = gcp.datacatalog.EntryGroup("entryGroup", entry_group_id="my_entry_group")
+        entry = gcp.datacatalog.Entry("entry",
+            entry_group=entry_group.id,
+            entry_id="my_entry",
+            user_specified_type="my_custom_type",
+            user_specified_system="SomethingExternal",
+            schema=\"\"\"{
+          "columns": [
+            {
+              "column": "first_name",
+              "description": "First name",
+              "mode": "REQUIRED",
+              "type": "STRING"
+            },
+            {
+              "column": "last_name",
+              "description": "Last name",
+              "mode": "REQUIRED",
+              "type": "STRING"
+            },
+            {
+              "column": "address",
+              "description": "Address",
+              "mode": "REPEATED",
+              "subcolumns": [
+                {
+                  "column": "city",
+                  "description": "City",
+                  "mode": "NULLABLE",
+                  "type": "STRING"
+                },
+                {
+                  "column": "state",
+                  "description": "State",
+                  "mode": "NULLABLE",
+                  "type": "STRING"
+                }
+              ],
+              "type": "RECORD"
+            }
+          ]
+        }
+        \"\"\")
+        tag_template = gcp.datacatalog.TagTemplate("tagTemplate",
+            tag_template_id="my_template",
+            region="us-central1",
+            display_name="Demo Tag Template",
+            fields=[
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="source",
+                    display_name="Source of data asset",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="STRING",
+                    ),
+                    is_required=True,
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="num_rows",
+                    display_name="Number of rows in the data asset",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        primitive_type="DOUBLE",
+                    ),
+                ),
+                gcp.datacatalog.TagTemplateFieldArgs(
+                    field_id="pii_type",
+                    display_name="PII type",
+                    type=gcp.datacatalog.TagTemplateFieldTypeArgs(
+                        enum_type=gcp.datacatalog.TagTemplateFieldTypeEnumTypeArgs(
+                            allowed_values=[
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="EMAIL",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="SOCIAL SECURITY NUMBER",
+                                ),
+                                gcp.datacatalog.TagTemplateFieldTypeEnumTypeAllowedValueArgs(
+                                    display_name="NONE",
+                                ),
+                            ],
+                        ),
+                    ),
+                ),
+            ],
+            force_delete=False)
+        basic_tag = gcp.datacatalog.Tag("basicTag",
+            parent=entry.id,
+            template=tag_template.id,
+            fields=[
+                gcp.datacatalog.TagFieldArgs(
+                    field_name="source",
+                    string_value="my-string",
+                ),
+                gcp.datacatalog.TagFieldArgs(
+                    field_name="num_rows",
+                    double_value=5,
+                ),
+                gcp.datacatalog.TagFieldArgs(
+                    field_name="pii_type",
+                    enum_value="EMAIL",
+                ),
+            ],
+            column="address")
+        second_tag = gcp.datacatalog.Tag("second-tag",
+            parent=entry.id,
+            template=tag_template.id,
+            fields=[
+                gcp.datacatalog.TagFieldArgs(
+                    field_name="source",
+                    string_value="my-string",
+                ),
+                gcp.datacatalog.TagFieldArgs(
+                    field_name="pii_type",
+                    enum_value="NONE",
+                ),
+            ],
+            column="first_name")
+        ```
+
+        ## Import
+
+        Tag can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

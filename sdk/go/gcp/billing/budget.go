@@ -4,6 +4,7 @@
 package billing
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,223 @@ import (
 //     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
 //
 // ## Example Usage
+// ### Billing Budget Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/billing"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "000000-0000000-0000000-000000"
+// 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+// 			BillingAccount: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+// 			BillingAccount: pulumi.String(account.Id),
+// 			DisplayName:    pulumi.String("Example Billing Budget"),
+// 			Amount: &billing.BudgetAmountArgs{
+// 				SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+// 					CurrencyCode: pulumi.String("USD"),
+// 					Units:        pulumi.String("100000"),
+// 				},
+// 			},
+// 			ThresholdRules: billing.BudgetThresholdRuleArray{
+// 				&billing.BudgetThresholdRuleArgs{
+// 					ThresholdPercent: pulumi.Float64(0.5),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Billing Budget Lastperiod
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/billing"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "000000-0000000-0000000-000000"
+// 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+// 			BillingAccount: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+// 			BillingAccount: pulumi.String(account.Id),
+// 			DisplayName:    pulumi.String("Example Billing Budget"),
+// 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
+// 				Projects: pulumi.StringArray{
+// 					pulumi.String("projects/my-project-name"),
+// 				},
+// 			},
+// 			Amount: &billing.BudgetAmountArgs{
+// 				LastPeriodAmount: pulumi.Bool(true),
+// 			},
+// 			ThresholdRules: billing.BudgetThresholdRuleArray{
+// 				&billing.BudgetThresholdRuleArgs{
+// 					ThresholdPercent: pulumi.Float64(10),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Billing Budget Filter
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/billing"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "000000-0000000-0000000-000000"
+// 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+// 			BillingAccount: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+// 			BillingAccount: pulumi.String(account.Id),
+// 			DisplayName:    pulumi.String("Example Billing Budget"),
+// 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
+// 				Projects: pulumi.StringArray{
+// 					pulumi.String("projects/my-project-name"),
+// 				},
+// 				CreditTypesTreatment: pulumi.String("EXCLUDE_ALL_CREDITS"),
+// 				Services: pulumi.StringArray{
+// 					pulumi.String("services/24E6-581D-38E5"),
+// 				},
+// 			},
+// 			Amount: &billing.BudgetAmountArgs{
+// 				SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+// 					CurrencyCode: pulumi.String("USD"),
+// 					Units:        pulumi.String("100000"),
+// 				},
+// 			},
+// 			ThresholdRules: billing.BudgetThresholdRuleArray{
+// 				&billing.BudgetThresholdRuleArgs{
+// 					ThresholdPercent: pulumi.Float64(0.5),
+// 				},
+// 				&billing.BudgetThresholdRuleArgs{
+// 					ThresholdPercent: pulumi.Float64(0.9),
+// 					SpendBasis:       pulumi.String("FORECASTED_SPEND"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Billing Budget Notify
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/billing"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/monitoring"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "000000-0000000-0000000-000000"
+// 		account, err := organizations.GetBillingAccount(ctx, &organizations.GetBillingAccountArgs{
+// 			BillingAccount: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		notificationChannel, err := monitoring.NewNotificationChannel(ctx, "notificationChannel", &monitoring.NotificationChannelArgs{
+// 			DisplayName: pulumi.String("Example Notification Channel"),
+// 			Type:        pulumi.String("email"),
+// 			Labels: pulumi.StringMap{
+// 				"email_address": pulumi.String("address@example.com"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
+// 			BillingAccount: pulumi.String(account.Id),
+// 			DisplayName:    pulumi.String("Example Billing Budget"),
+// 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
+// 				Projects: pulumi.StringArray{
+// 					pulumi.String("projects/my-project-name"),
+// 				},
+// 			},
+// 			Amount: &billing.BudgetAmountArgs{
+// 				SpecifiedAmount: &billing.BudgetAmountSpecifiedAmountArgs{
+// 					CurrencyCode: pulumi.String("USD"),
+// 					Units:        pulumi.String("100000"),
+// 				},
+// 			},
+// 			ThresholdRules: billing.BudgetThresholdRuleArray{
+// 				&billing.BudgetThresholdRuleArgs{
+// 					ThresholdPercent: pulumi.Float64(1),
+// 				},
+// 				&billing.BudgetThresholdRuleArgs{
+// 					ThresholdPercent: pulumi.Float64(1),
+// 					SpendBasis:       pulumi.String("FORECASTED_SPEND"),
+// 				},
+// 			},
+// 			AllUpdatesRule: &billing.BudgetAllUpdatesRuleArgs{
+// 				MonitoringNotificationChannels: pulumi.StringArray{
+// 					notificationChannel.ID(),
+// 				},
+// 				DisableDefaultIamRecipients: pulumi.Bool(true),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Budget can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:billing/budget:Budget default {{name}}
+// ```
 type Budget struct {
 	pulumi.CustomResourceState
 
@@ -193,4 +411,43 @@ type BudgetArgs struct {
 
 func (BudgetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*budgetArgs)(nil)).Elem()
+}
+
+type BudgetInput interface {
+	pulumi.Input
+
+	ToBudgetOutput() BudgetOutput
+	ToBudgetOutputWithContext(ctx context.Context) BudgetOutput
+}
+
+func (Budget) ElementType() reflect.Type {
+	return reflect.TypeOf((*Budget)(nil)).Elem()
+}
+
+func (i Budget) ToBudgetOutput() BudgetOutput {
+	return i.ToBudgetOutputWithContext(context.Background())
+}
+
+func (i Budget) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BudgetOutput)
+}
+
+type BudgetOutput struct {
+	*pulumi.OutputState
+}
+
+func (BudgetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BudgetOutput)(nil)).Elem()
+}
+
+func (o BudgetOutput) ToBudgetOutput() BudgetOutput {
+	return o
+}
+
+func (o BudgetOutput) ToBudgetOutputWithContext(ctx context.Context) BudgetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(BudgetOutput{})
 }

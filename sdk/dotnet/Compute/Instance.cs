@@ -14,6 +14,88 @@ namespace Pulumi.Gcp.Compute
     /// [the official documentation](https://cloud.google.com/compute/docs/instances)
     /// and
     /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Compute.Instance("default", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+    ///             {
+    ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+    ///                 {
+    ///                     Image = "debian-cloud/debian-9",
+    ///                 },
+    ///             },
+    ///             MachineType = "e2-medium",
+    ///             Metadata = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
+    ///             MetadataStartupScript = "echo hi &gt; /test.txt",
+    ///             NetworkInterfaces = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+    ///                 {
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
+    ///                     Network = "default",
+    ///                 },
+    ///             },
+    ///             ScratchDisks = 
+    ///             {
+    ///                 new Gcp.Compute.Inputs.InstanceScratchDiskArgs
+    ///                 {
+    ///                     Interface = "SCSI",
+    ///                 },
+    ///             },
+    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+    ///             {
+    ///                 Scopes = 
+    ///                 {
+    ///                     "userinfo-email",
+    ///                     "compute-ro",
+    ///                     "storage-ro",
+    ///                 },
+    ///             },
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
+    ///             Zone = "us-central1-a",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Instances can be imported using any of these accepted formats
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instance:Instance default {{project}}/{{zone}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:compute/instance:Instance default {{name}}
+    /// ```
+    /// 
+    ///  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview [extended-custom-vm-type]https://cloud.google.com/compute/docs/instances/creating-instance-with-custom-machine-type#extendedmemory
     /// </summary>
     public partial class Instance : Pulumi.CustomResource
     {

@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -19,6 +20,18 @@ import (
 //     * [Creating firewall rules](https://cloud.google.com/vpc/docs/using-firewall-policies#create-rules)
 //
 // ## Example Usage
+//
+// ## Import
+//
+// OrganizationSecurityPolicyRule can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/{{priority}}
+// ```
 type OrganizationSecurityPolicyRule struct {
 	pulumi.CustomResourceState
 
@@ -237,4 +250,43 @@ type OrganizationSecurityPolicyRuleArgs struct {
 
 func (OrganizationSecurityPolicyRuleArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*organizationSecurityPolicyRuleArgs)(nil)).Elem()
+}
+
+type OrganizationSecurityPolicyRuleInput interface {
+	pulumi.Input
+
+	ToOrganizationSecurityPolicyRuleOutput() OrganizationSecurityPolicyRuleOutput
+	ToOrganizationSecurityPolicyRuleOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleOutput
+}
+
+func (OrganizationSecurityPolicyRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRule)(nil)).Elem()
+}
+
+func (i OrganizationSecurityPolicyRule) ToOrganizationSecurityPolicyRuleOutput() OrganizationSecurityPolicyRuleOutput {
+	return i.ToOrganizationSecurityPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i OrganizationSecurityPolicyRule) ToOrganizationSecurityPolicyRuleOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSecurityPolicyRuleOutput)
+}
+
+type OrganizationSecurityPolicyRuleOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationSecurityPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSecurityPolicyRuleOutput)(nil)).Elem()
+}
+
+func (o OrganizationSecurityPolicyRuleOutput) ToOrganizationSecurityPolicyRuleOutput() OrganizationSecurityPolicyRuleOutput {
+	return o
+}
+
+func (o OrganizationSecurityPolicyRuleOutput) ToOrganizationSecurityPolicyRuleOutputWithContext(ctx context.Context) OrganizationSecurityPolicyRuleOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(OrganizationSecurityPolicyRuleOutput{})
 }

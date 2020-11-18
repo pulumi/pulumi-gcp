@@ -30,6 +30,45 @@ class Table(pulumi.CustomResource):
         [the official documentation](https://cloud.google.com/bigtable/) and
         [API](https://cloud.google.com/bigtable/docs/go/reference).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
+            cluster_id="tf-instance-cluster",
+            zone="us-central1-b",
+            num_nodes=3,
+            storage_type="HDD",
+        )])
+        table = gcp.bigtable.Table("table",
+            instance_name=instance.name,
+            split_keys=[
+                "a",
+                "b",
+                "c",
+            ])
+        ```
+
+        ## Import
+
+        Bigtable Tables can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigtable/table:Table default projects/{{project}}/instances/{{instance_name}}/tables/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigtable/table:Table default {{project}}/{{instance_name}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigtable/table:Table default {{instance_name}}/{{name}}
+        ```
+
+         The following fields can't be read and will show diffs if set in config when imported- `split_keys`
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TableColumnFamilyArgs']]]] column_families: A group of columns within a table which share a common configuration. This can be specified multiple times. Structure is documented below.

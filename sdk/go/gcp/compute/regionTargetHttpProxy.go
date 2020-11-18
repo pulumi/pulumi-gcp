@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -20,6 +21,131 @@ import (
 //     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
 //
 // ## Example Usage
+// ### Region Target Http Proxy Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "defaultRegionHealthCheck", &compute.RegionHealthCheckArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionBackendService, err := compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
+// 			Region:     pulumi.String("us-central1"),
+// 			Protocol:   pulumi.String("HTTP"),
+// 			TimeoutSec: pulumi.Int(10),
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultRegionHealthCheck.ID(),
+// 			}),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "defaultRegionUrlMap", &compute.RegionUrlMapArgs{
+// 			Region:         pulumi.String("us-central1"),
+// 			DefaultService: defaultRegionBackendService.ID(),
+// 			HostRules: compute.RegionUrlMapHostRuleArray{
+// 				&compute.RegionUrlMapHostRuleArgs{
+// 					Hosts: pulumi.StringArray{
+// 						pulumi.String("mysite.com"),
+// 					},
+// 					PathMatcher: pulumi.String("allpaths"),
+// 				},
+// 			},
+// 			PathMatchers: compute.RegionUrlMapPathMatcherArray{
+// 				&compute.RegionUrlMapPathMatcherArgs{
+// 					Name:           pulumi.String("allpaths"),
+// 					DefaultService: defaultRegionBackendService.ID(),
+// 					PathRules: compute.RegionUrlMapPathMatcherPathRuleArray{
+// 						&compute.RegionUrlMapPathMatcherPathRuleArgs{
+// 							Paths: pulumi.StringArray{
+// 								pulumi.String("/*"),
+// 							},
+// 							Service: defaultRegionBackendService.ID(),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionTargetHttpProxy(ctx, "defaultRegionTargetHttpProxy", &compute.RegionTargetHttpProxyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			UrlMap: defaultRegionUrlMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Region Target Http Proxy Https Redirect
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultRegionUrlMap, err := compute.NewRegionUrlMap(ctx, "defaultRegionUrlMap", &compute.RegionUrlMapArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			DefaultUrlRedirect: &compute.RegionUrlMapDefaultUrlRedirectArgs{
+// 				HttpsRedirect: pulumi.Bool(true),
+// 				StripQuery:    pulumi.Bool(false),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionTargetHttpProxy(ctx, "defaultRegionTargetHttpProxy", &compute.RegionTargetHttpProxyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			UrlMap: defaultRegionUrlMap.ID(),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// RegionTargetHttpProxy can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default projects/{{project}}/regions/{{region}}/targetHttpProxies/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{project}}/{{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{region}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy default {{name}}
+// ```
 type RegionTargetHttpProxy struct {
 	pulumi.CustomResourceState
 
@@ -187,4 +313,43 @@ type RegionTargetHttpProxyArgs struct {
 
 func (RegionTargetHttpProxyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*regionTargetHttpProxyArgs)(nil)).Elem()
+}
+
+type RegionTargetHttpProxyInput interface {
+	pulumi.Input
+
+	ToRegionTargetHttpProxyOutput() RegionTargetHttpProxyOutput
+	ToRegionTargetHttpProxyOutputWithContext(ctx context.Context) RegionTargetHttpProxyOutput
+}
+
+func (RegionTargetHttpProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionTargetHttpProxy)(nil)).Elem()
+}
+
+func (i RegionTargetHttpProxy) ToRegionTargetHttpProxyOutput() RegionTargetHttpProxyOutput {
+	return i.ToRegionTargetHttpProxyOutputWithContext(context.Background())
+}
+
+func (i RegionTargetHttpProxy) ToRegionTargetHttpProxyOutputWithContext(ctx context.Context) RegionTargetHttpProxyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpProxyOutput)
+}
+
+type RegionTargetHttpProxyOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionTargetHttpProxyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionTargetHttpProxyOutput)(nil)).Elem()
+}
+
+func (o RegionTargetHttpProxyOutput) ToRegionTargetHttpProxyOutput() RegionTargetHttpProxyOutput {
+	return o
+}
+
+func (o RegionTargetHttpProxyOutput) ToRegionTargetHttpProxyOutputWithContext(ctx context.Context) RegionTargetHttpProxyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(RegionTargetHttpProxyOutput{})
 }

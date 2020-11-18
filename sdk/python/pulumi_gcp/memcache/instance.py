@@ -42,6 +42,26 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        Instance can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:memcache/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:memcache/instance:Instance default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:memcache/instance:Instance default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:memcache/instance:Instance default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorized_network: The full name of the GCE network to connect the instance to.  If not provided,

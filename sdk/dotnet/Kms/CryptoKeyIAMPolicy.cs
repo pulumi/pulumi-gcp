@@ -20,11 +20,205 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// &gt; **Note:** `gcp.kms.CryptoKeyIAMBinding` resources **can be** used in conjunction with `gcp.kms.CryptoKeyIAMMember` resources **only if** they do not grant privilege to the same role.
     /// 
-    /// With IAM Conditions:
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var keyring = new Gcp.Kms.KeyRing("keyring", new Gcp.Kms.KeyRingArgs
+    ///         {
+    ///             Location = "global",
+    ///         });
+    ///         var key = new Gcp.Kms.CryptoKey("key", new Gcp.Kms.CryptoKeyArgs
+    ///         {
+    ///             KeyRing = keyring.Id,
+    ///             RotationPeriod = "100000s",
+    ///         });
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/cloudkms.cryptoKeyEncrypter",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var cryptoKey = new Gcp.Kms.CryptoKeyIAMPolicy("cryptoKey", new Gcp.Kms.CryptoKeyIAMPolicyArgs
+    ///         {
+    ///             CryptoKeyId = key.Id,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// With IAM Conditions:
     /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
+    ///                     {
+    ///                         Description = "Expiring at midnight of 2019-12-31",
+    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                         Title = "expires_after_2019_12_31",
+    ///                     },
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                     Role = "roles/cloudkms.cryptoKeyEncrypter",
+    ///                 },
+    ///             },
+    ///         }));
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new Gcp.Kms.CryptoKeyIAMBindingArgs
+    ///         {
+    ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///             Role = "roles/cloudkms.cryptoKeyEncrypter",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cryptoKey = new Gcp.Kms.CryptoKeyIAMBinding("cryptoKey", new Gcp.Kms.CryptoKeyIAMBindingArgs
+    ///         {
+    ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///             Role = "roles/cloudkms.cryptoKeyEncrypter",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Condition = new Gcp.Kms.Inputs.CryptoKeyIAMBindingConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new Gcp.Kms.CryptoKeyIAMMemberArgs
+    ///         {
+    ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///             Role = "roles/cloudkms.cryptoKeyEncrypter",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var cryptoKey = new Gcp.Kms.CryptoKeyIAMMember("cryptoKey", new Gcp.Kms.CryptoKeyIAMMemberArgs
+    ///         {
+    ///             CryptoKeyId = google_kms_crypto_key.Key.Id,
+    ///             Role = "roles/cloudkms.cryptoKeyEncrypter",
+    ///             Member = "user:jane@example.com",
+    ///             Condition = new Gcp.Kms.Inputs.CryptoKeyIAMMemberConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+    /// 
+    /// This member resource can be imported using the `crypto_key_id`, role, and member identity e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/viewer user:foo@example.com"
+    /// ```
+    /// 
+    ///  IAM binding imports use space-delimited identifiers; first the resource in question and then the role.
+    /// 
+    /// These bindings can be imported using the `crypto_key_id` and role, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key "your-project-id/location-name/key-ring-name/key-name roles/editor"
+    /// ```
+    /// 
+    ///  IAM policy imports use the identifier of the resource in question.
+    /// 
+    /// This policy resource can be imported using the `crypto_key_id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import gcp:kms/cryptoKeyIAMPolicy:CryptoKeyIAMPolicy crypto_key your-project-id/location-name/key-ring-name/key-name
+    /// ```
     /// </summary>
     public partial class CryptoKeyIAMPolicy : Pulumi.CustomResource
     {

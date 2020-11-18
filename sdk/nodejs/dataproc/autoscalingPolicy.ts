@@ -2,14 +2,58 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Describes an autoscaling policy for Dataproc cluster autoscaler.
  *
  * ## Example Usage
+ * ### Dataproc Autoscaling Policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const asp = new gcp.dataproc.AutoscalingPolicy("asp", {
+ *     policyId: "dataproc-policy",
+ *     location: "us-central1",
+ *     workerConfig: {
+ *         maxInstances: 3,
+ *     },
+ *     basicAlgorithm: {
+ *         yarnConfig: {
+ *             gracefulDecommissionTimeout: "30s",
+ *             scaleUpFactor: 0.5,
+ *             scaleDownFactor: 0.5,
+ *         },
+ *     },
+ * });
+ * const basic = new gcp.dataproc.Cluster("basic", {
+ *     region: "us-central1",
+ *     clusterConfig: {
+ *         autoscalingConfig: {
+ *             policyUri: asp.name,
+ *         },
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * AutoscalingPolicy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default projects/{{project}}/locations/{{location}}/autoscalingPolicies/{{policy_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{project}}/{{location}}/{{policy_id}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
+ * ```
  */
 export class AutoscalingPolicy extends pulumi.CustomResource {
     /**

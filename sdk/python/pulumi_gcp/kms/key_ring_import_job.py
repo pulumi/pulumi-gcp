@@ -42,6 +42,14 @@ class KeyRingImportJob(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        KeyRingImportJob can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] import_job_id: It must be unique within a KeyRing and match the regular expression [a-zA-Z0-9_-]{1,63}

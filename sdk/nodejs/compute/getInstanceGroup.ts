@@ -2,14 +2,23 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
  * Get a Compute Instance Group within GCE.
  * For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/#unmanaged_instance_groups)
  * and [API](https://cloud.google.com/compute/docs/reference/latest/instanceGroups)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const all = pulumi.output(gcp.compute.getInstanceGroup({
+ *     name: "instance-group-name",
+ *     zone: "us-central1-a",
+ * }, { async: true }));
+ * ```
  */
 export function getInstanceGroup(args?: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
     args = args || {};

@@ -15,6 +15,68 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/compute/docs/load-balancing/http/target-proxies)
  *
  * ## Example Usage
+ * ### Target Http Proxy Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     portName: "http",
+ *     protocol: "HTTP",
+ *     timeoutSec: 10,
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ * });
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {
+ *     defaultService: defaultBackendService.id,
+ *     hostRules: [{
+ *         hosts: ["mysite.com"],
+ *         pathMatcher: "allpaths",
+ *     }],
+ *     pathMatchers: [{
+ *         name: "allpaths",
+ *         defaultService: defaultBackendService.id,
+ *         pathRules: [{
+ *             paths: ["/*"],
+ *             service: defaultBackendService.id,
+ *         }],
+ *     }],
+ * });
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.id});
+ * ```
+ * ### Target Http Proxy Https Redirect
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultURLMap = new gcp.compute.URLMap("defaultURLMap", {defaultUrlRedirect: {
+ *     httpsRedirect: true,
+ *     stripQuery: false,
+ * }});
+ * const defaultTargetHttpProxy = new gcp.compute.TargetHttpProxy("defaultTargetHttpProxy", {urlMap: defaultURLMap.id});
+ * ```
+ *
+ * ## Import
+ *
+ * TargetHttpProxy can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default projects/{{project}}/global/targetHttpProxies/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{project}}/{{name}}
+ * ```
+ *
+ * ```sh
+ *  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
+ * ```
  */
 export class TargetHttpProxy extends pulumi.CustomResource {
     /**

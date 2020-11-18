@@ -4,6 +4,7 @@
 package compute
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -26,6 +27,55 @@ import (
 //     * [Reserving zonal resources](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources)
 //
 // ## Example Usage
+// ### Reservation Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := compute.NewReservation(ctx, "gceReservation", &compute.ReservationArgs{
+// 			SpecificReservation: &compute.ReservationSpecificReservationArgs{
+// 				Count: pulumi.Int(1),
+// 				InstanceProperties: &compute.ReservationSpecificReservationInstancePropertiesArgs{
+// 					MachineType:    pulumi.String("n2-standard-2"),
+// 					MinCpuPlatform: pulumi.String("Intel Cascade Lake"),
+// 				},
+// 			},
+// 			Zone: pulumi.String("us-central1-a"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// Reservation can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:compute/reservation:Reservation default projects/{{project}}/zones/{{zone}}/reservations/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/reservation:Reservation default {{project}}/{{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/reservation:Reservation default {{zone}}/{{name}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:compute/reservation:Reservation default {{name}}
+// ```
 type Reservation struct {
 	pulumi.CustomResourceState
 
@@ -217,4 +267,43 @@ type ReservationArgs struct {
 
 func (ReservationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*reservationArgs)(nil)).Elem()
+}
+
+type ReservationInput interface {
+	pulumi.Input
+
+	ToReservationOutput() ReservationOutput
+	ToReservationOutputWithContext(ctx context.Context) ReservationOutput
+}
+
+func (Reservation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Reservation)(nil)).Elem()
+}
+
+func (i Reservation) ToReservationOutput() ReservationOutput {
+	return i.ToReservationOutputWithContext(context.Background())
+}
+
+func (i Reservation) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationOutput)
+}
+
+type ReservationOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationOutput)(nil)).Elem()
+}
+
+func (o ReservationOutput) ToReservationOutput() ReservationOutput {
+	return o
+}
+
+func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ReservationOutput{})
 }

@@ -24,7 +24,22 @@ class Api(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a Api resource with the given unique name, props, and options.
+        ## Import
+
+        Api can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:apigateway/api:Api default projects/{{project}}/locations/global/apis/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigateway/api:Api default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:apigateway/api:Api default {{name}}
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] api_id: Identifier to assign to the API. Must be unique within scope of the parent resource(project)

@@ -4,12 +4,36 @@
 package apigateway
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} * {{project}}/{{api}}/{{api_config}} * {{api}}/{{api_config}} * {{api_config}} Any variables not passed in the import command will be taken from the provider configuration. API Gateway apiconfig IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiConfigIamMember:ApiConfigIamMember editor "projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} roles/apigateway.viewer user:jane@example.com"
+// ```
+//
+//  IAM binding imports use space-delimited identifiersthe resource in question and the role, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiConfigIamMember:ApiConfigIamMember editor "projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}} roles/apigateway.viewer"
+// ```
+//
+//  IAM policy imports use the identifier of the resource in question, e.g.
+//
+// ```sh
+//  $ pulumi import gcp:apigateway/apiConfigIamMember:ApiConfigIamMember editor projects/{{project}}/locations/global/apis/{{api}}/configs/{{api_config}}
+// ```
+//
+//  -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the
+//
+// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
 type ApiConfigIamMember struct {
 	pulumi.CustomResourceState
 
@@ -144,4 +168,43 @@ type ApiConfigIamMemberArgs struct {
 
 func (ApiConfigIamMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*apiConfigIamMemberArgs)(nil)).Elem()
+}
+
+type ApiConfigIamMemberInput interface {
+	pulumi.Input
+
+	ToApiConfigIamMemberOutput() ApiConfigIamMemberOutput
+	ToApiConfigIamMemberOutputWithContext(ctx context.Context) ApiConfigIamMemberOutput
+}
+
+func (ApiConfigIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiConfigIamMember)(nil)).Elem()
+}
+
+func (i ApiConfigIamMember) ToApiConfigIamMemberOutput() ApiConfigIamMemberOutput {
+	return i.ToApiConfigIamMemberOutputWithContext(context.Background())
+}
+
+func (i ApiConfigIamMember) ToApiConfigIamMemberOutputWithContext(ctx context.Context) ApiConfigIamMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberOutput)
+}
+
+type ApiConfigIamMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiConfigIamMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiConfigIamMemberOutput)(nil)).Elem()
+}
+
+func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberOutput() ApiConfigIamMemberOutput {
+	return o
+}
+
+func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberOutputWithContext(ctx context.Context) ApiConfigIamMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApiConfigIamMemberOutput{})
 }

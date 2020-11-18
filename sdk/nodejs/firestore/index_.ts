@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "../types/input";
-import * as outputs from "../types/output";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -18,6 +17,39 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/query-data/indexing)
  *
  * ## Example Usage
+ * ### Firestore Index Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_index = new gcp.firestore.Index("my-index", {
+ *     collection: "chatrooms",
+ *     fields: [
+ *         {
+ *             fieldPath: "name",
+ *             order: "ASCENDING",
+ *         },
+ *         {
+ *             fieldPath: "description",
+ *             order: "DESCENDING",
+ *         },
+ *         {
+ *             fieldPath: "__name__",
+ *             order: "DESCENDING",
+ *         },
+ *     ],
+ *     project: "my-project-name",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Index can be imported using any of these accepted formats
+ *
+ * ```sh
+ *  $ pulumi import gcp:firestore/index:Index default {{name}}
+ * ```
  */
 export class Index extends pulumi.CustomResource {
     /**

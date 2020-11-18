@@ -4,6 +4,7 @@
 package storage
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -28,6 +29,51 @@ import (
 // state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
 //
 // ## Example Usage
+// ### Storage Hmac Key
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		serviceAccount, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
+// 			AccountId: pulumi.String("my-svc-acc"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = storage.NewHmacKey(ctx, "key", &storage.HmacKeyArgs{
+// 			ServiceAccountEmail: serviceAccount.Email,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ## Import
+//
+// HmacKey can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:storage/hmacKey:HmacKey default projects/{{project}}/hmacKeys/{{access_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:storage/hmacKey:HmacKey default {{project}}/{{access_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
+// ```
 type HmacKey struct {
 	pulumi.CustomResourceState
 
@@ -151,4 +197,43 @@ type HmacKeyArgs struct {
 
 func (HmacKeyArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*hmacKeyArgs)(nil)).Elem()
+}
+
+type HmacKeyInput interface {
+	pulumi.Input
+
+	ToHmacKeyOutput() HmacKeyOutput
+	ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput
+}
+
+func (HmacKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*HmacKey)(nil)).Elem()
+}
+
+func (i HmacKey) ToHmacKeyOutput() HmacKeyOutput {
+	return i.ToHmacKeyOutputWithContext(context.Background())
+}
+
+func (i HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyOutput)
+}
+
+type HmacKeyOutput struct {
+	*pulumi.OutputState
+}
+
+func (HmacKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HmacKeyOutput)(nil)).Elem()
+}
+
+func (o HmacKeyOutput) ToHmacKeyOutput() HmacKeyOutput {
+	return o
+}
+
+func (o HmacKeyOutput) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(HmacKeyOutput{})
 }

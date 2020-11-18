@@ -4,12 +4,28 @@
 package bigquery
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// ## Import
+//
+// Dataset can be imported using any of these accepted formats
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/dataset:Dataset default {{project}}/{{dataset_id}}
+// ```
+//
+// ```sh
+//  $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
+// ```
 type Dataset struct {
 	pulumi.CustomResourceState
 
@@ -253,4 +269,43 @@ type DatasetArgs struct {
 
 func (DatasetArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*datasetArgs)(nil)).Elem()
+}
+
+type DatasetInput interface {
+	pulumi.Input
+
+	ToDatasetOutput() DatasetOutput
+	ToDatasetOutputWithContext(ctx context.Context) DatasetOutput
+}
+
+func (Dataset) ElementType() reflect.Type {
+	return reflect.TypeOf((*Dataset)(nil)).Elem()
+}
+
+func (i Dataset) ToDatasetOutput() DatasetOutput {
+	return i.ToDatasetOutputWithContext(context.Background())
+}
+
+func (i Dataset) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetOutput)
+}
+
+type DatasetOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetOutput)(nil)).Elem()
+}
+
+func (o DatasetOutput) ToDatasetOutput() DatasetOutput {
+	return o
+}
+
+func (o DatasetOutput) ToDatasetOutputWithContext(ctx context.Context) DatasetOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(DatasetOutput{})
 }

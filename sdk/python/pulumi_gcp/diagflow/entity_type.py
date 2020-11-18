@@ -35,6 +35,45 @@ class EntityType(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/dialogflow/docs/)
 
         ## Example Usage
+        ### Dialogflow Entity Type Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_agent = gcp.diagflow.Agent("basicAgent",
+            display_name="example_agent",
+            default_language_code="en",
+            time_zone="America/New_York")
+        basic_entity_type = gcp.diagflow.EntityType("basicEntityType",
+            display_name="",
+            kind="KIND_MAP",
+            entities=[
+                gcp.diagflow.EntityTypeEntityArgs(
+                    value="value1",
+                    synonyms=[
+                        "synonym1",
+                        "synonym2",
+                    ],
+                ),
+                gcp.diagflow.EntityTypeEntityArgs(
+                    value="value2",
+                    synonyms=[
+                        "synonym3",
+                        "synonym4",
+                    ],
+                ),
+            ],
+            opts=ResourceOptions(depends_on=[basic_agent]))
+        ```
+
+        ## Import
+
+        EntityType can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.

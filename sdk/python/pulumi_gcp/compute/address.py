@@ -51,6 +51,85 @@ class Address(pulumi.CustomResource):
             * [Reserving a Static Internal IP Address](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
 
         ## Example Usage
+        ### Address Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        ip_address = gcp.compute.Address("ipAddress")
+        ```
+        ### Address With Subnetwork
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_network = gcp.compute.Network("defaultNetwork")
+        default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
+            ip_cidr_range="10.0.0.0/16",
+            region="us-central1",
+            network=default_network.id)
+        internal_with_subnet_and_address = gcp.compute.Address("internalWithSubnetAndAddress",
+            subnetwork=default_subnetwork.id,
+            address_type="INTERNAL",
+            address="10.0.42.42",
+            region="us-central1")
+        ```
+        ### Address With Gce Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        internal_with_gce_endpoint = gcp.compute.Address("internalWithGceEndpoint",
+            address_type="INTERNAL",
+            purpose="GCE_ENDPOINT")
+        ```
+        ### Instance With Ip
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        static = gcp.compute.Address("static")
+        debian_image = gcp.compute.get_image(family="debian-9",
+            project="debian-cloud")
+        instance_with_ip = gcp.compute.Instance("instanceWithIp",
+            machine_type="f1-micro",
+            zone="us-central1-a",
+            boot_disk=gcp.compute.InstanceBootDiskArgs(
+                initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
+                    image=debian_image.self_link,
+                ),
+            ),
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs(
+                    nat_ip=static.address,
+                )],
+            )])
+        ```
+
+        ## Import
+
+        Address can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default projects/{{project}}/regions/{{region}}/addresses/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/address:Address default {{name}}
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
