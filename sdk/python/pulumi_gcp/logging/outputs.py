@@ -65,6 +65,8 @@ class BillingAccountSinkExclusion(dict):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param str name: The name of the logging sink.
+        :param str description: A description of this sink. The maximum length of the description is 8000 characters.
+        :param bool disabled: If set to True, then this sink is disabled and it does not export any log entries.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "name", name)
@@ -94,11 +96,17 @@ class BillingAccountSinkExclusion(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        A description of this sink. The maximum length of the description is 8000 characters.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        If set to True, then this sink is disabled and it does not export any log entries.
+        """
         return pulumi.get(self, "disabled")
 
     def _translate_property(self, prop):
@@ -144,6 +152,8 @@ class FolderSinkExclusion(dict):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param str name: The name of the logging sink.
+        :param str description: A description of this sink. The maximum length of the description is 8000 characters.
+        :param bool disabled: If set to True, then this sink is disabled and it does not export any log entries.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "name", name)
@@ -173,11 +183,17 @@ class FolderSinkExclusion(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        A description of this sink. The maximum length of the description is 8000 characters.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        If set to True, then this sink is disabled and it does not export any log entries.
+        """
         return pulumi.get(self, "disabled")
 
     def _translate_property(self, prop):
@@ -537,6 +553,8 @@ class OrganizationSinkExclusion(dict):
                See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
         :param str name: The name of the logging sink.
+        :param str description: A description of this sink. The maximum length of the description is 8000 characters.
+        :param bool disabled: If set to True, then this sink is disabled and it does not export any log entries.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "name", name)
@@ -566,11 +584,17 @@ class OrganizationSinkExclusion(dict):
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
+        """
+        A description of this sink. The maximum length of the description is 8000 characters.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
+        """
+        If set to True, then this sink is disabled and it does not export any log entries.
+        """
         return pulumi.get(self, "disabled")
 
     def _translate_property(self, prop):

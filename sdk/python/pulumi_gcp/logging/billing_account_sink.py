@@ -19,7 +19,9 @@ class BillingAccountSink(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -44,6 +46,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         log_bucket = gcp.storage.Bucket("log-bucket")
         my_sink = gcp.logging.BillingAccountSink("my-sink",
+            description="some explaination on what this is",
             billing_account="ABCDEF-012345-GHIJKL",
             destination=log_bucket.name.apply(lambda name: f"storage.googleapis.com/{name}"))
         log_writer = gcp.projects.IAMBinding("log-writer",
@@ -63,12 +66,14 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
+        :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
                ```python
                import pulumi
                ```
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
                one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -97,9 +102,11 @@ class BillingAccountSink(pulumi.CustomResource):
             if billing_account is None:
                 raise TypeError("Missing required property 'billing_account'")
             __props__['billing_account'] = billing_account
+            __props__['description'] = description
             if destination is None:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
+            __props__['disabled'] = disabled
             __props__['exclusions'] = exclusions
             __props__['filter'] = filter
             __props__['name'] = name
@@ -116,7 +123,9 @@ class BillingAccountSink(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bigquery_options: Optional[pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']]] = None,
             billing_account: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[str]] = None,
+            disabled: Optional[pulumi.Input[bool]] = None,
             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -130,12 +139,14 @@ class BillingAccountSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BillingAccountSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] billing_account: The billing account exported to the sink.
+        :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
                ```python
                import pulumi
                ```
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BillingAccountSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
                one of exclusion_filters it will not be exported.
         :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -151,7 +162,9 @@ class BillingAccountSink(pulumi.CustomResource):
 
         __props__["bigquery_options"] = bigquery_options
         __props__["billing_account"] = billing_account
+        __props__["description"] = description
         __props__["destination"] = destination
+        __props__["disabled"] = disabled
         __props__["exclusions"] = exclusions
         __props__["filter"] = filter
         __props__["name"] = name
@@ -176,6 +189,14 @@ class BillingAccountSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description of this sink. The maximum length of the description is 8000 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -186,6 +207,14 @@ class BillingAccountSink(pulumi.CustomResource):
         The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to True, then this sink is disabled and it does not export any log entries.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter

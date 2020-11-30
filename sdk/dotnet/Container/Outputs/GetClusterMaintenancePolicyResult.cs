@@ -14,15 +14,19 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterMaintenancePolicyResult
     {
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult> DailyMaintenanceWindows;
+        public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult> MaintenanceExclusions;
         public readonly ImmutableArray<Outputs.GetClusterMaintenancePolicyRecurringWindowResult> RecurringWindows;
 
         [OutputConstructor]
         private GetClusterMaintenancePolicyResult(
             ImmutableArray<Outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult> dailyMaintenanceWindows,
 
+            ImmutableArray<Outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult> maintenanceExclusions,
+
             ImmutableArray<Outputs.GetClusterMaintenancePolicyRecurringWindowResult> recurringWindows)
         {
             DailyMaintenanceWindows = dailyMaintenanceWindows;
+            MaintenanceExclusions = maintenanceExclusions;
             RecurringWindows = recurringWindows;
         }
     }

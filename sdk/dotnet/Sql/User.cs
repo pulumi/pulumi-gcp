@@ -64,6 +64,14 @@ namespace Pulumi.Gcp.Sql
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>
+        /// The deletion policy for the user.
+        /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The host the user can connect from. This is only supported
         /// for MySQL instances. Don't set this field for PostgreSQL instances.
         /// Can be an IP address. Changing this forces a new resource to be created.
@@ -146,6 +154,14 @@ namespace Pulumi.Gcp.Sql
     public sealed class UserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The deletion policy for the user.
+        /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// The host the user can connect from. This is only supported
         /// for MySQL instances. Don't set this field for PostgreSQL instances.
         /// Can be an IP address. Changing this forces a new resource to be created.
@@ -188,6 +204,14 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class UserState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The deletion policy for the user.
+        /// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        /// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// The host the user can connect from. This is only supported
         /// for MySQL instances. Don't set this field for PostgreSQL instances.

@@ -2314,7 +2314,7 @@ export namespace bigquery {
         schema: string;
         /**
          * The data format. Supported values are:
-         * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+         * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
          * and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
          * the `scopes` must include
          * "https://www.googleapis.com/auth/drive.readonly".
@@ -12810,14 +12810,23 @@ export namespace container {
          */
         dailyMaintenanceWindow?: outputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow;
         /**
-         * Time window for
-         * recurring maintenance operations.
+         * Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+         */
+        maintenanceExclusions?: outputs.container.ClusterMaintenancePolicyMaintenanceExclusion[];
+        /**
+         * Time window for recurring maintenance operations.
          */
         recurringWindow?: outputs.container.ClusterMaintenancePolicyRecurringWindow;
     }
 
     export interface ClusterMaintenancePolicyDailyMaintenanceWindow {
         duration: string;
+        startTime: string;
+    }
+
+    export interface ClusterMaintenancePolicyMaintenanceExclusion {
+        endTime: string;
+        exclusionName: string;
         startTime: string;
     }
 
@@ -13580,11 +13589,18 @@ export namespace container {
 
     export interface GetClusterMaintenancePolicy {
         dailyMaintenanceWindows: outputs.container.GetClusterMaintenancePolicyDailyMaintenanceWindow[];
+        maintenanceExclusions: outputs.container.GetClusterMaintenancePolicyMaintenanceExclusion[];
         recurringWindows: outputs.container.GetClusterMaintenancePolicyRecurringWindow[];
     }
 
     export interface GetClusterMaintenancePolicyDailyMaintenanceWindow {
         duration: string;
+        startTime: string;
+    }
+
+    export interface GetClusterMaintenancePolicyMaintenanceExclusion {
+        endTime: string;
+        exclusionName: string;
         startTime: string;
     }
 
@@ -16661,6 +16677,18 @@ export namespace gameservices {
 }
 
 export namespace healthcare {
+    export interface ConsentStoreIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface ConsentStoreIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface DatasetIamBindingCondition {
         description?: string;
         expression: string;
@@ -17472,7 +17500,13 @@ export namespace logging {
     }
 
     export interface BillingAccountSinkExclusion {
+        /**
+         * A description of this sink. The maximum length of the description is 8000 characters.
+         */
         description?: string;
+        /**
+         * If set to True, then this sink is disabled and it does not export any log entries.
+         */
         disabled?: boolean;
         /**
          * The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -17497,7 +17531,13 @@ export namespace logging {
     }
 
     export interface FolderSinkExclusion {
+        /**
+         * A description of this sink. The maximum length of the description is 8000 characters.
+         */
         description?: string;
+        /**
+         * If set to True, then this sink is disabled and it does not export any log entries.
+         */
         disabled?: boolean;
         /**
          * The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -17633,7 +17673,13 @@ export namespace logging {
     }
 
     export interface OrganizationSinkExclusion {
+        /**
+         * A description of this sink. The maximum length of the description is 8000 characters.
+         */
         description?: string;
+        /**
+         * If set to True, then this sink is disabled and it does not export any log entries.
+         */
         disabled?: boolean;
         /**
          * The filter to apply when exporting logs. Only log entries that match the filter are exported.

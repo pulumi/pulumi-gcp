@@ -2,6 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 // Export members:
+export * from "./consentStore";
+export * from "./consentStoreIamBinding";
+export * from "./consentStoreIamMember";
+export * from "./consentStoreIamPolicy";
 export * from "./dataset";
 export * from "./datasetIamBinding";
 export * from "./datasetIamMember";

@@ -21,17 +21,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloudIdentityGroupBasic", {
+ * const cloudIdentityGroupBasic = new gcp.cloudidentity.Group("cloud_identity_group_basic", {
  *     displayName: "my-identity-group",
- *     parent: "customers/A01b123xz",
  *     groupKey: {
  *         id: "my-identity-group@example.com",
  *     },
  *     labels: {
  *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
  *     },
- * }, {
- *     provider: google_beta,
+ *     parent: "customers/A01b123xz",
  * });
  * ```
  *

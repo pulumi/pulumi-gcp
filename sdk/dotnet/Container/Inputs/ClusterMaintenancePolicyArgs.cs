@@ -20,9 +20,20 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("dailyMaintenanceWindow")]
         public Input<Inputs.ClusterMaintenancePolicyDailyMaintenanceWindowArgs>? DailyMaintenanceWindow { get; set; }
 
+        [Input("maintenanceExclusions")]
+        private InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs>? _maintenanceExclusions;
+
         /// <summary>
-        /// Time window for
-        /// recurring maintenance operations.
+        /// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        /// </summary>
+        public InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs> MaintenanceExclusions
+        {
+            get => _maintenanceExclusions ?? (_maintenanceExclusions = new InputList<Inputs.ClusterMaintenancePolicyMaintenanceExclusionArgs>());
+            set => _maintenanceExclusions = value;
+        }
+
+        /// <summary>
+        /// Time window for recurring maintenance operations.
         /// </summary>
         [Input("recurringWindow")]
         public Input<Inputs.ClusterMaintenancePolicyRecurringWindowArgs>? RecurringWindow { get; set; }

@@ -1510,6 +1510,25 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "healthcare_hl7_v2_store_iam.html.markdown",
 				},
 			},
+			"google_healthcare_consent_store": {Tok: gcpResource(gcpHealthcare, "ConsentStore")},
+			"google_healthcare_consent_store_iam_binding": {
+				Tok: gcpResource(gcpHealthcare, "ConsentStoreIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_consent_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_consent_store_iam_member": {
+				Tok: gcpResource(gcpHealthcare, "ConsentStoreIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_consent_store_iam.html.markdown",
+				},
+			},
+			"google_healthcare_consent_store_iam_policy": {
+				Tok: gcpResource(gcpHealthcare, "ConsentStoreIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "healthcare_consent_store_iam.html.markdown",
+				},
+			},
 
 			//CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},

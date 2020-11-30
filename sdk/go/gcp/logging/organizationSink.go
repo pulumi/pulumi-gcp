@@ -39,7 +39,8 @@ import (
 // 			return err
 // 		}
 // 		_, err = logging.NewOrganizationSink(ctx, "my_sink", &logging.OrganizationSinkArgs{
-// 			OrgId: pulumi.String("123456789"),
+// 			Description: pulumi.String("some explaination on what this is"),
+// 			OrgId:       pulumi.String("123456789"),
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
 // 			}).(pulumi.StringOutput),
@@ -72,6 +73,8 @@ type OrganizationSink struct {
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -89,6 +92,8 @@ type OrganizationSink struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions OrganizationSinkExclusionArrayOutput `pulumi:"exclusions"`
@@ -144,6 +149,8 @@ func GetOrganizationSink(ctx *pulumi.Context,
 type organizationSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -161,6 +168,8 @@ type organizationSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions []OrganizationSinkExclusion `pulumi:"exclusions"`
@@ -183,6 +192,8 @@ type organizationSinkState struct {
 type OrganizationSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -200,6 +211,8 @@ type OrganizationSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions OrganizationSinkExclusionArrayInput
@@ -226,6 +239,8 @@ func (OrganizationSinkState) ElementType() reflect.Type {
 type organizationSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -243,6 +258,8 @@ type organizationSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions []OrganizationSinkExclusion `pulumi:"exclusions"`
@@ -263,6 +280,8 @@ type organizationSinkArgs struct {
 type OrganizationSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -280,6 +299,8 @@ type OrganizationSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions OrganizationSinkExclusionArrayInput

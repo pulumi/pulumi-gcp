@@ -31,6 +31,7 @@ __all__ = [
     'ClusterIpAllocationPolicy',
     'ClusterMaintenancePolicy',
     'ClusterMaintenancePolicyDailyMaintenanceWindow',
+    'ClusterMaintenancePolicyMaintenanceExclusion',
     'ClusterMaintenancePolicyRecurringWindow',
     'ClusterMasterAuth',
     'ClusterMasterAuthClientCertificateConfig',
@@ -99,6 +100,7 @@ __all__ = [
     'GetClusterIpAllocationPolicyResult',
     'GetClusterMaintenancePolicyResult',
     'GetClusterMaintenancePolicyDailyMaintenanceWindowResult',
+    'GetClusterMaintenancePolicyMaintenanceExclusionResult',
     'GetClusterMaintenancePolicyRecurringWindowResult',
     'GetClusterMasterAuthResult',
     'GetClusterMasterAuthClientCertificateConfigResult',
@@ -921,16 +923,19 @@ class ClusterIpAllocationPolicy(dict):
 class ClusterMaintenancePolicy(dict):
     def __init__(__self__, *,
                  daily_maintenance_window: Optional['outputs.ClusterMaintenancePolicyDailyMaintenanceWindow'] = None,
+                 maintenance_exclusions: Optional[Sequence['outputs.ClusterMaintenancePolicyMaintenanceExclusion']] = None,
                  recurring_window: Optional['outputs.ClusterMaintenancePolicyRecurringWindow'] = None):
         """
         :param 'ClusterMaintenancePolicyDailyMaintenanceWindowArgs' daily_maintenance_window: Time window specified for daily maintenance operations.
                Specify `start_time` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
                where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
-        :param 'ClusterMaintenancePolicyRecurringWindowArgs' recurring_window: Time window for
-               recurring maintenance operations.
+        :param Sequence['ClusterMaintenancePolicyMaintenanceExclusionArgs'] maintenance_exclusions: Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        :param 'ClusterMaintenancePolicyRecurringWindowArgs' recurring_window: Time window for recurring maintenance operations.
         """
         if daily_maintenance_window is not None:
             pulumi.set(__self__, "daily_maintenance_window", daily_maintenance_window)
+        if maintenance_exclusions is not None:
+            pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
         if recurring_window is not None:
             pulumi.set(__self__, "recurring_window", recurring_window)
 
@@ -945,11 +950,18 @@ class ClusterMaintenancePolicy(dict):
         return pulumi.get(self, "daily_maintenance_window")
 
     @property
+    @pulumi.getter(name="maintenanceExclusions")
+    def maintenance_exclusions(self) -> Optional[Sequence['outputs.ClusterMaintenancePolicyMaintenanceExclusion']]:
+        """
+        Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+        """
+        return pulumi.get(self, "maintenance_exclusions")
+
+    @property
     @pulumi.getter(name="recurringWindow")
     def recurring_window(self) -> Optional['outputs.ClusterMaintenancePolicyRecurringWindow']:
         """
-        Time window for
-        recurring maintenance operations.
+        Time window for recurring maintenance operations.
         """
         return pulumi.get(self, "recurring_window")
 
@@ -975,6 +987,35 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow(dict):
     @pulumi.getter
     def duration(self) -> Optional[str]:
         return pulumi.get(self, "duration")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ClusterMaintenancePolicyMaintenanceExclusion(dict):
+    def __init__(__self__, *,
+                 end_time: str,
+                 exclusion_name: str,
+                 start_time: str):
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "exclusion_name", exclusion_name)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="exclusionName")
+    def exclusion_name(self) -> str:
+        return pulumi.get(self, "exclusion_name")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -3716,14 +3757,21 @@ class GetClusterIpAllocationPolicyResult(dict):
 class GetClusterMaintenancePolicyResult(dict):
     def __init__(__self__, *,
                  daily_maintenance_windows: Sequence['outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult'],
+                 maintenance_exclusions: Sequence['outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult'],
                  recurring_windows: Sequence['outputs.GetClusterMaintenancePolicyRecurringWindowResult']):
         pulumi.set(__self__, "daily_maintenance_windows", daily_maintenance_windows)
+        pulumi.set(__self__, "maintenance_exclusions", maintenance_exclusions)
         pulumi.set(__self__, "recurring_windows", recurring_windows)
 
     @property
     @pulumi.getter(name="dailyMaintenanceWindows")
     def daily_maintenance_windows(self) -> Sequence['outputs.GetClusterMaintenancePolicyDailyMaintenanceWindowResult']:
         return pulumi.get(self, "daily_maintenance_windows")
+
+    @property
+    @pulumi.getter(name="maintenanceExclusions")
+    def maintenance_exclusions(self) -> Sequence['outputs.GetClusterMaintenancePolicyMaintenanceExclusionResult']:
+        return pulumi.get(self, "maintenance_exclusions")
 
     @property
     @pulumi.getter(name="recurringWindows")
@@ -3743,6 +3791,32 @@ class GetClusterMaintenancePolicyDailyMaintenanceWindowResult(dict):
     @pulumi.getter
     def duration(self) -> str:
         return pulumi.get(self, "duration")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetClusterMaintenancePolicyMaintenanceExclusionResult(dict):
+    def __init__(__self__, *,
+                 end_time: str,
+                 exclusion_name: str,
+                 start_time: str):
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "exclusion_name", exclusion_name)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="exclusionName")
+    def exclusion_name(self) -> str:
+        return pulumi.get(self, "exclusion_name")
 
     @property
     @pulumi.getter(name="startTime")

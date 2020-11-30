@@ -43,14 +43,13 @@ class Group(pulumi.CustomResource):
 
         cloud_identity_group_basic = gcp.cloudidentity.Group("cloudIdentityGroupBasic",
             display_name="my-identity-group",
-            parent="customers/A01b123xz",
             group_key=gcp.cloudidentity.GroupGroupKeyArgs(
                 id="my-identity-group@example.com",
             ),
             labels={
                 "cloudidentity.googleapis.com/groups.discussion_forum": "",
             },
-            opts=ResourceOptions(provider=google_beta))
+            parent="customers/A01b123xz")
         ```
 
         ## Import

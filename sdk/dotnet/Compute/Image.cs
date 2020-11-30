@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
     ///             {
-    ///                 Source = "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+    ///                 Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
     ///             },
     ///         });
     ///     }
@@ -80,7 +80,7 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///             RawDisk = new Gcp.Compute.Inputs.ImageRawDiskArgs
     ///             {
-    ///                 Source = "https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+    ///                 Source = "https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
     ///             },
     ///         });
     ///     }

@@ -3111,8 +3111,9 @@ type ClusterMaintenancePolicy struct {
 	// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
 	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 	DailyMaintenanceWindow *ClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindow"`
-	// Time window for
-	// recurring maintenance operations.
+	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+	MaintenanceExclusions []ClusterMaintenancePolicyMaintenanceExclusion `pulumi:"maintenanceExclusions"`
+	// Time window for recurring maintenance operations.
 	RecurringWindow *ClusterMaintenancePolicyRecurringWindow `pulumi:"recurringWindow"`
 }
 
@@ -3132,8 +3133,9 @@ type ClusterMaintenancePolicyArgs struct {
 	// Specify `startTime` in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”,
 	// where HH : \[00-23\] and MM : \[00-59\] GMT. For example:
 	DailyMaintenanceWindow ClusterMaintenancePolicyDailyMaintenanceWindowPtrInput `pulumi:"dailyMaintenanceWindow"`
-	// Time window for
-	// recurring maintenance operations.
+	// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+	MaintenanceExclusions ClusterMaintenancePolicyMaintenanceExclusionArrayInput `pulumi:"maintenanceExclusions"`
+	// Time window for recurring maintenance operations.
 	RecurringWindow ClusterMaintenancePolicyRecurringWindowPtrInput `pulumi:"recurringWindow"`
 }
 
@@ -3223,8 +3225,14 @@ func (o ClusterMaintenancePolicyOutput) DailyMaintenanceWindow() ClusterMaintena
 	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
-// Time window for
-// recurring maintenance operations.
+// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+func (o ClusterMaintenancePolicyOutput) MaintenanceExclusions() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicy) []ClusterMaintenancePolicyMaintenanceExclusion {
+		return v.MaintenanceExclusions
+	}).(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
+}
+
+// Time window for recurring maintenance operations.
 func (o ClusterMaintenancePolicyOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow { return v.RecurringWindow }).(ClusterMaintenancePolicyRecurringWindowPtrOutput)
 }
@@ -3259,8 +3267,17 @@ func (o ClusterMaintenancePolicyPtrOutput) DailyMaintenanceWindow() ClusterMaint
 	}).(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput)
 }
 
-// Time window for
-// recurring maintenance operations.
+// Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+func (o ClusterMaintenancePolicyPtrOutput) MaintenanceExclusions() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o.ApplyT(func(v *ClusterMaintenancePolicy) []ClusterMaintenancePolicyMaintenanceExclusion {
+		if v == nil {
+			return nil
+		}
+		return v.MaintenanceExclusions
+	}).(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
+}
+
+// Time window for recurring maintenance operations.
 func (o ClusterMaintenancePolicyPtrOutput) RecurringWindow() ClusterMaintenancePolicyRecurringWindowPtrOutput {
 	return o.ApplyT(func(v *ClusterMaintenancePolicy) *ClusterMaintenancePolicyRecurringWindow {
 		if v == nil {
@@ -3411,6 +3428,112 @@ func (o ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput) StartTime() pul
 		}
 		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusion struct {
+	EndTime       string `pulumi:"endTime"`
+	ExclusionName string `pulumi:"exclusionName"`
+	StartTime     string `pulumi:"startTime"`
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionArgs and ClusterMaintenancePolicyMaintenanceExclusionOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionInput` via:
+//
+//          ClusterMaintenancePolicyMaintenanceExclusionArgs{...}
+type ClusterMaintenancePolicyMaintenanceExclusionInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionOutput() ClusterMaintenancePolicyMaintenanceExclusionOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionOutput
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionArgs struct {
+	EndTime       pulumi.StringInput `pulumi:"endTime"`
+	ExclusionName pulumi.StringInput `pulumi:"exclusionName"`
+	StartTime     pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (ClusterMaintenancePolicyMaintenanceExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArgs) ToClusterMaintenancePolicyMaintenanceExclusionOutput() ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArgs) ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionOutput)
+}
+
+// ClusterMaintenancePolicyMaintenanceExclusionArrayInput is an input type that accepts ClusterMaintenancePolicyMaintenanceExclusionArray and ClusterMaintenancePolicyMaintenanceExclusionArrayOutput values.
+// You can construct a concrete instance of `ClusterMaintenancePolicyMaintenanceExclusionArrayInput` via:
+//
+//          ClusterMaintenancePolicyMaintenanceExclusionArray{ ClusterMaintenancePolicyMaintenanceExclusionArgs{...} }
+type ClusterMaintenancePolicyMaintenanceExclusionArrayInput interface {
+	pulumi.Input
+
+	ToClusterMaintenancePolicyMaintenanceExclusionArrayOutput() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput
+	ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(context.Context) ClusterMaintenancePolicyMaintenanceExclusionArrayOutput
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionArray []ClusterMaintenancePolicyMaintenanceExclusionInput
+
+func (ClusterMaintenancePolicyMaintenanceExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArray) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutput() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return i.ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterMaintenancePolicyMaintenanceExclusionArray) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ToClusterMaintenancePolicyMaintenanceExclusionOutput() ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ToClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionName() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) string { return v.ExclusionName }).(pulumi.StringOutput)
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterMaintenancePolicyMaintenanceExclusion) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type ClusterMaintenancePolicyMaintenanceExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutput() ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ToClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(ctx context.Context) ClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o
+}
+
+func (o ClusterMaintenancePolicyMaintenanceExclusionArrayOutput) Index(i pulumi.IntInput) ClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterMaintenancePolicyMaintenanceExclusion {
+		return vs[0].([]ClusterMaintenancePolicyMaintenanceExclusion)[vs[1].(int)]
+	}).(ClusterMaintenancePolicyMaintenanceExclusionOutput)
 }
 
 type ClusterMaintenancePolicyRecurringWindow struct {
@@ -13499,6 +13622,7 @@ func (o GetClusterIpAllocationPolicyArrayOutput) Index(i pulumi.IntInput) GetClu
 
 type GetClusterMaintenancePolicy struct {
 	DailyMaintenanceWindows []GetClusterMaintenancePolicyDailyMaintenanceWindow `pulumi:"dailyMaintenanceWindows"`
+	MaintenanceExclusions   []GetClusterMaintenancePolicyMaintenanceExclusion   `pulumi:"maintenanceExclusions"`
 	RecurringWindows        []GetClusterMaintenancePolicyRecurringWindow        `pulumi:"recurringWindows"`
 }
 
@@ -13515,6 +13639,7 @@ type GetClusterMaintenancePolicyInput interface {
 
 type GetClusterMaintenancePolicyArgs struct {
 	DailyMaintenanceWindows GetClusterMaintenancePolicyDailyMaintenanceWindowArrayInput `pulumi:"dailyMaintenanceWindows"`
+	MaintenanceExclusions   GetClusterMaintenancePolicyMaintenanceExclusionArrayInput   `pulumi:"maintenanceExclusions"`
 	RecurringWindows        GetClusterMaintenancePolicyRecurringWindowArrayInput        `pulumi:"recurringWindows"`
 }
 
@@ -13573,6 +13698,12 @@ func (o GetClusterMaintenancePolicyOutput) DailyMaintenanceWindows() GetClusterM
 	return o.ApplyT(func(v GetClusterMaintenancePolicy) []GetClusterMaintenancePolicyDailyMaintenanceWindow {
 		return v.DailyMaintenanceWindows
 	}).(GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput)
+}
+
+func (o GetClusterMaintenancePolicyOutput) MaintenanceExclusions() GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o.ApplyT(func(v GetClusterMaintenancePolicy) []GetClusterMaintenancePolicyMaintenanceExclusion {
+		return v.MaintenanceExclusions
+	}).(GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
 }
 
 func (o GetClusterMaintenancePolicyOutput) RecurringWindows() GetClusterMaintenancePolicyRecurringWindowArrayOutput {
@@ -13699,6 +13830,112 @@ func (o GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenancePolicyDailyMaintenanceWindow {
 		return vs[0].([]GetClusterMaintenancePolicyDailyMaintenanceWindow)[vs[1].(int)]
 	}).(GetClusterMaintenancePolicyDailyMaintenanceWindowOutput)
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusion struct {
+	EndTime       string `pulumi:"endTime"`
+	ExclusionName string `pulumi:"exclusionName"`
+	StartTime     string `pulumi:"startTime"`
+}
+
+// GetClusterMaintenancePolicyMaintenanceExclusionInput is an input type that accepts GetClusterMaintenancePolicyMaintenanceExclusionArgs and GetClusterMaintenancePolicyMaintenanceExclusionOutput values.
+// You can construct a concrete instance of `GetClusterMaintenancePolicyMaintenanceExclusionInput` via:
+//
+//          GetClusterMaintenancePolicyMaintenanceExclusionArgs{...}
+type GetClusterMaintenancePolicyMaintenanceExclusionInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenancePolicyMaintenanceExclusionOutput() GetClusterMaintenancePolicyMaintenanceExclusionOutput
+	ToGetClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(context.Context) GetClusterMaintenancePolicyMaintenanceExclusionOutput
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionArgs struct {
+	EndTime       pulumi.StringInput `pulumi:"endTime"`
+	ExclusionName pulumi.StringInput `pulumi:"exclusionName"`
+	StartTime     pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionArgs) ToGetClusterMaintenancePolicyMaintenanceExclusionOutput() GetClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return i.ToGetClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionArgs) ToGetClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenancePolicyMaintenanceExclusionOutput)
+}
+
+// GetClusterMaintenancePolicyMaintenanceExclusionArrayInput is an input type that accepts GetClusterMaintenancePolicyMaintenanceExclusionArray and GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput values.
+// You can construct a concrete instance of `GetClusterMaintenancePolicyMaintenanceExclusionArrayInput` via:
+//
+//          GetClusterMaintenancePolicyMaintenanceExclusionArray{ GetClusterMaintenancePolicyMaintenanceExclusionArgs{...} }
+type GetClusterMaintenancePolicyMaintenanceExclusionArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterMaintenancePolicyMaintenanceExclusionArrayOutput() GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput
+	ToGetClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(context.Context) GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionArray []GetClusterMaintenancePolicyMaintenanceExclusionInput
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionArray) ToGetClusterMaintenancePolicyMaintenanceExclusionArrayOutput() GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return i.ToGetClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterMaintenancePolicyMaintenanceExclusionArray) ToGetClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput)
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionOutput() GetClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMaintenancePolicyMaintenanceExclusion) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) ExclusionName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMaintenancePolicyMaintenanceExclusion) string { return v.ExclusionName }).(pulumi.StringOutput)
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterMaintenancePolicyMaintenanceExclusion) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterMaintenancePolicyMaintenanceExclusion)(nil)).Elem()
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionArrayOutput() GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput) ToGetClusterMaintenancePolicyMaintenanceExclusionArrayOutputWithContext(ctx context.Context) GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput {
+	return o
+}
+
+func (o GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput) Index(i pulumi.IntInput) GetClusterMaintenancePolicyMaintenanceExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterMaintenancePolicyMaintenanceExclusion {
+		return vs[0].([]GetClusterMaintenancePolicyMaintenanceExclusion)[vs[1].(int)]
+	}).(GetClusterMaintenancePolicyMaintenanceExclusionOutput)
 }
 
 type GetClusterMaintenancePolicyRecurringWindow struct {
@@ -17647,6 +17884,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyDailyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyDailyMaintenanceWindowPtrOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionOutput{})
+	pulumi.RegisterOutputType(ClusterMaintenancePolicyMaintenanceExclusionArrayOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyRecurringWindowOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyRecurringWindowPtrOutput{})
 	pulumi.RegisterOutputType(ClusterMasterAuthOutput{})
@@ -17783,6 +18022,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyDailyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyDailyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenancePolicyMaintenanceExclusionOutput{})
+	pulumi.RegisterOutputType(GetClusterMaintenancePolicyMaintenanceExclusionArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyRecurringWindowOutput{})
 	pulumi.RegisterOutputType(GetClusterMaintenancePolicyRecurringWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterMasterAuthOutput{})

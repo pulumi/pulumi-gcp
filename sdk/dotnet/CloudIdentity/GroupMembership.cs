@@ -41,14 +41,11 @@ namespace Pulumi.Gcp.CloudIdentity
     ///             {
     ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var cloudIdentityGroupMembershipBasic = new Gcp.CloudIdentity.GroupMembership("cloudIdentityGroupMembershipBasic", new Gcp.CloudIdentity.GroupMembershipArgs
     ///         {
     ///             Group = @group.Id,
-    ///             MemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipMemberKeyArgs
+    ///             PreferredMemberKey = new Gcp.CloudIdentity.Inputs.GroupMembershipPreferredMemberKeyArgs
     ///             {
     ///                 Id = "cloud_identity_user@example.com",
     ///             },
@@ -63,9 +60,6 @@ namespace Pulumi.Gcp.CloudIdentity
     ///                     Name = "MANAGER",
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -96,7 +90,6 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Output("memberKey")]
         public Output<Outputs.GroupMembershipMemberKey> MemberKey { get; private set; } = null!;
@@ -189,7 +182,6 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyArgs>? MemberKey { get; set; }
@@ -236,7 +228,6 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
-        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyGetArgs>? MemberKey { get; set; }

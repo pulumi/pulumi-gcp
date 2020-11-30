@@ -56,6 +56,7 @@ export interface GetBackendServiceResult {
     readonly consistentHash: outputs.compute.GetBackendServiceConsistentHash[];
     readonly creationTimestamp: string;
     readonly customRequestHeaders: string[];
+    readonly customResponseHeaders: string[];
     /**
      * Textual description for the Backend Service.
      */

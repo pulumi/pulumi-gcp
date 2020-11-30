@@ -15,6 +15,7 @@ class User(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  host: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -61,6 +62,9 @@ class User(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the user.
+               Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+               for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported
                for MySQL instances. Don't set this field for PostgreSQL instances.
                Can be an IP address. Changing this forces a new resource to be created.
@@ -90,6 +94,7 @@ class User(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['deletion_policy'] = deletion_policy
             __props__['host'] = host
             if instance is None:
                 raise TypeError("Missing required property 'instance'")
@@ -107,6 +112,7 @@ class User(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             host: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -119,6 +125,9 @@ class User(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: The deletion policy for the user.
+               Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+               for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
         :param pulumi.Input[str] host: The host the user can connect from. This is only supported
                for MySQL instances. Don't set this field for PostgreSQL instances.
                Can be an IP address. Changing this forces a new resource to be created.
@@ -135,12 +144,23 @@ class User(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["deletion_policy"] = deletion_policy
         __props__["host"] = host
         __props__["instance"] = instance
         __props__["name"] = name
         __props__["password"] = password
         __props__["project"] = project
         return User(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        The deletion policy for the user.
+        Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+        for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter

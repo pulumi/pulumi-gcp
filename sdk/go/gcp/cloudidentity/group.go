@@ -34,14 +34,14 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudidentity.NewGroup(ctx, "cloudIdentityGroupBasic", &cloudidentity.GroupArgs{
 // 			DisplayName: pulumi.String("my-identity-group"),
-// 			Parent:      pulumi.String("customers/A01b123xz"),
 // 			GroupKey: &cloudidentity.GroupGroupKeyArgs{
 // 				Id: pulumi.String("my-identity-group@example.com"),
 // 			},
 // 			Labels: pulumi.StringMap{
 // 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 			Parent: pulumi.String("customers/A01b123xz"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

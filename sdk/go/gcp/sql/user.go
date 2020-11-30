@@ -71,6 +71,10 @@ import (
 type User struct {
 	pulumi.CustomResourceState
 
+	// The deletion policy for the user.
+	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
 	// for MySQL instances. Don't set this field for PostgreSQL instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
@@ -120,6 +124,10 @@ func GetUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering User resources.
 type userState struct {
+	// The deletion policy for the user.
+	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
 	// for MySQL instances. Don't set this field for PostgreSQL instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
@@ -139,6 +147,10 @@ type userState struct {
 }
 
 type UserState struct {
+	// The deletion policy for the user.
+	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+	DeletionPolicy pulumi.StringPtrInput
 	// The host the user can connect from. This is only supported
 	// for MySQL instances. Don't set this field for PostgreSQL instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
@@ -162,6 +174,10 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
+	// The deletion policy for the user.
+	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// The host the user can connect from. This is only supported
 	// for MySQL instances. Don't set this field for PostgreSQL instances.
 	// Can be an IP address. Changing this forces a new resource to be created.
@@ -182,6 +198,10 @@ type userArgs struct {
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
+	// The deletion policy for the user.
+	// Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+	// for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+	DeletionPolicy pulumi.StringPtrInput
 	// The host the user can connect from. This is only supported
 	// for MySQL instances. Don't set this field for PostgreSQL instances.
 	// Can be an IP address. Changing this forces a new resource to be created.

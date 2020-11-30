@@ -57,6 +57,10 @@ export class ProjectSink extends pulumi.CustomResource {
      */
     public readonly bigqueryOptions!: pulumi.Output<outputs.logging.ProjectSinkBigqueryOptions>;
     /**
+     * A description of this exclusion.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
      * ```typescript
@@ -65,6 +69,10 @@ export class ProjectSink extends pulumi.CustomResource {
      * The writer associated with the sink must have access to write to the above resource.
      */
     public readonly destination!: pulumi.Output<string>;
+    /**
+     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     */
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
@@ -109,7 +117,9 @@ export class ProjectSink extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ProjectSinkState | undefined;
             inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["destination"] = state ? state.destination : undefined;
+            inputs["disabled"] = state ? state.disabled : undefined;
             inputs["exclusions"] = state ? state.exclusions : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -122,7 +132,9 @@ export class ProjectSink extends pulumi.CustomResource {
                 throw new Error("Missing required property 'destination'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
+            inputs["disabled"] = args ? args.disabled : undefined;
             inputs["exclusions"] = args ? args.exclusions : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -150,6 +162,10 @@ export interface ProjectSinkState {
      */
     readonly bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
+     * A description of this exclusion.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
      * ```typescript
@@ -158,6 +174,10 @@ export interface ProjectSinkState {
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination?: pulumi.Input<string>;
+    /**
+     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     */
+    readonly disabled?: pulumi.Input<boolean>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
@@ -199,6 +219,10 @@ export interface ProjectSinkArgs {
      */
     readonly bigqueryOptions?: pulumi.Input<inputs.logging.ProjectSinkBigqueryOptions>;
     /**
+     * A description of this exclusion.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
      * ```typescript
@@ -207,6 +231,10 @@ export interface ProjectSinkArgs {
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination: pulumi.Input<string>;
+    /**
+     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
+     */
+    readonly disabled?: pulumi.Input<boolean>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */

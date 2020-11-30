@@ -14,9 +14,11 @@ namespace Pulumi.Gcp.CloudBuild
     /// 
     /// To get more information about Trigger, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/)
+    /// * [API documentation](https://cloud.google.com/cloud-build/docs/api/reference/rest/v1/projects.triggers)
     /// * How-to Guides
     ///     * [Automating builds using build triggers](https://cloud.google.com/cloud-build/docs/running-builds/automate-builds)
+    /// 
+    /// &gt; **Note:** You can retrieve the email of the Cloud Build Service Account used in jobs by using the `gcp.projects.ServiceIdentity` resource.
     /// 
     /// ## Example Usage
     /// ### Cloudbuild Trigger Filename

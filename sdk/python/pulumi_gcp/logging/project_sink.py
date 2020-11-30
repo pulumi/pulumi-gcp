@@ -18,7 +18,9 @@ class ProjectSink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -49,12 +51,14 @@ class ProjectSink(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
                ```python
                import pulumi
                ```
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -84,9 +88,11 @@ class ProjectSink(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['bigquery_options'] = bigquery_options
+            __props__['description'] = description
             if destination is None:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
+            __props__['disabled'] = disabled
             __props__['exclusions'] = exclusions
             __props__['filter'] = filter
             __props__['name'] = name
@@ -104,7 +110,9 @@ class ProjectSink(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             bigquery_options: Optional[pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             destination: Optional[pulumi.Input[str]] = None,
+            disabled: Optional[pulumi.Input[bool]] = None,
             exclusions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]]] = None,
             filter: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -119,12 +127,14 @@ class ProjectSink(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ProjectSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
+        :param pulumi.Input[str] description: A description of this exclusion.
         :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
                Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
                ```python
                import pulumi
                ```
                The writer associated with the sink must have access to write to the above resource.
+        :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectSinkExclusionArgs']]]] exclusions: Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
@@ -143,7 +153,9 @@ class ProjectSink(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["bigquery_options"] = bigquery_options
+        __props__["description"] = description
         __props__["destination"] = destination
+        __props__["disabled"] = disabled
         __props__["exclusions"] = exclusions
         __props__["filter"] = filter
         __props__["name"] = name
@@ -162,6 +174,14 @@ class ProjectSink(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description of this exclusion.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
         The destination of the sink (or, in other words, where logs are written to). Can be a
@@ -172,6 +192,14 @@ class ProjectSink(pulumi.CustomResource):
         The writer associated with the sink must have access to write to the above resource.
         """
         return pulumi.get(self, "destination")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        """
+        return pulumi.get(self, "disabled")
 
     @property
     @pulumi.getter

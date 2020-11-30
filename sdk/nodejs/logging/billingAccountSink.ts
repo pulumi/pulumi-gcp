@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  *
  * const log_bucket = new gcp.storage.Bucket("log-bucket", {});
  * const my_sink = new gcp.logging.BillingAccountSink("my-sink", {
+ *     description: "some explaination on what this is",
  *     billingAccount: "ABCDEF-012345-GHIJKL",
  *     destination: pulumi.interpolate`storage.googleapis.com/${log_bucket.name}`,
  * });
@@ -77,6 +78,10 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly billingAccount!: pulumi.Output<string>;
     /**
+     * A description of this sink. The maximum length of the description is 8000 characters.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
      * ```typescript
@@ -85,6 +90,10 @@ export class BillingAccountSink extends pulumi.CustomResource {
      * The writer associated with the sink must have access to write to the above resource.
      */
     public readonly destination!: pulumi.Output<string>;
+    /**
+     * If set to True, then this sink is disabled and it does not export any log entries.
+     */
+    public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
      * one of exclusion_filters it will not be exported.
@@ -120,7 +129,9 @@ export class BillingAccountSink extends pulumi.CustomResource {
             const state = argsOrState as BillingAccountSinkState | undefined;
             inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["destination"] = state ? state.destination : undefined;
+            inputs["disabled"] = state ? state.disabled : undefined;
             inputs["exclusions"] = state ? state.exclusions : undefined;
             inputs["filter"] = state ? state.filter : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -135,7 +146,9 @@ export class BillingAccountSink extends pulumi.CustomResource {
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
+            inputs["disabled"] = args ? args.disabled : undefined;
             inputs["exclusions"] = args ? args.exclusions : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -165,6 +178,10 @@ export interface BillingAccountSinkState {
      */
     readonly billingAccount?: pulumi.Input<string>;
     /**
+     * A description of this sink. The maximum length of the description is 8000 characters.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
      * ```typescript
@@ -173,6 +190,10 @@ export interface BillingAccountSinkState {
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination?: pulumi.Input<string>;
+    /**
+     * If set to True, then this sink is disabled and it does not export any log entries.
+     */
+    readonly disabled?: pulumi.Input<boolean>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
      * one of exclusion_filters it will not be exported.
@@ -208,6 +229,10 @@ export interface BillingAccountSinkArgs {
      */
     readonly billingAccount: pulumi.Input<string>;
     /**
+     * A description of this sink. The maximum length of the description is 8000 characters.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * The destination of the sink (or, in other words, where logs are written to). Can be a
      * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
      * ```typescript
@@ -216,6 +241,10 @@ export interface BillingAccountSinkArgs {
      * The writer associated with the sink must have access to write to the above resource.
      */
     readonly destination: pulumi.Input<string>;
+    /**
+     * If set to True, then this sink is disabled and it does not export any log entries.
+     */
+    readonly disabled?: pulumi.Input<boolean>;
     /**
      * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
      * one of exclusion_filters it will not be exported.

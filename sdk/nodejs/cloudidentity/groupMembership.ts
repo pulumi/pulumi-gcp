@@ -30,12 +30,10 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "cloudidentity.googleapis.com/groups.discussion_forum": "",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const cloudIdentityGroupMembershipBasic = new gcp.cloudidentity.GroupMembership("cloudIdentityGroupMembershipBasic", {
  *     group: group.id,
- *     memberKey: {
+ *     preferredMemberKey: {
  *         id: "cloud_identity_user@example.com",
  *     },
  *     roles: [
@@ -46,8 +44,6 @@ import * as utilities from "../utilities";
  *             name: "MANAGER",
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -97,7 +93,6 @@ export class GroupMembership extends pulumi.CustomResource {
     public readonly group!: pulumi.Output<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     public readonly memberKey!: pulumi.Output<outputs.cloudidentity.GroupMembershipMemberKey>;
     /**
@@ -187,7 +182,6 @@ export interface GroupMembershipState {
     readonly group?: pulumi.Input<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     readonly memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
@@ -226,7 +220,6 @@ export interface GroupMembershipArgs {
     readonly group: pulumi.Input<string>;
     /**
      * EntityKey of the member.
-     * Structure is documented below.
      */
     readonly memberKey?: pulumi.Input<inputs.cloudidentity.GroupMembershipMemberKey>;
     /**
