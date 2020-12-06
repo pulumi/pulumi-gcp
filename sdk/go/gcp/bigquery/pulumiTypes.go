@@ -6298,7 +6298,7 @@ type TableExternalDataConfiguration struct {
 	// `google_bigquery_table.schema`
 	Schema *string `pulumi:"schema"`
 	// The data format. Supported values are:
-	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
 	// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 	// the `scopes` must include
 	// "https://www.googleapis.com/auth/drive.readonly".
@@ -6361,7 +6361,7 @@ type TableExternalDataConfigurationArgs struct {
 	// `google_bigquery_table.schema`
 	Schema pulumi.StringPtrInput `pulumi:"schema"`
 	// The data format. Supported values are:
-	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+	// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
 	// and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 	// the `scopes` must include
 	// "https://www.googleapis.com/auth/drive.readonly".
@@ -6517,7 +6517,7 @@ func (o TableExternalDataConfigurationOutput) Schema() pulumi.StringPtrOutput {
 }
 
 // The data format. Supported values are:
-// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
 // and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 // the `scopes` must include
 // "https://www.googleapis.com/auth/drive.readonly".
@@ -6654,7 +6654,7 @@ func (o TableExternalDataConfigurationPtrOutput) Schema() pulumi.StringPtrOutput
 }
 
 // The data format. Supported values are:
-// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+// "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
 // and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
 // the `scopes` must include
 // "https://www.googleapis.com/auth/drive.readonly".

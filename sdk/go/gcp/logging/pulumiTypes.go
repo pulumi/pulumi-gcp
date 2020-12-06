@@ -154,8 +154,10 @@ func (o BillingAccountSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulum
 }
 
 type BillingAccountSinkExclusion struct {
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
-	Disabled    *bool   `pulumi:"disabled"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -176,8 +178,10 @@ type BillingAccountSinkExclusionInput interface {
 }
 
 type BillingAccountSinkExclusionArgs struct {
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Disabled    pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -237,10 +241,12 @@ func (o BillingAccountSinkExclusionOutput) ToBillingAccountSinkExclusionOutputWi
 	return o
 }
 
+// A description of this sink. The maximum length of the description is 8000 characters.
 func (o BillingAccountSinkExclusionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// If set to True, then this sink is disabled and it does not export any log entries.
 func (o BillingAccountSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -421,8 +427,10 @@ func (o FolderSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPt
 }
 
 type FolderSinkExclusion struct {
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
-	Disabled    *bool   `pulumi:"disabled"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -443,8 +451,10 @@ type FolderSinkExclusionInput interface {
 }
 
 type FolderSinkExclusionArgs struct {
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Disabled    pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -504,10 +514,12 @@ func (o FolderSinkExclusionOutput) ToFolderSinkExclusionOutputWithContext(ctx co
 	return o
 }
 
+// A description of this sink. The maximum length of the description is 8000 characters.
 func (o FolderSinkExclusionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// If set to True, then this sink is disabled and it does not export any log entries.
 func (o FolderSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
@@ -1729,8 +1741,10 @@ func (o OrganizationSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.
 }
 
 type OrganizationSinkExclusion struct {
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
-	Disabled    *bool   `pulumi:"disabled"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -1751,8 +1765,10 @@ type OrganizationSinkExclusionInput interface {
 }
 
 type OrganizationSinkExclusionArgs struct {
+	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Disabled    pulumi.BoolPtrInput   `pulumi:"disabled"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
 	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
@@ -1812,10 +1828,12 @@ func (o OrganizationSinkExclusionOutput) ToOrganizationSinkExclusionOutputWithCo
 	return o
 }
 
+// A description of this sink. The maximum length of the description is 8000 characters.
 func (o OrganizationSinkExclusionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// If set to True, then this sink is disabled and it does not export any log entries.
 func (o OrganizationSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }

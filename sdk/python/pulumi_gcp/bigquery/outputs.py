@@ -2094,7 +2094,7 @@ class TableExternalDataConfiguration(dict):
         :param bool autodetect: - Let BigQuery try to autodetect the schema
                and format of the table.
         :param str source_format: The data format. Supported values are:
-               "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+               "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
                and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
                the `scopes` must include
                "https://www.googleapis.com/auth/drive.readonly".
@@ -2163,7 +2163,7 @@ class TableExternalDataConfiguration(dict):
     def source_format(self) -> str:
         """
         The data format. Supported values are:
-        "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+        "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
         and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
         the `scopes` must include
         "https://www.googleapis.com/auth/drive.readonly".

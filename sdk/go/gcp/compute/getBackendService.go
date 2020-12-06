@@ -39,6 +39,7 @@ type LookupBackendServiceResult struct {
 	ConsistentHash               []GetBackendServiceConsistentHash `pulumi:"consistentHash"`
 	CreationTimestamp            string                            `pulumi:"creationTimestamp"`
 	CustomRequestHeaders         []string                          `pulumi:"customRequestHeaders"`
+	CustomResponseHeaders        []string                          `pulumi:"customResponseHeaders"`
 	// Textual description for the Backend Service.
 	Description string `pulumi:"description"`
 	// Whether or not Cloud CDN is enabled on the Backend Service.

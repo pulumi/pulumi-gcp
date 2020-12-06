@@ -13,6 +13,10 @@ import (
 
 // App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
 //
+// To get more information about AppProfile, see:
+//
+// * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
+//
 // ## Example Usage
 // ### Bigtable App Profile Multicluster
 //

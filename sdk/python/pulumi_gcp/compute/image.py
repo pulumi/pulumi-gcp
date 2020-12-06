@@ -64,7 +64,7 @@ class Image(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         example = gcp.compute.Image("example", raw_disk=gcp.compute.ImageRawDiskArgs(
-            source="https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+            source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
         ))
         ```
         ### Image Guest Os
@@ -83,7 +83,7 @@ class Image(pulumi.CustomResource):
                 ),
             ],
             raw_disk=gcp.compute.ImageRawDiskArgs(
-                source="https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz",
+                source="https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz",
             ))
         ```
 

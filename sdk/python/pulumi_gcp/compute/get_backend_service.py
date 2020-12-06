@@ -20,7 +20,7 @@ class GetBackendServiceResult:
     """
     A collection of values returned by getBackendService.
     """
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policies=None, circuit_breakers=None, connection_draining_timeout_sec=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, enable_cdn=None, fingerprint=None, health_checks=None, iaps=None, id=None, load_balancing_scheme=None, locality_lb_policy=None, log_configs=None, name=None, outlier_detections=None, port_name=None, project=None, protocol=None, security_policy=None, self_link=None, session_affinity=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -45,6 +45,9 @@ class GetBackendServiceResult:
         if custom_request_headers and not isinstance(custom_request_headers, list):
             raise TypeError("Expected argument 'custom_request_headers' to be a list")
         pulumi.set(__self__, "custom_request_headers", custom_request_headers)
+        if custom_response_headers and not isinstance(custom_response_headers, list):
+            raise TypeError("Expected argument 'custom_response_headers' to be a list")
+        pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -145,6 +148,11 @@ class GetBackendServiceResult:
     @pulumi.getter(name="customRequestHeaders")
     def custom_request_headers(self) -> Sequence[str]:
         return pulumi.get(self, "custom_request_headers")
+
+    @property
+    @pulumi.getter(name="customResponseHeaders")
+    def custom_response_headers(self) -> Sequence[str]:
+        return pulumi.get(self, "custom_response_headers")
 
     @property
     @pulumi.getter
@@ -281,6 +289,7 @@ class AwaitableGetBackendServiceResult(GetBackendServiceResult):
             consistent_hash=self.consistent_hash,
             creation_timestamp=self.creation_timestamp,
             custom_request_headers=self.custom_request_headers,
+            custom_response_headers=self.custom_response_headers,
             description=self.description,
             enable_cdn=self.enable_cdn,
             fingerprint=self.fingerprint,
@@ -331,6 +340,7 @@ def get_backend_service(name: Optional[str] = None,
         consistent_hash=__ret__.consistent_hash,
         creation_timestamp=__ret__.creation_timestamp,
         custom_request_headers=__ret__.custom_request_headers,
+        custom_response_headers=__ret__.custom_response_headers,
         description=__ret__.description,
         enable_cdn=__ret__.enable_cdn,
         fingerprint=__ret__.fingerprint,

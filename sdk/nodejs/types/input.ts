@@ -2314,7 +2314,7 @@ export namespace bigquery {
         schema?: pulumi.Input<string>;
         /**
          * The data format. Supported values are:
-         * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+         * "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
          * and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
          * the `scopes` must include
          * "https://www.googleapis.com/auth/drive.readonly".
@@ -12196,14 +12196,23 @@ export namespace container {
          */
         dailyMaintenanceWindow?: pulumi.Input<inputs.container.ClusterMaintenancePolicyDailyMaintenanceWindow>;
         /**
-         * Time window for
-         * recurring maintenance operations.
+         * Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to three maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
+         */
+        maintenanceExclusions?: pulumi.Input<pulumi.Input<inputs.container.ClusterMaintenancePolicyMaintenanceExclusion>[]>;
+        /**
+         * Time window for recurring maintenance operations.
          */
         recurringWindow?: pulumi.Input<inputs.container.ClusterMaintenancePolicyRecurringWindow>;
     }
 
     export interface ClusterMaintenancePolicyDailyMaintenanceWindow {
         duration?: pulumi.Input<string>;
+        startTime: pulumi.Input<string>;
+    }
+
+    export interface ClusterMaintenancePolicyMaintenanceExclusion {
+        endTime: pulumi.Input<string>;
+        exclusionName: pulumi.Input<string>;
         startTime: pulumi.Input<string>;
     }
 
@@ -15574,6 +15583,18 @@ export namespace gameservices {
 }
 
 export namespace healthcare {
+    export interface ConsentStoreIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface ConsentStoreIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface DatasetIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -16337,7 +16358,13 @@ export namespace logging {
     }
 
     export interface BillingAccountSinkExclusion {
+        /**
+         * A description of this sink. The maximum length of the description is 8000 characters.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * If set to True, then this sink is disabled and it does not export any log entries.
+         */
         disabled?: pulumi.Input<boolean>;
         /**
          * The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -16362,7 +16389,13 @@ export namespace logging {
     }
 
     export interface FolderSinkExclusion {
+        /**
+         * A description of this sink. The maximum length of the description is 8000 characters.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * If set to True, then this sink is disabled and it does not export any log entries.
+         */
         disabled?: pulumi.Input<boolean>;
         /**
          * The filter to apply when exporting logs. Only log entries that match the filter are exported.
@@ -16498,7 +16531,13 @@ export namespace logging {
     }
 
     export interface OrganizationSinkExclusion {
+        /**
+         * A description of this sink. The maximum length of the description is 8000 characters.
+         */
         description?: pulumi.Input<string>;
+        /**
+         * If set to True, then this sink is disabled and it does not export any log entries.
+         */
         disabled?: pulumi.Input<boolean>;
         /**
          * The filter to apply when exporting logs. Only log entries that match the filter are exported.

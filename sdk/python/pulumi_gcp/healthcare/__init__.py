@@ -3,6 +3,10 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .consent_store import *
+from .consent_store_iam_binding import *
+from .consent_store_iam_member import *
+from .consent_store_iam_policy import *
 from .dataset import *
 from .dataset_iam_binding import *
 from .dataset_iam_member import *

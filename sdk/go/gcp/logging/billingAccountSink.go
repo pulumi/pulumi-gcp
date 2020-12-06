@@ -41,6 +41,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = logging.NewBillingAccountSink(ctx, "my_sink", &logging.BillingAccountSinkArgs{
+// 			Description:    pulumi.String("some explaination on what this is"),
 // 			BillingAccount: pulumi.String("ABCDEF-012345-GHIJKL"),
 // 			Destination: log_bucket.Name.ApplyT(func(name string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "storage.googleapis.com/", name), nil
@@ -77,6 +78,8 @@ type BillingAccountSink struct {
 	BigqueryOptions BillingAccountSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -94,6 +97,8 @@ type BillingAccountSink struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions BillingAccountSinkExclusionArrayOutput `pulumi:"exclusions"`
@@ -146,6 +151,8 @@ type billingAccountSinkState struct {
 	BigqueryOptions *BillingAccountSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount *string `pulumi:"billingAccount"`
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -163,6 +170,8 @@ type billingAccountSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions []BillingAccountSinkExclusion `pulumi:"exclusions"`
@@ -182,6 +191,8 @@ type BillingAccountSinkState struct {
 	BigqueryOptions BillingAccountSinkBigqueryOptionsPtrInput
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringPtrInput
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -199,6 +210,8 @@ type BillingAccountSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions BillingAccountSinkExclusionArrayInput
@@ -222,6 +235,8 @@ type billingAccountSinkArgs struct {
 	BigqueryOptions *BillingAccountSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount string `pulumi:"billingAccount"`
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -239,6 +254,8 @@ type billingAccountSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions []BillingAccountSinkExclusion `pulumi:"exclusions"`
@@ -256,6 +273,8 @@ type BillingAccountSinkArgs struct {
 	BigqueryOptions BillingAccountSinkBigqueryOptionsPtrInput
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringInput
+	// A description of this sink. The maximum length of the description is 8000 characters.
+	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
 	// ```go
@@ -273,6 +292,8 @@ type BillingAccountSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
+	// If set to True, then this sink is disabled and it does not export any log entries.
+	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
 	// one of exclusion_filters it will not be exported.
 	Exclusions BillingAccountSinkExclusionArrayInput

@@ -13,7 +13,13 @@ namespace Pulumi.Gcp.Logging.Outputs
     [OutputType]
     public sealed class BillingAccountSinkExclusion
     {
+        /// <summary>
+        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// </summary>
         public readonly bool? Disabled;
         /// <summary>
         /// The filter to apply when exporting logs. Only log entries that match the filter are exported.

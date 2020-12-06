@@ -107,6 +107,7 @@ import * as utilities from "../utilities";
  *     timeoutSec: 10,
  *     connectionDrainingTimeoutSec: 10,
  *     customRequestHeaders: [pulumi.interpolate`host: ${proxy.fqdn}`],
+ *     customResponseHeaders: ["X-Cache-Hit: {cdn_cache_status}"],
  *     backends: [{
  *         group: externalProxy.id,
  *     }],
@@ -207,6 +208,11 @@ export class BackendService extends pulumi.CustomResource {
      * requests.
      */
     public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied
+     * responses.
+     */
+    public readonly customResponseHeaders!: pulumi.Output<string[] | undefined>;
     /**
      * An optional description of this resource.
      * Provide this property when you create the resource.
@@ -343,6 +349,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["consistentHash"] = state ? state.consistentHash : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["customRequestHeaders"] = state ? state.customRequestHeaders : undefined;
+            inputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableCdn"] = state ? state.enableCdn : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
@@ -369,6 +376,7 @@ export class BackendService extends pulumi.CustomResource {
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
             inputs["consistentHash"] = args ? args.consistentHash : undefined;
             inputs["customRequestHeaders"] = args ? args.customRequestHeaders : undefined;
+            inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
@@ -453,6 +461,11 @@ export interface BackendServiceState {
      * requests.
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied
+     * responses.
+     */
+    readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource.
      * Provide this property when you create the resource.
@@ -620,6 +633,11 @@ export interface BackendServiceArgs {
      * requests.
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied
+     * responses.
+     */
+    readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource.
      * Provide this property when you create the resource.

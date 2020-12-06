@@ -2477,7 +2477,7 @@ class TableExternalDataConfigurationArgs:
         :param pulumi.Input[bool] autodetect: - Let BigQuery try to autodetect the schema
                and format of the table.
         :param pulumi.Input[str] source_format: The data format. Supported values are:
-               "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+               "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
                and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
                the `scopes` must include
                "https://www.googleapis.com/auth/drive.readonly".
@@ -2550,7 +2550,7 @@ class TableExternalDataConfigurationArgs:
     def source_format(self) -> pulumi.Input[str]:
         """
         The data format. Supported values are:
-        "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET",
+        "CSV", "GOOGLE_SHEETS", "NEWLINE_DELIMITED_JSON", "AVRO", "PARQUET", "ORC"
         and "DATASTORE_BACKUP". To use "GOOGLE_SHEETS"
         the `scopes` must include
         "https://www.googleapis.com/auth/drive.readonly".

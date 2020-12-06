@@ -19,6 +19,12 @@ import (
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/datastore/docs/concepts/indexes)
 //
+// > **Warning:** This resource creates a Datastore Index on a project that has already
+// enabled a Datastore-compatible database. If you haven't already enabled
+// one, you can create a `appengine.Application` resource with
+// `databaseType` set to `"CLOUD_DATASTORE_COMPATIBILITY"` to do so. Your
+// Datastore location will be the same as the App Engine location specified.
+//
 // ## Example Usage
 // ### Datastore Index
 //

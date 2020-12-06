@@ -24,6 +24,7 @@ class BackendService(pulumi.CustomResource):
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
                  custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
@@ -135,6 +136,7 @@ class BackendService(pulumi.CustomResource):
             timeout_sec=10,
             connection_draining_timeout_sec=10,
             custom_request_headers=[proxy.fqdn.apply(lambda fqdn: f"host: {fqdn}")],
+            custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             backends=[gcp.compute.BackendServiceBackendArgs(
                 group=external_proxy.id,
             )])
@@ -183,6 +185,8 @@ class BackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied
                requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
+               responses.
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
@@ -270,6 +274,7 @@ class BackendService(pulumi.CustomResource):
             __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
             __props__['consistent_hash'] = consistent_hash
             __props__['custom_request_headers'] = custom_request_headers
+            __props__['custom_response_headers'] = custom_response_headers
             __props__['description'] = description
             __props__['enable_cdn'] = enable_cdn
             __props__['health_checks'] = health_checks
@@ -306,6 +311,7 @@ class BackendService(pulumi.CustomResource):
             consistent_hash: Optional[pulumi.Input[pulumi.InputType['BackendServiceConsistentHashArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             custom_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_cdn: Optional[pulumi.Input[bool]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
@@ -356,6 +362,8 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied
                requests.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
+               responses.
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
@@ -433,6 +441,7 @@ class BackendService(pulumi.CustomResource):
         __props__["consistent_hash"] = consistent_hash
         __props__["creation_timestamp"] = creation_timestamp
         __props__["custom_request_headers"] = custom_request_headers
+        __props__["custom_response_headers"] = custom_response_headers
         __props__["description"] = description
         __props__["enable_cdn"] = enable_cdn
         __props__["fingerprint"] = fingerprint
@@ -533,6 +542,15 @@ class BackendService(pulumi.CustomResource):
         requests.
         """
         return pulumi.get(self, "custom_request_headers")
+
+    @property
+    @pulumi.getter(name="customResponseHeaders")
+    def custom_response_headers(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Headers that the HTTP/S load balancer should add to proxied
+        responses.
+        """
+        return pulumi.get(self, "custom_response_headers")
 
     @property
     @pulumi.getter

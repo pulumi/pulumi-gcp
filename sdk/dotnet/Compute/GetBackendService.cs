@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Compute
         public readonly ImmutableArray<Outputs.GetBackendServiceConsistentHashResult> ConsistentHash;
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<string> CustomRequestHeaders;
+        public readonly ImmutableArray<string> CustomResponseHeaders;
         /// <summary>
         /// Textual description for the Backend Service.
         /// </summary>
@@ -125,6 +126,8 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<string> customRequestHeaders,
 
+            ImmutableArray<string> customResponseHeaders,
+
             string description,
 
             bool enableCdn,
@@ -169,6 +172,7 @@ namespace Pulumi.Gcp.Compute
             ConsistentHash = consistentHash;
             CreationTimestamp = creationTimestamp;
             CustomRequestHeaders = customRequestHeaders;
+            CustomResponseHeaders = customResponseHeaders;
             Description = description;
             EnableCdn = enableCdn;
             Fingerprint = fingerprint;

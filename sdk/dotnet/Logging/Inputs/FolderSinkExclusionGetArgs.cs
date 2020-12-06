@@ -12,9 +12,15 @@ namespace Pulumi.Gcp.Logging.Inputs
 
     public sealed class FolderSinkExclusionGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 

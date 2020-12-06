@@ -32,7 +32,6 @@ namespace Pulumi.Gcp.CloudIdentity
     ///         var cloudIdentityGroupBasic = new Gcp.CloudIdentity.Group("cloudIdentityGroupBasic", new Gcp.CloudIdentity.GroupArgs
     ///         {
     ///             DisplayName = "my-identity-group",
-    ///             Parent = "customers/A01b123xz",
     ///             GroupKey = new Gcp.CloudIdentity.Inputs.GroupGroupKeyArgs
     ///             {
     ///                 Id = "my-identity-group@example.com",
@@ -41,9 +40,7 @@ namespace Pulumi.Gcp.CloudIdentity
     ///             {
     ///                 { "cloudidentity.googleapis.com/groups.discussion_forum", "" },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
+    ///             Parent = "customers/A01b123xz",
     ///         });
     ///     }
     /// 

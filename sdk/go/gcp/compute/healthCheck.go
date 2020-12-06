@@ -22,6 +22,10 @@ import (
 // successfully to some number of consecutive probes, it is marked
 // healthy again and can receive new connections.
 //
+// ~>**NOTE**: Legacy HTTP(S) health checks must be used for target pool-based network
+// load balancers. See the [official guide](https://cloud.google.com/load-balancing/docs/health-check-concepts#selecting_hc)
+// for choosing a type of health check.
+//
 // To get more information about HealthCheck, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/healthChecks)

@@ -48,7 +48,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := compute.NewImage(ctx, "example", &compute.ImageArgs{
 // 			RawDisk: &compute.ImageRawDiskArgs{
-// 				Source: pulumi.String("https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz"),
+// 				Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -80,7 +80,7 @@ import (
 // 				},
 // 			},
 // 			RawDisk: &compute.ImageRawDiskArgs{
-// 				Source: pulumi.String("https://storage.googleapis.com/bosh-cpi-artifacts/bosh-stemcell-3262.4-google-kvm-ubuntu-trusty-go_agent-raw.tar.gz"),
+// 				Source: pulumi.String("https://storage.googleapis.com/bosh-gce-raw-stemcells/bosh-stemcell-97.98-google-kvm-ubuntu-xenial-go_agent-raw-1557960142.tar.gz"),
 // 			},
 // 		})
 // 		if err != nil {

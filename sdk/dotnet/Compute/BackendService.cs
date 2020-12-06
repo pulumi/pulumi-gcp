@@ -174,6 +174,10 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 proxy.Fqdn.Apply(fqdn =&gt; $"host: {fqdn}"),
     ///             },
+    ///             CustomResponseHeaders = 
+    ///             {
+    ///                 "X-Cache-Hit: {cdn_cache_status}",
+    ///             },
     ///             Backends = 
     ///             {
     ///                 new Gcp.Compute.Inputs.BackendServiceBackendArgs
@@ -270,6 +274,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("customRequestHeaders")]
         public Output<ImmutableArray<string>> CustomRequestHeaders { get; private set; } = null!;
+
+        /// <summary>
+        /// Headers that the HTTP/S load balancer should add to proxied
+        /// responses.
+        /// </summary>
+        [Output("customResponseHeaders")]
+        public Output<ImmutableArray<string>> CustomResponseHeaders { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource.
@@ -538,6 +549,19 @@ namespace Pulumi.Gcp.Compute
             set => _customRequestHeaders = value;
         }
 
+        [Input("customResponseHeaders")]
+        private InputList<string>? _customResponseHeaders;
+
+        /// <summary>
+        /// Headers that the HTTP/S load balancer should add to proxied
+        /// responses.
+        /// </summary>
+        public InputList<string> CustomResponseHeaders
+        {
+            get => _customResponseHeaders ?? (_customResponseHeaders = new InputList<string>());
+            set => _customResponseHeaders = value;
+        }
+
         /// <summary>
         /// An optional description of this resource.
         /// Provide this property when you create the resource.
@@ -758,6 +782,19 @@ namespace Pulumi.Gcp.Compute
         {
             get => _customRequestHeaders ?? (_customRequestHeaders = new InputList<string>());
             set => _customRequestHeaders = value;
+        }
+
+        [Input("customResponseHeaders")]
+        private InputList<string>? _customResponseHeaders;
+
+        /// <summary>
+        /// Headers that the HTTP/S load balancer should add to proxied
+        /// responses.
+        /// </summary>
+        public InputList<string> CustomResponseHeaders
+        {
+            get => _customResponseHeaders ?? (_customResponseHeaders = new InputList<string>());
+            set => _customResponseHeaders = value;
         }
 
         /// <summary>

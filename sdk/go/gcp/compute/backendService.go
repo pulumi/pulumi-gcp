@@ -178,6 +178,9 @@ import (
 // 					return fmt.Sprintf("%v%v", "host: ", fqdn), nil
 // 				}).(pulumi.StringOutput),
 // 			},
+// 			CustomResponseHeaders: pulumi.StringArray{
+// 				pulumi.String("X-Cache-Hit: {cdn_cache_status}"),
+// 			},
 // 			Backends: compute.BackendServiceBackendArray{
 // 				&compute.BackendServiceBackendArgs{
 // 					Group: externalProxy.ID(),
@@ -244,6 +247,9 @@ type BackendService struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders pulumi.StringArrayOutput `pulumi:"customRequestHeaders"`
+	// Headers that the HTTP/S load balancer should add to proxied
+	// responses.
+	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -389,6 +395,9 @@ type backendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
+	// Headers that the HTTP/S load balancer should add to proxied
+	// responses.
+	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -507,6 +516,9 @@ type BackendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders pulumi.StringArrayInput
+	// Headers that the HTTP/S load balancer should add to proxied
+	// responses.
+	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
@@ -627,6 +639,9 @@ type backendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
+	// Headers that the HTTP/S load balancer should add to proxied
+	// responses.
+	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -740,6 +755,9 @@ type BackendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders pulumi.StringArrayInput
+	// Headers that the HTTP/S load balancer should add to proxied
+	// responses.
+	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput

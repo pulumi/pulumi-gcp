@@ -41,13 +41,13 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"cloudidentity.googleapis.com/groups.discussion_forum": pulumi.String(""),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cloudidentity.NewGroupMembership(ctx, "cloudIdentityGroupMembershipBasic", &cloudidentity.GroupMembershipArgs{
 // 			Group: group.ID(),
-// 			MemberKey: &cloudidentity.GroupMembershipMemberKeyArgs{
+// 			PreferredMemberKey: &cloudidentity.GroupMembershipPreferredMemberKeyArgs{
 // 				Id: pulumi.String("cloud_identity_user@example.com"),
 // 			},
 // 			Roles: cloudidentity.GroupMembershipRoleArray{
@@ -58,7 +58,7 @@ import (
 // 					Name: pulumi.String("MANAGER"),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -82,7 +82,6 @@ type GroupMembership struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringOutput `pulumi:"group"`
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyOutput `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -139,7 +138,6 @@ type groupMembershipState struct {
 	// The name of the Group to create this membership in.
 	Group *string `pulumi:"group"`
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -163,7 +161,6 @@ type GroupMembershipState struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringPtrInput
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
 	// Possible values are `OWNER`, `MANAGER`, and `MEMBER`.
@@ -189,7 +186,6 @@ type groupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group string `pulumi:"group"`
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey *GroupMembershipMemberKey `pulumi:"memberKey"`
 	// EntityKey of the member.
 	// Structure is documented below.
@@ -205,7 +201,6 @@ type GroupMembershipArgs struct {
 	// The name of the Group to create this membership in.
 	Group pulumi.StringInput
 	// EntityKey of the member.
-	// Structure is documented below.
 	MemberKey GroupMembershipMemberKeyPtrInput
 	// EntityKey of the member.
 	// Structure is documented below.

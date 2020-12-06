@@ -33,6 +33,8 @@ type ProjectSink struct {
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
+	// A description of this exclusion.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
@@ -50,6 +52,8 @@ type ProjectSink struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions ProjectSinkExclusionArrayOutput `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -103,6 +107,8 @@ func GetProjectSink(ctx *pulumi.Context,
 type projectSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// A description of this exclusion.
+	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
@@ -120,6 +126,8 @@ type projectSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []ProjectSinkExclusion `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -143,6 +151,8 @@ type projectSinkState struct {
 type ProjectSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
+	// A description of this exclusion.
+	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
@@ -160,6 +170,8 @@ type ProjectSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions ProjectSinkExclusionArrayInput
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -187,6 +199,8 @@ func (ProjectSinkState) ElementType() reflect.Type {
 type projectSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *ProjectSinkBigqueryOptions `pulumi:"bigqueryOptions"`
+	// A description of this exclusion.
+	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
@@ -204,6 +218,8 @@ type projectSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	Disabled *bool `pulumi:"disabled"`
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []ProjectSinkExclusion `pulumi:"exclusions"`
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
@@ -225,6 +241,8 @@ type projectSinkArgs struct {
 type ProjectSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions ProjectSinkBigqueryOptionsPtrInput
+	// A description of this exclusion.
+	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
 	// ```go
@@ -242,6 +260,8 @@ type ProjectSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
+	Disabled pulumi.BoolPtrInput
 	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions ProjectSinkExclusionArrayInput
 	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to

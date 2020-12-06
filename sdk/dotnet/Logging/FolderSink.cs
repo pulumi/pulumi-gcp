@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Logging
     ///         });
     ///         var my_sink = new Gcp.Logging.FolderSink("my-sink", new Gcp.Logging.FolderSinkArgs
     ///         {
+    ///             Description = "some explaination on what this is",
     ///             Folder = my_folder.Name,
     ///             Destination = log_bucket.Name.Apply(name =&gt; $"storage.googleapis.com/{name}"),
     ///             Filter = "resource.type = gce_instance AND severity &gt;= WARNING",
@@ -71,6 +72,12 @@ namespace Pulumi.Gcp.Logging
         public Output<Outputs.FolderSinkBigqueryOptions> BigqueryOptions { get; private set; } = null!;
 
         /// <summary>
+        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
         /// ```csharp
@@ -88,6 +95,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Output("destination")]
         public Output<string> Destination { get; private set; } = null!;
+
+        /// <summary>
+        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// </summary>
+        [Output("disabled")]
+        public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
         /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
@@ -184,6 +197,12 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.FolderSinkBigqueryOptionsArgs>? BigqueryOptions { get; set; }
 
         /// <summary>
+        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
         /// ```csharp
@@ -201,6 +220,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("destination", required: true)]
         public Input<string> Destination { get; set; } = null!;
+
+        /// <summary>
+        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         [Input("exclusions")]
         private InputList<Inputs.FolderSinkExclusionArgs>? _exclusions;
@@ -257,6 +282,12 @@ namespace Pulumi.Gcp.Logging
         public Input<Inputs.FolderSinkBigqueryOptionsGetArgs>? BigqueryOptions { get; set; }
 
         /// <summary>
+        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The destination of the sink (or, in other words, where logs are written to). Can be a
         /// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
         /// ```csharp
@@ -274,6 +305,12 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         [Input("destination")]
         public Input<string>? Destination { get; set; }
+
+        /// <summary>
+        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
 
         [Input("exclusions")]
         private InputList<Inputs.FolderSinkExclusionGetArgs>? _exclusions;

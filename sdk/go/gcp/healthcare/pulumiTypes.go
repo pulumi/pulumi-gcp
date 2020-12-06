@@ -10,6 +10,318 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type ConsentStoreIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ConsentStoreIamBindingConditionInput is an input type that accepts ConsentStoreIamBindingConditionArgs and ConsentStoreIamBindingConditionOutput values.
+// You can construct a concrete instance of `ConsentStoreIamBindingConditionInput` via:
+//
+//          ConsentStoreIamBindingConditionArgs{...}
+type ConsentStoreIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToConsentStoreIamBindingConditionOutput() ConsentStoreIamBindingConditionOutput
+	ToConsentStoreIamBindingConditionOutputWithContext(context.Context) ConsentStoreIamBindingConditionOutput
+}
+
+type ConsentStoreIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ConsentStoreIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionOutput() ConsentStoreIamBindingConditionOutput {
+	return i.ToConsentStoreIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingConditionOutput)
+}
+
+func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionPtrOutput() ConsentStoreIamBindingConditionPtrOutput {
+	return i.ToConsentStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreIamBindingConditionArgs) ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingConditionOutput).ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// ConsentStoreIamBindingConditionPtrInput is an input type that accepts ConsentStoreIamBindingConditionArgs, ConsentStoreIamBindingConditionPtr and ConsentStoreIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `ConsentStoreIamBindingConditionPtrInput` via:
+//
+//          ConsentStoreIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ConsentStoreIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToConsentStoreIamBindingConditionPtrOutput() ConsentStoreIamBindingConditionPtrOutput
+	ToConsentStoreIamBindingConditionPtrOutputWithContext(context.Context) ConsentStoreIamBindingConditionPtrOutput
+}
+
+type consentStoreIamBindingConditionPtrType ConsentStoreIamBindingConditionArgs
+
+func ConsentStoreIamBindingConditionPtr(v *ConsentStoreIamBindingConditionArgs) ConsentStoreIamBindingConditionPtrInput {
+	return (*consentStoreIamBindingConditionPtrType)(v)
+}
+
+func (*consentStoreIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (i *consentStoreIamBindingConditionPtrType) ToConsentStoreIamBindingConditionPtrOutput() ConsentStoreIamBindingConditionPtrOutput {
+	return i.ToConsentStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *consentStoreIamBindingConditionPtrType) ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingConditionPtrOutput)
+}
+
+type ConsentStoreIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (o ConsentStoreIamBindingConditionOutput) ToConsentStoreIamBindingConditionOutput() ConsentStoreIamBindingConditionOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingConditionOutput) ToConsentStoreIamBindingConditionOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingConditionOutput) ToConsentStoreIamBindingConditionPtrOutput() ConsentStoreIamBindingConditionPtrOutput {
+	return o.ToConsentStoreIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentStoreIamBindingConditionOutput) ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v ConsentStoreIamBindingCondition) *ConsentStoreIamBindingCondition {
+		return &v
+	}).(ConsentStoreIamBindingConditionPtrOutput)
+}
+func (o ConsentStoreIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsentStoreIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ConsentStoreIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsentStoreIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ConsentStoreIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsentStoreIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ConsentStoreIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStoreIamBindingCondition)(nil)).Elem()
+}
+
+func (o ConsentStoreIamBindingConditionPtrOutput) ToConsentStoreIamBindingConditionPtrOutput() ConsentStoreIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingConditionPtrOutput) ToConsentStoreIamBindingConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingConditionPtrOutput) Elem() ConsentStoreIamBindingConditionOutput {
+	return o.ApplyT(func(v *ConsentStoreIamBindingCondition) ConsentStoreIamBindingCondition { return *v }).(ConsentStoreIamBindingConditionOutput)
+}
+
+func (o ConsentStoreIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsentStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsentStoreIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsentStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsentStoreIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsentStoreIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConsentStoreIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// ConsentStoreIamMemberConditionInput is an input type that accepts ConsentStoreIamMemberConditionArgs and ConsentStoreIamMemberConditionOutput values.
+// You can construct a concrete instance of `ConsentStoreIamMemberConditionInput` via:
+//
+//          ConsentStoreIamMemberConditionArgs{...}
+type ConsentStoreIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToConsentStoreIamMemberConditionOutput() ConsentStoreIamMemberConditionOutput
+	ToConsentStoreIamMemberConditionOutputWithContext(context.Context) ConsentStoreIamMemberConditionOutput
+}
+
+type ConsentStoreIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (ConsentStoreIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (i ConsentStoreIamMemberConditionArgs) ToConsentStoreIamMemberConditionOutput() ConsentStoreIamMemberConditionOutput {
+	return i.ToConsentStoreIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreIamMemberConditionArgs) ToConsentStoreIamMemberConditionOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamMemberConditionOutput)
+}
+
+func (i ConsentStoreIamMemberConditionArgs) ToConsentStoreIamMemberConditionPtrOutput() ConsentStoreIamMemberConditionPtrOutput {
+	return i.ToConsentStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreIamMemberConditionArgs) ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamMemberConditionOutput).ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// ConsentStoreIamMemberConditionPtrInput is an input type that accepts ConsentStoreIamMemberConditionArgs, ConsentStoreIamMemberConditionPtr and ConsentStoreIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `ConsentStoreIamMemberConditionPtrInput` via:
+//
+//          ConsentStoreIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type ConsentStoreIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToConsentStoreIamMemberConditionPtrOutput() ConsentStoreIamMemberConditionPtrOutput
+	ToConsentStoreIamMemberConditionPtrOutputWithContext(context.Context) ConsentStoreIamMemberConditionPtrOutput
+}
+
+type consentStoreIamMemberConditionPtrType ConsentStoreIamMemberConditionArgs
+
+func ConsentStoreIamMemberConditionPtr(v *ConsentStoreIamMemberConditionArgs) ConsentStoreIamMemberConditionPtrInput {
+	return (*consentStoreIamMemberConditionPtrType)(v)
+}
+
+func (*consentStoreIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (i *consentStoreIamMemberConditionPtrType) ToConsentStoreIamMemberConditionPtrOutput() ConsentStoreIamMemberConditionPtrOutput {
+	return i.ToConsentStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *consentStoreIamMemberConditionPtrType) ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamMemberConditionPtrOutput)
+}
+
+type ConsentStoreIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (o ConsentStoreIamMemberConditionOutput) ToConsentStoreIamMemberConditionOutput() ConsentStoreIamMemberConditionOutput {
+	return o
+}
+
+func (o ConsentStoreIamMemberConditionOutput) ToConsentStoreIamMemberConditionOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionOutput {
+	return o
+}
+
+func (o ConsentStoreIamMemberConditionOutput) ToConsentStoreIamMemberConditionPtrOutput() ConsentStoreIamMemberConditionPtrOutput {
+	return o.ToConsentStoreIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentStoreIamMemberConditionOutput) ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v ConsentStoreIamMemberCondition) *ConsentStoreIamMemberCondition {
+		return &v
+	}).(ConsentStoreIamMemberConditionPtrOutput)
+}
+func (o ConsentStoreIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConsentStoreIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o ConsentStoreIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsentStoreIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o ConsentStoreIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ConsentStoreIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ConsentStoreIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStoreIamMemberCondition)(nil)).Elem()
+}
+
+func (o ConsentStoreIamMemberConditionPtrOutput) ToConsentStoreIamMemberConditionPtrOutput() ConsentStoreIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ConsentStoreIamMemberConditionPtrOutput) ToConsentStoreIamMemberConditionPtrOutputWithContext(ctx context.Context) ConsentStoreIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o ConsentStoreIamMemberConditionPtrOutput) Elem() ConsentStoreIamMemberConditionOutput {
+	return o.ApplyT(func(v *ConsentStoreIamMemberCondition) ConsentStoreIamMemberCondition { return *v }).(ConsentStoreIamMemberConditionOutput)
+}
+
+func (o ConsentStoreIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsentStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsentStoreIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsentStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsentStoreIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConsentStoreIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatasetIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -2324,6 +2636,10 @@ func (o Hl7StoreParserConfigPtrOutput) Version() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterOutputType(ConsentStoreIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(ConsentStoreIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(ConsentStoreIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(ConsentStoreIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamMemberConditionOutput{})

@@ -70,6 +70,12 @@ export class User extends pulumi.CustomResource {
     }
 
     /**
+     * The deletion policy for the user.
+     * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+     * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The host the user can connect from. This is only supported
      * for MySQL instances. Don't set this field for PostgreSQL instances.
      * Can be an IP address. Changing this forces a new resource to be created.
@@ -108,6 +114,7 @@ export class User extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as UserState | undefined;
+            inputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             inputs["host"] = state ? state.host : undefined;
             inputs["instance"] = state ? state.instance : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -118,6 +125,7 @@ export class User extends pulumi.CustomResource {
             if (!args || args.instance === undefined) {
                 throw new Error("Missing required property 'instance'");
             }
+            inputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             inputs["host"] = args ? args.host : undefined;
             inputs["instance"] = args ? args.instance : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -139,6 +147,12 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
+    /**
+     * The deletion policy for the user.
+     * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+     * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     */
+    readonly deletionPolicy?: pulumi.Input<string>;
     /**
      * The host the user can connect from. This is only supported
      * for MySQL instances. Don't set this field for PostgreSQL instances.
@@ -171,6 +185,12 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
+    /**
+     * The deletion policy for the user.
+     * Setting `ABANDON` allows the resource to be abandoned rather than deleted. This is useful
+     * for Postgres, where users cannot be deleted from the API if they have been granted SQL roles.
+     */
+    readonly deletionPolicy?: pulumi.Input<string>;
     /**
      * The host the user can connect from. This is only supported
      * for MySQL instances. Don't set this field for PostgreSQL instances.
