@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v3.49.0 of the Google Beta Terraform Provider
-* Upgrade to pulumi-terraform-provider v2.13.3  
+_(none)_
 
 ---
+
+## 4.5.0 (2020-12-07)
+* Upgrade to v3.49.0 of the Google Beta Terraform Provider
+* Upgrade to pulumi-terraform-provider v2.13.3  
 
 ## 4.4.0 (2020-11-18)
 * Upgrade to v3.48.0 of the Google Beta Terraform Provider
