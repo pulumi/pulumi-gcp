@@ -53,11 +53,11 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if enrolled_services is None:
+            if enrolled_services is None and not opts.urn:
                 raise TypeError("Missing required property 'enrolled_services'")
             __props__['enrolled_services'] = enrolled_services
             __props__['notification_emails'] = notification_emails
-            if organization_id is None:
+            if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__['organization_id'] = organization_id
             __props__['enrolled_ancestor'] = None

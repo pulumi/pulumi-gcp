@@ -139,10 +139,10 @@ export class AttachedDisk extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as AttachedDiskArgs | undefined;
-            if (!args || args.disk === undefined) {
+            if ((!args || args.disk === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'disk'");
             }
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["deviceName"] = args ? args.deviceName : undefined;

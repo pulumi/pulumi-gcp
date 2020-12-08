@@ -209,6 +209,7 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args == nil {
 		args = &EnvironmentArgs{}
 	}
+
 	var resource Environment
 	err := ctx.RegisterResource("gcp:composer/environment:Environment", name, args, &resource, opts...)
 	if err != nil {

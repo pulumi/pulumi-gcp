@@ -97,18 +97,18 @@ class FolderFeed(pulumi.CustomResource):
 
             __props__['asset_names'] = asset_names
             __props__['asset_types'] = asset_types
-            if billing_project is None:
+            if billing_project is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_project'")
             __props__['billing_project'] = billing_project
             __props__['condition'] = condition
             __props__['content_type'] = content_type
-            if feed_id is None:
+            if feed_id is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_id'")
             __props__['feed_id'] = feed_id
-            if feed_output_config is None:
+            if feed_output_config is None and not opts.urn:
                 raise TypeError("Missing required property 'feed_output_config'")
             __props__['feed_output_config'] = feed_output_config
-            if folder is None:
+            if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")
             __props__['folder'] = folder
             __props__['folder_id'] = None

@@ -367,14 +367,15 @@ type Tag struct {
 // NewTag registers a new resource with the given unique name, arguments, and options.
 func NewTag(ctx *pulumi.Context,
 	name string, args *TagArgs, opts ...pulumi.ResourceOption) (*Tag, error) {
-	if args == nil || args.Fields == nil {
-		return nil, errors.New("missing required argument 'Fields'")
-	}
-	if args == nil || args.Template == nil {
-		return nil, errors.New("missing required argument 'Template'")
-	}
 	if args == nil {
-		args = &TagArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Fields == nil {
+		return nil, errors.New("invalid value for required argument 'Fields'")
+	}
+	if args.Template == nil {
+		return nil, errors.New("invalid value for required argument 'Template'")
 	}
 	var resource Tag
 	err := ctx.RegisterResource("gcp:datacatalog/tag:Tag", name, args, &resource, opts...)

@@ -104,14 +104,15 @@ type Endpoint struct {
 // NewEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewEndpoint(ctx *pulumi.Context,
 	name string, args *EndpointArgs, opts ...pulumi.ResourceOption) (*Endpoint, error) {
-	if args == nil || args.EndpointId == nil {
-		return nil, errors.New("missing required argument 'EndpointId'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &EndpointArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EndpointId == nil {
+		return nil, errors.New("invalid value for required argument 'EndpointId'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource Endpoint
 	err := ctx.RegisterResource("gcp:servicedirectory/endpoint:Endpoint", name, args, &resource, opts...)

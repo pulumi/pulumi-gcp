@@ -104,14 +104,15 @@ type BucketAccessControl struct {
 // NewBucketAccessControl registers a new resource with the given unique name, arguments, and options.
 func NewBucketAccessControl(ctx *pulumi.Context,
 	name string, args *BucketAccessControlArgs, opts ...pulumi.ResourceOption) (*BucketAccessControl, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Entity == nil {
-		return nil, errors.New("missing required argument 'Entity'")
-	}
 	if args == nil {
-		args = &BucketAccessControlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Entity == nil {
+		return nil, errors.New("invalid value for required argument 'Entity'")
 	}
 	var resource BucketAccessControl
 	err := ctx.RegisterResource("gcp:storage/bucketAccessControl:BucketAccessControl", name, args, &resource, opts...)

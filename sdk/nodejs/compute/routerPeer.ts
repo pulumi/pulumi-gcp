@@ -188,16 +188,16 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["router"] = state ? state.router : undefined;
         } else {
             const args = argsOrState as RouterPeerArgs | undefined;
-            if (!args || args.interface === undefined) {
+            if ((!args || args.interface === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'interface'");
             }
-            if (!args || args.peerAsn === undefined) {
+            if ((!args || args.peerAsn === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerAsn'");
             }
-            if (!args || args.peerIpAddress === undefined) {
+            if ((!args || args.peerIpAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerIpAddress'");
             }
-            if (!args || args.router === undefined) {
+            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'router'");
             }
             inputs["advertiseMode"] = args ? args.advertiseMode : undefined;

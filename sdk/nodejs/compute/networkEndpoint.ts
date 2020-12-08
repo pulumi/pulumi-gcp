@@ -158,16 +158,16 @@ export class NetworkEndpoint extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NetworkEndpointArgs | undefined;
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
-            if (!args || args.ipAddress === undefined) {
+            if ((!args || args.ipAddress === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipAddress'");
             }
-            if (!args || args.networkEndpointGroup === undefined) {
+            if ((!args || args.networkEndpointGroup === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkEndpointGroup'");
             }
-            if (!args || args.port === undefined) {
+            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["instance"] = args ? args.instance : undefined;

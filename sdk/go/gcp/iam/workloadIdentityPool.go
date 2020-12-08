@@ -58,11 +58,12 @@ type WorkloadIdentityPool struct {
 // NewWorkloadIdentityPool registers a new resource with the given unique name, arguments, and options.
 func NewWorkloadIdentityPool(ctx *pulumi.Context,
 	name string, args *WorkloadIdentityPoolArgs, opts ...pulumi.ResourceOption) (*WorkloadIdentityPool, error) {
-	if args == nil || args.WorkloadIdentityPoolId == nil {
-		return nil, errors.New("missing required argument 'WorkloadIdentityPoolId'")
-	}
 	if args == nil {
-		args = &WorkloadIdentityPoolArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.WorkloadIdentityPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
 	}
 	var resource WorkloadIdentityPool
 	err := ctx.RegisterResource("gcp:iam/workloadIdentityPool:WorkloadIdentityPool", name, args, &resource, opts...)

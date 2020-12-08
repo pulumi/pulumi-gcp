@@ -234,13 +234,13 @@ export class InstanceIAMBinding extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceIAMBindingArgs | undefined;
-            if (!args || args.instanceName === undefined) {
+            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;

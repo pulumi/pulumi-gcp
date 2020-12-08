@@ -262,17 +262,18 @@ type CryptoKeyIAMBinding struct {
 // NewCryptoKeyIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewCryptoKeyIAMBinding(ctx *pulumi.Context,
 	name string, args *CryptoKeyIAMBindingArgs, opts ...pulumi.ResourceOption) (*CryptoKeyIAMBinding, error) {
-	if args == nil || args.CryptoKeyId == nil {
-		return nil, errors.New("missing required argument 'CryptoKeyId'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &CryptoKeyIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CryptoKeyId == nil {
+		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource CryptoKeyIAMBinding
 	err := ctx.RegisterResource("gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding", name, args, &resource, opts...)

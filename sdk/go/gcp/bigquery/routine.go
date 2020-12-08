@@ -117,17 +117,18 @@ type Routine struct {
 // NewRoutine registers a new resource with the given unique name, arguments, and options.
 func NewRoutine(ctx *pulumi.Context,
 	name string, args *RoutineArgs, opts ...pulumi.ResourceOption) (*Routine, error) {
-	if args == nil || args.DatasetId == nil {
-		return nil, errors.New("missing required argument 'DatasetId'")
-	}
-	if args == nil || args.DefinitionBody == nil {
-		return nil, errors.New("missing required argument 'DefinitionBody'")
-	}
-	if args == nil || args.RoutineId == nil {
-		return nil, errors.New("missing required argument 'RoutineId'")
-	}
 	if args == nil {
-		args = &RoutineArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
+	}
+	if args.DefinitionBody == nil {
+		return nil, errors.New("invalid value for required argument 'DefinitionBody'")
+	}
+	if args.RoutineId == nil {
+		return nil, errors.New("invalid value for required argument 'RoutineId'")
 	}
 	var resource Routine
 	err := ctx.RegisterResource("gcp:bigquery/routine:Routine", name, args, &resource, opts...)

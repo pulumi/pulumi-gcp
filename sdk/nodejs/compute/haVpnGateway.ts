@@ -279,7 +279,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
             inputs["vpnInterfaces"] = state ? state.vpnInterfaces : undefined;
         } else {
             const args = argsOrState as HaVpnGatewayArgs | undefined;
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["description"] = args ? args.description : undefined;

@@ -46,7 +46,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
         my_project = gcp.organizations.Project("myProject",
             project_id="quota",
             org_id="123456789",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         override = gcp.serviceusage.ConsumerQuotaOverride("override",
             project=my_project.project_id,
             service="servicemanagement.googleapis.com",
@@ -54,7 +54,7 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             limit="%2Fmin%2Fproject",
             override_value="95",
             force=True,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -104,17 +104,17 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
 
             __props__['dimensions'] = dimensions
             __props__['force'] = force
-            if limit is None:
+            if limit is None and not opts.urn:
                 raise TypeError("Missing required property 'limit'")
             __props__['limit'] = limit
-            if metric is None:
+            if metric is None and not opts.urn:
                 raise TypeError("Missing required property 'metric'")
             __props__['metric'] = metric
-            if override_value is None:
+            if override_value is None and not opts.urn:
                 raise TypeError("Missing required property 'override_value'")
             __props__['override_value'] = override_value
             __props__['project'] = project
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['name'] = None

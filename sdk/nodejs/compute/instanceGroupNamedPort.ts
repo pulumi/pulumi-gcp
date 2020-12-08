@@ -141,10 +141,10 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupNamedPortArgs | undefined;
-            if (!args || args.group === undefined) {
+            if ((!args || args.group === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'group'");
             }
-            if (!args || args.port === undefined) {
+            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["group"] = args ? args.group : undefined;

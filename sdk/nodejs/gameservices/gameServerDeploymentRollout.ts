@@ -157,10 +157,10 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GameServerDeploymentRolloutArgs | undefined;
-            if (!args || args.defaultGameServerConfig === undefined) {
+            if ((!args || args.defaultGameServerConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'defaultGameServerConfig'");
             }
-            if (!args || args.deploymentId === undefined) {
+            if ((!args || args.deploymentId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deploymentId'");
             }
             inputs["defaultGameServerConfig"] = args ? args.defaultGameServerConfig : undefined;

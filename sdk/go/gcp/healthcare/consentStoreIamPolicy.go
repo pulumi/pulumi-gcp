@@ -53,17 +53,18 @@ type ConsentStoreIamPolicy struct {
 // NewConsentStoreIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewConsentStoreIamPolicy(ctx *pulumi.Context,
 	name string, args *ConsentStoreIamPolicyArgs, opts ...pulumi.ResourceOption) (*ConsentStoreIamPolicy, error) {
-	if args == nil || args.ConsentStoreId == nil {
-		return nil, errors.New("missing required argument 'ConsentStoreId'")
-	}
-	if args == nil || args.Dataset == nil {
-		return nil, errors.New("missing required argument 'Dataset'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &ConsentStoreIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConsentStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
+	}
+	if args.Dataset == nil {
+		return nil, errors.New("invalid value for required argument 'Dataset'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource ConsentStoreIamPolicy
 	err := ctx.RegisterResource("gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy", name, args, &resource, opts...)

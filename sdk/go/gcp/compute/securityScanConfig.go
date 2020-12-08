@@ -116,14 +116,15 @@ type SecurityScanConfig struct {
 // NewSecurityScanConfig registers a new resource with the given unique name, arguments, and options.
 func NewSecurityScanConfig(ctx *pulumi.Context,
 	name string, args *SecurityScanConfigArgs, opts ...pulumi.ResourceOption) (*SecurityScanConfig, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.StartingUrls == nil {
-		return nil, errors.New("missing required argument 'StartingUrls'")
-	}
 	if args == nil {
-		args = &SecurityScanConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.StartingUrls == nil {
+		return nil, errors.New("invalid value for required argument 'StartingUrls'")
 	}
 	var resource SecurityScanConfig
 	err := ctx.RegisterResource("gcp:compute/securityScanConfig:SecurityScanConfig", name, args, &resource, opts...)

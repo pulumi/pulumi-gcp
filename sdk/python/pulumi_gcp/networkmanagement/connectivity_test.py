@@ -197,7 +197,7 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if destination is None:
+            if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
             __props__['labels'] = labels
@@ -205,7 +205,7 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__['project'] = project
             __props__['protocol'] = protocol
             __props__['related_projects'] = related_projects
-            if source is None:
+            if source is None and not opts.urn:
                 raise TypeError("Missing required property 'source'")
             __props__['source'] = source
         super(ConnectivityTest, __self__).__init__(

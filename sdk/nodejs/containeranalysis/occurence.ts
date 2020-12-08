@@ -135,13 +135,13 @@ export class Occurence extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as OccurenceArgs | undefined;
-            if (!args || args.attestation === undefined) {
+            if ((!args || args.attestation === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'attestation'");
             }
-            if (!args || args.noteName === undefined) {
+            if ((!args || args.noteName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'noteName'");
             }
-            if (!args || args.resourceUri === undefined) {
+            if ((!args || args.resourceUri === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resourceUri'");
             }
             inputs["attestation"] = args ? args.attestation : undefined;

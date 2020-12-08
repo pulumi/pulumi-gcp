@@ -74,7 +74,7 @@ class Instance(pulumi.CustomResource):
                 project="deeplearning-platform-release",
                 image_family="tf-latest-cpu",
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Notebook Instance Basic Container
 
@@ -92,7 +92,7 @@ class Instance(pulumi.CustomResource):
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
                 tag="latest",
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Notebook Instance Basic Gpu
 
@@ -112,7 +112,7 @@ class Instance(pulumi.CustomResource):
                 project="deeplearning-platform-release",
                 image_family="tf-latest-gpu",
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Notebook Instance Full
 
@@ -142,7 +142,7 @@ class Instance(pulumi.CustomResource):
             labels={
                 "k": "val",
             },
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -253,10 +253,10 @@ class Instance(pulumi.CustomResource):
             __props__['instance_owners'] = instance_owners
             __props__['kms_key'] = kms_key
             __props__['labels'] = labels
-            if location is None:
+            if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__['location'] = location
-            if machine_type is None:
+            if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
             __props__['machine_type'] = machine_type
             __props__['metadata'] = metadata

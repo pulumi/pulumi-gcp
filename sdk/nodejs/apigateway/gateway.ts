@@ -109,10 +109,10 @@ export class Gateway extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if (!args || args.apiConfig === undefined) {
+            if ((!args || args.apiConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'apiConfig'");
             }
-            if (!args || args.gatewayId === undefined) {
+            if ((!args || args.gatewayId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'gatewayId'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;

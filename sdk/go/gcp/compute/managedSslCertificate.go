@@ -204,6 +204,7 @@ func NewManagedSslCertificate(ctx *pulumi.Context,
 	if args == nil {
 		args = &ManagedSslCertificateArgs{}
 	}
+
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("gcp:compute/mangedSslCertificate:MangedSslCertificate"),

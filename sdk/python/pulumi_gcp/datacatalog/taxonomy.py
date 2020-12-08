@@ -67,7 +67,7 @@ class Taxonomy(pulumi.CustomResource):
 
             __props__['activated_policy_types'] = activated_policy_types
             __props__['description'] = description
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['project'] = project

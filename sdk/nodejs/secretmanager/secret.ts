@@ -138,10 +138,10 @@ export class Secret extends pulumi.CustomResource {
             inputs["secretId"] = state ? state.secretId : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if (!args || args.replication === undefined) {
+            if ((!args || args.replication === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'replication'");
             }
-            if (!args || args.secretId === undefined) {
+            if ((!args || args.secretId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'secretId'");
             }
             inputs["labels"] = args ? args.labels : undefined;

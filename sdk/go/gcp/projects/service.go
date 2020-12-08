@@ -69,11 +69,12 @@ type Service struct {
 // NewService registers a new resource with the given unique name, arguments, and options.
 func NewService(ctx *pulumi.Context,
 	name string, args *ServiceArgs, opts ...pulumi.ResourceOption) (*Service, error) {
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &ServiceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource Service
 	err := ctx.RegisterResource("gcp:projects/service:Service", name, args, &resource, opts...)

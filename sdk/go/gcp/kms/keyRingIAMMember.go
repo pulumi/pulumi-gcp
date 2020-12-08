@@ -276,17 +276,18 @@ type KeyRingIAMMember struct {
 // NewKeyRingIAMMember registers a new resource with the given unique name, arguments, and options.
 func NewKeyRingIAMMember(ctx *pulumi.Context,
 	name string, args *KeyRingIAMMemberArgs, opts ...pulumi.ResourceOption) (*KeyRingIAMMember, error) {
-	if args == nil || args.KeyRingId == nil {
-		return nil, errors.New("missing required argument 'KeyRingId'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &KeyRingIAMMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.KeyRingId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyRingId'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource KeyRingIAMMember
 	err := ctx.RegisterResource("gcp:kms/keyRingIAMMember:KeyRingIAMMember", name, args, &resource, opts...)

@@ -160,7 +160,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['auto_healing_policies'] = auto_healing_policies
-            if base_instance_name is None:
+            if base_instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__['base_instance_name'] = base_instance_name
             __props__['description'] = description
@@ -168,14 +168,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__['name'] = name
             __props__['named_ports'] = named_ports
             __props__['project'] = project
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['stateful_disks'] = stateful_disks
             __props__['target_pools'] = target_pools
             __props__['target_size'] = target_size
             __props__['update_policy'] = update_policy
-            if versions is None:
+            if versions is None and not opts.urn:
                 raise TypeError("Missing required property 'versions'")
             __props__['versions'] = versions
             __props__['wait_for_instances'] = wait_for_instances

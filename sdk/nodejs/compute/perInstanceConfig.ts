@@ -134,10 +134,10 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as PerInstanceConfigArgs | undefined;
-            if (!args || args.instanceGroupManager === undefined) {
+            if ((!args || args.instanceGroupManager === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceGroupManager'");
             }
-            if (!args || args.zone === undefined) {
+            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;

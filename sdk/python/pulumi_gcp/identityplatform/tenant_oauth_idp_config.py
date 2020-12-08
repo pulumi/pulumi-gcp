@@ -95,20 +95,20 @@ class TenantOauthIdpConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if client_id is None:
+            if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
             __props__['client_id'] = client_id
             __props__['client_secret'] = client_secret
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['enabled'] = enabled
-            if issuer is None:
+            if issuer is None and not opts.urn:
                 raise TypeError("Missing required property 'issuer'")
             __props__['issuer'] = issuer
             __props__['name'] = name
             __props__['project'] = project
-            if tenant is None:
+            if tenant is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant'")
             __props__['tenant'] = tenant
         super(TenantOauthIdpConfig, __self__).__init__(

@@ -46,14 +46,15 @@ type PolicyTag struct {
 // NewPolicyTag registers a new resource with the given unique name, arguments, and options.
 func NewPolicyTag(ctx *pulumi.Context,
 	name string, args *PolicyTagArgs, opts ...pulumi.ResourceOption) (*PolicyTag, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Taxonomy == nil {
-		return nil, errors.New("missing required argument 'Taxonomy'")
-	}
 	if args == nil {
-		args = &PolicyTagArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Taxonomy == nil {
+		return nil, errors.New("invalid value for required argument 'Taxonomy'")
 	}
 	var resource PolicyTag
 	err := ctx.RegisterResource("gcp:datacatalog/policyTag:PolicyTag", name, args, &resource, opts...)

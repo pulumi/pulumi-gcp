@@ -494,6 +494,7 @@ func NewHealthCheck(ctx *pulumi.Context,
 	if args == nil {
 		args = &HealthCheckArgs{}
 	}
+
 	var resource HealthCheck
 	err := ctx.RegisterResource("gcp:compute/healthCheck:HealthCheck", name, args, &resource, opts...)
 	if err != nil {

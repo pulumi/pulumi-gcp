@@ -86,14 +86,15 @@ type ObjectACL struct {
 // NewObjectACL registers a new resource with the given unique name, arguments, and options.
 func NewObjectACL(ctx *pulumi.Context,
 	name string, args *ObjectACLArgs, opts ...pulumi.ResourceOption) (*ObjectACL, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Object == nil {
-		return nil, errors.New("missing required argument 'Object'")
-	}
 	if args == nil {
-		args = &ObjectACLArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Object == nil {
+		return nil, errors.New("invalid value for required argument 'Object'")
 	}
 	var resource ObjectACL
 	err := ctx.RegisterResource("gcp:storage/objectACL:ObjectACL", name, args, &resource, opts...)

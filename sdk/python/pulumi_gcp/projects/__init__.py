@@ -18,3 +18,56 @@ from .service_identity import *
 from .usage_export_bucket import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:projects/accessApprovalSettings:AccessApprovalSettings":
+                return AccessApprovalSettings(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts":
+                return DefaultServiceAccounts(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/iAMAuditConfig:IAMAuditConfig":
+                return IAMAuditConfig(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/iAMBinding:IAMBinding":
+                return IAMBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/iAMCustomRole:IAMCustomRole":
+                return IAMCustomRole(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/iAMMember:IAMMember":
+                return IAMMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/iAMPolicy:IAMPolicy":
+                return IAMPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/organizationPolicy:OrganizationPolicy":
+                return OrganizationPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/service:Service":
+                return Service(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/serviceIdentity:ServiceIdentity":
+                return ServiceIdentity(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:projects/usageExportBucket:UsageExportBucket":
+                return UsageExportBucket(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "projects/accessApprovalSettings", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/defaultServiceAccounts", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/iAMAuditConfig", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/iAMBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/iAMCustomRole", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/iAMMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/iAMPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/organizationPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/service", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/serviceIdentity", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "projects/usageExportBucket", _module_instance)
+
+_register_module()

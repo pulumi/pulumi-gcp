@@ -165,7 +165,7 @@ export class AppProfile extends pulumi.CustomResource {
             inputs["singleClusterRouting"] = state ? state.singleClusterRouting : undefined;
         } else {
             const args = argsOrState as AppProfileArgs | undefined;
-            if (!args || args.appProfileId === undefined) {
+            if ((!args || args.appProfileId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appProfileId'");
             }
             inputs["appProfileId"] = args ? args.appProfileId : undefined;

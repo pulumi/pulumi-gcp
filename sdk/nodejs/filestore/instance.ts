@@ -191,16 +191,16 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.fileShares === undefined) {
+            if ((!args || args.fileShares === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fileShares'");
             }
-            if (!args || args.networks === undefined) {
+            if ((!args || args.networks === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networks'");
             }
-            if (!args || args.tier === undefined) {
+            if ((!args || args.tier === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tier'");
             }
-            if (!args || args.zone === undefined) {
+            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["description"] = args ? args.description : undefined;

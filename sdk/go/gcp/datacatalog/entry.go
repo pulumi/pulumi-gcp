@@ -193,14 +193,15 @@ type Entry struct {
 // NewEntry registers a new resource with the given unique name, arguments, and options.
 func NewEntry(ctx *pulumi.Context,
 	name string, args *EntryArgs, opts ...pulumi.ResourceOption) (*Entry, error) {
-	if args == nil || args.EntryGroup == nil {
-		return nil, errors.New("missing required argument 'EntryGroup'")
-	}
-	if args == nil || args.EntryId == nil {
-		return nil, errors.New("missing required argument 'EntryId'")
-	}
 	if args == nil {
-		args = &EntryArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EntryGroup == nil {
+		return nil, errors.New("invalid value for required argument 'EntryGroup'")
+	}
+	if args.EntryId == nil {
+		return nil, errors.New("invalid value for required argument 'EntryId'")
 	}
 	var resource Entry
 	err := ctx.RegisterResource("gcp:datacatalog/entry:Entry", name, args, &resource, opts...)

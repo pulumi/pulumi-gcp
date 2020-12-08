@@ -72,13 +72,13 @@ class ConsentStoreIamPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if consent_store_id is None:
+            if consent_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_store_id'")
             __props__['consent_store_id'] = consent_store_id
-            if dataset is None:
+            if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__['dataset'] = dataset
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
             __props__['etag'] = None

@@ -253,20 +253,21 @@ type RecordSet struct {
 // NewRecordSet registers a new resource with the given unique name, arguments, and options.
 func NewRecordSet(ctx *pulumi.Context,
 	name string, args *RecordSetArgs, opts ...pulumi.ResourceOption) (*RecordSet, error) {
-	if args == nil || args.ManagedZone == nil {
-		return nil, errors.New("missing required argument 'ManagedZone'")
-	}
-	if args == nil || args.Rrdatas == nil {
-		return nil, errors.New("missing required argument 'Rrdatas'")
-	}
-	if args == nil || args.Ttl == nil {
-		return nil, errors.New("missing required argument 'Ttl'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &RecordSetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ManagedZone == nil {
+		return nil, errors.New("invalid value for required argument 'ManagedZone'")
+	}
+	if args.Rrdatas == nil {
+		return nil, errors.New("invalid value for required argument 'Rrdatas'")
+	}
+	if args.Ttl == nil {
+		return nil, errors.New("invalid value for required argument 'Ttl'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource RecordSet
 	err := ctx.RegisterResource("gcp:dns/recordSet:RecordSet", name, args, &resource, opts...)

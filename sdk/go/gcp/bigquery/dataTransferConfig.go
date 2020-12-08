@@ -156,20 +156,21 @@ type DataTransferConfig struct {
 // NewDataTransferConfig registers a new resource with the given unique name, arguments, and options.
 func NewDataTransferConfig(ctx *pulumi.Context,
 	name string, args *DataTransferConfigArgs, opts ...pulumi.ResourceOption) (*DataTransferConfig, error) {
-	if args == nil || args.DataSourceId == nil {
-		return nil, errors.New("missing required argument 'DataSourceId'")
-	}
-	if args == nil || args.DestinationDatasetId == nil {
-		return nil, errors.New("missing required argument 'DestinationDatasetId'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Params == nil {
-		return nil, errors.New("missing required argument 'Params'")
-	}
 	if args == nil {
-		args = &DataTransferConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DataSourceId == nil {
+		return nil, errors.New("invalid value for required argument 'DataSourceId'")
+	}
+	if args.DestinationDatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DestinationDatasetId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Params == nil {
+		return nil, errors.New("invalid value for required argument 'Params'")
 	}
 	var resource DataTransferConfig
 	err := ctx.RegisterResource("gcp:bigquery/dataTransferConfig:DataTransferConfig", name, args, &resource, opts...)

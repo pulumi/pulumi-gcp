@@ -108,14 +108,14 @@ class Instance(pulumi.CustomResource):
             __props__['memcache_parameters'] = memcache_parameters
             __props__['memcache_version'] = memcache_version
             __props__['name'] = name
-            if node_config is None:
+            if node_config is None and not opts.urn:
                 raise TypeError("Missing required property 'node_config'")
             __props__['node_config'] = node_config
-            if node_count is None:
+            if node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
             __props__['project'] = project
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['zones'] = zones

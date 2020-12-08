@@ -186,10 +186,10 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as TargetHttpsProxyArgs | undefined;
-            if (!args || args.sslCertificates === undefined) {
+            if ((!args || args.sslCertificates === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sslCertificates'");
             }
-            if (!args || args.urlMap === undefined) {
+            if ((!args || args.urlMap === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'urlMap'");
             }
             inputs["description"] = args ? args.description : undefined;

@@ -46,7 +46,7 @@ class Repository(pulumi.CustomResource):
             repository_id="my-repository",
             description="example docker repository",
             format="DOCKER",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Artifact Registry Repository Cmek
 
@@ -60,7 +60,7 @@ class Repository(pulumi.CustomResource):
             description="example docker repository with cmek",
             format="DOCKER",
             kms_key_name="kms-key",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Artifact Registry Repository Iam
 
@@ -73,17 +73,17 @@ class Repository(pulumi.CustomResource):
             repository_id="my-repository",
             description="example docker repository with iam",
             format="DOCKER",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         test_account = gcp.service_account.Account("test-account",
             account_id="my-account",
             display_name="Test Service Account",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         test_iam = gcp.artifactregistry.RepositoryIamMember("test-iam",
             location=my_repo.location,
             repository=my_repo.name,
             role="roles/artifactregistry.reader",
             member=test_account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -144,14 +144,14 @@ class Repository(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if format is None:
+            if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
             __props__['format'] = format
             __props__['kms_key_name'] = kms_key_name
             __props__['labels'] = labels
             __props__['location'] = location
             __props__['project'] = project
-            if repository_id is None:
+            if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
             __props__['repository_id'] = repository_id
             __props__['create_time'] = None

@@ -87,11 +87,12 @@ type DomainMapping struct {
 // NewDomainMapping registers a new resource with the given unique name, arguments, and options.
 func NewDomainMapping(ctx *pulumi.Context,
 	name string, args *DomainMappingArgs, opts ...pulumi.ResourceOption) (*DomainMapping, error) {
-	if args == nil || args.DomainName == nil {
-		return nil, errors.New("missing required argument 'DomainName'")
-	}
 	if args == nil {
-		args = &DomainMappingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
 	}
 	var resource DomainMapping
 	err := ctx.RegisterResource("gcp:appengine/domainMapping:DomainMapping", name, args, &resource, opts...)

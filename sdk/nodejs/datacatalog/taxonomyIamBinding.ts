@@ -102,13 +102,13 @@ export class TaxonomyIamBinding extends pulumi.CustomResource {
             inputs["taxonomy"] = state ? state.taxonomy : undefined;
         } else {
             const args = argsOrState as TaxonomyIamBindingArgs | undefined;
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.taxonomy === undefined) {
+            if ((!args || args.taxonomy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'taxonomy'");
             }
             inputs["condition"] = args ? args.condition : undefined;

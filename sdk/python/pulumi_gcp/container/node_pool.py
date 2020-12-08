@@ -138,7 +138,7 @@ class NodePool(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['autoscaling'] = autoscaling
-            if cluster is None:
+            if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__['cluster'] = cluster
             __props__['initial_node_count'] = initial_node_count

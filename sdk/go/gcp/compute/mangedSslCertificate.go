@@ -46,6 +46,7 @@ func NewMangedSslCertificate(ctx *pulumi.Context,
 	if args == nil {
 		args = &MangedSslCertificateArgs{}
 	}
+
 	var resource MangedSslCertificate
 	err := ctx.RegisterResource("gcp:compute/mangedSslCertificate:MangedSslCertificate", name, args, &resource, opts...)
 	if err != nil {

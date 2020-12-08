@@ -30,17 +30,18 @@ type Connection struct {
 // NewConnection registers a new resource with the given unique name, arguments, and options.
 func NewConnection(ctx *pulumi.Context,
 	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
-	if args == nil || args.ReservedPeeringRanges == nil {
-		return nil, errors.New("missing required argument 'ReservedPeeringRanges'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &ConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
+	}
+	if args.ReservedPeeringRanges == nil {
+		return nil, errors.New("invalid value for required argument 'ReservedPeeringRanges'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource Connection
 	err := ctx.RegisterResource("gcp:servicenetworking/connection:Connection", name, args, &resource, opts...)

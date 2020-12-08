@@ -211,10 +211,10 @@ export class ImageIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ImageIamPolicyArgs | undefined;
-            if (!args || args.image === undefined) {
+            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'image'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["image"] = args ? args.image : undefined;

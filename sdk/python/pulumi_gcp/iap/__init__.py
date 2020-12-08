@@ -31,3 +31,101 @@ from .web_type_compute_iam_member import *
 from .web_type_compute_iam_policy import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:iap/appEngineServiceIamBinding:AppEngineServiceIamBinding":
+                return AppEngineServiceIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/appEngineServiceIamMember:AppEngineServiceIamMember":
+                return AppEngineServiceIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/appEngineServiceIamPolicy:AppEngineServiceIamPolicy":
+                return AppEngineServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/appEngineVersionIamBinding:AppEngineVersionIamBinding":
+                return AppEngineVersionIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember":
+                return AppEngineVersionIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/appEngineVersionIamPolicy:AppEngineVersionIamPolicy":
+                return AppEngineVersionIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/brand:Brand":
+                return Brand(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/client:Client":
+                return Client(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/tunnelIamBinding:TunnelIamBinding":
+                return TunnelIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/tunnelIamMember:TunnelIamMember":
+                return TunnelIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/tunnelIamPolicy:TunnelIamPolicy":
+                return TunnelIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding":
+                return TunnelInstanceIAMBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/tunnelInstanceIAMMember:TunnelInstanceIAMMember":
+                return TunnelInstanceIAMMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/tunnelInstanceIAMPolicy:TunnelInstanceIAMPolicy":
+                return TunnelInstanceIAMPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding":
+                return WebBackendServiceIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webBackendServiceIamMember:WebBackendServiceIamMember":
+                return WebBackendServiceIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webBackendServiceIamPolicy:WebBackendServiceIamPolicy":
+                return WebBackendServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webIamBinding:WebIamBinding":
+                return WebIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webIamMember:WebIamMember":
+                return WebIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webIamPolicy:WebIamPolicy":
+                return WebIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webTypeAppEngingIamBinding:WebTypeAppEngingIamBinding":
+                return WebTypeAppEngingIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webTypeAppEngingIamMember:WebTypeAppEngingIamMember":
+                return WebTypeAppEngingIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webTypeAppEngingIamPolicy:WebTypeAppEngingIamPolicy":
+                return WebTypeAppEngingIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webTypeComputeIamBinding:WebTypeComputeIamBinding":
+                return WebTypeComputeIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webTypeComputeIamMember:WebTypeComputeIamMember":
+                return WebTypeComputeIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:iap/webTypeComputeIamPolicy:WebTypeComputeIamPolicy":
+                return WebTypeComputeIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "iap/appEngineServiceIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/appEngineServiceIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/appEngineServiceIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/appEngineVersionIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/appEngineVersionIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/appEngineVersionIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/brand", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/client", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/tunnelIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/tunnelIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/tunnelIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/tunnelInstanceIAMBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/tunnelInstanceIAMMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/tunnelInstanceIAMPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webBackendServiceIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webBackendServiceIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webBackendServiceIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webTypeAppEngingIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webTypeAppEngingIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webTypeAppEngingIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webTypeComputeIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webTypeComputeIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "iap/webTypeComputeIamPolicy", _module_instance)
+
+_register_module()

@@ -197,15 +197,15 @@ class SubnetworkIAMBinding(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
             __props__['project'] = project
             __props__['region'] = region
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if subnetwork is None:
+            if subnetwork is None and not opts.urn:
                 raise TypeError("Missing required property 'subnetwork'")
             __props__['subnetwork'] = subnetwork
             __props__['etag'] = None

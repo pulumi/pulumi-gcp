@@ -134,17 +134,17 @@ class DatabaseIAMMember(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if database is None:
+            if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
             __props__['database'] = database
-            if instance is None:
+            if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
-            if member is None:
+            if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

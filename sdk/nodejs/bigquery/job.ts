@@ -308,7 +308,7 @@ export class Job extends pulumi.CustomResource {
             inputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if (!args || args.jobId === undefined) {
+            if ((!args || args.jobId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'jobId'");
             }
             inputs["copy"] = args ? args.copy : undefined;

@@ -125,16 +125,16 @@ class NetworkEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if instance is None:
+            if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
-            if ip_address is None:
+            if ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_address'")
             __props__['ip_address'] = ip_address
-            if network_endpoint_group is None:
+            if network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_group'")
             __props__['network_endpoint_group'] = network_endpoint_group
-            if port is None:
+            if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__['port'] = port
             __props__['project'] = project

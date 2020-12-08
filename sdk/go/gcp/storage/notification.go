@@ -121,17 +121,18 @@ type Notification struct {
 // NewNotification registers a new resource with the given unique name, arguments, and options.
 func NewNotification(ctx *pulumi.Context,
 	name string, args *NotificationArgs, opts ...pulumi.ResourceOption) (*Notification, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.PayloadFormat == nil {
-		return nil, errors.New("missing required argument 'PayloadFormat'")
-	}
-	if args == nil || args.Topic == nil {
-		return nil, errors.New("missing required argument 'Topic'")
-	}
 	if args == nil {
-		args = &NotificationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.PayloadFormat == nil {
+		return nil, errors.New("invalid value for required argument 'PayloadFormat'")
+	}
+	if args.Topic == nil {
+		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
 	var resource Notification
 	err := ctx.RegisterResource("gcp:storage/notification:Notification", name, args, &resource, opts...)

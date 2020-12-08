@@ -257,7 +257,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["users"] = state ? state.users : undefined;
         } else {
             const args = argsOrState as RegionDiskArgs | undefined;
-            if (!args || args.replicaZones === undefined) {
+            if ((!args || args.replicaZones === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'replicaZones'");
             }
             inputs["description"] = args ? args.description : undefined;

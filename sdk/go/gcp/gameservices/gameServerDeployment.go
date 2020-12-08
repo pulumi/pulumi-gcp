@@ -83,11 +83,12 @@ type GameServerDeployment struct {
 // NewGameServerDeployment registers a new resource with the given unique name, arguments, and options.
 func NewGameServerDeployment(ctx *pulumi.Context,
 	name string, args *GameServerDeploymentArgs, opts ...pulumi.ResourceOption) (*GameServerDeployment, error) {
-	if args == nil || args.DeploymentId == nil {
-		return nil, errors.New("missing required argument 'DeploymentId'")
-	}
 	if args == nil {
-		args = &GameServerDeploymentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'DeploymentId'")
 	}
 	var resource GameServerDeployment
 	err := ctx.RegisterResource("gcp:gameservices/gameServerDeployment:GameServerDeployment", name, args, &resource, opts...)

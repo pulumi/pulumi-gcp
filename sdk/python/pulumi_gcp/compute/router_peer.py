@@ -137,19 +137,19 @@ class RouterPeer(pulumi.CustomResource):
             __props__['advertised_groups'] = advertised_groups
             __props__['advertised_ip_ranges'] = advertised_ip_ranges
             __props__['advertised_route_priority'] = advertised_route_priority
-            if interface is None:
+            if interface is None and not opts.urn:
                 raise TypeError("Missing required property 'interface'")
             __props__['interface'] = interface
             __props__['name'] = name
-            if peer_asn is None:
+            if peer_asn is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_asn'")
             __props__['peer_asn'] = peer_asn
-            if peer_ip_address is None:
+            if peer_ip_address is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_ip_address'")
             __props__['peer_ip_address'] = peer_ip_address
             __props__['project'] = project
             __props__['region'] = region
-            if router is None:
+            if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
             __props__['router'] = router
             __props__['ip_address'] = None

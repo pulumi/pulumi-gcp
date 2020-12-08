@@ -135,11 +135,11 @@ class NodeGroup(pulumi.CustomResource):
             __props__['description'] = description
             __props__['maintenance_policy'] = maintenance_policy
             __props__['name'] = name
-            if node_template is None:
+            if node_template is None and not opts.urn:
                 raise TypeError("Missing required property 'node_template'")
             __props__['node_template'] = node_template
             __props__['project'] = project
-            if size is None:
+            if size is None and not opts.urn:
                 raise TypeError("Missing required property 'size'")
             __props__['size'] = size
             __props__['zone'] = zone

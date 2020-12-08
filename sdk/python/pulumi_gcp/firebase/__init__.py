@@ -8,3 +8,32 @@ from .get_web_app_config import *
 from .project import *
 from .project_location import *
 from .web_app import *
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:firebase/project:Project":
+                return Project(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:firebase/projectLocation:ProjectLocation":
+                return ProjectLocation(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:firebase/webApp:WebApp":
+                return WebApp(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "firebase/project", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "firebase/projectLocation", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "firebase/webApp", _module_instance)
+
+_register_module()

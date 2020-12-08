@@ -50,13 +50,13 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
-            if reserved_peering_ranges is None:
+            if reserved_peering_ranges is None and not opts.urn:
                 raise TypeError("Missing required property 'reserved_peering_ranges'")
             __props__['reserved_peering_ranges'] = reserved_peering_ranges
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['peering'] = None

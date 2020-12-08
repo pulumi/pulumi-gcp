@@ -83,14 +83,15 @@ type TargetHttpsProxy struct {
 // NewTargetHttpsProxy registers a new resource with the given unique name, arguments, and options.
 func NewTargetHttpsProxy(ctx *pulumi.Context,
 	name string, args *TargetHttpsProxyArgs, opts ...pulumi.ResourceOption) (*TargetHttpsProxy, error) {
-	if args == nil || args.SslCertificates == nil {
-		return nil, errors.New("missing required argument 'SslCertificates'")
-	}
-	if args == nil || args.UrlMap == nil {
-		return nil, errors.New("missing required argument 'UrlMap'")
-	}
 	if args == nil {
-		args = &TargetHttpsProxyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SslCertificates == nil {
+		return nil, errors.New("invalid value for required argument 'SslCertificates'")
+	}
+	if args.UrlMap == nil {
+		return nil, errors.New("invalid value for required argument 'UrlMap'")
 	}
 	var resource TargetHttpsProxy
 	err := ctx.RegisterResource("gcp:compute/targetHttpsProxy:TargetHttpsProxy", name, args, &resource, opts...)

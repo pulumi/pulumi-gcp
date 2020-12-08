@@ -130,10 +130,10 @@ class EngineSplitTraffic(pulumi.CustomResource):
 
             __props__['migrate_traffic'] = migrate_traffic
             __props__['project'] = project
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
-            if split is None:
+            if split is None and not opts.urn:
                 raise TypeError("Missing required property 'split'")
             __props__['split'] = split
         super(EngineSplitTraffic, __self__).__init__(

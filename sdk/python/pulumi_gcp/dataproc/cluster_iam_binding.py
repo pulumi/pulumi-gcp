@@ -126,16 +126,16 @@ class ClusterIAMBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster is None:
+            if cluster is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster'")
             __props__['cluster'] = cluster
             __props__['condition'] = condition
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
             __props__['project'] = project
             __props__['region'] = region
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

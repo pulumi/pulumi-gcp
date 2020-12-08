@@ -110,10 +110,10 @@ export class Source extends pulumi.CustomResource {
             inputs["organization"] = state ? state.organization : undefined;
         } else {
             const args = argsOrState as SourceArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.organization === undefined) {
+            if ((!args || args.organization === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'organization'");
             }
             inputs["description"] = args ? args.description : undefined;

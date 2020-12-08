@@ -47,13 +47,13 @@ class IamAuditConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if audit_log_configs is None:
+            if audit_log_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'audit_log_configs'")
             __props__['audit_log_configs'] = audit_log_configs
-            if folder is None:
+            if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")
             __props__['folder'] = folder
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['etag'] = None

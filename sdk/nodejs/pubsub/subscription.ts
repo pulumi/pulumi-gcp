@@ -266,7 +266,7 @@ export class Subscription extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as SubscriptionArgs | undefined;
-            if (!args || args.topic === undefined) {
+            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;

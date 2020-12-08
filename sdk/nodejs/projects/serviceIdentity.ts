@@ -102,7 +102,7 @@ export class ServiceIdentity extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ServiceIdentityArgs | undefined;
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["project"] = args ? args.project : undefined;

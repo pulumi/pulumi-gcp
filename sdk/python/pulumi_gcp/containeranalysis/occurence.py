@@ -91,15 +91,15 @@ class Occurence(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if attestation is None:
+            if attestation is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation'")
             __props__['attestation'] = attestation
-            if note_name is None:
+            if note_name is None and not opts.urn:
                 raise TypeError("Missing required property 'note_name'")
             __props__['note_name'] = note_name
             __props__['project'] = project
             __props__['remediation'] = remediation
-            if resource_uri is None:
+            if resource_uri is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_uri'")
             __props__['resource_uri'] = resource_uri
             __props__['create_time'] = None

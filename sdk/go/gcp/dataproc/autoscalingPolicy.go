@@ -103,11 +103,12 @@ type AutoscalingPolicy struct {
 // NewAutoscalingPolicy registers a new resource with the given unique name, arguments, and options.
 func NewAutoscalingPolicy(ctx *pulumi.Context,
 	name string, args *AutoscalingPolicyArgs, opts ...pulumi.ResourceOption) (*AutoscalingPolicy, error) {
-	if args == nil || args.PolicyId == nil {
-		return nil, errors.New("missing required argument 'PolicyId'")
-	}
 	if args == nil {
-		args = &AutoscalingPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyId'")
 	}
 	var resource AutoscalingPolicy
 	err := ctx.RegisterResource("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy", name, args, &resource, opts...)

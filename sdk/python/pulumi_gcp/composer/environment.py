@@ -90,7 +90,7 @@ class Environment(pulumi.CustomResource):
                     "service_account": test_account.name,
                 },
             ),
-            opts=ResourceOptions(depends_on=[composer_worker]))
+            opts=pulumi.ResourceOptions(depends_on=[composer_worker]))
         ```
         ### With Software (Airflow) Config
         ```python

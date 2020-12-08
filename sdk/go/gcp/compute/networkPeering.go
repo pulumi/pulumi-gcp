@@ -99,14 +99,15 @@ type NetworkPeering struct {
 // NewNetworkPeering registers a new resource with the given unique name, arguments, and options.
 func NewNetworkPeering(ctx *pulumi.Context,
 	name string, args *NetworkPeeringArgs, opts ...pulumi.ResourceOption) (*NetworkPeering, error) {
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
-	if args == nil || args.PeerNetwork == nil {
-		return nil, errors.New("missing required argument 'PeerNetwork'")
-	}
 	if args == nil {
-		args = &NetworkPeeringArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
+	}
+	if args.PeerNetwork == nil {
+		return nil, errors.New("invalid value for required argument 'PeerNetwork'")
 	}
 	var resource NetworkPeering
 	err := ctx.RegisterResource("gcp:compute/networkPeering:NetworkPeering", name, args, &resource, opts...)

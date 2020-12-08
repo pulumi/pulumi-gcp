@@ -78,7 +78,7 @@ class ApiConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if api is None:
+            if api is None and not opts.urn:
                 raise TypeError("Missing required property 'api'")
             __props__['api'] = api
             __props__['api_config_id'] = api_config_id
@@ -86,7 +86,7 @@ class ApiConfig(pulumi.CustomResource):
             __props__['display_name'] = display_name
             __props__['gateway_config'] = gateway_config
             __props__['labels'] = labels
-            if openapi_documents is None:
+            if openapi_documents is None and not opts.urn:
                 raise TypeError("Missing required property 'openapi_documents'")
             __props__['openapi_documents'] = openapi_documents
             __props__['project'] = project

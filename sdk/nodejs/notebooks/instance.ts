@@ -351,10 +351,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["vmImage"] = state ? state.vmImage : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
-            if (!args || args.machineType === undefined) {
+            if ((!args || args.machineType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'machineType'");
             }
             inputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;

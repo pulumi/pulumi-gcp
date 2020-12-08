@@ -208,10 +208,10 @@ export class Metric extends pulumi.CustomResource {
             inputs["valueExtractor"] = state ? state.valueExtractor : undefined;
         } else {
             const args = argsOrState as MetricArgs | undefined;
-            if (!args || args.filter === undefined) {
+            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'filter'");
             }
-            if (!args || args.metricDescriptor === undefined) {
+            if ((!args || args.metricDescriptor === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metricDescriptor'");
             }
             inputs["bucketOptions"] = args ? args.bucketOptions : undefined;

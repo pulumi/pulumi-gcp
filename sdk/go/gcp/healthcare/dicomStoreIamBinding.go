@@ -157,17 +157,18 @@ type DicomStoreIamBinding struct {
 // NewDicomStoreIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewDicomStoreIamBinding(ctx *pulumi.Context,
 	name string, args *DicomStoreIamBindingArgs, opts ...pulumi.ResourceOption) (*DicomStoreIamBinding, error) {
-	if args == nil || args.DicomStoreId == nil {
-		return nil, errors.New("missing required argument 'DicomStoreId'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &DicomStoreIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DicomStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'DicomStoreId'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource DicomStoreIamBinding
 	err := ctx.RegisterResource("gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding", name, args, &resource, opts...)

@@ -311,13 +311,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.bootDisk === undefined) {
+            if ((!args || args.bootDisk === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bootDisk'");
             }
-            if (!args || args.machineType === undefined) {
+            if ((!args || args.machineType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'machineType'");
             }
-            if (!args || args.networkInterfaces === undefined) {
+            if ((!args || args.networkInterfaces === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkInterfaces'");
             }
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;

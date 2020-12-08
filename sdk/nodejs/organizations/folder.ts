@@ -125,10 +125,10 @@ export class Folder extends pulumi.CustomResource {
             inputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as FolderArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;

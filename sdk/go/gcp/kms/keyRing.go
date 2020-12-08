@@ -79,11 +79,12 @@ type KeyRing struct {
 // NewKeyRing registers a new resource with the given unique name, arguments, and options.
 func NewKeyRing(ctx *pulumi.Context,
 	name string, args *KeyRingArgs, opts ...pulumi.ResourceOption) (*KeyRing, error) {
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
 	if args == nil {
-		args = &KeyRingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	var resource KeyRing
 	err := ctx.RegisterResource("gcp:kms/keyRing:KeyRing", name, args, &resource, opts...)

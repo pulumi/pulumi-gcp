@@ -205,13 +205,13 @@ class Firewall(pulumi.CustomResource):
             __props__['destination_ranges'] = destination_ranges
             __props__['direction'] = direction
             __props__['disabled'] = disabled
-            if enable_logging is not None:
+            if enable_logging is not None and not opts.urn:
                 warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
                 pulumi.log.warn("enable_logging is deprecated: Deprecated in favor of log_config")
             __props__['enable_logging'] = enable_logging
             __props__['log_config'] = log_config
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['priority'] = priority

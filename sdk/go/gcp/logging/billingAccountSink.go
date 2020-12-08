@@ -116,14 +116,15 @@ type BillingAccountSink struct {
 // NewBillingAccountSink registers a new resource with the given unique name, arguments, and options.
 func NewBillingAccountSink(ctx *pulumi.Context,
 	name string, args *BillingAccountSinkArgs, opts ...pulumi.ResourceOption) (*BillingAccountSink, error) {
-	if args == nil || args.BillingAccount == nil {
-		return nil, errors.New("missing required argument 'BillingAccount'")
-	}
-	if args == nil || args.Destination == nil {
-		return nil, errors.New("missing required argument 'Destination'")
-	}
 	if args == nil {
-		args = &BillingAccountSinkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BillingAccount == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccount'")
+	}
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
 	var resource BillingAccountSink
 	err := ctx.RegisterResource("gcp:logging/billingAccountSink:BillingAccountSink", name, args, &resource, opts...)

@@ -286,14 +286,15 @@ type GuestPolicies struct {
 // NewGuestPolicies registers a new resource with the given unique name, arguments, and options.
 func NewGuestPolicies(ctx *pulumi.Context,
 	name string, args *GuestPoliciesArgs, opts ...pulumi.ResourceOption) (*GuestPolicies, error) {
-	if args == nil || args.Assignment == nil {
-		return nil, errors.New("missing required argument 'Assignment'")
-	}
-	if args == nil || args.GuestPolicyId == nil {
-		return nil, errors.New("missing required argument 'GuestPolicyId'")
-	}
 	if args == nil {
-		args = &GuestPoliciesArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Assignment == nil {
+		return nil, errors.New("invalid value for required argument 'Assignment'")
+	}
+	if args.GuestPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
 	}
 	var resource GuestPolicies
 	err := ctx.RegisterResource("gcp:osconfig/guestPolicies:GuestPolicies", name, args, &resource, opts...)

@@ -110,7 +110,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__['region'] = region
             __props__['replica_configuration'] = replica_configuration
             __props__['root_password'] = root_password
-            if settings is None:
+            if settings is None and not opts.urn:
                 raise TypeError("Missing required property 'settings'")
             __props__['settings'] = settings
             __props__['connection_name'] = None

@@ -96,13 +96,13 @@ class RegionBackendService(pulumi.CustomResource):
             tcp_health_check=gcp.compute.RegionHealthCheckTcpHealthCheckArgs(
                 port=80,
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.compute.RegionBackendService("default",
             region="us-central1",
             health_checks=[health_check.id],
             protocol="TCP",
             load_balancing_scheme="EXTERNAL",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Region Backend Service Ilb Ring Hash
 

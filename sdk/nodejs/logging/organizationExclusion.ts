@@ -105,10 +105,10 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             inputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as OrganizationExclusionArgs | undefined;
-            if (!args || args.filter === undefined) {
+            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'filter'");
             }
-            if (!args || args.orgId === undefined) {
+            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["description"] = args ? args.description : undefined;

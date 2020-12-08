@@ -45,7 +45,7 @@ class ServiceIdentity(pulumi.CustomResource):
         hc_sa = gcp.projects.ServiceIdentity("hcSa",
             project=project.project_id,
             service="healthcare.googleapis.com",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         hc_sa_bq_jobuser = gcp.projects.IAMMember("hcSaBqJobuser",
             project=project.project_id,
             role="roles/bigquery.jobUser",
@@ -80,7 +80,7 @@ class ServiceIdentity(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['project'] = project
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['email'] = None

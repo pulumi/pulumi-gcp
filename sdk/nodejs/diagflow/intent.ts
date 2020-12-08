@@ -177,7 +177,7 @@ export class Intent extends pulumi.CustomResource {
             inputs["webhookState"] = state ? state.webhookState : undefined;
         } else {
             const args = argsOrState as IntentArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["action"] = args ? args.action : undefined;

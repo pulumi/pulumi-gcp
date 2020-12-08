@@ -130,7 +130,7 @@ export class HmacKey extends pulumi.CustomResource {
             inputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as HmacKeyArgs | undefined;
-            if (!args || args.serviceAccountEmail === undefined) {
+            if ((!args || args.serviceAccountEmail === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
             inputs["project"] = args ? args.project : undefined;

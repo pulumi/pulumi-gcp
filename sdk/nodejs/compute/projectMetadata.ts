@@ -92,7 +92,7 @@ export class ProjectMetadata extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectMetadataArgs | undefined;
-            if (!args || args.metadata === undefined) {
+            if ((!args || args.metadata === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metadata'");
             }
             inputs["metadata"] = args ? args.metadata : undefined;

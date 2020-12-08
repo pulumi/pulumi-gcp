@@ -64,7 +64,7 @@ class EntityType(pulumi.CustomResource):
                     ],
                 ),
             ],
-            opts=ResourceOptions(depends_on=[basic_agent]))
+            opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import
@@ -107,12 +107,12 @@ class EntityType(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['enable_fuzzy_extraction'] = enable_fuzzy_extraction
             __props__['entities'] = entities
-            if kind is None:
+            if kind is None and not opts.urn:
                 raise TypeError("Missing required property 'kind'")
             __props__['kind'] = kind
             __props__['project'] = project

@@ -80,17 +80,18 @@ type BillingAccountBucketConfig struct {
 // NewBillingAccountBucketConfig registers a new resource with the given unique name, arguments, and options.
 func NewBillingAccountBucketConfig(ctx *pulumi.Context,
 	name string, args *BillingAccountBucketConfigArgs, opts ...pulumi.ResourceOption) (*BillingAccountBucketConfig, error) {
-	if args == nil || args.BillingAccount == nil {
-		return nil, errors.New("missing required argument 'BillingAccount'")
-	}
-	if args == nil || args.BucketId == nil {
-		return nil, errors.New("missing required argument 'BucketId'")
-	}
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
 	if args == nil {
-		args = &BillingAccountBucketConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BillingAccount == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccount'")
+	}
+	if args.BucketId == nil {
+		return nil, errors.New("invalid value for required argument 'BucketId'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	var resource BillingAccountBucketConfig
 	err := ctx.RegisterResource("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig", name, args, &resource, opts...)

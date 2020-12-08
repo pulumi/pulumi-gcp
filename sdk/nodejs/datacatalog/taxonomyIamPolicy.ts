@@ -96,10 +96,10 @@ export class TaxonomyIamPolicy extends pulumi.CustomResource {
             inputs["taxonomy"] = state ? state.taxonomy : undefined;
         } else {
             const args = argsOrState as TaxonomyIamPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.taxonomy === undefined) {
+            if ((!args || args.taxonomy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'taxonomy'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

@@ -127,15 +127,15 @@ class EntryGroupIamBinding(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if entry_group is None:
+            if entry_group is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_group'")
             __props__['entry_group'] = entry_group
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
             __props__['project'] = project
             __props__['region'] = region
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

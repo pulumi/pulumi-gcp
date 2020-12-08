@@ -247,20 +247,21 @@ type FlexibleAppVersion struct {
 // NewFlexibleAppVersion registers a new resource with the given unique name, arguments, and options.
 func NewFlexibleAppVersion(ctx *pulumi.Context,
 	name string, args *FlexibleAppVersionArgs, opts ...pulumi.ResourceOption) (*FlexibleAppVersion, error) {
-	if args == nil || args.LivenessCheck == nil {
-		return nil, errors.New("missing required argument 'LivenessCheck'")
-	}
-	if args == nil || args.ReadinessCheck == nil {
-		return nil, errors.New("missing required argument 'ReadinessCheck'")
-	}
-	if args == nil || args.Runtime == nil {
-		return nil, errors.New("missing required argument 'Runtime'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &FlexibleAppVersionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LivenessCheck == nil {
+		return nil, errors.New("invalid value for required argument 'LivenessCheck'")
+	}
+	if args.ReadinessCheck == nil {
+		return nil, errors.New("invalid value for required argument 'ReadinessCheck'")
+	}
+	if args.Runtime == nil {
+		return nil, errors.New("invalid value for required argument 'Runtime'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource FlexibleAppVersion
 	err := ctx.RegisterResource("gcp:appengine/flexibleAppVersion:FlexibleAppVersion", name, args, &resource, opts...)

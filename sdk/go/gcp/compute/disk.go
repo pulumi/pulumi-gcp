@@ -199,6 +199,7 @@ func NewDisk(ctx *pulumi.Context,
 	if args == nil {
 		args = &DiskArgs{}
 	}
+
 	var resource Disk
 	err := ctx.RegisterResource("gcp:compute/disk:Disk", name, args, &resource, opts...)
 	if err != nil {

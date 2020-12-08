@@ -150,16 +150,16 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ObjectAccessControlArgs | undefined;
-            if (!args || args.bucket === undefined) {
+            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (!args || args.entity === undefined) {
+            if ((!args || args.entity === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'entity'");
             }
-            if (!args || args.object === undefined) {
+            if ((!args || args.object === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'object'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;

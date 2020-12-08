@@ -146,11 +146,12 @@ type NamespaceIamPolicy struct {
 // NewNamespaceIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewNamespaceIamPolicy(ctx *pulumi.Context,
 	name string, args *NamespaceIamPolicyArgs, opts ...pulumi.ResourceOption) (*NamespaceIamPolicy, error) {
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &NamespaceIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource NamespaceIamPolicy
 	err := ctx.RegisterResource("gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy", name, args, &resource, opts...)

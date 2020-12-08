@@ -225,10 +225,10 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
             const args = argsOrState as SubnetworkIAMPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.subnetwork === undefined) {
+            if ((!args || args.subnetwork === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subnetwork'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

@@ -99,10 +99,10 @@ export class GatewayIamPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as GatewayIamPolicyArgs | undefined;
-            if (!args || args.gateway === undefined) {
+            if ((!args || args.gateway === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'gateway'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["gateway"] = args ? args.gateway : undefined;

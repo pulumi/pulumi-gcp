@@ -130,13 +130,13 @@ export class Domain extends pulumi.CustomResource {
             inputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if (!args || args.domainName === undefined) {
+            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if (!args || args.locations === undefined) {
+            if ((!args || args.locations === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'locations'");
             }
-            if (!args || args.reservedIpRange === undefined) {
+            if ((!args || args.reservedIpRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
             inputs["admin"] = args ? args.admin : undefined;

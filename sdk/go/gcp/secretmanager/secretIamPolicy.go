@@ -154,14 +154,15 @@ type SecretIamPolicy struct {
 // NewSecretIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewSecretIamPolicy(ctx *pulumi.Context,
 	name string, args *SecretIamPolicyArgs, opts ...pulumi.ResourceOption) (*SecretIamPolicy, error) {
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
-	if args == nil || args.SecretId == nil {
-		return nil, errors.New("missing required argument 'SecretId'")
-	}
 	if args == nil {
-		args = &SecretIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
+	}
+	if args.SecretId == nil {
+		return nil, errors.New("invalid value for required argument 'SecretId'")
 	}
 	var resource SecretIamPolicy
 	err := ctx.RegisterResource("gcp:secretmanager/secretIamPolicy:SecretIamPolicy", name, args, &resource, opts...)

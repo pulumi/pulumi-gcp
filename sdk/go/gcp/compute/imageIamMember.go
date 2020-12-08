@@ -266,17 +266,18 @@ type ImageIamMember struct {
 // NewImageIamMember registers a new resource with the given unique name, arguments, and options.
 func NewImageIamMember(ctx *pulumi.Context,
 	name string, args *ImageIamMemberArgs, opts ...pulumi.ResourceOption) (*ImageIamMember, error) {
-	if args == nil || args.Image == nil {
-		return nil, errors.New("missing required argument 'Image'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ImageIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Image == nil {
+		return nil, errors.New("invalid value for required argument 'Image'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ImageIamMember
 	err := ctx.RegisterResource("gcp:compute/imageIamMember:ImageIamMember", name, args, &resource, opts...)

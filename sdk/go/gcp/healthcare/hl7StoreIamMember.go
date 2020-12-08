@@ -157,17 +157,18 @@ type Hl7StoreIamMember struct {
 // NewHl7StoreIamMember registers a new resource with the given unique name, arguments, and options.
 func NewHl7StoreIamMember(ctx *pulumi.Context,
 	name string, args *Hl7StoreIamMemberArgs, opts ...pulumi.ResourceOption) (*Hl7StoreIamMember, error) {
-	if args == nil || args.Hl7V2StoreId == nil {
-		return nil, errors.New("missing required argument 'Hl7V2StoreId'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &Hl7StoreIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Hl7V2StoreId == nil {
+		return nil, errors.New("invalid value for required argument 'Hl7V2StoreId'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource Hl7StoreIamMember
 	err := ctx.RegisterResource("gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember", name, args, &resource, opts...)

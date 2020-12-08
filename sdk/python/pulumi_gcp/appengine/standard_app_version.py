@@ -185,7 +185,7 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__['automatic_scaling'] = automatic_scaling
             __props__['basic_scaling'] = basic_scaling
             __props__['delete_service_on_destroy'] = delete_service_on_destroy
-            if deployment is None:
+            if deployment is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment'")
             __props__['deployment'] = deployment
             __props__['entrypoint'] = entrypoint
@@ -197,11 +197,11 @@ class StandardAppVersion(pulumi.CustomResource):
             __props__['manual_scaling'] = manual_scaling
             __props__['noop_on_destroy'] = noop_on_destroy
             __props__['project'] = project
-            if runtime is None:
+            if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
             __props__['runtime_api_version'] = runtime_api_version
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['threadsafe'] = threadsafe

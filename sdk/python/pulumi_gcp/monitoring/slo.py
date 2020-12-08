@@ -158,13 +158,13 @@ class Slo(pulumi.CustomResource):
             __props__['basic_sli'] = basic_sli
             __props__['calendar_period'] = calendar_period
             __props__['display_name'] = display_name
-            if goal is None:
+            if goal is None and not opts.urn:
                 raise TypeError("Missing required property 'goal'")
             __props__['goal'] = goal
             __props__['project'] = project
             __props__['request_based_sli'] = request_based_sli
             __props__['rolling_period_days'] = rolling_period_days
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['slo_id'] = slo_id

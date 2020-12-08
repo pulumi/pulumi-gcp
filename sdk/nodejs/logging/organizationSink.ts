@@ -143,10 +143,10 @@ export class OrganizationSink extends pulumi.CustomResource {
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as OrganizationSinkArgs | undefined;
-            if (!args || args.destination === undefined) {
+            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destination'");
             }
-            if (!args || args.orgId === undefined) {
+            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;

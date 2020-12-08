@@ -141,7 +141,7 @@ class Attestor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if attestation_authority_note is None:
+            if attestation_authority_note is None and not opts.urn:
                 raise TypeError("Missing required property 'attestation_authority_note'")
             __props__['attestation_authority_note'] = attestation_authority_note
             __props__['description'] = description

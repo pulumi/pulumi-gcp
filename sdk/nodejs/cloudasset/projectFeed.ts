@@ -138,10 +138,10 @@ export class ProjectFeed extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectFeedArgs | undefined;
-            if (!args || args.feedId === undefined) {
+            if ((!args || args.feedId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'feedId'");
             }
-            if (!args || args.feedOutputConfig === undefined) {
+            if ((!args || args.feedOutputConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'feedOutputConfig'");
             }
             inputs["assetNames"] = args ? args.assetNames : undefined;

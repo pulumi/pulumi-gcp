@@ -75,7 +75,7 @@ class ProjectMetadata(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if metadata is None:
+            if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")
             __props__['metadata'] = metadata
             __props__['project'] = project

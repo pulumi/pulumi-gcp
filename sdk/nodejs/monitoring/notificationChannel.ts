@@ -183,7 +183,7 @@ export class NotificationChannel extends pulumi.CustomResource {
             inputs["verificationStatus"] = state ? state.verificationStatus : undefined;
         } else {
             const args = argsOrState as NotificationChannelArgs | undefined;
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["description"] = args ? args.description : undefined;

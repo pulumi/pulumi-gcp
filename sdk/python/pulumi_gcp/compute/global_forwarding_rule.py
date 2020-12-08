@@ -97,7 +97,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 auto_delete=True,
                 boot=True,
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         igm = gcp.compute.InstanceGroupManager("igm",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
                 instance_template=instance_template.id,
@@ -106,14 +106,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
             base_instance_name="internal-glb",
             zone="us-central1-f",
             target_size=1,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
                 port=80,
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_backend_service = gcp.compute.BackendService("defaultBackendService",
             port_name="http",
             protocol="HTTP",
@@ -126,7 +126,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 max_rate_per_instance=50,
             )],
             health_checks=[default_health_check.id],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
             default_service=default_backend_service.id,
@@ -142,11 +142,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
                     service=default_backend_service.id,
                 )],
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_target_http_proxy = gcp.compute.TargetHttpProxy("defaultTargetHttpProxy",
             description="a description",
             url_map=default_url_map.id,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
             target=default_target_http_proxy.id,
             port_range="80",
@@ -159,7 +159,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                     value="MARS",
                 )],
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -290,7 +290,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__['network'] = network
             __props__['port_range'] = port_range
             __props__['project'] = project
-            if target is None:
+            if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__['target'] = target
             __props__['label_fingerprint'] = None

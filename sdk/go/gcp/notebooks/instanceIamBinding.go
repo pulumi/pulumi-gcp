@@ -57,17 +57,18 @@ type InstanceIamBinding struct {
 // NewInstanceIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewInstanceIamBinding(ctx *pulumi.Context,
 	name string, args *InstanceIamBindingArgs, opts ...pulumi.ResourceOption) (*InstanceIamBinding, error) {
-	if args == nil || args.InstanceName == nil {
-		return nil, errors.New("missing required argument 'InstanceName'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &InstanceIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource InstanceIamBinding
 	err := ctx.RegisterResource("gcp:notebooks/instanceIamBinding:InstanceIamBinding", name, args, &resource, opts...)

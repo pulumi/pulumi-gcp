@@ -57,11 +57,12 @@ type DatasetAccess struct {
 // NewDatasetAccess registers a new resource with the given unique name, arguments, and options.
 func NewDatasetAccess(ctx *pulumi.Context,
 	name string, args *DatasetAccessArgs, opts ...pulumi.ResourceOption) (*DatasetAccess, error) {
-	if args == nil || args.DatasetId == nil {
-		return nil, errors.New("missing required argument 'DatasetId'")
-	}
 	if args == nil {
-		args = &DatasetAccessArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
 	var resource DatasetAccess
 	err := ctx.RegisterResource("gcp:bigquery/datasetAccess:DatasetAccess", name, args, &resource, opts...)

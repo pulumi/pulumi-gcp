@@ -319,11 +319,12 @@ type HaVpnGateway struct {
 // NewHaVpnGateway registers a new resource with the given unique name, arguments, and options.
 func NewHaVpnGateway(ctx *pulumi.Context,
 	name string, args *HaVpnGatewayArgs, opts ...pulumi.ResourceOption) (*HaVpnGateway, error) {
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
 	if args == nil {
-		args = &HaVpnGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
 	}
 	var resource HaVpnGateway
 	err := ctx.RegisterResource("gcp:compute/haVpnGateway:HaVpnGateway", name, args, &resource, opts...)

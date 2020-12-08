@@ -282,23 +282,24 @@ type AppEngineVersionIamMember struct {
 // NewAppEngineVersionIamMember registers a new resource with the given unique name, arguments, and options.
 func NewAppEngineVersionIamMember(ctx *pulumi.Context,
 	name string, args *AppEngineVersionIamMemberArgs, opts ...pulumi.ResourceOption) (*AppEngineVersionIamMember, error) {
-	if args == nil || args.AppId == nil {
-		return nil, errors.New("missing required argument 'AppId'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
-	if args == nil || args.VersionId == nil {
-		return nil, errors.New("missing required argument 'VersionId'")
-	}
 	if args == nil {
-		args = &AppEngineVersionIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
+	}
+	if args.VersionId == nil {
+		return nil, errors.New("invalid value for required argument 'VersionId'")
 	}
 	var resource AppEngineVersionIamMember
 	err := ctx.RegisterResource("gcp:iap/appEngineVersionIamMember:AppEngineVersionIamMember", name, args, &resource, opts...)

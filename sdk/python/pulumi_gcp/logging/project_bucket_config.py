@@ -92,14 +92,14 @@ class ProjectBucketConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bucket_id is None:
+            if bucket_id is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_id'")
             __props__['bucket_id'] = bucket_id
             __props__['description'] = description
-            if location is None:
+            if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__['location'] = location
-            if project is None:
+            if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__['project'] = project
             __props__['retention_days'] = retention_days

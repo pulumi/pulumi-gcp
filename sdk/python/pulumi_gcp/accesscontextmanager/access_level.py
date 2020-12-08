@@ -116,10 +116,10 @@ class AccessLevel(pulumi.CustomResource):
             __props__['custom'] = custom
             __props__['description'] = description
             __props__['name'] = name
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
-            if title is None:
+            if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__['title'] = title
         super(AccessLevel, __self__).__init__(

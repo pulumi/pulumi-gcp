@@ -190,10 +190,10 @@ export class RegionAutoscaler extends pulumi.CustomResource {
             inputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as RegionAutoscalerArgs | undefined;
-            if (!args || args.autoscalingPolicy === undefined) {
+            if ((!args || args.autoscalingPolicy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'autoscalingPolicy'");
             }
-            if (!args || args.target === undefined) {
+            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;

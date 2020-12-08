@@ -163,7 +163,7 @@ class Table(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['clusterings'] = clusterings
-            if dataset_id is None:
+            if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__['dataset_id'] = dataset_id
             __props__['description'] = description
@@ -176,7 +176,7 @@ class Table(pulumi.CustomResource):
             __props__['project'] = project
             __props__['range_partitioning'] = range_partitioning
             __props__['schema'] = schema
-            if table_id is None:
+            if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")
             __props__['table_id'] = table_id
             __props__['time_partitioning'] = time_partitioning

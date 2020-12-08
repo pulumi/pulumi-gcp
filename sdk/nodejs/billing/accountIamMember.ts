@@ -58,13 +58,13 @@ export class AccountIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as AccountIamMemberArgs | undefined;
-            if (!args || args.billingAccountId === undefined) {
+            if ((!args || args.billingAccountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;

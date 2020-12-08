@@ -149,14 +149,15 @@ type ServiceIamBinding struct {
 // NewServiceIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewServiceIamBinding(ctx *pulumi.Context,
 	name string, args *ServiceIamBindingArgs, opts ...pulumi.ResourceOption) (*ServiceIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ServiceIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ServiceIamBinding
 	err := ctx.RegisterResource("gcp:servicedirectory/serviceIamBinding:ServiceIamBinding", name, args, &resource, opts...)

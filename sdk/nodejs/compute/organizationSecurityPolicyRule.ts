@@ -132,16 +132,16 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
             inputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyRuleArgs | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.match === undefined) {
+            if ((!args || args.match === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'match'");
             }
-            if (!args || args.policyId === undefined) {
+            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if (!args || args.priority === undefined) {
+            if ((!args || args.priority === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'priority'");
             }
             inputs["action"] = args ? args.action : undefined;

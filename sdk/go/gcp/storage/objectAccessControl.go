@@ -110,20 +110,21 @@ type ObjectAccessControl struct {
 // NewObjectAccessControl registers a new resource with the given unique name, arguments, and options.
 func NewObjectAccessControl(ctx *pulumi.Context,
 	name string, args *ObjectAccessControlArgs, opts ...pulumi.ResourceOption) (*ObjectAccessControl, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Entity == nil {
-		return nil, errors.New("missing required argument 'Entity'")
-	}
-	if args == nil || args.Object == nil {
-		return nil, errors.New("missing required argument 'Object'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ObjectAccessControlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Entity == nil {
+		return nil, errors.New("invalid value for required argument 'Entity'")
+	}
+	if args.Object == nil {
+		return nil, errors.New("invalid value for required argument 'Object'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ObjectAccessControl
 	err := ctx.RegisterResource("gcp:storage/objectAccessControl:ObjectAccessControl", name, args, &resource, opts...)

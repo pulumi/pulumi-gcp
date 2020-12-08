@@ -94,20 +94,20 @@ class OrganizationSecurityPolicyRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
             __props__['description'] = description
             __props__['direction'] = direction
             __props__['enable_logging'] = enable_logging
-            if match is None:
+            if match is None and not opts.urn:
                 raise TypeError("Missing required property 'match'")
             __props__['match'] = match
-            if policy_id is None:
+            if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__['policy_id'] = policy_id
             __props__['preview'] = preview
-            if priority is None:
+            if priority is None and not opts.urn:
                 raise TypeError("Missing required property 'priority'")
             __props__['priority'] = priority
             __props__['target_resources'] = target_resources

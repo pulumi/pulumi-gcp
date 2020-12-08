@@ -76,20 +76,21 @@ type FolderFeed struct {
 // NewFolderFeed registers a new resource with the given unique name, arguments, and options.
 func NewFolderFeed(ctx *pulumi.Context,
 	name string, args *FolderFeedArgs, opts ...pulumi.ResourceOption) (*FolderFeed, error) {
-	if args == nil || args.BillingProject == nil {
-		return nil, errors.New("missing required argument 'BillingProject'")
-	}
-	if args == nil || args.FeedId == nil {
-		return nil, errors.New("missing required argument 'FeedId'")
-	}
-	if args == nil || args.FeedOutputConfig == nil {
-		return nil, errors.New("missing required argument 'FeedOutputConfig'")
-	}
-	if args == nil || args.Folder == nil {
-		return nil, errors.New("missing required argument 'Folder'")
-	}
 	if args == nil {
-		args = &FolderFeedArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BillingProject == nil {
+		return nil, errors.New("invalid value for required argument 'BillingProject'")
+	}
+	if args.FeedId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedId'")
+	}
+	if args.FeedOutputConfig == nil {
+		return nil, errors.New("invalid value for required argument 'FeedOutputConfig'")
+	}
+	if args.Folder == nil {
+		return nil, errors.New("invalid value for required argument 'Folder'")
 	}
 	var resource FolderFeed
 	err := ctx.RegisterResource("gcp:cloudasset/folderFeed:FolderFeed", name, args, &resource, opts...)

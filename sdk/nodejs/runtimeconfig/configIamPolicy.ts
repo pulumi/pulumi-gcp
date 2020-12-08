@@ -151,10 +151,10 @@ export class ConfigIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ConfigIamPolicyArgs | undefined;
-            if (!args || args.config === undefined) {
+            if ((!args || args.config === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'config'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["config"] = args ? args.config : undefined;

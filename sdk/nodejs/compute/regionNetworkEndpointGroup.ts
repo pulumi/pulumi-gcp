@@ -259,7 +259,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RegionNetworkEndpointGroupArgs | undefined;
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["appEngine"] = args ? args.appEngine : undefined;

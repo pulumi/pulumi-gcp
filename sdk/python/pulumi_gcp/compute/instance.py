@@ -190,7 +190,7 @@ class Instance(pulumi.CustomResource):
 
             __props__['allow_stopping_for_update'] = allow_stopping_for_update
             __props__['attached_disks'] = attached_disks
-            if boot_disk is None:
+            if boot_disk is None and not opts.urn:
                 raise TypeError("Missing required property 'boot_disk'")
             __props__['boot_disk'] = boot_disk
             __props__['can_ip_forward'] = can_ip_forward
@@ -202,14 +202,14 @@ class Instance(pulumi.CustomResource):
             __props__['guest_accelerators'] = guest_accelerators
             __props__['hostname'] = hostname
             __props__['labels'] = labels
-            if machine_type is None:
+            if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
             __props__['machine_type'] = machine_type
             __props__['metadata'] = metadata
             __props__['metadata_startup_script'] = metadata_startup_script
             __props__['min_cpu_platform'] = min_cpu_platform
             __props__['name'] = name
-            if network_interfaces is None:
+            if network_interfaces is None and not opts.urn:
                 raise TypeError("Missing required property 'network_interfaces'")
             __props__['network_interfaces'] = network_interfaces
             __props__['project'] = project

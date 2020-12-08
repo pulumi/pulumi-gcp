@@ -266,17 +266,18 @@ type WebBackendServiceIamBinding struct {
 // NewWebBackendServiceIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewWebBackendServiceIamBinding(ctx *pulumi.Context,
 	name string, args *WebBackendServiceIamBindingArgs, opts ...pulumi.ResourceOption) (*WebBackendServiceIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.WebBackendService == nil {
-		return nil, errors.New("missing required argument 'WebBackendService'")
-	}
 	if args == nil {
-		args = &WebBackendServiceIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.WebBackendService == nil {
+		return nil, errors.New("invalid value for required argument 'WebBackendService'")
 	}
 	var resource WebBackendServiceIamBinding
 	err := ctx.RegisterResource("gcp:iap/webBackendServiceIamBinding:WebBackendServiceIamBinding", name, args, &resource, opts...)

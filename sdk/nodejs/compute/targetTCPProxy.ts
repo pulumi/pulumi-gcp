@@ -146,7 +146,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as TargetTCPProxyArgs | undefined;
-            if (!args || args.backendService === undefined) {
+            if ((!args || args.backendService === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'backendService'");
             }
             inputs["backendService"] = args ? args.backendService : undefined;

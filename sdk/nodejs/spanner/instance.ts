@@ -150,10 +150,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.config === undefined) {
+            if ((!args || args.config === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'config'");
             }
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["config"] = args ? args.config : undefined;

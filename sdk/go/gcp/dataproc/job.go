@@ -135,11 +135,12 @@ type Job struct {
 // NewJob registers a new resource with the given unique name, arguments, and options.
 func NewJob(ctx *pulumi.Context,
 	name string, args *JobArgs, opts ...pulumi.ResourceOption) (*Job, error) {
-	if args == nil || args.Placement == nil {
-		return nil, errors.New("missing required argument 'Placement'")
-	}
 	if args == nil {
-		args = &JobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Placement == nil {
+		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("gcp:dataproc/job:Job", name, args, &resource, opts...)

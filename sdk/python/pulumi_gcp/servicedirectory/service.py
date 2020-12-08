@@ -40,7 +40,7 @@ class Service(pulumi.CustomResource):
         example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
             namespace_id="example-namespace",
             location="us-central1",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         example_service = gcp.servicedirectory.Service("exampleService",
             service_id="example-service",
             namespace=example_namespace.id,
@@ -48,7 +48,7 @@ class Service(pulumi.CustomResource):
                 "stage": "prod",
                 "region": "us-central1",
             },
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -95,10 +95,10 @@ class Service(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['metadata'] = metadata
-            if namespace is None:
+            if namespace is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace'")
             __props__['namespace'] = namespace
-            if service_id is None:
+            if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__['service_id'] = service_id
             __props__['name'] = None

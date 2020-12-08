@@ -227,7 +227,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceFromMachineImageArgs | undefined;
-            if (!args || args.sourceMachineImage === undefined) {
+            if ((!args || args.sourceMachineImage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceMachineImage'");
             }
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;

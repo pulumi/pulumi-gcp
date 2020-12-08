@@ -128,16 +128,16 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as NetworkPeeringRoutesConfigArgs | undefined;
-            if (!args || args.exportCustomRoutes === undefined) {
+            if ((!args || args.exportCustomRoutes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'exportCustomRoutes'");
             }
-            if (!args || args.importCustomRoutes === undefined) {
+            if ((!args || args.importCustomRoutes === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'importCustomRoutes'");
             }
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
-            if (!args || args.peering === undefined) {
+            if ((!args || args.peering === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peering'");
             }
             inputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;

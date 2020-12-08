@@ -128,10 +128,10 @@ export class SslCert extends pulumi.CustomResource {
             inputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
         } else {
             const args = argsOrState as SslCertArgs | undefined;
-            if (!args || args.commonName === undefined) {
+            if ((!args || args.commonName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'commonName'");
             }
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["commonName"] = args ? args.commonName : undefined;

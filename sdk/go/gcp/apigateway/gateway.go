@@ -55,14 +55,15 @@ type Gateway struct {
 // NewGateway registers a new resource with the given unique name, arguments, and options.
 func NewGateway(ctx *pulumi.Context,
 	name string, args *GatewayArgs, opts ...pulumi.ResourceOption) (*Gateway, error) {
-	if args == nil || args.ApiConfig == nil {
-		return nil, errors.New("missing required argument 'ApiConfig'")
-	}
-	if args == nil || args.GatewayId == nil {
-		return nil, errors.New("missing required argument 'GatewayId'")
-	}
 	if args == nil {
-		args = &GatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiConfig == nil {
+		return nil, errors.New("invalid value for required argument 'ApiConfig'")
+	}
+	if args.GatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'GatewayId'")
 	}
 	var resource Gateway
 	err := ctx.RegisterResource("gcp:apigateway/gateway:Gateway", name, args, &resource, opts...)

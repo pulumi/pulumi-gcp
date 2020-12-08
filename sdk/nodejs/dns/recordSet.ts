@@ -198,16 +198,16 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as RecordSetArgs | undefined;
-            if (!args || args.managedZone === undefined) {
+            if ((!args || args.managedZone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if (!args || args.rrdatas === undefined) {
+            if ((!args || args.rrdatas === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rrdatas'");
             }
-            if (!args || args.ttl === undefined) {
+            if ((!args || args.ttl === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ttl'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["managedZone"] = args ? args.managedZone : undefined;

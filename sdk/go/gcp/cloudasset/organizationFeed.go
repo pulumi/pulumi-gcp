@@ -74,20 +74,21 @@ type OrganizationFeed struct {
 // NewOrganizationFeed registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationFeed(ctx *pulumi.Context,
 	name string, args *OrganizationFeedArgs, opts ...pulumi.ResourceOption) (*OrganizationFeed, error) {
-	if args == nil || args.BillingProject == nil {
-		return nil, errors.New("missing required argument 'BillingProject'")
-	}
-	if args == nil || args.FeedId == nil {
-		return nil, errors.New("missing required argument 'FeedId'")
-	}
-	if args == nil || args.FeedOutputConfig == nil {
-		return nil, errors.New("missing required argument 'FeedOutputConfig'")
-	}
-	if args == nil || args.OrgId == nil {
-		return nil, errors.New("missing required argument 'OrgId'")
-	}
 	if args == nil {
-		args = &OrganizationFeedArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BillingProject == nil {
+		return nil, errors.New("invalid value for required argument 'BillingProject'")
+	}
+	if args.FeedId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedId'")
+	}
+	if args.FeedOutputConfig == nil {
+		return nil, errors.New("invalid value for required argument 'FeedOutputConfig'")
+	}
+	if args.OrgId == nil {
+		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
 	var resource OrganizationFeed
 	err := ctx.RegisterResource("gcp:cloudasset/organizationFeed:OrganizationFeed", name, args, &resource, opts...)

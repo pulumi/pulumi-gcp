@@ -75,10 +75,10 @@ class OrganizationSecurityPolicy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['type'] = type

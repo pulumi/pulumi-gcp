@@ -57,14 +57,15 @@ type Client struct {
 // NewClient registers a new resource with the given unique name, arguments, and options.
 func NewClient(ctx *pulumi.Context,
 	name string, args *ClientArgs, opts ...pulumi.ResourceOption) (*Client, error) {
-	if args == nil || args.Brand == nil {
-		return nil, errors.New("missing required argument 'Brand'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil {
-		args = &ClientArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Brand == nil {
+		return nil, errors.New("invalid value for required argument 'Brand'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	var resource Client
 	err := ctx.RegisterResource("gcp:iap/client:Client", name, args, &resource, opts...)

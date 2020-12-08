@@ -164,11 +164,12 @@ type Attestor struct {
 // NewAttestor registers a new resource with the given unique name, arguments, and options.
 func NewAttestor(ctx *pulumi.Context,
 	name string, args *AttestorArgs, opts ...pulumi.ResourceOption) (*Attestor, error) {
-	if args == nil || args.AttestationAuthorityNote == nil {
-		return nil, errors.New("missing required argument 'AttestationAuthorityNote'")
-	}
 	if args == nil {
-		args = &AttestorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AttestationAuthorityNote == nil {
+		return nil, errors.New("invalid value for required argument 'AttestationAuthorityNote'")
 	}
 	var resource Attestor
 	err := ctx.RegisterResource("gcp:binaryauthorization/attestor:Attestor", name, args, &resource, opts...)

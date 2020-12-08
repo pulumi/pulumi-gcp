@@ -272,11 +272,12 @@ type RegionNetworkEndpointGroup struct {
 // NewRegionNetworkEndpointGroup registers a new resource with the given unique name, arguments, and options.
 func NewRegionNetworkEndpointGroup(ctx *pulumi.Context,
 	name string, args *RegionNetworkEndpointGroupArgs, opts ...pulumi.ResourceOption) (*RegionNetworkEndpointGroup, error) {
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &RegionNetworkEndpointGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource RegionNetworkEndpointGroup
 	err := ctx.RegisterResource("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup", name, args, &resource, opts...)

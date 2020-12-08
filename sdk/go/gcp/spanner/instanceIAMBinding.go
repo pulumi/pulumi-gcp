@@ -158,17 +158,18 @@ type InstanceIAMBinding struct {
 // NewInstanceIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewInstanceIAMBinding(ctx *pulumi.Context,
 	name string, args *InstanceIAMBindingArgs, opts ...pulumi.ResourceOption) (*InstanceIAMBinding, error) {
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &InstanceIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource InstanceIAMBinding
 	err := ctx.RegisterResource("gcp:spanner/instanceIAMBinding:InstanceIAMBinding", name, args, &resource, opts...)

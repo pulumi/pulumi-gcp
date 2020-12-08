@@ -58,13 +58,13 @@ export class IAMMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as IAMMemberArgs | undefined;
-            if (!args || args.folder === undefined) {
+            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'folder'");
             }
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;

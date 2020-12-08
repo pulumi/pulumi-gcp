@@ -177,13 +177,13 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["userLabels"] = state ? state.userLabels : undefined;
         } else {
             const args = argsOrState as AlertPolicyArgs | undefined;
-            if (!args || args.combiner === undefined) {
+            if ((!args || args.combiner === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'combiner'");
             }
-            if (!args || args.conditions === undefined) {
+            if ((!args || args.conditions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'conditions'");
             }
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["combiner"] = args ? args.combiner : undefined;

@@ -167,10 +167,10 @@ export class TargetSSLProxy extends pulumi.CustomResource {
             inputs["sslPolicy"] = state ? state.sslPolicy : undefined;
         } else {
             const args = argsOrState as TargetSSLProxyArgs | undefined;
-            if (!args || args.backendService === undefined) {
+            if ((!args || args.backendService === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'backendService'");
             }
-            if (!args || args.sslCertificates === undefined) {
+            if ((!args || args.sslCertificates === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sslCertificates'");
             }
             inputs["backendService"] = args ? args.backendService : undefined;

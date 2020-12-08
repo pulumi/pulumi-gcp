@@ -104,13 +104,13 @@ export class MachineImageIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as MachineImageIamMemberArgs | undefined;
-            if (!args || args.machineImage === undefined) {
+            if ((!args || args.machineImage === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'machineImage'");
             }
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;

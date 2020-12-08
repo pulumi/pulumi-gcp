@@ -56,10 +56,10 @@ export class IAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as IAMPolicyArgs | undefined;
-            if (!args || args.orgId === undefined) {
+            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["orgId"] = args ? args.orgId : undefined;

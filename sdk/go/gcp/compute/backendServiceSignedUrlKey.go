@@ -134,14 +134,15 @@ type BackendServiceSignedUrlKey struct {
 // NewBackendServiceSignedUrlKey registers a new resource with the given unique name, arguments, and options.
 func NewBackendServiceSignedUrlKey(ctx *pulumi.Context,
 	name string, args *BackendServiceSignedUrlKeyArgs, opts ...pulumi.ResourceOption) (*BackendServiceSignedUrlKey, error) {
-	if args == nil || args.BackendService == nil {
-		return nil, errors.New("missing required argument 'BackendService'")
-	}
-	if args == nil || args.KeyValue == nil {
-		return nil, errors.New("missing required argument 'KeyValue'")
-	}
 	if args == nil {
-		args = &BackendServiceSignedUrlKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackendService == nil {
+		return nil, errors.New("invalid value for required argument 'BackendService'")
+	}
+	if args.KeyValue == nil {
+		return nil, errors.New("invalid value for required argument 'KeyValue'")
 	}
 	var resource BackendServiceSignedUrlKey
 	err := ctx.RegisterResource("gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey", name, args, &resource, opts...)

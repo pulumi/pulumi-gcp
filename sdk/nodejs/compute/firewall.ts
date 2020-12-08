@@ -271,7 +271,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["targetTags"] = state ? state.targetTags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["allows"] = args ? args.allows : undefined;

@@ -216,11 +216,12 @@ type FhirStore struct {
 // NewFhirStore registers a new resource with the given unique name, arguments, and options.
 func NewFhirStore(ctx *pulumi.Context,
 	name string, args *FhirStoreArgs, opts ...pulumi.ResourceOption) (*FhirStore, error) {
-	if args == nil || args.Dataset == nil {
-		return nil, errors.New("missing required argument 'Dataset'")
-	}
 	if args == nil {
-		args = &FhirStoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Dataset == nil {
+		return nil, errors.New("invalid value for required argument 'Dataset'")
 	}
 	var resource FhirStore
 	err := ctx.RegisterResource("gcp:healthcare/fhirStore:FhirStore", name, args, &resource, opts...)

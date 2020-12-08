@@ -104,7 +104,7 @@ class Database(pulumi.CustomResource):
 
             __props__['ddls'] = ddls
             __props__['deletion_protection'] = deletion_protection
-            if instance is None:
+            if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
             __props__['name'] = name

@@ -96,7 +96,7 @@ export class DefaultObjectACL extends pulumi.CustomResource {
             inputs["roleEntities"] = state ? state.roleEntities : undefined;
         } else {
             const args = argsOrState as DefaultObjectACLArgs | undefined;
-            if (!args || args.bucket === undefined) {
+            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;

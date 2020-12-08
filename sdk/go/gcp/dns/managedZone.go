@@ -318,11 +318,12 @@ type ManagedZone struct {
 // NewManagedZone registers a new resource with the given unique name, arguments, and options.
 func NewManagedZone(ctx *pulumi.Context,
 	name string, args *ManagedZoneArgs, opts ...pulumi.ResourceOption) (*ManagedZone, error) {
-	if args == nil || args.DnsName == nil {
-		return nil, errors.New("missing required argument 'DnsName'")
-	}
 	if args == nil {
-		args = &ManagedZoneArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DnsName == nil {
+		return nil, errors.New("invalid value for required argument 'DnsName'")
 	}
 	if args.Description == nil {
 		args.Description = pulumi.StringPtr("Managed by Pulumi")

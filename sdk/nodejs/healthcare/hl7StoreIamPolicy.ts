@@ -147,10 +147,10 @@ export class Hl7StoreIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as Hl7StoreIamPolicyArgs | undefined;
-            if (!args || args.hl7V2StoreId === undefined) {
+            if ((!args || args.hl7V2StoreId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hl7V2StoreId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;

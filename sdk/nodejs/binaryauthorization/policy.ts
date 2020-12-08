@@ -167,7 +167,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if (!args || args.defaultAdmissionRule === undefined) {
+            if ((!args || args.defaultAdmissionRule === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'defaultAdmissionRule'");
             }
             inputs["admissionWhitelistPatterns"] = args ? args.admissionWhitelistPatterns : undefined;

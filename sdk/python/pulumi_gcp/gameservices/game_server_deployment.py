@@ -87,7 +87,7 @@ class GameServerDeployment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if deployment_id is None:
+            if deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment_id'")
             __props__['deployment_id'] = deployment_id
             __props__['description'] = description

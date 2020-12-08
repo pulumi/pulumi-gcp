@@ -190,11 +190,11 @@ class Route(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if dest_range is None:
+            if dest_range is None and not opts.urn:
                 raise TypeError("Missing required property 'dest_range'")
             __props__['dest_range'] = dest_range
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['next_hop_gateway'] = next_hop_gateway

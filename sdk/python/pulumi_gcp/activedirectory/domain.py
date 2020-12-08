@@ -90,15 +90,15 @@ class Domain(pulumi.CustomResource):
 
             __props__['admin'] = admin
             __props__['authorized_networks'] = authorized_networks
-            if domain_name is None:
+            if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__['domain_name'] = domain_name
             __props__['labels'] = labels
-            if locations is None:
+            if locations is None and not opts.urn:
                 raise TypeError("Missing required property 'locations'")
             __props__['locations'] = locations
             __props__['project'] = project
-            if reserved_ip_range is None:
+            if reserved_ip_range is None and not opts.urn:
                 raise TypeError("Missing required property 'reserved_ip_range'")
             __props__['reserved_ip_range'] = reserved_ip_range
             __props__['fqdn'] = None

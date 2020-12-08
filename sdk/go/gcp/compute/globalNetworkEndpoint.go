@@ -90,14 +90,15 @@ type GlobalNetworkEndpoint struct {
 // NewGlobalNetworkEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewGlobalNetworkEndpoint(ctx *pulumi.Context,
 	name string, args *GlobalNetworkEndpointArgs, opts ...pulumi.ResourceOption) (*GlobalNetworkEndpoint, error) {
-	if args == nil || args.GlobalNetworkEndpointGroup == nil {
-		return nil, errors.New("missing required argument 'GlobalNetworkEndpointGroup'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
 	if args == nil {
-		args = &GlobalNetworkEndpointArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GlobalNetworkEndpointGroup == nil {
+		return nil, errors.New("invalid value for required argument 'GlobalNetworkEndpointGroup'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
 	}
 	var resource GlobalNetworkEndpoint
 	err := ctx.RegisterResource("gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint", name, args, &resource, opts...)

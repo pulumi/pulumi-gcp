@@ -120,10 +120,10 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GlobalNetworkEndpointArgs | undefined;
-            if (!args || args.globalNetworkEndpointGroup === undefined) {
+            if ((!args || args.globalNetworkEndpointGroup === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'globalNetworkEndpointGroup'");
             }
-            if (!args || args.port === undefined) {
+            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["fqdn"] = args ? args.fqdn : undefined;

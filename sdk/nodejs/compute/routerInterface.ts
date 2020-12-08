@@ -121,7 +121,7 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if (!args || args.router === undefined) {
+            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'router'");
             }
             inputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;

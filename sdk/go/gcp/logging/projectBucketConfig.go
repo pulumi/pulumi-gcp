@@ -106,17 +106,18 @@ type ProjectBucketConfig struct {
 // NewProjectBucketConfig registers a new resource with the given unique name, arguments, and options.
 func NewProjectBucketConfig(ctx *pulumi.Context,
 	name string, args *ProjectBucketConfigArgs, opts ...pulumi.ResourceOption) (*ProjectBucketConfig, error) {
-	if args == nil || args.BucketId == nil {
-		return nil, errors.New("missing required argument 'BucketId'")
-	}
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &ProjectBucketConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BucketId == nil {
+		return nil, errors.New("invalid value for required argument 'BucketId'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProjectBucketConfig
 	err := ctx.RegisterResource("gcp:logging/projectBucketConfig:ProjectBucketConfig", name, args, &resource, opts...)

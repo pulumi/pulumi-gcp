@@ -186,14 +186,14 @@ class ImageIamBinding(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if image is None:
+            if image is None and not opts.urn:
                 raise TypeError("Missing required property 'image'")
             __props__['image'] = image
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

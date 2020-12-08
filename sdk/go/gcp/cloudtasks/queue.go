@@ -132,11 +132,12 @@ type Queue struct {
 // NewQueue registers a new resource with the given unique name, arguments, and options.
 func NewQueue(ctx *pulumi.Context,
 	name string, args *QueueArgs, opts ...pulumi.ResourceOption) (*Queue, error) {
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
 	if args == nil {
-		args = &QueueArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	var resource Queue
 	err := ctx.RegisterResource("gcp:cloudtasks/queue:Queue", name, args, &resource, opts...)

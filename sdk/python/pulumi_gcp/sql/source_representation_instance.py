@@ -91,10 +91,10 @@ class SourceRepresentationInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if database_version is None:
+            if database_version is None and not opts.urn:
                 raise TypeError("Missing required property 'database_version'")
             __props__['database_version'] = database_version
-            if host is None:
+            if host is None and not opts.urn:
                 raise TypeError("Missing required property 'host'")
             __props__['host'] = host
             __props__['name'] = name

@@ -141,7 +141,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as GlobalNetworkEndpointGroupArgs | undefined;
-            if (!args || args.networkEndpointType === undefined) {
+            if ((!args || args.networkEndpointType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkEndpointType'");
             }
             inputs["defaultPort"] = args ? args.defaultPort : undefined;

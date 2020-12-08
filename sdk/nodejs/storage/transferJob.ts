@@ -179,13 +179,13 @@ export class TransferJob extends pulumi.CustomResource {
             inputs["transferSpec"] = state ? state.transferSpec : undefined;
         } else {
             const args = argsOrState as TransferJobArgs | undefined;
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.schedule === undefined) {
+            if ((!args || args.schedule === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'schedule'");
             }
-            if (!args || args.transferSpec === undefined) {
+            if ((!args || args.transferSpec === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'transferSpec'");
             }
             inputs["description"] = args ? args.description : undefined;

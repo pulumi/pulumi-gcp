@@ -338,10 +338,10 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as PatchDeploymentArgs | undefined;
-            if (!args || args.instanceFilter === undefined) {
+            if ((!args || args.instanceFilter === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceFilter'");
             }
-            if (!args || args.patchDeploymentId === undefined) {
+            if ((!args || args.patchDeploymentId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'patchDeploymentId'");
             }
             inputs["description"] = args ? args.description : undefined;

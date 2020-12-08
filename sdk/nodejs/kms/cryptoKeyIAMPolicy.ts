@@ -201,10 +201,10 @@ export class CryptoKeyIAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as CryptoKeyIAMPolicyArgs | undefined;
-            if (!args || args.cryptoKeyId === undefined) {
+            if ((!args || args.cryptoKeyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cryptoKeyId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;

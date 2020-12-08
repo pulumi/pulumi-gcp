@@ -152,14 +152,15 @@ type ClusterIAMPolicy struct {
 // NewClusterIAMPolicy registers a new resource with the given unique name, arguments, and options.
 func NewClusterIAMPolicy(ctx *pulumi.Context,
 	name string, args *ClusterIAMPolicyArgs, opts ...pulumi.ResourceOption) (*ClusterIAMPolicy, error) {
-	if args == nil || args.Cluster == nil {
-		return nil, errors.New("missing required argument 'Cluster'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &ClusterIAMPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Cluster == nil {
+		return nil, errors.New("invalid value for required argument 'Cluster'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource ClusterIAMPolicy
 	err := ctx.RegisterResource("gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy", name, args, &resource, opts...)

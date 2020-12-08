@@ -183,7 +183,7 @@ export class Note extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as NoteArgs | undefined;
-            if (!args || args.attestationAuthority === undefined) {
+            if ((!args || args.attestationAuthority === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'attestationAuthority'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;

@@ -64,7 +64,7 @@ class Service(pulumi.CustomResource):
             __props__['openapi_config'] = openapi_config
             __props__['project'] = project
             __props__['protoc_output_base64'] = protoc_output_base64
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
             __props__['apis'] = None

@@ -184,13 +184,13 @@ export class Agent extends pulumi.CustomResource {
             inputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as AgentArgs | undefined;
-            if (!args || args.defaultLanguageCode === undefined) {
+            if ((!args || args.defaultLanguageCode === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'defaultLanguageCode'");
             }
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.timeZone === undefined) {
+            if ((!args || args.timeZone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timeZone'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;

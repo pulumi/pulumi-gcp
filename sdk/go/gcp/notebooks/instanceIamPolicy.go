@@ -54,14 +54,15 @@ type InstanceIamPolicy struct {
 // NewInstanceIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewInstanceIamPolicy(ctx *pulumi.Context,
 	name string, args *InstanceIamPolicyArgs, opts ...pulumi.ResourceOption) (*InstanceIamPolicy, error) {
-	if args == nil || args.InstanceName == nil {
-		return nil, errors.New("missing required argument 'InstanceName'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &InstanceIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource InstanceIamPolicy
 	err := ctx.RegisterResource("gcp:notebooks/instanceIamPolicy:InstanceIamPolicy", name, args, &resource, opts...)

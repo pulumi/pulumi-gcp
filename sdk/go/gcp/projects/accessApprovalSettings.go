@@ -36,14 +36,15 @@ type AccessApprovalSettings struct {
 // NewAccessApprovalSettings registers a new resource with the given unique name, arguments, and options.
 func NewAccessApprovalSettings(ctx *pulumi.Context,
 	name string, args *AccessApprovalSettingsArgs, opts ...pulumi.ResourceOption) (*AccessApprovalSettings, error) {
-	if args == nil || args.EnrolledServices == nil {
-		return nil, errors.New("missing required argument 'EnrolledServices'")
-	}
-	if args == nil || args.ProjectId == nil {
-		return nil, errors.New("missing required argument 'ProjectId'")
-	}
 	if args == nil {
-		args = &AccessApprovalSettingsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EnrolledServices == nil {
+		return nil, errors.New("invalid value for required argument 'EnrolledServices'")
+	}
+	if args.ProjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
 	var resource AccessApprovalSettings
 	err := ctx.RegisterResource("gcp:projects/accessApprovalSettings:AccessApprovalSettings", name, args, &resource, opts...)

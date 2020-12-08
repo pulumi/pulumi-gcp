@@ -224,7 +224,7 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as FhirStoreArgs | undefined;
-            if (!args || args.dataset === undefined) {
+            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataset'");
             }
             inputs["dataset"] = args ? args.dataset : undefined;

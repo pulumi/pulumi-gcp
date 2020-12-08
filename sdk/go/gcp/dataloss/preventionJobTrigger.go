@@ -114,14 +114,15 @@ type PreventionJobTrigger struct {
 // NewPreventionJobTrigger registers a new resource with the given unique name, arguments, and options.
 func NewPreventionJobTrigger(ctx *pulumi.Context,
 	name string, args *PreventionJobTriggerArgs, opts ...pulumi.ResourceOption) (*PreventionJobTrigger, error) {
-	if args == nil || args.Parent == nil {
-		return nil, errors.New("missing required argument 'Parent'")
-	}
-	if args == nil || args.Triggers == nil {
-		return nil, errors.New("missing required argument 'Triggers'")
-	}
 	if args == nil {
-		args = &PreventionJobTriggerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
+	if args.Triggers == nil {
+		return nil, errors.New("invalid value for required argument 'Triggers'")
 	}
 	var resource PreventionJobTrigger
 	err := ctx.RegisterResource("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger", name, args, &resource, opts...)

@@ -72,6 +72,7 @@ func NewConfig(ctx *pulumi.Context,
 	if args == nil {
 		args = &ConfigArgs{}
 	}
+
 	var resource Config
 	err := ctx.RegisterResource("gcp:runtimeconfig/config:Config", name, args, &resource, opts...)
 	if err != nil {

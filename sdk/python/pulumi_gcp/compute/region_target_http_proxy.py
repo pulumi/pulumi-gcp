@@ -144,7 +144,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
-            if url_map is None:
+            if url_map is None and not opts.urn:
                 raise TypeError("Missing required property 'url_map'")
             __props__['url_map'] = url_map
             __props__['creation_timestamp'] = None

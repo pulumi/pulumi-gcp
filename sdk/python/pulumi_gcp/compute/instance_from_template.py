@@ -171,7 +171,7 @@ class InstanceFromTemplate(pulumi.CustomResource):
             __props__['scratch_disks'] = scratch_disks
             __props__['service_account'] = service_account
             __props__['shielded_instance_config'] = shielded_instance_config
-            if source_instance_template is None:
+            if source_instance_template is None and not opts.urn:
                 raise TypeError("Missing required property 'source_instance_template'")
             __props__['source_instance_template'] = source_instance_template
             __props__['tags'] = tags

@@ -22,14 +22,15 @@ type IAMPolicy struct {
 // NewIAMPolicy registers a new resource with the given unique name, arguments, and options.
 func NewIAMPolicy(ctx *pulumi.Context,
 	name string, args *IAMPolicyArgs, opts ...pulumi.ResourceOption) (*IAMPolicy, error) {
-	if args == nil || args.Folder == nil {
-		return nil, errors.New("missing required argument 'Folder'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &IAMPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Folder == nil {
+		return nil, errors.New("invalid value for required argument 'Folder'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource IAMPolicy
 	err := ctx.RegisterResource("gcp:folder/iAMPolicy:IAMPolicy", name, args, &resource, opts...)

@@ -237,14 +237,14 @@ class InstanceTemplate(pulumi.CustomResource):
             __props__['can_ip_forward'] = can_ip_forward
             __props__['confidential_instance_config'] = confidential_instance_config
             __props__['description'] = description
-            if disks is None:
+            if disks is None and not opts.urn:
                 raise TypeError("Missing required property 'disks'")
             __props__['disks'] = disks
             __props__['enable_display'] = enable_display
             __props__['guest_accelerators'] = guest_accelerators
             __props__['instance_description'] = instance_description
             __props__['labels'] = labels
-            if machine_type is None:
+            if machine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'machine_type'")
             __props__['machine_type'] = machine_type
             __props__['metadata'] = metadata

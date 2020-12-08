@@ -115,6 +115,7 @@ func NewGlobalAddress(ctx *pulumi.Context,
 	if args == nil {
 		args = &GlobalAddressArgs{}
 	}
+
 	var resource GlobalAddress
 	err := ctx.RegisterResource("gcp:compute/globalAddress:GlobalAddress", name, args, &resource, opts...)
 	if err != nil {

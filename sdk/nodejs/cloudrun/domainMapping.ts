@@ -140,13 +140,13 @@ export class DomainMapping extends pulumi.CustomResource {
             inputs["statuses"] = state ? state.statuses : undefined;
         } else {
             const args = argsOrState as DomainMappingArgs | undefined;
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
-            if (!args || args.metadata === undefined) {
+            if ((!args || args.metadata === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metadata'");
             }
-            if (!args || args.spec === undefined) {
+            if ((!args || args.spec === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'spec'");
             }
             inputs["location"] = args ? args.location : undefined;

@@ -179,13 +179,13 @@ class ServicePerimeter(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['perimeter_type'] = perimeter_type
             __props__['spec'] = spec
             __props__['status'] = status
-            if title is None:
+            if title is None and not opts.urn:
                 raise TypeError("Missing required property 'title'")
             __props__['title'] = title
             __props__['use_explicit_dry_run_spec'] = use_explicit_dry_run_spec

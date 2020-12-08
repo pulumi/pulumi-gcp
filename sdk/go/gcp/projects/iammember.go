@@ -319,14 +319,15 @@ type IAMMember struct {
 // NewIAMMember registers a new resource with the given unique name, arguments, and options.
 func NewIAMMember(ctx *pulumi.Context,
 	name string, args *IAMMemberArgs, opts ...pulumi.ResourceOption) (*IAMMember, error) {
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &IAMMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource IAMMember
 	err := ctx.RegisterResource("gcp:projects/iAMMember:IAMMember", name, args, &resource, opts...)

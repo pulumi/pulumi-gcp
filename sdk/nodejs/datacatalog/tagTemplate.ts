@@ -155,10 +155,10 @@ export class TagTemplate extends pulumi.CustomResource {
             inputs["tagTemplateId"] = state ? state.tagTemplateId : undefined;
         } else {
             const args = argsOrState as TagTemplateArgs | undefined;
-            if (!args || args.fields === undefined) {
+            if ((!args || args.fields === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fields'");
             }
-            if (!args || args.tagTemplateId === undefined) {
+            if ((!args || args.tagTemplateId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tagTemplateId'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;

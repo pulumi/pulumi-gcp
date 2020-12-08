@@ -430,6 +430,7 @@ func NewRegionBackendService(ctx *pulumi.Context,
 	if args == nil {
 		args = &RegionBackendServiceArgs{}
 	}
+
 	var resource RegionBackendService
 	err := ctx.RegisterResource("gcp:compute/regionBackendService:RegionBackendService", name, args, &resource, opts...)
 	if err != nil {

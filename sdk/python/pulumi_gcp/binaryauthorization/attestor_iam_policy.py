@@ -123,10 +123,10 @@ class AttestorIamPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if attestor is None:
+            if attestor is None and not opts.urn:
                 raise TypeError("Missing required property 'attestor'")
             __props__['attestor'] = attestor
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
             __props__['project'] = project

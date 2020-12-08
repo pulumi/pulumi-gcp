@@ -187,11 +187,12 @@ type RegionDisk struct {
 // NewRegionDisk registers a new resource with the given unique name, arguments, and options.
 func NewRegionDisk(ctx *pulumi.Context,
 	name string, args *RegionDiskArgs, opts ...pulumi.ResourceOption) (*RegionDisk, error) {
-	if args == nil || args.ReplicaZones == nil {
-		return nil, errors.New("missing required argument 'ReplicaZones'")
-	}
 	if args == nil {
-		args = &RegionDiskArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ReplicaZones == nil {
+		return nil, errors.New("invalid value for required argument 'ReplicaZones'")
 	}
 	var resource RegionDisk
 	err := ctx.RegisterResource("gcp:compute/regionDisk:RegionDisk", name, args, &resource, opts...)

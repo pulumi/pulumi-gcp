@@ -35,14 +35,15 @@ type AccessApprovalSettings struct {
 // NewAccessApprovalSettings registers a new resource with the given unique name, arguments, and options.
 func NewAccessApprovalSettings(ctx *pulumi.Context,
 	name string, args *AccessApprovalSettingsArgs, opts ...pulumi.ResourceOption) (*AccessApprovalSettings, error) {
-	if args == nil || args.EnrolledServices == nil {
-		return nil, errors.New("missing required argument 'EnrolledServices'")
-	}
-	if args == nil || args.FolderId == nil {
-		return nil, errors.New("missing required argument 'FolderId'")
-	}
 	if args == nil {
-		args = &AccessApprovalSettingsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EnrolledServices == nil {
+		return nil, errors.New("invalid value for required argument 'EnrolledServices'")
+	}
+	if args.FolderId == nil {
+		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
 	var resource AccessApprovalSettings
 	err := ctx.RegisterResource("gcp:folder/accessApprovalSettings:AccessApprovalSettings", name, args, &resource, opts...)

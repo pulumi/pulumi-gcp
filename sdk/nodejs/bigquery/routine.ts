@@ -170,13 +170,13 @@ export class Routine extends pulumi.CustomResource {
             inputs["routineType"] = state ? state.routineType : undefined;
         } else {
             const args = argsOrState as RoutineArgs | undefined;
-            if (!args || args.datasetId === undefined) {
+            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if (!args || args.definitionBody === undefined) {
+            if ((!args || args.definitionBody === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'definitionBody'");
             }
-            if (!args || args.routineId === undefined) {
+            if ((!args || args.routineId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'routineId'");
             }
             inputs["arguments"] = args ? args.arguments : undefined;

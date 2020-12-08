@@ -157,17 +157,18 @@ type SecretIamBinding struct {
 // NewSecretIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewSecretIamBinding(ctx *pulumi.Context,
 	name string, args *SecretIamBindingArgs, opts ...pulumi.ResourceOption) (*SecretIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.SecretId == nil {
-		return nil, errors.New("missing required argument 'SecretId'")
-	}
 	if args == nil {
-		args = &SecretIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.SecretId == nil {
+		return nil, errors.New("invalid value for required argument 'SecretId'")
 	}
 	var resource SecretIamBinding
 	err := ctx.RegisterResource("gcp:secretmanager/secretIamBinding:SecretIamBinding", name, args, &resource, opts...)

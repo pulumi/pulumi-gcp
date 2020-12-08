@@ -139,16 +139,16 @@ export class TenantInboundSamlConfig extends pulumi.CustomResource {
             inputs["tenant"] = state ? state.tenant : undefined;
         } else {
             const args = argsOrState as TenantInboundSamlConfigArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.idpConfig === undefined) {
+            if ((!args || args.idpConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'idpConfig'");
             }
-            if (!args || args.spConfig === undefined) {
+            if ((!args || args.spConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'spConfig'");
             }
-            if (!args || args.tenant === undefined) {
+            if ((!args || args.tenant === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tenant'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;

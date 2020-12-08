@@ -264,14 +264,15 @@ type Autoscaler struct {
 // NewAutoscaler registers a new resource with the given unique name, arguments, and options.
 func NewAutoscaler(ctx *pulumi.Context,
 	name string, args *AutoscalerArgs, opts ...pulumi.ResourceOption) (*Autoscaler, error) {
-	if args == nil || args.AutoscalingPolicy == nil {
-		return nil, errors.New("missing required argument 'AutoscalingPolicy'")
-	}
-	if args == nil || args.Target == nil {
-		return nil, errors.New("missing required argument 'Target'")
-	}
 	if args == nil {
-		args = &AutoscalerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutoscalingPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'AutoscalingPolicy'")
+	}
+	if args.Target == nil {
+		return nil, errors.New("invalid value for required argument 'Target'")
 	}
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{

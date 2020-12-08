@@ -147,10 +147,10 @@ export class DicomStoreIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as DicomStoreIamPolicyArgs | undefined;
-            if (!args || args.dicomStoreId === undefined) {
+            if ((!args || args.dicomStoreId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dicomStoreId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;

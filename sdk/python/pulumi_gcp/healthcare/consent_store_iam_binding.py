@@ -78,16 +78,16 @@ class ConsentStoreIamBinding(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if consent_store_id is None:
+            if consent_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_store_id'")
             __props__['consent_store_id'] = consent_store_id
-            if dataset is None:
+            if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__['dataset'] = dataset
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

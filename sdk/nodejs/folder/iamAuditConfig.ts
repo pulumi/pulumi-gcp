@@ -65,13 +65,13 @@ export class IamAuditConfig extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as IamAuditConfigArgs | undefined;
-            if (!args || args.auditLogConfigs === undefined) {
+            if ((!args || args.auditLogConfigs === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'auditLogConfigs'");
             }
-            if (!args || args.folder === undefined) {
+            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'folder'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["auditLogConfigs"] = args ? args.auditLogConfigs : undefined;

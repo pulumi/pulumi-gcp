@@ -114,13 +114,13 @@ export class OrganizationBucketConfig extends pulumi.CustomResource {
             inputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as OrganizationBucketConfigArgs | undefined;
-            if (!args || args.bucketId === undefined) {
+            if ((!args || args.bucketId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
-            if (!args || args.organization === undefined) {
+            if ((!args || args.organization === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'organization'");
             }
             inputs["bucketId"] = args ? args.bucketId : undefined;

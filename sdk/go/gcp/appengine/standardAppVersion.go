@@ -196,17 +196,18 @@ type StandardAppVersion struct {
 // NewStandardAppVersion registers a new resource with the given unique name, arguments, and options.
 func NewStandardAppVersion(ctx *pulumi.Context,
 	name string, args *StandardAppVersionArgs, opts ...pulumi.ResourceOption) (*StandardAppVersion, error) {
-	if args == nil || args.Deployment == nil {
-		return nil, errors.New("missing required argument 'Deployment'")
-	}
-	if args == nil || args.Runtime == nil {
-		return nil, errors.New("missing required argument 'Runtime'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &StandardAppVersionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Deployment == nil {
+		return nil, errors.New("invalid value for required argument 'Deployment'")
+	}
+	if args.Runtime == nil {
+		return nil, errors.New("invalid value for required argument 'Runtime'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource StandardAppVersion
 	err := ctx.RegisterResource("gcp:appengine/standardAppVersion:StandardAppVersion", name, args, &resource, opts...)

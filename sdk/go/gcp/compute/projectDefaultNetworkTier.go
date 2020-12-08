@@ -62,11 +62,12 @@ type ProjectDefaultNetworkTier struct {
 // NewProjectDefaultNetworkTier registers a new resource with the given unique name, arguments, and options.
 func NewProjectDefaultNetworkTier(ctx *pulumi.Context,
 	name string, args *ProjectDefaultNetworkTierArgs, opts ...pulumi.ResourceOption) (*ProjectDefaultNetworkTier, error) {
-	if args == nil || args.NetworkTier == nil {
-		return nil, errors.New("missing required argument 'NetworkTier'")
-	}
 	if args == nil {
-		args = &ProjectDefaultNetworkTierArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NetworkTier == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkTier'")
 	}
 	var resource ProjectDefaultNetworkTier
 	err := ctx.RegisterResource("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier", name, args, &resource, opts...)

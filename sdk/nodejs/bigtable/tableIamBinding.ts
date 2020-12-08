@@ -155,16 +155,16 @@ export class TableIamBinding extends pulumi.CustomResource {
             inputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as TableIamBindingArgs | undefined;
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.table === undefined) {
+            if ((!args || args.table === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'table'");
             }
             inputs["condition"] = args ? args.condition : undefined;

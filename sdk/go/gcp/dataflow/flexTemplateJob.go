@@ -96,11 +96,12 @@ type FlexTemplateJob struct {
 // NewFlexTemplateJob registers a new resource with the given unique name, arguments, and options.
 func NewFlexTemplateJob(ctx *pulumi.Context,
 	name string, args *FlexTemplateJobArgs, opts ...pulumi.ResourceOption) (*FlexTemplateJob, error) {
-	if args == nil || args.ContainerSpecGcsPath == nil {
-		return nil, errors.New("missing required argument 'ContainerSpecGcsPath'")
-	}
 	if args == nil {
-		args = &FlexTemplateJobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ContainerSpecGcsPath == nil {
+		return nil, errors.New("invalid value for required argument 'ContainerSpecGcsPath'")
 	}
 	var resource FlexTemplateJob
 	err := ctx.RegisterResource("gcp:dataflow/flexTemplateJob:FlexTemplateJob", name, args, &resource, opts...)

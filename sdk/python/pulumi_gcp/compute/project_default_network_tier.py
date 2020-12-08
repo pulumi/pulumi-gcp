@@ -69,7 +69,7 @@ class ProjectDefaultNetworkTier(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if network_tier is None:
+            if network_tier is None and not opts.urn:
                 raise TypeError("Missing required property 'network_tier'")
             __props__['network_tier'] = network_tier
             __props__['project'] = project

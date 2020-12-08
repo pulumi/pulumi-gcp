@@ -221,13 +221,13 @@ export class ImageIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ImageIamMemberArgs | undefined;
-            if (!args || args.image === undefined) {
+            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'image'");
             }
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;

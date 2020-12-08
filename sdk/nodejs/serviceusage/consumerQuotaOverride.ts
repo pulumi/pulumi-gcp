@@ -141,16 +141,16 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ConsumerQuotaOverrideArgs | undefined;
-            if (!args || args.limit === undefined) {
+            if ((!args || args.limit === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'limit'");
             }
-            if (!args || args.metric === undefined) {
+            if ((!args || args.metric === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metric'");
             }
-            if (!args || args.overrideValue === undefined) {
+            if ((!args || args.overrideValue === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'overrideValue'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["dimensions"] = args ? args.dimensions : undefined;

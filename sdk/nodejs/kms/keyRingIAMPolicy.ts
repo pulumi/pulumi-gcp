@@ -208,10 +208,10 @@ export class KeyRingIAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as KeyRingIAMPolicyArgs | undefined;
-            if (!args || args.keyRingId === undefined) {
+            if ((!args || args.keyRingId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["keyRingId"] = args ? args.keyRingId : undefined;

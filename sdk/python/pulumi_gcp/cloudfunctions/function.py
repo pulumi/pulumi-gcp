@@ -184,7 +184,7 @@ class Function(pulumi.CustomResource):
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
-            if runtime is None:
+            if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
             __props__['service_account_email'] = service_account_email

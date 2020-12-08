@@ -96,7 +96,7 @@ class User(pulumi.CustomResource):
 
             __props__['deletion_policy'] = deletion_policy
             __props__['host'] = host
-            if instance is None:
+            if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
             __props__['name'] = name

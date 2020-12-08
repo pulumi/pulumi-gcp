@@ -80,14 +80,15 @@ type ProjectFeed struct {
 // NewProjectFeed registers a new resource with the given unique name, arguments, and options.
 func NewProjectFeed(ctx *pulumi.Context,
 	name string, args *ProjectFeedArgs, opts ...pulumi.ResourceOption) (*ProjectFeed, error) {
-	if args == nil || args.FeedId == nil {
-		return nil, errors.New("missing required argument 'FeedId'")
-	}
-	if args == nil || args.FeedOutputConfig == nil {
-		return nil, errors.New("missing required argument 'FeedOutputConfig'")
-	}
 	if args == nil {
-		args = &ProjectFeedArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FeedId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedId'")
+	}
+	if args.FeedOutputConfig == nil {
+		return nil, errors.New("invalid value for required argument 'FeedOutputConfig'")
 	}
 	var resource ProjectFeed
 	err := ctx.RegisterResource("gcp:cloudasset/projectFeed:ProjectFeed", name, args, &resource, opts...)

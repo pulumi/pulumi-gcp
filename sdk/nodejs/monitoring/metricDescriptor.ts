@@ -205,19 +205,19 @@ export class MetricDescriptor extends pulumi.CustomResource {
             inputs["valueType"] = state ? state.valueType : undefined;
         } else {
             const args = argsOrState as MetricDescriptorArgs | undefined;
-            if (!args || args.description === undefined) {
+            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'description'");
             }
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.metricKind === undefined) {
+            if ((!args || args.metricKind === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'metricKind'");
             }
-            if (!args || args.type === undefined) {
+            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'type'");
             }
-            if (!args || args.valueType === undefined) {
+            if ((!args || args.valueType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'valueType'");
             }
             inputs["description"] = args ? args.description : undefined;

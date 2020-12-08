@@ -109,7 +109,7 @@ export class UsageExportBucket extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as UsageExportBucketArgs | undefined;
-            if (!args || args.bucketName === undefined) {
+            if ((!args || args.bucketName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucketName'");
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;

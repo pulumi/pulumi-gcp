@@ -155,17 +155,18 @@ type JobIAMBinding struct {
 // NewJobIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewJobIAMBinding(ctx *pulumi.Context,
 	name string, args *JobIAMBindingArgs, opts ...pulumi.ResourceOption) (*JobIAMBinding, error) {
-	if args == nil || args.JobId == nil {
-		return nil, errors.New("missing required argument 'JobId'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &JobIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.JobId == nil {
+		return nil, errors.New("invalid value for required argument 'JobId'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource JobIAMBinding
 	err := ctx.RegisterResource("gcp:dataproc/jobIAMBinding:JobIAMBinding", name, args, &resource, opts...)

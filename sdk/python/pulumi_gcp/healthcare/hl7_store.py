@@ -61,7 +61,7 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=ResourceOptions(provider=google_beta))
+        opts=pulumi.ResourceOptions(provider=google_beta))
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
             parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
@@ -147,7 +147,7 @@ class Hl7Store(pulumi.CustomResource):
         }
         \"\"\",
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Healthcare Hl7 V2 Store Unschematized
 
@@ -156,7 +156,7 @@ class Hl7Store(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=ResourceOptions(provider=google_beta))
+        opts=pulumi.ResourceOptions(provider=google_beta))
         store = gcp.healthcare.Hl7Store("store",
             dataset=dataset.id,
             parser_config=gcp.healthcare.Hl7StoreParserConfigArgs(
@@ -164,7 +164,7 @@ class Hl7Store(pulumi.CustomResource):
                 segment_terminator="Jw==",
                 version="V2",
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -221,12 +221,12 @@ class Hl7Store(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dataset is None:
+            if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__['dataset'] = dataset
             __props__['labels'] = labels
             __props__['name'] = name
-            if notification_config is not None:
+            if notification_config is not None and not opts.urn:
                 warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
                 pulumi.log.warn("notification_config is deprecated: This field has been replaced by notificationConfigs")
             __props__['notification_config'] = notification_config

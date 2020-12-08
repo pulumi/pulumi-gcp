@@ -104,10 +104,10 @@ export class Brand extends pulumi.CustomResource {
             inputs["supportEmail"] = state ? state.supportEmail : undefined;
         } else {
             const args = argsOrState as BrandArgs | undefined;
-            if (!args || args.applicationTitle === undefined) {
+            if ((!args || args.applicationTitle === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationTitle'");
             }
-            if (!args || args.supportEmail === undefined) {
+            if ((!args || args.supportEmail === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'supportEmail'");
             }
             inputs["applicationTitle"] = args ? args.applicationTitle : undefined;

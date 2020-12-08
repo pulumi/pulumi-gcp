@@ -140,10 +140,10 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if (!args || args.endpointId === undefined) {
+            if ((!args || args.endpointId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["address"] = args ? args.address : undefined;

@@ -258,14 +258,15 @@ type WebIamBinding struct {
 // NewWebIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewWebIamBinding(ctx *pulumi.Context,
 	name string, args *WebIamBindingArgs, opts ...pulumi.ResourceOption) (*WebIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &WebIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource WebIamBinding
 	err := ctx.RegisterResource("gcp:iap/webIamBinding:WebIamBinding", name, args, &resource, opts...)

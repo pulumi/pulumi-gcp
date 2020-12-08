@@ -56,20 +56,21 @@ type ConsentStoreIamMember struct {
 // NewConsentStoreIamMember registers a new resource with the given unique name, arguments, and options.
 func NewConsentStoreIamMember(ctx *pulumi.Context,
 	name string, args *ConsentStoreIamMemberArgs, opts ...pulumi.ResourceOption) (*ConsentStoreIamMember, error) {
-	if args == nil || args.ConsentStoreId == nil {
-		return nil, errors.New("missing required argument 'ConsentStoreId'")
-	}
-	if args == nil || args.Dataset == nil {
-		return nil, errors.New("missing required argument 'Dataset'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ConsentStoreIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConsentStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
+	}
+	if args.Dataset == nil {
+		return nil, errors.New("invalid value for required argument 'Dataset'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ConsentStoreIamMember
 	err := ctx.RegisterResource("gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember", name, args, &resource, opts...)

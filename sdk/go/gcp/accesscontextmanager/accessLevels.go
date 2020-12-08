@@ -133,11 +133,12 @@ type AccessLevels struct {
 // NewAccessLevels registers a new resource with the given unique name, arguments, and options.
 func NewAccessLevels(ctx *pulumi.Context,
 	name string, args *AccessLevelsArgs, opts ...pulumi.ResourceOption) (*AccessLevels, error) {
-	if args == nil || args.Parent == nil {
-		return nil, errors.New("missing required argument 'Parent'")
-	}
 	if args == nil {
-		args = &AccessLevelsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	var resource AccessLevels
 	err := ctx.RegisterResource("gcp:accesscontextmanager/accessLevels:AccessLevels", name, args, &resource, opts...)

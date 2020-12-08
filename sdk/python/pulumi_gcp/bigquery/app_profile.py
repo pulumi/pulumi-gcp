@@ -126,7 +126,7 @@ class AppProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if app_profile_id is None:
+            if app_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_profile_id'")
             __props__['app_profile_id'] = app_profile_id
             __props__['description'] = description

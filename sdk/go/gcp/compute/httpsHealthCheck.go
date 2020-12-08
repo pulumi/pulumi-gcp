@@ -118,6 +118,7 @@ func NewHttpsHealthCheck(ctx *pulumi.Context,
 	if args == nil {
 		args = &HttpsHealthCheckArgs{}
 	}
+
 	var resource HttpsHealthCheck
 	err := ctx.RegisterResource("gcp:compute/httpsHealthCheck:HttpsHealthCheck", name, args, &resource, opts...)
 	if err != nil {

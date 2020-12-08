@@ -105,7 +105,7 @@ class Database(pulumi.CustomResource):
 
             __props__['charset'] = charset
             __props__['collation'] = collation
-            if instance is None:
+            if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
             __props__['instance'] = instance
             __props__['name'] = name

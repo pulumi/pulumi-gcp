@@ -67,7 +67,7 @@ class NodeTemplate(pulumi.CustomResource):
             server_binding=gcp.compute.NodeTemplateServerBindingArgs(
                 type="RESTART_NODE_ON_MINIMAL_SERVERS",
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import

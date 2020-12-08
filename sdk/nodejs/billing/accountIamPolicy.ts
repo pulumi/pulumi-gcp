@@ -53,10 +53,10 @@ export class AccountIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as AccountIamPolicyArgs | undefined;
-            if (!args || args.billingAccountId === undefined) {
+            if ((!args || args.billingAccountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;

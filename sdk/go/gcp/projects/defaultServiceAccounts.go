@@ -86,14 +86,15 @@ type DefaultServiceAccounts struct {
 // NewDefaultServiceAccounts registers a new resource with the given unique name, arguments, and options.
 func NewDefaultServiceAccounts(ctx *pulumi.Context,
 	name string, args *DefaultServiceAccountsArgs, opts ...pulumi.ResourceOption) (*DefaultServiceAccounts, error) {
-	if args == nil || args.Action == nil {
-		return nil, errors.New("missing required argument 'Action'")
-	}
-	if args == nil || args.Project == nil {
-		return nil, errors.New("missing required argument 'Project'")
-	}
 	if args == nil {
-		args = &DefaultServiceAccountsArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DefaultServiceAccounts
 	err := ctx.RegisterResource("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts", name, args, &resource, opts...)

@@ -127,17 +127,18 @@ type Agent struct {
 // NewAgent registers a new resource with the given unique name, arguments, and options.
 func NewAgent(ctx *pulumi.Context,
 	name string, args *AgentArgs, opts ...pulumi.ResourceOption) (*Agent, error) {
-	if args == nil || args.DefaultLanguageCode == nil {
-		return nil, errors.New("missing required argument 'DefaultLanguageCode'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.TimeZone == nil {
-		return nil, errors.New("missing required argument 'TimeZone'")
-	}
 	if args == nil {
-		args = &AgentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DefaultLanguageCode == nil {
+		return nil, errors.New("invalid value for required argument 'DefaultLanguageCode'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.TimeZone == nil {
+		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
 	var resource Agent
 	err := ctx.RegisterResource("gcp:diagflow/agent:Agent", name, args, &resource, opts...)

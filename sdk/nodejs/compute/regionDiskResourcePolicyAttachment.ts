@@ -143,7 +143,7 @@ export class RegionDiskResourcePolicyAttachment extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as RegionDiskResourcePolicyAttachmentArgs | undefined;
-            if (!args || args.disk === undefined) {
+            if ((!args || args.disk === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'disk'");
             }
             inputs["disk"] = args ? args.disk : undefined;

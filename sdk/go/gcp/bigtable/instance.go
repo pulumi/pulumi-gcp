@@ -97,6 +97,7 @@ func NewInstance(ctx *pulumi.Context,
 	if args == nil {
 		args = &InstanceArgs{}
 	}
+
 	var resource Instance
 	err := ctx.RegisterResource("gcp:bigtable/instance:Instance", name, args, &resource, opts...)
 	if err != nil {

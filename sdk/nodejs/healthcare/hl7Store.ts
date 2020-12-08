@@ -261,7 +261,7 @@ export class Hl7Store extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as Hl7StoreArgs | undefined;
-            if (!args || args.dataset === undefined) {
+            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataset'");
             }
             inputs["dataset"] = args ? args.dataset : undefined;

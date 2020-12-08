@@ -109,7 +109,7 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             inputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
         } else {
             const args = argsOrState as WorkloadIdentityPoolArgs | undefined;
-            if (!args || args.workloadIdentityPoolId === undefined) {
+            if ((!args || args.workloadIdentityPoolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
             inputs["description"] = args ? args.description : undefined;

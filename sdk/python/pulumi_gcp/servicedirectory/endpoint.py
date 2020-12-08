@@ -42,11 +42,11 @@ class Endpoint(pulumi.CustomResource):
         example_namespace = gcp.servicedirectory.Namespace("exampleNamespace",
             namespace_id="example-namespace",
             location="us-central1",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         example_service = gcp.servicedirectory.Service("exampleService",
             service_id="example-service",
             namespace=example_namespace.id,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         example_endpoint = gcp.servicedirectory.Endpoint("exampleEndpoint",
             endpoint_id="example-endpoint",
             service=example_service.id,
@@ -56,7 +56,7 @@ class Endpoint(pulumi.CustomResource):
             },
             address="1.2.3.4",
             port=5353,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -106,12 +106,12 @@ class Endpoint(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['address'] = address
-            if endpoint_id is None:
+            if endpoint_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_id'")
             __props__['endpoint_id'] = endpoint_id
             __props__['metadata'] = metadata
             __props__['port'] = port
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['name'] = None

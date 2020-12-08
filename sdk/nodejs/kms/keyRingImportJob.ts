@@ -125,16 +125,16 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as KeyRingImportJobArgs | undefined;
-            if (!args || args.importJobId === undefined) {
+            if ((!args || args.importJobId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'importJobId'");
             }
-            if (!args || args.importMethod === undefined) {
+            if ((!args || args.importMethod === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'importMethod'");
             }
-            if (!args || args.keyRing === undefined) {
+            if ((!args || args.keyRing === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyRing'");
             }
-            if (!args || args.protectionLevel === undefined) {
+            if ((!args || args.protectionLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'protectionLevel'");
             }
             inputs["importJobId"] = args ? args.importJobId : undefined;

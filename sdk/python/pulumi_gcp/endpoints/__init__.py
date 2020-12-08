@@ -9,3 +9,35 @@ from .service_iam_member import *
 from .service_iam_policy import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:endpoints/service:Service":
+                return Service(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:endpoints/serviceIamBinding:ServiceIamBinding":
+                return ServiceIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:endpoints/serviceIamMember:ServiceIamMember":
+                return ServiceIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:endpoints/serviceIamPolicy:ServiceIamPolicy":
+                return ServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "endpoints/service", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "endpoints/serviceIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "endpoints/serviceIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "endpoints/serviceIamPolicy", _module_instance)
+
+_register_module()

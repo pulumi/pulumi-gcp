@@ -176,10 +176,10 @@ class IAMPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
-            if service_account_id is None:
+            if service_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_id'")
             __props__['service_account_id'] = service_account_id
             __props__['etag'] = None

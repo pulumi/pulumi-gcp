@@ -209,10 +209,10 @@ export class IAMPolicy extends pulumi.CustomResource {
             inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
         } else {
             const args = argsOrState as IAMPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.serviceAccountId === undefined) {
+            if ((!args || args.serviceAccountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

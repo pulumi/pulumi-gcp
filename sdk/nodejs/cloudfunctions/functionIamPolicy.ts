@@ -161,10 +161,10 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FunctionIamPolicyArgs | undefined;
-            if (!args || args.cloudFunction === undefined) {
+            if ((!args || args.cloudFunction === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cloudFunction'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;

@@ -59,14 +59,15 @@ type Brand struct {
 // NewBrand registers a new resource with the given unique name, arguments, and options.
 func NewBrand(ctx *pulumi.Context,
 	name string, args *BrandArgs, opts ...pulumi.ResourceOption) (*Brand, error) {
-	if args == nil || args.ApplicationTitle == nil {
-		return nil, errors.New("missing required argument 'ApplicationTitle'")
-	}
-	if args == nil || args.SupportEmail == nil {
-		return nil, errors.New("missing required argument 'SupportEmail'")
-	}
 	if args == nil {
-		args = &BrandArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationTitle == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationTitle'")
+	}
+	if args.SupportEmail == nil {
+		return nil, errors.New("invalid value for required argument 'SupportEmail'")
 	}
 	var resource Brand
 	err := ctx.RegisterResource("gcp:iap/brand:Brand", name, args, &resource, opts...)

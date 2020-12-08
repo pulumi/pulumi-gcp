@@ -156,17 +156,18 @@ type EntryGroupIamBinding struct {
 // NewEntryGroupIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewEntryGroupIamBinding(ctx *pulumi.Context,
 	name string, args *EntryGroupIamBindingArgs, opts ...pulumi.ResourceOption) (*EntryGroupIamBinding, error) {
-	if args == nil || args.EntryGroup == nil {
-		return nil, errors.New("missing required argument 'EntryGroup'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &EntryGroupIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.EntryGroup == nil {
+		return nil, errors.New("invalid value for required argument 'EntryGroup'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource EntryGroupIamBinding
 	err := ctx.RegisterResource("gcp:datacatalog/entryGroupIamBinding:EntryGroupIamBinding", name, args, &resource, opts...)

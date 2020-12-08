@@ -193,11 +193,12 @@ type Connection struct {
 // NewConnection registers a new resource with the given unique name, arguments, and options.
 func NewConnection(ctx *pulumi.Context,
 	name string, args *ConnectionArgs, opts ...pulumi.ResourceOption) (*Connection, error) {
-	if args == nil || args.CloudSql == nil {
-		return nil, errors.New("missing required argument 'CloudSql'")
-	}
 	if args == nil {
-		args = &ConnectionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CloudSql == nil {
+		return nil, errors.New("invalid value for required argument 'CloudSql'")
 	}
 	var resource Connection
 	err := ctx.RegisterResource("gcp:bigquery/connection:Connection", name, args, &resource, opts...)

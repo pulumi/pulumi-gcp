@@ -237,10 +237,10 @@ export class ConnectivityTest extends pulumi.CustomResource {
             inputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as ConnectivityTestArgs | undefined;
-            if (!args || args.destination === undefined) {
+            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destination'");
             }
-            if (!args || args.source === undefined) {
+            if ((!args || args.source === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'source'");
             }
             inputs["description"] = args ? args.description : undefined;

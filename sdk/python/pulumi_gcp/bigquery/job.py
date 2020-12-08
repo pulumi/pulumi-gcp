@@ -253,7 +253,7 @@ class Job(pulumi.CustomResource):
 
             __props__['copy'] = copy
             __props__['extract'] = extract
-            if job_id is None:
+            if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
             __props__['job_id'] = job_id
             __props__['job_timeout_ms'] = job_timeout_ms

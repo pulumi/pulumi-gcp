@@ -158,17 +158,18 @@ type ConfigIamBinding struct {
 // NewConfigIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewConfigIamBinding(ctx *pulumi.Context,
 	name string, args *ConfigIamBindingArgs, opts ...pulumi.ResourceOption) (*ConfigIamBinding, error) {
-	if args == nil || args.Config == nil {
-		return nil, errors.New("missing required argument 'Config'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ConfigIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Config == nil {
+		return nil, errors.New("invalid value for required argument 'Config'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ConfigIamBinding
 	err := ctx.RegisterResource("gcp:runtimeconfig/configIamBinding:ConfigIamBinding", name, args, &resource, opts...)

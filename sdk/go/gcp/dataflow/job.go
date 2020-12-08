@@ -157,14 +157,15 @@ type Job struct {
 // NewJob registers a new resource with the given unique name, arguments, and options.
 func NewJob(ctx *pulumi.Context,
 	name string, args *JobArgs, opts ...pulumi.ResourceOption) (*Job, error) {
-	if args == nil || args.TempGcsLocation == nil {
-		return nil, errors.New("missing required argument 'TempGcsLocation'")
-	}
-	if args == nil || args.TemplateGcsPath == nil {
-		return nil, errors.New("missing required argument 'TemplateGcsPath'")
-	}
 	if args == nil {
-		args = &JobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.TempGcsLocation == nil {
+		return nil, errors.New("invalid value for required argument 'TempGcsLocation'")
+	}
+	if args.TemplateGcsPath == nil {
+		return nil, errors.New("invalid value for required argument 'TemplateGcsPath'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("gcp:dataflow/job:Job", name, args, &resource, opts...)

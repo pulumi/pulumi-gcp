@@ -77,11 +77,12 @@ type DefaultObjectACL struct {
 // NewDefaultObjectACL registers a new resource with the given unique name, arguments, and options.
 func NewDefaultObjectACL(ctx *pulumi.Context,
 	name string, args *DefaultObjectACLArgs, opts ...pulumi.ResourceOption) (*DefaultObjectACL, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
 	if args == nil {
-		args = &DefaultObjectACLArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
 	}
 	var resource DefaultObjectACL
 	err := ctx.RegisterResource("gcp:storage/defaultObjectACL:DefaultObjectACL", name, args, &resource, opts...)

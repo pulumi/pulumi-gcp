@@ -131,16 +131,16 @@ export class IAMCustomRole extends pulumi.CustomResource {
             inputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as IAMCustomRoleArgs | undefined;
-            if (!args || args.orgId === undefined) {
+            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if (!args || args.permissions === undefined) {
+            if ((!args || args.permissions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if (!args || args.roleId === undefined) {
+            if ((!args || args.roleId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'roleId'");
             }
-            if (!args || args.title === undefined) {
+            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["description"] = args ? args.description : undefined;

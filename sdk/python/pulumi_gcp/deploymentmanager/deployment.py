@@ -138,7 +138,7 @@ class Deployment(pulumi.CustomResource):
             __props__['name'] = name
             __props__['preview'] = preview
             __props__['project'] = project
-            if target is None:
+            if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__['target'] = target
             __props__['deployment_id'] = None

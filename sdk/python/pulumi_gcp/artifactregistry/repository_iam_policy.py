@@ -130,11 +130,11 @@ class RepositoryIamPolicy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['location'] = location
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
             __props__['project'] = project
-            if repository is None:
+            if repository is None and not opts.urn:
                 raise TypeError("Missing required property 'repository'")
             __props__['repository'] = repository
             __props__['etag'] = None

@@ -96,11 +96,12 @@ type DataStoreIndex struct {
 // NewDataStoreIndex registers a new resource with the given unique name, arguments, and options.
 func NewDataStoreIndex(ctx *pulumi.Context,
 	name string, args *DataStoreIndexArgs, opts ...pulumi.ResourceOption) (*DataStoreIndex, error) {
-	if args == nil || args.Kind == nil {
-		return nil, errors.New("missing required argument 'Kind'")
-	}
 	if args == nil {
-		args = &DataStoreIndexArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
 	var resource DataStoreIndex
 	err := ctx.RegisterResource("gcp:datastore/dataStoreIndex:DataStoreIndex", name, args, &resource, opts...)

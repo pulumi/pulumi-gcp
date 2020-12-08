@@ -151,7 +151,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
-            if (!args || args.datasetId === undefined) {
+            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datasetId'");
             }
             inputs["accesses"] = args ? args.accesses : undefined;

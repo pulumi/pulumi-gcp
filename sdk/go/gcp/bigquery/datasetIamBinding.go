@@ -167,17 +167,18 @@ type DatasetIamBinding struct {
 // NewDatasetIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewDatasetIamBinding(ctx *pulumi.Context,
 	name string, args *DatasetIamBindingArgs, opts ...pulumi.ResourceOption) (*DatasetIamBinding, error) {
-	if args == nil || args.DatasetId == nil {
-		return nil, errors.New("missing required argument 'DatasetId'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &DatasetIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource DatasetIamBinding
 	err := ctx.RegisterResource("gcp:bigquery/datasetIamBinding:DatasetIamBinding", name, args, &resource, opts...)

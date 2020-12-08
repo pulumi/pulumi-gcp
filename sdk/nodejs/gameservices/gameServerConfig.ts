@@ -192,13 +192,13 @@ export class GameServerConfig extends pulumi.CustomResource {
             inputs["scalingConfigs"] = state ? state.scalingConfigs : undefined;
         } else {
             const args = argsOrState as GameServerConfigArgs | undefined;
-            if (!args || args.configId === undefined) {
+            if ((!args || args.configId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'configId'");
             }
-            if (!args || args.deploymentId === undefined) {
+            if ((!args || args.deploymentId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deploymentId'");
             }
-            if (!args || args.fleetConfigs === undefined) {
+            if ((!args || args.fleetConfigs === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fleetConfigs'");
             }
             inputs["configId"] = args ? args.configId : undefined;

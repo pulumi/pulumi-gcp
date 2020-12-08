@@ -145,13 +145,13 @@ export class GameServerCluster extends pulumi.CustomResource {
             inputs["realmId"] = state ? state.realmId : undefined;
         } else {
             const args = argsOrState as GameServerClusterArgs | undefined;
-            if (!args || args.clusterId === undefined) {
+            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if (!args || args.connectionInfo === undefined) {
+            if ((!args || args.connectionInfo === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'connectionInfo'");
             }
-            if (!args || args.realmId === undefined) {
+            if ((!args || args.realmId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'realmId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;

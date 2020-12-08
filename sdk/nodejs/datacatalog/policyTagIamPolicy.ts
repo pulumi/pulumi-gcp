@@ -88,10 +88,10 @@ export class PolicyTagIamPolicy extends pulumi.CustomResource {
             inputs["policyTag"] = state ? state.policyTag : undefined;
         } else {
             const args = argsOrState as PolicyTagIamPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.policyTag === undefined) {
+            if ((!args || args.policyTag === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyTag'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

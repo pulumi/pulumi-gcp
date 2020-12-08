@@ -129,10 +129,10 @@ class GameServerDeploymentRollout(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if default_game_server_config is None:
+            if default_game_server_config is None and not opts.urn:
                 raise TypeError("Missing required property 'default_game_server_config'")
             __props__['default_game_server_config'] = default_game_server_config
-            if deployment_id is None:
+            if deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment_id'")
             __props__['deployment_id'] = deployment_id
             __props__['game_server_config_overrides'] = game_server_config_overrides

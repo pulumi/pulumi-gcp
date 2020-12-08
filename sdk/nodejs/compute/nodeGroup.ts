@@ -177,10 +177,10 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NodeGroupArgs | undefined;
-            if (!args || args.nodeTemplate === undefined) {
+            if ((!args || args.nodeTemplate === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeTemplate'");
             }
-            if (!args || args.size === undefined) {
+            if ((!args || args.size === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'size'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;

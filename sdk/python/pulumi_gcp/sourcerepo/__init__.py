@@ -9,3 +9,35 @@ from .repository_iam_member import *
 from .repository_iam_policy import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:sourcerepo/repository:Repository":
+                return Repository(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding":
+                return RepositoryIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:sourcerepo/repositoryIamMember:RepositoryIamMember":
+                return RepositoryIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:sourcerepo/repositoryIamPolicy:RepositoryIamPolicy":
+                return RepositoryIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "sourcerepo/repository", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "sourcerepo/repositoryIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "sourcerepo/repositoryIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "sourcerepo/repositoryIamPolicy", _module_instance)
+
+_register_module()

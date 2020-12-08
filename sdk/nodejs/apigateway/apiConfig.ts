@@ -120,10 +120,10 @@ export class ApiConfig extends pulumi.CustomResource {
             inputs["serviceConfigId"] = state ? state.serviceConfigId : undefined;
         } else {
             const args = argsOrState as ApiConfigArgs | undefined;
-            if (!args || args.api === undefined) {
+            if ((!args || args.api === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'api'");
             }
-            if (!args || args.openapiDocuments === undefined) {
+            if ((!args || args.openapiDocuments === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'openapiDocuments'");
             }
             inputs["api"] = args ? args.api : undefined;

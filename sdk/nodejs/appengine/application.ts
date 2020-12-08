@@ -159,7 +159,7 @@ export class Application extends pulumi.CustomResource {
             inputs["urlDispatchRules"] = state ? state.urlDispatchRules : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if (!args || args.locationId === undefined) {
+            if ((!args || args.locationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'locationId'");
             }
             inputs["authDomain"] = args ? args.authDomain : undefined;

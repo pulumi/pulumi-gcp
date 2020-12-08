@@ -226,7 +226,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
         } else {
             const args = argsOrState as InterconnectAttachmentArgs | undefined;
-            if (!args || args.router === undefined) {
+            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'router'");
             }
             inputs["adminEnabled"] = args ? args.adminEnabled : undefined;

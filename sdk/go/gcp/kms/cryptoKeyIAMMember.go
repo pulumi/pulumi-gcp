@@ -262,17 +262,18 @@ type CryptoKeyIAMMember struct {
 // NewCryptoKeyIAMMember registers a new resource with the given unique name, arguments, and options.
 func NewCryptoKeyIAMMember(ctx *pulumi.Context,
 	name string, args *CryptoKeyIAMMemberArgs, opts ...pulumi.ResourceOption) (*CryptoKeyIAMMember, error) {
-	if args == nil || args.CryptoKeyId == nil {
-		return nil, errors.New("missing required argument 'CryptoKeyId'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &CryptoKeyIAMMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CryptoKeyId == nil {
+		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource CryptoKeyIAMMember
 	err := ctx.RegisterResource("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember", name, args, &resource, opts...)

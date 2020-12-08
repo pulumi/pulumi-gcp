@@ -79,7 +79,7 @@ class Key(pulumi.CustomResource):
             __props__['private_key_type'] = private_key_type
             __props__['public_key_data'] = public_key_data
             __props__['public_key_type'] = public_key_type
-            if service_account_id is None:
+            if service_account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_id'")
             __props__['service_account_id'] = service_account_id
             __props__['name'] = None

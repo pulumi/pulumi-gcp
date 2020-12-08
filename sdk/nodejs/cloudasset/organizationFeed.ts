@@ -132,16 +132,16 @@ export class OrganizationFeed extends pulumi.CustomResource {
             inputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as OrganizationFeedArgs | undefined;
-            if (!args || args.billingProject === undefined) {
+            if ((!args || args.billingProject === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingProject'");
             }
-            if (!args || args.feedId === undefined) {
+            if ((!args || args.feedId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'feedId'");
             }
-            if (!args || args.feedOutputConfig === undefined) {
+            if ((!args || args.feedOutputConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'feedOutputConfig'");
             }
-            if (!args || args.orgId === undefined) {
+            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["assetNames"] = args ? args.assetNames : undefined;

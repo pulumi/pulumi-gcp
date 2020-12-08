@@ -90,7 +90,7 @@ class EntryGroup(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['display_name'] = display_name
-            if entry_group_id is None:
+            if entry_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_group_id'")
             __props__['entry_group_id'] = entry_group_id
             __props__['project'] = project

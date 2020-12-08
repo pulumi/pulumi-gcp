@@ -149,13 +149,13 @@ class SSLCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if certificate is None:
+            if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
             __props__['certificate'] = certificate
             __props__['description'] = description
             __props__['name'] = name
             __props__['name_prefix'] = name_prefix
-            if private_key is None:
+            if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
             __props__['private_key'] = private_key
             __props__['project'] = project

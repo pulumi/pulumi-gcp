@@ -171,10 +171,10 @@ export class Policy extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if (!args || args.constraint === undefined) {
+            if ((!args || args.constraint === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'constraint'");
             }
-            if (!args || args.orgId === undefined) {
+            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["booleanPolicy"] = args ? args.booleanPolicy : undefined;

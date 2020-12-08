@@ -55,14 +55,15 @@ type TunnelIamBinding struct {
 // NewTunnelIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewTunnelIamBinding(ctx *pulumi.Context,
 	name string, args *TunnelIamBindingArgs, opts ...pulumi.ResourceOption) (*TunnelIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &TunnelIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource TunnelIamBinding
 	err := ctx.RegisterResource("gcp:iap/tunnelIamBinding:TunnelIamBinding", name, args, &resource, opts...)

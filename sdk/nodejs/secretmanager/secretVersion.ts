@@ -114,7 +114,7 @@ export class SecretVersion extends pulumi.CustomResource {
             inputs["secretData"] = state ? state.secretData : undefined;
         } else {
             const args = argsOrState as SecretVersionArgs | undefined;
-            if (!args || args.secret === undefined) {
+            if ((!args || args.secret === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'secret'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;

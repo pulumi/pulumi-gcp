@@ -115,7 +115,7 @@ class Device(pulumi.CustomResource):
             __props__['log_level'] = log_level
             __props__['metadata'] = metadata
             __props__['name'] = name
-            if registry is None:
+            if registry is None and not opts.urn:
                 raise TypeError("Missing required property 'registry'")
             __props__['registry'] = registry
             __props__['configs'] = None

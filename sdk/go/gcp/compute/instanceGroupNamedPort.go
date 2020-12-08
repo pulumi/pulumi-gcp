@@ -127,14 +127,15 @@ type InstanceGroupNamedPort struct {
 // NewInstanceGroupNamedPort registers a new resource with the given unique name, arguments, and options.
 func NewInstanceGroupNamedPort(ctx *pulumi.Context,
 	name string, args *InstanceGroupNamedPortArgs, opts ...pulumi.ResourceOption) (*InstanceGroupNamedPort, error) {
-	if args == nil || args.Group == nil {
-		return nil, errors.New("missing required argument 'Group'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
 	if args == nil {
-		args = &InstanceGroupNamedPortArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Group == nil {
+		return nil, errors.New("invalid value for required argument 'Group'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
 	}
 	var resource InstanceGroupNamedPort
 	err := ctx.RegisterResource("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort", name, args, &resource, opts...)

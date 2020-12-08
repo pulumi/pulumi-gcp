@@ -90,20 +90,21 @@ type Lien struct {
 // NewLien registers a new resource with the given unique name, arguments, and options.
 func NewLien(ctx *pulumi.Context,
 	name string, args *LienArgs, opts ...pulumi.ResourceOption) (*Lien, error) {
-	if args == nil || args.Origin == nil {
-		return nil, errors.New("missing required argument 'Origin'")
-	}
-	if args == nil || args.Parent == nil {
-		return nil, errors.New("missing required argument 'Parent'")
-	}
-	if args == nil || args.Reason == nil {
-		return nil, errors.New("missing required argument 'Reason'")
-	}
-	if args == nil || args.Restrictions == nil {
-		return nil, errors.New("missing required argument 'Restrictions'")
-	}
 	if args == nil {
-		args = &LienArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Origin == nil {
+		return nil, errors.New("invalid value for required argument 'Origin'")
+	}
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
+	if args.Reason == nil {
+		return nil, errors.New("invalid value for required argument 'Reason'")
+	}
+	if args.Restrictions == nil {
+		return nil, errors.New("invalid value for required argument 'Restrictions'")
 	}
 	var resource Lien
 	err := ctx.RegisterResource("gcp:resourcemanager/lien:Lien", name, args, &resource, opts...)

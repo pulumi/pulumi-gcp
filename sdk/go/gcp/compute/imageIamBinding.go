@@ -266,17 +266,18 @@ type ImageIamBinding struct {
 // NewImageIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewImageIamBinding(ctx *pulumi.Context,
 	name string, args *ImageIamBindingArgs, opts ...pulumi.ResourceOption) (*ImageIamBinding, error) {
-	if args == nil || args.Image == nil {
-		return nil, errors.New("missing required argument 'Image'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ImageIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Image == nil {
+		return nil, errors.New("invalid value for required argument 'Image'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ImageIamBinding
 	err := ctx.RegisterResource("gcp:compute/imageIamBinding:ImageIamBinding", name, args, &resource, opts...)

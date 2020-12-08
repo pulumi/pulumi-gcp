@@ -95,13 +95,13 @@ export class ConsentStoreIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as ConsentStoreIamPolicyArgs | undefined;
-            if (!args || args.consentStoreId === undefined) {
+            if ((!args || args.consentStoreId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
-            if (!args || args.dataset === undefined) {
+            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataset'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;

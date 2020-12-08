@@ -87,17 +87,18 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.NodeConfig == nil {
-		return nil, errors.New("missing required argument 'NodeConfig'")
-	}
-	if args == nil || args.NodeCount == nil {
-		return nil, errors.New("missing required argument 'NodeCount'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NodeConfig == nil {
+		return nil, errors.New("invalid value for required argument 'NodeConfig'")
+	}
+	if args.NodeCount == nil {
+		return nil, errors.New("invalid value for required argument 'NodeCount'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("gcp:memcache/instance:Instance", name, args, &resource, opts...)

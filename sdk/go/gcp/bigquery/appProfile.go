@@ -146,11 +146,12 @@ type AppProfile struct {
 // NewAppProfile registers a new resource with the given unique name, arguments, and options.
 func NewAppProfile(ctx *pulumi.Context,
 	name string, args *AppProfileArgs, opts ...pulumi.ResourceOption) (*AppProfile, error) {
-	if args == nil || args.AppProfileId == nil {
-		return nil, errors.New("missing required argument 'AppProfileId'")
-	}
 	if args == nil {
-		args = &AppProfileArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AppProfileId == nil {
+		return nil, errors.New("invalid value for required argument 'AppProfileId'")
 	}
 	var resource AppProfile
 	err := ctx.RegisterResource("gcp:bigquery/appProfile:AppProfile", name, args, &resource, opts...)

@@ -109,10 +109,10 @@ export class FolderExclusion extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as FolderExclusionArgs | undefined;
-            if (!args || args.filter === undefined) {
+            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'filter'");
             }
-            if (!args || args.folder === undefined) {
+            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'folder'");
             }
             inputs["description"] = args ? args.description : undefined;

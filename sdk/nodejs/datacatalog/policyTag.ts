@@ -94,10 +94,10 @@ export class PolicyTag extends pulumi.CustomResource {
             inputs["taxonomy"] = state ? state.taxonomy : undefined;
         } else {
             const args = argsOrState as PolicyTagArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.taxonomy === undefined) {
+            if ((!args || args.taxonomy === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'taxonomy'");
             }
             inputs["description"] = args ? args.description : undefined;

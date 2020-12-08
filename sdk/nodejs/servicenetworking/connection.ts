@@ -68,13 +68,13 @@ export class Connection extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
-            if (!args || args.reservedPeeringRanges === undefined) {
+            if ((!args || args.reservedPeeringRanges === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'reservedPeeringRanges'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["network"] = args ? args.network : undefined;

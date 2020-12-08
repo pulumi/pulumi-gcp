@@ -151,24 +151,24 @@ class MetricDescriptor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['labels'] = labels
             __props__['launch_stage'] = launch_stage
             __props__['metadata'] = metadata
-            if metric_kind is None:
+            if metric_kind is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_kind'")
             __props__['metric_kind'] = metric_kind
             __props__['project'] = project
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['unit'] = unit
-            if value_type is None:
+            if value_type is None and not opts.urn:
                 raise TypeError("Missing required property 'value_type'")
             __props__['value_type'] = value_type
             __props__['monitored_resource_types'] = None

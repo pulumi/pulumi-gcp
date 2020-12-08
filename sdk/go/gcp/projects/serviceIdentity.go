@@ -84,11 +84,12 @@ type ServiceIdentity struct {
 // NewServiceIdentity registers a new resource with the given unique name, arguments, and options.
 func NewServiceIdentity(ctx *pulumi.Context,
 	name string, args *ServiceIdentityArgs, opts ...pulumi.ResourceOption) (*ServiceIdentity, error) {
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &ServiceIdentityArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource ServiceIdentity
 	err := ctx.RegisterResource("gcp:projects/serviceIdentity:ServiceIdentity", name, args, &resource, opts...)

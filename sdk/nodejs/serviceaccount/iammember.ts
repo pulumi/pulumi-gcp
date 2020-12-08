@@ -219,13 +219,13 @@ export class IAMMember extends pulumi.CustomResource {
             inputs["serviceAccountId"] = state ? state.serviceAccountId : undefined;
         } else {
             const args = argsOrState as IAMMemberArgs | undefined;
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.serviceAccountId === undefined) {
+            if ((!args || args.serviceAccountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["condition"] = args ? args.condition : undefined;

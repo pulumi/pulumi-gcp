@@ -62,20 +62,21 @@ type TenantInboundSamlConfig struct {
 // NewTenantInboundSamlConfig registers a new resource with the given unique name, arguments, and options.
 func NewTenantInboundSamlConfig(ctx *pulumi.Context,
 	name string, args *TenantInboundSamlConfigArgs, opts ...pulumi.ResourceOption) (*TenantInboundSamlConfig, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.IdpConfig == nil {
-		return nil, errors.New("missing required argument 'IdpConfig'")
-	}
-	if args == nil || args.SpConfig == nil {
-		return nil, errors.New("missing required argument 'SpConfig'")
-	}
-	if args == nil || args.Tenant == nil {
-		return nil, errors.New("missing required argument 'Tenant'")
-	}
 	if args == nil {
-		args = &TenantInboundSamlConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.IdpConfig == nil {
+		return nil, errors.New("invalid value for required argument 'IdpConfig'")
+	}
+	if args.SpConfig == nil {
+		return nil, errors.New("invalid value for required argument 'SpConfig'")
+	}
+	if args.Tenant == nil {
+		return nil, errors.New("invalid value for required argument 'Tenant'")
 	}
 	var resource TenantInboundSamlConfig
 	err := ctx.RegisterResource("gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig", name, args, &resource, opts...)

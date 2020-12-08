@@ -140,10 +140,10 @@ export class Index extends pulumi.CustomResource {
             inputs["queryScope"] = state ? state.queryScope : undefined;
         } else {
             const args = argsOrState as IndexArgs | undefined;
-            if (!args || args.collection === undefined) {
+            if ((!args || args.collection === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'collection'");
             }
-            if (!args || args.fields === undefined) {
+            if ((!args || args.fields === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fields'");
             }
             inputs["collection"] = args ? args.collection : undefined;

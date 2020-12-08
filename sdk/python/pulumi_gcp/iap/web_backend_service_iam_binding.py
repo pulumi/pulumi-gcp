@@ -186,14 +186,14 @@ class WebBackendServiceIamBinding(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if web_backend_service is None:
+            if web_backend_service is None and not opts.urn:
                 raise TypeError("Missing required property 'web_backend_service'")
             __props__['web_backend_service'] = web_backend_service
             __props__['etag'] = None

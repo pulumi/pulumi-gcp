@@ -103,17 +103,18 @@ type DefaultObjectAccessControl struct {
 // NewDefaultObjectAccessControl registers a new resource with the given unique name, arguments, and options.
 func NewDefaultObjectAccessControl(ctx *pulumi.Context,
 	name string, args *DefaultObjectAccessControlArgs, opts ...pulumi.ResourceOption) (*DefaultObjectAccessControl, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Entity == nil {
-		return nil, errors.New("missing required argument 'Entity'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &DefaultObjectAccessControlArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Entity == nil {
+		return nil, errors.New("invalid value for required argument 'Entity'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource DefaultObjectAccessControl
 	err := ctx.RegisterResource("gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl", name, args, &resource, opts...)

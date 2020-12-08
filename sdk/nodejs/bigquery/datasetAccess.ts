@@ -118,7 +118,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             inputs["view"] = state ? state.view : undefined;
         } else {
             const args = argsOrState as DatasetAccessArgs | undefined;
-            if (!args || args.datasetId === undefined) {
+            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datasetId'");
             }
             inputs["datasetId"] = args ? args.datasetId : undefined;

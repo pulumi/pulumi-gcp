@@ -177,6 +177,7 @@ func NewInstanceGroup(ctx *pulumi.Context,
 	if args == nil {
 		args = &InstanceGroupArgs{}
 	}
+
 	var resource InstanceGroup
 	err := ctx.RegisterResource("gcp:compute/instanceGroup:InstanceGroup", name, args, &resource, opts...)
 	if err != nil {

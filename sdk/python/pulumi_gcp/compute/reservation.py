@@ -119,11 +119,11 @@ class Reservation(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['project'] = project
-            if specific_reservation is None:
+            if specific_reservation is None and not opts.urn:
                 raise TypeError("Missing required property 'specific_reservation'")
             __props__['specific_reservation'] = specific_reservation
             __props__['specific_reservation_required'] = specific_reservation_required
-            if zone is None:
+            if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
             __props__['commitment'] = None

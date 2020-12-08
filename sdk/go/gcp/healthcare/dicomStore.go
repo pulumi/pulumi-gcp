@@ -100,11 +100,12 @@ type DicomStore struct {
 // NewDicomStore registers a new resource with the given unique name, arguments, and options.
 func NewDicomStore(ctx *pulumi.Context,
 	name string, args *DicomStoreArgs, opts ...pulumi.ResourceOption) (*DicomStore, error) {
-	if args == nil || args.Dataset == nil {
-		return nil, errors.New("missing required argument 'Dataset'")
-	}
 	if args == nil {
-		args = &DicomStoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Dataset == nil {
+		return nil, errors.New("invalid value for required argument 'Dataset'")
 	}
 	var resource DicomStore
 	err := ctx.RegisterResource("gcp:healthcare/dicomStore:DicomStore", name, args, &resource, opts...)

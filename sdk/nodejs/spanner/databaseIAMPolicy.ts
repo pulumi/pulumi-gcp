@@ -159,13 +159,13 @@ export class DatabaseIAMPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as DatabaseIAMPolicyArgs | undefined;
-            if (!args || args.database === undefined) {
+            if ((!args || args.database === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'database'");
             }
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["database"] = args ? args.database : undefined;

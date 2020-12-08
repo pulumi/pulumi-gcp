@@ -96,11 +96,12 @@ type InstanceFromMachineImage struct {
 // NewInstanceFromMachineImage registers a new resource with the given unique name, arguments, and options.
 func NewInstanceFromMachineImage(ctx *pulumi.Context,
 	name string, args *InstanceFromMachineImageArgs, opts ...pulumi.ResourceOption) (*InstanceFromMachineImage, error) {
-	if args == nil || args.SourceMachineImage == nil {
-		return nil, errors.New("missing required argument 'SourceMachineImage'")
-	}
 	if args == nil {
-		args = &InstanceFromMachineImageArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SourceMachineImage == nil {
+		return nil, errors.New("invalid value for required argument 'SourceMachineImage'")
 	}
 	var resource InstanceFromMachineImage
 	err := ctx.RegisterResource("gcp:compute/instanceFromMachineImage:InstanceFromMachineImage", name, args, &resource, opts...)

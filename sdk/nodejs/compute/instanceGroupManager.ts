@@ -236,10 +236,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupManagerArgs | undefined;
-            if (!args || args.baseInstanceName === undefined) {
+            if ((!args || args.baseInstanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'baseInstanceName'");
             }
-            if (!args || args.versions === undefined) {
+            if ((!args || args.versions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'versions'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;

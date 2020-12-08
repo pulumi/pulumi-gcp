@@ -154,14 +154,15 @@ type Hl7StoreIamPolicy struct {
 // NewHl7StoreIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewHl7StoreIamPolicy(ctx *pulumi.Context,
 	name string, args *Hl7StoreIamPolicyArgs, opts ...pulumi.ResourceOption) (*Hl7StoreIamPolicy, error) {
-	if args == nil || args.Hl7V2StoreId == nil {
-		return nil, errors.New("missing required argument 'Hl7V2StoreId'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &Hl7StoreIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Hl7V2StoreId == nil {
+		return nil, errors.New("invalid value for required argument 'Hl7V2StoreId'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource Hl7StoreIamPolicy
 	err := ctx.RegisterResource("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy", name, args, &resource, opts...)

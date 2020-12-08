@@ -148,10 +148,10 @@ export class RepositoryIamPolicy extends pulumi.CustomResource {
             inputs["repository"] = state ? state.repository : undefined;
         } else {
             const args = argsOrState as RepositoryIamPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.repository === undefined) {
+            if ((!args || args.repository === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'repository'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

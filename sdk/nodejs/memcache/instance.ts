@@ -163,13 +163,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.nodeConfig === undefined) {
+            if ((!args || args.nodeConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeConfig'");
             }
-            if (!args || args.nodeCount === undefined) {
+            if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;

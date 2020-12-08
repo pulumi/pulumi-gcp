@@ -88,14 +88,15 @@ type Namespace struct {
 // NewNamespace registers a new resource with the given unique name, arguments, and options.
 func NewNamespace(ctx *pulumi.Context,
 	name string, args *NamespaceArgs, opts ...pulumi.ResourceOption) (*Namespace, error) {
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
-	if args == nil || args.NamespaceId == nil {
-		return nil, errors.New("missing required argument 'NamespaceId'")
-	}
 	if args == nil {
-		args = &NamespaceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.NamespaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceId'")
 	}
 	var resource Namespace
 	err := ctx.RegisterResource("gcp:servicedirectory/namespace:Namespace", name, args, &resource, opts...)

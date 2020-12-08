@@ -90,10 +90,10 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
             inputs["policyId"] = state ? state.policyId : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyAssociationArgs | undefined;
-            if (!args || args.attachmentId === undefined) {
+            if ((!args || args.attachmentId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'attachmentId'");
             }
-            if (!args || args.policyId === undefined) {
+            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyId'");
             }
             inputs["attachmentId"] = args ? args.attachmentId : undefined;

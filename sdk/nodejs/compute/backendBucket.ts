@@ -143,7 +143,7 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as BackendBucketArgs | undefined;
-            if (!args || args.bucketName === undefined) {
+            if ((!args || args.bucketName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucketName'");
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;

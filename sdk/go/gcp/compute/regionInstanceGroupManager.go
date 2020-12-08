@@ -119,17 +119,18 @@ type RegionInstanceGroupManager struct {
 // NewRegionInstanceGroupManager registers a new resource with the given unique name, arguments, and options.
 func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 	name string, args *RegionInstanceGroupManagerArgs, opts ...pulumi.ResourceOption) (*RegionInstanceGroupManager, error) {
-	if args == nil || args.BaseInstanceName == nil {
-		return nil, errors.New("missing required argument 'BaseInstanceName'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
-	if args == nil || args.Versions == nil {
-		return nil, errors.New("missing required argument 'Versions'")
-	}
 	if args == nil {
-		args = &RegionInstanceGroupManagerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BaseInstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'BaseInstanceName'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
+	if args.Versions == nil {
+		return nil, errors.New("invalid value for required argument 'Versions'")
 	}
 	var resource RegionInstanceGroupManager
 	err := ctx.RegisterResource("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager", name, args, &resource, opts...)

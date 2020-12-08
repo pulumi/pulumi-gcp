@@ -97,11 +97,12 @@ type Deployment struct {
 // NewDeployment registers a new resource with the given unique name, arguments, and options.
 func NewDeployment(ctx *pulumi.Context,
 	name string, args *DeploymentArgs, opts ...pulumi.ResourceOption) (*Deployment, error) {
-	if args == nil || args.Target == nil {
-		return nil, errors.New("missing required argument 'Target'")
-	}
 	if args == nil {
-		args = &DeploymentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Target == nil {
+		return nil, errors.New("invalid value for required argument 'Target'")
 	}
 	var resource Deployment
 	err := ctx.RegisterResource("gcp:deploymentmanager/deployment:Deployment", name, args, &resource, opts...)

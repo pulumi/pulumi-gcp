@@ -133,6 +133,7 @@ func NewSSLPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &SSLPolicyArgs{}
 	}
+
 	var resource SSLPolicy
 	err := ctx.RegisterResource("gcp:compute/sSLPolicy:SSLPolicy", name, args, &resource, opts...)
 	if err != nil {

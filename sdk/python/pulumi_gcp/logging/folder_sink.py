@@ -106,13 +106,13 @@ class FolderSink(pulumi.CustomResource):
 
             __props__['bigquery_options'] = bigquery_options
             __props__['description'] = description
-            if destination is None:
+            if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
             __props__['disabled'] = disabled
             __props__['exclusions'] = exclusions
             __props__['filter'] = filter
-            if folder is None:
+            if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")
             __props__['folder'] = folder
             __props__['include_children'] = include_children

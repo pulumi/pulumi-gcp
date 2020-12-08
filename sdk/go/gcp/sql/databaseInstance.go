@@ -94,11 +94,12 @@ type DatabaseInstance struct {
 // NewDatabaseInstance registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseInstance(ctx *pulumi.Context,
 	name string, args *DatabaseInstanceArgs, opts ...pulumi.ResourceOption) (*DatabaseInstance, error) {
-	if args == nil || args.Settings == nil {
-		return nil, errors.New("missing required argument 'Settings'")
-	}
 	if args == nil {
-		args = &DatabaseInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Settings == nil {
+		return nil, errors.New("invalid value for required argument 'Settings'")
 	}
 	var resource DatabaseInstance
 	err := ctx.RegisterResource("gcp:sql/databaseInstance:DatabaseInstance", name, args, &resource, opts...)

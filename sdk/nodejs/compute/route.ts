@@ -253,10 +253,10 @@ export class Route extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as RouteArgs | undefined;
-            if (!args || args.destRange === undefined) {
+            if ((!args || args.destRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destRange'");
             }
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["description"] = args ? args.description : undefined;

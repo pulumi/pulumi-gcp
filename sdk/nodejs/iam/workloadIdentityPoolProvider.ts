@@ -193,10 +193,10 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             inputs["workloadIdentityPoolProviderId"] = state ? state.workloadIdentityPoolProviderId : undefined;
         } else {
             const args = argsOrState as WorkloadIdentityPoolProviderArgs | undefined;
-            if (!args || args.workloadIdentityPoolId === undefined) {
+            if ((!args || args.workloadIdentityPoolId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            if (!args || args.workloadIdentityPoolProviderId === undefined) {
+            if ((!args || args.workloadIdentityPoolProviderId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'workloadIdentityPoolProviderId'");
             }
             inputs["attributeCondition"] = args ? args.attributeCondition : undefined;

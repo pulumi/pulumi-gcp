@@ -174,7 +174,7 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
             inputs["regex"] = state ? state.regex : undefined;
         } else {
             const args = argsOrState as PreventionStoredInfoTypeArgs | undefined;
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["description"] = args ? args.description : undefined;

@@ -225,7 +225,7 @@ class Subscription(pulumi.CustomResource):
             __props__['push_config'] = push_config
             __props__['retain_acked_messages'] = retain_acked_messages
             __props__['retry_policy'] = retry_policy
-            if topic is None:
+            if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__['topic'] = topic
             __props__['path'] = None

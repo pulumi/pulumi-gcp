@@ -144,10 +144,10 @@ export class SubscriptionIAMPolicy extends pulumi.CustomResource {
             inputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as SubscriptionIAMPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.subscription === undefined) {
+            if ((!args || args.subscription === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subscription'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

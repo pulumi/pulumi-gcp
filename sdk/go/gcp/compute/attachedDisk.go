@@ -108,14 +108,15 @@ type AttachedDisk struct {
 // NewAttachedDisk registers a new resource with the given unique name, arguments, and options.
 func NewAttachedDisk(ctx *pulumi.Context,
 	name string, args *AttachedDiskArgs, opts ...pulumi.ResourceOption) (*AttachedDisk, error) {
-	if args == nil || args.Disk == nil {
-		return nil, errors.New("missing required argument 'Disk'")
-	}
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
 	if args == nil {
-		args = &AttachedDiskArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Disk == nil {
+		return nil, errors.New("invalid value for required argument 'Disk'")
+	}
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
 	var resource AttachedDisk
 	err := ctx.RegisterResource("gcp:compute/attachedDisk:AttachedDisk", name, args, &resource, opts...)

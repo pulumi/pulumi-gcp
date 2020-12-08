@@ -361,10 +361,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
         } else {
             const args = argsOrState as InstanceTemplateArgs | undefined;
-            if (!args || args.disks === undefined) {
+            if ((!args || args.disks === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'disks'");
             }
-            if (!args || args.machineType === undefined) {
+            if ((!args || args.machineType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'machineType'");
             }
             inputs["canIpForward"] = args ? args.canIpForward : undefined;

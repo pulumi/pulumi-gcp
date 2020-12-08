@@ -46,11 +46,12 @@ type WebApp struct {
 // NewWebApp registers a new resource with the given unique name, arguments, and options.
 func NewWebApp(ctx *pulumi.Context,
 	name string, args *WebAppArgs, opts ...pulumi.ResourceOption) (*WebApp, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil {
-		args = &WebAppArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	var resource WebApp
 	err := ctx.RegisterResource("gcp:firebase/webApp:WebApp", name, args, &resource, opts...)

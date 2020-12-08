@@ -80,14 +80,15 @@ type RegionPerInstanceConfig struct {
 // NewRegionPerInstanceConfig registers a new resource with the given unique name, arguments, and options.
 func NewRegionPerInstanceConfig(ctx *pulumi.Context,
 	name string, args *RegionPerInstanceConfigArgs, opts ...pulumi.ResourceOption) (*RegionPerInstanceConfig, error) {
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
-	if args == nil || args.RegionInstanceGroupManager == nil {
-		return nil, errors.New("missing required argument 'RegionInstanceGroupManager'")
-	}
 	if args == nil {
-		args = &RegionPerInstanceConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
+	}
+	if args.RegionInstanceGroupManager == nil {
+		return nil, errors.New("invalid value for required argument 'RegionInstanceGroupManager'")
 	}
 	var resource RegionPerInstanceConfig
 	err := ctx.RegisterResource("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig", name, args, &resource, opts...)

@@ -125,6 +125,7 @@ func NewPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &PolicyArgs{}
 	}
+
 	var resource Policy
 	err := ctx.RegisterResource("gcp:dns/policy:Policy", name, args, &resource, opts...)
 	if err != nil {

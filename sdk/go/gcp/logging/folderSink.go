@@ -127,14 +127,15 @@ type FolderSink struct {
 // NewFolderSink registers a new resource with the given unique name, arguments, and options.
 func NewFolderSink(ctx *pulumi.Context,
 	name string, args *FolderSinkArgs, opts ...pulumi.ResourceOption) (*FolderSink, error) {
-	if args == nil || args.Destination == nil {
-		return nil, errors.New("missing required argument 'Destination'")
-	}
-	if args == nil || args.Folder == nil {
-		return nil, errors.New("missing required argument 'Folder'")
-	}
 	if args == nil {
-		args = &FolderSinkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
+	}
+	if args.Folder == nil {
+		return nil, errors.New("invalid value for required argument 'Folder'")
 	}
 	var resource FolderSink
 	err := ctx.RegisterResource("gcp:logging/folderSink:FolderSink", name, args, &resource, opts...)

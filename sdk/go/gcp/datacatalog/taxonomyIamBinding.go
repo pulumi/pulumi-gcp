@@ -56,17 +56,18 @@ type TaxonomyIamBinding struct {
 // NewTaxonomyIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewTaxonomyIamBinding(ctx *pulumi.Context,
 	name string, args *TaxonomyIamBindingArgs, opts ...pulumi.ResourceOption) (*TaxonomyIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Taxonomy == nil {
-		return nil, errors.New("missing required argument 'Taxonomy'")
-	}
 	if args == nil {
-		args = &TaxonomyIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Taxonomy == nil {
+		return nil, errors.New("invalid value for required argument 'Taxonomy'")
 	}
 	var resource TaxonomyIamBinding
 	err := ctx.RegisterResource("gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding", name, args, &resource, opts...)

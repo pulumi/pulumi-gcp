@@ -175,11 +175,11 @@ class Metric(pulumi.CustomResource):
 
             __props__['bucket_options'] = bucket_options
             __props__['description'] = description
-            if filter is None:
+            if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__['filter'] = filter
             __props__['label_extractors'] = label_extractors
-            if metric_descriptor is None:
+            if metric_descriptor is None and not opts.urn:
                 raise TypeError("Missing required property 'metric_descriptor'")
             __props__['metric_descriptor'] = metric_descriptor
             __props__['name'] = name

@@ -145,6 +145,7 @@ func NewNodeTemplate(ctx *pulumi.Context,
 	if args == nil {
 		args = &NodeTemplateArgs{}
 	}
+
 	var resource NodeTemplate
 	err := ctx.RegisterResource("gcp:compute/nodeTemplate:NodeTemplate", name, args, &resource, opts...)
 	if err != nil {

@@ -292,7 +292,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
-            if (!args || args.dnsName === undefined) {
+            if ((!args || args.dnsName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dnsName'");
             }
             inputs["description"] = (args ? args.description : undefined) || "Managed by Pulumi";

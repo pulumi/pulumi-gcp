@@ -134,6 +134,7 @@ func NewRegistry(ctx *pulumi.Context,
 	if args == nil {
 		args = &RegistryArgs{}
 	}
+
 	aliases := pulumi.Aliases([]pulumi.Alias{
 		{
 			Type: pulumi.String("gcp:kms/registry:Registry"),

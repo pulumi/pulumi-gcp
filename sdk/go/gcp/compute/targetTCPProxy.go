@@ -114,11 +114,12 @@ type TargetTCPProxy struct {
 // NewTargetTCPProxy registers a new resource with the given unique name, arguments, and options.
 func NewTargetTCPProxy(ctx *pulumi.Context,
 	name string, args *TargetTCPProxyArgs, opts ...pulumi.ResourceOption) (*TargetTCPProxy, error) {
-	if args == nil || args.BackendService == nil {
-		return nil, errors.New("missing required argument 'BackendService'")
-	}
 	if args == nil {
-		args = &TargetTCPProxyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackendService == nil {
+		return nil, errors.New("invalid value for required argument 'BackendService'")
 	}
 	var resource TargetTCPProxy
 	err := ctx.RegisterResource("gcp:compute/targetTCPProxy:TargetTCPProxy", name, args, &resource, opts...)
