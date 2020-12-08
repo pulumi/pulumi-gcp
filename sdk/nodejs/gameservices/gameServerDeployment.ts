@@ -119,7 +119,7 @@ export class GameServerDeployment extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GameServerDeploymentArgs | undefined;
-            if (!args || args.deploymentId === undefined) {
+            if ((!args || args.deploymentId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deploymentId'");
             }
             inputs["deploymentId"] = args ? args.deploymentId : undefined;

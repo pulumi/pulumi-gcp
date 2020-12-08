@@ -110,11 +110,11 @@ class Index(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if collection is None:
+            if collection is None and not opts.urn:
                 raise TypeError("Missing required property 'collection'")
             __props__['collection'] = collection
             __props__['database'] = database
-            if fields is None:
+            if fields is None and not opts.urn:
                 raise TypeError("Missing required property 'fields'")
             __props__['fields'] = fields
             __props__['project'] = project

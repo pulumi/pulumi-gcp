@@ -71,8 +71,8 @@ class Autoscaler(pulumi.CustomResource):
                     "storage-ro",
                 ],
             ),
-            opts=ResourceOptions(provider=google_beta))
-        default_target_pool = gcp.compute.TargetPool("defaultTargetPool", opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_target_pool = gcp.compute.TargetPool("defaultTargetPool", opts=pulumi.ResourceOptions(provider=google_beta))
         default_instance_group_manager = gcp.compute.InstanceGroupManager("defaultInstanceGroupManager",
             zone="us-central1-f",
             versions=[gcp.compute.InstanceGroupManagerVersionArgs(
@@ -81,7 +81,7 @@ class Autoscaler(pulumi.CustomResource):
             )],
             target_pools=[default_target_pool.id],
             base_instance_name="autoscaler-sample",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_autoscaler = gcp.compute.Autoscaler("defaultAutoscaler",
             zone="us-central1-f",
             target=default_instance_group_manager.id,
@@ -95,7 +95,7 @@ class Autoscaler(pulumi.CustomResource):
                     single_instance_assignment=65535,
                 )],
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Autoscaler Basic
 
@@ -206,13 +206,13 @@ class Autoscaler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if autoscaling_policy is None:
+            if autoscaling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling_policy'")
             __props__['autoscaling_policy'] = autoscaling_policy
             __props__['description'] = description
             __props__['name'] = name
             __props__['project'] = project
-            if target is None:
+            if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__['target'] = target
             __props__['zone'] = zone

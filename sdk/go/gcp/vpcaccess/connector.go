@@ -91,17 +91,18 @@ type Connector struct {
 // NewConnector registers a new resource with the given unique name, arguments, and options.
 func NewConnector(ctx *pulumi.Context,
 	name string, args *ConnectorArgs, opts ...pulumi.ResourceOption) (*Connector, error) {
-	if args == nil || args.IpCidrRange == nil {
-		return nil, errors.New("missing required argument 'IpCidrRange'")
-	}
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
-	if args == nil || args.Region == nil {
-		return nil, errors.New("missing required argument 'Region'")
-	}
 	if args == nil {
-		args = &ConnectorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IpCidrRange == nil {
+		return nil, errors.New("invalid value for required argument 'IpCidrRange'")
+	}
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Connector
 	err := ctx.RegisterResource("gcp:vpcaccess/connector:Connector", name, args, &resource, opts...)

@@ -137,7 +137,7 @@ def get_project_service_account(project: Optional[str] = None,
     bucket = gcp.storage.Bucket("bucket", encryption=gcp.storage.BucketEncryptionArgs(
         default_kms_key_name="your-crypto-key-id",
     ),
-    opts=ResourceOptions(depends_on=[binding]))
+    opts=pulumi.ResourceOptions(depends_on=[binding]))
     ```
 
 

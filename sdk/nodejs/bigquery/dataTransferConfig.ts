@@ -207,16 +207,16 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
         } else {
             const args = argsOrState as DataTransferConfigArgs | undefined;
-            if (!args || args.dataSourceId === undefined) {
+            if ((!args || args.dataSourceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataSourceId'");
             }
-            if (!args || args.destinationDatasetId === undefined) {
+            if ((!args || args.destinationDatasetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destinationDatasetId'");
             }
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.params === undefined) {
+            if ((!args || args.params === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'params'");
             }
             inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;

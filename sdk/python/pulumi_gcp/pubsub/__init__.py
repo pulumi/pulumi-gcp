@@ -14,3 +14,47 @@ from .topic_iam_member import *
 from .topic_iam_policy import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:pubsub/subscription:Subscription":
+                return Subscription(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
+                return SubscriptionIAMBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember":
+                return SubscriptionIAMMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy":
+                return SubscriptionIAMPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/topic:Topic":
+                return Topic(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/topicIAMBinding:TopicIAMBinding":
+                return TopicIAMBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/topicIAMMember:TopicIAMMember":
+                return TopicIAMMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy":
+                return TopicIAMPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "pubsub/subscription", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/subscriptionIAMBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/subscriptionIAMMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/subscriptionIAMPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/topic", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/topicIAMBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/topicIAMMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "pubsub/topicIAMPolicy", _module_instance)
+
+_register_module()

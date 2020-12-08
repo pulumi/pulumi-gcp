@@ -177,10 +177,10 @@ export class OrganizationPolicy extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as OrganizationPolicyArgs | undefined;
-            if (!args || args.constraint === undefined) {
+            if ((!args || args.constraint === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'constraint'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["booleanPolicy"] = args ? args.booleanPolicy : undefined;

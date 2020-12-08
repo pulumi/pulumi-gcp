@@ -150,11 +150,12 @@ type VPNGateway struct {
 // NewVPNGateway registers a new resource with the given unique name, arguments, and options.
 func NewVPNGateway(ctx *pulumi.Context,
 	name string, args *VPNGatewayArgs, opts ...pulumi.ResourceOption) (*VPNGateway, error) {
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
 	if args == nil {
-		args = &VPNGatewayArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
 	}
 	var resource VPNGateway
 	err := ctx.RegisterResource("gcp:compute/vPNGateway:VPNGateway", name, args, &resource, opts...)

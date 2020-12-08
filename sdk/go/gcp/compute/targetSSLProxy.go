@@ -80,14 +80,15 @@ type TargetSSLProxy struct {
 // NewTargetSSLProxy registers a new resource with the given unique name, arguments, and options.
 func NewTargetSSLProxy(ctx *pulumi.Context,
 	name string, args *TargetSSLProxyArgs, opts ...pulumi.ResourceOption) (*TargetSSLProxy, error) {
-	if args == nil || args.BackendService == nil {
-		return nil, errors.New("missing required argument 'BackendService'")
-	}
-	if args == nil || args.SslCertificates == nil {
-		return nil, errors.New("missing required argument 'SslCertificates'")
-	}
 	if args == nil {
-		args = &TargetSSLProxyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BackendService == nil {
+		return nil, errors.New("invalid value for required argument 'BackendService'")
+	}
+	if args.SslCertificates == nil {
+		return nil, errors.New("invalid value for required argument 'SslCertificates'")
 	}
 	var resource TargetSSLProxy
 	err := ctx.RegisterResource("gcp:compute/targetSSLProxy:TargetSSLProxy", name, args, &resource, opts...)

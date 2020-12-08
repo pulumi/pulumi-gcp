@@ -146,11 +146,12 @@ type NotificationChannel struct {
 // NewNotificationChannel registers a new resource with the given unique name, arguments, and options.
 func NewNotificationChannel(ctx *pulumi.Context,
 	name string, args *NotificationChannelArgs, opts ...pulumi.ResourceOption) (*NotificationChannel, error) {
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
 	if args == nil {
-		args = &NotificationChannelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	var resource NotificationChannel
 	err := ctx.RegisterResource("gcp:monitoring/notificationChannel:NotificationChannel", name, args, &resource, opts...)

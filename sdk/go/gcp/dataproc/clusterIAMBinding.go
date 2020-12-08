@@ -156,17 +156,18 @@ type ClusterIAMBinding struct {
 // NewClusterIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewClusterIAMBinding(ctx *pulumi.Context,
 	name string, args *ClusterIAMBindingArgs, opts ...pulumi.ResourceOption) (*ClusterIAMBinding, error) {
-	if args == nil || args.Cluster == nil {
-		return nil, errors.New("missing required argument 'Cluster'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ClusterIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Cluster == nil {
+		return nil, errors.New("invalid value for required argument 'Cluster'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ClusterIAMBinding
 	err := ctx.RegisterResource("gcp:dataproc/clusterIAMBinding:ClusterIAMBinding", name, args, &resource, opts...)

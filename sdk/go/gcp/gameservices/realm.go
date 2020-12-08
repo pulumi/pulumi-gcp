@@ -89,14 +89,15 @@ type Realm struct {
 // NewRealm registers a new resource with the given unique name, arguments, and options.
 func NewRealm(ctx *pulumi.Context,
 	name string, args *RealmArgs, opts ...pulumi.ResourceOption) (*Realm, error) {
-	if args == nil || args.RealmId == nil {
-		return nil, errors.New("missing required argument 'RealmId'")
-	}
-	if args == nil || args.TimeZone == nil {
-		return nil, errors.New("missing required argument 'TimeZone'")
-	}
 	if args == nil {
-		args = &RealmArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.RealmId == nil {
+		return nil, errors.New("invalid value for required argument 'RealmId'")
+	}
+	if args.TimeZone == nil {
+		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
 	var resource Realm
 	err := ctx.RegisterResource("gcp:gameservices/realm:Realm", name, args, &resource, opts...)

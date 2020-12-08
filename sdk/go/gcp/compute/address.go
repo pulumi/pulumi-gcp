@@ -243,6 +243,7 @@ func NewAddress(ctx *pulumi.Context,
 	if args == nil {
 		args = &AddressArgs{}
 	}
+
 	var resource Address
 	err := ctx.RegisterResource("gcp:compute/address:Address", name, args, &resource, opts...)
 	if err != nil {

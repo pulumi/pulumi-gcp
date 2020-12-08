@@ -277,17 +277,18 @@ type SubnetworkIAMBinding struct {
 // NewSubnetworkIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewSubnetworkIAMBinding(ctx *pulumi.Context,
 	name string, args *SubnetworkIAMBindingArgs, opts ...pulumi.ResourceOption) (*SubnetworkIAMBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Subnetwork == nil {
-		return nil, errors.New("missing required argument 'Subnetwork'")
-	}
 	if args == nil {
-		args = &SubnetworkIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Subnetwork == nil {
+		return nil, errors.New("invalid value for required argument 'Subnetwork'")
 	}
 	var resource SubnetworkIAMBinding
 	err := ctx.RegisterResource("gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding", name, args, &resource, opts...)

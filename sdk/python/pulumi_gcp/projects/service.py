@@ -80,7 +80,7 @@ class Service(pulumi.CustomResource):
             __props__['disable_dependent_services'] = disable_dependent_services
             __props__['disable_on_destroy'] = disable_on_destroy
             __props__['project'] = project
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
         super(Service, __self__).__init__(

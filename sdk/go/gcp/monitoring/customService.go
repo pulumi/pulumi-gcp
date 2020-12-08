@@ -81,6 +81,7 @@ func NewCustomService(ctx *pulumi.Context,
 	if args == nil {
 		args = &CustomServiceArgs{}
 	}
+
 	var resource CustomService
 	err := ctx.RegisterResource("gcp:monitoring/customService:CustomService", name, args, &resource, opts...)
 	if err != nil {

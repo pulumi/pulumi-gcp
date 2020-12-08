@@ -127,10 +127,10 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["sourceRange"] = state ? state.sourceRange : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.sourceRange === undefined) {
+            if ((!args || args.sourceRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceRange'");
             }
             inputs["action"] = args ? args.action : undefined;

@@ -185,7 +185,7 @@ export class RegionTargetHttpProxy extends pulumi.CustomResource {
             inputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as RegionTargetHttpProxyArgs | undefined;
-            if (!args || args.urlMap === undefined) {
+            if ((!args || args.urlMap === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'urlMap'");
             }
             inputs["description"] = args ? args.description : undefined;

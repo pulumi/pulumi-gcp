@@ -138,10 +138,10 @@ class RegionTargetHttpsProxy(pulumi.CustomResource):
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
-            if ssl_certificates is None:
+            if ssl_certificates is None and not opts.urn:
                 raise TypeError("Missing required property 'ssl_certificates'")
             __props__['ssl_certificates'] = ssl_certificates
-            if url_map is None:
+            if url_map is None and not opts.urn:
                 raise TypeError("Missing required property 'url_map'")
             __props__['url_map'] = url_map
             __props__['creation_timestamp'] = None

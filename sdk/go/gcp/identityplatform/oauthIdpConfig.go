@@ -83,14 +83,15 @@ type OauthIdpConfig struct {
 // NewOauthIdpConfig registers a new resource with the given unique name, arguments, and options.
 func NewOauthIdpConfig(ctx *pulumi.Context,
 	name string, args *OauthIdpConfigArgs, opts ...pulumi.ResourceOption) (*OauthIdpConfig, error) {
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.Issuer == nil {
-		return nil, errors.New("missing required argument 'Issuer'")
-	}
 	if args == nil {
-		args = &OauthIdpConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.Issuer == nil {
+		return nil, errors.New("invalid value for required argument 'Issuer'")
 	}
 	var resource OauthIdpConfig
 	err := ctx.RegisterResource("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig", name, args, &resource, opts...)

@@ -159,11 +159,12 @@ type DiskIamPolicy struct {
 // NewDiskIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewDiskIamPolicy(ctx *pulumi.Context,
 	name string, args *DiskIamPolicyArgs, opts ...pulumi.ResourceOption) (*DiskIamPolicy, error) {
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &DiskIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource DiskIamPolicy
 	err := ctx.RegisterResource("gcp:compute/diskIamPolicy:DiskIamPolicy", name, args, &resource, opts...)

@@ -62,7 +62,7 @@ class VPNGateway(pulumi.CustomResource):
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
             target_vpn_gateway=target_gateway.id,
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     fr_esp,
                     fr_udp500,
                     fr_udp4500,
@@ -128,7 +128,7 @@ class VPNGateway(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['project'] = project

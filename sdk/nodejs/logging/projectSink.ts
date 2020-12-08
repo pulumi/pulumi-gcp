@@ -128,7 +128,7 @@ export class ProjectSink extends pulumi.CustomResource {
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as ProjectSinkArgs | undefined;
-            if (!args || args.destination === undefined) {
+            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destination'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;

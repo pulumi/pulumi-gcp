@@ -151,10 +151,10 @@ export class AttestorIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as AttestorIamPolicyArgs | undefined;
-            if (!args || args.attestor === undefined) {
+            if ((!args || args.attestor === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'attestor'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["attestor"] = args ? args.attestor : undefined;

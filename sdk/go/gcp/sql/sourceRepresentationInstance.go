@@ -83,14 +83,15 @@ type SourceRepresentationInstance struct {
 // NewSourceRepresentationInstance registers a new resource with the given unique name, arguments, and options.
 func NewSourceRepresentationInstance(ctx *pulumi.Context,
 	name string, args *SourceRepresentationInstanceArgs, opts ...pulumi.ResourceOption) (*SourceRepresentationInstance, error) {
-	if args == nil || args.DatabaseVersion == nil {
-		return nil, errors.New("missing required argument 'DatabaseVersion'")
-	}
-	if args == nil || args.Host == nil {
-		return nil, errors.New("missing required argument 'Host'")
-	}
 	if args == nil {
-		args = &SourceRepresentationInstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DatabaseVersion == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseVersion'")
+	}
+	if args.Host == nil {
+		return nil, errors.New("invalid value for required argument 'Host'")
 	}
 	var resource SourceRepresentationInstance
 	err := ctx.RegisterResource("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance", name, args, &resource, opts...)

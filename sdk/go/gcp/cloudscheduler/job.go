@@ -245,6 +245,7 @@ func NewJob(ctx *pulumi.Context,
 	if args == nil {
 		args = &JobArgs{}
 	}
+
 	var resource Job
 	err := ctx.RegisterResource("gcp:cloudscheduler/job:Job", name, args, &resource, opts...)
 	if err != nil {

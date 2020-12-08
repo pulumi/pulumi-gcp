@@ -99,11 +99,12 @@ type HmacKey struct {
 // NewHmacKey registers a new resource with the given unique name, arguments, and options.
 func NewHmacKey(ctx *pulumi.Context,
 	name string, args *HmacKeyArgs, opts ...pulumi.ResourceOption) (*HmacKey, error) {
-	if args == nil || args.ServiceAccountEmail == nil {
-		return nil, errors.New("missing required argument 'ServiceAccountEmail'")
-	}
 	if args == nil {
-		args = &HmacKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ServiceAccountEmail == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountEmail'")
 	}
 	var resource HmacKey
 	err := ctx.RegisterResource("gcp:storage/hmacKey:HmacKey", name, args, &resource, opts...)

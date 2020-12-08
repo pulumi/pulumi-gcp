@@ -80,14 +80,15 @@ type FolderExclusion struct {
 // NewFolderExclusion registers a new resource with the given unique name, arguments, and options.
 func NewFolderExclusion(ctx *pulumi.Context,
 	name string, args *FolderExclusionArgs, opts ...pulumi.ResourceOption) (*FolderExclusion, error) {
-	if args == nil || args.Filter == nil {
-		return nil, errors.New("missing required argument 'Filter'")
-	}
-	if args == nil || args.Folder == nil {
-		return nil, errors.New("missing required argument 'Folder'")
-	}
 	if args == nil {
-		args = &FolderExclusionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Filter == nil {
+		return nil, errors.New("invalid value for required argument 'Filter'")
+	}
+	if args.Folder == nil {
+		return nil, errors.New("invalid value for required argument 'Folder'")
 	}
 	var resource FolderExclusion
 	err := ctx.RegisterResource("gcp:logging/folderExclusion:FolderExclusion", name, args, &resource, opts...)

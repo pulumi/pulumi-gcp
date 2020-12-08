@@ -138,10 +138,10 @@ export class EntityType extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as EntityTypeArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.kind === undefined) {
+            if ((!args || args.kind === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'kind'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;

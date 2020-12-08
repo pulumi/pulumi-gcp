@@ -110,15 +110,15 @@ class DomainMapping(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if location is None:
+            if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__['location'] = location
-            if metadata is None:
+            if metadata is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata'")
             __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['project'] = project
-            if spec is None:
+            if spec is None and not opts.urn:
                 raise TypeError("Missing required property 'spec'")
             __props__['spec'] = spec
             __props__['statuses'] = None

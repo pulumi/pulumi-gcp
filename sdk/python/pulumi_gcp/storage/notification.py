@@ -67,7 +67,7 @@ class Notification(pulumi.CustomResource):
             custom_attributes={
                 "new-attribute": "new-attribute-value",
             },
-            opts=ResourceOptions(depends_on=[binding]))
+            opts=pulumi.ResourceOptions(depends_on=[binding]))
         # Enable notifications by giving the correct IAM permission to the unique service account.
         ```
 
@@ -108,16 +108,16 @@ class Notification(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bucket is None:
+            if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
             __props__['bucket'] = bucket
             __props__['custom_attributes'] = custom_attributes
             __props__['event_types'] = event_types
             __props__['object_name_prefix'] = object_name_prefix
-            if payload_format is None:
+            if payload_format is None and not opts.urn:
                 raise TypeError("Missing required property 'payload_format'")
             __props__['payload_format'] = payload_format
-            if topic is None:
+            if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
             __props__['topic'] = topic
             __props__['notification_id'] = None

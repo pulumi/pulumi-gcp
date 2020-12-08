@@ -108,17 +108,17 @@ class GCPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if column_family is None:
+            if column_family is None and not opts.urn:
                 raise TypeError("Missing required property 'column_family'")
             __props__['column_family'] = column_family
-            if instance_name is None:
+            if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__['instance_name'] = instance_name
             __props__['max_ages'] = max_ages
             __props__['max_versions'] = max_versions
             __props__['mode'] = mode
             __props__['project'] = project
-            if table is None:
+            if table is None and not opts.urn:
                 raise TypeError("Missing required property 'table'")
             __props__['table'] = table
         super(GCPolicy, __self__).__init__(

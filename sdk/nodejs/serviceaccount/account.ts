@@ -119,7 +119,7 @@ export class Account extends pulumi.CustomResource {
             inputs["uniqueId"] = state ? state.uniqueId : undefined;
         } else {
             const args = argsOrState as AccountArgs | undefined;
-            if (!args || args.accountId === undefined) {
+            if ((!args || args.accountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accountId'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;

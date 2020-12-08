@@ -165,18 +165,18 @@ class RecordSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if managed_zone is None:
+            if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")
             __props__['managed_zone'] = managed_zone
             __props__['name'] = name
             __props__['project'] = project
-            if rrdatas is None:
+            if rrdatas is None and not opts.urn:
                 raise TypeError("Missing required property 'rrdatas'")
             __props__['rrdatas'] = rrdatas
-            if ttl is None:
+            if ttl is None and not opts.urn:
                 raise TypeError("Missing required property 'ttl'")
             __props__['ttl'] = ttl
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
         super(RecordSet, __self__).__init__(

@@ -142,14 +142,15 @@ type PreventionDeidentifyTemplate struct {
 // NewPreventionDeidentifyTemplate registers a new resource with the given unique name, arguments, and options.
 func NewPreventionDeidentifyTemplate(ctx *pulumi.Context,
 	name string, args *PreventionDeidentifyTemplateArgs, opts ...pulumi.ResourceOption) (*PreventionDeidentifyTemplate, error) {
-	if args == nil || args.DeidentifyConfig == nil {
-		return nil, errors.New("missing required argument 'DeidentifyConfig'")
-	}
-	if args == nil || args.Parent == nil {
-		return nil, errors.New("missing required argument 'Parent'")
-	}
 	if args == nil {
-		args = &PreventionDeidentifyTemplateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DeidentifyConfig == nil {
+		return nil, errors.New("invalid value for required argument 'DeidentifyConfig'")
+	}
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	var resource PreventionDeidentifyTemplate
 	err := ctx.RegisterResource("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate", name, args, &resource, opts...)

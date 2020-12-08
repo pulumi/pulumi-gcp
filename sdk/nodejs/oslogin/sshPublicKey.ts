@@ -108,10 +108,10 @@ export class SshPublicKey extends pulumi.CustomResource {
             inputs["user"] = state ? state.user : undefined;
         } else {
             const args = argsOrState as SshPublicKeyArgs | undefined;
-            if (!args || args.key === undefined) {
+            if ((!args || args.key === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'key'");
             }
-            if (!args || args.user === undefined) {
+            if ((!args || args.user === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'user'");
             }
             inputs["expirationTimeUsec"] = args ? args.expirationTimeUsec : undefined;

@@ -95,10 +95,10 @@ class ServicePerimeterResource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if perimeter_name is None:
+            if perimeter_name is None and not opts.urn:
                 raise TypeError("Missing required property 'perimeter_name'")
             __props__['perimeter_name'] = perimeter_name
-            if resource is None:
+            if resource is None and not opts.urn:
                 raise TypeError("Missing required property 'resource'")
             __props__['resource'] = resource
         super(ServicePerimeterResource, __self__).__init__(

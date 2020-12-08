@@ -149,11 +149,12 @@ type InterconnectAttachment struct {
 // NewInterconnectAttachment registers a new resource with the given unique name, arguments, and options.
 func NewInterconnectAttachment(ctx *pulumi.Context,
 	name string, args *InterconnectAttachmentArgs, opts ...pulumi.ResourceOption) (*InterconnectAttachment, error) {
-	if args == nil || args.Router == nil {
-		return nil, errors.New("missing required argument 'Router'")
-	}
 	if args == nil {
-		args = &InterconnectAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Router == nil {
+		return nil, errors.New("invalid value for required argument 'Router'")
 	}
 	var resource InterconnectAttachment
 	err := ctx.RegisterResource("gcp:compute/interconnectAttachment:InterconnectAttachment", name, args, &resource, opts...)

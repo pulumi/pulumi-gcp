@@ -54,7 +54,7 @@ class Intent(pulumi.CustomResource):
             default_language_code="en",
             time_zone="America/New_York")
         basic_intent = gcp.diagflow.Intent("basicIntent", display_name="basic-intent",
-        opts=ResourceOptions(depends_on=[basic_agent]))
+        opts=pulumi.ResourceOptions(depends_on=[basic_agent]))
         ```
 
         ## Import
@@ -116,7 +116,7 @@ class Intent(pulumi.CustomResource):
 
             __props__['action'] = action
             __props__['default_response_platforms'] = default_response_platforms
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['events'] = events

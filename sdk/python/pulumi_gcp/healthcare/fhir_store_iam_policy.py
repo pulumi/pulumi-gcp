@@ -122,10 +122,10 @@ class FhirStoreIamPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if fhir_store_id is None:
+            if fhir_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_store_id'")
             __props__['fhir_store_id'] = fhir_store_id
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
             __props__['etag'] = None

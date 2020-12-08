@@ -89,7 +89,7 @@ export class TunnelIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as TunnelIamPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

@@ -112,14 +112,15 @@ type Group struct {
 // NewGroup registers a new resource with the given unique name, arguments, and options.
 func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOption) (*Group, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Filter == nil {
-		return nil, errors.New("missing required argument 'Filter'")
-	}
 	if args == nil {
-		args = &GroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Filter == nil {
+		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
 	var resource Group
 	err := ctx.RegisterResource("gcp:monitoring/group:Group", name, args, &resource, opts...)

@@ -651,6 +651,7 @@ func NewRegionUrlMap(ctx *pulumi.Context,
 	if args == nil {
 		args = &RegionUrlMapArgs{}
 	}
+
 	var resource RegionUrlMap
 	err := ctx.RegisterResource("gcp:compute/regionUrlMap:RegionUrlMap", name, args, &resource, opts...)
 	if err != nil {

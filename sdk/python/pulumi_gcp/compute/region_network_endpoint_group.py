@@ -221,7 +221,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             __props__['name'] = name
             __props__['network_endpoint_type'] = network_endpoint_type
             __props__['project'] = project
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['self_link'] = None

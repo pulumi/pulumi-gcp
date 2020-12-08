@@ -315,14 +315,15 @@ type IAMAuditConfig struct {
 // NewIAMAuditConfig registers a new resource with the given unique name, arguments, and options.
 func NewIAMAuditConfig(ctx *pulumi.Context,
 	name string, args *IAMAuditConfigArgs, opts ...pulumi.ResourceOption) (*IAMAuditConfig, error) {
-	if args == nil || args.AuditLogConfigs == nil {
-		return nil, errors.New("missing required argument 'AuditLogConfigs'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &IAMAuditConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AuditLogConfigs == nil {
+		return nil, errors.New("invalid value for required argument 'AuditLogConfigs'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource IAMAuditConfig
 	err := ctx.RegisterResource("gcp:projects/iAMAuditConfig:IAMAuditConfig", name, args, &resource, opts...)

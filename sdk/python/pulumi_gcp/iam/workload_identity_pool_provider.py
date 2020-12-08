@@ -149,10 +149,10 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             __props__['display_name'] = display_name
             __props__['oidc'] = oidc
             __props__['project'] = project
-            if workload_identity_pool_id is None:
+            if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")
             __props__['workload_identity_pool_id'] = workload_identity_pool_id
-            if workload_identity_pool_provider_id is None:
+            if workload_identity_pool_provider_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_provider_id'")
             __props__['workload_identity_pool_provider_id'] = workload_identity_pool_provider_id
             __props__['name'] = None

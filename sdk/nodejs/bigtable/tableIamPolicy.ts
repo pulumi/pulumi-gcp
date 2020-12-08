@@ -148,13 +148,13 @@ export class TableIamPolicy extends pulumi.CustomResource {
             inputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as TableIamPolicyArgs | undefined;
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.table === undefined) {
+            if ((!args || args.table === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'table'");
             }
             inputs["instance"] = args ? args.instance : undefined;

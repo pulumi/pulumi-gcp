@@ -115,6 +115,7 @@ func NewTargetPool(ctx *pulumi.Context,
 	if args == nil {
 		args = &TargetPoolArgs{}
 	}
+
 	var resource TargetPool
 	err := ctx.RegisterResource("gcp:compute/targetPool:TargetPool", name, args, &resource, opts...)
 	if err != nil {

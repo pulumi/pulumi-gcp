@@ -118,7 +118,7 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ApplicationUrlDispatchRulesArgs | undefined;
-            if (!args || args.dispatchRules === undefined) {
+            if ((!args || args.dispatchRules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dispatchRules'");
             }
             inputs["dispatchRules"] = args ? args.dispatchRules : undefined;

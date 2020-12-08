@@ -138,10 +138,10 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as BillingAccountSinkArgs | undefined;
-            if (!args || args.billingAccount === undefined) {
+            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if (!args || args.destination === undefined) {
+            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destination'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;

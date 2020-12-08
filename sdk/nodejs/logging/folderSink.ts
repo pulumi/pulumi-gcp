@@ -148,10 +148,10 @@ export class FolderSink extends pulumi.CustomResource {
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as FolderSinkArgs | undefined;
-            if (!args || args.destination === undefined) {
+            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'destination'");
             }
-            if (!args || args.folder === undefined) {
+            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'folder'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;

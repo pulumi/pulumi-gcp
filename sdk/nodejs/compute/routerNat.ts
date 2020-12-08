@@ -237,13 +237,13 @@ export class RouterNat extends pulumi.CustomResource {
             inputs["udpIdleTimeoutSec"] = state ? state.udpIdleTimeoutSec : undefined;
         } else {
             const args = argsOrState as RouterNatArgs | undefined;
-            if (!args || args.natIpAllocateOption === undefined) {
+            if ((!args || args.natIpAllocateOption === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'natIpAllocateOption'");
             }
-            if (!args || args.router === undefined) {
+            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'router'");
             }
-            if (!args || args.sourceSubnetworkIpRangesToNat === undefined) {
+            if ((!args || args.sourceSubnetworkIpRangesToNat === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceSubnetworkIpRangesToNat'");
             }
             inputs["drainNatIps"] = args ? args.drainNatIps : undefined;

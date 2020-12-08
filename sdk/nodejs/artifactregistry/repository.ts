@@ -198,10 +198,10 @@ export class Repository extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
-            if (!args || args.format === undefined) {
+            if ((!args || args.format === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'format'");
             }
-            if (!args || args.repositoryId === undefined) {
+            if ((!args || args.repositoryId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'repositoryId'");
             }
             inputs["description"] = args ? args.description : undefined;

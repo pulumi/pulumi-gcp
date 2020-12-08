@@ -89,7 +89,7 @@ export class SharedVPCHostProject extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as SharedVPCHostProjectArgs | undefined;
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["project"] = args ? args.project : undefined;

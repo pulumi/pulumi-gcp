@@ -268,10 +268,10 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
-            if (!args || args.ipCidrRange === undefined) {
+            if ((!args || args.ipCidrRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipCidrRange'");
             }
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["description"] = args ? args.description : undefined;

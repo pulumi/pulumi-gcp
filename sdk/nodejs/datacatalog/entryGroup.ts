@@ -121,7 +121,7 @@ export class EntryGroup extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as EntryGroupArgs | undefined;
-            if (!args || args.entryGroupId === undefined) {
+            if ((!args || args.entryGroupId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'entryGroupId'");
             }
             inputs["description"] = args ? args.description : undefined;

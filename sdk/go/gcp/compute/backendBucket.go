@@ -106,11 +106,12 @@ type BackendBucket struct {
 // NewBackendBucket registers a new resource with the given unique name, arguments, and options.
 func NewBackendBucket(ctx *pulumi.Context,
 	name string, args *BackendBucketArgs, opts ...pulumi.ResourceOption) (*BackendBucket, error) {
-	if args == nil || args.BucketName == nil {
-		return nil, errors.New("missing required argument 'BucketName'")
-	}
 	if args == nil {
-		args = &BackendBucketArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BucketName == nil {
+		return nil, errors.New("invalid value for required argument 'BucketName'")
 	}
 	var resource BackendBucket
 	err := ctx.RegisterResource("gcp:compute/backendBucket:BackendBucket", name, args, &resource, opts...)

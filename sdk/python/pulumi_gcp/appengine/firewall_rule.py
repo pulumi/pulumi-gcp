@@ -100,13 +100,13 @@ class FirewallRule(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if action is None:
+            if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")
             __props__['action'] = action
             __props__['description'] = description
             __props__['priority'] = priority
             __props__['project'] = project
-            if source_range is None:
+            if source_range is None and not opts.urn:
                 raise TypeError("Missing required property 'source_range'")
             __props__['source_range'] = source_range
         super(FirewallRule, __self__).__init__(

@@ -215,13 +215,13 @@ export class PacketMirroring extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as PacketMirroringArgs | undefined;
-            if (!args || args.collectorIlb === undefined) {
+            if ((!args || args.collectorIlb === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'collectorIlb'");
             }
-            if (!args || args.mirroredResources === undefined) {
+            if ((!args || args.mirroredResources === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'mirroredResources'");
             }
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["collectorIlb"] = args ? args.collectorIlb : undefined;

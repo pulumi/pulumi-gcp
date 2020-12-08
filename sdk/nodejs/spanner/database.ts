@@ -131,7 +131,7 @@ export class Database extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["ddls"] = args ? args.ddls : undefined;

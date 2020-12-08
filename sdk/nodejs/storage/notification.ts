@@ -148,13 +148,13 @@ export class Notification extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as NotificationArgs | undefined;
-            if (!args || args.bucket === undefined) {
+            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (!args || args.payloadFormat === undefined) {
+            if ((!args || args.payloadFormat === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'payloadFormat'");
             }
-            if (!args || args.topic === undefined) {
+            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;

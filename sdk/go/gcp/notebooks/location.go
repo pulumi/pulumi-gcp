@@ -45,6 +45,7 @@ func NewLocation(ctx *pulumi.Context,
 	if args == nil {
 		args = &LocationArgs{}
 	}
+
 	var resource Location
 	err := ctx.RegisterResource("gcp:notebooks/location:Location", name, args, &resource, opts...)
 	if err != nil {

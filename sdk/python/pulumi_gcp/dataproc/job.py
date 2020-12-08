@@ -129,7 +129,7 @@ class Job(pulumi.CustomResource):
             __props__['hive_config'] = hive_config
             __props__['labels'] = labels
             __props__['pig_config'] = pig_config
-            if placement is None:
+            if placement is None and not opts.urn:
                 raise TypeError("Missing required property 'placement'")
             __props__['placement'] = placement
             __props__['project'] = project

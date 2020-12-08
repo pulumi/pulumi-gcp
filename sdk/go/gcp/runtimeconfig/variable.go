@@ -56,11 +56,12 @@ type Variable struct {
 // NewVariable registers a new resource with the given unique name, arguments, and options.
 func NewVariable(ctx *pulumi.Context,
 	name string, args *VariableArgs, opts ...pulumi.ResourceOption) (*Variable, error) {
-	if args == nil || args.Parent == nil {
-		return nil, errors.New("missing required argument 'Parent'")
-	}
 	if args == nil {
-		args = &VariableArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	var resource Variable
 	err := ctx.RegisterResource("gcp:runtimeconfig/variable:Variable", name, args, &resource, opts...)

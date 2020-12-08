@@ -274,12 +274,12 @@ class PatchDeployment(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['duration'] = duration
-            if instance_filter is None:
+            if instance_filter is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_filter'")
             __props__['instance_filter'] = instance_filter
             __props__['one_time_schedule'] = one_time_schedule
             __props__['patch_config'] = patch_config
-            if patch_deployment_id is None:
+            if patch_deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'patch_deployment_id'")
             __props__['patch_deployment_id'] = patch_deployment_id
             __props__['project'] = project

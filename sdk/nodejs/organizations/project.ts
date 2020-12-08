@@ -156,7 +156,7 @@ export class Project extends pulumi.CustomResource {
             inputs["skipDelete"] = state ? state.skipDelete : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if (!args || args.projectId === undefined) {
+            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;

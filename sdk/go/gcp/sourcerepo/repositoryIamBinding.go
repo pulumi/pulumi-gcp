@@ -157,17 +157,18 @@ type RepositoryIamBinding struct {
 // NewRepositoryIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewRepositoryIamBinding(ctx *pulumi.Context,
 	name string, args *RepositoryIamBindingArgs, opts ...pulumi.ResourceOption) (*RepositoryIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Repository == nil {
-		return nil, errors.New("missing required argument 'Repository'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &RepositoryIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Repository == nil {
+		return nil, errors.New("invalid value for required argument 'Repository'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource RepositoryIamBinding
 	err := ctx.RegisterResource("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding", name, args, &resource, opts...)

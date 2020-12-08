@@ -132,17 +132,18 @@ type AlertPolicy struct {
 // NewAlertPolicy registers a new resource with the given unique name, arguments, and options.
 func NewAlertPolicy(ctx *pulumi.Context,
 	name string, args *AlertPolicyArgs, opts ...pulumi.ResourceOption) (*AlertPolicy, error) {
-	if args == nil || args.Combiner == nil {
-		return nil, errors.New("missing required argument 'Combiner'")
-	}
-	if args == nil || args.Conditions == nil {
-		return nil, errors.New("missing required argument 'Conditions'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil {
-		args = &AlertPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Combiner == nil {
+		return nil, errors.New("invalid value for required argument 'Combiner'")
+	}
+	if args.Conditions == nil {
+		return nil, errors.New("invalid value for required argument 'Conditions'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	var resource AlertPolicy
 	err := ctx.RegisterResource("gcp:monitoring/alertPolicy:AlertPolicy", name, args, &resource, opts...)

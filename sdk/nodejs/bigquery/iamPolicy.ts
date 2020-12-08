@@ -216,13 +216,13 @@ export class IamPolicy extends pulumi.CustomResource {
             inputs["tableId"] = state ? state.tableId : undefined;
         } else {
             const args = argsOrState as IamPolicyArgs | undefined;
-            if (!args || args.datasetId === undefined) {
+            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.tableId === undefined) {
+            if ((!args || args.tableId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tableId'");
             }
             inputs["datasetId"] = args ? args.datasetId : undefined;

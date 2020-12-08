@@ -273,17 +273,18 @@ type TunnelInstanceIAMBinding struct {
 // NewTunnelInstanceIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewTunnelInstanceIAMBinding(ctx *pulumi.Context,
 	name string, args *TunnelInstanceIAMBindingArgs, opts ...pulumi.ResourceOption) (*TunnelInstanceIAMBinding, error) {
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &TunnelInstanceIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource TunnelInstanceIAMBinding
 	err := ctx.RegisterResource("gcp:iap/tunnelInstanceIAMBinding:TunnelInstanceIAMBinding", name, args, &resource, opts...)

@@ -177,6 +177,7 @@ func NewImage(ctx *pulumi.Context,
 	if args == nil {
 		args = &ImageArgs{}
 	}
+
 	var resource Image
 	err := ctx.RegisterResource("gcp:compute/image:Image", name, args, &resource, opts...)
 	if err != nil {

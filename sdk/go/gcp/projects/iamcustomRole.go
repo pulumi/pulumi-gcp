@@ -89,17 +89,18 @@ type IAMCustomRole struct {
 // NewIAMCustomRole registers a new resource with the given unique name, arguments, and options.
 func NewIAMCustomRole(ctx *pulumi.Context,
 	name string, args *IAMCustomRoleArgs, opts ...pulumi.ResourceOption) (*IAMCustomRole, error) {
-	if args == nil || args.Permissions == nil {
-		return nil, errors.New("missing required argument 'Permissions'")
-	}
-	if args == nil || args.RoleId == nil {
-		return nil, errors.New("missing required argument 'RoleId'")
-	}
-	if args == nil || args.Title == nil {
-		return nil, errors.New("missing required argument 'Title'")
-	}
 	if args == nil {
-		args = &IAMCustomRoleArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Permissions == nil {
+		return nil, errors.New("invalid value for required argument 'Permissions'")
+	}
+	if args.RoleId == nil {
+		return nil, errors.New("invalid value for required argument 'RoleId'")
+	}
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
 	}
 	var resource IAMCustomRole
 	err := ctx.RegisterResource("gcp:projects/iAMCustomRole:IAMCustomRole", name, args, &resource, opts...)

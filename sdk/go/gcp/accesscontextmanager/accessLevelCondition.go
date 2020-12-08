@@ -85,11 +85,12 @@ type AccessLevelCondition struct {
 // NewAccessLevelCondition registers a new resource with the given unique name, arguments, and options.
 func NewAccessLevelCondition(ctx *pulumi.Context,
 	name string, args *AccessLevelConditionArgs, opts ...pulumi.ResourceOption) (*AccessLevelCondition, error) {
-	if args == nil || args.AccessLevel == nil {
-		return nil, errors.New("missing required argument 'AccessLevel'")
-	}
 	if args == nil {
-		args = &AccessLevelConditionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AccessLevel == nil {
+		return nil, errors.New("invalid value for required argument 'AccessLevel'")
 	}
 	var resource AccessLevelCondition
 	err := ctx.RegisterResource("gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition", name, args, &resource, opts...)

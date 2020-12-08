@@ -326,7 +326,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["vpnGatewayInterface"] = state ? state.vpnGatewayInterface : undefined;
         } else {
             const args = argsOrState as VPNTunnelArgs | undefined;
-            if (!args || args.sharedSecret === undefined) {
+            if ((!args || args.sharedSecret === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sharedSecret'");
             }
             inputs["description"] = args ? args.description : undefined;

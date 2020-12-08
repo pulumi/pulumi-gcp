@@ -89,7 +89,7 @@ class Instance(pulumi.CustomResource):
                 network="default",
                 modes=["MODE_IPV4"],
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -147,19 +147,19 @@ class Instance(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if file_shares is None:
+            if file_shares is None and not opts.urn:
                 raise TypeError("Missing required property 'file_shares'")
             __props__['file_shares'] = file_shares
             __props__['labels'] = labels
             __props__['name'] = name
-            if networks is None:
+            if networks is None and not opts.urn:
                 raise TypeError("Missing required property 'networks'")
             __props__['networks'] = networks
             __props__['project'] = project
-            if tier is None:
+            if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")
             __props__['tier'] = tier
-            if zone is None:
+            if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
             __props__['create_time'] = None

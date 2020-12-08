@@ -125,23 +125,24 @@ type MetricDescriptor struct {
 // NewMetricDescriptor registers a new resource with the given unique name, arguments, and options.
 func NewMetricDescriptor(ctx *pulumi.Context,
 	name string, args *MetricDescriptorArgs, opts ...pulumi.ResourceOption) (*MetricDescriptor, error) {
-	if args == nil || args.Description == nil {
-		return nil, errors.New("missing required argument 'Description'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.MetricKind == nil {
-		return nil, errors.New("missing required argument 'MetricKind'")
-	}
-	if args == nil || args.Type == nil {
-		return nil, errors.New("missing required argument 'Type'")
-	}
-	if args == nil || args.ValueType == nil {
-		return nil, errors.New("missing required argument 'ValueType'")
-	}
 	if args == nil {
-		args = &MetricDescriptorArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.MetricKind == nil {
+		return nil, errors.New("invalid value for required argument 'MetricKind'")
+	}
+	if args.Type == nil {
+		return nil, errors.New("invalid value for required argument 'Type'")
+	}
+	if args.ValueType == nil {
+		return nil, errors.New("invalid value for required argument 'ValueType'")
 	}
 	var resource MetricDescriptor
 	err := ctx.RegisterResource("gcp:monitoring/metricDescriptor:MetricDescriptor", name, args, &resource, opts...)

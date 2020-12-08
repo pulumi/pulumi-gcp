@@ -204,10 +204,10 @@ export class Slo extends pulumi.CustomResource {
             inputs["windowsBasedSli"] = state ? state.windowsBasedSli : undefined;
         } else {
             const args = argsOrState as SloArgs | undefined;
-            if (!args || args.goal === undefined) {
+            if ((!args || args.goal === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'goal'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["basicSli"] = args ? args.basicSli : undefined;

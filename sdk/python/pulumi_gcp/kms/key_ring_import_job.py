@@ -78,16 +78,16 @@ class KeyRingImportJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if import_job_id is None:
+            if import_job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'import_job_id'")
             __props__['import_job_id'] = import_job_id
-            if import_method is None:
+            if import_method is None and not opts.urn:
                 raise TypeError("Missing required property 'import_method'")
             __props__['import_method'] = import_method
-            if key_ring is None:
+            if key_ring is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring'")
             __props__['key_ring'] = key_ring
-            if protection_level is None:
+            if protection_level is None and not opts.urn:
                 raise TypeError("Missing required property 'protection_level'")
             __props__['protection_level'] = protection_level
             __props__['attestations'] = None

@@ -119,10 +119,10 @@ class JobIAMPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if job_id is None:
+            if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
             __props__['job_id'] = job_id
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
             __props__['project'] = project

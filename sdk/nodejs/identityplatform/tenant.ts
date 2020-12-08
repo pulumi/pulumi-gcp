@@ -119,7 +119,7 @@ export class Tenant extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as TenantArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["allowPasswordSignup"] = args ? args.allowPasswordSignup : undefined;

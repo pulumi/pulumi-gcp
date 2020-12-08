@@ -158,17 +158,18 @@ type ConfigIamMember struct {
 // NewConfigIamMember registers a new resource with the given unique name, arguments, and options.
 func NewConfigIamMember(ctx *pulumi.Context,
 	name string, args *ConfigIamMemberArgs, opts ...pulumi.ResourceOption) (*ConfigIamMember, error) {
-	if args == nil || args.Config == nil {
-		return nil, errors.New("missing required argument 'Config'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ConfigIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Config == nil {
+		return nil, errors.New("invalid value for required argument 'Config'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ConfigIamMember
 	err := ctx.RegisterResource("gcp:runtimeconfig/configIamMember:ConfigIamMember", name, args, &resource, opts...)

@@ -88,7 +88,7 @@ class UsageExportBucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if bucket_name is None:
+            if bucket_name is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket_name'")
             __props__['bucket_name'] = bucket_name
             __props__['prefix'] = prefix

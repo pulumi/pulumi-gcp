@@ -256,7 +256,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
             __props__['description'] = description
             __props__['display_name'] = display_name
             __props__['inspect_config'] = inspect_config
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['name'] = None

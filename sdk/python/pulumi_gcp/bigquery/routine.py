@@ -119,10 +119,10 @@ class Routine(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['arguments'] = arguments
-            if dataset_id is None:
+            if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__['dataset_id'] = dataset_id
-            if definition_body is None:
+            if definition_body is None and not opts.urn:
                 raise TypeError("Missing required property 'definition_body'")
             __props__['definition_body'] = definition_body
             __props__['description'] = description
@@ -131,7 +131,7 @@ class Routine(pulumi.CustomResource):
             __props__['language'] = language
             __props__['project'] = project
             __props__['return_type'] = return_type
-            if routine_id is None:
+            if routine_id is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_id'")
             __props__['routine_id'] = routine_id
             __props__['routine_type'] = routine_type

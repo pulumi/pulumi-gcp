@@ -140,10 +140,10 @@ class Job(pulumi.CustomResource):
             __props__['region'] = region
             __props__['service_account_email'] = service_account_email
             __props__['subnetwork'] = subnetwork
-            if temp_gcs_location is None:
+            if temp_gcs_location is None and not opts.urn:
                 raise TypeError("Missing required property 'temp_gcs_location'")
             __props__['temp_gcs_location'] = temp_gcs_location
-            if template_gcs_path is None:
+            if template_gcs_path is None and not opts.urn:
                 raise TypeError("Missing required property 'template_gcs_path'")
             __props__['template_gcs_path'] = template_gcs_path
             __props__['transform_name_mapping'] = transform_name_mapping

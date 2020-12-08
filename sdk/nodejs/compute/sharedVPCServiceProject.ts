@@ -90,10 +90,10 @@ export class SharedVPCServiceProject extends pulumi.CustomResource {
             inputs["serviceProject"] = state ? state.serviceProject : undefined;
         } else {
             const args = argsOrState as SharedVPCServiceProjectArgs | undefined;
-            if (!args || args.hostProject === undefined) {
+            if ((!args || args.hostProject === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'hostProject'");
             }
-            if (!args || args.serviceProject === undefined) {
+            if ((!args || args.serviceProject === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceProject'");
             }
             inputs["hostProject"] = args ? args.hostProject : undefined;

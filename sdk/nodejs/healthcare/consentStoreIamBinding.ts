@@ -101,16 +101,16 @@ export class ConsentStoreIamBinding extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ConsentStoreIamBindingArgs | undefined;
-            if (!args || args.consentStoreId === undefined) {
+            if ((!args || args.consentStoreId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
-            if (!args || args.dataset === undefined) {
+            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataset'");
             }
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;

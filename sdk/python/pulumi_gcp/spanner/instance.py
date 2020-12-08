@@ -116,10 +116,10 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if config is None:
+            if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__['config'] = config
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['labels'] = labels

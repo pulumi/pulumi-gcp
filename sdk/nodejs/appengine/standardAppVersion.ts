@@ -255,13 +255,13 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
         } else {
             const args = argsOrState as StandardAppVersionArgs | undefined;
-            if (!args || args.deployment === undefined) {
+            if ((!args || args.deployment === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deployment'");
             }
-            if (!args || args.runtime === undefined) {
+            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["automaticScaling"] = args ? args.automaticScaling : undefined;

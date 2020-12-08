@@ -80,7 +80,7 @@ class SecretVersion(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['enabled'] = enabled
-            if secret is None:
+            if secret is None and not opts.urn:
                 raise TypeError("Missing required property 'secret'")
             __props__['secret'] = secret
             __props__['secret_data'] = secret_data

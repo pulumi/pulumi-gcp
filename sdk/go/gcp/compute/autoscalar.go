@@ -266,14 +266,15 @@ type Autoscalar struct {
 // NewAutoscalar registers a new resource with the given unique name, arguments, and options.
 func NewAutoscalar(ctx *pulumi.Context,
 	name string, args *AutoscalarArgs, opts ...pulumi.ResourceOption) (*Autoscalar, error) {
-	if args == nil || args.AutoscalingPolicy == nil {
-		return nil, errors.New("missing required argument 'AutoscalingPolicy'")
-	}
-	if args == nil || args.Target == nil {
-		return nil, errors.New("missing required argument 'Target'")
-	}
 	if args == nil {
-		args = &AutoscalarArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AutoscalingPolicy == nil {
+		return nil, errors.New("invalid value for required argument 'AutoscalingPolicy'")
+	}
+	if args.Target == nil {
+		return nil, errors.New("invalid value for required argument 'Target'")
 	}
 	var resource Autoscalar
 	err := ctx.RegisterResource("gcp:compute/autoscalar:Autoscalar", name, args, &resource, opts...)

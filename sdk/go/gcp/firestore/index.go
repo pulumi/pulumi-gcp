@@ -103,14 +103,15 @@ type Index struct {
 // NewIndex registers a new resource with the given unique name, arguments, and options.
 func NewIndex(ctx *pulumi.Context,
 	name string, args *IndexArgs, opts ...pulumi.ResourceOption) (*Index, error) {
-	if args == nil || args.Collection == nil {
-		return nil, errors.New("missing required argument 'Collection'")
-	}
-	if args == nil || args.Fields == nil {
-		return nil, errors.New("missing required argument 'Fields'")
-	}
 	if args == nil {
-		args = &IndexArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Collection == nil {
+		return nil, errors.New("invalid value for required argument 'Collection'")
+	}
+	if args.Fields == nil {
+		return nil, errors.New("invalid value for required argument 'Fields'")
 	}
 	var resource Index
 	err := ctx.RegisterResource("gcp:firestore/index:Index", name, args, &resource, opts...)

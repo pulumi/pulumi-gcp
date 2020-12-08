@@ -71,14 +71,15 @@ type OrganizationExclusion struct {
 // NewOrganizationExclusion registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationExclusion(ctx *pulumi.Context,
 	name string, args *OrganizationExclusionArgs, opts ...pulumi.ResourceOption) (*OrganizationExclusion, error) {
-	if args == nil || args.Filter == nil {
-		return nil, errors.New("missing required argument 'Filter'")
-	}
-	if args == nil || args.OrgId == nil {
-		return nil, errors.New("missing required argument 'OrgId'")
-	}
 	if args == nil {
-		args = &OrganizationExclusionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Filter == nil {
+		return nil, errors.New("invalid value for required argument 'Filter'")
+	}
+	if args.OrgId == nil {
+		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
 	var resource OrganizationExclusion
 	err := ctx.RegisterResource("gcp:logging/organizationExclusion:OrganizationExclusion", name, args, &resource, opts...)

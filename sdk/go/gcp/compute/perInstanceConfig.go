@@ -79,14 +79,15 @@ type PerInstanceConfig struct {
 // NewPerInstanceConfig registers a new resource with the given unique name, arguments, and options.
 func NewPerInstanceConfig(ctx *pulumi.Context,
 	name string, args *PerInstanceConfigArgs, opts ...pulumi.ResourceOption) (*PerInstanceConfig, error) {
-	if args == nil || args.InstanceGroupManager == nil {
-		return nil, errors.New("missing required argument 'InstanceGroupManager'")
-	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	if args == nil {
-		args = &PerInstanceConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.InstanceGroupManager == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceGroupManager'")
+	}
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource PerInstanceConfig
 	err := ctx.RegisterResource("gcp:compute/perInstanceConfig:PerInstanceConfig", name, args, &resource, opts...)

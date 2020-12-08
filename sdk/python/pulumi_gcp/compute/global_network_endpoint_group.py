@@ -113,7 +113,7 @@ class GlobalNetworkEndpointGroup(pulumi.CustomResource):
             __props__['default_port'] = default_port
             __props__['description'] = description
             __props__['name'] = name
-            if network_endpoint_type is None:
+            if network_endpoint_type is None and not opts.urn:
                 raise TypeError("Missing required property 'network_endpoint_type'")
             __props__['network_endpoint_type'] = network_endpoint_type
             __props__['project'] = project

@@ -105,6 +105,7 @@ func NewSecurityPolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &SecurityPolicyArgs{}
 	}
+
 	var resource SecurityPolicy
 	err := ctx.RegisterResource("gcp:compute/securityPolicy:SecurityPolicy", name, args, &resource, opts...)
 	if err != nil {

@@ -120,7 +120,7 @@ class InstanceFromMachineImage(pulumi.CustomResource):
             __props__['scheduling'] = scheduling
             __props__['service_account'] = service_account
             __props__['shielded_instance_config'] = shielded_instance_config
-            if source_machine_image is None:
+            if source_machine_image is None and not opts.urn:
                 raise TypeError("Missing required property 'source_machine_image'")
             __props__['source_machine_image'] = source_machine_image
             __props__['tags'] = tags

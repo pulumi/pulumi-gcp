@@ -75,11 +75,11 @@ class Brand(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if application_title is None:
+            if application_title is None and not opts.urn:
                 raise TypeError("Missing required property 'application_title'")
             __props__['application_title'] = application_title
             __props__['project'] = project
-            if support_email is None:
+            if support_email is None and not opts.urn:
                 raise TypeError("Missing required property 'support_email'")
             __props__['support_email'] = support_email
             __props__['name'] = None

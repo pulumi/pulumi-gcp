@@ -80,17 +80,18 @@ type OrganizationBucketConfig struct {
 // NewOrganizationBucketConfig registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationBucketConfig(ctx *pulumi.Context,
 	name string, args *OrganizationBucketConfigArgs, opts ...pulumi.ResourceOption) (*OrganizationBucketConfig, error) {
-	if args == nil || args.BucketId == nil {
-		return nil, errors.New("missing required argument 'BucketId'")
-	}
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
-	if args == nil || args.Organization == nil {
-		return nil, errors.New("missing required argument 'Organization'")
-	}
 	if args == nil {
-		args = &OrganizationBucketConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BucketId == nil {
+		return nil, errors.New("invalid value for required argument 'BucketId'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Organization == nil {
+		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
 	var resource OrganizationBucketConfig
 	err := ctx.RegisterResource("gcp:logging/organizationBucketConfig:OrganizationBucketConfig", name, args, &resource, opts...)

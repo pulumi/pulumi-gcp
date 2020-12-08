@@ -107,10 +107,10 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as BackendBucketSignedUrlKeyArgs | undefined;
-            if (!args || args.backendBucket === undefined) {
+            if ((!args || args.backendBucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'backendBucket'");
             }
-            if (!args || args.keyValue === undefined) {
+            if ((!args || args.keyValue === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyValue'");
             }
             inputs["backendBucket"] = args ? args.backendBucket : undefined;

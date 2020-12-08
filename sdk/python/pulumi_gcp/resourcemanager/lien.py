@@ -82,16 +82,16 @@ class Lien(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if origin is None:
+            if origin is None and not opts.urn:
                 raise TypeError("Missing required property 'origin'")
             __props__['origin'] = origin
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
-            if reason is None:
+            if reason is None and not opts.urn:
                 raise TypeError("Missing required property 'reason'")
             __props__['reason'] = reason
-            if restrictions is None:
+            if restrictions is None and not opts.urn:
                 raise TypeError("Missing required property 'restrictions'")
             __props__['restrictions'] = restrictions
             __props__['create_time'] = None

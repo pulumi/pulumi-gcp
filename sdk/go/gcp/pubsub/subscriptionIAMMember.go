@@ -151,17 +151,18 @@ type SubscriptionIAMMember struct {
 // NewSubscriptionIAMMember registers a new resource with the given unique name, arguments, and options.
 func NewSubscriptionIAMMember(ctx *pulumi.Context,
 	name string, args *SubscriptionIAMMemberArgs, opts ...pulumi.ResourceOption) (*SubscriptionIAMMember, error) {
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Subscription == nil {
-		return nil, errors.New("missing required argument 'Subscription'")
-	}
 	if args == nil {
-		args = &SubscriptionIAMMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Subscription == nil {
+		return nil, errors.New("invalid value for required argument 'Subscription'")
 	}
 	var resource SubscriptionIAMMember
 	err := ctx.RegisterResource("gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember", name, args, &resource, opts...)

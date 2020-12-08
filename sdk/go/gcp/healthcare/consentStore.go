@@ -54,11 +54,12 @@ type ConsentStore struct {
 // NewConsentStore registers a new resource with the given unique name, arguments, and options.
 func NewConsentStore(ctx *pulumi.Context,
 	name string, args *ConsentStoreArgs, opts ...pulumi.ResourceOption) (*ConsentStore, error) {
-	if args == nil || args.Dataset == nil {
-		return nil, errors.New("missing required argument 'Dataset'")
-	}
 	if args == nil {
-		args = &ConsentStoreArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Dataset == nil {
+		return nil, errors.New("invalid value for required argument 'Dataset'")
 	}
 	var resource ConsentStore
 	err := ctx.RegisterResource("gcp:healthcare/consentStore:ConsentStore", name, args, &resource, opts...)

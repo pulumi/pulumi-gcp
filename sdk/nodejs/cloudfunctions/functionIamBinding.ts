@@ -167,13 +167,13 @@ export class FunctionIamBinding extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as FunctionIamBindingArgs | undefined;
-            if (!args || args.cloudFunction === undefined) {
+            if ((!args || args.cloudFunction === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cloudFunction'");
             }
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;

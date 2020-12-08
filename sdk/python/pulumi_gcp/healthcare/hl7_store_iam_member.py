@@ -128,13 +128,13 @@ class Hl7StoreIamMember(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if hl7_v2_store_id is None:
+            if hl7_v2_store_id is None and not opts.urn:
                 raise TypeError("Missing required property 'hl7_v2_store_id'")
             __props__['hl7_v2_store_id'] = hl7_v2_store_id
-            if member is None:
+            if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

@@ -52,17 +52,18 @@ type PolicyTagIamBinding struct {
 // NewPolicyTagIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewPolicyTagIamBinding(ctx *pulumi.Context,
 	name string, args *PolicyTagIamBindingArgs, opts ...pulumi.ResourceOption) (*PolicyTagIamBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.PolicyTag == nil {
-		return nil, errors.New("missing required argument 'PolicyTag'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &PolicyTagIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.PolicyTag == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyTag'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource PolicyTagIamBinding
 	err := ctx.RegisterResource("gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding", name, args, &resource, opts...)

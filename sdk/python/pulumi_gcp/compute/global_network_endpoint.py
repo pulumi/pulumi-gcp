@@ -95,11 +95,11 @@ class GlobalNetworkEndpoint(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['fqdn'] = fqdn
-            if global_network_endpoint_group is None:
+            if global_network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'global_network_endpoint_group'")
             __props__['global_network_endpoint_group'] = global_network_endpoint_group
             __props__['ip_address'] = ip_address
-            if port is None:
+            if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__['port'] = port
             __props__['project'] = project

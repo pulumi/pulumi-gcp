@@ -51,7 +51,7 @@ class Instance(pulumi.CustomResource):
         basic_instance = gcp.datafusion.Instance("basicInstance",
             region="us-central1",
             type="BASIC",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Data Fusion Instance Full
 
@@ -74,7 +74,7 @@ class Instance(pulumi.CustomResource):
                 ip_allocation="10.89.48.0/22",
             ),
             version="6.1.1",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -151,7 +151,7 @@ class Instance(pulumi.CustomResource):
             __props__['private_instance'] = private_instance
             __props__['project'] = project
             __props__['region'] = region
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['version'] = version

@@ -123,13 +123,13 @@ class TagTemplate(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['display_name'] = display_name
-            if fields is None:
+            if fields is None and not opts.urn:
                 raise TypeError("Missing required property 'fields'")
             __props__['fields'] = fields
             __props__['force_delete'] = force_delete
             __props__['project'] = project
             __props__['region'] = region
-            if tag_template_id is None:
+            if tag_template_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_template_id'")
             __props__['tag_template_id'] = tag_template_id
             __props__['name'] = None

@@ -146,7 +146,7 @@ export class MachineImage extends pulumi.CustomResource {
             inputs["storageLocations"] = state ? state.storageLocations : undefined;
         } else {
             const args = argsOrState as MachineImageArgs | undefined;
-            if (!args || args.sourceInstance === undefined) {
+            if ((!args || args.sourceInstance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
             inputs["description"] = args ? args.description : undefined;

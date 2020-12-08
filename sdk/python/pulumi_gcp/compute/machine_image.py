@@ -54,9 +54,9 @@ class MachineImage(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network="default",
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         image = gcp.compute.MachineImage("image", source_instance=vm.self_link,
-        opts=ResourceOptions(provider=google_beta))
+        opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -112,7 +112,7 @@ class MachineImage(pulumi.CustomResource):
             __props__['machine_image_encryption_key'] = machine_image_encryption_key
             __props__['name'] = name
             __props__['project'] = project
-            if source_instance is None:
+            if source_instance is None and not opts.urn:
                 raise TypeError("Missing required property 'source_instance'")
             __props__['source_instance'] = source_instance
             __props__['self_link'] = None

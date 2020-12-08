@@ -264,10 +264,10 @@ export class Table extends pulumi.CustomResource {
             inputs["view"] = state ? state.view : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if (!args || args.datasetId === undefined) {
+            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if (!args || args.tableId === undefined) {
+            if ((!args || args.tableId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tableId'");
             }
             inputs["clusterings"] = args ? args.clusterings : undefined;

@@ -118,7 +118,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["slotCapacity"] = state ? state.slotCapacity : undefined;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
-            if (!args || args.slotCapacity === undefined) {
+            if ((!args || args.slotCapacity === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'slotCapacity'");
             }
             inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;

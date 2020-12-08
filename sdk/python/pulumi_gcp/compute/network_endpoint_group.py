@@ -130,7 +130,7 @@ class NetworkEndpointGroup(pulumi.CustomResource):
             __props__['default_port'] = default_port
             __props__['description'] = description
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['network_endpoint_type'] = network_endpoint_type

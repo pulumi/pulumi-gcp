@@ -153,10 +153,10 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             inputs["triggers"] = state ? state.triggers : undefined;
         } else {
             const args = argsOrState as PreventionJobTriggerArgs | undefined;
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
-            if (!args || args.triggers === undefined) {
+            if ((!args || args.triggers === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'triggers'");
             }
             inputs["description"] = args ? args.description : undefined;

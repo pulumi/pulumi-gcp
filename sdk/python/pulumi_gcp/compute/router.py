@@ -116,7 +116,7 @@ class Router(pulumi.CustomResource):
             __props__['bgp'] = bgp
             __props__['description'] = description
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['project'] = project

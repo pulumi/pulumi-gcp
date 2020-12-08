@@ -101,16 +101,16 @@ class NetworkPeeringRoutesConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if export_custom_routes is None:
+            if export_custom_routes is None and not opts.urn:
                 raise TypeError("Missing required property 'export_custom_routes'")
             __props__['export_custom_routes'] = export_custom_routes
-            if import_custom_routes is None:
+            if import_custom_routes is None and not opts.urn:
                 raise TypeError("Missing required property 'import_custom_routes'")
             __props__['import_custom_routes'] = import_custom_routes
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
-            if peering is None:
+            if peering is None and not opts.urn:
                 raise TypeError("Missing required property 'peering'")
             __props__['peering'] = peering
             __props__['project'] = project

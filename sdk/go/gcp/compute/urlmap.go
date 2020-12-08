@@ -923,6 +923,7 @@ func NewURLMap(ctx *pulumi.Context,
 	if args == nil {
 		args = &URLMapArgs{}
 	}
+
 	var resource URLMap
 	err := ctx.RegisterResource("gcp:compute/uRLMap:URLMap", name, args, &resource, opts...)
 	if err != nil {

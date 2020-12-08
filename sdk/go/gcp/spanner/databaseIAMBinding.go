@@ -163,20 +163,21 @@ type DatabaseIAMBinding struct {
 // NewDatabaseIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseIAMBinding(ctx *pulumi.Context,
 	name string, args *DatabaseIAMBindingArgs, opts ...pulumi.ResourceOption) (*DatabaseIAMBinding, error) {
-	if args == nil || args.Database == nil {
-		return nil, errors.New("missing required argument 'Database'")
-	}
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &DatabaseIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Database == nil {
+		return nil, errors.New("invalid value for required argument 'Database'")
+	}
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource DatabaseIAMBinding
 	err := ctx.RegisterResource("gcp:spanner/databaseIAMBinding:DatabaseIAMBinding", name, args, &resource, opts...)

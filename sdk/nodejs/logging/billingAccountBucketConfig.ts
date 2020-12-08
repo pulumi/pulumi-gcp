@@ -114,13 +114,13 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
             inputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as BillingAccountBucketConfigArgs | undefined;
-            if (!args || args.billingAccount === undefined) {
+            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if (!args || args.bucketId === undefined) {
+            if ((!args || args.bucketId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["billingAccount"] = args ? args.billingAccount : undefined;

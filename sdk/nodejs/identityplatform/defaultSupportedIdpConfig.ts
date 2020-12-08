@@ -126,13 +126,13 @@ export class DefaultSupportedIdpConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as DefaultSupportedIdpConfigArgs | undefined;
-            if (!args || args.clientId === undefined) {
+            if ((!args || args.clientId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if (!args || args.clientSecret === undefined) {
+            if ((!args || args.clientSecret === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clientSecret'");
             }
-            if (!args || args.idpId === undefined) {
+            if ((!args || args.idpId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'idpId'");
             }
             inputs["clientId"] = args ? args.clientId : undefined;

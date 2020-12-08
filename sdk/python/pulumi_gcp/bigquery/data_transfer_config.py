@@ -63,7 +63,7 @@ class DataTransferConfig(pulumi.CustomResource):
             friendly_name="foo",
             description="bar",
             location="asia-northeast1",
-            opts=ResourceOptions(depends_on=[permissions]))
+            opts=pulumi.ResourceOptions(depends_on=[permissions]))
         query_config = gcp.bigquery.DataTransferConfig("queryConfig",
             display_name="my-query",
             location="asia-northeast1",
@@ -75,7 +75,7 @@ class DataTransferConfig(pulumi.CustomResource):
                 "write_disposition": "WRITE_APPEND",
                 "query": "SELECT name FROM tabl WHERE x = 'y'",
             },
-            opts=ResourceOptions(depends_on=[permissions]))
+            opts=pulumi.ResourceOptions(depends_on=[permissions]))
         ```
 
         ## Import
@@ -146,20 +146,20 @@ class DataTransferConfig(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['data_refresh_window_days'] = data_refresh_window_days
-            if data_source_id is None:
+            if data_source_id is None and not opts.urn:
                 raise TypeError("Missing required property 'data_source_id'")
             __props__['data_source_id'] = data_source_id
-            if destination_dataset_id is None:
+            if destination_dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'destination_dataset_id'")
             __props__['destination_dataset_id'] = destination_dataset_id
             __props__['disabled'] = disabled
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['email_preferences'] = email_preferences
             __props__['location'] = location
             __props__['notification_pubsub_topic'] = notification_pubsub_topic
-            if params is None:
+            if params is None and not opts.urn:
                 raise TypeError("Missing required property 'params'")
             __props__['params'] = params
             __props__['project'] = project

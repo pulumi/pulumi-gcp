@@ -247,10 +247,10 @@ export class Entry extends pulumi.CustomResource {
             inputs["userSpecifiedType"] = state ? state.userSpecifiedType : undefined;
         } else {
             const args = argsOrState as EntryArgs | undefined;
-            if (!args || args.entryGroup === undefined) {
+            if ((!args || args.entryGroup === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'entryGroup'");
             }
-            if (!args || args.entryId === undefined) {
+            if ((!args || args.entryId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'entryId'");
             }
             inputs["description"] = args ? args.description : undefined;

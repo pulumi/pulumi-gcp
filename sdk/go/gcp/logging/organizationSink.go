@@ -116,14 +116,15 @@ type OrganizationSink struct {
 // NewOrganizationSink registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationSink(ctx *pulumi.Context,
 	name string, args *OrganizationSinkArgs, opts ...pulumi.ResourceOption) (*OrganizationSink, error) {
-	if args == nil || args.Destination == nil {
-		return nil, errors.New("missing required argument 'Destination'")
-	}
-	if args == nil || args.OrgId == nil {
-		return nil, errors.New("missing required argument 'OrgId'")
-	}
 	if args == nil {
-		args = &OrganizationSinkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
+	}
+	if args.OrgId == nil {
+		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
 	var resource OrganizationSink
 	err := ctx.RegisterResource("gcp:logging/organizationSink:OrganizationSink", name, args, &resource, opts...)

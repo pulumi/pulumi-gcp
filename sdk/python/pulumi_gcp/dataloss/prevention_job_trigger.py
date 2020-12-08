@@ -119,11 +119,11 @@ class PreventionJobTrigger(pulumi.CustomResource):
             __props__['description'] = description
             __props__['display_name'] = display_name
             __props__['inspect_job'] = inspect_job
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['status'] = status
-            if triggers is None:
+            if triggers is None and not opts.urn:
                 raise TypeError("Missing required property 'triggers'")
             __props__['triggers'] = triggers
             __props__['last_run_time'] = None

@@ -164,7 +164,7 @@ export class Attestor extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as AttestorArgs | undefined;
-            if (!args || args.attestationAuthorityNote === undefined) {
+            if ((!args || args.attestationAuthorityNote === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'attestationAuthorityNote'");
             }
             inputs["attestationAuthorityNote"] = args ? args.attestationAuthorityNote : undefined;

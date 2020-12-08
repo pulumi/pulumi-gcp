@@ -109,7 +109,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
             __props__['basic_algorithm'] = basic_algorithm
             __props__['location'] = location
-            if policy_id is None:
+            if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__['policy_id'] = policy_id
             __props__['project'] = project

@@ -128,7 +128,7 @@ export class Key extends pulumi.CustomResource {
             inputs["validBefore"] = state ? state.validBefore : undefined;
         } else {
             const args = argsOrState as KeyArgs | undefined;
-            if (!args || args.serviceAccountId === undefined) {
+            if ((!args || args.serviceAccountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;

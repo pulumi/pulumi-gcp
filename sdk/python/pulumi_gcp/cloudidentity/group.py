@@ -95,13 +95,13 @@ class Group(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['display_name'] = display_name
-            if group_key is None:
+            if group_key is None and not opts.urn:
                 raise TypeError("Missing required property 'group_key'")
             __props__['group_key'] = group_key
-            if labels is None:
+            if labels is None and not opts.urn:
                 raise TypeError("Missing required property 'labels'")
             __props__['labels'] = labels
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['create_time'] = None

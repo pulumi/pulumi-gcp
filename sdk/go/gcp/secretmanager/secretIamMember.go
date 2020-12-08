@@ -157,17 +157,18 @@ type SecretIamMember struct {
 // NewSecretIamMember registers a new resource with the given unique name, arguments, and options.
 func NewSecretIamMember(ctx *pulumi.Context,
 	name string, args *SecretIamMemberArgs, opts ...pulumi.ResourceOption) (*SecretIamMember, error) {
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.SecretId == nil {
-		return nil, errors.New("missing required argument 'SecretId'")
-	}
 	if args == nil {
-		args = &SecretIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.SecretId == nil {
+		return nil, errors.New("invalid value for required argument 'SecretId'")
 	}
 	var resource SecretIamMember
 	err := ctx.RegisterResource("gcp:secretmanager/secretIamMember:SecretIamMember", name, args, &resource, opts...)

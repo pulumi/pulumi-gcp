@@ -81,7 +81,7 @@ class ProjectExclusion(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['disabled'] = disabled
-            if filter is None:
+            if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__['filter'] = filter
             __props__['name'] = name

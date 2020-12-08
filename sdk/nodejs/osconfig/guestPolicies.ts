@@ -299,10 +299,10 @@ export class GuestPolicies extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as GuestPoliciesArgs | undefined;
-            if (!args || args.assignment === undefined) {
+            if ((!args || args.assignment === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'assignment'");
             }
-            if (!args || args.guestPolicyId === undefined) {
+            if ((!args || args.guestPolicyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'guestPolicyId'");
             }
             inputs["assignment"] = args ? args.assignment : undefined;

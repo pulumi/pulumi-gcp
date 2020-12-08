@@ -66,14 +66,15 @@ type SharedVPCServiceProject struct {
 // NewSharedVPCServiceProject registers a new resource with the given unique name, arguments, and options.
 func NewSharedVPCServiceProject(ctx *pulumi.Context,
 	name string, args *SharedVPCServiceProjectArgs, opts ...pulumi.ResourceOption) (*SharedVPCServiceProject, error) {
-	if args == nil || args.HostProject == nil {
-		return nil, errors.New("missing required argument 'HostProject'")
-	}
-	if args == nil || args.ServiceProject == nil {
-		return nil, errors.New("missing required argument 'ServiceProject'")
-	}
 	if args == nil {
-		args = &SharedVPCServiceProjectArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.HostProject == nil {
+		return nil, errors.New("invalid value for required argument 'HostProject'")
+	}
+	if args.ServiceProject == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceProject'")
 	}
 	var resource SharedVPCServiceProject
 	err := ctx.RegisterResource("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject", name, args, &resource, opts...)

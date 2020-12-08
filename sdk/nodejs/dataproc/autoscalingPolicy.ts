@@ -140,7 +140,7 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             inputs["workerConfig"] = state ? state.workerConfig : undefined;
         } else {
             const args = argsOrState as AutoscalingPolicyArgs | undefined;
-            if (!args || args.policyId === undefined) {
+            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyId'");
             }
             inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;

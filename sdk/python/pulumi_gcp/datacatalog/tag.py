@@ -328,11 +328,11 @@ class Tag(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['column'] = column
-            if fields is None:
+            if fields is None and not opts.urn:
                 raise TypeError("Missing required property 'fields'")
             __props__['fields'] = fields
             __props__['parent'] = parent
-            if template is None:
+            if template is None and not opts.urn:
                 raise TypeError("Missing required property 'template'")
             __props__['template'] = template
             __props__['name'] = None

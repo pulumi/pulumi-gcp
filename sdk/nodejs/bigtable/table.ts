@@ -121,7 +121,7 @@ export class Table extends pulumi.CustomResource {
             inputs["splitKeys"] = state ? state.splitKeys : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if (!args || args.instanceName === undefined) {
+            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceName'");
             }
             inputs["columnFamilies"] = args ? args.columnFamilies : undefined;

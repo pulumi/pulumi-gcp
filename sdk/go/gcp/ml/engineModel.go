@@ -114,6 +114,7 @@ func NewEngineModel(ctx *pulumi.Context,
 	if args == nil {
 		args = &EngineModelArgs{}
 	}
+
 	var resource EngineModel
 	err := ctx.RegisterResource("gcp:ml/engineModel:EngineModel", name, args, &resource, opts...)
 	if err != nil {

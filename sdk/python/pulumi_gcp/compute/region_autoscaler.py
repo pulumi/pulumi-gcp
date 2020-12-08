@@ -149,14 +149,14 @@ class RegionAutoscaler(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if autoscaling_policy is None:
+            if autoscaling_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'autoscaling_policy'")
             __props__['autoscaling_policy'] = autoscaling_policy
             __props__['description'] = description
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
-            if target is None:
+            if target is None and not opts.urn:
                 raise TypeError("Missing required property 'target'")
             __props__['target'] = target
             __props__['creation_timestamp'] = None

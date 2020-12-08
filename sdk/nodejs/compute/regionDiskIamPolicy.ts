@@ -153,7 +153,7 @@ export class RegionDiskIamPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as RegionDiskIamPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["name"] = args ? args.name : undefined;

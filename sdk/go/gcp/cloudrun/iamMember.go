@@ -163,17 +163,18 @@ type IamMember struct {
 // NewIamMember registers a new resource with the given unique name, arguments, and options.
 func NewIamMember(ctx *pulumi.Context,
 	name string, args *IamMemberArgs, opts ...pulumi.ResourceOption) (*IamMember, error) {
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &IamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource IamMember
 	err := ctx.RegisterResource("gcp:cloudrun/iamMember:IamMember", name, args, &resource, opts...)

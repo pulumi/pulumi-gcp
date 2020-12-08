@@ -80,14 +80,15 @@ type Source struct {
 // NewSource registers a new resource with the given unique name, arguments, and options.
 func NewSource(ctx *pulumi.Context,
 	name string, args *SourceArgs, opts ...pulumi.ResourceOption) (*Source, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Organization == nil {
-		return nil, errors.New("missing required argument 'Organization'")
-	}
 	if args == nil {
-		args = &SourceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Organization == nil {
+		return nil, errors.New("invalid value for required argument 'Organization'")
 	}
 	var resource Source
 	err := ctx.RegisterResource("gcp:securitycenter/source:Source", name, args, &resource, opts...)

@@ -100,10 +100,10 @@ class SecretCiphertext(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['additional_authenticated_data'] = additional_authenticated_data
-            if crypto_key is None:
+            if crypto_key is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key'")
             __props__['crypto_key'] = crypto_key
-            if plaintext is None:
+            if plaintext is None and not opts.urn:
                 raise TypeError("Missing required property 'plaintext'")
             __props__['plaintext'] = plaintext
             __props__['ciphertext'] = None

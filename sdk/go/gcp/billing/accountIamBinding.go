@@ -24,17 +24,18 @@ type AccountIamBinding struct {
 // NewAccountIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewAccountIamBinding(ctx *pulumi.Context,
 	name string, args *AccountIamBindingArgs, opts ...pulumi.ResourceOption) (*AccountIamBinding, error) {
-	if args == nil || args.BillingAccountId == nil {
-		return nil, errors.New("missing required argument 'BillingAccountId'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &AccountIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BillingAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccountId'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource AccountIamBinding
 	err := ctx.RegisterResource("gcp:billing/accountIamBinding:AccountIamBinding", name, args, &resource, opts...)

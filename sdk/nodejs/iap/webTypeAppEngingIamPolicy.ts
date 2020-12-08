@@ -211,10 +211,10 @@ export class WebTypeAppEngingIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as WebTypeAppEngingIamPolicyArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["appId"] = args ? args.appId : undefined;

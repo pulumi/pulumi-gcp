@@ -221,13 +221,13 @@ export class WebBackendServiceIamMember extends pulumi.CustomResource {
             inputs["webBackendService"] = state ? state.webBackendService : undefined;
         } else {
             const args = argsOrState as WebBackendServiceIamMemberArgs | undefined;
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.webBackendService === undefined) {
+            if ((!args || args.webBackendService === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'webBackendService'");
             }
             inputs["condition"] = args ? args.condition : undefined;

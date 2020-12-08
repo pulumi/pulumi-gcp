@@ -175,7 +175,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["settings"] = state ? state.settings : undefined;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
-            if (!args || args.settings === undefined) {
+            if ((!args || args.settings === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'settings'");
             }
             inputs["databaseVersion"] = args ? args.databaseVersion : undefined;

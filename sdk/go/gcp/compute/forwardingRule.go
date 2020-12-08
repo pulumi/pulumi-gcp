@@ -629,6 +629,7 @@ func NewForwardingRule(ctx *pulumi.Context,
 	if args == nil {
 		args = &ForwardingRuleArgs{}
 	}
+
 	var resource ForwardingRule
 	err := ctx.RegisterResource("gcp:compute/forwardingRule:ForwardingRule", name, args, &resource, opts...)
 	if err != nil {

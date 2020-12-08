@@ -60,17 +60,18 @@ type InboundSamlConfig struct {
 // NewInboundSamlConfig registers a new resource with the given unique name, arguments, and options.
 func NewInboundSamlConfig(ctx *pulumi.Context,
 	name string, args *InboundSamlConfigArgs, opts ...pulumi.ResourceOption) (*InboundSamlConfig, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.IdpConfig == nil {
-		return nil, errors.New("missing required argument 'IdpConfig'")
-	}
-	if args == nil || args.SpConfig == nil {
-		return nil, errors.New("missing required argument 'SpConfig'")
-	}
 	if args == nil {
-		args = &InboundSamlConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.IdpConfig == nil {
+		return nil, errors.New("invalid value for required argument 'IdpConfig'")
+	}
+	if args.SpConfig == nil {
+		return nil, errors.New("invalid value for required argument 'SpConfig'")
 	}
 	var resource InboundSamlConfig
 	err := ctx.RegisterResource("gcp:identityplatform/inboundSamlConfig:InboundSamlConfig", name, args, &resource, opts...)

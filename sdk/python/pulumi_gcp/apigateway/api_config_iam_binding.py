@@ -78,18 +78,18 @@ class ApiConfigIamBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if api is None:
+            if api is None and not opts.urn:
                 raise TypeError("Missing required property 'api'")
             __props__['api'] = api
-            if api_config is None:
+            if api_config is None and not opts.urn:
                 raise TypeError("Missing required property 'api_config'")
             __props__['api_config'] = api_config
             __props__['condition'] = condition
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

@@ -172,7 +172,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NetworkEndpointGroupArgs | undefined;
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["defaultPort"] = args ? args.defaultPort : undefined;

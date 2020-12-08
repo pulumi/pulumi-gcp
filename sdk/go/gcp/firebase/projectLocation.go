@@ -55,11 +55,12 @@ type ProjectLocation struct {
 // NewProjectLocation registers a new resource with the given unique name, arguments, and options.
 func NewProjectLocation(ctx *pulumi.Context,
 	name string, args *ProjectLocationArgs, opts ...pulumi.ResourceOption) (*ProjectLocation, error) {
-	if args == nil || args.LocationId == nil {
-		return nil, errors.New("missing required argument 'LocationId'")
-	}
 	if args == nil {
-		args = &ProjectLocationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.LocationId == nil {
+		return nil, errors.New("invalid value for required argument 'LocationId'")
 	}
 	var resource ProjectLocation
 	err := ctx.RegisterResource("gcp:firebase/projectLocation:ProjectLocation", name, args, &resource, opts...)

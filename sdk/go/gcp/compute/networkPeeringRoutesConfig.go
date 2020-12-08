@@ -111,20 +111,21 @@ type NetworkPeeringRoutesConfig struct {
 // NewNetworkPeeringRoutesConfig registers a new resource with the given unique name, arguments, and options.
 func NewNetworkPeeringRoutesConfig(ctx *pulumi.Context,
 	name string, args *NetworkPeeringRoutesConfigArgs, opts ...pulumi.ResourceOption) (*NetworkPeeringRoutesConfig, error) {
-	if args == nil || args.ExportCustomRoutes == nil {
-		return nil, errors.New("missing required argument 'ExportCustomRoutes'")
-	}
-	if args == nil || args.ImportCustomRoutes == nil {
-		return nil, errors.New("missing required argument 'ImportCustomRoutes'")
-	}
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
-	if args == nil || args.Peering == nil {
-		return nil, errors.New("missing required argument 'Peering'")
-	}
 	if args == nil {
-		args = &NetworkPeeringRoutesConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ExportCustomRoutes == nil {
+		return nil, errors.New("invalid value for required argument 'ExportCustomRoutes'")
+	}
+	if args.ImportCustomRoutes == nil {
+		return nil, errors.New("invalid value for required argument 'ImportCustomRoutes'")
+	}
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
+	}
+	if args.Peering == nil {
+		return nil, errors.New("invalid value for required argument 'Peering'")
 	}
 	var resource NetworkPeeringRoutesConfig
 	err := ctx.RegisterResource("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig", name, args, &resource, opts...)

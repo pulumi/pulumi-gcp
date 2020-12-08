@@ -96,10 +96,10 @@ class Realm(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['location'] = location
             __props__['project'] = project
-            if realm_id is None:
+            if realm_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realm_id'")
             __props__['realm_id'] = realm_id
-            if time_zone is None:
+            if time_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'time_zone'")
             __props__['time_zone'] = time_zone
             __props__['etag'] = None

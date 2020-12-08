@@ -235,7 +235,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if (!args || args.cluster === undefined) {
+            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cluster'");
             }
             inputs["autoscaling"] = args ? args.autoscaling : undefined;

@@ -136,13 +136,13 @@ export class Connector extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            if (!args || args.ipCidrRange === undefined) {
+            if ((!args || args.ipCidrRange === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'ipCidrRange'");
             }
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;

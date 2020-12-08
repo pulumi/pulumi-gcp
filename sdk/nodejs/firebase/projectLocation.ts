@@ -91,7 +91,7 @@ export class ProjectLocation extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectLocationArgs | undefined;
-            if (!args || args.locationId === undefined) {
+            if ((!args || args.locationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'locationId'");
             }
             inputs["locationId"] = args ? args.locationId : undefined;

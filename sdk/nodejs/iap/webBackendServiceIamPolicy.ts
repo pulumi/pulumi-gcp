@@ -211,10 +211,10 @@ export class WebBackendServiceIamPolicy extends pulumi.CustomResource {
             inputs["webBackendService"] = state ? state.webBackendService : undefined;
         } else {
             const args = argsOrState as WebBackendServiceIamPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.webBackendService === undefined) {
+            if ((!args || args.webBackendService === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'webBackendService'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

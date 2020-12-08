@@ -128,15 +128,15 @@ class AttestorIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if attestor is None:
+            if attestor is None and not opts.urn:
                 raise TypeError("Missing required property 'attestor'")
             __props__['attestor'] = attestor
             __props__['condition'] = condition
-            if member is None:
+            if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

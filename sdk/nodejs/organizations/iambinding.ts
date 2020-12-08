@@ -111,13 +111,13 @@ export class IAMBinding extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as IAMBindingArgs | undefined;
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.orgId === undefined) {
+            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;

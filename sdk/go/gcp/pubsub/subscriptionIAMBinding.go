@@ -151,17 +151,18 @@ type SubscriptionIAMBinding struct {
 // NewSubscriptionIAMBinding registers a new resource with the given unique name, arguments, and options.
 func NewSubscriptionIAMBinding(ctx *pulumi.Context,
 	name string, args *SubscriptionIAMBindingArgs, opts ...pulumi.ResourceOption) (*SubscriptionIAMBinding, error) {
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Subscription == nil {
-		return nil, errors.New("missing required argument 'Subscription'")
-	}
 	if args == nil {
-		args = &SubscriptionIAMBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Subscription == nil {
+		return nil, errors.New("invalid value for required argument 'Subscription'")
 	}
 	var resource SubscriptionIAMBinding
 	err := ctx.RegisterResource("gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding", name, args, &resource, opts...)

@@ -182,16 +182,16 @@ class RouterNat(pulumi.CustomResource):
             __props__['log_config'] = log_config
             __props__['min_ports_per_vm'] = min_ports_per_vm
             __props__['name'] = name
-            if nat_ip_allocate_option is None:
+            if nat_ip_allocate_option is None and not opts.urn:
                 raise TypeError("Missing required property 'nat_ip_allocate_option'")
             __props__['nat_ip_allocate_option'] = nat_ip_allocate_option
             __props__['nat_ips'] = nat_ips
             __props__['project'] = project
             __props__['region'] = region
-            if router is None:
+            if router is None and not opts.urn:
                 raise TypeError("Missing required property 'router'")
             __props__['router'] = router
-            if source_subnetwork_ip_ranges_to_nat is None:
+            if source_subnetwork_ip_ranges_to_nat is None and not opts.urn:
                 raise TypeError("Missing required property 'source_subnetwork_ip_ranges_to_nat'")
             __props__['source_subnetwork_ip_ranges_to_nat'] = source_subnetwork_ip_ranges_to_nat
             __props__['subnetworks'] = subnetworks

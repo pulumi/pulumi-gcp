@@ -243,7 +243,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tier"] = state ? state.tier : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if (!args || args.memorySizeGb === undefined) {
+            if ((!args || args.memorySizeGb === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'memorySizeGb'");
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;

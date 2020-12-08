@@ -154,14 +154,14 @@ class GameServerConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if config_id is None:
+            if config_id is None and not opts.urn:
                 raise TypeError("Missing required property 'config_id'")
             __props__['config_id'] = config_id
-            if deployment_id is None:
+            if deployment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment_id'")
             __props__['deployment_id'] = deployment_id
             __props__['description'] = description
-            if fleet_configs is None:
+            if fleet_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'fleet_configs'")
             __props__['fleet_configs'] = fleet_configs
             __props__['labels'] = labels

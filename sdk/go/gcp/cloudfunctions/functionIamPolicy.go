@@ -162,14 +162,15 @@ type FunctionIamPolicy struct {
 // NewFunctionIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewFunctionIamPolicy(ctx *pulumi.Context,
 	name string, args *FunctionIamPolicyArgs, opts ...pulumi.ResourceOption) (*FunctionIamPolicy, error) {
-	if args == nil || args.CloudFunction == nil {
-		return nil, errors.New("missing required argument 'CloudFunction'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &FunctionIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.CloudFunction == nil {
+		return nil, errors.New("invalid value for required argument 'CloudFunction'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource FunctionIamPolicy
 	err := ctx.RegisterResource("gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy", name, args, &resource, opts...)

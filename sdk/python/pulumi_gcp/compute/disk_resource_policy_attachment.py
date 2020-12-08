@@ -103,7 +103,7 @@ class DiskResourcePolicyAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if disk is None:
+            if disk is None and not opts.urn:
                 raise TypeError("Missing required property 'disk'")
             __props__['disk'] = disk
             __props__['name'] = name

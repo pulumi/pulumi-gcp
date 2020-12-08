@@ -242,14 +242,15 @@ type ConnectivityTest struct {
 // NewConnectivityTest registers a new resource with the given unique name, arguments, and options.
 func NewConnectivityTest(ctx *pulumi.Context,
 	name string, args *ConnectivityTestArgs, opts ...pulumi.ResourceOption) (*ConnectivityTest, error) {
-	if args == nil || args.Destination == nil {
-		return nil, errors.New("missing required argument 'Destination'")
-	}
-	if args == nil || args.Source == nil {
-		return nil, errors.New("missing required argument 'Source'")
-	}
 	if args == nil {
-		args = &ConnectivityTestArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
+	}
+	if args.Source == nil {
+		return nil, errors.New("invalid value for required argument 'Source'")
 	}
 	var resource ConnectivityTest
 	err := ctx.RegisterResource("gcp:networkmanagement/connectivityTest:ConnectivityTest", name, args, &resource, opts...)

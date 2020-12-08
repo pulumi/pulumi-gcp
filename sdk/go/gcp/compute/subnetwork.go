@@ -238,14 +238,15 @@ type Subnetwork struct {
 // NewSubnetwork registers a new resource with the given unique name, arguments, and options.
 func NewSubnetwork(ctx *pulumi.Context,
 	name string, args *SubnetworkArgs, opts ...pulumi.ResourceOption) (*Subnetwork, error) {
-	if args == nil || args.IpCidrRange == nil {
-		return nil, errors.New("missing required argument 'IpCidrRange'")
-	}
-	if args == nil || args.Network == nil {
-		return nil, errors.New("missing required argument 'Network'")
-	}
 	if args == nil {
-		args = &SubnetworkArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.IpCidrRange == nil {
+		return nil, errors.New("invalid value for required argument 'IpCidrRange'")
+	}
+	if args.Network == nil {
+		return nil, errors.New("invalid value for required argument 'Network'")
 	}
 	var resource Subnetwork
 	err := ctx.RegisterResource("gcp:compute/subnetwork:Subnetwork", name, args, &resource, opts...)

@@ -66,17 +66,18 @@ type GameServerConfig struct {
 // NewGameServerConfig registers a new resource with the given unique name, arguments, and options.
 func NewGameServerConfig(ctx *pulumi.Context,
 	name string, args *GameServerConfigArgs, opts ...pulumi.ResourceOption) (*GameServerConfig, error) {
-	if args == nil || args.ConfigId == nil {
-		return nil, errors.New("missing required argument 'ConfigId'")
-	}
-	if args == nil || args.DeploymentId == nil {
-		return nil, errors.New("missing required argument 'DeploymentId'")
-	}
-	if args == nil || args.FleetConfigs == nil {
-		return nil, errors.New("missing required argument 'FleetConfigs'")
-	}
 	if args == nil {
-		args = &GameServerConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
+	}
+	if args.DeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'DeploymentId'")
+	}
+	if args.FleetConfigs == nil {
+		return nil, errors.New("invalid value for required argument 'FleetConfigs'")
 	}
 	var resource GameServerConfig
 	err := ctx.RegisterResource("gcp:gameservices/gameServerConfig:GameServerConfig", name, args, &resource, opts...)

@@ -53,14 +53,15 @@ type TaxonomyIamPolicy struct {
 // NewTaxonomyIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewTaxonomyIamPolicy(ctx *pulumi.Context,
 	name string, args *TaxonomyIamPolicyArgs, opts ...pulumi.ResourceOption) (*TaxonomyIamPolicy, error) {
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
-	if args == nil || args.Taxonomy == nil {
-		return nil, errors.New("missing required argument 'Taxonomy'")
-	}
 	if args == nil {
-		args = &TaxonomyIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
+	}
+	if args.Taxonomy == nil {
+		return nil, errors.New("invalid value for required argument 'Taxonomy'")
 	}
 	var resource TaxonomyIamPolicy
 	err := ctx.RegisterResource("gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy", name, args, &resource, opts...)

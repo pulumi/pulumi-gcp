@@ -10,3 +10,35 @@ from .function_iam_policy import *
 from .get_function import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:cloudfunctions/function:Function":
+                return Function(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:cloudfunctions/functionIamBinding:FunctionIamBinding":
+                return FunctionIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:cloudfunctions/functionIamMember:FunctionIamMember":
+                return FunctionIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy":
+                return FunctionIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "cloudfunctions/function", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "cloudfunctions/functionIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "cloudfunctions/functionIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "cloudfunctions/functionIamPolicy", _module_instance)
+
+_register_module()

@@ -164,10 +164,10 @@ export class DiskIamBinding extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DiskIamBindingArgs | undefined;
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;

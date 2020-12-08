@@ -175,13 +175,13 @@ export class Node extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NodeArgs | undefined;
-            if (!args || args.acceleratorType === undefined) {
+            if ((!args || args.acceleratorType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'acceleratorType'");
             }
-            if (!args || args.tensorflowVersion === undefined) {
+            if ((!args || args.tensorflowVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tensorflowVersion'");
             }
-            if (!args || args.zone === undefined) {
+            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["acceleratorType"] = args ? args.acceleratorType : undefined;

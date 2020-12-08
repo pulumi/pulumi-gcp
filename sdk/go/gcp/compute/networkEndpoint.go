@@ -147,20 +147,21 @@ type NetworkEndpoint struct {
 // NewNetworkEndpoint registers a new resource with the given unique name, arguments, and options.
 func NewNetworkEndpoint(ctx *pulumi.Context,
 	name string, args *NetworkEndpointArgs, opts ...pulumi.ResourceOption) (*NetworkEndpoint, error) {
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
-	if args == nil || args.IpAddress == nil {
-		return nil, errors.New("missing required argument 'IpAddress'")
-	}
-	if args == nil || args.NetworkEndpointGroup == nil {
-		return nil, errors.New("missing required argument 'NetworkEndpointGroup'")
-	}
-	if args == nil || args.Port == nil {
-		return nil, errors.New("missing required argument 'Port'")
-	}
 	if args == nil {
-		args = &NetworkEndpointArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
+	}
+	if args.IpAddress == nil {
+		return nil, errors.New("invalid value for required argument 'IpAddress'")
+	}
+	if args.NetworkEndpointGroup == nil {
+		return nil, errors.New("invalid value for required argument 'NetworkEndpointGroup'")
+	}
+	if args.Port == nil {
+		return nil, errors.New("invalid value for required argument 'Port'")
 	}
 	var resource NetworkEndpoint
 	err := ctx.RegisterResource("gcp:compute/networkEndpoint:NetworkEndpoint", name, args, &resource, opts...)

@@ -88,7 +88,7 @@ export class WebApp extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as WebAppArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;

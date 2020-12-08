@@ -191,7 +191,7 @@ export class Device extends pulumi.CustomResource {
             inputs["states"] = state ? state.states : undefined;
         } else {
             const args = argsOrState as DeviceArgs | undefined;
-            if (!args || args.registry === undefined) {
+            if ((!args || args.registry === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'registry'");
             }
             inputs["blocked"] = args ? args.blocked : undefined;

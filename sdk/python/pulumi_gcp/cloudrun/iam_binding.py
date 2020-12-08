@@ -135,14 +135,14 @@ class IamBinding(pulumi.CustomResource):
 
             __props__['condition'] = condition
             __props__['location'] = location
-            if members is None:
+            if members is None and not opts.urn:
                 raise TypeError("Missing required property 'members'")
             __props__['members'] = members
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['etag'] = None

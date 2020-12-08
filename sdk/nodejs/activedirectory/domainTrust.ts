@@ -137,22 +137,22 @@ export class DomainTrust extends pulumi.CustomResource {
             inputs["trustType"] = state ? state.trustType : undefined;
         } else {
             const args = argsOrState as DomainTrustArgs | undefined;
-            if (!args || args.domain === undefined) {
+            if ((!args || args.domain === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domain'");
             }
-            if (!args || args.targetDnsIpAddresses === undefined) {
+            if ((!args || args.targetDnsIpAddresses === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetDnsIpAddresses'");
             }
-            if (!args || args.targetDomainName === undefined) {
+            if ((!args || args.targetDomainName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'targetDomainName'");
             }
-            if (!args || args.trustDirection === undefined) {
+            if ((!args || args.trustDirection === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'trustDirection'");
             }
-            if (!args || args.trustHandshakeSecret === undefined) {
+            if ((!args || args.trustHandshakeSecret === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'trustHandshakeSecret'");
             }
-            if (!args || args.trustType === undefined) {
+            if ((!args || args.trustType === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'trustType'");
             }
             inputs["domain"] = args ? args.domain : undefined;

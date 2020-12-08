@@ -243,19 +243,19 @@ export class AppEngineVersionIamMember extends pulumi.CustomResource {
             inputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as AppEngineVersionIamMemberArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
-            if (!args || args.versionId === undefined) {
+            if ((!args || args.versionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'versionId'");
             }
             inputs["appId"] = args ? args.appId : undefined;

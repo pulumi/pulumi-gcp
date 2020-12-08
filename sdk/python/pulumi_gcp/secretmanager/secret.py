@@ -109,10 +109,10 @@ class Secret(pulumi.CustomResource):
 
             __props__['labels'] = labels
             __props__['project'] = project
-            if replication is None:
+            if replication is None and not opts.urn:
                 raise TypeError("Missing required property 'replication'")
             __props__['replication'] = replication
-            if secret_id is None:
+            if secret_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_id'")
             __props__['secret_id'] = secret_id
             __props__['create_time'] = None

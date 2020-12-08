@@ -154,14 +154,15 @@ type FhirStoreIamPolicy struct {
 // NewFhirStoreIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewFhirStoreIamPolicy(ctx *pulumi.Context,
 	name string, args *FhirStoreIamPolicyArgs, opts ...pulumi.ResourceOption) (*FhirStoreIamPolicy, error) {
-	if args == nil || args.FhirStoreId == nil {
-		return nil, errors.New("missing required argument 'FhirStoreId'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &FhirStoreIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FhirStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'FhirStoreId'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource FhirStoreIamPolicy
 	err := ctx.RegisterResource("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy", name, args, &resource, opts...)

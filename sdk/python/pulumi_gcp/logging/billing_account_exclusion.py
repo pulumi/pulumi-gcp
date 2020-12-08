@@ -79,12 +79,12 @@ class BillingAccountExclusion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if billing_account is None:
+            if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")
             __props__['billing_account'] = billing_account
             __props__['description'] = description
             __props__['disabled'] = disabled
-            if filter is None:
+            if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__['filter'] = filter
             __props__['name'] = name

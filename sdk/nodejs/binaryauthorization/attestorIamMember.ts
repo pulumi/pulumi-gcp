@@ -157,13 +157,13 @@ export class AttestorIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as AttestorIamMemberArgs | undefined;
-            if (!args || args.attestor === undefined) {
+            if ((!args || args.attestor === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'attestor'");
             }
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["attestor"] = args ? args.attestor : undefined;

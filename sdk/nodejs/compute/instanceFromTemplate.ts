@@ -273,7 +273,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceFromTemplateArgs | undefined;
-            if (!args || args.sourceInstanceTemplate === undefined) {
+            if ((!args || args.sourceInstanceTemplate === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceInstanceTemplate'");
             }
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;

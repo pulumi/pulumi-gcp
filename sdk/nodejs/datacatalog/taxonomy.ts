@@ -94,7 +94,7 @@ export class Taxonomy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as TaxonomyArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;

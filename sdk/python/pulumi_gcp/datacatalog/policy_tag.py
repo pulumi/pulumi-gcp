@@ -63,11 +63,11 @@ class PolicyTag(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['parent_policy_tag'] = parent_policy_tag
-            if taxonomy is None:
+            if taxonomy is None and not opts.urn:
                 raise TypeError("Missing required property 'taxonomy'")
             __props__['taxonomy'] = taxonomy
             __props__['child_policy_tags'] = None

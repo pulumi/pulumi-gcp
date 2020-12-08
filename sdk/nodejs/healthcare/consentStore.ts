@@ -99,7 +99,7 @@ export class ConsentStore extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as ConsentStoreArgs | undefined;
-            if (!args || args.dataset === undefined) {
+            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataset'");
             }
             inputs["dataset"] = args ? args.dataset : undefined;

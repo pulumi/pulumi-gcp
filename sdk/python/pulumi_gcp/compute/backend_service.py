@@ -79,12 +79,12 @@ class BackendService(pulumi.CustomResource):
         health_check = gcp.compute.HealthCheck("healthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
             port=80,
         ),
-        opts=ResourceOptions(provider=google_beta))
+        opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.compute.BackendService("default",
             health_checks=[health_check.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
             locality_lb_policy="ROUND_ROBIN",
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Backend Service Traffic Director Ring Hash
 
@@ -95,7 +95,7 @@ class BackendService(pulumi.CustomResource):
         health_check = gcp.compute.HealthCheck("healthCheck", http_health_check=gcp.compute.HealthCheckHttpHealthCheckArgs(
             port=80,
         ),
-        opts=ResourceOptions(provider=google_beta))
+        opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.compute.BackendService("default",
             health_checks=[health_check.id],
             load_balancing_scheme="INTERNAL_SELF_MANAGED",
@@ -116,7 +116,7 @@ class BackendService(pulumi.CustomResource):
             outlier_detection=gcp.compute.BackendServiceOutlierDetectionArgs(
                 consecutive_errors=2,
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Backend Service Network Endpoint
 

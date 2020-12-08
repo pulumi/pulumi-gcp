@@ -46,7 +46,7 @@ class Namespace(pulumi.CustomResource):
                 "key": "value",
                 "foo": "bar",
             },
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -96,10 +96,10 @@ class Namespace(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['labels'] = labels
-            if location is None:
+            if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__['location'] = location
-            if namespace_id is None:
+            if namespace_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespace_id'")
             __props__['namespace_id'] = namespace_id
             __props__['project'] = project

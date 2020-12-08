@@ -122,10 +122,10 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as OauthIdpConfigArgs | undefined;
-            if (!args || args.clientId === undefined) {
+            if ((!args || args.clientId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if (!args || args.issuer === undefined) {
+            if ((!args || args.issuer === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'issuer'");
             }
             inputs["clientId"] = args ? args.clientId : undefined;

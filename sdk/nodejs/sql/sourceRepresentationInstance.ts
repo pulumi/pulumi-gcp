@@ -119,10 +119,10 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as SourceRepresentationInstanceArgs | undefined;
-            if (!args || args.databaseVersion === undefined) {
+            if ((!args || args.databaseVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'databaseVersion'");
             }
-            if (!args || args.host === undefined) {
+            if ((!args || args.host === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'host'");
             }
             inputs["databaseVersion"] = args ? args.databaseVersion : undefined;

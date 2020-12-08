@@ -163,10 +163,10 @@ export class Reservation extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
-            if (!args || args.specificReservation === undefined) {
+            if ((!args || args.specificReservation === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'specificReservation'");
             }
-            if (!args || args.zone === undefined) {
+            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["description"] = args ? args.description : undefined;

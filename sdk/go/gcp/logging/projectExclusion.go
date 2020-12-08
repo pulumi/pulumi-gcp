@@ -71,11 +71,12 @@ type ProjectExclusion struct {
 // NewProjectExclusion registers a new resource with the given unique name, arguments, and options.
 func NewProjectExclusion(ctx *pulumi.Context,
 	name string, args *ProjectExclusionArgs, opts ...pulumi.ResourceOption) (*ProjectExclusion, error) {
-	if args == nil || args.Filter == nil {
-		return nil, errors.New("missing required argument 'Filter'")
-	}
 	if args == nil {
-		args = &ProjectExclusionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Filter == nil {
+		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
 	var resource ProjectExclusion
 	err := ctx.RegisterResource("gcp:logging/projectExclusion:ProjectExclusion", name, args, &resource, opts...)

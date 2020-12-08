@@ -104,16 +104,16 @@ class InboundSamlConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['enabled'] = enabled
-            if idp_config is None:
+            if idp_config is None and not opts.urn:
                 raise TypeError("Missing required property 'idp_config'")
             __props__['idp_config'] = idp_config
             __props__['name'] = name
             __props__['project'] = project
-            if sp_config is None:
+            if sp_config is None and not opts.urn:
                 raise TypeError("Missing required property 'sp_config'")
             __props__['sp_config'] = sp_config
         super(InboundSamlConfig, __self__).__init__(

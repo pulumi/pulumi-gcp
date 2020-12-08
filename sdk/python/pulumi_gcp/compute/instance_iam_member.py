@@ -196,14 +196,14 @@ class InstanceIAMMember(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if instance_name is None:
+            if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__['instance_name'] = instance_name
-            if member is None:
+            if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['zone'] = zone

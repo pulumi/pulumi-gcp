@@ -137,16 +137,16 @@ export class FolderFeed extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as FolderFeedArgs | undefined;
-            if (!args || args.billingProject === undefined) {
+            if ((!args || args.billingProject === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingProject'");
             }
-            if (!args || args.feedId === undefined) {
+            if ((!args || args.feedId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'feedId'");
             }
-            if (!args || args.feedOutputConfig === undefined) {
+            if ((!args || args.feedOutputConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'feedOutputConfig'");
             }
-            if (!args || args.folder === undefined) {
+            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'folder'");
             }
             inputs["assetNames"] = args ? args.assetNames : undefined;

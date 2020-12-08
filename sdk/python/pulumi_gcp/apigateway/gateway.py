@@ -72,11 +72,11 @@ class Gateway(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if api_config is None:
+            if api_config is None and not opts.urn:
                 raise TypeError("Missing required property 'api_config'")
             __props__['api_config'] = api_config
             __props__['display_name'] = display_name
-            if gateway_id is None:
+            if gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gateway_id'")
             __props__['gateway_id'] = gateway_id
             __props__['labels'] = labels

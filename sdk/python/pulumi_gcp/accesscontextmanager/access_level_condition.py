@@ -108,7 +108,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if access_level is None:
+            if access_level is None and not opts.urn:
                 raise TypeError("Missing required property 'access_level'")
             __props__['access_level'] = access_level
             __props__['device_policy'] = device_policy

@@ -127,13 +127,13 @@ class AlertPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if combiner is None:
+            if combiner is None and not opts.urn:
                 raise TypeError("Missing required property 'combiner'")
             __props__['combiner'] = combiner
-            if conditions is None:
+            if conditions is None and not opts.urn:
                 raise TypeError("Missing required property 'conditions'")
             __props__['conditions'] = conditions
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['documentation'] = documentation

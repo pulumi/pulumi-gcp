@@ -132,13 +132,13 @@ export class Group extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if (!args || args.groupKey === undefined) {
+            if ((!args || args.groupKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupKey'");
             }
-            if (!args || args.labels === undefined) {
+            if ((!args || args.labels === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'labels'");
             }
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["description"] = args ? args.description : undefined;

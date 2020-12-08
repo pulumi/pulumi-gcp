@@ -143,7 +143,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as FlexTemplateJobArgs | undefined;
-            if (!args || args.containerSpecGcsPath === undefined) {
+            if ((!args || args.containerSpecGcsPath === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'containerSpecGcsPath'");
             }
             inputs["containerSpecGcsPath"] = args ? args.containerSpecGcsPath : undefined;

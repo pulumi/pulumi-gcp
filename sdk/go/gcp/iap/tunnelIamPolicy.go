@@ -50,11 +50,12 @@ type TunnelIamPolicy struct {
 // NewTunnelIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewTunnelIamPolicy(ctx *pulumi.Context,
 	name string, args *TunnelIamPolicyArgs, opts ...pulumi.ResourceOption) (*TunnelIamPolicy, error) {
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &TunnelIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource TunnelIamPolicy
 	err := ctx.RegisterResource("gcp:iap/tunnelIamPolicy:TunnelIamPolicy", name, args, &resource, opts...)

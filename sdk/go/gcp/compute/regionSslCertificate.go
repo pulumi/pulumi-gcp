@@ -86,14 +86,15 @@ type RegionSslCertificate struct {
 // NewRegionSslCertificate registers a new resource with the given unique name, arguments, and options.
 func NewRegionSslCertificate(ctx *pulumi.Context,
 	name string, args *RegionSslCertificateArgs, opts ...pulumi.ResourceOption) (*RegionSslCertificate, error) {
-	if args == nil || args.Certificate == nil {
-		return nil, errors.New("missing required argument 'Certificate'")
-	}
-	if args == nil || args.PrivateKey == nil {
-		return nil, errors.New("missing required argument 'PrivateKey'")
-	}
 	if args == nil {
-		args = &RegionSslCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Certificate == nil {
+		return nil, errors.New("invalid value for required argument 'Certificate'")
+	}
+	if args.PrivateKey == nil {
+		return nil, errors.New("invalid value for required argument 'PrivateKey'")
 	}
 	var resource RegionSslCertificate
 	err := ctx.RegisterResource("gcp:compute/regionSslCertificate:RegionSslCertificate", name, args, &resource, opts...)

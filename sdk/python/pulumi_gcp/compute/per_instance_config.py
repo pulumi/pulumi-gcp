@@ -102,7 +102,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if instance_group_manager is None:
+            if instance_group_manager is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_group_manager'")
             __props__['instance_group_manager'] = instance_group_manager
             __props__['minimal_action'] = minimal_action
@@ -111,7 +111,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             __props__['preserved_state'] = preserved_state
             __props__['project'] = project
             __props__['remove_instance_state_on_destroy'] = remove_instance_state_on_destroy
-            if zone is None:
+            if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(PerInstanceConfig, __self__).__init__(

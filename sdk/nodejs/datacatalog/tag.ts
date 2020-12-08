@@ -371,10 +371,10 @@ export class Tag extends pulumi.CustomResource {
             inputs["templateDisplayname"] = state ? state.templateDisplayname : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            if (!args || args.fields === undefined) {
+            if ((!args || args.fields === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fields'");
             }
-            if (!args || args.template === undefined) {
+            if ((!args || args.template === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'template'");
             }
             inputs["column"] = args ? args.column : undefined;

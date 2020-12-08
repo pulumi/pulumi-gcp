@@ -67,11 +67,11 @@ class OrganizationSecurityPolicyAssociation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if attachment_id is None:
+            if attachment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attachment_id'")
             __props__['attachment_id'] = attachment_id
             __props__['name'] = name
-            if policy_id is None:
+            if policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_id'")
             __props__['policy_id'] = policy_id
             __props__['display_name'] = None

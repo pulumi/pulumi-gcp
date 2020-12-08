@@ -152,17 +152,18 @@ type ServiceIamMember struct {
 // NewServiceIamMember registers a new resource with the given unique name, arguments, and options.
 func NewServiceIamMember(ctx *pulumi.Context,
 	name string, args *ServiceIamMemberArgs, opts ...pulumi.ResourceOption) (*ServiceIamMember, error) {
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.ServiceName == nil {
-		return nil, errors.New("missing required argument 'ServiceName'")
-	}
 	if args == nil {
-		args = &ServiceIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.ServiceName == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceName'")
 	}
 	var resource ServiceIamMember
 	err := ctx.RegisterResource("gcp:endpoints/serviceIamMember:ServiceIamMember", name, args, &resource, opts...)

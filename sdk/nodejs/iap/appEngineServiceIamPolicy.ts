@@ -222,13 +222,13 @@ export class AppEngineServiceIamPolicy extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as AppEngineServiceIamPolicyArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["appId"] = args ? args.appId : undefined;

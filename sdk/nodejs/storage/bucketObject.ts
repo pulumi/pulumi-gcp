@@ -160,7 +160,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["storageClass"] = state ? state.storageClass : undefined;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
-            if (!args || args.bucket === undefined) {
+            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;

@@ -56,14 +56,15 @@ type GatewayIamPolicy struct {
 // NewGatewayIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewGatewayIamPolicy(ctx *pulumi.Context,
 	name string, args *GatewayIamPolicyArgs, opts ...pulumi.ResourceOption) (*GatewayIamPolicy, error) {
-	if args == nil || args.Gateway == nil {
-		return nil, errors.New("missing required argument 'Gateway'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &GatewayIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Gateway == nil {
+		return nil, errors.New("invalid value for required argument 'Gateway'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource GatewayIamPolicy
 	err := ctx.RegisterResource("gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy", name, args, &resource, opts...)

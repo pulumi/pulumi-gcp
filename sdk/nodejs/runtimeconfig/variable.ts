@@ -102,7 +102,7 @@ export class Variable extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as VariableArgs | undefined;
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["name"] = args ? args.name : undefined;

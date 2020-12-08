@@ -137,10 +137,10 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as BackendServiceSignedUrlKeyArgs | undefined;
-            if (!args || args.backendService === undefined) {
+            if ((!args || args.backendService === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'backendService'");
             }
-            if (!args || args.keyValue === undefined) {
+            if ((!args || args.keyValue === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyValue'");
             }
             inputs["backendService"] = args ? args.backendService : undefined;

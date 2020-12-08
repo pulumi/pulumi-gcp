@@ -219,10 +219,10 @@ export class TunnelInstanceIAMPolicy extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as TunnelInstanceIAMPolicyArgs | undefined;
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["instance"] = args ? args.instance : undefined;

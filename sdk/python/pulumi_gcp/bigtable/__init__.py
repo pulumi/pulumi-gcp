@@ -14,3 +14,50 @@ from .table_iam_member import *
 from .table_iam_policy import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:bigtable/gCPolicy:GCPolicy":
+                return GCPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/instanceIamBinding:InstanceIamBinding":
+                return InstanceIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/instanceIamMember:InstanceIamMember":
+                return InstanceIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/instanceIamPolicy:InstanceIamPolicy":
+                return InstanceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/table:Table":
+                return Table(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/tableIamBinding:TableIamBinding":
+                return TableIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/tableIamMember:TableIamMember":
+                return TableIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:bigtable/tableIamPolicy:TableIamPolicy":
+                return TableIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "bigtable/gCPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/instance", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/instanceIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/instanceIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/instanceIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/table", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/tableIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/tableIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "bigtable/tableIamPolicy", _module_instance)
+
+_register_module()

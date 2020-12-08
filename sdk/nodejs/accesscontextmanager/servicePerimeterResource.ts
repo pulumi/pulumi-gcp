@@ -113,10 +113,10 @@ export class ServicePerimeterResource extends pulumi.CustomResource {
             inputs["resource"] = state ? state.resource : undefined;
         } else {
             const args = argsOrState as ServicePerimeterResourceArgs | undefined;
-            if (!args || args.perimeterName === undefined) {
+            if ((!args || args.perimeterName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'perimeterName'");
             }
-            if (!args || args.resource === undefined) {
+            if ((!args || args.resource === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'resource'");
             }
             inputs["perimeterName"] = args ? args.perimeterName : undefined;

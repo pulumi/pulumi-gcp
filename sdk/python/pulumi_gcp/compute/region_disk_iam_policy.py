@@ -125,7 +125,7 @@ class RegionDiskIamPolicy(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['name'] = name
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
             __props__['project'] = project

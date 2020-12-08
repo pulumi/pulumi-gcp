@@ -46,11 +46,12 @@ type Taxonomy struct {
 // NewTaxonomy registers a new resource with the given unique name, arguments, and options.
 func NewTaxonomy(ctx *pulumi.Context,
 	name string, args *TaxonomyArgs, opts ...pulumi.ResourceOption) (*Taxonomy, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil {
-		args = &TaxonomyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	var resource Taxonomy
 	err := ctx.RegisterResource("gcp:datacatalog/taxonomy:Taxonomy", name, args, &resource, opts...)

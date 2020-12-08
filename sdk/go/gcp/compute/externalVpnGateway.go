@@ -201,6 +201,7 @@ func NewExternalVpnGateway(ctx *pulumi.Context,
 	if args == nil {
 		args = &ExternalVpnGatewayArgs{}
 	}
+
 	var resource ExternalVpnGateway
 	err := ctx.RegisterResource("gcp:compute/externalVpnGateway:ExternalVpnGateway", name, args, &resource, opts...)
 	if err != nil {

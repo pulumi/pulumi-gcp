@@ -138,7 +138,7 @@ class NotificationChannel(pulumi.CustomResource):
             __props__['labels'] = labels
             __props__['project'] = project
             __props__['sensitive_labels'] = sensitive_labels
-            if type is None:
+            if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__['type'] = type
             __props__['user_labels'] = user_labels

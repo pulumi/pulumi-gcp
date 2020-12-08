@@ -121,10 +121,10 @@ class EntryGroupIamPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if entry_group is None:
+            if entry_group is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_group'")
             __props__['entry_group'] = entry_group
-            if policy_data is None:
+            if policy_data is None and not opts.urn:
                 raise TypeError("Missing required property 'policy_data'")
             __props__['policy_data'] = policy_data
             __props__['project'] = project

@@ -224,10 +224,10 @@ export class InstanceIAMPolicy extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceIAMPolicyArgs | undefined;
-            if (!args || args.instanceName === undefined) {
+            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["instanceName"] = args ? args.instanceName : undefined;

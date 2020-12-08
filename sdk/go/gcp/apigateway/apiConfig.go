@@ -59,14 +59,15 @@ type ApiConfig struct {
 // NewApiConfig registers a new resource with the given unique name, arguments, and options.
 func NewApiConfig(ctx *pulumi.Context,
 	name string, args *ApiConfigArgs, opts ...pulumi.ResourceOption) (*ApiConfig, error) {
-	if args == nil || args.Api == nil {
-		return nil, errors.New("missing required argument 'Api'")
-	}
-	if args == nil || args.OpenapiDocuments == nil {
-		return nil, errors.New("missing required argument 'OpenapiDocuments'")
-	}
 	if args == nil {
-		args = &ApiConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Api == nil {
+		return nil, errors.New("invalid value for required argument 'Api'")
+	}
+	if args.OpenapiDocuments == nil {
+		return nil, errors.New("invalid value for required argument 'OpenapiDocuments'")
 	}
 	var resource ApiConfig
 	err := ctx.RegisterResource("gcp:apigateway/apiConfig:ApiConfig", name, args, &resource, opts...)

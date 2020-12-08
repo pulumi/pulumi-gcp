@@ -147,10 +147,10 @@ export class FhirStoreIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as FhirStoreIamPolicyArgs | undefined;
-            if (!args || args.fhirStoreId === undefined) {
+            if ((!args || args.fhirStoreId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'fhirStoreId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;

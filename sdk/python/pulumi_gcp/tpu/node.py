@@ -121,7 +121,7 @@ class Node(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if accelerator_type is None:
+            if accelerator_type is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_type'")
             __props__['accelerator_type'] = accelerator_type
             __props__['cidr_block'] = cidr_block
@@ -131,11 +131,11 @@ class Node(pulumi.CustomResource):
             __props__['network'] = network
             __props__['project'] = project
             __props__['scheduling_config'] = scheduling_config
-            if tensorflow_version is None:
+            if tensorflow_version is None and not opts.urn:
                 raise TypeError("Missing required property 'tensorflow_version'")
             __props__['tensorflow_version'] = tensorflow_version
             __props__['use_service_networking'] = use_service_networking
-            if zone is None:
+            if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
             __props__['network_endpoints'] = None

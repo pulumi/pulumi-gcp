@@ -164,20 +164,21 @@ type Instance struct {
 // NewInstance registers a new resource with the given unique name, arguments, and options.
 func NewInstance(ctx *pulumi.Context,
 	name string, args *InstanceArgs, opts ...pulumi.ResourceOption) (*Instance, error) {
-	if args == nil || args.FileShares == nil {
-		return nil, errors.New("missing required argument 'FileShares'")
-	}
-	if args == nil || args.Networks == nil {
-		return nil, errors.New("missing required argument 'Networks'")
-	}
-	if args == nil || args.Tier == nil {
-		return nil, errors.New("missing required argument 'Tier'")
-	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	if args == nil {
-		args = &InstanceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FileShares == nil {
+		return nil, errors.New("invalid value for required argument 'FileShares'")
+	}
+	if args.Networks == nil {
+		return nil, errors.New("invalid value for required argument 'Networks'")
+	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
+	}
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("gcp:filestore/instance:Instance", name, args, &resource, opts...)

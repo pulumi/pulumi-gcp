@@ -83,11 +83,12 @@ type Tenant struct {
 // NewTenant registers a new resource with the given unique name, arguments, and options.
 func NewTenant(ctx *pulumi.Context,
 	name string, args *TenantArgs, opts ...pulumi.ResourceOption) (*Tenant, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
 	if args == nil {
-		args = &TenantArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	var resource Tenant
 	err := ctx.RegisterResource("gcp:identityplatform/tenant:Tenant", name, args, &resource, opts...)

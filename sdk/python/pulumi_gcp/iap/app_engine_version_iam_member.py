@@ -201,21 +201,21 @@ class AppEngineVersionIamMember(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if app_id is None:
+            if app_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_id'")
             __props__['app_id'] = app_id
             __props__['condition'] = condition
-            if member is None:
+            if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
             __props__['project'] = project
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
-            if version_id is None:
+            if version_id is None and not opts.urn:
                 raise TypeError("Missing required property 'version_id'")
             __props__['version_id'] = version_id
             __props__['etag'] = None

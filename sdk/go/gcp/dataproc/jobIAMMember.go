@@ -155,17 +155,18 @@ type JobIAMMember struct {
 // NewJobIAMMember registers a new resource with the given unique name, arguments, and options.
 func NewJobIAMMember(ctx *pulumi.Context,
 	name string, args *JobIAMMemberArgs, opts ...pulumi.ResourceOption) (*JobIAMMember, error) {
-	if args == nil || args.JobId == nil {
-		return nil, errors.New("missing required argument 'JobId'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &JobIAMMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.JobId == nil {
+		return nil, errors.New("invalid value for required argument 'JobId'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource JobIAMMember
 	err := ctx.RegisterResource("gcp:dataproc/jobIAMMember:JobIAMMember", name, args, &resource, opts...)

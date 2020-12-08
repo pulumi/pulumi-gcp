@@ -143,11 +143,12 @@ type Note struct {
 // NewNote registers a new resource with the given unique name, arguments, and options.
 func NewNote(ctx *pulumi.Context,
 	name string, args *NoteArgs, opts ...pulumi.ResourceOption) (*Note, error) {
-	if args == nil || args.AttestationAuthority == nil {
-		return nil, errors.New("missing required argument 'AttestationAuthority'")
-	}
 	if args == nil {
-		args = &NoteArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AttestationAuthority == nil {
+		return nil, errors.New("invalid value for required argument 'AttestationAuthority'")
 	}
 	var resource Note
 	err := ctx.RegisterResource("gcp:containeranalysis/note:Note", name, args, &resource, opts...)

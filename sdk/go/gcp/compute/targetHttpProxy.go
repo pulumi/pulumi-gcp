@@ -167,11 +167,12 @@ type TargetHttpProxy struct {
 // NewTargetHttpProxy registers a new resource with the given unique name, arguments, and options.
 func NewTargetHttpProxy(ctx *pulumi.Context,
 	name string, args *TargetHttpProxyArgs, opts ...pulumi.ResourceOption) (*TargetHttpProxy, error) {
-	if args == nil || args.UrlMap == nil {
-		return nil, errors.New("missing required argument 'UrlMap'")
-	}
 	if args == nil {
-		args = &TargetHttpProxyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.UrlMap == nil {
+		return nil, errors.New("invalid value for required argument 'UrlMap'")
 	}
 	var resource TargetHttpProxy
 	err := ctx.RegisterResource("gcp:compute/targetHttpProxy:TargetHttpProxy", name, args, &resource, opts...)

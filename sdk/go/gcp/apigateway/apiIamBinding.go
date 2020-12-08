@@ -54,17 +54,18 @@ type ApiIamBinding struct {
 // NewApiIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewApiIamBinding(ctx *pulumi.Context,
 	name string, args *ApiIamBindingArgs, opts ...pulumi.ResourceOption) (*ApiIamBinding, error) {
-	if args == nil || args.Api == nil {
-		return nil, errors.New("missing required argument 'Api'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ApiIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Api == nil {
+		return nil, errors.New("invalid value for required argument 'Api'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ApiIamBinding
 	err := ctx.RegisterResource("gcp:apigateway/apiIamBinding:ApiIamBinding", name, args, &resource, opts...)

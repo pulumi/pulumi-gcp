@@ -298,7 +298,7 @@ export class Service extends pulumi.CustomResource {
             inputs["traffics"] = state ? state.traffics : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["autogenerateRevisionName"] = args ? args.autogenerateRevisionName : undefined;

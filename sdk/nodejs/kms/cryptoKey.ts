@@ -153,7 +153,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
-            if (!args || args.keyRing === undefined) {
+            if ((!args || args.keyRing === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'keyRing'");
             }
             inputs["keyRing"] = args ? args.keyRing : undefined;

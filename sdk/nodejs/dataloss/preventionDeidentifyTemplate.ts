@@ -172,10 +172,10 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
             inputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as PreventionDeidentifyTemplateArgs | undefined;
-            if (!args || args.deidentifyConfig === undefined) {
+            if ((!args || args.deidentifyConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'deidentifyConfig'");
             }
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["deidentifyConfig"] = args ? args.deidentifyConfig : undefined;

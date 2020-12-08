@@ -125,6 +125,7 @@ func NewNetwork(ctx *pulumi.Context,
 	if args == nil {
 		args = &NetworkArgs{}
 	}
+
 	var resource Network
 	err := ctx.RegisterResource("gcp:compute/network:Network", name, args, &resource, opts...)
 	if err != nil {

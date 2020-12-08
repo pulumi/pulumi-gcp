@@ -155,14 +155,15 @@ type ConfigIamPolicy struct {
 // NewConfigIamPolicy registers a new resource with the given unique name, arguments, and options.
 func NewConfigIamPolicy(ctx *pulumi.Context,
 	name string, args *ConfigIamPolicyArgs, opts ...pulumi.ResourceOption) (*ConfigIamPolicy, error) {
-	if args == nil || args.Config == nil {
-		return nil, errors.New("missing required argument 'Config'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &ConfigIamPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Config == nil {
+		return nil, errors.New("invalid value for required argument 'Config'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource ConfigIamPolicy
 	err := ctx.RegisterResource("gcp:runtimeconfig/configIamPolicy:ConfigIamPolicy", name, args, &resource, opts...)

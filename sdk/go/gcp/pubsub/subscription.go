@@ -260,11 +260,12 @@ type Subscription struct {
 // NewSubscription registers a new resource with the given unique name, arguments, and options.
 func NewSubscription(ctx *pulumi.Context,
 	name string, args *SubscriptionArgs, opts ...pulumi.ResourceOption) (*Subscription, error) {
-	if args == nil || args.Topic == nil {
-		return nil, errors.New("missing required argument 'Topic'")
-	}
 	if args == nil {
-		args = &SubscriptionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Topic == nil {
+		return nil, errors.New("invalid value for required argument 'Topic'")
 	}
 	var resource Subscription
 	err := ctx.RegisterResource("gcp:pubsub/subscription:Subscription", name, args, &resource, opts...)

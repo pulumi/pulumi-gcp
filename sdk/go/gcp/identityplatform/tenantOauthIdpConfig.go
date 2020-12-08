@@ -92,20 +92,21 @@ type TenantOauthIdpConfig struct {
 // NewTenantOauthIdpConfig registers a new resource with the given unique name, arguments, and options.
 func NewTenantOauthIdpConfig(ctx *pulumi.Context,
 	name string, args *TenantOauthIdpConfigArgs, opts ...pulumi.ResourceOption) (*TenantOauthIdpConfig, error) {
-	if args == nil || args.ClientId == nil {
-		return nil, errors.New("missing required argument 'ClientId'")
-	}
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Issuer == nil {
-		return nil, errors.New("missing required argument 'Issuer'")
-	}
-	if args == nil || args.Tenant == nil {
-		return nil, errors.New("missing required argument 'Tenant'")
-	}
 	if args == nil {
-		args = &TenantOauthIdpConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ClientId == nil {
+		return nil, errors.New("invalid value for required argument 'ClientId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Issuer == nil {
+		return nil, errors.New("invalid value for required argument 'Issuer'")
+	}
+	if args.Tenant == nil {
+		return nil, errors.New("invalid value for required argument 'Tenant'")
 	}
 	var resource TenantOauthIdpConfig
 	err := ctx.RegisterResource("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig", name, args, &resource, opts...)

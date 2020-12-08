@@ -131,10 +131,10 @@ export class NetworkPeering extends pulumi.CustomResource {
             inputs["stateDetails"] = state ? state.stateDetails : undefined;
         } else {
             const args = argsOrState as NetworkPeeringArgs | undefined;
-            if (!args || args.network === undefined) {
+            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
             }
-            if (!args || args.peerNetwork === undefined) {
+            if ((!args || args.peerNetwork === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'peerNetwork'");
             }
             inputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;

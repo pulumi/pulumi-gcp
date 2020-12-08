@@ -154,13 +154,13 @@ export class SecretIamMember extends pulumi.CustomResource {
             inputs["secretId"] = state ? state.secretId : undefined;
         } else {
             const args = argsOrState as SecretIamMemberArgs | undefined;
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.secretId === undefined) {
+            if ((!args || args.secretId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'secretId'");
             }
             inputs["condition"] = args ? args.condition : undefined;

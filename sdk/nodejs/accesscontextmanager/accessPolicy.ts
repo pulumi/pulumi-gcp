@@ -113,10 +113,10 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
-            if (!args || args.title === undefined) {
+            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["parent"] = args ? args.parent : undefined;

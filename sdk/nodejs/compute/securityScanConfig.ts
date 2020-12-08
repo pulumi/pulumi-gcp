@@ -161,10 +161,10 @@ export class SecurityScanConfig extends pulumi.CustomResource {
             inputs["userAgent"] = state ? state.userAgent : undefined;
         } else {
             const args = argsOrState as SecurityScanConfigArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.startingUrls === undefined) {
+            if ((!args || args.startingUrls === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'startingUrls'");
             }
             inputs["authentication"] = args ? args.authentication : undefined;

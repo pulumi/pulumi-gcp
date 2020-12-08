@@ -93,7 +93,7 @@ class HmacKey(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['project'] = project
-            if service_account_email is None:
+            if service_account_email is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_email'")
             __props__['service_account_email'] = service_account_email
             __props__['state'] = state

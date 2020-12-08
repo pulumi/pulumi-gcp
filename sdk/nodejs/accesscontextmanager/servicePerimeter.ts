@@ -226,10 +226,10 @@ export class ServicePerimeter extends pulumi.CustomResource {
             inputs["useExplicitDryRunSpec"] = state ? state.useExplicitDryRunSpec : undefined;
         } else {
             const args = argsOrState as ServicePerimeterArgs | undefined;
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
-            if (!args || args.title === undefined) {
+            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["description"] = args ? args.description : undefined;

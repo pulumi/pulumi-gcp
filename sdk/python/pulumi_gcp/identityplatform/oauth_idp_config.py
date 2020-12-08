@@ -91,13 +91,13 @@ class OauthIdpConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if client_id is None:
+            if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
             __props__['client_id'] = client_id
             __props__['client_secret'] = client_secret
             __props__['display_name'] = display_name
             __props__['enabled'] = enabled
-            if issuer is None:
+            if issuer is None and not opts.urn:
                 raise TypeError("Missing required property 'issuer'")
             __props__['issuer'] = issuer
             __props__['name'] = name

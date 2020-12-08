@@ -67,7 +67,7 @@ class GuestPolicies(pulumi.CustomResource):
             metadata={
                 "foo": "bar",
             },
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         guest_policies = gcp.osconfig.GuestPolicies("guestPolicies",
             guest_policy_id="guest-policy",
             assignment=gcp.osconfig.GuestPoliciesAssignmentArgs(
@@ -77,7 +77,7 @@ class GuestPolicies(pulumi.CustomResource):
                 name="my-package",
                 desired_state="UPDATED",
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Os Config Guest Policies Packages
 
@@ -139,7 +139,7 @@ class GuestPolicies(pulumi.CustomResource):
                     ),
                 ),
             ],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Os Config Guest Policies Recipes
 
@@ -172,7 +172,7 @@ class GuestPolicies(pulumi.CustomResource):
                     ),
                 )],
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -237,12 +237,12 @@ class GuestPolicies(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if assignment is None:
+            if assignment is None and not opts.urn:
                 raise TypeError("Missing required property 'assignment'")
             __props__['assignment'] = assignment
             __props__['description'] = description
             __props__['etag'] = etag
-            if guest_policy_id is None:
+            if guest_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'guest_policy_id'")
             __props__['guest_policy_id'] = guest_policy_id
             __props__['package_repositories'] = package_repositories

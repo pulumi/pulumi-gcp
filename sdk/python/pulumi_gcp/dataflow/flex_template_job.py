@@ -42,7 +42,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             parameters={
                 "inputSubscription": "messages",
             },
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ## Note on "destroy" / "apply"
 
@@ -100,10 +100,10 @@ class FlexTemplateJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if container_spec_gcs_path is None:
+            if container_spec_gcs_path is None and not opts.urn:
                 raise TypeError("Missing required property 'container_spec_gcs_path'")
             __props__['container_spec_gcs_path'] = container_spec_gcs_path
-            if labels is not None:
+            if labels is not None and not opts.urn:
                 warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
                 pulumi.log.warn("labels is deprecated: Deprecated until the API supports this field")
             __props__['labels'] = labels

@@ -123,10 +123,10 @@ export class Namespace extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
-            if (!args || args.namespaceId === undefined) {
+            if ((!args || args.namespaceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'namespaceId'");
             }
             inputs["labels"] = args ? args.labels : undefined;

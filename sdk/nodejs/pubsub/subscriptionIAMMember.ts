@@ -150,13 +150,13 @@ export class SubscriptionIAMMember extends pulumi.CustomResource {
             inputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as SubscriptionIAMMemberArgs | undefined;
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.subscription === undefined) {
+            if ((!args || args.subscription === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subscription'");
             }
             inputs["condition"] = args ? args.condition : undefined;

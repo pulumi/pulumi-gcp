@@ -97,13 +97,13 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ApiConfigIamPolicyArgs | undefined;
-            if (!args || args.api === undefined) {
+            if ((!args || args.api === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'api'");
             }
-            if (!args || args.apiConfig === undefined) {
+            if ((!args || args.apiConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'apiConfig'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["api"] = args ? args.api : undefined;

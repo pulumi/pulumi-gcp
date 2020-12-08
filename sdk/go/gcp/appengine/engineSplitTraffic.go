@@ -52,14 +52,15 @@ type EngineSplitTraffic struct {
 // NewEngineSplitTraffic registers a new resource with the given unique name, arguments, and options.
 func NewEngineSplitTraffic(ctx *pulumi.Context,
 	name string, args *EngineSplitTrafficArgs, opts ...pulumi.ResourceOption) (*EngineSplitTraffic, error) {
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
-	if args == nil || args.Split == nil {
-		return nil, errors.New("missing required argument 'Split'")
-	}
 	if args == nil {
-		args = &EngineSplitTrafficArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
+	}
+	if args.Split == nil {
+		return nil, errors.New("invalid value for required argument 'Split'")
 	}
 	var resource EngineSplitTraffic
 	err := ctx.RegisterResource("gcp:appengine/engineSplitTraffic:EngineSplitTraffic", name, args, &resource, opts...)

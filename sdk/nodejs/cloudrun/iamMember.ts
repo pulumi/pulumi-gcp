@@ -165,13 +165,13 @@ export class IamMember extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as IamMemberArgs | undefined;
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["condition"] = args ? args.condition : undefined;

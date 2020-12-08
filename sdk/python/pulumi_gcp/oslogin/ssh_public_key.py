@@ -81,11 +81,11 @@ class SshPublicKey(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['expiration_time_usec'] = expiration_time_usec
-            if key is None:
+            if key is None and not opts.urn:
                 raise TypeError("Missing required property 'key'")
             __props__['key'] = key
             __props__['project'] = project
-            if user is None:
+            if user is None and not opts.urn:
                 raise TypeError("Missing required property 'user'")
             __props__['user'] = user
             __props__['fingerprint'] = None

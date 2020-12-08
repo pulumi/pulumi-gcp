@@ -131,10 +131,10 @@ export class Realm extends pulumi.CustomResource {
             inputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as RealmArgs | undefined;
-            if (!args || args.realmId === undefined) {
+            if ((!args || args.realmId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'realmId'");
             }
-            if (!args || args.timeZone === undefined) {
+            if ((!args || args.timeZone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timeZone'");
             }
             inputs["description"] = args ? args.description : undefined;

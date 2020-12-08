@@ -157,13 +157,13 @@ export class TopicIAMMember extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as TopicIAMMemberArgs | undefined;
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.topic === undefined) {
+            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["condition"] = args ? args.condition : undefined;

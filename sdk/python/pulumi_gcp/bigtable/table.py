@@ -98,7 +98,7 @@ class Table(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['column_families'] = column_families
-            if instance_name is None:
+            if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__['instance_name'] = instance_name
             __props__['name'] = name

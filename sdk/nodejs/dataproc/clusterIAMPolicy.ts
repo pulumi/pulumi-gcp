@@ -151,10 +151,10 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ClusterIAMPolicyArgs | undefined;
-            if (!args || args.cluster === undefined) {
+            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;

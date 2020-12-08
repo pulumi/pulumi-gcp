@@ -132,14 +132,15 @@ type InstanceGroupManager struct {
 // NewInstanceGroupManager registers a new resource with the given unique name, arguments, and options.
 func NewInstanceGroupManager(ctx *pulumi.Context,
 	name string, args *InstanceGroupManagerArgs, opts ...pulumi.ResourceOption) (*InstanceGroupManager, error) {
-	if args == nil || args.BaseInstanceName == nil {
-		return nil, errors.New("missing required argument 'BaseInstanceName'")
-	}
-	if args == nil || args.Versions == nil {
-		return nil, errors.New("missing required argument 'Versions'")
-	}
 	if args == nil {
-		args = &InstanceGroupManagerArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BaseInstanceName == nil {
+		return nil, errors.New("invalid value for required argument 'BaseInstanceName'")
+	}
+	if args.Versions == nil {
+		return nil, errors.New("invalid value for required argument 'Versions'")
 	}
 	var resource InstanceGroupManager
 	err := ctx.RegisterResource("gcp:compute/instanceGroupManager:InstanceGroupManager", name, args, &resource, opts...)

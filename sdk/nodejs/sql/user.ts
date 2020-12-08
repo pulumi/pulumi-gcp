@@ -122,7 +122,7 @@ export class User extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if (!args || args.instance === undefined) {
+            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;

@@ -132,13 +132,13 @@ export class InboundSamlConfig extends pulumi.CustomResource {
             inputs["spConfig"] = state ? state.spConfig : undefined;
         } else {
             const args = argsOrState as InboundSamlConfigArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.idpConfig === undefined) {
+            if ((!args || args.idpConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'idpConfig'");
             }
-            if (!args || args.spConfig === undefined) {
+            if ((!args || args.spConfig === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'spConfig'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;

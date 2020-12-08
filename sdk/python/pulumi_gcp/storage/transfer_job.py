@@ -51,7 +51,7 @@ class TransferJob(pulumi.CustomResource):
             bucket=s3_backup_bucket_bucket.name,
             role="roles/storage.admin",
             member=f"serviceAccount:{default.email}",
-            opts=ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
+            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket]))
         s3_bucket_nightly_backup = gcp.storage.TransferJob("s3-bucket-nightly-backup",
             description="Nightly backup of S3 bucket",
             project=var["project"],
@@ -92,7 +92,7 @@ class TransferJob(pulumi.CustomResource):
                     nanos=0,
                 ),
             ),
-            opts=ResourceOptions(depends_on=[s3_backup_bucket_bucket_iam_member]))
+            opts=pulumi.ResourceOptions(depends_on=[s3_backup_bucket_bucket_iam_member]))
         ```
 
         ## Import
@@ -129,15 +129,15 @@ class TransferJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if description is None:
+            if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
             __props__['description'] = description
             __props__['project'] = project
-            if schedule is None:
+            if schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule'")
             __props__['schedule'] = schedule
             __props__['status'] = status
-            if transfer_spec is None:
+            if transfer_spec is None and not opts.urn:
                 raise TypeError("Missing required property 'transfer_spec'")
             __props__['transfer_spec'] = transfer_spec
             __props__['creation_time'] = None

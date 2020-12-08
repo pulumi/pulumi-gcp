@@ -149,7 +149,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             log_config=gcp.compute.RegionHealthCheckLogConfigArgs(
                 enable=True,
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Region Health Check Http Full
 

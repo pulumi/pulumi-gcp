@@ -62,14 +62,15 @@ type ProjectMetadataItem struct {
 // NewProjectMetadataItem registers a new resource with the given unique name, arguments, and options.
 func NewProjectMetadataItem(ctx *pulumi.Context,
 	name string, args *ProjectMetadataItemArgs, opts ...pulumi.ResourceOption) (*ProjectMetadataItem, error) {
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &ProjectMetadataItemArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource ProjectMetadataItem
 	err := ctx.RegisterResource("gcp:compute/projectMetadataItem:ProjectMetadataItem", name, args, &resource, opts...)

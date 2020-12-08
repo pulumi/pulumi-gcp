@@ -229,7 +229,7 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__['handlers'] = handlers
             __props__['inbound_services'] = inbound_services
             __props__['instance_class'] = instance_class
-            if liveness_check is None:
+            if liveness_check is None and not opts.urn:
                 raise TypeError("Missing required property 'liveness_check'")
             __props__['liveness_check'] = liveness_check
             __props__['manual_scaling'] = manual_scaling
@@ -237,17 +237,17 @@ class FlexibleAppVersion(pulumi.CustomResource):
             __props__['nobuild_files_regex'] = nobuild_files_regex
             __props__['noop_on_destroy'] = noop_on_destroy
             __props__['project'] = project
-            if readiness_check is None:
+            if readiness_check is None and not opts.urn:
                 raise TypeError("Missing required property 'readiness_check'")
             __props__['readiness_check'] = readiness_check
             __props__['resources'] = resources
-            if runtime is None:
+            if runtime is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime'")
             __props__['runtime'] = runtime
             __props__['runtime_api_version'] = runtime_api_version
             __props__['runtime_channel'] = runtime_channel
             __props__['runtime_main_executable_path'] = runtime_main_executable_path
-            if service is None:
+            if service is None and not opts.urn:
                 raise TypeError("Missing required property 'service'")
             __props__['service'] = service
             __props__['serving_status'] = serving_status

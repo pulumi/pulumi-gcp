@@ -80,17 +80,18 @@ type FolderBucketConfig struct {
 // NewFolderBucketConfig registers a new resource with the given unique name, arguments, and options.
 func NewFolderBucketConfig(ctx *pulumi.Context,
 	name string, args *FolderBucketConfigArgs, opts ...pulumi.ResourceOption) (*FolderBucketConfig, error) {
-	if args == nil || args.BucketId == nil {
-		return nil, errors.New("missing required argument 'BucketId'")
-	}
-	if args == nil || args.Folder == nil {
-		return nil, errors.New("missing required argument 'Folder'")
-	}
-	if args == nil || args.Location == nil {
-		return nil, errors.New("missing required argument 'Location'")
-	}
 	if args == nil {
-		args = &FolderBucketConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.BucketId == nil {
+		return nil, errors.New("invalid value for required argument 'BucketId'")
+	}
+	if args.Folder == nil {
+		return nil, errors.New("invalid value for required argument 'Folder'")
+	}
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	var resource FolderBucketConfig
 	err := ctx.RegisterResource("gcp:logging/folderBucketConfig:FolderBucketConfig", name, args, &resource, opts...)

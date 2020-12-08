@@ -55,7 +55,7 @@ class Budget(pulumi.CustomResource):
             threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
                 threshold_percent=0.5,
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Billing Budget Lastperiod
 
@@ -76,7 +76,7 @@ class Budget(pulumi.CustomResource):
             threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
                 threshold_percent=10,
             )],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Billing Budget Filter
 
@@ -108,7 +108,7 @@ class Budget(pulumi.CustomResource):
                     spend_basis="FORECASTED_SPEND",
                 ),
             ],
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Billing Budget Notify
 
@@ -123,7 +123,7 @@ class Budget(pulumi.CustomResource):
             labels={
                 "email_address": "address@example.com",
             },
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
@@ -149,7 +149,7 @@ class Budget(pulumi.CustomResource):
                 monitoring_notification_channels=[notification_channel.id],
                 disable_default_iam_recipients=True,
             ),
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -196,15 +196,15 @@ class Budget(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['all_updates_rule'] = all_updates_rule
-            if amount is None:
+            if amount is None and not opts.urn:
                 raise TypeError("Missing required property 'amount'")
             __props__['amount'] = amount
-            if billing_account is None:
+            if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")
             __props__['billing_account'] = billing_account
             __props__['budget_filter'] = budget_filter
             __props__['display_name'] = display_name
-            if threshold_rules is None:
+            if threshold_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'threshold_rules'")
             __props__['threshold_rules'] = threshold_rules
             __props__['name'] = None

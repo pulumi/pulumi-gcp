@@ -83,11 +83,12 @@ type Key struct {
 // NewKey registers a new resource with the given unique name, arguments, and options.
 func NewKey(ctx *pulumi.Context,
 	name string, args *KeyArgs, opts ...pulumi.ResourceOption) (*Key, error) {
-	if args == nil || args.ServiceAccountId == nil {
-		return nil, errors.New("missing required argument 'ServiceAccountId'")
-	}
 	if args == nil {
-		args = &KeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ServiceAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
 	var resource Key
 	err := ctx.RegisterResource("gcp:serviceAccount/key:Key", name, args, &resource, opts...)

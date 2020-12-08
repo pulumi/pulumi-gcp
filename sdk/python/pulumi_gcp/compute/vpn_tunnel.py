@@ -76,7 +76,7 @@ class VPNTunnel(pulumi.CustomResource):
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
             target_vpn_gateway=target_gateway.id,
-            opts=ResourceOptions(depends_on=[
+            opts=pulumi.ResourceOptions(depends_on=[
                     fr_esp,
                     fr_udp500,
                     fr_udp4500,
@@ -93,27 +93,27 @@ class VPNTunnel(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        network1 = gcp.compute.Network("network1", opts=ResourceOptions(provider=google_beta))
+        network1 = gcp.compute.Network("network1", opts=pulumi.ResourceOptions(provider=google_beta))
         target_gateway = gcp.compute.VPNGateway("targetGateway", network=network1.id,
-        opts=ResourceOptions(provider=google_beta))
-        vpn_static_ip = gcp.compute.Address("vpnStaticIp", opts=ResourceOptions(provider=google_beta))
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        vpn_static_ip = gcp.compute.Address("vpnStaticIp", opts=pulumi.ResourceOptions(provider=google_beta))
         fr_esp = gcp.compute.ForwardingRule("frEsp",
             ip_protocol="ESP",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         fr_udp500 = gcp.compute.ForwardingRule("frUdp500",
             ip_protocol="UDP",
             port_range="500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         fr_udp4500 = gcp.compute.ForwardingRule("frUdp4500",
             ip_protocol="UDP",
             port_range="4500",
             ip_address=vpn_static_ip.address,
             target=target_gateway.id,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         tunnel1 = gcp.compute.VPNTunnel("tunnel1",
             peer_ip="15.0.0.120",
             shared_secret="a secret message",
@@ -121,7 +121,7 @@ class VPNTunnel(pulumi.CustomResource):
             labels={
                 "foo": "bar",
             },
-            opts=ResourceOptions(provider=google_beta,
+            opts=pulumi.ResourceOptions(provider=google_beta,
                 depends_on=[
                     fr_esp,
                     fr_udp500,
@@ -132,7 +132,7 @@ class VPNTunnel(pulumi.CustomResource):
             dest_range="15.0.0.0/24",
             priority=1000,
             next_hop_vpn_tunnel=tunnel1.id,
-            opts=ResourceOptions(provider=google_beta))
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -228,7 +228,7 @@ class VPNTunnel(pulumi.CustomResource):
             __props__['region'] = region
             __props__['remote_traffic_selectors'] = remote_traffic_selectors
             __props__['router'] = router
-            if shared_secret is None:
+            if shared_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'shared_secret'")
             __props__['shared_secret'] = shared_secret
             __props__['target_vpn_gateway'] = target_vpn_gateway

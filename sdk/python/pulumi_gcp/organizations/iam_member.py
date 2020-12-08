@@ -48,13 +48,13 @@ class IAMMember(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if member is None:
+            if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
-            if org_id is None:
+            if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__['org_id'] = org_id
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
             __props__['etag'] = None

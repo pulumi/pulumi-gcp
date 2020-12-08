@@ -135,10 +135,10 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             inputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
         } else {
             const args = argsOrState as RegionPerInstanceConfigArgs | undefined;
-            if (!args || args.region === undefined) {
+            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'region'");
             }
-            if (!args || args.regionInstanceGroupManager === undefined) {
+            if ((!args || args.regionInstanceGroupManager === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'regionInstanceGroupManager'");
             }
             inputs["minimalAction"] = args ? args.minimalAction : undefined;

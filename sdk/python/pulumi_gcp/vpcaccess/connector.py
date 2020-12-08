@@ -95,17 +95,17 @@ class Connector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if ip_cidr_range is None:
+            if ip_cidr_range is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_cidr_range'")
             __props__['ip_cidr_range'] = ip_cidr_range
             __props__['max_throughput'] = max_throughput
             __props__['min_throughput'] = min_throughput
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['project'] = project
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['self_link'] = None

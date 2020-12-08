@@ -137,7 +137,7 @@ export class AccessLevelCondition extends pulumi.CustomResource {
             inputs["requiredAccessLevels"] = state ? state.requiredAccessLevels : undefined;
         } else {
             const args = argsOrState as AccessLevelConditionArgs | undefined;
-            if (!args || args.accessLevel === undefined) {
+            if ((!args || args.accessLevel === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'accessLevel'");
             }
             inputs["accessLevel"] = args ? args.accessLevel : undefined;

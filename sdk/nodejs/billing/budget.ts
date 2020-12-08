@@ -245,13 +245,13 @@ export class Budget extends pulumi.CustomResource {
             inputs["thresholdRules"] = state ? state.thresholdRules : undefined;
         } else {
             const args = argsOrState as BudgetArgs | undefined;
-            if (!args || args.amount === undefined) {
+            if ((!args || args.amount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'amount'");
             }
-            if (!args || args.billingAccount === undefined) {
+            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if (!args || args.thresholdRules === undefined) {
+            if ((!args || args.thresholdRules === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'thresholdRules'");
             }
             inputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;

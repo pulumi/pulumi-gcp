@@ -99,10 +99,10 @@ export class Client extends pulumi.CustomResource {
             inputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
-            if (!args || args.brand === undefined) {
+            if ((!args || args.brand === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'brand'");
             }
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["brand"] = args ? args.brand : undefined;

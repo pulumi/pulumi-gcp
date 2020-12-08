@@ -103,24 +103,24 @@ class DomainTrust(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if domain is None:
+            if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__['domain'] = domain
             __props__['project'] = project
             __props__['selective_authentication'] = selective_authentication
-            if target_dns_ip_addresses is None:
+            if target_dns_ip_addresses is None and not opts.urn:
                 raise TypeError("Missing required property 'target_dns_ip_addresses'")
             __props__['target_dns_ip_addresses'] = target_dns_ip_addresses
-            if target_domain_name is None:
+            if target_domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'target_domain_name'")
             __props__['target_domain_name'] = target_domain_name
-            if trust_direction is None:
+            if trust_direction is None and not opts.urn:
                 raise TypeError("Missing required property 'trust_direction'")
             __props__['trust_direction'] = trust_direction
-            if trust_handshake_secret is None:
+            if trust_handshake_secret is None and not opts.urn:
                 raise TypeError("Missing required property 'trust_handshake_secret'")
             __props__['trust_handshake_secret'] = trust_handshake_secret
-            if trust_type is None:
+            if trust_type is None and not opts.urn:
                 raise TypeError("Missing required property 'trust_type'")
             __props__['trust_type'] = trust_type
         super(DomainTrust, __self__).__init__(

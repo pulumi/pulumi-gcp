@@ -157,17 +157,18 @@ type FhirStoreIamBinding struct {
 // NewFhirStoreIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewFhirStoreIamBinding(ctx *pulumi.Context,
 	name string, args *FhirStoreIamBindingArgs, opts ...pulumi.ResourceOption) (*FhirStoreIamBinding, error) {
-	if args == nil || args.FhirStoreId == nil {
-		return nil, errors.New("missing required argument 'FhirStoreId'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &FhirStoreIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.FhirStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'FhirStoreId'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource FhirStoreIamBinding
 	err := ctx.RegisterResource("gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding", name, args, &resource, opts...)

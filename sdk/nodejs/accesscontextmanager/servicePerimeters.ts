@@ -134,7 +134,7 @@ export class ServicePerimeters extends pulumi.CustomResource {
             inputs["servicePerimeters"] = state ? state.servicePerimeters : undefined;
         } else {
             const args = argsOrState as ServicePerimetersArgs | undefined;
-            if (!args || args.parent === undefined) {
+            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["parent"] = args ? args.parent : undefined;

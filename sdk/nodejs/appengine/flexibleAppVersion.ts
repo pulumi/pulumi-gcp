@@ -320,16 +320,16 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             inputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
         } else {
             const args = argsOrState as FlexibleAppVersionArgs | undefined;
-            if (!args || args.livenessCheck === undefined) {
+            if ((!args || args.livenessCheck === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'livenessCheck'");
             }
-            if (!args || args.readinessCheck === undefined) {
+            if ((!args || args.readinessCheck === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'readinessCheck'");
             }
-            if (!args || args.runtime === undefined) {
+            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;

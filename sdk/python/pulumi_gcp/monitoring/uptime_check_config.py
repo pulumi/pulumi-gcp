@@ -162,7 +162,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['content_matchers'] = content_matchers
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['http_check'] = http_check
@@ -172,7 +172,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__['resource_group'] = resource_group
             __props__['selected_regions'] = selected_regions
             __props__['tcp_check'] = tcp_check
-            if timeout is None:
+            if timeout is None and not opts.urn:
                 raise TypeError("Missing required property 'timeout'")
             __props__['timeout'] = timeout
             __props__['name'] = None

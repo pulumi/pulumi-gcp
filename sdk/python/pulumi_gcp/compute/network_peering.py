@@ -93,10 +93,10 @@ class NetworkPeering(pulumi.CustomResource):
             __props__['import_custom_routes'] = import_custom_routes
             __props__['import_subnet_routes_with_public_ip'] = import_subnet_routes_with_public_ip
             __props__['name'] = name
-            if network is None:
+            if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
-            if peer_network is None:
+            if peer_network is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_network'")
             __props__['peer_network'] = peer_network
             __props__['state'] = None

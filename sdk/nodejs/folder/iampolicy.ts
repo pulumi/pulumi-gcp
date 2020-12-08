@@ -53,10 +53,10 @@ export class IAMPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as IAMPolicyArgs | undefined;
-            if (!args || args.folder === undefined) {
+            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'folder'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["folder"] = args ? args.folder : undefined;

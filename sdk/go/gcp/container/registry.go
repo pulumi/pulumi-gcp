@@ -91,6 +91,7 @@ func NewRegistry(ctx *pulumi.Context,
 	if args == nil {
 		args = &RegistryArgs{}
 	}
+
 	var resource Registry
 	err := ctx.RegisterResource("gcp:container/registry:Registry", name, args, &resource, opts...)
 	if err != nil {

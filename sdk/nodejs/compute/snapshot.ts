@@ -211,7 +211,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as SnapshotArgs | undefined;
-            if (!args || args.sourceDisk === undefined) {
+            if ((!args || args.sourceDisk === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'sourceDisk'");
             }
             inputs["description"] = args ? args.description : undefined;

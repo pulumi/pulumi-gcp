@@ -113,7 +113,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["location"] = args ? args.location : undefined;

@@ -155,20 +155,21 @@ type TableIamMember struct {
 // NewTableIamMember registers a new resource with the given unique name, arguments, and options.
 func NewTableIamMember(ctx *pulumi.Context,
 	name string, args *TableIamMemberArgs, opts ...pulumi.ResourceOption) (*TableIamMember, error) {
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
-	if args == nil || args.Table == nil {
-		return nil, errors.New("missing required argument 'Table'")
-	}
 	if args == nil {
-		args = &TableIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
+	}
+	if args.Table == nil {
+		return nil, errors.New("invalid value for required argument 'Table'")
 	}
 	var resource TableIamMember
 	err := ctx.RegisterResource("gcp:bigtable/tableIamMember:TableIamMember", name, args, &resource, opts...)

@@ -50,11 +50,12 @@ type Api struct {
 // NewApi registers a new resource with the given unique name, arguments, and options.
 func NewApi(ctx *pulumi.Context,
 	name string, args *ApiArgs, opts ...pulumi.ResourceOption) (*Api, error) {
-	if args == nil || args.ApiId == nil {
-		return nil, errors.New("missing required argument 'ApiId'")
-	}
 	if args == nil {
-		args = &ApiArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApiId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiId'")
 	}
 	var resource Api
 	err := ctx.RegisterResource("gcp:apigateway/api:Api", name, args, &resource, opts...)

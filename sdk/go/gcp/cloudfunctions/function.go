@@ -196,11 +196,12 @@ type Function struct {
 // NewFunction registers a new resource with the given unique name, arguments, and options.
 func NewFunction(ctx *pulumi.Context,
 	name string, args *FunctionArgs, opts ...pulumi.ResourceOption) (*Function, error) {
-	if args == nil || args.Runtime == nil {
-		return nil, errors.New("missing required argument 'Runtime'")
-	}
 	if args == nil {
-		args = &FunctionArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Runtime == nil {
+		return nil, errors.New("invalid value for required argument 'Runtime'")
 	}
 	var resource Function
 	err := ctx.RegisterResource("gcp:cloudfunctions/function:Function", name, args, &resource, opts...)

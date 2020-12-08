@@ -85,17 +85,17 @@ class GameServerCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if cluster_id is None:
+            if cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cluster_id'")
             __props__['cluster_id'] = cluster_id
-            if connection_info is None:
+            if connection_info is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_info'")
             __props__['connection_info'] = connection_info
             __props__['description'] = description
             __props__['labels'] = labels
             __props__['location'] = location
             __props__['project'] = project
-            if realm_id is None:
+            if realm_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realm_id'")
             __props__['realm_id'] = realm_id
             __props__['name'] = None

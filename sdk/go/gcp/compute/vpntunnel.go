@@ -278,11 +278,12 @@ type VPNTunnel struct {
 // NewVPNTunnel registers a new resource with the given unique name, arguments, and options.
 func NewVPNTunnel(ctx *pulumi.Context,
 	name string, args *VPNTunnelArgs, opts ...pulumi.ResourceOption) (*VPNTunnel, error) {
-	if args == nil || args.SharedSecret == nil {
-		return nil, errors.New("missing required argument 'SharedSecret'")
-	}
 	if args == nil {
-		args = &VPNTunnelArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.SharedSecret == nil {
+		return nil, errors.New("invalid value for required argument 'SharedSecret'")
 	}
 	var resource VPNTunnel
 	err := ctx.RegisterResource("gcp:compute/vPNTunnel:VPNTunnel", name, args, &resource, opts...)

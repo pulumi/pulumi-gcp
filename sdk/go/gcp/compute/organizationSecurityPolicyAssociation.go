@@ -48,14 +48,15 @@ type OrganizationSecurityPolicyAssociation struct {
 // NewOrganizationSecurityPolicyAssociation registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationSecurityPolicyAssociation(ctx *pulumi.Context,
 	name string, args *OrganizationSecurityPolicyAssociationArgs, opts ...pulumi.ResourceOption) (*OrganizationSecurityPolicyAssociation, error) {
-	if args == nil || args.AttachmentId == nil {
-		return nil, errors.New("missing required argument 'AttachmentId'")
-	}
-	if args == nil || args.PolicyId == nil {
-		return nil, errors.New("missing required argument 'PolicyId'")
-	}
 	if args == nil {
-		args = &OrganizationSecurityPolicyAssociationArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AttachmentId == nil {
+		return nil, errors.New("invalid value for required argument 'AttachmentId'")
+	}
+	if args.PolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyId'")
 	}
 	var resource OrganizationSecurityPolicyAssociation
 	err := ctx.RegisterResource("gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation", name, args, &resource, opts...)

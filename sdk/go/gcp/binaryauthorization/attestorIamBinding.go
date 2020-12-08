@@ -158,17 +158,18 @@ type AttestorIamBinding struct {
 // NewAttestorIamBinding registers a new resource with the given unique name, arguments, and options.
 func NewAttestorIamBinding(ctx *pulumi.Context,
 	name string, args *AttestorIamBindingArgs, opts ...pulumi.ResourceOption) (*AttestorIamBinding, error) {
-	if args == nil || args.Attestor == nil {
-		return nil, errors.New("missing required argument 'Attestor'")
-	}
-	if args == nil || args.Members == nil {
-		return nil, errors.New("missing required argument 'Members'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &AttestorIamBindingArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Attestor == nil {
+		return nil, errors.New("invalid value for required argument 'Attestor'")
+	}
+	if args.Members == nil {
+		return nil, errors.New("invalid value for required argument 'Members'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource AttestorIamBinding
 	err := ctx.RegisterResource("gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding", name, args, &resource, opts...)

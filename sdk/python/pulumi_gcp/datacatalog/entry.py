@@ -185,10 +185,10 @@ class Entry(pulumi.CustomResource):
 
             __props__['description'] = description
             __props__['display_name'] = display_name
-            if entry_group is None:
+            if entry_group is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_group'")
             __props__['entry_group'] = entry_group
-            if entry_id is None:
+            if entry_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_id'")
             __props__['entry_id'] = entry_id
             __props__['gcs_fileset_spec'] = gcs_fileset_spec

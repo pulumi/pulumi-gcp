@@ -125,7 +125,7 @@ export class DicomStore extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as DicomStoreArgs | undefined;
-            if (!args || args.dataset === undefined) {
+            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'dataset'");
             }
             inputs["dataset"] = args ? args.dataset : undefined;

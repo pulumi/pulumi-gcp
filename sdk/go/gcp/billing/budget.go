@@ -269,17 +269,18 @@ type Budget struct {
 // NewBudget registers a new resource with the given unique name, arguments, and options.
 func NewBudget(ctx *pulumi.Context,
 	name string, args *BudgetArgs, opts ...pulumi.ResourceOption) (*Budget, error) {
-	if args == nil || args.Amount == nil {
-		return nil, errors.New("missing required argument 'Amount'")
-	}
-	if args == nil || args.BillingAccount == nil {
-		return nil, errors.New("missing required argument 'BillingAccount'")
-	}
-	if args == nil || args.ThresholdRules == nil {
-		return nil, errors.New("missing required argument 'ThresholdRules'")
-	}
 	if args == nil {
-		args = &BudgetArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Amount == nil {
+		return nil, errors.New("invalid value for required argument 'Amount'")
+	}
+	if args.BillingAccount == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccount'")
+	}
+	if args.ThresholdRules == nil {
+		return nil, errors.New("invalid value for required argument 'ThresholdRules'")
 	}
 	var resource Budget
 	err := ctx.RegisterResource("gcp:billing/budget:Budget", name, args, &resource, opts...)

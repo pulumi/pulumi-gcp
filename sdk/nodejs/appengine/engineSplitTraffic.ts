@@ -152,10 +152,10 @@ export class EngineSplitTraffic extends pulumi.CustomResource {
             inputs["split"] = state ? state.split : undefined;
         } else {
             const args = argsOrState as EngineSplitTrafficArgs | undefined;
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
-            if (!args || args.split === undefined) {
+            if ((!args || args.split === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'split'");
             }
             inputs["migrateTraffic"] = args ? args.migrateTraffic : undefined;

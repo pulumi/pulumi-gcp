@@ -99,11 +99,11 @@ class BillingAccountSink(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['bigquery_options'] = bigquery_options
-            if billing_account is None:
+            if billing_account is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_account'")
             __props__['billing_account'] = billing_account
             __props__['description'] = description
-            if destination is None:
+            if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__['destination'] = destination
             __props__['disabled'] = disabled

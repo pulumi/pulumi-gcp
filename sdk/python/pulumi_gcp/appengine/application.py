@@ -97,7 +97,7 @@ class Application(pulumi.CustomResource):
             __props__['database_type'] = database_type
             __props__['feature_settings'] = feature_settings
             __props__['iap'] = iap
-            if location_id is None:
+            if location_id is None and not opts.urn:
                 raise TypeError("Missing required property 'location_id'")
             __props__['location_id'] = location_id
             __props__['project'] = project

@@ -120,17 +120,18 @@ type Node struct {
 // NewNode registers a new resource with the given unique name, arguments, and options.
 func NewNode(ctx *pulumi.Context,
 	name string, args *NodeArgs, opts ...pulumi.ResourceOption) (*Node, error) {
-	if args == nil || args.AcceleratorType == nil {
-		return nil, errors.New("missing required argument 'AcceleratorType'")
-	}
-	if args == nil || args.TensorflowVersion == nil {
-		return nil, errors.New("missing required argument 'TensorflowVersion'")
-	}
-	if args == nil || args.Zone == nil {
-		return nil, errors.New("missing required argument 'Zone'")
-	}
 	if args == nil {
-		args = &NodeArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AcceleratorType == nil {
+		return nil, errors.New("invalid value for required argument 'AcceleratorType'")
+	}
+	if args.TensorflowVersion == nil {
+		return nil, errors.New("invalid value for required argument 'TensorflowVersion'")
+	}
+	if args.Zone == nil {
+		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource Node
 	err := ctx.RegisterResource("gcp:tpu/node:Node", name, args, &resource, opts...)

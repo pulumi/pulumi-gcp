@@ -354,7 +354,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
-            if (!args || args.target === undefined) {
+            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["description"] = args ? args.description : undefined;

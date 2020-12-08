@@ -54,17 +54,18 @@ type ApiIamMember struct {
 // NewApiIamMember registers a new resource with the given unique name, arguments, and options.
 func NewApiIamMember(ctx *pulumi.Context,
 	name string, args *ApiIamMemberArgs, opts ...pulumi.ResourceOption) (*ApiIamMember, error) {
-	if args == nil || args.Api == nil {
-		return nil, errors.New("missing required argument 'Api'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &ApiIamMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Api == nil {
+		return nil, errors.New("invalid value for required argument 'Api'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource ApiIamMember
 	err := ctx.RegisterResource("gcp:apigateway/apiIamMember:ApiIamMember", name, args, &resource, opts...)

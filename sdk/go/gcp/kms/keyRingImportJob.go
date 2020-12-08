@@ -67,20 +67,21 @@ type KeyRingImportJob struct {
 // NewKeyRingImportJob registers a new resource with the given unique name, arguments, and options.
 func NewKeyRingImportJob(ctx *pulumi.Context,
 	name string, args *KeyRingImportJobArgs, opts ...pulumi.ResourceOption) (*KeyRingImportJob, error) {
-	if args == nil || args.ImportJobId == nil {
-		return nil, errors.New("missing required argument 'ImportJobId'")
-	}
-	if args == nil || args.ImportMethod == nil {
-		return nil, errors.New("missing required argument 'ImportMethod'")
-	}
-	if args == nil || args.KeyRing == nil {
-		return nil, errors.New("missing required argument 'KeyRing'")
-	}
-	if args == nil || args.ProtectionLevel == nil {
-		return nil, errors.New("missing required argument 'ProtectionLevel'")
-	}
 	if args == nil {
-		args = &KeyRingImportJobArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ImportJobId == nil {
+		return nil, errors.New("invalid value for required argument 'ImportJobId'")
+	}
+	if args.ImportMethod == nil {
+		return nil, errors.New("invalid value for required argument 'ImportMethod'")
+	}
+	if args.KeyRing == nil {
+		return nil, errors.New("invalid value for required argument 'KeyRing'")
+	}
+	if args.ProtectionLevel == nil {
+		return nil, errors.New("invalid value for required argument 'ProtectionLevel'")
 	}
 	var resource KeyRingImportJob
 	err := ctx.RegisterResource("gcp:kms/keyRingImportJob:KeyRingImportJob", name, args, &resource, opts...)

@@ -162,6 +162,7 @@ func NewResourcePolicy(ctx *pulumi.Context,
 	if args == nil {
 		args = &ResourcePolicyArgs{}
 	}
+
 	var resource ResourcePolicy
 	err := ctx.RegisterResource("gcp:compute/resourcePolicy:ResourcePolicy", name, args, &resource, opts...)
 	if err != nil {

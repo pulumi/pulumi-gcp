@@ -78,10 +78,10 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
             inputs["organizationId"] = state ? state.organizationId : undefined;
         } else {
             const args = argsOrState as AccessApprovalSettingsArgs | undefined;
-            if (!args || args.enrolledServices === undefined) {
+            if ((!args || args.enrolledServices === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'enrolledServices'");
             }
-            if (!args || args.organizationId === undefined) {
+            if ((!args || args.organizationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["enrolledServices"] = args ? args.enrolledServices : undefined;

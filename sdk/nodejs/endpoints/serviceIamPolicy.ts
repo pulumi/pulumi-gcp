@@ -142,10 +142,10 @@ export class ServiceIamPolicy extends pulumi.CustomResource {
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as ServiceIamPolicyArgs | undefined;
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;

@@ -12,3 +12,44 @@ from .service_perimeter_resource import *
 from .service_perimeters import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:accesscontextmanager/accessLevel:AccessLevel":
+                return AccessLevel(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition":
+                return AccessLevelCondition(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:accesscontextmanager/accessLevels:AccessLevels":
+                return AccessLevels(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:accesscontextmanager/accessPolicy:AccessPolicy":
+                return AccessPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter":
+                return ServicePerimeter(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource":
+                return ServicePerimeterResource(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:accesscontextmanager/servicePerimeters:ServicePerimeters":
+                return ServicePerimeters(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/accessLevel", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/accessLevelCondition", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/accessLevels", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/accessPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/servicePerimeter", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/servicePerimeterResource", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/servicePerimeters", _module_instance)
+
+_register_module()

@@ -188,7 +188,7 @@ export class Job extends pulumi.CustomResource {
             inputs["statuses"] = state ? state.statuses : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if (!args || args.placement === undefined) {
+            if ((!args || args.placement === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'placement'");
             }
             inputs["forceDelete"] = args ? args.forceDelete : undefined;

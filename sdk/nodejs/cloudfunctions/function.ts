@@ -251,7 +251,7 @@ export class Function extends pulumi.CustomResource {
             inputs["vpcConnectorEgressSettings"] = state ? state.vpcConnectorEgressSettings : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if (!args || args.runtime === undefined) {
+            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'runtime'");
             }
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;

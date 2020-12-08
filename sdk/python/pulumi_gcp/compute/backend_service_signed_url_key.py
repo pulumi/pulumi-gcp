@@ -111,10 +111,10 @@ class BackendServiceSignedUrlKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if backend_service is None:
+            if backend_service is None and not opts.urn:
                 raise TypeError("Missing required property 'backend_service'")
             __props__['backend_service'] = backend_service
-            if key_value is None:
+            if key_value is None and not opts.urn:
                 raise TypeError("Missing required property 'key_value'")
             __props__['key_value'] = key_value
             __props__['name'] = name

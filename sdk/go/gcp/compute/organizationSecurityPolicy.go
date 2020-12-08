@@ -57,14 +57,15 @@ type OrganizationSecurityPolicy struct {
 // NewOrganizationSecurityPolicy registers a new resource with the given unique name, arguments, and options.
 func NewOrganizationSecurityPolicy(ctx *pulumi.Context,
 	name string, args *OrganizationSecurityPolicyArgs, opts ...pulumi.ResourceOption) (*OrganizationSecurityPolicy, error) {
-	if args == nil || args.DisplayName == nil {
-		return nil, errors.New("missing required argument 'DisplayName'")
-	}
-	if args == nil || args.Parent == nil {
-		return nil, errors.New("missing required argument 'Parent'")
-	}
 	if args == nil {
-		args = &OrganizationSecurityPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
 	var resource OrganizationSecurityPolicy
 	err := ctx.RegisterResource("gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy", name, args, &resource, opts...)

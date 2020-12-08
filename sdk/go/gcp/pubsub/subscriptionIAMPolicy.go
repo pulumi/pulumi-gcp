@@ -148,14 +148,15 @@ type SubscriptionIAMPolicy struct {
 // NewSubscriptionIAMPolicy registers a new resource with the given unique name, arguments, and options.
 func NewSubscriptionIAMPolicy(ctx *pulumi.Context,
 	name string, args *SubscriptionIAMPolicyArgs, opts ...pulumi.ResourceOption) (*SubscriptionIAMPolicy, error) {
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
-	if args == nil || args.Subscription == nil {
-		return nil, errors.New("missing required argument 'Subscription'")
-	}
 	if args == nil {
-		args = &SubscriptionIAMPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
+	}
+	if args.Subscription == nil {
+		return nil, errors.New("invalid value for required argument 'Subscription'")
 	}
 	var resource SubscriptionIAMPolicy
 	err := ctx.RegisterResource("gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy", name, args, &resource, opts...)

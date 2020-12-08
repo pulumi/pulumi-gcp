@@ -101,14 +101,15 @@ type ServicePerimeterResource struct {
 // NewServicePerimeterResource registers a new resource with the given unique name, arguments, and options.
 func NewServicePerimeterResource(ctx *pulumi.Context,
 	name string, args *ServicePerimeterResourceArgs, opts ...pulumi.ResourceOption) (*ServicePerimeterResource, error) {
-	if args == nil || args.PerimeterName == nil {
-		return nil, errors.New("missing required argument 'PerimeterName'")
-	}
-	if args == nil || args.Resource == nil {
-		return nil, errors.New("missing required argument 'Resource'")
-	}
 	if args == nil {
-		args = &ServicePerimeterResourceArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.PerimeterName == nil {
+		return nil, errors.New("invalid value for required argument 'PerimeterName'")
+	}
+	if args.Resource == nil {
+		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
 	var resource ServicePerimeterResource
 	err := ctx.RegisterResource("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource", name, args, &resource, opts...)

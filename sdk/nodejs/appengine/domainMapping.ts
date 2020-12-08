@@ -124,7 +124,7 @@ export class DomainMapping extends pulumi.CustomResource {
             inputs["sslSettings"] = state ? state.sslSettings : undefined;
         } else {
             const args = argsOrState as DomainMappingArgs | undefined;
-            if (!args || args.domainName === undefined) {
+            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'domainName'");
             }
             inputs["domainName"] = args ? args.domainName : undefined;

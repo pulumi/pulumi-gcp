@@ -210,7 +210,7 @@ export class Connection extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
-            if (!args || args.cloudSql === undefined) {
+            if ((!args || args.cloudSql === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cloudSql'");
             }
             inputs["cloudSql"] = args ? args.cloudSql : undefined;

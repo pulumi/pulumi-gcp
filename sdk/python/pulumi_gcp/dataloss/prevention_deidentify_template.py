@@ -146,12 +146,12 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if deidentify_config is None:
+            if deidentify_config is None and not opts.urn:
                 raise TypeError("Missing required property 'deidentify_config'")
             __props__['deidentify_config'] = deidentify_config
             __props__['description'] = description
             __props__['display_name'] = display_name
-            if parent is None:
+            if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__['parent'] = parent
             __props__['name'] = None

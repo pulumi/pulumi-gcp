@@ -108,10 +108,10 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             __props__['name'] = name
             __props__['preserved_state'] = preserved_state
             __props__['project'] = project
-            if region is None:
+            if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__['region'] = region
-            if region_instance_group_manager is None:
+            if region_instance_group_manager is None and not opts.urn:
                 raise TypeError("Missing required property 'region_instance_group_manager'")
             __props__['region_instance_group_manager'] = region_instance_group_manager
             __props__['remove_instance_state_on_destroy'] = remove_instance_state_on_destroy

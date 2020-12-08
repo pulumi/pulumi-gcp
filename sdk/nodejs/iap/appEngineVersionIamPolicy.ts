@@ -233,16 +233,16 @@ export class AppEngineVersionIamPolicy extends pulumi.CustomResource {
             inputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as AppEngineVersionIamPolicyArgs | undefined;
-            if (!args || args.appId === undefined) {
+            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'appId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if (!args || args.service === undefined) {
+            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'service'");
             }
-            if (!args || args.versionId === undefined) {
+            if ((!args || args.versionId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'versionId'");
             }
             inputs["appId"] = args ? args.appId : undefined;

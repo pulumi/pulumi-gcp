@@ -146,14 +146,15 @@ type NodeGroup struct {
 // NewNodeGroup registers a new resource with the given unique name, arguments, and options.
 func NewNodeGroup(ctx *pulumi.Context,
 	name string, args *NodeGroupArgs, opts ...pulumi.ResourceOption) (*NodeGroup, error) {
-	if args == nil || args.NodeTemplate == nil {
-		return nil, errors.New("missing required argument 'NodeTemplate'")
-	}
-	if args == nil || args.Size == nil {
-		return nil, errors.New("missing required argument 'Size'")
-	}
 	if args == nil {
-		args = &NodeGroupArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NodeTemplate == nil {
+		return nil, errors.New("invalid value for required argument 'NodeTemplate'")
+	}
+	if args.Size == nil {
+		return nil, errors.New("invalid value for required argument 'Size'")
 	}
 	var resource NodeGroup
 	err := ctx.RegisterResource("gcp:compute/nodeGroup:NodeGroup", name, args, &resource, opts...)

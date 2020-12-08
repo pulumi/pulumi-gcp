@@ -158,10 +158,10 @@ export class DatasetIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as DatasetIamPolicyArgs | undefined;
-            if (!args || args.datasetId === undefined) {
+            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if (!args || args.policyData === undefined) {
+            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["datasetId"] = args ? args.datasetId : undefined;

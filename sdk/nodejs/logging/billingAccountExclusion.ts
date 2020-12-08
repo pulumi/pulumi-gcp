@@ -105,10 +105,10 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as BillingAccountExclusionArgs | undefined;
-            if (!args || args.billingAccount === undefined) {
+            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if (!args || args.filter === undefined) {
+            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'filter'");
             }
             inputs["billingAccount"] = args ? args.billingAccount : undefined;

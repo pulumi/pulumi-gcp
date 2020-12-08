@@ -96,11 +96,12 @@ type User struct {
 // NewUser registers a new resource with the given unique name, arguments, and options.
 func NewUser(ctx *pulumi.Context,
 	name string, args *UserArgs, opts ...pulumi.ResourceOption) (*User, error) {
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
 	if args == nil {
-		args = &UserArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
 	var resource User
 	err := ctx.RegisterResource("gcp:sql/user:User", name, args, &resource, opts...)

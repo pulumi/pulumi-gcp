@@ -107,7 +107,7 @@ export class KeyRing extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as KeyRingArgs | undefined;
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["location"] = args ? args.location : undefined;

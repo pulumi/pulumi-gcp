@@ -141,7 +141,7 @@ class Policy(pulumi.CustomResource):
 
             __props__['admission_whitelist_patterns'] = admission_whitelist_patterns
             __props__['cluster_admission_rules'] = cluster_admission_rules
-            if default_admission_rule is None:
+            if default_admission_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'default_admission_rule'")
             __props__['default_admission_rule'] = default_admission_rule
             __props__['description'] = description

@@ -180,7 +180,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__['physical_block_size_bytes'] = physical_block_size_bytes
             __props__['project'] = project
             __props__['region'] = region
-            if replica_zones is None:
+            if replica_zones is None and not opts.urn:
                 raise TypeError("Missing required property 'replica_zones'")
             __props__['replica_zones'] = replica_zones
             __props__['size'] = size

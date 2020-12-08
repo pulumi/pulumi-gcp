@@ -104,7 +104,7 @@ class Instance(pulumi.CustomResource):
             __props__['clusters'] = clusters
             __props__['deletion_protection'] = deletion_protection
             __props__['display_name'] = display_name
-            if instance_type is not None:
+            if instance_type is not None and not opts.urn:
                 warnings.warn("""It is recommended to leave this field unspecified since the distinction between \"DEVELOPMENT\" and \"PRODUCTION\" instances is going away, and all instances will become \"PRODUCTION\" instances. This means that new and existing \"DEVELOPMENT\" instances will be converted to \"PRODUCTION\" instances. It is recommended for users to use \"PRODUCTION\" instances in any case, since a 1-node \"PRODUCTION\" instance is functionally identical to a \"DEVELOPMENT\" instance, but without the accompanying restrictions.""", DeprecationWarning)
                 pulumi.log.warn("instance_type is deprecated: It is recommended to leave this field unspecified since the distinction between \"DEVELOPMENT\" and \"PRODUCTION\" instances is going away, and all instances will become \"PRODUCTION\" instances. This means that new and existing \"DEVELOPMENT\" instances will be converted to \"PRODUCTION\" instances. It is recommended for users to use \"PRODUCTION\" instances in any case, since a 1-node \"PRODUCTION\" instance is functionally identical to a \"DEVELOPMENT\" instance, but without the accompanying restrictions.")
             __props__['instance_type'] = instance_type

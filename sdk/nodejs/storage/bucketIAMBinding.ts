@@ -219,13 +219,13 @@ export class BucketIAMBinding extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as BucketIAMBindingArgs | undefined;
-            if (!args || args.bucket === undefined) {
+            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;

@@ -123,13 +123,13 @@ class ServiceIamMember(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['condition'] = condition
-            if member is None:
+            if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
             __props__['member'] = member
-            if role is None:
+            if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
             __props__['role'] = role
-            if service_name is None:
+            if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
             __props__['service_name'] = service_name
             __props__['etag'] = None

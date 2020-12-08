@@ -102,7 +102,7 @@ class ApplicationUrlDispatchRules(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dispatch_rules is None:
+            if dispatch_rules is None and not opts.urn:
                 raise TypeError("Missing required property 'dispatch_rules'")
             __props__['dispatch_rules'] = dispatch_rules
             __props__['project'] = project

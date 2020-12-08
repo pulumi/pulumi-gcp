@@ -75,7 +75,7 @@ class ConsentStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if dataset is None:
+            if dataset is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset'")
             __props__['dataset'] = dataset
             __props__['default_consent_ttl'] = default_consent_ttl

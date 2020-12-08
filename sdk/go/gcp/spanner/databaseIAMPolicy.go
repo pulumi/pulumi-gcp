@@ -160,17 +160,18 @@ type DatabaseIAMPolicy struct {
 // NewDatabaseIAMPolicy registers a new resource with the given unique name, arguments, and options.
 func NewDatabaseIAMPolicy(ctx *pulumi.Context,
 	name string, args *DatabaseIAMPolicyArgs, opts ...pulumi.ResourceOption) (*DatabaseIAMPolicy, error) {
-	if args == nil || args.Database == nil {
-		return nil, errors.New("missing required argument 'Database'")
-	}
-	if args == nil || args.Instance == nil {
-		return nil, errors.New("missing required argument 'Instance'")
-	}
-	if args == nil || args.PolicyData == nil {
-		return nil, errors.New("missing required argument 'PolicyData'")
-	}
 	if args == nil {
-		args = &DatabaseIAMPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Database == nil {
+		return nil, errors.New("invalid value for required argument 'Database'")
+	}
+	if args.Instance == nil {
+		return nil, errors.New("invalid value for required argument 'Instance'")
+	}
+	if args.PolicyData == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyData'")
 	}
 	var resource DatabaseIAMPolicy
 	err := ctx.RegisterResource("gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy", name, args, &resource, opts...)

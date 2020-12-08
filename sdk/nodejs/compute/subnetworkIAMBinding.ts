@@ -235,13 +235,13 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
             const args = argsOrState as SubnetworkIAMBindingArgs | undefined;
-            if (!args || args.members === undefined) {
+            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'members'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
-            if (!args || args.subnetwork === undefined) {
+            if ((!args || args.subnetwork === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'subnetwork'");
             }
             inputs["condition"] = args ? args.condition : undefined;

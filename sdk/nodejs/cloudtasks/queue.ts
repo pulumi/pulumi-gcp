@@ -160,7 +160,7 @@ export class Queue extends pulumi.CustomResource {
             inputs["stackdriverLoggingConfig"] = state ? state.stackdriverLoggingConfig : undefined;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            if (!args || args.location === undefined) {
+            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;

@@ -227,6 +227,7 @@ func NewTargetGrpcProxy(ctx *pulumi.Context,
 	if args == nil {
 		args = &TargetGrpcProxyArgs{}
 	}
+
 	var resource TargetGrpcProxy
 	err := ctx.RegisterResource("gcp:compute/targetGrpcProxy:TargetGrpcProxy", name, args, &resource, opts...)
 	if err != nil {

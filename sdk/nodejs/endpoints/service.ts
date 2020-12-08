@@ -104,7 +104,7 @@ export class Service extends pulumi.CustomResource {
             inputs["serviceName"] = state ? state.serviceName : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if (!args || args.serviceName === undefined) {
+            if ((!args || args.serviceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceName'");
             }
             inputs["grpcConfig"] = args ? args.grpcConfig : undefined;

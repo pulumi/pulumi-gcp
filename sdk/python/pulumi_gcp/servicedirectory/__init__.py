@@ -14,3 +14,50 @@ from .service_iam_member import *
 from .service_iam_policy import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:servicedirectory/endpoint:Endpoint":
+                return Endpoint(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/namespace:Namespace":
+                return Namespace(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/namespaceIamBinding:NamespaceIamBinding":
+                return NamespaceIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/namespaceIamMember:NamespaceIamMember":
+                return NamespaceIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/namespaceIamPolicy:NamespaceIamPolicy":
+                return NamespaceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/service:Service":
+                return Service(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/serviceIamBinding:ServiceIamBinding":
+                return ServiceIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/serviceIamMember:ServiceIamMember":
+                return ServiceIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:servicedirectory/serviceIamPolicy:ServiceIamPolicy":
+                return ServiceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/endpoint", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/namespace", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/namespaceIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/namespaceIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/namespaceIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/service", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/serviceIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/serviceIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "servicedirectory/serviceIamPolicy", _module_instance)
+
+_register_module()

@@ -224,17 +224,18 @@ type RouterNat struct {
 // NewRouterNat registers a new resource with the given unique name, arguments, and options.
 func NewRouterNat(ctx *pulumi.Context,
 	name string, args *RouterNatArgs, opts ...pulumi.ResourceOption) (*RouterNat, error) {
-	if args == nil || args.NatIpAllocateOption == nil {
-		return nil, errors.New("missing required argument 'NatIpAllocateOption'")
-	}
-	if args == nil || args.Router == nil {
-		return nil, errors.New("missing required argument 'Router'")
-	}
-	if args == nil || args.SourceSubnetworkIpRangesToNat == nil {
-		return nil, errors.New("missing required argument 'SourceSubnetworkIpRangesToNat'")
-	}
 	if args == nil {
-		args = &RouterNatArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.NatIpAllocateOption == nil {
+		return nil, errors.New("invalid value for required argument 'NatIpAllocateOption'")
+	}
+	if args.Router == nil {
+		return nil, errors.New("invalid value for required argument 'Router'")
+	}
+	if args.SourceSubnetworkIpRangesToNat == nil {
+		return nil, errors.New("invalid value for required argument 'SourceSubnetworkIpRangesToNat'")
 	}
 	var resource RouterNat
 	err := ctx.RegisterResource("gcp:compute/routerNat:RouterNat", name, args, &resource, opts...)

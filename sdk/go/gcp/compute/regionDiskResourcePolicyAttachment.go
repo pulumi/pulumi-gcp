@@ -130,11 +130,12 @@ type RegionDiskResourcePolicyAttachment struct {
 // NewRegionDiskResourcePolicyAttachment registers a new resource with the given unique name, arguments, and options.
 func NewRegionDiskResourcePolicyAttachment(ctx *pulumi.Context,
 	name string, args *RegionDiskResourcePolicyAttachmentArgs, opts ...pulumi.ResourceOption) (*RegionDiskResourcePolicyAttachment, error) {
-	if args == nil || args.Disk == nil {
-		return nil, errors.New("missing required argument 'Disk'")
-	}
 	if args == nil {
-		args = &RegionDiskResourcePolicyAttachmentArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Disk == nil {
+		return nil, errors.New("invalid value for required argument 'Disk'")
 	}
 	var resource RegionDiskResourcePolicyAttachment
 	err := ctx.RegisterResource("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment", name, args, &resource, opts...)

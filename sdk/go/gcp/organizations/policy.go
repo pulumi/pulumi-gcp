@@ -166,14 +166,15 @@ type Policy struct {
 // NewPolicy registers a new resource with the given unique name, arguments, and options.
 func NewPolicy(ctx *pulumi.Context,
 	name string, args *PolicyArgs, opts ...pulumi.ResourceOption) (*Policy, error) {
-	if args == nil || args.Constraint == nil {
-		return nil, errors.New("missing required argument 'Constraint'")
-	}
-	if args == nil || args.OrgId == nil {
-		return nil, errors.New("missing required argument 'OrgId'")
-	}
 	if args == nil {
-		args = &PolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Constraint == nil {
+		return nil, errors.New("invalid value for required argument 'Constraint'")
+	}
+	if args.OrgId == nil {
+		return nil, errors.New("invalid value for required argument 'OrgId'")
 	}
 	var resource Policy
 	err := ctx.RegisterResource("gcp:organizations/policy:Policy", name, args, &resource, opts...)

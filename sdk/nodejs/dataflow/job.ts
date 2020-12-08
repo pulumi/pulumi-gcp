@@ -204,10 +204,10 @@ export class Job extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if (!args || args.tempGcsLocation === undefined) {
+            if ((!args || args.tempGcsLocation === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tempGcsLocation'");
             }
-            if (!args || args.templateGcsPath === undefined) {
+            if ((!args || args.templateGcsPath === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
             inputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;

@@ -125,10 +125,10 @@ export class SecretCiphertext extends pulumi.CustomResource {
             inputs["plaintext"] = state ? state.plaintext : undefined;
         } else {
             const args = argsOrState as SecretCiphertextArgs | undefined;
-            if (!args || args.cryptoKey === undefined) {
+            if ((!args || args.cryptoKey === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cryptoKey'");
             }
-            if (!args || args.plaintext === undefined) {
+            if ((!args || args.plaintext === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'plaintext'");
             }
             inputs["additionalAuthenticatedData"] = args ? args.additionalAuthenticatedData : undefined;

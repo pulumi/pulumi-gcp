@@ -257,17 +257,18 @@ type BucketIAMMember struct {
 // NewBucketIAMMember registers a new resource with the given unique name, arguments, and options.
 func NewBucketIAMMember(ctx *pulumi.Context,
 	name string, args *BucketIAMMemberArgs, opts ...pulumi.ResourceOption) (*BucketIAMMember, error) {
-	if args == nil || args.Bucket == nil {
-		return nil, errors.New("missing required argument 'Bucket'")
-	}
-	if args == nil || args.Member == nil {
-		return nil, errors.New("missing required argument 'Member'")
-	}
-	if args == nil || args.Role == nil {
-		return nil, errors.New("missing required argument 'Role'")
-	}
 	if args == nil {
-		args = &BucketIAMMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Bucket == nil {
+		return nil, errors.New("invalid value for required argument 'Bucket'")
+	}
+	if args.Member == nil {
+		return nil, errors.New("invalid value for required argument 'Member'")
+	}
+	if args.Role == nil {
+		return nil, errors.New("invalid value for required argument 'Role'")
 	}
 	var resource BucketIAMMember
 	err := ctx.RegisterResource("gcp:storage/bucketIAMMember:BucketIAMMember", name, args, &resource, opts...)

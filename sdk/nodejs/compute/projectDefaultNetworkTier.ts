@@ -86,7 +86,7 @@ export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectDefaultNetworkTierArgs | undefined;
-            if (!args || args.networkTier === undefined) {
+            if ((!args || args.networkTier === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'networkTier'");
             }
             inputs["networkTier"] = args ? args.networkTier : undefined;

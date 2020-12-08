@@ -104,10 +104,10 @@ export class DefaultServiceAccounts extends pulumi.CustomResource {
             inputs["serviceAccounts"] = state ? state.serviceAccounts : undefined;
         } else {
             const args = argsOrState as DefaultServiceAccountsArgs | undefined;
-            if (!args || args.action === undefined) {
+            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'action'");
             }
-            if (!args || args.project === undefined) {
+            if ((!args || args.project === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'project'");
             }
             inputs["action"] = args ? args.action : undefined;

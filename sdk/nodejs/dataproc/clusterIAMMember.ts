@@ -158,13 +158,13 @@ export class ClusterIAMMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ClusterIAMMemberArgs | undefined;
-            if (!args || args.cluster === undefined) {
+            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if (!args || args.member === undefined) {
+            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'member'");
             }
-            if (!args || args.role === undefined) {
+            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;

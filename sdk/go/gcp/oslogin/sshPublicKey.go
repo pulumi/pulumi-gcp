@@ -50,14 +50,15 @@ type SshPublicKey struct {
 // NewSshPublicKey registers a new resource with the given unique name, arguments, and options.
 func NewSshPublicKey(ctx *pulumi.Context,
 	name string, args *SshPublicKeyArgs, opts ...pulumi.ResourceOption) (*SshPublicKey, error) {
-	if args == nil || args.Key == nil {
-		return nil, errors.New("missing required argument 'Key'")
-	}
-	if args == nil || args.User == nil {
-		return nil, errors.New("missing required argument 'User'")
-	}
 	if args == nil {
-		args = &SshPublicKeyArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Key == nil {
+		return nil, errors.New("invalid value for required argument 'Key'")
+	}
+	if args.User == nil {
+		return nil, errors.New("invalid value for required argument 'User'")
 	}
 	var resource SshPublicKey
 	err := ctx.RegisterResource("gcp:oslogin/sshPublicKey:SshPublicKey", name, args, &resource, opts...)

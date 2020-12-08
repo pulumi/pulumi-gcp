@@ -9,3 +9,35 @@ from .account_iam_policy import *
 from .budget import *
 from ._inputs import *
 from . import outputs
+
+def _register_module():
+    import pulumi
+    from .. import _utilities
+
+
+    class Module(pulumi.runtime.ResourceModule):
+        _version = _utilities.get_semver_version()
+
+        def version(self):
+            return Module._version
+
+        def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
+            if typ == "gcp:billing/accountIamBinding:AccountIamBinding":
+                return AccountIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:billing/accountIamMember:AccountIamMember":
+                return AccountIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:billing/accountIamPolicy:AccountIamPolicy":
+                return AccountIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:billing/budget:Budget":
+                return Budget(name, pulumi.ResourceOptions(urn=urn))
+            else:
+                raise Exception(f"unknown resource type {typ}")
+
+
+    _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "billing/accountIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "billing/accountIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "billing/accountIamPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "billing/budget", _module_instance)
+
+_register_module()

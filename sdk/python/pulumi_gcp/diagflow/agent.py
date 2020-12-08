@@ -135,11 +135,11 @@ class Agent(pulumi.CustomResource):
             __props__['api_version'] = api_version
             __props__['avatar_uri'] = avatar_uri
             __props__['classification_threshold'] = classification_threshold
-            if default_language_code is None:
+            if default_language_code is None and not opts.urn:
                 raise TypeError("Missing required property 'default_language_code'")
             __props__['default_language_code'] = default_language_code
             __props__['description'] = description
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['enable_logging'] = enable_logging
@@ -147,7 +147,7 @@ class Agent(pulumi.CustomResource):
             __props__['project'] = project
             __props__['supported_language_codes'] = supported_language_codes
             __props__['tier'] = tier
-            if time_zone is None:
+            if time_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'time_zone'")
             __props__['time_zone'] = time_zone
             __props__['avatar_uri_backend'] = None

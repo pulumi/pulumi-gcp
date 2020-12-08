@@ -140,13 +140,13 @@ export class GCPolicy extends pulumi.CustomResource {
             inputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as GCPolicyArgs | undefined;
-            if (!args || args.columnFamily === undefined) {
+            if ((!args || args.columnFamily === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'columnFamily'");
             }
-            if (!args || args.instanceName === undefined) {
+            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if (!args || args.table === undefined) {
+            if ((!args || args.table === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'table'");
             }
             inputs["columnFamily"] = args ? args.columnFamily : undefined;

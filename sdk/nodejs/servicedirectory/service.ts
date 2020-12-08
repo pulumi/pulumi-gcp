@@ -121,10 +121,10 @@ export class Service extends pulumi.CustomResource {
             inputs["serviceId"] = state ? state.serviceId : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if (!args || args.namespace === undefined) {
+            if ((!args || args.namespace === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'namespace'");
             }
-            if (!args || args.serviceId === undefined) {
+            if ((!args || args.serviceId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceId'");
             }
             inputs["metadata"] = args ? args.metadata : undefined;

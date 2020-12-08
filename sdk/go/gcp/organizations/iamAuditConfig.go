@@ -68,17 +68,18 @@ type IamAuditConfig struct {
 // NewIamAuditConfig registers a new resource with the given unique name, arguments, and options.
 func NewIamAuditConfig(ctx *pulumi.Context,
 	name string, args *IamAuditConfigArgs, opts ...pulumi.ResourceOption) (*IamAuditConfig, error) {
-	if args == nil || args.AuditLogConfigs == nil {
-		return nil, errors.New("missing required argument 'AuditLogConfigs'")
-	}
-	if args == nil || args.OrgId == nil {
-		return nil, errors.New("missing required argument 'OrgId'")
-	}
-	if args == nil || args.Service == nil {
-		return nil, errors.New("missing required argument 'Service'")
-	}
 	if args == nil {
-		args = &IamAuditConfigArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.AuditLogConfigs == nil {
+		return nil, errors.New("invalid value for required argument 'AuditLogConfigs'")
+	}
+	if args.OrgId == nil {
+		return nil, errors.New("invalid value for required argument 'OrgId'")
+	}
+	if args.Service == nil {
+		return nil, errors.New("invalid value for required argument 'Service'")
 	}
 	var resource IamAuditConfig
 	err := ctx.RegisterResource("gcp:organizations/iamAuditConfig:IamAuditConfig", name, args, &resource, opts...)

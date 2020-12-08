@@ -214,10 +214,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             inputs["uptimeCheckId"] = state ? state.uptimeCheckId : undefined;
         } else {
             const args = argsOrState as UptimeCheckConfigArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.timeout === undefined) {
+            if ((!args || args.timeout === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'timeout'");
             }
             inputs["contentMatchers"] = args ? args.contentMatchers : undefined;
