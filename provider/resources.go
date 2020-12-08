@@ -21,71 +21,72 @@ const (
 	// https://github.com/GoogleCloudPlatform/google-cloud-go
 	gcpAccessContextManager = "AccessContextManager" // Access Context Manager resources
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
-	gcpApiGateway           = "ApiGateway"           // ApiGateway resources
-	gcpAppEngine            = "AppEngine"            // AppEngine resources
-	gcpArtifactRegistry     = "ArtifactRegistry"     // ArtifactRegistry resources
-	gcpBigQuery             = "BigQuery"             // BigQuery resources
-	gcpBigTable             = "BigTable"             // BitTable resources
-	gcpBilling              = "Billing"              // Billing resources
-	gcpBinaryAuthorization  = "BinaryAuthorization"  // Binary Authorization resources
-	gcpCloudAsset           = "CloudAsset"           // CloudAsset resources
-	gcpCloudBuild           = "CloudBuild"           // CloudBuild resources
-	gcpCloudFunctions       = "CloudFunctions"       // CloudFunction resources
-	gcpCloudIdentity        = "CloudIdentity"        // CloudIdentity resources
-	gcpCloudRun             = "CloudRun"             // CloudRun resources
-	gcpCloudScheduler       = "CloudScheduler"       // Cloud Scheduler resources
-	gcpCloudTasks           = "CloudTasks"           // Cloud Tasks resources
-	gcpComposer             = "Composer"             // Cloud Composer resources
-	gcpCompute              = "Compute"              // Compute resources
-	gcpContainerAnalysis    = "ContainerAnalysis"    // Container Analysis resources
-	gcpDNS                  = "Dns"                  // DNS resources
-	gcpDataCatalog          = "DataCatalog"          // Data Catalog resources
-	gcpDataFlow             = "Dataflow"             // DataFlow resources
-	gcpDataFusion           = "DataFusion"           // DataFusion resources
-	gcpDataLoss             = "DataLoss"             // DataLoss resources
-	gcpDataProc             = "Dataproc"             // DataProc resources
-	gcpDatastore            = "Datastore"            // Datastore resources
-	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
-	gcpDiagflow             = "Diagflow"             // Diagflow resources
-	gcpEndPoints            = "Endpoints"            // End Point resources
-	gcpFilestore            = "Filestore"            // Filestore resources
-	gcpFirebase             = "Firebase"             // Firebase resources
-	gcpFirestore            = "Firestore"            // Firestore resources
-	gcpFolder               = "Folder"               // Folder resources
-	gcpGameServices         = "GameServices"         // Game Services resources
-	gcpHealthcare           = "Healthcare"           // Healthcare resources
-	gcpIAM                  = "Iam"                  // IAM resources
-	gcpIAP                  = "Iap"                  // IAP resources
-	gcpIdentityPlatform     = "IdentityPlatform"     // IdentityPlatform resources
-	gcpIot                  = "Iot"                  // Iot resources
-	gcpKMS                  = "Kms"                  // KMS resources
-	gcpKubernetes           = "Container"            // Kubernetes Engine resources
-	gcpLogging              = "Logging"              // Logging resources
-	gcpMachingLearning      = "ML"                   // Machine Learning
-	gcpMemcache             = "Memcache"             // Memcache resources
-	gcpMonitoring           = "Monitoring"           // Monitoring resources
-	gcpNetworkManagement    = "NetworkManagement"    // Network Management resources
-	gcpNotebooks            = "Notebooks"            // Notebooks resources
-	gcpOrganization         = "Organizations"        // Organization resources
-	gcpOsConfig             = "OsConfig"             // OsConfig resources
-	gcpOsLogin              = "OsLogin"              // OsLogin resources
-	gcpProject              = "Projects"             // Project resources
-	gcpPubSub               = "PubSub"               // PubSub resources
-	gcpRedis                = "Redis"                // Redis resources
-	gcpResourceManager      = "ResourceManager"      // Resource Manager resources
-	gcpRuntimeConfig        = "RuntimeConfig"        // Runtime Config resources
-	gcpSecretManager        = "SecretManager"        // Secret Manager resources
-	gcpServiceDirectory     = "ServiceDirectory"     // Service Directory resources
-	gcpServiceNetworking    = "ServiceNetworking"    // Service Networking resources
-	gcpSecurityCenter       = "SecurityCenter"       // Security Center
-	gcpSQL                  = "Sql"                  // SQL resources
-	gcpServiceAccount       = "ServiceAccount"       // Service Account resources
-	gcpServiceUsage         = "ServiceUsage"         // Service Usage resources
-	gcpSourceRepo           = "SourceRepo"           // Source Repo resources
-	gcpSpanner              = "Spanner"              // Spanner Resources
-	gcpStorage              = "Storage"              // Storage resources
-	gcpTPU                  = "Tpu"                  // Tensor Processing Units
-	gcpVpcAccess            = "VpcAccess"            // VPC Access
+	// nolint:golint
+	gcpApiGateway          = "ApiGateway"          // ApiGateway resources
+	gcpAppEngine           = "AppEngine"           // AppEngine resources
+	gcpArtifactRegistry    = "ArtifactRegistry"    // ArtifactRegistry resources
+	gcpBigQuery            = "BigQuery"            // BigQuery resources
+	gcpBigTable            = "BigTable"            // BitTable resources
+	gcpBilling             = "Billing"             // Billing resources
+	gcpBinaryAuthorization = "BinaryAuthorization" // Binary Authorization resources
+	gcpCloudAsset          = "CloudAsset"          // CloudAsset resources
+	gcpCloudBuild          = "CloudBuild"          // CloudBuild resources
+	gcpCloudFunctions      = "CloudFunctions"      // CloudFunction resources
+	gcpCloudIdentity       = "CloudIdentity"       // CloudIdentity resources
+	gcpCloudRun            = "CloudRun"            // CloudRun resources
+	gcpCloudScheduler      = "CloudScheduler"      // Cloud Scheduler resources
+	gcpCloudTasks          = "CloudTasks"          // Cloud Tasks resources
+	gcpComposer            = "Composer"            // Cloud Composer resources
+	gcpCompute             = "Compute"             // Compute resources
+	gcpContainerAnalysis   = "ContainerAnalysis"   // Container Analysis resources
+	gcpDNS                 = "Dns"                 // DNS resources
+	gcpDataCatalog         = "DataCatalog"         // Data Catalog resources
+	gcpDataFlow            = "Dataflow"            // DataFlow resources
+	gcpDataFusion          = "DataFusion"          // DataFusion resources
+	gcpDataLoss            = "DataLoss"            // DataLoss resources
+	gcpDataProc            = "Dataproc"            // DataProc resources
+	gcpDatastore           = "Datastore"           // Datastore resources
+	gcpDeploymentManager   = "DeploymentManager"   // DeploymentManager resources
+	gcpDiagflow            = "Diagflow"            // Diagflow resources
+	gcpEndPoints           = "Endpoints"           // End Point resources
+	gcpFilestore           = "Filestore"           // Filestore resources
+	gcpFirebase            = "Firebase"            // Firebase resources
+	gcpFirestore           = "Firestore"           // Firestore resources
+	gcpFolder              = "Folder"              // Folder resources
+	gcpGameServices        = "GameServices"        // Game Services resources
+	gcpHealthcare          = "Healthcare"          // Healthcare resources
+	gcpIAM                 = "Iam"                 // IAM resources
+	gcpIAP                 = "Iap"                 // IAP resources
+	gcpIdentityPlatform    = "IdentityPlatform"    // IdentityPlatform resources
+	gcpIot                 = "Iot"                 // Iot resources
+	gcpKMS                 = "Kms"                 // KMS resources
+	gcpKubernetes          = "Container"           // Kubernetes Engine resources
+	gcpLogging             = "Logging"             // Logging resources
+	gcpMachingLearning     = "ML"                  // Machine Learning
+	gcpMemcache            = "Memcache"            // Memcache resources
+	gcpMonitoring          = "Monitoring"          // Monitoring resources
+	gcpNetworkManagement   = "NetworkManagement"   // Network Management resources
+	gcpNotebooks           = "Notebooks"           // Notebooks resources
+	gcpOrganization        = "Organizations"       // Organization resources
+	gcpOsConfig            = "OsConfig"            // OsConfig resources
+	gcpOsLogin             = "OsLogin"             // OsLogin resources
+	gcpProject             = "Projects"            // Project resources
+	gcpPubSub              = "PubSub"              // PubSub resources
+	gcpRedis               = "Redis"               // Redis resources
+	gcpResourceManager     = "ResourceManager"     // Resource Manager resources
+	gcpRuntimeConfig       = "RuntimeConfig"       // Runtime Config resources
+	gcpSecretManager       = "SecretManager"       // Secret Manager resources
+	gcpServiceDirectory    = "ServiceDirectory"    // Service Directory resources
+	gcpServiceNetworking   = "ServiceNetworking"   // Service Networking resources
+	gcpSecurityCenter      = "SecurityCenter"      // Security Center
+	gcpSQL                 = "Sql"                 // SQL resources
+	gcpServiceAccount      = "ServiceAccount"      // Service Account resources
+	gcpServiceUsage        = "ServiceUsage"        // Service Usage resources
+	gcpSourceRepo          = "SourceRepo"          // Source Repo resources
+	gcpSpanner             = "Spanner"             // Spanner Resources
+	gcpStorage             = "Storage"             // Storage resources
+	gcpTPU                 = "Tpu"                 // Tensor Processing Units
+	gcpVpcAccess           = "VpcAccess"           // VPC Access
 )
 
 var namespaceMap = map[string]string{
@@ -857,6 +858,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_container_analysis_occurrence": {
+				// nolint:misspell
 				Tok: gcpResource(gcpContainerAnalysis, "Occurence"),
 			},
 
@@ -2365,7 +2367,6 @@ func Provider() tfbridge.ProviderInfo {
 			Requires: map[string]string{
 				"pulumi": ">=2.9.0,<3.0.0",
 			},
-			UsesIOClasses: true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
 			PackageReferences: map[string]string{
