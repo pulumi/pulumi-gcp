@@ -2,10 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.15.2 of pulumi-terraform-bridge
-  * Bug fix: Corrects an issue where replacements were not being correctly identified and leading to panics.
+_(none)_
 
 ---
+
+## 4.5.1 (2020-12-08)
+* Upgrade to v2.15.2 of pulumi-terraform-bridge
+  * Bug fix: Corrects an issue where replacements were not being correctly identified and leading to panics.
 
 ## 4.5.0 (2020-12-07)
 * Upgrade to v3.49.0 of the Google Beta Terraform Provider
