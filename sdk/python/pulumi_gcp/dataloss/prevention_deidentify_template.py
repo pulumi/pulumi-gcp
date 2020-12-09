@@ -25,7 +25,7 @@ class PreventionDeidentifyTemplate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Allows creation of templates to de-idenfity content.
+        Allows creation of templates to de-identify content.
 
         To get more information about DeidentifyTemplate, see:
 

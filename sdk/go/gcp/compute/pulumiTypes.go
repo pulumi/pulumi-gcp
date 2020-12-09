@@ -3181,6 +3181,13 @@ func (o AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput) P
 }
 
 type BackendBucketCdnPolicy struct {
+	CacheMode               *string                                       `pulumi:"cacheMode"`
+	ClientTtl               *int                                          `pulumi:"clientTtl"`
+	DefaultTtl              *int                                          `pulumi:"defaultTtl"`
+	MaxTtl                  *int                                          `pulumi:"maxTtl"`
+	NegativeCaching         *bool                                         `pulumi:"negativeCaching"`
+	NegativeCachingPolicies []BackendBucketCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         *int                                          `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will
 	// be considered fresh. After this time period,
 	// the response will be revalidated before being served.
@@ -3189,7 +3196,7 @@ type BackendBucketCdnPolicy struct {
 	// all responses from this backend had a "Cache-Control: public,
 	// max-age=[TTL]" header, regardless of any existing Cache-Control
 	// header. The actual headers served in responses will not be altered.
-	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
+	SignedUrlCacheMaxAgeSec *int `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 // BackendBucketCdnPolicyInput is an input type that accepts BackendBucketCdnPolicyArgs and BackendBucketCdnPolicyOutput values.
@@ -3204,6 +3211,13 @@ type BackendBucketCdnPolicyInput interface {
 }
 
 type BackendBucketCdnPolicyArgs struct {
+	CacheMode               pulumi.StringPtrInput                                 `pulumi:"cacheMode"`
+	ClientTtl               pulumi.IntPtrInput                                    `pulumi:"clientTtl"`
+	DefaultTtl              pulumi.IntPtrInput                                    `pulumi:"defaultTtl"`
+	MaxTtl                  pulumi.IntPtrInput                                    `pulumi:"maxTtl"`
+	NegativeCaching         pulumi.BoolPtrInput                                   `pulumi:"negativeCaching"`
+	NegativeCachingPolicies BackendBucketCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         pulumi.IntPtrInput                                    `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will
 	// be considered fresh. After this time period,
 	// the response will be revalidated before being served.
@@ -3212,7 +3226,7 @@ type BackendBucketCdnPolicyArgs struct {
 	// all responses from this backend had a "Cache-Control: public,
 	// max-age=[TTL]" header, regardless of any existing Cache-Control
 	// header. The actual headers served in responses will not be altered.
-	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
+	SignedUrlCacheMaxAgeSec pulumi.IntPtrInput `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 func (BackendBucketCdnPolicyArgs) ElementType() reflect.Type {
@@ -3291,6 +3305,35 @@ func (o BackendBucketCdnPolicyOutput) ToBackendBucketCdnPolicyPtrOutputWithConte
 		return &v
 	}).(BackendBucketCdnPolicyPtrOutput)
 }
+func (o BackendBucketCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyOutput) NegativeCachingPolicies() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) []BackendBucketCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicies
+	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o BackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
+}
 
 // Maximum number of seconds the response to a signed URL request will
 // be considered fresh. After this time period,
@@ -3300,8 +3343,8 @@ func (o BackendBucketCdnPolicyOutput) ToBackendBucketCdnPolicyPtrOutputWithConte
 // all responses from this backend had a "Cache-Control: public,
 // max-age=[TTL]" header, regardless of any existing Cache-Control
 // header. The actual headers served in responses will not be altered.
-func (o BackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
-	return o.ApplyT(func(v BackendBucketCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
+func (o BackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntPtrOutput)
 }
 
 type BackendBucketCdnPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -3322,6 +3365,69 @@ func (o BackendBucketCdnPolicyPtrOutput) Elem() BackendBucketCdnPolicyOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) BackendBucketCdnPolicy { return *v }).(BackendBucketCdnPolicyOutput)
 }
 
+func (o BackendBucketCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCaching
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyPtrOutput) NegativeCachingPolicies() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) []BackendBucketCdnPolicyNegativeCachingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCachingPolicies
+	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o BackendBucketCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServeWhileStale
+	}).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of seconds the response to a signed URL request will
 // be considered fresh. After this time period,
 // the response will be revalidated before being served.
@@ -3335,8 +3441,108 @@ func (o BackendBucketCdnPolicyPtrOutput) SignedUrlCacheMaxAgeSec() pulumi.IntPtr
 		if v == nil {
 			return nil
 		}
-		return &v.SignedUrlCacheMaxAgeSec
+		return v.SignedUrlCacheMaxAgeSec
 	}).(pulumi.IntPtrOutput)
+}
+
+type BackendBucketCdnPolicyNegativeCachingPolicy struct {
+	Code *int `pulumi:"code"`
+	Ttl  *int `pulumi:"ttl"`
+}
+
+// BackendBucketCdnPolicyNegativeCachingPolicyInput is an input type that accepts BackendBucketCdnPolicyNegativeCachingPolicyArgs and BackendBucketCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `BackendBucketCdnPolicyNegativeCachingPolicyInput` via:
+//
+//          BackendBucketCdnPolicyNegativeCachingPolicyArgs{...}
+type BackendBucketCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToBackendBucketCdnPolicyNegativeCachingPolicyOutput() BackendBucketCdnPolicyNegativeCachingPolicyOutput
+	ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) BackendBucketCdnPolicyNegativeCachingPolicyOutput
+}
+
+type BackendBucketCdnPolicyNegativeCachingPolicyArgs struct {
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	Ttl  pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArgs) ToBackendBucketCdnPolicyNegativeCachingPolicyOutput() BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArgs) ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// BackendBucketCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts BackendBucketCdnPolicyNegativeCachingPolicyArray and BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `BackendBucketCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//          BackendBucketCdnPolicyNegativeCachingPolicyArray{ BackendBucketCdnPolicyNegativeCachingPolicyArgs{...} }
+type BackendBucketCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput
+	ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type BackendBucketCdnPolicyNegativeCachingPolicyArray []BackendBucketCdnPolicyNegativeCachingPolicyInput
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArray) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i BackendBucketCdnPolicyNegativeCachingPolicyArray) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+type BackendBucketCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyOutput() BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendBucketCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) BackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendBucketCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]BackendBucketCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(BackendBucketCdnPolicyNegativeCachingPolicyOutput)
 }
 
 type BackendServiceBackend struct {
@@ -15335,7 +15541,8 @@ type InstanceGroupManagerUpdatePolicy struct {
 	// ***
 	MinReadySec *int `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction string `pulumi:"minimalAction"`
+	MinimalAction     string  `pulumi:"minimalAction"`
+	ReplacementMethod *string `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type string `pulumi:"type"`
 }
@@ -15364,7 +15571,8 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	// ***
 	MinReadySec pulumi.IntPtrInput `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	MinimalAction     pulumi.StringInput    `pulumi:"minimalAction"`
+	ReplacementMethod pulumi.StringPtrInput `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -15477,6 +15685,10 @@ func (o InstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.StringOut
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
 
+func (o InstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *string { return v.ReplacementMethod }).(pulumi.StringPtrOutput)
+}
+
 // - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 func (o InstanceGroupManagerUpdatePolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) string { return v.Type }).(pulumi.StringOutput)
@@ -15558,6 +15770,15 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) MinimalAction() pulumi.String
 			return nil
 		}
 		return &v.MinimalAction
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceGroupManagerUpdatePolicyPtrOutput) ReplacementMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplacementMethod
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -29606,7 +29827,8 @@ type RegionInstanceGroupManagerUpdatePolicy struct {
 	// ***
 	MinReadySec *int `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction string `pulumi:"minimalAction"`
+	MinimalAction     string  `pulumi:"minimalAction"`
+	ReplacementMethod *string `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type string `pulumi:"type"`
 }
@@ -29637,7 +29859,8 @@ type RegionInstanceGroupManagerUpdatePolicyArgs struct {
 	// ***
 	MinReadySec pulumi.IntPtrInput `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	MinimalAction     pulumi.StringInput    `pulumi:"minimalAction"`
+	ReplacementMethod pulumi.StringPtrInput `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type pulumi.StringInput `pulumi:"type"`
 }
@@ -29755,6 +29978,10 @@ func (o RegionInstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.Str
 	return o.ApplyT(func(v RegionInstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
 
+func (o RegionInstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManagerUpdatePolicy) *string { return v.ReplacementMethod }).(pulumi.StringPtrOutput)
+}
+
 // - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 func (o RegionInstanceGroupManagerUpdatePolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RegionInstanceGroupManagerUpdatePolicy) string { return v.Type }).(pulumi.StringOutput)
@@ -29846,6 +30073,15 @@ func (o RegionInstanceGroupManagerUpdatePolicyPtrOutput) MinimalAction() pulumi.
 			return nil
 		}
 		return &v.MinimalAction
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionInstanceGroupManagerUpdatePolicyPtrOutput) ReplacementMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManagerUpdatePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplacementMethod
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -32536,7 +32772,7 @@ type RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For
+	// Specifies the regular expression patterns that match allowed origins. For
 	// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
@@ -32572,7 +32808,7 @@ type RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For
+	// Specifies the regular expression patterns that match allowed origins. For
 	// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
@@ -32682,7 +32918,7 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowMethods
 	return o.ApplyT(func(v RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For
+// Specifies the regular expression patterns that match allowed origins. For
 // regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -32763,7 +32999,7 @@ func (o RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowMeth
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For
+// Specifies the regular expression patterns that match allowed origins. For
 // regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 func (o RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -36004,7 +36240,7 @@ func (o RegionUrlMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOut
 }
 
 type RegionUrlMapPathMatcherRouteRuleMatchRule struct {
-	// For satifying the matchRule condition, the path of the request must exactly
+	// For satisfying the matchRule condition, the path of the request must exactly
 	// match the value specified in fullPathMatch after removing any query parameters
 	// and anchor that may be part of the original URL. FullPathMatch must be between 1
 	// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -36057,7 +36293,7 @@ type RegionUrlMapPathMatcherRouteRuleMatchRuleInput interface {
 }
 
 type RegionUrlMapPathMatcherRouteRuleMatchRuleArgs struct {
-	// For satifying the matchRule condition, the path of the request must exactly
+	// For satisfying the matchRule condition, the path of the request must exactly
 	// match the value specified in fullPathMatch after removing any query parameters
 	// and anchor that may be part of the original URL. FullPathMatch must be between 1
 	// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -36149,7 +36385,7 @@ func (o RegionUrlMapPathMatcherRouteRuleMatchRuleOutput) ToRegionUrlMapPathMatch
 	return o
 }
 
-// For satifying the matchRule condition, the path of the request must exactly
+// For satisfying the matchRule condition, the path of the request must exactly
 // match the value specified in fullPathMatch after removing any query parameters
 // and anchor that may be part of the original URL. FullPathMatch must be between 1
 // and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -37392,7 +37628,7 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For
+	// Specifies the regular expression patterns that match allowed origins. For
 	// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
@@ -37428,7 +37664,7 @@ type RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For
+	// Specifies the regular expression patterns that match allowed origins. For
 	// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
@@ -37538,7 +37774,7 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowMethod
 	return o.ApplyT(func(v RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For
+// Specifies the regular expression patterns that match allowed origins. For
 // regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -37619,7 +37855,7 @@ func (o RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowMet
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For
+// Specifies the regular expression patterns that match allowed origins. For
 // regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either allowOrigins or allow_origin_regex.
 func (o RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -45772,7 +46008,7 @@ type URLMapDefaultRouteActionCorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
@@ -45807,7 +46043,7 @@ type URLMapDefaultRouteActionCorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
@@ -45916,7 +46152,7 @@ func (o URLMapDefaultRouteActionCorsPolicyOutput) AllowMethods() pulumi.StringAr
 	return o.ApplyT(func(v URLMapDefaultRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapDefaultRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -45994,7 +46230,7 @@ func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) AllowMethods() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapDefaultRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -49624,7 +49860,7 @@ type URLMapPathMatcherDefaultRouteActionCorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
@@ -49659,7 +49895,7 @@ type URLMapPathMatcherDefaultRouteActionCorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
@@ -49768,7 +50004,7 @@ func (o URLMapPathMatcherDefaultRouteActionCorsPolicyOutput) AllowMethods() pulu
 	return o.ApplyT(func(v URLMapPathMatcherDefaultRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapPathMatcherDefaultRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -49848,7 +50084,7 @@ func (o URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput) AllowMethods() p
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapPathMatcherDefaultRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -53291,7 +53527,7 @@ type URLMapPathMatcherPathRuleRouteActionCorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
@@ -53326,7 +53562,7 @@ type URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
@@ -53435,7 +53671,7 @@ func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowMethods() pul
 	return o.ApplyT(func(v URLMapPathMatcherPathRuleRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -53515,7 +53751,7 @@ func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowMethods() 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapPathMatcherPathRuleRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -56664,7 +56900,7 @@ func (o URLMapPathMatcherRouteRuleHeaderActionResponseHeadersToAddArrayOutput) I
 }
 
 type URLMapPathMatcherRouteRuleMatchRule struct {
-	// For satifying the matchRule condition, the path of the request must exactly
+	// For satisfying the matchRule condition, the path of the request must exactly
 	// match the value specified in fullPathMatch after removing any query parameters
 	// and anchor that may be part of the original URL. FullPathMatch must be between 1
 	// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -56717,7 +56953,7 @@ type URLMapPathMatcherRouteRuleMatchRuleInput interface {
 }
 
 type URLMapPathMatcherRouteRuleMatchRuleArgs struct {
-	// For satifying the matchRule condition, the path of the request must exactly
+	// For satisfying the matchRule condition, the path of the request must exactly
 	// match the value specified in fullPathMatch after removing any query parameters
 	// and anchor that may be part of the original URL. FullPathMatch must be between 1
 	// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -56809,7 +57045,7 @@ func (o URLMapPathMatcherRouteRuleMatchRuleOutput) ToURLMapPathMatcherRouteRuleM
 	return o
 }
 
-// For satifying the matchRule condition, the path of the request must exactly
+// For satisfying the matchRule condition, the path of the request must exactly
 // match the value specified in fullPathMatch after removing any query parameters
 // and anchor that may be part of the original URL. FullPathMatch must be between 1
 // and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -58016,7 +58252,7 @@ type URLMapPathMatcherRouteRuleRouteActionCorsPolicy struct {
 	AllowHeaders []string `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods []string `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes []string `pulumi:"allowOriginRegexes"`
@@ -58051,7 +58287,7 @@ type URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs struct {
 	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
 	// Specifies the content for the Access-Control-Allow-Methods header.
 	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+	// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 	// please see en.cppreference.com/w/cpp/regex/ecmascript
 	// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 	AllowOriginRegexes pulumi.StringArrayInput `pulumi:"allowOriginRegexes"`
@@ -58160,7 +58396,7 @@ func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowMethods() pu
 	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionCorsPolicy) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -58240,7 +58476,7 @@ func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowMethods()
 	}).(pulumi.StringArrayOutput)
 }
 
-// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+// Specifies the regular expression patterns that match allowed origins. For regular expression grammar
 // please see en.cppreference.com/w/cpp/regex/ecmascript
 // An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
 func (o URLMapPathMatcherRouteRuleRouteActionCorsPolicyPtrOutput) AllowOriginRegexes() pulumi.StringArrayOutput {
@@ -60849,6 +61085,13 @@ func (o URLMapTestArrayOutput) Index(i pulumi.IntInput) URLMapTestOutput {
 }
 
 type GetBackendBucketCdnPolicy struct {
+	CacheMode               string                                           `pulumi:"cacheMode"`
+	ClientTtl               int                                              `pulumi:"clientTtl"`
+	DefaultTtl              int                                              `pulumi:"defaultTtl"`
+	MaxTtl                  int                                              `pulumi:"maxTtl"`
+	NegativeCaching         bool                                             `pulumi:"negativeCaching"`
+	NegativeCachingPolicies []GetBackendBucketCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         int                                              `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
 }
@@ -60865,6 +61108,13 @@ type GetBackendBucketCdnPolicyInput interface {
 }
 
 type GetBackendBucketCdnPolicyArgs struct {
+	CacheMode               pulumi.StringInput                                       `pulumi:"cacheMode"`
+	ClientTtl               pulumi.IntInput                                          `pulumi:"clientTtl"`
+	DefaultTtl              pulumi.IntInput                                          `pulumi:"defaultTtl"`
+	MaxTtl                  pulumi.IntInput                                          `pulumi:"maxTtl"`
+	NegativeCaching         pulumi.BoolInput                                         `pulumi:"negativeCaching"`
+	NegativeCachingPolicies GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         pulumi.IntInput                                          `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
 }
@@ -60920,6 +61170,36 @@ func (o GetBackendBucketCdnPolicyOutput) ToGetBackendBucketCdnPolicyOutputWithCo
 	return o
 }
 
+func (o GetBackendBucketCdnPolicyOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) string { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ClientTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.ClientTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) DefaultTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.DefaultTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) MaxTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.MaxTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) NegativeCaching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) bool { return v.NegativeCaching }).(pulumi.BoolOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) NegativeCachingPolicies() GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) []GetBackendBucketCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicies
+	}).(GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o GetBackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.ServeWhileStale }).(pulumi.IntOutput)
+}
+
 // Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 func (o GetBackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
@@ -60943,6 +61223,106 @@ func (o GetBackendBucketCdnPolicyArrayOutput) Index(i pulumi.IntInput) GetBacken
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendBucketCdnPolicy {
 		return vs[0].([]GetBackendBucketCdnPolicy)[vs[1].(int)]
 	}).(GetBackendBucketCdnPolicyOutput)
+}
+
+type GetBackendBucketCdnPolicyNegativeCachingPolicy struct {
+	Code int `pulumi:"code"`
+	Ttl  int `pulumi:"ttl"`
+}
+
+// GetBackendBucketCdnPolicyNegativeCachingPolicyInput is an input type that accepts GetBackendBucketCdnPolicyNegativeCachingPolicyArgs and GetBackendBucketCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `GetBackendBucketCdnPolicyNegativeCachingPolicyInput` via:
+//
+//          GetBackendBucketCdnPolicyNegativeCachingPolicyArgs{...}
+type GetBackendBucketCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendBucketCdnPolicyNegativeCachingPolicyOutput() GetBackendBucketCdnPolicyNegativeCachingPolicyOutput
+	ToGetBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) GetBackendBucketCdnPolicyNegativeCachingPolicyOutput
+}
+
+type GetBackendBucketCdnPolicyNegativeCachingPolicyArgs struct {
+	Code pulumi.IntInput `pulumi:"code"`
+	Ttl  pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetBackendBucketCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i GetBackendBucketCdnPolicyNegativeCachingPolicyArgs) ToGetBackendBucketCdnPolicyNegativeCachingPolicyOutput() GetBackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToGetBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendBucketCdnPolicyNegativeCachingPolicyArgs) ToGetBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendBucketCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts GetBackendBucketCdnPolicyNegativeCachingPolicyArray and GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//          GetBackendBucketCdnPolicyNegativeCachingPolicyArray{ GetBackendBucketCdnPolicyNegativeCachingPolicyArgs{...} }
+type GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput
+	ToGetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type GetBackendBucketCdnPolicyNegativeCachingPolicyArray []GetBackendBucketCdnPolicyNegativeCachingPolicyInput
+
+func (GetBackendBucketCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i GetBackendBucketCdnPolicyNegativeCachingPolicyArray) ToGetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToGetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendBucketCdnPolicyNegativeCachingPolicyArray) ToGetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+type GetBackendBucketCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) ToGetBackendBucketCdnPolicyNegativeCachingPolicyOutput() GetBackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) ToGetBackendBucketCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicyNegativeCachingPolicy) int { return v.Code }).(pulumi.IntOutput)
+}
+
+func (o GetBackendBucketCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendBucketCdnPolicyNegativeCachingPolicy) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendBucketCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ToGetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput() GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) ToGetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendBucketCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendBucketCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]GetBackendBucketCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(GetBackendBucketCdnPolicyNegativeCachingPolicyOutput)
 }
 
 type GetBackendServiceBackend struct {
@@ -64512,6 +64892,940 @@ func (o GetRegionInstanceGroupInstanceNamedPortArrayOutput) Index(i pulumi.IntIn
 	}).(GetRegionInstanceGroupInstanceNamedPortOutput)
 }
 
+type GetResourcePolicyGroupPlacementPolicy struct {
+	AvailabilityDomainCount int    `pulumi:"availabilityDomainCount"`
+	Collocation             string `pulumi:"collocation"`
+	VmCount                 int    `pulumi:"vmCount"`
+}
+
+// GetResourcePolicyGroupPlacementPolicyInput is an input type that accepts GetResourcePolicyGroupPlacementPolicyArgs and GetResourcePolicyGroupPlacementPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicyGroupPlacementPolicyInput` via:
+//
+//          GetResourcePolicyGroupPlacementPolicyArgs{...}
+type GetResourcePolicyGroupPlacementPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyGroupPlacementPolicyOutput() GetResourcePolicyGroupPlacementPolicyOutput
+	ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(context.Context) GetResourcePolicyGroupPlacementPolicyOutput
+}
+
+type GetResourcePolicyGroupPlacementPolicyArgs struct {
+	AvailabilityDomainCount pulumi.IntInput    `pulumi:"availabilityDomainCount"`
+	Collocation             pulumi.StringInput `pulumi:"collocation"`
+	VmCount                 pulumi.IntInput    `pulumi:"vmCount"`
+}
+
+func (GetResourcePolicyGroupPlacementPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArgs) ToGetResourcePolicyGroupPlacementPolicyOutput() GetResourcePolicyGroupPlacementPolicyOutput {
+	return i.ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArgs) ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyGroupPlacementPolicyOutput)
+}
+
+// GetResourcePolicyGroupPlacementPolicyArrayInput is an input type that accepts GetResourcePolicyGroupPlacementPolicyArray and GetResourcePolicyGroupPlacementPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicyGroupPlacementPolicyArrayInput` via:
+//
+//          GetResourcePolicyGroupPlacementPolicyArray{ GetResourcePolicyGroupPlacementPolicyArgs{...} }
+type GetResourcePolicyGroupPlacementPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicyGroupPlacementPolicyArrayOutput() GetResourcePolicyGroupPlacementPolicyArrayOutput
+	ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(context.Context) GetResourcePolicyGroupPlacementPolicyArrayOutput
+}
+
+type GetResourcePolicyGroupPlacementPolicyArray []GetResourcePolicyGroupPlacementPolicyInput
+
+func (GetResourcePolicyGroupPlacementPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArray) ToGetResourcePolicyGroupPlacementPolicyArrayOutput() GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return i.ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicyGroupPlacementPolicyArray) ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicyGroupPlacementPolicyArrayOutput)
+}
+
+type GetResourcePolicyGroupPlacementPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyGroupPlacementPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) ToGetResourcePolicyGroupPlacementPolicyOutput() GetResourcePolicyGroupPlacementPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) ToGetResourcePolicyGroupPlacementPolicyOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) AvailabilityDomainCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.AvailabilityDomainCount }).(pulumi.IntOutput)
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) Collocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) string { return v.Collocation }).(pulumi.StringOutput)
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyOutput) VmCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicyGroupPlacementPolicy) int { return v.VmCount }).(pulumi.IntOutput)
+}
+
+type GetResourcePolicyGroupPlacementPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicyGroupPlacementPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicyGroupPlacementPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) ToGetResourcePolicyGroupPlacementPolicyArrayOutput() GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) ToGetResourcePolicyGroupPlacementPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicyGroupPlacementPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicyGroupPlacementPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicyGroupPlacementPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicyGroupPlacementPolicy {
+		return vs[0].([]GetResourcePolicyGroupPlacementPolicy)[vs[1].(int)]
+	}).(GetResourcePolicyGroupPlacementPolicyOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicy struct {
+	RetentionPolicies  []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy  `pulumi:"retentionPolicies"`
+	Schedules          []GetResourcePolicySnapshotSchedulePolicySchedule         `pulumi:"schedules"`
+	SnapshotProperties []GetResourcePolicySnapshotSchedulePolicySnapshotProperty `pulumi:"snapshotProperties"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyArgs and GetResourcePolicySnapshotSchedulePolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyOutput() GetResourcePolicySnapshotSchedulePolicyOutput
+	ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyArgs struct {
+	RetentionPolicies  GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput  `pulumi:"retentionPolicies"`
+	Schedules          GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput         `pulumi:"schedules"`
+	SnapshotProperties GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput `pulumi:"snapshotProperties"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyOutput() GetResourcePolicySnapshotSchedulePolicyOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyArray and GetResourcePolicySnapshotSchedulePolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyArray{ GetResourcePolicySnapshotSchedulePolicyArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyArray []GetResourcePolicySnapshotSchedulePolicyInput
+
+func (GetResourcePolicySnapshotSchedulePolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArray) ToGetResourcePolicySnapshotSchedulePolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyArray) ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyOutput() GetResourcePolicySnapshotSchedulePolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) RetentionPolicies() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		return v.RetentionPolicies
+	}).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) Schedules() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicySchedule {
+		return v.Schedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyOutput) SnapshotProperties() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicy) []GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+		return v.SnapshotProperties
+	}).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicy {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicy)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicy struct {
+	MaxRetentionDays   int    `pulumi:"maxRetentionDays"`
+	OnSourceDiskDelete string `pulumi:"onSourceDiskDelete"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs and GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs struct {
+	MaxRetentionDays   pulumi.IntInput    `pulumi:"maxRetentionDays"`
+	OnSourceDiskDelete pulumi.StringInput `pulumi:"onSourceDiskDelete"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray and GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray{ GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray []GetResourcePolicySnapshotSchedulePolicyRetentionPolicyInput
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArray) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) MaxRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyRetentionPolicy) int { return v.MaxRetentionDays }).(pulumi.IntOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput) OnSourceDiskDelete() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyRetentionPolicy) string { return v.OnSourceDiskDelete }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput() GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyRetentionPolicy)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySchedule struct {
+	DailySchedules  []GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule  `pulumi:"dailySchedules"`
+	HourlySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule `pulumi:"hourlySchedules"`
+	WeeklySchedules []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule `pulumi:"weeklySchedules"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleArgs struct {
+	DailySchedules  GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput  `pulumi:"dailySchedules"`
+	HourlySchedules GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput `pulumi:"hourlySchedules"`
+	WeeklySchedules GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput `pulumi:"weeklySchedules"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) DailySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		return v.DailySchedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) HourlySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		return v.HourlySchedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleOutput) WeeklySchedules() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+		return v.WeeklySchedules
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule struct {
+	DaysInCycle int    `pulumi:"daysInCycle"`
+	StartTime   string `pulumi:"startTime"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs struct {
+	DaysInCycle pulumi.IntInput    `pulumi:"daysInCycle"`
+	StartTime   pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) DaysInCycle() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) int { return v.DaysInCycle }).(pulumi.IntOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule struct {
+	HoursInCycle int    `pulumi:"hoursInCycle"`
+	StartTime    string `pulumi:"startTime"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs struct {
+	HoursInCycle pulumi.IntInput    `pulumi:"hoursInCycle"`
+	StartTime    pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) HoursInCycle() pulumi.IntOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) int { return v.HoursInCycle }).(pulumi.IntOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule struct {
+	DayOfWeeks []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek `pulumi:"dayOfWeeks"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs struct {
+	DayOfWeeks GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput `pulumi:"dayOfWeeks"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray{ GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput) DayOfWeeks() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule) []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+		return v.DayOfWeeks
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek struct {
+	Day       string `pulumi:"day"`
+	StartTime string `pulumi:"startTime"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs{...}
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs struct {
+	Day       pulumi.StringInput `pulumi:"day"`
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray and GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray{ GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray []GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekInput
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArray) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string { return v.Day }).(pulumi.StringOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek) string {
+		return v.StartTime
+	}).(pulumi.StringOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput() GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) ToGetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotProperty struct {
+	GuestFlush       bool              `pulumi:"guestFlush"`
+	Labels           map[string]string `pulumi:"labels"`
+	StorageLocations []string          `pulumi:"storageLocations"`
+}
+
+// GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs and GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs{...}
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs struct {
+	GuestFlush       pulumi.BoolInput        `pulumi:"guestFlush"`
+	Labels           pulumi.StringMapInput   `pulumi:"labels"`
+	StorageLocations pulumi.StringArrayInput `pulumi:"storageLocations"`
+}
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput)
+}
+
+// GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput is an input type that accepts GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray and GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput values.
+// You can construct a concrete instance of `GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput` via:
+//
+//          GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray{ GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArgs{...} }
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput
+	ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray []GetResourcePolicySnapshotSchedulePolicySnapshotPropertyInput
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return i.ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArray) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) GuestFlush() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) bool { return v.GuestFlush }).(pulumi.BoolOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput) StorageLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetResourcePolicySnapshotSchedulePolicySnapshotProperty) []string { return v.StorageLocations }).(pulumi.StringArrayOutput)
+}
+
+type GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetResourcePolicySnapshotSchedulePolicySnapshotProperty)(nil)).Elem()
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput() GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) ToGetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutputWithContext(ctx context.Context) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput {
+	return o
+}
+
+func (o GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput) Index(i pulumi.IntInput) GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+		return vs[0].([]GetResourcePolicySnapshotSchedulePolicySnapshotProperty)[vs[1].(int)]
+	}).(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput)
+}
+
 type GetRouterBgp struct {
 	AdvertiseMode      string                          `pulumi:"advertiseMode"`
 	AdvertisedGroups   []string                        `pulumi:"advertisedGroups"`
@@ -64871,6 +66185,8 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendBucketCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceBackendOutput{})
 	pulumi.RegisterOutputType(BackendServiceBackendArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyOutput{})
@@ -65512,6 +66828,8 @@ func init() {
 	pulumi.RegisterOutputType(URLMapTestArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyOutput{})
 	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendBucketCdnPolicyNegativeCachingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceBackendOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceBackendArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyOutput{})
@@ -65574,6 +66892,24 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyRetentionPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArrayOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyOutput{})
+	pulumi.RegisterOutputType(GetResourcePolicySnapshotSchedulePolicySnapshotPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterBgpOutput{})
 	pulumi.RegisterOutputType(GetRouterBgpArrayOutput{})
 	pulumi.RegisterOutputType(GetRouterBgpAdvertisedIpRangeOutput{})

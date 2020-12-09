@@ -31,12 +31,6 @@ import * as utilities from "../utilities";
  *     timeoutSec: 10,
  *     healthChecks: [_default.id],
  * });
- * const home = new gcp.compute.BackendService("home", {
- *     portName: "http",
- *     protocol: "HTTP",
- *     timeoutSec: 10,
- *     healthChecks: [_default.id],
- * });
  * const staticBucket = new gcp.storage.Bucket("staticBucket", {location: "US"});
  * const staticBackendBucket = new gcp.compute.BackendBucket("staticBackendBucket", {
  *     bucketName: staticBucket.name,
@@ -44,7 +38,7 @@ import * as utilities from "../utilities";
  * });
  * const urlmap = new gcp.compute.URLMap("urlmap", {
  *     description: "a description",
- *     defaultService: home.id,
+ *     defaultService: staticBackendBucket.id,
  *     hostRules: [
  *         {
  *             hosts: ["mysite.com"],
@@ -58,11 +52,11 @@ import * as utilities from "../utilities";
  *     pathMatchers: [
  *         {
  *             name: "mysite",
- *             defaultService: home.id,
+ *             defaultService: staticBackendBucket.id,
  *             pathRules: [
  *                 {
  *                     paths: ["/home"],
- *                     service: home.id,
+ *                     service: staticBackendBucket.id,
  *                 },
  *                 {
  *                     paths: ["/login"],
@@ -76,11 +70,11 @@ import * as utilities from "../utilities";
  *         },
  *         {
  *             name: "otherpaths",
- *             defaultService: home.id,
+ *             defaultService: staticBackendBucket.id,
  *         },
  *     ],
  *     tests: [{
- *         service: home.id,
+ *         service: staticBackendBucket.id,
  *         host: "hi.com",
  *         path: "/home",
  *     }],

@@ -77,7 +77,10 @@ namespace Pulumi.Gcp.Projects
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+        /// The action to be performed in the default service accounts on the resource destroy.
+        /// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+        /// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+        /// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
         /// </summary>
         [Output("restorePolicy")]
         public Output<string?> RestorePolicy { get; private set; } = null!;
@@ -147,7 +150,10 @@ namespace Pulumi.Gcp.Projects
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+        /// The action to be performed in the default service accounts on the resource destroy.
+        /// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+        /// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+        /// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
         /// </summary>
         [Input("restorePolicy")]
         public Input<string>? RestorePolicy { get; set; }
@@ -172,7 +178,10 @@ namespace Pulumi.Gcp.Projects
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+        /// The action to be performed in the default service accounts on the resource destroy.
+        /// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+        /// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+        /// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
         /// </summary>
         [Input("restorePolicy")]
         public Input<string>? RestorePolicy { get; set; }

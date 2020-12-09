@@ -44,16 +44,6 @@ namespace Pulumi.Gcp.Compute
     ///                 @default.Id,
     ///             },
     ///         });
-    ///         var home = new Gcp.Compute.BackendService("home", new Gcp.Compute.BackendServiceArgs
-    ///         {
-    ///             PortName = "http",
-    ///             Protocol = "HTTP",
-    ///             TimeoutSec = 10,
-    ///             HealthChecks = 
-    ///             {
-    ///                 @default.Id,
-    ///             },
-    ///         });
     ///         var staticBucket = new Gcp.Storage.Bucket("staticBucket", new Gcp.Storage.BucketArgs
     ///         {
     ///             Location = "US",
@@ -66,7 +56,7 @@ namespace Pulumi.Gcp.Compute
     ///         var urlmap = new Gcp.Compute.URLMap("urlmap", new Gcp.Compute.URLMapArgs
     ///         {
     ///             Description = "a description",
-    ///             DefaultService = home.Id,
+    ///             DefaultService = staticBackendBucket.Id,
     ///             HostRules = 
     ///             {
     ///                 new Gcp.Compute.Inputs.URLMapHostRuleArgs
@@ -91,7 +81,7 @@ namespace Pulumi.Gcp.Compute
     ///                 new Gcp.Compute.Inputs.URLMapPathMatcherArgs
     ///                 {
     ///                     Name = "mysite",
-    ///                     DefaultService = home.Id,
+    ///                     DefaultService = staticBackendBucket.Id,
     ///                     PathRules = 
     ///                     {
     ///                         new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
@@ -100,7 +90,7 @@ namespace Pulumi.Gcp.Compute
     ///                             {
     ///                                 "/home",
     ///                             },
-    ///                             Service = home.Id,
+    ///                             Service = staticBackendBucket.Id,
     ///                         },
     ///                         new Gcp.Compute.Inputs.URLMapPathMatcherPathRuleArgs
     ///                         {
@@ -123,14 +113,14 @@ namespace Pulumi.Gcp.Compute
     ///                 new Gcp.Compute.Inputs.URLMapPathMatcherArgs
     ///                 {
     ///                     Name = "otherpaths",
-    ///                     DefaultService = home.Id,
+    ///                     DefaultService = staticBackendBucket.Id,
     ///                 },
     ///             },
     ///             Tests = 
     ///             {
     ///                 new Gcp.Compute.Inputs.URLMapTestArgs
     ///                 {
-    ///                     Service = home.Id,
+    ///                     Service = staticBackendBucket.Id,
     ///                     Host = "hi.com",
     ///                     Path = "/home",
     ///                 },

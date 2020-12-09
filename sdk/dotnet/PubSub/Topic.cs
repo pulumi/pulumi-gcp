@@ -18,6 +18,9 @@ namespace Pulumi.Gcp.PubSub
     /// * How-to Guides
     ///     * [Managing Topics](https://cloud.google.com/pubsub/docs/admin#managing_topics)
     /// 
+    /// &gt; **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
+    /// by using the `gcp.projects.ServiceIdentity` resource.
+    /// 
     /// ## Example Usage
     /// ### Pubsub Topic Basic
     /// 

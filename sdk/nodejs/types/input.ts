@@ -4067,6 +4067,7 @@ export namespace cloudscheduler {
          * HTTP request body.
          * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
          * It is an error to set body on a job with an incompatible HttpMethod.
+         * A base64-encoded string.
          */
         body?: pulumi.Input<string>;
         /**
@@ -4111,6 +4112,7 @@ export namespace cloudscheduler {
          * HTTP request body.
          * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
          * It is an error to set body on a job with an incompatible HttpMethod.
+         * A base64-encoded string.
          */
         body?: pulumi.Input<string>;
         /**
@@ -4459,7 +4461,7 @@ export namespace composer {
         servicesSecondaryRangeName?: pulumi.Input<string>;
         /**
          * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-         * Defaults to true if the `ipAllocationBlock` is present in config.
+         * Defaults to true if the `ipAllocationPolicy` block is present in config.
          */
         useIpAliases: pulumi.Input<boolean>;
     }
@@ -4561,6 +4563,71 @@ export namespace composer {
          * `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface GetEnvironmentConfig {
+        airflowUri?: string;
+        dagGcsPrefix?: string;
+        databaseConfig?: inputs.composer.GetEnvironmentConfigDatabaseConfig;
+        gkeCluster?: string;
+        nodeConfig?: inputs.composer.GetEnvironmentConfigNodeConfig;
+        nodeCount?: number;
+        privateEnvironmentConfig?: inputs.composer.GetEnvironmentConfigPrivateEnvironmentConfig;
+        softwareConfig?: inputs.composer.GetEnvironmentConfigSoftwareConfig;
+        webServerConfig?: inputs.composer.GetEnvironmentConfigWebServerConfig;
+        webServerNetworkAccessControl?: inputs.composer.GetEnvironmentConfigWebServerNetworkAccessControl;
+    }
+
+    export interface GetEnvironmentConfigDatabaseConfig {
+        machineType: string;
+    }
+
+    export interface GetEnvironmentConfigNodeConfig {
+        diskSizeGb?: number;
+        ipAllocationPolicy?: inputs.composer.GetEnvironmentConfigNodeConfigIpAllocationPolicy;
+        machineType?: string;
+        network?: string;
+        oauthScopes?: string[];
+        serviceAccount?: string;
+        subnetwork?: string;
+        tags?: string[];
+        zone: string;
+    }
+
+    export interface GetEnvironmentConfigNodeConfigIpAllocationPolicy {
+        clusterIpv4CidrBlock?: string;
+        clusterSecondaryRangeName?: string;
+        servicesIpv4CidrBlock?: string;
+        servicesSecondaryRangeName?: string;
+        useIpAliases: boolean;
+    }
+
+    export interface GetEnvironmentConfigPrivateEnvironmentConfig {
+        cloudSqlIpv4CidrBlock?: string;
+        enablePrivateEndpoint?: boolean;
+        masterIpv4CidrBlock?: string;
+        webServerIpv4CidrBlock?: string;
+    }
+
+    export interface GetEnvironmentConfigSoftwareConfig {
+        airflowConfigOverrides?: {[key: string]: string};
+        envVariables?: {[key: string]: string};
+        imageVersion?: string;
+        pypiPackages?: {[key: string]: string};
+        pythonVersion?: string;
+    }
+
+    export interface GetEnvironmentConfigWebServerConfig {
+        machineType: string;
+    }
+
+    export interface GetEnvironmentConfigWebServerNetworkAccessControl {
+        allowedIpRanges?: inputs.composer.GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange[];
+    }
+
+    export interface GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+        description?: string;
+        value: string;
     }
 
 }
@@ -4971,6 +5038,13 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicy {
+        cacheMode?: pulumi.Input<string>;
+        clientTtl?: pulumi.Input<number>;
+        defaultTtl?: pulumi.Input<number>;
+        maxTtl?: pulumi.Input<number>;
+        negativeCaching?: pulumi.Input<boolean>;
+        negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendBucketCdnPolicyNegativeCachingPolicy>[]>;
+        serveWhileStale?: pulumi.Input<number>;
         /**
          * Maximum number of seconds the response to a signed URL request will
          * be considered fresh. After this time period,
@@ -4981,7 +5055,12 @@ export namespace compute {
          * max-age=[TTL]" header, regardless of any existing Cache-Control
          * header. The actual headers served in responses will not be altered.
          */
-        signedUrlCacheMaxAgeSec: pulumi.Input<number>;
+        signedUrlCacheMaxAgeSec?: pulumi.Input<number>;
+    }
+
+    export interface BackendBucketCdnPolicyNegativeCachingPolicy {
+        code?: pulumi.Input<number>;
+        ttl?: pulumi.Input<number>;
     }
 
     export interface BackendServiceBackend {
@@ -6272,6 +6351,7 @@ export namespace compute {
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
+        replacementMethod?: pulumi.Input<string>;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
          */
@@ -8025,6 +8105,7 @@ export namespace compute {
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
+        replacementMethod?: pulumi.Input<string>;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
          */
@@ -8434,7 +8515,7 @@ export namespace compute {
          */
         allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For
+         * Specifies the regular expression patterns that match allowed origins. For
          * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
          */
@@ -8848,7 +8929,7 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRule {
         /**
-         * For satifying the matchRule condition, the path of the request must exactly
+         * For satisfying the matchRule condition, the path of the request must exactly
          * match the value specified in fullPathMatch after removing any query parameters
          * and anchor that may be part of the original URL. FullPathMatch must be between 1
          * and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -9105,7 +9186,7 @@ export namespace compute {
          */
         allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For
+         * Specifies the regular expression patterns that match allowed origins. For
          * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
          */
@@ -10032,7 +10113,7 @@ export namespace compute {
          */
         allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -10518,7 +10599,7 @@ export namespace compute {
          */
         allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -10957,7 +11038,7 @@ export namespace compute {
          */
         allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -11352,7 +11433,7 @@ export namespace compute {
 
     export interface URLMapPathMatcherRouteRuleMatchRule {
         /**
-         * For satifying the matchRule condition, the path of the request must exactly
+         * For satisfying the matchRule condition, the path of the request must exactly
          * match the value specified in fullPathMatch after removing any query parameters
          * and anchor that may be part of the original URL. FullPathMatch must be between 1
          * and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -11599,7 +11680,7 @@ export namespace compute {
          */
         allowMethods?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -13320,7 +13401,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
         /**
-         * Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+         * Characters to skip when doing de-identification of a value. These will be left alone and skipped.
          * Structure is documented below.
          */
         charactersToIgnores?: pulumi.Input<pulumi.Input<inputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore>[]>;

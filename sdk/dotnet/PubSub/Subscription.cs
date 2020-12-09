@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.PubSub
     /// * How-to Guides
     ///     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
     /// 
+    /// &gt; **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
+    /// by using the `gcp.projects.ServiceIdentity` resource.
+    /// 
     /// ## Example Usage
     /// ### Pubsub Subscription Push
     /// 
@@ -186,7 +189,7 @@ namespace Pulumi.Gcp.PubSub
         /// A policy that specifies the conditions for dead lettering messages in
         /// this subscription. If dead_letter_policy is not set, dead lettering
         /// is disabled.
-        /// The Cloud Pub/Sub service account associated with this subscriptions's
+        /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
         /// permission to Acknowledge() messages on this subscription.
@@ -363,7 +366,7 @@ namespace Pulumi.Gcp.PubSub
         /// A policy that specifies the conditions for dead lettering messages in
         /// this subscription. If dead_letter_policy is not set, dead lettering
         /// is disabled.
-        /// The Cloud Pub/Sub service account associated with this subscriptions's
+        /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
         /// permission to Acknowledge() messages on this subscription.
@@ -504,7 +507,7 @@ namespace Pulumi.Gcp.PubSub
         /// A policy that specifies the conditions for dead lettering messages in
         /// this subscription. If dead_letter_policy is not set, dead lettering
         /// is disabled.
-        /// The Cloud Pub/Sub service account associated with this subscriptions's
+        /// The Cloud Pub/Sub service account associated with this subscription's
         /// parent project (i.e.,
         /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
         /// permission to Acknowledge() messages on this subscription.

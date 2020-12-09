@@ -89,7 +89,7 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
      */
     public readonly basicAlgorithm!: pulumi.Output<outputs.dataproc.AutoscalingPolicyBasicAlgorithm | undefined>;
     /**
-     * The  location where the autoscaling poicy should reside.
+     * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
     public readonly location!: pulumi.Output<string | undefined>;
@@ -172,7 +172,7 @@ export interface AutoscalingPolicyState {
      */
     readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
     /**
-     * The  location where the autoscaling poicy should reside.
+     * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
     readonly location?: pulumi.Input<string>;
@@ -213,7 +213,7 @@ export interface AutoscalingPolicyArgs {
      */
     readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.AutoscalingPolicyBasicAlgorithm>;
     /**
-     * The  location where the autoscaling poicy should reside.
+     * The  location where the autoscaling policy should reside.
      * The default value is `global`.
      */
     readonly location?: pulumi.Input<string>;

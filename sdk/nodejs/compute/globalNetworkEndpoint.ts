@@ -24,13 +24,12 @@ import * as utilities from "../utilities";
  *
  * const neg = new gcp.compute.GlobalNetworkEndpointGroup("neg", {
  *     defaultPort: "90",
- *     networkEndpointType: "INTERNET_IP_PORT",
+ *     networkEndpointType: "INTERNET_FQDN_PORT",
  * });
  * const default_endpoint = new gcp.compute.GlobalNetworkEndpoint("default-endpoint", {
  *     globalNetworkEndpointGroup: neg.name,
  *     fqdn: "www.example.com",
  *     port: 90,
- *     ipAddress: "8.8.8.8",
  * });
  * ```
  *

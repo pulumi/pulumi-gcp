@@ -83,7 +83,7 @@ namespace Pulumi.Gcp.Dataproc
         public Output<Outputs.AutoscalingPolicyBasicAlgorithm?> BasicAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The  location where the autoscaling poicy should reside.
+        /// The  location where the autoscaling policy should reside.
         /// The default value is `global`.
         /// </summary>
         [Output("location")]
@@ -178,7 +178,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.AutoscalingPolicyBasicAlgorithmArgs>? BasicAlgorithm { get; set; }
 
         /// <summary>
-        /// The  location where the autoscaling poicy should reside.
+        /// The  location where the autoscaling policy should reside.
         /// The default value is `global`.
         /// </summary>
         [Input("location")]
@@ -228,7 +228,7 @@ namespace Pulumi.Gcp.Dataproc
         public Input<Inputs.AutoscalingPolicyBasicAlgorithmGetArgs>? BasicAlgorithm { get; set; }
 
         /// <summary>
-        /// The  location where the autoscaling poicy should reside.
+        /// The  location where the autoscaling policy should reside.
         /// The default value is `global`.
         /// </summary>
         [Input("location")]

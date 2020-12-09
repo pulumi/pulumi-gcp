@@ -17,6 +17,7 @@ type JobAppEngineHttpTarget struct {
 	// HTTP request body.
 	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 	// It is an error to set body on a job with an incompatible HttpMethod.
+	// A base64-encoded string.
 	Body *string `pulumi:"body"`
 	// This map contains the header field names and values.
 	// Repeated headers are not supported, but a header value can contain commas.
@@ -49,6 +50,7 @@ type JobAppEngineHttpTargetArgs struct {
 	// HTTP request body.
 	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 	// It is an error to set body on a job with an incompatible HttpMethod.
+	// A base64-encoded string.
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// This map contains the header field names and values.
 	// Repeated headers are not supported, but a header value can contain commas.
@@ -149,6 +151,7 @@ func (o JobAppEngineHttpTargetOutput) AppEngineRouting() JobAppEngineHttpTargetA
 // HTTP request body.
 // A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 // It is an error to set body on a job with an incompatible HttpMethod.
+// A base64-encoded string.
 func (o JobAppEngineHttpTargetOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobAppEngineHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
@@ -205,6 +208,7 @@ func (o JobAppEngineHttpTargetPtrOutput) AppEngineRouting() JobAppEngineHttpTarg
 // HTTP request body.
 // A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 // It is an error to set body on a job with an incompatible HttpMethod.
+// A base64-encoded string.
 func (o JobAppEngineHttpTargetPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobAppEngineHttpTarget) *string {
 		if v == nil {
@@ -434,6 +438,7 @@ type JobHttpTarget struct {
 	// HTTP request body.
 	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 	// It is an error to set body on a job with an incompatible HttpMethod.
+	// A base64-encoded string.
 	Body *string `pulumi:"body"`
 	// This map contains the header field names and values.
 	// Repeated headers are not supported, but a header value can contain commas.
@@ -467,6 +472,7 @@ type JobHttpTargetArgs struct {
 	// HTTP request body.
 	// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 	// It is an error to set body on a job with an incompatible HttpMethod.
+	// A base64-encoded string.
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// This map contains the header field names and values.
 	// Repeated headers are not supported, but a header value can contain commas.
@@ -565,6 +571,7 @@ func (o JobHttpTargetOutput) ToJobHttpTargetPtrOutputWithContext(ctx context.Con
 // HTTP request body.
 // A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 // It is an error to set body on a job with an incompatible HttpMethod.
+// A base64-encoded string.
 func (o JobHttpTargetOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobHttpTarget) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
@@ -620,6 +627,7 @@ func (o JobHttpTargetPtrOutput) Elem() JobHttpTargetOutput {
 // HTTP request body.
 // A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
 // It is an error to set body on a job with an incompatible HttpMethod.
+// A base64-encoded string.
 func (o JobHttpTargetPtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobHttpTarget) *string {
 		if v == nil {

@@ -12,6 +12,32 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class BackendBucketCdnPolicyGetArgs : Pulumi.ResourceArgs
     {
+        [Input("cacheMode")]
+        public Input<string>? CacheMode { get; set; }
+
+        [Input("clientTtl")]
+        public Input<int>? ClientTtl { get; set; }
+
+        [Input("defaultTtl")]
+        public Input<int>? DefaultTtl { get; set; }
+
+        [Input("maxTtl")]
+        public Input<int>? MaxTtl { get; set; }
+
+        [Input("negativeCaching")]
+        public Input<bool>? NegativeCaching { get; set; }
+
+        [Input("negativeCachingPolicies")]
+        private InputList<Inputs.BackendBucketCdnPolicyNegativeCachingPolicyGetArgs>? _negativeCachingPolicies;
+        public InputList<Inputs.BackendBucketCdnPolicyNegativeCachingPolicyGetArgs> NegativeCachingPolicies
+        {
+            get => _negativeCachingPolicies ?? (_negativeCachingPolicies = new InputList<Inputs.BackendBucketCdnPolicyNegativeCachingPolicyGetArgs>());
+            set => _negativeCachingPolicies = value;
+        }
+
+        [Input("serveWhileStale")]
+        public Input<int>? ServeWhileStale { get; set; }
+
         /// <summary>
         /// Maximum number of seconds the response to a signed URL request will
         /// be considered fresh. After this time period,
@@ -22,8 +48,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// max-age=[TTL]" header, regardless of any existing Cache-Control
         /// header. The actual headers served in responses will not be altered.
         /// </summary>
-        [Input("signedUrlCacheMaxAgeSec", required: true)]
-        public Input<int> SignedUrlCacheMaxAgeSec { get; set; } = null!;
+        [Input("signedUrlCacheMaxAgeSec")]
+        public Input<int>? SignedUrlCacheMaxAgeSec { get; set; }
 
         public BackendBucketCdnPolicyGetArgs()
         {

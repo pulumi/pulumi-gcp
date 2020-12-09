@@ -36,7 +36,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		neg, err := compute.NewGlobalNetworkEndpointGroup(ctx, "neg", &compute.GlobalNetworkEndpointGroupArgs{
 // 			DefaultPort:         pulumi.Int(90),
-// 			NetworkEndpointType: pulumi.String("INTERNET_IP_PORT"),
+// 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -45,7 +45,6 @@ import (
 // 			GlobalNetworkEndpointGroup: neg.Name,
 // 			Fqdn:                       pulumi.String("www.example.com"),
 // 			Port:                       pulumi.Int(90),
-// 			IpAddress:                  pulumi.String("8.8.8.8"),
 // 		})
 // 		if err != nil {
 // 			return err

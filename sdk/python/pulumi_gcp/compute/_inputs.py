@@ -26,6 +26,7 @@ __all__ = [
     'AutoscalerAutoscalingPolicyScaleInControlArgs',
     'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
     'BackendBucketCdnPolicyArgs',
+    'BackendBucketCdnPolicyNegativeCachingPolicyArgs',
     'BackendServiceBackendArgs',
     'BackendServiceCdnPolicyArgs',
     'BackendServiceCdnPolicyCacheKeyPolicyArgs',
@@ -1549,7 +1550,14 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs:
 @pulumi.input_type
 class BackendBucketCdnPolicyArgs:
     def __init__(__self__, *,
-                 signed_url_cache_max_age_sec: pulumi.Input[int]):
+                 cache_mode: Optional[pulumi.Input[str]] = None,
+                 client_ttl: Optional[pulumi.Input[int]] = None,
+                 default_ttl: Optional[pulumi.Input[int]] = None,
+                 max_ttl: Optional[pulumi.Input[int]] = None,
+                 negative_caching: Optional[pulumi.Input[bool]] = None,
+                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 serve_while_stale: Optional[pulumi.Input[int]] = None,
+                 signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will
                be considered fresh. After this time period,
@@ -1560,11 +1568,89 @@ class BackendBucketCdnPolicyArgs:
                max-age=[TTL]" header, regardless of any existing Cache-Control
                header. The actual headers served in responses will not be altered.
         """
-        pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+        if cache_mode is not None:
+            pulumi.set(__self__, "cache_mode", cache_mode)
+        if client_ttl is not None:
+            pulumi.set(__self__, "client_ttl", client_ttl)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policies is not None:
+            pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
+        if signed_url_cache_max_age_sec is not None:
+            pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cache_mode")
+
+    @cache_mode.setter
+    def cache_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_mode", value)
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "client_ttl")
+
+    @client_ttl.setter
+    def client_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_ttl", value)
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "default_ttl")
+
+    @default_ttl.setter
+    def default_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_ttl", value)
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_ttl")
+
+    @max_ttl.setter
+    def max_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_ttl", value)
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "negative_caching")
+
+    @negative_caching.setter
+    def negative_caching(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negative_caching", value)
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]]:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @negative_caching_policies.setter
+    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendBucketCdnPolicyNegativeCachingPolicyArgs']]]]):
+        pulumi.set(self, "negative_caching_policies", value)
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "serve_while_stale")
+
+    @serve_while_stale.setter
+    def serve_while_stale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "serve_while_stale", value)
 
     @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
-    def signed_url_cache_max_age_sec(self) -> pulumi.Input[int]:
+    def signed_url_cache_max_age_sec(self) -> Optional[pulumi.Input[int]]:
         """
         Maximum number of seconds the response to a signed URL request will
         be considered fresh. After this time period,
@@ -1578,8 +1664,37 @@ class BackendBucketCdnPolicyArgs:
         return pulumi.get(self, "signed_url_cache_max_age_sec")
 
     @signed_url_cache_max_age_sec.setter
-    def signed_url_cache_max_age_sec(self, value: pulumi.Input[int]):
+    def signed_url_cache_max_age_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "signed_url_cache_max_age_sec", value)
+
+
+@pulumi.input_type
+class BackendBucketCdnPolicyNegativeCachingPolicyArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
@@ -6291,7 +6406,8 @@ class InstanceGroupManagerUpdatePolicyArgs:
                  max_surge_percent: Optional[pulumi.Input[int]] = None,
                  max_unavailable_fixed: Optional[pulumi.Input[int]] = None,
                  max_unavailable_percent: Optional[pulumi.Input[int]] = None,
-                 min_ready_sec: Optional[pulumi.Input[int]] = None):
+                 min_ready_sec: Optional[pulumi.Input[int]] = None,
+                 replacement_method: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] minimal_action: - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param pulumi.Input[str] type: - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -6314,6 +6430,8 @@ class InstanceGroupManagerUpdatePolicyArgs:
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if replacement_method is not None:
+            pulumi.set(__self__, "replacement_method", replacement_method)
 
     @property
     @pulumi.getter(name="minimalAction")
@@ -6399,6 +6517,15 @@ class InstanceGroupManagerUpdatePolicyArgs:
     @min_ready_sec.setter
     def min_ready_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_ready_sec", value)
+
+    @property
+    @pulumi.getter(name="replacementMethod")
+    def replacement_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "replacement_method")
+
+    @replacement_method.setter
+    def replacement_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replacement_method", value)
 
 
 @pulumi.input_type
@@ -11912,7 +12039,8 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
                  max_surge_percent: Optional[pulumi.Input[int]] = None,
                  max_unavailable_fixed: Optional[pulumi.Input[int]] = None,
                  max_unavailable_percent: Optional[pulumi.Input[int]] = None,
-                 min_ready_sec: Optional[pulumi.Input[int]] = None):
+                 min_ready_sec: Optional[pulumi.Input[int]] = None,
+                 replacement_method: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] minimal_action: - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param pulumi.Input[str] type: - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -11938,6 +12066,8 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if replacement_method is not None:
+            pulumi.set(__self__, "replacement_method", replacement_method)
 
     @property
     @pulumi.getter(name="minimalAction")
@@ -12035,6 +12165,15 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
     @min_ready_sec.setter
     def min_ready_sec(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_ready_sec", value)
+
+    @property
+    @pulumi.getter(name="replacementMethod")
+    def replacement_method(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "replacement_method")
+
+    @replacement_method.setter
+    def replacement_method(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replacement_method", value)
 
 
 @pulumi.input_type
@@ -13240,7 +13379,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
                Control-Allow-Credentials header. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For
                regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either allow_origins or allow_origin_regex.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An
@@ -13319,7 +13458,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For
+        Specifies the regular expression patterns that match allowed origins. For
         regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either allow_origins or allow_origin_regex.
         """
@@ -14571,7 +14710,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
                  query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
                  regex_match: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] full_path_match: For satifying the matchRule condition, the path of the request must exactly
+        :param pulumi.Input[str] full_path_match: For satisfying the matchRule condition, the path of the request must exactly
                match the value specified in fullPathMatch after removing any query parameters
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -14623,7 +14762,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleArgs:
     @pulumi.getter(name="fullPathMatch")
     def full_path_match(self) -> Optional[pulumi.Input[str]]:
         """
-        For satifying the matchRule condition, the path of the request must exactly
+        For satisfying the matchRule condition, the path of the request must exactly
         match the value specified in fullPathMatch after removing any query parameters
         and anchor that may be part of the original URL. FullPathMatch must be between 1
         and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -15318,7 +15457,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
                Control-Allow-Credentials header. Defaults to false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For
                regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either allow_origins or allow_origin_regex.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An
@@ -15387,7 +15526,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For
+        Specifies the regular expression patterns that match allowed origins. For
         regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either allow_origins or allow_origin_regex.
         """
@@ -18279,7 +18418,7 @@ class URLMapDefaultRouteActionCorsPolicyArgs:
                This translates to the Access-Control-Allow-Credentials header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -18347,7 +18486,7 @@ class URLMapDefaultRouteActionCorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
@@ -19845,7 +19984,7 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
                This translates to the Access-Control-Allow-Credentials header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -19913,7 +20052,7 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
@@ -21263,7 +21402,7 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
                This translates to the Access-Control-Allow-Credentials header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -21341,7 +21480,7 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
@@ -22555,7 +22694,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
                  query_parameter_matches: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs']]]] = None,
                  regex_match: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] full_path_match: For satifying the matchRule condition, the path of the request must exactly
+        :param pulumi.Input[str] full_path_match: For satisfying the matchRule condition, the path of the request must exactly
                match the value specified in fullPathMatch after removing any query parameters
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -22607,7 +22746,7 @@ class URLMapPathMatcherRouteRuleMatchRuleArgs:
     @pulumi.getter(name="fullPathMatch")
     def full_path_match(self) -> Optional[pulumi.Input[str]]:
         """
-        For satifying the matchRule condition, the path of the request must exactly
+        For satisfying the matchRule condition, the path of the request must exactly
         match the value specified in fullPathMatch after removing any query parameters
         and anchor that may be part of the original URL. FullPathMatch must be between 1
         and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -23283,7 +23422,7 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
                This translates to the Access-Control-Allow-Credentials header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -23351,7 +23490,7 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicyArgs:
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """

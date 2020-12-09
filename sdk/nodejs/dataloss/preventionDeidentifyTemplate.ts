@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Allows creation of templates to de-idenfity content.
+ * Allows creation of templates to de-identify content.
  *
  * To get more information about DeidentifyTemplate, see:
  *

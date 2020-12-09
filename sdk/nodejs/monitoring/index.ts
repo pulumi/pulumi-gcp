@@ -9,6 +9,8 @@ export * from "./alertPolicy";
 export * from "./customService";
 export * from "./dashboard";
 export * from "./getAppEngineService";
+export * from "./getClusterIstioService";
+export * from "./getMeshIstioService";
 export * from "./getNotificationChannel";
 export * from "./getSecretVersion";
 export * from "./getUptimeCheckIPs";

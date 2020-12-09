@@ -8522,6 +8522,194 @@ func (o GetAppEngineServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetApp
 	}).(GetAppEngineServiceTelemetryOutput)
 }
 
+type GetClusterIstioServiceTelemetry struct {
+	ResourceName string `pulumi:"resourceName"`
+}
+
+// GetClusterIstioServiceTelemetryInput is an input type that accepts GetClusterIstioServiceTelemetryArgs and GetClusterIstioServiceTelemetryOutput values.
+// You can construct a concrete instance of `GetClusterIstioServiceTelemetryInput` via:
+//
+//          GetClusterIstioServiceTelemetryArgs{...}
+type GetClusterIstioServiceTelemetryInput interface {
+	pulumi.Input
+
+	ToGetClusterIstioServiceTelemetryOutput() GetClusterIstioServiceTelemetryOutput
+	ToGetClusterIstioServiceTelemetryOutputWithContext(context.Context) GetClusterIstioServiceTelemetryOutput
+}
+
+type GetClusterIstioServiceTelemetryArgs struct {
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+}
+
+func (GetClusterIstioServiceTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (i GetClusterIstioServiceTelemetryArgs) ToGetClusterIstioServiceTelemetryOutput() GetClusterIstioServiceTelemetryOutput {
+	return i.ToGetClusterIstioServiceTelemetryOutputWithContext(context.Background())
+}
+
+func (i GetClusterIstioServiceTelemetryArgs) ToGetClusterIstioServiceTelemetryOutputWithContext(ctx context.Context) GetClusterIstioServiceTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIstioServiceTelemetryOutput)
+}
+
+// GetClusterIstioServiceTelemetryArrayInput is an input type that accepts GetClusterIstioServiceTelemetryArray and GetClusterIstioServiceTelemetryArrayOutput values.
+// You can construct a concrete instance of `GetClusterIstioServiceTelemetryArrayInput` via:
+//
+//          GetClusterIstioServiceTelemetryArray{ GetClusterIstioServiceTelemetryArgs{...} }
+type GetClusterIstioServiceTelemetryArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterIstioServiceTelemetryArrayOutput() GetClusterIstioServiceTelemetryArrayOutput
+	ToGetClusterIstioServiceTelemetryArrayOutputWithContext(context.Context) GetClusterIstioServiceTelemetryArrayOutput
+}
+
+type GetClusterIstioServiceTelemetryArray []GetClusterIstioServiceTelemetryInput
+
+func (GetClusterIstioServiceTelemetryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (i GetClusterIstioServiceTelemetryArray) ToGetClusterIstioServiceTelemetryArrayOutput() GetClusterIstioServiceTelemetryArrayOutput {
+	return i.ToGetClusterIstioServiceTelemetryArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterIstioServiceTelemetryArray) ToGetClusterIstioServiceTelemetryArrayOutputWithContext(ctx context.Context) GetClusterIstioServiceTelemetryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterIstioServiceTelemetryArrayOutput)
+}
+
+type GetClusterIstioServiceTelemetryOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIstioServiceTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (o GetClusterIstioServiceTelemetryOutput) ToGetClusterIstioServiceTelemetryOutput() GetClusterIstioServiceTelemetryOutput {
+	return o
+}
+
+func (o GetClusterIstioServiceTelemetryOutput) ToGetClusterIstioServiceTelemetryOutputWithContext(ctx context.Context) GetClusterIstioServiceTelemetryOutput {
+	return o
+}
+
+func (o GetClusterIstioServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterIstioServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+type GetClusterIstioServiceTelemetryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterIstioServiceTelemetryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (o GetClusterIstioServiceTelemetryArrayOutput) ToGetClusterIstioServiceTelemetryArrayOutput() GetClusterIstioServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GetClusterIstioServiceTelemetryArrayOutput) ToGetClusterIstioServiceTelemetryArrayOutputWithContext(ctx context.Context) GetClusterIstioServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GetClusterIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetClusterIstioServiceTelemetryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterIstioServiceTelemetry {
+		return vs[0].([]GetClusterIstioServiceTelemetry)[vs[1].(int)]
+	}).(GetClusterIstioServiceTelemetryOutput)
+}
+
+type GetMeshIstioServiceTelemetry struct {
+	ResourceName string `pulumi:"resourceName"`
+}
+
+// GetMeshIstioServiceTelemetryInput is an input type that accepts GetMeshIstioServiceTelemetryArgs and GetMeshIstioServiceTelemetryOutput values.
+// You can construct a concrete instance of `GetMeshIstioServiceTelemetryInput` via:
+//
+//          GetMeshIstioServiceTelemetryArgs{...}
+type GetMeshIstioServiceTelemetryInput interface {
+	pulumi.Input
+
+	ToGetMeshIstioServiceTelemetryOutput() GetMeshIstioServiceTelemetryOutput
+	ToGetMeshIstioServiceTelemetryOutputWithContext(context.Context) GetMeshIstioServiceTelemetryOutput
+}
+
+type GetMeshIstioServiceTelemetryArgs struct {
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
+}
+
+func (GetMeshIstioServiceTelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMeshIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (i GetMeshIstioServiceTelemetryArgs) ToGetMeshIstioServiceTelemetryOutput() GetMeshIstioServiceTelemetryOutput {
+	return i.ToGetMeshIstioServiceTelemetryOutputWithContext(context.Background())
+}
+
+func (i GetMeshIstioServiceTelemetryArgs) ToGetMeshIstioServiceTelemetryOutputWithContext(ctx context.Context) GetMeshIstioServiceTelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMeshIstioServiceTelemetryOutput)
+}
+
+// GetMeshIstioServiceTelemetryArrayInput is an input type that accepts GetMeshIstioServiceTelemetryArray and GetMeshIstioServiceTelemetryArrayOutput values.
+// You can construct a concrete instance of `GetMeshIstioServiceTelemetryArrayInput` via:
+//
+//          GetMeshIstioServiceTelemetryArray{ GetMeshIstioServiceTelemetryArgs{...} }
+type GetMeshIstioServiceTelemetryArrayInput interface {
+	pulumi.Input
+
+	ToGetMeshIstioServiceTelemetryArrayOutput() GetMeshIstioServiceTelemetryArrayOutput
+	ToGetMeshIstioServiceTelemetryArrayOutputWithContext(context.Context) GetMeshIstioServiceTelemetryArrayOutput
+}
+
+type GetMeshIstioServiceTelemetryArray []GetMeshIstioServiceTelemetryInput
+
+func (GetMeshIstioServiceTelemetryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMeshIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (i GetMeshIstioServiceTelemetryArray) ToGetMeshIstioServiceTelemetryArrayOutput() GetMeshIstioServiceTelemetryArrayOutput {
+	return i.ToGetMeshIstioServiceTelemetryArrayOutputWithContext(context.Background())
+}
+
+func (i GetMeshIstioServiceTelemetryArray) ToGetMeshIstioServiceTelemetryArrayOutputWithContext(ctx context.Context) GetMeshIstioServiceTelemetryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMeshIstioServiceTelemetryArrayOutput)
+}
+
+type GetMeshIstioServiceTelemetryOutput struct{ *pulumi.OutputState }
+
+func (GetMeshIstioServiceTelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMeshIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (o GetMeshIstioServiceTelemetryOutput) ToGetMeshIstioServiceTelemetryOutput() GetMeshIstioServiceTelemetryOutput {
+	return o
+}
+
+func (o GetMeshIstioServiceTelemetryOutput) ToGetMeshIstioServiceTelemetryOutputWithContext(ctx context.Context) GetMeshIstioServiceTelemetryOutput {
+	return o
+}
+
+func (o GetMeshIstioServiceTelemetryOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMeshIstioServiceTelemetry) string { return v.ResourceName }).(pulumi.StringOutput)
+}
+
+type GetMeshIstioServiceTelemetryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMeshIstioServiceTelemetryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMeshIstioServiceTelemetry)(nil)).Elem()
+}
+
+func (o GetMeshIstioServiceTelemetryArrayOutput) ToGetMeshIstioServiceTelemetryArrayOutput() GetMeshIstioServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GetMeshIstioServiceTelemetryArrayOutput) ToGetMeshIstioServiceTelemetryArrayOutputWithContext(ctx context.Context) GetMeshIstioServiceTelemetryArrayOutput {
+	return o
+}
+
+func (o GetMeshIstioServiceTelemetryArrayOutput) Index(i pulumi.IntInput) GetMeshIstioServiceTelemetryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMeshIstioServiceTelemetry {
+		return vs[0].([]GetMeshIstioServiceTelemetry)[vs[1].(int)]
+	}).(GetMeshIstioServiceTelemetryOutput)
+}
+
 type GetNotificationChannelSensitiveLabel struct {
 	AuthToken  string `pulumi:"authToken"`
 	Password   string `pulumi:"password"`
@@ -8838,6 +9026,10 @@ func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigTcpCheckPtrOutput{})
 	pulumi.RegisterOutputType(GetAppEngineServiceTelemetryOutput{})
 	pulumi.RegisterOutputType(GetAppEngineServiceTelemetryArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterIstioServiceTelemetryOutput{})
+	pulumi.RegisterOutputType(GetClusterIstioServiceTelemetryArrayOutput{})
+	pulumi.RegisterOutputType(GetMeshIstioServiceTelemetryOutput{})
+	pulumi.RegisterOutputType(GetMeshIstioServiceTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelOutput{})
 	pulumi.RegisterOutputType(GetNotificationChannelSensitiveLabelArrayOutput{})
 	pulumi.RegisterOutputType(GetUptimeCheckIPsUptimeCheckIpOutput{})

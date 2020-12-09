@@ -6,8 +6,8 @@ import * as utilities from "../utilities";
 
 /**
  * A Network endpoint represents a IP address and port combination that is
- * part of a specific network endpoint group (NEG). NEGs are zonals
- * collection of these endpoints for GCP resources within a
+ * part of a specific network endpoint group (NEG). NEGs are zonal
+ * collections of these endpoints for GCP resources within a
  * single subnet. **NOTE**: Network endpoints cannot be created outside of a
  * network endpoint group.
  *

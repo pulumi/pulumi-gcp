@@ -54,8 +54,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Region where the Resource Policy resides.
         /// </summary>
-        [Input("region", required: true)]
-        public string Region { get; set; } = null!;
+        [Input("region")]
+        public string? Region { get; set; }
 
         public GetResourcePolicyArgs()
         {
@@ -66,25 +66,23 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetResourcePolicyResult
     {
-        /// <summary>
-        /// Description of this Resource Policy.
-        /// </summary>
-        public readonly string Description;
+        public readonly ImmutableArray<Outputs.GetResourcePolicyGroupPlacementPolicyResult> GroupPlacementPolicies;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly string Name;
         public readonly string? Project;
-        public readonly string Region;
+        public readonly string? Region;
         /// <summary>
         /// The URI of the resource.
         /// </summary>
         public readonly string SelfLink;
+        public readonly ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyResult> SnapshotSchedulePolicies;
 
         [OutputConstructor]
         private GetResourcePolicyResult(
-            string description,
+            ImmutableArray<Outputs.GetResourcePolicyGroupPlacementPolicyResult> groupPlacementPolicies,
 
             string id,
 
@@ -92,16 +90,19 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
-            string region,
+            string? region,
 
-            string selfLink)
+            string selfLink,
+
+            ImmutableArray<Outputs.GetResourcePolicySnapshotSchedulePolicyResult> snapshotSchedulePolicies)
         {
-            Description = description;
+            GroupPlacementPolicies = groupPlacementPolicies;
             Id = id;
             Name = name;
             Project = project;
             Region = region;
             SelfLink = selfLink;
+            SnapshotSchedulePolicies = snapshotSchedulePolicies;
         }
     }
 }

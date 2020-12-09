@@ -77,7 +77,10 @@ type DefaultServiceAccounts struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// The project ID where service accounts are created.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+	// The action to be performed in the default service accounts on the resource destroy.
+	// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+	// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy pulumi.StringPtrOutput `pulumi:"restorePolicy"`
 	// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
 	ServiceAccounts pulumi.MapOutput `pulumi:"serviceAccounts"`
@@ -122,7 +125,10 @@ type defaultServiceAccountsState struct {
 	Action *string `pulumi:"action"`
 	// The project ID where service accounts are created.
 	Project *string `pulumi:"project"`
-	// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+	// The action to be performed in the default service accounts on the resource destroy.
+	// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+	// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy *string `pulumi:"restorePolicy"`
 	// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
 	ServiceAccounts map[string]interface{} `pulumi:"serviceAccounts"`
@@ -133,7 +139,10 @@ type DefaultServiceAccountsState struct {
 	Action pulumi.StringPtrInput
 	// The project ID where service accounts are created.
 	Project pulumi.StringPtrInput
-	// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+	// The action to be performed in the default service accounts on the resource destroy.
+	// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+	// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy pulumi.StringPtrInput
 	// The Service Accounts changed by this resource. It is used for `REVERT` the `action` on the destroy.
 	ServiceAccounts pulumi.MapInput
@@ -148,7 +157,10 @@ type defaultServiceAccountsArgs struct {
 	Action string `pulumi:"action"`
 	// The project ID where service accounts are created.
 	Project string `pulumi:"project"`
-	// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+	// The action to be performed in the default service accounts on the resource destroy.
+	// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+	// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy *string `pulumi:"restorePolicy"`
 }
 
@@ -158,7 +170,10 @@ type DefaultServiceAccountsArgs struct {
 	Action pulumi.StringInput
 	// The project ID where service accounts are created.
 	Project pulumi.StringInput
-	// The action to be performed in the default service accounts on the resource destroy. Valid values are `NONE` and `REVERT`. If set to `REVERT` it will attempt to restore all default SAs but in the `DEPRIVILEGE` action.
+	// The action to be performed in the default service accounts on the resource destroy.
+	// Valid values are NONE, REVERT and REVERT_AND_IGNORE_FAILURE. It is applied for any action but in the DEPRIVILEGE.
+	// If set to REVERT it attempts to restore all default SAs but the DEPRIVILEGE action.
+	// If set to REVERT_AND_IGNORE_FAILURE it is the same behavior as REVERT but ignores errors returned by the API.
 	RestorePolicy pulumi.StringPtrInput
 }
 

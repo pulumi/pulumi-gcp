@@ -132,7 +132,7 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The format of packages that are stored in the repoitory.
+     * The format of packages that are stored in the repository.
      * Possible values are `DOCKER`.
      */
     public readonly format!: pulumi.Output<string>;
@@ -239,7 +239,7 @@ export interface RepositoryState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The format of packages that are stored in the repoitory.
+     * The format of packages that are stored in the repository.
      * Possible values are `DOCKER`.
      */
     readonly format?: pulumi.Input<string>;
@@ -291,7 +291,7 @@ export interface RepositoryArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The format of packages that are stored in the repoitory.
+     * The format of packages that are stored in the repository.
      * Possible values are `DOCKER`.
      */
     readonly format: pulumi.Input<string>;

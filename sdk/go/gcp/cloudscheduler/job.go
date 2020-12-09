@@ -24,38 +24,6 @@ import (
 //     * [Official Documentation](https://cloud.google.com/scheduler/)
 //
 // ## Example Usage
-// ### Scheduler Job Http
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudscheduler"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := cloudscheduler.NewJob(ctx, "job", &cloudscheduler.JobArgs{
-// 			AttemptDeadline: pulumi.String("320s"),
-// 			Description:     pulumi.String("test http job"),
-// 			HttpTarget: &cloudscheduler.JobHttpTargetArgs{
-// 				HttpMethod: pulumi.String("POST"),
-// 				Uri:        pulumi.String("https://example.com/ping"),
-// 			},
-// 			RetryConfig: &cloudscheduler.JobRetryConfigArgs{
-// 				RetryCount: pulumi.Int(1),
-// 			},
-// 			Schedule: pulumi.String("*/8 * * * *"),
-// 			TimeZone: pulumi.String("America/New_York"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
 // ### Scheduler Job App Engine
 //
 // ```go

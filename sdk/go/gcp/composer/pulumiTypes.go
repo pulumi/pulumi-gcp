@@ -851,7 +851,7 @@ type EnvironmentConfigNodeConfigIpAllocationPolicy struct {
 	// This field is applicable only when `useIpAliases` is true.
 	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
 	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-	// Defaults to true if the `ipAllocationBlock` is present in config.
+	// Defaults to true if the `ipAllocationPolicy` block is present in config.
 	UseIpAliases bool `pulumi:"useIpAliases"`
 }
 
@@ -890,7 +890,7 @@ type EnvironmentConfigNodeConfigIpAllocationPolicyArgs struct {
 	// This field is applicable only when `useIpAliases` is true.
 	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
 	// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-	// Defaults to true if the `ipAllocationBlock` is present in config.
+	// Defaults to true if the `ipAllocationPolicy` block is present in config.
 	UseIpAliases pulumi.BoolInput `pulumi:"useIpAliases"`
 }
 
@@ -1006,7 +1006,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesSecondaryRa
 }
 
 // Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-// Defaults to true if the `ipAllocationBlock` is present in config.
+// Defaults to true if the `ipAllocationPolicy` block is present in config.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
 }
@@ -1086,7 +1086,7 @@ func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) ServicesSecondar
 }
 
 // Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-// Defaults to true if the `ipAllocationBlock` is present in config.
+// Defaults to true if the `ipAllocationPolicy` block is present in config.
 func (o EnvironmentConfigNodeConfigIpAllocationPolicyPtrOutput) UseIpAliases() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigNodeConfigIpAllocationPolicy) *bool {
 		if v == nil {
@@ -2030,6 +2030,674 @@ func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
 	}).(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput)
 }
 
+type GetEnvironmentConfig struct {
+	AirflowUri                    string                                            `pulumi:"airflowUri"`
+	DagGcsPrefix                  string                                            `pulumi:"dagGcsPrefix"`
+	DatabaseConfig                GetEnvironmentConfigDatabaseConfig                `pulumi:"databaseConfig"`
+	GkeCluster                    string                                            `pulumi:"gkeCluster"`
+	NodeConfig                    GetEnvironmentConfigNodeConfig                    `pulumi:"nodeConfig"`
+	NodeCount                     int                                               `pulumi:"nodeCount"`
+	PrivateEnvironmentConfig      GetEnvironmentConfigPrivateEnvironmentConfig      `pulumi:"privateEnvironmentConfig"`
+	SoftwareConfig                GetEnvironmentConfigSoftwareConfig                `pulumi:"softwareConfig"`
+	WebServerConfig               GetEnvironmentConfigWebServerConfig               `pulumi:"webServerConfig"`
+	WebServerNetworkAccessControl GetEnvironmentConfigWebServerNetworkAccessControl `pulumi:"webServerNetworkAccessControl"`
+}
+
+// GetEnvironmentConfigInput is an input type that accepts GetEnvironmentConfigArgs and GetEnvironmentConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigInput` via:
+//
+//          GetEnvironmentConfigArgs{...}
+type GetEnvironmentConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigOutput() GetEnvironmentConfigOutput
+	ToGetEnvironmentConfigOutputWithContext(context.Context) GetEnvironmentConfigOutput
+}
+
+type GetEnvironmentConfigArgs struct {
+	AirflowUri                    pulumi.StringInput                                     `pulumi:"airflowUri"`
+	DagGcsPrefix                  pulumi.StringInput                                     `pulumi:"dagGcsPrefix"`
+	DatabaseConfig                GetEnvironmentConfigDatabaseConfigInput                `pulumi:"databaseConfig"`
+	GkeCluster                    pulumi.StringInput                                     `pulumi:"gkeCluster"`
+	NodeConfig                    GetEnvironmentConfigNodeConfigInput                    `pulumi:"nodeConfig"`
+	NodeCount                     pulumi.IntInput                                        `pulumi:"nodeCount"`
+	PrivateEnvironmentConfig      GetEnvironmentConfigPrivateEnvironmentConfigInput      `pulumi:"privateEnvironmentConfig"`
+	SoftwareConfig                GetEnvironmentConfigSoftwareConfigInput                `pulumi:"softwareConfig"`
+	WebServerConfig               GetEnvironmentConfigWebServerConfigInput               `pulumi:"webServerConfig"`
+	WebServerNetworkAccessControl GetEnvironmentConfigWebServerNetworkAccessControlInput `pulumi:"webServerNetworkAccessControl"`
+}
+
+func (GetEnvironmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigArgs) ToGetEnvironmentConfigOutput() GetEnvironmentConfigOutput {
+	return i.ToGetEnvironmentConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigArgs) ToGetEnvironmentConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigOutput)
+}
+
+type GetEnvironmentConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigOutput) ToGetEnvironmentConfigOutput() GetEnvironmentConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigOutput) ToGetEnvironmentConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigOutput) AirflowUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.AirflowUri }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigOutput) DagGcsPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.DagGcsPrefix }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigOutput) DatabaseConfig() GetEnvironmentConfigDatabaseConfigOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) GetEnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(GetEnvironmentConfigDatabaseConfigOutput)
+}
+
+func (o GetEnvironmentConfigOutput) GkeCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) string { return v.GkeCluster }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigOutput) NodeConfig() GetEnvironmentConfigNodeConfigOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) GetEnvironmentConfigNodeConfig { return v.NodeConfig }).(GetEnvironmentConfigNodeConfigOutput)
+}
+
+func (o GetEnvironmentConfigOutput) NodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) int { return v.NodeCount }).(pulumi.IntOutput)
+}
+
+func (o GetEnvironmentConfigOutput) PrivateEnvironmentConfig() GetEnvironmentConfigPrivateEnvironmentConfigOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) GetEnvironmentConfigPrivateEnvironmentConfig {
+		return v.PrivateEnvironmentConfig
+	}).(GetEnvironmentConfigPrivateEnvironmentConfigOutput)
+}
+
+func (o GetEnvironmentConfigOutput) SoftwareConfig() GetEnvironmentConfigSoftwareConfigOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) GetEnvironmentConfigSoftwareConfig { return v.SoftwareConfig }).(GetEnvironmentConfigSoftwareConfigOutput)
+}
+
+func (o GetEnvironmentConfigOutput) WebServerConfig() GetEnvironmentConfigWebServerConfigOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) GetEnvironmentConfigWebServerConfig { return v.WebServerConfig }).(GetEnvironmentConfigWebServerConfigOutput)
+}
+
+func (o GetEnvironmentConfigOutput) WebServerNetworkAccessControl() GetEnvironmentConfigWebServerNetworkAccessControlOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) GetEnvironmentConfigWebServerNetworkAccessControl {
+		return v.WebServerNetworkAccessControl
+	}).(GetEnvironmentConfigWebServerNetworkAccessControlOutput)
+}
+
+type GetEnvironmentConfigDatabaseConfig struct {
+	MachineType string `pulumi:"machineType"`
+}
+
+// GetEnvironmentConfigDatabaseConfigInput is an input type that accepts GetEnvironmentConfigDatabaseConfigArgs and GetEnvironmentConfigDatabaseConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigDatabaseConfigInput` via:
+//
+//          GetEnvironmentConfigDatabaseConfigArgs{...}
+type GetEnvironmentConfigDatabaseConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigDatabaseConfigOutput() GetEnvironmentConfigDatabaseConfigOutput
+	ToGetEnvironmentConfigDatabaseConfigOutputWithContext(context.Context) GetEnvironmentConfigDatabaseConfigOutput
+}
+
+type GetEnvironmentConfigDatabaseConfigArgs struct {
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+}
+
+func (GetEnvironmentConfigDatabaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigDatabaseConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigDatabaseConfigArgs) ToGetEnvironmentConfigDatabaseConfigOutput() GetEnvironmentConfigDatabaseConfigOutput {
+	return i.ToGetEnvironmentConfigDatabaseConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigDatabaseConfigArgs) ToGetEnvironmentConfigDatabaseConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigDatabaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigDatabaseConfigOutput)
+}
+
+type GetEnvironmentConfigDatabaseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigDatabaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigDatabaseConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigDatabaseConfigOutput) ToGetEnvironmentConfigDatabaseConfigOutput() GetEnvironmentConfigDatabaseConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDatabaseConfigOutput) ToGetEnvironmentConfigDatabaseConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigDatabaseConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigDatabaseConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigDatabaseConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigNodeConfig struct {
+	DiskSizeGb         int                                              `pulumi:"diskSizeGb"`
+	IpAllocationPolicy GetEnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
+	MachineType        string                                           `pulumi:"machineType"`
+	Network            string                                           `pulumi:"network"`
+	OauthScopes        []string                                         `pulumi:"oauthScopes"`
+	ServiceAccount     string                                           `pulumi:"serviceAccount"`
+	Subnetwork         *string                                          `pulumi:"subnetwork"`
+	Tags               []string                                         `pulumi:"tags"`
+	Zone               string                                           `pulumi:"zone"`
+}
+
+// GetEnvironmentConfigNodeConfigInput is an input type that accepts GetEnvironmentConfigNodeConfigArgs and GetEnvironmentConfigNodeConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigNodeConfigInput` via:
+//
+//          GetEnvironmentConfigNodeConfigArgs{...}
+type GetEnvironmentConfigNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigNodeConfigOutput() GetEnvironmentConfigNodeConfigOutput
+	ToGetEnvironmentConfigNodeConfigOutputWithContext(context.Context) GetEnvironmentConfigNodeConfigOutput
+}
+
+type GetEnvironmentConfigNodeConfigArgs struct {
+	DiskSizeGb         pulumi.IntInput                                       `pulumi:"diskSizeGb"`
+	IpAllocationPolicy GetEnvironmentConfigNodeConfigIpAllocationPolicyInput `pulumi:"ipAllocationPolicy"`
+	MachineType        pulumi.StringInput                                    `pulumi:"machineType"`
+	Network            pulumi.StringInput                                    `pulumi:"network"`
+	OauthScopes        pulumi.StringArrayInput                               `pulumi:"oauthScopes"`
+	ServiceAccount     pulumi.StringInput                                    `pulumi:"serviceAccount"`
+	Subnetwork         pulumi.StringPtrInput                                 `pulumi:"subnetwork"`
+	Tags               pulumi.StringArrayInput                               `pulumi:"tags"`
+	Zone               pulumi.StringInput                                    `pulumi:"zone"`
+}
+
+func (GetEnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigNodeConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigNodeConfigArgs) ToGetEnvironmentConfigNodeConfigOutput() GetEnvironmentConfigNodeConfigOutput {
+	return i.ToGetEnvironmentConfigNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigNodeConfigArgs) ToGetEnvironmentConfigNodeConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigOutput)
+}
+
+type GetEnvironmentConfigNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigNodeConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) ToGetEnvironmentConfigNodeConfigOutput() GetEnvironmentConfigNodeConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) ToGetEnvironmentConfigNodeConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) IpAllocationPolicy() GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) GetEnvironmentConfigNodeConfigIpAllocationPolicy {
+		return v.IpAllocationPolicy
+	}).(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigNodeConfigIpAllocationPolicy struct {
+	ClusterIpv4CidrBlock       *string `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  *string `pulumi:"clusterSecondaryRangeName"`
+	ServicesIpv4CidrBlock      *string `pulumi:"servicesIpv4CidrBlock"`
+	ServicesSecondaryRangeName *string `pulumi:"servicesSecondaryRangeName"`
+	UseIpAliases               bool    `pulumi:"useIpAliases"`
+}
+
+// GetEnvironmentConfigNodeConfigIpAllocationPolicyInput is an input type that accepts GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs and GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigNodeConfigIpAllocationPolicyInput` via:
+//
+//          GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs{...}
+type GetEnvironmentConfigNodeConfigIpAllocationPolicyInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutput() GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput
+	ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutputWithContext(context.Context) GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput
+}
+
+type GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs struct {
+	ClusterIpv4CidrBlock       pulumi.StringPtrInput `pulumi:"clusterIpv4CidrBlock"`
+	ClusterSecondaryRangeName  pulumi.StringPtrInput `pulumi:"clusterSecondaryRangeName"`
+	ServicesIpv4CidrBlock      pulumi.StringPtrInput `pulumi:"servicesIpv4CidrBlock"`
+	ServicesSecondaryRangeName pulumi.StringPtrInput `pulumi:"servicesSecondaryRangeName"`
+	UseIpAliases               pulumi.BoolInput      `pulumi:"useIpAliases"`
+}
+
+func (GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigNodeConfigIpAllocationPolicy)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutput() GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput {
+	return i.ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigNodeConfigIpAllocationPolicyArgs) ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput)
+}
+
+type GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigNodeConfigIpAllocationPolicy)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutput() GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ToGetEnvironmentConfigNodeConfigIpAllocationPolicyOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ClusterSecondaryRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ClusterSecondaryRangeName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) ServicesSecondaryRangeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) *string { return v.ServicesSecondaryRangeName }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput) UseIpAliases() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfigIpAllocationPolicy) bool { return v.UseIpAliases }).(pulumi.BoolOutput)
+}
+
+type GetEnvironmentConfigPrivateEnvironmentConfig struct {
+	CloudSqlIpv4CidrBlock  string  `pulumi:"cloudSqlIpv4CidrBlock"`
+	EnablePrivateEndpoint  *bool   `pulumi:"enablePrivateEndpoint"`
+	MasterIpv4CidrBlock    *string `pulumi:"masterIpv4CidrBlock"`
+	WebServerIpv4CidrBlock string  `pulumi:"webServerIpv4CidrBlock"`
+}
+
+// GetEnvironmentConfigPrivateEnvironmentConfigInput is an input type that accepts GetEnvironmentConfigPrivateEnvironmentConfigArgs and GetEnvironmentConfigPrivateEnvironmentConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigPrivateEnvironmentConfigInput` via:
+//
+//          GetEnvironmentConfigPrivateEnvironmentConfigArgs{...}
+type GetEnvironmentConfigPrivateEnvironmentConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigPrivateEnvironmentConfigOutput() GetEnvironmentConfigPrivateEnvironmentConfigOutput
+	ToGetEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(context.Context) GetEnvironmentConfigPrivateEnvironmentConfigOutput
+}
+
+type GetEnvironmentConfigPrivateEnvironmentConfigArgs struct {
+	CloudSqlIpv4CidrBlock  pulumi.StringInput    `pulumi:"cloudSqlIpv4CidrBlock"`
+	EnablePrivateEndpoint  pulumi.BoolPtrInput   `pulumi:"enablePrivateEndpoint"`
+	MasterIpv4CidrBlock    pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	WebServerIpv4CidrBlock pulumi.StringInput    `pulumi:"webServerIpv4CidrBlock"`
+}
+
+func (GetEnvironmentConfigPrivateEnvironmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigPrivateEnvironmentConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigPrivateEnvironmentConfigArgs) ToGetEnvironmentConfigPrivateEnvironmentConfigOutput() GetEnvironmentConfigPrivateEnvironmentConfigOutput {
+	return i.ToGetEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigPrivateEnvironmentConfigArgs) ToGetEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigPrivateEnvironmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigPrivateEnvironmentConfigOutput)
+}
+
+type GetEnvironmentConfigPrivateEnvironmentConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigPrivateEnvironmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigPrivateEnvironmentConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToGetEnvironmentConfigPrivateEnvironmentConfigOutput() GetEnvironmentConfigPrivateEnvironmentConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) ToGetEnvironmentConfigPrivateEnvironmentConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigPrivateEnvironmentConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) EnablePrivateEndpoint() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) *bool { return v.EnablePrivateEndpoint }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnvironmentConfigPrivateEnvironmentConfigOutput) WebServerIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigPrivateEnvironmentConfig) string { return v.WebServerIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigSoftwareConfig struct {
+	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
+	EnvVariables           map[string]string `pulumi:"envVariables"`
+	ImageVersion           string            `pulumi:"imageVersion"`
+	PypiPackages           map[string]string `pulumi:"pypiPackages"`
+	PythonVersion          string            `pulumi:"pythonVersion"`
+}
+
+// GetEnvironmentConfigSoftwareConfigInput is an input type that accepts GetEnvironmentConfigSoftwareConfigArgs and GetEnvironmentConfigSoftwareConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigSoftwareConfigInput` via:
+//
+//          GetEnvironmentConfigSoftwareConfigArgs{...}
+type GetEnvironmentConfigSoftwareConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigSoftwareConfigOutput() GetEnvironmentConfigSoftwareConfigOutput
+	ToGetEnvironmentConfigSoftwareConfigOutputWithContext(context.Context) GetEnvironmentConfigSoftwareConfigOutput
+}
+
+type GetEnvironmentConfigSoftwareConfigArgs struct {
+	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
+	EnvVariables           pulumi.StringMapInput `pulumi:"envVariables"`
+	ImageVersion           pulumi.StringInput    `pulumi:"imageVersion"`
+	PypiPackages           pulumi.StringMapInput `pulumi:"pypiPackages"`
+	PythonVersion          pulumi.StringInput    `pulumi:"pythonVersion"`
+}
+
+func (GetEnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigSoftwareConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigSoftwareConfigArgs) ToGetEnvironmentConfigSoftwareConfigOutput() GetEnvironmentConfigSoftwareConfigOutput {
+	return i.ToGetEnvironmentConfigSoftwareConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigSoftwareConfigArgs) ToGetEnvironmentConfigSoftwareConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigSoftwareConfigOutput)
+}
+
+type GetEnvironmentConfigSoftwareConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigSoftwareConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigSoftwareConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) ToGetEnvironmentConfigSoftwareConfigOutput() GetEnvironmentConfigSoftwareConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) ToGetEnvironmentConfigSoftwareConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigSoftwareConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) ImageVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) string { return v.ImageVersion }).(pulumi.StringOutput)
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) PypiPackages() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) string { return v.PythonVersion }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigWebServerConfig struct {
+	MachineType string `pulumi:"machineType"`
+}
+
+// GetEnvironmentConfigWebServerConfigInput is an input type that accepts GetEnvironmentConfigWebServerConfigArgs and GetEnvironmentConfigWebServerConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWebServerConfigInput` via:
+//
+//          GetEnvironmentConfigWebServerConfigArgs{...}
+type GetEnvironmentConfigWebServerConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWebServerConfigOutput() GetEnvironmentConfigWebServerConfigOutput
+	ToGetEnvironmentConfigWebServerConfigOutputWithContext(context.Context) GetEnvironmentConfigWebServerConfigOutput
+}
+
+type GetEnvironmentConfigWebServerConfigArgs struct {
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+}
+
+func (GetEnvironmentConfigWebServerConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWebServerConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWebServerConfigArgs) ToGetEnvironmentConfigWebServerConfigOutput() GetEnvironmentConfigWebServerConfigOutput {
+	return i.ToGetEnvironmentConfigWebServerConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWebServerConfigArgs) ToGetEnvironmentConfigWebServerConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerConfigOutput)
+}
+
+type GetEnvironmentConfigWebServerConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWebServerConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWebServerConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWebServerConfigOutput) ToGetEnvironmentConfigWebServerConfigOutput() GetEnvironmentConfigWebServerConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerConfigOutput) ToGetEnvironmentConfigWebServerConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWebServerConfig) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControl struct {
+	AllowedIpRanges []GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange `pulumi:"allowedIpRanges"`
+}
+
+// GetEnvironmentConfigWebServerNetworkAccessControlInput is an input type that accepts GetEnvironmentConfigWebServerNetworkAccessControlArgs and GetEnvironmentConfigWebServerNetworkAccessControlOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWebServerNetworkAccessControlInput` via:
+//
+//          GetEnvironmentConfigWebServerNetworkAccessControlArgs{...}
+type GetEnvironmentConfigWebServerNetworkAccessControlInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWebServerNetworkAccessControlOutput() GetEnvironmentConfigWebServerNetworkAccessControlOutput
+	ToGetEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(context.Context) GetEnvironmentConfigWebServerNetworkAccessControlOutput
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControlArgs struct {
+	AllowedIpRanges GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput `pulumi:"allowedIpRanges"`
+}
+
+func (GetEnvironmentConfigWebServerNetworkAccessControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWebServerNetworkAccessControl)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWebServerNetworkAccessControlArgs) ToGetEnvironmentConfigWebServerNetworkAccessControlOutput() GetEnvironmentConfigWebServerNetworkAccessControlOutput {
+	return i.ToGetEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWebServerNetworkAccessControlArgs) ToGetEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerNetworkAccessControlOutput)
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControlOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWebServerNetworkAccessControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWebServerNetworkAccessControl)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlOutput() GetEnvironmentConfigWebServerNetworkAccessControlOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlOutput) AllowedIpRanges() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWebServerNetworkAccessControl) []GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+		return v.AllowedIpRanges
+	}).(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange struct {
+	Description *string `pulumi:"description"`
+	Value       string  `pulumi:"value"`
+}
+
+// GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput is an input type that accepts GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs and GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput` via:
+//
+//          GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...}
+type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput
+	ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Value       pulumi.StringInput    `pulumi:"value"`
+}
+
+func (GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return i.ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput)
+}
+
+// GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput is an input type that accepts GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray and GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput` via:
+//
+//          GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray{ GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs{...} }
+type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput
+	ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray []GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeInput
+
+func (GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return i.ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput() GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) ToGetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+		return vs[0].([]GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange)[vs[1].(int)]
+	}).(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput)
+}
+
 type GetImageVersionsImageVersion struct {
 	// The string identifier of the image version, in the form: "composer-x.y.z-airflow-a.b(.c)"
 	ImageVersionId string `pulumi:"imageVersionId"`
@@ -2155,6 +2823,16 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigDatabaseConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigPrivateEnvironmentConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigSoftwareConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerNetworkAccessControlOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetImageVersionsImageVersionOutput{})
 	pulumi.RegisterOutputType(GetImageVersionsImageVersionArrayOutput{})
 }

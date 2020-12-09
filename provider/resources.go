@@ -1991,6 +1991,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_composer_image_versions.html.markdown",
 				},
 			},
+			"google_composer_environment": {Tok: gcpDataSource(gcpComposer, "getEnvironment")},
 			"google_iam_role": {
 				Tok: gcpDataSource(gcpIAM, "getRule"),
 				Docs: &tfbridge.DocInfo{
@@ -2276,6 +2277,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_monitoring_app_engine_service.html.markdown",
 				},
 			},
+			"google_monitoring_cluster_istio_service": {Tok: gcpDataSource(gcpMonitoring, "getClusterIstioService")},
+			"google_monitoring_mesh_istio_service":    {Tok: gcpDataSource(gcpMonitoring, "getMeshIstioService")},
 
 			// Firebase
 			"google_firebase_web_app_config": {

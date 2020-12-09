@@ -56,18 +56,12 @@ namespace Pulumi.Gcp.Compute
     ///                     "sslcert.tf-test.club.",
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("defaultHttpHealthCheck", new Gcp.Compute.HttpHealthCheckArgs
     ///         {
     ///             RequestPath = "/",
     ///             CheckIntervalSec = 1,
     ///             TimeoutSec = 1,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
     ///         {
@@ -78,9 +72,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 defaultHttpHealthCheck.Id,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultURLMap = new Gcp.Compute.URLMap("defaultURLMap", new Gcp.Compute.URLMapArgs
     ///         {
@@ -116,9 +107,6 @@ namespace Pulumi.Gcp.Compute
     ///                     },
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultTargetHttpsProxy = new Gcp.Compute.TargetHttpsProxy("defaultTargetHttpsProxy", new Gcp.Compute.TargetHttpsProxyArgs
     ///         {
@@ -127,24 +115,15 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 defaultManagedSslCertificate.Id,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var zone = new Gcp.Dns.ManagedZone("zone", new Gcp.Dns.ManagedZoneArgs
     ///         {
     ///             DnsName = "sslcert.tf-test.club.",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultGlobalForwardingRule = new Gcp.Compute.GlobalForwardingRule("defaultGlobalForwardingRule", new Gcp.Compute.GlobalForwardingRuleArgs
     ///         {
     ///             Target = defaultTargetHttpsProxy.Id,
     ///             PortRange = "443",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var @set = new Gcp.Dns.RecordSet("set", new Gcp.Dns.RecordSetArgs
     ///         {
@@ -155,9 +134,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 defaultGlobalForwardingRule.IpAddress,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

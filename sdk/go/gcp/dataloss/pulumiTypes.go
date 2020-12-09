@@ -581,7 +581,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig struct {
-	// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+	// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
 	// Structure is documented below.
 	CharactersToIgnores []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore `pulumi:"charactersToIgnores"`
 	// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
@@ -607,7 +607,7 @@ type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfor
 }
 
 type PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigArgs struct {
-	// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+	// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
 	// Structure is documented below.
 	CharactersToIgnores PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayInput `pulumi:"charactersToIgnores"`
 	// Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
@@ -698,7 +698,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput)
 }
 
-// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput) CharactersToIgnores() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
 	return o.ApplyT(func(v PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {
@@ -750,7 +750,7 @@ func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTrans
 	}).(PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigOutput)
 }
 
-// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
 // Structure is documented below.
 func (o PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigPtrOutput) CharactersToIgnores() PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArrayOutput {
 	return o.ApplyT(func(v *PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig) []PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore {

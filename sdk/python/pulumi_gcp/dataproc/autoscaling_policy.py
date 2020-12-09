@@ -78,7 +78,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
-        :param pulumi.Input[str] location: The  location where the autoscaling poicy should reside.
+        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
         :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
                and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between
@@ -142,7 +142,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AutoscalingPolicyBasicAlgorithmArgs']] basic_algorithm: Basic algorithm for autoscaling.
                Structure is documented below.
-        :param pulumi.Input[str] location: The  location where the autoscaling poicy should reside.
+        :param pulumi.Input[str] location: The  location where the autoscaling policy should reside.
                The default value is `global`.
         :param pulumi.Input[str] name: The "resource name" of the autoscaling policy.
         :param pulumi.Input[str] policy_id: The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -181,7 +181,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[Optional[str]]:
         """
-        The  location where the autoscaling poicy should reside.
+        The  location where the autoscaling policy should reside.
         The default value is `global`.
         """
         return pulumi.get(self, "location")

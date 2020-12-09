@@ -93,6 +93,10 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
+     * Headers that the HTTP/S load balancer should add to proxied responses.
+     */
+    public readonly customResponseHeaders!: pulumi.Output<string[] | undefined>;
+    /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
      */
@@ -136,6 +140,7 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["bucketName"] = state ? state.bucketName : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
+            inputs["customResponseHeaders"] = state ? state.customResponseHeaders : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableCdn"] = state ? state.enableCdn : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -148,6 +153,7 @@ export class BackendBucket extends pulumi.CustomResource {
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -183,6 +189,10 @@ export interface BackendBucketState {
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp?: pulumi.Input<string>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied responses.
+     */
+    readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.
@@ -226,6 +236,10 @@ export interface BackendBucketArgs {
      * Structure is documented below.
      */
     readonly cdnPolicy?: pulumi.Input<inputs.compute.BackendBucketCdnPolicy>;
+    /**
+     * Headers that the HTTP/S load balancer should add to proxied responses.
+     */
+    readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional textual description of the resource; provided by the
      * client when the resource is created.

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataLoss
 {
     /// <summary>
-    /// Allows creation of templates to de-idenfity content.
+    /// Allows creation of templates to de-identify content.
     /// 
     /// To get more information about DeidentifyTemplate, see:
     /// 

@@ -80,7 +80,7 @@ type AutoscalingPolicy struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrOutput `pulumi:"basicAlgorithm"`
-	// The  location where the autoscaling poicy should reside.
+	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrOutput `pulumi:"location"`
 	// The "resource name" of the autoscaling policy.
@@ -135,7 +135,7 @@ type autoscalingPolicyState struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
-	// The  location where the autoscaling poicy should reside.
+	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The "resource name" of the autoscaling policy.
@@ -159,7 +159,7 @@ type AutoscalingPolicyState struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
-	// The  location where the autoscaling poicy should reside.
+	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The "resource name" of the autoscaling policy.
@@ -187,7 +187,7 @@ type autoscalingPolicyArgs struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm *AutoscalingPolicyBasicAlgorithm `pulumi:"basicAlgorithm"`
-	// The  location where the autoscaling poicy should reside.
+	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location *string `pulumi:"location"`
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),
@@ -210,7 +210,7 @@ type AutoscalingPolicyArgs struct {
 	// Basic algorithm for autoscaling.
 	// Structure is documented below.
 	BasicAlgorithm AutoscalingPolicyBasicAlgorithmPtrInput
-	// The  location where the autoscaling poicy should reside.
+	// The  location where the autoscaling policy should reside.
 	// The default value is `global`.
 	Location pulumi.StringPtrInput
 	// The policy id. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_),

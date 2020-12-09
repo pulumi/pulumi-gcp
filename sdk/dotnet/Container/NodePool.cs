@@ -42,8 +42,7 @@ namespace Pulumi.Gcp.Container
     ///                 MachineType = "e2-medium",
     ///                 OauthScopes = 
     ///                 {
-    ///                     "https://www.googleapis.com/auth/logging.write",
-    ///                     "https://www.googleapis.com/auth/monitoring",
+    ///                     "https://www.googleapis.com/auth/cloud-platform",
     ///                 },
     ///             },
     ///         });

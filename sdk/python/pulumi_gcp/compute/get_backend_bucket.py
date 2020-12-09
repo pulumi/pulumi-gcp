@@ -20,7 +20,7 @@ class GetBackendBucketResult:
     """
     A collection of values returned by getBackendBucket.
     """
-    def __init__(__self__, bucket_name=None, cdn_policies=None, creation_timestamp=None, description=None, enable_cdn=None, id=None, name=None, project=None, self_link=None):
+    def __init__(__self__, bucket_name=None, cdn_policies=None, creation_timestamp=None, custom_response_headers=None, description=None, enable_cdn=None, id=None, name=None, project=None, self_link=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -30,6 +30,9 @@ class GetBackendBucketResult:
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if custom_response_headers and not isinstance(custom_response_headers, list):
+            raise TypeError("Expected argument 'custom_response_headers' to be a list")
+        pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -72,6 +75,11 @@ class GetBackendBucketResult:
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="customResponseHeaders")
+    def custom_response_headers(self) -> Sequence[str]:
+        return pulumi.get(self, "custom_response_headers")
 
     @property
     @pulumi.getter
@@ -125,6 +133,7 @@ class AwaitableGetBackendBucketResult(GetBackendBucketResult):
             bucket_name=self.bucket_name,
             cdn_policies=self.cdn_policies,
             creation_timestamp=self.creation_timestamp,
+            custom_response_headers=self.custom_response_headers,
             description=self.description,
             enable_cdn=self.enable_cdn,
             id=self.id,
@@ -166,6 +175,7 @@ def get_backend_bucket(name: Optional[str] = None,
         bucket_name=__ret__.bucket_name,
         cdn_policies=__ret__.cdn_policies,
         creation_timestamp=__ret__.creation_timestamp,
+        custom_response_headers=__ret__.custom_response_headers,
         description=__ret__.description,
         enable_cdn=__ret__.enable_cdn,
         id=__ret__.id,

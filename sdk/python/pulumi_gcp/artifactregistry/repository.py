@@ -109,7 +109,7 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[str] format: The format of packages that are stored in the repoitory.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository.
                Possible values are `DOCKER`.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
@@ -186,7 +186,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
-        :param pulumi.Input[str] format: The format of packages that are stored in the repoitory.
+        :param pulumi.Input[str] format: The format of packages that are stored in the repository.
                Possible values are `DOCKER`.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
@@ -241,7 +241,7 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def format(self) -> pulumi.Output[str]:
         """
-        The format of packages that are stored in the repoitory.
+        The format of packages that are stored in the repository.
         Possible values are `DOCKER`.
         """
         return pulumi.get(self, "format")

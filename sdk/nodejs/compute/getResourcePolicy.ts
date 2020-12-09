@@ -48,26 +48,24 @@ export interface GetResourcePolicyArgs {
     /**
      * Region where the Resource Policy resides.
      */
-    readonly region: string;
+    readonly region?: string;
 }
 
 /**
  * A collection of values returned by getResourcePolicy.
  */
 export interface GetResourcePolicyResult {
-    /**
-     * Description of this Resource Policy.
-     */
-    readonly description: string;
+    readonly groupPlacementPolicies: outputs.compute.GetResourcePolicyGroupPlacementPolicy[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly name: string;
     readonly project?: string;
-    readonly region: string;
+    readonly region?: string;
     /**
      * The URI of the resource.
      */
     readonly selfLink: string;
+    readonly snapshotSchedulePolicies: outputs.compute.GetResourcePolicySnapshotSchedulePolicy[];
 }

@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly string? ServicesSecondaryRangeName;
         /// <summary>
         /// Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-        /// Defaults to true if the `ip_allocation_block` is present in config.
+        /// Defaults to true if the `ip_allocation_policy` block is present in config.
         /// </summary>
         public readonly bool UseIpAliases;
 

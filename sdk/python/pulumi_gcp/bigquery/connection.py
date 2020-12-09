@@ -123,7 +123,15 @@ class Connection(pulumi.CustomResource):
         Connection can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:bigquery/connection:Connection default {{name}}
+         $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/connection:Connection default {{project}}/{{location}}/{{connection_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
         ```
 
         :param str resource_name: The name of the resource.

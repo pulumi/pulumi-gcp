@@ -30,8 +30,19 @@ import * as utilities from "../utilities";
  *     attemptDeadline: "320s",
  *     description: "test http job",
  *     httpTarget: {
+ *         base64encode: [{}],
+ *         body: "",
  *         httpMethod: "POST",
  *         uri: "https://example.com/ping",
+ *         "{": [{
+ *             foo: [{
+ *                 ":": [{
+ *                     bar: [{
+ *                         "}": [{}],
+ *                     }],
+ *                 }],
+ *             }],
+ *         }],
  *     },
  *     retryConfig: {
  *         retryCount: 1,

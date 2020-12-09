@@ -51,6 +51,8 @@ __all__ = [
     'UptimeCheckConfigResourceGroup',
     'UptimeCheckConfigTcpCheck',
     'GetAppEngineServiceTelemetryResult',
+    'GetClusterIstioServiceTelemetryResult',
+    'GetMeshIstioServiceTelemetryResult',
     'GetNotificationChannelSensitiveLabelResult',
     'GetUptimeCheckIPsUptimeCheckIpResult',
 ]
@@ -2966,6 +2968,30 @@ class UptimeCheckConfigTcpCheck(dict):
 
 @pulumi.output_type
 class GetAppEngineServiceTelemetryResult(dict):
+    def __init__(__self__, *,
+                 resource_name: str):
+        pulumi.set(__self__, "resource_name", resource_name)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> str:
+        return pulumi.get(self, "resource_name")
+
+
+@pulumi.output_type
+class GetClusterIstioServiceTelemetryResult(dict):
+    def __init__(__self__, *,
+                 resource_name: str):
+        pulumi.set(__self__, "resource_name", resource_name)
+
+    @property
+    @pulumi.getter(name="resourceName")
+    def resource_name(self) -> str:
+        return pulumi.get(self, "resource_name")
+
+
+@pulumi.output_type
+class GetMeshIstioServiceTelemetryResult(dict):
     def __init__(__self__, *,
                  resource_name: str):
         pulumi.set(__self__, "resource_name", resource_name)

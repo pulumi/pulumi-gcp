@@ -57,10 +57,7 @@ class NodePool(pulumi.CustomResource):
             node_config=gcp.container.NodePoolNodeConfigArgs(
                 preemptible=True,
                 machine_type="e2-medium",
-                oauth_scopes=[
-                    "https://www.googleapis.com/auth/logging.write",
-                    "https://www.googleapis.com/auth/monitoring",
-                ],
+                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             ))
         ```
 

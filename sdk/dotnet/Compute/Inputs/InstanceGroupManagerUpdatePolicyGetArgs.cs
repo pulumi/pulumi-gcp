@@ -49,6 +49,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("minimalAction", required: true)]
         public Input<string> MinimalAction { get; set; } = null!;
 
+        [Input("replacementMethod")]
+        public Input<string>? ReplacementMethod { get; set; }
+
         /// <summary>
         /// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         /// </summary>
