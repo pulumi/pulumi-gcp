@@ -36,8 +36,8 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/storage"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //

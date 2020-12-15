@@ -39,7 +39,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/composer"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/composer"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -67,10 +67,10 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/composer"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/composer"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -133,7 +133,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/composer"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/composer"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //

@@ -43,8 +43,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/compute"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/dns"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //

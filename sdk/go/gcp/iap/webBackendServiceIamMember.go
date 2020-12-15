@@ -27,8 +27,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -66,8 +66,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -109,7 +109,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -137,7 +137,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -169,7 +169,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -195,7 +195,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v3/go/gcp/iap"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iap"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
