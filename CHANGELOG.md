@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.16.0 of pulumi-terraform-bridge
+    * Preserve unknowns during provider preview
 
 ---
 
@@ -382,4 +383,3 @@ export let url = f.function.httpsTriggerUrl;
 
 ## 0.14.0 (2018-06-15)
 * This package is new in this release! Use it to deploy and manage resources for Google Cloud Platform.
-
