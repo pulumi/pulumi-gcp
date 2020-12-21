@@ -19,10 +19,12 @@ class RegionBackendService(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]]] = None,
+                 cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
                  connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_cdn: Optional[pulumi.Input[bool]] = None,
                  failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
                  health_checks: Optional[pulumi.Input[str]] = None,
                  load_balancing_scheme: Optional[pulumi.Input[str]] = None,
@@ -68,6 +70,33 @@ class RegionBackendService(pulumi.CustomResource):
             health_checks=[default_health_check.id],
             connection_draining_timeout_sec=10,
             session_affinity="CLIENT_IP")
+        ```
+        ### Region Backend Service Cache
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="us-central1",
+            health_checks=[default_region_health_check.id],
+            enable_cdn=True,
+            cdn_policy=gcp.compute.RegionBackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
+            ),
+            load_balancing_scheme="EXTERNAL",
+            protocol="HTTP")
         ```
         ### Region Backend Service Ilb Round Robin
 
@@ -221,6 +250,8 @@ class RegionBackendService(pulumi.CustomResource):
                When the load balancing scheme is INTERNAL, this field is not used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]] backends: The set of backends that serve this RegionBackendService.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
                and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -236,6 +267,7 @@ class RegionBackendService(pulumi.CustomResource):
                This field only applies when all of the following are true -
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
+        :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']] failover_policy: Policy for failovers.
                Structure is documented below.
         :param pulumi.Input[str] health_checks: The set of URLs to HealthCheck resources for health checking
@@ -321,10 +353,12 @@ class RegionBackendService(pulumi.CustomResource):
 
             __props__['affinity_cookie_ttl_sec'] = affinity_cookie_ttl_sec
             __props__['backends'] = backends
+            __props__['cdn_policy'] = cdn_policy
             __props__['circuit_breakers'] = circuit_breakers
             __props__['connection_draining_timeout_sec'] = connection_draining_timeout_sec
             __props__['consistent_hash'] = consistent_hash
             __props__['description'] = description
+            __props__['enable_cdn'] = enable_cdn
             __props__['failover_policy'] = failover_policy
             __props__['health_checks'] = health_checks
             __props__['load_balancing_scheme'] = load_balancing_scheme
@@ -354,11 +388,13 @@ class RegionBackendService(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             affinity_cookie_ttl_sec: Optional[pulumi.Input[int]] = None,
             backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]]] = None,
+            cdn_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']]] = None,
             circuit_breakers: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']]] = None,
             connection_draining_timeout_sec: Optional[pulumi.Input[int]] = None,
             consistent_hash: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceConsistentHashArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            enable_cdn: Optional[pulumi.Input[bool]] = None,
             failover_policy: Optional[pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             health_checks: Optional[pulumi.Input[str]] = None,
@@ -389,6 +425,8 @@ class RegionBackendService(pulumi.CustomResource):
                When the load balancing scheme is INTERNAL, this field is not used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionBackendServiceBackendArgs']]]] backends: The set of backends that serve this RegionBackendService.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService.
+               Structure is documented below.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceCircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. This field
                is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
                and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -405,6 +443,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
+        :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this RegionBackendService.
         :param pulumi.Input[pulumi.InputType['RegionBackendServiceFailoverPolicyArgs']] failover_policy: Policy for failovers.
                Structure is documented below.
         :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking.
@@ -479,11 +518,13 @@ class RegionBackendService(pulumi.CustomResource):
 
         __props__["affinity_cookie_ttl_sec"] = affinity_cookie_ttl_sec
         __props__["backends"] = backends
+        __props__["cdn_policy"] = cdn_policy
         __props__["circuit_breakers"] = circuit_breakers
         __props__["connection_draining_timeout_sec"] = connection_draining_timeout_sec
         __props__["consistent_hash"] = consistent_hash
         __props__["creation_timestamp"] = creation_timestamp
         __props__["description"] = description
+        __props__["enable_cdn"] = enable_cdn
         __props__["failover_policy"] = failover_policy
         __props__["fingerprint"] = fingerprint
         __props__["health_checks"] = health_checks
@@ -522,6 +563,15 @@ class RegionBackendService(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "backends")
+
+    @property
+    @pulumi.getter(name="cdnPolicy")
+    def cdn_policy(self) -> pulumi.Output['outputs.RegionBackendServiceCdnPolicy']:
+        """
+        Cloud CDN configuration for this BackendService.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cdn_policy")
 
     @property
     @pulumi.getter(name="circuitBreakers")
@@ -573,6 +623,14 @@ class RegionBackendService(pulumi.CustomResource):
         Provide this property when you create the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="enableCdn")
+    def enable_cdn(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, enable Cloud CDN for this RegionBackendService.
+        """
+        return pulumi.get(self, "enable_cdn")
 
     @property
     @pulumi.getter(name="failoverPolicy")

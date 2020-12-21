@@ -770,8 +770,16 @@ type BucketLifecycleRuleCondition struct {
 	Age *int `pulumi:"age"`
 	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
 	CreatedBefore *string `pulumi:"createdBefore"`
+	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	CustomTimeBefore *string `pulumi:"customTimeBefore"`
+	// Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+	DaysSinceCustomTime *int `pulumi:"daysSinceCustomTime"`
+	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+	DaysSinceNoncurrentTime *int `pulumi:"daysSinceNoncurrentTime"`
 	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
+	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions *int `pulumi:"numNewerVersions"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -794,8 +802,16 @@ type BucketLifecycleRuleConditionArgs struct {
 	Age pulumi.IntPtrInput `pulumi:"age"`
 	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
 	CreatedBefore pulumi.StringPtrInput `pulumi:"createdBefore"`
+	// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+	CustomTimeBefore pulumi.StringPtrInput `pulumi:"customTimeBefore"`
+	// Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+	DaysSinceCustomTime pulumi.IntPtrInput `pulumi:"daysSinceCustomTime"`
+	// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+	DaysSinceNoncurrentTime pulumi.IntPtrInput `pulumi:"daysSinceNoncurrentTime"`
 	// [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
+	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
 	NumNewerVersions pulumi.IntPtrInput `pulumi:"numNewerVersions"`
 	// Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -838,9 +854,29 @@ func (o BucketLifecycleRuleConditionOutput) CreatedBefore() pulumi.StringPtrOutp
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CreatedBefore }).(pulumi.StringPtrOutput)
 }
 
+// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+func (o BucketLifecycleRuleConditionOutput) CustomTimeBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.CustomTimeBefore }).(pulumi.StringPtrOutput)
+}
+
+// Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+func (o BucketLifecycleRuleConditionOutput) DaysSinceCustomTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceCustomTime }).(pulumi.IntPtrOutput)
+}
+
+// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+func (o BucketLifecycleRuleConditionOutput) DaysSinceNoncurrentTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *int { return v.DaysSinceNoncurrentTime }).(pulumi.IntPtrOutput)
+}
+
 // [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
 func (o BucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesStorageClasses }).(pulumi.StringArrayOutput)
+}
+
+// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+func (o BucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *string { return v.NoncurrentTimeBefore }).(pulumi.StringPtrOutput)
 }
 
 // Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.

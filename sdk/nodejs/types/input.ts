@@ -5163,6 +5163,13 @@ export namespace compute {
          * Structure is documented below.
          */
         cacheKeyPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicyCacheKeyPolicy>;
+        cacheMode?: pulumi.Input<string>;
+        clientTtl?: pulumi.Input<number>;
+        defaultTtl?: pulumi.Input<number>;
+        maxTtl?: pulumi.Input<number>;
+        negativeCaching?: pulumi.Input<boolean>;
+        negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceCdnPolicyNegativeCachingPolicy>[]>;
+        serveWhileStale?: pulumi.Input<number>;
         /**
          * Maximum number of seconds the response to a signed URL request
          * will be considered fresh, defaults to 1hr (3600s). After this
@@ -5211,6 +5218,11 @@ export namespace compute {
          * delimiters.
          */
         queryStringWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface BackendServiceCdnPolicyNegativeCachingPolicy {
+        code?: pulumi.Input<number>;
+        ttl?: pulumi.Input<number>;
     }
 
     export interface BackendServiceCircuitBreakers {
@@ -5295,10 +5307,6 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: pulumi.Input<string>;
-        /**
-         * Lifetime of the cookie.
-         * Structure is documented below.
-         */
         ttl?: pulumi.Input<inputs.compute.BackendServiceConsistentHashHttpCookieTtl>;
     }
 
@@ -6107,6 +6115,9 @@ export namespace compute {
     }
 
     export interface InstanceConfidentialInstanceConfig {
+        /**
+         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
         enableConfidentialCompute: pulumi.Input<boolean>;
     }
 
@@ -6610,6 +6621,9 @@ export namespace compute {
     }
 
     export interface InstanceTemplateConfidentialInstanceConfig {
+        /**
+         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
         enableConfidentialCompute: pulumi.Input<boolean>;
     }
 
@@ -7444,6 +7458,74 @@ export namespace compute {
         maxUtilization?: pulumi.Input<number>;
     }
 
+    export interface RegionBackendServiceCdnPolicy {
+        /**
+         * The CacheKeyPolicy for this CdnPolicy.
+         * Structure is documented below.
+         */
+        cacheKeyPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicyCacheKeyPolicy>;
+        cacheMode?: pulumi.Input<string>;
+        clientTtl?: pulumi.Input<number>;
+        defaultTtl?: pulumi.Input<number>;
+        maxTtl?: pulumi.Input<number>;
+        negativeCaching?: pulumi.Input<boolean>;
+        negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicyNegativeCachingPolicy>[]>;
+        serveWhileStale?: pulumi.Input<number>;
+        /**
+         * Maximum number of seconds the response to a signed URL request
+         * will be considered fresh, defaults to 1hr (3600s). After this
+         * time period, the response will be revalidated before
+         * being served.
+         * When serving responses to signed URL requests, Cloud CDN will
+         * internally behave as though all responses from this backend had a
+         * "Cache-Control: public, max-age=[TTL]" header, regardless of any
+         * existing Cache-Control header. The actual headers served in
+         * responses will not be altered.
+         */
+        signedUrlCacheMaxAgeSec?: pulumi.Input<number>;
+    }
+
+    export interface RegionBackendServiceCdnPolicyCacheKeyPolicy {
+        /**
+         * If true requests to different hosts will be cached separately.
+         */
+        includeHost?: pulumi.Input<boolean>;
+        /**
+         * If true, http and https requests will be cached separately.
+         */
+        includeProtocol?: pulumi.Input<boolean>;
+        /**
+         * If true, include query string parameters in the cache key
+         * according to queryStringWhitelist and
+         * query_string_blacklist. If neither is set, the entire query
+         * string will be included.
+         * If false, the query string will be excluded from the cache
+         * key entirely.
+         */
+        includeQueryString?: pulumi.Input<boolean>;
+        /**
+         * Names of query string parameters to exclude in cache keys.
+         * All other parameters will be included. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
+        queryStringBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Names of query string parameters to include in cache keys.
+         * All other parameters will be excluded. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
+        queryStringWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+        code?: pulumi.Input<number>;
+        ttl?: pulumi.Input<number>;
+    }
+
     export interface RegionBackendServiceCircuitBreakers {
         /**
          * The timeout for new network connections to hosts.  Structure is documented below.
@@ -7526,10 +7608,6 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: pulumi.Input<string>;
-        /**
-         * Lifetime of the cookie.
-         * Structure is documented below.
-         */
         ttl?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl>;
     }
 
@@ -19993,9 +20071,25 @@ export namespace storage {
          */
         createdBefore?: pulumi.Input<string>;
         /**
+         * Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+         */
+        customTimeBefore?: pulumi.Input<string>;
+        /**
+         * Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+         */
+        daysSinceCustomTime?: pulumi.Input<number>;
+        /**
+         * Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+         */
+        daysSinceNoncurrentTime?: pulumi.Input<number>;
+        /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+         */
+        noncurrentTimeBefore?: pulumi.Input<string>;
         /**
          * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
          */

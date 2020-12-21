@@ -30,6 +30,7 @@ __all__ = [
     'BackendServiceBackendArgs',
     'BackendServiceCdnPolicyArgs',
     'BackendServiceCdnPolicyCacheKeyPolicyArgs',
+    'BackendServiceCdnPolicyNegativeCachingPolicyArgs',
     'BackendServiceCircuitBreakersArgs',
     'BackendServiceCircuitBreakersConnectTimeoutArgs',
     'BackendServiceConsistentHashArgs',
@@ -151,6 +152,9 @@ __all__ = [
     'RegionAutoscalerAutoscalingPolicyScaleInControlArgs',
     'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs',
     'RegionBackendServiceBackendArgs',
+    'RegionBackendServiceCdnPolicyArgs',
+    'RegionBackendServiceCdnPolicyCacheKeyPolicyArgs',
+    'RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs',
     'RegionBackendServiceCircuitBreakersArgs',
     'RegionBackendServiceCircuitBreakersConnectTimeoutArgs',
     'RegionBackendServiceConsistentHashArgs',
@@ -1977,6 +1981,13 @@ class BackendServiceBackendArgs:
 class BackendServiceCdnPolicyArgs:
     def __init__(__self__, *,
                  cache_key_policy: Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs']] = None,
+                 cache_mode: Optional[pulumi.Input[str]] = None,
+                 client_ttl: Optional[pulumi.Input[int]] = None,
+                 default_ttl: Optional[pulumi.Input[int]] = None,
+                 max_ttl: Optional[pulumi.Input[int]] = None,
+                 negative_caching: Optional[pulumi.Input[bool]] = None,
+                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 serve_while_stale: Optional[pulumi.Input[int]] = None,
                  signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
@@ -1993,6 +2004,20 @@ class BackendServiceCdnPolicyArgs:
         """
         if cache_key_policy is not None:
             pulumi.set(__self__, "cache_key_policy", cache_key_policy)
+        if cache_mode is not None:
+            pulumi.set(__self__, "cache_mode", cache_mode)
+        if client_ttl is not None:
+            pulumi.set(__self__, "client_ttl", client_ttl)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policies is not None:
+            pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
 
@@ -2008,6 +2033,69 @@ class BackendServiceCdnPolicyArgs:
     @cache_key_policy.setter
     def cache_key_policy(self, value: Optional[pulumi.Input['BackendServiceCdnPolicyCacheKeyPolicyArgs']]):
         pulumi.set(self, "cache_key_policy", value)
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cache_mode")
+
+    @cache_mode.setter
+    def cache_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_mode", value)
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "client_ttl")
+
+    @client_ttl.setter
+    def client_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_ttl", value)
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "default_ttl")
+
+    @default_ttl.setter
+    def default_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_ttl", value)
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_ttl")
+
+    @max_ttl.setter
+    def max_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_ttl", value)
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "negative_caching")
+
+    @negative_caching.setter
+    def negative_caching(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negative_caching", value)
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @negative_caching_policies.setter
+    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]):
+        pulumi.set(self, "negative_caching_policies", value)
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "serve_while_stale")
+
+    @serve_while_stale.setter
+    def serve_while_stale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "serve_while_stale", value)
 
     @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
@@ -2141,6 +2229,35 @@ class BackendServiceCdnPolicyCacheKeyPolicyArgs:
     @query_string_whitelists.setter
     def query_string_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "query_string_whitelists", value)
+
+
+@pulumi.input_type
+class BackendServiceCdnPolicyNegativeCachingPolicyArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
@@ -2388,8 +2505,6 @@ class BackendServiceConsistentHashHttpCookieArgs:
         """
         :param pulumi.Input[str] name: Name of the cookie.
         :param pulumi.Input[str] path: Path to set for the cookie.
-        :param pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgs'] ttl: Lifetime of the cookie.
-               Structure is documented below.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2425,10 +2540,6 @@ class BackendServiceConsistentHashHttpCookieArgs:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input['BackendServiceConsistentHashHttpCookieTtlArgs']]:
-        """
-        Lifetime of the cookie.
-        Structure is documented below.
-        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -5015,11 +5126,17 @@ class InstanceBootDiskInitializeParamsArgs:
 class InstanceConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_confidential_compute: ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> pulumi.Input[bool]:
+        """
+        ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
@@ -7363,11 +7480,17 @@ class InstanceShieldedInstanceConfigArgs:
 class InstanceTemplateConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_confidential_compute: ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> pulumi.Input[bool]:
+        """
+        ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     @enable_confidential_compute.setter
@@ -10013,6 +10136,289 @@ class RegionBackendServiceBackendArgs:
 
 
 @pulumi.input_type
+class RegionBackendServiceCdnPolicyArgs:
+    def __init__(__self__, *,
+                 cache_key_policy: Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs']] = None,
+                 cache_mode: Optional[pulumi.Input[str]] = None,
+                 client_ttl: Optional[pulumi.Input[int]] = None,
+                 default_ttl: Optional[pulumi.Input[int]] = None,
+                 max_ttl: Optional[pulumi.Input[int]] = None,
+                 negative_caching: Optional[pulumi.Input[bool]] = None,
+                 negative_caching_policies: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]]] = None,
+                 serve_while_stale: Optional[pulumi.Input[int]] = None,
+                 signed_url_cache_max_age_sec: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs'] cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+               Structure is documented below.
+        :param pulumi.Input[int] signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request
+               will be considered fresh, defaults to 1hr (3600s). After this
+               time period, the response will be revalidated before
+               being served.
+               When serving responses to signed URL requests, Cloud CDN will
+               internally behave as though all responses from this backend had a
+               "Cache-Control: public, max-age=[TTL]" header, regardless of any
+               existing Cache-Control header. The actual headers served in
+               responses will not be altered.
+        """
+        if cache_key_policy is not None:
+            pulumi.set(__self__, "cache_key_policy", cache_key_policy)
+        if cache_mode is not None:
+            pulumi.set(__self__, "cache_mode", cache_mode)
+        if client_ttl is not None:
+            pulumi.set(__self__, "client_ttl", client_ttl)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policies is not None:
+            pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
+        if signed_url_cache_max_age_sec is not None:
+            pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheKeyPolicy")
+    def cache_key_policy(self) -> Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs']]:
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cache_key_policy")
+
+    @cache_key_policy.setter
+    def cache_key_policy(self, value: Optional[pulumi.Input['RegionBackendServiceCdnPolicyCacheKeyPolicyArgs']]):
+        pulumi.set(self, "cache_key_policy", value)
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "cache_mode")
+
+    @cache_mode.setter
+    def cache_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cache_mode", value)
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "client_ttl")
+
+    @client_ttl.setter
+    def client_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "client_ttl", value)
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "default_ttl")
+
+    @default_ttl.setter
+    def default_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "default_ttl", value)
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "max_ttl")
+
+    @max_ttl.setter
+    def max_ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_ttl", value)
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "negative_caching")
+
+    @negative_caching.setter
+    def negative_caching(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "negative_caching", value)
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @negative_caching_policies.setter
+    def negative_caching_policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs']]]]):
+        pulumi.set(self, "negative_caching_policies", value)
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "serve_while_stale")
+
+    @serve_while_stale.setter
+    def serve_while_stale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "serve_while_stale", value)
+
+    @property
+    @pulumi.getter(name="signedUrlCacheMaxAgeSec")
+    def signed_url_cache_max_age_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of seconds the response to a signed URL request
+        will be considered fresh, defaults to 1hr (3600s). After this
+        time period, the response will be revalidated before
+        being served.
+        When serving responses to signed URL requests, Cloud CDN will
+        internally behave as though all responses from this backend had a
+        "Cache-Control: public, max-age=[TTL]" header, regardless of any
+        existing Cache-Control header. The actual headers served in
+        responses will not be altered.
+        """
+        return pulumi.get(self, "signed_url_cache_max_age_sec")
+
+    @signed_url_cache_max_age_sec.setter
+    def signed_url_cache_max_age_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "signed_url_cache_max_age_sec", value)
+
+
+@pulumi.input_type
+class RegionBackendServiceCdnPolicyCacheKeyPolicyArgs:
+    def __init__(__self__, *,
+                 include_host: Optional[pulumi.Input[bool]] = None,
+                 include_protocol: Optional[pulumi.Input[bool]] = None,
+                 include_query_string: Optional[pulumi.Input[bool]] = None,
+                 query_string_blacklists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_string_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] include_host: If true requests to different hosts will be cached separately.
+        :param pulumi.Input[bool] include_protocol: If true, http and https requests will be cached separately.
+        :param pulumi.Input[bool] include_query_string: If true, include query string parameters in the cache key
+               according to query_string_whitelist and
+               query_string_blacklist. If neither is set, the entire query
+               string will be included.
+               If false, the query string will be excluded from the cache
+               key entirely.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_string_blacklists: Names of query string parameters to exclude in cache keys.
+               All other parameters will be included. Either specify
+               query_string_whitelist or query_string_blacklist, not both.
+               '&' and '=' will be percent encoded and not treated as
+               delimiters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_string_whitelists: Names of query string parameters to include in cache keys.
+               All other parameters will be excluded. Either specify
+               query_string_whitelist or query_string_blacklist, not both.
+               '&' and '=' will be percent encoded and not treated as
+               delimiters.
+        """
+        if include_host is not None:
+            pulumi.set(__self__, "include_host", include_host)
+        if include_protocol is not None:
+            pulumi.set(__self__, "include_protocol", include_protocol)
+        if include_query_string is not None:
+            pulumi.set(__self__, "include_query_string", include_query_string)
+        if query_string_blacklists is not None:
+            pulumi.set(__self__, "query_string_blacklists", query_string_blacklists)
+        if query_string_whitelists is not None:
+            pulumi.set(__self__, "query_string_whitelists", query_string_whitelists)
+
+    @property
+    @pulumi.getter(name="includeHost")
+    def include_host(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true requests to different hosts will be cached separately.
+        """
+        return pulumi.get(self, "include_host")
+
+    @include_host.setter
+    def include_host(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_host", value)
+
+    @property
+    @pulumi.getter(name="includeProtocol")
+    def include_protocol(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, http and https requests will be cached separately.
+        """
+        return pulumi.get(self, "include_protocol")
+
+    @include_protocol.setter
+    def include_protocol(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_protocol", value)
+
+    @property
+    @pulumi.getter(name="includeQueryString")
+    def include_query_string(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, include query string parameters in the cache key
+        according to query_string_whitelist and
+        query_string_blacklist. If neither is set, the entire query
+        string will be included.
+        If false, the query string will be excluded from the cache
+        key entirely.
+        """
+        return pulumi.get(self, "include_query_string")
+
+    @include_query_string.setter
+    def include_query_string(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_query_string", value)
+
+    @property
+    @pulumi.getter(name="queryStringBlacklists")
+    def query_string_blacklists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of query string parameters to exclude in cache keys.
+        All other parameters will be included. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        return pulumi.get(self, "query_string_blacklists")
+
+    @query_string_blacklists.setter
+    def query_string_blacklists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_string_blacklists", value)
+
+    @property
+    @pulumi.getter(name="queryStringWhitelists")
+    def query_string_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of query string parameters to include in cache keys.
+        All other parameters will be excluded. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        return pulumi.get(self, "query_string_whitelists")
+
+    @query_string_whitelists.setter
+    def query_string_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_string_whitelists", value)
+
+
+@pulumi.input_type
+class RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs:
+    def __init__(__self__, *,
+                 code: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "code")
+
+    @code.setter
+    def code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "code", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
 class RegionBackendServiceCircuitBreakersArgs:
     def __init__(__self__, *,
                  connect_timeout: Optional[pulumi.Input['RegionBackendServiceCircuitBreakersConnectTimeoutArgs']] = None,
@@ -10257,8 +10663,6 @@ class RegionBackendServiceConsistentHashHttpCookieArgs:
         """
         :param pulumi.Input[str] name: Name of the cookie.
         :param pulumi.Input[str] path: Path to set for the cookie.
-        :param pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgs'] ttl: Lifetime of the cookie.
-               Structure is documented below.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -10294,10 +10698,6 @@ class RegionBackendServiceConsistentHashHttpCookieArgs:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input['RegionBackendServiceConsistentHashHttpCookieTtlArgs']]:
-        """
-        Lifetime of the cookie.
-        Structure is documented below.
-        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter

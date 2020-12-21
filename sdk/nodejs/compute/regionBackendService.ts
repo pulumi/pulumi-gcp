@@ -36,6 +36,36 @@ import * as utilities from "../utilities";
  *     sessionAffinity: "CLIENT_IP",
  * });
  * ```
+ * ### Region Backend Service Cache
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultRegionHealthCheck = new gcp.compute.RegionHealthCheck("defaultRegionHealthCheck", {
+ *     region: "us-central1",
+ *     httpHealthCheck: {
+ *         port: 80,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {
+ *     region: "us-central1",
+ *     healthChecks: [defaultRegionHealthCheck.id],
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         cacheMode: "CACHE_ALL_STATIC",
+ *         defaultTtl: 3600,
+ *         clientTtl: 7200,
+ *         maxTtl: 10800,
+ *         negativeCaching: true,
+ *         signedUrlCacheMaxAgeSec: 7200,
+ *     },
+ *     loadBalancingScheme: "EXTERNAL",
+ *     protocol: "HTTP",
+ * });
+ * ```
  * ### Region Backend Service Ilb Round Robin
  *
  * ```typescript
@@ -235,6 +265,11 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly backends!: pulumi.Output<outputs.compute.RegionBackendServiceBackend[] | undefined>;
     /**
+     * Cloud CDN configuration for this BackendService.
+     * Structure is documented below.
+     */
+    public readonly cdnPolicy!: pulumi.Output<outputs.compute.RegionBackendServiceCdnPolicy>;
+    /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -265,6 +300,10 @@ export class RegionBackendService extends pulumi.CustomResource {
      * Provide this property when you create the resource.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * If true, enable Cloud CDN for this RegionBackendService.
+     */
+    public readonly enableCdn!: pulumi.Output<boolean | undefined>;
     /**
      * Policy for failovers.
      * Structure is documented below.
@@ -395,11 +434,13 @@ export class RegionBackendService extends pulumi.CustomResource {
             const state = argsOrState as RegionBackendServiceState | undefined;
             inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
             inputs["backends"] = state ? state.backends : undefined;
+            inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
             inputs["circuitBreakers"] = state ? state.circuitBreakers : undefined;
             inputs["connectionDrainingTimeoutSec"] = state ? state.connectionDrainingTimeoutSec : undefined;
             inputs["consistentHash"] = state ? state.consistentHash : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enableCdn"] = state ? state.enableCdn : undefined;
             inputs["failoverPolicy"] = state ? state.failoverPolicy : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["healthChecks"] = state ? state.healthChecks : undefined;
@@ -420,10 +461,12 @@ export class RegionBackendService extends pulumi.CustomResource {
             const args = argsOrState as RegionBackendServiceArgs | undefined;
             inputs["affinityCookieTtlSec"] = args ? args.affinityCookieTtlSec : undefined;
             inputs["backends"] = args ? args.backends : undefined;
+            inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             inputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
             inputs["connectionDrainingTimeoutSec"] = args ? args.connectionDrainingTimeoutSec : undefined;
             inputs["consistentHash"] = args ? args.consistentHash : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableCdn"] = args ? args.enableCdn : undefined;
             inputs["failoverPolicy"] = args ? args.failoverPolicy : undefined;
             inputs["healthChecks"] = args ? args.healthChecks : undefined;
             inputs["loadBalancingScheme"] = args ? args.loadBalancingScheme : undefined;
@@ -471,6 +514,11 @@ export interface RegionBackendServiceState {
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[]>;
     /**
+     * Cloud CDN configuration for this BackendService.
+     * Structure is documented below.
+     */
+    readonly cdnPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicy>;
+    /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -501,6 +549,10 @@ export interface RegionBackendServiceState {
      * Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * If true, enable Cloud CDN for this RegionBackendService.
+     */
+    readonly enableCdn?: pulumi.Input<boolean>;
     /**
      * Policy for failovers.
      * Structure is documented below.
@@ -636,6 +688,11 @@ export interface RegionBackendServiceArgs {
      */
     readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceBackend>[]>;
     /**
+     * Cloud CDN configuration for this BackendService.
+     * Structure is documented below.
+     */
+    readonly cdnPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicy>;
+    /**
      * Settings controlling the volume of connections to a backend service. This field
      * is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
      * and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -662,6 +719,10 @@ export interface RegionBackendServiceArgs {
      * Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * If true, enable Cloud CDN for this RegionBackendService.
+     */
+    readonly enableCdn?: pulumi.Input<boolean>;
     /**
      * Policy for failovers.
      * Structure is documented below.

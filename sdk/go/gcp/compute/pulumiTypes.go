@@ -3876,7 +3876,14 @@ func (o BackendServiceBackendArrayOutput) Index(i pulumi.IntInput) BackendServic
 type BackendServiceCdnPolicy struct {
 	// The CacheKeyPolicy for this CdnPolicy.
 	// Structure is documented below.
-	CacheKeyPolicy *BackendServiceCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicy"`
+	CacheKeyPolicy          *BackendServiceCdnPolicyCacheKeyPolicy         `pulumi:"cacheKeyPolicy"`
+	CacheMode               *string                                        `pulumi:"cacheMode"`
+	ClientTtl               *int                                           `pulumi:"clientTtl"`
+	DefaultTtl              *int                                           `pulumi:"defaultTtl"`
+	MaxTtl                  *int                                           `pulumi:"maxTtl"`
+	NegativeCaching         *bool                                          `pulumi:"negativeCaching"`
+	NegativeCachingPolicies []BackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         *int                                           `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
 	// time period, the response will be revalidated before
@@ -3903,7 +3910,14 @@ type BackendServiceCdnPolicyInput interface {
 type BackendServiceCdnPolicyArgs struct {
 	// The CacheKeyPolicy for this CdnPolicy.
 	// Structure is documented below.
-	CacheKeyPolicy BackendServiceCdnPolicyCacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
+	CacheKeyPolicy          BackendServiceCdnPolicyCacheKeyPolicyPtrInput          `pulumi:"cacheKeyPolicy"`
+	CacheMode               pulumi.StringPtrInput                                  `pulumi:"cacheMode"`
+	ClientTtl               pulumi.IntPtrInput                                     `pulumi:"clientTtl"`
+	DefaultTtl              pulumi.IntPtrInput                                     `pulumi:"defaultTtl"`
+	MaxTtl                  pulumi.IntPtrInput                                     `pulumi:"maxTtl"`
+	NegativeCaching         pulumi.BoolPtrInput                                    `pulumi:"negativeCaching"`
+	NegativeCachingPolicies BackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         pulumi.IntPtrInput                                     `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
 	// time period, the response will be revalidated before
@@ -3999,6 +4013,36 @@ func (o BackendServiceCdnPolicyOutput) CacheKeyPolicy() BackendServiceCdnPolicyC
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *BackendServiceCdnPolicyCacheKeyPolicy { return v.CacheKeyPolicy }).(BackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
 }
 
+func (o BackendServiceCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyOutput) NegativeCachingPolicies() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) []BackendServiceCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicies
+	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o BackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of seconds the response to a signed URL request
 // will be considered fresh, defaults to 1hr (3600s). After this
 // time period, the response will be revalidated before
@@ -4039,6 +4083,69 @@ func (o BackendServiceCdnPolicyPtrOutput) CacheKeyPolicy() BackendServiceCdnPoli
 		}
 		return v.CacheKeyPolicy
 	}).(BackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCaching
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyPtrOutput) NegativeCachingPolicies() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) []BackendServiceCdnPolicyNegativeCachingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCachingPolicies
+	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o BackendServiceCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServeWhileStale
+	}).(pulumi.IntPtrOutput)
 }
 
 // Maximum number of seconds the response to a signed URL request
@@ -4316,6 +4423,106 @@ func (o BackendServiceCdnPolicyCacheKeyPolicyPtrOutput) QueryStringWhitelists() 
 		}
 		return v.QueryStringWhitelists
 	}).(pulumi.StringArrayOutput)
+}
+
+type BackendServiceCdnPolicyNegativeCachingPolicy struct {
+	Code *int `pulumi:"code"`
+	Ttl  *int `pulumi:"ttl"`
+}
+
+// BackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts BackendServiceCdnPolicyNegativeCachingPolicyArgs and BackendServiceCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `BackendServiceCdnPolicyNegativeCachingPolicyInput` via:
+//
+//          BackendServiceCdnPolicyNegativeCachingPolicyArgs{...}
+type BackendServiceCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToBackendServiceCdnPolicyNegativeCachingPolicyOutput() BackendServiceCdnPolicyNegativeCachingPolicyOutput
+	ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) BackendServiceCdnPolicyNegativeCachingPolicyOutput
+}
+
+type BackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	Ttl  pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArgs) ToBackendServiceCdnPolicyNegativeCachingPolicyOutput() BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArgs) ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// BackendServiceCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts BackendServiceCdnPolicyNegativeCachingPolicyArray and BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `BackendServiceCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//          BackendServiceCdnPolicyNegativeCachingPolicyArray{ BackendServiceCdnPolicyNegativeCachingPolicyArgs{...} }
+type BackendServiceCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+	ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type BackendServiceCdnPolicyNegativeCachingPolicyArray []BackendServiceCdnPolicyNegativeCachingPolicyInput
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArray) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceCdnPolicyNegativeCachingPolicyArray) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+type BackendServiceCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyOutput() BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) BackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendServiceCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]BackendServiceCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(BackendServiceCdnPolicyNegativeCachingPolicyOutput)
 }
 
 type BackendServiceCircuitBreakers struct {
@@ -4951,10 +5158,8 @@ type BackendServiceConsistentHashHttpCookie struct {
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
 	// Path to set for the cookie.
-	Path *string `pulumi:"path"`
-	// Lifetime of the cookie.
-	// Structure is documented below.
-	Ttl *BackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
+	Path *string                                    `pulumi:"path"`
+	Ttl  *BackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
 }
 
 // BackendServiceConsistentHashHttpCookieInput is an input type that accepts BackendServiceConsistentHashHttpCookieArgs and BackendServiceConsistentHashHttpCookieOutput values.
@@ -4972,10 +5177,8 @@ type BackendServiceConsistentHashHttpCookieArgs struct {
 	// Name of the cookie.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to set for the cookie.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Lifetime of the cookie.
-	// Structure is documented below.
-	Ttl BackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
+	Path pulumi.StringPtrInput                             `pulumi:"path"`
+	Ttl  BackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
 }
 
 func (BackendServiceConsistentHashHttpCookieArgs) ElementType() reflect.Type {
@@ -5065,8 +5268,6 @@ func (o BackendServiceConsistentHashHttpCookieOutput) Path() pulumi.StringPtrOut
 	return o.ApplyT(func(v BackendServiceConsistentHashHttpCookie) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.
-// Structure is documented below.
 func (o BackendServiceConsistentHashHttpCookieOutput) Ttl() BackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v BackendServiceConsistentHashHttpCookie) *BackendServiceConsistentHashHttpCookieTtl {
 		return v.Ttl
@@ -5111,8 +5312,6 @@ func (o BackendServiceConsistentHashHttpCookiePtrOutput) Path() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.
-// Structure is documented below.
 func (o BackendServiceConsistentHashHttpCookiePtrOutput) Ttl() BackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConsistentHashHttpCookie) *BackendServiceConsistentHashHttpCookieTtl {
 		if v == nil {
@@ -11547,6 +11746,7 @@ func (o InstanceBootDiskInitializeParamsPtrOutput) Type() pulumi.StringPtrOutput
 }
 
 type InstanceConfidentialInstanceConfig struct {
+	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -11562,6 +11762,7 @@ type InstanceConfidentialInstanceConfigInput interface {
 }
 
 type InstanceConfidentialInstanceConfigArgs struct {
+	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 }
 
@@ -11641,6 +11842,8 @@ func (o InstanceConfidentialInstanceConfigOutput) ToInstanceConfidentialInstance
 		return &v
 	}).(InstanceConfidentialInstanceConfigPtrOutput)
 }
+
+// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -11663,6 +11866,7 @@ func (o InstanceConfidentialInstanceConfigPtrOutput) Elem() InstanceConfidential
 	return o.ApplyT(func(v *InstanceConfidentialInstanceConfig) InstanceConfidentialInstanceConfig { return *v }).(InstanceConfidentialInstanceConfigOutput)
 }
 
+// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceConfidentialInstanceConfig) *bool {
 		if v == nil {
@@ -17878,6 +18082,7 @@ func (o InstanceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutp
 }
 
 type InstanceTemplateConfidentialInstanceConfig struct {
+	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -17893,6 +18098,7 @@ type InstanceTemplateConfidentialInstanceConfigInput interface {
 }
 
 type InstanceTemplateConfidentialInstanceConfigArgs struct {
+	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 }
 
@@ -17972,6 +18178,8 @@ func (o InstanceTemplateConfidentialInstanceConfigOutput) ToInstanceTemplateConf
 		return &v
 	}).(InstanceTemplateConfidentialInstanceConfigPtrOutput)
 }
+
+// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceTemplateConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceTemplateConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -17996,6 +18204,7 @@ func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) Elem() InstanceTemp
 	}).(InstanceTemplateConfidentialInstanceConfigOutput)
 }
 
+// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplateConfidentialInstanceConfig) *bool {
 		if v == nil {
@@ -24633,6 +24842,662 @@ func (o RegionBackendServiceBackendArrayOutput) Index(i pulumi.IntInput) RegionB
 	}).(RegionBackendServiceBackendOutput)
 }
 
+type RegionBackendServiceCdnPolicy struct {
+	// The CacheKeyPolicy for this CdnPolicy.
+	// Structure is documented below.
+	CacheKeyPolicy          *RegionBackendServiceCdnPolicyCacheKeyPolicy         `pulumi:"cacheKeyPolicy"`
+	CacheMode               *string                                              `pulumi:"cacheMode"`
+	ClientTtl               *int                                                 `pulumi:"clientTtl"`
+	DefaultTtl              *int                                                 `pulumi:"defaultTtl"`
+	MaxTtl                  *int                                                 `pulumi:"maxTtl"`
+	NegativeCaching         *bool                                                `pulumi:"negativeCaching"`
+	NegativeCachingPolicies []RegionBackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         *int                                                 `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request
+	// will be considered fresh, defaults to 1hr (3600s). After this
+	// time period, the response will be revalidated before
+	// being served.
+	// When serving responses to signed URL requests, Cloud CDN will
+	// internally behave as though all responses from this backend had a
+	// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+	// existing Cache-Control header. The actual headers served in
+	// responses will not be altered.
+	SignedUrlCacheMaxAgeSec *int `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+// RegionBackendServiceCdnPolicyInput is an input type that accepts RegionBackendServiceCdnPolicyArgs and RegionBackendServiceCdnPolicyOutput values.
+// You can construct a concrete instance of `RegionBackendServiceCdnPolicyInput` via:
+//
+//          RegionBackendServiceCdnPolicyArgs{...}
+type RegionBackendServiceCdnPolicyInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCdnPolicyOutput() RegionBackendServiceCdnPolicyOutput
+	ToRegionBackendServiceCdnPolicyOutputWithContext(context.Context) RegionBackendServiceCdnPolicyOutput
+}
+
+type RegionBackendServiceCdnPolicyArgs struct {
+	// The CacheKeyPolicy for this CdnPolicy.
+	// Structure is documented below.
+	CacheKeyPolicy          RegionBackendServiceCdnPolicyCacheKeyPolicyPtrInput          `pulumi:"cacheKeyPolicy"`
+	CacheMode               pulumi.StringPtrInput                                        `pulumi:"cacheMode"`
+	ClientTtl               pulumi.IntPtrInput                                           `pulumi:"clientTtl"`
+	DefaultTtl              pulumi.IntPtrInput                                           `pulumi:"defaultTtl"`
+	MaxTtl                  pulumi.IntPtrInput                                           `pulumi:"maxTtl"`
+	NegativeCaching         pulumi.BoolPtrInput                                          `pulumi:"negativeCaching"`
+	NegativeCachingPolicies RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         pulumi.IntPtrInput                                           `pulumi:"serveWhileStale"`
+	// Maximum number of seconds the response to a signed URL request
+	// will be considered fresh, defaults to 1hr (3600s). After this
+	// time period, the response will be revalidated before
+	// being served.
+	// When serving responses to signed URL requests, Cloud CDN will
+	// internally behave as though all responses from this backend had a
+	// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+	// existing Cache-Control header. The actual headers served in
+	// responses will not be altered.
+	SignedUrlCacheMaxAgeSec pulumi.IntPtrInput `pulumi:"signedUrlCacheMaxAgeSec"`
+}
+
+func (RegionBackendServiceCdnPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (i RegionBackendServiceCdnPolicyArgs) ToRegionBackendServiceCdnPolicyOutput() RegionBackendServiceCdnPolicyOutput {
+	return i.ToRegionBackendServiceCdnPolicyOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceCdnPolicyArgs) ToRegionBackendServiceCdnPolicyOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyOutput)
+}
+
+func (i RegionBackendServiceCdnPolicyArgs) ToRegionBackendServiceCdnPolicyPtrOutput() RegionBackendServiceCdnPolicyPtrOutput {
+	return i.ToRegionBackendServiceCdnPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceCdnPolicyArgs) ToRegionBackendServiceCdnPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyOutput).ToRegionBackendServiceCdnPolicyPtrOutputWithContext(ctx)
+}
+
+// RegionBackendServiceCdnPolicyPtrInput is an input type that accepts RegionBackendServiceCdnPolicyArgs, RegionBackendServiceCdnPolicyPtr and RegionBackendServiceCdnPolicyPtrOutput values.
+// You can construct a concrete instance of `RegionBackendServiceCdnPolicyPtrInput` via:
+//
+//          RegionBackendServiceCdnPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionBackendServiceCdnPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCdnPolicyPtrOutput() RegionBackendServiceCdnPolicyPtrOutput
+	ToRegionBackendServiceCdnPolicyPtrOutputWithContext(context.Context) RegionBackendServiceCdnPolicyPtrOutput
+}
+
+type regionBackendServiceCdnPolicyPtrType RegionBackendServiceCdnPolicyArgs
+
+func RegionBackendServiceCdnPolicyPtr(v *RegionBackendServiceCdnPolicyArgs) RegionBackendServiceCdnPolicyPtrInput {
+	return (*regionBackendServiceCdnPolicyPtrType)(v)
+}
+
+func (*regionBackendServiceCdnPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (i *regionBackendServiceCdnPolicyPtrType) ToRegionBackendServiceCdnPolicyPtrOutput() RegionBackendServiceCdnPolicyPtrOutput {
+	return i.ToRegionBackendServiceCdnPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *regionBackendServiceCdnPolicyPtrType) ToRegionBackendServiceCdnPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyPtrOutput)
+}
+
+type RegionBackendServiceCdnPolicyOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCdnPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) ToRegionBackendServiceCdnPolicyOutput() RegionBackendServiceCdnPolicyOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) ToRegionBackendServiceCdnPolicyOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) ToRegionBackendServiceCdnPolicyPtrOutput() RegionBackendServiceCdnPolicyPtrOutput {
+	return o.ToRegionBackendServiceCdnPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) ToRegionBackendServiceCdnPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *RegionBackendServiceCdnPolicy {
+		return &v
+	}).(RegionBackendServiceCdnPolicyPtrOutput)
+}
+
+// The CacheKeyPolicy for this CdnPolicy.
+// Structure is documented below.
+func (o RegionBackendServiceCdnPolicyOutput) CacheKeyPolicy() RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *RegionBackendServiceCdnPolicyCacheKeyPolicy {
+		return v.CacheKeyPolicy
+	}).(RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) NegativeCachingPolicies() RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) []RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicies
+	}).(RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of seconds the response to a signed URL request
+// will be considered fresh, defaults to 1hr (3600s). After this
+// time period, the response will be revalidated before
+// being served.
+// When serving responses to signed URL requests, Cloud CDN will
+// internally behave as though all responses from this backend had a
+// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+// existing Cache-Control header. The actual headers served in
+// responses will not be altered.
+func (o RegionBackendServiceCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntPtrOutput)
+}
+
+type RegionBackendServiceCdnPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCdnPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendServiceCdnPolicy)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) ToRegionBackendServiceCdnPolicyPtrOutput() RegionBackendServiceCdnPolicyPtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) ToRegionBackendServiceCdnPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyPtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) Elem() RegionBackendServiceCdnPolicyOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) RegionBackendServiceCdnPolicy { return *v }).(RegionBackendServiceCdnPolicyOutput)
+}
+
+// The CacheKeyPolicy for this CdnPolicy.
+// Structure is documented below.
+func (o RegionBackendServiceCdnPolicyPtrOutput) CacheKeyPolicy() RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *RegionBackendServiceCdnPolicyCacheKeyPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.CacheKeyPolicy
+	}).(RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheMode
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTtl
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCaching
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) NegativeCachingPolicies() RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) []RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.NegativeCachingPolicies
+	}).(RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ServeWhileStale
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of seconds the response to a signed URL request
+// will be considered fresh, defaults to 1hr (3600s). After this
+// time period, the response will be revalidated before
+// being served.
+// When serving responses to signed URL requests, Cloud CDN will
+// internally behave as though all responses from this backend had a
+// "Cache-Control: public, max-age=[TTL]" header, regardless of any
+// existing Cache-Control header. The actual headers served in
+// responses will not be altered.
+func (o RegionBackendServiceCdnPolicyPtrOutput) SignedUrlCacheMaxAgeSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SignedUrlCacheMaxAgeSec
+	}).(pulumi.IntPtrOutput)
+}
+
+type RegionBackendServiceCdnPolicyCacheKeyPolicy struct {
+	// If true requests to different hosts will be cached separately.
+	IncludeHost *bool `pulumi:"includeHost"`
+	// If true, http and https requests will be cached separately.
+	IncludeProtocol *bool `pulumi:"includeProtocol"`
+	// If true, include query string parameters in the cache key
+	// according to queryStringWhitelist and
+	// query_string_blacklist. If neither is set, the entire query
+	// string will be included.
+	// If false, the query string will be excluded from the cache
+	// key entirely.
+	IncludeQueryString *bool `pulumi:"includeQueryString"`
+	// Names of query string parameters to exclude in cache keys.
+	// All other parameters will be included. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringBlacklists []string `pulumi:"queryStringBlacklists"`
+	// Names of query string parameters to include in cache keys.
+	// All other parameters will be excluded. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringWhitelists []string `pulumi:"queryStringWhitelists"`
+}
+
+// RegionBackendServiceCdnPolicyCacheKeyPolicyInput is an input type that accepts RegionBackendServiceCdnPolicyCacheKeyPolicyArgs and RegionBackendServiceCdnPolicyCacheKeyPolicyOutput values.
+// You can construct a concrete instance of `RegionBackendServiceCdnPolicyCacheKeyPolicyInput` via:
+//
+//          RegionBackendServiceCdnPolicyCacheKeyPolicyArgs{...}
+type RegionBackendServiceCdnPolicyCacheKeyPolicyInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCdnPolicyCacheKeyPolicyOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyOutput
+	ToRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyOutput
+}
+
+type RegionBackendServiceCdnPolicyCacheKeyPolicyArgs struct {
+	// If true requests to different hosts will be cached separately.
+	IncludeHost pulumi.BoolPtrInput `pulumi:"includeHost"`
+	// If true, http and https requests will be cached separately.
+	IncludeProtocol pulumi.BoolPtrInput `pulumi:"includeProtocol"`
+	// If true, include query string parameters in the cache key
+	// according to queryStringWhitelist and
+	// query_string_blacklist. If neither is set, the entire query
+	// string will be included.
+	// If false, the query string will be excluded from the cache
+	// key entirely.
+	IncludeQueryString pulumi.BoolPtrInput `pulumi:"includeQueryString"`
+	// Names of query string parameters to exclude in cache keys.
+	// All other parameters will be included. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringBlacklists pulumi.StringArrayInput `pulumi:"queryStringBlacklists"`
+	// Names of query string parameters to include in cache keys.
+	// All other parameters will be excluded. Either specify
+	// queryStringWhitelist or query_string_blacklist, not both.
+	// '&' and '=' will be percent encoded and not treated as
+	// delimiters.
+	QueryStringWhitelists pulumi.StringArrayInput `pulumi:"queryStringWhitelists"`
+}
+
+func (RegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (i RegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ToRegionBackendServiceCdnPolicyCacheKeyPolicyOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return i.ToRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ToRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyCacheKeyPolicyOutput)
+}
+
+func (i RegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return i.ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceCdnPolicyCacheKeyPolicyArgs) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyCacheKeyPolicyOutput).ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx)
+}
+
+// RegionBackendServiceCdnPolicyCacheKeyPolicyPtrInput is an input type that accepts RegionBackendServiceCdnPolicyCacheKeyPolicyArgs, RegionBackendServiceCdnPolicyCacheKeyPolicyPtr and RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput values.
+// You can construct a concrete instance of `RegionBackendServiceCdnPolicyCacheKeyPolicyPtrInput` via:
+//
+//          RegionBackendServiceCdnPolicyCacheKeyPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type RegionBackendServiceCdnPolicyCacheKeyPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput
+	ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput
+}
+
+type regionBackendServiceCdnPolicyCacheKeyPolicyPtrType RegionBackendServiceCdnPolicyCacheKeyPolicyArgs
+
+func RegionBackendServiceCdnPolicyCacheKeyPolicyPtr(v *RegionBackendServiceCdnPolicyCacheKeyPolicyArgs) RegionBackendServiceCdnPolicyCacheKeyPolicyPtrInput {
+	return (*regionBackendServiceCdnPolicyCacheKeyPolicyPtrType)(v)
+}
+
+func (*regionBackendServiceCdnPolicyCacheKeyPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (i *regionBackendServiceCdnPolicyCacheKeyPolicyPtrType) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return i.ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *regionBackendServiceCdnPolicyCacheKeyPolicyPtrType) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
+}
+
+type RegionBackendServiceCdnPolicyCacheKeyPolicyOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ToRegionBackendServiceCdnPolicyCacheKeyPolicyOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ToRegionBackendServiceCdnPolicyCacheKeyPolicyOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return o.ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyCacheKeyPolicy) *RegionBackendServiceCdnPolicyCacheKeyPolicy {
+		return &v
+	}).(RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
+}
+
+// If true requests to different hosts will be cached separately.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyCacheKeyPolicy) *bool { return v.IncludeHost }).(pulumi.BoolPtrOutput)
+}
+
+// If true, http and https requests will be cached separately.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyCacheKeyPolicy) *bool { return v.IncludeProtocol }).(pulumi.BoolPtrOutput)
+}
+
+// If true, include query string parameters in the cache key
+// according to queryStringWhitelist and
+// query_string_blacklist. If neither is set, the entire query
+// string will be included.
+// If false, the query string will be excluded from the cache
+// key entirely.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) IncludeQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyCacheKeyPolicy) *bool { return v.IncludeQueryString }).(pulumi.BoolPtrOutput)
+}
+
+// Names of query string parameters to exclude in cache keys.
+// All other parameters will be included. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) QueryStringBlacklists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.QueryStringBlacklists }).(pulumi.StringArrayOutput)
+}
+
+// Names of query string parameters to include in cache keys.
+// All other parameters will be excluded. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyOutput) QueryStringWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyCacheKeyPolicy) []string { return v.QueryStringWhitelists }).(pulumi.StringArrayOutput)
+}
+
+type RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendServiceCdnPolicyCacheKeyPolicy)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput() RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) ToRegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) Elem() RegionBackendServiceCdnPolicyCacheKeyPolicyOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicyCacheKeyPolicy) RegionBackendServiceCdnPolicyCacheKeyPolicy {
+		return *v
+	}).(RegionBackendServiceCdnPolicyCacheKeyPolicyOutput)
+}
+
+// If true requests to different hosts will be cached separately.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) IncludeHost() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicyCacheKeyPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeHost
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, http and https requests will be cached separately.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) IncludeProtocol() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicyCacheKeyPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeProtocol
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, include query string parameters in the cache key
+// according to queryStringWhitelist and
+// query_string_blacklist. If neither is set, the entire query
+// string will be included.
+// If false, the query string will be excluded from the cache
+// key entirely.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) IncludeQueryString() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicyCacheKeyPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeQueryString
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Names of query string parameters to exclude in cache keys.
+// All other parameters will be included. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) QueryStringBlacklists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicyCacheKeyPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringBlacklists
+	}).(pulumi.StringArrayOutput)
+}
+
+// Names of query string parameters to include in cache keys.
+// All other parameters will be excluded. Either specify
+// queryStringWhitelist or query_string_blacklist, not both.
+// '&' and '=' will be percent encoded and not treated as
+// delimiters.
+func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) QueryStringWhitelists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCdnPolicyCacheKeyPolicy) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringWhitelists
+	}).(pulumi.StringArrayOutput)
+}
+
+type RegionBackendServiceCdnPolicyNegativeCachingPolicy struct {
+	Code *int `pulumi:"code"`
+	Ttl  *int `pulumi:"ttl"`
+}
+
+// RegionBackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs and RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `RegionBackendServiceCdnPolicyNegativeCachingPolicyInput` via:
+//
+//          RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs{...}
+type RegionBackendServiceCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput() RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput
+	ToRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput
+}
+
+type RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	Ttl  pulumi.IntPtrInput `pulumi:"ttl"`
+}
+
+func (RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput() RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts RegionBackendServiceCdnPolicyNegativeCachingPolicyArray and RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//          RegionBackendServiceCdnPolicyNegativeCachingPolicyArray{ RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs{...} }
+type RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+	ToRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type RegionBackendServiceCdnPolicyNegativeCachingPolicyArray []RegionBackendServiceCdnPolicyNegativeCachingPolicyInput
+
+func (RegionBackendServiceCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i RegionBackendServiceCdnPolicyNegativeCachingPolicyArray) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceCdnPolicyNegativeCachingPolicyArray) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+type RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyOutput() RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RegionBackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
+}
+
+type RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToRegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]RegionBackendServiceCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput)
+}
+
 type RegionBackendServiceCircuitBreakers struct {
 	// The timeout for new network connections to hosts.  Structure is documented below.
 	ConnectTimeout *RegionBackendServiceCircuitBreakersConnectTimeout `pulumi:"connectTimeout"`
@@ -25268,10 +26133,8 @@ type RegionBackendServiceConsistentHashHttpCookie struct {
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
 	// Path to set for the cookie.
-	Path *string `pulumi:"path"`
-	// Lifetime of the cookie.
-	// Structure is documented below.
-	Ttl *RegionBackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
+	Path *string                                          `pulumi:"path"`
+	Ttl  *RegionBackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
 }
 
 // RegionBackendServiceConsistentHashHttpCookieInput is an input type that accepts RegionBackendServiceConsistentHashHttpCookieArgs and RegionBackendServiceConsistentHashHttpCookieOutput values.
@@ -25289,10 +26152,8 @@ type RegionBackendServiceConsistentHashHttpCookieArgs struct {
 	// Name of the cookie.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to set for the cookie.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Lifetime of the cookie.
-	// Structure is documented below.
-	Ttl RegionBackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
+	Path pulumi.StringPtrInput                                   `pulumi:"path"`
+	Ttl  RegionBackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
 }
 
 func (RegionBackendServiceConsistentHashHttpCookieArgs) ElementType() reflect.Type {
@@ -25382,8 +26243,6 @@ func (o RegionBackendServiceConsistentHashHttpCookieOutput) Path() pulumi.String
 	return o.ApplyT(func(v RegionBackendServiceConsistentHashHttpCookie) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.
-// Structure is documented below.
 func (o RegionBackendServiceConsistentHashHttpCookieOutput) Ttl() RegionBackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceConsistentHashHttpCookie) *RegionBackendServiceConsistentHashHttpCookieTtl {
 		return v.Ttl
@@ -25430,8 +26289,6 @@ func (o RegionBackendServiceConsistentHashHttpCookiePtrOutput) Path() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Lifetime of the cookie.
-// Structure is documented below.
 func (o RegionBackendServiceConsistentHashHttpCookiePtrOutput) Ttl() RegionBackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceConsistentHashHttpCookie) *RegionBackendServiceConsistentHashHttpCookieTtl {
 		if v == nil {
@@ -61483,8 +62340,15 @@ func (o GetBackendServiceBackendArrayOutput) Index(i pulumi.IntInput) GetBackend
 }
 
 type GetBackendServiceCdnPolicy struct {
-	CacheKeyPolicies        []GetBackendServiceCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicies"`
-	SignedUrlCacheMaxAgeSec int                                        `pulumi:"signedUrlCacheMaxAgeSec"`
+	CacheKeyPolicies        []GetBackendServiceCdnPolicyCacheKeyPolicy        `pulumi:"cacheKeyPolicies"`
+	CacheMode               string                                            `pulumi:"cacheMode"`
+	ClientTtl               int                                               `pulumi:"clientTtl"`
+	DefaultTtl              int                                               `pulumi:"defaultTtl"`
+	MaxTtl                  int                                               `pulumi:"maxTtl"`
+	NegativeCaching         bool                                              `pulumi:"negativeCaching"`
+	NegativeCachingPolicies []GetBackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         int                                               `pulumi:"serveWhileStale"`
+	SignedUrlCacheMaxAgeSec int                                               `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 // GetBackendServiceCdnPolicyInput is an input type that accepts GetBackendServiceCdnPolicyArgs and GetBackendServiceCdnPolicyOutput values.
@@ -61499,8 +62363,15 @@ type GetBackendServiceCdnPolicyInput interface {
 }
 
 type GetBackendServiceCdnPolicyArgs struct {
-	CacheKeyPolicies        GetBackendServiceCdnPolicyCacheKeyPolicyArrayInput `pulumi:"cacheKeyPolicies"`
-	SignedUrlCacheMaxAgeSec pulumi.IntInput                                    `pulumi:"signedUrlCacheMaxAgeSec"`
+	CacheKeyPolicies        GetBackendServiceCdnPolicyCacheKeyPolicyArrayInput        `pulumi:"cacheKeyPolicies"`
+	CacheMode               pulumi.StringInput                                        `pulumi:"cacheMode"`
+	ClientTtl               pulumi.IntInput                                           `pulumi:"clientTtl"`
+	DefaultTtl              pulumi.IntInput                                           `pulumi:"defaultTtl"`
+	MaxTtl                  pulumi.IntInput                                           `pulumi:"maxTtl"`
+	NegativeCaching         pulumi.BoolInput                                          `pulumi:"negativeCaching"`
+	NegativeCachingPolicies GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
+	ServeWhileStale         pulumi.IntInput                                           `pulumi:"serveWhileStale"`
+	SignedUrlCacheMaxAgeSec pulumi.IntInput                                           `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 func (GetBackendServiceCdnPolicyArgs) ElementType() reflect.Type {
@@ -61558,6 +62429,36 @@ func (o GetBackendServiceCdnPolicyOutput) CacheKeyPolicies() GetBackendServiceCd
 	return o.ApplyT(func(v GetBackendServiceCdnPolicy) []GetBackendServiceCdnPolicyCacheKeyPolicy {
 		return v.CacheKeyPolicies
 	}).(GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput)
+}
+
+func (o GetBackendServiceCdnPolicyOutput) CacheMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) string { return v.CacheMode }).(pulumi.StringOutput)
+}
+
+func (o GetBackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.ClientTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.DefaultTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.MaxTtl }).(pulumi.IntOutput)
+}
+
+func (o GetBackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) bool { return v.NegativeCaching }).(pulumi.BoolOutput)
+}
+
+func (o GetBackendServiceCdnPolicyOutput) NegativeCachingPolicies() GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) []GetBackendServiceCdnPolicyNegativeCachingPolicy {
+		return v.NegativeCachingPolicies
+	}).(GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+func (o GetBackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicy) int { return v.ServeWhileStale }).(pulumi.IntOutput)
 }
 
 func (o GetBackendServiceCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
@@ -61700,6 +62601,106 @@ func (o GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput) Index(i pulumi.IntI
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceCdnPolicyCacheKeyPolicy {
 		return vs[0].([]GetBackendServiceCdnPolicyCacheKeyPolicy)[vs[1].(int)]
 	}).(GetBackendServiceCdnPolicyCacheKeyPolicyOutput)
+}
+
+type GetBackendServiceCdnPolicyNegativeCachingPolicy struct {
+	Code int `pulumi:"code"`
+	Ttl  int `pulumi:"ttl"`
+}
+
+// GetBackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts GetBackendServiceCdnPolicyNegativeCachingPolicyArgs and GetBackendServiceCdnPolicyNegativeCachingPolicyOutput values.
+// You can construct a concrete instance of `GetBackendServiceCdnPolicyNegativeCachingPolicyInput` via:
+//
+//          GetBackendServiceCdnPolicyNegativeCachingPolicyArgs{...}
+type GetBackendServiceCdnPolicyNegativeCachingPolicyInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceCdnPolicyNegativeCachingPolicyOutput() GetBackendServiceCdnPolicyNegativeCachingPolicyOutput
+	ToGetBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Context) GetBackendServiceCdnPolicyNegativeCachingPolicyOutput
+}
+
+type GetBackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	Code pulumi.IntInput `pulumi:"code"`
+	Ttl  pulumi.IntInput `pulumi:"ttl"`
+}
+
+func (GetBackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceCdnPolicyNegativeCachingPolicyArgs) ToGetBackendServiceCdnPolicyNegativeCachingPolicyOutput() GetBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return i.ToGetBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceCdnPolicyNegativeCachingPolicyArgs) ToGetBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCdnPolicyNegativeCachingPolicyOutput)
+}
+
+// GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput is an input type that accepts GetBackendServiceCdnPolicyNegativeCachingPolicyArray and GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput values.
+// You can construct a concrete instance of `GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput` via:
+//
+//          GetBackendServiceCdnPolicyNegativeCachingPolicyArray{ GetBackendServiceCdnPolicyNegativeCachingPolicyArgs{...} }
+type GetBackendServiceCdnPolicyNegativeCachingPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+	ToGetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Context) GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput
+}
+
+type GetBackendServiceCdnPolicyNegativeCachingPolicyArray []GetBackendServiceCdnPolicyNegativeCachingPolicyInput
+
+func (GetBackendServiceCdnPolicyNegativeCachingPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (i GetBackendServiceCdnPolicyNegativeCachingPolicyArray) ToGetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return i.ToGetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackendServiceCdnPolicyNegativeCachingPolicyArray) ToGetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
+}
+
+type GetBackendServiceCdnPolicyNegativeCachingPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToGetBackendServiceCdnPolicyNegativeCachingPolicyOutput() GetBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToGetBackendServiceCdnPolicyNegativeCachingPolicyOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicyNegativeCachingPolicy) int { return v.Code }).(pulumi.IntOutput)
+}
+
+func (o GetBackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackendServiceCdnPolicyNegativeCachingPolicy) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+type GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackendServiceCdnPolicyNegativeCachingPolicy)(nil)).Elem()
+}
+
+func (o GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToGetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput() GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) ToGetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutputWithContext(ctx context.Context) GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
+	return o
+}
+
+func (o GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput) Index(i pulumi.IntInput) GetBackendServiceCdnPolicyNegativeCachingPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackendServiceCdnPolicyNegativeCachingPolicy {
+		return vs[0].([]GetBackendServiceCdnPolicyNegativeCachingPolicy)[vs[1].(int)]
+	}).(GetBackendServiceCdnPolicyNegativeCachingPolicyOutput)
 }
 
 type GetBackendServiceCircuitBreaker struct {
@@ -66193,6 +67194,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheKeyPolicyOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheKeyPolicyPtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(BackendServiceCircuitBreakersOutput{})
 	pulumi.RegisterOutputType(BackendServiceCircuitBreakersPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceCircuitBreakersConnectTimeoutOutput{})
@@ -66435,6 +67438,12 @@ func init() {
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceBackendOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceBackendArrayOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCdnPolicyOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCdnPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCdnPolicyCacheKeyPolicyOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCircuitBreakersOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCircuitBreakersPtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCircuitBreakersConnectTimeoutOutput{})
@@ -66836,6 +67845,8 @@ func init() {
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyCacheKeyPolicyOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyCacheKeyPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyNegativeCachingPolicyOutput{})
+	pulumi.RegisterOutputType(GetBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCircuitBreakerOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCircuitBreakerArrayOutput{})
 	pulumi.RegisterOutputType(GetBackendServiceCircuitBreakerConnectTimeoutOutput{})

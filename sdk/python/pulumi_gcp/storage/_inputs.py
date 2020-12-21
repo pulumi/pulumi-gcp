@@ -309,13 +309,21 @@ class BucketLifecycleRuleConditionArgs:
     def __init__(__self__, *,
                  age: Optional[pulumi.Input[int]] = None,
                  created_before: Optional[pulumi.Input[str]] = None,
+                 custom_time_before: Optional[pulumi.Input[str]] = None,
+                 days_since_custom_time: Optional[pulumi.Input[int]] = None,
+                 days_since_noncurrent_time: Optional[pulumi.Input[int]] = None,
                  matches_storage_classes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 noncurrent_time_before: Optional[pulumi.Input[str]] = None,
                  num_newer_versions: Optional[pulumi.Input[int]] = None,
                  with_state: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] age: Minimum age of an object in days to satisfy this condition.
         :param pulumi.Input[str] created_before: Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        :param pulumi.Input[str] custom_time_before: Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        :param pulumi.Input[int] days_since_custom_time: Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+        :param pulumi.Input[int] days_since_noncurrent_time: Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
+        :param pulumi.Input[str] noncurrent_time_before: Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
         :param pulumi.Input[int] num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         :param pulumi.Input[str] with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
         """
@@ -323,8 +331,16 @@ class BucketLifecycleRuleConditionArgs:
             pulumi.set(__self__, "age", age)
         if created_before is not None:
             pulumi.set(__self__, "created_before", created_before)
+        if custom_time_before is not None:
+            pulumi.set(__self__, "custom_time_before", custom_time_before)
+        if days_since_custom_time is not None:
+            pulumi.set(__self__, "days_since_custom_time", days_since_custom_time)
+        if days_since_noncurrent_time is not None:
+            pulumi.set(__self__, "days_since_noncurrent_time", days_since_noncurrent_time)
         if matches_storage_classes is not None:
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
+        if noncurrent_time_before is not None:
+            pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
             pulumi.set(__self__, "num_newer_versions", num_newer_versions)
         if with_state is not None:
@@ -355,6 +371,42 @@ class BucketLifecycleRuleConditionArgs:
         pulumi.set(self, "created_before", value)
 
     @property
+    @pulumi.getter(name="customTimeBefore")
+    def custom_time_before(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        """
+        return pulumi.get(self, "custom_time_before")
+
+    @custom_time_before.setter
+    def custom_time_before(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_time_before", value)
+
+    @property
+    @pulumi.getter(name="daysSinceCustomTime")
+    def days_since_custom_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+        """
+        return pulumi.get(self, "days_since_custom_time")
+
+    @days_since_custom_time.setter
+    def days_since_custom_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "days_since_custom_time", value)
+
+    @property
+    @pulumi.getter(name="daysSinceNoncurrentTime")
+    def days_since_noncurrent_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+        """
+        return pulumi.get(self, "days_since_noncurrent_time")
+
+    @days_since_noncurrent_time.setter
+    def days_since_noncurrent_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "days_since_noncurrent_time", value)
+
+    @property
     @pulumi.getter(name="matchesStorageClasses")
     def matches_storage_classes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -365,6 +417,18 @@ class BucketLifecycleRuleConditionArgs:
     @matches_storage_classes.setter
     def matches_storage_classes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "matches_storage_classes", value)
+
+    @property
+    @pulumi.getter(name="noncurrentTimeBefore")
+    def noncurrent_time_before(self) -> Optional[pulumi.Input[str]]:
+        """
+        Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+        """
+        return pulumi.get(self, "noncurrent_time_before")
+
+    @noncurrent_time_before.setter
+    def noncurrent_time_before(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "noncurrent_time_before", value)
 
     @property
     @pulumi.getter(name="numNewerVersions")

@@ -616,8 +616,6 @@ github.com/prometheus/common v0.4.0/go.mod h1:TNfzLD0ON7rHzMJeJkieUDPYmFC7Snx/y8
 github.com/prometheus/procfs v0.0.0-20181005140218-185b4288413d/go.mod h1:c3At6R/oaqEKCNdg8wHV1ftS6bRYblBhIjjI8uT2IGk=
 github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084/go.mod h1:TjEm7ze935MbeOT/UhFTIMYKhuLP4wbCsTZCD3I8kEA=
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
-github.com/pulumi/pulumi-terraform-bridge/v2 v2.15.3 h1:UzyIyVjZ7O3qacxgKbZugxrD1jZ6kCSuqq592c1iAGE=
-github.com/pulumi/pulumi-terraform-bridge/v2 v2.15.3/go.mod h1:XQza50xY2T2b+FkrAKQeLj6sREwDzdrhvjR3eSo2Gys=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.16.0 h1:jTxndT/rY6bN3DyVIsX4Q4B+LPSAOrRlnNW/W6GzDH4=
 github.com/pulumi/pulumi-terraform-bridge/v2 v2.16.0/go.mod h1:/oSHj3Hg9zd8xT2dKVoBifeBbH+/pLPqmTDypgN5FHk=
 github.com/pulumi/pulumi/pkg/v2 v2.15.1-0.20201202214525-260620430c4c h1:M4BMhdOt1le+7JtOhR7uOVrpvu9HnN9388AI/Je9/3Y=
@@ -629,8 +627,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df h1:kXSvfAz43o0D0gfxUqVCOP3NrfnGbptJBshVsqZlBqA=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20200910230100-328eb4ff41df/go.mod h1:pVZLnLuSe/yv0XqTHFPb8xRGWPwgANT77jHeHqjXS5o=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201209160900-e7a50cd322ca h1:aPOyLASSKKUvHyIX0kMivh0wk6YBcgoljzaYavGlupY=
-github.com/pulumi/terraform-provider-google-beta v0.0.0-20201209160900-e7a50cd322ca/go.mod h1:CKyrxhv7Lx+3x9ZuseBgOBgWYaltUIWCcrLR3rf3JaE=
+github.com/pulumi/terraform-provider-google-beta/v3 v3.0.0-20201221155014-6f7c7373cbad h1:+/CRqShhNYBed+BwFrXJrgMPgtFIuxod4yum+O9Db3c=
+github.com/pulumi/terraform-provider-google-beta/v3 v3.0.0-20201221155014-6f7c7373cbad/go.mod h1:URdYGrWefQtOGxUkX1RJd5q3RzgBtR2sXG009A3nqgA=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=

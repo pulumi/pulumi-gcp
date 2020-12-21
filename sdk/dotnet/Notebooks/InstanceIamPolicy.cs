@@ -10,6 +10,101 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Notebooks
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for Cloud AI Notebooks Instance. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.notebooks.InstanceIamPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+    /// * `gcp.notebooks.InstanceIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+    /// * `gcp.notebooks.InstanceIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.notebooks.InstanceIamPolicy` **cannot** be used in conjunction with `gcp.notebooks.InstanceIamBinding` and `gcp.notebooks.InstanceIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.notebooks.InstanceIamBinding` resources **can be** used in conjunction with `gcp.notebooks.InstanceIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_notebooks\_instance\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/viewer",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.Notebooks.InstanceIamPolicy("policy", new Gcp.Notebooks.InstanceIamPolicyArgs
+    ///         {
+    ///             Project = google_notebooks_instance.Instance.Project,
+    ///             Location = google_notebooks_instance.Instance.Location,
+    ///             InstanceName = google_notebooks_instance.Instance.Name,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_notebooks\_instance\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.Notebooks.InstanceIamBinding("binding", new Gcp.Notebooks.InstanceIamBindingArgs
+    ///         {
+    ///             Project = google_notebooks_instance.Instance.Project,
+    ///             Location = google_notebooks_instance.Instance.Location,
+    ///             InstanceName = google_notebooks_instance.Instance.Name,
+    ///             Role = "roles/viewer",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ## google\_notebooks\_instance\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.Notebooks.InstanceIamMember("member", new Gcp.Notebooks.InstanceIamMemberArgs
+    ///         {
+    ///             Project = google_notebooks_instance.Instance.Project,
+    ///             Location = google_notebooks_instance.Instance.Location,
+    ///             InstanceName = google_notebooks_instance.Instance.Name,
+    ///             Role = "roles/viewer",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/locations/{{location}}/instances/{{instance_name}} * {{project}}/{{location}}/{{instance_name}} * {{location}}/{{instance_name}} * {{instance_name}} Any variables not passed in the import command will be taken from the provider configuration. Cloud AI Notebooks instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

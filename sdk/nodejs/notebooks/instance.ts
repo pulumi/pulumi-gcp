@@ -29,11 +29,9 @@ import * as utilities from "../utilities";
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     vmImage: {
- *         project: "deeplearning-platform-release",
  *         imageFamily: "tf-latest-cpu",
+ *         project: "deeplearning-platform-release",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Notebook Instance Basic Container
@@ -43,17 +41,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.notebooks.Instance("instance", {
+ *     containerImage: {
+ *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
+ *         tag: "latest",
+ *     },
  *     location: "us-west1-a",
  *     machineType: "e2-medium",
  *     metadata: {
  *         "proxy-mode": "service_account",
  *     },
- *     containerImage: {
- *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
- *         tag: "latest",
- *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Notebook Instance Basic Gpu
@@ -63,19 +59,17 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.notebooks.Instance("instance", {
- *     location: "us-west1-a",
- *     machineType: "n1-standard-1",
- *     installGpuDriver: true,
  *     acceleratorConfig: {
- *         type: "NVIDIA_TESLA_T4",
  *         coreCount: 1,
+ *         type: "NVIDIA_TESLA_T4",
  *     },
+ *     installGpuDriver: true,
+ *     location: "us-west1-a",
+ *     machineType: "n1-standard-1", // can't be e2 because of accelerator
  *     vmImage: {
- *         project: "deeplearning-platform-release",
  *         imageFamily: "tf-latest-gpu",
+ *         project: "deeplearning-platform-release",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Notebook Instance Full
@@ -110,8 +104,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         k: "val",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

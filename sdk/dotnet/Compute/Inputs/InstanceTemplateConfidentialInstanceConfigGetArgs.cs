@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Compute.Inputs
 
     public sealed class InstanceTemplateConfidentialInstanceConfigGetArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// </summary>
         [Input("enableConfidentialCompute", required: true)]
         public Input<bool> EnableConfidentialCompute { get; set; } = null!;
 

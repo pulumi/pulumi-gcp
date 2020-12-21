@@ -56,6 +56,47 @@ import (
 // 	})
 // }
 // ```
+// ### Backend Service Cache
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
+// 			RequestPath:      pulumi.String("/"),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHttpHealthCheck.ID(),
+// 			}),
+// 			EnableCdn: pulumi.Bool(true),
+// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
+// 				DefaultTtl:              pulumi.Int(3600),
+// 				ClientTtl:               pulumi.Int(7200),
+// 				MaxTtl:                  pulumi.Int(10800),
+// 				NegativeCaching:         pulumi.Bool(true),
+// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Backend Service Traffic Director Round Robin
 //
 // ```go
@@ -157,7 +198,7 @@ import (
 // 		externalProxy, err := compute.NewGlobalNetworkEndpointGroup(ctx, "externalProxy", &compute.GlobalNetworkEndpointGroupArgs{
 // 			NetworkEndpointType: pulumi.String("INTERNET_FQDN_PORT"),
 // 			DefaultPort:         pulumi.Int(443),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -165,7 +206,7 @@ import (
 // 			GlobalNetworkEndpointGroup: externalProxy.ID(),
 // 			Fqdn:                       pulumi.String("test.example.com"),
 // 			Port:                       externalProxy.DefaultPort,
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -186,7 +227,7 @@ import (
 // 					Group: externalProxy.ID(),
 // 				},
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -247,8 +288,7 @@ type BackendService struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders pulumi.StringArrayOutput `pulumi:"customRequestHeaders"`
-	// Headers that the HTTP/S load balancer should add to proxied
-	// responses.
+	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -396,8 +436,7 @@ type backendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
-	// Headers that the HTTP/S load balancer should add to proxied
-	// responses.
+	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -517,8 +556,7 @@ type BackendServiceState struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders pulumi.StringArrayInput
-	// Headers that the HTTP/S load balancer should add to proxied
-	// responses.
+	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -640,8 +678,7 @@ type backendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders []string `pulumi:"customRequestHeaders"`
-	// Headers that the HTTP/S load balancer should add to proxied
-	// responses.
+	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
@@ -756,8 +793,7 @@ type BackendServiceArgs struct {
 	// Headers that the HTTP/S load balancer should add to proxied
 	// requests.
 	CustomRequestHeaders pulumi.StringArrayInput
-	// Headers that the HTTP/S load balancer should add to proxied
-	// responses.
+	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional description of this resource.
 	// Provide this property when you create the resource.

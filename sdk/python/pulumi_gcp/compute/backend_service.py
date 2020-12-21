@@ -70,6 +70,28 @@ class BackendService(pulumi.CustomResource):
             timeout_sec=1)
         default_backend_service = gcp.compute.BackendService("defaultBackendService", health_checks=[default_http_health_check.id])
         ```
+        ### Backend Service Cache
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            health_checks=[default_http_health_check.id],
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                cache_mode="CACHE_ALL_STATIC",
+                default_ttl=3600,
+                client_ttl=7200,
+                max_ttl=10800,
+                negative_caching=True,
+                signed_url_cache_max_age_sec=7200,
+            ))
+        ```
         ### Backend Service Traffic Director Round Robin
 
         ```python
@@ -126,11 +148,13 @@ class BackendService(pulumi.CustomResource):
 
         external_proxy = gcp.compute.GlobalNetworkEndpointGroup("externalProxy",
             network_endpoint_type="INTERNET_FQDN_PORT",
-            default_port=443)
+            default_port=443,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         proxy = gcp.compute.GlobalNetworkEndpoint("proxy",
             global_network_endpoint_group=external_proxy.id,
             fqdn="test.example.com",
-            port=external_proxy.default_port)
+            port=external_proxy.default_port,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default = gcp.compute.BackendService("default",
             enable_cdn=True,
             timeout_sec=10,
@@ -139,7 +163,8 @@ class BackendService(pulumi.CustomResource):
             custom_response_headers=["X-Cache-Hit: {cdn_cache_status}"],
             backends=[gcp.compute.BackendServiceBackendArgs(
                 group=external_proxy.id,
-            )])
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
         ## Import
@@ -185,8 +210,7 @@ class BackendService(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied
                requests.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
-               responses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
@@ -362,8 +386,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied
                requests.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied
-               responses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional description of this resource.
                Provide this property when you create the resource.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendService.
@@ -547,8 +570,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Headers that the HTTP/S load balancer should add to proxied
-        responses.
+        Headers that the HTTP/S load balancer should add to proxied responses.
         """
         return pulumi.get(self, "custom_response_headers")
 

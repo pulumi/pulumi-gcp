@@ -19,6 +19,32 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("cacheKeyPolicy")]
         public Input<Inputs.BackendServiceCdnPolicyCacheKeyPolicyArgs>? CacheKeyPolicy { get; set; }
 
+        [Input("cacheMode")]
+        public Input<string>? CacheMode { get; set; }
+
+        [Input("clientTtl")]
+        public Input<int>? ClientTtl { get; set; }
+
+        [Input("defaultTtl")]
+        public Input<int>? DefaultTtl { get; set; }
+
+        [Input("maxTtl")]
+        public Input<int>? MaxTtl { get; set; }
+
+        [Input("negativeCaching")]
+        public Input<bool>? NegativeCaching { get; set; }
+
+        [Input("negativeCachingPolicies")]
+        private InputList<Inputs.BackendServiceCdnPolicyNegativeCachingPolicyArgs>? _negativeCachingPolicies;
+        public InputList<Inputs.BackendServiceCdnPolicyNegativeCachingPolicyArgs> NegativeCachingPolicies
+        {
+            get => _negativeCachingPolicies ?? (_negativeCachingPolicies = new InputList<Inputs.BackendServiceCdnPolicyNegativeCachingPolicyArgs>());
+            set => _negativeCachingPolicies = value;
+        }
+
+        [Input("serveWhileStale")]
+        public Input<int>? ServeWhileStale { get; set; }
+
         /// <summary>
         /// Maximum number of seconds the response to a signed URL request
         /// will be considered fresh, defaults to 1hr (3600s). After this

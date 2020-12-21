@@ -105,8 +105,7 @@ type Instance struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
@@ -245,8 +244,7 @@ type instanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
@@ -348,8 +346,7 @@ type InstanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
@@ -455,8 +452,7 @@ type instanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -545,8 +541,7 @@ type InstanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-	// to create.
+	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.

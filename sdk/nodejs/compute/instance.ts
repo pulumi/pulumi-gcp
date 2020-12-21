@@ -118,8 +118,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly canIpForward!: pulumi.Output<boolean | undefined>;
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
     public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceConfidentialInstanceConfig>;
     /**
@@ -390,8 +389,7 @@ export interface InstanceState {
      */
     readonly canIpForward?: pulumi.Input<boolean>;
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
     readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**
@@ -562,8 +560,7 @@ export interface InstanceArgs {
      */
     readonly canIpForward?: pulumi.Input<boolean>;
     /**
-     * The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-     * to create.
+     * ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
     readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceConfidentialInstanceConfig>;
     /**

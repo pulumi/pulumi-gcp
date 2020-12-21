@@ -5403,6 +5403,13 @@ export namespace compute {
          * Structure is documented below.
          */
         cacheKeyPolicy?: outputs.compute.BackendServiceCdnPolicyCacheKeyPolicy;
+        cacheMode: string;
+        clientTtl?: number;
+        defaultTtl?: number;
+        maxTtl?: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies?: outputs.compute.BackendServiceCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale?: number;
         /**
          * Maximum number of seconds the response to a signed URL request
          * will be considered fresh, defaults to 1hr (3600s). After this
@@ -5451,6 +5458,11 @@ export namespace compute {
          * delimiters.
          */
         queryStringWhitelists?: string[];
+    }
+
+    export interface BackendServiceCdnPolicyNegativeCachingPolicy {
+        code?: number;
+        ttl?: number;
     }
 
     export interface BackendServiceCircuitBreakers {
@@ -5535,10 +5547,6 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: string;
-        /**
-         * Lifetime of the cookie.
-         * Structure is documented below.
-         */
         ttl?: outputs.compute.BackendServiceConsistentHashHttpCookieTtl;
     }
 
@@ -5881,6 +5889,13 @@ export namespace compute {
 
     export interface GetBackendServiceCdnPolicy {
         cacheKeyPolicies: outputs.compute.GetBackendServiceCdnPolicyCacheKeyPolicy[];
+        cacheMode: string;
+        clientTtl: number;
+        defaultTtl: number;
+        maxTtl: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies: outputs.compute.GetBackendServiceCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale: number;
         signedUrlCacheMaxAgeSec: number;
     }
 
@@ -5890,6 +5905,11 @@ export namespace compute {
         includeQueryString: boolean;
         queryStringBlacklists: string[];
         queryStringWhitelists: string[];
+    }
+
+    export interface GetBackendServiceCdnPolicyNegativeCachingPolicy {
+        code: number;
+        ttl: number;
     }
 
     export interface GetBackendServiceCircuitBreaker {
@@ -6777,6 +6797,9 @@ export namespace compute {
     }
 
     export interface InstanceConfidentialInstanceConfig {
+        /**
+         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
         enableConfidentialCompute: boolean;
     }
 
@@ -7280,6 +7303,9 @@ export namespace compute {
     }
 
     export interface InstanceTemplateConfidentialInstanceConfig {
+        /**
+         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
         enableConfidentialCompute: boolean;
     }
 
@@ -8114,6 +8140,74 @@ export namespace compute {
         maxUtilization?: number;
     }
 
+    export interface RegionBackendServiceCdnPolicy {
+        /**
+         * The CacheKeyPolicy for this CdnPolicy.
+         * Structure is documented below.
+         */
+        cacheKeyPolicy?: outputs.compute.RegionBackendServiceCdnPolicyCacheKeyPolicy;
+        cacheMode: string;
+        clientTtl?: number;
+        defaultTtl?: number;
+        maxTtl?: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies?: outputs.compute.RegionBackendServiceCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale?: number;
+        /**
+         * Maximum number of seconds the response to a signed URL request
+         * will be considered fresh, defaults to 1hr (3600s). After this
+         * time period, the response will be revalidated before
+         * being served.
+         * When serving responses to signed URL requests, Cloud CDN will
+         * internally behave as though all responses from this backend had a
+         * "Cache-Control: public, max-age=[TTL]" header, regardless of any
+         * existing Cache-Control header. The actual headers served in
+         * responses will not be altered.
+         */
+        signedUrlCacheMaxAgeSec?: number;
+    }
+
+    export interface RegionBackendServiceCdnPolicyCacheKeyPolicy {
+        /**
+         * If true requests to different hosts will be cached separately.
+         */
+        includeHost?: boolean;
+        /**
+         * If true, http and https requests will be cached separately.
+         */
+        includeProtocol?: boolean;
+        /**
+         * If true, include query string parameters in the cache key
+         * according to queryStringWhitelist and
+         * query_string_blacklist. If neither is set, the entire query
+         * string will be included.
+         * If false, the query string will be excluded from the cache
+         * key entirely.
+         */
+        includeQueryString?: boolean;
+        /**
+         * Names of query string parameters to exclude in cache keys.
+         * All other parameters will be included. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
+        queryStringBlacklists?: string[];
+        /**
+         * Names of query string parameters to include in cache keys.
+         * All other parameters will be excluded. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
+        queryStringWhitelists?: string[];
+    }
+
+    export interface RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+        code?: number;
+        ttl?: number;
+    }
+
     export interface RegionBackendServiceCircuitBreakers {
         /**
          * The timeout for new network connections to hosts.  Structure is documented below.
@@ -8196,10 +8290,6 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: string;
-        /**
-         * Lifetime of the cookie.
-         * Structure is documented below.
-         */
         ttl?: outputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl;
     }
 
@@ -21067,7 +21157,7 @@ export namespace sql {
          *
          * @deprecated This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
          */
-        replicationType?: string;
+        replicationType: string;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
          * for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
@@ -21504,9 +21594,25 @@ export namespace storage {
          */
         createdBefore?: string;
         /**
+         * Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+         */
+        customTimeBefore?: string;
+        /**
+         * Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+         */
+        daysSinceCustomTime?: number;
+        /**
+         * Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+         */
+        daysSinceNoncurrentTime?: number;
+        /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: string[];
+        /**
+         * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+         */
+        noncurrentTimeBefore?: string;
         /**
          * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
          */

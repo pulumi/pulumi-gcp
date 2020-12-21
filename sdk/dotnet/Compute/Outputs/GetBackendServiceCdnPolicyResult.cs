@@ -14,15 +14,43 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class GetBackendServiceCdnPolicyResult
     {
         public readonly ImmutableArray<Outputs.GetBackendServiceCdnPolicyCacheKeyPolicyResult> CacheKeyPolicies;
+        public readonly string CacheMode;
+        public readonly int ClientTtl;
+        public readonly int DefaultTtl;
+        public readonly int MaxTtl;
+        public readonly bool NegativeCaching;
+        public readonly ImmutableArray<Outputs.GetBackendServiceCdnPolicyNegativeCachingPolicyResult> NegativeCachingPolicies;
+        public readonly int ServeWhileStale;
         public readonly int SignedUrlCacheMaxAgeSec;
 
         [OutputConstructor]
         private GetBackendServiceCdnPolicyResult(
             ImmutableArray<Outputs.GetBackendServiceCdnPolicyCacheKeyPolicyResult> cacheKeyPolicies,
 
+            string cacheMode,
+
+            int clientTtl,
+
+            int defaultTtl,
+
+            int maxTtl,
+
+            bool negativeCaching,
+
+            ImmutableArray<Outputs.GetBackendServiceCdnPolicyNegativeCachingPolicyResult> negativeCachingPolicies,
+
+            int serveWhileStale,
+
             int signedUrlCacheMaxAgeSec)
         {
             CacheKeyPolicies = cacheKeyPolicies;
+            CacheMode = cacheMode;
+            ClientTtl = clientTtl;
+            DefaultTtl = defaultTtl;
+            MaxTtl = maxTtl;
+            NegativeCaching = negativeCaching;
+            NegativeCachingPolicies = negativeCachingPolicies;
+            ServeWhileStale = serveWhileStale;
             SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
         }
     }
