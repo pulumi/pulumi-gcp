@@ -21,10 +21,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Path to set for the cookie.
         /// </summary>
         public readonly string? Path;
-        /// <summary>
-        /// Lifetime of the cookie.
-        /// Structure is documented below.
-        /// </summary>
         public readonly Outputs.BackendServiceConsistentHashHttpCookieTtl? Ttl;
 
         [OutputConstructor]

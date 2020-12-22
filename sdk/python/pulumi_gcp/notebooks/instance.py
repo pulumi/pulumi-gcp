@@ -71,10 +71,9 @@ class Instance(pulumi.CustomResource):
             location="us-west1-a",
             machine_type="e2-medium",
             vm_image=gcp.notebooks.InstanceVmImageArgs(
-                project="deeplearning-platform-release",
                 image_family="tf-latest-cpu",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+                project="deeplearning-platform-release",
+            ))
         ```
         ### Notebook Instance Basic Container
 
@@ -83,16 +82,15 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
-            location="us-west1-a",
-            machine_type="e2-medium",
-            metadata={
-                "proxy-mode": "service_account",
-            },
             container_image=gcp.notebooks.InstanceContainerImageArgs(
                 repository="gcr.io/deeplearning-platform-release/base-cpu",
                 tag="latest",
             ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="us-west1-a",
+            machine_type="e2-medium",
+            metadata={
+                "proxy-mode": "service_account",
+            })
         ```
         ### Notebook Instance Basic Gpu
 
@@ -101,18 +99,17 @@ class Instance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         instance = gcp.notebooks.Instance("instance",
+            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArgs(
+                core_count=1,
+                type="NVIDIA_TESLA_T4",
+            ),
+            install_gpu_driver=True,
             location="us-west1-a",
             machine_type="n1-standard-1",
-            install_gpu_driver=True,
-            accelerator_config=gcp.notebooks.InstanceAcceleratorConfigArgs(
-                type="NVIDIA_TESLA_T4",
-                core_count=1,
-            ),
             vm_image=gcp.notebooks.InstanceVmImageArgs(
-                project="deeplearning-platform-release",
                 image_family="tf-latest-gpu",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+                project="deeplearning-platform-release",
+            ))
         ```
         ### Notebook Instance Full
 
@@ -141,8 +138,7 @@ class Instance(pulumi.CustomResource):
             subnet=my_subnetwork.id,
             labels={
                 "k": "val",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
 
         ## Import

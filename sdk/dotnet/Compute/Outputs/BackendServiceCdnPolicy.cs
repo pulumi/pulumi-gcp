@@ -18,6 +18,13 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.BackendServiceCdnPolicyCacheKeyPolicy? CacheKeyPolicy;
+        public readonly string? CacheMode;
+        public readonly int? ClientTtl;
+        public readonly int? DefaultTtl;
+        public readonly int? MaxTtl;
+        public readonly bool? NegativeCaching;
+        public readonly ImmutableArray<Outputs.BackendServiceCdnPolicyNegativeCachingPolicy> NegativeCachingPolicies;
+        public readonly int? ServeWhileStale;
         /// <summary>
         /// Maximum number of seconds the response to a signed URL request
         /// will be considered fresh, defaults to 1hr (3600s). After this
@@ -35,9 +42,30 @@ namespace Pulumi.Gcp.Compute.Outputs
         private BackendServiceCdnPolicy(
             Outputs.BackendServiceCdnPolicyCacheKeyPolicy? cacheKeyPolicy,
 
+            string? cacheMode,
+
+            int? clientTtl,
+
+            int? defaultTtl,
+
+            int? maxTtl,
+
+            bool? negativeCaching,
+
+            ImmutableArray<Outputs.BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies,
+
+            int? serveWhileStale,
+
             int? signedUrlCacheMaxAgeSec)
         {
             CacheKeyPolicy = cacheKeyPolicy;
+            CacheMode = cacheMode;
+            ClientTtl = clientTtl;
+            DefaultTtl = defaultTtl;
+            MaxTtl = maxTtl;
+            NegativeCaching = negativeCaching;
+            NegativeCachingPolicies = negativeCachingPolicies;
+            ServeWhileStale = serveWhileStale;
             SignedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
         }
     }

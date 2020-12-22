@@ -56,7 +56,7 @@ import (
 // 					pulumi.String("sslcert.tf-test.club."),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -64,7 +64,7 @@ import (
 // 			RequestPath:      pulumi.String("/"),
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			TimeoutSec:       pulumi.Int(1),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -75,7 +75,7 @@ import (
 // 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHttpHealthCheck.ID(),
 // 			}),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -104,7 +104,7 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -113,20 +113,20 @@ import (
 // 			SslCertificates: pulumi.StringArray{
 // 				defaultManagedSslCertificate.ID(),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		zone, err := dns.NewManagedZone(ctx, "zone", &dns.ManagedZoneArgs{
 // 			DnsName: pulumi.String("sslcert.tf-test.club."),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultGlobalForwardingRule, err := compute.NewGlobalForwardingRule(ctx, "defaultGlobalForwardingRule", &compute.GlobalForwardingRuleArgs{
 // 			Target:    defaultTargetHttpsProxy.ID(),
 // 			PortRange: pulumi.String("443"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -137,7 +137,7 @@ import (
 // 			Rrdatas: pulumi.StringArray{
 // 				defaultGlobalForwardingRule.IpAddress,
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

@@ -173,8 +173,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-               to create.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -305,8 +304,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-               to create.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -395,8 +393,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> pulumi.Output['outputs.InstanceTemplateConfidentialInstanceConfig']:
         """
-        The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        to create.
+        ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         """
         return pulumi.get(self, "confidential_instance_config")
 

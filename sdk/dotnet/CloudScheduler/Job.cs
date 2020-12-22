@@ -40,17 +40,22 @@ namespace Pulumi.Gcp.CloudScheduler
     ///             Description = "test http job",
     ///             HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
     ///             {
+    ///                 Base64encode = 
+    ///                 {
+    ///                     ,
+    ///                 },
+    ///                 Body = "",
     ///                 HttpMethod = "POST",
     ///                 Uri = "https://example.com/ping",
-    ///             },
-    ///             RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
-    ///             {
-    ///                 RetryCount = 1,
-    ///             },
-    ///             Schedule = "*/8 * * * *",
-    ///             TimeZone = "America/New_York",
-    ///         });
-    ///     }
+    ///                 %!v(PANIC=Format method: interface conversion: model.Expression is *model.TemplateExpression, not *model.LiteralValueExpression),
+    ///                 RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
+    ///                 {
+    ///                     RetryCount = 1,
+    ///                 },
+    ///                 Schedule = "*/8 * * * *",
+    ///                 TimeZone = "America/New_York",
+    ///             });
+    ///         }
     /// 
     /// }
     /// ```

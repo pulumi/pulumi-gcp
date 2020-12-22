@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.CloudScheduler.Outputs
         /// HTTP request body.
         /// A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
         /// It is an error to set body on a job with an incompatible HttpMethod.
+        /// A base64-encoded string.
         /// </summary>
         public readonly string? Body;
         /// <summary>

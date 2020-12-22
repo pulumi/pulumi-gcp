@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .document import *
 from .index import *
 from ._inputs import *
 from . import outputs
@@ -19,13 +20,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp:firestore/index:Index":
+            if typ == "gcp:firestore/document:Document":
+                return Document(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:firestore/index:Index":
                 return Index(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "firestore/document", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "firestore/index", _module_instance)
 
 _register_module()

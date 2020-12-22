@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionUrlMapPathMatcherRouteRuleMatchRule
     {
         /// <summary>
-        /// For satifying the matchRule condition, the path of the request must exactly
+        /// For satisfying the matchRule condition, the path of the request must exactly
         /// match the value specified in fullPathMatch after removing any query parameters
         /// and anchor that may be part of the original URL. FullPathMatch must be between 1
         /// and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must

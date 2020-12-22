@@ -20,6 +20,9 @@ import (
 // * How-to Guides
 //     * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 //
+// > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
+// by using the `projects.ServiceIdentity` resource.
+//
 // ## Example Usage
 // ### Pubsub Subscription Push
 //
@@ -197,7 +200,7 @@ type Subscription struct {
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
-	// The Cloud Pub/Sub service account associated with this subscriptions's
+	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
 	// permission to Acknowledge() messages on this subscription.
@@ -308,7 +311,7 @@ type subscriptionState struct {
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
-	// The Cloud Pub/Sub service account associated with this subscriptions's
+	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
 	// permission to Acknowledge() messages on this subscription.
@@ -388,7 +391,7 @@ type SubscriptionState struct {
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
-	// The Cloud Pub/Sub service account associated with this subscriptions's
+	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
 	// permission to Acknowledge() messages on this subscription.
@@ -472,7 +475,7 @@ type subscriptionArgs struct {
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
-	// The Cloud Pub/Sub service account associated with this subscriptions's
+	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
 	// permission to Acknowledge() messages on this subscription.
@@ -552,7 +555,7 @@ type SubscriptionArgs struct {
 	// A policy that specifies the conditions for dead lettering messages in
 	// this subscription. If deadLetterPolicy is not set, dead lettering
 	// is disabled.
-	// The Cloud Pub/Sub service account associated with this subscriptions's
+	// The Cloud Pub/Sub service account associated with this subscription's
 	// parent project (i.e.,
 	// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
 	// permission to Acknowledge() messages on this subscription.

@@ -203,8 +203,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> CanIpForward { get; private set; } = null!;
 
         /// <summary>
-        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        /// to create.
+        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Output("confidentialInstanceConfig")]
         public Output<Outputs.InstanceTemplateConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
@@ -417,8 +416,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        /// to create.
+        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceTemplateConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -610,8 +608,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// The Confidential VM config being used by the instance. on_host_maintenance has to be set to TERMINATE or this will fail
-        /// to create.
+        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceTemplateConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }

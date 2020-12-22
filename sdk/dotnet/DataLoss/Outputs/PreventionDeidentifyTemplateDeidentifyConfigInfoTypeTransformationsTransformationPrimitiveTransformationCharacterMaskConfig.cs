@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
     public sealed class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig
     {
         /// <summary>
-        /// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+        /// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore> CharactersToIgnores;

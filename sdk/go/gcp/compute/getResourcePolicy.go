@@ -19,9 +19,10 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "us-central1"
 // 		_, err := compute.LookupResourcePolicy(ctx, &compute.LookupResourcePolicyArgs{
 // 			Name:   "daily",
-// 			Region: "us-central1",
+// 			Region: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -46,18 +47,18 @@ type LookupResourcePolicyArgs struct {
 	// Project from which to list the Resource Policy. Defaults to project declared in the provider.
 	Project *string `pulumi:"project"`
 	// Region where the Resource Policy resides.
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getResourcePolicy.
 type LookupResourcePolicyResult struct {
-	// Description of this Resource Policy.
-	Description string `pulumi:"description"`
+	GroupPlacementPolicies []GetResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicies"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string  `pulumi:"id"`
 	Name    string  `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	Region  string  `pulumi:"region"`
+	Region  *string `pulumi:"region"`
 	// The URI of the resource.
-	SelfLink string `pulumi:"selfLink"`
+	SelfLink                 string                                    `pulumi:"selfLink"`
+	SnapshotSchedulePolicies []GetResourcePolicySnapshotSchedulePolicy `pulumi:"snapshotSchedulePolicies"`
 }

@@ -33,6 +33,30 @@ import * as utilities from "../utilities";
  * });
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.id]});
  * ```
+ * ### Backend Service Cache
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         cacheMode: "CACHE_ALL_STATIC",
+ *         defaultTtl: 3600,
+ *         clientTtl: 7200,
+ *         maxTtl: 10800,
+ *         negativeCaching: true,
+ *         signedUrlCacheMaxAgeSec: 7200,
+ *     },
+ * });
+ * ```
  * ### Backend Service Traffic Director Round Robin
  *
  * ```typescript
@@ -96,11 +120,15 @@ import * as utilities from "../utilities";
  * const externalProxy = new gcp.compute.GlobalNetworkEndpointGroup("externalProxy", {
  *     networkEndpointType: "INTERNET_FQDN_PORT",
  *     defaultPort: "443",
+ * }, {
+ *     provider: google_beta,
  * });
  * const proxy = new gcp.compute.GlobalNetworkEndpoint("proxy", {
  *     globalNetworkEndpointGroup: externalProxy.id,
  *     fqdn: "test.example.com",
  *     port: externalProxy.defaultPort,
+ * }, {
+ *     provider: google_beta,
  * });
  * const _default = new gcp.compute.BackendService("default", {
  *     enableCdn: true,
@@ -111,6 +139,8 @@ import * as utilities from "../utilities";
  *     backends: [{
  *         group: externalProxy.id,
  *     }],
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -209,8 +239,7 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied
-     * responses.
+     * Headers that the HTTP/S load balancer should add to proxied responses.
      */
     public readonly customResponseHeaders!: pulumi.Output<string[] | undefined>;
     /**
@@ -462,8 +491,7 @@ export interface BackendServiceState {
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied
-     * responses.
+     * Headers that the HTTP/S load balancer should add to proxied responses.
      */
     readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -634,8 +662,7 @@ export interface BackendServiceArgs {
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied
-     * responses.
+     * Headers that the HTTP/S load balancer should add to proxied responses.
      */
     readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**

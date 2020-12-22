@@ -58,10 +58,18 @@ class IAMCustomRole(pulumi.CustomResource):
 
         ## Import
 
-        Customized IAM project role can be imported using their URI, e.g.
+        Custom Roles can be imported using any of these accepted formats
 
         ```sh
-         $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole my-custom-role projects/my-project/roles/myCustomRole
+         $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default projects/{{project}}/roles/{{role_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default {{project}}/{{role_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default {{role_id}}
         ```
 
         :param str resource_name: The name of the resource.

@@ -56,7 +56,8 @@ type LookupBackendBucketResult struct {
 	// Cloud CDN configuration for this Backend Bucket. Structure is documented below.
 	CdnPolicies []GetBackendBucketCdnPolicy `pulumi:"cdnPolicies"`
 	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp string `pulumi:"creationTimestamp"`
+	CreationTimestamp     string   `pulumi:"creationTimestamp"`
+	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description string `pulumi:"description"`
 	// Whether Cloud CDN is enabled for this BackendBucket.

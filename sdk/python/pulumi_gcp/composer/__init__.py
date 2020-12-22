@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .environment import *
+from .get_environment import *
 from .get_image_versions import *
 from ._inputs import *
 from . import outputs

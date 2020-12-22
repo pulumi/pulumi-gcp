@@ -56,14 +56,16 @@ class Job(pulumi.CustomResource):
             attempt_deadline="320s",
             description="test http job",
             http_target=gcp.cloudscheduler.JobHttpTargetArgs(
+                base64encode=[{}],
+                body="",
                 http_method="POST",
                 uri="https://example.com/ping",
-            ),
-            retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
-                retry_count=1,
-            ),
-            schedule="*/8 * * * *",
-            time_zone="America/New_York")
+                %!v(PANIC=Format method: interface conversion: model.Expression is *model.TemplateExpression, not *model.LiteralValueExpression),
+                retry_config=gcp.cloudscheduler.JobRetryConfigArgs(
+                    retry_count=1,
+                ),
+                schedule="*/8 * * * *",
+                time_zone="America/New_York")
         ```
         ### Scheduler Job App Engine
 

@@ -6,6 +6,7 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./environment";
+export * from "./getEnvironment";
 export * from "./getImageVersions";
 
 // Import resources to register:

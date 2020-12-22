@@ -231,7 +231,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
                  number_to_mask: Optional[int] = None,
                  reverse_order: Optional[bool] = None):
         """
-        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+        :param Sequence['PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs'] characters_to_ignores: Characters to skip when doing de-identification of a value. These will be left alone and skipped.
                Structure is documented below.
         :param str masking_character: Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
                such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to * for
@@ -253,7 +253,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
     @pulumi.getter(name="charactersToIgnores")
     def characters_to_ignores(self) -> Optional[Sequence['outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore']]:
         """
-        Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+        Characters to skip when doing de-identification of a value. These will be left alone and skipped.
         Structure is documented below.
         """
         return pulumi.get(self, "characters_to_ignores")

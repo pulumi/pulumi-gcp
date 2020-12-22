@@ -39,12 +39,9 @@ namespace Pulumi.Gcp.Notebooks
     ///             MachineType = "e2-medium",
     ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///             {
-    ///                 Project = "deeplearning-platform-release",
     ///                 ImageFamily = "tf-latest-cpu",
+    ///                 Project = "deeplearning-platform-release",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -62,20 +59,17 @@ namespace Pulumi.Gcp.Notebooks
     ///     {
     ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
     ///         {
+    ///             ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
+    ///             {
+    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
+    ///                 Tag = "latest",
+    ///             },
     ///             Location = "us-west1-a",
     ///             MachineType = "e2-medium",
     ///             Metadata = 
     ///             {
     ///                 { "proxy-mode", "service_account" },
     ///             },
-    ///             ContainerImage = new Gcp.Notebooks.Inputs.InstanceContainerImageArgs
-    ///             {
-    ///                 Repository = "gcr.io/deeplearning-platform-release/base-cpu",
-    ///                 Tag = "latest",
-    ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -93,22 +87,19 @@ namespace Pulumi.Gcp.Notebooks
     ///     {
     ///         var instance = new Gcp.Notebooks.Instance("instance", new Gcp.Notebooks.InstanceArgs
     ///         {
-    ///             Location = "us-west1-a",
-    ///             MachineType = "n1-standard-1",
-    ///             InstallGpuDriver = true,
     ///             AcceleratorConfig = new Gcp.Notebooks.Inputs.InstanceAcceleratorConfigArgs
     ///             {
-    ///                 Type = "NVIDIA_TESLA_T4",
     ///                 CoreCount = 1,
+    ///                 Type = "NVIDIA_TESLA_T4",
     ///             },
+    ///             InstallGpuDriver = true,
+    ///             Location = "us-west1-a",
+    ///             MachineType = "n1-standard-1",
     ///             VmImage = new Gcp.Notebooks.Inputs.InstanceVmImageArgs
     ///             {
-    ///                 Project = "deeplearning-platform-release",
     ///                 ImageFamily = "tf-latest-gpu",
+    ///                 Project = "deeplearning-platform-release",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -158,9 +149,6 @@ namespace Pulumi.Gcp.Notebooks
     ///             {
     ///                 { "k", "val" },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

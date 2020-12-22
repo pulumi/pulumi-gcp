@@ -66,8 +66,8 @@ type ProjectSink struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Whether or not to create a unique identity associated with this sink. If `false`
 	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-	// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-	// must set `uniqueWriterIdentity` to true.
+	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity pulumi.BoolPtrOutput `pulumi:"uniqueWriterIdentity"`
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -141,8 +141,8 @@ type projectSinkState struct {
 	Project *string `pulumi:"project"`
 	// Whether or not to create a unique identity associated with this sink. If `false`
 	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-	// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-	// must set `uniqueWriterIdentity` to true.
+	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity *bool `pulumi:"uniqueWriterIdentity"`
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -185,8 +185,8 @@ type ProjectSinkState struct {
 	Project pulumi.StringPtrInput
 	// Whether or not to create a unique identity associated with this sink. If `false`
 	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-	// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-	// must set `uniqueWriterIdentity` to true.
+	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity pulumi.BoolPtrInput
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -233,8 +233,8 @@ type projectSinkArgs struct {
 	Project *string `pulumi:"project"`
 	// Whether or not to create a unique identity associated with this sink. If `false`
 	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-	// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-	// must set `uniqueWriterIdentity` to true.
+	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity *bool `pulumi:"uniqueWriterIdentity"`
 }
 
@@ -275,8 +275,8 @@ type ProjectSinkArgs struct {
 	Project pulumi.StringPtrInput
 	// Whether or not to create a unique identity associated with this sink. If `false`
 	// (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-	// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-	// must set `uniqueWriterIdentity` to true.
+	// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+	// `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
 	UniqueWriterIdentity pulumi.BoolPtrInput
 }
 

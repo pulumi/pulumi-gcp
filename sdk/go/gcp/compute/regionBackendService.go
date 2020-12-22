@@ -57,6 +57,51 @@ import (
 // 	})
 // }
 // ```
+// ### Region Backend Service Cache
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultRegionHealthCheck, err := compute.NewRegionHealthCheck(ctx, "defaultRegionHealthCheck", &compute.RegionHealthCheckArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			HttpHealthCheck: &compute.RegionHealthCheckHttpHealthCheckArgs{
+// 				Port: pulumi.Int(80),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewRegionBackendService(ctx, "defaultRegionBackendService", &compute.RegionBackendServiceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultRegionHealthCheck.ID(),
+// 			}),
+// 			EnableCdn: pulumi.Bool(true),
+// 			CdnPolicy: &compute.RegionBackendServiceCdnPolicyArgs{
+// 				CacheMode:               pulumi.String("CACHE_ALL_STATIC"),
+// 				DefaultTtl:              pulumi.Int(3600),
+// 				ClientTtl:               pulumi.Int(7200),
+// 				MaxTtl:                  pulumi.Int(10800),
+// 				NegativeCaching:         pulumi.Bool(true),
+// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
+// 			},
+// 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
+// 			Protocol:            pulumi.String("HTTP"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Region Backend Service Ilb Round Robin
 //
 // ```go
@@ -318,6 +363,9 @@ type RegionBackendService struct {
 	// The set of backends that serve this RegionBackendService.
 	// Structure is documented below.
 	Backends RegionBackendServiceBackendArrayOutput `pulumi:"backends"`
+	// Cloud CDN configuration for this BackendService.
+	// Structure is documented below.
+	CdnPolicy RegionBackendServiceCdnPolicyOutput `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
 	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -339,6 +387,8 @@ type RegionBackendService struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// If true, enable Cloud CDN for this RegionBackendService.
+	EnableCdn pulumi.BoolPtrOutput `pulumi:"enableCdn"`
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrOutput `pulumi:"failoverPolicy"`
@@ -462,6 +512,9 @@ type regionBackendServiceState struct {
 	// The set of backends that serve this RegionBackendService.
 	// Structure is documented below.
 	Backends []RegionBackendServiceBackend `pulumi:"backends"`
+	// Cloud CDN configuration for this BackendService.
+	// Structure is documented below.
+	CdnPolicy *RegionBackendServiceCdnPolicy `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
 	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -483,6 +536,8 @@ type regionBackendServiceState struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// If true, enable Cloud CDN for this RegionBackendService.
+	EnableCdn *bool `pulumi:"enableCdn"`
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy *RegionBackendServiceFailoverPolicy `pulumi:"failoverPolicy"`
@@ -578,6 +633,9 @@ type RegionBackendServiceState struct {
 	// The set of backends that serve this RegionBackendService.
 	// Structure is documented below.
 	Backends RegionBackendServiceBackendArrayInput
+	// Cloud CDN configuration for this BackendService.
+	// Structure is documented below.
+	CdnPolicy RegionBackendServiceCdnPolicyPtrInput
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
 	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -599,6 +657,8 @@ type RegionBackendServiceState struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// If true, enable Cloud CDN for this RegionBackendService.
+	EnableCdn pulumi.BoolPtrInput
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrInput
@@ -698,6 +758,9 @@ type regionBackendServiceArgs struct {
 	// The set of backends that serve this RegionBackendService.
 	// Structure is documented below.
 	Backends []RegionBackendServiceBackend `pulumi:"backends"`
+	// Cloud CDN configuration for this BackendService.
+	// Structure is documented below.
+	CdnPolicy *RegionBackendServiceCdnPolicy `pulumi:"cdnPolicy"`
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
 	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -717,6 +780,8 @@ type regionBackendServiceArgs struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
+	// If true, enable Cloud CDN for this RegionBackendService.
+	EnableCdn *bool `pulumi:"enableCdn"`
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy *RegionBackendServiceFailoverPolicy `pulumi:"failoverPolicy"`
@@ -809,6 +874,9 @@ type RegionBackendServiceArgs struct {
 	// The set of backends that serve this RegionBackendService.
 	// Structure is documented below.
 	Backends RegionBackendServiceBackendArrayInput
+	// Cloud CDN configuration for this BackendService.
+	// Structure is documented below.
+	CdnPolicy RegionBackendServiceCdnPolicyPtrInput
 	// Settings controlling the volume of connections to a backend service. This field
 	// is applicable only when the `loadBalancingScheme` is set to INTERNAL_MANAGED
 	// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -828,6 +896,8 @@ type RegionBackendServiceArgs struct {
 	// An optional description of this resource.
 	// Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
+	// If true, enable Cloud CDN for this RegionBackendService.
+	EnableCdn pulumi.BoolPtrInput
 	// Policy for failovers.
 	// Structure is documented below.
 	FailoverPolicy RegionBackendServiceFailoverPolicyPtrInput

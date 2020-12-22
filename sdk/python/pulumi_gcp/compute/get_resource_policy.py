@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
+from . import outputs
 
 __all__ = [
     'GetResourcePolicyResult',
@@ -19,10 +20,10 @@ class GetResourcePolicyResult:
     """
     A collection of values returned by getResourcePolicy.
     """
-    def __init__(__self__, description=None, id=None, name=None, project=None, region=None, self_link=None):
-        if description and not isinstance(description, str):
-            raise TypeError("Expected argument 'description' to be a str")
-        pulumi.set(__self__, "description", description)
+    def __init__(__self__, group_placement_policies=None, id=None, name=None, project=None, region=None, self_link=None, snapshot_schedule_policies=None):
+        if group_placement_policies and not isinstance(group_placement_policies, list):
+            raise TypeError("Expected argument 'group_placement_policies' to be a list")
+        pulumi.set(__self__, "group_placement_policies", group_placement_policies)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -38,14 +39,14 @@ class GetResourcePolicyResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if snapshot_schedule_policies and not isinstance(snapshot_schedule_policies, list):
+            raise TypeError("Expected argument 'snapshot_schedule_policies' to be a list")
+        pulumi.set(__self__, "snapshot_schedule_policies", snapshot_schedule_policies)
 
     @property
-    @pulumi.getter
-    def description(self) -> str:
-        """
-        Description of this Resource Policy.
-        """
-        return pulumi.get(self, "description")
+    @pulumi.getter(name="groupPlacementPolicies")
+    def group_placement_policies(self) -> Sequence['outputs.GetResourcePolicyGroupPlacementPolicyResult']:
+        return pulumi.get(self, "group_placement_policies")
 
     @property
     @pulumi.getter
@@ -67,7 +68,7 @@ class GetResourcePolicyResult:
 
     @property
     @pulumi.getter
-    def region(self) -> str:
+    def region(self) -> Optional[str]:
         return pulumi.get(self, "region")
 
     @property
@@ -78,6 +79,11 @@ class GetResourcePolicyResult:
         """
         return pulumi.get(self, "self_link")
 
+    @property
+    @pulumi.getter(name="snapshotSchedulePolicies")
+    def snapshot_schedule_policies(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyResult']:
+        return pulumi.get(self, "snapshot_schedule_policies")
+
 
 class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
     # pylint: disable=using-constant-test
@@ -85,12 +91,13 @@ class AwaitableGetResourcePolicyResult(GetResourcePolicyResult):
         if False:
             yield self
         return GetResourcePolicyResult(
-            description=self.description,
+            group_placement_policies=self.group_placement_policies,
             id=self.id,
             name=self.name,
             project=self.project,
             region=self.region,
-            self_link=self.self_link)
+            self_link=self.self_link,
+            snapshot_schedule_policies=self.snapshot_schedule_policies)
 
 
 def get_resource_policy(name: Optional[str] = None,
@@ -124,9 +131,10 @@ def get_resource_policy(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:compute/getResourcePolicy:getResourcePolicy', __args__, opts=opts, typ=GetResourcePolicyResult).value
 
     return AwaitableGetResourcePolicyResult(
-        description=__ret__.description,
+        group_placement_policies=__ret__.group_placement_policies,
         id=__ret__.id,
         name=__ret__.name,
         project=__ret__.project,
         region=__ret__.region,
-        self_link=__ret__.self_link)
+        self_link=__ret__.self_link,
+        snapshot_schedule_policies=__ret__.snapshot_schedule_policies)

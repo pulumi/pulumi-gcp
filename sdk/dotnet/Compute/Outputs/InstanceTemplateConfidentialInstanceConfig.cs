@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class InstanceTemplateConfidentialInstanceConfig
     {
+        /// <summary>
+        /// ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// </summary>
         public readonly bool EnableConfidentialCompute;
 
         [OutputConstructor]

@@ -88,6 +88,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// </summary>
+        [Output("customResponseHeaders")]
+        public Output<ImmutableArray<string>> CustomResponseHeaders { get; private set; } = null!;
+
+        /// <summary>
         /// An optional textual description of the resource; provided by the
         /// client when the resource is created.
         /// </summary>
@@ -184,6 +190,18 @@ namespace Pulumi.Gcp.Compute
         [Input("cdnPolicy")]
         public Input<Inputs.BackendBucketCdnPolicyArgs>? CdnPolicy { get; set; }
 
+        [Input("customResponseHeaders")]
+        private InputList<string>? _customResponseHeaders;
+
+        /// <summary>
+        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// </summary>
+        public InputList<string> CustomResponseHeaders
+        {
+            get => _customResponseHeaders ?? (_customResponseHeaders = new InputList<string>());
+            set => _customResponseHeaders = value;
+        }
+
         /// <summary>
         /// An optional textual description of the resource; provided by the
         /// client when the resource is created.
@@ -241,6 +259,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("creationTimestamp")]
         public Input<string>? CreationTimestamp { get; set; }
+
+        [Input("customResponseHeaders")]
+        private InputList<string>? _customResponseHeaders;
+
+        /// <summary>
+        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// </summary>
+        public InputList<string> CustomResponseHeaders
+        {
+            get => _customResponseHeaders ?? (_customResponseHeaders = new InputList<string>());
+            set => _customResponseHeaders = value;
+        }
 
         /// <summary>
         /// An optional textual description of the resource; provided by the

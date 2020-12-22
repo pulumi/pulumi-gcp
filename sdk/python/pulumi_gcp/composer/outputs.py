@@ -19,6 +19,15 @@ __all__ = [
     'EnvironmentConfigWebServerConfig',
     'EnvironmentConfigWebServerNetworkAccessControl',
     'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange',
+    'GetEnvironmentConfigResult',
+    'GetEnvironmentConfigDatabaseConfigResult',
+    'GetEnvironmentConfigNodeConfigResult',
+    'GetEnvironmentConfigNodeConfigIpAllocationPolicyResult',
+    'GetEnvironmentConfigPrivateEnvironmentConfigResult',
+    'GetEnvironmentConfigSoftwareConfigResult',
+    'GetEnvironmentConfigWebServerConfigResult',
+    'GetEnvironmentConfigWebServerNetworkAccessControlResult',
+    'GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult',
     'GetImageVersionsImageVersionResult',
 ]
 
@@ -342,7 +351,7 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
                  services_secondary_range_name: Optional[str] = None):
         """
         :param bool use_ip_aliases: Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-               Defaults to true if the `ip_allocation_block` is present in config.
+               Defaults to true if the `ip_allocation_policy` block is present in config.
         :param str cluster_ipv4_cidr_block: The IP address range used to allocate IP addresses to pods in the cluster.
                Set to blank to have GKE choose a range with the default size.
                Set to /netmask (e.g. /14) to have GKE choose a range with a specific netmask.
@@ -377,7 +386,7 @@ class EnvironmentConfigNodeConfigIpAllocationPolicy(dict):
     def use_ip_aliases(self) -> bool:
         """
         Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-        Defaults to true if the `ip_allocation_block` is present in config.
+        Defaults to true if the `ip_allocation_policy` block is present in config.
         """
         return pulumi.get(self, "use_ip_aliases")
 
@@ -697,6 +706,329 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange(dict):
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GetEnvironmentConfigResult(dict):
+    def __init__(__self__, *,
+                 airflow_uri: str,
+                 dag_gcs_prefix: str,
+                 database_config: 'outputs.GetEnvironmentConfigDatabaseConfigResult',
+                 gke_cluster: str,
+                 node_config: 'outputs.GetEnvironmentConfigNodeConfigResult',
+                 node_count: int,
+                 private_environment_config: 'outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult',
+                 software_config: 'outputs.GetEnvironmentConfigSoftwareConfigResult',
+                 web_server_config: 'outputs.GetEnvironmentConfigWebServerConfigResult',
+                 web_server_network_access_control: 'outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult'):
+        pulumi.set(__self__, "airflow_uri", airflow_uri)
+        pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
+        pulumi.set(__self__, "database_config", database_config)
+        pulumi.set(__self__, "gke_cluster", gke_cluster)
+        pulumi.set(__self__, "node_config", node_config)
+        pulumi.set(__self__, "node_count", node_count)
+        pulumi.set(__self__, "private_environment_config", private_environment_config)
+        pulumi.set(__self__, "software_config", software_config)
+        pulumi.set(__self__, "web_server_config", web_server_config)
+        pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
+
+    @property
+    @pulumi.getter(name="airflowUri")
+    def airflow_uri(self) -> str:
+        return pulumi.get(self, "airflow_uri")
+
+    @property
+    @pulumi.getter(name="dagGcsPrefix")
+    def dag_gcs_prefix(self) -> str:
+        return pulumi.get(self, "dag_gcs_prefix")
+
+    @property
+    @pulumi.getter(name="databaseConfig")
+    def database_config(self) -> 'outputs.GetEnvironmentConfigDatabaseConfigResult':
+        return pulumi.get(self, "database_config")
+
+    @property
+    @pulumi.getter(name="gkeCluster")
+    def gke_cluster(self) -> str:
+        return pulumi.get(self, "gke_cluster")
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> 'outputs.GetEnvironmentConfigNodeConfigResult':
+        return pulumi.get(self, "node_config")
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> int:
+        return pulumi.get(self, "node_count")
+
+    @property
+    @pulumi.getter(name="privateEnvironmentConfig")
+    def private_environment_config(self) -> 'outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult':
+        return pulumi.get(self, "private_environment_config")
+
+    @property
+    @pulumi.getter(name="softwareConfig")
+    def software_config(self) -> 'outputs.GetEnvironmentConfigSoftwareConfigResult':
+        return pulumi.get(self, "software_config")
+
+    @property
+    @pulumi.getter(name="webServerConfig")
+    def web_server_config(self) -> 'outputs.GetEnvironmentConfigWebServerConfigResult':
+        return pulumi.get(self, "web_server_config")
+
+    @property
+    @pulumi.getter(name="webServerNetworkAccessControl")
+    def web_server_network_access_control(self) -> 'outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult':
+        return pulumi.get(self, "web_server_network_access_control")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigDatabaseConfigResult(dict):
+    def __init__(__self__, *,
+                 machine_type: str):
+        pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 disk_size_gb: int,
+                 ip_allocation_policy: 'outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult',
+                 machine_type: str,
+                 network: str,
+                 oauth_scopes: Sequence[str],
+                 service_account: str,
+                 zone: str,
+                 subnetwork: Optional[str] = None,
+                 tags: Optional[Sequence[str]] = None):
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "ip_allocation_policy", ip_allocation_policy)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "oauth_scopes", oauth_scopes)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "zone", zone)
+        if subnetwork is not None:
+            pulumi.set(__self__, "subnetwork", subnetwork)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> int:
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="ipAllocationPolicy")
+    def ip_allocation_policy(self) -> 'outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult':
+        return pulumi.get(self, "ip_allocation_policy")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="oauthScopes")
+    def oauth_scopes(self) -> Sequence[str]:
+        return pulumi.get(self, "oauth_scopes")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        return pulumi.get(self, "zone")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> Optional[str]:
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigNodeConfigIpAllocationPolicyResult(dict):
+    def __init__(__self__, *,
+                 use_ip_aliases: bool,
+                 cluster_ipv4_cidr_block: Optional[str] = None,
+                 cluster_secondary_range_name: Optional[str] = None,
+                 services_ipv4_cidr_block: Optional[str] = None,
+                 services_secondary_range_name: Optional[str] = None):
+        pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
+        if cluster_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "cluster_ipv4_cidr_block", cluster_ipv4_cidr_block)
+        if cluster_secondary_range_name is not None:
+            pulumi.set(__self__, "cluster_secondary_range_name", cluster_secondary_range_name)
+        if services_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
+        if services_secondary_range_name is not None:
+            pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
+
+    @property
+    @pulumi.getter(name="useIpAliases")
+    def use_ip_aliases(self) -> bool:
+        return pulumi.get(self, "use_ip_aliases")
+
+    @property
+    @pulumi.getter(name="clusterIpv4CidrBlock")
+    def cluster_ipv4_cidr_block(self) -> Optional[str]:
+        return pulumi.get(self, "cluster_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="clusterSecondaryRangeName")
+    def cluster_secondary_range_name(self) -> Optional[str]:
+        return pulumi.get(self, "cluster_secondary_range_name")
+
+    @property
+    @pulumi.getter(name="servicesIpv4CidrBlock")
+    def services_ipv4_cidr_block(self) -> Optional[str]:
+        return pulumi.get(self, "services_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="servicesSecondaryRangeName")
+    def services_secondary_range_name(self) -> Optional[str]:
+        return pulumi.get(self, "services_secondary_range_name")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigPrivateEnvironmentConfigResult(dict):
+    def __init__(__self__, *,
+                 cloud_sql_ipv4_cidr_block: str,
+                 web_server_ipv4_cidr_block: str,
+                 enable_private_endpoint: Optional[bool] = None,
+                 master_ipv4_cidr_block: Optional[str] = None):
+        pulumi.set(__self__, "cloud_sql_ipv4_cidr_block", cloud_sql_ipv4_cidr_block)
+        pulumi.set(__self__, "web_server_ipv4_cidr_block", web_server_ipv4_cidr_block)
+        if enable_private_endpoint is not None:
+            pulumi.set(__self__, "enable_private_endpoint", enable_private_endpoint)
+        if master_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "master_ipv4_cidr_block", master_ipv4_cidr_block)
+
+    @property
+    @pulumi.getter(name="cloudSqlIpv4CidrBlock")
+    def cloud_sql_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "cloud_sql_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="webServerIpv4CidrBlock")
+    def web_server_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "web_server_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="enablePrivateEndpoint")
+    def enable_private_endpoint(self) -> Optional[bool]:
+        return pulumi.get(self, "enable_private_endpoint")
+
+    @property
+    @pulumi.getter(name="masterIpv4CidrBlock")
+    def master_ipv4_cidr_block(self) -> Optional[str]:
+        return pulumi.get(self, "master_ipv4_cidr_block")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigSoftwareConfigResult(dict):
+    def __init__(__self__, *,
+                 image_version: str,
+                 python_version: str,
+                 airflow_config_overrides: Optional[Mapping[str, str]] = None,
+                 env_variables: Optional[Mapping[str, str]] = None,
+                 pypi_packages: Optional[Mapping[str, str]] = None):
+        pulumi.set(__self__, "image_version", image_version)
+        pulumi.set(__self__, "python_version", python_version)
+        if airflow_config_overrides is not None:
+            pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
+        if env_variables is not None:
+            pulumi.set(__self__, "env_variables", env_variables)
+        if pypi_packages is not None:
+            pulumi.set(__self__, "pypi_packages", pypi_packages)
+
+    @property
+    @pulumi.getter(name="imageVersion")
+    def image_version(self) -> str:
+        return pulumi.get(self, "image_version")
+
+    @property
+    @pulumi.getter(name="pythonVersion")
+    def python_version(self) -> str:
+        return pulumi.get(self, "python_version")
+
+    @property
+    @pulumi.getter(name="airflowConfigOverrides")
+    def airflow_config_overrides(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "airflow_config_overrides")
+
+    @property
+    @pulumi.getter(name="envVariables")
+    def env_variables(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "env_variables")
+
+    @property
+    @pulumi.getter(name="pypiPackages")
+    def pypi_packages(self) -> Optional[Mapping[str, str]]:
+        return pulumi.get(self, "pypi_packages")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigWebServerConfigResult(dict):
+    def __init__(__self__, *,
+                 machine_type: str):
+        pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigWebServerNetworkAccessControlResult(dict):
+    def __init__(__self__, *,
+                 allowed_ip_ranges: Sequence['outputs.GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult']):
+        pulumi.set(__self__, "allowed_ip_ranges", allowed_ip_ranges)
+
+    @property
+    @pulumi.getter(name="allowedIpRanges")
+    def allowed_ip_ranges(self) -> Sequence['outputs.GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult']:
+        return pulumi.get(self, "allowed_ip_ranges")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult(dict):
+    def __init__(__self__, *,
+                 value: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

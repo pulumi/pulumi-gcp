@@ -53,6 +53,51 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Region Backend Service Cache
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultRegionHealthCheck = new Gcp.Compute.RegionHealthCheck("defaultRegionHealthCheck", new Gcp.Compute.RegionHealthCheckArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HttpHealthCheck = new Gcp.Compute.Inputs.RegionHealthCheckHttpHealthCheckArgs
+    ///             {
+    ///                 Port = 80,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultRegionHealthCheck.Id,
+    ///             },
+    ///             EnableCdn = true,
+    ///             CdnPolicy = new Gcp.Compute.Inputs.RegionBackendServiceCdnPolicyArgs
+    ///             {
+    ///                 CacheMode = "CACHE_ALL_STATIC",
+    ///                 DefaultTtl = 3600,
+    ///                 ClientTtl = 7200,
+    ///                 MaxTtl = 10800,
+    ///                 NegativeCaching = true,
+    ///                 SignedUrlCacheMaxAgeSec = 7200,
+    ///             },
+    ///             LoadBalancingScheme = "EXTERNAL",
+    ///             Protocol = "HTTP",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Region Backend Service Ilb Round Robin
     /// 
     /// ```csharp
@@ -315,6 +360,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<Outputs.RegionBackendServiceBackend>> Backends { get; private set; } = null!;
 
         /// <summary>
+        /// Cloud CDN configuration for this BackendService.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cdnPolicy")]
+        public Output<Outputs.RegionBackendServiceCdnPolicy> CdnPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Settings controlling the volume of connections to a backend service. This field
         /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
         /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -354,6 +406,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// If true, enable Cloud CDN for this RegionBackendService.
+        /// </summary>
+        [Output("enableCdn")]
+        public Output<bool?> EnableCdn { get; private set; } = null!;
 
         /// <summary>
         /// Policy for failovers.
@@ -572,6 +630,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Cloud CDN configuration for this BackendService.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cdnPolicy")]
+        public Input<Inputs.RegionBackendServiceCdnPolicyArgs>? CdnPolicy { get; set; }
+
+        /// <summary>
         /// Settings controlling the volume of connections to a backend service. This field
         /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
         /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -605,6 +670,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// If true, enable Cloud CDN for this RegionBackendService.
+        /// </summary>
+        [Input("enableCdn")]
+        public Input<bool>? EnableCdn { get; set; }
 
         /// <summary>
         /// Policy for failovers.
@@ -772,6 +843,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Cloud CDN configuration for this BackendService.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cdnPolicy")]
+        public Input<Inputs.RegionBackendServiceCdnPolicyGetArgs>? CdnPolicy { get; set; }
+
+        /// <summary>
         /// Settings controlling the volume of connections to a backend service. This field
         /// is applicable only when the `load_balancing_scheme` is set to INTERNAL_MANAGED
         /// and the `protocol` is set to HTTP, HTTPS, or HTTP2.
@@ -811,6 +889,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// If true, enable Cloud CDN for this RegionBackendService.
+        /// </summary>
+        [Input("enableCdn")]
+        public Input<bool>? EnableCdn { get; set; }
 
         /// <summary>
         /// Policy for failovers.

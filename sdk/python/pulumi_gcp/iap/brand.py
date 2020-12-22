@@ -23,7 +23,7 @@ class Brand(pulumi.CustomResource):
                  __opts__=None):
         """
         OAuth brand data. Only "Organization Internal" brands can be created
-        programatically via API. To convert it into an external brands
+        programmatically via API. To convert it into an external brands
         please use the GCP Console.
 
         > **Note:** Brands can only be created once for a Google Cloud

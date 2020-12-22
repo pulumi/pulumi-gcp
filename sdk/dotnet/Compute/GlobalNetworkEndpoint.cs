@@ -34,14 +34,13 @@ namespace Pulumi.Gcp.Compute
     ///         var neg = new Gcp.Compute.GlobalNetworkEndpointGroup("neg", new Gcp.Compute.GlobalNetworkEndpointGroupArgs
     ///         {
     ///             DefaultPort = 90,
-    ///             NetworkEndpointType = "INTERNET_IP_PORT",
+    ///             NetworkEndpointType = "INTERNET_FQDN_PORT",
     ///         });
     ///         var default_endpoint = new Gcp.Compute.GlobalNetworkEndpoint("default-endpoint", new Gcp.Compute.GlobalNetworkEndpointArgs
     ///         {
     ///             GlobalNetworkEndpointGroup = neg.Name,
     ///             Fqdn = "www.example.com",
     ///             Port = 90,
-    ///             IpAddress = "8.8.8.8",
     ///         });
     ///     }
     /// 

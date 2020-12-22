@@ -29,10 +29,7 @@ import * as utilities from "../utilities";
  *     nodeConfig: {
  *         preemptible: true,
  *         machineType: "e2-medium",
- *         oauthScopes: [
- *             "https://www.googleapis.com/auth/logging.write",
- *             "https://www.googleapis.com/auth/monitoring",
- *         ],
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *     },
  * });
  * ```
@@ -54,10 +51,7 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     nodeConfig: {
- *         oauthScopes: [
- *             "https://www.googleapis.com/auth/logging.write",
- *             "https://www.googleapis.com/auth/monitoring",
- *         ],
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *         metadata: {
  *             "disable-legacy-endpoints": "true",
  *         },

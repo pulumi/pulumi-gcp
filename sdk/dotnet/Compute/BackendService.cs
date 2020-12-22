@@ -51,6 +51,43 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Backend Service Cache
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("defaultHttpHealthCheck", new Gcp.Compute.HttpHealthCheckArgs
+    ///         {
+    ///             RequestPath = "/",
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///         });
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHttpHealthCheck.Id,
+    ///             },
+    ///             EnableCdn = true,
+    ///             CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///             {
+    ///                 CacheMode = "CACHE_ALL_STATIC",
+    ///                 DefaultTtl = 3600,
+    ///                 ClientTtl = 7200,
+    ///                 MaxTtl = 10800,
+    ///                 NegativeCaching = true,
+    ///                 SignedUrlCacheMaxAgeSec = 7200,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Backend Service Traffic Director Round Robin
     /// 
     /// ```csharp
@@ -158,12 +195,18 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             NetworkEndpointType = "INTERNET_FQDN_PORT",
     ///             DefaultPort = 443,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var proxy = new Gcp.Compute.GlobalNetworkEndpoint("proxy", new Gcp.Compute.GlobalNetworkEndpointArgs
     ///         {
     ///             GlobalNetworkEndpointGroup = externalProxy.Id,
     ///             Fqdn = "test.example.com",
     ///             Port = externalProxy.DefaultPort,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var @default = new Gcp.Compute.BackendService("default", new Gcp.Compute.BackendServiceArgs
     ///         {
@@ -185,6 +228,9 @@ namespace Pulumi.Gcp.Compute
     ///                     Group = externalProxy.Id,
     ///                 },
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -276,8 +322,7 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> CustomRequestHeaders { get; private set; } = null!;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied
-        /// responses.
+        /// Headers that the HTTP/S load balancer should add to proxied responses.
         /// </summary>
         [Output("customResponseHeaders")]
         public Output<ImmutableArray<string>> CustomResponseHeaders { get; private set; } = null!;
@@ -553,8 +598,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _customResponseHeaders;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied
-        /// responses.
+        /// Headers that the HTTP/S load balancer should add to proxied responses.
         /// </summary>
         public InputList<string> CustomResponseHeaders
         {
@@ -788,8 +832,7 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _customResponseHeaders;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied
-        /// responses.
+        /// Headers that the HTTP/S load balancer should add to proxied responses.
         /// </summary>
         public InputList<string> CustomResponseHeaders
         {

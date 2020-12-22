@@ -78,6 +78,7 @@ namespace Pulumi.Gcp.Compute
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         public readonly string CreationTimestamp;
+        public readonly ImmutableArray<string> CustomResponseHeaders;
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
         /// </summary>
@@ -105,6 +106,8 @@ namespace Pulumi.Gcp.Compute
 
             string creationTimestamp,
 
+            ImmutableArray<string> customResponseHeaders,
+
             string description,
 
             bool enableCdn,
@@ -120,6 +123,7 @@ namespace Pulumi.Gcp.Compute
             BucketName = bucketName;
             CdnPolicies = cdnPolicies;
             CreationTimestamp = creationTimestamp;
+            CustomResponseHeaders = customResponseHeaders;
             Description = description;
             EnableCdn = enableCdn;
             Id = id;

@@ -44,8 +44,7 @@ import (
 // 				Preemptible: pulumi.Bool(true),
 // 				MachineType: pulumi.String("e2-medium"),
 // 				OauthScopes: pulumi.StringArray{
-// 					pulumi.String("https://www.googleapis.com/auth/logging.write"),
-// 					pulumi.String("https://www.googleapis.com/auth/monitoring"),
+// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 // 				},
 // 			},
 // 		})

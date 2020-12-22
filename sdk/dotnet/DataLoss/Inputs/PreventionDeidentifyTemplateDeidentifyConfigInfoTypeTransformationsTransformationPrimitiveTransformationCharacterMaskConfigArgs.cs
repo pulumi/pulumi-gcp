@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         private InputList<Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs>? _charactersToIgnores;
 
         /// <summary>
-        /// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+        /// Characters to skip when doing de-identification of a value. These will be left alone and skipped.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnoreArgs> CharactersToIgnores

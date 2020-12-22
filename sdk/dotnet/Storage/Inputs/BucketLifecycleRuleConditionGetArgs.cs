@@ -24,6 +24,24 @@ namespace Pulumi.Gcp.Storage.Inputs
         [Input("createdBefore")]
         public Input<string>? CreatedBefore { get; set; }
 
+        /// <summary>
+        /// Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+        /// </summary>
+        [Input("customTimeBefore")]
+        public Input<string>? CustomTimeBefore { get; set; }
+
+        /// <summary>
+        /// Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+        /// </summary>
+        [Input("daysSinceCustomTime")]
+        public Input<int>? DaysSinceCustomTime { get; set; }
+
+        /// <summary>
+        /// Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+        /// </summary>
+        [Input("daysSinceNoncurrentTime")]
+        public Input<int>? DaysSinceNoncurrentTime { get; set; }
+
         [Input("matchesStorageClasses")]
         private InputList<string>? _matchesStorageClasses;
 
@@ -35,6 +53,12 @@ namespace Pulumi.Gcp.Storage.Inputs
             get => _matchesStorageClasses ?? (_matchesStorageClasses = new InputList<string>());
             set => _matchesStorageClasses = value;
         }
+
+        /// <summary>
+        /// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+        /// </summary>
+        [Input("noncurrentTimeBefore")]
+        public Input<string>? NoncurrentTimeBefore { get; set; }
 
         /// <summary>
         /// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.

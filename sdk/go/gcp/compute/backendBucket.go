@@ -83,6 +83,8 @@ type BackendBucket struct {
 	CdnPolicy BackendBucketCdnPolicyOutput `pulumi:"cdnPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -142,6 +144,8 @@ type backendBucketState struct {
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description *string `pulumi:"description"`
@@ -170,6 +174,8 @@ type BackendBucketState struct {
 	CdnPolicy BackendBucketCdnPolicyPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrInput
@@ -200,6 +206,8 @@ type backendBucketArgs struct {
 	// Cloud CDN configuration for this Backend Bucket.
 	// Structure is documented below.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description *string `pulumi:"description"`
@@ -225,6 +233,8 @@ type BackendBucketArgs struct {
 	// Cloud CDN configuration for this Backend Bucket.
 	// Structure is documented below.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
+	// Headers that the HTTP/S load balancer should add to proxied responses.
+	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional textual description of the resource; provided by the
 	// client when the resource is created.
 	Description pulumi.StringPtrInput

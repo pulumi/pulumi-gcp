@@ -4297,6 +4297,7 @@ export namespace cloudscheduler {
          * HTTP request body.
          * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
          * It is an error to set body on a job with an incompatible HttpMethod.
+         * A base64-encoded string.
          */
         body?: string;
         /**
@@ -4341,6 +4342,7 @@ export namespace cloudscheduler {
          * HTTP request body.
          * A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
          * It is an error to set body on a job with an incompatible HttpMethod.
+         * A base64-encoded string.
          */
         body?: string;
         /**
@@ -4689,7 +4691,7 @@ export namespace composer {
         servicesSecondaryRangeName?: string;
         /**
          * Whether or not to enable Alias IPs in the GKE cluster. If true, a VPC-native cluster is created.
-         * Defaults to true if the `ipAllocationBlock` is present in config.
+         * Defaults to true if the `ipAllocationPolicy` block is present in config.
          */
         useIpAliases: boolean;
     }
@@ -4790,6 +4792,71 @@ export namespace composer {
          * IP range prefixes should be properly truncated. For example,
          * `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`.
          */
+        value: string;
+    }
+
+    export interface GetEnvironmentConfig {
+        airflowUri: string;
+        dagGcsPrefix: string;
+        databaseConfig: outputs.composer.GetEnvironmentConfigDatabaseConfig;
+        gkeCluster: string;
+        nodeConfig: outputs.composer.GetEnvironmentConfigNodeConfig;
+        nodeCount: number;
+        privateEnvironmentConfig: outputs.composer.GetEnvironmentConfigPrivateEnvironmentConfig;
+        softwareConfig: outputs.composer.GetEnvironmentConfigSoftwareConfig;
+        webServerConfig: outputs.composer.GetEnvironmentConfigWebServerConfig;
+        webServerNetworkAccessControl: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControl;
+    }
+
+    export interface GetEnvironmentConfigDatabaseConfig {
+        machineType: string;
+    }
+
+    export interface GetEnvironmentConfigNodeConfig {
+        diskSizeGb: number;
+        ipAllocationPolicy: outputs.composer.GetEnvironmentConfigNodeConfigIpAllocationPolicy;
+        machineType: string;
+        network: string;
+        oauthScopes: string[];
+        serviceAccount: string;
+        subnetwork?: string;
+        tags?: string[];
+        zone: string;
+    }
+
+    export interface GetEnvironmentConfigNodeConfigIpAllocationPolicy {
+        clusterIpv4CidrBlock?: string;
+        clusterSecondaryRangeName?: string;
+        servicesIpv4CidrBlock?: string;
+        servicesSecondaryRangeName?: string;
+        useIpAliases: boolean;
+    }
+
+    export interface GetEnvironmentConfigPrivateEnvironmentConfig {
+        cloudSqlIpv4CidrBlock: string;
+        enablePrivateEndpoint?: boolean;
+        masterIpv4CidrBlock?: string;
+        webServerIpv4CidrBlock: string;
+    }
+
+    export interface GetEnvironmentConfigSoftwareConfig {
+        airflowConfigOverrides?: {[key: string]: string};
+        envVariables?: {[key: string]: string};
+        imageVersion: string;
+        pypiPackages?: {[key: string]: string};
+        pythonVersion: string;
+    }
+
+    export interface GetEnvironmentConfigWebServerConfig {
+        machineType: string;
+    }
+
+    export interface GetEnvironmentConfigWebServerNetworkAccessControl {
+        allowedIpRanges: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange[];
+    }
+
+    export interface GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
+        description?: string;
         value: string;
     }
 
@@ -5211,6 +5278,13 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicy {
+        cacheMode: string;
+        clientTtl?: number;
+        defaultTtl?: number;
+        maxTtl?: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies?: outputs.compute.BackendBucketCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale?: number;
         /**
          * Maximum number of seconds the response to a signed URL request will
          * be considered fresh. After this time period,
@@ -5221,7 +5295,12 @@ export namespace compute {
          * max-age=[TTL]" header, regardless of any existing Cache-Control
          * header. The actual headers served in responses will not be altered.
          */
-        signedUrlCacheMaxAgeSec: number;
+        signedUrlCacheMaxAgeSec?: number;
+    }
+
+    export interface BackendBucketCdnPolicyNegativeCachingPolicy {
+        code?: number;
+        ttl?: number;
     }
 
     export interface BackendServiceBackend {
@@ -5324,6 +5403,13 @@ export namespace compute {
          * Structure is documented below.
          */
         cacheKeyPolicy?: outputs.compute.BackendServiceCdnPolicyCacheKeyPolicy;
+        cacheMode: string;
+        clientTtl?: number;
+        defaultTtl?: number;
+        maxTtl?: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies?: outputs.compute.BackendServiceCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale?: number;
         /**
          * Maximum number of seconds the response to a signed URL request
          * will be considered fresh, defaults to 1hr (3600s). After this
@@ -5372,6 +5458,11 @@ export namespace compute {
          * delimiters.
          */
         queryStringWhitelists?: string[];
+    }
+
+    export interface BackendServiceCdnPolicyNegativeCachingPolicy {
+        code?: number;
+        ttl?: number;
     }
 
     export interface BackendServiceCircuitBreakers {
@@ -5456,10 +5547,6 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: string;
-        /**
-         * Lifetime of the cookie.
-         * Structure is documented below.
-         */
         ttl?: outputs.compute.BackendServiceConsistentHashHttpCookieTtl;
     }
 
@@ -5765,10 +5852,22 @@ export namespace compute {
     }
 
     export interface GetBackendBucketCdnPolicy {
+        cacheMode: string;
+        clientTtl: number;
+        defaultTtl: number;
+        maxTtl: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies: outputs.compute.GetBackendBucketCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale: number;
         /**
          * Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
          */
         signedUrlCacheMaxAgeSec: number;
+    }
+
+    export interface GetBackendBucketCdnPolicyNegativeCachingPolicy {
+        code: number;
+        ttl: number;
     }
 
     export interface GetBackendServiceBackend {
@@ -5790,6 +5889,13 @@ export namespace compute {
 
     export interface GetBackendServiceCdnPolicy {
         cacheKeyPolicies: outputs.compute.GetBackendServiceCdnPolicyCacheKeyPolicy[];
+        cacheMode: string;
+        clientTtl: number;
+        defaultTtl: number;
+        maxTtl: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies: outputs.compute.GetBackendServiceCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale: number;
         signedUrlCacheMaxAgeSec: number;
     }
 
@@ -5799,6 +5905,11 @@ export namespace compute {
         includeQueryString: boolean;
         queryStringBlacklists: string[];
         queryStringWhitelists: string[];
+    }
+
+    export interface GetBackendServiceCdnPolicyNegativeCachingPolicy {
+        code: number;
+        ttl: number;
     }
 
     export interface GetBackendServiceCircuitBreaker {
@@ -6107,6 +6218,54 @@ export namespace compute {
          * Integer port number
          */
         port: number;
+    }
+
+    export interface GetResourcePolicyGroupPlacementPolicy {
+        availabilityDomainCount: number;
+        collocation: string;
+        vmCount: number;
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicy {
+        retentionPolicies: outputs.compute.GetResourcePolicySnapshotSchedulePolicyRetentionPolicy[];
+        schedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicySchedule[];
+        snapshotProperties: outputs.compute.GetResourcePolicySnapshotSchedulePolicySnapshotProperty[];
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
+        maxRetentionDays: number;
+        onSourceDiskDelete: string;
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicySchedule {
+        dailySchedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule[];
+        hourlySchedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule[];
+        weeklySchedules: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule[];
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
+        daysInCycle: number;
+        startTime: string;
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
+        hoursInCycle: number;
+        startTime: string;
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
+        dayOfWeeks: outputs.compute.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek[];
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
+        day: string;
+        startTime: string;
+    }
+
+    export interface GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
+        guestFlush: boolean;
+        labels: {[key: string]: string};
+        storageLocations: string[];
     }
 
     export interface GetRouterBgp {
@@ -6638,6 +6797,9 @@ export namespace compute {
     }
 
     export interface InstanceConfidentialInstanceConfig {
+        /**
+         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
         enableConfidentialCompute: boolean;
     }
 
@@ -6882,6 +7044,7 @@ export namespace compute {
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: string;
+        replacementMethod?: string;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
          */
@@ -7140,6 +7303,9 @@ export namespace compute {
     }
 
     export interface InstanceTemplateConfidentialInstanceConfig {
+        /**
+         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         */
         enableConfidentialCompute: boolean;
     }
 
@@ -7974,6 +8140,74 @@ export namespace compute {
         maxUtilization?: number;
     }
 
+    export interface RegionBackendServiceCdnPolicy {
+        /**
+         * The CacheKeyPolicy for this CdnPolicy.
+         * Structure is documented below.
+         */
+        cacheKeyPolicy?: outputs.compute.RegionBackendServiceCdnPolicyCacheKeyPolicy;
+        cacheMode: string;
+        clientTtl?: number;
+        defaultTtl?: number;
+        maxTtl?: number;
+        negativeCaching: boolean;
+        negativeCachingPolicies?: outputs.compute.RegionBackendServiceCdnPolicyNegativeCachingPolicy[];
+        serveWhileStale?: number;
+        /**
+         * Maximum number of seconds the response to a signed URL request
+         * will be considered fresh, defaults to 1hr (3600s). After this
+         * time period, the response will be revalidated before
+         * being served.
+         * When serving responses to signed URL requests, Cloud CDN will
+         * internally behave as though all responses from this backend had a
+         * "Cache-Control: public, max-age=[TTL]" header, regardless of any
+         * existing Cache-Control header. The actual headers served in
+         * responses will not be altered.
+         */
+        signedUrlCacheMaxAgeSec?: number;
+    }
+
+    export interface RegionBackendServiceCdnPolicyCacheKeyPolicy {
+        /**
+         * If true requests to different hosts will be cached separately.
+         */
+        includeHost?: boolean;
+        /**
+         * If true, http and https requests will be cached separately.
+         */
+        includeProtocol?: boolean;
+        /**
+         * If true, include query string parameters in the cache key
+         * according to queryStringWhitelist and
+         * query_string_blacklist. If neither is set, the entire query
+         * string will be included.
+         * If false, the query string will be excluded from the cache
+         * key entirely.
+         */
+        includeQueryString?: boolean;
+        /**
+         * Names of query string parameters to exclude in cache keys.
+         * All other parameters will be included. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
+        queryStringBlacklists?: string[];
+        /**
+         * Names of query string parameters to include in cache keys.
+         * All other parameters will be excluded. Either specify
+         * queryStringWhitelist or query_string_blacklist, not both.
+         * '&' and '=' will be percent encoded and not treated as
+         * delimiters.
+         */
+        queryStringWhitelists?: string[];
+    }
+
+    export interface RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+        code?: number;
+        ttl?: number;
+    }
+
     export interface RegionBackendServiceCircuitBreakers {
         /**
          * The timeout for new network connections to hosts.  Structure is documented below.
@@ -8056,10 +8290,6 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: string;
-        /**
-         * Lifetime of the cookie.
-         * Structure is documented below.
-         */
         ttl?: outputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl;
     }
 
@@ -8635,6 +8865,7 @@ export namespace compute {
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: string;
+        replacementMethod?: string;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
          */
@@ -9044,7 +9275,7 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For
+         * Specifies the regular expression patterns that match allowed origins. For
          * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
          */
@@ -9458,7 +9689,7 @@ export namespace compute {
 
     export interface RegionUrlMapPathMatcherRouteRuleMatchRule {
         /**
-         * For satifying the matchRule condition, the path of the request must exactly
+         * For satisfying the matchRule condition, the path of the request must exactly
          * match the value specified in fullPathMatch after removing any query parameters
          * and anchor that may be part of the original URL. FullPathMatch must be between 1
          * and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -9715,7 +9946,7 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For
+         * Specifies the regular expression patterns that match allowed origins. For
          * regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either allowOrigins or allow_origin_regex.
          */
@@ -10642,7 +10873,7 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -11128,7 +11359,7 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -11567,7 +11798,7 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -11962,7 +12193,7 @@ export namespace compute {
 
     export interface URLMapPathMatcherRouteRuleMatchRule {
         /**
-         * For satifying the matchRule condition, the path of the request must exactly
+         * For satisfying the matchRule condition, the path of the request must exactly
          * match the value specified in fullPathMatch after removing any query parameters
          * and anchor that may be part of the original URL. FullPathMatch must be between 1
          * and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -12209,7 +12440,7 @@ export namespace compute {
          */
         allowMethods?: string[];
         /**
-         * Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+         * Specifies the regular expression patterns that match allowed origins. For regular expression grammar
          * please see en.cppreference.com/w/cpp/regex/ecmascript
          * An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
          */
@@ -14277,7 +14508,7 @@ export namespace dataloss {
 
     export interface PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig {
         /**
-         * Characters to skip when doing deidentification of a value. These will be left alone and skipped.
+         * Characters to skip when doing de-identification of a value. These will be left alone and skipped.
          * Structure is documented below.
          */
         charactersToIgnores?: outputs.dataloss.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore[];
@@ -18375,6 +18606,14 @@ export namespace monitoring {
         resourceName: string;
     }
 
+    export interface GetClusterIstioServiceTelemetry {
+        resourceName: string;
+    }
+
+    export interface GetMeshIstioServiceTelemetry {
+        resourceName: string;
+    }
+
     export interface GetNotificationChannelSensitiveLabel {
         authToken: string;
         password: string;
@@ -20918,7 +21157,7 @@ export namespace sql {
          *
          * @deprecated This property is only applicable to First Generation instances, and First Generation instances are now deprecated.
          */
-        replicationType?: string;
+        replicationType: string;
         /**
          * The machine type to use. See [tiers](https://cloud.google.com/sql/docs/admin-api/v1beta4/tiers)
          * for more details and supported versions. Postgres supports only shared-core machine types such as `db-f1-micro`,
@@ -21355,9 +21594,25 @@ export namespace storage {
          */
         createdBefore?: string;
         /**
+         * Creation date of an object in RFC 3339 (e.g. `2017-06-13`) to satisfy this condition.
+         */
+        customTimeBefore?: string;
+        /**
+         * Date in RFC 3339 (e.g. `2017-06-13`) when an object's Custom-Time metadata is earlier than the date specified in this condition.
+         */
+        daysSinceCustomTime?: number;
+        /**
+         * Relevant only for versioned objects. Number of days elapsed since the noncurrent timestamp of an object.
+         */
+        daysSinceNoncurrentTime?: number;
+        /**
          * [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `STANDARD`, `DURABLE_REDUCED_AVAILABILITY`.
          */
         matchesStorageClasses?: string[];
+        /**
+         * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
+         */
+        noncurrentTimeBefore?: string;
         /**
          * Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
          */

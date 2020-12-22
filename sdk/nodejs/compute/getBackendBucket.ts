@@ -64,6 +64,7 @@ export interface GetBackendBucketResult {
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
+    readonly customResponseHeaders: string[];
     /**
      * An optional textual description of the resource; provided by the client when the resource is created.
      */

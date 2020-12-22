@@ -67,8 +67,8 @@ class ProjectSink(pulumi.CustomResource):
                used.
         :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`
                (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-               then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-               must set `unique_writer_identity` to true.
+               then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+               `bigquery_options`, you must set `unique_writer_identity` to true.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -143,8 +143,8 @@ class ProjectSink(pulumi.CustomResource):
                used.
         :param pulumi.Input[bool] unique_writer_identity: Whether or not to create a unique identity associated with this sink. If `false`
                (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-               then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-               must set `unique_writer_identity` to true.
+               then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+               `bigquery_options`, you must set `unique_writer_identity` to true.
         :param pulumi.Input[str] writer_identity: The identity associated with this sink. This identity must be granted write access to the
                configured `destination`.
         """
@@ -241,8 +241,8 @@ class ProjectSink(pulumi.CustomResource):
         """
         Whether or not to create a unique identity associated with this sink. If `false`
         (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-        then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-        must set `unique_writer_identity` to true.
+        then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+        `bigquery_options`, you must set `unique_writer_identity` to true.
         """
         return pulumi.get(self, "unique_writer_identity")
 

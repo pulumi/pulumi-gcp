@@ -96,8 +96,8 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// Whether or not to create a unique identity associated with this sink. If `false`
         /// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-        /// must set `unique_writer_identity` to true.
+        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+        /// `bigquery_options`, you must set `unique_writer_identity` to true.
         /// </summary>
         [Output("uniqueWriterIdentity")]
         public Output<bool?> UniqueWriterIdentity { get; private set; } = null!;
@@ -227,8 +227,8 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// Whether or not to create a unique identity associated with this sink. If `false`
         /// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-        /// must set `unique_writer_identity` to true.
+        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+        /// `bigquery_options`, you must set `unique_writer_identity` to true.
         /// </summary>
         [Input("uniqueWriterIdentity")]
         public Input<bool>? UniqueWriterIdentity { get; set; }
@@ -312,8 +312,8 @@ namespace Pulumi.Gcp.Logging
         /// <summary>
         /// Whether or not to create a unique identity associated with this sink. If `false`
         /// (the default), then the `writer_identity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-        /// must set `unique_writer_identity` to true.
+        /// then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+        /// `bigquery_options`, you must set `unique_writer_identity` to true.
         /// </summary>
         [Input("uniqueWriterIdentity")]
         public Input<bool>? UniqueWriterIdentity { get; set; }

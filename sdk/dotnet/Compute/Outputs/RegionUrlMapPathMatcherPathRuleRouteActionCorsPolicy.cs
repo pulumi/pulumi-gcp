@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowMethods;
         /// <summary>
-        /// Specifies the regualar expression patterns that match allowed origins. For
+        /// Specifies the regular expression patterns that match allowed origins. For
         /// regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
         /// An origin is allowed if it matches either allow_origins or allow_origin_regex.
         /// </summary>

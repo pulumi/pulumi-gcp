@@ -50,17 +50,6 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		home, err := compute.NewBackendService(ctx, "home", &compute.BackendServiceArgs{
-// 			PortName:   pulumi.String("http"),
-// 			Protocol:   pulumi.String("HTTP"),
-// 			TimeoutSec: pulumi.Int(10),
-// 			HealthChecks: pulumi.String(pulumi.String{
-// 				_default.ID(),
-// 			}),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
 // 		staticBucket, err := storage.NewBucket(ctx, "staticBucket", &storage.BucketArgs{
 // 			Location: pulumi.String("US"),
 // 		})
@@ -76,7 +65,7 @@ import (
 // 		}
 // 		_, err = compute.NewURLMap(ctx, "urlmap", &compute.URLMapArgs{
 // 			Description:    pulumi.String("a description"),
-// 			DefaultService: home.ID(),
+// 			DefaultService: staticBackendBucket.ID(),
 // 			HostRules: compute.URLMapHostRuleArray{
 // 				&compute.URLMapHostRuleArgs{
 // 					Hosts: pulumi.StringArray{
@@ -94,13 +83,13 @@ import (
 // 			PathMatchers: compute.URLMapPathMatcherArray{
 // 				&compute.URLMapPathMatcherArgs{
 // 					Name:           pulumi.String("mysite"),
-// 					DefaultService: home.ID(),
+// 					DefaultService: staticBackendBucket.ID(),
 // 					PathRules: compute.URLMapPathMatcherPathRuleArray{
 // 						&compute.URLMapPathMatcherPathRuleArgs{
 // 							Paths: pulumi.StringArray{
 // 								pulumi.String("/home"),
 // 							},
-// 							Service: home.ID(),
+// 							Service: staticBackendBucket.ID(),
 // 						},
 // 						&compute.URLMapPathMatcherPathRuleArgs{
 // 							Paths: pulumi.StringArray{
@@ -118,12 +107,12 @@ import (
 // 				},
 // 				&compute.URLMapPathMatcherArgs{
 // 					Name:           pulumi.String("otherpaths"),
-// 					DefaultService: home.ID(),
+// 					DefaultService: staticBackendBucket.ID(),
 // 				},
 // 			},
 // 			Tests: compute.URLMapTestArray{
 // 				&compute.URLMapTestArgs{
-// 					Service: home.ID(),
+// 					Service: staticBackendBucket.ID(),
 // 					Host:    pulumi.String("hi.com"),
 // 					Path:    pulumi.String("/home"),
 // 				},

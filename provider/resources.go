@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unicode"
 
-	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
+	google "github.com/hashicorp/terraform-provider-google-beta/v3/google-beta"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
@@ -138,15 +138,16 @@ func boolRef(b bool) *bool {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(google.Provider())
 	prov := tfbridge.ProviderInfo{
-		P:              p,
-		Name:           "google-beta",
-		ResourcePrefix: "google",
-		GitHubOrg:      "hashicorp",
-		Description:    "A Pulumi package for creating and managing Google Cloud Platform resources.",
-		Keywords:       []string{"pulumi", "gcp"},
-		License:        "Apache-2.0",
-		Homepage:       "https://pulumi.io",
-		Repository:     "https://github.com/pulumi/pulumi-gcp",
+		P:                       p,
+		Name:                    "google-beta",
+		ResourcePrefix:          "google",
+		GitHubOrg:               "hashicorp",
+		Description:             "A Pulumi package for creating and managing Google Cloud Platform resources.",
+		Keywords:                []string{"pulumi", "gcp"},
+		License:                 "Apache-2.0",
+		Homepage:                "https://pulumi.io",
+		Repository:              "https://github.com/pulumi/pulumi-gcp",
+		TFProviderModuleVersion: "v3",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"credentials": {
 				Default: &tfbridge.DefaultInfo{
@@ -964,7 +965,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_firebase_web_app":          {Tok: gcpResource(gcpFirebase, "WebApp")},
 
 			// Firestore resources
-			"google_firestore_index": {Tok: gcpResource(gcpFirestore, "Index")},
+			"google_firestore_index":    {Tok: gcpResource(gcpFirestore, "Index")},
+			"google_firestore_document": {Tok: gcpResource(gcpFirestore, "Document")},
 
 			// Monitoring resources
 			"google_monitoring_alert_policy":         {Tok: gcpResource(gcpMonitoring, "AlertPolicy")},
@@ -1991,6 +1993,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_composer_image_versions.html.markdown",
 				},
 			},
+			"google_composer_environment": {Tok: gcpDataSource(gcpComposer, "getEnvironment")},
 			"google_iam_role": {
 				Tok: gcpDataSource(gcpIAM, "getRule"),
 				Docs: &tfbridge.DocInfo{
@@ -2276,6 +2279,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_monitoring_app_engine_service.html.markdown",
 				},
 			},
+			"google_monitoring_cluster_istio_service": {Tok: gcpDataSource(gcpMonitoring, "getClusterIstioService")},
+			"google_monitoring_mesh_istio_service":    {Tok: gcpDataSource(gcpMonitoring, "getMeshIstioService")},
 
 			// Firebase
 			"google_firebase_web_app_config": {

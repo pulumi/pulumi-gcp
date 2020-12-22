@@ -54,18 +54,13 @@ class URLMap(pulumi.CustomResource):
             protocol="HTTP",
             timeout_sec=10,
             health_checks=[default.id])
-        home = gcp.compute.BackendService("home",
-            port_name="http",
-            protocol="HTTP",
-            timeout_sec=10,
-            health_checks=[default.id])
         static_bucket = gcp.storage.Bucket("staticBucket", location="US")
         static_backend_bucket = gcp.compute.BackendBucket("staticBackendBucket",
             bucket_name=static_bucket.name,
             enable_cdn=True)
         urlmap = gcp.compute.URLMap("urlmap",
             description="a description",
-            default_service=home.id,
+            default_service=static_backend_bucket.id,
             host_rules=[
                 gcp.compute.URLMapHostRuleArgs(
                     hosts=["mysite.com"],
@@ -79,11 +74,11 @@ class URLMap(pulumi.CustomResource):
             path_matchers=[
                 gcp.compute.URLMapPathMatcherArgs(
                     name="mysite",
-                    default_service=home.id,
+                    default_service=static_backend_bucket.id,
                     path_rules=[
                         gcp.compute.URLMapPathMatcherPathRuleArgs(
                             paths=["/home"],
-                            service=home.id,
+                            service=static_backend_bucket.id,
                         ),
                         gcp.compute.URLMapPathMatcherPathRuleArgs(
                             paths=["/login"],
@@ -97,11 +92,11 @@ class URLMap(pulumi.CustomResource):
                 ),
                 gcp.compute.URLMapPathMatcherArgs(
                     name="otherpaths",
-                    default_service=home.id,
+                    default_service=static_backend_bucket.id,
                 ),
             ],
             tests=[gcp.compute.URLMapTestArgs(
-                service=home.id,
+                service=static_backend_bucket.id,
                 host="hi.com",
                 path="/home",
             )])

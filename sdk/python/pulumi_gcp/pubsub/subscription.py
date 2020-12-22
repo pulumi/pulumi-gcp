@@ -43,6 +43,9 @@ class Subscription(pulumi.CustomResource):
         * How-to Guides
             * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
 
+        > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
+        by using the `projects.ServiceIdentity` resource.
+
         ## Example Usage
         ### Pubsub Subscription Push
 
@@ -150,7 +153,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
                is disabled.
-               The Cloud Pub/Sub service account associated with this subscriptions's
+               The Cloud Pub/Sub service account associated with this subscription's
                parent project (i.e.,
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
@@ -278,7 +281,7 @@ class Subscription(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
                this subscription. If dead_letter_policy is not set, dead lettering
                is disabled.
-               The Cloud Pub/Sub service account associated with this subscriptions's
+               The Cloud Pub/Sub service account associated with this subscription's
                parent project (i.e.,
                service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
                permission to Acknowledge() messages on this subscription.
@@ -373,7 +376,7 @@ class Subscription(pulumi.CustomResource):
         A policy that specifies the conditions for dead lettering messages in
         this subscription. If dead_letter_policy is not set, dead lettering
         is disabled.
-        The Cloud Pub/Sub service account associated with this subscriptions's
+        The Cloud Pub/Sub service account associated with this subscription's
         parent project (i.e.,
         service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
         permission to Acknowledge() messages on this subscription.

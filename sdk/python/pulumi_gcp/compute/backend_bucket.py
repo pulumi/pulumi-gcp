@@ -19,6 +19,7 @@ class BackendBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -76,6 +77,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
@@ -110,6 +112,7 @@ class BackendBucket(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bucket_name'")
             __props__['bucket_name'] = bucket_name
             __props__['cdn_policy'] = cdn_policy
+            __props__['custom_response_headers'] = custom_response_headers
             __props__['description'] = description
             __props__['enable_cdn'] = enable_cdn
             __props__['name'] = name
@@ -129,6 +132,7 @@ class BackendBucket(pulumi.CustomResource):
             bucket_name: Optional[pulumi.Input[str]] = None,
             cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
+            custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_cdn: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -145,6 +149,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this Backend Bucket.
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the
                client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
@@ -166,6 +171,7 @@ class BackendBucket(pulumi.CustomResource):
         __props__["bucket_name"] = bucket_name
         __props__["cdn_policy"] = cdn_policy
         __props__["creation_timestamp"] = creation_timestamp
+        __props__["custom_response_headers"] = custom_response_headers
         __props__["description"] = description
         __props__["enable_cdn"] = enable_cdn
         __props__["name"] = name
@@ -197,6 +203,14 @@ class BackendBucket(pulumi.CustomResource):
         Creation timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "creation_timestamp")
+
+    @property
+    @pulumi.getter(name="customResponseHeaders")
+    def custom_response_headers(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Headers that the HTTP/S load balancer should add to proxied responses.
+        """
+        return pulumi.get(self, "custom_response_headers")
 
     @property
     @pulumi.getter

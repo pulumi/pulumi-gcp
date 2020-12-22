@@ -37,6 +37,7 @@ class JobAppEngineHttpTargetArgs:
         :param pulumi.Input[str] body: HTTP request body.
                A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
                It is an error to set body on a job with an incompatible HttpMethod.
+               A base64-encoded string.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: This map contains the header field names and values.
                Repeated headers are not supported, but a header value can contain commas.
         :param pulumi.Input[str] http_method: Which HTTP method to use for the request.
@@ -87,6 +88,7 @@ class JobAppEngineHttpTargetArgs:
         HTTP request body.
         A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
         It is an error to set body on a job with an incompatible HttpMethod.
+        A base64-encoded string.
         """
         return pulumi.get(self, "body")
 
@@ -195,6 +197,7 @@ class JobHttpTargetArgs:
         :param pulumi.Input[str] body: HTTP request body.
                A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
                It is an error to set body on a job with an incompatible HttpMethod.
+               A base64-encoded string.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: This map contains the header field names and values.
                Repeated headers are not supported, but a header value can contain commas.
         :param pulumi.Input[str] http_method: Which HTTP method to use for the request.
@@ -236,6 +239,7 @@ class JobHttpTargetArgs:
         HTTP request body.
         A request body is allowed only if the HTTP method is POST, PUT, or PATCH.
         It is an error to set body on a job with an incompatible HttpMethod.
+        A base64-encoded string.
         """
         return pulumi.get(self, "body")
 

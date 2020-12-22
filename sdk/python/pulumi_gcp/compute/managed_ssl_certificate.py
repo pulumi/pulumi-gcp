@@ -62,19 +62,16 @@ class ManagedSslCertificate(pulumi.CustomResource):
 
         default_managed_ssl_certificate = gcp.compute.ManagedSslCertificate("defaultManagedSslCertificate", managed=gcp.compute.ManagedSslCertificateManagedArgs(
             domains=["sslcert.tf-test.club."],
-        ),
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        ))
         default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
             request_path="/",
             check_interval_sec=1,
-            timeout_sec=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            timeout_sec=1)
         default_backend_service = gcp.compute.BackendService("defaultBackendService",
             port_name="http",
             protocol="HTTP",
             timeout_sec=10,
-            health_checks=[default_http_health_check.id],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            health_checks=[default_http_health_check.id])
         default_url_map = gcp.compute.URLMap("defaultURLMap",
             description="a description",
             default_service=default_backend_service.id,
@@ -89,24 +86,19 @@ class ManagedSslCertificate(pulumi.CustomResource):
                     paths=["/*"],
                     service=default_backend_service.id,
                 )],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         default_target_https_proxy = gcp.compute.TargetHttpsProxy("defaultTargetHttpsProxy",
             url_map=default_url_map.id,
-            ssl_certificates=[default_managed_ssl_certificate.id],
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        zone = gcp.dns.ManagedZone("zone", dns_name="sslcert.tf-test.club.",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ssl_certificates=[default_managed_ssl_certificate.id])
+        zone = gcp.dns.ManagedZone("zone", dns_name="sslcert.tf-test.club.")
         default_global_forwarding_rule = gcp.compute.GlobalForwardingRule("defaultGlobalForwardingRule",
             target=default_target_https_proxy.id,
-            port_range="443",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            port_range="443")
         set = gcp.dns.RecordSet("set",
             type="A",
             ttl=3600,
             managed_zone=zone.name,
-            rrdatas=[default_global_forwarding_rule.ip_address],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            rrdatas=[default_global_forwarding_rule.ip_address])
         ```
 
         ## Import

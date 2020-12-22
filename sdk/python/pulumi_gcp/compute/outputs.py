@@ -27,9 +27,11 @@ __all__ = [
     'AutoscalerAutoscalingPolicyScaleInControl',
     'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
     'BackendBucketCdnPolicy',
+    'BackendBucketCdnPolicyNegativeCachingPolicy',
     'BackendServiceBackend',
     'BackendServiceCdnPolicy',
     'BackendServiceCdnPolicyCacheKeyPolicy',
+    'BackendServiceCdnPolicyNegativeCachingPolicy',
     'BackendServiceCircuitBreakers',
     'BackendServiceCircuitBreakersConnectTimeout',
     'BackendServiceConsistentHash',
@@ -151,6 +153,9 @@ __all__ = [
     'RegionAutoscalerAutoscalingPolicyScaleInControl',
     'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
     'RegionBackendServiceBackend',
+    'RegionBackendServiceCdnPolicy',
+    'RegionBackendServiceCdnPolicyCacheKeyPolicy',
+    'RegionBackendServiceCdnPolicyNegativeCachingPolicy',
     'RegionBackendServiceCircuitBreakers',
     'RegionBackendServiceCircuitBreakersConnectTimeout',
     'RegionBackendServiceConsistentHash',
@@ -348,9 +353,11 @@ __all__ = [
     'URLMapPathMatcherRouteRuleUrlRedirect',
     'URLMapTest',
     'GetBackendBucketCdnPolicyResult',
+    'GetBackendBucketCdnPolicyNegativeCachingPolicyResult',
     'GetBackendServiceBackendResult',
     'GetBackendServiceCdnPolicyResult',
     'GetBackendServiceCdnPolicyCacheKeyPolicyResult',
+    'GetBackendServiceCdnPolicyNegativeCachingPolicyResult',
     'GetBackendServiceCircuitBreakerResult',
     'GetBackendServiceCircuitBreakerConnectTimeoutResult',
     'GetBackendServiceConsistentHashResult',
@@ -379,6 +386,15 @@ __all__ = [
     'GetInstanceShieldedInstanceConfigResult',
     'GetRegionInstanceGroupInstanceResult',
     'GetRegionInstanceGroupInstanceNamedPortResult',
+    'GetResourcePolicyGroupPlacementPolicyResult',
+    'GetResourcePolicySnapshotSchedulePolicyResult',
+    'GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult',
+    'GetResourcePolicySnapshotSchedulePolicyScheduleResult',
+    'GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult',
+    'GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult',
+    'GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult',
+    'GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult',
+    'GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult',
     'GetRouterBgpResult',
     'GetRouterBgpAdvertisedIpRangeResult',
     'GetSubnetworkSecondaryIpRangeResult',
@@ -1441,7 +1457,14 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
 @pulumi.output_type
 class BackendBucketCdnPolicy(dict):
     def __init__(__self__, *,
-                 signed_url_cache_max_age_sec: int):
+                 cache_mode: Optional[str] = None,
+                 client_ttl: Optional[int] = None,
+                 default_ttl: Optional[int] = None,
+                 max_ttl: Optional[int] = None,
+                 negative_caching: Optional[bool] = None,
+                 negative_caching_policies: Optional[Sequence['outputs.BackendBucketCdnPolicyNegativeCachingPolicy']] = None,
+                 serve_while_stale: Optional[int] = None,
+                 signed_url_cache_max_age_sec: Optional[int] = None):
         """
         :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will
                be considered fresh. After this time period,
@@ -1452,11 +1475,61 @@ class BackendBucketCdnPolicy(dict):
                max-age=[TTL]" header, regardless of any existing Cache-Control
                header. The actual headers served in responses will not be altered.
         """
-        pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+        if cache_mode is not None:
+            pulumi.set(__self__, "cache_mode", cache_mode)
+        if client_ttl is not None:
+            pulumi.set(__self__, "client_ttl", client_ttl)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policies is not None:
+            pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
+        if signed_url_cache_max_age_sec is not None:
+            pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> Optional[str]:
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "client_ttl")
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "default_ttl")
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "max_ttl")
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[bool]:
+        return pulumi.get(self, "negative_caching")
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Optional[Sequence['outputs.BackendBucketCdnPolicyNegativeCachingPolicy']]:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[int]:
+        return pulumi.get(self, "serve_while_stale")
 
     @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
-    def signed_url_cache_max_age_sec(self) -> int:
+    def signed_url_cache_max_age_sec(self) -> Optional[int]:
         """
         Maximum number of seconds the response to a signed URL request will
         be considered fresh. After this time period,
@@ -1468,6 +1541,30 @@ class BackendBucketCdnPolicy(dict):
         header. The actual headers served in responses will not be altered.
         """
         return pulumi.get(self, "signed_url_cache_max_age_sec")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class BackendBucketCdnPolicyNegativeCachingPolicy(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 ttl: Optional[int] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1712,6 +1809,13 @@ class BackendServiceBackend(dict):
 class BackendServiceCdnPolicy(dict):
     def __init__(__self__, *,
                  cache_key_policy: Optional['outputs.BackendServiceCdnPolicyCacheKeyPolicy'] = None,
+                 cache_mode: Optional[str] = None,
+                 client_ttl: Optional[int] = None,
+                 default_ttl: Optional[int] = None,
+                 max_ttl: Optional[int] = None,
+                 negative_caching: Optional[bool] = None,
+                 negative_caching_policies: Optional[Sequence['outputs.BackendServiceCdnPolicyNegativeCachingPolicy']] = None,
+                 serve_while_stale: Optional[int] = None,
                  signed_url_cache_max_age_sec: Optional[int] = None):
         """
         :param 'BackendServiceCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
@@ -1728,6 +1832,20 @@ class BackendServiceCdnPolicy(dict):
         """
         if cache_key_policy is not None:
             pulumi.set(__self__, "cache_key_policy", cache_key_policy)
+        if cache_mode is not None:
+            pulumi.set(__self__, "cache_mode", cache_mode)
+        if client_ttl is not None:
+            pulumi.set(__self__, "client_ttl", client_ttl)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policies is not None:
+            pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         if signed_url_cache_max_age_sec is not None:
             pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
 
@@ -1739,6 +1857,41 @@ class BackendServiceCdnPolicy(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "cache_key_policy")
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> Optional[str]:
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "client_ttl")
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "default_ttl")
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "max_ttl")
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[bool]:
+        return pulumi.get(self, "negative_caching")
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Optional[Sequence['outputs.BackendServiceCdnPolicyNegativeCachingPolicy']]:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[int]:
+        return pulumi.get(self, "serve_while_stale")
 
     @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
@@ -1851,6 +2004,30 @@ class BackendServiceCdnPolicyCacheKeyPolicy(dict):
         delimiters.
         """
         return pulumi.get(self, "query_string_whitelists")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class BackendServiceCdnPolicyNegativeCachingPolicy(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 ttl: Optional[int] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -2066,8 +2243,6 @@ class BackendServiceConsistentHashHttpCookie(dict):
         """
         :param str name: Name of the cookie.
         :param str path: Path to set for the cookie.
-        :param 'BackendServiceConsistentHashHttpCookieTtlArgs' ttl: Lifetime of the cookie.
-               Structure is documented below.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2095,10 +2270,6 @@ class BackendServiceConsistentHashHttpCookie(dict):
     @property
     @pulumi.getter
     def ttl(self) -> Optional['outputs.BackendServiceConsistentHashHttpCookieTtl']:
-        """
-        Lifetime of the cookie.
-        Structure is documented below.
-        """
         return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
@@ -4308,11 +4479,17 @@ class InstanceBootDiskInitializeParams(dict):
 class InstanceConfidentialInstanceConfig(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
+        """
+        :param bool enable_confidential_compute: ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
+        """
+        ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     def _translate_property(self, prop):
@@ -5385,7 +5562,8 @@ class InstanceGroupManagerUpdatePolicy(dict):
                  max_surge_percent: Optional[int] = None,
                  max_unavailable_fixed: Optional[int] = None,
                  max_unavailable_percent: Optional[int] = None,
-                 min_ready_sec: Optional[int] = None):
+                 min_ready_sec: Optional[int] = None,
+                 replacement_method: Optional[str] = None):
         """
         :param str minimal_action: - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str type: - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -5408,6 +5586,8 @@ class InstanceGroupManagerUpdatePolicy(dict):
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if replacement_method is not None:
+            pulumi.set(__self__, "replacement_method", replacement_method)
 
     @property
     @pulumi.getter(name="minimalAction")
@@ -5465,6 +5645,11 @@ class InstanceGroupManagerUpdatePolicy(dict):
         - - -
         """
         return pulumi.get(self, "min_ready_sec")
+
+    @property
+    @pulumi.getter(name="replacementMethod")
+    def replacement_method(self) -> Optional[str]:
+        return pulumi.get(self, "replacement_method")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -6183,11 +6368,17 @@ class InstanceShieldedInstanceConfig(dict):
 class InstanceTemplateConfidentialInstanceConfig(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
+        """
+        :param bool enable_confidential_compute: ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
     @property
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
+        """
+        ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        """
         return pulumi.get(self, "enable_confidential_compute")
 
     def _translate_property(self, prop):
@@ -8469,6 +8660,234 @@ class RegionBackendServiceBackend(dict):
 
 
 @pulumi.output_type
+class RegionBackendServiceCdnPolicy(dict):
+    def __init__(__self__, *,
+                 cache_key_policy: Optional['outputs.RegionBackendServiceCdnPolicyCacheKeyPolicy'] = None,
+                 cache_mode: Optional[str] = None,
+                 client_ttl: Optional[int] = None,
+                 default_ttl: Optional[int] = None,
+                 max_ttl: Optional[int] = None,
+                 negative_caching: Optional[bool] = None,
+                 negative_caching_policies: Optional[Sequence['outputs.RegionBackendServiceCdnPolicyNegativeCachingPolicy']] = None,
+                 serve_while_stale: Optional[int] = None,
+                 signed_url_cache_max_age_sec: Optional[int] = None):
+        """
+        :param 'RegionBackendServiceCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
+               Structure is documented below.
+        :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request
+               will be considered fresh, defaults to 1hr (3600s). After this
+               time period, the response will be revalidated before
+               being served.
+               When serving responses to signed URL requests, Cloud CDN will
+               internally behave as though all responses from this backend had a
+               "Cache-Control: public, max-age=[TTL]" header, regardless of any
+               existing Cache-Control header. The actual headers served in
+               responses will not be altered.
+        """
+        if cache_key_policy is not None:
+            pulumi.set(__self__, "cache_key_policy", cache_key_policy)
+        if cache_mode is not None:
+            pulumi.set(__self__, "cache_mode", cache_mode)
+        if client_ttl is not None:
+            pulumi.set(__self__, "client_ttl", client_ttl)
+        if default_ttl is not None:
+            pulumi.set(__self__, "default_ttl", default_ttl)
+        if max_ttl is not None:
+            pulumi.set(__self__, "max_ttl", max_ttl)
+        if negative_caching is not None:
+            pulumi.set(__self__, "negative_caching", negative_caching)
+        if negative_caching_policies is not None:
+            pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        if serve_while_stale is not None:
+            pulumi.set(__self__, "serve_while_stale", serve_while_stale)
+        if signed_url_cache_max_age_sec is not None:
+            pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheKeyPolicy")
+    def cache_key_policy(self) -> Optional['outputs.RegionBackendServiceCdnPolicyCacheKeyPolicy']:
+        """
+        The CacheKeyPolicy for this CdnPolicy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cache_key_policy")
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> Optional[str]:
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "client_ttl")
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "default_ttl")
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> Optional[int]:
+        return pulumi.get(self, "max_ttl")
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> Optional[bool]:
+        return pulumi.get(self, "negative_caching")
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Optional[Sequence['outputs.RegionBackendServiceCdnPolicyNegativeCachingPolicy']]:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> Optional[int]:
+        return pulumi.get(self, "serve_while_stale")
+
+    @property
+    @pulumi.getter(name="signedUrlCacheMaxAgeSec")
+    def signed_url_cache_max_age_sec(self) -> Optional[int]:
+        """
+        Maximum number of seconds the response to a signed URL request
+        will be considered fresh, defaults to 1hr (3600s). After this
+        time period, the response will be revalidated before
+        being served.
+        When serving responses to signed URL requests, Cloud CDN will
+        internally behave as though all responses from this backend had a
+        "Cache-Control: public, max-age=[TTL]" header, regardless of any
+        existing Cache-Control header. The actual headers served in
+        responses will not be altered.
+        """
+        return pulumi.get(self, "signed_url_cache_max_age_sec")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RegionBackendServiceCdnPolicyCacheKeyPolicy(dict):
+    def __init__(__self__, *,
+                 include_host: Optional[bool] = None,
+                 include_protocol: Optional[bool] = None,
+                 include_query_string: Optional[bool] = None,
+                 query_string_blacklists: Optional[Sequence[str]] = None,
+                 query_string_whitelists: Optional[Sequence[str]] = None):
+        """
+        :param bool include_host: If true requests to different hosts will be cached separately.
+        :param bool include_protocol: If true, http and https requests will be cached separately.
+        :param bool include_query_string: If true, include query string parameters in the cache key
+               according to query_string_whitelist and
+               query_string_blacklist. If neither is set, the entire query
+               string will be included.
+               If false, the query string will be excluded from the cache
+               key entirely.
+        :param Sequence[str] query_string_blacklists: Names of query string parameters to exclude in cache keys.
+               All other parameters will be included. Either specify
+               query_string_whitelist or query_string_blacklist, not both.
+               '&' and '=' will be percent encoded and not treated as
+               delimiters.
+        :param Sequence[str] query_string_whitelists: Names of query string parameters to include in cache keys.
+               All other parameters will be excluded. Either specify
+               query_string_whitelist or query_string_blacklist, not both.
+               '&' and '=' will be percent encoded and not treated as
+               delimiters.
+        """
+        if include_host is not None:
+            pulumi.set(__self__, "include_host", include_host)
+        if include_protocol is not None:
+            pulumi.set(__self__, "include_protocol", include_protocol)
+        if include_query_string is not None:
+            pulumi.set(__self__, "include_query_string", include_query_string)
+        if query_string_blacklists is not None:
+            pulumi.set(__self__, "query_string_blacklists", query_string_blacklists)
+        if query_string_whitelists is not None:
+            pulumi.set(__self__, "query_string_whitelists", query_string_whitelists)
+
+    @property
+    @pulumi.getter(name="includeHost")
+    def include_host(self) -> Optional[bool]:
+        """
+        If true requests to different hosts will be cached separately.
+        """
+        return pulumi.get(self, "include_host")
+
+    @property
+    @pulumi.getter(name="includeProtocol")
+    def include_protocol(self) -> Optional[bool]:
+        """
+        If true, http and https requests will be cached separately.
+        """
+        return pulumi.get(self, "include_protocol")
+
+    @property
+    @pulumi.getter(name="includeQueryString")
+    def include_query_string(self) -> Optional[bool]:
+        """
+        If true, include query string parameters in the cache key
+        according to query_string_whitelist and
+        query_string_blacklist. If neither is set, the entire query
+        string will be included.
+        If false, the query string will be excluded from the cache
+        key entirely.
+        """
+        return pulumi.get(self, "include_query_string")
+
+    @property
+    @pulumi.getter(name="queryStringBlacklists")
+    def query_string_blacklists(self) -> Optional[Sequence[str]]:
+        """
+        Names of query string parameters to exclude in cache keys.
+        All other parameters will be included. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        return pulumi.get(self, "query_string_blacklists")
+
+    @property
+    @pulumi.getter(name="queryStringWhitelists")
+    def query_string_whitelists(self) -> Optional[Sequence[str]]:
+        """
+        Names of query string parameters to include in cache keys.
+        All other parameters will be excluded. Either specify
+        query_string_whitelist or query_string_blacklist, not both.
+        '&' and '=' will be percent encoded and not treated as
+        delimiters.
+        """
+        return pulumi.get(self, "query_string_whitelists")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
+    def __init__(__self__, *,
+                 code: Optional[int] = None,
+                 ttl: Optional[int] = None):
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[int]:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[int]:
+        return pulumi.get(self, "ttl")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class RegionBackendServiceCircuitBreakers(dict):
     def __init__(__self__, *,
                  connect_timeout: Optional['outputs.RegionBackendServiceCircuitBreakersConnectTimeout'] = None,
@@ -8678,8 +9097,6 @@ class RegionBackendServiceConsistentHashHttpCookie(dict):
         """
         :param str name: Name of the cookie.
         :param str path: Path to set for the cookie.
-        :param 'RegionBackendServiceConsistentHashHttpCookieTtlArgs' ttl: Lifetime of the cookie.
-               Structure is documented below.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -8707,10 +9124,6 @@ class RegionBackendServiceConsistentHashHttpCookie(dict):
     @property
     @pulumi.getter
     def ttl(self) -> Optional['outputs.RegionBackendServiceConsistentHashHttpCookieTtl']:
-        """
-        Lifetime of the cookie.
-        Structure is documented below.
-        """
         return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
@@ -10199,7 +10612,8 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
                  max_surge_percent: Optional[int] = None,
                  max_unavailable_fixed: Optional[int] = None,
                  max_unavailable_percent: Optional[int] = None,
-                 min_ready_sec: Optional[int] = None):
+                 min_ready_sec: Optional[int] = None,
+                 replacement_method: Optional[str] = None):
         """
         :param str minimal_action: - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         :param str type: - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -10225,6 +10639,8 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
             pulumi.set(__self__, "max_unavailable_percent", max_unavailable_percent)
         if min_ready_sec is not None:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
+        if replacement_method is not None:
+            pulumi.set(__self__, "replacement_method", replacement_method)
 
     @property
     @pulumi.getter(name="minimalAction")
@@ -10290,6 +10706,11 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         - - -
         """
         return pulumi.get(self, "min_ready_sec")
+
+    @property
+    @pulumi.getter(name="replacementMethod")
+    def replacement_method(self) -> Optional[str]:
+        return pulumi.get(self, "replacement_method")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -11333,7 +11754,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
                Control-Allow-Credentials header. Defaults to false.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For
+        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For
                regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either allow_origins or allow_origin_regex.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An
@@ -11396,7 +11817,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For
+        Specifies the regular expression patterns that match allowed origins. For
         regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either allow_origins or allow_origin_regex.
         """
@@ -12477,7 +12898,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
                  query_parameter_matches: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatch']] = None,
                  regex_match: Optional[str] = None):
         """
-        :param str full_path_match: For satifying the matchRule condition, the path of the request must exactly
+        :param str full_path_match: For satisfying the matchRule condition, the path of the request must exactly
                match the value specified in fullPathMatch after removing any query parameters
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -12529,7 +12950,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRule(dict):
     @pulumi.getter(name="fullPathMatch")
     def full_path_match(self) -> Optional[str]:
         """
-        For satifying the matchRule condition, the path of the request must exactly
+        For satisfying the matchRule condition, the path of the request must exactly
         match the value specified in fullPathMatch after removing any query parameters
         and anchor that may be part of the original URL. FullPathMatch must be between 1
         and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -13117,7 +13538,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
                Control-Allow-Credentials header. Defaults to false.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For
+        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For
                regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either allow_origins or allow_origin_regex.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests. An
@@ -13174,7 +13595,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For
+        Specifies the regular expression patterns that match allowed origins. For
         regular expression grammar please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either allow_origins or allow_origin_regex.
         """
@@ -15669,7 +16090,7 @@ class URLMapDefaultRouteActionCorsPolicy(dict):
                This translates to the Access-Control-Allow-Credentials header.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -15725,7 +16146,7 @@ class URLMapDefaultRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
@@ -17006,7 +17427,7 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicy(dict):
                This translates to the Access-Control-Allow-Credentials header.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -17062,7 +17483,7 @@ class URLMapPathMatcherDefaultRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
@@ -18220,7 +18641,7 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
                This translates to the Access-Control-Allow-Credentials header.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -18282,7 +18703,7 @@ class URLMapPathMatcherPathRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
@@ -19325,7 +19746,7 @@ class URLMapPathMatcherRouteRuleMatchRule(dict):
                  query_parameter_matches: Optional[Sequence['outputs.URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch']] = None,
                  regex_match: Optional[str] = None):
         """
-        :param str full_path_match: For satifying the matchRule condition, the path of the request must exactly
+        :param str full_path_match: For satisfying the matchRule condition, the path of the request must exactly
                match the value specified in fullPathMatch after removing any query parameters
                and anchor that may be part of the original URL. FullPathMatch must be between 1
                and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -19377,7 +19798,7 @@ class URLMapPathMatcherRouteRuleMatchRule(dict):
     @pulumi.getter(name="fullPathMatch")
     def full_path_match(self) -> Optional[str]:
         """
-        For satifying the matchRule condition, the path of the request must exactly
+        For satisfying the matchRule condition, the path of the request must exactly
         match the value specified in fullPathMatch after removing any query parameters
         and anchor that may be part of the original URL. FullPathMatch must be between 1
         and 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must
@@ -19946,7 +20367,7 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
                This translates to the Access-Control-Allow-Credentials header.
         :param Sequence[str] allow_headers: Specifies the content for the Access-Control-Allow-Headers header.
         :param Sequence[str] allow_methods: Specifies the content for the Access-Control-Allow-Methods header.
-        :param Sequence[str] allow_origin_regexes: Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        :param Sequence[str] allow_origin_regexes: Specifies the regular expression patterns that match allowed origins. For regular expression grammar
                please see en.cppreference.com/w/cpp/regex/ecmascript
                An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         :param Sequence[str] allow_origins: Specifies the list of origins that will be allowed to do CORS requests.
@@ -20002,7 +20423,7 @@ class URLMapPathMatcherRouteRuleRouteActionCorsPolicy(dict):
     @pulumi.getter(name="allowOriginRegexes")
     def allow_origin_regexes(self) -> Optional[Sequence[str]]:
         """
-        Specifies the regualar expression patterns that match allowed origins. For regular expression grammar
+        Specifies the regular expression patterns that match allowed origins. For regular expression grammar
         please see en.cppreference.com/w/cpp/regex/ecmascript
         An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         """
@@ -20815,11 +21236,60 @@ class URLMapTest(dict):
 @pulumi.output_type
 class GetBackendBucketCdnPolicyResult(dict):
     def __init__(__self__, *,
+                 cache_mode: str,
+                 client_ttl: int,
+                 default_ttl: int,
+                 max_ttl: int,
+                 negative_caching: bool,
+                 negative_caching_policies: Sequence['outputs.GetBackendBucketCdnPolicyNegativeCachingPolicyResult'],
+                 serve_while_stale: int,
                  signed_url_cache_max_age_sec: int):
         """
         :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
         """
+        pulumi.set(__self__, "cache_mode", cache_mode)
+        pulumi.set(__self__, "client_ttl", client_ttl)
+        pulumi.set(__self__, "default_ttl", default_ttl)
+        pulumi.set(__self__, "max_ttl", max_ttl)
+        pulumi.set(__self__, "negative_caching", negative_caching)
+        pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> str:
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> int:
+        return pulumi.get(self, "client_ttl")
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> int:
+        return pulumi.get(self, "default_ttl")
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> int:
+        return pulumi.get(self, "max_ttl")
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> bool:
+        return pulumi.get(self, "negative_caching")
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Sequence['outputs.GetBackendBucketCdnPolicyNegativeCachingPolicyResult']:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> int:
+        return pulumi.get(self, "serve_while_stale")
 
     @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
@@ -20828,6 +21298,25 @@ class GetBackendBucketCdnPolicyResult(dict):
         Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
         """
         return pulumi.get(self, "signed_url_cache_max_age_sec")
+
+
+@pulumi.output_type
+class GetBackendBucketCdnPolicyNegativeCachingPolicyResult(dict):
+    def __init__(__self__, *,
+                 code: int,
+                 ttl: int):
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        return pulumi.get(self, "ttl")
 
 
 @pulumi.output_type
@@ -20922,14 +21411,63 @@ class GetBackendServiceBackendResult(dict):
 class GetBackendServiceCdnPolicyResult(dict):
     def __init__(__self__, *,
                  cache_key_policies: Sequence['outputs.GetBackendServiceCdnPolicyCacheKeyPolicyResult'],
+                 cache_mode: str,
+                 client_ttl: int,
+                 default_ttl: int,
+                 max_ttl: int,
+                 negative_caching: bool,
+                 negative_caching_policies: Sequence['outputs.GetBackendServiceCdnPolicyNegativeCachingPolicyResult'],
+                 serve_while_stale: int,
                  signed_url_cache_max_age_sec: int):
         pulumi.set(__self__, "cache_key_policies", cache_key_policies)
+        pulumi.set(__self__, "cache_mode", cache_mode)
+        pulumi.set(__self__, "client_ttl", client_ttl)
+        pulumi.set(__self__, "default_ttl", default_ttl)
+        pulumi.set(__self__, "max_ttl", max_ttl)
+        pulumi.set(__self__, "negative_caching", negative_caching)
+        pulumi.set(__self__, "negative_caching_policies", negative_caching_policies)
+        pulumi.set(__self__, "serve_while_stale", serve_while_stale)
         pulumi.set(__self__, "signed_url_cache_max_age_sec", signed_url_cache_max_age_sec)
 
     @property
     @pulumi.getter(name="cacheKeyPolicies")
     def cache_key_policies(self) -> Sequence['outputs.GetBackendServiceCdnPolicyCacheKeyPolicyResult']:
         return pulumi.get(self, "cache_key_policies")
+
+    @property
+    @pulumi.getter(name="cacheMode")
+    def cache_mode(self) -> str:
+        return pulumi.get(self, "cache_mode")
+
+    @property
+    @pulumi.getter(name="clientTtl")
+    def client_ttl(self) -> int:
+        return pulumi.get(self, "client_ttl")
+
+    @property
+    @pulumi.getter(name="defaultTtl")
+    def default_ttl(self) -> int:
+        return pulumi.get(self, "default_ttl")
+
+    @property
+    @pulumi.getter(name="maxTtl")
+    def max_ttl(self) -> int:
+        return pulumi.get(self, "max_ttl")
+
+    @property
+    @pulumi.getter(name="negativeCaching")
+    def negative_caching(self) -> bool:
+        return pulumi.get(self, "negative_caching")
+
+    @property
+    @pulumi.getter(name="negativeCachingPolicies")
+    def negative_caching_policies(self) -> Sequence['outputs.GetBackendServiceCdnPolicyNegativeCachingPolicyResult']:
+        return pulumi.get(self, "negative_caching_policies")
+
+    @property
+    @pulumi.getter(name="serveWhileStale")
+    def serve_while_stale(self) -> int:
+        return pulumi.get(self, "serve_while_stale")
 
     @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
@@ -20975,6 +21513,25 @@ class GetBackendServiceCdnPolicyCacheKeyPolicyResult(dict):
     @pulumi.getter(name="queryStringWhitelists")
     def query_string_whitelists(self) -> Sequence[str]:
         return pulumi.get(self, "query_string_whitelists")
+
+
+@pulumi.output_type
+class GetBackendServiceCdnPolicyNegativeCachingPolicyResult(dict):
+    def __init__(__self__, *,
+                 code: int,
+                 ttl: int):
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> int:
+        return pulumi.get(self, "ttl")
 
 
 @pulumi.output_type
@@ -21983,6 +22540,198 @@ class GetRegionInstanceGroupInstanceNamedPortResult(dict):
         Integer port number
         """
         return pulumi.get(self, "port")
+
+
+@pulumi.output_type
+class GetResourcePolicyGroupPlacementPolicyResult(dict):
+    def __init__(__self__, *,
+                 availability_domain_count: int,
+                 collocation: str,
+                 vm_count: int):
+        pulumi.set(__self__, "availability_domain_count", availability_domain_count)
+        pulumi.set(__self__, "collocation", collocation)
+        pulumi.set(__self__, "vm_count", vm_count)
+
+    @property
+    @pulumi.getter(name="availabilityDomainCount")
+    def availability_domain_count(self) -> int:
+        return pulumi.get(self, "availability_domain_count")
+
+    @property
+    @pulumi.getter
+    def collocation(self) -> str:
+        return pulumi.get(self, "collocation")
+
+    @property
+    @pulumi.getter(name="vmCount")
+    def vm_count(self) -> int:
+        return pulumi.get(self, "vm_count")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicyResult(dict):
+    def __init__(__self__, *,
+                 retention_policies: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult'],
+                 schedules: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleResult'],
+                 snapshot_properties: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult']):
+        pulumi.set(__self__, "retention_policies", retention_policies)
+        pulumi.set(__self__, "schedules", schedules)
+        pulumi.set(__self__, "snapshot_properties", snapshot_properties)
+
+    @property
+    @pulumi.getter(name="retentionPolicies")
+    def retention_policies(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult']:
+        return pulumi.get(self, "retention_policies")
+
+    @property
+    @pulumi.getter
+    def schedules(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleResult']:
+        return pulumi.get(self, "schedules")
+
+    @property
+    @pulumi.getter(name="snapshotProperties")
+    def snapshot_properties(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult']:
+        return pulumi.get(self, "snapshot_properties")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicyRetentionPolicyResult(dict):
+    def __init__(__self__, *,
+                 max_retention_days: int,
+                 on_source_disk_delete: str):
+        pulumi.set(__self__, "max_retention_days", max_retention_days)
+        pulumi.set(__self__, "on_source_disk_delete", on_source_disk_delete)
+
+    @property
+    @pulumi.getter(name="maxRetentionDays")
+    def max_retention_days(self) -> int:
+        return pulumi.get(self, "max_retention_days")
+
+    @property
+    @pulumi.getter(name="onSourceDiskDelete")
+    def on_source_disk_delete(self) -> str:
+        return pulumi.get(self, "on_source_disk_delete")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicyScheduleResult(dict):
+    def __init__(__self__, *,
+                 daily_schedules: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult'],
+                 hourly_schedules: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult'],
+                 weekly_schedules: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult']):
+        pulumi.set(__self__, "daily_schedules", daily_schedules)
+        pulumi.set(__self__, "hourly_schedules", hourly_schedules)
+        pulumi.set(__self__, "weekly_schedules", weekly_schedules)
+
+    @property
+    @pulumi.getter(name="dailySchedules")
+    def daily_schedules(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult']:
+        return pulumi.get(self, "daily_schedules")
+
+    @property
+    @pulumi.getter(name="hourlySchedules")
+    def hourly_schedules(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult']:
+        return pulumi.get(self, "hourly_schedules")
+
+    @property
+    @pulumi.getter(name="weeklySchedules")
+    def weekly_schedules(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult']:
+        return pulumi.get(self, "weekly_schedules")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleResult(dict):
+    def __init__(__self__, *,
+                 days_in_cycle: int,
+                 start_time: str):
+        pulumi.set(__self__, "days_in_cycle", days_in_cycle)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="daysInCycle")
+    def days_in_cycle(self) -> int:
+        return pulumi.get(self, "days_in_cycle")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleResult(dict):
+    def __init__(__self__, *,
+                 hours_in_cycle: int,
+                 start_time: str):
+        pulumi.set(__self__, "hours_in_cycle", hours_in_cycle)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="hoursInCycle")
+    def hours_in_cycle(self) -> int:
+        return pulumi.get(self, "hours_in_cycle")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleResult(dict):
+    def __init__(__self__, *,
+                 day_of_weeks: Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult']):
+        pulumi.set(__self__, "day_of_weeks", day_of_weeks)
+
+    @property
+    @pulumi.getter(name="dayOfWeeks")
+    def day_of_weeks(self) -> Sequence['outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult']:
+        return pulumi.get(self, "day_of_weeks")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekResult(dict):
+    def __init__(__self__, *,
+                 day: str,
+                 start_time: str):
+        pulumi.set(__self__, "day", day)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter
+    def day(self) -> str:
+        return pulumi.get(self, "day")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetResourcePolicySnapshotSchedulePolicySnapshotPropertyResult(dict):
+    def __init__(__self__, *,
+                 guest_flush: bool,
+                 labels: Mapping[str, str],
+                 storage_locations: Sequence[str]):
+        pulumi.set(__self__, "guest_flush", guest_flush)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "storage_locations", storage_locations)
+
+    @property
+    @pulumi.getter(name="guestFlush")
+    def guest_flush(self) -> bool:
+        return pulumi.get(self, "guest_flush")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="storageLocations")
+    def storage_locations(self) -> Sequence[str]:
+        return pulumi.get(self, "storage_locations")
 
 
 @pulumi.output_type

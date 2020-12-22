@@ -94,8 +94,8 @@ export class ProjectSink extends pulumi.CustomResource {
     /**
      * Whether or not to create a unique identity associated with this sink. If `false`
      * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `uniqueWriterIdentity` to true.
+     * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+     * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      */
     public readonly uniqueWriterIdentity!: pulumi.Output<boolean | undefined>;
     /**
@@ -199,8 +199,8 @@ export interface ProjectSinkState {
     /**
      * Whether or not to create a unique identity associated with this sink. If `false`
      * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `uniqueWriterIdentity` to true.
+     * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+     * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      */
     readonly uniqueWriterIdentity?: pulumi.Input<boolean>;
     /**
@@ -256,8 +256,8 @@ export interface ProjectSinkArgs {
     /**
      * Whether or not to create a unique identity associated with this sink. If `false`
      * (the default), then the `writerIdentity` used is `serviceAccount:cloud-logs@system.gserviceaccount.com`. If `true`,
-     * then a unique service account is created and used for this sink. If you wish to publish logs across projects, you
-     * must set `uniqueWriterIdentity` to true.
+     * then a unique service account is created and used for this sink. If you wish to publish logs across projects or utilize
+     * `bigqueryOptions`, you must set `uniqueWriterIdentity` to true.
      */
     readonly uniqueWriterIdentity?: pulumi.Input<boolean>;
 }
