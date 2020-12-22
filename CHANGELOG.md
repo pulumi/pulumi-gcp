@@ -2,14 +2,17 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 4.6.0 (2020-12-22)
 * Upgrade to v2.16.0 of pulumi-terraform-bridge
     * Preserve unknowns during provider preview
 * Upgrade NodeJS and Python versions to use Pulumi >= v2.15.0
 * Upgrade to v3.51.0 of the Google Beta Terraform Provider
 
----
-
-## 4.52 (2020-12-08)
+## 4.5.2 (2020-12-08)
 * Upgrade to v2.15.3 of pulumi-terraform-bridge
   * Bug fix: Corrects a panic caused by reading sets with partially-known elements.
 
