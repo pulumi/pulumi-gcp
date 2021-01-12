@@ -17,6 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const defaultAccount = new gcp.serviceAccount.Account("defaultAccount", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
  * const myImage = gcp.compute.getImage({
  *     family: "debian-9",
  *     project: "debian-cloud",
@@ -27,7 +31,7 @@ import * as utilities from "../utilities";
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
- * const _default = new gcp.compute.InstanceTemplate("default", {
+ * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
  *     description: "This template is used to create app server instances.",
  *     tags: [
  *         "foo",
@@ -62,11 +66,8 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     serviceAccount: {
- *         scopes: [
- *             "userinfo-email",
- *             "compute-ro",
- *             "storage-ro",
- *         ],
+ *         email: defaultAccount.email,
+ *         scopes: ["cloud-platform"],
  *     },
  * });
  * ```
@@ -208,7 +209,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
      */
     public readonly canIpForward!: pulumi.Output<boolean | undefined>;
     /**
-     * ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
     public readonly confidentialInstanceConfig!: pulumi.Output<outputs.compute.InstanceTemplateConfidentialInstanceConfig>;
     /**
@@ -412,7 +413,7 @@ export interface InstanceTemplateState {
      */
     readonly canIpForward?: pulumi.Input<boolean>;
     /**
-     * ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
     readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig>;
     /**
@@ -537,7 +538,7 @@ export interface InstanceTemplateArgs {
      */
     readonly canIpForward?: pulumi.Input<boolean>;
     /**
-     * ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+     * Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
      */
     readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.InstanceTemplateConfidentialInstanceConfig>;
     /**

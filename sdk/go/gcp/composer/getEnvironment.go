@@ -19,8 +19,6 @@ func LookupEnvironment(ctx *pulumi.Context, args *LookupEnvironmentArgs, opts ..
 
 // A collection of arguments for invoking getEnvironment.
 type LookupEnvironmentArgs struct {
-	Config *GetEnvironmentConfig `pulumi:"config"`
-	Labels map[string]string     `pulumi:"labels"`
 	// Name of the environment.
 	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
@@ -32,11 +30,11 @@ type LookupEnvironmentArgs struct {
 
 // A collection of values returned by getEnvironment.
 type LookupEnvironmentResult struct {
-	Config GetEnvironmentConfig `pulumi:"config"`
+	Configs []GetEnvironmentConfig `pulumi:"configs"`
 	// The provider-assigned unique ID for this managed resource.
 	Id      string            `pulumi:"id"`
 	Labels  map[string]string `pulumi:"labels"`
 	Name    string            `pulumi:"name"`
-	Project string            `pulumi:"project"`
+	Project *string           `pulumi:"project"`
 	Region  *string           `pulumi:"region"`
 }

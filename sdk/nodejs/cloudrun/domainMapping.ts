@@ -38,9 +38,6 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     metadata: {
  *         namespace: "my-project-name",
- *         annotations: {
- *             "run.googleapis.com/launch-stage": "BETA",
- *         },
  *     },
  *     spec: {
  *         routeName: defaultService.name,

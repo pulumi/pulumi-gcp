@@ -13,12 +13,12 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult
     {
-        public readonly string? Description;
+        public readonly string Description;
         public readonly string Value;
 
         [OutputConstructor]
         private GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult(
-            string? description,
+            string description,
 
             string value)
         {

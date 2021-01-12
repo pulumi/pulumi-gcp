@@ -47,6 +47,47 @@ namespace Pulumi.Gcp.Sql
     /// }
     /// ```
     /// 
+    /// Example creating a Cloud IAM User.
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dbNameSuffix = new Random.RandomId("dbNameSuffix", new Random.RandomIdArgs
+    ///         {
+    ///             ByteLength = 4,
+    ///         });
+    ///         var master = new Gcp.Sql.DatabaseInstance("master", new Gcp.Sql.DatabaseInstanceArgs
+    ///         {
+    ///             DatabaseVersion = "POSTGRES_9_6",
+    ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///             {
+    ///                 Tier = "db-f1-micro",
+    ///                 DatagbaseFlags = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "name", "cloudsql.iam_authentication" },
+    ///                         { "value", "on" },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var users = new Gcp.Sql.User("users", new Gcp.Sql.UserArgs
+    ///         {
+    ///             Instance = master.Name,
+    ///             Type = "CLOUD_IAM_USER",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -106,6 +147,14 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The user type. It determines the method to authenticate the
+        /// user during login. The default is the database's built-in user type. Flags
+        /// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
 
         /// <summary>
@@ -197,6 +246,14 @@ namespace Pulumi.Gcp.Sql
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The user type. It determines the method to authenticate the
+        /// user during login. The default is the database's built-in user type. Flags
+        /// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public UserArgs()
         {
         }
@@ -247,6 +304,14 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The user type. It determines the method to authenticate the
+        /// user during login. The default is the database's built-in user type. Flags
+        /// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         public UserState()
         {

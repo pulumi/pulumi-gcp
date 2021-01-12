@@ -14,12 +14,26 @@ namespace Pulumi.Gcp.Billing.Outputs
     public sealed class BudgetBudgetFilter
     {
         /// <summary>
+        /// A set of subaccounts of the form billingAccounts/{account_id},
+        /// specifying that usage from only this set of subaccounts should
+        /// be included in the budget. If a subaccount is set to the name of
+        /// the parent account, usage from the parent account will be included.
+        /// If the field is omitted, the report will include usage from the parent
+        /// account and all subaccounts, if they exist.
+        /// </summary>
+        public readonly ImmutableArray<string> CreditTypes;
+        /// <summary>
         /// Specifies how credits should be treated when determining spend
         /// for threshold calculations.
         /// Default value is `INCLUDE_ALL_CREDITS`.
-        /// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+        /// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
         /// </summary>
         public readonly string? CreditTypesTreatment;
+        /// <summary>
+        /// A single label and value pair specifying that usage from only
+        /// this set of labeled resources should be included in the budget.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Labels;
         /// <summary>
         /// A set of projects of the form projects/{project_id},
         /// specifying that usage from only this set of projects should be
@@ -38,18 +52,36 @@ namespace Pulumi.Gcp.Billing.Outputs
         /// https://cloud.google.com/billing/v1/how-tos/catalog-api.
         /// </summary>
         public readonly ImmutableArray<string> Services;
+        /// <summary>
+        /// A set of subaccounts of the form billingAccounts/{account_id},
+        /// specifying that usage from only this set of subaccounts should
+        /// be included in the budget. If a subaccount is set to the name of
+        /// the parent account, usage from the parent account will be included.
+        /// If the field is omitted, the report will include usage from the parent
+        /// account and all subaccounts, if they exist.
+        /// </summary>
+        public readonly ImmutableArray<string> Subaccounts;
 
         [OutputConstructor]
         private BudgetBudgetFilter(
+            ImmutableArray<string> creditTypes,
+
             string? creditTypesTreatment,
+
+            ImmutableDictionary<string, string>? labels,
 
             ImmutableArray<string> projects,
 
-            ImmutableArray<string> services)
+            ImmutableArray<string> services,
+
+            ImmutableArray<string> subaccounts)
         {
+            CreditTypes = creditTypes;
             CreditTypesTreatment = creditTypesTreatment;
+            Labels = labels;
             Projects = projects;
             Services = services;
+            Subaccounts = subaccounts;
         }
     }
 }

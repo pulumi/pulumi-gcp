@@ -122,7 +122,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
@@ -217,7 +217,7 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[bool] force_destroy: When deleting a bucket, this
                boolean option will delete all contained objects. If you try to delete a
                bucket that contains objects, the provider will fail that run.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to the bucket.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the bucket.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketLifecycleRuleArgs']]]] lifecycle_rules: The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
         :param pulumi.Input[str] location: The [GCS location](https://cloud.google.com/storage/docs/bucket-locations)
         :param pulumi.Input[pulumi.InputType['BucketLoggingArgs']] logging: The bucket's [Access & Storage Logs](https://cloud.google.com/storage/docs/access-logs) configuration.
@@ -301,7 +301,7 @@ class Bucket(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        A set of key/value label pairs to assign to the bucket.
+        A map of key/value label pairs to assign to the bucket.
         """
         return pulumi.get(self, "labels")
 

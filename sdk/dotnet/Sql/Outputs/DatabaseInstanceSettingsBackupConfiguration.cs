@@ -23,6 +23,9 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// True if backup configuration is enabled.
         /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The region where the backup will be stored
+        /// </summary>
         public readonly string? Location;
         /// <summary>
         /// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.

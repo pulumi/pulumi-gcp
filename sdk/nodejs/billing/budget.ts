@@ -10,9 +10,15 @@ import * as utilities from "../utilities";
  *
  * To get more information about Budget, see:
  *
- * * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
+ * * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1/billingAccounts.budgets)
  * * How-to Guides
  *     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+ *
+ * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+ * you must specify a `billingProject` and set `userProjectOverride` to true
+ * in the provider configuration. Otherwise the Billing Budgets API will return a 403 error.
+ * Your account must have the `serviceusage.services.use` permission on the
+ * `billingProject` you defined.
  *
  * ## Example Usage
  * ### Billing Budget Basic
@@ -36,8 +42,6 @@ import * as utilities from "../utilities";
  *     thresholdRules: [{
  *         thresholdPercent: 0.5,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Billing Budget Lastperiod
@@ -49,11 +53,12 @@ import * as utilities from "../utilities";
  * const account = gcp.organizations.getBillingAccount({
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
+ * const project = gcp.organizations.getProject({});
  * const budget = new gcp.billing.Budget("budget", {
  *     billingAccount: account.then(account => account.id),
  *     displayName: "Example Billing Budget",
  *     budgetFilter: {
- *         projects: ["projects/my-project-name"],
+ *         projects: [project.then(project => `projects/${project.number}`)],
  *     },
  *     amount: {
  *         lastPeriodAmount: true,
@@ -61,8 +66,6 @@ import * as utilities from "../utilities";
  *     thresholdRules: [{
  *         thresholdPercent: 10,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Billing Budget Filter
@@ -74,11 +77,12 @@ import * as utilities from "../utilities";
  * const account = gcp.organizations.getBillingAccount({
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
+ * const project = gcp.organizations.getProject({});
  * const budget = new gcp.billing.Budget("budget", {
  *     billingAccount: account.then(account => account.id),
  *     displayName: "Example Billing Budget",
  *     budgetFilter: {
- *         projects: ["projects/my-project-name"],
+ *         projects: [project.then(project => `projects/${project.number}`)],
  *         creditTypesTreatment: "EXCLUDE_ALL_CREDITS",
  *         services: ["services/24E6-581D-38E5"],
  *     },
@@ -97,8 +101,6 @@ import * as utilities from "../utilities";
  *             spendBasis: "FORECASTED_SPEND",
  *         },
  *     ],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Billing Budget Notify
@@ -110,20 +112,19 @@ import * as utilities from "../utilities";
  * const account = gcp.organizations.getBillingAccount({
  *     billingAccount: "000000-0000000-0000000-000000",
  * });
+ * const project = gcp.organizations.getProject({});
  * const notificationChannel = new gcp.monitoring.NotificationChannel("notificationChannel", {
  *     displayName: "Example Notification Channel",
  *     type: "email",
  *     labels: {
  *         email_address: "address@example.com",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const budget = new gcp.billing.Budget("budget", {
  *     billingAccount: account.then(account => account.id),
  *     displayName: "Example Billing Budget",
  *     budgetFilter: {
- *         projects: ["projects/my-project-name"],
+ *         projects: [project.then(project => `projects/${project.number}`)],
  *     },
  *     amount: {
  *         specifiedAmount: {
@@ -144,18 +145,12 @@ import * as utilities from "../utilities";
  *         monitoringNotificationChannels: [notificationChannel.id],
  *         disableDefaultIamRecipients: true,
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
  * ## Import
  *
- * Budget can be imported using any of these accepted formats
- *
- * ```sh
- *  $ pulumi import gcp:billing/budget:Budget default {{name}}
- * ```
+ * This resource does not support import.
  */
 export class Budget extends pulumi.CustomResource {
     /**
@@ -206,7 +201,7 @@ export class Budget extends pulumi.CustomResource {
      * spend against the budget.
      * Structure is documented below.
      */
-    public readonly budgetFilter!: pulumi.Output<outputs.billing.BudgetBudgetFilter | undefined>;
+    public readonly budgetFilter!: pulumi.Output<outputs.billing.BudgetBudgetFilter>;
     /**
      * User data for display name in UI. Must be <= 60 chars.
      */

@@ -14,12 +14,12 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class GetEnvironmentConfigNodeConfigResult
     {
         public readonly int DiskSizeGb;
-        public readonly Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult IpAllocationPolicy;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult> IpAllocationPolicies;
         public readonly string MachineType;
         public readonly string Network;
         public readonly ImmutableArray<string> OauthScopes;
         public readonly string ServiceAccount;
-        public readonly string? Subnetwork;
+        public readonly string Subnetwork;
         public readonly ImmutableArray<string> Tags;
         public readonly string Zone;
 
@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         private GetEnvironmentConfigNodeConfigResult(
             int diskSizeGb,
 
-            Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult ipAllocationPolicy,
+            ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult> ipAllocationPolicies,
 
             string machineType,
 
@@ -37,14 +37,14 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string serviceAccount,
 
-            string? subnetwork,
+            string subnetwork,
 
             ImmutableArray<string> tags,
 
             string zone)
         {
             DiskSizeGb = diskSizeGb;
-            IpAllocationPolicy = ipAllocationPolicy;
+            IpAllocationPolicies = ipAllocationPolicies;
             MachineType = machineType;
             Network = network;
             OauthScopes = oauthScopes;

@@ -268,14 +268,25 @@ class BudgetAmountSpecifiedAmount(dict):
 @pulumi.output_type
 class BudgetBudgetFilter(dict):
     def __init__(__self__, *,
+                 credit_types: Optional[Sequence[str]] = None,
                  credit_types_treatment: Optional[str] = None,
+                 labels: Optional[Mapping[str, str]] = None,
                  projects: Optional[Sequence[str]] = None,
-                 services: Optional[Sequence[str]] = None):
+                 services: Optional[Sequence[str]] = None,
+                 subaccounts: Optional[Sequence[str]] = None):
         """
+        :param Sequence[str] credit_types: A set of subaccounts of the form billingAccounts/{account_id},
+               specifying that usage from only this set of subaccounts should
+               be included in the budget. If a subaccount is set to the name of
+               the parent account, usage from the parent account will be included.
+               If the field is omitted, the report will include usage from the parent
+               account and all subaccounts, if they exist.
         :param str credit_types_treatment: Specifies how credits should be treated when determining spend
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
-               Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+               Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+        :param Mapping[str, str] labels: A single label and value pair specifying that usage from only
+               this set of labeled resources should be included in the budget.
         :param Sequence[str] projects: A set of projects of the form projects/{project_id},
                specifying that usage from only this set of projects should be
                included in the budget. If omitted, the report will include
@@ -288,13 +299,38 @@ class BudgetBudgetFilter(dict):
                usage for all the services. The service names are available
                through the Catalog API:
                https://cloud.google.com/billing/v1/how-tos/catalog-api.
+        :param Sequence[str] subaccounts: A set of subaccounts of the form billingAccounts/{account_id},
+               specifying that usage from only this set of subaccounts should
+               be included in the budget. If a subaccount is set to the name of
+               the parent account, usage from the parent account will be included.
+               If the field is omitted, the report will include usage from the parent
+               account and all subaccounts, if they exist.
         """
+        if credit_types is not None:
+            pulumi.set(__self__, "credit_types", credit_types)
         if credit_types_treatment is not None:
             pulumi.set(__self__, "credit_types_treatment", credit_types_treatment)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if projects is not None:
             pulumi.set(__self__, "projects", projects)
         if services is not None:
             pulumi.set(__self__, "services", services)
+        if subaccounts is not None:
+            pulumi.set(__self__, "subaccounts", subaccounts)
+
+    @property
+    @pulumi.getter(name="creditTypes")
+    def credit_types(self) -> Optional[Sequence[str]]:
+        """
+        A set of subaccounts of the form billingAccounts/{account_id},
+        specifying that usage from only this set of subaccounts should
+        be included in the budget. If a subaccount is set to the name of
+        the parent account, usage from the parent account will be included.
+        If the field is omitted, the report will include usage from the parent
+        account and all subaccounts, if they exist.
+        """
+        return pulumi.get(self, "credit_types")
 
     @property
     @pulumi.getter(name="creditTypesTreatment")
@@ -303,9 +339,18 @@ class BudgetBudgetFilter(dict):
         Specifies how credits should be treated when determining spend
         for threshold calculations.
         Default value is `INCLUDE_ALL_CREDITS`.
-        Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+        Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
         """
         return pulumi.get(self, "credit_types_treatment")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        A single label and value pair specifying that usage from only
+        this set of labeled resources should be included in the budget.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -332,6 +377,19 @@ class BudgetBudgetFilter(dict):
         https://cloud.google.com/billing/v1/how-tos/catalog-api.
         """
         return pulumi.get(self, "services")
+
+    @property
+    @pulumi.getter
+    def subaccounts(self) -> Optional[Sequence[str]]:
+        """
+        A set of subaccounts of the form billingAccounts/{account_id},
+        specifying that usage from only this set of subaccounts should
+        be included in the budget. If a subaccount is set to the name of
+        the parent account, usage from the parent account will be included.
+        If the field is omitted, the report will include usage from the parent
+        account and all subaccounts, if they exist.
+        """
+        return pulumi.get(self, "subaccounts")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

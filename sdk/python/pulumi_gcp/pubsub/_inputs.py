@@ -9,6 +9,10 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'LiteSubscriptionDeliveryConfigArgs',
+    'LiteTopicPartitionConfigArgs',
+    'LiteTopicPartitionConfigCapacityArgs',
+    'LiteTopicRetentionConfigArgs',
     'SubscriptionDeadLetterPolicyArgs',
     'SubscriptionExpirationPolicyArgs',
     'SubscriptionIAMBindingConditionArgs',
@@ -20,6 +24,151 @@ __all__ = [
     'TopicIAMMemberConditionArgs',
     'TopicMessageStoragePolicyArgs',
 ]
+
+@pulumi.input_type
+class LiteSubscriptionDeliveryConfigArgs:
+    def __init__(__self__, *,
+                 delivery_requirement: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] delivery_requirement: When this subscription should send messages to subscribers relative to messages persistence in storage.
+               Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+        """
+        pulumi.set(__self__, "delivery_requirement", delivery_requirement)
+
+    @property
+    @pulumi.getter(name="deliveryRequirement")
+    def delivery_requirement(self) -> pulumi.Input[str]:
+        """
+        When this subscription should send messages to subscribers relative to messages persistence in storage.
+        Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "delivery_requirement")
+
+    @delivery_requirement.setter
+    def delivery_requirement(self, value: pulumi.Input[str]):
+        pulumi.set(self, "delivery_requirement", value)
+
+
+@pulumi.input_type
+class LiteTopicPartitionConfigArgs:
+    def __init__(__self__, *,
+                 count: pulumi.Input[int],
+                 capacity: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']] = None):
+        """
+        :param pulumi.Input[int] count: The number of partitions in the topic. Must be at least 1.
+        :param pulumi.Input['LiteTopicPartitionConfigCapacityArgs'] capacity: The capacity configuration.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "count", count)
+        if capacity is not None:
+            pulumi.set(__self__, "capacity", capacity)
+
+    @property
+    @pulumi.getter
+    def count(self) -> pulumi.Input[int]:
+        """
+        The number of partitions in the topic. Must be at least 1.
+        """
+        return pulumi.get(self, "count")
+
+    @count.setter
+    def count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "count", value)
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']]:
+        """
+        The capacity configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "capacity")
+
+    @capacity.setter
+    def capacity(self, value: Optional[pulumi.Input['LiteTopicPartitionConfigCapacityArgs']]):
+        pulumi.set(self, "capacity", value)
+
+
+@pulumi.input_type
+class LiteTopicPartitionConfigCapacityArgs:
+    def __init__(__self__, *,
+                 publish_mib_per_sec: pulumi.Input[int],
+                 subscribe_mib_per_sec: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] publish_mib_per_sec: Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        :param pulumi.Input[int] subscribe_mib_per_sec: Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        """
+        pulumi.set(__self__, "publish_mib_per_sec", publish_mib_per_sec)
+        pulumi.set(__self__, "subscribe_mib_per_sec", subscribe_mib_per_sec)
+
+    @property
+    @pulumi.getter(name="publishMibPerSec")
+    def publish_mib_per_sec(self) -> pulumi.Input[int]:
+        """
+        Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        """
+        return pulumi.get(self, "publish_mib_per_sec")
+
+    @publish_mib_per_sec.setter
+    def publish_mib_per_sec(self, value: pulumi.Input[int]):
+        pulumi.set(self, "publish_mib_per_sec", value)
+
+    @property
+    @pulumi.getter(name="subscribeMibPerSec")
+    def subscribe_mib_per_sec(self) -> pulumi.Input[int]:
+        """
+        Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        """
+        return pulumi.get(self, "subscribe_mib_per_sec")
+
+    @subscribe_mib_per_sec.setter
+    def subscribe_mib_per_sec(self, value: pulumi.Input[int]):
+        pulumi.set(self, "subscribe_mib_per_sec", value)
+
+
+@pulumi.input_type
+class LiteTopicRetentionConfigArgs:
+    def __init__(__self__, *,
+                 per_partition_bytes: pulumi.Input[str],
+                 period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] per_partition_bytes: The provisioned storage, in bytes, per partition. If the number of bytes stored
+               in any of the topic's partitions grows beyond this value, older messages will be
+               dropped to make room for newer ones, regardless of the value of period.
+        :param pulumi.Input[str] period: How long a published message is retained. If unset, messages will be retained as
+               long as the bytes retained for each partition is below perPartitionBytes.
+        """
+        pulumi.set(__self__, "per_partition_bytes", per_partition_bytes)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter(name="perPartitionBytes")
+    def per_partition_bytes(self) -> pulumi.Input[str]:
+        """
+        The provisioned storage, in bytes, per partition. If the number of bytes stored
+        in any of the topic's partitions grows beyond this value, older messages will be
+        dropped to make room for newer ones, regardless of the value of period.
+        """
+        return pulumi.get(self, "per_partition_bytes")
+
+    @per_partition_bytes.setter
+    def per_partition_bytes(self, value: pulumi.Input[str]):
+        pulumi.set(self, "per_partition_bytes", value)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long a published message is retained. If unset, messages will be retained as
+        long as the bytes retained for each partition is below perPartitionBytes.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period", value)
+
 
 @pulumi.input_type
 class SubscriptionDeadLetterPolicyArgs:

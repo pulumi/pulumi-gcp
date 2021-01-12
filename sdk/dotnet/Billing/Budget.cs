@@ -14,9 +14,15 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// To get more information about Budget, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
+    /// * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1/billingAccounts.budgets)
     /// * How-to Guides
     ///     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+    /// 
+    /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// in the provider configuration. Otherwise the Billing Budgets API will return a 403 error.
+    /// Your account must have the `serviceusage.services.use` permission on the
+    /// `billing_project` you defined.
     /// 
     /// ## Example Usage
     /// ### Billing Budget Basic
@@ -52,9 +58,6 @@ namespace Pulumi.Gcp.Billing
     ///                     ThresholdPercent = 0.5,
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -74,6 +77,7 @@ namespace Pulumi.Gcp.Billing
     ///         {
     ///             BillingAccount = "000000-0000000-0000000-000000",
     ///         }));
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
     ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
     ///         {
     ///             BillingAccount = account.Apply(account =&gt; account.Id),
@@ -82,7 +86,7 @@ namespace Pulumi.Gcp.Billing
     ///             {
     ///                 Projects = 
     ///                 {
-    ///                     "projects/my-project-name",
+    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
     ///                 },
     ///             },
     ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
@@ -96,9 +100,6 @@ namespace Pulumi.Gcp.Billing
     ///                     ThresholdPercent = 10,
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -118,6 +119,7 @@ namespace Pulumi.Gcp.Billing
     ///         {
     ///             BillingAccount = "000000-0000000-0000000-000000",
     ///         }));
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
     ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
     ///         {
     ///             BillingAccount = account.Apply(account =&gt; account.Id),
@@ -126,7 +128,7 @@ namespace Pulumi.Gcp.Billing
     ///             {
     ///                 Projects = 
     ///                 {
-    ///                     "projects/my-project-name",
+    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
     ///                 },
     ///                 CreditTypesTreatment = "EXCLUDE_ALL_CREDITS",
     ///                 Services = 
@@ -154,9 +156,6 @@ namespace Pulumi.Gcp.Billing
     ///                     SpendBasis = "FORECASTED_SPEND",
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -176,6 +175,7 @@ namespace Pulumi.Gcp.Billing
     ///         {
     ///             BillingAccount = "000000-0000000-0000000-000000",
     ///         }));
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
     ///         var notificationChannel = new Gcp.Monitoring.NotificationChannel("notificationChannel", new Gcp.Monitoring.NotificationChannelArgs
     ///         {
     ///             DisplayName = "Example Notification Channel",
@@ -184,9 +184,6 @@ namespace Pulumi.Gcp.Billing
     ///             {
     ///                 { "email_address", "address@example.com" },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var budget = new Gcp.Billing.Budget("budget", new Gcp.Billing.BudgetArgs
     ///         {
@@ -196,7 +193,7 @@ namespace Pulumi.Gcp.Billing
     ///             {
     ///                 Projects = 
     ///                 {
-    ///                     "projects/my-project-name",
+    ///                     project.Apply(project =&gt; $"projects/{project.Number}"),
     ///                 },
     ///             },
     ///             Amount = new Gcp.Billing.Inputs.BudgetAmountArgs
@@ -227,9 +224,6 @@ namespace Pulumi.Gcp.Billing
     ///                 },
     ///                 DisableDefaultIamRecipients = true,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -238,11 +232,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// ## Import
     /// 
-    /// Budget can be imported using any of these accepted formats
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:billing/budget:Budget default {{name}}
-    /// ```
+    /// This resource does not support import.
     /// </summary>
     public partial class Budget : Pulumi.CustomResource
     {
@@ -274,7 +264,7 @@ namespace Pulumi.Gcp.Billing
         /// Structure is documented below.
         /// </summary>
         [Output("budgetFilter")]
-        public Output<Outputs.BudgetBudgetFilter?> BudgetFilter { get; private set; } = null!;
+        public Output<Outputs.BudgetBudgetFilter> BudgetFilter { get; private set; } = null!;
 
         /// <summary>
         /// User data for display name in UI. Must be &lt;= 60 chars.

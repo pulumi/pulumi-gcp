@@ -22,6 +22,7 @@ class Disk(pulumi.CustomResource):
                  image: Optional[pulumi.Input[str]] = None,
                  interface: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -124,6 +125,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
                value: "SCSI" Possible values: ["SCSI", "NVME"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
+        :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -192,6 +194,7 @@ class Disk(pulumi.CustomResource):
             __props__['image'] = image
             __props__['interface'] = interface
             __props__['labels'] = labels
+            __props__['multi_writer'] = multi_writer
             __props__['name'] = name
             __props__['physical_block_size_bytes'] = physical_block_size_bytes
             __props__['project'] = project
@@ -229,6 +232,7 @@ class Disk(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             last_attach_timestamp: Optional[pulumi.Input[str]] = None,
             last_detach_timestamp: Optional[pulumi.Input[str]] = None,
+            multi_writer: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             physical_block_size_bytes: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -278,6 +282,7 @@ class Disk(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
         :param pulumi.Input[str] last_detach_timestamp: Last detach timestamp in RFC3339 text format.
+        :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
                created. The name must be 1-63 characters long, and comply with
                RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -345,6 +350,7 @@ class Disk(pulumi.CustomResource):
         __props__["labels"] = labels
         __props__["last_attach_timestamp"] = last_attach_timestamp
         __props__["last_detach_timestamp"] = last_detach_timestamp
+        __props__["multi_writer"] = multi_writer
         __props__["name"] = name
         __props__["physical_block_size_bytes"] = physical_block_size_bytes
         __props__["project"] = project
@@ -451,6 +457,14 @@ class Disk(pulumi.CustomResource):
         Last detach timestamp in RFC3339 text format.
         """
         return pulumi.get(self, "last_detach_timestamp")
+
+    @property
+    @pulumi.getter(name="multiWriter")
+    def multi_writer(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether or not the disk can be read/write attached to more than one instance.
+        """
+        return pulumi.get(self, "multi_writer")
 
     @property
     @pulumi.getter

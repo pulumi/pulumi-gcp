@@ -22,19 +22,32 @@ __all__ = [
 @pulumi.output_type
 class GCPolicyMaxAge(dict):
     def __init__(__self__, *,
-                 days: int):
+                 days: Optional[int] = None,
+                 duration: Optional[str] = None):
         """
         :param int days: Number of days before applying GC policy.
+        :param str duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
         """
-        pulumi.set(__self__, "days", days)
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
 
     @property
     @pulumi.getter
-    def days(self) -> int:
+    def days(self) -> Optional[int]:
         """
         Number of days before applying GC policy.
         """
         return pulumi.get(self, "days")
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[str]:
+        """
+        Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+        """
+        return pulumi.get(self, "duration")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

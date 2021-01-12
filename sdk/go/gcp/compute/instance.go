@@ -23,28 +23,29 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := compute.NewInstance(ctx, "_default", &compute.InstanceArgs{
+// 		defaultAccount, err := serviceAccount.NewAccount(ctx, "defaultAccount", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("service_account_id"),
+// 			DisplayName: pulumi.String("Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewInstance(ctx, "defaultInstance", &compute.InstanceArgs{
+// 			MachineType: pulumi.String("e2-medium"),
+// 			Zone:        pulumi.String("us-central1-a"),
+// 			Tags: pulumi.StringArray{
+// 				pulumi.String("foo"),
+// 				pulumi.String("bar"),
+// 			},
 // 			BootDisk: &compute.InstanceBootDiskArgs{
 // 				InitializeParams: &compute.InstanceBootDiskInitializeParamsArgs{
 // 					Image: pulumi.String("debian-cloud/debian-9"),
-// 				},
-// 			},
-// 			MachineType: pulumi.String("e2-medium"),
-// 			Metadata: pulumi.StringMap{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			MetadataStartupScript: pulumi.String("echo hi > /test.txt"),
-// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
-// 				&compute.InstanceNetworkInterfaceArgs{
-// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
-// 						nil,
-// 					},
-// 					Network: pulumi.String("default"),
 // 				},
 // 			},
 // 			ScratchDisks: compute.InstanceScratchDiskArray{
@@ -52,18 +53,24 @@ import (
 // 					Interface: pulumi.String("SCSI"),
 // 				},
 // 			},
-// 			ServiceAccount: &compute.InstanceServiceAccountArgs{
-// 				Scopes: pulumi.StringArray{
-// 					pulumi.String("userinfo-email"),
-// 					pulumi.String("compute-ro"),
-// 					pulumi.String("storage-ro"),
+// 			NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
+// 				&compute.InstanceNetworkInterfaceArgs{
+// 					Network: pulumi.String("default"),
+// 					AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
+// 						nil,
+// 					},
 // 				},
 // 			},
-// 			Tags: pulumi.StringArray{
-// 				pulumi.String("foo"),
-// 				pulumi.String("bar"),
+// 			Metadata: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
 // 			},
-// 			Zone: pulumi.String("us-central1-a"),
+// 			MetadataStartupScript: pulumi.String("echo hi > /test.txt"),
+// 			ServiceAccount: &compute.InstanceServiceAccountArgs{
+// 				Email: defaultAccount.Email,
+// 				Scopes: pulumi.StringArray{
+// 					pulumi.String("cloud-platform"),
+// 				},
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -105,7 +112,7 @@ type Instance struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrOutput `pulumi:"canIpForward"`
-	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigOutput `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringOutput `pulumi:"cpuPlatform"`
@@ -244,7 +251,7 @@ type instanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// The CPU platform used by this instance.
 	CpuPlatform *string `pulumi:"cpuPlatform"`
@@ -346,7 +353,7 @@ type InstanceState struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// The CPU platform used by this instance.
 	CpuPlatform pulumi.StringPtrInput
@@ -452,7 +459,7 @@ type instanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward *bool `pulumi:"canIpForward"`
-	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig *InstanceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
@@ -541,7 +548,7 @@ type InstanceArgs struct {
 	// packets with non-matching source or destination IPs.
 	// This defaults to false.
 	CanIpForward pulumi.BoolPtrInput
-	// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+	// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
 	ConfidentialInstanceConfig InstanceConfidentialInstanceConfigPtrInput
 	// Enable deletion protection on this instance. Defaults to false.
 	// **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.

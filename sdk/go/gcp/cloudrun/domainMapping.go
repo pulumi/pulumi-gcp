@@ -54,9 +54,6 @@ import (
 // 			Location: pulumi.String("us-central1"),
 // 			Metadata: &cloudrun.DomainMappingMetadataArgs{
 // 				Namespace: pulumi.String("my-project-name"),
-// 				Annotations: pulumi.StringMap{
-// 					"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-// 				},
 // 			},
 // 			Spec: &cloudrun.DomainMappingSpecArgs{
 // 				RouteName: defaultService.Name,

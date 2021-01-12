@@ -58,36 +58,36 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.Instance("default",
+        default_account = gcp.service_account.Account("defaultAccount",
+            account_id="service_account_id",
+            display_name="Service Account")
+        default_instance = gcp.compute.Instance("defaultInstance",
+            machine_type="e2-medium",
+            zone="us-central1-a",
+            tags=[
+                "foo",
+                "bar",
+            ],
             boot_disk=gcp.compute.InstanceBootDiskArgs(
                 initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
                     image="debian-cloud/debian-9",
                 ),
             ),
-            machine_type="e2-medium",
+            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
+                interface="SCSI",
+            )],
+            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
+                network="default",
+                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
+            )],
             metadata={
                 "foo": "bar",
             },
             metadata_startup_script="echo hi > /test.txt",
-            network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
-                access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-                network="default",
-            )],
-            scratch_disks=[gcp.compute.InstanceScratchDiskArgs(
-                interface="SCSI",
-            )],
             service_account=gcp.compute.InstanceServiceAccountArgs(
-                scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
-                ],
-            ),
-            tags=[
-                "foo",
-                "bar",
-            ],
-            zone="us-central1-a")
+                email=default_account.email,
+                scopes=["cloud-platform"],
+            ))
         ```
 
         ## Import
@@ -118,7 +118,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
                **Note:** you must disable deletion protection before removing the resource (e.g., via `pulumi destroy`), or the instance cannot be deleted and the provider run will not complete successfully.
         :param pulumi.Input[str] description: A brief description of this resource.
@@ -284,7 +284,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs.
                This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        :param pulumi.Input[pulumi.InputType['InstanceConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         :param pulumi.Input[str] cpu_platform: The CPU platform used by this instance.
         :param pulumi.Input[str] current_status: Current status of the instance.
         :param pulumi.Input[bool] deletion_protection: Enable deletion protection on this instance. Defaults to false.
@@ -422,7 +422,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> pulumi.Output['outputs.InstanceConfidentialInstanceConfig']:
         """
-        ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         """
         return pulumi.get(self, "confidential_instance_config")
 

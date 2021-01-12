@@ -40,7 +40,7 @@ export interface GetAccountAccessTokenArgs {
      */
     readonly lifetime?: string;
     /**
-     * The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
+     * The scopes the new credential should have (e.g. `["cloud-platform"]`)
      */
     readonly scopes: string[];
     /**

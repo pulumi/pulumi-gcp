@@ -13,11 +13,9 @@ namespace Pulumi.Gcp.Organizations
     {
         /// <summary>
         /// Generates an IAM policy document that may be referenced by and applied to
-        /// other Google Cloud Platform resources, such as the `gcp.organizations.Project` resource.
+        /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
         /// 
-        /// **Note:** Several restrictions apply when setting IAM policies through this API.
-        /// See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
-        /// for a list of these restrictions.
+        /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -95,7 +93,7 @@ namespace Pulumi.Gcp.Organizations
         private List<Inputs.GetIAMPolicyAuditConfigArgs>? _auditConfigs;
 
         /// <summary>
-        /// A nested configuration block that defines logging additional configuration for your project.
+        /// A nested configuration block that defines logging additional configuration for your project. This field is only supported on `gcp.projects.IAMPolicy`, `gcp.folder.IAMPolicy` and `gcp.organizations.IAMPolicy`.
         /// </summary>
         public List<Inputs.GetIAMPolicyAuditConfigArgs> AuditConfigs
         {

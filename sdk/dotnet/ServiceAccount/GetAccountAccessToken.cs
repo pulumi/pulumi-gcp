@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.ServiceAccount
         private List<string>? _scopes;
 
         /// <summary>
-        /// The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
+        /// The scopes the new credential should have (e.g. `["cloud-platform"]`)
         /// </summary>
         public List<string> Scopes
         {

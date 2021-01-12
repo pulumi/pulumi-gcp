@@ -16,12 +16,20 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// <summary>
         /// Number of days before applying GC policy.
         /// </summary>
-        public readonly int Days;
+        public readonly int? Days;
+        /// <summary>
+        /// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+        /// </summary>
+        public readonly string? Duration;
 
         [OutputConstructor]
-        private GCPolicyMaxAge(int days)
+        private GCPolicyMaxAge(
+            int? days,
+
+            string? duration)
         {
             Days = days;
+            Duration = duration;
         }
     }
 }

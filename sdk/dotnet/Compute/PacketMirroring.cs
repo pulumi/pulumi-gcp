@@ -33,9 +33,6 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         var defaultNetwork = new Gcp.Compute.Network("defaultNetwork", new Gcp.Compute.NetworkArgs
     ///         {
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var mirror = new Gcp.Compute.Instance("mirror", new Gcp.Compute.InstanceArgs
     ///         {
@@ -58,17 +55,11 @@ namespace Pulumi.Gcp.Compute
     ///                     },
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultSubnetwork = new Gcp.Compute.Subnetwork("defaultSubnetwork", new Gcp.Compute.SubnetworkArgs
     ///         {
     ///             Network = defaultNetwork.Id,
     ///             IpCidrRange = "10.2.0.0/16",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultHealthCheck = new Gcp.Compute.HealthCheck("defaultHealthCheck", new Gcp.Compute.HealthCheckArgs
     ///         {
@@ -78,9 +69,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 Port = 80,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultRegionBackendService = new Gcp.Compute.RegionBackendService("defaultRegionBackendService", new Gcp.Compute.RegionBackendServiceArgs
     ///         {
@@ -88,9 +76,6 @@ namespace Pulumi.Gcp.Compute
     ///             {
     ///                 defaultHealthCheck.Id,
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var defaultForwardingRule = new Gcp.Compute.ForwardingRule("defaultForwardingRule", new Gcp.Compute.ForwardingRuleArgs
     ///         {
@@ -104,7 +89,6 @@ namespace Pulumi.Gcp.Compute
     ///             NetworkTier = "PREMIUM",
     ///         }, new CustomResourceOptions
     ///         {
-    ///             Provider = google_beta,
     ///             DependsOn = 
     ///             {
     ///                 defaultSubnetwork,
@@ -145,10 +129,8 @@ namespace Pulumi.Gcp.Compute
     ///                 {
     ///                     "0.0.0.0/0",
     ///                 },
+    ///                 Direction = "BOTH",
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

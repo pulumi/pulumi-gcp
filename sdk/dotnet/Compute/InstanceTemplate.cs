@@ -25,6 +25,11 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     public MyStack()
     ///     {
+    ///         var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "service-account-id",
+    ///             DisplayName = "Service Account",
+    ///         });
     ///         var myImage = Output.Create(Gcp.Compute.GetImage.InvokeAsync(new Gcp.Compute.GetImageArgs
     ///         {
     ///             Family = "debian-9",
@@ -37,7 +42,7 @@ namespace Pulumi.Gcp.Compute
     ///             Type = "pd-ssd",
     ///             Zone = "us-central1-a",
     ///         });
-    ///         var @default = new Gcp.Compute.InstanceTemplate("default", new Gcp.Compute.InstanceTemplateArgs
+    ///         var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("defaultInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
     ///         {
     ///             Description = "This template is used to create app server instances.",
     ///             Tags = 
@@ -85,11 +90,10 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceTemplateServiceAccountArgs
     ///             {
+    ///                 Email = defaultAccount.Email,
     ///                 Scopes = 
     ///                 {
-    ///                     "userinfo-email",
-    ///                     "compute-ro",
-    ///                     "storage-ro",
+    ///                     "cloud-platform",
     ///                 },
     ///             },
     ///         });
@@ -203,7 +207,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> CanIpForward { get; private set; } = null!;
 
         /// <summary>
-        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Output("confidentialInstanceConfig")]
         public Output<Outputs.InstanceTemplateConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
@@ -416,7 +420,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceTemplateConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -608,7 +612,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceTemplateConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }

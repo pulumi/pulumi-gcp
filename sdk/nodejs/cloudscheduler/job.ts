@@ -20,37 +20,6 @@ import * as utilities from "../utilities";
  *     * [Official Documentation](https://cloud.google.com/scheduler/)
  *
  * ## Example Usage
- * ### Scheduler Job Http
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const job = new gcp.cloudscheduler.Job("job", {
- *     attemptDeadline: "320s",
- *     description: "test http job",
- *     httpTarget: {
- *         base64encode: [{}],
- *         body: "",
- *         httpMethod: "POST",
- *         uri: "https://example.com/ping",
- *         "{": [{
- *             foo: [{
- *                 ":": [{
- *                     bar: [{
- *                         "}": [{}],
- *                     }],
- *                 }],
- *             }],
- *         }],
- *     },
- *     retryConfig: {
- *         retryCount: 1,
- *     },
- *     schedule: "*&#47;8 * * * *",
- *     timeZone: "America/New_York",
- * });
- * ```
  * ### Scheduler Job App Engine
  *
  * ```typescript

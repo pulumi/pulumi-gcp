@@ -51,6 +51,38 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Backend Service Cache Simple
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var defaultHttpHealthCheck = new Gcp.Compute.HttpHealthCheck("defaultHttpHealthCheck", new Gcp.Compute.HttpHealthCheckArgs
+    ///         {
+    ///             RequestPath = "/",
+    ///             CheckIntervalSec = 1,
+    ///             TimeoutSec = 1,
+    ///         });
+    ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
+    ///         {
+    ///             HealthChecks = 
+    ///             {
+    ///                 defaultHttpHealthCheck.Id,
+    ///             },
+    ///             EnableCdn = true,
+    ///             CdnPolicy = new Gcp.Compute.Inputs.BackendServiceCdnPolicyArgs
+    ///             {
+    ///                 SignedUrlCacheMaxAgeSec = 7200,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Backend Service Cache
     /// 
     /// ```csharp

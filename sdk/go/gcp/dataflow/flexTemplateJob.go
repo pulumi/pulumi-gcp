@@ -82,7 +82,8 @@ type FlexTemplateJob struct {
 	// deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrOutput `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as
-	// used in the template).
+	// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+	// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
 	Parameters pulumi.MapOutput `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
@@ -138,7 +139,8 @@ type flexTemplateJobState struct {
 	// deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as
-	// used in the template).
+	// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+	// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
@@ -163,7 +165,8 @@ type FlexTemplateJobState struct {
 	// deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as
-	// used in the template).
+	// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+	// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
 	Parameters pulumi.MapInput
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
@@ -190,7 +193,8 @@ type flexTemplateJobArgs struct {
 	// deletion during `pulumi destroy`.  See above note.
 	OnDelete *string `pulumi:"onDelete"`
 	// Key/Value pairs to be passed to the Dataflow job (as
-	// used in the template).
+	// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+	// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
 	Parameters map[string]interface{} `pulumi:"parameters"`
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.
@@ -212,7 +216,8 @@ type FlexTemplateJobArgs struct {
 	// deletion during `pulumi destroy`.  See above note.
 	OnDelete pulumi.StringPtrInput
 	// Key/Value pairs to be passed to the Dataflow job (as
-	// used in the template).
+	// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+	// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
 	Parameters pulumi.MapInput
 	// The project in which the resource belongs. If it is not
 	// provided, the provider project is used.

@@ -33,9 +33,12 @@ class IAMAuditConfig(pulumi.CustomResource):
 
         > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig` or they will fight over what your policy should be.
 
+        > **Note:** `projects.IAMPolicy` **cannot** be used in conjunction with `projects.IAMBinding`, `projects.IAMMember`, or `projects.IAMAuditConfig` or they will fight over what your policy should be.
+
         > **Note:** `projects.IAMBinding` resources **can be** used in conjunction with `projects.IAMMember` resources **only if** they do not grant privilege to the same role.
 
-        > **Note:** It is not possible to grant the `roles/owner` role using any of these resources due to this being disallowed by the underlying `projects.setIamPolicy` API method. See the method [documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy) for full details. It is, however, possible to remove all owners from the project by passing in an empty `members = []` list to the `projects.IAMBinding` resource. This is useful for removing the owner role from a project upon creation, however, precautions should be taken to avoid inadvertently locking oneself out of a project such as by granting additional roles to alternate entities.
+        > **Note:** The underlying API method `projects.setIamPolicy` has a lot of constraints which are documented [here](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy). In addition to these constraints,
+           IAM Conditions cannot be used with Basic Roles such as Owner. Violating these constraints will result in the API returning 400 error code so please review these if you encounter errors with this resource.
 
         ## google\_project\_iam\_policy
 
@@ -73,7 +76,7 @@ class IAMAuditConfig(pulumi.CustomResource):
                 title="expires_after_2019_12_31",
             ),
             members=["user:jane@example.com"],
-            role="roles/editor",
+            role="roles/compute.admin",
         )])
         project = gcp.projects.IAMPolicy("project",
             policy_data=admin.policy_data,
@@ -106,7 +109,7 @@ class IAMAuditConfig(pulumi.CustomResource):
             ),
             members=["user:jane@example.com"],
             project="your-project-id",
-            role="roles/editor")
+            role="roles/container.admin")
         ```
 
         ## google\_project\_iam\_member
@@ -135,7 +138,7 @@ class IAMAuditConfig(pulumi.CustomResource):
             ),
             member="user:jane@example.com",
             project="your-project-id",
-            role="roles/editor")
+            role="roles/firebase.admin")
         ```
 
         ## google\_project\_iam\_audit\_config

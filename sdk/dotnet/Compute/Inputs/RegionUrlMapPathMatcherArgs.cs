@@ -17,8 +17,8 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// none of the pathRules defined by this PathMatcher is matched by
         /// the URL's path portion.
         /// </summary>
-        [Input("defaultService", required: true)]
-        public Input<string> DefaultService { get; set; } = null!;
+        [Input("defaultService")]
+        public Input<string>? DefaultService { get; set; }
 
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified

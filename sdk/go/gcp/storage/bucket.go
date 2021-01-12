@@ -135,7 +135,7 @@ type Bucket struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
-	// A set of key/value label pairs to assign to the bucket.
+	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayOutput `pulumi:"lifecycleRules"`
@@ -208,7 +208,7 @@ type bucketState struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// A set of key/value label pairs to assign to the bucket.
+	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
@@ -253,7 +253,7 @@ type BucketState struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
-	// A set of key/value label pairs to assign to the bucket.
+	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayInput
@@ -302,7 +302,7 @@ type bucketArgs struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
-	// A set of key/value label pairs to assign to the bucket.
+	// A map of key/value label pairs to assign to the bucket.
 	Labels map[string]string `pulumi:"labels"`
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
@@ -344,7 +344,7 @@ type BucketArgs struct {
 	// boolean option will delete all contained objects. If you try to delete a
 	// bucket that contains objects, the provider will fail that run.
 	ForceDestroy pulumi.BoolPtrInput
-	// A set of key/value label pairs to assign to the bucket.
+	// A map of key/value label pairs to assign to the bucket.
 	Labels pulumi.StringMapInput
 	// The bucket's [Lifecycle Rules](https://cloud.google.com/storage/docs/lifecycle#configuration) configuration. Multiple blocks of this type are permitted. Structure is documented below.
 	LifecycleRules BucketLifecycleRuleArrayInput

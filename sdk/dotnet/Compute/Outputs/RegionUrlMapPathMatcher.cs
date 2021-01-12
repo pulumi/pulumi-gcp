@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// none of the pathRules defined by this PathMatcher is matched by
         /// the URL's path portion.
         /// </summary>
-        public readonly string DefaultService;
+        public readonly string? DefaultService;
         /// <summary>
         /// When none of the specified hostRules match, the request is redirected to a URL specified
         /// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -58,7 +58,7 @@ namespace Pulumi.Gcp.Compute.Outputs
 
         [OutputConstructor]
         private RegionUrlMapPathMatcher(
-            string defaultService,
+            string? defaultService,
 
             Outputs.RegionUrlMapPathMatcherDefaultUrlRedirect? defaultUrlRedirect,
 

@@ -115,6 +115,8 @@ type Job struct {
 	IpConfiguration pulumi.StringPtrOutput `pulumi:"ipConfiguration"`
 	// The unique ID of this job.
 	JobId pulumi.StringOutput `pulumi:"jobId"`
+	// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+	KmsKeyName pulumi.StringPtrOutput `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -195,6 +197,8 @@ type jobState struct {
 	IpConfiguration *string `pulumi:"ipConfiguration"`
 	// The unique ID of this job.
 	JobId *string `pulumi:"jobId"`
+	// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -241,6 +245,8 @@ type JobState struct {
 	IpConfiguration pulumi.StringPtrInput
 	// The unique ID of this job.
 	JobId pulumi.StringPtrInput
+	// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -289,6 +295,8 @@ type jobArgs struct {
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration *string `pulumi:"ipConfiguration"`
+	// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -330,6 +338,8 @@ type JobArgs struct {
 	AdditionalExperiments pulumi.StringArrayInput
 	// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
 	IpConfiguration pulumi.StringPtrInput
+	// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+	KmsKeyName pulumi.StringPtrInput
 	// User labels to be specified for the job. Keys and values should follow the restrictions
 	// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
 	// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.

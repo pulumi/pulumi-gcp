@@ -10410,7 +10410,7 @@ func (o HealthCheckTcpHealthCheckPtrOutput) Response() pulumi.StringPtrOutput {
 
 type ImageGuestOsFeature struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
 	Type string `pulumi:"type"`
 }
 
@@ -10427,7 +10427,7 @@ type ImageGuestOsFeatureInput interface {
 
 type ImageGuestOsFeatureArgs struct {
 	// The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+	// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10483,7 +10483,7 @@ func (o ImageGuestOsFeatureOutput) ToImageGuestOsFeatureOutputWithContext(ctx co
 }
 
 // The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+// Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
 func (o ImageGuestOsFeatureOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11746,7 +11746,7 @@ func (o InstanceBootDiskInitializeParamsPtrOutput) Type() pulumi.StringPtrOutput
 }
 
 type InstanceConfidentialInstanceConfig struct {
-	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -11762,7 +11762,7 @@ type InstanceConfidentialInstanceConfigInput interface {
 }
 
 type InstanceConfidentialInstanceConfigArgs struct {
-	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 }
 
@@ -11843,7 +11843,7 @@ func (o InstanceConfidentialInstanceConfigOutput) ToInstanceConfidentialInstance
 	}).(InstanceConfidentialInstanceConfigPtrOutput)
 }
 
-// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -11866,7 +11866,7 @@ func (o InstanceConfidentialInstanceConfigPtrOutput) Elem() InstanceConfidential
 	return o.ApplyT(func(v *InstanceConfidentialInstanceConfig) InstanceConfidentialInstanceConfig { return *v }).(InstanceConfidentialInstanceConfigOutput)
 }
 
-// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceConfidentialInstanceConfig) *bool {
 		if v == nil {
@@ -18082,7 +18082,7 @@ func (o InstanceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutp
 }
 
 type InstanceTemplateConfidentialInstanceConfig struct {
-	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 }
 
@@ -18098,7 +18098,7 @@ type InstanceTemplateConfidentialInstanceConfigInput interface {
 }
 
 type InstanceTemplateConfidentialInstanceConfigArgs struct {
-	// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+	// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
 }
 
@@ -18179,7 +18179,7 @@ func (o InstanceTemplateConfidentialInstanceConfigOutput) ToInstanceTemplateConf
 	}).(InstanceTemplateConfidentialInstanceConfigPtrOutput)
 }
 
-// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceTemplateConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v InstanceTemplateConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
@@ -18204,7 +18204,7 @@ func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) Elem() InstanceTemp
 	}).(InstanceTemplateConfidentialInstanceConfigOutput)
 }
 
-// ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+// Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
 func (o InstanceTemplateConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplateConfidentialInstanceConfig) *bool {
 		if v == nil {
@@ -21934,6 +21934,10 @@ type PacketMirroringFilter struct {
 	// IP CIDR ranges that apply as a filter on the source (ingress) or
 	// destination (egress) IP in the IP header. Only IPv4 is supported.
 	CidrRanges []string `pulumi:"cidrRanges"`
+	// Direction of traffic to mirror.
+	// Default value is `BOTH`.
+	// Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+	Direction *string `pulumi:"direction"`
 	// Protocols that apply as a filter on mirrored traffic.
 	// Each value may be one of `tcp`, `udp`, and `icmp`.
 	IpProtocols []string `pulumi:"ipProtocols"`
@@ -21954,6 +21958,10 @@ type PacketMirroringFilterArgs struct {
 	// IP CIDR ranges that apply as a filter on the source (ingress) or
 	// destination (egress) IP in the IP header. Only IPv4 is supported.
 	CidrRanges pulumi.StringArrayInput `pulumi:"cidrRanges"`
+	// Direction of traffic to mirror.
+	// Default value is `BOTH`.
+	// Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
 	// Protocols that apply as a filter on mirrored traffic.
 	// Each value may be one of `tcp`, `udp`, and `icmp`.
 	IpProtocols pulumi.StringArrayInput `pulumi:"ipProtocols"`
@@ -22042,6 +22050,13 @@ func (o PacketMirroringFilterOutput) CidrRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PacketMirroringFilter) []string { return v.CidrRanges }).(pulumi.StringArrayOutput)
 }
 
+// Direction of traffic to mirror.
+// Default value is `BOTH`.
+// Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+func (o PacketMirroringFilterOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PacketMirroringFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
 // Protocols that apply as a filter on mirrored traffic.
 // Each value may be one of `tcp`, `udp`, and `icmp`.
 func (o PacketMirroringFilterOutput) IpProtocols() pulumi.StringArrayOutput {
@@ -22075,6 +22090,18 @@ func (o PacketMirroringFilterPtrOutput) CidrRanges() pulumi.StringArrayOutput {
 		}
 		return v.CidrRanges
 	}).(pulumi.StringArrayOutput)
+}
+
+// Direction of traffic to mirror.
+// Default value is `BOTH`.
+// Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+func (o PacketMirroringFilterPtrOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PacketMirroringFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Direction
+	}).(pulumi.StringPtrOutput)
 }
 
 // Protocols that apply as a filter on mirrored traffic.
@@ -32573,7 +32600,7 @@ type RegionUrlMapPathMatcher struct {
 	// A reference to a RegionBackendService resource. This will be used if
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
-	DefaultService string `pulumi:"defaultService"`
+	DefaultService *string `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
 	// defaultRouteAction must not be set.
@@ -32617,7 +32644,7 @@ type RegionUrlMapPathMatcherArgs struct {
 	// A reference to a RegionBackendService resource. This will be used if
 	// none of the pathRules defined by this PathMatcher is matched by
 	// the URL's path portion.
-	DefaultService pulumi.StringInput `pulumi:"defaultService"`
+	DefaultService pulumi.StringPtrInput `pulumi:"defaultService"`
 	// When none of the specified hostRules match, the request is redirected to a URL specified
 	// by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
 	// defaultRouteAction must not be set.
@@ -32700,8 +32727,8 @@ func (o RegionUrlMapPathMatcherOutput) ToRegionUrlMapPathMatcherOutputWithContex
 // A reference to a RegionBackendService resource. This will be used if
 // none of the pathRules defined by this PathMatcher is matched by
 // the URL's path portion.
-func (o RegionUrlMapPathMatcherOutput) DefaultService() pulumi.StringOutput {
-	return o.ApplyT(func(v RegionUrlMapPathMatcher) string { return v.DefaultService }).(pulumi.StringOutput)
+func (o RegionUrlMapPathMatcherOutput) DefaultService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionUrlMapPathMatcher) *string { return v.DefaultService }).(pulumi.StringPtrOutput)
 }
 
 // When none of the specified hostRules match, the request is redirected to a URL specified

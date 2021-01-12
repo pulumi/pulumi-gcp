@@ -178,7 +178,7 @@ type Connection struct {
 	// Structure is documented below.
 	CloudSql ConnectionCloudSqlOutput `pulumi:"cloudSql"`
 	// Optional connection id that should be assigned to the created connection.
-	ConnectionId pulumi.StringPtrOutput `pulumi:"connectionId"`
+	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
 	// A descriptive description for the connection
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A descriptive name for the connection

@@ -17,8 +17,6 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("gcp:composer/getEnvironment:getEnvironment", {
-        "config": args.config,
-        "labels": args.labels,
         "name": args.name,
         "project": args.project,
         "region": args.region,
@@ -29,8 +27,6 @@ export function getEnvironment(args: GetEnvironmentArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getEnvironment.
  */
 export interface GetEnvironmentArgs {
-    readonly config?: inputs.composer.GetEnvironmentConfig;
-    readonly labels?: {[key: string]: string};
     /**
      * Name of the environment.
      */
@@ -50,13 +46,13 @@ export interface GetEnvironmentArgs {
  * A collection of values returned by getEnvironment.
  */
 export interface GetEnvironmentResult {
-    readonly config: outputs.composer.GetEnvironmentConfig;
+    readonly configs: outputs.composer.GetEnvironmentConfig[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    readonly labels?: {[key: string]: string};
+    readonly labels: {[key: string]: string};
     readonly name: string;
-    readonly project: string;
+    readonly project?: string;
     readonly region?: string;
 }

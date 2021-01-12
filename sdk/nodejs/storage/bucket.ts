@@ -134,7 +134,7 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
-     * A set of key/value label pairs to assign to the bucket.
+     * A map of key/value label pairs to assign to the bucket.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
@@ -281,7 +281,7 @@ export interface BucketState {
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
-     * A set of key/value label pairs to assign to the bucket.
+     * A map of key/value label pairs to assign to the bucket.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -365,7 +365,7 @@ export interface BucketArgs {
      */
     readonly forceDestroy?: pulumi.Input<boolean>;
     /**
-     * A set of key/value label pairs to assign to the bucket.
+     * A map of key/value label pairs to assign to the bucket.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**

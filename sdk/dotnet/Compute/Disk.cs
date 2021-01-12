@@ -158,6 +158,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> LastDetachTimestamp { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether or not the disk can be read/write attached to more than one instance.
+        /// </summary>
+        [Output("multiWriter")]
+        public Output<bool?> MultiWriter { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -382,6 +388,12 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Indicates whether or not the disk can be read/write attached to more than one instance.
+        /// </summary>
+        [Input("multiWriter")]
+        public Input<bool>? MultiWriter { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is
         /// created. The name must be 1-63 characters long, and comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -567,6 +579,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("lastDetachTimestamp")]
         public Input<string>? LastDetachTimestamp { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not the disk can be read/write attached to more than one instance.
+        /// </summary>
+        [Input("multiWriter")]
+        public Input<bool>? MultiWriter { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

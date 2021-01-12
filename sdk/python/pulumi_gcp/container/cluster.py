@@ -81,17 +81,13 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
         primary = gcp.container.Cluster("primary",
             location="us-central1",
             remove_default_node_pool=True,
-            initial_node_count=1,
-            master_auth=gcp.container.ClusterMasterAuthArgs(
-                username="",
-                password="",
-                client_certificate_config=gcp.container.ClusterMasterAuthClientCertificateConfigArgs(
-                    issue_client_certificate=False,
-                ),
-            ))
+            initial_node_count=1)
         primary_preemptible_nodes = gcp.container.NodePool("primaryPreemptibleNodes",
             location="us-central1",
             cluster=primary.name,
@@ -99,40 +95,8 @@ class Cluster(pulumi.CustomResource):
             node_config=gcp.container.NodePoolNodeConfigArgs(
                 preemptible=True,
                 machine_type="e2-medium",
-                metadata={
-                    "disable-legacy-endpoints": "true",
-                },
+                service_account=default.email,
                 oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
-            ))
-        ```
-        ### With The Default Node Pool
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        primary = gcp.container.Cluster("primary",
-            initial_node_count=3,
-            location="us-central1-a",
-            master_auth=gcp.container.ClusterMasterAuthArgs(
-                client_certificate_config=gcp.container.ClusterMasterAuthClientCertificateConfigArgs(
-                    issue_client_certificate=False,
-                ),
-                password="",
-                username="",
-            ),
-            node_config=gcp.container.ClusterNodeConfigArgs(
-                labels={
-                    "foo": "bar",
-                },
-                metadata={
-                    "disable-legacy-endpoints": "true",
-                },
-                oauth_scopes=["https://www.googleapis.com/auth/cloud-platform"],
-                tags=[
-                    "foo",
-                    "bar",
-                ],
             ))
         ```
 
@@ -222,7 +186,7 @@ class Cluster(pulumi.CustomResource):
                your service account has permission to get credentials for your GKE cluster. If
                you see an unexpected diff removing a username/password or unsetting your client
                cert, ensure you have the `container.clusters.getCredentials` permission.
-               Structure is documented below.
+               Structure is documented below. This has been deprecated as of GKE 1.19.
         :param pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The desired configuration options
                for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
                external access (except the cluster node IPs, which GKE automatically whitelists).
@@ -519,7 +483,7 @@ class Cluster(pulumi.CustomResource):
                your service account has permission to get credentials for your GKE cluster. If
                you see an unexpected diff removing a username/password or unsetting your client
                cert, ensure you have the `container.clusters.getCredentials` permission.
-               Structure is documented below.
+               Structure is documented below. This has been deprecated as of GKE 1.19.
         :param pulumi.Input[pulumi.InputType['ClusterMasterAuthorizedNetworksConfigArgs']] master_authorized_networks_config: The desired configuration options
                for master authorized networks. Omit the nested `cidr_blocks` attribute to disallow
                external access (except the cluster node IPs, which GKE automatically whitelists).
@@ -925,7 +889,7 @@ class Cluster(pulumi.CustomResource):
         your service account has permission to get credentials for your GKE cluster. If
         you see an unexpected diff removing a username/password or unsetting your client
         cert, ensure you have the `container.clusters.getCredentials` permission.
-        Structure is documented below.
+        Structure is documented below. This has been deprecated as of GKE 1.19.
         """
         return pulumi.get(self, "master_auth")
 

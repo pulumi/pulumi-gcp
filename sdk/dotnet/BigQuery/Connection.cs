@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.BigQuery
         /// Optional connection id that should be assigned to the created connection.
         /// </summary>
         [Output("connectionId")]
-        public Output<string?> ConnectionId { get; private set; } = null!;
+        public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
         /// A descriptive description for the connection

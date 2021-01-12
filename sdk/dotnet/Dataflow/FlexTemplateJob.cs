@@ -99,7 +99,8 @@ namespace Pulumi.Gcp.Dataflow
 
         /// <summary>
         /// Key/Value pairs to be passed to the Dataflow job (as
-        /// used in the template).
+        /// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+        /// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
         /// </summary>
         [Output("parameters")]
         public Output<ImmutableDictionary<string, object>?> Parameters { get; private set; } = null!;
@@ -203,7 +204,8 @@ namespace Pulumi.Gcp.Dataflow
 
         /// <summary>
         /// Key/Value pairs to be passed to the Dataflow job (as
-        /// used in the template).
+        /// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+        /// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
         /// </summary>
         public InputMap<object> Parameters
         {
@@ -271,7 +273,8 @@ namespace Pulumi.Gcp.Dataflow
 
         /// <summary>
         /// Key/Value pairs to be passed to the Dataflow job (as
-        /// used in the template).
+        /// used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+        /// such as `serviceAccount`, `workerMachineType`, etc can be specified here.
         /// </summary>
         public InputMap<object> Parameters
         {

@@ -140,6 +140,8 @@ namespace Pulumi.Gcp
 
         public static string? PubsubCustomEndpoint { get; set; } = __config.Get("pubsubCustomEndpoint");
 
+        public static string? PubsubLiteCustomEndpoint { get; set; } = __config.Get("pubsubLiteCustomEndpoint");
+
         public static string? RedisCustomEndpoint { get; set; } = __config.Get("redisCustomEndpoint");
 
         public static string? Region { get; set; } = __config.Get("region") ?? Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");

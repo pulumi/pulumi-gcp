@@ -82,6 +82,7 @@ class Provider(pulumi.ProviderResource):
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  redis_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
@@ -205,6 +206,7 @@ class Provider(pulumi.ProviderResource):
                 project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
             __props__['project'] = project
             __props__['pubsub_custom_endpoint'] = pubsub_custom_endpoint
+            __props__['pubsub_lite_custom_endpoint'] = pubsub_lite_custom_endpoint
             __props__['redis_custom_endpoint'] = redis_custom_endpoint
             if region is None:
                 region = _utilities.get_env('GOOGLE_REGION', 'GCLOUD_REGION', 'CLOUDSDK_COMPUTE_REGION')

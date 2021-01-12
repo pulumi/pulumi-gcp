@@ -312,14 +312,25 @@ class BudgetAmountSpecifiedAmountArgs:
 @pulumi.input_type
 class BudgetBudgetFilterArgs:
     def __init__(__self__, *,
+                 credit_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  credit_types_treatment: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: A set of subaccounts of the form billingAccounts/{account_id},
+               specifying that usage from only this set of subaccounts should
+               be included in the budget. If a subaccount is set to the name of
+               the parent account, usage from the parent account will be included.
+               If the field is omitted, the report will include usage from the parent
+               account and all subaccounts, if they exist.
         :param pulumi.Input[str] credit_types_treatment: Specifies how credits should be treated when determining spend
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
-               Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+               Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A single label and value pair specifying that usage from only
+               this set of labeled resources should be included in the budget.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: A set of projects of the form projects/{project_id},
                specifying that usage from only this set of projects should be
                included in the budget. If omitted, the report will include
@@ -332,13 +343,42 @@ class BudgetBudgetFilterArgs:
                usage for all the services. The service names are available
                through the Catalog API:
                https://cloud.google.com/billing/v1/how-tos/catalog-api.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] subaccounts: A set of subaccounts of the form billingAccounts/{account_id},
+               specifying that usage from only this set of subaccounts should
+               be included in the budget. If a subaccount is set to the name of
+               the parent account, usage from the parent account will be included.
+               If the field is omitted, the report will include usage from the parent
+               account and all subaccounts, if they exist.
         """
+        if credit_types is not None:
+            pulumi.set(__self__, "credit_types", credit_types)
         if credit_types_treatment is not None:
             pulumi.set(__self__, "credit_types_treatment", credit_types_treatment)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if projects is not None:
             pulumi.set(__self__, "projects", projects)
         if services is not None:
             pulumi.set(__self__, "services", services)
+        if subaccounts is not None:
+            pulumi.set(__self__, "subaccounts", subaccounts)
+
+    @property
+    @pulumi.getter(name="creditTypes")
+    def credit_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of subaccounts of the form billingAccounts/{account_id},
+        specifying that usage from only this set of subaccounts should
+        be included in the budget. If a subaccount is set to the name of
+        the parent account, usage from the parent account will be included.
+        If the field is omitted, the report will include usage from the parent
+        account and all subaccounts, if they exist.
+        """
+        return pulumi.get(self, "credit_types")
+
+    @credit_types.setter
+    def credit_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "credit_types", value)
 
     @property
     @pulumi.getter(name="creditTypesTreatment")
@@ -347,13 +387,26 @@ class BudgetBudgetFilterArgs:
         Specifies how credits should be treated when determining spend
         for threshold calculations.
         Default value is `INCLUDE_ALL_CREDITS`.
-        Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+        Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
         """
         return pulumi.get(self, "credit_types_treatment")
 
     @credit_types_treatment.setter
     def credit_types_treatment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "credit_types_treatment", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A single label and value pair specifying that usage from only
+        this set of labeled resources should be included in the budget.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -388,6 +441,23 @@ class BudgetBudgetFilterArgs:
     @services.setter
     def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "services", value)
+
+    @property
+    @pulumi.getter
+    def subaccounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of subaccounts of the form billingAccounts/{account_id},
+        specifying that usage from only this set of subaccounts should
+        be included in the budget. If a subaccount is set to the name of
+        the parent account, usage from the parent account will be included.
+        If the field is omitted, the report will include usage from the parent
+        account and all subaccounts, if they exist.
+        """
+        return pulumi.get(self, "subaccounts")
+
+    @subaccounts.setter
+    def subaccounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "subaccounts", value)
 
 
 @pulumi.input_type

@@ -153,6 +153,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastDetachTimestamp!: pulumi.Output<string>;
     /**
+     * Indicates whether or not the disk can be read/write attached to more than one instance.
+     */
+    public readonly multiWriter!: pulumi.Output<boolean | undefined>;
+    /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
      * RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -269,6 +273,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["labels"] = state ? state.labels : undefined;
             inputs["lastAttachTimestamp"] = state ? state.lastAttachTimestamp : undefined;
             inputs["lastDetachTimestamp"] = state ? state.lastDetachTimestamp : undefined;
+            inputs["multiWriter"] = state ? state.multiWriter : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["physicalBlockSizeBytes"] = state ? state.physicalBlockSizeBytes : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -290,6 +295,7 @@ export class Disk extends pulumi.CustomResource {
             inputs["image"] = args ? args.image : undefined;
             inputs["interface"] = args ? args.interface : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["multiWriter"] = args ? args.multiWriter : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -379,6 +385,10 @@ export interface DiskState {
      * Last detach timestamp in RFC3339 text format.
      */
     readonly lastDetachTimestamp?: pulumi.Input<string>;
+    /**
+     * Indicates whether or not the disk can be read/write attached to more than one instance.
+     */
+    readonly multiWriter?: pulumi.Input<boolean>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with
@@ -519,6 +529,10 @@ export interface DiskArgs {
      * Labels to apply to this disk.  A list of key->value pairs.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Indicates whether or not the disk can be read/write attached to more than one instance.
+     */
+    readonly multiWriter?: pulumi.Input<boolean>;
     /**
      * Name of the resource. Provided by the client when the resource is
      * created. The name must be 1-63 characters long, and comply with

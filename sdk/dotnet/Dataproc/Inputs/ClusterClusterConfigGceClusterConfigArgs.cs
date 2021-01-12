@@ -56,9 +56,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         /// <summary>
         /// The set of Google API scopes
         /// to be made available on all of the node VMs under the `service_account`
-        /// specified. These can be	either FQDNs, or scope aliases. The following scopes
-        /// must be set if any other scopes are set. They're necessary to ensure the
-        /// correct functioning ofthe cluster, and are set automatically by the API:
+        /// specified. Both OAuth2 URLs and gcloud
+        /// short names are supported. To allow full access to all Cloud APIs, use the
+        /// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
         /// </summary>
         public InputList<string> ServiceAccountScopes
         {

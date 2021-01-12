@@ -171,6 +171,9 @@ type RouterNat struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayOutput `pulumi:"drainNatIps"`
+	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	EnableEndpointIndependentMapping pulumi.BoolPtrOutput `pulumi:"enableEndpointIndependentMapping"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"icmpIdleTimeoutSec"`
 	// Configuration for logging on NAT
@@ -262,6 +265,9 @@ type routerNatState struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
+	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
 	// Configuration for logging on NAT
@@ -316,6 +322,9 @@ type RouterNatState struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
+	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	EnableEndpointIndependentMapping pulumi.BoolPtrInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
 	// Configuration for logging on NAT
@@ -374,6 +383,9 @@ type routerNatArgs struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps []string `pulumi:"drainNatIps"`
+	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	EnableEndpointIndependentMapping *bool `pulumi:"enableEndpointIndependentMapping"`
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec *int `pulumi:"icmpIdleTimeoutSec"`
 	// Configuration for logging on NAT
@@ -429,6 +441,9 @@ type RouterNatArgs struct {
 	// A list of URLs of the IP resources to be drained. These IPs must be
 	// valid static external IPs that have been assigned to the NAT.
 	DrainNatIps pulumi.StringArrayInput
+	// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+	// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+	EnableEndpointIndependentMapping pulumi.BoolPtrInput
 	// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
 	IcmpIdleTimeoutSec pulumi.IntPtrInput
 	// Configuration for logging on NAT

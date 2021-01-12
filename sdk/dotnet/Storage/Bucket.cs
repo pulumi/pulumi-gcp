@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Storage
         public Output<bool?> ForceDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the bucket.
+        /// A map of key/value label pairs to assign to the bucket.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -323,7 +323,7 @@ namespace Pulumi.Gcp.Storage
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the bucket.
+        /// A map of key/value label pairs to assign to the bucket.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -450,7 +450,7 @@ namespace Pulumi.Gcp.Storage
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// A set of key/value label pairs to assign to the bucket.
+        /// A map of key/value label pairs to assign to the bucket.
         /// </summary>
         public InputMap<string> Labels
         {

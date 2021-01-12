@@ -7,6 +7,7 @@ from .account_iam_binding import *
 from .account_iam_member import *
 from .account_iam_policy import *
 from .budget import *
+from .sub_account import *
 from ._inputs import *
 from . import outputs
 
@@ -30,6 +31,8 @@ def _register_module():
                 return AccountIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:billing/budget:Budget":
                 return Budget(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:billing/subAccount:SubAccount":
+                return SubAccount(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -39,5 +42,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("gcp", "billing/accountIamMember", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "billing/accountIamPolicy", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "billing/budget", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "billing/subAccount", _module_instance)
 
 _register_module()

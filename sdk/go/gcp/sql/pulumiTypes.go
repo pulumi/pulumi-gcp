@@ -1108,7 +1108,8 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	// Cannot be used with Postgres.
 	BinaryLogEnabled *bool `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
-	Enabled  *bool   `pulumi:"enabled"`
+	Enabled *bool `pulumi:"enabled"`
+	// The region where the backup will be stored
 	Location *string `pulumi:"location"`
 	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
 	PointInTimeRecoveryEnabled *bool `pulumi:"pointInTimeRecoveryEnabled"`
@@ -1134,7 +1135,8 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// Cannot be used with Postgres.
 	BinaryLogEnabled pulumi.BoolPtrInput `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
-	Enabled  pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The region where the backup will be stored
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
 	PointInTimeRecoveryEnabled pulumi.BoolPtrInput `pulumi:"pointInTimeRecoveryEnabled"`
@@ -1232,6 +1234,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) Enabled() pulumi.Bool
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The region where the backup will be stored
 func (o DatabaseInstanceSettingsBackupConfigurationOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.Location }).(pulumi.StringPtrOutput)
 }
@@ -1289,6 +1292,7 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Enabled() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The region where the backup will be stored
 func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Location() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *string {
 		if v == nil {

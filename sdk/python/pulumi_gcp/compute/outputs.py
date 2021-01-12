@@ -4012,7 +4012,7 @@ class ImageGuestOsFeature(dict):
                  type: str):
         """
         :param str type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+               Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -4021,7 +4021,7 @@ class ImageGuestOsFeature(dict):
     def type(self) -> str:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+        Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
         """
         return pulumi.get(self, "type")
 
@@ -4480,7 +4480,7 @@ class InstanceConfidentialInstanceConfig(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
         """
-        :param bool enable_confidential_compute: ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
@@ -4488,7 +4488,7 @@ class InstanceConfidentialInstanceConfig(dict):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
         """
-        ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -6369,7 +6369,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
         """
-        :param bool enable_confidential_compute: ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
 
@@ -6377,7 +6377,7 @@ class InstanceTemplateConfidentialInstanceConfig(dict):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> bool:
         """
-        ) Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -7614,15 +7614,21 @@ class PacketMirroringCollectorIlb(dict):
 class PacketMirroringFilter(dict):
     def __init__(__self__, *,
                  cidr_ranges: Optional[Sequence[str]] = None,
+                 direction: Optional[str] = None,
                  ip_protocols: Optional[Sequence[str]] = None):
         """
         :param Sequence[str] cidr_ranges: IP CIDR ranges that apply as a filter on the source (ingress) or
                destination (egress) IP in the IP header. Only IPv4 is supported.
+        :param str direction: Direction of traffic to mirror.
+               Default value is `BOTH`.
+               Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
         :param Sequence[str] ip_protocols: Protocols that apply as a filter on mirrored traffic.
                Each value may be one of `tcp`, `udp`, and `icmp`.
         """
         if cidr_ranges is not None:
             pulumi.set(__self__, "cidr_ranges", cidr_ranges)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
         if ip_protocols is not None:
             pulumi.set(__self__, "ip_protocols", ip_protocols)
 
@@ -7634,6 +7640,16 @@ class PacketMirroringFilter(dict):
         destination (egress) IP in the IP header. Only IPv4 is supported.
         """
         return pulumi.get(self, "cidr_ranges")
+
+    @property
+    @pulumi.getter
+    def direction(self) -> Optional[str]:
+        """
+        Direction of traffic to mirror.
+        Default value is `BOTH`.
+        Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+        """
+        return pulumi.get(self, "direction")
 
     @property
     @pulumi.getter(name="ipProtocols")
@@ -11267,18 +11283,18 @@ class RegionUrlMapHostRule(dict):
 @pulumi.output_type
 class RegionUrlMapPathMatcher(dict):
     def __init__(__self__, *,
-                 default_service: str,
                  name: str,
+                 default_service: Optional[str] = None,
                  default_url_redirect: Optional['outputs.RegionUrlMapPathMatcherDefaultUrlRedirect'] = None,
                  description: Optional[str] = None,
                  path_rules: Optional[Sequence['outputs.RegionUrlMapPathMatcherPathRule']] = None,
                  route_rules: Optional[Sequence['outputs.RegionUrlMapPathMatcherRouteRule']] = None):
         """
+        :param str name: The name of the query parameter to match. The query parameter must exist in the
+               request, in the absence of which the request match fails.
         :param str default_service: A reference to a RegionBackendService resource. This will be used if
                none of the pathRules defined by this PathMatcher is matched by
                the URL's path portion.
-        :param str name: The name of the query parameter to match. The query parameter must exist in the
-               request, in the absence of which the request match fails.
         :param 'RegionUrlMapPathMatcherDefaultUrlRedirectArgs' default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
                by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
                defaultRouteAction must not be set.
@@ -11299,8 +11315,9 @@ class RegionUrlMapPathMatcher(dict):
                External load balancers.
                Structure is documented below.
         """
-        pulumi.set(__self__, "default_service", default_service)
         pulumi.set(__self__, "name", name)
+        if default_service is not None:
+            pulumi.set(__self__, "default_service", default_service)
         if default_url_redirect is not None:
             pulumi.set(__self__, "default_url_redirect", default_url_redirect)
         if description is not None:
@@ -11311,16 +11328,6 @@ class RegionUrlMapPathMatcher(dict):
             pulumi.set(__self__, "route_rules", route_rules)
 
     @property
-    @pulumi.getter(name="defaultService")
-    def default_service(self) -> str:
-        """
-        A reference to a RegionBackendService resource. This will be used if
-        none of the pathRules defined by this PathMatcher is matched by
-        the URL's path portion.
-        """
-        return pulumi.get(self, "default_service")
-
-    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -11328,6 +11335,16 @@ class RegionUrlMapPathMatcher(dict):
         request, in the absence of which the request match fails.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="defaultService")
+    def default_service(self) -> Optional[str]:
+        """
+        A reference to a RegionBackendService resource. This will be used if
+        none of the pathRules defined by this PathMatcher is matched by
+        the URL's path portion.
+        """
+        return pulumi.get(self, "default_service")
 
     @property
     @pulumi.getter(name="defaultUrlRedirect")

@@ -136,7 +136,7 @@ class IAMPolicy(pulumi.CustomResource):
         ```
 
         ```sh
-         $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} iam.serviceAccountUser"
+         $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser"
         ```
 
         ```sh
@@ -146,11 +146,11 @@ class IAMPolicy(pulumi.CustomResource):
          -> **Custom Roles**If you're importing a IAM resource with a custom role, make sure to use the full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`. With conditions
 
         ```sh
-         $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} iam.serviceAccountUser expires_after_2019_12_31"
+         $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser expires_after_2019_12_31"
         ```
 
         ```sh
-         $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
+         $ pulumi import gcp:serviceAccount/iAMPolicy:IAMPolicy admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
         ```
 
         :param str resource_name: The name of the resource.

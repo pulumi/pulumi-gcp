@@ -47,38 +47,43 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
+// 		_, err := serviceAccount.NewAccount(ctx, "_default", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("service-account-id"),
+// 			DisplayName: pulumi.String("Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = dataproc.NewCluster(ctx, "mycluster", &dataproc.ClusterArgs{
+// 			Region:                      pulumi.String("us-central1"),
+// 			GracefulDecommissionTimeout: pulumi.String("120s"),
+// 			Labels: pulumi.StringMap{
+// 				"foo": pulumi.String("bar"),
+// 			},
 // 			ClusterConfig: &dataproc.ClusterClusterConfigArgs{
-// 				GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
-// 					ServiceAccountScopes: pulumi.StringArray{
-// 						pulumi.String("https://www.googleapis.com/auth/monitoring"),
-// 						pulumi.String("useraccounts-ro"),
-// 						pulumi.String("storage-rw"),
-// 						pulumi.String("logging-write"),
-// 					},
-// 					Tags: pulumi.StringArray{
-// 						pulumi.String("foo"),
-// 						pulumi.String("bar"),
-// 					},
-// 				},
-// 				InitializationActions: dataproc.ClusterClusterConfigInitializationActionArray{
-// 					&dataproc.ClusterClusterConfigInitializationActionArgs{
-// 						Script:     pulumi.String("gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"),
-// 						TimeoutSec: pulumi.Int(500),
-// 					},
-// 				},
+// 				StagingBucket: pulumi.String("dataproc-staging-bucket"),
 // 				MasterConfig: &dataproc.ClusterClusterConfigMasterConfigArgs{
-// 					DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
-// 						BootDiskSizeGb: pulumi.Int(15),
-// 						BootDiskType:   pulumi.String("pd-ssd"),
-// 					},
-// 					MachineType:  pulumi.String("e2-medium"),
 // 					NumInstances: pulumi.Int(1),
+// 					MachineType:  pulumi.String("e2-medium"),
+// 					DiskConfig: &dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs{
+// 						BootDiskType:   pulumi.String("pd-ssd"),
+// 						BootDiskSizeGb: pulumi.Int(15),
+// 					},
+// 				},
+// 				WorkerConfig: &dataproc.ClusterClusterConfigWorkerConfigArgs{
+// 					NumInstances:   pulumi.Int(2),
+// 					MachineType:    pulumi.String("e2-medium"),
+// 					MinCpuPlatform: pulumi.String("Intel Skylake"),
+// 					DiskConfig: &dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs{
+// 						BootDiskSizeGb: pulumi.Int(15),
+// 						NumLocalSsds:   pulumi.Int(1),
+// 					},
 // 				},
 // 				PreemptibleWorkerConfig: &dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs{
 // 					NumInstances: pulumi.Int(0),
@@ -89,22 +94,23 @@ import (
 // 						"dataproc:dataproc.allow.zero.workers": pulumi.String("true"),
 // 					},
 // 				},
-// 				StagingBucket: pulumi.String("dataproc-staging-bucket"),
-// 				WorkerConfig: &dataproc.ClusterClusterConfigWorkerConfigArgs{
-// 					DiskConfig: &dataproc.ClusterClusterConfigWorkerConfigDiskConfigArgs{
-// 						BootDiskSizeGb: pulumi.Int(15),
-// 						NumLocalSsds:   pulumi.Int(1),
+// 				GceClusterConfig: &dataproc.ClusterClusterConfigGceClusterConfigArgs{
+// 					Tags: pulumi.StringArray{
+// 						pulumi.String("foo"),
+// 						pulumi.String("bar"),
 // 					},
-// 					MachineType:    pulumi.String("e2-medium"),
-// 					MinCpuPlatform: pulumi.String("Intel Skylake"),
-// 					NumInstances:   pulumi.Int(2),
+// 					ServiceAccount: _default.Email,
+// 					ServiceAccountScopes: pulumi.StringArray{
+// 						pulumi.String("cloud-platform"),
+// 					},
+// 				},
+// 				InitializationActions: dataproc.ClusterClusterConfigInitializationActionArray{
+// 					&dataproc.ClusterClusterConfigInitializationActionArgs{
+// 						Script:     pulumi.String("gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"),
+// 						TimeoutSec: pulumi.Int(500),
+// 					},
 // 				},
 // 			},
-// 			GracefulDecommissionTimeout: pulumi.String("120s"),
-// 			Labels: pulumi.StringMap{
-// 				"foo": pulumi.String("bar"),
-// 			},
-// 			Region: pulumi.String("us-central1"),
 // 		})
 // 		if err != nil {
 // 			return err

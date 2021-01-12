@@ -13,6 +13,8 @@ import (
 
 // Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
 //
+// > **Warning:**  If you delete and recreate a service account, you must reapply any IAM roles that it had before.
+//
 // > Creation of service accounts is eventually consistent, and that can lead to
 // errors when you try to apply ACLs to service accounts immediately after
 // creation.
@@ -32,7 +34,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := serviceAccount.NewAccount(ctx, "serviceAccount", &serviceAccount.AccountArgs{
-// 			AccountId:   pulumi.String("service_account_id"),
+// 			AccountId:   pulumi.String("service-account-id"),
 // 			DisplayName: pulumi.String("Service Account"),
 // 		})
 // 		if err != nil {

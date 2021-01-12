@@ -57,9 +57,6 @@ class DomainMapping(pulumi.CustomResource):
             location="us-central1",
             metadata=gcp.cloudrun.DomainMappingMetadataArgs(
                 namespace="my-project-name",
-                annotations={
-                    "run.googleapis.com/launch-stage": "BETA",
-                },
             ),
             spec=gcp.cloudrun.DomainMappingSpecArgs(
                 route_name=default_service.name,

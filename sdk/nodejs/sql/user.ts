@@ -27,6 +27,30 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * Example creating a Cloud IAM User.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
+ * const master = new gcp.sql.DatabaseInstance("master", {
+ *     databaseVersion: "POSTGRES_9_6",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         datagbaseFlags: [{
+ *             name: "cloudsql.iam_authentication",
+ *             value: "on",
+ *         }],
+ *     },
+ * });
+ * const users = new gcp.sql.User("users", {
+ *     instance: master.name,
+ *     type: "CLOUD_IAM_USER",
+ * });
+ * ```
+ *
  * ## Import
  *
  * SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -101,6 +125,12 @@ export class User extends pulumi.CustomResource {
      * is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The user type. It determines the method to authenticate the
+     * user during login. The default is the database's built-in user type. Flags
+     * include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -120,6 +150,7 @@ export class User extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
@@ -131,6 +162,7 @@ export class User extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["type"] = args ? args.type : undefined;
         }
         if (!opts) {
             opts = {}
@@ -179,6 +211,12 @@ export interface UserState {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The user type. It determines the method to authenticate the
+     * user during login. The default is the database's built-in user type. Flags
+     * include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+     */
+    readonly type?: pulumi.Input<string>;
 }
 
 /**
@@ -217,4 +255,10 @@ export interface UserArgs {
      * is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The user type. It determines the method to authenticate the
+     * user during login. The default is the database's built-in user type. Flags
+     * include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+     */
+    readonly type?: pulumi.Input<string>;
 }

@@ -15,14 +15,14 @@ namespace Pulumi.Gcp.Composer.Outputs
     {
         public readonly string AirflowUri;
         public readonly string DagGcsPrefix;
-        public readonly Outputs.GetEnvironmentConfigDatabaseConfigResult DatabaseConfig;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigDatabaseConfigResult> DatabaseConfigs;
         public readonly string GkeCluster;
-        public readonly Outputs.GetEnvironmentConfigNodeConfigResult NodeConfig;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigResult> NodeConfigs;
         public readonly int NodeCount;
-        public readonly Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult PrivateEnvironmentConfig;
-        public readonly Outputs.GetEnvironmentConfigSoftwareConfigResult SoftwareConfig;
-        public readonly Outputs.GetEnvironmentConfigWebServerConfigResult WebServerConfig;
-        public readonly Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult WebServerNetworkAccessControl;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult> PrivateEnvironmentConfigs;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigSoftwareConfigResult> SoftwareConfigs;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerConfigResult> WebServerConfigs;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult> WebServerNetworkAccessControls;
 
         [OutputConstructor]
         private GetEnvironmentConfigResult(
@@ -30,32 +30,32 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string dagGcsPrefix,
 
-            Outputs.GetEnvironmentConfigDatabaseConfigResult databaseConfig,
+            ImmutableArray<Outputs.GetEnvironmentConfigDatabaseConfigResult> databaseConfigs,
 
             string gkeCluster,
 
-            Outputs.GetEnvironmentConfigNodeConfigResult nodeConfig,
+            ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigResult> nodeConfigs,
 
             int nodeCount,
 
-            Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult privateEnvironmentConfig,
+            ImmutableArray<Outputs.GetEnvironmentConfigPrivateEnvironmentConfigResult> privateEnvironmentConfigs,
 
-            Outputs.GetEnvironmentConfigSoftwareConfigResult softwareConfig,
+            ImmutableArray<Outputs.GetEnvironmentConfigSoftwareConfigResult> softwareConfigs,
 
-            Outputs.GetEnvironmentConfigWebServerConfigResult webServerConfig,
+            ImmutableArray<Outputs.GetEnvironmentConfigWebServerConfigResult> webServerConfigs,
 
-            Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult webServerNetworkAccessControl)
+            ImmutableArray<Outputs.GetEnvironmentConfigWebServerNetworkAccessControlResult> webServerNetworkAccessControls)
         {
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
-            DatabaseConfig = databaseConfig;
+            DatabaseConfigs = databaseConfigs;
             GkeCluster = gkeCluster;
-            NodeConfig = nodeConfig;
+            NodeConfigs = nodeConfigs;
             NodeCount = nodeCount;
-            PrivateEnvironmentConfig = privateEnvironmentConfig;
-            SoftwareConfig = softwareConfig;
-            WebServerConfig = webServerConfig;
-            WebServerNetworkAccessControl = webServerNetworkAccessControl;
+            PrivateEnvironmentConfigs = privateEnvironmentConfigs;
+            SoftwareConfigs = softwareConfigs;
+            WebServerConfigs = webServerConfigs;
+            WebServerNetworkAccessControls = webServerNetworkAccessControls;
         }
     }
 }

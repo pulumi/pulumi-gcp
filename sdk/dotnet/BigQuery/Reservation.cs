@@ -31,12 +31,9 @@ namespace Pulumi.Gcp.BigQuery
     ///     {
     ///         var reservation = new Gcp.BigQuery.Reservation("reservation", new Gcp.BigQuery.ReservationArgs
     ///         {
+    ///             IgnoreIdleSlots = false,
     ///             Location = "asia-northeast1",
     ///             SlotCapacity = 0,
-    ///             IgnoreIdleSlots = false,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

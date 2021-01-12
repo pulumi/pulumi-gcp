@@ -642,9 +642,6 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
                Use the "https://www.googleapis.com/auth/cloud-platform" scope to grant access to all APIs. It is recommended that you set `service_account` to a non-default service account and grant IAM roles to that service account for only the resources that it needs.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-               In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-               [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-               [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
         """
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
@@ -689,9 +686,6 @@ class ClusterClusterAutoscalingAutoProvisioningDefaultsArgs:
         """
         The service account to be used by the Node VMs.
         If not specified, the "default" service account is used.
-        In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-        [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-        [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
         """
         return pulumi.get(self, "service_account")
 
@@ -1138,9 +1132,9 @@ class ClusterMasterAuthArgs:
         """
         :param pulumi.Input['ClusterMasterAuthClientCertificateConfigArgs'] client_certificate_config: Whether client certificate authorization is enabled for this cluster.  For example:
         :param pulumi.Input[str] password: The password to use for HTTP basic authentication when accessing
-               the Kubernetes master endpoint.
+               the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
         :param pulumi.Input[str] username: The username to use for HTTP basic authentication when accessing
-               the Kubernetes master endpoint. If not present basic auth will be disabled.
+               the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
         """
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
@@ -1199,7 +1193,7 @@ class ClusterMasterAuthArgs:
     def password(self) -> Optional[pulumi.Input[str]]:
         """
         The password to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint.
+        the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
         """
         return pulumi.get(self, "password")
 
@@ -1212,7 +1206,7 @@ class ClusterMasterAuthArgs:
     def username(self) -> Optional[pulumi.Input[str]]:
         """
         The username to use for HTTP basic authentication when accessing
-        the Kubernetes master endpoint. If not present basic auth will be disabled.
+        the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
         """
         return pulumi.get(self, "username")
 
@@ -1407,9 +1401,6 @@ class ClusterNodeConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-               In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-               [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-               [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
         :param pulumi.Input['ClusterNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
@@ -1675,9 +1666,6 @@ class ClusterNodeConfigArgs:
         """
         The service account to be used by the Node VMs.
         If not specified, the "default" service account is used.
-        In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-        [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-        [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
         """
         return pulumi.get(self, "service_account")
 
@@ -2339,9 +2327,6 @@ class ClusterNodePoolNodeConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] service_account: The service account to be used by the Node VMs.
                If not specified, the "default" service account is used.
-               In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-               [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-               [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
         :param pulumi.Input['ClusterNodePoolNodeConfigShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify
                valid sources or targets for network firewalls.
@@ -2607,9 +2592,6 @@ class ClusterNodePoolNodeConfigArgs:
         """
         The service account to be used by the Node VMs.
         If not specified, the "default" service account is used.
-        In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-        [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-        [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
         """
         return pulumi.get(self, "service_account")
 

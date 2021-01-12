@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.ServiceAccount
     /// <summary>
     /// Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
     /// 
+    /// &gt; **Warning:**  If you delete and recreate a service account, you must reapply any IAM roles that it had before.
+    /// 
     /// &gt; Creation of service accounts is eventually consistent, and that can lead to
     /// errors when you try to apply ACLs to service accounts immediately after
     /// creation.
@@ -30,7 +32,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///     {
     ///         var serviceAccount = new Gcp.ServiceAccount.Account("serviceAccount", new Gcp.ServiceAccount.AccountArgs
     ///         {
-    ///             AccountId = "service_account_id",
+    ///             AccountId = "service-account-id",
     ///             DisplayName = "Service Account",
     ///         });
     ///     }

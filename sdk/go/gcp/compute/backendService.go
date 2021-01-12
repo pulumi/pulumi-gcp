@@ -56,6 +56,42 @@ import (
 // 	})
 // }
 // ```
+// ### Backend Service Cache Simple
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultHttpHealthCheck, err := compute.NewHttpHealthCheck(ctx, "defaultHttpHealthCheck", &compute.HttpHealthCheckArgs{
+// 			RequestPath:      pulumi.String("/"),
+// 			CheckIntervalSec: pulumi.Int(1),
+// 			TimeoutSec:       pulumi.Int(1),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = compute.NewBackendService(ctx, "defaultBackendService", &compute.BackendServiceArgs{
+// 			HealthChecks: pulumi.String(pulumi.String{
+// 				defaultHttpHealthCheck.ID(),
+// 			}),
+// 			EnableCdn: pulumi.Bool(true),
+// 			CdnPolicy: &compute.BackendServiceCdnPolicyArgs{
+// 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 // ### Backend Service Cache
 //
 // ```go

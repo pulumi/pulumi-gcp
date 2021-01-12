@@ -19,7 +19,7 @@ class GCPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_family: Optional[pulumi.Input[str]] = None,
                  instance_name: Optional[pulumi.Input[str]] = None,
-                 max_ages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]]]] = None,
+                 max_age: Optional[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]] = None,
                  max_versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxVersionArgs']]]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -53,9 +53,9 @@ class GCPolicy(pulumi.CustomResource):
             instance_name=instance.name,
             table=table.name,
             column_family="name",
-            max_ages=[gcp.bigtable.GCPolicyMaxAgeArgs(
-                days=7,
-            )])
+            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
+                duration="168h",
+            ))
         ```
 
         Multiple conditions is also supported. `UNION` when any of its sub-policies apply (OR). `INTERSECTION` when all its sub-policies apply (AND)
@@ -69,9 +69,9 @@ class GCPolicy(pulumi.CustomResource):
             table=google_bigtable_table["table"]["name"],
             column_family="name",
             mode="UNION",
-            max_ages=[gcp.bigtable.GCPolicyMaxAgeArgs(
-                days=7,
-            )],
+            max_age=gcp.bigtable.GCPolicyMaxAgeArgs(
+                duration="168h",
+            ),
             max_versions=[gcp.bigtable.GCPolicyMaxVersionArgs(
                 number=10,
             )])
@@ -85,7 +85,7 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]]] max_ages: GC policy that applies to all cells older than the given age.
+        :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxVersionArgs']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -114,7 +114,7 @@ class GCPolicy(pulumi.CustomResource):
             if instance_name is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_name'")
             __props__['instance_name'] = instance_name
-            __props__['max_ages'] = max_ages
+            __props__['max_age'] = max_age
             __props__['max_versions'] = max_versions
             __props__['mode'] = mode
             __props__['project'] = project
@@ -133,7 +133,7 @@ class GCPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             column_family: Optional[pulumi.Input[str]] = None,
             instance_name: Optional[pulumi.Input[str]] = None,
-            max_ages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]]]] = None,
+            max_age: Optional[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]] = None,
             max_versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxVersionArgs']]]]] = None,
             mode: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -147,7 +147,7 @@ class GCPolicy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] column_family: The name of the column family.
         :param pulumi.Input[str] instance_name: The name of the Bigtable instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']]]] max_ages: GC policy that applies to all cells older than the given age.
+        :param pulumi.Input[pulumi.InputType['GCPolicyMaxAgeArgs']] max_age: GC policy that applies to all cells older than the given age.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GCPolicyMaxVersionArgs']]]] max_versions: GC policy that applies to all versions of a cell except for the most recent.
         :param pulumi.Input[str] mode: If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
@@ -159,7 +159,7 @@ class GCPolicy(pulumi.CustomResource):
 
         __props__["column_family"] = column_family
         __props__["instance_name"] = instance_name
-        __props__["max_ages"] = max_ages
+        __props__["max_age"] = max_age
         __props__["max_versions"] = max_versions
         __props__["mode"] = mode
         __props__["project"] = project
@@ -183,12 +183,12 @@ class GCPolicy(pulumi.CustomResource):
         return pulumi.get(self, "instance_name")
 
     @property
-    @pulumi.getter(name="maxAges")
-    def max_ages(self) -> pulumi.Output[Optional[Sequence['outputs.GCPolicyMaxAge']]]:
+    @pulumi.getter(name="maxAge")
+    def max_age(self) -> pulumi.Output[Optional['outputs.GCPolicyMaxAge']]:
         """
         GC policy that applies to all cells older than the given age.
         """
-        return pulumi.get(self, "max_ages")
+        return pulumi.get(self, "max_age")
 
     @property
     @pulumi.getter(name="maxVersions")

@@ -55,10 +55,8 @@ import (
 // 			InstanceName: instance.Name,
 // 			Table:        table.Name,
 // 			ColumnFamily: pulumi.String("name"),
-// 			MaxAges: bigtable.GCPolicyMaxAgeArray{
-// 				&bigtable.GCPolicyMaxAgeArgs{
-// 					Days: pulumi.Int(7),
-// 				},
+// 			MaxAge: &bigtable.GCPolicyMaxAgeArgs{
+// 				Duration: pulumi.String("168h"),
 // 			},
 // 		})
 // 		if err != nil {
@@ -86,10 +84,8 @@ import (
 // 			Table:        pulumi.Any(google_bigtable_table.Table.Name),
 // 			ColumnFamily: pulumi.String("name"),
 // 			Mode:         pulumi.String("UNION"),
-// 			MaxAges: bigtable.GCPolicyMaxAgeArray{
-// 				&bigtable.GCPolicyMaxAgeArgs{
-// 					Days: pulumi.Int(7),
-// 				},
+// 			MaxAge: &bigtable.GCPolicyMaxAgeArgs{
+// 				Duration: pulumi.String("168h"),
 // 			},
 // 			MaxVersions: bigtable.GCPolicyMaxVersionArray{
 // 				&bigtable.GCPolicyMaxVersionArgs{
@@ -116,7 +112,7 @@ type GCPolicy struct {
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
-	MaxAges GCPolicyMaxAgeArrayOutput `pulumi:"maxAges"`
+	MaxAge GCPolicyMaxAgePtrOutput `pulumi:"maxAge"`
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions GCPolicyMaxVersionArrayOutput `pulumi:"maxVersions"`
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
@@ -170,7 +166,7 @@ type gcpolicyState struct {
 	// The name of the Bigtable instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
-	MaxAges []GCPolicyMaxAge `pulumi:"maxAges"`
+	MaxAge *GCPolicyMaxAge `pulumi:"maxAge"`
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions []GCPolicyMaxVersion `pulumi:"maxVersions"`
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
@@ -187,7 +183,7 @@ type GCPolicyState struct {
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringPtrInput
 	// GC policy that applies to all cells older than the given age.
-	MaxAges GCPolicyMaxAgeArrayInput
+	MaxAge GCPolicyMaxAgePtrInput
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions GCPolicyMaxVersionArrayInput
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
@@ -208,7 +204,7 @@ type gcpolicyArgs struct {
 	// The name of the Bigtable instance.
 	InstanceName string `pulumi:"instanceName"`
 	// GC policy that applies to all cells older than the given age.
-	MaxAges []GCPolicyMaxAge `pulumi:"maxAges"`
+	MaxAge *GCPolicyMaxAge `pulumi:"maxAge"`
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions []GCPolicyMaxVersion `pulumi:"maxVersions"`
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
@@ -226,7 +222,7 @@ type GCPolicyArgs struct {
 	// The name of the Bigtable instance.
 	InstanceName pulumi.StringInput
 	// GC policy that applies to all cells older than the given age.
-	MaxAges GCPolicyMaxAgeArrayInput
+	MaxAge GCPolicyMaxAgePtrInput
 	// GC policy that applies to all versions of a cell except for the most recent.
 	MaxVersions GCPolicyMaxVersionArrayInput
 	// If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.

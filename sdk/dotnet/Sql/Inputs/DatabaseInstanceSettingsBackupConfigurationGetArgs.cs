@@ -26,6 +26,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The region where the backup will be stored
+        /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
 

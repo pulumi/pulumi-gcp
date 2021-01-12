@@ -13,21 +13,21 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigSoftwareConfigResult
     {
-        public readonly ImmutableDictionary<string, string>? AirflowConfigOverrides;
-        public readonly ImmutableDictionary<string, string>? EnvVariables;
+        public readonly ImmutableDictionary<string, string> AirflowConfigOverrides;
+        public readonly ImmutableDictionary<string, string> EnvVariables;
         public readonly string ImageVersion;
-        public readonly ImmutableDictionary<string, string>? PypiPackages;
+        public readonly ImmutableDictionary<string, string> PypiPackages;
         public readonly string PythonVersion;
 
         [OutputConstructor]
         private GetEnvironmentConfigSoftwareConfigResult(
-            ImmutableDictionary<string, string>? airflowConfigOverrides,
+            ImmutableDictionary<string, string> airflowConfigOverrides,
 
-            ImmutableDictionary<string, string>? envVariables,
+            ImmutableDictionary<string, string> envVariables,
 
             string imageVersion,
 
-            ImmutableDictionary<string, string>? pypiPackages,
+            ImmutableDictionary<string, string> pypiPackages,
 
             string pythonVersion)
         {

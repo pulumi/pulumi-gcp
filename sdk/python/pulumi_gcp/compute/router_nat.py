@@ -18,6 +18,7 @@ class RouterNat(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
                  icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
                  min_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -125,6 +126,8 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
+        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+               see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -178,6 +181,7 @@ class RouterNat(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['drain_nat_ips'] = drain_nat_ips
+            __props__['enable_endpoint_independent_mapping'] = enable_endpoint_independent_mapping
             __props__['icmp_idle_timeout_sec'] = icmp_idle_timeout_sec
             __props__['log_config'] = log_config
             __props__['min_ports_per_vm'] = min_ports_per_vm
@@ -209,6 +213,7 @@ class RouterNat(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             drain_nat_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            enable_endpoint_independent_mapping: Optional[pulumi.Input[bool]] = None,
             icmp_idle_timeout_sec: Optional[pulumi.Input[int]] = None,
             log_config: Optional[pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']]] = None,
             min_ports_per_vm: Optional[pulumi.Input[int]] = None,
@@ -232,6 +237,8 @@ class RouterNat(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] drain_nat_ips: A list of URLs of the IP resources to be drained. These IPs must be
                valid static external IPs that have been assigned to the NAT.
+        :param pulumi.Input[bool] enable_endpoint_independent_mapping: Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+               see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
         :param pulumi.Input[int] icmp_idle_timeout_sec: Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         :param pulumi.Input[pulumi.InputType['RouterNatLogConfigArgs']] log_config: Configuration for logging on NAT
                Structure is documented below.
@@ -272,6 +279,7 @@ class RouterNat(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["drain_nat_ips"] = drain_nat_ips
+        __props__["enable_endpoint_independent_mapping"] = enable_endpoint_independent_mapping
         __props__["icmp_idle_timeout_sec"] = icmp_idle_timeout_sec
         __props__["log_config"] = log_config
         __props__["min_ports_per_vm"] = min_ports_per_vm
@@ -296,6 +304,15 @@ class RouterNat(pulumi.CustomResource):
         valid static external IPs that have been assigned to the NAT.
         """
         return pulumi.get(self, "drain_nat_ips")
+
+    @property
+    @pulumi.getter(name="enableEndpointIndependentMapping")
+    def enable_endpoint_independent_mapping(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+        see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        """
+        return pulumi.get(self, "enable_endpoint_independent_mapping")
 
     @property
     @pulumi.getter(name="icmpIdleTimeoutSec")

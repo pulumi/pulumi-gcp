@@ -10,6 +10,607 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type LiteSubscriptionDeliveryConfig struct {
+	// When this subscription should send messages to subscribers relative to messages persistence in storage.
+	// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+	DeliveryRequirement string `pulumi:"deliveryRequirement"`
+}
+
+// LiteSubscriptionDeliveryConfigInput is an input type that accepts LiteSubscriptionDeliveryConfigArgs and LiteSubscriptionDeliveryConfigOutput values.
+// You can construct a concrete instance of `LiteSubscriptionDeliveryConfigInput` via:
+//
+//          LiteSubscriptionDeliveryConfigArgs{...}
+type LiteSubscriptionDeliveryConfigInput interface {
+	pulumi.Input
+
+	ToLiteSubscriptionDeliveryConfigOutput() LiteSubscriptionDeliveryConfigOutput
+	ToLiteSubscriptionDeliveryConfigOutputWithContext(context.Context) LiteSubscriptionDeliveryConfigOutput
+}
+
+type LiteSubscriptionDeliveryConfigArgs struct {
+	// When this subscription should send messages to subscribers relative to messages persistence in storage.
+	// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+	DeliveryRequirement pulumi.StringInput `pulumi:"deliveryRequirement"`
+}
+
+func (LiteSubscriptionDeliveryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteSubscriptionDeliveryConfig)(nil)).Elem()
+}
+
+func (i LiteSubscriptionDeliveryConfigArgs) ToLiteSubscriptionDeliveryConfigOutput() LiteSubscriptionDeliveryConfigOutput {
+	return i.ToLiteSubscriptionDeliveryConfigOutputWithContext(context.Background())
+}
+
+func (i LiteSubscriptionDeliveryConfigArgs) ToLiteSubscriptionDeliveryConfigOutputWithContext(ctx context.Context) LiteSubscriptionDeliveryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionDeliveryConfigOutput)
+}
+
+func (i LiteSubscriptionDeliveryConfigArgs) ToLiteSubscriptionDeliveryConfigPtrOutput() LiteSubscriptionDeliveryConfigPtrOutput {
+	return i.ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LiteSubscriptionDeliveryConfigArgs) ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(ctx context.Context) LiteSubscriptionDeliveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionDeliveryConfigOutput).ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(ctx)
+}
+
+// LiteSubscriptionDeliveryConfigPtrInput is an input type that accepts LiteSubscriptionDeliveryConfigArgs, LiteSubscriptionDeliveryConfigPtr and LiteSubscriptionDeliveryConfigPtrOutput values.
+// You can construct a concrete instance of `LiteSubscriptionDeliveryConfigPtrInput` via:
+//
+//          LiteSubscriptionDeliveryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LiteSubscriptionDeliveryConfigPtrInput interface {
+	pulumi.Input
+
+	ToLiteSubscriptionDeliveryConfigPtrOutput() LiteSubscriptionDeliveryConfigPtrOutput
+	ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(context.Context) LiteSubscriptionDeliveryConfigPtrOutput
+}
+
+type liteSubscriptionDeliveryConfigPtrType LiteSubscriptionDeliveryConfigArgs
+
+func LiteSubscriptionDeliveryConfigPtr(v *LiteSubscriptionDeliveryConfigArgs) LiteSubscriptionDeliveryConfigPtrInput {
+	return (*liteSubscriptionDeliveryConfigPtrType)(v)
+}
+
+func (*liteSubscriptionDeliveryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteSubscriptionDeliveryConfig)(nil)).Elem()
+}
+
+func (i *liteSubscriptionDeliveryConfigPtrType) ToLiteSubscriptionDeliveryConfigPtrOutput() LiteSubscriptionDeliveryConfigPtrOutput {
+	return i.ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *liteSubscriptionDeliveryConfigPtrType) ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(ctx context.Context) LiteSubscriptionDeliveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionDeliveryConfigPtrOutput)
+}
+
+type LiteSubscriptionDeliveryConfigOutput struct{ *pulumi.OutputState }
+
+func (LiteSubscriptionDeliveryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteSubscriptionDeliveryConfig)(nil)).Elem()
+}
+
+func (o LiteSubscriptionDeliveryConfigOutput) ToLiteSubscriptionDeliveryConfigOutput() LiteSubscriptionDeliveryConfigOutput {
+	return o
+}
+
+func (o LiteSubscriptionDeliveryConfigOutput) ToLiteSubscriptionDeliveryConfigOutputWithContext(ctx context.Context) LiteSubscriptionDeliveryConfigOutput {
+	return o
+}
+
+func (o LiteSubscriptionDeliveryConfigOutput) ToLiteSubscriptionDeliveryConfigPtrOutput() LiteSubscriptionDeliveryConfigPtrOutput {
+	return o.ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LiteSubscriptionDeliveryConfigOutput) ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(ctx context.Context) LiteSubscriptionDeliveryConfigPtrOutput {
+	return o.ApplyT(func(v LiteSubscriptionDeliveryConfig) *LiteSubscriptionDeliveryConfig {
+		return &v
+	}).(LiteSubscriptionDeliveryConfigPtrOutput)
+}
+
+// When this subscription should send messages to subscribers relative to messages persistence in storage.
+// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+func (o LiteSubscriptionDeliveryConfigOutput) DeliveryRequirement() pulumi.StringOutput {
+	return o.ApplyT(func(v LiteSubscriptionDeliveryConfig) string { return v.DeliveryRequirement }).(pulumi.StringOutput)
+}
+
+type LiteSubscriptionDeliveryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LiteSubscriptionDeliveryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteSubscriptionDeliveryConfig)(nil)).Elem()
+}
+
+func (o LiteSubscriptionDeliveryConfigPtrOutput) ToLiteSubscriptionDeliveryConfigPtrOutput() LiteSubscriptionDeliveryConfigPtrOutput {
+	return o
+}
+
+func (o LiteSubscriptionDeliveryConfigPtrOutput) ToLiteSubscriptionDeliveryConfigPtrOutputWithContext(ctx context.Context) LiteSubscriptionDeliveryConfigPtrOutput {
+	return o
+}
+
+func (o LiteSubscriptionDeliveryConfigPtrOutput) Elem() LiteSubscriptionDeliveryConfigOutput {
+	return o.ApplyT(func(v *LiteSubscriptionDeliveryConfig) LiteSubscriptionDeliveryConfig { return *v }).(LiteSubscriptionDeliveryConfigOutput)
+}
+
+// When this subscription should send messages to subscribers relative to messages persistence in storage.
+// Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+func (o LiteSubscriptionDeliveryConfigPtrOutput) DeliveryRequirement() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LiteSubscriptionDeliveryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DeliveryRequirement
+	}).(pulumi.StringPtrOutput)
+}
+
+type LiteTopicPartitionConfig struct {
+	// The capacity configuration.
+	// Structure is documented below.
+	Capacity *LiteTopicPartitionConfigCapacity `pulumi:"capacity"`
+	// The number of partitions in the topic. Must be at least 1.
+	Count int `pulumi:"count"`
+}
+
+// LiteTopicPartitionConfigInput is an input type that accepts LiteTopicPartitionConfigArgs and LiteTopicPartitionConfigOutput values.
+// You can construct a concrete instance of `LiteTopicPartitionConfigInput` via:
+//
+//          LiteTopicPartitionConfigArgs{...}
+type LiteTopicPartitionConfigInput interface {
+	pulumi.Input
+
+	ToLiteTopicPartitionConfigOutput() LiteTopicPartitionConfigOutput
+	ToLiteTopicPartitionConfigOutputWithContext(context.Context) LiteTopicPartitionConfigOutput
+}
+
+type LiteTopicPartitionConfigArgs struct {
+	// The capacity configuration.
+	// Structure is documented below.
+	Capacity LiteTopicPartitionConfigCapacityPtrInput `pulumi:"capacity"`
+	// The number of partitions in the topic. Must be at least 1.
+	Count pulumi.IntInput `pulumi:"count"`
+}
+
+func (LiteTopicPartitionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicPartitionConfig)(nil)).Elem()
+}
+
+func (i LiteTopicPartitionConfigArgs) ToLiteTopicPartitionConfigOutput() LiteTopicPartitionConfigOutput {
+	return i.ToLiteTopicPartitionConfigOutputWithContext(context.Background())
+}
+
+func (i LiteTopicPartitionConfigArgs) ToLiteTopicPartitionConfigOutputWithContext(ctx context.Context) LiteTopicPartitionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPartitionConfigOutput)
+}
+
+func (i LiteTopicPartitionConfigArgs) ToLiteTopicPartitionConfigPtrOutput() LiteTopicPartitionConfigPtrOutput {
+	return i.ToLiteTopicPartitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LiteTopicPartitionConfigArgs) ToLiteTopicPartitionConfigPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPartitionConfigOutput).ToLiteTopicPartitionConfigPtrOutputWithContext(ctx)
+}
+
+// LiteTopicPartitionConfigPtrInput is an input type that accepts LiteTopicPartitionConfigArgs, LiteTopicPartitionConfigPtr and LiteTopicPartitionConfigPtrOutput values.
+// You can construct a concrete instance of `LiteTopicPartitionConfigPtrInput` via:
+//
+//          LiteTopicPartitionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LiteTopicPartitionConfigPtrInput interface {
+	pulumi.Input
+
+	ToLiteTopicPartitionConfigPtrOutput() LiteTopicPartitionConfigPtrOutput
+	ToLiteTopicPartitionConfigPtrOutputWithContext(context.Context) LiteTopicPartitionConfigPtrOutput
+}
+
+type liteTopicPartitionConfigPtrType LiteTopicPartitionConfigArgs
+
+func LiteTopicPartitionConfigPtr(v *LiteTopicPartitionConfigArgs) LiteTopicPartitionConfigPtrInput {
+	return (*liteTopicPartitionConfigPtrType)(v)
+}
+
+func (*liteTopicPartitionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicPartitionConfig)(nil)).Elem()
+}
+
+func (i *liteTopicPartitionConfigPtrType) ToLiteTopicPartitionConfigPtrOutput() LiteTopicPartitionConfigPtrOutput {
+	return i.ToLiteTopicPartitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *liteTopicPartitionConfigPtrType) ToLiteTopicPartitionConfigPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPartitionConfigPtrOutput)
+}
+
+type LiteTopicPartitionConfigOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicPartitionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicPartitionConfig)(nil)).Elem()
+}
+
+func (o LiteTopicPartitionConfigOutput) ToLiteTopicPartitionConfigOutput() LiteTopicPartitionConfigOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigOutput) ToLiteTopicPartitionConfigOutputWithContext(ctx context.Context) LiteTopicPartitionConfigOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigOutput) ToLiteTopicPartitionConfigPtrOutput() LiteTopicPartitionConfigPtrOutput {
+	return o.ToLiteTopicPartitionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LiteTopicPartitionConfigOutput) ToLiteTopicPartitionConfigPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigPtrOutput {
+	return o.ApplyT(func(v LiteTopicPartitionConfig) *LiteTopicPartitionConfig {
+		return &v
+	}).(LiteTopicPartitionConfigPtrOutput)
+}
+
+// The capacity configuration.
+// Structure is documented below.
+func (o LiteTopicPartitionConfigOutput) Capacity() LiteTopicPartitionConfigCapacityPtrOutput {
+	return o.ApplyT(func(v LiteTopicPartitionConfig) *LiteTopicPartitionConfigCapacity { return v.Capacity }).(LiteTopicPartitionConfigCapacityPtrOutput)
+}
+
+// The number of partitions in the topic. Must be at least 1.
+func (o LiteTopicPartitionConfigOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v LiteTopicPartitionConfig) int { return v.Count }).(pulumi.IntOutput)
+}
+
+type LiteTopicPartitionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicPartitionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicPartitionConfig)(nil)).Elem()
+}
+
+func (o LiteTopicPartitionConfigPtrOutput) ToLiteTopicPartitionConfigPtrOutput() LiteTopicPartitionConfigPtrOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigPtrOutput) ToLiteTopicPartitionConfigPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigPtrOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigPtrOutput) Elem() LiteTopicPartitionConfigOutput {
+	return o.ApplyT(func(v *LiteTopicPartitionConfig) LiteTopicPartitionConfig { return *v }).(LiteTopicPartitionConfigOutput)
+}
+
+// The capacity configuration.
+// Structure is documented below.
+func (o LiteTopicPartitionConfigPtrOutput) Capacity() LiteTopicPartitionConfigCapacityPtrOutput {
+	return o.ApplyT(func(v *LiteTopicPartitionConfig) *LiteTopicPartitionConfigCapacity {
+		if v == nil {
+			return nil
+		}
+		return v.Capacity
+	}).(LiteTopicPartitionConfigCapacityPtrOutput)
+}
+
+// The number of partitions in the topic. Must be at least 1.
+func (o LiteTopicPartitionConfigPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LiteTopicPartitionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+type LiteTopicPartitionConfigCapacity struct {
+	// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+	PublishMibPerSec int `pulumi:"publishMibPerSec"`
+	// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+	SubscribeMibPerSec int `pulumi:"subscribeMibPerSec"`
+}
+
+// LiteTopicPartitionConfigCapacityInput is an input type that accepts LiteTopicPartitionConfigCapacityArgs and LiteTopicPartitionConfigCapacityOutput values.
+// You can construct a concrete instance of `LiteTopicPartitionConfigCapacityInput` via:
+//
+//          LiteTopicPartitionConfigCapacityArgs{...}
+type LiteTopicPartitionConfigCapacityInput interface {
+	pulumi.Input
+
+	ToLiteTopicPartitionConfigCapacityOutput() LiteTopicPartitionConfigCapacityOutput
+	ToLiteTopicPartitionConfigCapacityOutputWithContext(context.Context) LiteTopicPartitionConfigCapacityOutput
+}
+
+type LiteTopicPartitionConfigCapacityArgs struct {
+	// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+	PublishMibPerSec pulumi.IntInput `pulumi:"publishMibPerSec"`
+	// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+	SubscribeMibPerSec pulumi.IntInput `pulumi:"subscribeMibPerSec"`
+}
+
+func (LiteTopicPartitionConfigCapacityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicPartitionConfigCapacity)(nil)).Elem()
+}
+
+func (i LiteTopicPartitionConfigCapacityArgs) ToLiteTopicPartitionConfigCapacityOutput() LiteTopicPartitionConfigCapacityOutput {
+	return i.ToLiteTopicPartitionConfigCapacityOutputWithContext(context.Background())
+}
+
+func (i LiteTopicPartitionConfigCapacityArgs) ToLiteTopicPartitionConfigCapacityOutputWithContext(ctx context.Context) LiteTopicPartitionConfigCapacityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPartitionConfigCapacityOutput)
+}
+
+func (i LiteTopicPartitionConfigCapacityArgs) ToLiteTopicPartitionConfigCapacityPtrOutput() LiteTopicPartitionConfigCapacityPtrOutput {
+	return i.ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(context.Background())
+}
+
+func (i LiteTopicPartitionConfigCapacityArgs) ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigCapacityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPartitionConfigCapacityOutput).ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(ctx)
+}
+
+// LiteTopicPartitionConfigCapacityPtrInput is an input type that accepts LiteTopicPartitionConfigCapacityArgs, LiteTopicPartitionConfigCapacityPtr and LiteTopicPartitionConfigCapacityPtrOutput values.
+// You can construct a concrete instance of `LiteTopicPartitionConfigCapacityPtrInput` via:
+//
+//          LiteTopicPartitionConfigCapacityArgs{...}
+//
+//  or:
+//
+//          nil
+type LiteTopicPartitionConfigCapacityPtrInput interface {
+	pulumi.Input
+
+	ToLiteTopicPartitionConfigCapacityPtrOutput() LiteTopicPartitionConfigCapacityPtrOutput
+	ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(context.Context) LiteTopicPartitionConfigCapacityPtrOutput
+}
+
+type liteTopicPartitionConfigCapacityPtrType LiteTopicPartitionConfigCapacityArgs
+
+func LiteTopicPartitionConfigCapacityPtr(v *LiteTopicPartitionConfigCapacityArgs) LiteTopicPartitionConfigCapacityPtrInput {
+	return (*liteTopicPartitionConfigCapacityPtrType)(v)
+}
+
+func (*liteTopicPartitionConfigCapacityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicPartitionConfigCapacity)(nil)).Elem()
+}
+
+func (i *liteTopicPartitionConfigCapacityPtrType) ToLiteTopicPartitionConfigCapacityPtrOutput() LiteTopicPartitionConfigCapacityPtrOutput {
+	return i.ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(context.Background())
+}
+
+func (i *liteTopicPartitionConfigCapacityPtrType) ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigCapacityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPartitionConfigCapacityPtrOutput)
+}
+
+type LiteTopicPartitionConfigCapacityOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicPartitionConfigCapacityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicPartitionConfigCapacity)(nil)).Elem()
+}
+
+func (o LiteTopicPartitionConfigCapacityOutput) ToLiteTopicPartitionConfigCapacityOutput() LiteTopicPartitionConfigCapacityOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigCapacityOutput) ToLiteTopicPartitionConfigCapacityOutputWithContext(ctx context.Context) LiteTopicPartitionConfigCapacityOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigCapacityOutput) ToLiteTopicPartitionConfigCapacityPtrOutput() LiteTopicPartitionConfigCapacityPtrOutput {
+	return o.ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(context.Background())
+}
+
+func (o LiteTopicPartitionConfigCapacityOutput) ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigCapacityPtrOutput {
+	return o.ApplyT(func(v LiteTopicPartitionConfigCapacity) *LiteTopicPartitionConfigCapacity {
+		return &v
+	}).(LiteTopicPartitionConfigCapacityPtrOutput)
+}
+
+// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+func (o LiteTopicPartitionConfigCapacityOutput) PublishMibPerSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LiteTopicPartitionConfigCapacity) int { return v.PublishMibPerSec }).(pulumi.IntOutput)
+}
+
+// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+func (o LiteTopicPartitionConfigCapacityOutput) SubscribeMibPerSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LiteTopicPartitionConfigCapacity) int { return v.SubscribeMibPerSec }).(pulumi.IntOutput)
+}
+
+type LiteTopicPartitionConfigCapacityPtrOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicPartitionConfigCapacityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicPartitionConfigCapacity)(nil)).Elem()
+}
+
+func (o LiteTopicPartitionConfigCapacityPtrOutput) ToLiteTopicPartitionConfigCapacityPtrOutput() LiteTopicPartitionConfigCapacityPtrOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigCapacityPtrOutput) ToLiteTopicPartitionConfigCapacityPtrOutputWithContext(ctx context.Context) LiteTopicPartitionConfigCapacityPtrOutput {
+	return o
+}
+
+func (o LiteTopicPartitionConfigCapacityPtrOutput) Elem() LiteTopicPartitionConfigCapacityOutput {
+	return o.ApplyT(func(v *LiteTopicPartitionConfigCapacity) LiteTopicPartitionConfigCapacity { return *v }).(LiteTopicPartitionConfigCapacityOutput)
+}
+
+// Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+func (o LiteTopicPartitionConfigCapacityPtrOutput) PublishMibPerSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LiteTopicPartitionConfigCapacity) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.PublishMibPerSec
+	}).(pulumi.IntPtrOutput)
+}
+
+// Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+func (o LiteTopicPartitionConfigCapacityPtrOutput) SubscribeMibPerSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LiteTopicPartitionConfigCapacity) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SubscribeMibPerSec
+	}).(pulumi.IntPtrOutput)
+}
+
+type LiteTopicRetentionConfig struct {
+	// The provisioned storage, in bytes, per partition. If the number of bytes stored
+	// in any of the topic's partitions grows beyond this value, older messages will be
+	// dropped to make room for newer ones, regardless of the value of period.
+	PerPartitionBytes string `pulumi:"perPartitionBytes"`
+	// How long a published message is retained. If unset, messages will be retained as
+	// long as the bytes retained for each partition is below perPartitionBytes.
+	Period *string `pulumi:"period"`
+}
+
+// LiteTopicRetentionConfigInput is an input type that accepts LiteTopicRetentionConfigArgs and LiteTopicRetentionConfigOutput values.
+// You can construct a concrete instance of `LiteTopicRetentionConfigInput` via:
+//
+//          LiteTopicRetentionConfigArgs{...}
+type LiteTopicRetentionConfigInput interface {
+	pulumi.Input
+
+	ToLiteTopicRetentionConfigOutput() LiteTopicRetentionConfigOutput
+	ToLiteTopicRetentionConfigOutputWithContext(context.Context) LiteTopicRetentionConfigOutput
+}
+
+type LiteTopicRetentionConfigArgs struct {
+	// The provisioned storage, in bytes, per partition. If the number of bytes stored
+	// in any of the topic's partitions grows beyond this value, older messages will be
+	// dropped to make room for newer ones, regardless of the value of period.
+	PerPartitionBytes pulumi.StringInput `pulumi:"perPartitionBytes"`
+	// How long a published message is retained. If unset, messages will be retained as
+	// long as the bytes retained for each partition is below perPartitionBytes.
+	Period pulumi.StringPtrInput `pulumi:"period"`
+}
+
+func (LiteTopicRetentionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicRetentionConfig)(nil)).Elem()
+}
+
+func (i LiteTopicRetentionConfigArgs) ToLiteTopicRetentionConfigOutput() LiteTopicRetentionConfigOutput {
+	return i.ToLiteTopicRetentionConfigOutputWithContext(context.Background())
+}
+
+func (i LiteTopicRetentionConfigArgs) ToLiteTopicRetentionConfigOutputWithContext(ctx context.Context) LiteTopicRetentionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicRetentionConfigOutput)
+}
+
+func (i LiteTopicRetentionConfigArgs) ToLiteTopicRetentionConfigPtrOutput() LiteTopicRetentionConfigPtrOutput {
+	return i.ToLiteTopicRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LiteTopicRetentionConfigArgs) ToLiteTopicRetentionConfigPtrOutputWithContext(ctx context.Context) LiteTopicRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicRetentionConfigOutput).ToLiteTopicRetentionConfigPtrOutputWithContext(ctx)
+}
+
+// LiteTopicRetentionConfigPtrInput is an input type that accepts LiteTopicRetentionConfigArgs, LiteTopicRetentionConfigPtr and LiteTopicRetentionConfigPtrOutput values.
+// You can construct a concrete instance of `LiteTopicRetentionConfigPtrInput` via:
+//
+//          LiteTopicRetentionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type LiteTopicRetentionConfigPtrInput interface {
+	pulumi.Input
+
+	ToLiteTopicRetentionConfigPtrOutput() LiteTopicRetentionConfigPtrOutput
+	ToLiteTopicRetentionConfigPtrOutputWithContext(context.Context) LiteTopicRetentionConfigPtrOutput
+}
+
+type liteTopicRetentionConfigPtrType LiteTopicRetentionConfigArgs
+
+func LiteTopicRetentionConfigPtr(v *LiteTopicRetentionConfigArgs) LiteTopicRetentionConfigPtrInput {
+	return (*liteTopicRetentionConfigPtrType)(v)
+}
+
+func (*liteTopicRetentionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicRetentionConfig)(nil)).Elem()
+}
+
+func (i *liteTopicRetentionConfigPtrType) ToLiteTopicRetentionConfigPtrOutput() LiteTopicRetentionConfigPtrOutput {
+	return i.ToLiteTopicRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *liteTopicRetentionConfigPtrType) ToLiteTopicRetentionConfigPtrOutputWithContext(ctx context.Context) LiteTopicRetentionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicRetentionConfigPtrOutput)
+}
+
+type LiteTopicRetentionConfigOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicRetentionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopicRetentionConfig)(nil)).Elem()
+}
+
+func (o LiteTopicRetentionConfigOutput) ToLiteTopicRetentionConfigOutput() LiteTopicRetentionConfigOutput {
+	return o
+}
+
+func (o LiteTopicRetentionConfigOutput) ToLiteTopicRetentionConfigOutputWithContext(ctx context.Context) LiteTopicRetentionConfigOutput {
+	return o
+}
+
+func (o LiteTopicRetentionConfigOutput) ToLiteTopicRetentionConfigPtrOutput() LiteTopicRetentionConfigPtrOutput {
+	return o.ToLiteTopicRetentionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LiteTopicRetentionConfigOutput) ToLiteTopicRetentionConfigPtrOutputWithContext(ctx context.Context) LiteTopicRetentionConfigPtrOutput {
+	return o.ApplyT(func(v LiteTopicRetentionConfig) *LiteTopicRetentionConfig {
+		return &v
+	}).(LiteTopicRetentionConfigPtrOutput)
+}
+
+// The provisioned storage, in bytes, per partition. If the number of bytes stored
+// in any of the topic's partitions grows beyond this value, older messages will be
+// dropped to make room for newer ones, regardless of the value of period.
+func (o LiteTopicRetentionConfigOutput) PerPartitionBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LiteTopicRetentionConfig) string { return v.PerPartitionBytes }).(pulumi.StringOutput)
+}
+
+// How long a published message is retained. If unset, messages will be retained as
+// long as the bytes retained for each partition is below perPartitionBytes.
+func (o LiteTopicRetentionConfigOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LiteTopicRetentionConfig) *string { return v.Period }).(pulumi.StringPtrOutput)
+}
+
+type LiteTopicRetentionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicRetentionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopicRetentionConfig)(nil)).Elem()
+}
+
+func (o LiteTopicRetentionConfigPtrOutput) ToLiteTopicRetentionConfigPtrOutput() LiteTopicRetentionConfigPtrOutput {
+	return o
+}
+
+func (o LiteTopicRetentionConfigPtrOutput) ToLiteTopicRetentionConfigPtrOutputWithContext(ctx context.Context) LiteTopicRetentionConfigPtrOutput {
+	return o
+}
+
+func (o LiteTopicRetentionConfigPtrOutput) Elem() LiteTopicRetentionConfigOutput {
+	return o.ApplyT(func(v *LiteTopicRetentionConfig) LiteTopicRetentionConfig { return *v }).(LiteTopicRetentionConfigOutput)
+}
+
+// The provisioned storage, in bytes, per partition. If the number of bytes stored
+// in any of the topic's partitions grows beyond this value, older messages will be
+// dropped to make room for newer ones, regardless of the value of period.
+func (o LiteTopicRetentionConfigPtrOutput) PerPartitionBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LiteTopicRetentionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PerPartitionBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// How long a published message is retained. If unset, messages will be retained as
+// long as the bytes retained for each partition is below perPartitionBytes.
+func (o LiteTopicRetentionConfigPtrOutput) Period() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LiteTopicRetentionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.StringPtrOutput)
+}
+
 type SubscriptionDeadLetterPolicy struct {
 	// The name of the topic to which dead letter messages should be published.
 	// Format is `projects/{project}/topics/{topic}`.
@@ -1830,6 +2431,14 @@ func (o GetTopicMessageStoragePolicyArrayOutput) Index(i pulumi.IntInput) GetTop
 }
 
 func init() {
+	pulumi.RegisterOutputType(LiteSubscriptionDeliveryConfigOutput{})
+	pulumi.RegisterOutputType(LiteSubscriptionDeliveryConfigPtrOutput{})
+	pulumi.RegisterOutputType(LiteTopicPartitionConfigOutput{})
+	pulumi.RegisterOutputType(LiteTopicPartitionConfigPtrOutput{})
+	pulumi.RegisterOutputType(LiteTopicPartitionConfigCapacityOutput{})
+	pulumi.RegisterOutputType(LiteTopicPartitionConfigCapacityPtrOutput{})
+	pulumi.RegisterOutputType(LiteTopicRetentionConfigOutput{})
+	pulumi.RegisterOutputType(LiteTopicRetentionConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyOutput{})
 	pulumi.RegisterOutputType(SubscriptionDeadLetterPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SubscriptionExpirationPolicyOutput{})

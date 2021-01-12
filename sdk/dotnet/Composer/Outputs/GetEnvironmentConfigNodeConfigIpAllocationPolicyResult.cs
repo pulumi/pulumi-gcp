@@ -13,21 +13,21 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigNodeConfigIpAllocationPolicyResult
     {
-        public readonly string? ClusterIpv4CidrBlock;
-        public readonly string? ClusterSecondaryRangeName;
-        public readonly string? ServicesIpv4CidrBlock;
-        public readonly string? ServicesSecondaryRangeName;
+        public readonly string ClusterIpv4CidrBlock;
+        public readonly string ClusterSecondaryRangeName;
+        public readonly string ServicesIpv4CidrBlock;
+        public readonly string ServicesSecondaryRangeName;
         public readonly bool UseIpAliases;
 
         [OutputConstructor]
         private GetEnvironmentConfigNodeConfigIpAllocationPolicyResult(
-            string? clusterIpv4CidrBlock,
+            string clusterIpv4CidrBlock,
 
-            string? clusterSecondaryRangeName,
+            string clusterSecondaryRangeName,
 
-            string? servicesIpv4CidrBlock,
+            string servicesIpv4CidrBlock,
 
-            string? servicesSecondaryRangeName,
+            string servicesSecondaryRangeName,
 
             bool useIpAliases)
         {
