@@ -132,6 +132,11 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly drainNatIps!: pulumi.Output<string[] | undefined>;
     /**
+     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     */
+    public readonly enableEndpointIndependentMapping!: pulumi.Output<boolean | undefined>;
+    /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
     public readonly icmpIdleTimeoutSec!: pulumi.Output<number | undefined>;
@@ -221,6 +226,7 @@ export class RouterNat extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as RouterNatState | undefined;
             inputs["drainNatIps"] = state ? state.drainNatIps : undefined;
+            inputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
             inputs["icmpIdleTimeoutSec"] = state ? state.icmpIdleTimeoutSec : undefined;
             inputs["logConfig"] = state ? state.logConfig : undefined;
             inputs["minPortsPerVm"] = state ? state.minPortsPerVm : undefined;
@@ -247,6 +253,7 @@ export class RouterNat extends pulumi.CustomResource {
                 throw new Error("Missing required property 'sourceSubnetworkIpRangesToNat'");
             }
             inputs["drainNatIps"] = args ? args.drainNatIps : undefined;
+            inputs["enableEndpointIndependentMapping"] = args ? args.enableEndpointIndependentMapping : undefined;
             inputs["icmpIdleTimeoutSec"] = args ? args.icmpIdleTimeoutSec : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["minPortsPerVm"] = args ? args.minPortsPerVm : undefined;
@@ -282,6 +289,11 @@ export interface RouterNatState {
      * valid static external IPs that have been assigned to the NAT.
      */
     readonly drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     */
+    readonly enableEndpointIndependentMapping?: pulumi.Input<boolean>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */
@@ -369,6 +381,11 @@ export interface RouterNatArgs {
      * valid static external IPs that have been assigned to the NAT.
      */
     readonly drainNatIps?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+     * see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+     */
+    readonly enableEndpointIndependentMapping?: pulumi.Input<boolean>;
     /**
      * Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
      */

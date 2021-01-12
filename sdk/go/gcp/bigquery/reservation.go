@@ -33,10 +33,10 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := bigquery.NewReservation(ctx, "reservation", &bigquery.ReservationArgs{
+// 			IgnoreIdleSlots: pulumi.Bool(false),
 // 			Location:        pulumi.String("asia-northeast1"),
 // 			SlotCapacity:    pulumi.Int(0),
-// 			IgnoreIdleSlots: pulumi.Bool(false),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

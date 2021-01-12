@@ -17,6 +17,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const _default = new gcp.serviceAccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
  * const primary = new gcp.container.Cluster("primary", {
  *     location: "us-central1",
  *     removeDefaultNodePool: true,
@@ -29,6 +33,7 @@ import * as utilities from "../utilities";
  *     nodeConfig: {
  *         preemptible: true,
  *         machineType: "e2-medium",
+ *         serviceAccount: _default.email,
  *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *     },
  * });
@@ -39,22 +44,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const _default = new gcp.serviceAccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
  * const primary = new gcp.container.Cluster("primary", {
  *     location: "us-central1-a",
  *     initialNodeCount: 3,
  *     nodeLocations: ["us-central1-c"],
- *     masterAuth: {
- *         username: "",
- *         password: "",
- *         clientCertificateConfig: {
- *             issueClientCertificate: false,
- *         },
- *     },
  *     nodeConfig: {
+ *         serviceAccount: _default.email,
  *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
- *         metadata: {
- *             "disable-legacy-endpoints": "true",
- *         },
  *         guestAccelerators: [{
  *             type: "nvidia-tesla-k80",
  *             count: 1,
@@ -64,7 +64,11 @@ import * as utilities from "../utilities";
  * const np = new gcp.container.NodePool("np", {
  *     location: "us-central1-a",
  *     cluster: primary.name,
- *     nodeCount: 3,
+ *     nodeConfig: {
+ *         machineType: "e2-medium",
+ *         serviceAccount: _default.email,
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
+ *     },
  *     timeouts: [{
  *         create: "30m",
  *         update: "20m",

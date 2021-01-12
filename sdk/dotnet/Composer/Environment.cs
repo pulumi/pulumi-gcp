@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Composer
     ///     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
     /// * [Apache Airflow Documentation](http://airflow.apache.org/)
     /// 
-    /// &gt; **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
+    /// &gt; **Warning:** We **STRONGLY** recommend you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
     ///   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
     ///   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
     ///   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Composer
     ///     against GCP Cloud Composer before filing bugs against this provider.
     ///   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
     ///     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+    ///   * Please review the [known issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having problems.
     /// 
     /// ## Example Usage
     /// ### Basic Usage
@@ -53,9 +54,8 @@ namespace Pulumi.Gcp.Composer
     /// ```
     /// ### With GKE and Compute Resource Dependencies
     /// 
-    /// **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
-    /// (i.e. at a project level). This will probably require an explicit dependency
-    /// on the IAM policy binding (see `gcp.projects.IAMMember` below).
+    /// **NOTE** To use custom service accounts, you need to give at least `role/composer.worker` to the service account being used by the GKE Nodes on the Composer project.
+    /// You may need to assign additional roles depending on what the Airflow DAGs will be running.
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -80,11 +80,6 @@ namespace Pulumi.Gcp.Composer
     ///             AccountId = "composer-env-account",
     ///             DisplayName = "Test Service Account for Composer Environment",
     ///         });
-    ///         var composer_worker = new Gcp.Projects.IAMMember("composer-worker", new Gcp.Projects.IAMMemberArgs
-    ///         {
-    ///             Role = "roles/composer.worker",
-    ///             Member = testAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         });
     ///         var testEnvironment = new Gcp.Composer.Environment("testEnvironment", new Gcp.Composer.EnvironmentArgs
     ///         {
     ///             Region = "us-central1",
@@ -100,12 +95,11 @@ namespace Pulumi.Gcp.Composer
     ///                     ServiceAccount = testAccount.Name,
     ///                 },
     ///             },
-    ///         }, new CustomResourceOptions
+    ///         });
+    ///         var composer_worker = new Gcp.Projects.IAMMember("composer-worker", new Gcp.Projects.IAMMemberArgs
     ///         {
-    ///             DependsOn = 
-    ///             {
-    ///                 composer_worker,
-    ///             },
+    ///             Role = "roles/composer.worker",
+    ///             Member = testAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///         });
     ///     }
     /// 

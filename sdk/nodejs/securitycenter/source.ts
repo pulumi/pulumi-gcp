@@ -14,7 +14,7 @@ import * as utilities from "../utilities";
  *
  * * [API documentation](https://cloud.google.com/security-command-center/docs/reference/rest/v1beta1/organizations.sources)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/binary-authorization/)
+ *     * [Official Documentation](https://cloud.google.com/security-command-center/docs)
  *
  * ## Example Usage
  * ### Scc Source Basic

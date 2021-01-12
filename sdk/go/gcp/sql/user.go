@@ -55,6 +55,52 @@ import (
 // }
 // ```
 //
+// Example creating a Cloud IAM User.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
+// 			ByteLength: pulumi.Int(4),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		master, err := sql.NewDatabaseInstance(ctx, "master", &sql.DatabaseInstanceArgs{
+// 			DatabaseVersion: pulumi.String("POSTGRES_9_6"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 				DatagbaseFlags: pulumi.StringMapArray{
+// 					pulumi.StringMap{
+// 						"name":  pulumi.String("cloudsql.iam_authentication"),
+// 						"value": pulumi.String("on"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sql.NewUser(ctx, "users", &sql.UserArgs{
+// 			Instance: master.Name,
+// 			Type:     pulumi.String("CLOUD_IAM_USER"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g.
@@ -91,6 +137,10 @@ type User struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The user type. It determines the method to authenticate the
+	// user during login. The default is the database's built-in user type. Flags
+	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -145,6 +195,10 @@ type userState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The user type. It determines the method to authenticate the
+	// user during login. The default is the database's built-in user type. Flags
+	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	Type *string `pulumi:"type"`
 }
 
 type UserState struct {
@@ -168,6 +222,10 @@ type UserState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The user type. It determines the method to authenticate the
+	// user during login. The default is the database's built-in user type. Flags
+	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	Type pulumi.StringPtrInput
 }
 
 func (UserState) ElementType() reflect.Type {
@@ -195,6 +253,10 @@ type userArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The user type. It determines the method to authenticate the
+	// user during login. The default is the database's built-in user type. Flags
+	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a User resource.
@@ -219,6 +281,10 @@ type UserArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The user type. It determines the method to authenticate the
+	// user during login. The default is the database's built-in user type. Flags
+	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	Type pulumi.StringPtrInput
 }
 
 func (UserArgs) ElementType() reflect.Type {

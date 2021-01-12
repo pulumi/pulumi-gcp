@@ -111,6 +111,12 @@ namespace Pulumi.Gcp.Dataflow
         public Output<string> JobId { get; private set; } = null!;
 
         /// <summary>
+        /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string?> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// User labels to be specified for the job. Keys and values should follow the restrictions
         /// specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page.
         /// **NOTE**: Google-provided Dataflow templates often provide default labels that begin with `goog-dataflow-provided`.
@@ -279,6 +285,12 @@ namespace Pulumi.Gcp.Dataflow
         [Input("ipConfiguration")]
         public Input<string>? IpConfiguration { get; set; }
 
+        /// <summary>
+        /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
         [Input("labels")]
         private InputMap<object>? _labels;
 
@@ -420,6 +432,12 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
+
+        /// <summary>
+        /// The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         [Input("labels")]
         private InputMap<object>? _labels;

@@ -12,7 +12,11 @@ import (
 
 type GCPolicyMaxAge struct {
 	// Number of days before applying GC policy.
-	Days int `pulumi:"days"`
+	//
+	// Deprecated: Deprecated in favor of duration
+	Days *int `pulumi:"days"`
+	// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+	Duration *string `pulumi:"duration"`
 }
 
 // GCPolicyMaxAgeInput is an input type that accepts GCPolicyMaxAgeArgs and GCPolicyMaxAgeOutput values.
@@ -28,7 +32,11 @@ type GCPolicyMaxAgeInput interface {
 
 type GCPolicyMaxAgeArgs struct {
 	// Number of days before applying GC policy.
-	Days pulumi.IntInput `pulumi:"days"`
+	//
+	// Deprecated: Deprecated in favor of duration
+	Days pulumi.IntPtrInput `pulumi:"days"`
+	// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+	Duration pulumi.StringPtrInput `pulumi:"duration"`
 }
 
 func (GCPolicyMaxAgeArgs) ElementType() reflect.Type {
@@ -43,29 +51,45 @@ func (i GCPolicyMaxAgeArgs) ToGCPolicyMaxAgeOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxAgeOutput)
 }
 
-// GCPolicyMaxAgeArrayInput is an input type that accepts GCPolicyMaxAgeArray and GCPolicyMaxAgeArrayOutput values.
-// You can construct a concrete instance of `GCPolicyMaxAgeArrayInput` via:
+func (i GCPolicyMaxAgeArgs) ToGCPolicyMaxAgePtrOutput() GCPolicyMaxAgePtrOutput {
+	return i.ToGCPolicyMaxAgePtrOutputWithContext(context.Background())
+}
+
+func (i GCPolicyMaxAgeArgs) ToGCPolicyMaxAgePtrOutputWithContext(ctx context.Context) GCPolicyMaxAgePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxAgeOutput).ToGCPolicyMaxAgePtrOutputWithContext(ctx)
+}
+
+// GCPolicyMaxAgePtrInput is an input type that accepts GCPolicyMaxAgeArgs, GCPolicyMaxAgePtr and GCPolicyMaxAgePtrOutput values.
+// You can construct a concrete instance of `GCPolicyMaxAgePtrInput` via:
 //
-//          GCPolicyMaxAgeArray{ GCPolicyMaxAgeArgs{...} }
-type GCPolicyMaxAgeArrayInput interface {
+//          GCPolicyMaxAgeArgs{...}
+//
+//  or:
+//
+//          nil
+type GCPolicyMaxAgePtrInput interface {
 	pulumi.Input
 
-	ToGCPolicyMaxAgeArrayOutput() GCPolicyMaxAgeArrayOutput
-	ToGCPolicyMaxAgeArrayOutputWithContext(context.Context) GCPolicyMaxAgeArrayOutput
+	ToGCPolicyMaxAgePtrOutput() GCPolicyMaxAgePtrOutput
+	ToGCPolicyMaxAgePtrOutputWithContext(context.Context) GCPolicyMaxAgePtrOutput
 }
 
-type GCPolicyMaxAgeArray []GCPolicyMaxAgeInput
+type gcpolicyMaxAgePtrType GCPolicyMaxAgeArgs
 
-func (GCPolicyMaxAgeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GCPolicyMaxAge)(nil)).Elem()
+func GCPolicyMaxAgePtr(v *GCPolicyMaxAgeArgs) GCPolicyMaxAgePtrInput {
+	return (*gcpolicyMaxAgePtrType)(v)
 }
 
-func (i GCPolicyMaxAgeArray) ToGCPolicyMaxAgeArrayOutput() GCPolicyMaxAgeArrayOutput {
-	return i.ToGCPolicyMaxAgeArrayOutputWithContext(context.Background())
+func (*gcpolicyMaxAgePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GCPolicyMaxAge)(nil)).Elem()
 }
 
-func (i GCPolicyMaxAgeArray) ToGCPolicyMaxAgeArrayOutputWithContext(ctx context.Context) GCPolicyMaxAgeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxAgeArrayOutput)
+func (i *gcpolicyMaxAgePtrType) ToGCPolicyMaxAgePtrOutput() GCPolicyMaxAgePtrOutput {
+	return i.ToGCPolicyMaxAgePtrOutputWithContext(context.Background())
+}
+
+func (i *gcpolicyMaxAgePtrType) ToGCPolicyMaxAgePtrOutputWithContext(ctx context.Context) GCPolicyMaxAgePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GCPolicyMaxAgePtrOutput)
 }
 
 type GCPolicyMaxAgeOutput struct{ *pulumi.OutputState }
@@ -82,29 +106,66 @@ func (o GCPolicyMaxAgeOutput) ToGCPolicyMaxAgeOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o GCPolicyMaxAgeOutput) ToGCPolicyMaxAgePtrOutput() GCPolicyMaxAgePtrOutput {
+	return o.ToGCPolicyMaxAgePtrOutputWithContext(context.Background())
+}
+
+func (o GCPolicyMaxAgeOutput) ToGCPolicyMaxAgePtrOutputWithContext(ctx context.Context) GCPolicyMaxAgePtrOutput {
+	return o.ApplyT(func(v GCPolicyMaxAge) *GCPolicyMaxAge {
+		return &v
+	}).(GCPolicyMaxAgePtrOutput)
+}
+
 // Number of days before applying GC policy.
-func (o GCPolicyMaxAgeOutput) Days() pulumi.IntOutput {
-	return o.ApplyT(func(v GCPolicyMaxAge) int { return v.Days }).(pulumi.IntOutput)
+//
+// Deprecated: Deprecated in favor of duration
+func (o GCPolicyMaxAgeOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GCPolicyMaxAge) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-type GCPolicyMaxAgeArrayOutput struct{ *pulumi.OutputState }
-
-func (GCPolicyMaxAgeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GCPolicyMaxAge)(nil)).Elem()
+// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+func (o GCPolicyMaxAgeOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GCPolicyMaxAge) *string { return v.Duration }).(pulumi.StringPtrOutput)
 }
 
-func (o GCPolicyMaxAgeArrayOutput) ToGCPolicyMaxAgeArrayOutput() GCPolicyMaxAgeArrayOutput {
+type GCPolicyMaxAgePtrOutput struct{ *pulumi.OutputState }
+
+func (GCPolicyMaxAgePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GCPolicyMaxAge)(nil)).Elem()
+}
+
+func (o GCPolicyMaxAgePtrOutput) ToGCPolicyMaxAgePtrOutput() GCPolicyMaxAgePtrOutput {
 	return o
 }
 
-func (o GCPolicyMaxAgeArrayOutput) ToGCPolicyMaxAgeArrayOutputWithContext(ctx context.Context) GCPolicyMaxAgeArrayOutput {
+func (o GCPolicyMaxAgePtrOutput) ToGCPolicyMaxAgePtrOutputWithContext(ctx context.Context) GCPolicyMaxAgePtrOutput {
 	return o
 }
 
-func (o GCPolicyMaxAgeArrayOutput) Index(i pulumi.IntInput) GCPolicyMaxAgeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GCPolicyMaxAge {
-		return vs[0].([]GCPolicyMaxAge)[vs[1].(int)]
-	}).(GCPolicyMaxAgeOutput)
+func (o GCPolicyMaxAgePtrOutput) Elem() GCPolicyMaxAgeOutput {
+	return o.ApplyT(func(v *GCPolicyMaxAge) GCPolicyMaxAge { return *v }).(GCPolicyMaxAgeOutput)
+}
+
+// Number of days before applying GC policy.
+//
+// Deprecated: Deprecated in favor of duration
+func (o GCPolicyMaxAgePtrOutput) Days() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GCPolicyMaxAge) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Days
+	}).(pulumi.IntPtrOutput)
+}
+
+// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+func (o GCPolicyMaxAgePtrOutput) Duration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GCPolicyMaxAge) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Duration
+	}).(pulumi.StringPtrOutput)
 }
 
 type GCPolicyMaxVersion struct {
@@ -1066,7 +1127,7 @@ func (o TableIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 
 func init() {
 	pulumi.RegisterOutputType(GCPolicyMaxAgeOutput{})
-	pulumi.RegisterOutputType(GCPolicyMaxAgeArrayOutput{})
+	pulumi.RegisterOutputType(GCPolicyMaxAgePtrOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxVersionOutput{})
 	pulumi.RegisterOutputType(GCPolicyMaxVersionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceClusterOutput{})

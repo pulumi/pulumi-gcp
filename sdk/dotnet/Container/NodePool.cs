@@ -25,6 +25,11 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     public MyStack()
     ///     {
+    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "service-account-id",
+    ///             DisplayName = "Service Account",
+    ///         });
     ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
     ///         {
     ///             Location = "us-central1",
@@ -40,6 +45,7 @@ namespace Pulumi.Gcp.Container
     ///             {
     ///                 Preemptible = true,
     ///                 MachineType = "e2-medium",
+    ///                 ServiceAccount = @default.Email,
     ///                 OauthScopes = 
     ///                 {
     ///                     "https://www.googleapis.com/auth/cloud-platform",

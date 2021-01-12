@@ -21,6 +21,7 @@ class User(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -44,6 +45,28 @@ class User(pulumi.CustomResource):
             instance=master.name,
             host="me.com",
             password="changeme")
+        ```
+
+        Example creating a Cloud IAM User.
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        db_name_suffix = random.RandomId("dbNameSuffix", byte_length=4)
+        master = gcp.sql.DatabaseInstance("master",
+            database_version="POSTGRES_9_6",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+                datagbase_flags=[{
+                    "name": "cloudsql.iam_authentication",
+                    "value": "on",
+                }],
+            ))
+        users = gcp.sql.User("users",
+            instance=master.name,
+            type="CLOUD_IAM_USER")
         ```
 
         ## Import
@@ -76,6 +99,9 @@ class User(pulumi.CustomResource):
                instances this is a Required field.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
+               user during login. The default is the database's built-in user type. Flags
+               include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,6 +128,7 @@ class User(pulumi.CustomResource):
             __props__['name'] = name
             __props__['password'] = password
             __props__['project'] = project
+            __props__['type'] = type
         super(User, __self__).__init__(
             'gcp:sql/user:User',
             resource_name,
@@ -117,7 +144,8 @@ class User(pulumi.CustomResource):
             instance: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
-            project: Optional[pulumi.Input[str]] = None) -> 'User':
+            project: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -139,6 +167,9 @@ class User(pulumi.CustomResource):
                instances this is a Required field.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input[str] type: The user type. It determines the method to authenticate the
+               user during login. The default is the database's built-in user type. Flags
+               include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -150,6 +181,7 @@ class User(pulumi.CustomResource):
         __props__["name"] = name
         __props__["password"] = password
         __props__["project"] = project
+        __props__["type"] = type
         return User(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -207,6 +239,16 @@ class User(pulumi.CustomResource):
         is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        The user type. It determines the method to authenticate the
+        user during login. The default is the database's built-in user type. Flags
+        include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+        """
+        return pulumi.get(self, "type")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

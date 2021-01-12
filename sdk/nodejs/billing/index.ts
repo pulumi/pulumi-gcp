@@ -9,12 +9,14 @@ export * from "./accountIamBinding";
 export * from "./accountIamMember";
 export * from "./accountIamPolicy";
 export * from "./budget";
+export * from "./subAccount";
 
 // Import resources to register:
 import { AccountIamBinding } from "./accountIamBinding";
 import { AccountIamMember } from "./accountIamMember";
 import { AccountIamPolicy } from "./accountIamPolicy";
 import { Budget } from "./budget";
+import { SubAccount } from "./subAccount";
 
 const _module = {
     version: utilities.getVersion(),
@@ -28,6 +30,8 @@ const _module = {
                 return new AccountIamPolicy(name, <any>undefined, { urn })
             case "gcp:billing/budget:Budget":
                 return new Budget(name, <any>undefined, { urn })
+            case "gcp:billing/subAccount:SubAccount":
+                return new SubAccount(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -37,3 +41,4 @@ pulumi.runtime.registerResourceModule("gcp", "billing/accountIamBinding", _modul
 pulumi.runtime.registerResourceModule("gcp", "billing/accountIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "billing/accountIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "billing/budget", _module)
+pulumi.runtime.registerResourceModule("gcp", "billing/subAccount", _module)

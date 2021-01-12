@@ -56,10 +56,6 @@ namespace Pulumi.Gcp.CloudRun
     ///             Metadata = new Gcp.CloudRun.Inputs.DomainMappingMetadataArgs
     ///             {
     ///                 Namespace = "my-project-name",
-    ///                 Annotations = 
-    ///                 {
-    ///                     { "run.googleapis.com/launch-stage", "BETA" },
-    ///                 },
     ///             },
     ///             Spec = new Gcp.CloudRun.Inputs.DomainMappingSpecArgs
     ///             {

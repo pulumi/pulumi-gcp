@@ -26,22 +26,23 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := serviceAccount.NewAccount(ctx, "_default", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("service-account-id"),
+// 			DisplayName: pulumi.String("Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 // 			Location:              pulumi.String("us-central1"),
 // 			RemoveDefaultNodePool: pulumi.Bool(true),
 // 			InitialNodeCount:      pulumi.Int(1),
-// 			MasterAuth: &container.ClusterMasterAuthArgs{
-// 				Username: pulumi.String(""),
-// 				Password: pulumi.String(""),
-// 				ClientCertificateConfig: &container.ClusterMasterAuthClientCertificateConfigArgs{
-// 					IssueClientCertificate: pulumi.Bool(false),
-// 				},
-// 			},
 // 		})
 // 		if err != nil {
 // 			return err
@@ -51,58 +52,11 @@ import (
 // 			Cluster:   primary.Name,
 // 			NodeCount: pulumi.Int(1),
 // 			NodeConfig: &container.NodePoolNodeConfigArgs{
-// 				Preemptible: pulumi.Bool(true),
-// 				MachineType: pulumi.String("e2-medium"),
-// 				Metadata: pulumi.StringMap{
-// 					"disable-legacy-endpoints": pulumi.String("true"),
-// 				},
+// 				Preemptible:    pulumi.Bool(true),
+// 				MachineType:    pulumi.String("e2-medium"),
+// 				ServiceAccount: _default.Email,
 // 				OauthScopes: pulumi.StringArray{
 // 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-// ### With The Default Node Pool
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/container"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
-// 			InitialNodeCount: pulumi.Int(3),
-// 			Location:         pulumi.String("us-central1-a"),
-// 			MasterAuth: &container.ClusterMasterAuthArgs{
-// 				ClientCertificateConfig: &container.ClusterMasterAuthClientCertificateConfigArgs{
-// 					IssueClientCertificate: pulumi.Bool(false),
-// 				},
-// 				Password: pulumi.String(""),
-// 				Username: pulumi.String(""),
-// 			},
-// 			NodeConfig: &container.ClusterNodeConfigArgs{
-// 				Labels: pulumi.StringMap{
-// 					"foo": pulumi.String("bar"),
-// 				},
-// 				Metadata: pulumi.StringMap{
-// 					"disable-legacy-endpoints": pulumi.String("true"),
-// 				},
-// 				OauthScopes: pulumi.StringArray{
-// 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
-// 				},
-// 				Tags: pulumi.StringArray{
-// 					pulumi.String("foo"),
-// 					pulumi.String("bar"),
 // 				},
 // 			},
 // 		})
@@ -229,7 +183,7 @@ type Cluster struct {
 	// your service account has permission to get credentials for your GKE cluster. If
 	// you see an unexpected diff removing a username/password or unsetting your client
 	// cert, ensure you have the `container.clusters.getCredentials` permission.
-	// Structure is documented below.
+	// Structure is documented below. This has been deprecated as of GKE 1.19.
 	MasterAuth ClusterMasterAuthOutput `pulumi:"masterAuth"`
 	// The desired configuration options
 	// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
@@ -480,7 +434,7 @@ type clusterState struct {
 	// your service account has permission to get credentials for your GKE cluster. If
 	// you see an unexpected diff removing a username/password or unsetting your client
 	// cert, ensure you have the `container.clusters.getCredentials` permission.
-	// Structure is documented below.
+	// Structure is documented below. This has been deprecated as of GKE 1.19.
 	MasterAuth *ClusterMasterAuth `pulumi:"masterAuth"`
 	// The desired configuration options
 	// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
@@ -703,7 +657,7 @@ type ClusterState struct {
 	// your service account has permission to get credentials for your GKE cluster. If
 	// you see an unexpected diff removing a username/password or unsetting your client
 	// cert, ensure you have the `container.clusters.getCredentials` permission.
-	// Structure is documented below.
+	// Structure is documented below. This has been deprecated as of GKE 1.19.
 	MasterAuth ClusterMasterAuthPtrInput
 	// The desired configuration options
 	// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
@@ -923,7 +877,7 @@ type clusterArgs struct {
 	// your service account has permission to get credentials for your GKE cluster. If
 	// you see an unexpected diff removing a username/password or unsetting your client
 	// cert, ensure you have the `container.clusters.getCredentials` permission.
-	// Structure is documented below.
+	// Structure is documented below. This has been deprecated as of GKE 1.19.
 	MasterAuth *ClusterMasterAuth `pulumi:"masterAuth"`
 	// The desired configuration options
 	// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow
@@ -1124,7 +1078,7 @@ type ClusterArgs struct {
 	// your service account has permission to get credentials for your GKE cluster. If
 	// you see an unexpected diff removing a username/password or unsetting your client
 	// cert, ensure you have the `container.clusters.getCredentials` permission.
-	// Structure is documented below.
+	// Structure is documented below. This has been deprecated as of GKE 1.19.
 	MasterAuth ClusterMasterAuthPtrInput
 	// The desired configuration options
 	// for master authorized networks. Omit the nested `cidrBlocks` attribute to disallow

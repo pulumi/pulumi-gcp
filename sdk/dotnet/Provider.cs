@@ -247,6 +247,9 @@ namespace Pulumi.Gcp
         [Input("pubsubCustomEndpoint")]
         public Input<string>? PubsubCustomEndpoint { get; set; }
 
+        [Input("pubsubLiteCustomEndpoint")]
+        public Input<string>? PubsubLiteCustomEndpoint { get; set; }
+
         [Input("redisCustomEndpoint")]
         public Input<string>? RedisCustomEndpoint { get; set; }
 

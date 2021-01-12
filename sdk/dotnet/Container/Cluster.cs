@@ -29,20 +29,16 @@ namespace Pulumi.Gcp.Container
     /// {
     ///     public MyStack()
     ///     {
+    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "service-account-id",
+    ///             DisplayName = "Service Account",
+    ///         });
     ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
     ///         {
     ///             Location = "us-central1",
     ///             RemoveDefaultNodePool = true,
     ///             InitialNodeCount = 1,
-    ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
-    ///             {
-    ///                 Username = "",
-    ///                 Password = "",
-    ///                 ClientCertificateConfig = new Gcp.Container.Inputs.ClusterMasterAuthClientCertificateConfigArgs
-    ///                 {
-    ///                     IssueClientCertificate = false,
-    ///                 },
-    ///             },
     ///         });
     ///         var primaryPreemptibleNodes = new Gcp.Container.NodePool("primaryPreemptibleNodes", new Gcp.Container.NodePoolArgs
     ///         {
@@ -53,61 +49,10 @@ namespace Pulumi.Gcp.Container
     ///             {
     ///                 Preemptible = true,
     ///                 MachineType = "e2-medium",
-    ///                 Metadata = 
-    ///                 {
-    ///                     { "disable-legacy-endpoints", "true" },
-    ///                 },
+    ///                 ServiceAccount = @default.Email,
     ///                 OauthScopes = 
     ///                 {
     ///                     "https://www.googleapis.com/auth/cloud-platform",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// ### With The Default Node Pool
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var primary = new Gcp.Container.Cluster("primary", new Gcp.Container.ClusterArgs
-    ///         {
-    ///             InitialNodeCount = 3,
-    ///             Location = "us-central1-a",
-    ///             MasterAuth = new Gcp.Container.Inputs.ClusterMasterAuthArgs
-    ///             {
-    ///                 ClientCertificateConfig = new Gcp.Container.Inputs.ClusterMasterAuthClientCertificateConfigArgs
-    ///                 {
-    ///                     IssueClientCertificate = false,
-    ///                 },
-    ///                 Password = "",
-    ///                 Username = "",
-    ///             },
-    ///             NodeConfig = new Gcp.Container.Inputs.ClusterNodeConfigArgs
-    ///             {
-    ///                 Labels = 
-    ///                 {
-    ///                     { "foo", "bar" },
-    ///                 },
-    ///                 Metadata = 
-    ///                 {
-    ///                     { "disable-legacy-endpoints", "true" },
-    ///                 },
-    ///                 OauthScopes = 
-    ///                 {
-    ///                     "https://www.googleapis.com/auth/cloud-platform",
-    ///                 },
-    ///                 Tags = 
-    ///                 {
-    ///                     "foo",
-    ///                     "bar",
     ///                 },
     ///             },
     ///         });
@@ -332,7 +277,7 @@ namespace Pulumi.Gcp.Container
         /// your service account has permission to get credentials for your GKE cluster. If
         /// you see an unexpected diff removing a username/password or unsetting your client
         /// cert, ensure you have the `container.clusters.getCredentials` permission.
-        /// Structure is documented below.
+        /// Structure is documented below. This has been deprecated as of GKE 1.19.
         /// </summary>
         [Output("masterAuth")]
         public Output<Outputs.ClusterMasterAuth> MasterAuth { get; private set; } = null!;
@@ -789,7 +734,7 @@ namespace Pulumi.Gcp.Container
         /// your service account has permission to get credentials for your GKE cluster. If
         /// you see an unexpected diff removing a username/password or unsetting your client
         /// cert, ensure you have the `container.clusters.getCredentials` permission.
-        /// Structure is documented below.
+        /// Structure is documented below. This has been deprecated as of GKE 1.19.
         /// </summary>
         [Input("masterAuth")]
         public Input<Inputs.ClusterMasterAuthArgs>? MasterAuth { get; set; }
@@ -1216,7 +1161,7 @@ namespace Pulumi.Gcp.Container
         /// your service account has permission to get credentials for your GKE cluster. If
         /// you see an unexpected diff removing a username/password or unsetting your client
         /// cert, ensure you have the `container.clusters.getCredentials` permission.
-        /// Structure is documented below.
+        /// Structure is documented below. This has been deprecated as of GKE 1.19.
         /// </summary>
         [Input("masterAuth")]
         public Input<Inputs.ClusterMasterAuthGetArgs>? MasterAuth { get; set; }

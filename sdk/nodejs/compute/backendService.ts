@@ -33,6 +33,25 @@ import * as utilities from "../utilities";
  * });
  * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {healthChecks: [defaultHttpHealthCheck.id]});
  * ```
+ * ### Backend Service Cache Simple
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultHttpHealthCheck = new gcp.compute.HttpHealthCheck("defaultHttpHealthCheck", {
+ *     requestPath: "/",
+ *     checkIntervalSec: 1,
+ *     timeoutSec: 1,
+ * });
+ * const defaultBackendService = new gcp.compute.BackendService("defaultBackendService", {
+ *     healthChecks: [defaultHttpHealthCheck.id],
+ *     enableCdn: true,
+ *     cdnPolicy: {
+ *         signedUrlCacheMaxAgeSec: 7200,
+ *     },
+ * });
+ * ```
  * ### Backend Service Cache
  *
  * ```typescript

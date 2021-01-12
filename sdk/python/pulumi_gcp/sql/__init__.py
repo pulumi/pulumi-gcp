@@ -5,6 +5,7 @@
 # Export this package's modules as members:
 from .database import *
 from .database_instance import *
+from .get_backup_run import *
 from .get_ca_certs import *
 from .get_database_instance import *
 from .source_representation_instance import *

@@ -89,10 +89,11 @@ class AlertPolicy(pulumi.CustomResource):
                incidents. To avoid confusion, don't use the same
                display name for multiple conditions in the same
                policy.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: A short name or phrase used to identify the policy in dashboards,
-               notifications, and incidents. To avoid confusion, don't use the same
-               display name for multiple policies in the same project. The name is
-               limited to 512 Unicode characters.
+        :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: Documentation that is included with notifications and incidents related
+               to this policy. Best practice is for the documentation to include information
+               to help responders understand, mitigate, escalate, and correct the underlying
+               problems detected by the alerting policy. Notification channels that have
+               limited capacity might not show this documentation.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_channels: Identifies the notification channels to which notifications should be
@@ -185,10 +186,11 @@ class AlertPolicy(pulumi.CustomResource):
                incidents. To avoid confusion, don't use the same
                display name for multiple conditions in the same
                policy.
-        :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: A short name or phrase used to identify the policy in dashboards,
-               notifications, and incidents. To avoid confusion, don't use the same
-               display name for multiple policies in the same project. The name is
-               limited to 512 Unicode characters.
+        :param pulumi.Input[pulumi.InputType['AlertPolicyDocumentationArgs']] documentation: Documentation that is included with notifications and incidents related
+               to this policy. Best practice is for the documentation to include information
+               to help responders understand, mitigate, escalate, and correct the underlying
+               problems detected by the alerting policy. Notification channels that have
+               limited capacity might not show this documentation.
                Structure is documented below.
         :param pulumi.Input[bool] enabled: Whether or not the policy is enabled. The default is true.
         :param pulumi.Input[str] name: -
@@ -276,10 +278,11 @@ class AlertPolicy(pulumi.CustomResource):
     @pulumi.getter
     def documentation(self) -> pulumi.Output[Optional['outputs.AlertPolicyDocumentation']]:
         """
-        A short name or phrase used to identify the policy in dashboards,
-        notifications, and incidents. To avoid confusion, don't use the same
-        display name for multiple policies in the same project. The name is
-        limited to 512 Unicode characters.
+        Documentation that is included with notifications and incidents related
+        to this policy. Best practice is for the documentation to include information
+        to help responders understand, mitigate, escalate, and correct the underlying
+        problems detected by the alerting policy. Notification channels that have
+        limited capacity might not show this documentation.
         Structure is documented below.
         """
         return pulumi.get(self, "documentation")

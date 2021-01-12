@@ -2491,8 +2491,14 @@ export namespace bigtable {
     export interface GCPolicyMaxAge {
         /**
          * Number of days before applying GC policy.
+         *
+         * @deprecated Deprecated in favor of duration
          */
-        days: number;
+        days?: number;
+        /**
+         * Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+         */
+        duration?: string;
     }
 
     export interface GCPolicyMaxVersion {
@@ -2642,12 +2648,26 @@ export namespace billing {
 
     export interface BudgetBudgetFilter {
         /**
+         * A set of subaccounts of the form billingAccounts/{account_id},
+         * specifying that usage from only this set of subaccounts should
+         * be included in the budget. If a subaccount is set to the name of
+         * the parent account, usage from the parent account will be included.
+         * If the field is omitted, the report will include usage from the parent
+         * account and all subaccounts, if they exist.
+         */
+        creditTypes: string[];
+        /**
          * Specifies how credits should be treated when determining spend
          * for threshold calculations.
          * Default value is `INCLUDE_ALL_CREDITS`.
-         * Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+         * Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
          */
         creditTypesTreatment?: string;
+        /**
+         * A single label and value pair specifying that usage from only
+         * this set of labeled resources should be included in the budget.
+         */
+        labels: {[key: string]: string};
         /**
          * A set of projects of the form projects/{project_id},
          * specifying that usage from only this set of projects should be
@@ -2665,7 +2685,16 @@ export namespace billing {
          * through the Catalog API:
          * https://cloud.google.com/billing/v1/how-tos/catalog-api.
          */
-        services?: string[];
+        services: string[];
+        /**
+         * A set of subaccounts of the form billingAccounts/{account_id},
+         * specifying that usage from only this set of subaccounts should
+         * be included in the budget. If a subaccount is set to the name of
+         * the parent account, usage from the parent account will be included.
+         * If the field is omitted, the report will include usage from the parent
+         * account and all subaccounts, if they exist.
+         */
+        subaccounts: string[];
     }
 
     export interface BudgetThresholdRule {
@@ -4798,14 +4827,14 @@ export namespace composer {
     export interface GetEnvironmentConfig {
         airflowUri: string;
         dagGcsPrefix: string;
-        databaseConfig: outputs.composer.GetEnvironmentConfigDatabaseConfig;
+        databaseConfigs: outputs.composer.GetEnvironmentConfigDatabaseConfig[];
         gkeCluster: string;
-        nodeConfig: outputs.composer.GetEnvironmentConfigNodeConfig;
+        nodeConfigs: outputs.composer.GetEnvironmentConfigNodeConfig[];
         nodeCount: number;
-        privateEnvironmentConfig: outputs.composer.GetEnvironmentConfigPrivateEnvironmentConfig;
-        softwareConfig: outputs.composer.GetEnvironmentConfigSoftwareConfig;
-        webServerConfig: outputs.composer.GetEnvironmentConfigWebServerConfig;
-        webServerNetworkAccessControl: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControl;
+        privateEnvironmentConfigs: outputs.composer.GetEnvironmentConfigPrivateEnvironmentConfig[];
+        softwareConfigs: outputs.composer.GetEnvironmentConfigSoftwareConfig[];
+        webServerConfigs: outputs.composer.GetEnvironmentConfigWebServerConfig[];
+        webServerNetworkAccessControls: outputs.composer.GetEnvironmentConfigWebServerNetworkAccessControl[];
     }
 
     export interface GetEnvironmentConfigDatabaseConfig {
@@ -4814,36 +4843,36 @@ export namespace composer {
 
     export interface GetEnvironmentConfigNodeConfig {
         diskSizeGb: number;
-        ipAllocationPolicy: outputs.composer.GetEnvironmentConfigNodeConfigIpAllocationPolicy;
+        ipAllocationPolicies: outputs.composer.GetEnvironmentConfigNodeConfigIpAllocationPolicy[];
         machineType: string;
         network: string;
         oauthScopes: string[];
         serviceAccount: string;
-        subnetwork?: string;
-        tags?: string[];
+        subnetwork: string;
+        tags: string[];
         zone: string;
     }
 
     export interface GetEnvironmentConfigNodeConfigIpAllocationPolicy {
-        clusterIpv4CidrBlock?: string;
-        clusterSecondaryRangeName?: string;
-        servicesIpv4CidrBlock?: string;
-        servicesSecondaryRangeName?: string;
+        clusterIpv4CidrBlock: string;
+        clusterSecondaryRangeName: string;
+        servicesIpv4CidrBlock: string;
+        servicesSecondaryRangeName: string;
         useIpAliases: boolean;
     }
 
     export interface GetEnvironmentConfigPrivateEnvironmentConfig {
         cloudSqlIpv4CidrBlock: string;
-        enablePrivateEndpoint?: boolean;
-        masterIpv4CidrBlock?: string;
+        enablePrivateEndpoint: boolean;
+        masterIpv4CidrBlock: string;
         webServerIpv4CidrBlock: string;
     }
 
     export interface GetEnvironmentConfigSoftwareConfig {
-        airflowConfigOverrides?: {[key: string]: string};
-        envVariables?: {[key: string]: string};
+        airflowConfigOverrides: {[key: string]: string};
+        envVariables: {[key: string]: string};
         imageVersion: string;
-        pypiPackages?: {[key: string]: string};
+        pypiPackages: {[key: string]: string};
         pythonVersion: string;
     }
 
@@ -4856,7 +4885,7 @@ export namespace composer {
     }
 
     export interface GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRange {
-        description?: string;
+        description: string;
         value: string;
     }
 
@@ -6633,7 +6662,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, and `WINDOWS`.
+         * Possible values are `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, and `GVNIC`.
          */
         type: string;
     }
@@ -6798,7 +6827,7 @@ export namespace compute {
 
     export interface InstanceConfidentialInstanceConfig {
         /**
-         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
         enableConfidentialCompute: boolean;
     }
@@ -7304,7 +7333,7 @@ export namespace compute {
 
     export interface InstanceTemplateConfidentialInstanceConfig {
         /**
-         * ) Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
          */
         enableConfidentialCompute: boolean;
     }
@@ -7748,6 +7777,12 @@ export namespace compute {
          * destination (egress) IP in the IP header. Only IPv4 is supported.
          */
         cidrRanges?: string[];
+        /**
+         * Direction of traffic to mirror.
+         * Default value is `BOTH`.
+         * Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+         */
+        direction?: string;
         /**
          * Protocols that apply as a filter on mirrored traffic.
          * Each value may be one of `tcp`, `udp`, and `icmp`.
@@ -9081,7 +9116,7 @@ export namespace compute {
          * none of the pathRules defined by this PathMatcher is matched by
          * the URL's path portion.
          */
-        defaultService: string;
+        defaultService?: string;
         /**
          * When none of the specified hostRules match, the request is redirected to a URL specified
          * by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
@@ -12943,9 +12978,6 @@ export namespace container {
         /**
          * The service account to be used by the Node VMs.
          * If not specified, the "default" service account is used.
-         * In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-         * [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-         * [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
          */
         serviceAccount?: string;
     }
@@ -13077,12 +13109,12 @@ export namespace container {
         clusterCaCertificate: string;
         /**
          * The password to use for HTTP basic authentication when accessing
-         * the Kubernetes master endpoint.
+         * the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
          */
         password?: string;
         /**
          * The username to use for HTTP basic authentication when accessing
-         * the Kubernetes master endpoint. If not present basic auth will be disabled.
+         * the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
          */
         username?: string;
     }
@@ -13211,9 +13243,6 @@ export namespace container {
         /**
          * The service account to be used by the Node VMs.
          * If not specified, the "default" service account is used.
-         * In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-         * [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-         * [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
          */
         serviceAccount: string;
         /**
@@ -13472,9 +13501,6 @@ export namespace container {
         /**
          * The service account to be used by the Node VMs.
          * If not specified, the "default" service account is used.
-         * In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-         * [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-         * [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
          */
         serviceAccount: string;
         /**
@@ -15595,9 +15621,9 @@ export namespace dataproc {
         /**
          * The set of Google API scopes
          * to be made available on all of the node VMs under the `serviceAccount`
-         * specified. These can be	either FQDNs, or scope aliases. The following scopes
-         * must be set if any other scopes are set. They're necessary to ensure the
-         * correct functioning ofthe cluster, and are set automatically by the API:
+         * specified. Both OAuth2 URLs and gcloud
+         * short names are supported. To allow full access to all Cloud APIs, use the
+         * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
          */
         serviceAccountScopes: string[];
         /**
@@ -19385,8 +19411,8 @@ export namespace organizations {
         /**
          * An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
          * Each entry can have one of the following values:
-         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. It **can't** be used with the `gcp.organizations.Project` resource.
-         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. It **can't** be used with the `gcp.organizations.Project` resource.
+         * * **allUsers**: A special identifier that represents anyone who is on the internet; with or without a Google account. Some resources **don't** support this identity.
+         * * **allAuthenticatedUsers**: A special identifier that represents anyone who is authenticated with a Google account or a service account. Some resources **don't** support this identity.
          * * **user:{emailid}**: An email address that represents a specific Google account. For example, alice@gmail.com.
          * * **serviceAccount:{emailid}**: An email address that represents a service account. For example, my-other-app@appspot.gserviceaccount.com.
          * * **group:{emailid}**: An email address that represents a Google group. For example, admins@example.com.
@@ -20707,6 +20733,51 @@ export namespace pubsub {
         allowedPersistenceRegions: string[];
     }
 
+    export interface LiteSubscriptionDeliveryConfig {
+        /**
+         * When this subscription should send messages to subscribers relative to messages persistence in storage.
+         * Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+         */
+        deliveryRequirement: string;
+    }
+
+    export interface LiteTopicPartitionConfig {
+        /**
+         * The capacity configuration.
+         * Structure is documented below.
+         */
+        capacity?: outputs.pubsub.LiteTopicPartitionConfigCapacity;
+        /**
+         * The number of partitions in the topic. Must be at least 1.
+         */
+        count: number;
+    }
+
+    export interface LiteTopicPartitionConfigCapacity {
+        /**
+         * Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+         */
+        publishMibPerSec: number;
+        /**
+         * Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+         */
+        subscribeMibPerSec: number;
+    }
+
+    export interface LiteTopicRetentionConfig {
+        /**
+         * The provisioned storage, in bytes, per partition. If the number of bytes stored
+         * in any of the topic's partitions grows beyond this value, older messages will be
+         * dropped to make room for newer ones, regardless of the value of period.
+         */
+        perPartitionBytes: string;
+        /**
+         * How long a published message is retained. If unset, messages will be retained as
+         * long as the bytes retained for each partition is below perPartitionBytes.
+         */
+        period?: string;
+    }
+
     export interface SubscriptionDeadLetterPolicy {
         /**
          * The name of the topic to which dead letter messages should be published.
@@ -21182,6 +21253,9 @@ export namespace sql {
          * True if backup configuration is enabled.
          */
         enabled?: boolean;
+        /**
+         * The region where the backup will be stored
+         */
         location?: string;
         /**
          * True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.

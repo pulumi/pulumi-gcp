@@ -15,8 +15,14 @@ namespace Pulumi.Gcp.BigTable.Inputs
         /// <summary>
         /// Number of days before applying GC policy.
         /// </summary>
-        [Input("days", required: true)]
-        public Input<int> Days { get; set; } = null!;
+        [Input("days")]
+        public Input<int>? Days { get; set; }
+
+        /// <summary>
+        /// Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+        /// </summary>
+        [Input("duration")]
+        public Input<string>? Duration { get; set; }
 
         public GCPolicyMaxAgeArgs()
         {

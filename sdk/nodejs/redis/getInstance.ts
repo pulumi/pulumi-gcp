@@ -63,6 +63,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly alternativeLocationId: string;
     readonly authEnabled: boolean;
+    readonly authString: string;
     readonly authorizedNetwork: string;
     readonly connectMode: string;
     readonly createTime: string;

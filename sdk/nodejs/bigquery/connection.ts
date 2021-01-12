@@ -165,7 +165,7 @@ export class Connection extends pulumi.CustomResource {
     /**
      * Optional connection id that should be assigned to the created connection.
      */
-    public readonly connectionId!: pulumi.Output<string | undefined>;
+    public readonly connectionId!: pulumi.Output<string>;
     /**
      * A descriptive description for the connection
      */

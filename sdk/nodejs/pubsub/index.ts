@@ -6,6 +6,8 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./getTopic";
+export * from "./liteSubscription";
+export * from "./liteTopic";
 export * from "./subscription";
 export * from "./subscriptionIAMBinding";
 export * from "./subscriptionIAMMember";
@@ -17,6 +19,8 @@ export * from "./topicIAMPolicy";
 export * from "./zMixins";
 
 // Import resources to register:
+import { LiteSubscription } from "./liteSubscription";
+import { LiteTopic } from "./liteTopic";
 import { Subscription } from "./subscription";
 import { SubscriptionIAMBinding } from "./subscriptionIAMBinding";
 import { SubscriptionIAMMember } from "./subscriptionIAMMember";
@@ -30,6 +34,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:pubsub/liteSubscription:LiteSubscription":
+                return new LiteSubscription(name, <any>undefined, { urn })
+            case "gcp:pubsub/liteTopic:LiteTopic":
+                return new LiteTopic(name, <any>undefined, { urn })
             case "gcp:pubsub/subscription:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
             case "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
@@ -51,6 +59,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "pubsub/liteSubscription", _module)
+pulumi.runtime.registerResourceModule("gcp", "pubsub/liteTopic", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/subscription", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIAMBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "pubsub/subscriptionIAMMember", _module)

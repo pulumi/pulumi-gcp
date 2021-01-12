@@ -46,42 +46,42 @@ namespace Pulumi.Gcp.Dataproc
     /// {
     ///     public MyStack()
     ///     {
+    ///         var @default = new Gcp.ServiceAccount.Account("default", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "service-account-id",
+    ///             DisplayName = "Service Account",
+    ///         });
     ///         var mycluster = new Gcp.Dataproc.Cluster("mycluster", new Gcp.Dataproc.ClusterArgs
     ///         {
+    ///             Region = "us-central1",
+    ///             GracefulDecommissionTimeout = "120s",
+    ///             Labels = 
+    ///             {
+    ///                 { "foo", "bar" },
+    ///             },
     ///             ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
     ///             {
-    ///                 GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
-    ///                 {
-    ///                     ServiceAccountScopes = 
-    ///                     {
-    ///                         "https://www.googleapis.com/auth/monitoring",
-    ///                         "useraccounts-ro",
-    ///                         "storage-rw",
-    ///                         "logging-write",
-    ///                     },
-    ///                     Tags = 
-    ///                     {
-    ///                         "foo",
-    ///                         "bar",
-    ///                     },
-    ///                 },
-    ///                 InitializationActions = 
-    ///                 {
-    ///                     new Gcp.Dataproc.Inputs.ClusterClusterConfigInitializationActionArgs
-    ///                     {
-    ///                         Script = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-    ///                         TimeoutSec = 500,
-    ///                     },
-    ///                 },
+    ///                 StagingBucket = "dataproc-staging-bucket",
     ///                 MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
     ///                 {
+    ///                     NumInstances = 1,
+    ///                     MachineType = "e2-medium",
     ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
     ///                     {
-    ///                         BootDiskSizeGb = 15,
     ///                         BootDiskType = "pd-ssd",
+    ///                         BootDiskSizeGb = 15,
     ///                     },
+    ///                 },
+    ///                 WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
+    ///                 {
+    ///                     NumInstances = 2,
     ///                     MachineType = "e2-medium",
-    ///                     NumInstances = 1,
+    ///                     MinCpuPlatform = "Intel Skylake",
+    ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
+    ///                     {
+    ///                         BootDiskSizeGb = 15,
+    ///                         NumLocalSsds = 1,
+    ///                     },
     ///                 },
     ///                 PreemptibleWorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigPreemptibleWorkerConfigArgs
     ///                 {
@@ -95,25 +95,28 @@ namespace Pulumi.Gcp.Dataproc
     ///                         { "dataproc:dataproc.allow.zero.workers", "true" },
     ///                     },
     ///                 },
-    ///                 StagingBucket = "dataproc-staging-bucket",
-    ///                 WorkerConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigArgs
+    ///                 GceClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigGceClusterConfigArgs
     ///                 {
-    ///                     DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigWorkerConfigDiskConfigArgs
+    ///                     Tags = 
     ///                     {
-    ///                         BootDiskSizeGb = 15,
-    ///                         NumLocalSsds = 1,
+    ///                         "foo",
+    ///                         "bar",
     ///                     },
-    ///                     MachineType = "e2-medium",
-    ///                     MinCpuPlatform = "Intel Skylake",
-    ///                     NumInstances = 2,
+    ///                     ServiceAccount = @default.Email,
+    ///                     ServiceAccountScopes = 
+    ///                     {
+    ///                         "cloud-platform",
+    ///                     },
+    ///                 },
+    ///                 InitializationActions = 
+    ///                 {
+    ///                     new Gcp.Dataproc.Inputs.ClusterClusterConfigInitializationActionArgs
+    ///                     {
+    ///                         Script = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+    ///                         TimeoutSec = 500,
+    ///                     },
     ///                 },
     ///             },
-    ///             GracefulDecommissionTimeout = "120s",
-    ///             Labels = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             Region = "us-central1",
     ///         });
     ///     }
     /// 

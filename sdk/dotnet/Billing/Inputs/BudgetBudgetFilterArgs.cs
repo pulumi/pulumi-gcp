@@ -12,14 +12,44 @@ namespace Pulumi.Gcp.Billing.Inputs
 
     public sealed class BudgetBudgetFilterArgs : Pulumi.ResourceArgs
     {
+        [Input("creditTypes")]
+        private InputList<string>? _creditTypes;
+
+        /// <summary>
+        /// A set of subaccounts of the form billingAccounts/{account_id},
+        /// specifying that usage from only this set of subaccounts should
+        /// be included in the budget. If a subaccount is set to the name of
+        /// the parent account, usage from the parent account will be included.
+        /// If the field is omitted, the report will include usage from the parent
+        /// account and all subaccounts, if they exist.
+        /// </summary>
+        public InputList<string> CreditTypes
+        {
+            get => _creditTypes ?? (_creditTypes = new InputList<string>());
+            set => _creditTypes = value;
+        }
+
         /// <summary>
         /// Specifies how credits should be treated when determining spend
         /// for threshold calculations.
         /// Default value is `INCLUDE_ALL_CREDITS`.
-        /// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+        /// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
         /// </summary>
         [Input("creditTypesTreatment")]
         public Input<string>? CreditTypesTreatment { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// A single label and value pair specifying that usage from only
+        /// this set of labeled resources should be included in the budget.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("projects")]
         private InputList<string>? _projects;
@@ -53,6 +83,23 @@ namespace Pulumi.Gcp.Billing.Inputs
         {
             get => _services ?? (_services = new InputList<string>());
             set => _services = value;
+        }
+
+        [Input("subaccounts")]
+        private InputList<string>? _subaccounts;
+
+        /// <summary>
+        /// A set of subaccounts of the form billingAccounts/{account_id},
+        /// specifying that usage from only this set of subaccounts should
+        /// be included in the budget. If a subaccount is set to the name of
+        /// the parent account, usage from the parent account will be included.
+        /// If the field is omitted, the report will include usage from the parent
+        /// account and all subaccounts, if they exist.
+        /// </summary>
+        public InputList<string> Subaccounts
+        {
+            get => _subaccounts ?? (_subaccounts = new InputList<string>());
+            set => _subaccounts = value;
         }
 
         public BudgetBudgetFilterArgs()

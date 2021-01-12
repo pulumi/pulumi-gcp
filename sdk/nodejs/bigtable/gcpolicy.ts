@@ -32,9 +32,9 @@ import * as utilities from "../utilities";
  *     instanceName: instance.name,
  *     table: table.name,
  *     columnFamily: "name",
- *     maxAges: [{
- *         days: 7,
- *     }],
+ *     maxAge: {
+ *         duration: "168h",
+ *     },
  * });
  * ```
  *
@@ -49,9 +49,9 @@ import * as utilities from "../utilities";
  *     table: google_bigtable_table.table.name,
  *     columnFamily: "name",
  *     mode: "UNION",
- *     maxAges: [{
- *         days: 7,
- *     }],
+ *     maxAge: {
+ *         duration: "168h",
+ *     },
  *     maxVersions: [{
  *         number: 10,
  *     }],
@@ -101,7 +101,7 @@ export class GCPolicy extends pulumi.CustomResource {
     /**
      * GC policy that applies to all cells older than the given age.
      */
-    public readonly maxAges!: pulumi.Output<outputs.bigtable.GCPolicyMaxAge[] | undefined>;
+    public readonly maxAge!: pulumi.Output<outputs.bigtable.GCPolicyMaxAge | undefined>;
     /**
      * GC policy that applies to all versions of a cell except for the most recent.
      */
@@ -133,7 +133,7 @@ export class GCPolicy extends pulumi.CustomResource {
             const state = argsOrState as GCPolicyState | undefined;
             inputs["columnFamily"] = state ? state.columnFamily : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
-            inputs["maxAges"] = state ? state.maxAges : undefined;
+            inputs["maxAge"] = state ? state.maxAge : undefined;
             inputs["maxVersions"] = state ? state.maxVersions : undefined;
             inputs["mode"] = state ? state.mode : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -151,7 +151,7 @@ export class GCPolicy extends pulumi.CustomResource {
             }
             inputs["columnFamily"] = args ? args.columnFamily : undefined;
             inputs["instanceName"] = args ? args.instanceName : undefined;
-            inputs["maxAges"] = args ? args.maxAges : undefined;
+            inputs["maxAge"] = args ? args.maxAge : undefined;
             inputs["maxVersions"] = args ? args.maxVersions : undefined;
             inputs["mode"] = args ? args.mode : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -183,7 +183,7 @@ export interface GCPolicyState {
     /**
      * GC policy that applies to all cells older than the given age.
      */
-    readonly maxAges?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxAge>[]>;
+    readonly maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge>;
     /**
      * GC policy that applies to all versions of a cell except for the most recent.
      */
@@ -217,7 +217,7 @@ export interface GCPolicyArgs {
     /**
      * GC policy that applies to all cells older than the given age.
      */
-    readonly maxAges?: pulumi.Input<pulumi.Input<inputs.bigtable.GCPolicyMaxAge>[]>;
+    readonly maxAge?: pulumi.Input<inputs.bigtable.GCPolicyMaxAge>;
     /**
      * GC policy that applies to all versions of a cell except for the most recent.
      */

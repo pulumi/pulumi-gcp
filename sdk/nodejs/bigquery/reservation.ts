@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const reservation = new gcp.bigquery.Reservation("reservation", {
- *     location: "asia-northeast1",
- *     slotCapacity: 0,
  *     ignoreIdleSlots: false,
- * }, {
- *     provider: google_beta,
+ *     location: "asia-northeast1",
+ *     // Set to 0 for testing purposes
+ *     // In reality this would be larger than zero
+ *     slotCapacity: 0,
  * });
  * ```
  *

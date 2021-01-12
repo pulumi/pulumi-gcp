@@ -47,7 +47,7 @@ class PacketMirroring(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default_network = gcp.compute.Network("defaultNetwork", opts=pulumi.ResourceOptions(provider=google_beta))
+        default_network = gcp.compute.Network("defaultNetwork")
         mirror = gcp.compute.Instance("mirror",
             machine_type="e2-medium",
             boot_disk=gcp.compute.InstanceBootDiskArgs(
@@ -58,21 +58,17 @@ class PacketMirroring(pulumi.CustomResource):
             network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(
                 network=default_network.id,
                 access_configs=[gcp.compute.InstanceNetworkInterfaceAccessConfigArgs()],
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         default_subnetwork = gcp.compute.Subnetwork("defaultSubnetwork",
             network=default_network.id,
-            ip_cidr_range="10.2.0.0/16",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ip_cidr_range="10.2.0.0/16")
         default_health_check = gcp.compute.HealthCheck("defaultHealthCheck",
             check_interval_sec=1,
             timeout_sec=1,
             tcp_health_check=gcp.compute.HealthCheckTcpHealthCheckArgs(
                 port=80,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService", health_checks=[default_health_check.id],
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService", health_checks=[default_health_check.id])
         default_forwarding_rule = gcp.compute.ForwardingRule("defaultForwardingRule",
             is_mirroring_collector=True,
             ip_protocol="TCP",
@@ -82,8 +78,7 @@ class PacketMirroring(pulumi.CustomResource):
             network=default_network.id,
             subnetwork=default_subnetwork.id,
             network_tier="PREMIUM",
-            opts=pulumi.ResourceOptions(provider=google_beta,
-                depends_on=[default_subnetwork]))
+            opts=pulumi.ResourceOptions(depends_on=[default_subnetwork]))
         foobar = gcp.compute.PacketMirroring("foobar",
             description="bar",
             network=gcp.compute.PacketMirroringNetworkArgs(
@@ -101,8 +96,8 @@ class PacketMirroring(pulumi.CustomResource):
             filter=gcp.compute.PacketMirroringFilterArgs(
                 ip_protocols=["tcp"],
                 cidr_ranges=["0.0.0.0/0"],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+                direction="BOTH",
+            ))
         ```
 
         ## Import

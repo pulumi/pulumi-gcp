@@ -59,6 +59,7 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	AlternativeLocationId string `pulumi:"alternativeLocationId"`
 	AuthEnabled           bool   `pulumi:"authEnabled"`
+	AuthString            string `pulumi:"authString"`
 	AuthorizedNetwork     string `pulumi:"authorizedNetwork"`
 	ConnectMode           string `pulumi:"connectMode"`
 	CreateTime            string `pulumi:"createTime"`

@@ -152,6 +152,13 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> DrainNatIps { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+        /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// </summary>
+        [Output("enableEndpointIndependentMapping")]
+        public Output<bool?> EnableEndpointIndependentMapping { get; private set; } = null!;
+
+        /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         /// </summary>
         [Output("icmpIdleTimeoutSec")]
@@ -315,6 +322,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+        /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// </summary>
+        [Input("enableEndpointIndependentMapping")]
+        public Input<bool>? EnableEndpointIndependentMapping { get; set; }
+
+        /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
         /// </summary>
         [Input("icmpIdleTimeoutSec")]
@@ -449,6 +463,13 @@ namespace Pulumi.Gcp.Compute
             get => _drainNatIps ?? (_drainNatIps = new InputList<string>());
             set => _drainNatIps = value;
         }
+
+        /// <summary>
+        /// Specifies if endpoint independent mapping is enabled. This is enabled by default. For more information
+        /// see the [official documentation](https://cloud.google.com/nat/docs/overview#specs-rfcs).
+        /// </summary>
+        [Input("enableEndpointIndependentMapping")]
+        public Input<bool>? EnableEndpointIndependentMapping { get; set; }
 
         /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.

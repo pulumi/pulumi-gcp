@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.Redis
     {
         public readonly string AlternativeLocationId;
         public readonly bool AuthEnabled;
+        public readonly string AuthString;
         public readonly string AuthorizedNetwork;
         public readonly string ConnectMode;
         public readonly string CreateTime;
@@ -112,6 +113,8 @@ namespace Pulumi.Gcp.Redis
             string alternativeLocationId,
 
             bool authEnabled,
+
+            string authString,
 
             string authorizedNetwork,
 
@@ -153,6 +156,7 @@ namespace Pulumi.Gcp.Redis
         {
             AlternativeLocationId = alternativeLocationId;
             AuthEnabled = authEnabled;
+            AuthString = authString;
             AuthorizedNetwork = authorizedNetwork;
             ConnectMode = connectMode;
             CreateTime = createTime;

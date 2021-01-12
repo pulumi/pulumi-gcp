@@ -25,6 +25,14 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _cidrRanges = value;
         }
 
+        /// <summary>
+        /// Direction of traffic to mirror.
+        /// Default value is `BOTH`.
+        /// Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+        /// </summary>
+        [Input("direction")]
+        public Input<string>? Direction { get; set; }
+
         [Input("ipProtocols")]
         private InputList<string>? _ipProtocols;
 

@@ -70,6 +70,23 @@ class BackendService(pulumi.CustomResource):
             timeout_sec=1)
         default_backend_service = gcp.compute.BackendService("defaultBackendService", health_checks=[default_http_health_check.id])
         ```
+        ### Backend Service Cache Simple
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
+            request_path="/",
+            check_interval_sec=1,
+            timeout_sec=1)
+        default_backend_service = gcp.compute.BackendService("defaultBackendService",
+            health_checks=[default_http_health_check.id],
+            enable_cdn=True,
+            cdn_policy=gcp.compute.BackendServiceCdnPolicyArgs(
+                signed_url_cache_max_age_sec=7200,
+            ))
+        ```
         ### Backend Service Cache
 
         ```python

@@ -23,11 +23,19 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/container"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := serviceAccount.NewAccount(ctx, "_default", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("service-account-id"),
+// 			DisplayName: pulumi.String("Service Account"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		primary, err := container.NewCluster(ctx, "primary", &container.ClusterArgs{
 // 			Location:              pulumi.String("us-central1"),
 // 			RemoveDefaultNodePool: pulumi.Bool(true),
@@ -41,8 +49,9 @@ import (
 // 			Cluster:   primary.Name,
 // 			NodeCount: pulumi.Int(1),
 // 			NodeConfig: &container.NodePoolNodeConfigArgs{
-// 				Preemptible: pulumi.Bool(true),
-// 				MachineType: pulumi.String("e2-medium"),
+// 				Preemptible:    pulumi.Bool(true),
+// 				MachineType:    pulumi.String("e2-medium"),
+// 				ServiceAccount: _default.Email,
 // 				OauthScopes: pulumi.StringArray{
 // 					pulumi.String("https://www.googleapis.com/auth/cloud-platform"),
 // 				},

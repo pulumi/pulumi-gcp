@@ -349,9 +349,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_billing_account_iam_policy.md",
 				},
 			},
-			"google_billing_budget": {
-				Tok: gcpResource(gcpBilling, "Budget"),
-			},
+			"google_billing_budget":     {Tok: gcpResource(gcpBilling, "Budget")},
+			"google_billing_subaccount": {Tok: gcpResource(gcpBilling, "SubAccount")},
 
 			// Binary Authorization
 			"google_binary_authorization_attestor": {
@@ -1022,6 +1021,8 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "pubsub_subscription_iam.html.markdown",
 				},
 			},
+			"google_pubsub_lite_subscription": {Tok: gcpResource(gcpPubSub, "LiteSubscription")},
+			"google_pubsub_lite_topic":        {Tok: gcpResource(gcpPubSub, "LiteTopic")},
 
 			// Redis resources
 			"google_redis_instance": {Tok: gcpResource(gcpRedis, "Instance")},
@@ -2206,6 +2207,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "google_storage_transfer_project_service_account.html.markdown",
 				},
 			},
+			"google_storage_bucket_object_content": {
+				Tok: gcpDataSource(gcpStorage, "getBucketObjectContent"),
+			},
 			"google_service_account": {
 				Tok: gcpDataSource(gcpServiceAccount, "getAccount"),
 				Docs: &tfbridge.DocInfo{
@@ -2261,6 +2265,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_sql_database_instance": {
 				Tok: gcpDataSource(gcpSQL, "getDatabaseInstance"),
 			},
+			"google_sql_backup_run": {Tok: gcpDataSource(gcpSQL, "getBackupRun")},
 			"google_monitoring_notification_channel": {
 				Tok: gcpDataSource(gcpMonitoring, "getNotificationChannel"),
 				Docs: &tfbridge.DocInfo{

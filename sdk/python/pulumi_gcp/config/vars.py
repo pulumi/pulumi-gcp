@@ -76,6 +76,7 @@ __all__ = [
     'os_login_custom_endpoint',
     'project',
     'pubsub_custom_endpoint',
+    'pubsub_lite_custom_endpoint',
     'redis_custom_endpoint',
     'region',
     'request_timeout',
@@ -235,6 +236,8 @@ os_login_custom_endpoint = __config__.get('osLoginCustomEndpoint')
 project = __config__.get('project') or _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
 
 pubsub_custom_endpoint = __config__.get('pubsubCustomEndpoint')
+
+pubsub_lite_custom_endpoint = __config__.get('pubsubLiteCustomEndpoint')
 
 redis_custom_endpoint = __config__.get('redisCustomEndpoint')
 

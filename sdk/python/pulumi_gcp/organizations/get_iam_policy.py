@@ -80,11 +80,9 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetIAMPolicyResult:
     """
     Generates an IAM policy document that may be referenced by and applied to
-    other Google Cloud Platform resources, such as the `organizations.Project` resource.
+    other Google Cloud Platform IAM resources, such as the `projects.IAMPolicy` resource.
 
-    **Note:** Several restrictions apply when setting IAM policies through this API.
-    See the [setIamPolicy docs](https://cloud.google.com/resource-manager/reference/rest/v1/projects/setIamPolicy)
-    for a list of these restrictions.
+    **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
 
     ```python
     import pulumi
@@ -122,7 +120,7 @@ def get_iam_policy(audit_configs: Optional[Sequence[pulumi.InputType['GetIAMPoli
     from another resource is the only way to apply an IAM policy to a resource.
 
 
-    :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project.
+    :param Sequence[pulumi.InputType['GetIAMPolicyAuditConfigArgs']] audit_configs: A nested configuration block that defines logging additional configuration for your project. This field is only supported on `projects.IAMPolicy`, `folder.IAMPolicy` and `organizations.IAMPolicy`.
     :param Sequence[pulumi.InputType['GetIAMPolicyBindingArgs']] bindings: A nested configuration block (described below)
            defining a binding to be included in the policy document. Multiple
            `binding` arguments are supported.

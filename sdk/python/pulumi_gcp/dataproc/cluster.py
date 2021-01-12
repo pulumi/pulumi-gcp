@@ -49,32 +49,34 @@ class Cluster(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        default = gcp.service_account.Account("default",
+            account_id="service-account-id",
+            display_name="Service Account")
         mycluster = gcp.dataproc.Cluster("mycluster",
+            region="us-central1",
+            graceful_decommission_timeout="120s",
+            labels={
+                "foo": "bar",
+            },
             cluster_config=gcp.dataproc.ClusterClusterConfigArgs(
-                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
-                    service_account_scopes=[
-                        "https://www.googleapis.com/auth/monitoring",
-                        "useraccounts-ro",
-                        "storage-rw",
-                        "logging-write",
-                    ],
-                    tags=[
-                        "foo",
-                        "bar",
-                    ],
-                ),
-                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
-                    script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
-                    timeout_sec=500,
-                )],
+                staging_bucket="dataproc-staging-bucket",
                 master_config=gcp.dataproc.ClusterClusterConfigMasterConfigArgs(
-                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
-                        boot_disk_size_gb=15,
-                        boot_disk_type="pd-ssd",
-                    ),
-                    machine_type="e2-medium",
                     num_instances=1,
+                    machine_type="e2-medium",
+                    disk_config=gcp.dataproc.ClusterClusterConfigMasterConfigDiskConfigArgs(
+                        boot_disk_type="pd-ssd",
+                        boot_disk_size_gb=15,
+                    ),
                 ),
+                worker_config={
+                    "numInstances": 2,
+                    "machine_type": "e2-medium",
+                    "min_cpu_platform": "Intel Skylake",
+                    "diskConfig": {
+                        "boot_disk_size_gb": 15,
+                        "numLocalSsds": 1,
+                    },
+                },
                 preemptible_worker_config=gcp.dataproc.ClusterClusterConfigPreemptibleWorkerConfigArgs(
                     num_instances=0,
                 ),
@@ -84,22 +86,19 @@ class Cluster(pulumi.CustomResource):
                         "dataproc:dataproc.allow.zero.workers": "true",
                     },
                 ),
-                staging_bucket="dataproc-staging-bucket",
-                worker_config={
-                    "diskConfig": {
-                        "boot_disk_size_gb": 15,
-                        "numLocalSsds": 1,
-                    },
-                    "machine_type": "e2-medium",
-                    "min_cpu_platform": "Intel Skylake",
-                    "numInstances": 2,
-                },
-            ),
-            graceful_decommission_timeout="120s",
-            labels={
-                "foo": "bar",
-            },
-            region="us-central1")
+                gce_cluster_config=gcp.dataproc.ClusterClusterConfigGceClusterConfigArgs(
+                    tags=[
+                        "foo",
+                        "bar",
+                    ],
+                    service_account=default.email,
+                    service_account_scopes=["cloud-platform"],
+                ),
+                initialization_actions=[gcp.dataproc.ClusterClusterConfigInitializationActionArgs(
+                    script="gs://dataproc-initialization-actions/stackdriver/stackdriver.sh",
+                    timeout_sec=500,
+                )],
+            ))
         ```
         ### Using A GPU Accelerator
 

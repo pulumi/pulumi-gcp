@@ -22,23 +22,43 @@ __all__ = [
 @pulumi.input_type
 class GCPolicyMaxAgeArgs:
     def __init__(__self__, *,
-                 days: pulumi.Input[int]):
+                 days: Optional[pulumi.Input[int]] = None,
+                 duration: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] days: Number of days before applying GC policy.
+        :param pulumi.Input[str] duration: Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
         """
-        pulumi.set(__self__, "days", days)
+        if days is not None:
+            warnings.warn("""Deprecated in favor of duration""", DeprecationWarning)
+            pulumi.log.warn("days is deprecated: Deprecated in favor of duration")
+        if days is not None:
+            pulumi.set(__self__, "days", days)
+        if duration is not None:
+            pulumi.set(__self__, "duration", duration)
 
     @property
     @pulumi.getter
-    def days(self) -> pulumi.Input[int]:
+    def days(self) -> Optional[pulumi.Input[int]]:
         """
         Number of days before applying GC policy.
         """
         return pulumi.get(self, "days")
 
     @days.setter
-    def days(self, value: pulumi.Input[int]):
+    def days(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "days", value)
+
+    @property
+    @pulumi.getter
+    def duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
+        """
+        return pulumi.get(self, "duration")
+
+    @duration.setter
+    def duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "duration", value)
 
 
 @pulumi.input_type

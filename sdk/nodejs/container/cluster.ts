@@ -21,17 +21,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const _default = new gcp.serviceAccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
  * const primary = new gcp.container.Cluster("primary", {
  *     location: "us-central1",
  *     removeDefaultNodePool: true,
  *     initialNodeCount: 1,
- *     masterAuth: {
- *         username: "",
- *         password: "",
- *         clientCertificateConfig: {
- *             issueClientCertificate: false,
- *         },
- *     },
  * });
  * const primaryPreemptibleNodes = new gcp.container.NodePool("primaryPreemptibleNodes", {
  *     location: "us-central1",
@@ -40,9 +37,7 @@ import * as utilities from "../utilities";
  *     nodeConfig: {
  *         preemptible: true,
  *         machineType: "e2-medium",
- *         metadata: {
- *             "disable-legacy-endpoints": "true",
- *         },
+ *         serviceAccount: _default.email,
  *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *     },
  * });
@@ -53,33 +48,29 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const _default = new gcp.serviceAccount.Account("default", {
+ *     accountId: "service-account-id",
+ *     displayName: "Service Account",
+ * });
  * const primary = new gcp.container.Cluster("primary", {
- *     initialNodeCount: 3,
  *     location: "us-central1-a",
- *     masterAuth: {
- *         clientCertificateConfig: {
- *             issueClientCertificate: false,
- *         },
- *         password: "",
- *         username: "",
- *     },
+ *     initialNodeCount: 3,
  *     nodeConfig: {
+ *         serviceAccount: _default.email,
+ *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *         labels: {
  *             foo: "bar",
  *         },
- *         metadata: {
- *             "disable-legacy-endpoints": "true",
- *         },
- *         oauthScopes: ["https://www.googleapis.com/auth/cloud-platform"],
  *         tags: [
  *             "foo",
  *             "bar",
  *         ],
  *     },
- * }, { timeouts: {
- *     create: "30m",
- *     update: "40m",
- * } });
+ *     timeouts: [{
+ *         create: "30m",
+ *         update: "40m",
+ *     }],
+ * });
  * ```
  *
  * ## Import
@@ -274,7 +265,7 @@ export class Cluster extends pulumi.CustomResource {
      * your service account has permission to get credentials for your GKE cluster. If
      * you see an unexpected diff removing a username/password or unsetting your client
      * cert, ensure you have the `container.clusters.getCredentials` permission.
-     * Structure is documented below.
+     * Structure is documented below. This has been deprecated as of GKE 1.19.
      */
     public readonly masterAuth!: pulumi.Output<outputs.container.ClusterMasterAuth>;
     /**
@@ -735,7 +726,7 @@ export interface ClusterState {
      * your service account has permission to get credentials for your GKE cluster. If
      * you see an unexpected diff removing a username/password or unsetting your client
      * cert, ensure you have the `container.clusters.getCredentials` permission.
-     * Structure is documented below.
+     * Structure is documented below. This has been deprecated as of GKE 1.19.
      */
     readonly masterAuth?: pulumi.Input<inputs.container.ClusterMasterAuth>;
     /**
@@ -1052,7 +1043,7 @@ export interface ClusterArgs {
      * your service account has permission to get credentials for your GKE cluster. If
      * you see an unexpected diff removing a username/password or unsetting your client
      * cert, ensure you have the `container.clusters.getCredentials` permission.
-     * Structure is documented below.
+     * Structure is documented below. This has been deprecated as of GKE 1.19.
      */
     readonly masterAuth?: pulumi.Input<inputs.container.ClusterMasterAuth>;
     /**

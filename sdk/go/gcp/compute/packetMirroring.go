@@ -34,7 +34,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil, pulumi.Provider(google_beta))
+// 		defaultNetwork, err := compute.NewNetwork(ctx, "defaultNetwork", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -53,14 +53,14 @@ import (
 // 					},
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		defaultSubnetwork, err := compute.NewSubnetwork(ctx, "defaultSubnetwork", &compute.SubnetworkArgs{
 // 			Network:     defaultNetwork.ID(),
 // 			IpCidrRange: pulumi.String("10.2.0.0/16"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -70,7 +70,7 @@ import (
 // 			TcpHealthCheck: &compute.HealthCheckTcpHealthCheckArgs{
 // 				Port: pulumi.Int(80),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -78,7 +78,7 @@ import (
 // 			HealthChecks: pulumi.String(pulumi.String{
 // 				defaultHealthCheck.ID(),
 // 			}),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -91,7 +91,7 @@ import (
 // 			Network:              defaultNetwork.ID(),
 // 			Subnetwork:           defaultSubnetwork.ID(),
 // 			NetworkTier:          pulumi.String("PREMIUM"),
-// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 		}, pulumi.DependsOn([]pulumi.Resource{
 // 			defaultSubnetwork,
 // 		}))
 // 		if err != nil {
@@ -122,8 +122,9 @@ import (
 // 				CidrRanges: pulumi.StringArray{
 // 					pulumi.String("0.0.0.0/0"),
 // 				},
+// 				Direction: pulumi.String("BOTH"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

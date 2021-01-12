@@ -1996,9 +1996,6 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	OauthScopes []string `pulumi:"oauthScopes"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
-	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 }
 
@@ -2026,9 +2023,6 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
-	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 }
 
@@ -2127,9 +2121,6 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) OauthScopes() p
 
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
-// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -2182,9 +2173,6 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) OauthScopes(
 
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
-// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
 		if v == nil {
@@ -3699,10 +3687,10 @@ type ClusterMasterAuth struct {
 	ClientKey               *string                                   `pulumi:"clientKey"`
 	ClusterCaCertificate    *string                                   `pulumi:"clusterCaCertificate"`
 	// The password to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint.
+	// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
 	Password *string `pulumi:"password"`
 	// The username to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint. If not present basic auth will be disabled.
+	// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
 	Username *string `pulumi:"username"`
 }
 
@@ -3724,10 +3712,10 @@ type ClusterMasterAuthArgs struct {
 	ClientKey               pulumi.StringPtrInput                            `pulumi:"clientKey"`
 	ClusterCaCertificate    pulumi.StringPtrInput                            `pulumi:"clusterCaCertificate"`
 	// The password to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint.
+	// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The username to use for HTTP basic authentication when accessing
-	// the Kubernetes master endpoint. If not present basic auth will be disabled.
+	// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -3825,13 +3813,13 @@ func (o ClusterMasterAuthOutput) ClusterCaCertificate() pulumi.StringPtrOutput {
 }
 
 // The password to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint.
+// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
 func (o ClusterMasterAuthOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
 // The username to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint. If not present basic auth will be disabled.
+// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
 func (o ClusterMasterAuthOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterMasterAuth) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -3892,7 +3880,7 @@ func (o ClusterMasterAuthPtrOutput) ClusterCaCertificate() pulumi.StringPtrOutpu
 }
 
 // The password to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint.
+// the Kubernetes master endpoint. This has been deprecated as of GKE 1.19.
 func (o ClusterMasterAuthPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuth) *string {
 		if v == nil {
@@ -3903,7 +3891,7 @@ func (o ClusterMasterAuthPtrOutput) Password() pulumi.StringPtrOutput {
 }
 
 // The username to use for HTTP basic authentication when accessing
-// the Kubernetes master endpoint. If not present basic auth will be disabled.
+// the Kubernetes master endpoint. If not present basic auth will be disabled. This has been deprecated as of GKE 1.19.
 func (o ClusterMasterAuthPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterMasterAuth) *string {
 		if v == nil {
@@ -4496,9 +4484,6 @@ type ClusterNodeConfig struct {
 	SandboxConfig *ClusterNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
-	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -4587,9 +4572,6 @@ type ClusterNodeConfigArgs struct {
 	SandboxConfig ClusterNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
-	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -4788,9 +4770,6 @@ func (o ClusterNodeConfigOutput) SandboxConfig() ClusterNodeConfigSandboxConfigP
 
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
-// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -5018,9 +4997,6 @@ func (o ClusterNodeConfigPtrOutput) SandboxConfig() ClusterNodeConfigSandboxConf
 
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
-// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *string {
 		if v == nil {
@@ -6624,9 +6600,6 @@ type ClusterNodePoolNodeConfig struct {
 	SandboxConfig *ClusterNodePoolNodeConfigSandboxConfig `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
-	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig *ClusterNodePoolNodeConfigShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -6715,9 +6688,6 @@ type ClusterNodePoolNodeConfigArgs struct {
 	SandboxConfig ClusterNodePoolNodeConfigSandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The service account to be used by the Node VMs.
 	// If not specified, the "default" service account is used.
-	// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-	// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-	// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Shielded Instance options. Structure is documented below.
 	ShieldedInstanceConfig ClusterNodePoolNodeConfigShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -6918,9 +6888,6 @@ func (o ClusterNodePoolNodeConfigOutput) SandboxConfig() ClusterNodePoolNodeConf
 
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
-// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodePoolNodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -7152,9 +7119,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) SandboxConfig() ClusterNodePoolNodeC
 
 // The service account to be used by the Node VMs.
 // If not specified, the "default" service account is used.
-// In order to use the configured `oauthScopes` for logging and monitoring, the service account being used needs the
-// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
 func (o ClusterNodePoolNodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
 		if v == nil {

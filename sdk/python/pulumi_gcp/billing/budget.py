@@ -31,9 +31,15 @@ class Budget(pulumi.CustomResource):
 
         To get more information about Budget, see:
 
-        * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
+        * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1/billingAccounts.budgets)
         * How-to Guides
             * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+
+        > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+        you must specify a `billing_project` and set `user_project_override` to true
+        in the provider configuration. Otherwise the Billing Budgets API will return a 403 error.
+        Your account must have the `serviceusage.services.use` permission on the
+        `billing_project` you defined.
 
         ## Example Usage
         ### Billing Budget Basic
@@ -54,8 +60,7 @@ class Budget(pulumi.CustomResource):
             ),
             threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
                 threshold_percent=0.5,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Billing Budget Lastperiod
 
@@ -64,19 +69,19 @@ class Budget(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        project = gcp.organizations.get_project()
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
             budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=["projects/my-project-name"],
+                projects=[f"projects/{project.number}"],
             ),
             amount=gcp.billing.BudgetAmountArgs(
                 last_period_amount=True,
             ),
             threshold_rules=[gcp.billing.BudgetThresholdRuleArgs(
                 threshold_percent=10,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Billing Budget Filter
 
@@ -85,11 +90,12 @@ class Budget(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        project = gcp.organizations.get_project()
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
             budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=["projects/my-project-name"],
+                projects=[f"projects/{project.number}"],
                 credit_types_treatment="EXCLUDE_ALL_CREDITS",
                 services=["services/24E6-581D-38E5"],
             ),
@@ -107,8 +113,7 @@ class Budget(pulumi.CustomResource):
                     threshold_percent=0.9,
                     spend_basis="FORECASTED_SPEND",
                 ),
-            ],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ])
         ```
         ### Billing Budget Notify
 
@@ -117,18 +122,18 @@ class Budget(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         account = gcp.organizations.get_billing_account(billing_account="000000-0000000-0000000-000000")
+        project = gcp.organizations.get_project()
         notification_channel = gcp.monitoring.NotificationChannel("notificationChannel",
             display_name="Example Notification Channel",
             type="email",
             labels={
                 "email_address": "address@example.com",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         budget = gcp.billing.Budget("budget",
             billing_account=account.id,
             display_name="Example Billing Budget",
             budget_filter=gcp.billing.BudgetBudgetFilterArgs(
-                projects=["projects/my-project-name"],
+                projects=[f"projects/{project.number}"],
             ),
             amount=gcp.billing.BudgetAmountArgs(
                 specified_amount=gcp.billing.BudgetAmountSpecifiedAmountArgs(
@@ -148,17 +153,12 @@ class Budget(pulumi.CustomResource):
             all_updates_rule=gcp.billing.BudgetAllUpdatesRuleArgs(
                 monitoring_notification_channels=[notification_channel.id],
                 disable_default_iam_recipients=True,
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
 
         ## Import
 
-        Budget can be imported using any of these accepted formats
-
-        ```sh
-         $ pulumi import gcp:billing/budget:Budget default {{name}}
-        ```
+        This resource does not support import.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -293,7 +293,7 @@ class Budget(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="budgetFilter")
-    def budget_filter(self) -> pulumi.Output[Optional['outputs.BudgetBudgetFilter']]:
+    def budget_filter(self) -> pulumi.Output['outputs.BudgetBudgetFilter']:
         """
         Filters that define which resources are used to compute the actual
         spend against the budget.

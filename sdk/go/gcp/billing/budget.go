@@ -15,9 +15,15 @@ import (
 //
 // To get more information about Budget, see:
 //
-// * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1beta1/billingAccounts.budgets)
+// * [API documentation](https://cloud.google.com/billing/docs/reference/budget/rest/v1/billingAccounts.budgets)
 // * How-to Guides
 //     * [Creating a budget](https://cloud.google.com/billing/docs/how-to/budgets)
+//
+// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+// you must specify a `billingProject` and set `userProjectOverride` to true
+// in the provider configuration. Otherwise the Billing Budgets API will return a 403 error.
+// Your account must have the `serviceusage.services.use` permission on the
+// `billingProject` you defined.
 //
 // ## Example Usage
 // ### Billing Budget Basic
@@ -54,7 +60,7 @@ import (
 // 					ThresholdPercent: pulumi.Float64(0.5),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -68,6 +74,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/billing"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -82,12 +90,16 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
 // 		_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
 // 			BillingAccount: pulumi.String(account.Id),
 // 			DisplayName:    pulumi.String("Example Billing Budget"),
 // 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
 // 				Projects: pulumi.StringArray{
-// 					pulumi.String("projects/my-project-name"),
+// 					pulumi.String(fmt.Sprintf("%v%v", "projects/", project.Number)),
 // 				},
 // 			},
 // 			Amount: &billing.BudgetAmountArgs{
@@ -98,7 +110,7 @@ import (
 // 					ThresholdPercent: pulumi.Float64(10),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -112,6 +124,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/billing"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -126,12 +140,16 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
 // 		_, err = billing.NewBudget(ctx, "budget", &billing.BudgetArgs{
 // 			BillingAccount: pulumi.String(account.Id),
 // 			DisplayName:    pulumi.String("Example Billing Budget"),
 // 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
 // 				Projects: pulumi.StringArray{
-// 					pulumi.String("projects/my-project-name"),
+// 					pulumi.String(fmt.Sprintf("%v%v", "projects/", project.Number)),
 // 				},
 // 				CreditTypesTreatment: pulumi.String("EXCLUDE_ALL_CREDITS"),
 // 				Services: pulumi.StringArray{
@@ -153,7 +171,7 @@ import (
 // 					SpendBasis:       pulumi.String("FORECASTED_SPEND"),
 // 				},
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -167,6 +185,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/billing"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/monitoring"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
@@ -182,13 +202,17 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
 // 		notificationChannel, err := monitoring.NewNotificationChannel(ctx, "notificationChannel", &monitoring.NotificationChannelArgs{
 // 			DisplayName: pulumi.String("Example Notification Channel"),
 // 			Type:        pulumi.String("email"),
 // 			Labels: pulumi.StringMap{
 // 				"email_address": pulumi.String("address@example.com"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -197,7 +221,7 @@ import (
 // 			DisplayName:    pulumi.String("Example Billing Budget"),
 // 			BudgetFilter: &billing.BudgetBudgetFilterArgs{
 // 				Projects: pulumi.StringArray{
-// 					pulumi.String("projects/my-project-name"),
+// 					pulumi.String(fmt.Sprintf("%v%v", "projects/", project.Number)),
 // 				},
 // 			},
 // 			Amount: &billing.BudgetAmountArgs{
@@ -221,7 +245,7 @@ import (
 // 				},
 // 				DisableDefaultIamRecipients: pulumi.Bool(true),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -232,11 +256,7 @@ import (
 //
 // ## Import
 //
-// Budget can be imported using any of these accepted formats
-//
-// ```sh
-//  $ pulumi import gcp:billing/budget:Budget default {{name}}
-// ```
+// This resource does not support import.
 type Budget struct {
 	pulumi.CustomResourceState
 
@@ -253,7 +273,7 @@ type Budget struct {
 	// Filters that define which resources are used to compute the actual
 	// spend against the budget.
 	// Structure is documented below.
-	BudgetFilter BudgetBudgetFilterPtrOutput `pulumi:"budgetFilter"`
+	BudgetFilter BudgetBudgetFilterOutput `pulumi:"budgetFilter"`
 	// User data for display name in UI. Must be <= 60 chars.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form

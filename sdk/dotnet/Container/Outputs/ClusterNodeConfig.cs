@@ -100,9 +100,6 @@ namespace Pulumi.Gcp.Container.Outputs
         /// <summary>
         /// The service account to be used by the Node VMs.
         /// If not specified, the "default" service account is used.
-        /// In order to use the configured `oauth_scopes` for logging and monitoring, the service account being used needs the
-        /// [roles/logging.logWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_logging_roles) and
-        /// [roles/monitoring.metricWriter](https://cloud.google.com/iam/docs/understanding-roles#stackdriver_monitoring_roles) roles.
         /// </summary>
         public readonly string? ServiceAccount;
         /// <summary>

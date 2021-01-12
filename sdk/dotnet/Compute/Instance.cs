@@ -25,30 +25,25 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     public MyStack()
     ///     {
-    ///         var @default = new Gcp.Compute.Instance("default", new Gcp.Compute.InstanceArgs
+    ///         var defaultAccount = new Gcp.ServiceAccount.Account("defaultAccount", new Gcp.ServiceAccount.AccountArgs
     ///         {
+    ///             AccountId = "service_account_id",
+    ///             DisplayName = "Service Account",
+    ///         });
+    ///         var defaultInstance = new Gcp.Compute.Instance("defaultInstance", new Gcp.Compute.InstanceArgs
+    ///         {
+    ///             MachineType = "e2-medium",
+    ///             Zone = "us-central1-a",
+    ///             Tags = 
+    ///             {
+    ///                 "foo",
+    ///                 "bar",
+    ///             },
     ///             BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
     ///             {
     ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
     ///                 {
     ///                     Image = "debian-cloud/debian-9",
-    ///                 },
-    ///             },
-    ///             MachineType = "e2-medium",
-    ///             Metadata = 
-    ///             {
-    ///                 { "foo", "bar" },
-    ///             },
-    ///             MetadataStartupScript = "echo hi &gt; /test.txt",
-    ///             NetworkInterfaces = 
-    ///             {
-    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
-    ///                 {
-    ///                     AccessConfigs = 
-    ///                     {
-    ///                         ,
-    ///                     },
-    ///                     Network = "default",
     ///                 },
     ///             },
     ///             ScratchDisks = 
@@ -58,21 +53,30 @@ namespace Pulumi.Gcp.Compute
     ///                     Interface = "SCSI",
     ///                 },
     ///             },
-    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+    ///             NetworkInterfaces = 
     ///             {
-    ///                 Scopes = 
+    ///                 new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
     ///                 {
-    ///                     "userinfo-email",
-    ///                     "compute-ro",
-    ///                     "storage-ro",
+    ///                     Network = "default",
+    ///                     AccessConfigs = 
+    ///                     {
+    ///                         ,
+    ///                     },
     ///                 },
     ///             },
-    ///             Tags = 
+    ///             Metadata = 
     ///             {
-    ///                 "foo",
-    ///                 "bar",
+    ///                 { "foo", "bar" },
     ///             },
-    ///             Zone = "us-central1-a",
+    ///             MetadataStartupScript = "echo hi &gt; /test.txt",
+    ///             ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+    ///             {
+    ///                 Email = defaultAccount.Email,
+    ///                 Scopes = 
+    ///                 {
+    ///                     "cloud-platform",
+    ///                 },
+    ///             },
     ///         });
     ///     }
     /// 
@@ -128,7 +132,7 @@ namespace Pulumi.Gcp.Compute
         public Output<bool?> CanIpForward { get; private set; } = null!;
 
         /// <summary>
-        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Output("confidentialInstanceConfig")]
         public Output<Outputs.InstanceConfidentialInstanceConfig> ConfidentialInstanceConfig { get; private set; } = null!;
@@ -411,7 +415,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceConfidentialInstanceConfigArgs>? ConfidentialInstanceConfig { get; set; }
@@ -649,7 +653,7 @@ namespace Pulumi.Gcp.Compute
         public Input<bool>? CanIpForward { get; set; }
 
         /// <summary>
-        /// ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        /// Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         /// </summary>
         [Input("confidentialInstanceConfig")]
         public Input<Inputs.InstanceConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }

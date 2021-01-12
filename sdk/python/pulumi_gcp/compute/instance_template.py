@@ -53,6 +53,9 @@ class InstanceTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        default_account = gcp.service_account.Account("defaultAccount",
+            account_id="service-account-id",
+            display_name="Service Account")
         my_image = gcp.compute.get_image(family="debian-9",
             project="debian-cloud")
         foobar = gcp.compute.Disk("foobar",
@@ -60,7 +63,7 @@ class InstanceTemplate(pulumi.CustomResource):
             size=10,
             type="pd-ssd",
             zone="us-central1-a")
-        default = gcp.compute.InstanceTemplate("default",
+        default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
             description="This template is used to create app server instances.",
             tags=[
                 "foo",
@@ -95,11 +98,8 @@ class InstanceTemplate(pulumi.CustomResource):
                 "foo": "bar",
             },
             service_account=gcp.compute.InstanceTemplateServiceAccountArgs(
-                scopes=[
-                    "userinfo-email",
-                    "compute-ro",
-                    "storage-ro",
-                ],
+                email=default_account.email,
+                scopes=["cloud-platform"],
             ))
         ```
         ## Deploying the Latest Image
@@ -173,7 +173,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -304,7 +304,7 @@ class InstanceTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] can_ip_forward: Whether to allow sending and receiving of
                packets with non-matching source or destination IPs. This defaults to false.
-        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        :param pulumi.Input[pulumi.InputType['InstanceTemplateConfidentialInstanceConfigArgs']] confidential_instance_config: Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         :param pulumi.Input[str] description: A brief description of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceTemplateDiskArgs']]]] disks: Disks to attach to instances created from this template.
                This can be specified multiple times for multiple disks. Structure is
@@ -393,7 +393,7 @@ class InstanceTemplate(pulumi.CustomResource):
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> pulumi.Output['outputs.InstanceTemplateConfidentialInstanceConfig']:
         """
-        ) - Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
+        Enable [Confidential Mode](https://cloud.google.com/compute/confidential-vm/docs/about-cvm) on this VM.
         """
         return pulumi.get(self, "confidential_instance_config")
 

@@ -15,6 +15,7 @@ export * from "./bucketObject";
 export * from "./defaultObjectACL";
 export * from "./defaultObjectAccessControl";
 export * from "./getBucketObject";
+export * from "./getBucketObjectContent";
 export * from "./getObjectSignedUrl";
 export * from "./getProjectServiceAccount";
 export * from "./getTransferProjectServieAccount";

@@ -8,7 +8,6 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 from . import outputs
-from ._inputs import *
 
 __all__ = [
     'GetEnvironmentResult',
@@ -21,10 +20,10 @@ class GetEnvironmentResult:
     """
     A collection of values returned by getEnvironment.
     """
-    def __init__(__self__, config=None, id=None, labels=None, name=None, project=None, region=None):
-        if config and not isinstance(config, dict):
-            raise TypeError("Expected argument 'config' to be a dict")
-        pulumi.set(__self__, "config", config)
+    def __init__(__self__, configs=None, id=None, labels=None, name=None, project=None, region=None):
+        if configs and not isinstance(configs, list):
+            raise TypeError("Expected argument 'configs' to be a list")
+        pulumi.set(__self__, "configs", configs)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -43,8 +42,8 @@ class GetEnvironmentResult:
 
     @property
     @pulumi.getter
-    def config(self) -> 'outputs.GetEnvironmentConfigResult':
-        return pulumi.get(self, "config")
+    def configs(self) -> Sequence['outputs.GetEnvironmentConfigResult']:
+        return pulumi.get(self, "configs")
 
     @property
     @pulumi.getter
@@ -56,7 +55,7 @@ class GetEnvironmentResult:
 
     @property
     @pulumi.getter
-    def labels(self) -> Optional[Mapping[str, str]]:
+    def labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "labels")
 
     @property
@@ -66,7 +65,7 @@ class GetEnvironmentResult:
 
     @property
     @pulumi.getter
-    def project(self) -> str:
+    def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
 
     @property
@@ -81,7 +80,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
         if False:
             yield self
         return GetEnvironmentResult(
-            config=self.config,
+            configs=self.configs,
             id=self.id,
             labels=self.labels,
             name=self.name,
@@ -89,9 +88,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             region=self.region)
 
 
-def get_environment(config: Optional[pulumi.InputType['GetEnvironmentConfigArgs']] = None,
-                    labels: Optional[Mapping[str, str]] = None,
-                    name: Optional[str] = None,
+def get_environment(name: Optional[str] = None,
                     project: Optional[str] = None,
                     region: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetEnvironmentResult:
@@ -105,8 +102,6 @@ def get_environment(config: Optional[pulumi.InputType['GetEnvironmentConfigArgs'
     :param str region: The location or Compute Engine region of the environment.
     """
     __args__ = dict()
-    __args__['config'] = config
-    __args__['labels'] = labels
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
@@ -117,7 +112,7 @@ def get_environment(config: Optional[pulumi.InputType['GetEnvironmentConfigArgs'
     __ret__ = pulumi.runtime.invoke('gcp:composer/getEnvironment:getEnvironment', __args__, opts=opts, typ=GetEnvironmentResult).value
 
     return AwaitableGetEnvironmentResult(
-        config=__ret__.config,
+        configs=__ret__.configs,
         id=__ret__.id,
         labels=__ret__.labels,
         name=__ret__.name,

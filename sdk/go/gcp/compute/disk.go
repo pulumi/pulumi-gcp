@@ -124,6 +124,8 @@ type Disk struct {
 	LastAttachTimestamp pulumi.StringOutput `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringOutput `pulumi:"lastDetachTimestamp"`
+	// Indicates whether or not the disk can be read/write attached to more than one instance.
+	MultiWriter pulumi.BoolPtrOutput `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -259,6 +261,8 @@ type diskState struct {
 	LastAttachTimestamp *string `pulumi:"lastAttachTimestamp"`
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp *string `pulumi:"lastDetachTimestamp"`
+	// Indicates whether or not the disk can be read/write attached to more than one instance.
+	MultiWriter *bool `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -366,6 +370,8 @@ type DiskState struct {
 	LastAttachTimestamp pulumi.StringPtrInput
 	// Last detach timestamp in RFC3339 text format.
 	LastDetachTimestamp pulumi.StringPtrInput
+	// Indicates whether or not the disk can be read/write attached to more than one instance.
+	MultiWriter pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -469,6 +475,8 @@ type diskArgs struct {
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
+	// Indicates whether or not the disk can be read/write attached to more than one instance.
+	MultiWriter *bool `pulumi:"multiWriter"`
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match
@@ -557,6 +565,8 @@ type DiskArgs struct {
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
+	// Indicates whether or not the disk can be read/write attached to more than one instance.
+	MultiWriter pulumi.BoolPtrInput
 	// Name of the resource. Provided by the client when the resource is
 	// created. The name must be 1-63 characters long, and comply with
 	// RFC1035. Specifically, the name must be 1-63 characters long and match

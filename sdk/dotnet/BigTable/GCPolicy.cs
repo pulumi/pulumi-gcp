@@ -53,12 +53,9 @@ namespace Pulumi.Gcp.BigTable
     ///             InstanceName = instance.Name,
     ///             Table = table.Name,
     ///             ColumnFamily = "name",
-    ///             MaxAges = 
+    ///             MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
-    ///                 {
-    ///                     Days = 7,
-    ///                 },
+    ///                 Duration = "168h",
     ///             },
     ///         });
     ///     }
@@ -82,12 +79,9 @@ namespace Pulumi.Gcp.BigTable
     ///             Table = google_bigtable_table.Table.Name,
     ///             ColumnFamily = "name",
     ///             Mode = "UNION",
-    ///             MaxAges = 
+    ///             MaxAge = new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
     ///             {
-    ///                 new Gcp.BigTable.Inputs.GCPolicyMaxAgeArgs
-    ///                 {
-    ///                     Days = 7,
-    ///                 },
+    ///                 Duration = "168h",
     ///             },
     ///             MaxVersions = 
     ///             {
@@ -123,8 +117,8 @@ namespace Pulumi.Gcp.BigTable
         /// <summary>
         /// GC policy that applies to all cells older than the given age.
         /// </summary>
-        [Output("maxAges")]
-        public Output<ImmutableArray<Outputs.GCPolicyMaxAge>> MaxAges { get; private set; } = null!;
+        [Output("maxAge")]
+        public Output<Outputs.GCPolicyMaxAge?> MaxAge { get; private set; } = null!;
 
         /// <summary>
         /// GC policy that applies to all versions of a cell except for the most recent.
@@ -208,17 +202,11 @@ namespace Pulumi.Gcp.BigTable
         [Input("instanceName", required: true)]
         public Input<string> InstanceName { get; set; } = null!;
 
-        [Input("maxAges")]
-        private InputList<Inputs.GCPolicyMaxAgeArgs>? _maxAges;
-
         /// <summary>
         /// GC policy that applies to all cells older than the given age.
         /// </summary>
-        public InputList<Inputs.GCPolicyMaxAgeArgs> MaxAges
-        {
-            get => _maxAges ?? (_maxAges = new InputList<Inputs.GCPolicyMaxAgeArgs>());
-            set => _maxAges = value;
-        }
+        [Input("maxAge")]
+        public Input<Inputs.GCPolicyMaxAgeArgs>? MaxAge { get; set; }
 
         [Input("maxVersions")]
         private InputList<Inputs.GCPolicyMaxVersionArgs>? _maxVersions;
@@ -269,17 +257,11 @@ namespace Pulumi.Gcp.BigTable
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
-        [Input("maxAges")]
-        private InputList<Inputs.GCPolicyMaxAgeGetArgs>? _maxAges;
-
         /// <summary>
         /// GC policy that applies to all cells older than the given age.
         /// </summary>
-        public InputList<Inputs.GCPolicyMaxAgeGetArgs> MaxAges
-        {
-            get => _maxAges ?? (_maxAges = new InputList<Inputs.GCPolicyMaxAgeGetArgs>());
-            set => _maxAges = value;
-        }
+        [Input("maxAge")]
+        public Input<Inputs.GCPolicyMaxAgeGetArgs>? MaxAge { get; set; }
 
         [Input("maxVersions")]
         private InputList<Inputs.GCPolicyMaxVersionGetArgs>? _maxVersions;

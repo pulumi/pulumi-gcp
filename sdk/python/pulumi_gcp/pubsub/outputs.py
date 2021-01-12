@@ -10,6 +10,10 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'LiteSubscriptionDeliveryConfig',
+    'LiteTopicPartitionConfig',
+    'LiteTopicPartitionConfigCapacity',
+    'LiteTopicRetentionConfig',
     'SubscriptionDeadLetterPolicy',
     'SubscriptionExpirationPolicy',
     'SubscriptionIAMBindingCondition',
@@ -22,6 +26,135 @@ __all__ = [
     'TopicMessageStoragePolicy',
     'GetTopicMessageStoragePolicyResult',
 ]
+
+@pulumi.output_type
+class LiteSubscriptionDeliveryConfig(dict):
+    def __init__(__self__, *,
+                 delivery_requirement: str):
+        """
+        :param str delivery_requirement: When this subscription should send messages to subscribers relative to messages persistence in storage.
+               Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+        """
+        pulumi.set(__self__, "delivery_requirement", delivery_requirement)
+
+    @property
+    @pulumi.getter(name="deliveryRequirement")
+    def delivery_requirement(self) -> str:
+        """
+        When this subscription should send messages to subscribers relative to messages persistence in storage.
+        Possible values are `DELIVER_IMMEDIATELY`, `DELIVER_AFTER_STORED`, and `DELIVERY_REQUIREMENT_UNSPECIFIED`.
+        """
+        return pulumi.get(self, "delivery_requirement")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class LiteTopicPartitionConfig(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 capacity: Optional['outputs.LiteTopicPartitionConfigCapacity'] = None):
+        """
+        :param int count: The number of partitions in the topic. Must be at least 1.
+        :param 'LiteTopicPartitionConfigCapacityArgs' capacity: The capacity configuration.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "count", count)
+        if capacity is not None:
+            pulumi.set(__self__, "capacity", capacity)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of partitions in the topic. Must be at least 1.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def capacity(self) -> Optional['outputs.LiteTopicPartitionConfigCapacity']:
+        """
+        The capacity configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "capacity")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class LiteTopicPartitionConfigCapacity(dict):
+    def __init__(__self__, *,
+                 publish_mib_per_sec: int,
+                 subscribe_mib_per_sec: int):
+        """
+        :param int publish_mib_per_sec: Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        :param int subscribe_mib_per_sec: Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        """
+        pulumi.set(__self__, "publish_mib_per_sec", publish_mib_per_sec)
+        pulumi.set(__self__, "subscribe_mib_per_sec", subscribe_mib_per_sec)
+
+    @property
+    @pulumi.getter(name="publishMibPerSec")
+    def publish_mib_per_sec(self) -> int:
+        """
+        Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        """
+        return pulumi.get(self, "publish_mib_per_sec")
+
+    @property
+    @pulumi.getter(name="subscribeMibPerSec")
+    def subscribe_mib_per_sec(self) -> int:
+        """
+        Publish throughput capacity per partition in MiB/s. Must be >= 4 and <= 16.
+        """
+        return pulumi.get(self, "subscribe_mib_per_sec")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class LiteTopicRetentionConfig(dict):
+    def __init__(__self__, *,
+                 per_partition_bytes: str,
+                 period: Optional[str] = None):
+        """
+        :param str per_partition_bytes: The provisioned storage, in bytes, per partition. If the number of bytes stored
+               in any of the topic's partitions grows beyond this value, older messages will be
+               dropped to make room for newer ones, regardless of the value of period.
+        :param str period: How long a published message is retained. If unset, messages will be retained as
+               long as the bytes retained for each partition is below perPartitionBytes.
+        """
+        pulumi.set(__self__, "per_partition_bytes", per_partition_bytes)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter(name="perPartitionBytes")
+    def per_partition_bytes(self) -> str:
+        """
+        The provisioned storage, in bytes, per partition. If the number of bytes stored
+        in any of the topic's partitions grows beyond this value, older messages will be
+        dropped to make room for newer ones, regardless of the value of period.
+        """
+        return pulumi.get(self, "per_partition_bytes")
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[str]:
+        """
+        How long a published message is retained. If unset, messages will be retained as
+        long as the bytes retained for each partition is below perPartitionBytes.
+        """
+        return pulumi.get(self, "period")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class SubscriptionDeadLetterPolicy(dict):

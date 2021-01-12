@@ -103,7 +103,8 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     public readonly onDelete!: pulumi.Output<string | undefined>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as
-     * used in the template).
+     * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+     * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
      */
     public readonly parameters!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -195,7 +196,8 @@ export interface FlexTemplateJobState {
     readonly onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as
-     * used in the template).
+     * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+     * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
      */
     readonly parameters?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -237,7 +239,8 @@ export interface FlexTemplateJobArgs {
     readonly onDelete?: pulumi.Input<string>;
     /**
      * Key/Value pairs to be passed to the Dataflow job (as
-     * used in the template).
+     * used in the template). Additional [pipeline options](https://cloud.google.com/dataflow/docs/guides/specifying-exec-params#setting-other-cloud-dataflow-pipeline-options)
+     * such as `serviceAccount`, `workerMachineType`, etc can be specified here.
      */
     readonly parameters?: pulumi.Input<{[key: string]: any}>;
     /**

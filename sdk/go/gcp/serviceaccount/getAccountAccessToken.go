@@ -26,7 +26,7 @@ type GetAccountAccessTokenArgs struct {
 	Delegates []string `pulumi:"delegates"`
 	// Lifetime of the impersonated token (defaults to its max: `3600s`).
 	Lifetime *string `pulumi:"lifetime"`
-	// The scopes the new credential should have (e.g. `["storage-ro", "cloud-platform"]`)
+	// The scopes the new credential should have (e.g. `["cloud-platform"]`)
 	Scopes []string `pulumi:"scopes"`
 	// The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
 	TargetServiceAccount string `pulumi:"targetServiceAccount"`

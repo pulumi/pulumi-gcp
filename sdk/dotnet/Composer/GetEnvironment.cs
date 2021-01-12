@@ -21,17 +21,6 @@ namespace Pulumi.Gcp.Composer
 
     public sealed class GetEnvironmentArgs : Pulumi.InvokeArgs
     {
-        [Input("config")]
-        public Inputs.GetEnvironmentConfigArgs? Config { get; set; }
-
-        [Input("labels")]
-        private Dictionary<string, string>? _labels;
-        public Dictionary<string, string> Labels
-        {
-            get => _labels ?? (_labels = new Dictionary<string, string>());
-            set => _labels = value;
-        }
-
         /// <summary>
         /// Name of the environment.
         /// </summary>
@@ -60,31 +49,31 @@ namespace Pulumi.Gcp.Composer
     [OutputType]
     public sealed class GetEnvironmentResult
     {
-        public readonly Outputs.GetEnvironmentConfigResult Config;
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigResult> Configs;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableDictionary<string, string>? Labels;
+        public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
-        public readonly string Project;
+        public readonly string? Project;
         public readonly string? Region;
 
         [OutputConstructor]
         private GetEnvironmentResult(
-            Outputs.GetEnvironmentConfigResult config,
+            ImmutableArray<Outputs.GetEnvironmentConfigResult> configs,
 
             string id,
 
-            ImmutableDictionary<string, string>? labels,
+            ImmutableDictionary<string, string> labels,
 
             string name,
 
-            string project,
+            string? project,
 
             string? region)
         {
-            Config = config;
+            Configs = configs;
             Id = id;
             Labels = labels;
             Name = name;

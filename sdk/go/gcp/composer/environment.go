@@ -22,7 +22,7 @@ import (
 //     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)
 // * [Apache Airflow Documentation](http://airflow.apache.org/)
 //
-// > **Warning:** We **STRONGLY** recommend  you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
+// > **Warning:** We **STRONGLY** recommend you read the [GCP guides](https://cloud.google.com/composer/docs/how-to)
 //   as the Environment resource requires a long deployment process and involves several layers of GCP infrastructure,
 //   including a Kubernetes Engine cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API,
 //   This provider will not be able to automatically find or manage many of these underlying resources. In particular:
@@ -32,6 +32,7 @@ import (
 //     against GCP Cloud Composer before filing bugs against this provider.
 //   * **Environments create Google Cloud Storage buckets that do not get cleaned up automatically** on environment
 //     deletion. [More about Composer's use of Cloud Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+//   * Please review the [known issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having problems.
 //
 // ## Example Usage
 // ### Basic Usage
@@ -57,9 +58,8 @@ import (
 // ```
 // ### With GKE and Compute Resource Dependencies
 //
-// **NOTE** To use service accounts, you need to give `role/composer.worker` to the service account on any resources that may be created for the environment
-// (i.e. at a project level). This will probably require an explicit dependency
-// on the IAM policy binding (see `projects.IAMMember` below).
+// **NOTE** To use custom service accounts, you need to give at least `role/composer.worker` to the service account being used by the GKE Nodes on the Composer project.
+// You may need to assign additional roles depending on what the Airflow DAGs will be running.
 //
 // ```go
 // package main
@@ -97,15 +97,6 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = projects.NewIAMMember(ctx, "composer_worker", &projects.IAMMemberArgs{
-// 			Role: pulumi.String("roles/composer.worker"),
-// 			Member: testAccount.Email.ApplyT(func(email string) (string, error) {
-// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
 // 		_, err = composer.NewEnvironment(ctx, "testEnvironment", &composer.EnvironmentArgs{
 // 			Region: pulumi.String("us-central1"),
 // 			Config: &composer.EnvironmentConfigArgs{
@@ -118,9 +109,16 @@ import (
 // 					ServiceAccount: testAccount.Name,
 // 				},
 // 			},
-// 		}, pulumi.DependsOn([]pulumi.Resource{
-// 			composer_worker,
-// 		}))
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = projects.NewIAMMember(ctx, "composer_worker", &projects.IAMMemberArgs{
+// 			Role: pulumi.String("roles/composer.worker"),
+// 			Member: testAccount.Email.ApplyT(func(email string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 			}).(pulumi.StringOutput),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

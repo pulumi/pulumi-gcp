@@ -112,6 +112,7 @@ type providerArgs struct {
 	OsLoginCustomEndpoint                *string           `pulumi:"osLoginCustomEndpoint"`
 	Project                              *string           `pulumi:"project"`
 	PubsubCustomEndpoint                 *string           `pulumi:"pubsubCustomEndpoint"`
+	PubsubLiteCustomEndpoint             *string           `pulumi:"pubsubLiteCustomEndpoint"`
 	RedisCustomEndpoint                  *string           `pulumi:"redisCustomEndpoint"`
 	Region                               *string           `pulumi:"region"`
 	RequestTimeout                       *string           `pulumi:"requestTimeout"`
@@ -206,6 +207,7 @@ type ProviderArgs struct {
 	OsLoginCustomEndpoint                pulumi.StringPtrInput
 	Project                              pulumi.StringPtrInput
 	PubsubCustomEndpoint                 pulumi.StringPtrInput
+	PubsubLiteCustomEndpoint             pulumi.StringPtrInput
 	RedisCustomEndpoint                  pulumi.StringPtrInput
 	Region                               pulumi.StringPtrInput
 	RequestTimeout                       pulumi.StringPtrInput

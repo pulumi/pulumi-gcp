@@ -214,6 +214,9 @@ func GetProject(ctx *pulumi.Context) string {
 func GetPubsubCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:pubsubCustomEndpoint")
 }
+func GetPubsubLiteCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:pubsubLiteCustomEndpoint")
+}
 func GetRedisCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:redisCustomEndpoint")
 }

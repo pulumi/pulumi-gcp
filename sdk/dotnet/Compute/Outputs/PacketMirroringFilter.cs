@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> CidrRanges;
         /// <summary>
+        /// Direction of traffic to mirror.
+        /// Default value is `BOTH`.
+        /// Possible values are `INGRESS`, `EGRESS`, and `BOTH`.
+        /// </summary>
+        public readonly string? Direction;
+        /// <summary>
         /// Protocols that apply as a filter on mirrored traffic.
         /// Each value may be one of `tcp`, `udp`, and `icmp`.
         /// </summary>
@@ -28,9 +34,12 @@ namespace Pulumi.Gcp.Compute.Outputs
         private PacketMirroringFilter(
             ImmutableArray<string> cidrRanges,
 
+            string? direction,
+
             ImmutableArray<string> ipProtocols)
         {
             CidrRanges = cidrRanges;
+            Direction = direction;
             IpProtocols = ipProtocols;
         }
     }

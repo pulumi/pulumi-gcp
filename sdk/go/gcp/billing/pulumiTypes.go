@@ -926,11 +926,21 @@ func (o BudgetAmountSpecifiedAmountPtrOutput) Units() pulumi.StringPtrOutput {
 }
 
 type BudgetBudgetFilter struct {
+	// A set of subaccounts of the form billingAccounts/{account_id},
+	// specifying that usage from only this set of subaccounts should
+	// be included in the budget. If a subaccount is set to the name of
+	// the parent account, usage from the parent account will be included.
+	// If the field is omitted, the report will include usage from the parent
+	// account and all subaccounts, if they exist.
+	CreditTypes []string `pulumi:"creditTypes"`
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
 	// Default value is `INCLUDE_ALL_CREDITS`.
-	// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+	// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
 	CreditTypesTreatment *string `pulumi:"creditTypesTreatment"`
+	// A single label and value pair specifying that usage from only
+	// this set of labeled resources should be included in the budget.
+	Labels map[string]string `pulumi:"labels"`
 	// A set of projects of the form projects/{project_id},
 	// specifying that usage from only this set of projects should be
 	// included in the budget. If omitted, the report will include
@@ -945,6 +955,13 @@ type BudgetBudgetFilter struct {
 	// through the Catalog API:
 	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services []string `pulumi:"services"`
+	// A set of subaccounts of the form billingAccounts/{account_id},
+	// specifying that usage from only this set of subaccounts should
+	// be included in the budget. If a subaccount is set to the name of
+	// the parent account, usage from the parent account will be included.
+	// If the field is omitted, the report will include usage from the parent
+	// account and all subaccounts, if they exist.
+	Subaccounts []string `pulumi:"subaccounts"`
 }
 
 // BudgetBudgetFilterInput is an input type that accepts BudgetBudgetFilterArgs and BudgetBudgetFilterOutput values.
@@ -959,11 +976,21 @@ type BudgetBudgetFilterInput interface {
 }
 
 type BudgetBudgetFilterArgs struct {
+	// A set of subaccounts of the form billingAccounts/{account_id},
+	// specifying that usage from only this set of subaccounts should
+	// be included in the budget. If a subaccount is set to the name of
+	// the parent account, usage from the parent account will be included.
+	// If the field is omitted, the report will include usage from the parent
+	// account and all subaccounts, if they exist.
+	CreditTypes pulumi.StringArrayInput `pulumi:"creditTypes"`
 	// Specifies how credits should be treated when determining spend
 	// for threshold calculations.
 	// Default value is `INCLUDE_ALL_CREDITS`.
-	// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+	// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
 	CreditTypesTreatment pulumi.StringPtrInput `pulumi:"creditTypesTreatment"`
+	// A single label and value pair specifying that usage from only
+	// this set of labeled resources should be included in the budget.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// A set of projects of the form projects/{project_id},
 	// specifying that usage from only this set of projects should be
 	// included in the budget. If omitted, the report will include
@@ -978,6 +1005,13 @@ type BudgetBudgetFilterArgs struct {
 	// through the Catalog API:
 	// https://cloud.google.com/billing/v1/how-tos/catalog-api.
 	Services pulumi.StringArrayInput `pulumi:"services"`
+	// A set of subaccounts of the form billingAccounts/{account_id},
+	// specifying that usage from only this set of subaccounts should
+	// be included in the budget. If a subaccount is set to the name of
+	// the parent account, usage from the parent account will be included.
+	// If the field is omitted, the report will include usage from the parent
+	// account and all subaccounts, if they exist.
+	Subaccounts pulumi.StringArrayInput `pulumi:"subaccounts"`
 }
 
 func (BudgetBudgetFilterArgs) ElementType() reflect.Type {
@@ -1057,12 +1091,28 @@ func (o BudgetBudgetFilterOutput) ToBudgetBudgetFilterPtrOutputWithContext(ctx c
 	}).(BudgetBudgetFilterPtrOutput)
 }
 
+// A set of subaccounts of the form billingAccounts/{account_id},
+// specifying that usage from only this set of subaccounts should
+// be included in the budget. If a subaccount is set to the name of
+// the parent account, usage from the parent account will be included.
+// If the field is omitted, the report will include usage from the parent
+// account and all subaccounts, if they exist.
+func (o BudgetBudgetFilterOutput) CreditTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.CreditTypes }).(pulumi.StringArrayOutput)
+}
+
 // Specifies how credits should be treated when determining spend
 // for threshold calculations.
 // Default value is `INCLUDE_ALL_CREDITS`.
-// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
 func (o BudgetBudgetFilterOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) *string { return v.CreditTypesTreatment }).(pulumi.StringPtrOutput)
+}
+
+// A single label and value pair specifying that usage from only
+// this set of labeled resources should be included in the budget.
+func (o BudgetBudgetFilterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v BudgetBudgetFilter) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // A set of projects of the form projects/{project_id},
@@ -1085,6 +1135,16 @@ func (o BudgetBudgetFilterOutput) Services() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Services }).(pulumi.StringArrayOutput)
 }
 
+// A set of subaccounts of the form billingAccounts/{account_id},
+// specifying that usage from only this set of subaccounts should
+// be included in the budget. If a subaccount is set to the name of
+// the parent account, usage from the parent account will be included.
+// If the field is omitted, the report will include usage from the parent
+// account and all subaccounts, if they exist.
+func (o BudgetBudgetFilterOutput) Subaccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Subaccounts }).(pulumi.StringArrayOutput)
+}
+
 type BudgetBudgetFilterPtrOutput struct{ *pulumi.OutputState }
 
 func (BudgetBudgetFilterPtrOutput) ElementType() reflect.Type {
@@ -1103,10 +1163,25 @@ func (o BudgetBudgetFilterPtrOutput) Elem() BudgetBudgetFilterOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) BudgetBudgetFilter { return *v }).(BudgetBudgetFilterOutput)
 }
 
+// A set of subaccounts of the form billingAccounts/{account_id},
+// specifying that usage from only this set of subaccounts should
+// be included in the budget. If a subaccount is set to the name of
+// the parent account, usage from the parent account will be included.
+// If the field is omitted, the report will include usage from the parent
+// account and all subaccounts, if they exist.
+func (o BudgetBudgetFilterPtrOutput) CreditTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CreditTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 // Specifies how credits should be treated when determining spend
 // for threshold calculations.
 // Default value is `INCLUDE_ALL_CREDITS`.
-// Possible values are `INCLUDE_ALL_CREDITS` and `EXCLUDE_ALL_CREDITS`.
+// Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
 func (o BudgetBudgetFilterPtrOutput) CreditTypesTreatment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) *string {
 		if v == nil {
@@ -1114,6 +1189,17 @@ func (o BudgetBudgetFilterPtrOutput) CreditTypesTreatment() pulumi.StringPtrOutp
 		}
 		return v.CreditTypesTreatment
 	}).(pulumi.StringPtrOutput)
+}
+
+// A single label and value pair specifying that usage from only
+// this set of labeled resources should be included in the budget.
+func (o BudgetBudgetFilterPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilter) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
 }
 
 // A set of projects of the form projects/{project_id},
@@ -1143,6 +1229,21 @@ func (o BudgetBudgetFilterPtrOutput) Services() pulumi.StringArrayOutput {
 			return nil
 		}
 		return v.Services
+	}).(pulumi.StringArrayOutput)
+}
+
+// A set of subaccounts of the form billingAccounts/{account_id},
+// specifying that usage from only this set of subaccounts should
+// be included in the budget. If a subaccount is set to the name of
+// the parent account, usage from the parent account will be included.
+// If the field is omitted, the report will include usage from the parent
+// account and all subaccounts, if they exist.
+func (o BudgetBudgetFilterPtrOutput) Subaccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Subaccounts
 	}).(pulumi.StringArrayOutput)
 }
 

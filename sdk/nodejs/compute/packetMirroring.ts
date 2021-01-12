@@ -23,9 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {}, {
- *     provider: google_beta,
- * });
+ * const defaultNetwork = new gcp.compute.Network("defaultNetwork", {});
  * const mirror = new gcp.compute.Instance("mirror", {
  *     machineType: "e2-medium",
  *     bootDisk: {
@@ -37,14 +35,10 @@ import * as utilities from "../utilities";
  *         network: defaultNetwork.id,
  *         accessConfigs: [{}],
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * const defaultSubnetwork = new gcp.compute.Subnetwork("defaultSubnetwork", {
  *     network: defaultNetwork.id,
  *     ipCidrRange: "10.2.0.0/16",
- * }, {
- *     provider: google_beta,
  * });
  * const defaultHealthCheck = new gcp.compute.HealthCheck("defaultHealthCheck", {
  *     checkIntervalSec: 1,
@@ -52,12 +46,8 @@ import * as utilities from "../utilities";
  *     tcpHealthCheck: {
  *         port: "80",
  *     },
- * }, {
- *     provider: google_beta,
  * });
- * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {healthChecks: [defaultHealthCheck.id]}, {
- *     provider: google_beta,
- * });
+ * const defaultRegionBackendService = new gcp.compute.RegionBackendService("defaultRegionBackendService", {healthChecks: [defaultHealthCheck.id]});
  * const defaultForwardingRule = new gcp.compute.ForwardingRule("defaultForwardingRule", {
  *     isMirroringCollector: true,
  *     ipProtocol: "TCP",
@@ -68,7 +58,6 @@ import * as utilities from "../utilities";
  *     subnetwork: defaultSubnetwork.id,
  *     networkTier: "PREMIUM",
  * }, {
- *     provider: google_beta,
  *     dependsOn: [defaultSubnetwork],
  * });
  * const foobar = new gcp.compute.PacketMirroring("foobar", {
@@ -88,9 +77,8 @@ import * as utilities from "../utilities";
  *     filter: {
  *         ipProtocols: ["tcp"],
  *         cidrRanges: ["0.0.0.0/0"],
+ *         direction: "BOTH",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

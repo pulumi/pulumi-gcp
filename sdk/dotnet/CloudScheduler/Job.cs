@@ -24,41 +24,6 @@ namespace Pulumi.Gcp.CloudScheduler
     ///     * [Official Documentation](https://cloud.google.com/scheduler/)
     /// 
     /// ## Example Usage
-    /// ### Scheduler Job Http
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var job = new Gcp.CloudScheduler.Job("job", new Gcp.CloudScheduler.JobArgs
-    ///         {
-    ///             AttemptDeadline = "320s",
-    ///             Description = "test http job",
-    ///             HttpTarget = new Gcp.CloudScheduler.Inputs.JobHttpTargetArgs
-    ///             {
-    ///                 Base64encode = 
-    ///                 {
-    ///                     ,
-    ///                 },
-    ///                 Body = "",
-    ///                 HttpMethod = "POST",
-    ///                 Uri = "https://example.com/ping",
-    ///                 %!v(PANIC=Format method: interface conversion: model.Expression is *model.TemplateExpression, not *model.LiteralValueExpression),
-    ///                 RetryConfig = new Gcp.CloudScheduler.Inputs.JobRetryConfigArgs
-    ///                 {
-    ///                     RetryCount = 1,
-    ///                 },
-    ///                 Schedule = "*/8 * * * *",
-    ///                 TimeZone = "America/New_York",
-    ///             });
-    ///         }
-    /// 
-    /// }
-    /// ```
     /// ### Scheduler Job App Engine
     /// 
     /// ```csharp

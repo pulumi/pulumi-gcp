@@ -240,7 +240,7 @@ class Connection(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="connectionId")
-    def connection_id(self) -> pulumi.Output[Optional[str]]:
+    def connection_id(self) -> pulumi.Output[str]:
         """
         Optional connection id that should be assigned to the created connection.
         """

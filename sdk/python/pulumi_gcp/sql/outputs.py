@@ -513,6 +513,7 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
                `settings.backup_configuration.enabled` is false, this must be as well.
                Cannot be used with Postgres.
         :param bool enabled: True if backup configuration is enabled.
+        :param str location: The region where the backup will be stored
         :param bool point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
         :param str start_time: `HH:MM` format time indicating when backup
                configuration starts.
@@ -549,6 +550,9 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
     @property
     @pulumi.getter
     def location(self) -> Optional[str]:
+        """
+        The region where the backup will be stored
+        """
         return pulumi.get(self, "location")
 
     @property

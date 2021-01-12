@@ -40,10 +40,9 @@ class Reservation(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         reservation = gcp.bigquery.Reservation("reservation",
-            location="asia-northeast1",
-            slot_capacity=0,
             ignore_idle_slots=False,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="asia-northeast1",
+            slot_capacity=0)
         ```
 
         ## Import

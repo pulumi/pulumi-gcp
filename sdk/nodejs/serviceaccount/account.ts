@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Allows management of a [Google Cloud Platform service account](https://cloud.google.com/compute/docs/access/service-accounts)
  *
+ * > **Warning:**  If you delete and recreate a service account, you must reapply any IAM roles that it had before.
+ *
  * > Creation of service accounts is eventually consistent, and that can lead to
  * errors when you try to apply ACLs to service accounts immediately after
  * creation.
@@ -20,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const serviceAccount = new gcp.serviceAccount.Account("service_account", {
- *     accountId: "service_account_id",
+ *     accountId: "service-account-id",
  *     displayName: "Service Account",
  * });
  * ```
