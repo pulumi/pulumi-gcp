@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * });
  * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
  * const frontend = new gcp.dns.RecordSet("frontend", {
+ *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: prod.name,

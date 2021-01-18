@@ -95,6 +95,7 @@ class ManagedSslCertificate(pulumi.CustomResource):
             target=default_target_https_proxy.id,
             port_range="443")
         set = gcp.dns.RecordSet("set",
+            name="sslcert.tf-test.club.",
             type="A",
             ttl=3600,
             managed_zone=zone.name,

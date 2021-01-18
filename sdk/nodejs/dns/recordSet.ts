@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * });
  * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
  * const frontendRecordSet = new gcp.dns.RecordSet("frontendRecordSet", {
+ *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
  *     type: "A",
  *     ttl: 300,
  *     managedZone: prod.name,
@@ -49,6 +50,7 @@ import * as utilities from "../utilities";
  *
  * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
  * const recordSet = new gcp.dns.RecordSet("recordSet", {
+ *     name: pulumi.interpolate`backend.${prod.dnsName}`,
  *     managedZone: prod.name,
  *     type: "A",
  *     ttl: 300,
@@ -63,6 +65,7 @@ import * as utilities from "../utilities";
  *
  * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
  * const mx = new gcp.dns.RecordSet("mx", {
+ *     name: prod.dnsName,
  *     managedZone: prod.name,
  *     type: "MX",
  *     ttl: 3600,
@@ -85,6 +88,7 @@ import * as utilities from "../utilities";
  *
  * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
  * const spf = new gcp.dns.RecordSet("spf", {
+ *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
  *     managedZone: prod.name,
  *     type: "TXT",
  *     ttl: 300,
@@ -101,6 +105,7 @@ import * as utilities from "../utilities";
  *
  * const prod = new gcp.dns.ManagedZone("prod", {dnsName: "prod.mydomain.com."});
  * const cname = new gcp.dns.RecordSet("cname", {
+ *     name: pulumi.interpolate`frontend.${prod.dnsName}`,
  *     managedZone: prod.name,
  *     type: "CNAME",
  *     ttl: 300,
@@ -201,6 +206,9 @@ export class RecordSet extends pulumi.CustomResource {
             if ((!args || args.managedZone === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'managedZone'");
             }
+            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.rrdatas === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'rrdatas'");
             }
@@ -273,7 +281,7 @@ export interface RecordSetArgs {
     /**
      * The DNS name this record set will apply to.
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

@@ -131,6 +131,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "set", &dns.RecordSetArgs{
+// 			Name:        pulumi.String("sslcert.tf-test.club."),
 // 			Type:        pulumi.String("A"),
 // 			Ttl:         pulumi.Int(3600),
 // 			ManagedZone: zone.Name,

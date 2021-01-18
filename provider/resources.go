@@ -924,8 +924,15 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"google_dns_policy":     {Tok: gcpResource(gcpDNS, "Policy")},
-			"google_dns_record_set": {Tok: gcpResource(gcpDNS, "RecordSet")},
+			"google_dns_policy": {Tok: gcpResource(gcpDNS, "Policy")},
+			"google_dns_record_set": {
+				Tok: gcpResource(gcpDNS, "RecordSet"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					// Do not autoname RecordSet records, as the "name" of these is actually the true
+					// domain name of the DNS record.
+					"name": {Name: "name"},
+				},
+			},
 
 			// EndPoints resources
 			"google_endpoints_service": {Tok: gcpResource(gcpEndPoints, "Service")},

@@ -127,6 +127,7 @@ namespace Pulumi.Gcp.Compute
     ///         });
     ///         var @set = new Gcp.Dns.RecordSet("set", new Gcp.Dns.RecordSetArgs
     ///         {
+    ///             Name = "sslcert.tf-test.club.",
     ///             Type = "A",
     ///             Ttl = 3600,
     ///             ManagedZone = zone.Name,

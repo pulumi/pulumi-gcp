@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Remove autonaming from `gcp.dns.RecordSets` as the name of the resouce relates to a DNS name.
 
 ---
 

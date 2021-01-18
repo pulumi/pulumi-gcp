@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Dns
         ///         }));
         ///         var dns = new Gcp.Dns.RecordSet("dns", new Gcp.Dns.RecordSetArgs
         ///         {
+        ///             Name = envDnsZone.Apply(envDnsZone =&gt; $"my-address.{envDnsZone.DnsName}"),
         ///             Type = "TXT",
         ///             Ttl = 300,
         ///             ManagedZone = envDnsZone.Apply(envDnsZone =&gt; envDnsZone.Name),
