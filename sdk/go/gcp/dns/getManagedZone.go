@@ -17,6 +17,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -30,6 +32,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "dns", &dns.RecordSetArgs{
+// 			Name:        pulumi.String(fmt.Sprintf("%v%v", "my-address.", envDnsZone.DnsName)),
 // 			Type:        pulumi.String("TXT"),
 // 			Ttl:         pulumi.Int(300),
 // 			ManagedZone: pulumi.String(envDnsZone.Name),

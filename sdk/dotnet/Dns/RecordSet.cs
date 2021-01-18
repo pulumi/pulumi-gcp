@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Dns
     ///         });
     ///         var frontendRecordSet = new Gcp.Dns.RecordSet("frontendRecordSet", new Gcp.Dns.RecordSetArgs
     ///         {
+    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
     ///             Type = "A",
     ///             Ttl = 300,
     ///             ManagedZone = prod.Name,
@@ -86,6 +87,7 @@ namespace Pulumi.Gcp.Dns
     ///         });
     ///         var recordSet = new Gcp.Dns.RecordSet("recordSet", new Gcp.Dns.RecordSetArgs
     ///         {
+    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
     ///             ManagedZone = prod.Name,
     ///             Type = "A",
     ///             Ttl = 300,
@@ -114,6 +116,7 @@ namespace Pulumi.Gcp.Dns
     ///         });
     ///         var mx = new Gcp.Dns.RecordSet("mx", new Gcp.Dns.RecordSetArgs
     ///         {
+    ///             Name = prod.DnsName,
     ///             ManagedZone = prod.Name,
     ///             Type = "MX",
     ///             Ttl = 3600,
@@ -148,6 +151,7 @@ namespace Pulumi.Gcp.Dns
     ///         });
     ///         var spf = new Gcp.Dns.RecordSet("spf", new Gcp.Dns.RecordSetArgs
     ///         {
+    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
     ///             ManagedZone = prod.Name,
     ///             Type = "TXT",
     ///             Ttl = 300,
@@ -178,6 +182,7 @@ namespace Pulumi.Gcp.Dns
     ///         });
     ///         var cname = new Gcp.Dns.RecordSet("cname", new Gcp.Dns.RecordSetArgs
     ///         {
+    ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
     ///             ManagedZone = prod.Name,
     ///             Type = "CNAME",
     ///             Ttl = 300,
@@ -302,8 +307,8 @@ namespace Pulumi.Gcp.Dns
         /// <summary>
         /// The DNS name this record set will apply to.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it

@@ -79,6 +79,7 @@ import * as utilities from "../utilities";
  *     portRange: 443,
  * });
  * const set = new gcp.dns.RecordSet("set", {
+ *     name: "sslcert.tf-test.club.",
  *     type: "A",
  *     ttl: 3600,
  *     managedZone: zone.name,

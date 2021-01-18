@@ -16,6 +16,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -36,6 +38,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "frontend", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
 // 			Type:        pulumi.String("A"),
 // 			Ttl:         pulumi.Int(300),
 // 			ManagedZone: prod.Name,

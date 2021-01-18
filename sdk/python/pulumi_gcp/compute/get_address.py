@@ -122,6 +122,7 @@ def get_address(name: Optional[str] = None,
     my_address = gcp.compute.get_address(name="foobar")
     prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
     frontend = gcp.dns.RecordSet("frontend",
+        name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
         type="A",
         ttl=300,
         managed_zone=prod.name,

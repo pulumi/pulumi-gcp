@@ -54,6 +54,7 @@ class RecordSet(pulumi.CustomResource):
             )])
         prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
         frontend_record_set = gcp.dns.RecordSet("frontendRecordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             type="A",
             ttl=300,
             managed_zone=prod.name,
@@ -67,6 +68,7 @@ class RecordSet(pulumi.CustomResource):
 
         prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
         record_set = gcp.dns.RecordSet("recordSet",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
             managed_zone=prod.name,
             type="A",
             ttl=300,
@@ -80,6 +82,7 @@ class RecordSet(pulumi.CustomResource):
 
         prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
         mx = gcp.dns.RecordSet("mx",
+            name=prod.dns_name,
             managed_zone=prod.name,
             type="MX",
             ttl=3600,
@@ -101,6 +104,7 @@ class RecordSet(pulumi.CustomResource):
 
         prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
         spf = gcp.dns.RecordSet("spf",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             managed_zone=prod.name,
             type="TXT",
             ttl=300,
@@ -116,6 +120,7 @@ class RecordSet(pulumi.CustomResource):
 
         prod = gcp.dns.ManagedZone("prod", dns_name="prod.mydomain.com.")
         cname = gcp.dns.RecordSet("cname",
+            name=prod.dns_name.apply(lambda dns_name: f"frontend.{dns_name}"),
             managed_zone=prod.name,
             type="CNAME",
             ttl=300,
@@ -168,6 +173,8 @@ class RecordSet(pulumi.CustomResource):
             if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")
             __props__['managed_zone'] = managed_zone
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__['name'] = name
             __props__['project'] = project
             if rrdatas is None and not opts.urn:

@@ -26,6 +26,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -60,6 +62,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "frontendRecordSet", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
 // 			Type:        pulumi.String("A"),
 // 			Ttl:         pulumi.Int(300),
 // 			ManagedZone: prod.Name,
@@ -82,6 +87,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -95,6 +102,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "recordSet", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "backend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
 // 			ManagedZone: prod.Name,
 // 			Type:        pulumi.String("A"),
 // 			Ttl:         pulumi.Int(300),
@@ -128,6 +138,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "mx", &dns.RecordSetArgs{
+// 			Name:        prod.DnsName,
 // 			ManagedZone: prod.Name,
 // 			Type:        pulumi.String("MX"),
 // 			Ttl:         pulumi.Int(3600),
@@ -154,6 +165,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -167,6 +180,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "spf", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
 // 			ManagedZone: prod.Name,
 // 			Type:        pulumi.String("TXT"),
 // 			Ttl:         pulumi.Int(300),
@@ -189,6 +205,8 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
+//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dns"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
@@ -202,6 +220,9 @@ import (
 // 			return err
 // 		}
 // 		_, err = dns.NewRecordSet(ctx, "cname", &dns.RecordSetArgs{
+// 			Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "frontend.", dnsName), nil
+// 			}).(pulumi.StringOutput),
 // 			ManagedZone: prod.Name,
 // 			Type:        pulumi.String("CNAME"),
 // 			Ttl:         pulumi.Int(300),
@@ -259,6 +280,9 @@ func NewRecordSet(ctx *pulumi.Context,
 
 	if args.ManagedZone == nil {
 		return nil, errors.New("invalid value for required argument 'ManagedZone'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Rrdatas == nil {
 		return nil, errors.New("invalid value for required argument 'Rrdatas'")
@@ -335,7 +359,7 @@ type recordSetArgs struct {
 	// reside.
 	ManagedZone string `pulumi:"managedZone"`
 	// The DNS name this record set will apply to.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -354,7 +378,7 @@ type RecordSetArgs struct {
 	// reside.
 	ManagedZone pulumi.StringInput
 	// The DNS name this record set will apply to.
-	Name pulumi.StringPtrInput
+	Name pulumi.StringInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

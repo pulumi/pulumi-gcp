@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.Compute
         ///         });
         ///         var frontend = new Gcp.Dns.RecordSet("frontend", new Gcp.Dns.RecordSetArgs
         ///         {
+        ///             Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
         ///             Type = "A",
         ///             Ttl = 300,
         ///             ManagedZone = prod.Name,

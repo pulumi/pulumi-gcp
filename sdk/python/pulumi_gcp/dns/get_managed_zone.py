@@ -127,6 +127,7 @@ def get_managed_zone(name: Optional[str] = None,
 
     env_dns_zone = gcp.dns.get_managed_zone(name="qa-zone")
     dns = gcp.dns.RecordSet("dns",
+        name=f"my-address.{env_dns_zone.dns_name}",
         type="TXT",
         ttl=300,
         managed_zone=env_dns_zone.name,
