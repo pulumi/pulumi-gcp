@@ -25,6 +25,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']]] = None,
+                 restore_backup_context: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']]] = None,
                  __props__=None,
@@ -71,8 +72,7 @@ class DatabaseInstance(pulumi.CustomResource):
                the master in the replication setup. Note, this requires the master to have
                `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The full project ID of the source instance.`
         :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
                available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
                A valid region must be provided to use this resource. If a region is not provided in the resource definition,
@@ -110,6 +110,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__['project'] = project
             __props__['region'] = region
             __props__['replica_configuration'] = replica_configuration
+            __props__['restore_backup_context'] = restore_backup_context
             __props__['root_password'] = root_password
             if settings is None and not opts.urn:
                 raise TypeError("Missing required property 'settings'")
@@ -145,6 +146,7 @@ class DatabaseInstance(pulumi.CustomResource):
             public_ip_address: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             replica_configuration: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceReplicaConfigurationArgs']]] = None,
+            restore_backup_context: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceRestoreBackupContextArgs']]] = None,
             root_password: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatabaseInstanceServerCaCertArgs']]]]] = None,
@@ -181,8 +183,7 @@ class DatabaseInstance(pulumi.CustomResource):
                `binary_log_enabled` set, as well as existing backups.
         :param pulumi.Input[str] name: A name for this whitelist entry.
         :param pulumi.Input[str] private_ip_address: The first private (`PRIVATE`) IPv4 address assigned.
-        :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
-               is not provided, the provider project is used.
+        :param pulumi.Input[str] project: The full project ID of the source instance.`
         :param pulumi.Input[str] public_ip_address: The first public (`PRIMARY`) IPv4 address assigned.
         :param pulumi.Input[str] region: The region the instance will sit in. Note, Cloud SQL is not
                available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -216,6 +217,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__["public_ip_address"] = public_ip_address
         __props__["region"] = region
         __props__["replica_configuration"] = replica_configuration
+        __props__["restore_backup_context"] = restore_backup_context
         __props__["root_password"] = root_password
         __props__["self_link"] = self_link
         __props__["server_ca_certs"] = server_ca_certs
@@ -312,8 +314,7 @@ class DatabaseInstance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The ID of the project in which the resource belongs. If it
-        is not provided, the provider project is used.
+        The full project ID of the source instance.`
         """
         return pulumi.get(self, "project")
 
@@ -346,6 +347,11 @@ class DatabaseInstance(pulumi.CustomResource):
         configuration is detailed below.
         """
         return pulumi.get(self, "replica_configuration")
+
+    @property
+    @pulumi.getter(name="restoreBackupContext")
+    def restore_backup_context(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceRestoreBackupContext']]:
+        return pulumi.get(self, "restore_backup_context")
 
     @property
     @pulumi.getter(name="rootPassword")

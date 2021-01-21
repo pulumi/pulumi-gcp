@@ -22,7 +22,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sql.LookupDatabaseInstance(ctx, &sql.LookupDatabaseInstanceArgs{
-// 			Name: google_sql_database_instance.Master.Name,
+// 			Name: "test-sql-instance",
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -76,6 +76,7 @@ type LookupDatabaseInstanceResult struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfigurations []GetDatabaseInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
+	RestoreBackupContexts []GetDatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword string `pulumi:"rootPassword"`
 	// The URI of the created resource.

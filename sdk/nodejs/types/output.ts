@@ -6223,6 +6223,234 @@ export namespace compute {
         enableVtpm: boolean;
     }
 
+    export interface GetInstanceTemplateConfidentialInstanceConfig {
+        enableConfidentialCompute: boolean;
+    }
+
+    export interface GetInstanceTemplateDisk {
+        /**
+         * Whether or not the disk should be auto-deleted.
+         * This defaults to true.
+         */
+        autoDelete: boolean;
+        /**
+         * Indicates that this is a boot disk.
+         */
+        boot: boolean;
+        /**
+         * A unique device name that is reflected into the
+         * /dev/  tree of a Linux operating system running within the instance. If not
+         * specified, the server chooses a default device name to apply to this disk.
+         */
+        deviceName: string;
+        /**
+         * Encrypts or decrypts a disk using a customer-supplied encryption key.
+         */
+        diskEncryptionKeys: outputs.compute.GetInstanceTemplateDiskDiskEncryptionKey[];
+        /**
+         * Name of the disk. When not provided, this defaults
+         * to the name of the instance.
+         */
+        diskName: string;
+        /**
+         * The size of the image in gigabytes. If not
+         * specified, it will inherit the size of its base image. For SCRATCH disks,
+         * the size must be exactly 375GB.
+         */
+        diskSizeGb: number;
+        /**
+         * The GCE disk type. Can be either `"pd-ssd"`,
+         * `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+         */
+        diskType: string;
+        /**
+         * Specifies the disk interface to use for attaching this disk, 
+         * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+         * and the request will fail if you attempt to attach a persistent disk in any other format
+         * than SCSI. Local SSDs can use either NVME or SCSI.
+         */
+        interface: string;
+        /**
+         * A set of key/value label pairs to assign to instances
+         * created from this template,
+         */
+        labels: {[key: string]: string};
+        /**
+         * The mode in which to attach this disk, either READ_WRITE
+         * or READ_ONLY. If you are attaching or creating a boot disk, this must
+         * read-write mode.
+         */
+        mode: string;
+        /**
+         * The name (**not self_link**)
+         * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
+         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        source: string;
+        /**
+         * The image from which to
+         * initialize this disk. This can be one of: the image's `selfLink`,
+         * `projects/{project}/global/images/{image}`,
+         * `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+         * `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+         * `{project}/{image}`, `{family}`, or `{image}`.
+         * > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+         */
+        sourceImage: string;
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface GetInstanceTemplateDiskDiskEncryptionKey {
+        /**
+         * The self link of the encryption key that is stored in Google Cloud KMS
+         */
+        kmsKeySelfLink: string;
+    }
+
+    export interface GetInstanceTemplateGuestAccelerator {
+        /**
+         * The number of the guest accelerator cards exposed to this instance.
+         */
+        count: number;
+        /**
+         * The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+         */
+        type: string;
+    }
+
+    export interface GetInstanceTemplateNetworkInterface {
+        accessConfigs: outputs.compute.GetInstanceTemplateNetworkInterfaceAccessConfig[];
+        /**
+         * An
+         * array of alias IP ranges for this network interface. Can only be specified for network
+         * interfaces on subnet-mode networks. Structure documented below.
+         */
+        aliasIpRanges: outputs.compute.GetInstanceTemplateNetworkInterfaceAliasIpRange[];
+        /**
+         * The name of the instance template. One of `name` or `filter` must be provided.
+         */
+        name: string;
+        /**
+         * The name or selfLink of the network to attach this interface to.
+         * Use `network` attribute for Legacy or Auto subnetted networks and
+         * `subnetwork` for custom subnetted networks.
+         */
+        network: string;
+        /**
+         * The private IP address to assign to the instance. If
+         * empty, the address will be automatically assigned.
+         */
+        networkIp: string;
+        /**
+         * the name of the subnetwork to attach this interface
+         * to. The subnetwork must exist in the same `region` this instance will be
+         * created in. Either `network` or `subnetwork` must be provided.
+         */
+        subnetwork: string;
+        /**
+         * The ID of the project in which the subnetwork belongs.
+         * If it is not provided, the provider project is used.
+         */
+        subnetworkProject: string;
+    }
+
+    export interface GetInstanceTemplateNetworkInterfaceAccessConfig {
+        /**
+         * The IP address that will be 1:1 mapped to the instance's
+         * network ip. If not given, one will be generated.
+         */
+        natIp: string;
+        /**
+         * The [networking tier][network-tier] used for configuring
+         * this instance template. This field can take the following values: PREMIUM or
+         * STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+         */
+        networkTier: string;
+        publicPtrDomainName: string;
+    }
+
+    export interface GetInstanceTemplateNetworkInterfaceAliasIpRange {
+        /**
+         * The IP CIDR range represented by this alias IP range. This IP CIDR range
+         * must belong to the specified subnetwork and cannot contain IP addresses reserved by
+         * system or used by other network interfaces. At the time of writing only a
+         * netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+         * error.
+         */
+        ipCidrRange: string;
+        /**
+         * The subnetwork secondary range name specifying
+         * the secondary range from which to allocate the IP CIDR range for this alias IP
+         * range. If left unspecified, the primary range of the subnetwork will be used.
+         */
+        subnetworkRangeName: string;
+    }
+
+    export interface GetInstanceTemplateScheduling {
+        /**
+         * Specifies whether the instance should be
+         * automatically restarted if it is terminated by Compute Engine (not
+         * terminated by a user). This defaults to true.
+         */
+        automaticRestart: boolean;
+        minNodeCpus: number;
+        /**
+         * Specifies node affinities or anti-affinities
+         * to determine which sole-tenant nodes your instances and managed instance
+         * groups will use as host systems. Read more on sole-tenant node creation
+         * [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+         * Structure documented below.
+         */
+        nodeAffinities: outputs.compute.GetInstanceTemplateSchedulingNodeAffinity[];
+        /**
+         * Defines the maintenance behavior for this
+         * instance.
+         */
+        onHostMaintenance: string;
+        /**
+         * Allows instance to be preempted. This defaults to
+         * false. Read more on this
+         * [here](https://cloud.google.com/compute/docs/instances/preemptible).
+         */
+        preemptible: boolean;
+    }
+
+    export interface GetInstanceTemplateSchedulingNodeAffinity {
+        /**
+         * The key for the node affinity label.
+         */
+        key: string;
+        /**
+         * The operator. Can be `IN` for node-affinities
+         * or `NOT_IN` for anti-affinities.
+         */
+        operator: string;
+        values: string[];
+    }
+
+    export interface GetInstanceTemplateServiceAccount {
+        /**
+         * The service account e-mail address. If not given, the
+         * default Google Compute Engine service account is used.
+         */
+        email: string;
+        /**
+         * A list of service scopes. Both OAuth2 URLs and gcloud
+         * short names are supported. To allow full access to all Cloud APIs, use the
+         * `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+         */
+        scopes: string[];
+    }
+
+    export interface GetInstanceTemplateShieldedInstanceConfig {
+        enableIntegrityMonitoring: boolean;
+        enableSecureBoot: boolean;
+        enableVtpm: boolean;
+    }
+
     export interface GetRegionInstanceGroupInstance {
         /**
          * URL to the instance.
@@ -21155,6 +21383,22 @@ export namespace sql {
         verifyServerCertificate?: boolean;
     }
 
+    export interface DatabaseInstanceRestoreBackupContext {
+        /**
+         * The ID of the backup run to restore from.
+         */
+        backupRunId: number;
+        /**
+         * The ID of the instance that the backup was taken from. If left empty,
+         * this instance's ID will be used.
+         */
+        instanceId?: string;
+        /**
+         * The full project ID of the source instance.`
+         */
+        project?: string;
+    }
+
     export interface DatabaseInstanceServerCaCert {
         cert: string;
         commonName: string;
@@ -21421,6 +21665,15 @@ export namespace sql {
          * True if the master's common name value is checked during the SSL handshake.
          */
         verifyServerCertificate: boolean;
+    }
+
+    export interface GetDatabaseInstanceRestoreBackupContext {
+        backupRunId: number;
+        instanceId: string;
+        /**
+         * The ID of the project in which the resource belongs.
+         */
+        project: string;
     }
 
     export interface GetDatabaseInstanceServerCaCert {

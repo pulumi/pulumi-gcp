@@ -125,7 +125,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The name of the Memcache region of the instance.
+     * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -168,9 +168,6 @@ export class Instance extends pulumi.CustomResource {
             }
             if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'nodeCount'");
-            }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -264,7 +261,7 @@ export interface InstanceState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The name of the Memcache region of the instance.
+     * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -323,9 +320,9 @@ export interface InstanceArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The name of the Memcache region of the instance.
+     * The region of the Memcache instance. If it is not provided, the provider region is used.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * Zones where memcache nodes should be provisioned.  If not
      * provided, all zones will be used.

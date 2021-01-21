@@ -11,71 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Allows creation and management of a Google Cloud Platform project.
-//
-// Projects created with this resource must be associated with an Organization.
-// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-//
-// The service account used to run this provider when creating a `organizations.Project`
-// resource must have `roles/resourcemanager.projectCreator`. See the
-// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-// doc for more information.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-// 			OrgId:     pulumi.String("1234567"),
-// 			ProjectId: pulumi.String("your-project-id"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
-// To create a project under a specific folder
-//
-// ```go
-// package main
-//
-// import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-// 			DisplayName: pulumi.String("Department 1"),
-// 			Parent:      pulumi.String("organizations/1234567"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = organizations.NewProject(ctx, "myProject_in_a_folder", &organizations.ProjectArgs{
-// 			ProjectId: pulumi.String("your-project-id"),
-// 			FolderId:  department1.Name,
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
 // Projects can be imported using the `project_id`, e.g.
@@ -93,8 +28,8 @@ type Project struct {
 	AutoCreateNetwork pulumi.BoolPtrOutput `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have Billing Account Administrator privileges (`roles/billing.admin`) in
-	// the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrOutput `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
@@ -162,8 +97,8 @@ type projectState struct {
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have Billing Account Administrator privileges (`roles/billing.admin`) in
-	// the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
@@ -200,8 +135,8 @@ type ProjectState struct {
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have Billing Account Administrator privileges (`roles/billing.admin`) in
-	// the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be
@@ -242,8 +177,8 @@ type projectArgs struct {
 	AutoCreateNetwork *bool `pulumi:"autoCreateNetwork"`
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have Billing Account Administrator privileges (`roles/billing.admin`) in
-	// the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount *string `pulumi:"billingAccount"`
 	// The numeric ID of the folder this project should be
@@ -279,8 +214,8 @@ type ProjectArgs struct {
 	AutoCreateNetwork pulumi.BoolPtrInput
 	// The alphanumeric ID of the billing account this project
 	// belongs to. The user or service account performing this operation with the provider
-	// must have Billing Account Administrator privileges (`roles/billing.admin`) in
-	// the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+	// must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+	// See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
 	// for more details.
 	BillingAccount pulumi.StringPtrInput
 	// The numeric ID of the folder this project should be

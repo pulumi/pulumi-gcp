@@ -33,11 +33,11 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := notebooks.NewEnvironment(ctx, "environment", &notebooks.EnvironmentArgs{
-// 			Location: pulumi.String("us-west1-a"),
 // 			ContainerImage: &notebooks.EnvironmentContainerImageArgs{
 // 				Repository: pulumi.String("gcr.io/deeplearning-platform-release/base-cpu"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 			Location: pulumi.String("us-west1-a"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}

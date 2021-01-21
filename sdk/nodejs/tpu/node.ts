@@ -144,7 +144,7 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly useServiceNetworking!: pulumi.Output<boolean | undefined>;
     /**
-     * The GCP location for the TPU.
+     * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -180,9 +180,6 @@ export class Node extends pulumi.CustomResource {
             }
             if ((!args || args.tensorflowVersion === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'tensorflowVersion'");
-            }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'zone'");
             }
             inputs["acceleratorType"] = args ? args.acceleratorType : undefined;
             inputs["cidrBlock"] = args ? args.cidrBlock : undefined;
@@ -279,7 +276,7 @@ export interface NodeState {
      */
     readonly useServiceNetworking?: pulumi.Input<boolean>;
     /**
-     * The GCP location for the TPU.
+     * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */
     readonly zone?: pulumi.Input<string>;
 }
@@ -344,7 +341,7 @@ export interface NodeArgs {
      */
     readonly useServiceNetworking?: pulumi.Input<boolean>;
     /**
-     * The GCP location for the TPU.
+     * The GCP location for the TPU. If it is not provided, the provider zone is used.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

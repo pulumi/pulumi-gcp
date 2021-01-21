@@ -22,13 +22,16 @@ type AccessApprovalSettings struct {
 	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
 	// expanded as the set of supported services is expanded.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayOutput `pulumi:"enrolledServices"`
-	// The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
 	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
 	// addresses are allowed.
 	NotificationEmails pulumi.StringArrayOutput `pulumi:"notificationEmails"`
-	Project            pulumi.StringOutput      `pulumi:"project"`
+	// Deprecated in favor of 'project_id'
+	//
+	// Deprecated: Deprecated in favor of `project_id`
+	Project pulumi.StringPtrOutput `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 }
@@ -76,13 +79,16 @@ type accessApprovalSettingsState struct {
 	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
 	// expanded as the set of supported services is expanded.
 	EnrolledServices []AccessApprovalSettingsEnrolledService `pulumi:"enrolledServices"`
-	// The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name *string `pulumi:"name"`
 	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
 	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
 	// addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	Project            *string  `pulumi:"project"`
+	// Deprecated in favor of 'project_id'
+	//
+	// Deprecated: Deprecated in favor of `project_id`
+	Project *string `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId *string `pulumi:"projectId"`
 }
@@ -96,13 +102,16 @@ type AccessApprovalSettingsState struct {
 	// Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
 	// expanded as the set of supported services is expanded.
 	EnrolledServices AccessApprovalSettingsEnrolledServiceArrayInput
-	// The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+	// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
 	Name pulumi.StringPtrInput
 	// A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
 	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
 	// addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	Project            pulumi.StringPtrInput
+	// Deprecated in favor of 'project_id'
+	//
+	// Deprecated: Deprecated in favor of `project_id`
+	Project pulumi.StringPtrInput
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringPtrInput
 }
@@ -121,7 +130,10 @@ type accessApprovalSettingsArgs struct {
 	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
 	// addresses are allowed.
 	NotificationEmails []string `pulumi:"notificationEmails"`
-	Project            *string  `pulumi:"project"`
+	// Deprecated in favor of 'project_id'
+	//
+	// Deprecated: Deprecated in favor of `project_id`
+	Project *string `pulumi:"project"`
 	// ID of the project of the access approval settings.
 	ProjectId string `pulumi:"projectId"`
 }
@@ -137,7 +149,10 @@ type AccessApprovalSettingsArgs struct {
 	// a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
 	// addresses are allowed.
 	NotificationEmails pulumi.StringArrayInput
-	Project            pulumi.StringPtrInput
+	// Deprecated in favor of 'project_id'
+	//
+	// Deprecated: Deprecated in favor of `project_id`
+	Project pulumi.StringPtrInput
 	// ID of the project of the access approval settings.
 	ProjectId pulumi.StringInput
 }

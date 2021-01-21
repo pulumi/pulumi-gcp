@@ -10,61 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
-    /// Allows creation and management of a Google Cloud Platform project.
-    /// 
-    /// Projects created with this resource must be associated with an Organization.
-    /// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-    /// 
-    /// The service account used to run this provider when creating a `gcp.organizations.Project`
-    /// resource must have `roles/resourcemanager.projectCreator`. See the
-    /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-    /// doc for more information.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             OrgId = "1234567",
-    ///             ProjectId = "your-project-id",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
-    /// To create a project under a specific folder
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var department1 = new Gcp.Organizations.Folder("department1", new Gcp.Organizations.FolderArgs
-    ///         {
-    ///             DisplayName = "Department 1",
-    ///             Parent = "organizations/1234567",
-    ///         });
-    ///         var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new Gcp.Organizations.ProjectArgs
-    ///         {
-    ///             ProjectId = "your-project-id",
-    ///             FolderId = department1.Name,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Projects can be imported using the `project_id`, e.g.

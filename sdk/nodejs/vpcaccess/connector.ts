@@ -23,7 +23,6 @@ import * as utilities from "../utilities";
  * const connector = new gcp.vpcaccess.Connector("connector", {
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
- *     region: "us-central1",
  * });
  * ```
  *
@@ -101,7 +100,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Region where the VPC Access connector resides
+     * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -141,9 +140,6 @@ export class Connector extends pulumi.CustomResource {
             }
             if ((!args || args.network === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'network'");
-            }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
             }
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["maxThroughput"] = args ? args.maxThroughput : undefined;
@@ -196,7 +192,7 @@ export interface ConnectorState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Region where the VPC Access connector resides
+     * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -239,7 +235,7 @@ export interface ConnectorArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * Region where the VPC Access connector resides
+     * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
 }

@@ -98,6 +98,9 @@ namespace Pulumi.Gcp.Compute
     ///             RequestPath = "/",
     ///             CheckIntervalSec = 1,
     ///             TimeoutSec = 1,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///         var defaultBackendService = new Gcp.Compute.BackendService("defaultBackendService", new Gcp.Compute.BackendServiceArgs
     ///         {
@@ -115,6 +118,9 @@ namespace Pulumi.Gcp.Compute
     ///                 NegativeCaching = true,
     ///                 SignedUrlCacheMaxAgeSec = 7200,
     ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

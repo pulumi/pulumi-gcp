@@ -94,7 +94,7 @@ import (
 // 			},
 // 			LoadBalancingScheme: pulumi.String("EXTERNAL"),
 // 			Protocol:            pulumi.String("HTTP"),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

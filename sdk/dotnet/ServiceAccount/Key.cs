@@ -45,6 +45,12 @@ namespace Pulumi.Gcp.ServiceAccount
     public partial class Key : Pulumi.CustomResource
     {
         /// <summary>
+        /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        /// </summary>
+        [Output("keepers")]
+        public Output<ImmutableDictionary<string, object>?> Keepers { get; private set; } = null!;
+
+        /// <summary>
         /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
         /// Valid values are listed at
         /// [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -157,6 +163,18 @@ namespace Pulumi.Gcp.ServiceAccount
 
     public sealed class KeyArgs : Pulumi.ResourceArgs
     {
+        [Input("keepers")]
+        private InputMap<object>? _keepers;
+
+        /// <summary>
+        /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        /// </summary>
+        public InputMap<object> Keepers
+        {
+            get => _keepers ?? (_keepers = new InputMap<object>());
+            set => _keepers = value;
+        }
+
         /// <summary>
         /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
         /// Valid values are listed at
@@ -199,6 +217,18 @@ namespace Pulumi.Gcp.ServiceAccount
 
     public sealed class KeyState : Pulumi.ResourceArgs
     {
+        [Input("keepers")]
+        private InputMap<object>? _keepers;
+
+        /// <summary>
+        /// Arbitrary map of values that, when changed, will trigger a new key to be generated.
+        /// </summary>
+        public InputMap<object> Keepers
+        {
+            get => _keepers ?? (_keepers = new InputMap<object>());
+            set => _keepers = value;
+        }
+
         /// <summary>
         /// The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
         /// Valid values are listed at

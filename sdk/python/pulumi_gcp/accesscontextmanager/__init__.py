@@ -7,6 +7,7 @@ from .access_level import *
 from .access_level_condition import *
 from .access_levels import *
 from .access_policy import *
+from .gcp_user_access_binding import *
 from .service_perimeter import *
 from .service_perimeter_resource import *
 from .service_perimeters import *
@@ -33,6 +34,8 @@ def _register_module():
                 return AccessLevels(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:accesscontextmanager/accessPolicy:AccessPolicy":
                 return AccessPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding":
+                return GcpUserAccessBinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter":
                 return ServicePerimeter(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource":
@@ -48,6 +51,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/accessLevelCondition", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/accessLevels", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/accessPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/gcpUserAccessBinding", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/servicePerimeter", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/servicePerimeterResource", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "accesscontextmanager/servicePerimeters", _module_instance)

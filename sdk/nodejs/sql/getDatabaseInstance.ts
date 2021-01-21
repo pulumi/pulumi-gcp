@@ -14,9 +14,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const qa = gcp.sql.getDatabaseInstance({
- *     name: google_sql_database_instance.master.name,
- * });
+ * const qa = pulumi.output(gcp.sql.getDatabaseInstance({
+ *     name: "test-sql-instance",
+ * }, { async: true }));
  * ```
  */
 export function getDatabaseInstance(args: GetDatabaseInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseInstanceResult> {
@@ -97,6 +97,7 @@ export interface GetDatabaseInstanceResult {
      * configuration is detailed below.
      */
     readonly replicaConfigurations: outputs.sql.GetDatabaseInstanceReplicaConfiguration[];
+    readonly restoreBackupContexts: outputs.sql.GetDatabaseInstanceRestoreBackupContext[];
     /**
      * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
      */

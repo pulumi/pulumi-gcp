@@ -96,7 +96,8 @@ class BackendService(pulumi.CustomResource):
         default_http_health_check = gcp.compute.HttpHealthCheck("defaultHttpHealthCheck",
             request_path="/",
             check_interval_sec=1,
-            timeout_sec=1)
+            timeout_sec=1,
+            opts=pulumi.ResourceOptions(provider=google_beta))
         default_backend_service = gcp.compute.BackendService("defaultBackendService",
             health_checks=[default_http_health_check.id],
             enable_cdn=True,
@@ -107,7 +108,8 @@ class BackendService(pulumi.CustomResource):
                 max_ttl=10800,
                 negative_caching=True,
                 signed_url_cache_max_age_sec=7200,
-            ))
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Backend Service Traffic Director Round Robin
 

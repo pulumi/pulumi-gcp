@@ -31,6 +31,7 @@ from .get_image import *
 from .get_instance import *
 from .get_instance_group import *
 from .get_instance_serial_port import *
+from .get_instance_template import *
 from .get_lbip_ranges import *
 from .get_netblock_ip_ranges import *
 from .get_network import *

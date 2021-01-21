@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Sql
         ///     {
         ///         var qa = Output.Create(Gcp.Sql.GetDatabaseInstance.InvokeAsync(new Gcp.Sql.GetDatabaseInstanceArgs
         ///         {
-        ///             Name = google_sql_database_instance.Master.Name,
+        ///             Name = "test-sql-instance",
         ///         }));
         ///     }
         /// 
@@ -111,6 +111,7 @@ namespace Pulumi.Gcp.Sql
         /// configuration is detailed below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceReplicaConfigurationResult> ReplicaConfigurations;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceRestoreBackupContextResult> RestoreBackupContexts;
         /// <summary>
         /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         /// </summary>
@@ -160,6 +161,8 @@ namespace Pulumi.Gcp.Sql
 
             ImmutableArray<Outputs.GetDatabaseInstanceReplicaConfigurationResult> replicaConfigurations,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceRestoreBackupContextResult> restoreBackupContexts,
+
             string rootPassword,
 
             string selfLink,
@@ -184,6 +187,7 @@ namespace Pulumi.Gcp.Sql
             PublicIpAddress = publicIpAddress;
             Region = region;
             ReplicaConfigurations = replicaConfigurations;
+            RestoreBackupContexts = restoreBackupContexts;
             RootPassword = rootPassword;
             SelfLink = selfLink;
             ServerCaCerts = serverCaCerts;

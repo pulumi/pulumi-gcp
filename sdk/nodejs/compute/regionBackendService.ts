@@ -64,6 +64,8 @@ import * as utilities from "../utilities";
  *     },
  *     loadBalancingScheme: "EXTERNAL",
  *     protocol: "HTTP",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  * ### Region Backend Service Ilb Round Robin

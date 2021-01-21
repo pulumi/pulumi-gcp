@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Sql
     ///     {
     ///         var instance = new Gcp.Sql.SourceRepresentationInstance("instance", new Gcp.Sql.SourceRepresentationInstanceArgs
     ///         {
-    ///             DatabaseVersion = "MYSQL_5_7",
+    ///             DatabaseVersion = "MYSQL_8_0",
     ///             Host = "10.20.30.40",
     ///             Port = 3306,
     ///             Region = "us-central1",
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The MySQL version running on your source database server.
-        /// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+        /// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The MySQL version running on your source database server.
-        /// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+        /// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         /// </summary>
         [Input("databaseVersion", required: true)]
         public Input<string> DatabaseVersion { get; set; } = null!;
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.Sql
     {
         /// <summary>
         /// The MySQL version running on your source database server.
-        /// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+        /// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }

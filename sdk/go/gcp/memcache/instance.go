@@ -77,7 +77,7 @@ type Instance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The name of the Memcache region of the instance.
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
@@ -96,9 +96,6 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args.NodeCount == nil {
 		return nil, errors.New("invalid value for required argument 'NodeCount'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("gcp:memcache/instance:Instance", name, args, &resource, opts...)
@@ -156,7 +153,7 @@ type instanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The name of the Memcache region of the instance.
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
@@ -198,7 +195,7 @@ type InstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The name of the Memcache region of the instance.
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
@@ -236,8 +233,8 @@ type instanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The name of the Memcache region of the instance.
-	Region string `pulumi:"region"`
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
+	Region *string `pulumi:"region"`
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones []string `pulumi:"zones"`
@@ -271,8 +268,8 @@ type InstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The name of the Memcache region of the instance.
-	Region pulumi.StringInput
+	// The region of the Memcache instance. If it is not provided, the provider region is used.
+	Region pulumi.StringPtrInput
 	// Zones where memcache nodes should be provisioned.  If not
 	// provided, all zones will be used.
 	Zones pulumi.StringArrayInput

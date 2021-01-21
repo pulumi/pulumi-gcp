@@ -22,12 +22,10 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const environment = new gcp.notebooks.Environment("environment", {
- *     location: "us-west1-a",
  *     containerImage: {
  *         repository: "gcr.io/deeplearning-platform-release/base-cpu",
  *     },
- * }, {
- *     provider: google_beta,
+ *     location: "us-west1-a",
  * });
  * ```
  *

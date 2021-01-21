@@ -31,7 +31,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := sql.NewSourceRepresentationInstance(ctx, "instance", &sql.SourceRepresentationInstanceArgs{
-// 			DatabaseVersion: pulumi.String("MYSQL_5_7"),
+// 			DatabaseVersion: pulumi.String("MYSQL_8_0"),
 // 			Host:            pulumi.String("10.20.30.40"),
 // 			Port:            pulumi.Int(3306),
 // 			Region:          pulumi.String("us-central1"),
@@ -63,7 +63,7 @@ type SourceRepresentationInstance struct {
 	pulumi.CustomResourceState
 
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+	// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// The externally accessible IPv4 address for the source database server.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -116,7 +116,7 @@ func GetSourceRepresentationInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SourceRepresentationInstance resources.
 type sourceRepresentationInstanceState struct {
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+	// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// The externally accessible IPv4 address for the source database server.
 	Host *string `pulumi:"host"`
@@ -135,7 +135,7 @@ type sourceRepresentationInstanceState struct {
 
 type SourceRepresentationInstanceState struct {
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+	// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringPtrInput
 	// The externally accessible IPv4 address for the source database server.
 	Host pulumi.StringPtrInput
@@ -158,7 +158,7 @@ func (SourceRepresentationInstanceState) ElementType() reflect.Type {
 
 type sourceRepresentationInstanceArgs struct {
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+	// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion string `pulumi:"databaseVersion"`
 	// The externally accessible IPv4 address for the source database server.
 	Host string `pulumi:"host"`
@@ -178,7 +178,7 @@ type sourceRepresentationInstanceArgs struct {
 // The set of arguments for constructing a SourceRepresentationInstance resource.
 type SourceRepresentationInstanceArgs struct {
 	// The MySQL version running on your source database server.
-	// Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+	// Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
 	DatabaseVersion pulumi.StringInput
 	// The externally accessible IPv4 address for the source database server.
 	Host pulumi.StringInput

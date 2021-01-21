@@ -102,8 +102,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public /*out*/ readonly privateIpAddress!: pulumi.Output<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The full project ID of the source instance.`
      */
     public readonly project!: pulumi.Output<string>;
     /**
@@ -124,6 +123,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * configuration is detailed below.
      */
     public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
+    public readonly restoreBackupContext!: pulumi.Output<outputs.sql.DatabaseInstanceRestoreBackupContext | undefined>;
     /**
      * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
      */
@@ -169,6 +169,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["publicIpAddress"] = state ? state.publicIpAddress : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
+            inputs["restoreBackupContext"] = state ? state.restoreBackupContext : undefined;
             inputs["rootPassword"] = state ? state.rootPassword : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
@@ -187,6 +188,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaConfiguration"] = args ? args.replicaConfiguration : undefined;
+            inputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
             inputs["rootPassword"] = args ? args.rootPassword : undefined;
             inputs["settings"] = args ? args.settings : undefined;
             inputs["connectionName"] = undefined /*out*/;
@@ -263,8 +265,7 @@ export interface DatabaseInstanceState {
      */
     readonly privateIpAddress?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The full project ID of the source instance.`
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -285,6 +286,7 @@ export interface DatabaseInstanceState {
      * configuration is detailed below.
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    readonly restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
     /**
      * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
      */
@@ -346,8 +348,7 @@ export interface DatabaseInstanceArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * The ID of the project in which the resource belongs. If it
-     * is not provided, the provider project is used.
+     * The full project ID of the source instance.`
      */
     readonly project?: pulumi.Input<string>;
     /**
@@ -364,6 +365,7 @@ export interface DatabaseInstanceArgs {
      * configuration is detailed below.
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    readonly restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
     /**
      * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
      */

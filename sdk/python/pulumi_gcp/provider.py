@@ -21,6 +21,7 @@ class Provider(pulumi.ProviderResource):
                  access_token: Optional[pulumi.Input[str]] = None,
                  active_directory_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  artifact_registry_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  batching: Optional[pulumi.Input[pulumi.InputType['ProviderBatchingArgs']]] = None,
@@ -141,6 +142,7 @@ class Provider(pulumi.ProviderResource):
             __props__['access_token'] = access_token
             __props__['active_directory_custom_endpoint'] = active_directory_custom_endpoint
             __props__['api_gateway_custom_endpoint'] = api_gateway_custom_endpoint
+            __props__['apigee_custom_endpoint'] = apigee_custom_endpoint
             __props__['app_engine_custom_endpoint'] = app_engine_custom_endpoint
             __props__['artifact_registry_custom_endpoint'] = artifact_registry_custom_endpoint
             __props__['batching'] = pulumi.Output.from_input(batching).apply(pulumi.runtime.to_json) if batching is not None else None

@@ -64,8 +64,7 @@ type DatabaseInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringOutput `pulumi:"privateIpAddress"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The full project ID of the source instance.`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringOutput `pulumi:"publicIpAddress"`
@@ -78,7 +77,8 @@ type DatabaseInstance struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below.
-	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
+	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput    `pulumi:"replicaConfiguration"`
+	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrOutput `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
 	// The URI of the created resource.
@@ -157,8 +157,7 @@ type databaseInstanceState struct {
 	Name *string `pulumi:"name"`
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress *string `pulumi:"privateIpAddress"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The full project ID of the source instance.`
 	Project *string `pulumi:"project"`
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress *string `pulumi:"publicIpAddress"`
@@ -172,6 +171,7 @@ type databaseInstanceState struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
+	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The URI of the created resource.
@@ -219,8 +219,7 @@ type DatabaseInstanceState struct {
 	Name pulumi.StringPtrInput
 	// The first private (`PRIVATE`) IPv4 address assigned.
 	PrivateIpAddress pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The full project ID of the source instance.`
 	Project pulumi.StringPtrInput
 	// The first public (`PRIMARY`) IPv4 address assigned.
 	PublicIpAddress pulumi.StringPtrInput
@@ -234,6 +233,7 @@ type DatabaseInstanceState struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
+	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The URI of the created resource.
@@ -277,8 +277,7 @@ type databaseInstanceArgs struct {
 	MasterInstanceName *string `pulumi:"masterInstanceName"`
 	// A name for this whitelist entry.
 	Name *string `pulumi:"name"`
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The full project ID of the source instance.`
 	Project *string `pulumi:"project"`
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -290,6 +289,7 @@ type databaseInstanceArgs struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
+	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The settings to use for the database. The
@@ -324,8 +324,7 @@ type DatabaseInstanceArgs struct {
 	MasterInstanceName pulumi.StringPtrInput
 	// A name for this whitelist entry.
 	Name pulumi.StringPtrInput
-	// The ID of the project in which the resource belongs. If it
-	// is not provided, the provider project is used.
+	// The full project ID of the source instance.`
 	Project pulumi.StringPtrInput
 	// The region the instance will sit in. Note, Cloud SQL is not
 	// available in all regions - choose from one of the options listed [here](https://cloud.google.com/sql/docs/mysql/instance-locations).
@@ -337,6 +336,7 @@ type DatabaseInstanceArgs struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
+	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The settings to use for the database. The

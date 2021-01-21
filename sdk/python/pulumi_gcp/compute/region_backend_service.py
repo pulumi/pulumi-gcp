@@ -96,7 +96,8 @@ class RegionBackendService(pulumi.CustomResource):
                 signed_url_cache_max_age_sec=7200,
             ),
             load_balancing_scheme="EXTERNAL",
-            protocol="HTTP")
+            protocol="HTTP",
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Region Backend Service Ilb Round Robin
 

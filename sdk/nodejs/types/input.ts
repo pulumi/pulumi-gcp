@@ -19797,6 +19797,22 @@ export namespace sql {
         verifyServerCertificate?: pulumi.Input<boolean>;
     }
 
+    export interface DatabaseInstanceRestoreBackupContext {
+        /**
+         * The ID of the backup run to restore from.
+         */
+        backupRunId: pulumi.Input<number>;
+        /**
+         * The ID of the instance that the backup was taken from. If left empty,
+         * this instance's ID will be used.
+         */
+        instanceId?: pulumi.Input<string>;
+        /**
+         * The full project ID of the source instance.`
+         */
+        project?: pulumi.Input<string>;
+    }
+
     export interface DatabaseInstanceServerCaCert {
         cert?: pulumi.Input<string>;
         commonName?: pulumi.Input<string>;

@@ -113,7 +113,7 @@ type Node struct {
 	// cidrBlock field should not be specified. If the network that you want to peer the
 	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
 	UseServiceNetworking pulumi.BoolPtrOutput `pulumi:"useServiceNetworking"`
-	// The GCP location for the TPU.
+	// The GCP location for the TPU. If it is not provided, the provider zone is used.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -129,9 +129,6 @@ func NewNode(ctx *pulumi.Context,
 	}
 	if args.TensorflowVersion == nil {
 		return nil, errors.New("invalid value for required argument 'TensorflowVersion'")
-	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource Node
 	err := ctx.RegisterResource("gcp:tpu/node:Node", name, args, &resource, opts...)
@@ -196,7 +193,7 @@ type nodeState struct {
 	// cidrBlock field should not be specified. If the network that you want to peer the
 	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
 	UseServiceNetworking *bool `pulumi:"useServiceNetworking"`
-	// The GCP location for the TPU.
+	// The GCP location for the TPU. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -242,7 +239,7 @@ type NodeState struct {
 	// cidrBlock field should not be specified. If the network that you want to peer the
 	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
 	UseServiceNetworking pulumi.BoolPtrInput
-	// The GCP location for the TPU.
+	// The GCP location for the TPU. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
 
@@ -286,8 +283,8 @@ type nodeArgs struct {
 	// cidrBlock field should not be specified. If the network that you want to peer the
 	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
 	UseServiceNetworking *bool `pulumi:"useServiceNetworking"`
-	// The GCP location for the TPU.
-	Zone string `pulumi:"zone"`
+	// The GCP location for the TPU. If it is not provided, the provider zone is used.
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a Node resource.
@@ -327,8 +324,8 @@ type NodeArgs struct {
 	// cidrBlock field should not be specified. If the network that you want to peer the
 	// TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
 	UseServiceNetworking pulumi.BoolPtrInput
-	// The GCP location for the TPU.
-	Zone pulumi.StringInput
+	// The GCP location for the TPU. If it is not provided, the provider zone is used.
+	Zone pulumi.StringPtrInput
 }
 
 func (NodeArgs) ElementType() reflect.Type {

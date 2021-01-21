@@ -35,6 +35,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
                a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
                addresses are allowed.
+        :param pulumi.Input[str] project: Deprecated in favor of 'project_id'
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
         if __name__ is not None:
@@ -58,6 +59,9 @@ class AccessApprovalSettings(pulumi.CustomResource):
                 raise TypeError("Missing required property 'enrolled_services'")
             __props__['enrolled_services'] = enrolled_services
             __props__['notification_emails'] = notification_emails
+            if project is not None and not opts.urn:
+                warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
+                pulumi.log.warn("project is deprecated: Deprecated in favor of `project_id`")
             __props__['project'] = project
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -93,10 +97,11 @@ class AccessApprovalSettings(pulumi.CustomResource):
                resource given by name against any of these services contained here will be required to have explicit approval.
                Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
                expanded as the set of supported services is expanded.
-        :param pulumi.Input[str] name: The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+        :param pulumi.Input[str] name: The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
                a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
                addresses are allowed.
+        :param pulumi.Input[str] project: Deprecated in favor of 'project_id'
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -135,7 +140,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+        The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
         """
         return pulumi.get(self, "name")
 
@@ -151,7 +156,10 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def project(self) -> pulumi.Output[str]:
+    def project(self) -> pulumi.Output[Optional[str]]:
+        """
+        Deprecated in favor of 'project_id'
+        """
         return pulumi.get(self, "project")
 
     @property

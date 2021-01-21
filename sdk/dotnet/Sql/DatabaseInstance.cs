@@ -98,8 +98,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string> PrivateIpAddress { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The full project ID of the source instance.`
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -127,6 +126,9 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("replicaConfiguration")]
         public Output<Outputs.DatabaseInstanceReplicaConfiguration> ReplicaConfiguration { get; private set; } = null!;
+
+        [Output("restoreBackupContext")]
+        public Output<Outputs.DatabaseInstanceRestoreBackupContext?> RestoreBackupContext { get; private set; } = null!;
 
         /// <summary>
         /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -249,8 +251,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The full project ID of the source instance.`
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -272,6 +273,9 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("replicaConfiguration")]
         public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration { get; set; }
+
+        [Input("restoreBackupContext")]
+        public Input<Inputs.DatabaseInstanceRestoreBackupContextArgs>? RestoreBackupContext { get; set; }
 
         /// <summary>
         /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -366,8 +370,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? PrivateIpAddress { get; set; }
 
         /// <summary>
-        /// The ID of the project in which the resource belongs. If it
-        /// is not provided, the provider project is used.
+        /// The full project ID of the source instance.`
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -395,6 +398,9 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Input("replicaConfiguration")]
         public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration { get; set; }
+
+        [Input("restoreBackupContext")]
+        public Input<Inputs.DatabaseInstanceRestoreBackupContextGetArgs>? RestoreBackupContext { get; set; }
 
         /// <summary>
         /// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.

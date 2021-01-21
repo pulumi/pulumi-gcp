@@ -23,6 +23,7 @@ const (
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
 	// nolint:golint
 	gcpApiGateway          = "ApiGateway"          // ApiGateway resources
+	gcpApigee              = "Apigee"              // Apigee resources
 	gcpAppEngine           = "AppEngine"           // AppEngine resources
 	gcpArtifactRegistry    = "ArtifactRegistry"    // ArtifactRegistry resources
 	gcpBigQuery            = "BigQuery"            // BigQuery resources
@@ -219,6 +220,9 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_access_context_manager_access_level_condition": {
 				Tok: gcpResource(gcpAccessContextManager, "AccessLevelCondition"),
+			},
+			"google_access_context_manager_gcp_user_access_binding": {
+				Tok: gcpResource(gcpAccessContextManager, "GcpUserAccessBinding"),
 			},
 
 			// AppEngine
@@ -1836,6 +1840,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iam_workload_identity_pool":          {Tok: gcpResource(gcpIAM, "WorkloadIdentityPool")},
 			"google_iam_workload_identity_pool_provider": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPoolProvider")},
 
+			// apigee
+			"google_apigee_organization": {Tok: gcpResource(gcpApigee, "Organization")},
+
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
 				Tok: gcpResource(gcpApiGateway, "ApiConfigIamBinding"),
@@ -1956,6 +1963,7 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_google_compute_backend_bucket.html.markdown",
 				},
 			},
+			"google_compute_instance_template": {Tok: gcpDataSource(gcpCompute, "getInstanceTemplate")},
 			"google_compute_image": {
 				Tok: gcpDataSource(gcpCompute, "getImage"),
 				Docs: &tfbridge.DocInfo{

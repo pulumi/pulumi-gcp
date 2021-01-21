@@ -23,6 +23,9 @@ func GetActiveDirectoryCustomEndpoint(ctx *pulumi.Context) string {
 func GetApiGatewayCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:apiGatewayCustomEndpoint")
 }
+func GetApigeeCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:apigeeCustomEndpoint")
+}
 func GetAppEngineCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:appEngineCustomEndpoint")
 }

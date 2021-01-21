@@ -65699,6 +65699,1489 @@ func (o GetInstanceShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetInstanceShieldedInstanceConfigOutput)
 }
 
+type GetInstanceTemplateConfidentialInstanceConfig struct {
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
+}
+
+// GetInstanceTemplateConfidentialInstanceConfigInput is an input type that accepts GetInstanceTemplateConfidentialInstanceConfigArgs and GetInstanceTemplateConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateConfidentialInstanceConfigInput` via:
+//
+//          GetInstanceTemplateConfidentialInstanceConfigArgs{...}
+type GetInstanceTemplateConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateConfidentialInstanceConfigOutput() GetInstanceTemplateConfidentialInstanceConfigOutput
+	ToGetInstanceTemplateConfidentialInstanceConfigOutputWithContext(context.Context) GetInstanceTemplateConfidentialInstanceConfigOutput
+}
+
+type GetInstanceTemplateConfidentialInstanceConfigArgs struct {
+	EnableConfidentialCompute pulumi.BoolInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (GetInstanceTemplateConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateConfidentialInstanceConfigArgs) ToGetInstanceTemplateConfidentialInstanceConfigOutput() GetInstanceTemplateConfidentialInstanceConfigOutput {
+	return i.ToGetInstanceTemplateConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateConfidentialInstanceConfigArgs) ToGetInstanceTemplateConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceTemplateConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateConfidentialInstanceConfigOutput)
+}
+
+// GetInstanceTemplateConfidentialInstanceConfigArrayInput is an input type that accepts GetInstanceTemplateConfidentialInstanceConfigArray and GetInstanceTemplateConfidentialInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateConfidentialInstanceConfigArrayInput` via:
+//
+//          GetInstanceTemplateConfidentialInstanceConfigArray{ GetInstanceTemplateConfidentialInstanceConfigArgs{...} }
+type GetInstanceTemplateConfidentialInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateConfidentialInstanceConfigArrayOutput() GetInstanceTemplateConfidentialInstanceConfigArrayOutput
+	ToGetInstanceTemplateConfidentialInstanceConfigArrayOutputWithContext(context.Context) GetInstanceTemplateConfidentialInstanceConfigArrayOutput
+}
+
+type GetInstanceTemplateConfidentialInstanceConfigArray []GetInstanceTemplateConfidentialInstanceConfigInput
+
+func (GetInstanceTemplateConfidentialInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateConfidentialInstanceConfigArray) ToGetInstanceTemplateConfidentialInstanceConfigArrayOutput() GetInstanceTemplateConfidentialInstanceConfigArrayOutput {
+	return i.ToGetInstanceTemplateConfidentialInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateConfidentialInstanceConfigArray) ToGetInstanceTemplateConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateConfidentialInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateConfidentialInstanceConfigArrayOutput)
+}
+
+type GetInstanceTemplateConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateConfidentialInstanceConfigOutput) ToGetInstanceTemplateConfidentialInstanceConfigOutput() GetInstanceTemplateConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceTemplateConfidentialInstanceConfigOutput) ToGetInstanceTemplateConfidentialInstanceConfigOutputWithContext(ctx context.Context) GetInstanceTemplateConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceTemplateConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateConfidentialInstanceConfig) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
+}
+
+type GetInstanceTemplateConfidentialInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateConfidentialInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateConfidentialInstanceConfigArrayOutput) ToGetInstanceTemplateConfidentialInstanceConfigArrayOutput() GetInstanceTemplateConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateConfidentialInstanceConfigArrayOutput) ToGetInstanceTemplateConfidentialInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateConfidentialInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateConfidentialInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateConfidentialInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateConfidentialInstanceConfig {
+		return vs[0].([]GetInstanceTemplateConfidentialInstanceConfig)[vs[1].(int)]
+	}).(GetInstanceTemplateConfidentialInstanceConfigOutput)
+}
+
+type GetInstanceTemplateDisk struct {
+	// Whether or not the disk should be auto-deleted.
+	// This defaults to true.
+	AutoDelete bool `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk.
+	Boot bool `pulumi:"boot"`
+	// A unique device name that is reflected into the
+	// /dev/  tree of a Linux operating system running within the instance. If not
+	// specified, the server chooses a default device name to apply to this disk.
+	DeviceName string `pulumi:"deviceName"`
+	// Encrypts or decrypts a disk using a customer-supplied encryption key.
+	DiskEncryptionKeys []GetInstanceTemplateDiskDiskEncryptionKey `pulumi:"diskEncryptionKeys"`
+	// Name of the disk. When not provided, this defaults
+	// to the name of the instance.
+	DiskName string `pulumi:"diskName"`
+	// The size of the image in gigabytes. If not
+	// specified, it will inherit the size of its base image. For SCRATCH disks,
+	// the size must be exactly 375GB.
+	DiskSizeGb int `pulumi:"diskSizeGb"`
+	// The GCE disk type. Can be either `"pd-ssd"`,
+	// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+	DiskType string `pulumi:"diskType"`
+	// Specifies the disk interface to use for attaching this disk,
+	// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+	// and the request will fail if you attempt to attach a persistent disk in any other format
+	// than SCSI. Local SSDs can use either NVME or SCSI.
+	Interface string `pulumi:"interface"`
+	// A set of key/value label pairs to assign to instances
+	// created from this template,
+	Labels map[string]string `pulumi:"labels"`
+	// The mode in which to attach this disk, either READ_WRITE
+	// or READ_ONLY. If you are attaching or creating a boot disk, this must
+	// read-write mode.
+	Mode string `pulumi:"mode"`
+	// The name (**not self_link**)
+	// of the disk (such as those managed by `compute.Disk`) to attach.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	Source string `pulumi:"source"`
+	// The image from which to
+	// initialize this disk. This can be one of: the image's `selfLink`,
+	// `projects/{project}/global/images/{image}`,
+	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+	// `{project}/{image}`, `{family}`, or `{image}`.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	SourceImage string `pulumi:"sourceImage"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceTemplateDiskInput is an input type that accepts GetInstanceTemplateDiskArgs and GetInstanceTemplateDiskOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskInput` via:
+//
+//          GetInstanceTemplateDiskArgs{...}
+type GetInstanceTemplateDiskInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskOutput() GetInstanceTemplateDiskOutput
+	ToGetInstanceTemplateDiskOutputWithContext(context.Context) GetInstanceTemplateDiskOutput
+}
+
+type GetInstanceTemplateDiskArgs struct {
+	// Whether or not the disk should be auto-deleted.
+	// This defaults to true.
+	AutoDelete pulumi.BoolInput `pulumi:"autoDelete"`
+	// Indicates that this is a boot disk.
+	Boot pulumi.BoolInput `pulumi:"boot"`
+	// A unique device name that is reflected into the
+	// /dev/  tree of a Linux operating system running within the instance. If not
+	// specified, the server chooses a default device name to apply to this disk.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// Encrypts or decrypts a disk using a customer-supplied encryption key.
+	DiskEncryptionKeys GetInstanceTemplateDiskDiskEncryptionKeyArrayInput `pulumi:"diskEncryptionKeys"`
+	// Name of the disk. When not provided, this defaults
+	// to the name of the instance.
+	DiskName pulumi.StringInput `pulumi:"diskName"`
+	// The size of the image in gigabytes. If not
+	// specified, it will inherit the size of its base image. For SCRATCH disks,
+	// the size must be exactly 375GB.
+	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
+	// The GCE disk type. Can be either `"pd-ssd"`,
+	// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// Specifies the disk interface to use for attaching this disk,
+	// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+	// and the request will fail if you attempt to attach a persistent disk in any other format
+	// than SCSI. Local SSDs can use either NVME or SCSI.
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// A set of key/value label pairs to assign to instances
+	// created from this template,
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The mode in which to attach this disk, either READ_WRITE
+	// or READ_ONLY. If you are attaching or creating a boot disk, this must
+	// read-write mode.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// The name (**not self_link**)
+	// of the disk (such as those managed by `compute.Disk`) to attach.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	Source pulumi.StringInput `pulumi:"source"`
+	// The image from which to
+	// initialize this disk. This can be one of: the image's `selfLink`,
+	// `projects/{project}/global/images/{image}`,
+	// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+	// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+	// `{project}/{image}`, `{family}`, or `{image}`.
+	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+	SourceImage pulumi.StringInput `pulumi:"sourceImage"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceTemplateDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDisk)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskArgs) ToGetInstanceTemplateDiskOutput() GetInstanceTemplateDiskOutput {
+	return i.ToGetInstanceTemplateDiskOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskArgs) ToGetInstanceTemplateDiskOutputWithContext(ctx context.Context) GetInstanceTemplateDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskOutput)
+}
+
+// GetInstanceTemplateDiskArrayInput is an input type that accepts GetInstanceTemplateDiskArray and GetInstanceTemplateDiskArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskArrayInput` via:
+//
+//          GetInstanceTemplateDiskArray{ GetInstanceTemplateDiskArgs{...} }
+type GetInstanceTemplateDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskArrayOutput() GetInstanceTemplateDiskArrayOutput
+	ToGetInstanceTemplateDiskArrayOutputWithContext(context.Context) GetInstanceTemplateDiskArrayOutput
+}
+
+type GetInstanceTemplateDiskArray []GetInstanceTemplateDiskInput
+
+func (GetInstanceTemplateDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDisk)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskArray) ToGetInstanceTemplateDiskArrayOutput() GetInstanceTemplateDiskArrayOutput {
+	return i.ToGetInstanceTemplateDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskArray) ToGetInstanceTemplateDiskArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskArrayOutput)
+}
+
+type GetInstanceTemplateDiskOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDisk)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskOutput) ToGetInstanceTemplateDiskOutput() GetInstanceTemplateDiskOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskOutput) ToGetInstanceTemplateDiskOutputWithContext(ctx context.Context) GetInstanceTemplateDiskOutput {
+	return o
+}
+
+// Whether or not the disk should be auto-deleted.
+// This defaults to true.
+func (o GetInstanceTemplateDiskOutput) AutoDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) bool { return v.AutoDelete }).(pulumi.BoolOutput)
+}
+
+// Indicates that this is a boot disk.
+func (o GetInstanceTemplateDiskOutput) Boot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) bool { return v.Boot }).(pulumi.BoolOutput)
+}
+
+// A unique device name that is reflected into the
+// /dev/  tree of a Linux operating system running within the instance. If not
+// specified, the server chooses a default device name to apply to this disk.
+func (o GetInstanceTemplateDiskOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// Encrypts or decrypts a disk using a customer-supplied encryption key.
+func (o GetInstanceTemplateDiskOutput) DiskEncryptionKeys() GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) []GetInstanceTemplateDiskDiskEncryptionKey {
+		return v.DiskEncryptionKeys
+	}).(GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput)
+}
+
+// Name of the disk. When not provided, this defaults
+// to the name of the instance.
+func (o GetInstanceTemplateDiskOutput) DiskName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.DiskName }).(pulumi.StringOutput)
+}
+
+// The size of the image in gigabytes. If not
+// specified, it will inherit the size of its base image. For SCRATCH disks,
+// the size must be exactly 375GB.
+func (o GetInstanceTemplateDiskOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+// The GCE disk type. Can be either `"pd-ssd"`,
+// `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+func (o GetInstanceTemplateDiskOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+// Specifies the disk interface to use for attaching this disk,
+// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+// and the request will fail if you attempt to attach a persistent disk in any other format
+// than SCSI. Local SSDs can use either NVME or SCSI.
+func (o GetInstanceTemplateDiskOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+// A set of key/value label pairs to assign to instances
+// created from this template,
+func (o GetInstanceTemplateDiskOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The mode in which to attach this disk, either READ_WRITE
+// or READ_ONLY. If you are attaching or creating a boot disk, this must
+// read-write mode.
+func (o GetInstanceTemplateDiskOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name (**not self_link**)
+// of the disk (such as those managed by `compute.Disk`) to attach.
+// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+func (o GetInstanceTemplateDiskOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// The image from which to
+// initialize this disk. This can be one of: the image's `selfLink`,
+// `projects/{project}/global/images/{image}`,
+// `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+// `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+// `{project}/{image}`, `{family}`, or `{image}`.
+// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+func (o GetInstanceTemplateDiskOutput) SourceImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.SourceImage }).(pulumi.StringOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceTemplateDiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDisk)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskArrayOutput) ToGetInstanceTemplateDiskArrayOutput() GetInstanceTemplateDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskArrayOutput) ToGetInstanceTemplateDiskArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateDisk {
+		return vs[0].([]GetInstanceTemplateDisk)[vs[1].(int)]
+	}).(GetInstanceTemplateDiskOutput)
+}
+
+type GetInstanceTemplateDiskDiskEncryptionKey struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink string `pulumi:"kmsKeySelfLink"`
+}
+
+// GetInstanceTemplateDiskDiskEncryptionKeyInput is an input type that accepts GetInstanceTemplateDiskDiskEncryptionKeyArgs and GetInstanceTemplateDiskDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskDiskEncryptionKeyInput` via:
+//
+//          GetInstanceTemplateDiskDiskEncryptionKeyArgs{...}
+type GetInstanceTemplateDiskDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskDiskEncryptionKeyOutput() GetInstanceTemplateDiskDiskEncryptionKeyOutput
+	ToGetInstanceTemplateDiskDiskEncryptionKeyOutputWithContext(context.Context) GetInstanceTemplateDiskDiskEncryptionKeyOutput
+}
+
+type GetInstanceTemplateDiskDiskEncryptionKeyArgs struct {
+	// The self link of the encryption key that is stored in Google Cloud KMS
+	KmsKeySelfLink pulumi.StringInput `pulumi:"kmsKeySelfLink"`
+}
+
+func (GetInstanceTemplateDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskDiskEncryptionKeyArgs) ToGetInstanceTemplateDiskDiskEncryptionKeyOutput() GetInstanceTemplateDiskDiskEncryptionKeyOutput {
+	return i.ToGetInstanceTemplateDiskDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskDiskEncryptionKeyArgs) ToGetInstanceTemplateDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceTemplateDiskDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskDiskEncryptionKeyOutput)
+}
+
+// GetInstanceTemplateDiskDiskEncryptionKeyArrayInput is an input type that accepts GetInstanceTemplateDiskDiskEncryptionKeyArray and GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateDiskDiskEncryptionKeyArrayInput` via:
+//
+//          GetInstanceTemplateDiskDiskEncryptionKeyArray{ GetInstanceTemplateDiskDiskEncryptionKeyArgs{...} }
+type GetInstanceTemplateDiskDiskEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateDiskDiskEncryptionKeyArrayOutput() GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput
+	ToGetInstanceTemplateDiskDiskEncryptionKeyArrayOutputWithContext(context.Context) GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput
+}
+
+type GetInstanceTemplateDiskDiskEncryptionKeyArray []GetInstanceTemplateDiskDiskEncryptionKeyInput
+
+func (GetInstanceTemplateDiskDiskEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateDiskDiskEncryptionKeyArray) ToGetInstanceTemplateDiskDiskEncryptionKeyArrayOutput() GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput {
+	return i.ToGetInstanceTemplateDiskDiskEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateDiskDiskEncryptionKeyArray) ToGetInstanceTemplateDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput)
+}
+
+type GetInstanceTemplateDiskDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskDiskEncryptionKeyOutput) ToGetInstanceTemplateDiskDiskEncryptionKeyOutput() GetInstanceTemplateDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskDiskEncryptionKeyOutput) ToGetInstanceTemplateDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetInstanceTemplateDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+// The self link of the encryption key that is stored in Google Cloud KMS
+func (o GetInstanceTemplateDiskDiskEncryptionKeyOutput) KmsKeySelfLink() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDiskDiskEncryptionKey) string { return v.KmsKeySelfLink }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput) ToGetInstanceTemplateDiskDiskEncryptionKeyArrayOutput() GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput) ToGetInstanceTemplateDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateDiskDiskEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateDiskDiskEncryptionKey {
+		return vs[0].([]GetInstanceTemplateDiskDiskEncryptionKey)[vs[1].(int)]
+	}).(GetInstanceTemplateDiskDiskEncryptionKeyOutput)
+}
+
+type GetInstanceTemplateGuestAccelerator struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count int `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type string `pulumi:"type"`
+}
+
+// GetInstanceTemplateGuestAcceleratorInput is an input type that accepts GetInstanceTemplateGuestAcceleratorArgs and GetInstanceTemplateGuestAcceleratorOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateGuestAcceleratorInput` via:
+//
+//          GetInstanceTemplateGuestAcceleratorArgs{...}
+type GetInstanceTemplateGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateGuestAcceleratorOutput() GetInstanceTemplateGuestAcceleratorOutput
+	ToGetInstanceTemplateGuestAcceleratorOutputWithContext(context.Context) GetInstanceTemplateGuestAcceleratorOutput
+}
+
+type GetInstanceTemplateGuestAcceleratorArgs struct {
+	// The number of the guest accelerator cards exposed to this instance.
+	Count pulumi.IntInput `pulumi:"count"`
+	// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetInstanceTemplateGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateGuestAcceleratorArgs) ToGetInstanceTemplateGuestAcceleratorOutput() GetInstanceTemplateGuestAcceleratorOutput {
+	return i.ToGetInstanceTemplateGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateGuestAcceleratorArgs) ToGetInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) GetInstanceTemplateGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateGuestAcceleratorOutput)
+}
+
+// GetInstanceTemplateGuestAcceleratorArrayInput is an input type that accepts GetInstanceTemplateGuestAcceleratorArray and GetInstanceTemplateGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateGuestAcceleratorArrayInput` via:
+//
+//          GetInstanceTemplateGuestAcceleratorArray{ GetInstanceTemplateGuestAcceleratorArgs{...} }
+type GetInstanceTemplateGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateGuestAcceleratorArrayOutput() GetInstanceTemplateGuestAcceleratorArrayOutput
+	ToGetInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Context) GetInstanceTemplateGuestAcceleratorArrayOutput
+}
+
+type GetInstanceTemplateGuestAcceleratorArray []GetInstanceTemplateGuestAcceleratorInput
+
+func (GetInstanceTemplateGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateGuestAcceleratorArray) ToGetInstanceTemplateGuestAcceleratorArrayOutput() GetInstanceTemplateGuestAcceleratorArrayOutput {
+	return i.ToGetInstanceTemplateGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateGuestAcceleratorArray) ToGetInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetInstanceTemplateGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateGuestAcceleratorArrayOutput)
+}
+
+type GetInstanceTemplateGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateGuestAcceleratorOutput) ToGetInstanceTemplateGuestAcceleratorOutput() GetInstanceTemplateGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetInstanceTemplateGuestAcceleratorOutput) ToGetInstanceTemplateGuestAcceleratorOutputWithContext(ctx context.Context) GetInstanceTemplateGuestAcceleratorOutput {
+	return o
+}
+
+// The number of the guest accelerator cards exposed to this instance.
+func (o GetInstanceTemplateGuestAcceleratorOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateGuestAccelerator) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+func (o GetInstanceTemplateGuestAcceleratorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateGuestAccelerator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateGuestAcceleratorArrayOutput) ToGetInstanceTemplateGuestAcceleratorArrayOutput() GetInstanceTemplateGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateGuestAcceleratorArrayOutput) ToGetInstanceTemplateGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetInstanceTemplateGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateGuestAccelerator {
+		return vs[0].([]GetInstanceTemplateGuestAccelerator)[vs[1].(int)]
+	}).(GetInstanceTemplateGuestAcceleratorOutput)
+}
+
+type GetInstanceTemplateNetworkInterface struct {
+	AccessConfigs []GetInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
+	// An
+	// array of alias IP ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpRanges []GetInstanceTemplateNetworkInterfaceAliasIpRange `pulumi:"aliasIpRanges"`
+	// The name of the instance template. One of `name` or `filter` must be provided.
+	Name string `pulumi:"name"`
+	// The name or selfLink of the network to attach this interface to.
+	// Use `network` attribute for Legacy or Auto subnetted networks and
+	// `subnetwork` for custom subnetted networks.
+	Network string `pulumi:"network"`
+	// The private IP address to assign to the instance. If
+	// empty, the address will be automatically assigned.
+	NetworkIp string `pulumi:"networkIp"`
+	// the name of the subnetwork to attach this interface
+	// to. The subnetwork must exist in the same `region` this instance will be
+	// created in. Either `network` or `subnetwork` must be provided.
+	Subnetwork string `pulumi:"subnetwork"`
+	// The ID of the project in which the subnetwork belongs.
+	// If it is not provided, the provider project is used.
+	SubnetworkProject string `pulumi:"subnetworkProject"`
+}
+
+// GetInstanceTemplateNetworkInterfaceInput is an input type that accepts GetInstanceTemplateNetworkInterfaceArgs and GetInstanceTemplateNetworkInterfaceOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceInput` via:
+//
+//          GetInstanceTemplateNetworkInterfaceArgs{...}
+type GetInstanceTemplateNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceOutput() GetInstanceTemplateNetworkInterfaceOutput
+	ToGetInstanceTemplateNetworkInterfaceOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceArgs struct {
+	AccessConfigs GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
+	// An
+	// array of alias IP ranges for this network interface. Can only be specified for network
+	// interfaces on subnet-mode networks. Structure documented below.
+	AliasIpRanges GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput `pulumi:"aliasIpRanges"`
+	// The name of the instance template. One of `name` or `filter` must be provided.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The name or selfLink of the network to attach this interface to.
+	// Use `network` attribute for Legacy or Auto subnetted networks and
+	// `subnetwork` for custom subnetted networks.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The private IP address to assign to the instance. If
+	// empty, the address will be automatically assigned.
+	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	// the name of the subnetwork to attach this interface
+	// to. The subnetwork must exist in the same `region` this instance will be
+	// created in. Either `network` or `subnetwork` must be provided.
+	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
+	// The ID of the project in which the subnetwork belongs.
+	// If it is not provided, the provider project is used.
+	SubnetworkProject pulumi.StringInput `pulumi:"subnetworkProject"`
+}
+
+func (GetInstanceTemplateNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceArgs) ToGetInstanceTemplateNetworkInterfaceOutput() GetInstanceTemplateNetworkInterfaceOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceArgs) ToGetInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceOutput)
+}
+
+// GetInstanceTemplateNetworkInterfaceArrayInput is an input type that accepts GetInstanceTemplateNetworkInterfaceArray and GetInstanceTemplateNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceArrayInput` via:
+//
+//          GetInstanceTemplateNetworkInterfaceArray{ GetInstanceTemplateNetworkInterfaceArgs{...} }
+type GetInstanceTemplateNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceArrayOutput() GetInstanceTemplateNetworkInterfaceArrayOutput
+	ToGetInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceArrayOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceArray []GetInstanceTemplateNetworkInterfaceInput
+
+func (GetInstanceTemplateNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceArray) ToGetInstanceTemplateNetworkInterfaceArrayOutput() GetInstanceTemplateNetworkInterfaceArrayOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceArray) ToGetInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceArrayOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceOutput) ToGetInstanceTemplateNetworkInterfaceOutput() GetInstanceTemplateNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceOutput) ToGetInstanceTemplateNetworkInterfaceOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAccessConfig {
+		return v.AccessConfigs
+	}).(GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
+}
+
+// An
+// array of alias IP ranges for this network interface. Can only be specified for network
+// interfaces on subnet-mode networks. Structure documented below.
+func (o GetInstanceTemplateNetworkInterfaceOutput) AliasIpRanges() GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAliasIpRange {
+		return v.AliasIpRanges
+	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+// The name of the instance template. One of `name` or `filter` must be provided.
+func (o GetInstanceTemplateNetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The name or selfLink of the network to attach this interface to.
+// Use `network` attribute for Legacy or Auto subnetted networks and
+// `subnetwork` for custom subnetted networks.
+func (o GetInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The private IP address to assign to the instance. If
+// empty, the address will be automatically assigned.
+func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
+}
+
+// the name of the subnetwork to attach this interface
+// to. The subnetwork must exist in the same `region` this instance will be
+// created in. Either `network` or `subnetwork` must be provided.
+func (o GetInstanceTemplateNetworkInterfaceOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the subnetwork belongs.
+// If it is not provided, the provider project is used.
+func (o GetInstanceTemplateNetworkInterfaceOutput) SubnetworkProject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.SubnetworkProject }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterface)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceArrayOutput) ToGetInstanceTemplateNetworkInterfaceArrayOutput() GetInstanceTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceArrayOutput) ToGetInstanceTemplateNetworkInterfaceArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkInterface {
+		return vs[0].([]GetInstanceTemplateNetworkInterface)[vs[1].(int)]
+	}).(GetInstanceTemplateNetworkInterfaceOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAccessConfig struct {
+	// The IP address that will be 1:1 mapped to the instance's
+	// network ip. If not given, one will be generated.
+	NatIp string `pulumi:"natIp"`
+	// The [networking tier][network-tier] used for configuring
+	// this instance template. This field can take the following values: PREMIUM or
+	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+	NetworkTier         string `pulumi:"networkTier"`
+	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
+}
+
+// GetInstanceTemplateNetworkInterfaceAccessConfigInput is an input type that accepts GetInstanceTemplateNetworkInterfaceAccessConfigArgs and GetInstanceTemplateNetworkInterfaceAccessConfigOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceAccessConfigInput` via:
+//
+//          GetInstanceTemplateNetworkInterfaceAccessConfigArgs{...}
+type GetInstanceTemplateNetworkInterfaceAccessConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceAccessConfigOutput() GetInstanceTemplateNetworkInterfaceAccessConfigOutput
+	ToGetInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceAccessConfigOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceAccessConfigArgs struct {
+	// The IP address that will be 1:1 mapped to the instance's
+	// network ip. If not given, one will be generated.
+	NatIp pulumi.StringInput `pulumi:"natIp"`
+	// The [networking tier][network-tier] used for configuring
+	// this instance template. This field can take the following values: PREMIUM or
+	// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+	NetworkTier         pulumi.StringInput `pulumi:"networkTier"`
+	PublicPtrDomainName pulumi.StringInput `pulumi:"publicPtrDomainName"`
+}
+
+func (GetInstanceTemplateNetworkInterfaceAccessConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAccessConfigArgs) ToGetInstanceTemplateNetworkInterfaceAccessConfigOutput() GetInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAccessConfigArgs) ToGetInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceAccessConfigOutput)
+}
+
+// GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput is an input type that accepts GetInstanceTemplateNetworkInterfaceAccessConfigArray and GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput` via:
+//
+//          GetInstanceTemplateNetworkInterfaceAccessConfigArray{ GetInstanceTemplateNetworkInterfaceAccessConfigArgs{...} }
+type GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
+	ToGetInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceAccessConfigArray []GetInstanceTemplateNetworkInterfaceAccessConfigInput
+
+func (GetInstanceTemplateNetworkInterfaceAccessConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAccessConfigArray) ToGetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAccessConfigArray) ToGetInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAccessConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceAccessConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigOutput) ToGetInstanceTemplateNetworkInterfaceAccessConfigOutput() GetInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigOutput) ToGetInstanceTemplateNetworkInterfaceAccessConfigOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return o
+}
+
+// The IP address that will be 1:1 mapped to the instance's
+// network ip. If not given, one will be generated.
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigOutput) NatIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAccessConfig) string { return v.NatIp }).(pulumi.StringOutput)
+}
+
+// The [networking tier][network-tier] used for configuring
+// this instance template. This field can take the following values: PREMIUM or
+// STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigOutput) NetworkTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAccessConfig) string { return v.NetworkTier }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigOutput) PublicPtrDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAccessConfig) string { return v.PublicPtrDomainName }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterfaceAccessConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToGetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) ToGetInstanceTemplateNetworkInterfaceAccessConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateNetworkInterfaceAccessConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkInterfaceAccessConfig {
+		return vs[0].([]GetInstanceTemplateNetworkInterfaceAccessConfig)[vs[1].(int)]
+	}).(GetInstanceTemplateNetworkInterfaceAccessConfigOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpRange struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange string `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName string `pulumi:"subnetworkRangeName"`
+}
+
+// GetInstanceTemplateNetworkInterfaceAliasIpRangeInput is an input type that accepts GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs and GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceAliasIpRangeInput` via:
+//
+//          GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...}
+type GetInstanceTemplateNetworkInterfaceAliasIpRangeInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceAliasIpRangeOutput() GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput
+	ToGetInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs struct {
+	// The IP CIDR range represented by this alias IP range. This IP CIDR range
+	// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+	// system or used by other network interfaces. At the time of writing only a
+	// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+	// error.
+	IpCidrRange pulumi.StringInput `pulumi:"ipCidrRange"`
+	// The subnetwork secondary range name specifying
+	// the secondary range from which to allocate the IP CIDR range for this alias IP
+	// range. If left unspecified, the primary range of the subnetwork will be used.
+	SubnetworkRangeName pulumi.StringInput `pulumi:"subnetworkRangeName"`
+}
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeOutput() GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+// GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput is an input type that accepts GetInstanceTemplateNetworkInterfaceAliasIpRangeArray and GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput` via:
+//
+//          GetInstanceTemplateNetworkInterfaceAliasIpRangeArray{ GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs{...} }
+type GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
+	ToGetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Context) GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpRangeArray []GetInstanceTemplateNetworkInterfaceAliasIpRangeInput
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return i.ToGetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateNetworkInterfaceAliasIpRangeArray) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeOutput() GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return o
+}
+
+// The IP CIDR range represented by this alias IP range. This IP CIDR range
+// must belong to the specified subnetwork and cannot contain IP addresses reserved by
+// system or used by other network interfaces. At the time of writing only a
+// netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+// error.
+func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput) IpCidrRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAliasIpRange) string { return v.IpCidrRange }).(pulumi.StringOutput)
+}
+
+// The subnetwork secondary range name specifying
+// the secondary range from which to allocate the IP CIDR range for this alias IP
+// range. If left unspecified, the primary range of the subnetwork will be used.
+func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput) SubnetworkRangeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterfaceAliasIpRange) string { return v.SubnetworkRangeName }).(pulumi.StringOutput)
+}
+
+type GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateNetworkInterfaceAliasIpRange)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput() GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) ToGetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutputWithContext(ctx context.Context) GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateNetworkInterfaceAliasIpRange {
+		return vs[0].([]GetInstanceTemplateNetworkInterfaceAliasIpRange)[vs[1].(int)]
+	}).(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput)
+}
+
+type GetInstanceTemplateScheduling struct {
+	// Specifies whether the instance should be
+	// automatically restarted if it is terminated by Compute Engine (not
+	// terminated by a user). This defaults to true.
+	AutomaticRestart bool `pulumi:"automaticRestart"`
+	MinNodeCpus      int  `pulumi:"minNodeCpus"`
+	// Specifies node affinities or anti-affinities
+	// to determine which sole-tenant nodes your instances and managed instance
+	// groups will use as host systems. Read more on sole-tenant node creation
+	// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+	// Structure documented below.
+	NodeAffinities []GetInstanceTemplateSchedulingNodeAffinity `pulumi:"nodeAffinities"`
+	// Defines the maintenance behavior for this
+	// instance.
+	OnHostMaintenance string `pulumi:"onHostMaintenance"`
+	// Allows instance to be preempted. This defaults to
+	// false. Read more on this
+	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+	Preemptible bool `pulumi:"preemptible"`
+}
+
+// GetInstanceTemplateSchedulingInput is an input type that accepts GetInstanceTemplateSchedulingArgs and GetInstanceTemplateSchedulingOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingInput` via:
+//
+//          GetInstanceTemplateSchedulingArgs{...}
+type GetInstanceTemplateSchedulingInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingOutput() GetInstanceTemplateSchedulingOutput
+	ToGetInstanceTemplateSchedulingOutputWithContext(context.Context) GetInstanceTemplateSchedulingOutput
+}
+
+type GetInstanceTemplateSchedulingArgs struct {
+	// Specifies whether the instance should be
+	// automatically restarted if it is terminated by Compute Engine (not
+	// terminated by a user). This defaults to true.
+	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	MinNodeCpus      pulumi.IntInput  `pulumi:"minNodeCpus"`
+	// Specifies node affinities or anti-affinities
+	// to determine which sole-tenant nodes your instances and managed instance
+	// groups will use as host systems. Read more on sole-tenant node creation
+	// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+	// Structure documented below.
+	NodeAffinities GetInstanceTemplateSchedulingNodeAffinityArrayInput `pulumi:"nodeAffinities"`
+	// Defines the maintenance behavior for this
+	// instance.
+	OnHostMaintenance pulumi.StringInput `pulumi:"onHostMaintenance"`
+	// Allows instance to be preempted. This defaults to
+	// false. Read more on this
+	// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+	Preemptible pulumi.BoolInput `pulumi:"preemptible"`
+}
+
+func (GetInstanceTemplateSchedulingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingArgs) ToGetInstanceTemplateSchedulingOutput() GetInstanceTemplateSchedulingOutput {
+	return i.ToGetInstanceTemplateSchedulingOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingArgs) ToGetInstanceTemplateSchedulingOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingOutput)
+}
+
+// GetInstanceTemplateSchedulingArrayInput is an input type that accepts GetInstanceTemplateSchedulingArray and GetInstanceTemplateSchedulingArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingArrayInput` via:
+//
+//          GetInstanceTemplateSchedulingArray{ GetInstanceTemplateSchedulingArgs{...} }
+type GetInstanceTemplateSchedulingArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingArrayOutput() GetInstanceTemplateSchedulingArrayOutput
+	ToGetInstanceTemplateSchedulingArrayOutputWithContext(context.Context) GetInstanceTemplateSchedulingArrayOutput
+}
+
+type GetInstanceTemplateSchedulingArray []GetInstanceTemplateSchedulingInput
+
+func (GetInstanceTemplateSchedulingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingArray) ToGetInstanceTemplateSchedulingArrayOutput() GetInstanceTemplateSchedulingArrayOutput {
+	return i.ToGetInstanceTemplateSchedulingArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingArray) ToGetInstanceTemplateSchedulingArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingArrayOutput)
+}
+
+type GetInstanceTemplateSchedulingOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingOutput) ToGetInstanceTemplateSchedulingOutput() GetInstanceTemplateSchedulingOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingOutput) ToGetInstanceTemplateSchedulingOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingOutput {
+	return o
+}
+
+// Specifies whether the instance should be
+// automatically restarted if it is terminated by Compute Engine (not
+// terminated by a user). This defaults to true.
+func (o GetInstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceTemplateSchedulingOutput) MinNodeCpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) int { return v.MinNodeCpus }).(pulumi.IntOutput)
+}
+
+// Specifies node affinities or anti-affinities
+// to determine which sole-tenant nodes your instances and managed instance
+// groups will use as host systems. Read more on sole-tenant node creation
+// [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+// Structure documented below.
+func (o GetInstanceTemplateSchedulingOutput) NodeAffinities() GetInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) []GetInstanceTemplateSchedulingNodeAffinity {
+		return v.NodeAffinities
+	}).(GetInstanceTemplateSchedulingNodeAffinityArrayOutput)
+}
+
+// Defines the maintenance behavior for this
+// instance.
+func (o GetInstanceTemplateSchedulingOutput) OnHostMaintenance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) string { return v.OnHostMaintenance }).(pulumi.StringOutput)
+}
+
+// Allows instance to be preempted. This defaults to
+// false. Read more on this
+// [here](https://cloud.google.com/compute/docs/instances/preemptible).
+func (o GetInstanceTemplateSchedulingOutput) Preemptible() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) bool { return v.Preemptible }).(pulumi.BoolOutput)
+}
+
+type GetInstanceTemplateSchedulingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateScheduling)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingArrayOutput) ToGetInstanceTemplateSchedulingArrayOutput() GetInstanceTemplateSchedulingArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingArrayOutput) ToGetInstanceTemplateSchedulingArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateSchedulingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateScheduling {
+		return vs[0].([]GetInstanceTemplateScheduling)[vs[1].(int)]
+	}).(GetInstanceTemplateSchedulingOutput)
+}
+
+type GetInstanceTemplateSchedulingNodeAffinity struct {
+	// The key for the node affinity label.
+	Key string `pulumi:"key"`
+	// The operator. Can be `IN` for node-affinities
+	// or `NOT_IN` for anti-affinities.
+	Operator string   `pulumi:"operator"`
+	Values   []string `pulumi:"values"`
+}
+
+// GetInstanceTemplateSchedulingNodeAffinityInput is an input type that accepts GetInstanceTemplateSchedulingNodeAffinityArgs and GetInstanceTemplateSchedulingNodeAffinityOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingNodeAffinityInput` via:
+//
+//          GetInstanceTemplateSchedulingNodeAffinityArgs{...}
+type GetInstanceTemplateSchedulingNodeAffinityInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingNodeAffinityOutput() GetInstanceTemplateSchedulingNodeAffinityOutput
+	ToGetInstanceTemplateSchedulingNodeAffinityOutputWithContext(context.Context) GetInstanceTemplateSchedulingNodeAffinityOutput
+}
+
+type GetInstanceTemplateSchedulingNodeAffinityArgs struct {
+	// The key for the node affinity label.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The operator. Can be `IN` for node-affinities
+	// or `NOT_IN` for anti-affinities.
+	Operator pulumi.StringInput      `pulumi:"operator"`
+	Values   pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetInstanceTemplateSchedulingNodeAffinityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingNodeAffinityArgs) ToGetInstanceTemplateSchedulingNodeAffinityOutput() GetInstanceTemplateSchedulingNodeAffinityOutput {
+	return i.ToGetInstanceTemplateSchedulingNodeAffinityOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingNodeAffinityArgs) ToGetInstanceTemplateSchedulingNodeAffinityOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingNodeAffinityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingNodeAffinityOutput)
+}
+
+// GetInstanceTemplateSchedulingNodeAffinityArrayInput is an input type that accepts GetInstanceTemplateSchedulingNodeAffinityArray and GetInstanceTemplateSchedulingNodeAffinityArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateSchedulingNodeAffinityArrayInput` via:
+//
+//          GetInstanceTemplateSchedulingNodeAffinityArray{ GetInstanceTemplateSchedulingNodeAffinityArgs{...} }
+type GetInstanceTemplateSchedulingNodeAffinityArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateSchedulingNodeAffinityArrayOutput() GetInstanceTemplateSchedulingNodeAffinityArrayOutput
+	ToGetInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(context.Context) GetInstanceTemplateSchedulingNodeAffinityArrayOutput
+}
+
+type GetInstanceTemplateSchedulingNodeAffinityArray []GetInstanceTemplateSchedulingNodeAffinityInput
+
+func (GetInstanceTemplateSchedulingNodeAffinityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateSchedulingNodeAffinityArray) ToGetInstanceTemplateSchedulingNodeAffinityArrayOutput() GetInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return i.ToGetInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateSchedulingNodeAffinityArray) ToGetInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateSchedulingNodeAffinityArrayOutput)
+}
+
+type GetInstanceTemplateSchedulingNodeAffinityOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingNodeAffinityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingNodeAffinityOutput) ToGetInstanceTemplateSchedulingNodeAffinityOutput() GetInstanceTemplateSchedulingNodeAffinityOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingNodeAffinityOutput) ToGetInstanceTemplateSchedulingNodeAffinityOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingNodeAffinityOutput {
+	return o
+}
+
+// The key for the node affinity label.
+func (o GetInstanceTemplateSchedulingNodeAffinityOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingNodeAffinity) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The operator. Can be `IN` for node-affinities
+// or `NOT_IN` for anti-affinities.
+func (o GetInstanceTemplateSchedulingNodeAffinityOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingNodeAffinity) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateSchedulingNodeAffinityOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateSchedulingNodeAffinity) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceTemplateSchedulingNodeAffinityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateSchedulingNodeAffinityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateSchedulingNodeAffinity)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateSchedulingNodeAffinityArrayOutput) ToGetInstanceTemplateSchedulingNodeAffinityArrayOutput() GetInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingNodeAffinityArrayOutput) ToGetInstanceTemplateSchedulingNodeAffinityArrayOutputWithContext(ctx context.Context) GetInstanceTemplateSchedulingNodeAffinityArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateSchedulingNodeAffinityArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateSchedulingNodeAffinityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateSchedulingNodeAffinity {
+		return vs[0].([]GetInstanceTemplateSchedulingNodeAffinity)[vs[1].(int)]
+	}).(GetInstanceTemplateSchedulingNodeAffinityOutput)
+}
+
+type GetInstanceTemplateServiceAccount struct {
+	// The service account e-mail address. If not given, the
+	// default Google Compute Engine service account is used.
+	Email string `pulumi:"email"`
+	// A list of service scopes. Both OAuth2 URLs and gcloud
+	// short names are supported. To allow full access to all Cloud APIs, use the
+	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+	Scopes []string `pulumi:"scopes"`
+}
+
+// GetInstanceTemplateServiceAccountInput is an input type that accepts GetInstanceTemplateServiceAccountArgs and GetInstanceTemplateServiceAccountOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateServiceAccountInput` via:
+//
+//          GetInstanceTemplateServiceAccountArgs{...}
+type GetInstanceTemplateServiceAccountInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateServiceAccountOutput() GetInstanceTemplateServiceAccountOutput
+	ToGetInstanceTemplateServiceAccountOutputWithContext(context.Context) GetInstanceTemplateServiceAccountOutput
+}
+
+type GetInstanceTemplateServiceAccountArgs struct {
+	// The service account e-mail address. If not given, the
+	// default Google Compute Engine service account is used.
+	Email pulumi.StringInput `pulumi:"email"`
+	// A list of service scopes. Both OAuth2 URLs and gcloud
+	// short names are supported. To allow full access to all Cloud APIs, use the
+	// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
+}
+
+func (GetInstanceTemplateServiceAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateServiceAccountArgs) ToGetInstanceTemplateServiceAccountOutput() GetInstanceTemplateServiceAccountOutput {
+	return i.ToGetInstanceTemplateServiceAccountOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateServiceAccountArgs) ToGetInstanceTemplateServiceAccountOutputWithContext(ctx context.Context) GetInstanceTemplateServiceAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateServiceAccountOutput)
+}
+
+// GetInstanceTemplateServiceAccountArrayInput is an input type that accepts GetInstanceTemplateServiceAccountArray and GetInstanceTemplateServiceAccountArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateServiceAccountArrayInput` via:
+//
+//          GetInstanceTemplateServiceAccountArray{ GetInstanceTemplateServiceAccountArgs{...} }
+type GetInstanceTemplateServiceAccountArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateServiceAccountArrayOutput() GetInstanceTemplateServiceAccountArrayOutput
+	ToGetInstanceTemplateServiceAccountArrayOutputWithContext(context.Context) GetInstanceTemplateServiceAccountArrayOutput
+}
+
+type GetInstanceTemplateServiceAccountArray []GetInstanceTemplateServiceAccountInput
+
+func (GetInstanceTemplateServiceAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateServiceAccountArray) ToGetInstanceTemplateServiceAccountArrayOutput() GetInstanceTemplateServiceAccountArrayOutput {
+	return i.ToGetInstanceTemplateServiceAccountArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateServiceAccountArray) ToGetInstanceTemplateServiceAccountArrayOutputWithContext(ctx context.Context) GetInstanceTemplateServiceAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateServiceAccountArrayOutput)
+}
+
+type GetInstanceTemplateServiceAccountOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateServiceAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateServiceAccountOutput) ToGetInstanceTemplateServiceAccountOutput() GetInstanceTemplateServiceAccountOutput {
+	return o
+}
+
+func (o GetInstanceTemplateServiceAccountOutput) ToGetInstanceTemplateServiceAccountOutputWithContext(ctx context.Context) GetInstanceTemplateServiceAccountOutput {
+	return o
+}
+
+// The service account e-mail address. If not given, the
+// default Google Compute Engine service account is used.
+func (o GetInstanceTemplateServiceAccountOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateServiceAccount) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// A list of service scopes. Both OAuth2 URLs and gcloud
+// short names are supported. To allow full access to all Cloud APIs, use the
+// `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+func (o GetInstanceTemplateServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
+type GetInstanceTemplateServiceAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateServiceAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateServiceAccount)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateServiceAccountArrayOutput) ToGetInstanceTemplateServiceAccountArrayOutput() GetInstanceTemplateServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateServiceAccountArrayOutput) ToGetInstanceTemplateServiceAccountArrayOutputWithContext(ctx context.Context) GetInstanceTemplateServiceAccountArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateServiceAccountArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateServiceAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateServiceAccount {
+		return vs[0].([]GetInstanceTemplateServiceAccount)[vs[1].(int)]
+	}).(GetInstanceTemplateServiceAccountOutput)
+}
+
+type GetInstanceTemplateShieldedInstanceConfig struct {
+	EnableIntegrityMonitoring bool `pulumi:"enableIntegrityMonitoring"`
+	EnableSecureBoot          bool `pulumi:"enableSecureBoot"`
+	EnableVtpm                bool `pulumi:"enableVtpm"`
+}
+
+// GetInstanceTemplateShieldedInstanceConfigInput is an input type that accepts GetInstanceTemplateShieldedInstanceConfigArgs and GetInstanceTemplateShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateShieldedInstanceConfigInput` via:
+//
+//          GetInstanceTemplateShieldedInstanceConfigArgs{...}
+type GetInstanceTemplateShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateShieldedInstanceConfigOutput() GetInstanceTemplateShieldedInstanceConfigOutput
+	ToGetInstanceTemplateShieldedInstanceConfigOutputWithContext(context.Context) GetInstanceTemplateShieldedInstanceConfigOutput
+}
+
+type GetInstanceTemplateShieldedInstanceConfigArgs struct {
+	EnableIntegrityMonitoring pulumi.BoolInput `pulumi:"enableIntegrityMonitoring"`
+	EnableSecureBoot          pulumi.BoolInput `pulumi:"enableSecureBoot"`
+	EnableVtpm                pulumi.BoolInput `pulumi:"enableVtpm"`
+}
+
+func (GetInstanceTemplateShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateShieldedInstanceConfigArgs) ToGetInstanceTemplateShieldedInstanceConfigOutput() GetInstanceTemplateShieldedInstanceConfigOutput {
+	return i.ToGetInstanceTemplateShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateShieldedInstanceConfigArgs) ToGetInstanceTemplateShieldedInstanceConfigOutputWithContext(ctx context.Context) GetInstanceTemplateShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateShieldedInstanceConfigOutput)
+}
+
+// GetInstanceTemplateShieldedInstanceConfigArrayInput is an input type that accepts GetInstanceTemplateShieldedInstanceConfigArray and GetInstanceTemplateShieldedInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstanceTemplateShieldedInstanceConfigArrayInput` via:
+//
+//          GetInstanceTemplateShieldedInstanceConfigArray{ GetInstanceTemplateShieldedInstanceConfigArgs{...} }
+type GetInstanceTemplateShieldedInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceTemplateShieldedInstanceConfigArrayOutput() GetInstanceTemplateShieldedInstanceConfigArrayOutput
+	ToGetInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(context.Context) GetInstanceTemplateShieldedInstanceConfigArrayOutput
+}
+
+type GetInstanceTemplateShieldedInstanceConfigArray []GetInstanceTemplateShieldedInstanceConfigInput
+
+func (GetInstanceTemplateShieldedInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i GetInstanceTemplateShieldedInstanceConfigArray) ToGetInstanceTemplateShieldedInstanceConfigArrayOutput() GetInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return i.ToGetInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceTemplateShieldedInstanceConfigArray) ToGetInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceTemplateShieldedInstanceConfigArrayOutput)
+}
+
+type GetInstanceTemplateShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigOutput) ToGetInstanceTemplateShieldedInstanceConfigOutput() GetInstanceTemplateShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigOutput) ToGetInstanceTemplateShieldedInstanceConfigOutputWithContext(ctx context.Context) GetInstanceTemplateShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateShieldedInstanceConfig) bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateShieldedInstanceConfig) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateShieldedInstanceConfig) bool { return v.EnableVtpm }).(pulumi.BoolOutput)
+}
+
+type GetInstanceTemplateShieldedInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceTemplateShieldedInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceTemplateShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigArrayOutput) ToGetInstanceTemplateShieldedInstanceConfigArrayOutput() GetInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigArrayOutput) ToGetInstanceTemplateShieldedInstanceConfigArrayOutputWithContext(ctx context.Context) GetInstanceTemplateShieldedInstanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstanceTemplateShieldedInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceTemplateShieldedInstanceConfig {
+		return vs[0].([]GetInstanceTemplateShieldedInstanceConfig)[vs[1].(int)]
+	}).(GetInstanceTemplateShieldedInstanceConfigOutput)
+}
+
 type GetRegionInstanceGroupInstance struct {
 	// URL to the instance.
 	Instance string `pulumi:"instance"`
@@ -67926,6 +69409,28 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateConfidentialInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateDiskDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAccessConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateNetworkInterfaceAliasIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingNodeAffinityOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateSchedulingNodeAffinityArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateServiceAccountOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateServiceAccountArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortOutput{})

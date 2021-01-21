@@ -2,6 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+* Upgrade to v3.53.0 of the Google Beta Terraform Provider
 * Remove autonaming from `gcp.dns.RecordSets` as the name of the resouce relates to a DNS name.
 
 ---

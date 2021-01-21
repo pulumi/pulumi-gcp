@@ -129,7 +129,7 @@ namespace Pulumi.Gcp.Memcache
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the Memcache region of the instance.
+        /// The region of the Memcache instance. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -256,10 +256,10 @@ namespace Pulumi.Gcp.Memcache
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the Memcache region of the instance.
+        /// The region of the Memcache instance. If it is not provided, the provider region is used.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("zones")]
         private InputList<string>? _zones;
@@ -380,7 +380,7 @@ namespace Pulumi.Gcp.Memcache
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The name of the Memcache region of the instance.
+        /// The region of the Memcache instance. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

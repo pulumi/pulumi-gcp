@@ -102,7 +102,7 @@ class Node(pulumi.CustomResource):
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
                TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
-        :param pulumi.Input[str] zone: The GCP location for the TPU.
+        :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -135,8 +135,6 @@ class Node(pulumi.CustomResource):
                 raise TypeError("Missing required property 'tensorflow_version'")
             __props__['tensorflow_version'] = tensorflow_version
             __props__['use_service_networking'] = use_service_networking
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
             __props__['network_endpoints'] = None
             __props__['service_account'] = None
@@ -199,7 +197,7 @@ class Node(pulumi.CustomResource):
                The VPC Peering should be set up before provisioning the node. If this field is set,
                cidr_block field should not be specified. If the network that you want to peer the
                TPU Node to is a Shared VPC network, the node must be created with this this field enabled.
-        :param pulumi.Input[str] zone: The GCP location for the TPU.
+        :param pulumi.Input[str] zone: The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -337,7 +335,7 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The GCP location for the TPU.
+        The GCP location for the TPU. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
