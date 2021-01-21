@@ -20,7 +20,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if connection_name and not isinstance(connection_name, str):
             raise TypeError("Expected argument 'connection_name' to be a str")
         pulumi.set(__self__, "connection_name", connection_name)
@@ -63,6 +63,9 @@ class GetDatabaseInstanceResult:
         if replica_configurations and not isinstance(replica_configurations, list):
             raise TypeError("Expected argument 'replica_configurations' to be a list")
         pulumi.set(__self__, "replica_configurations", replica_configurations)
+        if restore_backup_contexts and not isinstance(restore_backup_contexts, list):
+            raise TypeError("Expected argument 'restore_backup_contexts' to be a list")
+        pulumi.set(__self__, "restore_backup_contexts", restore_backup_contexts)
         if root_password and not isinstance(root_password, str):
             raise TypeError("Expected argument 'root_password' to be a str")
         pulumi.set(__self__, "root_password", root_password)
@@ -182,6 +185,11 @@ class GetDatabaseInstanceResult:
         return pulumi.get(self, "replica_configurations")
 
     @property
+    @pulumi.getter(name="restoreBackupContexts")
+    def restore_backup_contexts(self) -> Sequence['outputs.GetDatabaseInstanceRestoreBackupContextResult']:
+        return pulumi.get(self, "restore_backup_contexts")
+
+    @property
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
         """
@@ -240,6 +248,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             public_ip_address=self.public_ip_address,
             region=self.region,
             replica_configurations=self.replica_configurations,
+            restore_backup_contexts=self.restore_backup_contexts,
             root_password=self.root_password,
             self_link=self.self_link,
             server_ca_certs=self.server_ca_certs,
@@ -259,7 +268,7 @@ def get_database_instance(name: Optional[str] = None,
     import pulumi
     import pulumi_gcp as gcp
 
-    qa = gcp.sql.get_database_instance(name=google_sql_database_instance["master"]["name"])
+    qa = gcp.sql.get_database_instance(name="test-sql-instance")
     ```
 
 
@@ -290,6 +299,7 @@ def get_database_instance(name: Optional[str] = None,
         public_ip_address=__ret__.public_ip_address,
         region=__ret__.region,
         replica_configurations=__ret__.replica_configurations,
+        restore_backup_contexts=__ret__.restore_backup_contexts,
         root_password=__ret__.root_password,
         self_link=__ret__.self_link,
         server_ca_certs=__ret__.server_ca_certs,

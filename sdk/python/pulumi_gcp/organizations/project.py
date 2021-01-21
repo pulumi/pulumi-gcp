@@ -27,41 +27,6 @@ class Project(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Allows creation and management of a Google Cloud Platform project.
-
-        Projects created with this resource must be associated with an Organization.
-        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-
-        The service account used to run this provider when creating a `organizations.Project`
-        resource must have `roles/resourcemanager.projectCreator`. See the
-        [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-        doc for more information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            org_id="1234567",
-            project_id="your-project-id")
-        ```
-
-        To create a project under a specific folder
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
-            project_id="your-project-id",
-            folder_id=department1.name)
-        ```
-
         ## Import
 
         Projects can be imported using the `project_id`, e.g.
@@ -78,8 +43,8 @@ class Project(pulumi.CustomResource):
                you set `auto_create_network` to `false`, since the network will exist momentarily.
         :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with the provider
-               must have Billing Account Administrator privileges (`roles/billing.admin`) in
-               the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+               See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
@@ -158,8 +123,8 @@ class Project(pulumi.CustomResource):
                you set `auto_create_network` to `false`, since the network will exist momentarily.
         :param pulumi.Input[str] billing_account: The alphanumeric ID of the billing account this project
                belongs to. The user or service account performing this operation with the provider
-               must have Billing Account Administrator privileges (`roles/billing.admin`) in
-               the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+               must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+               See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
                for more details.
         :param pulumi.Input[str] folder_id: The numeric ID of the folder this project should be
                created under. Only one of `org_id` or `folder_id` may be
@@ -211,8 +176,8 @@ class Project(pulumi.CustomResource):
         """
         The alphanumeric ID of the billing account this project
         belongs to. The user or service account performing this operation with the provider
-        must have Billing Account Administrator privileges (`roles/billing.admin`) in
-        the organization. See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/v1/how-tos/access-control)
+        must have at mininum Billing Account User privileges (`roles/billing.user`) on the billing account.
+        See [Google Cloud Billing API Access Control](https://cloud.google.com/billing/docs/how-to/billing-access)
         for more details.
         """
         return pulumi.get(self, "billing_account")

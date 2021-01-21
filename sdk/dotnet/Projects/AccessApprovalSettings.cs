@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Projects
         public Output<ImmutableArray<Outputs.AccessApprovalSettingsEnrolledService>> EnrolledServices { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+        /// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -41,8 +41,11 @@ namespace Pulumi.Gcp.Projects
         [Output("notificationEmails")]
         public Output<ImmutableArray<string>> NotificationEmails { get; private set; } = null!;
 
+        /// <summary>
+        /// Deprecated in favor of 'project_id'
+        /// </summary>
         [Output("project")]
-        public Output<string> Project { get; private set; } = null!;
+        public Output<string?> Project { get; private set; } = null!;
 
         /// <summary>
         /// ID of the project of the access approval settings.
@@ -125,6 +128,9 @@ namespace Pulumi.Gcp.Projects
             set => _notificationEmails = value;
         }
 
+        /// <summary>
+        /// Deprecated in favor of 'project_id'
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -164,7 +170,7 @@ namespace Pulumi.Gcp.Projects
         }
 
         /// <summary>
-        /// The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+        /// The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -183,6 +189,9 @@ namespace Pulumi.Gcp.Projects
             set => _notificationEmails = value;
         }
 
+        /// <summary>
+        /// Deprecated in favor of 'project_id'
+        /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 

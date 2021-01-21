@@ -11,6 +11,7 @@ from .. import _utilities, _tables
 __all__ = [
     'DatabaseInstanceIpAddressArgs',
     'DatabaseInstanceReplicaConfigurationArgs',
+    'DatabaseInstanceRestoreBackupContextArgs',
     'DatabaseInstanceServerCaCertArgs',
     'DatabaseInstanceSettingsArgs',
     'DatabaseInstanceSettingsBackupConfigurationArgs',
@@ -259,6 +260,62 @@ class DatabaseInstanceReplicaConfigurationArgs:
     @verify_server_certificate.setter
     def verify_server_certificate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "verify_server_certificate", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceRestoreBackupContextArgs:
+    def __init__(__self__, *,
+                 backup_run_id: pulumi.Input[int],
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] backup_run_id: The ID of the backup run to restore from.
+        :param pulumi.Input[str] instance_id: The ID of the instance that the backup was taken from. If left empty,
+               this instance's ID will be used.
+        :param pulumi.Input[str] project: The full project ID of the source instance.`
+        """
+        pulumi.set(__self__, "backup_run_id", backup_run_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="backupRunId")
+    def backup_run_id(self) -> pulumi.Input[int]:
+        """
+        The ID of the backup run to restore from.
+        """
+        return pulumi.get(self, "backup_run_id")
+
+    @backup_run_id.setter
+    def backup_run_id(self, value: pulumi.Input[int]):
+        pulumi.set(self, "backup_run_id", value)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the instance that the backup was taken from. If left empty,
+        this instance's ID will be used.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full project ID of the source instance.`
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 @pulumi.input_type

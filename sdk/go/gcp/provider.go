@@ -51,6 +51,7 @@ type providerArgs struct {
 	AccessToken                          *string           `pulumi:"accessToken"`
 	ActiveDirectoryCustomEndpoint        *string           `pulumi:"activeDirectoryCustomEndpoint"`
 	ApiGatewayCustomEndpoint             *string           `pulumi:"apiGatewayCustomEndpoint"`
+	ApigeeCustomEndpoint                 *string           `pulumi:"apigeeCustomEndpoint"`
 	AppEngineCustomEndpoint              *string           `pulumi:"appEngineCustomEndpoint"`
 	ArtifactRegistryCustomEndpoint       *string           `pulumi:"artifactRegistryCustomEndpoint"`
 	Batching                             *ProviderBatching `pulumi:"batching"`
@@ -146,6 +147,7 @@ type ProviderArgs struct {
 	AccessToken                          pulumi.StringPtrInput
 	ActiveDirectoryCustomEndpoint        pulumi.StringPtrInput
 	ApiGatewayCustomEndpoint             pulumi.StringPtrInput
+	ApigeeCustomEndpoint                 pulumi.StringPtrInput
 	AppEngineCustomEndpoint              pulumi.StringPtrInput
 	ArtifactRegistryCustomEndpoint       pulumi.StringPtrInput
 	Batching                             ProviderBatchingPtrInput

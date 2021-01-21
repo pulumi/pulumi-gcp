@@ -22,41 +22,6 @@ class UsageExportBucket(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Allows creation and management of a Google Cloud Platform project.
-
-        Projects created with this resource must be associated with an Organization.
-        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
-
-        The service account used to run this provider when creating a `organizations.Project`
-        resource must have `roles/resourcemanager.projectCreator`. See the
-        [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-        doc for more information.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("myProject",
-            org_id="1234567",
-            project_id="your-project-id")
-        ```
-
-        To create a project under a specific folder
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
-            project_id="your-project-id",
-            folder_id=department1.name)
-        ```
-
         ## Import
 
         Projects can be imported using the `project_id`, e.g.

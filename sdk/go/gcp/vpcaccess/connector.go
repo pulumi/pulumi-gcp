@@ -35,7 +35,6 @@ import (
 // 		_, err := vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
 // 			IpCidrRange: pulumi.String("10.8.0.0/28"),
 // 			Network:     pulumi.String("default"),
-// 			Region:      pulumi.String("us-central1"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -80,7 +79,7 @@ type Connector struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Region where the VPC Access connector resides
+	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The fully qualified name of this VPC connector
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -100,9 +99,6 @@ func NewConnector(ctx *pulumi.Context,
 	}
 	if args.Network == nil {
 		return nil, errors.New("invalid value for required argument 'Network'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	var resource Connector
 	err := ctx.RegisterResource("gcp:vpcaccess/connector:Connector", name, args, &resource, opts...)
@@ -139,7 +135,7 @@ type connectorState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Region where the VPC Access connector resides
+	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The fully qualified name of this VPC connector
 	SelfLink *string `pulumi:"selfLink"`
@@ -161,7 +157,7 @@ type ConnectorState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Region where the VPC Access connector resides
+	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The fully qualified name of this VPC connector
 	SelfLink pulumi.StringPtrInput
@@ -187,8 +183,8 @@ type connectorArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// Region where the VPC Access connector resides
-	Region string `pulumi:"region"`
+	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Connector resource.
@@ -206,8 +202,8 @@ type ConnectorArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// Region where the VPC Access connector resides
-	Region pulumi.StringInput
+	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (ConnectorArgs) ElementType() reflect.Type {

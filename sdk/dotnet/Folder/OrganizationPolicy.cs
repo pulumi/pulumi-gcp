@@ -11,8 +11,7 @@ namespace Pulumi.Gcp.Folder
 {
     /// <summary>
     /// Allows management of Organization policies for a Google Folder. For more information see
-    /// [the official
-    /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
+    /// [the official documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview) and
     /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/folders/setOrgPolicy).
     /// 
     /// ## Example Usage

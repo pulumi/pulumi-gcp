@@ -81,7 +81,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The name of the Memcache region of the instance.
+        :param pulumi.Input[str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where memcache nodes should be provisioned.  If not
                provided, all zones will be used.
         """
@@ -115,8 +115,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_count'")
             __props__['node_count'] = node_count
             __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['zones'] = zones
             __props__['create_time'] = None
@@ -176,7 +174,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] node_count: Number of nodes in the memcache instance.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The name of the Memcache region of the instance.
+        :param pulumi.Input[str] region: The region of the Memcache instance. If it is not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones where memcache nodes should be provisioned.  If not
                provided, all zones will be used.
         """
@@ -317,7 +315,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The name of the Memcache region of the instance.
+        The region of the Memcache instance. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 

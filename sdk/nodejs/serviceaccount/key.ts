@@ -57,6 +57,10 @@ export class Key extends pulumi.CustomResource {
     }
 
     /**
+     * Arbitrary map of values that, when changed, will trigger a new key to be generated.
+     */
+    public readonly keepers!: pulumi.Output<{[key: string]: any} | undefined>;
+    /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at
      * [ServiceAccountPrivateKeyType](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys#ServiceAccountKeyAlgorithm)
@@ -116,6 +120,7 @@ export class Key extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as KeyState | undefined;
+            inputs["keepers"] = state ? state.keepers : undefined;
             inputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["privateKey"] = state ? state.privateKey : undefined;
@@ -131,6 +136,7 @@ export class Key extends pulumi.CustomResource {
             if ((!args || args.serviceAccountId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
+            inputs["keepers"] = args ? args.keepers : undefined;
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
             inputs["publicKeyData"] = args ? args.publicKeyData : undefined;
@@ -157,6 +163,10 @@ export class Key extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Key resources.
  */
 export interface KeyState {
+    /**
+     * Arbitrary map of values that, when changed, will trigger a new key to be generated.
+     */
+    readonly keepers?: pulumi.Input<{[key: string]: any}>;
     /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at
@@ -210,6 +220,10 @@ export interface KeyState {
  * The set of arguments for constructing a Key resource.
  */
 export interface KeyArgs {
+    /**
+     * Arbitrary map of values that, when changed, will trigger a new key to be generated.
+     */
+    readonly keepers?: pulumi.Input<{[key: string]: any}>;
     /**
      * The algorithm used to generate the key. KEY_ALG_RSA_2048 is the default algorithm.
      * Valid values are listed at

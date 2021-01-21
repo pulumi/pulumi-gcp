@@ -46,7 +46,7 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      */
     public readonly enrolledServices!: pulumi.Output<outputs.projects.AccessApprovalSettingsEnrolledService[]>;
     /**
-     * The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+     * The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -55,7 +55,12 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
      * addresses are allowed.
      */
     public readonly notificationEmails!: pulumi.Output<string[]>;
-    public readonly project!: pulumi.Output<string>;
+    /**
+     * Deprecated in favor of 'project_id'
+     *
+     * @deprecated Deprecated in favor of `project_id`
+     */
+    public readonly project!: pulumi.Output<string | undefined>;
     /**
      * ID of the project of the access approval settings.
      */
@@ -122,7 +127,7 @@ export interface AccessApprovalSettingsState {
      */
     readonly enrolledServices?: pulumi.Input<pulumi.Input<inputs.projects.AccessApprovalSettingsEnrolledService>[]>;
     /**
-     * The resource name of the settings. Format is "projects/{project_id/accessApprovalSettings"
+     * The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -131,6 +136,11 @@ export interface AccessApprovalSettingsState {
      * addresses are allowed.
      */
     readonly notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Deprecated in favor of 'project_id'
+     *
+     * @deprecated Deprecated in favor of `project_id`
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * ID of the project of the access approval settings.
@@ -155,6 +165,11 @@ export interface AccessApprovalSettingsArgs {
      * addresses are allowed.
      */
     readonly notificationEmails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Deprecated in favor of 'project_id'
+     *
+     * @deprecated Deprecated in favor of `project_id`
+     */
     readonly project?: pulumi.Input<string>;
     /**
      * ID of the project of the access approval settings.

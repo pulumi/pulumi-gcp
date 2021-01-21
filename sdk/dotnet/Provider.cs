@@ -59,6 +59,9 @@ namespace Pulumi.Gcp
         [Input("apiGatewayCustomEndpoint")]
         public Input<string>? ApiGatewayCustomEndpoint { get; set; }
 
+        [Input("apigeeCustomEndpoint")]
+        public Input<string>? ApigeeCustomEndpoint { get; set; }
+
         [Input("appEngineCustomEndpoint")]
         public Input<string>? AppEngineCustomEndpoint { get; set; }
 

@@ -43,8 +43,7 @@ class Connector(pulumi.CustomResource):
 
         connector = gcp.vpcaccess.Connector("connector",
             ip_cidr_range="10.8.0.0/28",
-            network="default",
-            region="us-central1")
+            network="default")
         ```
 
         ## Import
@@ -76,7 +75,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] network: Name of a VPC network.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region where the VPC Access connector resides
+        :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -105,8 +104,6 @@ class Connector(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network'")
             __props__['network'] = network
             __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['self_link'] = None
             __props__['state'] = None
@@ -143,7 +140,7 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] network: Name of a VPC network.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] region: Region where the VPC Access connector resides
+        :param pulumi.Input[str] region: Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The fully qualified name of this VPC connector
         :param pulumi.Input[str] state: State of the VPC access connector.
         """
@@ -215,7 +212,7 @@ class Connector(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Region where the VPC Access connector resides
+        Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 

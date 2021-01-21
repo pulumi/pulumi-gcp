@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'DatabaseInstanceIpAddress',
     'DatabaseInstanceReplicaConfiguration',
+    'DatabaseInstanceRestoreBackupContext',
     'DatabaseInstanceServerCaCert',
     'DatabaseInstanceSettings',
     'DatabaseInstanceSettingsBackupConfiguration',
@@ -23,6 +24,7 @@ __all__ = [
     'GetCaCertsCertResult',
     'GetDatabaseInstanceIpAddressResult',
     'GetDatabaseInstanceReplicaConfigurationResult',
+    'GetDatabaseInstanceRestoreBackupContextResult',
     'GetDatabaseInstanceServerCaCertResult',
     'GetDatabaseInstanceSettingResult',
     'GetDatabaseInstanceSettingBackupConfigurationResult',
@@ -218,6 +220,53 @@ class DatabaseInstanceReplicaConfiguration(dict):
         value is checked during the SSL handshake.
         """
         return pulumi.get(self, "verify_server_certificate")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DatabaseInstanceRestoreBackupContext(dict):
+    def __init__(__self__, *,
+                 backup_run_id: int,
+                 instance_id: Optional[str] = None,
+                 project: Optional[str] = None):
+        """
+        :param int backup_run_id: The ID of the backup run to restore from.
+        :param str instance_id: The ID of the instance that the backup was taken from. If left empty,
+               this instance's ID will be used.
+        :param str project: The full project ID of the source instance.`
+        """
+        pulumi.set(__self__, "backup_run_id", backup_run_id)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="backupRunId")
+    def backup_run_id(self) -> int:
+        """
+        The ID of the backup run to restore from.
+        """
+        return pulumi.get(self, "backup_run_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[str]:
+        """
+        The ID of the instance that the backup was taken from. If left empty,
+        this instance's ID will be used.
+        """
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[str]:
+        """
+        The full project ID of the source instance.`
+        """
+        return pulumi.get(self, "project")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1025,6 +1074,38 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
         True if the master's common name value is checked during the SSL handshake.
         """
         return pulumi.get(self, "verify_server_certificate")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceRestoreBackupContextResult(dict):
+    def __init__(__self__, *,
+                 backup_run_id: int,
+                 instance_id: str,
+                 project: str):
+        """
+        :param str project: The ID of the project in which the resource belongs.
+        """
+        pulumi.set(__self__, "backup_run_id", backup_run_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="backupRunId")
+    def backup_run_id(self) -> int:
+        return pulumi.get(self, "backup_run_id")
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> str:
+        return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        The ID of the project in which the resource belongs.
+        """
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type

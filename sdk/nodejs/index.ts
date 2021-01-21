@@ -12,6 +12,7 @@ export * from "./utils";
 import * as accesscontextmanager from "./accesscontextmanager";
 import * as activedirectory from "./activedirectory";
 import * as apigateway from "./apigateway";
+import * as apigee from "./apigee";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as bigquery from "./bigquery";
@@ -83,6 +84,7 @@ export {
     accesscontextmanager,
     activedirectory,
     apigateway,
+    apigee,
     appengine,
     artifactregistry,
     bigquery,

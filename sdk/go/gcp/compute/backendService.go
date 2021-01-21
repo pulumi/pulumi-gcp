@@ -108,7 +108,7 @@ import (
 // 			RequestPath:      pulumi.String("/"),
 // 			CheckIntervalSec: pulumi.Int(1),
 // 			TimeoutSec:       pulumi.Int(1),
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -125,7 +125,7 @@ import (
 // 				NegativeCaching:         pulumi.Bool(true),
 // 				SignedUrlCacheMaxAgeSec: pulumi.Int(7200),
 // 			},
-// 		})
+// 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
 // 		}

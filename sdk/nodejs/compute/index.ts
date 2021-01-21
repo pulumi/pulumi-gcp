@@ -33,6 +33,7 @@ export * from "./getImage";
 export * from "./getInstance";
 export * from "./getInstanceGroup";
 export * from "./getInstanceSerialPort";
+export * from "./getInstanceTemplate";
 export * from "./getLBIPRanges";
 export * from "./getNetblockIPRanges";
 export * from "./getNetwork";

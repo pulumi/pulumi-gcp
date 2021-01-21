@@ -384,6 +384,17 @@ __all__ = [
     'GetInstanceScratchDiskResult',
     'GetInstanceServiceAccountResult',
     'GetInstanceShieldedInstanceConfigResult',
+    'GetInstanceTemplateConfidentialInstanceConfigResult',
+    'GetInstanceTemplateDiskResult',
+    'GetInstanceTemplateDiskDiskEncryptionKeyResult',
+    'GetInstanceTemplateGuestAcceleratorResult',
+    'GetInstanceTemplateNetworkInterfaceResult',
+    'GetInstanceTemplateNetworkInterfaceAccessConfigResult',
+    'GetInstanceTemplateNetworkInterfaceAliasIpRangeResult',
+    'GetInstanceTemplateSchedulingResult',
+    'GetInstanceTemplateSchedulingNodeAffinityResult',
+    'GetInstanceTemplateServiceAccountResult',
+    'GetInstanceTemplateShieldedInstanceConfigResult',
     'GetRegionInstanceGroupInstanceResult',
     'GetRegionInstanceGroupInstanceNamedPortResult',
     'GetResourcePolicyGroupPlacementPolicyResult',
@@ -22466,6 +22477,611 @@ class GetInstanceServiceAccountResult(dict):
 
 @pulumi.output_type
 class GetInstanceShieldedInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: bool,
+                 enable_secure_boot: bool,
+                 enable_vtpm: bool):
+        pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> bool:
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> bool:
+        return pulumi.get(self, "enable_secure_boot")
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> bool:
+        return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
+class GetInstanceTemplateConfidentialInstanceConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_confidential_compute: bool):
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
+class GetInstanceTemplateDiskResult(dict):
+    def __init__(__self__, *,
+                 auto_delete: bool,
+                 boot: bool,
+                 device_name: str,
+                 disk_encryption_keys: Sequence['outputs.GetInstanceTemplateDiskDiskEncryptionKeyResult'],
+                 disk_name: str,
+                 disk_size_gb: int,
+                 disk_type: str,
+                 interface: str,
+                 labels: Mapping[str, str],
+                 mode: str,
+                 source: str,
+                 source_image: str,
+                 type: str):
+        """
+        :param bool auto_delete: Whether or not the disk should be auto-deleted.
+               This defaults to true.
+        :param bool boot: Indicates that this is a boot disk.
+        :param str device_name: A unique device name that is reflected into the
+               /dev/  tree of a Linux operating system running within the instance. If not
+               specified, the server chooses a default device name to apply to this disk.
+        :param Sequence['GetInstanceTemplateDiskDiskEncryptionKeyArgs'] disk_encryption_keys: Encrypts or decrypts a disk using a customer-supplied encryption key.
+        :param str disk_name: Name of the disk. When not provided, this defaults
+               to the name of the instance.
+        :param int disk_size_gb: The size of the image in gigabytes. If not
+               specified, it will inherit the size of its base image. For SCRATCH disks,
+               the size must be exactly 375GB.
+        :param str disk_type: The GCE disk type. Can be either `"pd-ssd"`,
+               `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+        :param str interface: Specifies the disk interface to use for attaching this disk, 
+               which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+               and the request will fail if you attempt to attach a persistent disk in any other format
+               than SCSI. Local SSDs can use either NVME or SCSI.
+        :param Mapping[str, str] labels: A set of key/value label pairs to assign to instances
+               created from this template,
+        :param str mode: The mode in which to attach this disk, either READ_WRITE
+               or READ_ONLY. If you are attaching or creating a boot disk, this must
+               read-write mode.
+        :param str source: The name (**not self_link**)
+               of the disk (such as those managed by `compute.Disk`) to attach.
+               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param str source_image: The image from which to
+               initialize this disk. This can be one of: the image's `self_link`,
+               `projects/{project}/global/images/{image}`,
+               `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+               `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+               `{project}/{image}`, `{family}`, or `{image}`.
+               > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "auto_delete", auto_delete)
+        pulumi.set(__self__, "boot", boot)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "disk_encryption_keys", disk_encryption_keys)
+        pulumi.set(__self__, "disk_name", disk_name)
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "interface", interface)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "source_image", source_image)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="autoDelete")
+    def auto_delete(self) -> bool:
+        """
+        Whether or not the disk should be auto-deleted.
+        This defaults to true.
+        """
+        return pulumi.get(self, "auto_delete")
+
+    @property
+    @pulumi.getter
+    def boot(self) -> bool:
+        """
+        Indicates that this is a boot disk.
+        """
+        return pulumi.get(self, "boot")
+
+    @property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> str:
+        """
+        A unique device name that is reflected into the
+        /dev/  tree of a Linux operating system running within the instance. If not
+        specified, the server chooses a default device name to apply to this disk.
+        """
+        return pulumi.get(self, "device_name")
+
+    @property
+    @pulumi.getter(name="diskEncryptionKeys")
+    def disk_encryption_keys(self) -> Sequence['outputs.GetInstanceTemplateDiskDiskEncryptionKeyResult']:
+        """
+        Encrypts or decrypts a disk using a customer-supplied encryption key.
+        """
+        return pulumi.get(self, "disk_encryption_keys")
+
+    @property
+    @pulumi.getter(name="diskName")
+    def disk_name(self) -> str:
+        """
+        Name of the disk. When not provided, this defaults
+        to the name of the instance.
+        """
+        return pulumi.get(self, "disk_name")
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> int:
+        """
+        The size of the image in gigabytes. If not
+        specified, it will inherit the size of its base image. For SCRATCH disks,
+        the size must be exactly 375GB.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter(name="diskType")
+    def disk_type(self) -> str:
+        """
+        The GCE disk type. Can be either `"pd-ssd"`,
+        `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
+        """
+        return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> str:
+        """
+        Specifies the disk interface to use for attaching this disk, 
+        which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
+        and the request will fail if you attempt to attach a persistent disk in any other format
+        than SCSI. Local SSDs can use either NVME or SCSI.
+        """
+        return pulumi.get(self, "interface")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        A set of key/value label pairs to assign to instances
+        created from this template,
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        The mode in which to attach this disk, either READ_WRITE
+        or READ_ONLY. If you are attaching or creating a boot disk, this must
+        read-write mode.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        The name (**not self_link**)
+        of the disk (such as those managed by `compute.Disk`) to attach.
+        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter(name="sourceImage")
+    def source_image(self) -> str:
+        """
+        The image from which to
+        initialize this disk. This can be one of: the image's `self_link`,
+        `projects/{project}/global/images/{image}`,
+        `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
+        `global/images/family/{family}`, `family/{family}`, `{project}/{family}`,
+        `{project}/{image}`, `{family}`, or `{image}`.
+        > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
+        """
+        return pulumi.get(self, "source_image")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceTemplateDiskDiskEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_self_link: str):
+        """
+        :param str kms_key_self_link: The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+
+    @property
+    @pulumi.getter(name="kmsKeySelfLink")
+    def kms_key_self_link(self) -> str:
+        """
+        The self link of the encryption key that is stored in Google Cloud KMS
+        """
+        return pulumi.get(self, "kms_key_self_link")
+
+
+@pulumi.output_type
+class GetInstanceTemplateGuestAcceleratorResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 type: str):
+        """
+        :param int count: The number of the guest accelerator cards exposed to this instance.
+        :param str type: The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        The number of the guest accelerator cards exposed to this instance.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetInstanceTemplateNetworkInterfaceResult(dict):
+    def __init__(__self__, *,
+                 access_configs: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult'],
+                 alias_ip_ranges: Sequence['outputs.GetInstanceTemplateNetworkInterfaceAliasIpRangeResult'],
+                 name: str,
+                 network: str,
+                 network_ip: str,
+                 subnetwork: str,
+                 subnetwork_project: str):
+        """
+        :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
+               array of alias IP ranges for this network interface. Can only be specified for network
+               interfaces on subnet-mode networks. Structure documented below.
+        :param str name: The name of the instance template. One of `name` or `filter` must be provided.
+        :param str network: The name or self_link of the network to attach this interface to.
+               Use `network` attribute for Legacy or Auto subnetted networks and
+               `subnetwork` for custom subnetted networks.
+        :param str network_ip: The private IP address to assign to the instance. If
+               empty, the address will be automatically assigned.
+        :param str subnetwork: the name of the subnetwork to attach this interface
+               to. The subnetwork must exist in the same `region` this instance will be
+               created in. Either `network` or `subnetwork` must be provided.
+        :param str subnetwork_project: The ID of the project in which the subnetwork belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "access_configs", access_configs)
+        pulumi.set(__self__, "alias_ip_ranges", alias_ip_ranges)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_ip", network_ip)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+        pulumi.set(__self__, "subnetwork_project", subnetwork_project)
+
+    @property
+    @pulumi.getter(name="accessConfigs")
+    def access_configs(self) -> Sequence['outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult']:
+        return pulumi.get(self, "access_configs")
+
+    @property
+    @pulumi.getter(name="aliasIpRanges")
+    def alias_ip_ranges(self) -> Sequence['outputs.GetInstanceTemplateNetworkInterfaceAliasIpRangeResult']:
+        """
+        An
+        array of alias IP ranges for this network interface. Can only be specified for network
+        interfaces on subnet-mode networks. Structure documented below.
+        """
+        return pulumi.get(self, "alias_ip_ranges")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the instance template. One of `name` or `filter` must be provided.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The name or self_link of the network to attach this interface to.
+        Use `network` attribute for Legacy or Auto subnetted networks and
+        `subnetwork` for custom subnetted networks.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkIp")
+    def network_ip(self) -> str:
+        """
+        The private IP address to assign to the instance. If
+        empty, the address will be automatically assigned.
+        """
+        return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        the name of the subnetwork to attach this interface
+        to. The subnetwork must exist in the same `region` this instance will be
+        created in. Either `network` or `subnetwork` must be provided.
+        """
+        return pulumi.get(self, "subnetwork")
+
+    @property
+    @pulumi.getter(name="subnetworkProject")
+    def subnetwork_project(self) -> str:
+        """
+        The ID of the project in which the subnetwork belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "subnetwork_project")
+
+
+@pulumi.output_type
+class GetInstanceTemplateNetworkInterfaceAccessConfigResult(dict):
+    def __init__(__self__, *,
+                 nat_ip: str,
+                 network_tier: str,
+                 public_ptr_domain_name: str):
+        """
+        :param str nat_ip: The IP address that will be 1:1 mapped to the instance's
+               network ip. If not given, one will be generated.
+        :param str network_tier: The [networking tier][network-tier] used for configuring
+               this instance template. This field can take the following values: PREMIUM or
+               STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        """
+        pulumi.set(__self__, "nat_ip", nat_ip)
+        pulumi.set(__self__, "network_tier", network_tier)
+        pulumi.set(__self__, "public_ptr_domain_name", public_ptr_domain_name)
+
+    @property
+    @pulumi.getter(name="natIp")
+    def nat_ip(self) -> str:
+        """
+        The IP address that will be 1:1 mapped to the instance's
+        network ip. If not given, one will be generated.
+        """
+        return pulumi.get(self, "nat_ip")
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> str:
+        """
+        The [networking tier][network-tier] used for configuring
+        this instance template. This field can take the following values: PREMIUM or
+        STANDARD. If this field is not specified, it is assumed to be PREMIUM.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @property
+    @pulumi.getter(name="publicPtrDomainName")
+    def public_ptr_domain_name(self) -> str:
+        return pulumi.get(self, "public_ptr_domain_name")
+
+
+@pulumi.output_type
+class GetInstanceTemplateNetworkInterfaceAliasIpRangeResult(dict):
+    def __init__(__self__, *,
+                 ip_cidr_range: str,
+                 subnetwork_range_name: str):
+        """
+        :param str ip_cidr_range: The IP CIDR range represented by this alias IP range. This IP CIDR range
+               must belong to the specified subnetwork and cannot contain IP addresses reserved by
+               system or used by other network interfaces. At the time of writing only a
+               netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+               error.
+        :param str subnetwork_range_name: The subnetwork secondary range name specifying
+               the secondary range from which to allocate the IP CIDR range for this alias IP
+               range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+        pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        pulumi.set(__self__, "subnetwork_range_name", subnetwork_range_name)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> str:
+        """
+        The IP CIDR range represented by this alias IP range. This IP CIDR range
+        must belong to the specified subnetwork and cannot contain IP addresses reserved by
+        system or used by other network interfaces. At the time of writing only a
+        netmask (e.g. /24) may be supplied, with a CIDR format resulting in an API
+        error.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @property
+    @pulumi.getter(name="subnetworkRangeName")
+    def subnetwork_range_name(self) -> str:
+        """
+        The subnetwork secondary range name specifying
+        the secondary range from which to allocate the IP CIDR range for this alias IP
+        range. If left unspecified, the primary range of the subnetwork will be used.
+        """
+        return pulumi.get(self, "subnetwork_range_name")
+
+
+@pulumi.output_type
+class GetInstanceTemplateSchedulingResult(dict):
+    def __init__(__self__, *,
+                 automatic_restart: bool,
+                 min_node_cpus: int,
+                 node_affinities: Sequence['outputs.GetInstanceTemplateSchedulingNodeAffinityResult'],
+                 on_host_maintenance: str,
+                 preemptible: bool):
+        """
+        :param bool automatic_restart: Specifies whether the instance should be
+               automatically restarted if it is terminated by Compute Engine (not
+               terminated by a user). This defaults to true.
+        :param Sequence['GetInstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
+               to determine which sole-tenant nodes your instances and managed instance
+               groups will use as host systems. Read more on sole-tenant node creation
+               [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+               Structure documented below.
+        :param str on_host_maintenance: Defines the maintenance behavior for this
+               instance.
+        :param bool preemptible: Allows instance to be preempted. This defaults to
+               false. Read more on this
+               [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        """
+        pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "min_node_cpus", min_node_cpus)
+        pulumi.set(__self__, "node_affinities", node_affinities)
+        pulumi.set(__self__, "on_host_maintenance", on_host_maintenance)
+        pulumi.set(__self__, "preemptible", preemptible)
+
+    @property
+    @pulumi.getter(name="automaticRestart")
+    def automatic_restart(self) -> bool:
+        """
+        Specifies whether the instance should be
+        automatically restarted if it is terminated by Compute Engine (not
+        terminated by a user). This defaults to true.
+        """
+        return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="minNodeCpus")
+    def min_node_cpus(self) -> int:
+        return pulumi.get(self, "min_node_cpus")
+
+    @property
+    @pulumi.getter(name="nodeAffinities")
+    def node_affinities(self) -> Sequence['outputs.GetInstanceTemplateSchedulingNodeAffinityResult']:
+        """
+        Specifies node affinities or anti-affinities
+        to determine which sole-tenant nodes your instances and managed instance
+        groups will use as host systems. Read more on sole-tenant node creation
+        [here](https://cloud.google.com/compute/docs/nodes/create-nodes).
+        Structure documented below.
+        """
+        return pulumi.get(self, "node_affinities")
+
+    @property
+    @pulumi.getter(name="onHostMaintenance")
+    def on_host_maintenance(self) -> str:
+        """
+        Defines the maintenance behavior for this
+        instance.
+        """
+        return pulumi.get(self, "on_host_maintenance")
+
+    @property
+    @pulumi.getter
+    def preemptible(self) -> bool:
+        """
+        Allows instance to be preempted. This defaults to
+        false. Read more on this
+        [here](https://cloud.google.com/compute/docs/instances/preemptible).
+        """
+        return pulumi.get(self, "preemptible")
+
+
+@pulumi.output_type
+class GetInstanceTemplateSchedulingNodeAffinityResult(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 operator: str,
+                 values: Sequence[str]):
+        """
+        :param str key: The key for the node affinity label.
+        :param str operator: The operator. Can be `IN` for node-affinities
+               or `NOT_IN` for anti-affinities.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The key for the node affinity label.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        The operator. Can be `IN` for node-affinities
+        or `NOT_IN` for anti-affinities.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def values(self) -> Sequence[str]:
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetInstanceTemplateServiceAccountResult(dict):
+    def __init__(__self__, *,
+                 email: str,
+                 scopes: Sequence[str]):
+        """
+        :param str email: The service account e-mail address. If not given, the
+               default Google Compute Engine service account is used.
+        :param Sequence[str] scopes: A list of service scopes. Both OAuth2 URLs and gcloud
+               short names are supported. To allow full access to all Cloud APIs, use the
+               `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "scopes", scopes)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        The service account e-mail address. If not given, the
+        default Google Compute Engine service account is used.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Sequence[str]:
+        """
+        A list of service scopes. Both OAuth2 URLs and gcloud
+        short names are supported. To allow full access to all Cloud APIs, use the
+        `cloud-platform` scope. See a complete list of scopes [here](https://cloud.google.com/sdk/gcloud/reference/alpha/compute/instances/set-scopes#--scopes).
+        """
+        return pulumi.get(self, "scopes")
+
+
+@pulumi.output_type
+class GetInstanceTemplateShieldedInstanceConfigResult(dict):
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,

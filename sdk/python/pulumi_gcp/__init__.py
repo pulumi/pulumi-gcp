@@ -12,6 +12,7 @@ from . import (
     accesscontextmanager,
     activedirectory,
     apigateway,
+    apigee,
     appengine,
     artifactregistry,
     bigquery,

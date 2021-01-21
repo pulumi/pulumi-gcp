@@ -93,6 +93,9 @@ namespace Pulumi.Gcp.Compute
     ///             },
     ///             LoadBalancingScheme = "EXTERNAL",
     ///             Protocol = "HTTP",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 

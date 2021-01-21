@@ -33,7 +33,6 @@ namespace Pulumi.Gcp.VpcAccess
     ///         {
     ///             IpCidrRange = "10.8.0.0/28",
     ///             Network = "default",
-    ///             Region = "us-central1",
     ///         });
     ///     }
     /// 
@@ -100,7 +99,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Region where the VPC Access connector resides
+        /// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -201,10 +200,10 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region where the VPC Access connector resides
+        /// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public ConnectorArgs()
         {
@@ -251,7 +250,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Region where the VPC Access connector resides
+        /// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

@@ -69,16 +69,12 @@ import (
 // 	})
 // }
 // ```
-//
-// {{% /example %}}
 // ### Cloud Run Service Sql
 //
 // ```go
 // package main
 //
 // import (
-// 	"fmt"
-//
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
@@ -87,28 +83,18 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		instance, err := sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
-// 			DeletionProtection: pulumi.Bool(true),
-// 			Region:             pulumi.String("us-east1"),
+// 			Region: pulumi.String("us-east1"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
 // 			},
+// 			DeletionProtection: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
-// 			AutogenerateRevisionName: pulumi.Bool(true),
-// 			Location:                 pulumi.String("us-central1"),
+// 			Location: pulumi.String("us-central1"),
 // 			Template: &cloudrun.ServiceTemplateArgs{
-// 				Metadata: &cloudrun.ServiceTemplateMetadataArgs{
-// 					Annotations: pulumi.StringMap{
-// 						"autoscaling.knative.dev/maxScale": pulumi.String("1000"),
-// 						"run.googleapis.com/client-name":   pulumi.String("demo"),
-// 						"run.googleapis.com/cloudsql-instances": instance.Name.ApplyT(func(name string) (string, error) {
-// 							return fmt.Sprintf("%v%v", "my-project-name:us-central1:", name), nil
-// 						}).(pulumi.StringOutput),
-// 					},
-// 				},
 // 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
 // 						&cloudrun.ServiceTemplateSpecContainerArgs{
@@ -116,7 +102,15 @@ import (
 // 						},
 // 					},
 // 				},
+// 				Metadata: &cloudrun.ServiceTemplateMetadataArgs{
+// 					Annotations: pulumi.StringMap{
+// 						"autoscaling.knative.dev/maxScale":      pulumi.String("1000"),
+// 						"run.googleapis.com/cloudsql-instances": instance.ConnectionName,
+// 						"run.googleapis.com/client-name":        pulumi.String("demo"),
+// 					},
+// 				},
 // 			},
+// 			AutogenerateRevisionName: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err

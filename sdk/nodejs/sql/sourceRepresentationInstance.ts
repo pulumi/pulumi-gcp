@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const instance = new gcp.sql.SourceRepresentationInstance("instance", {
- *     databaseVersion: "MYSQL_5_7",
+ *     databaseVersion: "MYSQL_8_0",
  *     host: "10.20.30.40",
  *     port: 3306,
  *     region: "us-central1",
@@ -72,7 +72,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
 
     /**
      * The MySQL version running on your source database server.
-     * Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+     * Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
@@ -149,7 +149,7 @@ export class SourceRepresentationInstance extends pulumi.CustomResource {
 export interface SourceRepresentationInstanceState {
     /**
      * The MySQL version running on your source database server.
-     * Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+     * Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
@@ -183,7 +183,7 @@ export interface SourceRepresentationInstanceState {
 export interface SourceRepresentationInstanceArgs {
     /**
      * The MySQL version running on your source database server.
-     * Possible values are `MYSQL_5_6` and `MYSQL_5_7`.
+     * Possible values are `MYSQL_5_6`, `MYSQL_5_7`, and `MYSQL_8_0`.
      */
     readonly databaseVersion: pulumi.Input<string>;
     /**

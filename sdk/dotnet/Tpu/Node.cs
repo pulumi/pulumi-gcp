@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Tpu
         public Output<bool?> UseServiceNetworking { get; private set; } = null!;
 
         /// <summary>
-        /// The GCP location for the TPU.
+        /// The GCP location for the TPU. If it is not provided, the provider zone is used.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -287,10 +287,10 @@ namespace Pulumi.Gcp.Tpu
         public Input<bool>? UseServiceNetworking { get; set; }
 
         /// <summary>
-        /// The GCP location for the TPU.
+        /// The GCP location for the TPU. If it is not provided, the provider zone is used.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public NodeArgs()
         {
@@ -401,7 +401,7 @@ namespace Pulumi.Gcp.Tpu
         public Input<bool>? UseServiceNetworking { get; set; }
 
         /// <summary>
-        /// The GCP location for the TPU.
+        /// The GCP location for the TPU. If it is not provided, the provider zone is used.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

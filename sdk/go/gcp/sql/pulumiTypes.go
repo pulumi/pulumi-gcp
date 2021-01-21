@@ -473,6 +473,179 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) VerifyServerCertificate()
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DatabaseInstanceRestoreBackupContext struct {
+	// The ID of the backup run to restore from.
+	BackupRunId int `pulumi:"backupRunId"`
+	// The ID of the instance that the backup was taken from. If left empty,
+	// this instance's ID will be used.
+	InstanceId *string `pulumi:"instanceId"`
+	// The full project ID of the source instance.`
+	Project *string `pulumi:"project"`
+}
+
+// DatabaseInstanceRestoreBackupContextInput is an input type that accepts DatabaseInstanceRestoreBackupContextArgs and DatabaseInstanceRestoreBackupContextOutput values.
+// You can construct a concrete instance of `DatabaseInstanceRestoreBackupContextInput` via:
+//
+//          DatabaseInstanceRestoreBackupContextArgs{...}
+type DatabaseInstanceRestoreBackupContextInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceRestoreBackupContextOutput() DatabaseInstanceRestoreBackupContextOutput
+	ToDatabaseInstanceRestoreBackupContextOutputWithContext(context.Context) DatabaseInstanceRestoreBackupContextOutput
+}
+
+type DatabaseInstanceRestoreBackupContextArgs struct {
+	// The ID of the backup run to restore from.
+	BackupRunId pulumi.IntInput `pulumi:"backupRunId"`
+	// The ID of the instance that the backup was taken from. If left empty,
+	// this instance's ID will be used.
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
+	// The full project ID of the source instance.`
+	Project pulumi.StringPtrInput `pulumi:"project"`
+}
+
+func (DatabaseInstanceRestoreBackupContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (i DatabaseInstanceRestoreBackupContextArgs) ToDatabaseInstanceRestoreBackupContextOutput() DatabaseInstanceRestoreBackupContextOutput {
+	return i.ToDatabaseInstanceRestoreBackupContextOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceRestoreBackupContextArgs) ToDatabaseInstanceRestoreBackupContextOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceRestoreBackupContextOutput)
+}
+
+func (i DatabaseInstanceRestoreBackupContextArgs) ToDatabaseInstanceRestoreBackupContextPtrOutput() DatabaseInstanceRestoreBackupContextPtrOutput {
+	return i.ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceRestoreBackupContextArgs) ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceRestoreBackupContextOutput).ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceRestoreBackupContextPtrInput is an input type that accepts DatabaseInstanceRestoreBackupContextArgs, DatabaseInstanceRestoreBackupContextPtr and DatabaseInstanceRestoreBackupContextPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceRestoreBackupContextPtrInput` via:
+//
+//          DatabaseInstanceRestoreBackupContextArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseInstanceRestoreBackupContextPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceRestoreBackupContextPtrOutput() DatabaseInstanceRestoreBackupContextPtrOutput
+	ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(context.Context) DatabaseInstanceRestoreBackupContextPtrOutput
+}
+
+type databaseInstanceRestoreBackupContextPtrType DatabaseInstanceRestoreBackupContextArgs
+
+func DatabaseInstanceRestoreBackupContextPtr(v *DatabaseInstanceRestoreBackupContextArgs) DatabaseInstanceRestoreBackupContextPtrInput {
+	return (*databaseInstanceRestoreBackupContextPtrType)(v)
+}
+
+func (*databaseInstanceRestoreBackupContextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (i *databaseInstanceRestoreBackupContextPtrType) ToDatabaseInstanceRestoreBackupContextPtrOutput() DatabaseInstanceRestoreBackupContextPtrOutput {
+	return i.ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceRestoreBackupContextPtrType) ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceRestoreBackupContextPtrOutput)
+}
+
+type DatabaseInstanceRestoreBackupContextOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceRestoreBackupContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (o DatabaseInstanceRestoreBackupContextOutput) ToDatabaseInstanceRestoreBackupContextOutput() DatabaseInstanceRestoreBackupContextOutput {
+	return o
+}
+
+func (o DatabaseInstanceRestoreBackupContextOutput) ToDatabaseInstanceRestoreBackupContextOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextOutput {
+	return o
+}
+
+func (o DatabaseInstanceRestoreBackupContextOutput) ToDatabaseInstanceRestoreBackupContextPtrOutput() DatabaseInstanceRestoreBackupContextPtrOutput {
+	return o.ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceRestoreBackupContextOutput) ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceRestoreBackupContext) *DatabaseInstanceRestoreBackupContext {
+		return &v
+	}).(DatabaseInstanceRestoreBackupContextPtrOutput)
+}
+
+// The ID of the backup run to restore from.
+func (o DatabaseInstanceRestoreBackupContextOutput) BackupRunId() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseInstanceRestoreBackupContext) int { return v.BackupRunId }).(pulumi.IntOutput)
+}
+
+// The ID of the instance that the backup was taken from. If left empty,
+// this instance's ID will be used.
+func (o DatabaseInstanceRestoreBackupContextOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceRestoreBackupContext) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The full project ID of the source instance.`
+func (o DatabaseInstanceRestoreBackupContextOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceRestoreBackupContext) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceRestoreBackupContextPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceRestoreBackupContextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (o DatabaseInstanceRestoreBackupContextPtrOutput) ToDatabaseInstanceRestoreBackupContextPtrOutput() DatabaseInstanceRestoreBackupContextPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceRestoreBackupContextPtrOutput) ToDatabaseInstanceRestoreBackupContextPtrOutputWithContext(ctx context.Context) DatabaseInstanceRestoreBackupContextPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceRestoreBackupContextPtrOutput) Elem() DatabaseInstanceRestoreBackupContextOutput {
+	return o.ApplyT(func(v *DatabaseInstanceRestoreBackupContext) DatabaseInstanceRestoreBackupContext { return *v }).(DatabaseInstanceRestoreBackupContextOutput)
+}
+
+// The ID of the backup run to restore from.
+func (o DatabaseInstanceRestoreBackupContextPtrOutput) BackupRunId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceRestoreBackupContext) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.BackupRunId
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the instance that the backup was taken from. If left empty,
+// this instance's ID will be used.
+func (o DatabaseInstanceRestoreBackupContextPtrOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceRestoreBackupContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The full project ID of the source instance.`
+func (o DatabaseInstanceRestoreBackupContextPtrOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceRestoreBackupContext) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Project
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatabaseInstanceServerCaCert struct {
 	Cert       *string `pulumi:"cert"`
 	CommonName *string `pulumi:"commonName"`
@@ -2526,6 +2699,115 @@ func (o GetDatabaseInstanceReplicaConfigurationArrayOutput) Index(i pulumi.IntIn
 	}).(GetDatabaseInstanceReplicaConfigurationOutput)
 }
 
+type GetDatabaseInstanceRestoreBackupContext struct {
+	BackupRunId int    `pulumi:"backupRunId"`
+	InstanceId  string `pulumi:"instanceId"`
+	// The ID of the project in which the resource belongs.
+	Project string `pulumi:"project"`
+}
+
+// GetDatabaseInstanceRestoreBackupContextInput is an input type that accepts GetDatabaseInstanceRestoreBackupContextArgs and GetDatabaseInstanceRestoreBackupContextOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceRestoreBackupContextInput` via:
+//
+//          GetDatabaseInstanceRestoreBackupContextArgs{...}
+type GetDatabaseInstanceRestoreBackupContextInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceRestoreBackupContextOutput() GetDatabaseInstanceRestoreBackupContextOutput
+	ToGetDatabaseInstanceRestoreBackupContextOutputWithContext(context.Context) GetDatabaseInstanceRestoreBackupContextOutput
+}
+
+type GetDatabaseInstanceRestoreBackupContextArgs struct {
+	BackupRunId pulumi.IntInput    `pulumi:"backupRunId"`
+	InstanceId  pulumi.StringInput `pulumi:"instanceId"`
+	// The ID of the project in which the resource belongs.
+	Project pulumi.StringInput `pulumi:"project"`
+}
+
+func (GetDatabaseInstanceRestoreBackupContextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceRestoreBackupContextArgs) ToGetDatabaseInstanceRestoreBackupContextOutput() GetDatabaseInstanceRestoreBackupContextOutput {
+	return i.ToGetDatabaseInstanceRestoreBackupContextOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceRestoreBackupContextArgs) ToGetDatabaseInstanceRestoreBackupContextOutputWithContext(ctx context.Context) GetDatabaseInstanceRestoreBackupContextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceRestoreBackupContextOutput)
+}
+
+// GetDatabaseInstanceRestoreBackupContextArrayInput is an input type that accepts GetDatabaseInstanceRestoreBackupContextArray and GetDatabaseInstanceRestoreBackupContextArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceRestoreBackupContextArrayInput` via:
+//
+//          GetDatabaseInstanceRestoreBackupContextArray{ GetDatabaseInstanceRestoreBackupContextArgs{...} }
+type GetDatabaseInstanceRestoreBackupContextArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceRestoreBackupContextArrayOutput() GetDatabaseInstanceRestoreBackupContextArrayOutput
+	ToGetDatabaseInstanceRestoreBackupContextArrayOutputWithContext(context.Context) GetDatabaseInstanceRestoreBackupContextArrayOutput
+}
+
+type GetDatabaseInstanceRestoreBackupContextArray []GetDatabaseInstanceRestoreBackupContextInput
+
+func (GetDatabaseInstanceRestoreBackupContextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceRestoreBackupContextArray) ToGetDatabaseInstanceRestoreBackupContextArrayOutput() GetDatabaseInstanceRestoreBackupContextArrayOutput {
+	return i.ToGetDatabaseInstanceRestoreBackupContextArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceRestoreBackupContextArray) ToGetDatabaseInstanceRestoreBackupContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceRestoreBackupContextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceRestoreBackupContextArrayOutput)
+}
+
+type GetDatabaseInstanceRestoreBackupContextOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceRestoreBackupContextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceRestoreBackupContextOutput) ToGetDatabaseInstanceRestoreBackupContextOutput() GetDatabaseInstanceRestoreBackupContextOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceRestoreBackupContextOutput) ToGetDatabaseInstanceRestoreBackupContextOutputWithContext(ctx context.Context) GetDatabaseInstanceRestoreBackupContextOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceRestoreBackupContextOutput) BackupRunId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceRestoreBackupContext) int { return v.BackupRunId }).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstanceRestoreBackupContextOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceRestoreBackupContext) string { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The ID of the project in which the resource belongs.
+func (o GetDatabaseInstanceRestoreBackupContextOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceRestoreBackupContext) string { return v.Project }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceRestoreBackupContextArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceRestoreBackupContextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceRestoreBackupContext)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) ToGetDatabaseInstanceRestoreBackupContextArrayOutput() GetDatabaseInstanceRestoreBackupContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) ToGetDatabaseInstanceRestoreBackupContextArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceRestoreBackupContextArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceRestoreBackupContextArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceRestoreBackupContextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceRestoreBackupContext {
+		return vs[0].([]GetDatabaseInstanceRestoreBackupContext)[vs[1].(int)]
+	}).(GetDatabaseInstanceRestoreBackupContextOutput)
+}
+
 type GetDatabaseInstanceServerCaCert struct {
 	Cert       string `pulumi:"cert"`
 	CommonName string `pulumi:"commonName"`
@@ -3602,6 +3884,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceRestoreBackupContextOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceRestoreBackupContextPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceServerCaCertArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsOutput{})
@@ -3624,6 +3908,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceRestoreBackupContextOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceRestoreBackupContextArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceServerCaCertOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceServerCaCertArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingOutput{})
