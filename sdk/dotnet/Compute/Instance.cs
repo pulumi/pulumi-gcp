@@ -329,7 +329,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> TagsFingerprint { get; private set; } = null!;
 
         /// <summary>
-        /// The zone that the machine should be created in.
+        /// The zone that the machine should be created in. If it is not provided, the provider zone is used.
         /// </summary>
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -606,7 +606,7 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The zone that the machine should be created in.
+        /// The zone that the machine should be created in. If it is not provided, the provider zone is used.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }
@@ -886,7 +886,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? TagsFingerprint { get; set; }
 
         /// <summary>
-        /// The zone that the machine should be created in.
+        /// The zone that the machine should be created in. If it is not provided, the provider zone is used.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

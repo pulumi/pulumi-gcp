@@ -22,28 +22,9 @@ import * as utilities from "../utilities";
  *         clusterId: "tf-instance-cluster",
  *         numNodes: 1,
  *         storageType: "HDD",
- *         zone: "us-central1-b",
  *     }],
  *     labels: {
  *         "my-label": "prod-label",
- *     },
- * });
- * ```
- * ### Development Instance
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const development_instance = new gcp.bigtable.Instance("development-instance", {
- *     clusters: [{
- *         clusterId: "tf-instance-cluster",
- *         storageType: "HDD",
- *         zone: "us-central1-b",
- *     }],
- *     instanceType: "DEVELOPMENT",
- *     labels: {
- *         "my-label": "dev-label",
  *     },
  * });
  * ```

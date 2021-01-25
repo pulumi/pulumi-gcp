@@ -183,9 +183,7 @@ class Autoscalar(pulumi.CustomResource):
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] target: Fraction of backend capacity utilization (set in HTTP(s) load
@@ -256,9 +254,7 @@ class Autoscalar(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -314,9 +310,7 @@ class Autoscalar(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The identifier (type) of the Stackdriver Monitoring metric.
-        The metric cannot have negative values.
-        The metric must have a value type of INT64 or DOUBLE.
+        The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "name")
 

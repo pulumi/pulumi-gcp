@@ -50,7 +50,7 @@ import (
 // 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
 // 						&cloudrun.ServiceTemplateSpecContainerArgs{
-// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 // 						},
 // 					},
 // 				},
@@ -98,7 +98,7 @@ import (
 // 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
 // 						&cloudrun.ServiceTemplateSpecContainerArgs{
-// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 // 						},
 // 					},
 // 				},
@@ -139,7 +139,7 @@ import (
 // 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
 // 						&cloudrun.ServiceTemplateSpecContainerArgs{
-// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 // 						},
 // 					},
 // 				},
@@ -208,7 +208,7 @@ import (
 // 									"value": pulumi.String("home"),
 // 								},
 // 							},
-// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 // 						},
 // 					},
 // 				},
@@ -248,7 +248,7 @@ import (
 // 				Spec: &cloudrun.ServiceTemplateSpecArgs{
 // 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
 // 						&cloudrun.ServiceTemplateSpecContainerArgs{
-// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
 // 						},
 // 					},
 // 				},

@@ -128,7 +128,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The region where the managed instance group resides.
+        :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
                instances in the group are added. Updating the target pools attribute does
@@ -168,8 +168,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__['name'] = name
             __props__['named_ports'] = named_ports
             __props__['project'] = project
-            if region is None and not opts.urn:
-                raise TypeError("Missing required property 'region'")
             __props__['region'] = region
             __props__['stateful_disks'] = stateful_disks
             __props__['target_pools'] = target_pools
@@ -235,7 +233,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                for details on configuration.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[str] region: The region where the managed instance group resides.
+        :param pulumi.Input[str] region: The region where the managed instance group resides. If not provided, the provider region is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerStatefulDiskArgs']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `update_policy`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The full URL of all target pools to which new
@@ -359,7 +357,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The region where the managed instance group resides.
+        The region where the managed instance group resides. If not provided, the provider region is used.
         """
         return pulumi.get(self, "region")
 

@@ -207,6 +207,9 @@ func GetOsConfigCustomEndpoint(ctx *pulumi.Context) string {
 func GetOsLoginCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:osLoginCustomEndpoint")
 }
+func GetPrivatecaCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:privatecaCustomEndpoint")
+}
 func GetProject(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "gcp:project")
 	if err == nil {

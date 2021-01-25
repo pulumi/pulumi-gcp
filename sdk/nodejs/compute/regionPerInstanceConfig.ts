@@ -135,9 +135,6 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             inputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
         } else {
             const args = argsOrState as RegionPerInstanceConfigArgs | undefined;
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
-            }
             if ((!args || args.regionInstanceGroupManager === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'regionInstanceGroupManager'");
             }
@@ -252,7 +249,7 @@ export interface RegionPerInstanceConfigArgs {
     /**
      * Region where the containing instance group manager is located
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * The region instance group manager this instance config is part of.
      */

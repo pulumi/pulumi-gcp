@@ -197,7 +197,7 @@ type Instance struct {
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringOutput `pulumi:"tagsFingerprint"`
-	// The zone that the machine should be created in.
+	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -336,7 +336,7 @@ type instanceState struct {
 	Tags []string `pulumi:"tags"`
 	// The unique fingerprint of the tags.
 	TagsFingerprint *string `pulumi:"tagsFingerprint"`
-	// The zone that the machine should be created in.
+	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -438,7 +438,7 @@ type InstanceState struct {
 	Tags pulumi.StringArrayInput
 	// The unique fingerprint of the tags.
 	TagsFingerprint pulumi.StringPtrInput
-	// The zone that the machine should be created in.
+	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
 
@@ -530,7 +530,7 @@ type instanceArgs struct {
 	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// A list of network tags to attach to the instance.
 	Tags []string `pulumi:"tags"`
-	// The zone that the machine should be created in.
+	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -619,7 +619,7 @@ type InstanceArgs struct {
 	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
 	// A list of network tags to attach to the instance.
 	Tags pulumi.StringArrayInput
-	// The zone that the machine should be created in.
+	// The zone that the machine should be created in. If it is not provided, the provider zone is used.
 	Zone pulumi.StringPtrInput
 }
 

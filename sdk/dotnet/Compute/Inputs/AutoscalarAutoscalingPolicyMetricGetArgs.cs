@@ -45,9 +45,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The identifier (type) of the Stackdriver Monitoring metric.
-        /// The metric cannot have negative values.
-        /// The metric must have a value type of INT64 or DOUBLE.
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

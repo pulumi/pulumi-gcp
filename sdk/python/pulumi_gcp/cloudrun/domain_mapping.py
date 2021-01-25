@@ -49,7 +49,7 @@ class DomainMapping(pulumi.CustomResource):
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ))

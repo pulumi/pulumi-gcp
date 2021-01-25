@@ -44,9 +44,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Filter;
         /// <summary>
-        /// The identifier (type) of the Stackdriver Monitoring metric.
-        /// The metric cannot have negative values.
-        /// The metric must have a value type of INT64 or DOUBLE.
+        /// The identifier for this object. Format specified above.
         /// </summary>
         public readonly string Name;
         /// <summary>

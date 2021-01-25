@@ -244,9 +244,7 @@ type Autoscaler struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -313,9 +311,7 @@ type autoscalerState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -342,9 +338,7 @@ type AutoscalerState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -373,9 +367,7 @@ type autoscalerArgs struct {
 	AutoscalingPolicy AutoscalerAutoscalingPolicy `pulumi:"autoscalingPolicy"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -399,9 +391,7 @@ type AutoscalerArgs struct {
 	AutoscalingPolicy AutoscalerAutoscalingPolicyInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.

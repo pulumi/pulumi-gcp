@@ -31,7 +31,6 @@ namespace Pulumi.Gcp.BigTable
     ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///                 {
     ///                     ClusterId = "tf-instance-cluster",
-    ///                     Zone = "us-central1-b",
     ///                     NumNodes = 3,
     ///                     StorageType = "HDD",
     ///                 },

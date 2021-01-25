@@ -525,7 +525,7 @@ class HealthCheck(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logConfig")
-    def log_config(self) -> pulumi.Output[Optional['outputs.HealthCheckLogConfig']]:
+    def log_config(self) -> pulumi.Output['outputs.HealthCheckLogConfig']:
         """
         Configure logging on this health check.  Structure is documented below.
         """

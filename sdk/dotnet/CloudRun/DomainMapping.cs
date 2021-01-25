@@ -44,7 +44,7 @@ namespace Pulumi.Gcp.CloudRun
     ///                     {
     ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                         {
-    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
     ///                         },
     ///                     },
     ///                 },

@@ -19,6 +19,7 @@ import * as bigquery from "./bigquery";
 import * as bigtable from "./bigtable";
 import * as billing from "./billing";
 import * as binaryauthorization from "./binaryauthorization";
+import * as certificateauthority from "./certificateauthority";
 import * as cloudasset from "./cloudasset";
 import * as cloudbuild from "./cloudbuild";
 import * as cloudfunctions from "./cloudfunctions";
@@ -91,6 +92,7 @@ export {
     bigtable,
     billing,
     binaryauthorization,
+    certificateauthority,
     cloudasset,
     cloudbuild,
     cloudfunctions,

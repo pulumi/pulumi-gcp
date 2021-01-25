@@ -87,26 +87,27 @@ class GCPolicyMaxVersionArgs:
 class InstanceClusterArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[str],
-                 zone: pulumi.Input[str],
                  num_nodes: Optional[pulumi.Input[int]] = None,
-                 storage_type: Optional[pulumi.Input[str]] = None):
+                 storage_type: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] cluster_id: The ID of the Cloud Bigtable cluster.
-        :param pulumi.Input[str] zone: The zone to create the Cloud Bigtable cluster in. Each
-               cluster must have a different zone in the same region. Zones that support
-               Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         :param pulumi.Input[int] num_nodes: The number of nodes in your Cloud Bigtable cluster.
                Required, with a minimum of `1` for a `PRODUCTION` instance. Must be left unset
                for a `DEVELOPMENT` instance.
         :param pulumi.Input[str] storage_type: The storage type to use. One of `"SSD"` or
                `"HDD"`. Defaults to `"SSD"`.
+        :param pulumi.Input[str] zone: The zone to create the Cloud Bigtable cluster in. If it not
+               specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
+               Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "zone", zone)
         if num_nodes is not None:
             pulumi.set(__self__, "num_nodes", num_nodes)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="clusterId")
@@ -119,20 +120,6 @@ class InstanceClusterArgs:
     @cluster_id.setter
     def cluster_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_id", value)
-
-    @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        """
-        The zone to create the Cloud Bigtable cluster in. Each
-        cluster must have a different zone in the same region. Zones that support
-        Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-        """
-        return pulumi.get(self, "zone")
-
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
 
     @property
     @pulumi.getter(name="numNodes")
@@ -160,6 +147,20 @@ class InstanceClusterArgs:
     @storage_type.setter
     def storage_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_type", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone to create the Cloud Bigtable cluster in. If it not
+        specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
+        Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type

@@ -110,7 +110,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
     /**
      * Zone where the containing instance group manager is located
      */
-    public readonly zone!: pulumi.Output<string>;
+    public readonly zone!: pulumi.Output<string | undefined>;
 
     /**
      * Create a PerInstanceConfig resource with the given unique name, arguments, and options.
@@ -136,9 +136,6 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             const args = argsOrState as PerInstanceConfigArgs | undefined;
             if ((!args || args.instanceGroupManager === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'instanceGroupManager'");
-            }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'zone'");
             }
             inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
             inputs["minimalAction"] = args ? args.minimalAction : undefined;
@@ -261,5 +258,5 @@ export interface PerInstanceConfigArgs {
     /**
      * Zone where the containing instance group manager is located
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

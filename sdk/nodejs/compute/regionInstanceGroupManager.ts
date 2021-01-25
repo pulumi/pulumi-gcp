@@ -158,7 +158,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The region where the managed instance group resides.
+     * The region where the managed instance group resides. If not provided, the provider region is used.
      */
     public readonly region!: pulumi.Output<string>;
     /**
@@ -229,9 +229,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             const args = argsOrState as RegionInstanceGroupManagerArgs | undefined;
             if ((!args || args.baseInstanceName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'baseInstanceName'");
-            }
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'region'");
             }
             if ((!args || args.versions === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'versions'");
@@ -316,7 +313,7 @@ export interface RegionInstanceGroupManagerState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region where the managed instance group resides.
+     * The region where the managed instance group resides. If not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
     /**
@@ -398,9 +395,9 @@ export interface RegionInstanceGroupManagerArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The region where the managed instance group resides.
+     * The region where the managed instance group resides. If not provided, the provider region is used.
      */
-    readonly region: pulumi.Input<string>;
+    readonly region?: pulumi.Input<string>;
     /**
      * Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
      */

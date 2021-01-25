@@ -270,9 +270,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier (type) of the Stackdriver Monitoring metric.
-        /// The metric cannot have negative values.
-        /// The metric must have a value type of INT64 or DOUBLE.
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -368,9 +366,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The identifier (type) of the Stackdriver Monitoring metric.
-        /// The metric cannot have negative values.
-        /// The metric must have a value type of INT64 or DOUBLE.
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -427,9 +423,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The identifier (type) of the Stackdriver Monitoring metric.
-        /// The metric cannot have negative values.
-        /// The metric must have a value type of INT64 or DOUBLE.
+        /// The identifier for this object. Format specified above.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

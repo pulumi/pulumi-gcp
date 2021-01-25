@@ -111,6 +111,7 @@ type providerArgs struct {
 	NotebooksCustomEndpoint              *string           `pulumi:"notebooksCustomEndpoint"`
 	OsConfigCustomEndpoint               *string           `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint                *string           `pulumi:"osLoginCustomEndpoint"`
+	PrivatecaCustomEndpoint              *string           `pulumi:"privatecaCustomEndpoint"`
 	Project                              *string           `pulumi:"project"`
 	PubsubCustomEndpoint                 *string           `pulumi:"pubsubCustomEndpoint"`
 	PubsubLiteCustomEndpoint             *string           `pulumi:"pubsubLiteCustomEndpoint"`
@@ -207,6 +208,7 @@ type ProviderArgs struct {
 	NotebooksCustomEndpoint              pulumi.StringPtrInput
 	OsConfigCustomEndpoint               pulumi.StringPtrInput
 	OsLoginCustomEndpoint                pulumi.StringPtrInput
+	PrivatecaCustomEndpoint              pulumi.StringPtrInput
 	Project                              pulumi.StringPtrInput
 	PubsubCustomEndpoint                 pulumi.StringPtrInput
 	PubsubLiteCustomEndpoint             pulumi.StringPtrInput

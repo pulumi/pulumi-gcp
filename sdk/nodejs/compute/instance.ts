@@ -259,7 +259,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly tagsFingerprint!: pulumi.Output<string>;
     /**
-     * The zone that the machine should be created in.
+     * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -530,7 +530,7 @@ export interface InstanceState {
      */
     readonly tagsFingerprint?: pulumi.Input<string>;
     /**
-     * The zone that the machine should be created in.
+     * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
     readonly zone?: pulumi.Input<string>;
 }
@@ -673,7 +673,7 @@ export interface InstanceArgs {
      */
     readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The zone that the machine should be created in.
+     * The zone that the machine should be created in. If it is not provided, the provider zone is used.
      */
     readonly zone?: pulumi.Input<string>;
 }

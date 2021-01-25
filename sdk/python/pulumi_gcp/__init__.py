@@ -19,6 +19,7 @@ from . import (
     bigtable,
     billing,
     binaryauthorization,
+    certificateauthority,
     cloudasset,
     cloudbuild,
     cloudfunctions,
