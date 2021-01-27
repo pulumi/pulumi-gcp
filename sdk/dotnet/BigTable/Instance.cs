@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.BigTable
     /// [API](https://cloud.google.com/bigtable/docs/go/reference).
     /// 
     /// ## Example Usage
-    /// ### Development Instance
+    /// ### Production Instance
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -25,21 +25,20 @@ namespace Pulumi.Gcp.BigTable
     /// {
     ///     public MyStack()
     ///     {
-    ///         var development_instance = new Gcp.BigTable.Instance("development-instance", new Gcp.BigTable.InstanceArgs
+    ///         var production_instance = new Gcp.BigTable.Instance("production-instance", new Gcp.BigTable.InstanceArgs
     ///         {
     ///             Clusters = 
     ///             {
     ///                 new Gcp.BigTable.Inputs.InstanceClusterArgs
     ///                 {
     ///                     ClusterId = "tf-instance-cluster",
+    ///                     NumNodes = 1,
     ///                     StorageType = "HDD",
-    ///                     Zone = "us-central1-b",
     ///                 },
     ///             },
-    ///             InstanceType = "DEVELOPMENT",
     ///             Labels = 
     ///             {
-    ///                 { "my-label", "dev-label" },
+    ///                 { "my-label", "prod-label" },
     ///             },
     ///         });
     ///     }

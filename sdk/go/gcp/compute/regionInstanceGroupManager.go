@@ -92,7 +92,7 @@ type RegionInstanceGroupManager struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The region where the managed instance group resides.
+	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -125,9 +125,6 @@ func NewRegionInstanceGroupManager(ctx *pulumi.Context,
 
 	if args.BaseInstanceName == nil {
 		return nil, errors.New("invalid value for required argument 'BaseInstanceName'")
-	}
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	if args.Versions == nil {
 		return nil, errors.New("invalid value for required argument 'Versions'")
@@ -182,7 +179,7 @@ type regionInstanceGroupManagerState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region where the managed instance group resides.
+	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -235,7 +232,7 @@ type RegionInstanceGroupManagerState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region where the managed instance group resides.
+	// The region where the managed instance group resides. If not provided, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -288,8 +285,8 @@ type regionInstanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The region where the managed instance group resides.
-	Region string `pulumi:"region"`
+	// The region where the managed instance group resides. If not provided, the provider region is used.
+	Region *string `pulumi:"region"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
 	// The full URL of all target pools to which new
@@ -336,8 +333,8 @@ type RegionInstanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The region where the managed instance group resides.
-	Region pulumi.StringInput
+	// The region where the managed instance group resides. If not provided, the provider region is used.
+	Region pulumi.StringPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
 	// The full URL of all target pools to which new

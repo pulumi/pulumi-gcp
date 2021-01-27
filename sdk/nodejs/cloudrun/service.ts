@@ -38,7 +38,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         spec: {
  *             containers: [{
- *                 image: "gcr.io/cloudrun/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             }],
  *         },
  *     },
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         spec: {
  *             containers: [{
- *                 image: "gcr.io/cloudrun/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             }],
  *         },
  *         metadata: {
@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         spec: {
  *             containers: [{
- *                 image: "gcr.io/cloudrun/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             }],
  *         },
  *     },
@@ -137,7 +137,7 @@ import * as utilities from "../utilities";
  *                         value: "home",
  *                     },
  *                 ],
- *                 image: "gcr.io/cloudrun/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             }],
  *         },
  *     },
@@ -161,7 +161,7 @@ import * as utilities from "../utilities";
  *         },
  *         spec: {
  *             containers: [{
- *                 image: "gcr.io/cloudrun/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             }],
  *         },
  *     },

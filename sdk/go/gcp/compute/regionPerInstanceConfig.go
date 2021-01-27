@@ -84,9 +84,6 @@ func NewRegionPerInstanceConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Region == nil {
-		return nil, errors.New("invalid value for required argument 'Region'")
-	}
 	if args.RegionInstanceGroupManager == nil {
 		return nil, errors.New("invalid value for required argument 'RegionInstanceGroupManager'")
 	}
@@ -205,7 +202,7 @@ type regionPerInstanceConfigArgs struct {
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Region where the containing instance group manager is located
-	Region string `pulumi:"region"`
+	Region *string `pulumi:"region"`
 	// The region instance group manager this instance config is part of.
 	RegionInstanceGroupManager string `pulumi:"regionInstanceGroupManager"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
@@ -239,7 +236,7 @@ type RegionPerInstanceConfigArgs struct {
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Region where the containing instance group manager is located
-	Region pulumi.StringInput
+	Region pulumi.StringPtrInput
 	// The region instance group manager this instance config is part of.
 	RegionInstanceGroupManager pulumi.StringInput
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.

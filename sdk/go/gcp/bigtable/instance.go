@@ -15,7 +15,7 @@ import (
 // [API](https://cloud.google.com/bigtable/docs/go/reference).
 //
 // ## Example Usage
-// ### Development Instance
+// ### Production Instance
 //
 // ```go
 // package main
@@ -27,17 +27,16 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := bigtable.NewInstance(ctx, "development_instance", &bigtable.InstanceArgs{
+// 		_, err := bigtable.NewInstance(ctx, "production_instance", &bigtable.InstanceArgs{
 // 			Clusters: bigtable.InstanceClusterArray{
 // 				&bigtable.InstanceClusterArgs{
 // 					ClusterId:   pulumi.String("tf-instance-cluster"),
+// 					NumNodes:    pulumi.Int(1),
 // 					StorageType: pulumi.String("HDD"),
-// 					Zone:        pulumi.String("us-central1-b"),
 // 				},
 // 			},
-// 			InstanceType: pulumi.String("DEVELOPMENT"),
 // 			Labels: pulumi.StringMap{
-// 				"my-label": pulumi.String("dev-label"),
+// 				"my-label": pulumi.String("prod-label"),
 // 			},
 // 		})
 // 		if err != nil {

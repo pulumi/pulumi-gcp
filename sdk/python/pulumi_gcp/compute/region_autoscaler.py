@@ -122,9 +122,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                on cpuUtilization to 0.6 or 60%.
                Structure is documented below.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
@@ -194,9 +192,7 @@ class RegionAutoscaler(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[str] name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
+        :param pulumi.Input[str] name: The identifier for this object. Format specified above.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: URL of the region where the instance group resides.
@@ -252,9 +248,7 @@ class RegionAutoscaler(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The identifier (type) of the Stackdriver Monitoring metric.
-        The metric cannot have negative values.
-        The metric must have a value type of INT64 or DOUBLE.
+        The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "name")
 

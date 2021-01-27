@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     template: {
  *         spec: {
  *             containers: [{
- *                 image: "gcr.io/cloudrun/hello",
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             }],
  *         },
  *     },

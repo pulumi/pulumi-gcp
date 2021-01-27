@@ -213,9 +213,7 @@ export class Autoscalar extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The identifier (type) of the Stackdriver Monitoring metric.
-     * The metric cannot have negative values.
-     * The metric must have a value type of INT64 or DOUBLE.
+     * The identifier for this object. Format specified above.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -311,9 +309,7 @@ export interface AutoscalarState {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The identifier (type) of the Stackdriver Monitoring metric.
-     * The metric cannot have negative values.
-     * The metric must have a value type of INT64 or DOUBLE.
+     * The identifier for this object. Format specified above.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -355,9 +351,7 @@ export interface AutoscalarArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * The identifier (type) of the Stackdriver Monitoring metric.
-     * The metric cannot have negative values.
-     * The metric must have a value type of INT64 or DOUBLE.
+     * The identifier for this object. Format specified above.
      */
     readonly name?: pulumi.Input<string>;
     /**

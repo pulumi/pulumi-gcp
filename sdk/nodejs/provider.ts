@@ -102,6 +102,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["notebooksCustomEndpoint"] = args ? args.notebooksCustomEndpoint : undefined;
             inputs["osConfigCustomEndpoint"] = args ? args.osConfigCustomEndpoint : undefined;
             inputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
+            inputs["privatecaCustomEndpoint"] = args ? args.privatecaCustomEndpoint : undefined;
             inputs["project"] = (args ? args.project : undefined) || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
             inputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
             inputs["pubsubLiteCustomEndpoint"] = args ? args.pubsubLiteCustomEndpoint : undefined;
@@ -210,6 +211,7 @@ export interface ProviderArgs {
     readonly notebooksCustomEndpoint?: pulumi.Input<string>;
     readonly osConfigCustomEndpoint?: pulumi.Input<string>;
     readonly osLoginCustomEndpoint?: pulumi.Input<string>;
+    readonly privatecaCustomEndpoint?: pulumi.Input<string>;
     readonly project?: pulumi.Input<string>;
     readonly pubsubCustomEndpoint?: pulumi.Input<string>;
     readonly pubsubLiteCustomEndpoint?: pulumi.Input<string>;

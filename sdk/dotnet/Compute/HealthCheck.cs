@@ -457,7 +457,7 @@ namespace Pulumi.Gcp.Compute
         /// Configure logging on this health check.  Structure is documented below.
         /// </summary>
         [Output("logConfig")]
-        public Output<Outputs.HealthCheckLogConfig?> LogConfig { get; private set; } = null!;
+        public Output<Outputs.HealthCheckLogConfig> LogConfig { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is

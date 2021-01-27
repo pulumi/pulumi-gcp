@@ -40,7 +40,6 @@ class GCPolicy(pulumi.CustomResource):
 
         instance = gcp.bigtable.Instance("instance", clusters=[gcp.bigtable.InstanceClusterArgs(
             cluster_id="tf-instance-cluster",
-            zone="us-central1-b",
             num_nodes=3,
             storage_type="HDD",
         )])

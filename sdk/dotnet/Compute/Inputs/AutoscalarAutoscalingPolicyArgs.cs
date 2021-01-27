@@ -97,6 +97,14 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("scaleInControl")]
         public Input<Inputs.AutoscalarAutoscalingPolicyScaleInControlArgs>? ScaleInControl { get; set; }
 
+        [Input("scalingSchedules")]
+        private InputList<Inputs.AutoscalarAutoscalingPolicyScalingScheduleArgs>? _scalingSchedules;
+        public InputList<Inputs.AutoscalarAutoscalingPolicyScalingScheduleArgs> ScalingSchedules
+        {
+            get => _scalingSchedules ?? (_scalingSchedules = new InputList<Inputs.AutoscalarAutoscalingPolicyScalingScheduleArgs>());
+            set => _scalingSchedules = value;
+        }
+
         public AutoscalarAutoscalingPolicyArgs()
         {
         }

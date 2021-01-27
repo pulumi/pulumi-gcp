@@ -275,10 +275,10 @@ type InstanceCluster struct {
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType *string `pulumi:"storageType"`
-	// The zone to create the Cloud Bigtable cluster in. Each
-	// cluster must have a different zone in the same region. Zones that support
+	// The zone to create the Cloud Bigtable cluster in. If it not
+	// specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
 	// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // InstanceClusterInput is an input type that accepts InstanceClusterArgs and InstanceClusterOutput values.
@@ -302,10 +302,10 @@ type InstanceClusterArgs struct {
 	// The storage type to use. One of `"SSD"` or
 	// `"HDD"`. Defaults to `"SSD"`.
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
-	// The zone to create the Cloud Bigtable cluster in. Each
-	// cluster must have a different zone in the same region. Zones that support
+	// The zone to create the Cloud Bigtable cluster in. If it not
+	// specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
 	// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-	Zone pulumi.StringInput `pulumi:"zone"`
+	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
 func (InstanceClusterArgs) ElementType() reflect.Type {
@@ -377,11 +377,11 @@ func (o InstanceClusterOutput) StorageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceCluster) *string { return v.StorageType }).(pulumi.StringPtrOutput)
 }
 
-// The zone to create the Cloud Bigtable cluster in. Each
-// cluster must have a different zone in the same region. Zones that support
+// The zone to create the Cloud Bigtable cluster in. If it not
+// specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
 // Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
-func (o InstanceClusterOutput) Zone() pulumi.StringOutput {
-	return o.ApplyT(func(v InstanceCluster) string { return v.Zone }).(pulumi.StringOutput)
+func (o InstanceClusterOutput) Zone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceCluster) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
 
 type InstanceClusterArrayOutput struct{ *pulumi.OutputState }

@@ -72,6 +72,7 @@ export let networkManagementCustomEndpoint: string | undefined = __config.get("n
 export let notebooksCustomEndpoint: string | undefined = __config.get("notebooksCustomEndpoint");
 export let osConfigCustomEndpoint: string | undefined = __config.get("osConfigCustomEndpoint");
 export let osLoginCustomEndpoint: string | undefined = __config.get("osLoginCustomEndpoint");
+export let privatecaCustomEndpoint: string | undefined = __config.get("privatecaCustomEndpoint");
 export let project: string | undefined = __config.get("project") || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
 export let pubsubCustomEndpoint: string | undefined = __config.get("pubsubCustomEndpoint");
 export let pubsubLiteCustomEndpoint: string | undefined = __config.get("pubsubLiteCustomEndpoint");

@@ -111,8 +111,6 @@ class PerInstanceConfig(pulumi.CustomResource):
             __props__['preserved_state'] = preserved_state
             __props__['project'] = project
             __props__['remove_instance_state_on_destroy'] = remove_instance_state_on_destroy
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__['zone'] = zone
         super(PerInstanceConfig, __self__).__init__(
             'gcp:compute/perInstanceConfig:PerInstanceConfig',
@@ -248,7 +246,7 @@ class PerInstanceConfig(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def zone(self) -> pulumi.Output[str]:
+    def zone(self) -> pulumi.Output[Optional[str]]:
         """
         Zone where the containing instance group manager is located
         """

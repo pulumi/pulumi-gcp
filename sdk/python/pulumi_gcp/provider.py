@@ -81,6 +81,7 @@ class Provider(pulumi.ProviderResource):
                  notebooks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pubsub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  pubsub_lite_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -204,6 +205,7 @@ class Provider(pulumi.ProviderResource):
             __props__['notebooks_custom_endpoint'] = notebooks_custom_endpoint
             __props__['os_config_custom_endpoint'] = os_config_custom_endpoint
             __props__['os_login_custom_endpoint'] = os_login_custom_endpoint
+            __props__['privateca_custom_endpoint'] = privateca_custom_endpoint
             if project is None:
                 project = _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
             __props__['project'] = project

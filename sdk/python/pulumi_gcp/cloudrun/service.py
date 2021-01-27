@@ -60,7 +60,7 @@ class Service(pulumi.CustomResource):
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ),
@@ -86,7 +86,7 @@ class Service(pulumi.CustomResource):
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
                 metadata=gcp.cloudrun.ServiceTemplateMetadataArgs(
@@ -111,7 +111,7 @@ class Service(pulumi.CustomResource):
             template=gcp.cloudrun.ServiceTemplateArgs(
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ))
@@ -152,7 +152,7 @@ class Service(pulumi.CustomResource):
                                 "value": "home",
                             },
                         ],
-                        image="gcr.io/cloudrun/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ),
@@ -175,7 +175,7 @@ class Service(pulumi.CustomResource):
                 ),
                 spec=gcp.cloudrun.ServiceTemplateSpecArgs(
                     containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        image="gcr.io/cloudrun/hello",
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
                     )],
                 ),
             ),

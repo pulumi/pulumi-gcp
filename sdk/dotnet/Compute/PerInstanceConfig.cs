@@ -103,7 +103,7 @@ namespace Pulumi.Gcp.Compute
         /// Zone where the containing instance group manager is located
         /// </summary>
         [Output("zone")]
-        public Output<string> Zone { get; private set; } = null!;
+        public Output<string?> Zone { get; private set; } = null!;
 
 
         /// <summary>
@@ -210,8 +210,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Zone where the containing instance group manager is located
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public PerInstanceConfigArgs()
         {

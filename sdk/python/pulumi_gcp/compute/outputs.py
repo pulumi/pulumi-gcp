@@ -18,6 +18,7 @@ __all__ = [
     'AutoscalarAutoscalingPolicyScaleDownControlMaxScaledDownReplicas',
     'AutoscalarAutoscalingPolicyScaleInControl',
     'AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas',
+    'AutoscalarAutoscalingPolicyScalingSchedule',
     'AutoscalerAutoscalingPolicy',
     'AutoscalerAutoscalingPolicyCpuUtilization',
     'AutoscalerAutoscalingPolicyLoadBalancingUtilization',
@@ -26,6 +27,7 @@ __all__ = [
     'AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas',
     'AutoscalerAutoscalingPolicyScaleInControl',
     'AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
+    'AutoscalerAutoscalingPolicyScalingSchedule',
     'BackendBucketCdnPolicy',
     'BackendBucketCdnPolicyNegativeCachingPolicy',
     'BackendServiceBackend',
@@ -152,6 +154,7 @@ __all__ = [
     'RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas',
     'RegionAutoscalerAutoscalingPolicyScaleInControl',
     'RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas',
+    'RegionAutoscalerAutoscalingPolicyScalingSchedule',
     'RegionBackendServiceBackend',
     'RegionBackendServiceCdnPolicy',
     'RegionBackendServiceCdnPolicyCacheKeyPolicy',
@@ -422,7 +425,8 @@ class AutoscalarAutoscalingPolicy(dict):
                  metrics: Optional[Sequence['outputs.AutoscalarAutoscalingPolicyMetric']] = None,
                  mode: Optional[str] = None,
                  scale_down_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleDownControl'] = None,
-                 scale_in_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControl'] = None):
+                 scale_in_control: Optional['outputs.AutoscalarAutoscalingPolicyScaleInControl'] = None,
+                 scaling_schedules: Optional[Sequence['outputs.AutoscalarAutoscalingPolicyScalingSchedule']] = None):
         """
         :param int max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -475,6 +479,8 @@ class AutoscalarAutoscalingPolicy(dict):
             pulumi.set(__self__, "scale_down_control", scale_down_control)
         if scale_in_control is not None:
             pulumi.set(__self__, "scale_in_control", scale_in_control)
+        if scaling_schedules is not None:
+            pulumi.set(__self__, "scaling_schedules", scaling_schedules)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -573,6 +579,11 @@ class AutoscalarAutoscalingPolicy(dict):
         """
         return pulumi.get(self, "scale_in_control")
 
+    @property
+    @pulumi.getter(name="scalingSchedules")
+    def scaling_schedules(self) -> Optional[Sequence['outputs.AutoscalarAutoscalingPolicyScalingSchedule']]:
+        return pulumi.get(self, "scaling_schedules")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -636,9 +647,7 @@ class AutoscalarAutoscalingPolicyMetric(dict):
                  target: Optional[float] = None,
                  type: Optional[str] = None):
         """
-        :param str name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
+        :param str name: The identifier for this object. Format specified above.
         :param str filter: A filter string to be used as the filter string for
                a Stackdriver Monitoring TimeSeries.list API call.
                This filter is used to select a specific TimeSeries for
@@ -701,9 +710,7 @@ class AutoscalarAutoscalingPolicyMetric(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The identifier (type) of the Stackdriver Monitoring metric.
-        The metric cannot have negative values.
-        The metric must have a value type of INT64 or DOUBLE.
+        The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "name")
 
@@ -939,6 +946,96 @@ class AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
 
 
 @pulumi.output_type
+class AutoscalarAutoscalingPolicyScalingSchedule(dict):
+    def __init__(__self__, *,
+                 duration_sec: int,
+                 min_required_replicas: int,
+                 name: str,
+                 schedule: str,
+                 description: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 time_zone: Optional[str] = None):
+        """
+        :param int duration_sec: The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        :param int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        :param str name: The identifier for this object. Format specified above.
+        :param str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        :param str description: An optional description of this resource.
+        :param bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        :param str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        pulumi.set(__self__, "duration_sec", duration_sec)
+        pulumi.set(__self__, "min_required_replicas", min_required_replicas)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "schedule", schedule)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="durationSec")
+    def duration_sec(self) -> int:
+        """
+        The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        """
+        return pulumi.get(self, "duration_sec")
+
+    @property
+    @pulumi.getter(name="minRequiredReplicas")
+    def min_required_replicas(self) -> int:
+        """
+        Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        """
+        return pulumi.get(self, "min_required_replicas")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> str:
+        """
+        The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        """
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        return pulumi.get(self, "time_zone")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class AutoscalerAutoscalingPolicy(dict):
     def __init__(__self__, *,
                  max_replicas: int,
@@ -949,7 +1046,8 @@ class AutoscalerAutoscalingPolicy(dict):
                  metrics: Optional[Sequence['outputs.AutoscalerAutoscalingPolicyMetric']] = None,
                  mode: Optional[str] = None,
                  scale_down_control: Optional['outputs.AutoscalerAutoscalingPolicyScaleDownControl'] = None,
-                 scale_in_control: Optional['outputs.AutoscalerAutoscalingPolicyScaleInControl'] = None):
+                 scale_in_control: Optional['outputs.AutoscalerAutoscalingPolicyScaleInControl'] = None,
+                 scaling_schedules: Optional[Sequence['outputs.AutoscalerAutoscalingPolicyScalingSchedule']] = None):
         """
         :param int max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -1002,6 +1100,8 @@ class AutoscalerAutoscalingPolicy(dict):
             pulumi.set(__self__, "scale_down_control", scale_down_control)
         if scale_in_control is not None:
             pulumi.set(__self__, "scale_in_control", scale_in_control)
+        if scaling_schedules is not None:
+            pulumi.set(__self__, "scaling_schedules", scaling_schedules)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -1100,6 +1200,11 @@ class AutoscalerAutoscalingPolicy(dict):
         """
         return pulumi.get(self, "scale_in_control")
 
+    @property
+    @pulumi.getter(name="scalingSchedules")
+    def scaling_schedules(self) -> Optional[Sequence['outputs.AutoscalerAutoscalingPolicyScalingSchedule']]:
+        return pulumi.get(self, "scaling_schedules")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -1163,9 +1268,7 @@ class AutoscalerAutoscalingPolicyMetric(dict):
                  target: Optional[float] = None,
                  type: Optional[str] = None):
         """
-        :param str name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
+        :param str name: The identifier for this object. Format specified above.
         :param str filter: A filter string to be used as the filter string for
                a Stackdriver Monitoring TimeSeries.list API call.
                This filter is used to select a specific TimeSeries for
@@ -1228,9 +1331,7 @@ class AutoscalerAutoscalingPolicyMetric(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The identifier (type) of the Stackdriver Monitoring metric.
-        The metric cannot have negative values.
-        The metric must have a value type of INT64 or DOUBLE.
+        The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "name")
 
@@ -1460,6 +1561,96 @@ class AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
         For example, specify 80 for 80%.
         """
         return pulumi.get(self, "percent")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class AutoscalerAutoscalingPolicyScalingSchedule(dict):
+    def __init__(__self__, *,
+                 duration_sec: int,
+                 min_required_replicas: int,
+                 name: str,
+                 schedule: str,
+                 description: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 time_zone: Optional[str] = None):
+        """
+        :param int duration_sec: The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        :param int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        :param str name: The identifier for this object. Format specified above.
+        :param str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        :param str description: An optional description of this resource.
+        :param bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        :param str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        pulumi.set(__self__, "duration_sec", duration_sec)
+        pulumi.set(__self__, "min_required_replicas", min_required_replicas)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "schedule", schedule)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="durationSec")
+    def duration_sec(self) -> int:
+        """
+        The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        """
+        return pulumi.get(self, "duration_sec")
+
+    @property
+    @pulumi.getter(name="minRequiredReplicas")
+    def min_required_replicas(self) -> int:
+        """
+        Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        """
+        return pulumi.get(self, "min_required_replicas")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> str:
+        """
+        The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        """
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        return pulumi.get(self, "time_zone")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -7909,7 +8100,8 @@ class RegionAutoscalerAutoscalingPolicy(dict):
                  metrics: Optional[Sequence['outputs.RegionAutoscalerAutoscalingPolicyMetric']] = None,
                  mode: Optional[str] = None,
                  scale_down_control: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleDownControl'] = None,
-                 scale_in_control: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleInControl'] = None):
+                 scale_in_control: Optional['outputs.RegionAutoscalerAutoscalingPolicyScaleInControl'] = None,
+                 scaling_schedules: Optional[Sequence['outputs.RegionAutoscalerAutoscalingPolicyScalingSchedule']] = None):
         """
         :param int max_replicas: The maximum number of instances that the autoscaler can scale up
                to. This is required when creating or updating an autoscaler. The
@@ -7962,6 +8154,8 @@ class RegionAutoscalerAutoscalingPolicy(dict):
             pulumi.set(__self__, "scale_down_control", scale_down_control)
         if scale_in_control is not None:
             pulumi.set(__self__, "scale_in_control", scale_in_control)
+        if scaling_schedules is not None:
+            pulumi.set(__self__, "scaling_schedules", scaling_schedules)
 
     @property
     @pulumi.getter(name="maxReplicas")
@@ -8060,6 +8254,11 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         """
         return pulumi.get(self, "scale_in_control")
 
+    @property
+    @pulumi.getter(name="scalingSchedules")
+    def scaling_schedules(self) -> Optional[Sequence['outputs.RegionAutoscalerAutoscalingPolicyScalingSchedule']]:
+        return pulumi.get(self, "scaling_schedules")
+
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
@@ -8123,9 +8322,7 @@ class RegionAutoscalerAutoscalingPolicyMetric(dict):
                  target: Optional[float] = None,
                  type: Optional[str] = None):
         """
-        :param str name: The identifier (type) of the Stackdriver Monitoring metric.
-               The metric cannot have negative values.
-               The metric must have a value type of INT64 or DOUBLE.
+        :param str name: The identifier for this object. Format specified above.
         :param str filter: A filter string to be used as the filter string for
                a Stackdriver Monitoring TimeSeries.list API call.
                This filter is used to select a specific TimeSeries for
@@ -8188,9 +8385,7 @@ class RegionAutoscalerAutoscalingPolicyMetric(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The identifier (type) of the Stackdriver Monitoring metric.
-        The metric cannot have negative values.
-        The metric must have a value type of INT64 or DOUBLE.
+        The identifier for this object. Format specified above.
         """
         return pulumi.get(self, "name")
 
@@ -8420,6 +8615,96 @@ class RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas(dict):
         For example, specify 80 for 80%.
         """
         return pulumi.get(self, "percent")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class RegionAutoscalerAutoscalingPolicyScalingSchedule(dict):
+    def __init__(__self__, *,
+                 duration_sec: int,
+                 min_required_replicas: int,
+                 name: str,
+                 schedule: str,
+                 description: Optional[str] = None,
+                 disabled: Optional[bool] = None,
+                 time_zone: Optional[str] = None):
+        """
+        :param int duration_sec: The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        :param int min_required_replicas: Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        :param str name: The identifier for this object. Format specified above.
+        :param str schedule: The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        :param str description: An optional description of this resource.
+        :param bool disabled: A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        :param str time_zone: The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        pulumi.set(__self__, "duration_sec", duration_sec)
+        pulumi.set(__self__, "min_required_replicas", min_required_replicas)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "schedule", schedule)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter(name="durationSec")
+    def duration_sec(self) -> int:
+        """
+        The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+        """
+        return pulumi.get(self, "duration_sec")
+
+    @property
+    @pulumi.getter(name="minRequiredReplicas")
+    def min_required_replicas(self) -> int:
+        """
+        Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+        """
+        return pulumi.get(self, "min_required_replicas")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> str:
+        """
+        The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+        """
+        return pulumi.get(self, "schedule")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[bool]:
+        """
+        A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+        """
+        return pulumi.get(self, "disabled")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[str]:
+        """
+        The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        """
+        return pulumi.get(self, "time_zone")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

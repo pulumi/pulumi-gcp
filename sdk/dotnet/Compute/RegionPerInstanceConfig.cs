@@ -197,8 +197,8 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// Region where the containing instance group manager is located
         /// </summary>
-        [Input("region", required: true)]
-        public Input<string> Region { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The region instance group manager this instance config is part of.

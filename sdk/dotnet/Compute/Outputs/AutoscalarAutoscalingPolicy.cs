@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AutoscalarAutoscalingPolicyScaleInControl? ScaleInControl;
+        public readonly ImmutableArray<Outputs.AutoscalarAutoscalingPolicyScalingSchedule> ScalingSchedules;
 
         [OutputConstructor]
         private AutoscalarAutoscalingPolicy(
@@ -93,7 +94,9 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             Outputs.AutoscalarAutoscalingPolicyScaleDownControl? scaleDownControl,
 
-            Outputs.AutoscalarAutoscalingPolicyScaleInControl? scaleInControl)
+            Outputs.AutoscalarAutoscalingPolicyScaleInControl? scaleInControl,
+
+            ImmutableArray<Outputs.AutoscalarAutoscalingPolicyScalingSchedule> scalingSchedules)
         {
             CooldownPeriod = cooldownPeriod;
             CpuUtilization = cpuUtilization;
@@ -104,6 +107,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Mode = mode;
             ScaleDownControl = scaleDownControl;
             ScaleInControl = scaleInControl;
+            ScalingSchedules = scalingSchedules;
         }
     }
 }

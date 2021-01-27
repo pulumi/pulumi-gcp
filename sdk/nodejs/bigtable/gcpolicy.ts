@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * const instance = new gcp.bigtable.Instance("instance", {clusters: [{
  *     clusterId: "tf-instance-cluster",
- *     zone: "us-central1-b",
  *     numNodes: 3,
  *     storageType: "HDD",
  * }]});

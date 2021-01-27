@@ -75,6 +75,7 @@ __all__ = [
     'notebooks_custom_endpoint',
     'os_config_custom_endpoint',
     'os_login_custom_endpoint',
+    'privateca_custom_endpoint',
     'project',
     'pubsub_custom_endpoint',
     'pubsub_lite_custom_endpoint',
@@ -235,6 +236,8 @@ notebooks_custom_endpoint = __config__.get('notebooksCustomEndpoint')
 os_config_custom_endpoint = __config__.get('osConfigCustomEndpoint')
 
 os_login_custom_endpoint = __config__.get('osLoginCustomEndpoint')
+
+privateca_custom_endpoint = __config__.get('privatecaCustomEndpoint')
 
 project = __config__.get('project') or _utilities.get_env('GOOGLE_PROJECT', 'GOOGLE_CLOUD_PROJECT', 'GCLOUD_PROJECT', 'CLOUDSDK_CORE_PROJECT')
 

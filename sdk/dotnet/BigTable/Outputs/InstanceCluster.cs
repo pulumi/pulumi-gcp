@@ -29,11 +29,11 @@ namespace Pulumi.Gcp.BigTable.Outputs
         /// </summary>
         public readonly string? StorageType;
         /// <summary>
-        /// The zone to create the Cloud Bigtable cluster in. Each
-        /// cluster must have a different zone in the same region. Zones that support
+        /// The zone to create the Cloud Bigtable cluster in. If it not
+        /// specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
         /// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         /// </summary>
-        public readonly string Zone;
+        public readonly string? Zone;
 
         [OutputConstructor]
         private InstanceCluster(
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.BigTable.Outputs
 
             string? storageType,
 
-            string zone)
+            string? zone)
         {
             ClusterId = clusterId;
             NumNodes = numNodes;

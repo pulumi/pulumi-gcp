@@ -34,12 +34,12 @@ namespace Pulumi.Gcp.BigTable.Inputs
         public Input<string>? StorageType { get; set; }
 
         /// <summary>
-        /// The zone to create the Cloud Bigtable cluster in. Each
-        /// cluster must have a different zone in the same region. Zones that support
+        /// The zone to create the Cloud Bigtable cluster in. If it not
+        /// specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
         /// Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public InstanceClusterArgs()
         {

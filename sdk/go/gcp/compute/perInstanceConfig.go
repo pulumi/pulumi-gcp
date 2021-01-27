@@ -73,7 +73,7 @@ type PerInstanceConfig struct {
 	// State will be removed on the next instance recreation or update.
 	RemoveInstanceStateOnDestroy pulumi.BoolPtrOutput `pulumi:"removeInstanceStateOnDestroy"`
 	// Zone where the containing instance group manager is located
-	Zone pulumi.StringOutput `pulumi:"zone"`
+	Zone pulumi.StringPtrOutput `pulumi:"zone"`
 }
 
 // NewPerInstanceConfig registers a new resource with the given unique name, arguments, and options.
@@ -85,9 +85,6 @@ func NewPerInstanceConfig(ctx *pulumi.Context,
 
 	if args.InstanceGroupManager == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceGroupManager'")
-	}
-	if args.Zone == nil {
-		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
 	var resource PerInstanceConfig
 	err := ctx.RegisterResource("gcp:compute/perInstanceConfig:PerInstanceConfig", name, args, &resource, opts...)
@@ -210,7 +207,7 @@ type perInstanceConfigArgs struct {
 	// State will be removed on the next instance recreation or update.
 	RemoveInstanceStateOnDestroy *bool `pulumi:"removeInstanceStateOnDestroy"`
 	// Zone where the containing instance group manager is located
-	Zone string `pulumi:"zone"`
+	Zone *string `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a PerInstanceConfig resource.
@@ -244,7 +241,7 @@ type PerInstanceConfigArgs struct {
 	// State will be removed on the next instance recreation or update.
 	RemoveInstanceStateOnDestroy pulumi.BoolPtrInput
 	// Zone where the containing instance group manager is located
-	Zone pulumi.StringInput
+	Zone pulumi.StringPtrInput
 }
 
 func (PerInstanceConfigArgs) ElementType() reflect.Type {

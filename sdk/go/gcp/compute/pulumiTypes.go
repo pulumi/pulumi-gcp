@@ -53,7 +53,8 @@ type AutoscalarAutoscalingPolicy struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl *AutoscalarAutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
+	ScaleInControl   *AutoscalarAutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
+	ScalingSchedules []AutoscalarAutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
 // AutoscalarAutoscalingPolicyInput is an input type that accepts AutoscalarAutoscalingPolicyArgs and AutoscalarAutoscalingPolicyOutput values.
@@ -110,7 +111,8 @@ type AutoscalarAutoscalingPolicyArgs struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl AutoscalarAutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
+	ScaleInControl   AutoscalarAutoscalingPolicyScaleInControlPtrInput    `pulumi:"scaleInControl"`
+	ScalingSchedules AutoscalarAutoscalingPolicyScalingScheduleArrayInput `pulumi:"scalingSchedules"`
 }
 
 func (AutoscalarAutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -268,6 +270,12 @@ func (o AutoscalarAutoscalingPolicyOutput) ScaleInControl() AutoscalarAutoscalin
 	}).(AutoscalarAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+func (o AutoscalarAutoscalingPolicyOutput) ScalingSchedules() AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) []AutoscalarAutoscalingPolicyScalingSchedule {
+		return v.ScalingSchedules
+	}).(AutoscalarAutoscalingPolicyScalingScheduleArrayOutput)
+}
+
 type AutoscalarAutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalarAutoscalingPolicyPtrOutput) ElementType() reflect.Type {
@@ -399,6 +407,15 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) ScaleInControl() AutoscalarAutosca
 		}
 		return v.ScaleInControl
 	}).(AutoscalarAutoscalingPolicyScaleInControlPtrOutput)
+}
+
+func (o AutoscalarAutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
+	return o.ApplyT(func(v *AutoscalarAutoscalingPolicy) []AutoscalarAutoscalingPolicyScalingSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingSchedules
+	}).(AutoscalarAutoscalingPolicyScalingScheduleArrayOutput)
 }
 
 type AutoscalarAutoscalingPolicyCpuUtilization struct {
@@ -712,9 +729,7 @@ type AutoscalarAutoscalingPolicyMetric struct {
 	// TimeSeries are returned upon the query execution, the autoscaler
 	// will sum their respective values to obtain its scaling value.
 	Filter *string `pulumi:"filter"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name string `pulumi:"name"`
 	// If scaling is based on a per-group metric value that represents the
 	// total amount of work to be done or resource usage, set this value to
@@ -781,9 +796,7 @@ type AutoscalarAutoscalingPolicyMetricArgs struct {
 	// TimeSeries are returned upon the query execution, the autoscaler
 	// will sum their respective values to obtain its scaling value.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringInput `pulumi:"name"`
 	// If scaling is based on a per-group metric value that represents the
 	// total amount of work to be done or resource usage, set this value to
@@ -892,9 +905,7 @@ func (o AutoscalarAutoscalingPolicyMetricOutput) Filter() pulumi.StringPtrOutput
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyMetric) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// The identifier (type) of the Stackdriver Monitoring metric.
-// The metric cannot have negative values.
-// The metric must have a value type of INT64 or DOUBLE.
+// The identifier for this object. Format specified above.
 func (o AutoscalarAutoscalingPolicyMetricOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicyMetric) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1595,6 +1606,157 @@ func (o AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput) P
 	}).(pulumi.IntPtrOutput)
 }
 
+type AutoscalarAutoscalingPolicyScalingSchedule struct {
+	// An optional description of this resource.
+	Description *string `pulumi:"description"`
+	// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+	Disabled *bool `pulumi:"disabled"`
+	// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+	DurationSec int `pulumi:"durationSec"`
+	// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+	MinRequiredReplicas int `pulumi:"minRequiredReplicas"`
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+	Schedule string `pulumi:"schedule"`
+	// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// AutoscalarAutoscalingPolicyScalingScheduleInput is an input type that accepts AutoscalarAutoscalingPolicyScalingScheduleArgs and AutoscalarAutoscalingPolicyScalingScheduleOutput values.
+// You can construct a concrete instance of `AutoscalarAutoscalingPolicyScalingScheduleInput` via:
+//
+//          AutoscalarAutoscalingPolicyScalingScheduleArgs{...}
+type AutoscalarAutoscalingPolicyScalingScheduleInput interface {
+	pulumi.Input
+
+	ToAutoscalarAutoscalingPolicyScalingScheduleOutput() AutoscalarAutoscalingPolicyScalingScheduleOutput
+	ToAutoscalarAutoscalingPolicyScalingScheduleOutputWithContext(context.Context) AutoscalarAutoscalingPolicyScalingScheduleOutput
+}
+
+type AutoscalarAutoscalingPolicyScalingScheduleArgs struct {
+	// An optional description of this resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+	DurationSec pulumi.IntInput `pulumi:"durationSec"`
+	// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+	MinRequiredReplicas pulumi.IntInput `pulumi:"minRequiredReplicas"`
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (AutoscalarAutoscalingPolicyScalingScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalarAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalarAutoscalingPolicyScalingScheduleArgs) ToAutoscalarAutoscalingPolicyScalingScheduleOutput() AutoscalarAutoscalingPolicyScalingScheduleOutput {
+	return i.ToAutoscalarAutoscalingPolicyScalingScheduleOutputWithContext(context.Background())
+}
+
+func (i AutoscalarAutoscalingPolicyScalingScheduleArgs) ToAutoscalarAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalarAutoscalingPolicyScalingScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalarAutoscalingPolicyScalingScheduleOutput)
+}
+
+// AutoscalarAutoscalingPolicyScalingScheduleArrayInput is an input type that accepts AutoscalarAutoscalingPolicyScalingScheduleArray and AutoscalarAutoscalingPolicyScalingScheduleArrayOutput values.
+// You can construct a concrete instance of `AutoscalarAutoscalingPolicyScalingScheduleArrayInput` via:
+//
+//          AutoscalarAutoscalingPolicyScalingScheduleArray{ AutoscalarAutoscalingPolicyScalingScheduleArgs{...} }
+type AutoscalarAutoscalingPolicyScalingScheduleArrayInput interface {
+	pulumi.Input
+
+	ToAutoscalarAutoscalingPolicyScalingScheduleArrayOutput() AutoscalarAutoscalingPolicyScalingScheduleArrayOutput
+	ToAutoscalarAutoscalingPolicyScalingScheduleArrayOutputWithContext(context.Context) AutoscalarAutoscalingPolicyScalingScheduleArrayOutput
+}
+
+type AutoscalarAutoscalingPolicyScalingScheduleArray []AutoscalarAutoscalingPolicyScalingScheduleInput
+
+func (AutoscalarAutoscalingPolicyScalingScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoscalarAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalarAutoscalingPolicyScalingScheduleArray) ToAutoscalarAutoscalingPolicyScalingScheduleArrayOutput() AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
+	return i.ToAutoscalarAutoscalingPolicyScalingScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i AutoscalarAutoscalingPolicyScalingScheduleArray) ToAutoscalarAutoscalingPolicyScalingScheduleArrayOutputWithContext(ctx context.Context) AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalarAutoscalingPolicyScalingScheduleArrayOutput)
+}
+
+type AutoscalarAutoscalingPolicyScalingScheduleOutput struct{ *pulumi.OutputState }
+
+func (AutoscalarAutoscalingPolicyScalingScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalarAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) ToAutoscalarAutoscalingPolicyScalingScheduleOutput() AutoscalarAutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) ToAutoscalarAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalarAutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+// An optional description of this resource.
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScalingSchedule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScalingSchedule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) DurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScalingSchedule) int { return v.DurationSec }).(pulumi.IntOutput)
+}
+
+// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) MinRequiredReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScalingSchedule) int { return v.MinRequiredReplicas }).(pulumi.IntOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScalingSchedule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScalingSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o AutoscalarAutoscalingPolicyScalingScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyScalingSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type AutoscalarAutoscalingPolicyScalingScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoscalarAutoscalingPolicyScalingScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoscalarAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalarAutoscalingPolicyScalingScheduleArrayOutput) ToAutoscalarAutoscalingPolicyScalingScheduleArrayOutput() AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
+	return o
+}
+
+func (o AutoscalarAutoscalingPolicyScalingScheduleArrayOutput) ToAutoscalarAutoscalingPolicyScalingScheduleArrayOutputWithContext(ctx context.Context) AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
+	return o
+}
+
+func (o AutoscalarAutoscalingPolicyScalingScheduleArrayOutput) Index(i pulumi.IntInput) AutoscalarAutoscalingPolicyScalingScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoscalarAutoscalingPolicyScalingSchedule {
+		return vs[0].([]AutoscalarAutoscalingPolicyScalingSchedule)[vs[1].(int)]
+	}).(AutoscalarAutoscalingPolicyScalingScheduleOutput)
+}
+
 type AutoscalerAutoscalingPolicy struct {
 	// The number of seconds that the autoscaler should wait before it
 	// starts collecting information from a new instance. This prevents
@@ -1638,7 +1800,8 @@ type AutoscalerAutoscalingPolicy struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl *AutoscalerAutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
+	ScaleInControl   *AutoscalerAutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
+	ScalingSchedules []AutoscalerAutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
 // AutoscalerAutoscalingPolicyInput is an input type that accepts AutoscalerAutoscalingPolicyArgs and AutoscalerAutoscalingPolicyOutput values.
@@ -1695,7 +1858,8 @@ type AutoscalerAutoscalingPolicyArgs struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl AutoscalerAutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
+	ScaleInControl   AutoscalerAutoscalingPolicyScaleInControlPtrInput    `pulumi:"scaleInControl"`
+	ScalingSchedules AutoscalerAutoscalingPolicyScalingScheduleArrayInput `pulumi:"scalingSchedules"`
 }
 
 func (AutoscalerAutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -1853,6 +2017,12 @@ func (o AutoscalerAutoscalingPolicyOutput) ScaleInControl() AutoscalerAutoscalin
 	}).(AutoscalerAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+func (o AutoscalerAutoscalingPolicyOutput) ScalingSchedules() AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyScalingSchedule {
+		return v.ScalingSchedules
+	}).(AutoscalerAutoscalingPolicyScalingScheduleArrayOutput)
+}
+
 type AutoscalerAutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (AutoscalerAutoscalingPolicyPtrOutput) ElementType() reflect.Type {
@@ -1984,6 +2154,15 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) ScaleInControl() AutoscalerAutosca
 		}
 		return v.ScaleInControl
 	}).(AutoscalerAutoscalingPolicyScaleInControlPtrOutput)
+}
+
+func (o AutoscalerAutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyScalingSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingSchedules
+	}).(AutoscalerAutoscalingPolicyScalingScheduleArrayOutput)
 }
 
 type AutoscalerAutoscalingPolicyCpuUtilization struct {
@@ -2297,9 +2476,7 @@ type AutoscalerAutoscalingPolicyMetric struct {
 	// TimeSeries are returned upon the query execution, the autoscaler
 	// will sum their respective values to obtain its scaling value.
 	Filter *string `pulumi:"filter"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name string `pulumi:"name"`
 	// If scaling is based on a per-group metric value that represents the
 	// total amount of work to be done or resource usage, set this value to
@@ -2366,9 +2543,7 @@ type AutoscalerAutoscalingPolicyMetricArgs struct {
 	// TimeSeries are returned upon the query execution, the autoscaler
 	// will sum their respective values to obtain its scaling value.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringInput `pulumi:"name"`
 	// If scaling is based on a per-group metric value that represents the
 	// total amount of work to be done or resource usage, set this value to
@@ -2477,9 +2652,7 @@ func (o AutoscalerAutoscalingPolicyMetricOutput) Filter() pulumi.StringPtrOutput
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// The identifier (type) of the Stackdriver Monitoring metric.
-// The metric cannot have negative values.
-// The metric must have a value type of INT64 or DOUBLE.
+// The identifier for this object. Format specified above.
 func (o AutoscalerAutoscalingPolicyMetricOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicyMetric) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3178,6 +3351,157 @@ func (o AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput) P
 		}
 		return v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+type AutoscalerAutoscalingPolicyScalingSchedule struct {
+	// An optional description of this resource.
+	Description *string `pulumi:"description"`
+	// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+	Disabled *bool `pulumi:"disabled"`
+	// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+	DurationSec int `pulumi:"durationSec"`
+	// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+	MinRequiredReplicas int `pulumi:"minRequiredReplicas"`
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+	Schedule string `pulumi:"schedule"`
+	// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// AutoscalerAutoscalingPolicyScalingScheduleInput is an input type that accepts AutoscalerAutoscalingPolicyScalingScheduleArgs and AutoscalerAutoscalingPolicyScalingScheduleOutput values.
+// You can construct a concrete instance of `AutoscalerAutoscalingPolicyScalingScheduleInput` via:
+//
+//          AutoscalerAutoscalingPolicyScalingScheduleArgs{...}
+type AutoscalerAutoscalingPolicyScalingScheduleInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyScalingScheduleOutput() AutoscalerAutoscalingPolicyScalingScheduleOutput
+	ToAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(context.Context) AutoscalerAutoscalingPolicyScalingScheduleOutput
+}
+
+type AutoscalerAutoscalingPolicyScalingScheduleArgs struct {
+	// An optional description of this resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+	DurationSec pulumi.IntInput `pulumi:"durationSec"`
+	// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+	MinRequiredReplicas pulumi.IntInput `pulumi:"minRequiredReplicas"`
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (AutoscalerAutoscalingPolicyScalingScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalerAutoscalingPolicyScalingScheduleArgs) ToAutoscalerAutoscalingPolicyScalingScheduleOutput() AutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return i.ToAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyScalingScheduleArgs) ToAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyScalingScheduleOutput)
+}
+
+// AutoscalerAutoscalingPolicyScalingScheduleArrayInput is an input type that accepts AutoscalerAutoscalingPolicyScalingScheduleArray and AutoscalerAutoscalingPolicyScalingScheduleArrayOutput values.
+// You can construct a concrete instance of `AutoscalerAutoscalingPolicyScalingScheduleArrayInput` via:
+//
+//          AutoscalerAutoscalingPolicyScalingScheduleArray{ AutoscalerAutoscalingPolicyScalingScheduleArgs{...} }
+type AutoscalerAutoscalingPolicyScalingScheduleArrayInput interface {
+	pulumi.Input
+
+	ToAutoscalerAutoscalingPolicyScalingScheduleArrayOutput() AutoscalerAutoscalingPolicyScalingScheduleArrayOutput
+	ToAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(context.Context) AutoscalerAutoscalingPolicyScalingScheduleArrayOutput
+}
+
+type AutoscalerAutoscalingPolicyScalingScheduleArray []AutoscalerAutoscalingPolicyScalingScheduleInput
+
+func (AutoscalerAutoscalingPolicyScalingScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i AutoscalerAutoscalingPolicyScalingScheduleArray) ToAutoscalerAutoscalingPolicyScalingScheduleArrayOutput() AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return i.ToAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i AutoscalerAutoscalingPolicyScalingScheduleArray) ToAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerAutoscalingPolicyScalingScheduleArrayOutput)
+}
+
+type AutoscalerAutoscalingPolicyScalingScheduleOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyScalingScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) ToAutoscalerAutoscalingPolicyScalingScheduleOutput() AutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) ToAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+// An optional description of this resource.
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScalingSchedule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScalingSchedule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) DurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScalingSchedule) int { return v.DurationSec }).(pulumi.IntOutput)
+}
+
+// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) MinRequiredReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScalingSchedule) int { return v.MinRequiredReplicas }).(pulumi.IntOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScalingSchedule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScalingSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o AutoscalerAutoscalingPolicyScalingScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyScalingSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type AutoscalerAutoscalingPolicyScalingScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (AutoscalerAutoscalingPolicyScalingScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o AutoscalerAutoscalingPolicyScalingScheduleArrayOutput) ToAutoscalerAutoscalingPolicyScalingScheduleArrayOutput() AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyScalingScheduleArrayOutput) ToAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(ctx context.Context) AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o
+}
+
+func (o AutoscalerAutoscalingPolicyScalingScheduleArrayOutput) Index(i pulumi.IntInput) AutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutoscalerAutoscalingPolicyScalingSchedule {
+		return vs[0].([]AutoscalerAutoscalingPolicyScalingSchedule)[vs[1].(int)]
+	}).(AutoscalerAutoscalingPolicyScalingScheduleOutput)
 }
 
 type BackendBucketCdnPolicy struct {
@@ -22969,7 +23293,8 @@ type RegionAutoscalerAutoscalingPolicy struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl *RegionAutoscalerAutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
+	ScaleInControl   *RegionAutoscalerAutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
+	ScalingSchedules []RegionAutoscalerAutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
 // RegionAutoscalerAutoscalingPolicyInput is an input type that accepts RegionAutoscalerAutoscalingPolicyArgs and RegionAutoscalerAutoscalingPolicyOutput values.
@@ -23026,7 +23351,8 @@ type RegionAutoscalerAutoscalingPolicyArgs struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl RegionAutoscalerAutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
+	ScaleInControl   RegionAutoscalerAutoscalingPolicyScaleInControlPtrInput    `pulumi:"scaleInControl"`
+	ScalingSchedules RegionAutoscalerAutoscalingPolicyScalingScheduleArrayInput `pulumi:"scalingSchedules"`
 }
 
 func (RegionAutoscalerAutoscalingPolicyArgs) ElementType() reflect.Type {
@@ -23184,6 +23510,12 @@ func (o RegionAutoscalerAutoscalingPolicyOutput) ScaleInControl() RegionAutoscal
 	}).(RegionAutoscalerAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+func (o RegionAutoscalerAutoscalingPolicyOutput) ScalingSchedules() RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) []RegionAutoscalerAutoscalingPolicyScalingSchedule {
+		return v.ScalingSchedules
+	}).(RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput)
+}
+
 type RegionAutoscalerAutoscalingPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (RegionAutoscalerAutoscalingPolicyPtrOutput) ElementType() reflect.Type {
@@ -23315,6 +23647,15 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) ScaleInControl() RegionAutos
 		}
 		return v.ScaleInControl
 	}).(RegionAutoscalerAutoscalingPolicyScaleInControlPtrOutput)
+}
+
+func (o RegionAutoscalerAutoscalingPolicyPtrOutput) ScalingSchedules() RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) []RegionAutoscalerAutoscalingPolicyScalingSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingSchedules
+	}).(RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput)
 }
 
 type RegionAutoscalerAutoscalingPolicyCpuUtilization struct {
@@ -23628,9 +23969,7 @@ type RegionAutoscalerAutoscalingPolicyMetric struct {
 	// TimeSeries are returned upon the query execution, the autoscaler
 	// will sum their respective values to obtain its scaling value.
 	Filter *string `pulumi:"filter"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name string `pulumi:"name"`
 	// If scaling is based on a per-group metric value that represents the
 	// total amount of work to be done or resource usage, set this value to
@@ -23697,9 +24036,7 @@ type RegionAutoscalerAutoscalingPolicyMetricArgs struct {
 	// TimeSeries are returned upon the query execution, the autoscaler
 	// will sum their respective values to obtain its scaling value.
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The identifier (type) of the Stackdriver Monitoring metric.
-	// The metric cannot have negative values.
-	// The metric must have a value type of INT64 or DOUBLE.
+	// The identifier for this object. Format specified above.
 	Name pulumi.StringInput `pulumi:"name"`
 	// If scaling is based on a per-group metric value that represents the
 	// total amount of work to be done or resource usage, set this value to
@@ -23808,9 +24145,7 @@ func (o RegionAutoscalerAutoscalingPolicyMetricOutput) Filter() pulumi.StringPtr
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyMetric) *string { return v.Filter }).(pulumi.StringPtrOutput)
 }
 
-// The identifier (type) of the Stackdriver Monitoring metric.
-// The metric cannot have negative values.
-// The metric must have a value type of INT64 or DOUBLE.
+// The identifier for this object. Format specified above.
 func (o RegionAutoscalerAutoscalingPolicyMetricOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyMetric) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -24509,6 +24844,157 @@ func (o RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOut
 		}
 		return v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScalingSchedule struct {
+	// An optional description of this resource.
+	Description *string `pulumi:"description"`
+	// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+	Disabled *bool `pulumi:"disabled"`
+	// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+	DurationSec int `pulumi:"durationSec"`
+	// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+	MinRequiredReplicas int `pulumi:"minRequiredReplicas"`
+	// The identifier for this object. Format specified above.
+	Name string `pulumi:"name"`
+	// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+	Schedule string `pulumi:"schedule"`
+	// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// RegionAutoscalerAutoscalingPolicyScalingScheduleInput is an input type that accepts RegionAutoscalerAutoscalingPolicyScalingScheduleArgs and RegionAutoscalerAutoscalingPolicyScalingScheduleOutput values.
+// You can construct a concrete instance of `RegionAutoscalerAutoscalingPolicyScalingScheduleInput` via:
+//
+//          RegionAutoscalerAutoscalingPolicyScalingScheduleArgs{...}
+type RegionAutoscalerAutoscalingPolicyScalingScheduleInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerAutoscalingPolicyScalingScheduleOutput() RegionAutoscalerAutoscalingPolicyScalingScheduleOutput
+	ToRegionAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(context.Context) RegionAutoscalerAutoscalingPolicyScalingScheduleOutput
+}
+
+type RegionAutoscalerAutoscalingPolicyScalingScheduleArgs struct {
+	// An optional description of this resource.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
+	// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+	DurationSec pulumi.IntInput `pulumi:"durationSec"`
+	// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+	MinRequiredReplicas pulumi.IntInput `pulumi:"minRequiredReplicas"`
+	// The identifier for this object. Format specified above.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+	Schedule pulumi.StringInput `pulumi:"schedule"`
+	// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (RegionAutoscalerAutoscalingPolicyScalingScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScalingScheduleArgs) ToRegionAutoscalerAutoscalingPolicyScalingScheduleOutput() RegionAutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScalingScheduleArgs) ToRegionAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScalingScheduleOutput)
+}
+
+// RegionAutoscalerAutoscalingPolicyScalingScheduleArrayInput is an input type that accepts RegionAutoscalerAutoscalingPolicyScalingScheduleArray and RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput values.
+// You can construct a concrete instance of `RegionAutoscalerAutoscalingPolicyScalingScheduleArrayInput` via:
+//
+//          RegionAutoscalerAutoscalingPolicyScalingScheduleArray{ RegionAutoscalerAutoscalingPolicyScalingScheduleArgs{...} }
+type RegionAutoscalerAutoscalingPolicyScalingScheduleArrayInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput() RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput
+	ToRegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(context.Context) RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput
+}
+
+type RegionAutoscalerAutoscalingPolicyScalingScheduleArray []RegionAutoscalerAutoscalingPolicyScalingScheduleInput
+
+func (RegionAutoscalerAutoscalingPolicyScalingScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionAutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScalingScheduleArray) ToRegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput() RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return i.ToRegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerAutoscalingPolicyScalingScheduleArray) ToRegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScalingScheduleOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionAutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) ToRegionAutoscalerAutoscalingPolicyScalingScheduleOutput() RegionAutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) ToRegionAutoscalerAutoscalingPolicyScalingScheduleOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return o
+}
+
+// An optional description of this resource.
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScalingSchedule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScalingSchedule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
+// The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) DurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScalingSchedule) int { return v.DurationSec }).(pulumi.IntOutput)
+}
+
+// Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) MinRequiredReplicas() pulumi.IntOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScalingSchedule) int { return v.MinRequiredReplicas }).(pulumi.IntOutput)
+}
+
+// The identifier for this object. Format specified above.
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScalingSchedule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScalingSchedule) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+// The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyScalingSchedule) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionAutoscalerAutoscalingPolicyScalingSchedule)(nil)).Elem()
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput) ToRegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput() RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput) ToRegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutputWithContext(ctx context.Context) RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
+	return o
+}
+
+func (o RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput) Index(i pulumi.IntInput) RegionAutoscalerAutoscalingPolicyScalingScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionAutoscalerAutoscalingPolicyScalingSchedule {
+		return vs[0].([]RegionAutoscalerAutoscalingPolicyScalingSchedule)[vs[1].(int)]
+	}).(RegionAutoscalerAutoscalingPolicyScalingScheduleOutput)
 }
 
 type RegionBackendServiceBackend struct {
@@ -68678,6 +69164,8 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyScaleInControlPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasOutput{})
 	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyScalingScheduleOutput{})
+	pulumi.RegisterOutputType(AutoscalarAutoscalingPolicyScalingScheduleArrayOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyCpuUtilizationOutput{})
@@ -68694,6 +69182,8 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyScaleInControlPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasOutput{})
 	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyScalingScheduleOutput{})
+	pulumi.RegisterOutputType(AutoscalerAutoscalingPolicyScalingScheduleArrayOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyNegativeCachingPolicyOutput{})
@@ -68946,6 +69436,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleInControlPtrOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasOutput{})
 	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasPtrOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScalingScheduleOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceBackendOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceBackendArrayOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceCdnPolicyOutput{})

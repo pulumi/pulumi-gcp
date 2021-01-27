@@ -31,7 +31,6 @@ import (
 // 			Clusters: bigtable.InstanceClusterArray{
 // 				&bigtable.InstanceClusterArgs{
 // 					ClusterId:   pulumi.String("tf-instance-cluster"),
-// 					Zone:        pulumi.String("us-central1-b"),
 // 					NumNodes:    pulumi.Int(3),
 // 					StorageType: pulumi.String("HDD"),
 // 				},

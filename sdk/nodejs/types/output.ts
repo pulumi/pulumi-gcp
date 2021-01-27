@@ -2525,8 +2525,8 @@ export namespace bigtable {
          */
         storageType?: string;
         /**
-         * The zone to create the Cloud Bigtable cluster in. Each
-         * cluster must have a different zone in the same region. Zones that support
+         * The zone to create the Cloud Bigtable cluster in. If it not
+         * specified, the provider zone is used. Each cluster must have a different zone in the same region. Zones that support
          * Bigtable instances are noted on the [Cloud Bigtable locations page](https://cloud.google.com/bigtable/docs/locations).
          */
         zone: string;
@@ -2876,6 +2876,145 @@ export namespace binaryauthorization {
          * specifies REQUIRE_ATTESTATION, otherwise it must be empty.
          */
         requireAttestationsBies?: string[];
+    }
+}
+
+export namespace certificateauthority {
+    export interface AuthorityAccessUrl {
+        caCertificateAccessUrl: string;
+        crlAccessUrl: string;
+    }
+
+    export interface AuthorityConfig {
+        /**
+         * A resource path to a ReusableConfig in the format
+         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
+         * . Alternatively, one of the short names
+         * found by running `gcloud beta privateca reusable-configs list`.
+         */
+        reusableConfig: outputs.certificateauthority.AuthorityConfigReusableConfig;
+        /**
+         * Specifies some of the values in a certificate that are related to the subject.
+         * Structure is documented below.
+         */
+        subjectConfig: outputs.certificateauthority.AuthorityConfigSubjectConfig;
+    }
+
+    export interface AuthorityConfigReusableConfig {
+        /**
+         * A resource path to a ReusableConfig in the format
+         * `projects/*&#47;locations/*&#47;reusableConfigs/*`.
+         * . Alternatively, one of the short names
+         * found by running `gcloud beta privateca reusable-configs list`.
+         */
+        reusableConfig: string;
+    }
+
+    export interface AuthorityConfigSubjectConfig {
+        /**
+         * The common name of the distinguished name.
+         */
+        commonName: string;
+        /**
+         * Contains distinguished name fields such as the location and organization.
+         * Structure is documented below.
+         */
+        subject: outputs.certificateauthority.AuthorityConfigSubjectConfigSubject;
+        /**
+         * The subject alternative name fields.
+         * Structure is documented below.
+         */
+        subjectAltName?: outputs.certificateauthority.AuthorityConfigSubjectConfigSubjectAltName;
+    }
+
+    export interface AuthorityConfigSubjectConfigSubject {
+        /**
+         * The country code of the subject.
+         */
+        countryCode?: string;
+        /**
+         * The locality or city of the subject.
+         */
+        locality?: string;
+        /**
+         * The organization of the subject.
+         */
+        organization: string;
+        /**
+         * The organizational unit of the subject.
+         */
+        organizationalUnit?: string;
+        /**
+         * The postal code of the subject.
+         */
+        postalCode?: string;
+        /**
+         * The province, territory, or regional state of the subject.
+         */
+        province?: string;
+        /**
+         * The street address of the subject.
+         */
+        streetAddress?: string;
+    }
+
+    export interface AuthorityConfigSubjectConfigSubjectAltName {
+        /**
+         * Contains only valid, fully-qualified host names.
+         */
+        dnsNames?: string[];
+        /**
+         * Contains only valid RFC 2822 E-mail addresses.
+         */
+        emailAddresses?: string[];
+        /**
+         * Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+         */
+        ipAddresses?: string[];
+        /**
+         * Contains only valid RFC 3986 URIs.
+         */
+        uris?: string[];
+    }
+
+    export interface AuthorityIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AuthorityIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AuthorityIssuingOptions {
+        /**
+         * When true, includes a URL to the issuing CA certificate in the "authority
+         * information access" X.509 extension.
+         */
+        includeCaCertUrl?: boolean;
+        /**
+         * When true, includes a URL to the CRL corresponding to certificates issued from a
+         * CertificateAuthority. CRLs will expire 7 days from their creation. However, we will
+         * rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+         */
+        includeCrlAccessUrl?: boolean;
+    }
+
+    export interface AuthorityKeySpec {
+        /**
+         * The algorithm to use for creating a managed Cloud KMS key for a for a simplified
+         * experience. All managed keys will be have their ProtectionLevel as HSM.
+         * Possible values are `SIGN_HASH_ALGORITHM_UNSPECIFIED`, `RSA_PSS_2048_SHA256`, `RSA_PSS_3072_SHA256`, `RSA_PSS_4096_SHA256`, `RSA_PKCS1_2048_SHA256`, `RSA_PKCS1_3072_SHA256`, `RSA_PKCS1_4096_SHA256`, `EC_P256_SHA256`, and `EC_P384_SHA384`.
+         */
+        algorithm?: string;
+        /**
+         * The resource name for an existing Cloud KMS CryptoKeyVersion in the format
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`.
+         */
+        cloudKmsKeyVersion?: string;
     }
 }
 
@@ -4964,6 +5103,7 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: outputs.compute.AutoscalarAutoscalingPolicyScaleInControl;
+        scalingSchedules?: outputs.compute.AutoscalarAutoscalingPolicyScalingSchedule[];
     }
 
     export interface AutoscalarAutoscalingPolicyCpuUtilization {
@@ -5016,9 +5156,7 @@ export namespace compute {
          */
         filter?: string;
         /**
-         * The identifier (type) of the Stackdriver Monitoring metric.
-         * The metric cannot have negative values.
-         * The metric must have a value type of INT64 or DOUBLE.
+         * The identifier for this object. Format specified above.
          */
         name: string;
         /**
@@ -5104,6 +5242,37 @@ export namespace compute {
         percent?: number;
     }
 
+    export interface AutoscalarAutoscalingPolicyScalingSchedule {
+        /**
+         * An optional description of this resource.
+         */
+        description?: string;
+        /**
+         * A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+         */
+        disabled?: boolean;
+        /**
+         * The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+         */
+        durationSec: number;
+        /**
+         * Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+         */
+        minRequiredReplicas: number;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+         */
+        schedule: string;
+        /**
+         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         */
+        timeZone?: string;
+    }
+
     export interface AutoscalerAutoscalingPolicy {
         /**
          * The number of seconds that the autoscaler should wait before it
@@ -5166,6 +5335,7 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: outputs.compute.AutoscalerAutoscalingPolicyScaleInControl;
+        scalingSchedules?: outputs.compute.AutoscalerAutoscalingPolicyScalingSchedule[];
     }
 
     export interface AutoscalerAutoscalingPolicyCpuUtilization {
@@ -5218,9 +5388,7 @@ export namespace compute {
          */
         filter?: string;
         /**
-         * The identifier (type) of the Stackdriver Monitoring metric.
-         * The metric cannot have negative values.
-         * The metric must have a value type of INT64 or DOUBLE.
+         * The identifier for this object. Format specified above.
          */
         name: string;
         /**
@@ -5304,6 +5472,37 @@ export namespace compute {
          * For example, specify 80 for 80%.
          */
         percent?: number;
+    }
+
+    export interface AutoscalerAutoscalingPolicyScalingSchedule {
+        /**
+         * An optional description of this resource.
+         */
+        description?: string;
+        /**
+         * A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+         */
+        disabled?: boolean;
+        /**
+         * The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+         */
+        durationSec: number;
+        /**
+         * Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+         */
+        minRequiredReplicas: number;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+         */
+        schedule: string;
+        /**
+         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         */
+        timeZone?: string;
     }
 
     export interface BackendBucketCdnPolicy {
@@ -8158,6 +8357,7 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: outputs.compute.RegionAutoscalerAutoscalingPolicyScaleInControl;
+        scalingSchedules?: outputs.compute.RegionAutoscalerAutoscalingPolicyScalingSchedule[];
     }
 
     export interface RegionAutoscalerAutoscalingPolicyCpuUtilization {
@@ -8210,9 +8410,7 @@ export namespace compute {
          */
         filter?: string;
         /**
-         * The identifier (type) of the Stackdriver Monitoring metric.
-         * The metric cannot have negative values.
-         * The metric must have a value type of INT64 or DOUBLE.
+         * The identifier for this object. Format specified above.
          */
         name: string;
         /**
@@ -8296,6 +8494,37 @@ export namespace compute {
          * For example, specify 80 for 80%.
          */
         percent?: number;
+    }
+
+    export interface RegionAutoscalerAutoscalingPolicyScalingSchedule {
+        /**
+         * An optional description of this resource.
+         */
+        description?: string;
+        /**
+         * A boolean value that specifies if a scaling schedule can influence autoscaler recommendations. If set to true, then a scaling schedule has no effect.
+         */
+        disabled?: boolean;
+        /**
+         * The duration of time intervals (in seconds) for which this scaling schedule will be running. The minimum allowed value is 300.
+         */
+        durationSec: number;
+        /**
+         * Minimum number of VM instances that autoscaler will recommend in time intervals starting according to schedule.
+         */
+        minRequiredReplicas: number;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        name: string;
+        /**
+         * The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
+         */
+        schedule: string;
+        /**
+         * The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+         */
+        timeZone?: string;
     }
 
     export interface RegionBackendServiceBackend {

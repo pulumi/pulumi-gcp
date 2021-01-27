@@ -168,7 +168,7 @@ class Instance(pulumi.CustomResource):
                **Note**: `shielded_instance_config` can only be used with boot images with shielded vm support. See the complete list [here](https://cloud.google.com/compute/docs/images#shielded-images).
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
-        :param pulumi.Input[str] zone: The zone that the machine should be created in.
+        :param pulumi.Input[str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -341,7 +341,7 @@ class Instance(pulumi.CustomResource):
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of network tags to attach to the instance.
         :param pulumi.Input[str] tags_fingerprint: The unique fingerprint of the tags.
-        :param pulumi.Input[str] zone: The zone that the machine should be created in.
+        :param pulumi.Input[str] zone: The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -675,7 +675,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        The zone that the machine should be created in.
+        The zone that the machine should be created in. If it is not provided, the provider zone is used.
         """
         return pulumi.get(self, "zone")
 
