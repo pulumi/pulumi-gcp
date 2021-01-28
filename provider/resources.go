@@ -3,6 +3,9 @@
 package gcp
 
 import (
+	"fmt"
+	"github.com/pulumi/pulumi-gcp/provider/v4/pkg/version"
+	"path/filepath"
 	"strings"
 	"unicode"
 
@@ -2410,6 +2413,15 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+		},
+		Golang: &tfbridge.GolangInfo{
+			ImportBasePath: filepath.Join(
+				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", gcpPackage),
+				tfbridge.GetModuleMajorVersion(version.Version),
+				"go",
+				gcpPackage,
+			),
+			GenerateResourceContainerTypes: true,
 		},
 		Python: &tfbridge.PythonInfo{
 			Requires: map[string]string{

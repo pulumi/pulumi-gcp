@@ -4,8 +4,8 @@ go 1.15
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta/v3 v3.51.0
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.18.0
-	github.com/pulumi/pulumi/sdk/v2 v2.18.0
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.18.1-0.20210128145316-5b5467501ada
+	github.com/pulumi/pulumi/sdk/v2 v2.18.2
 )
 
 replace (
