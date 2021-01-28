@@ -145,15 +145,15 @@ type SshPublicKeyInput interface {
 	ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput
 }
 
-func (SshPublicKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*SshPublicKey)(nil)).Elem()
+func (*SshPublicKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*SshPublicKey)(nil))
 }
 
-func (i SshPublicKey) ToSshPublicKeyOutput() SshPublicKeyOutput {
+func (i *SshPublicKey) ToSshPublicKeyOutput() SshPublicKeyOutput {
 	return i.ToSshPublicKeyOutputWithContext(context.Background())
 }
 
-func (i SshPublicKey) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
+func (i *SshPublicKey) ToSshPublicKeyOutputWithContext(ctx context.Context) SshPublicKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyOutput)
 }
 
@@ -162,7 +162,7 @@ type SshPublicKeyOutput struct {
 }
 
 func (SshPublicKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SshPublicKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*SshPublicKey)(nil))
 }
 
 func (o SshPublicKeyOutput) ToSshPublicKeyOutput() SshPublicKeyOutput {

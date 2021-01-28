@@ -353,15 +353,15 @@ type CryptoKeyIAMPolicyInput interface {
 	ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput
 }
 
-func (CryptoKeyIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMPolicy)(nil)).Elem()
+func (*CryptoKeyIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyIAMPolicy)(nil))
 }
 
-func (i CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput {
+func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput {
 	return i.ToCryptoKeyIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput {
+func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyOutput)
 }
 
@@ -370,7 +370,7 @@ type CryptoKeyIAMPolicyOutput struct {
 }
 
 func (CryptoKeyIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*CryptoKeyIAMPolicy)(nil))
 }
 
 func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutput() CryptoKeyIAMPolicyOutput {

@@ -303,15 +303,15 @@ type SecurityScanConfigInput interface {
 	ToSecurityScanConfigOutputWithContext(ctx context.Context) SecurityScanConfigOutput
 }
 
-func (SecurityScanConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityScanConfig)(nil)).Elem()
+func (*SecurityScanConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityScanConfig)(nil))
 }
 
-func (i SecurityScanConfig) ToSecurityScanConfigOutput() SecurityScanConfigOutput {
+func (i *SecurityScanConfig) ToSecurityScanConfigOutput() SecurityScanConfigOutput {
 	return i.ToSecurityScanConfigOutputWithContext(context.Background())
 }
 
-func (i SecurityScanConfig) ToSecurityScanConfigOutputWithContext(ctx context.Context) SecurityScanConfigOutput {
+func (i *SecurityScanConfig) ToSecurityScanConfigOutputWithContext(ctx context.Context) SecurityScanConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigOutput)
 }
 
@@ -320,7 +320,7 @@ type SecurityScanConfigOutput struct {
 }
 
 func (SecurityScanConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityScanConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecurityScanConfig)(nil))
 }
 
 func (o SecurityScanConfigOutput) ToSecurityScanConfigOutput() SecurityScanConfigOutput {

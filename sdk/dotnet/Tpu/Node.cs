@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Tpu
     ///  $ pulumi import gcp:tpu/node:Node default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:tpu/node:Node")]
     public partial class Node : Pulumi.CustomResource
     {
         /// <summary>

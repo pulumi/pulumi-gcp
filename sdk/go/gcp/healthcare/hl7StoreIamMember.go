@@ -267,15 +267,15 @@ type Hl7StoreIamMemberInput interface {
 	ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput
 }
 
-func (Hl7StoreIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7StoreIamMember)(nil)).Elem()
+func (*Hl7StoreIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*Hl7StoreIamMember)(nil))
 }
 
-func (i Hl7StoreIamMember) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput {
+func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput {
 	return i.ToHl7StoreIamMemberOutputWithContext(context.Background())
 }
 
-func (i Hl7StoreIamMember) ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput {
+func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutputWithContext(ctx context.Context) Hl7StoreIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberOutput)
 }
 
@@ -284,7 +284,7 @@ type Hl7StoreIamMemberOutput struct {
 }
 
 func (Hl7StoreIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Hl7StoreIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*Hl7StoreIamMember)(nil))
 }
 
 func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutput() Hl7StoreIamMemberOutput {

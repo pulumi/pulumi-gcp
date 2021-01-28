@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.BigQuery
     ///  $ pulumi import gcp:bigquery/dataset:Dataset default {{dataset_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:bigquery/dataset:Dataset")]
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>

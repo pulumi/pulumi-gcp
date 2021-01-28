@@ -263,6 +263,7 @@ namespace Pulumi.Gcp.OsConfig
     ///  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:osconfig/guestPolicies:GuestPolicies")]
     public partial class GuestPolicies : Pulumi.CustomResource
     {
         /// <summary>

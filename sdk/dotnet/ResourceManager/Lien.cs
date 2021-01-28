@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.ResourceManager
     ///  $ pulumi import gcp:resourcemanager/lien:Lien default {{parent}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:resourcemanager/lien:Lien")]
     public partial class Lien : Pulumi.CustomResource
     {
         /// <summary>

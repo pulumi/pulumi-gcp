@@ -75,6 +75,7 @@ namespace Pulumi.Gcp.DeploymentManager
     ///  $ pulumi import gcp:deploymentmanager/deployment:Deployment default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:deploymentmanager/deployment:Deployment")]
     public partial class Deployment : Pulumi.CustomResource
     {
         /// <summary>

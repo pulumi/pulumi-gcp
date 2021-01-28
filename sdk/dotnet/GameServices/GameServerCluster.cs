@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.GameServices
     ///  $ pulumi import gcp:gameservices/gameServerCluster:GameServerCluster default {{location}}/{{realm_id}}/{{cluster_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:gameservices/gameServerCluster:GameServerCluster")]
     public partial class GameServerCluster : Pulumi.CustomResource
     {
         /// <summary>

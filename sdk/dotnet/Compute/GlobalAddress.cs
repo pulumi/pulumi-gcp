@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/globalAddress:GlobalAddress default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/globalAddress:GlobalAddress")]
     public partial class GlobalAddress : Pulumi.CustomResource
     {
         /// <summary>

@@ -252,15 +252,15 @@ type DomainTrustInput interface {
 	ToDomainTrustOutputWithContext(ctx context.Context) DomainTrustOutput
 }
 
-func (DomainTrust) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainTrust)(nil)).Elem()
+func (*DomainTrust) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainTrust)(nil))
 }
 
-func (i DomainTrust) ToDomainTrustOutput() DomainTrustOutput {
+func (i *DomainTrust) ToDomainTrustOutput() DomainTrustOutput {
 	return i.ToDomainTrustOutputWithContext(context.Background())
 }
 
-func (i DomainTrust) ToDomainTrustOutputWithContext(ctx context.Context) DomainTrustOutput {
+func (i *DomainTrust) ToDomainTrustOutputWithContext(ctx context.Context) DomainTrustOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainTrustOutput)
 }
 
@@ -269,7 +269,7 @@ type DomainTrustOutput struct {
 }
 
 func (DomainTrustOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DomainTrustOutput)(nil)).Elem()
+	return reflect.TypeOf((*DomainTrust)(nil))
 }
 
 func (o DomainTrustOutput) ToDomainTrustOutput() DomainTrustOutput {

@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy")]
     public partial class DicomStoreIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

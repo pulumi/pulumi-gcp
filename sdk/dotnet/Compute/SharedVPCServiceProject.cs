@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject service1 host-project-id/service-project-id-1
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject")]
     public partial class SharedVPCServiceProject : Pulumi.CustomResource
     {
         /// <summary>

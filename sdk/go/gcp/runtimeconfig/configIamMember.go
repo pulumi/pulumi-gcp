@@ -268,15 +268,15 @@ type ConfigIamMemberInput interface {
 	ToConfigIamMemberOutputWithContext(ctx context.Context) ConfigIamMemberOutput
 }
 
-func (ConfigIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigIamMember)(nil)).Elem()
+func (*ConfigIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfigIamMember)(nil))
 }
 
-func (i ConfigIamMember) ToConfigIamMemberOutput() ConfigIamMemberOutput {
+func (i *ConfigIamMember) ToConfigIamMemberOutput() ConfigIamMemberOutput {
 	return i.ToConfigIamMemberOutputWithContext(context.Background())
 }
 
-func (i ConfigIamMember) ToConfigIamMemberOutputWithContext(ctx context.Context) ConfigIamMemberOutput {
+func (i *ConfigIamMember) ToConfigIamMemberOutputWithContext(ctx context.Context) ConfigIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigIamMemberOutput)
 }
 
@@ -285,7 +285,7 @@ type ConfigIamMemberOutput struct {
 }
 
 func (ConfigIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConfigIamMember)(nil))
 }
 
 func (o ConfigIamMemberOutput) ToConfigIamMemberOutput() ConfigIamMemberOutput {

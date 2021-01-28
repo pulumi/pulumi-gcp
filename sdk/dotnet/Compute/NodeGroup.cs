@@ -104,6 +104,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/nodeGroup:NodeGroup default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/nodeGroup:NodeGroup")]
     public partial class NodeGroup : Pulumi.CustomResource
     {
         /// <summary>

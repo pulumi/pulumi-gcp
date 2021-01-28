@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.Folder
     ///  $ pulumi import gcp:folder/organizationPolicy:OrganizationPolicy policy folder-1234/serviceuser.services
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:folder/organizationPolicy:OrganizationPolicy")]
     public partial class OrganizationPolicy : Pulumi.CustomResource
     {
         /// <summary>

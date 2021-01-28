@@ -101,6 +101,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///  $ pulumi import gcp:containeranalysis/note:Note default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:containeranalysis/note:Note")]
     public partial class Note : Pulumi.CustomResource
     {
         /// <summary>

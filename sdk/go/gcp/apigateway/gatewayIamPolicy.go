@@ -167,15 +167,15 @@ type GatewayIamPolicyInput interface {
 	ToGatewayIamPolicyOutputWithContext(ctx context.Context) GatewayIamPolicyOutput
 }
 
-func (GatewayIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamPolicy)(nil)).Elem()
+func (*GatewayIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIamPolicy)(nil))
 }
 
-func (i GatewayIamPolicy) ToGatewayIamPolicyOutput() GatewayIamPolicyOutput {
+func (i *GatewayIamPolicy) ToGatewayIamPolicyOutput() GatewayIamPolicyOutput {
 	return i.ToGatewayIamPolicyOutputWithContext(context.Background())
 }
 
-func (i GatewayIamPolicy) ToGatewayIamPolicyOutputWithContext(ctx context.Context) GatewayIamPolicyOutput {
+func (i *GatewayIamPolicy) ToGatewayIamPolicyOutputWithContext(ctx context.Context) GatewayIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyOutput)
 }
 
@@ -184,7 +184,7 @@ type GatewayIamPolicyOutput struct {
 }
 
 func (GatewayIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*GatewayIamPolicy)(nil))
 }
 
 func (o GatewayIamPolicyOutput) ToGatewayIamPolicyOutput() GatewayIamPolicyOutput {

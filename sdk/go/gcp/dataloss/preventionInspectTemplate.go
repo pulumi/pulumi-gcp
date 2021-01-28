@@ -397,15 +397,15 @@ type PreventionInspectTemplateInput interface {
 	ToPreventionInspectTemplateOutputWithContext(ctx context.Context) PreventionInspectTemplateOutput
 }
 
-func (PreventionInspectTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionInspectTemplate)(nil)).Elem()
+func (*PreventionInspectTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionInspectTemplate)(nil))
 }
 
-func (i PreventionInspectTemplate) ToPreventionInspectTemplateOutput() PreventionInspectTemplateOutput {
+func (i *PreventionInspectTemplate) ToPreventionInspectTemplateOutput() PreventionInspectTemplateOutput {
 	return i.ToPreventionInspectTemplateOutputWithContext(context.Background())
 }
 
-func (i PreventionInspectTemplate) ToPreventionInspectTemplateOutputWithContext(ctx context.Context) PreventionInspectTemplateOutput {
+func (i *PreventionInspectTemplate) ToPreventionInspectTemplateOutputWithContext(ctx context.Context) PreventionInspectTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateOutput)
 }
 
@@ -414,7 +414,7 @@ type PreventionInspectTemplateOutput struct {
 }
 
 func (PreventionInspectTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionInspectTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*PreventionInspectTemplate)(nil))
 }
 
 func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutput() PreventionInspectTemplateOutput {

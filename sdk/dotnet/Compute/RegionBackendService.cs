@@ -343,6 +343,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionBackendService:RegionBackendService")]
     public partial class RegionBackendService : Pulumi.CustomResource
     {
         /// <summary>

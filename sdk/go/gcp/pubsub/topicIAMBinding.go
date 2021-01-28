@@ -268,15 +268,15 @@ type TopicIAMBindingInput interface {
 	ToTopicIAMBindingOutputWithContext(ctx context.Context) TopicIAMBindingOutput
 }
 
-func (TopicIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMBinding)(nil)).Elem()
+func (*TopicIAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIAMBinding)(nil))
 }
 
-func (i TopicIAMBinding) ToTopicIAMBindingOutput() TopicIAMBindingOutput {
+func (i *TopicIAMBinding) ToTopicIAMBindingOutput() TopicIAMBindingOutput {
 	return i.ToTopicIAMBindingOutputWithContext(context.Background())
 }
 
-func (i TopicIAMBinding) ToTopicIAMBindingOutputWithContext(ctx context.Context) TopicIAMBindingOutput {
+func (i *TopicIAMBinding) ToTopicIAMBindingOutputWithContext(ctx context.Context) TopicIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingOutput)
 }
 
@@ -285,7 +285,7 @@ type TopicIAMBindingOutput struct {
 }
 
 func (TopicIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*TopicIAMBinding)(nil))
 }
 
 func (o TopicIAMBindingOutput) ToTopicIAMBindingOutput() TopicIAMBindingOutput {

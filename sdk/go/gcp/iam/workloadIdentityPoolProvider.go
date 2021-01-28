@@ -687,15 +687,15 @@ type WorkloadIdentityPoolProviderInput interface {
 	ToWorkloadIdentityPoolProviderOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOutput
 }
 
-func (WorkloadIdentityPoolProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadIdentityPoolProvider)(nil)).Elem()
+func (*WorkloadIdentityPoolProvider) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPoolProvider)(nil))
 }
 
-func (i WorkloadIdentityPoolProvider) ToWorkloadIdentityPoolProviderOutput() WorkloadIdentityPoolProviderOutput {
+func (i *WorkloadIdentityPoolProvider) ToWorkloadIdentityPoolProviderOutput() WorkloadIdentityPoolProviderOutput {
 	return i.ToWorkloadIdentityPoolProviderOutputWithContext(context.Background())
 }
 
-func (i WorkloadIdentityPoolProvider) ToWorkloadIdentityPoolProviderOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOutput {
+func (i *WorkloadIdentityPoolProvider) ToWorkloadIdentityPoolProviderOutputWithContext(ctx context.Context) WorkloadIdentityPoolProviderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolProviderOutput)
 }
 
@@ -704,7 +704,7 @@ type WorkloadIdentityPoolProviderOutput struct {
 }
 
 func (WorkloadIdentityPoolProviderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadIdentityPoolProviderOutput)(nil)).Elem()
+	return reflect.TypeOf((*WorkloadIdentityPoolProvider)(nil))
 }
 
 func (o WorkloadIdentityPoolProviderOutput) ToWorkloadIdentityPoolProviderOutput() WorkloadIdentityPoolProviderOutput {

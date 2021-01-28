@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/network:Network default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/network:Network")]
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>

@@ -137,6 +137,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:bigquery/datasetIamBinding:DatasetIamBinding")]
     public partial class DatasetIamBinding : Pulumi.CustomResource
     {
         [Output("condition")]

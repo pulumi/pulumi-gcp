@@ -379,15 +379,15 @@ type MetricDescriptorInput interface {
 	ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput
 }
 
-func (MetricDescriptor) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricDescriptor)(nil)).Elem()
+func (*MetricDescriptor) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptor)(nil))
 }
 
-func (i MetricDescriptor) ToMetricDescriptorOutput() MetricDescriptorOutput {
+func (i *MetricDescriptor) ToMetricDescriptorOutput() MetricDescriptorOutput {
 	return i.ToMetricDescriptorOutputWithContext(context.Background())
 }
 
-func (i MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput {
+func (i *MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Context) MetricDescriptorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorOutput)
 }
 
@@ -396,7 +396,7 @@ type MetricDescriptorOutput struct {
 }
 
 func (MetricDescriptorOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MetricDescriptorOutput)(nil)).Elem()
+	return reflect.TypeOf((*MetricDescriptor)(nil))
 }
 
 func (o MetricDescriptorOutput) ToMetricDescriptorOutput() MetricDescriptorOutput {

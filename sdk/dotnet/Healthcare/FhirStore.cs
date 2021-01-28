@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/fhirStore:FhirStore")]
     public partial class FhirStore : Pulumi.CustomResource
     {
         /// <summary>

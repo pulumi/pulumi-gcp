@@ -207,15 +207,15 @@ type HmacKeyInput interface {
 	ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput
 }
 
-func (HmacKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*HmacKey)(nil)).Elem()
+func (*HmacKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*HmacKey)(nil))
 }
 
-func (i HmacKey) ToHmacKeyOutput() HmacKeyOutput {
+func (i *HmacKey) ToHmacKeyOutput() HmacKeyOutput {
 	return i.ToHmacKeyOutputWithContext(context.Background())
 }
 
-func (i HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput {
+func (i *HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyOutput)
 }
 
@@ -224,7 +224,7 @@ type HmacKeyOutput struct {
 }
 
 func (HmacKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HmacKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*HmacKey)(nil))
 }
 
 func (o HmacKeyOutput) ToHmacKeyOutput() HmacKeyOutput {

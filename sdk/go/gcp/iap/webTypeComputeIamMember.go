@@ -162,15 +162,15 @@ type WebTypeComputeIamMemberInput interface {
 	ToWebTypeComputeIamMemberOutputWithContext(ctx context.Context) WebTypeComputeIamMemberOutput
 }
 
-func (WebTypeComputeIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamMember)(nil)).Elem()
+func (*WebTypeComputeIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebTypeComputeIamMember)(nil))
 }
 
-func (i WebTypeComputeIamMember) ToWebTypeComputeIamMemberOutput() WebTypeComputeIamMemberOutput {
+func (i *WebTypeComputeIamMember) ToWebTypeComputeIamMemberOutput() WebTypeComputeIamMemberOutput {
 	return i.ToWebTypeComputeIamMemberOutputWithContext(context.Background())
 }
 
-func (i WebTypeComputeIamMember) ToWebTypeComputeIamMemberOutputWithContext(ctx context.Context) WebTypeComputeIamMemberOutput {
+func (i *WebTypeComputeIamMember) ToWebTypeComputeIamMemberOutputWithContext(ctx context.Context) WebTypeComputeIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamMemberOutput)
 }
 
@@ -179,7 +179,7 @@ type WebTypeComputeIamMemberOutput struct {
 }
 
 func (WebTypeComputeIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebTypeComputeIamMember)(nil))
 }
 
 func (o WebTypeComputeIamMemberOutput) ToWebTypeComputeIamMemberOutput() WebTypeComputeIamMemberOutput {

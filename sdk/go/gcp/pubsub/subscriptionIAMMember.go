@@ -261,15 +261,15 @@ type SubscriptionIAMMemberInput interface {
 	ToSubscriptionIAMMemberOutputWithContext(ctx context.Context) SubscriptionIAMMemberOutput
 }
 
-func (SubscriptionIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMMember)(nil)).Elem()
+func (*SubscriptionIAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionIAMMember)(nil))
 }
 
-func (i SubscriptionIAMMember) ToSubscriptionIAMMemberOutput() SubscriptionIAMMemberOutput {
+func (i *SubscriptionIAMMember) ToSubscriptionIAMMemberOutput() SubscriptionIAMMemberOutput {
 	return i.ToSubscriptionIAMMemberOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMMember) ToSubscriptionIAMMemberOutputWithContext(ctx context.Context) SubscriptionIAMMemberOutput {
+func (i *SubscriptionIAMMember) ToSubscriptionIAMMemberOutputWithContext(ctx context.Context) SubscriptionIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberOutput)
 }
 
@@ -278,7 +278,7 @@ type SubscriptionIAMMemberOutput struct {
 }
 
 func (SubscriptionIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*SubscriptionIAMMember)(nil))
 }
 
 func (o SubscriptionIAMMemberOutput) ToSubscriptionIAMMemberOutput() SubscriptionIAMMemberOutput {

@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.ML
     ///  $ pulumi import gcp:ml/engineModel:EngineModel default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:ml/engineModel:EngineModel")]
     public partial class EngineModel : Pulumi.CustomResource
     {
         /// <summary>

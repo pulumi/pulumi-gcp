@@ -98,6 +98,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///  $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datacatalog/tagTemplate:TagTemplate")]
     public partial class TagTemplate : Pulumi.CustomResource
     {
         /// <summary>

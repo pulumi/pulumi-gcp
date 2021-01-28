@@ -269,15 +269,15 @@ type TransferJobInput interface {
 	ToTransferJobOutputWithContext(ctx context.Context) TransferJobOutput
 }
 
-func (TransferJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJob)(nil)).Elem()
+func (*TransferJob) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJob)(nil))
 }
 
-func (i TransferJob) ToTransferJobOutput() TransferJobOutput {
+func (i *TransferJob) ToTransferJobOutput() TransferJobOutput {
 	return i.ToTransferJobOutputWithContext(context.Background())
 }
 
-func (i TransferJob) ToTransferJobOutputWithContext(ctx context.Context) TransferJobOutput {
+func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) TransferJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobOutput)
 }
 
@@ -286,7 +286,7 @@ type TransferJobOutput struct {
 }
 
 func (TransferJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJobOutput)(nil)).Elem()
+	return reflect.TypeOf((*TransferJob)(nil))
 }
 
 func (o TransferJobOutput) ToTransferJobOutput() TransferJobOutput {

@@ -267,15 +267,15 @@ type DicomStoreIamMemberInput interface {
 	ToDicomStoreIamMemberOutputWithContext(ctx context.Context) DicomStoreIamMemberOutput
 }
 
-func (DicomStoreIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamMember)(nil)).Elem()
+func (*DicomStoreIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreIamMember)(nil))
 }
 
-func (i DicomStoreIamMember) ToDicomStoreIamMemberOutput() DicomStoreIamMemberOutput {
+func (i *DicomStoreIamMember) ToDicomStoreIamMemberOutput() DicomStoreIamMemberOutput {
 	return i.ToDicomStoreIamMemberOutputWithContext(context.Background())
 }
 
-func (i DicomStoreIamMember) ToDicomStoreIamMemberOutputWithContext(ctx context.Context) DicomStoreIamMemberOutput {
+func (i *DicomStoreIamMember) ToDicomStoreIamMemberOutputWithContext(ctx context.Context) DicomStoreIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberOutput)
 }
 
@@ -284,7 +284,7 @@ type DicomStoreIamMemberOutput struct {
 }
 
 func (DicomStoreIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*DicomStoreIamMember)(nil))
 }
 
 func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberOutput() DicomStoreIamMemberOutput {

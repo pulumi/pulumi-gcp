@@ -150,15 +150,15 @@ type PolicyTagIamMemberInput interface {
 	ToPolicyTagIamMemberOutputWithContext(ctx context.Context) PolicyTagIamMemberOutput
 }
 
-func (PolicyTagIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTagIamMember)(nil)).Elem()
+func (*PolicyTagIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTagIamMember)(nil))
 }
 
-func (i PolicyTagIamMember) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput {
+func (i *PolicyTagIamMember) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput {
 	return i.ToPolicyTagIamMemberOutputWithContext(context.Background())
 }
 
-func (i PolicyTagIamMember) ToPolicyTagIamMemberOutputWithContext(ctx context.Context) PolicyTagIamMemberOutput {
+func (i *PolicyTagIamMember) ToPolicyTagIamMemberOutputWithContext(ctx context.Context) PolicyTagIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberOutput)
 }
 
@@ -167,7 +167,7 @@ type PolicyTagIamMemberOutput struct {
 }
 
 func (PolicyTagIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTagIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*PolicyTagIamMember)(nil))
 }
 
 func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberOutput() PolicyTagIamMemberOutput {

@@ -252,15 +252,15 @@ type EntryGroupIamPolicyInput interface {
 	ToEntryGroupIamPolicyOutputWithContext(ctx context.Context) EntryGroupIamPolicyOutput
 }
 
-func (EntryGroupIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamPolicy)(nil)).Elem()
+func (*EntryGroupIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryGroupIamPolicy)(nil))
 }
 
-func (i EntryGroupIamPolicy) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyOutput {
+func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyOutput {
 	return i.ToEntryGroupIamPolicyOutputWithContext(context.Background())
 }
 
-func (i EntryGroupIamPolicy) ToEntryGroupIamPolicyOutputWithContext(ctx context.Context) EntryGroupIamPolicyOutput {
+func (i *EntryGroupIamPolicy) ToEntryGroupIamPolicyOutputWithContext(ctx context.Context) EntryGroupIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamPolicyOutput)
 }
 
@@ -269,7 +269,7 @@ type EntryGroupIamPolicyOutput struct {
 }
 
 func (EntryGroupIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*EntryGroupIamPolicy)(nil))
 }
 
 func (o EntryGroupIamPolicyOutput) ToEntryGroupIamPolicyOutput() EntryGroupIamPolicyOutput {

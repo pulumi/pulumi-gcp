@@ -168,15 +168,15 @@ type AccessApprovalSettingsInput interface {
 	ToAccessApprovalSettingsOutputWithContext(ctx context.Context) AccessApprovalSettingsOutput
 }
 
-func (AccessApprovalSettings) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessApprovalSettings)(nil)).Elem()
+func (*AccessApprovalSettings) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessApprovalSettings)(nil))
 }
 
-func (i AccessApprovalSettings) ToAccessApprovalSettingsOutput() AccessApprovalSettingsOutput {
+func (i *AccessApprovalSettings) ToAccessApprovalSettingsOutput() AccessApprovalSettingsOutput {
 	return i.ToAccessApprovalSettingsOutputWithContext(context.Background())
 }
 
-func (i AccessApprovalSettings) ToAccessApprovalSettingsOutputWithContext(ctx context.Context) AccessApprovalSettingsOutput {
+func (i *AccessApprovalSettings) ToAccessApprovalSettingsOutputWithContext(ctx context.Context) AccessApprovalSettingsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsOutput)
 }
 
@@ -185,7 +185,7 @@ type AccessApprovalSettingsOutput struct {
 }
 
 func (AccessApprovalSettingsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessApprovalSettingsOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessApprovalSettings)(nil))
 }
 
 func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutput() AccessApprovalSettingsOutput {

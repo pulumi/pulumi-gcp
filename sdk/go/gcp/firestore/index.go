@@ -244,15 +244,15 @@ type IndexInput interface {
 	ToIndexOutputWithContext(ctx context.Context) IndexOutput
 }
 
-func (Index) ElementType() reflect.Type {
-	return reflect.TypeOf((*Index)(nil)).Elem()
+func (*Index) ElementType() reflect.Type {
+	return reflect.TypeOf((*Index)(nil))
 }
 
-func (i Index) ToIndexOutput() IndexOutput {
+func (i *Index) ToIndexOutput() IndexOutput {
 	return i.ToIndexOutputWithContext(context.Background())
 }
 
-func (i Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
+func (i *Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndexOutput)
 }
 
@@ -261,7 +261,7 @@ type IndexOutput struct {
 }
 
 func (IndexOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IndexOutput)(nil)).Elem()
+	return reflect.TypeOf((*Index)(nil))
 }
 
 func (o IndexOutput) ToIndexOutput() IndexOutput {

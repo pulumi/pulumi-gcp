@@ -212,15 +212,15 @@ type LiteTopicInput interface {
 	ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicOutput
 }
 
-func (LiteTopic) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteTopic)(nil)).Elem()
+func (*LiteTopic) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteTopic)(nil))
 }
 
-func (i LiteTopic) ToLiteTopicOutput() LiteTopicOutput {
+func (i *LiteTopic) ToLiteTopicOutput() LiteTopicOutput {
 	return i.ToLiteTopicOutputWithContext(context.Background())
 }
 
-func (i LiteTopic) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicOutput {
+func (i *LiteTopic) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicOutput)
 }
 
@@ -229,7 +229,7 @@ type LiteTopicOutput struct {
 }
 
 func (LiteTopicOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteTopicOutput)(nil)).Elem()
+	return reflect.TypeOf((*LiteTopic)(nil))
 }
 
 func (o LiteTopicOutput) ToLiteTopicOutput() LiteTopicOutput {

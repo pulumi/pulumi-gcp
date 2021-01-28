@@ -199,15 +199,15 @@ type ReservationInput interface {
 	ToReservationOutputWithContext(ctx context.Context) ReservationOutput
 }
 
-func (Reservation) ElementType() reflect.Type {
-	return reflect.TypeOf((*Reservation)(nil)).Elem()
+func (*Reservation) ElementType() reflect.Type {
+	return reflect.TypeOf((*Reservation)(nil))
 }
 
-func (i Reservation) ToReservationOutput() ReservationOutput {
+func (i *Reservation) ToReservationOutput() ReservationOutput {
 	return i.ToReservationOutputWithContext(context.Background())
 }
 
-func (i Reservation) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
+func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) ReservationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationOutput)
 }
 
@@ -216,7 +216,7 @@ type ReservationOutput struct {
 }
 
 func (ReservationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ReservationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Reservation)(nil))
 }
 
 func (o ReservationOutput) ToReservationOutput() ReservationOutput {

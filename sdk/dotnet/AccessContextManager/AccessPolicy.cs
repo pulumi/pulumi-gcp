@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///  $ pulumi import gcp:accesscontextmanager/accessPolicy:AccessPolicy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:accesscontextmanager/accessPolicy:AccessPolicy")]
     public partial class AccessPolicy : Pulumi.CustomResource
     {
         /// <summary>

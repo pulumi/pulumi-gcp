@@ -83,6 +83,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default {{disk}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment")]
     public partial class DiskResourcePolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

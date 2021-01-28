@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
+    [GcpResourceType("gcp:organizations/accessApprovalSettings:AccessApprovalSettings")]
     public partial class AccessApprovalSettings : Pulumi.CustomResource
     {
         /// <summary>

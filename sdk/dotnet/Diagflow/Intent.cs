@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.Diagflow
     ///  $ pulumi import gcp:diagflow/intent:Intent default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:diagflow/intent:Intent")]
     public partial class Intent : Pulumi.CustomResource
     {
         /// <summary>

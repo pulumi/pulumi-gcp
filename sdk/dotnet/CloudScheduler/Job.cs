@@ -146,6 +146,7 @@ namespace Pulumi.Gcp.CloudScheduler
     ///  $ pulumi import gcp:cloudscheduler/job:Job default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudscheduler/job:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

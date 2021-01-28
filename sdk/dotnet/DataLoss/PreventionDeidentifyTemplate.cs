@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.DataLoss
     ///  $ pulumi import gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate default {{parent}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:dataloss/preventionDeidentifyTemplate:PreventionDeidentifyTemplate")]
     public partial class PreventionDeidentifyTemplate : Pulumi.CustomResource
     {
         /// <summary>

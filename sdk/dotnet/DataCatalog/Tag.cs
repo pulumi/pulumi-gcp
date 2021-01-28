@@ -383,6 +383,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///  $ pulumi import gcp:datacatalog/tag:Tag default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datacatalog/tag:Tag")]
     public partial class Tag : Pulumi.CustomResource
     {
         /// <summary>

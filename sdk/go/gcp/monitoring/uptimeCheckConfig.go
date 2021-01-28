@@ -363,15 +363,15 @@ type UptimeCheckConfigInput interface {
 	ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput
 }
 
-func (UptimeCheckConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*UptimeCheckConfig)(nil)).Elem()
+func (*UptimeCheckConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfig)(nil))
 }
 
-func (i UptimeCheckConfig) ToUptimeCheckConfigOutput() UptimeCheckConfigOutput {
+func (i *UptimeCheckConfig) ToUptimeCheckConfigOutput() UptimeCheckConfigOutput {
 	return i.ToUptimeCheckConfigOutputWithContext(context.Background())
 }
 
-func (i UptimeCheckConfig) ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput {
+func (i *UptimeCheckConfig) ToUptimeCheckConfigOutputWithContext(ctx context.Context) UptimeCheckConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigOutput)
 }
 
@@ -380,7 +380,7 @@ type UptimeCheckConfigOutput struct {
 }
 
 func (UptimeCheckConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UptimeCheckConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*UptimeCheckConfig)(nil))
 }
 
 func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutput() UptimeCheckConfigOutput {

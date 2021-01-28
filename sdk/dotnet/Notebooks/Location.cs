@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Notebooks
     ///  $ pulumi import gcp:notebooks/location:Location default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:notebooks/location:Location")]
     public partial class Location : Pulumi.CustomResource
     {
         /// <summary>

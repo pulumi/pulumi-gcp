@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/routerInterface:RouterInterface foobar us-central1/router-1/interface-1
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/routerInterface:RouterInterface")]
     public partial class RouterInterface : Pulumi.CustomResource
     {
         /// <summary>

@@ -133,15 +133,15 @@ type SubAccountInput interface {
 	ToSubAccountOutputWithContext(ctx context.Context) SubAccountOutput
 }
 
-func (SubAccount) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubAccount)(nil)).Elem()
+func (*SubAccount) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubAccount)(nil))
 }
 
-func (i SubAccount) ToSubAccountOutput() SubAccountOutput {
+func (i *SubAccount) ToSubAccountOutput() SubAccountOutput {
 	return i.ToSubAccountOutputWithContext(context.Background())
 }
 
-func (i SubAccount) ToSubAccountOutputWithContext(ctx context.Context) SubAccountOutput {
+func (i *SubAccount) ToSubAccountOutputWithContext(ctx context.Context) SubAccountOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountOutput)
 }
 
@@ -150,7 +150,7 @@ type SubAccountOutput struct {
 }
 
 func (SubAccountOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubAccountOutput)(nil)).Elem()
+	return reflect.TypeOf((*SubAccount)(nil))
 }
 
 func (o SubAccountOutput) ToSubAccountOutput() SubAccountOutput {

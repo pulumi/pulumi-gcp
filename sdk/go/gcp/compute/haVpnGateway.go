@@ -451,15 +451,15 @@ type HaVpnGatewayInput interface {
 	ToHaVpnGatewayOutputWithContext(ctx context.Context) HaVpnGatewayOutput
 }
 
-func (HaVpnGateway) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVpnGateway)(nil)).Elem()
+func (*HaVpnGateway) ElementType() reflect.Type {
+	return reflect.TypeOf((*HaVpnGateway)(nil))
 }
 
-func (i HaVpnGateway) ToHaVpnGatewayOutput() HaVpnGatewayOutput {
+func (i *HaVpnGateway) ToHaVpnGatewayOutput() HaVpnGatewayOutput {
 	return i.ToHaVpnGatewayOutputWithContext(context.Background())
 }
 
-func (i HaVpnGateway) ToHaVpnGatewayOutputWithContext(ctx context.Context) HaVpnGatewayOutput {
+func (i *HaVpnGateway) ToHaVpnGatewayOutputWithContext(ctx context.Context) HaVpnGatewayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(HaVpnGatewayOutput)
 }
 
@@ -468,7 +468,7 @@ type HaVpnGatewayOutput struct {
 }
 
 func (HaVpnGatewayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HaVpnGatewayOutput)(nil)).Elem()
+	return reflect.TypeOf((*HaVpnGateway)(nil))
 }
 
 func (o HaVpnGatewayOutput) ToHaVpnGatewayOutput() HaVpnGatewayOutput {

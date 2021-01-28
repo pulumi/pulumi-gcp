@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink my_sink billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/billingAccountSink:BillingAccountSink")]
     public partial class BillingAccountSink : Pulumi.CustomResource
     {
         /// <summary>

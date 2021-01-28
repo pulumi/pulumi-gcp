@@ -188,15 +188,15 @@ type GameServerDeploymentRolloutInput interface {
 	ToGameServerDeploymentRolloutOutputWithContext(ctx context.Context) GameServerDeploymentRolloutOutput
 }
 
-func (GameServerDeploymentRollout) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeploymentRollout)(nil)).Elem()
+func (*GameServerDeploymentRollout) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerDeploymentRollout)(nil))
 }
 
-func (i GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutput() GameServerDeploymentRolloutOutput {
+func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutput() GameServerDeploymentRolloutOutput {
 	return i.ToGameServerDeploymentRolloutOutputWithContext(context.Background())
 }
 
-func (i GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutputWithContext(ctx context.Context) GameServerDeploymentRolloutOutput {
+func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutputWithContext(ctx context.Context) GameServerDeploymentRolloutOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutOutput)
 }
 
@@ -205,7 +205,7 @@ type GameServerDeploymentRolloutOutput struct {
 }
 
 func (GameServerDeploymentRolloutOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerDeploymentRolloutOutput)(nil)).Elem()
+	return reflect.TypeOf((*GameServerDeploymentRollout)(nil))
 }
 
 func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutOutput() GameServerDeploymentRolloutOutput {

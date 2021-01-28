@@ -230,6 +230,7 @@ namespace Pulumi.Gcp.Kms
     ///  $ pulumi import gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy key_ring_iam your-project-id/location-name/key-ring-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:kms/keyRingIAMPolicy:KeyRingIAMPolicy")]
     public partial class KeyRingIAMPolicy : Pulumi.CustomResource
     {
         /// <summary>

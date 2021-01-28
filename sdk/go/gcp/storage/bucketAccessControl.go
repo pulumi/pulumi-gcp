@@ -255,15 +255,15 @@ type BucketAccessControlInput interface {
 	ToBucketAccessControlOutputWithContext(ctx context.Context) BucketAccessControlOutput
 }
 
-func (BucketAccessControl) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessControl)(nil)).Elem()
+func (*BucketAccessControl) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketAccessControl)(nil))
 }
 
-func (i BucketAccessControl) ToBucketAccessControlOutput() BucketAccessControlOutput {
+func (i *BucketAccessControl) ToBucketAccessControlOutput() BucketAccessControlOutput {
 	return i.ToBucketAccessControlOutputWithContext(context.Background())
 }
 
-func (i BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context.Context) BucketAccessControlOutput {
+func (i *BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context.Context) BucketAccessControlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlOutput)
 }
 
@@ -272,7 +272,7 @@ type BucketAccessControlOutput struct {
 }
 
 func (BucketAccessControlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketAccessControlOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketAccessControl)(nil))
 }
 
 func (o BucketAccessControlOutput) ToBucketAccessControlOutput() BucketAccessControlOutput {

@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.PubSub
     ///  $ pulumi import gcp:pubsub/liteTopic:LiteTopic default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:pubsub/liteTopic:LiteTopic")]
     public partial class LiteTopic : Pulumi.CustomResource
     {
         /// <summary>

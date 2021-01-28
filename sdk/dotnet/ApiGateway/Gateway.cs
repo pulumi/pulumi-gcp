@@ -30,6 +30,7 @@ namespace Pulumi.Gcp.ApiGateway
     ///  $ pulumi import gcp:apigateway/gateway:Gateway default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:apigateway/gateway:Gateway")]
     public partial class Gateway : Pulumi.CustomResource
     {
         /// <summary>

@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Firebase
     ///  $ pulumi import gcp:firebase/projectLocation:ProjectLocation default {{project}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:firebase/projectLocation:ProjectLocation")]
     public partial class ProjectLocation : Pulumi.CustomResource
     {
         /// <summary>

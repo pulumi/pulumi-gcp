@@ -460,15 +460,15 @@ type RegionNetworkEndpointGroupInput interface {
 	ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput
 }
 
-func (RegionNetworkEndpointGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkEndpointGroup)(nil)).Elem()
+func (*RegionNetworkEndpointGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionNetworkEndpointGroup)(nil))
 }
 
-func (i RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput {
+func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput {
 	return i.ToRegionNetworkEndpointGroupOutputWithContext(context.Background())
 }
 
-func (i RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput {
+func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupOutput)
 }
 
@@ -477,7 +477,7 @@ type RegionNetworkEndpointGroupOutput struct {
 }
 
 func (RegionNetworkEndpointGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkEndpointGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegionNetworkEndpointGroup)(nil))
 }
 
 func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutput() RegionNetworkEndpointGroupOutput {

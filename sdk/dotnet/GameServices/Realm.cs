@@ -57,6 +57,7 @@ namespace Pulumi.Gcp.GameServices
     ///  $ pulumi import gcp:gameservices/realm:Realm default {{location}}/{{realm_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:gameservices/realm:Realm")]
     public partial class Realm : Pulumi.CustomResource
     {
         /// <summary>

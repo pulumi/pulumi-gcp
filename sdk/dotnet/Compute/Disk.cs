@@ -82,6 +82,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/disk:Disk default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/disk:Disk")]
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>

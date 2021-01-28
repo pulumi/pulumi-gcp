@@ -221,15 +221,15 @@ type LiteSubscriptionInput interface {
 	ToLiteSubscriptionOutputWithContext(ctx context.Context) LiteSubscriptionOutput
 }
 
-func (LiteSubscription) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteSubscription)(nil)).Elem()
+func (*LiteSubscription) ElementType() reflect.Type {
+	return reflect.TypeOf((*LiteSubscription)(nil))
 }
 
-func (i LiteSubscription) ToLiteSubscriptionOutput() LiteSubscriptionOutput {
+func (i *LiteSubscription) ToLiteSubscriptionOutput() LiteSubscriptionOutput {
 	return i.ToLiteSubscriptionOutputWithContext(context.Background())
 }
 
-func (i LiteSubscription) ToLiteSubscriptionOutputWithContext(ctx context.Context) LiteSubscriptionOutput {
+func (i *LiteSubscription) ToLiteSubscriptionOutputWithContext(ctx context.Context) LiteSubscriptionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionOutput)
 }
 
@@ -238,7 +238,7 @@ type LiteSubscriptionOutput struct {
 }
 
 func (LiteSubscriptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LiteSubscriptionOutput)(nil)).Elem()
+	return reflect.TypeOf((*LiteSubscription)(nil))
 }
 
 func (o LiteSubscriptionOutput) ToLiteSubscriptionOutput() LiteSubscriptionOutput {

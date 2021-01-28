@@ -147,15 +147,15 @@ type ImageIamPolicyInput interface {
 	ToImageIamPolicyOutputWithContext(ctx context.Context) ImageIamPolicyOutput
 }
 
-func (ImageIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageIamPolicy)(nil)).Elem()
+func (*ImageIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageIamPolicy)(nil))
 }
 
-func (i ImageIamPolicy) ToImageIamPolicyOutput() ImageIamPolicyOutput {
+func (i *ImageIamPolicy) ToImageIamPolicyOutput() ImageIamPolicyOutput {
 	return i.ToImageIamPolicyOutputWithContext(context.Background())
 }
 
-func (i ImageIamPolicy) ToImageIamPolicyOutputWithContext(ctx context.Context) ImageIamPolicyOutput {
+func (i *ImageIamPolicy) ToImageIamPolicyOutputWithContext(ctx context.Context) ImageIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamPolicyOutput)
 }
 
@@ -164,7 +164,7 @@ type ImageIamPolicyOutput struct {
 }
 
 func (ImageIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageIamPolicy)(nil))
 }
 
 func (o ImageIamPolicyOutput) ToImageIamPolicyOutput() ImageIamPolicyOutput {

@@ -220,15 +220,15 @@ type NetworkPeeringRoutesConfigInput interface {
 	ToNetworkPeeringRoutesConfigOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigOutput
 }
 
-func (NetworkPeeringRoutesConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPeeringRoutesConfig)(nil)).Elem()
+func (*NetworkPeeringRoutesConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPeeringRoutesConfig)(nil))
 }
 
-func (i NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutput() NetworkPeeringRoutesConfigOutput {
+func (i *NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutput() NetworkPeeringRoutesConfigOutput {
 	return i.ToNetworkPeeringRoutesConfigOutputWithContext(context.Background())
 }
 
-func (i NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigOutput {
+func (i *NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigOutput)
 }
 
@@ -237,7 +237,7 @@ type NetworkPeeringRoutesConfigOutput struct {
 }
 
 func (NetworkPeeringRoutesConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkPeeringRoutesConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkPeeringRoutesConfig)(nil))
 }
 
 func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigOutput() NetworkPeeringRoutesConfigOutput {

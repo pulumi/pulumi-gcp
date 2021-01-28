@@ -100,6 +100,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default {{disk}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment")]
     public partial class RegionDiskResourcePolicyAttachment : Pulumi.CustomResource
     {
         /// <summary>

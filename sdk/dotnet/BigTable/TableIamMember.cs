@@ -123,6 +123,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:bigtable/tableIamMember:TableIamMember")]
     public partial class TableIamMember : Pulumi.CustomResource
     {
         [Output("condition")]

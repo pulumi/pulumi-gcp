@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.BigTable
     ///  $ pulumi import gcp:bigtable/instance:Instance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:bigtable/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

@@ -197,6 +197,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///  [custom-vm-types]https://cloud.google.com/dataproc/docs/concepts/compute/custom-machine-types [network-tier]https://cloud.google.com/network-tiers/docs/overview
     /// </summary>
+    [GcpResourceType("gcp:compute/instanceTemplate:InstanceTemplate")]
     public partial class InstanceTemplate : Pulumi.CustomResource
     {
         /// <summary>

@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.SecretManager
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:secretmanager/secretIamBinding:SecretIamBinding")]
     public partial class SecretIamBinding : Pulumi.CustomResource
     {
         [Output("condition")]

@@ -138,6 +138,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/route:Route default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/route:Route")]
     public partial class Route : Pulumi.CustomResource
     {
         /// <summary>

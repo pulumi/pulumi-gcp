@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.SecurityCenter
     ///  $ pulumi import gcp:securitycenter/source:Source default {{organization}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:securitycenter/source:Source")]
     public partial class Source : Pulumi.CustomResource
     {
         /// <summary>

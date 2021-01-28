@@ -133,6 +133,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     ///  It is all right if the constraint contains a slash, as in the example above.
     /// </summary>
+    [GcpResourceType("gcp:organizations/policy:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

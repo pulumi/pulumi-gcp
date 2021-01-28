@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/projectSink:ProjectSink my_sink projects/my-project/sinks/my-sink
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/projectSink:ProjectSink")]
     public partial class ProjectSink : Pulumi.CustomResource
     {
         /// <summary>

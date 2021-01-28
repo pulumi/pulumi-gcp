@@ -98,6 +98,7 @@ namespace Pulumi.Gcp.DataFusion
     ///  $ pulumi import gcp:datafusion/instance:Instance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datafusion/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

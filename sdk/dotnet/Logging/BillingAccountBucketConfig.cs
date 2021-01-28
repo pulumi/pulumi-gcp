@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig default billingAccounts/{{billingAccount}}/locations/{{location}}/buckets/{{bucket_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/billingAccountBucketConfig:BillingAccountBucketConfig")]
     public partial class BillingAccountBucketConfig : Pulumi.CustomResource
     {
         /// <summary>

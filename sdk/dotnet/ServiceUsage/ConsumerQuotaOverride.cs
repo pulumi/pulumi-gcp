@@ -72,6 +72,7 @@ namespace Pulumi.Gcp.ServiceUsage
     ///  $ pulumi import gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride default {{service}}/{{metric}}/{{limit}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:serviceusage/consumerQuotaOverride:ConsumerQuotaOverride")]
     public partial class ConsumerQuotaOverride : Pulumi.CustomResource
     {
         /// <summary>

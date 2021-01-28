@@ -350,15 +350,15 @@ type IAMPolicyInput interface {
 	ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput
 }
 
-func (IAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMPolicy)(nil)).Elem()
+func (*IAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMPolicy)(nil))
 }
 
-func (i IAMPolicy) ToIAMPolicyOutput() IAMPolicyOutput {
+func (i *IAMPolicy) ToIAMPolicyOutput() IAMPolicyOutput {
 	return i.ToIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i IAMPolicy) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput {
+func (i *IAMPolicy) ToIAMPolicyOutputWithContext(ctx context.Context) IAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMPolicyOutput)
 }
 
@@ -367,7 +367,7 @@ type IAMPolicyOutput struct {
 }
 
 func (IAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*IAMPolicy)(nil))
 }
 
 func (o IAMPolicyOutput) ToIAMPolicyOutput() IAMPolicyOutput {

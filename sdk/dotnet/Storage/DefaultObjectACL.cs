@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:storage/defaultObjectACL:DefaultObjectACL")]
     public partial class DefaultObjectACL : Pulumi.CustomResource
     {
         /// <summary>

@@ -247,15 +247,15 @@ type DatasetAccessInput interface {
 	ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput
 }
 
-func (DatasetAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccess)(nil)).Elem()
+func (*DatasetAccess) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccess)(nil))
 }
 
-func (i DatasetAccess) ToDatasetAccessOutput() DatasetAccessOutput {
+func (i *DatasetAccess) ToDatasetAccessOutput() DatasetAccessOutput {
 	return i.ToDatasetAccessOutputWithContext(context.Background())
 }
 
-func (i DatasetAccess) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
+func (i *DatasetAccess) ToDatasetAccessOutputWithContext(ctx context.Context) DatasetAccessOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessOutput)
 }
 
@@ -264,7 +264,7 @@ type DatasetAccessOutput struct {
 }
 
 func (DatasetAccessOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatasetAccess)(nil))
 }
 
 func (o DatasetAccessOutput) ToDatasetAccessOutput() DatasetAccessOutput {

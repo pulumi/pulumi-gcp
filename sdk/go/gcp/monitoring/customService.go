@@ -179,15 +179,15 @@ type CustomServiceInput interface {
 	ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput
 }
 
-func (CustomService) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomService)(nil)).Elem()
+func (*CustomService) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomService)(nil))
 }
 
-func (i CustomService) ToCustomServiceOutput() CustomServiceOutput {
+func (i *CustomService) ToCustomServiceOutput() CustomServiceOutput {
 	return i.ToCustomServiceOutputWithContext(context.Background())
 }
 
-func (i CustomService) ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput {
+func (i *CustomService) ToCustomServiceOutputWithContext(ctx context.Context) CustomServiceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceOutput)
 }
 
@@ -196,7 +196,7 @@ type CustomServiceOutput struct {
 }
 
 func (CustomServiceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CustomServiceOutput)(nil)).Elem()
+	return reflect.TypeOf((*CustomService)(nil))
 }
 
 func (o CustomServiceOutput) ToCustomServiceOutput() CustomServiceOutput {

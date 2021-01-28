@@ -268,15 +268,15 @@ type TableIamBindingInput interface {
 	ToTableIamBindingOutputWithContext(ctx context.Context) TableIamBindingOutput
 }
 
-func (TableIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableIamBinding)(nil)).Elem()
+func (*TableIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableIamBinding)(nil))
 }
 
-func (i TableIamBinding) ToTableIamBindingOutput() TableIamBindingOutput {
+func (i *TableIamBinding) ToTableIamBindingOutput() TableIamBindingOutput {
 	return i.ToTableIamBindingOutputWithContext(context.Background())
 }
 
-func (i TableIamBinding) ToTableIamBindingOutputWithContext(ctx context.Context) TableIamBindingOutput {
+func (i *TableIamBinding) ToTableIamBindingOutputWithContext(ctx context.Context) TableIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamBindingOutput)
 }
 
@@ -285,7 +285,7 @@ type TableIamBindingOutput struct {
 }
 
 func (TableIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*TableIamBinding)(nil))
 }
 
 func (o TableIamBindingOutput) ToTableIamBindingOutput() TableIamBindingOutput {

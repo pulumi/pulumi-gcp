@@ -226,15 +226,15 @@ type NamespaceIamPolicyInput interface {
 	ToNamespaceIamPolicyOutputWithContext(ctx context.Context) NamespaceIamPolicyOutput
 }
 
-func (NamespaceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamPolicy)(nil)).Elem()
+func (*NamespaceIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceIamPolicy)(nil))
 }
 
-func (i NamespaceIamPolicy) ToNamespaceIamPolicyOutput() NamespaceIamPolicyOutput {
+func (i *NamespaceIamPolicy) ToNamespaceIamPolicyOutput() NamespaceIamPolicyOutput {
 	return i.ToNamespaceIamPolicyOutputWithContext(context.Background())
 }
 
-func (i NamespaceIamPolicy) ToNamespaceIamPolicyOutputWithContext(ctx context.Context) NamespaceIamPolicyOutput {
+func (i *NamespaceIamPolicy) ToNamespaceIamPolicyOutputWithContext(ctx context.Context) NamespaceIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyOutput)
 }
 
@@ -243,7 +243,7 @@ type NamespaceIamPolicyOutput struct {
 }
 
 func (NamespaceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*NamespaceIamPolicy)(nil))
 }
 
 func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyOutput() NamespaceIamPolicyOutput {

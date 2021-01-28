@@ -354,15 +354,15 @@ type IntentInput interface {
 	ToIntentOutputWithContext(ctx context.Context) IntentOutput
 }
 
-func (Intent) ElementType() reflect.Type {
-	return reflect.TypeOf((*Intent)(nil)).Elem()
+func (*Intent) ElementType() reflect.Type {
+	return reflect.TypeOf((*Intent)(nil))
 }
 
-func (i Intent) ToIntentOutput() IntentOutput {
+func (i *Intent) ToIntentOutput() IntentOutput {
 	return i.ToIntentOutputWithContext(context.Background())
 }
 
-func (i Intent) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
+func (i *Intent) ToIntentOutputWithContext(ctx context.Context) IntentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IntentOutput)
 }
 
@@ -371,7 +371,7 @@ type IntentOutput struct {
 }
 
 func (IntentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IntentOutput)(nil)).Elem()
+	return reflect.TypeOf((*Intent)(nil))
 }
 
 func (o IntentOutput) ToIntentOutput() IntentOutput {

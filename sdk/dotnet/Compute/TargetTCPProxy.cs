@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/targetTCPProxy:TargetTCPProxy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/targetTCPProxy:TargetTCPProxy")]
     public partial class TargetTCPProxy : Pulumi.CustomResource
     {
         /// <summary>

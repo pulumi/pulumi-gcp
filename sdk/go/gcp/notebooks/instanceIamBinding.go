@@ -281,15 +281,15 @@ type InstanceIamBindingInput interface {
 	ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput
 }
 
-func (InstanceIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIamBinding)(nil)).Elem()
+func (*InstanceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIamBinding)(nil))
 }
 
-func (i InstanceIamBinding) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
+func (i *InstanceIamBinding) ToInstanceIamBindingOutput() InstanceIamBindingOutput {
 	return i.ToInstanceIamBindingOutputWithContext(context.Background())
 }
 
-func (i InstanceIamBinding) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
+func (i *InstanceIamBinding) ToInstanceIamBindingOutputWithContext(ctx context.Context) InstanceIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIamBindingOutput)
 }
 
@@ -298,7 +298,7 @@ type InstanceIamBindingOutput struct {
 }
 
 func (InstanceIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceIamBinding)(nil))
 }
 
 func (o InstanceIamBindingOutput) ToInstanceIamBindingOutput() InstanceIamBindingOutput {

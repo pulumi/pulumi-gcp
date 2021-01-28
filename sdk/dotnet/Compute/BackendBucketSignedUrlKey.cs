@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey")]
     public partial class BackendBucketSignedUrlKey : Pulumi.CustomResource
     {
         /// <summary>

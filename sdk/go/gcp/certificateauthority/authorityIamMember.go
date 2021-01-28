@@ -104,15 +104,15 @@ type AuthorityIamMemberInput interface {
 	ToAuthorityIamMemberOutputWithContext(ctx context.Context) AuthorityIamMemberOutput
 }
 
-func (AuthorityIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorityIamMember)(nil)).Elem()
+func (*AuthorityIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityIamMember)(nil))
 }
 
-func (i AuthorityIamMember) ToAuthorityIamMemberOutput() AuthorityIamMemberOutput {
+func (i *AuthorityIamMember) ToAuthorityIamMemberOutput() AuthorityIamMemberOutput {
 	return i.ToAuthorityIamMemberOutputWithContext(context.Background())
 }
 
-func (i AuthorityIamMember) ToAuthorityIamMemberOutputWithContext(ctx context.Context) AuthorityIamMemberOutput {
+func (i *AuthorityIamMember) ToAuthorityIamMemberOutputWithContext(ctx context.Context) AuthorityIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamMemberOutput)
 }
 
@@ -121,7 +121,7 @@ type AuthorityIamMemberOutput struct {
 }
 
 func (AuthorityIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorityIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthorityIamMember)(nil))
 }
 
 func (o AuthorityIamMemberOutput) ToAuthorityIamMemberOutput() AuthorityIamMemberOutput {

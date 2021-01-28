@@ -41,6 +41,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/perInstanceConfig:PerInstanceConfig default {{instance_group_manager}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/perInstanceConfig:PerInstanceConfig")]
     public partial class PerInstanceConfig : Pulumi.CustomResource
     {
         /// <summary>

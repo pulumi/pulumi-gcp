@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/alertPolicy:AlertPolicy")]
     public partial class AlertPolicy : Pulumi.CustomResource
     {
         /// <summary>

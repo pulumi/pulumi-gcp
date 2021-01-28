@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default my_metadata
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/projectMetadataItem:ProjectMetadataItem")]
     public partial class ProjectMetadataItem : Pulumi.CustomResource
     {
         /// <summary>

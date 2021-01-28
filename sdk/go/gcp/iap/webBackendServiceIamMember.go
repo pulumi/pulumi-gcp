@@ -175,15 +175,15 @@ type WebBackendServiceIamMemberInput interface {
 	ToWebBackendServiceIamMemberOutputWithContext(ctx context.Context) WebBackendServiceIamMemberOutput
 }
 
-func (WebBackendServiceIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebBackendServiceIamMember)(nil)).Elem()
+func (*WebBackendServiceIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebBackendServiceIamMember)(nil))
 }
 
-func (i WebBackendServiceIamMember) ToWebBackendServiceIamMemberOutput() WebBackendServiceIamMemberOutput {
+func (i *WebBackendServiceIamMember) ToWebBackendServiceIamMemberOutput() WebBackendServiceIamMemberOutput {
 	return i.ToWebBackendServiceIamMemberOutputWithContext(context.Background())
 }
 
-func (i WebBackendServiceIamMember) ToWebBackendServiceIamMemberOutputWithContext(ctx context.Context) WebBackendServiceIamMemberOutput {
+func (i *WebBackendServiceIamMember) ToWebBackendServiceIamMemberOutputWithContext(ctx context.Context) WebBackendServiceIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberOutput)
 }
 
@@ -192,7 +192,7 @@ type WebBackendServiceIamMemberOutput struct {
 }
 
 func (WebBackendServiceIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebBackendServiceIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebBackendServiceIamMember)(nil))
 }
 
 func (o WebBackendServiceIamMemberOutput) ToWebBackendServiceIamMemberOutput() WebBackendServiceIamMemberOutput {

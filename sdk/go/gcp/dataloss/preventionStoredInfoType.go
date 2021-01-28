@@ -283,15 +283,15 @@ type PreventionStoredInfoTypeInput interface {
 	ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput
 }
 
-func (PreventionStoredInfoType) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionStoredInfoType)(nil)).Elem()
+func (*PreventionStoredInfoType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionStoredInfoType)(nil))
 }
 
-func (i PreventionStoredInfoType) ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput {
+func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput {
 	return i.ToPreventionStoredInfoTypeOutputWithContext(context.Background())
 }
 
-func (i PreventionStoredInfoType) ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput {
+func (i *PreventionStoredInfoType) ToPreventionStoredInfoTypeOutputWithContext(ctx context.Context) PreventionStoredInfoTypeOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionStoredInfoTypeOutput)
 }
 
@@ -300,7 +300,7 @@ type PreventionStoredInfoTypeOutput struct {
 }
 
 func (PreventionStoredInfoTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionStoredInfoTypeOutput)(nil)).Elem()
+	return reflect.TypeOf((*PreventionStoredInfoType)(nil))
 }
 
 func (o PreventionStoredInfoTypeOutput) ToPreventionStoredInfoTypeOutput() PreventionStoredInfoTypeOutput {

@@ -243,15 +243,15 @@ type SubscriptionIAMPolicyInput interface {
 	ToSubscriptionIAMPolicyOutputWithContext(ctx context.Context) SubscriptionIAMPolicyOutput
 }
 
-func (SubscriptionIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMPolicy)(nil)).Elem()
+func (*SubscriptionIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubscriptionIAMPolicy)(nil))
 }
 
-func (i SubscriptionIAMPolicy) ToSubscriptionIAMPolicyOutput() SubscriptionIAMPolicyOutput {
+func (i *SubscriptionIAMPolicy) ToSubscriptionIAMPolicyOutput() SubscriptionIAMPolicyOutput {
 	return i.ToSubscriptionIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i SubscriptionIAMPolicy) ToSubscriptionIAMPolicyOutputWithContext(ctx context.Context) SubscriptionIAMPolicyOutput {
+func (i *SubscriptionIAMPolicy) ToSubscriptionIAMPolicyOutputWithContext(ctx context.Context) SubscriptionIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMPolicyOutput)
 }
 
@@ -260,7 +260,7 @@ type SubscriptionIAMPolicyOutput struct {
 }
 
 func (SubscriptionIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubscriptionIAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*SubscriptionIAMPolicy)(nil))
 }
 
 func (o SubscriptionIAMPolicyOutput) ToSubscriptionIAMPolicyOutput() SubscriptionIAMPolicyOutput {

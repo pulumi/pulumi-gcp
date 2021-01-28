@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:dataproc/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>

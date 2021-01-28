@@ -87,6 +87,7 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:kms/secretCiphertext:SecretCiphertext")]
     public partial class SecretCiphertext : Pulumi.CustomResource
     {
         /// <summary>

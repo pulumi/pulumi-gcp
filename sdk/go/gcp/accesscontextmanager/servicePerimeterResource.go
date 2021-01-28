@@ -184,15 +184,15 @@ type ServicePerimeterResourceInput interface {
 	ToServicePerimeterResourceOutputWithContext(ctx context.Context) ServicePerimeterResourceOutput
 }
 
-func (ServicePerimeterResource) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeterResource)(nil)).Elem()
+func (*ServicePerimeterResource) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterResource)(nil))
 }
 
-func (i ServicePerimeterResource) ToServicePerimeterResourceOutput() ServicePerimeterResourceOutput {
+func (i *ServicePerimeterResource) ToServicePerimeterResourceOutput() ServicePerimeterResourceOutput {
 	return i.ToServicePerimeterResourceOutputWithContext(context.Background())
 }
 
-func (i ServicePerimeterResource) ToServicePerimeterResourceOutputWithContext(ctx context.Context) ServicePerimeterResourceOutput {
+func (i *ServicePerimeterResource) ToServicePerimeterResourceOutputWithContext(ctx context.Context) ServicePerimeterResourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceOutput)
 }
 
@@ -201,7 +201,7 @@ type ServicePerimeterResourceOutput struct {
 }
 
 func (ServicePerimeterResourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeterResourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServicePerimeterResource)(nil))
 }
 
 func (o ServicePerimeterResourceOutput) ToServicePerimeterResourceOutput() ServicePerimeterResourceOutput {

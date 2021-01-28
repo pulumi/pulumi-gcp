@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Container
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:container/registry:Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>

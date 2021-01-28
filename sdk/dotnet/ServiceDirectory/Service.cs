@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///  $ pulumi import gcp:servicedirectory/service:Service default {{location}}/{{namespace_id}}/{{service_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:servicedirectory/service:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

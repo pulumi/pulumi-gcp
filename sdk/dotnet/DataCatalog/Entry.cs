@@ -154,6 +154,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///  $ pulumi import gcp:datacatalog/entry:Entry default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datacatalog/entry:Entry")]
     public partial class Entry : Pulumi.CustomResource
     {
         /// <summary>

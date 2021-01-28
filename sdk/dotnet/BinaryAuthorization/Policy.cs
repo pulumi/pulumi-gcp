@@ -135,6 +135,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     ///  $ pulumi import gcp:binaryauthorization/policy:Policy default {{project}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:binaryauthorization/policy:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

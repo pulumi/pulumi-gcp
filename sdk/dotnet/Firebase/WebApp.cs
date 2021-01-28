@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Firebase
     ///  $ pulumi import gcp:firebase/webApp:WebApp default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:firebase/webApp:WebApp")]
     public partial class WebApp : Pulumi.CustomResource
     {
         /// <summary>

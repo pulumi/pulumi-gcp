@@ -63,6 +63,7 @@ namespace Pulumi.Gcp.Organizations
     ///  $ pulumi import gcp:organizations/folder:Folder department1 folders/1234567
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:organizations/folder:Folder")]
     public partial class Folder : Pulumi.CustomResource
     {
         /// <summary>

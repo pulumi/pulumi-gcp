@@ -175,15 +175,15 @@ type ImageIamBindingInput interface {
 	ToImageIamBindingOutputWithContext(ctx context.Context) ImageIamBindingOutput
 }
 
-func (ImageIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageIamBinding)(nil)).Elem()
+func (*ImageIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImageIamBinding)(nil))
 }
 
-func (i ImageIamBinding) ToImageIamBindingOutput() ImageIamBindingOutput {
+func (i *ImageIamBinding) ToImageIamBindingOutput() ImageIamBindingOutput {
 	return i.ToImageIamBindingOutputWithContext(context.Background())
 }
 
-func (i ImageIamBinding) ToImageIamBindingOutputWithContext(ctx context.Context) ImageIamBindingOutput {
+func (i *ImageIamBinding) ToImageIamBindingOutputWithContext(ctx context.Context) ImageIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingOutput)
 }
 
@@ -192,7 +192,7 @@ type ImageIamBindingOutput struct {
 }
 
 func (ImageIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ImageIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ImageIamBinding)(nil))
 }
 
 func (o ImageIamBindingOutput) ToImageIamBindingOutput() ImageIamBindingOutput {

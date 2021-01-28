@@ -277,6 +277,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/globalForwardingRule:GlobalForwardingRule")]
     public partial class GlobalForwardingRule : Pulumi.CustomResource
     {
         /// <summary>

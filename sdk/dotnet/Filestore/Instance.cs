@@ -138,6 +138,7 @@ namespace Pulumi.Gcp.Filestore
     ///  $ pulumi import gcp:filestore/instance:Instance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:filestore/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

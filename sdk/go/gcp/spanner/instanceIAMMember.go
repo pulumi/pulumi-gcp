@@ -268,15 +268,15 @@ type InstanceIAMMemberInput interface {
 	ToInstanceIAMMemberOutputWithContext(ctx context.Context) InstanceIAMMemberOutput
 }
 
-func (InstanceIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIAMMember)(nil)).Elem()
+func (*InstanceIAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceIAMMember)(nil))
 }
 
-func (i InstanceIAMMember) ToInstanceIAMMemberOutput() InstanceIAMMemberOutput {
+func (i *InstanceIAMMember) ToInstanceIAMMemberOutput() InstanceIAMMemberOutput {
 	return i.ToInstanceIAMMemberOutputWithContext(context.Background())
 }
 
-func (i InstanceIAMMember) ToInstanceIAMMemberOutputWithContext(ctx context.Context) InstanceIAMMemberOutput {
+func (i *InstanceIAMMember) ToInstanceIAMMemberOutputWithContext(ctx context.Context) InstanceIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberOutput)
 }
 
@@ -285,7 +285,7 @@ type InstanceIAMMemberOutput struct {
 }
 
 func (InstanceIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceIAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceIAMMember)(nil))
 }
 
 func (o InstanceIAMMemberOutput) ToInstanceIAMMemberOutput() InstanceIAMMemberOutput {

@@ -210,15 +210,15 @@ type ApiConfigInput interface {
 	ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput
 }
 
-func (ApiConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiConfig)(nil)).Elem()
+func (*ApiConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiConfig)(nil))
 }
 
-func (i ApiConfig) ToApiConfigOutput() ApiConfigOutput {
+func (i *ApiConfig) ToApiConfigOutput() ApiConfigOutput {
 	return i.ToApiConfigOutputWithContext(context.Background())
 }
 
-func (i ApiConfig) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput {
+func (i *ApiConfig) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOutput)
 }
 
@@ -227,7 +227,7 @@ type ApiConfigOutput struct {
 }
 
 func (ApiConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApiConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApiConfig)(nil))
 }
 
 func (o ApiConfigOutput) ToApiConfigOutput() ApiConfigOutput {

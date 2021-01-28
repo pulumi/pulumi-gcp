@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.BigQuery
     ///  $ pulumi import gcp:bigquery/routine:Routine default {{dataset_id}}/{{routine_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:bigquery/routine:Routine")]
     public partial class Routine : Pulumi.CustomResource
     {
         /// <summary>

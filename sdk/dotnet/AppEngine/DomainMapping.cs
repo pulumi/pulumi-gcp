@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.AppEngine
     ///  $ pulumi import gcp:appengine/domainMapping:DomainMapping default {{domain_name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:appengine/domainMapping:DomainMapping")]
     public partial class DomainMapping : Pulumi.CustomResource
     {
         /// <summary>

@@ -220,6 +220,7 @@ namespace Pulumi.Gcp.Kms
     ///  $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember crypto_key your-project-id/location-name/key-ring-name/key-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember")]
     public partial class CryptoKeyIAMMember : Pulumi.CustomResource
     {
         /// <summary>

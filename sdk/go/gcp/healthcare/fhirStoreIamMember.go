@@ -267,15 +267,15 @@ type FhirStoreIamMemberInput interface {
 	ToFhirStoreIamMemberOutputWithContext(ctx context.Context) FhirStoreIamMemberOutput
 }
 
-func (FhirStoreIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamMember)(nil)).Elem()
+func (*FhirStoreIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreIamMember)(nil))
 }
 
-func (i FhirStoreIamMember) ToFhirStoreIamMemberOutput() FhirStoreIamMemberOutput {
+func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutput() FhirStoreIamMemberOutput {
 	return i.ToFhirStoreIamMemberOutputWithContext(context.Background())
 }
 
-func (i FhirStoreIamMember) ToFhirStoreIamMemberOutputWithContext(ctx context.Context) FhirStoreIamMemberOutput {
+func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutputWithContext(ctx context.Context) FhirStoreIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberOutput)
 }
 
@@ -284,7 +284,7 @@ type FhirStoreIamMemberOutput struct {
 }
 
 func (FhirStoreIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*FhirStoreIamMember)(nil))
 }
 
 func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutput() FhirStoreIamMemberOutput {

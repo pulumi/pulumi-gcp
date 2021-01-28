@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/metric:Metric default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/metric:Metric")]
     public partial class Metric : Pulumi.CustomResource
     {
         /// <summary>

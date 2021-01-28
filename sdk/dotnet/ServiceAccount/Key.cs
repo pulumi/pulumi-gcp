@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.ServiceAccount
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:serviceAccount/key:Key")]
     public partial class Key : Pulumi.CustomResource
     {
         /// <summary>

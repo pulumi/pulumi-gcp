@@ -953,6 +953,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/uRLMap:URLMap default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/uRLMap:URLMap")]
     public partial class URLMap : Pulumi.CustomResource
     {
         /// <summary>

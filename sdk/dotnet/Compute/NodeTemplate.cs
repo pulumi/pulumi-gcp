@@ -95,6 +95,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/nodeTemplate:NodeTemplate default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/nodeTemplate:NodeTemplate")]
     public partial class NodeTemplate : Pulumi.CustomResource
     {
         /// <summary>

@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/backendBucket:BackendBucket default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/backendBucket:BackendBucket")]
     public partial class BackendBucket : Pulumi.CustomResource
     {
         /// <summary>

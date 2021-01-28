@@ -226,15 +226,15 @@ type ServiceIamPolicyInput interface {
 	ToServiceIamPolicyOutputWithContext(ctx context.Context) ServiceIamPolicyOutput
 }
 
-func (ServiceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIamPolicy)(nil)).Elem()
+func (*ServiceIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamPolicy)(nil))
 }
 
-func (i ServiceIamPolicy) ToServiceIamPolicyOutput() ServiceIamPolicyOutput {
+func (i *ServiceIamPolicy) ToServiceIamPolicyOutput() ServiceIamPolicyOutput {
 	return i.ToServiceIamPolicyOutputWithContext(context.Background())
 }
 
-func (i ServiceIamPolicy) ToServiceIamPolicyOutputWithContext(ctx context.Context) ServiceIamPolicyOutput {
+func (i *ServiceIamPolicy) ToServiceIamPolicyOutputWithContext(ctx context.Context) ServiceIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamPolicyOutput)
 }
 
@@ -243,7 +243,7 @@ type ServiceIamPolicyOutput struct {
 }
 
 func (ServiceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceIamPolicy)(nil))
 }
 
 func (o ServiceIamPolicyOutput) ToServiceIamPolicyOutput() ServiceIamPolicyOutput {

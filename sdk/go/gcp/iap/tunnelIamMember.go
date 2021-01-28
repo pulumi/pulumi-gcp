@@ -162,15 +162,15 @@ type TunnelIamMemberInput interface {
 	ToTunnelIamMemberOutputWithContext(ctx context.Context) TunnelIamMemberOutput
 }
 
-func (TunnelIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelIamMember)(nil)).Elem()
+func (*TunnelIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelIamMember)(nil))
 }
 
-func (i TunnelIamMember) ToTunnelIamMemberOutput() TunnelIamMemberOutput {
+func (i *TunnelIamMember) ToTunnelIamMemberOutput() TunnelIamMemberOutput {
 	return i.ToTunnelIamMemberOutputWithContext(context.Background())
 }
 
-func (i TunnelIamMember) ToTunnelIamMemberOutputWithContext(ctx context.Context) TunnelIamMemberOutput {
+func (i *TunnelIamMember) ToTunnelIamMemberOutputWithContext(ctx context.Context) TunnelIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberOutput)
 }
 
@@ -179,7 +179,7 @@ type TunnelIamMemberOutput struct {
 }
 
 func (TunnelIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*TunnelIamMember)(nil))
 }
 
 func (o TunnelIamMemberOutput) ToTunnelIamMemberOutput() TunnelIamMemberOutput {

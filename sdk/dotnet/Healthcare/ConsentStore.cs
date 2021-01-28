@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/consentStore:ConsentStore")]
     public partial class ConsentStore : Pulumi.CustomResource
     {
         /// <summary>

@@ -287,15 +287,15 @@ type OrganizationPolicyInput interface {
 	ToOrganizationPolicyOutputWithContext(ctx context.Context) OrganizationPolicyOutput
 }
 
-func (OrganizationPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationPolicy)(nil)).Elem()
+func (*OrganizationPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationPolicy)(nil))
 }
 
-func (i OrganizationPolicy) ToOrganizationPolicyOutput() OrganizationPolicyOutput {
+func (i *OrganizationPolicy) ToOrganizationPolicyOutput() OrganizationPolicyOutput {
 	return i.ToOrganizationPolicyOutputWithContext(context.Background())
 }
 
-func (i OrganizationPolicy) ToOrganizationPolicyOutputWithContext(ctx context.Context) OrganizationPolicyOutput {
+func (i *OrganizationPolicy) ToOrganizationPolicyOutputWithContext(ctx context.Context) OrganizationPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyOutput)
 }
 
@@ -304,7 +304,7 @@ type OrganizationPolicyOutput struct {
 }
 
 func (OrganizationPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationPolicy)(nil))
 }
 
 func (o OrganizationPolicyOutput) ToOrganizationPolicyOutput() OrganizationPolicyOutput {

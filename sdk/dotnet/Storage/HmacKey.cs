@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.Storage
     ///  $ pulumi import gcp:storage/hmacKey:HmacKey default {{access_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:storage/hmacKey:HmacKey")]
     public partial class HmacKey : Pulumi.CustomResource
     {
         /// <summary>

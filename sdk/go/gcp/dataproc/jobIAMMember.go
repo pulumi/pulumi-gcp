@@ -273,15 +273,15 @@ type JobIAMMemberInput interface {
 	ToJobIAMMemberOutputWithContext(ctx context.Context) JobIAMMemberOutput
 }
 
-func (JobIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMMember)(nil)).Elem()
+func (*JobIAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIAMMember)(nil))
 }
 
-func (i JobIAMMember) ToJobIAMMemberOutput() JobIAMMemberOutput {
+func (i *JobIAMMember) ToJobIAMMemberOutput() JobIAMMemberOutput {
 	return i.ToJobIAMMemberOutputWithContext(context.Background())
 }
 
-func (i JobIAMMember) ToJobIAMMemberOutputWithContext(ctx context.Context) JobIAMMemberOutput {
+func (i *JobIAMMember) ToJobIAMMemberOutputWithContext(ctx context.Context) JobIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberOutput)
 }
 
@@ -290,7 +290,7 @@ type JobIAMMemberOutput struct {
 }
 
 func (JobIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobIAMMember)(nil))
 }
 
 func (o JobIAMMemberOutput) ToJobIAMMemberOutput() JobIAMMemberOutput {

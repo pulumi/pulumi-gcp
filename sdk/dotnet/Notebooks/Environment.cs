@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Notebooks
     ///  $ pulumi import gcp:notebooks/environment:Environment default {{location}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:notebooks/environment:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>

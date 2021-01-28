@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Apigee
     ///  $ pulumi import gcp:apigee/organization:Organization default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:apigee/organization:Organization")]
     public partial class Organization : Pulumi.CustomResource
     {
         /// <summary>

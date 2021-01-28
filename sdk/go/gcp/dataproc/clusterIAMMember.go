@@ -278,15 +278,15 @@ type ClusterIAMMemberInput interface {
 	ToClusterIAMMemberOutputWithContext(ctx context.Context) ClusterIAMMemberOutput
 }
 
-func (ClusterIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMMember)(nil)).Elem()
+func (*ClusterIAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterIAMMember)(nil))
 }
 
-func (i ClusterIAMMember) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {
+func (i *ClusterIAMMember) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {
 	return i.ToClusterIAMMemberOutputWithContext(context.Background())
 }
 
-func (i ClusterIAMMember) ToClusterIAMMemberOutputWithContext(ctx context.Context) ClusterIAMMemberOutput {
+func (i *ClusterIAMMember) ToClusterIAMMemberOutputWithContext(ctx context.Context) ClusterIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberOutput)
 }
 
@@ -295,7 +295,7 @@ type ClusterIAMMemberOutput struct {
 }
 
 func (ClusterIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterIAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*ClusterIAMMember)(nil))
 }
 
 func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutput() ClusterIAMMemberOutput {

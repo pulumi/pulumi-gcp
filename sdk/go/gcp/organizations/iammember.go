@@ -109,15 +109,15 @@ type IAMMemberInput interface {
 	ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput
 }
 
-func (IAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMember)(nil)).Elem()
+func (*IAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMMember)(nil))
 }
 
-func (i IAMMember) ToIAMMemberOutput() IAMMemberOutput {
+func (i *IAMMember) ToIAMMemberOutput() IAMMemberOutput {
 	return i.ToIAMMemberOutputWithContext(context.Background())
 }
 
-func (i IAMMember) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
+func (i *IAMMember) ToIAMMemberOutputWithContext(ctx context.Context) IAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMMemberOutput)
 }
 
@@ -126,7 +126,7 @@ type IAMMemberOutput struct {
 }
 
 func (IAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*IAMMember)(nil))
 }
 
 func (o IAMMemberOutput) ToIAMMemberOutput() IAMMemberOutput {

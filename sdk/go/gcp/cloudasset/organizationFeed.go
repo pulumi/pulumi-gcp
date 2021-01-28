@@ -271,15 +271,15 @@ type OrganizationFeedInput interface {
 	ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput
 }
 
-func (OrganizationFeed) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationFeed)(nil)).Elem()
+func (*OrganizationFeed) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationFeed)(nil))
 }
 
-func (i OrganizationFeed) ToOrganizationFeedOutput() OrganizationFeedOutput {
+func (i *OrganizationFeed) ToOrganizationFeedOutput() OrganizationFeedOutput {
 	return i.ToOrganizationFeedOutputWithContext(context.Background())
 }
 
-func (i OrganizationFeed) ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput {
+func (i *OrganizationFeed) ToOrganizationFeedOutputWithContext(ctx context.Context) OrganizationFeedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationFeedOutput)
 }
 
@@ -288,7 +288,7 @@ type OrganizationFeedOutput struct {
 }
 
 func (OrganizationFeedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationFeedOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationFeed)(nil))
 }
 
 func (o OrganizationFeedOutput) ToOrganizationFeedOutput() OrganizationFeedOutput {

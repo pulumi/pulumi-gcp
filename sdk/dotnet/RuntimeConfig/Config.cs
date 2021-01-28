@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     ///  When importing using only the name, the provider project must be set.
     /// </summary>
+    [GcpResourceType("gcp:runtimeconfig/config:Config")]
     public partial class Config : Pulumi.CustomResource
     {
         /// <summary>

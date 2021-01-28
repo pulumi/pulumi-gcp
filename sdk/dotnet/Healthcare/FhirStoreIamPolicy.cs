@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy fhir_store_iam your-project-id/location-name/dataset-name/fhir-store-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy")]
     public partial class FhirStoreIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

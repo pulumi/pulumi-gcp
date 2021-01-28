@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///  $ pulumi import gcp:serviceAccount/account:Account my_sa projects/my-project/serviceAccounts/my-sa@my-project.iam.gserviceaccount.com
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:serviceAccount/account:Account")]
     public partial class Account : Pulumi.CustomResource
     {
         /// <summary>

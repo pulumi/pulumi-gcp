@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/resourcePolicy:ResourcePolicy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/resourcePolicy:ResourcePolicy")]
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.Iot
     ///  $ pulumi import gcp:iot/registry:Registry default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:iot/registry:Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>

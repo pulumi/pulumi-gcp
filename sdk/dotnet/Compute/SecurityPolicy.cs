@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/securityPolicy:SecurityPolicy")]
     public partial class SecurityPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -279,15 +279,15 @@ type ProjectFeedInput interface {
 	ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput
 }
 
-func (ProjectFeed) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectFeed)(nil)).Elem()
+func (*ProjectFeed) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectFeed)(nil))
 }
 
-func (i ProjectFeed) ToProjectFeedOutput() ProjectFeedOutput {
+func (i *ProjectFeed) ToProjectFeedOutput() ProjectFeedOutput {
 	return i.ToProjectFeedOutputWithContext(context.Background())
 }
 
-func (i ProjectFeed) ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput {
+func (i *ProjectFeed) ToProjectFeedOutputWithContext(ctx context.Context) ProjectFeedOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedOutput)
 }
 
@@ -296,7 +296,7 @@ type ProjectFeedOutput struct {
 }
 
 func (ProjectFeedOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectFeedOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectFeed)(nil))
 }
 
 func (o ProjectFeedOutput) ToProjectFeedOutput() ProjectFeedOutput {

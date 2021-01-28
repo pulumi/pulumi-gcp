@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.CloudFunctions
     ///  $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/function-test
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudfunctions/function:Function")]
     public partial class Function : Pulumi.CustomResource
     {
         /// <summary>

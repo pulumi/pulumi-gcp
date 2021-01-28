@@ -268,15 +268,15 @@ type AttestorIamMemberInput interface {
 	ToAttestorIamMemberOutputWithContext(ctx context.Context) AttestorIamMemberOutput
 }
 
-func (AttestorIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamMember)(nil)).Elem()
+func (*AttestorIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestorIamMember)(nil))
 }
 
-func (i AttestorIamMember) ToAttestorIamMemberOutput() AttestorIamMemberOutput {
+func (i *AttestorIamMember) ToAttestorIamMemberOutput() AttestorIamMemberOutput {
 	return i.ToAttestorIamMemberOutputWithContext(context.Background())
 }
 
-func (i AttestorIamMember) ToAttestorIamMemberOutputWithContext(ctx context.Context) AttestorIamMemberOutput {
+func (i *AttestorIamMember) ToAttestorIamMemberOutputWithContext(ctx context.Context) AttestorIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberOutput)
 }
 
@@ -285,7 +285,7 @@ type AttestorIamMemberOutput struct {
 }
 
 func (AttestorIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*AttestorIamMember)(nil))
 }
 
 func (o AttestorIamMemberOutput) ToAttestorIamMemberOutput() AttestorIamMemberOutput {

@@ -77,4 +77,11 @@ namespace Pulumi.Gcp
             }
         }
     }
+
+    internal sealed class GcpResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public GcpResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

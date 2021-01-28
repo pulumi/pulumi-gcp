@@ -266,15 +266,15 @@ type DatabaseIAMPolicyInput interface {
 	ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput
 }
 
-func (DatabaseIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMPolicy)(nil)).Elem()
+func (*DatabaseIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIAMPolicy)(nil))
 }
 
-func (i DatabaseIAMPolicy) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput {
+func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput {
 	return i.ToDatabaseIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i DatabaseIAMPolicy) ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput {
+func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyOutputWithContext(ctx context.Context) DatabaseIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyOutput)
 }
 
@@ -283,7 +283,7 @@ type DatabaseIAMPolicyOutput struct {
 }
 
 func (DatabaseIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseIAMPolicy)(nil))
 }
 
 func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutput() DatabaseIAMPolicyOutput {

@@ -515,6 +515,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/forwardingRule:ForwardingRule default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/forwardingRule:ForwardingRule")]
     public partial class ForwardingRule : Pulumi.CustomResource
     {
         /// <summary>

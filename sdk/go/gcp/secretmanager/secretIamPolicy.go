@@ -245,15 +245,15 @@ type SecretIamPolicyInput interface {
 	ToSecretIamPolicyOutputWithContext(ctx context.Context) SecretIamPolicyOutput
 }
 
-func (SecretIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamPolicy)(nil)).Elem()
+func (*SecretIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretIamPolicy)(nil))
 }
 
-func (i SecretIamPolicy) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
+func (i *SecretIamPolicy) ToSecretIamPolicyOutput() SecretIamPolicyOutput {
 	return i.ToSecretIamPolicyOutputWithContext(context.Background())
 }
 
-func (i SecretIamPolicy) ToSecretIamPolicyOutputWithContext(ctx context.Context) SecretIamPolicyOutput {
+func (i *SecretIamPolicy) ToSecretIamPolicyOutputWithContext(ctx context.Context) SecretIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamPolicyOutput)
 }
 
@@ -262,7 +262,7 @@ type SecretIamPolicyOutput struct {
 }
 
 func (SecretIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecretIamPolicy)(nil))
 }
 
 func (o SecretIamPolicyOutput) ToSecretIamPolicyOutput() SecretIamPolicyOutput {

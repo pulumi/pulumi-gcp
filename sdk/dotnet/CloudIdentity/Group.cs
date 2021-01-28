@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.CloudIdentity
     ///  $ pulumi import gcp:cloudidentity/group:Group default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudidentity/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

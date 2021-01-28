@@ -154,15 +154,15 @@ type ConfigInput interface {
 	ToConfigOutputWithContext(ctx context.Context) ConfigOutput
 }
 
-func (Config) ElementType() reflect.Type {
-	return reflect.TypeOf((*Config)(nil)).Elem()
+func (*Config) ElementType() reflect.Type {
+	return reflect.TypeOf((*Config)(nil))
 }
 
-func (i Config) ToConfigOutput() ConfigOutput {
+func (i *Config) ToConfigOutput() ConfigOutput {
 	return i.ToConfigOutputWithContext(context.Background())
 }
 
-func (i Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
+func (i *Config) ToConfigOutputWithContext(ctx context.Context) ConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigOutput)
 }
 
@@ -171,7 +171,7 @@ type ConfigOutput struct {
 }
 
 func (ConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*Config)(nil))
 }
 
 func (o ConfigOutput) ToConfigOutput() ConfigOutput {

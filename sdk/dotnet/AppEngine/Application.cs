@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.AppEngine
     ///  $ pulumi import gcp:appengine/application:Application app your-project-id
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:appengine/application:Application")]
     public partial class Application : Pulumi.CustomResource
     {
         /// <summary>

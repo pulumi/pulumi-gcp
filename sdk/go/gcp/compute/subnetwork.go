@@ -537,15 +537,15 @@ type SubnetworkInput interface {
 	ToSubnetworkOutputWithContext(ctx context.Context) SubnetworkOutput
 }
 
-func (Subnetwork) ElementType() reflect.Type {
-	return reflect.TypeOf((*Subnetwork)(nil)).Elem()
+func (*Subnetwork) ElementType() reflect.Type {
+	return reflect.TypeOf((*Subnetwork)(nil))
 }
 
-func (i Subnetwork) ToSubnetworkOutput() SubnetworkOutput {
+func (i *Subnetwork) ToSubnetworkOutput() SubnetworkOutput {
 	return i.ToSubnetworkOutputWithContext(context.Background())
 }
 
-func (i Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) SubnetworkOutput {
+func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) SubnetworkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
 }
 
@@ -554,7 +554,7 @@ type SubnetworkOutput struct {
 }
 
 func (SubnetworkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkOutput)(nil)).Elem()
+	return reflect.TypeOf((*Subnetwork)(nil))
 }
 
 func (o SubnetworkOutput) ToSubnetworkOutput() SubnetworkOutput {

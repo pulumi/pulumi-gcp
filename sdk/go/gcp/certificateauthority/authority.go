@@ -397,15 +397,15 @@ type AuthorityInput interface {
 	ToAuthorityOutputWithContext(ctx context.Context) AuthorityOutput
 }
 
-func (Authority) ElementType() reflect.Type {
-	return reflect.TypeOf((*Authority)(nil)).Elem()
+func (*Authority) ElementType() reflect.Type {
+	return reflect.TypeOf((*Authority)(nil))
 }
 
-func (i Authority) ToAuthorityOutput() AuthorityOutput {
+func (i *Authority) ToAuthorityOutput() AuthorityOutput {
 	return i.ToAuthorityOutputWithContext(context.Background())
 }
 
-func (i Authority) ToAuthorityOutputWithContext(ctx context.Context) AuthorityOutput {
+func (i *Authority) ToAuthorityOutputWithContext(ctx context.Context) AuthorityOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityOutput)
 }
 
@@ -414,7 +414,7 @@ type AuthorityOutput struct {
 }
 
 func (AuthorityOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorityOutput)(nil)).Elem()
+	return reflect.TypeOf((*Authority)(nil))
 }
 
 func (o AuthorityOutput) ToAuthorityOutput() AuthorityOutput {

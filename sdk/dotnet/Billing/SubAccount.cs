@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Billing
     ///  $ pulumi import gcp:billing/subAccount:SubAccount default billingAccounts/{billing_account_id}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:billing/subAccount:SubAccount")]
     public partial class SubAccount : Pulumi.CustomResource
     {
         /// <summary>

@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy")]
     public partial class Hl7StoreIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

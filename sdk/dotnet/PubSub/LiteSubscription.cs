@@ -81,6 +81,7 @@ namespace Pulumi.Gcp.PubSub
     ///  $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:pubsub/liteSubscription:LiteSubscription")]
     public partial class LiteSubscription : Pulumi.CustomResource
     {
         /// <summary>

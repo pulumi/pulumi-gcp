@@ -242,15 +242,15 @@ type MachineImageInput interface {
 	ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput
 }
 
-func (MachineImage) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImage)(nil)).Elem()
+func (*MachineImage) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImage)(nil))
 }
 
-func (i MachineImage) ToMachineImageOutput() MachineImageOutput {
+func (i *MachineImage) ToMachineImageOutput() MachineImageOutput {
 	return i.ToMachineImageOutputWithContext(context.Background())
 }
 
-func (i MachineImage) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
+func (i *MachineImage) ToMachineImageOutputWithContext(ctx context.Context) MachineImageOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageOutput)
 }
 
@@ -259,7 +259,7 @@ type MachineImageOutput struct {
 }
 
 func (MachineImageOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImageOutput)(nil)).Elem()
+	return reflect.TypeOf((*MachineImage)(nil))
 }
 
 func (o MachineImageOutput) ToMachineImageOutput() MachineImageOutput {

@@ -158,6 +158,7 @@ namespace Pulumi.Gcp.Composer
     ///  $ pulumi import gcp:composer/environment:Environment default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:composer/environment:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>

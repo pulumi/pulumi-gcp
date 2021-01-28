@@ -196,15 +196,15 @@ type DefaultServiceAccountsInput interface {
 	ToDefaultServiceAccountsOutputWithContext(ctx context.Context) DefaultServiceAccountsOutput
 }
 
-func (DefaultServiceAccounts) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultServiceAccounts)(nil)).Elem()
+func (*DefaultServiceAccounts) ElementType() reflect.Type {
+	return reflect.TypeOf((*DefaultServiceAccounts)(nil))
 }
 
-func (i DefaultServiceAccounts) ToDefaultServiceAccountsOutput() DefaultServiceAccountsOutput {
+func (i *DefaultServiceAccounts) ToDefaultServiceAccountsOutput() DefaultServiceAccountsOutput {
 	return i.ToDefaultServiceAccountsOutputWithContext(context.Background())
 }
 
-func (i DefaultServiceAccounts) ToDefaultServiceAccountsOutputWithContext(ctx context.Context) DefaultServiceAccountsOutput {
+func (i *DefaultServiceAccounts) ToDefaultServiceAccountsOutputWithContext(ctx context.Context) DefaultServiceAccountsOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultServiceAccountsOutput)
 }
 
@@ -213,7 +213,7 @@ type DefaultServiceAccountsOutput struct {
 }
 
 func (DefaultServiceAccountsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DefaultServiceAccountsOutput)(nil)).Elem()
+	return reflect.TypeOf((*DefaultServiceAccounts)(nil))
 }
 
 func (o DefaultServiceAccountsOutput) ToDefaultServiceAccountsOutput() DefaultServiceAccountsOutput {

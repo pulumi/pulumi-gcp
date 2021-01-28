@@ -104,6 +104,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/image:Image default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/image:Image")]
     public partial class Image : Pulumi.CustomResource
     {
         /// <summary>

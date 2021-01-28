@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.Storage
     ///  $ pulumi import gcp:storage/objectAccessControl:ObjectAccessControl default {{bucket}}/{{object}}/{{entity}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:storage/objectAccessControl:ObjectAccessControl")]
     public partial class ObjectAccessControl : Pulumi.CustomResource
     {
         /// <summary>

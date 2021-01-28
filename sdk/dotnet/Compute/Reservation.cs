@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/reservation:Reservation default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/reservation:Reservation")]
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>

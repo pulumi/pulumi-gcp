@@ -134,15 +134,15 @@ type WebTypeComputeIamPolicyInput interface {
 	ToWebTypeComputeIamPolicyOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyOutput
 }
 
-func (WebTypeComputeIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamPolicy)(nil)).Elem()
+func (*WebTypeComputeIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebTypeComputeIamPolicy)(nil))
 }
 
-func (i WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutput() WebTypeComputeIamPolicyOutput {
+func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutput() WebTypeComputeIamPolicyOutput {
 	return i.ToWebTypeComputeIamPolicyOutputWithContext(context.Background())
 }
 
-func (i WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyOutput {
+func (i *WebTypeComputeIamPolicy) ToWebTypeComputeIamPolicyOutputWithContext(ctx context.Context) WebTypeComputeIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamPolicyOutput)
 }
 
@@ -151,7 +151,7 @@ type WebTypeComputeIamPolicyOutput struct {
 }
 
 func (WebTypeComputeIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebTypeComputeIamPolicy)(nil))
 }
 
 func (o WebTypeComputeIamPolicyOutput) ToWebTypeComputeIamPolicyOutput() WebTypeComputeIamPolicyOutput {

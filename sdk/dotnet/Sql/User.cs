@@ -102,6 +102,7 @@ namespace Pulumi.Gcp.Sql
     ///  $ pulumi import gcp:sql/user:User users my-project/master-instance/me
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:sql/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>

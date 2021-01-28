@@ -163,6 +163,7 @@ namespace Pulumi.Gcp.PubSub
     ///  $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:pubsub/subscription:Subscription")]
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>

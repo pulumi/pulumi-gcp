@@ -213,15 +213,15 @@ type ServicePerimetersInput interface {
 	ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput
 }
 
-func (ServicePerimeters) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimeters)(nil)).Elem()
+func (*ServicePerimeters) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeters)(nil))
 }
 
-func (i ServicePerimeters) ToServicePerimetersOutput() ServicePerimetersOutput {
+func (i *ServicePerimeters) ToServicePerimetersOutput() ServicePerimetersOutput {
 	return i.ToServicePerimetersOutputWithContext(context.Background())
 }
 
-func (i ServicePerimeters) ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput {
+func (i *ServicePerimeters) ToServicePerimetersOutputWithContext(ctx context.Context) ServicePerimetersOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersOutput)
 }
 
@@ -230,7 +230,7 @@ type ServicePerimetersOutput struct {
 }
 
 func (ServicePerimetersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePerimetersOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServicePerimeters)(nil))
 }
 
 func (o ServicePerimetersOutput) ToServicePerimetersOutput() ServicePerimetersOutput {

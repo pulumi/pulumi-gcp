@@ -243,6 +243,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/autoscaler:Autoscaler default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/autoscaler:Autoscaler")]
     public partial class Autoscaler : Pulumi.CustomResource
     {
         /// <summary>

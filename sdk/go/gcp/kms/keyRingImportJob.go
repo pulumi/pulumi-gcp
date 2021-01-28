@@ -204,15 +204,15 @@ type KeyRingImportJobInput interface {
 	ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput
 }
 
-func (KeyRingImportJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingImportJob)(nil)).Elem()
+func (*KeyRingImportJob) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyRingImportJob)(nil))
 }
 
-func (i KeyRingImportJob) ToKeyRingImportJobOutput() KeyRingImportJobOutput {
+func (i *KeyRingImportJob) ToKeyRingImportJobOutput() KeyRingImportJobOutput {
 	return i.ToKeyRingImportJobOutputWithContext(context.Background())
 }
 
-func (i KeyRingImportJob) ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput {
+func (i *KeyRingImportJob) ToKeyRingImportJobOutputWithContext(ctx context.Context) KeyRingImportJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingImportJobOutput)
 }
 
@@ -221,7 +221,7 @@ type KeyRingImportJobOutput struct {
 }
 
 func (KeyRingImportJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*KeyRingImportJobOutput)(nil)).Elem()
+	return reflect.TypeOf((*KeyRingImportJob)(nil))
 }
 
 func (o KeyRingImportJobOutput) ToKeyRingImportJobOutput() KeyRingImportJobOutput {

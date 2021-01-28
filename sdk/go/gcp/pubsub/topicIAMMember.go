@@ -268,15 +268,15 @@ type TopicIAMMemberInput interface {
 	ToTopicIAMMemberOutputWithContext(ctx context.Context) TopicIAMMemberOutput
 }
 
-func (TopicIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMMember)(nil)).Elem()
+func (*TopicIAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIAMMember)(nil))
 }
 
-func (i TopicIAMMember) ToTopicIAMMemberOutput() TopicIAMMemberOutput {
+func (i *TopicIAMMember) ToTopicIAMMemberOutput() TopicIAMMemberOutput {
 	return i.ToTopicIAMMemberOutputWithContext(context.Background())
 }
 
-func (i TopicIAMMember) ToTopicIAMMemberOutputWithContext(ctx context.Context) TopicIAMMemberOutput {
+func (i *TopicIAMMember) ToTopicIAMMemberOutputWithContext(ctx context.Context) TopicIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMMemberOutput)
 }
 
@@ -285,7 +285,7 @@ type TopicIAMMemberOutput struct {
 }
 
 func (TopicIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*TopicIAMMember)(nil))
 }
 
 func (o TopicIAMMemberOutput) ToTopicIAMMemberOutput() TopicIAMMemberOutput {

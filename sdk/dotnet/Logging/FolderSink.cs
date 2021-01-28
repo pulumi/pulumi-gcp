@@ -63,6 +63,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/folderSink:FolderSink my_sink folders/{{folder_id}}/sinks/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/folderSink:FolderSink")]
     public partial class FolderSink : Pulumi.CustomResource
     {
         /// <summary>

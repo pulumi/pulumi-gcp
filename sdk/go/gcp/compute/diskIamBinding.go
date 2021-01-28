@@ -285,15 +285,15 @@ type DiskIamBindingInput interface {
 	ToDiskIamBindingOutputWithContext(ctx context.Context) DiskIamBindingOutput
 }
 
-func (DiskIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskIamBinding)(nil)).Elem()
+func (*DiskIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskIamBinding)(nil))
 }
 
-func (i DiskIamBinding) ToDiskIamBindingOutput() DiskIamBindingOutput {
+func (i *DiskIamBinding) ToDiskIamBindingOutput() DiskIamBindingOutput {
 	return i.ToDiskIamBindingOutputWithContext(context.Background())
 }
 
-func (i DiskIamBinding) ToDiskIamBindingOutputWithContext(ctx context.Context) DiskIamBindingOutput {
+func (i *DiskIamBinding) ToDiskIamBindingOutputWithContext(ctx context.Context) DiskIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingOutput)
 }
 
@@ -302,7 +302,7 @@ type DiskIamBindingOutput struct {
 }
 
 func (DiskIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*DiskIamBinding)(nil))
 }
 
 func (o DiskIamBindingOutput) ToDiskIamBindingOutput() DiskIamBindingOutput {

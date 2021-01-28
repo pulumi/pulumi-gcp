@@ -270,15 +270,15 @@ type EntryGroupIamMemberInput interface {
 	ToEntryGroupIamMemberOutputWithContext(ctx context.Context) EntryGroupIamMemberOutput
 }
 
-func (EntryGroupIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamMember)(nil)).Elem()
+func (*EntryGroupIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryGroupIamMember)(nil))
 }
 
-func (i EntryGroupIamMember) ToEntryGroupIamMemberOutput() EntryGroupIamMemberOutput {
+func (i *EntryGroupIamMember) ToEntryGroupIamMemberOutput() EntryGroupIamMemberOutput {
 	return i.ToEntryGroupIamMemberOutputWithContext(context.Background())
 }
 
-func (i EntryGroupIamMember) ToEntryGroupIamMemberOutputWithContext(ctx context.Context) EntryGroupIamMemberOutput {
+func (i *EntryGroupIamMember) ToEntryGroupIamMemberOutputWithContext(ctx context.Context) EntryGroupIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberOutput)
 }
 
@@ -287,7 +287,7 @@ type EntryGroupIamMemberOutput struct {
 }
 
 func (EntryGroupIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*EntryGroupIamMember)(nil))
 }
 
 func (o EntryGroupIamMemberOutput) ToEntryGroupIamMemberOutput() EntryGroupIamMemberOutput {

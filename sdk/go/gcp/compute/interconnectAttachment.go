@@ -469,15 +469,15 @@ type InterconnectAttachmentInput interface {
 	ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput
 }
 
-func (InterconnectAttachment) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachment)(nil)).Elem()
+func (*InterconnectAttachment) ElementType() reflect.Type {
+	return reflect.TypeOf((*InterconnectAttachment)(nil))
 }
 
-func (i InterconnectAttachment) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
+func (i *InterconnectAttachment) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {
 	return i.ToInterconnectAttachmentOutputWithContext(context.Background())
 }
 
-func (i InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
+func (i *InterconnectAttachment) ToInterconnectAttachmentOutputWithContext(ctx context.Context) InterconnectAttachmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InterconnectAttachmentOutput)
 }
 
@@ -486,7 +486,7 @@ type InterconnectAttachmentOutput struct {
 }
 
 func (InterconnectAttachmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InterconnectAttachmentOutput)(nil)).Elem()
+	return reflect.TypeOf((*InterconnectAttachment)(nil))
 }
 
 func (o InterconnectAttachmentOutput) ToInterconnectAttachmentOutput() InterconnectAttachmentOutput {

@@ -142,6 +142,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/routerNat:RouterNat default {{router}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/routerNat:RouterNat")]
     public partial class RouterNat : Pulumi.CustomResource
     {
         /// <summary>

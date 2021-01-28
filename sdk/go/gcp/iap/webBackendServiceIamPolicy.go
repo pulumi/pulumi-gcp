@@ -147,15 +147,15 @@ type WebBackendServiceIamPolicyInput interface {
 	ToWebBackendServiceIamPolicyOutputWithContext(ctx context.Context) WebBackendServiceIamPolicyOutput
 }
 
-func (WebBackendServiceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebBackendServiceIamPolicy)(nil)).Elem()
+func (*WebBackendServiceIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebBackendServiceIamPolicy)(nil))
 }
 
-func (i WebBackendServiceIamPolicy) ToWebBackendServiceIamPolicyOutput() WebBackendServiceIamPolicyOutput {
+func (i *WebBackendServiceIamPolicy) ToWebBackendServiceIamPolicyOutput() WebBackendServiceIamPolicyOutput {
 	return i.ToWebBackendServiceIamPolicyOutputWithContext(context.Background())
 }
 
-func (i WebBackendServiceIamPolicy) ToWebBackendServiceIamPolicyOutputWithContext(ctx context.Context) WebBackendServiceIamPolicyOutput {
+func (i *WebBackendServiceIamPolicy) ToWebBackendServiceIamPolicyOutputWithContext(ctx context.Context) WebBackendServiceIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamPolicyOutput)
 }
 
@@ -164,7 +164,7 @@ type WebBackendServiceIamPolicyOutput struct {
 }
 
 func (WebBackendServiceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebBackendServiceIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebBackendServiceIamPolicy)(nil))
 }
 
 func (o WebBackendServiceIamPolicyOutput) ToWebBackendServiceIamPolicyOutput() WebBackendServiceIamPolicyOutput {

@@ -201,15 +201,15 @@ type AppEngineVersionIamMemberInput interface {
 	ToAppEngineVersionIamMemberOutputWithContext(ctx context.Context) AppEngineVersionIamMemberOutput
 }
 
-func (AppEngineVersionIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineVersionIamMember)(nil)).Elem()
+func (*AppEngineVersionIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineVersionIamMember)(nil))
 }
 
-func (i AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutput() AppEngineVersionIamMemberOutput {
+func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutput() AppEngineVersionIamMemberOutput {
 	return i.ToAppEngineVersionIamMemberOutputWithContext(context.Background())
 }
 
-func (i AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutputWithContext(ctx context.Context) AppEngineVersionIamMemberOutput {
+func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutputWithContext(ctx context.Context) AppEngineVersionIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberOutput)
 }
 
@@ -218,7 +218,7 @@ type AppEngineVersionIamMemberOutput struct {
 }
 
 func (AppEngineVersionIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineVersionIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*AppEngineVersionIamMember)(nil))
 }
 
 func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberOutput() AppEngineVersionIamMemberOutput {

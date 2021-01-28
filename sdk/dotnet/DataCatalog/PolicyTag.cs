@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///  $ pulumi import gcp:datacatalog/policyTag:PolicyTag default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datacatalog/policyTag:PolicyTag")]
     public partial class PolicyTag : Pulumi.CustomResource
     {
         /// <summary>

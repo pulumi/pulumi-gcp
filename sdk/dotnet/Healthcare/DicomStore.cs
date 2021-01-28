@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/dicomStore:DicomStore")]
     public partial class DicomStore : Pulumi.CustomResource
     {
         /// <summary>

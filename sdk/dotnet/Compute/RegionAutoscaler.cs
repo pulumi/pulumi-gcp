@@ -135,6 +135,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionAutoscaler:RegionAutoscaler default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionAutoscaler:RegionAutoscaler")]
     public partial class RegionAutoscaler : Pulumi.CustomResource
     {
         /// <summary>

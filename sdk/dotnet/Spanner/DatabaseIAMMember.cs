@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.Spanner
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:spanner/databaseIAMMember:DatabaseIAMMember")]
     public partial class DatabaseIAMMember : Pulumi.CustomResource
     {
         [Output("condition")]

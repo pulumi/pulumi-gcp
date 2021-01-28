@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.GameServices
     ///  $ pulumi import gcp:gameservices/gameServerDeployment:GameServerDeployment default {{location}}/{{deployment_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:gameservices/gameServerDeployment:GameServerDeployment")]
     public partial class GameServerDeployment : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.ServiceNetworking
 {
+    [GcpResourceType("gcp:servicenetworking/connection:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

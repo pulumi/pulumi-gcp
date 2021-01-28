@@ -162,15 +162,15 @@ type WebIamMemberInput interface {
 	ToWebIamMemberOutputWithContext(ctx context.Context) WebIamMemberOutput
 }
 
-func (WebIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebIamMember)(nil)).Elem()
+func (*WebIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebIamMember)(nil))
 }
 
-func (i WebIamMember) ToWebIamMemberOutput() WebIamMemberOutput {
+func (i *WebIamMember) ToWebIamMemberOutput() WebIamMemberOutput {
 	return i.ToWebIamMemberOutputWithContext(context.Background())
 }
 
-func (i WebIamMember) ToWebIamMemberOutputWithContext(ctx context.Context) WebIamMemberOutput {
+func (i *WebIamMember) ToWebIamMemberOutputWithContext(ctx context.Context) WebIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamMemberOutput)
 }
 
@@ -179,7 +179,7 @@ type WebIamMemberOutput struct {
 }
 
 func (WebIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebIamMember)(nil))
 }
 
 func (o WebIamMemberOutput) ToWebIamMemberOutput() WebIamMemberOutput {

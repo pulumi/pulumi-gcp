@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/organizationSink:OrganizationSink my_sink organizations/{{organization_id}}/sinks/{{sink_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/organizationSink:OrganizationSink")]
     public partial class OrganizationSink : Pulumi.CustomResource
     {
         /// <summary>

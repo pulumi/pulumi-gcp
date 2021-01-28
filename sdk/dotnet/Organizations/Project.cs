@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Organizations
     ///  $ pulumi import gcp:organizations/project:Project my_project your-project-id
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:organizations/project:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

@@ -286,15 +286,15 @@ type RepositoryIamBindingInput interface {
 	ToRepositoryIamBindingOutputWithContext(ctx context.Context) RepositoryIamBindingOutput
 }
 
-func (RepositoryIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryIamBinding)(nil)).Elem()
+func (*RepositoryIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryIamBinding)(nil))
 }
 
-func (i RepositoryIamBinding) ToRepositoryIamBindingOutput() RepositoryIamBindingOutput {
+func (i *RepositoryIamBinding) ToRepositoryIamBindingOutput() RepositoryIamBindingOutput {
 	return i.ToRepositoryIamBindingOutputWithContext(context.Background())
 }
 
-func (i RepositoryIamBinding) ToRepositoryIamBindingOutputWithContext(ctx context.Context) RepositoryIamBindingOutput {
+func (i *RepositoryIamBinding) ToRepositoryIamBindingOutputWithContext(ctx context.Context) RepositoryIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingOutput)
 }
 
@@ -303,7 +303,7 @@ type RepositoryIamBindingOutput struct {
 }
 
 func (RepositoryIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*RepositoryIamBinding)(nil))
 }
 
 func (o RepositoryIamBindingOutput) ToRepositoryIamBindingOutput() RepositoryIamBindingOutput {

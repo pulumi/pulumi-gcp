@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:dataflow/job:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

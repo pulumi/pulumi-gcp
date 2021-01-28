@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.AppEngine
     ///  $ pulumi import gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules default {{project}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules")]
     public partial class ApplicationUrlDispatchRules : Pulumi.CustomResource
     {
         /// <summary>

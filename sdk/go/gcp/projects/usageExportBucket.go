@@ -112,15 +112,15 @@ type UsageExportBucketInput interface {
 	ToUsageExportBucketOutputWithContext(ctx context.Context) UsageExportBucketOutput
 }
 
-func (UsageExportBucket) ElementType() reflect.Type {
-	return reflect.TypeOf((*UsageExportBucket)(nil)).Elem()
+func (*UsageExportBucket) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsageExportBucket)(nil))
 }
 
-func (i UsageExportBucket) ToUsageExportBucketOutput() UsageExportBucketOutput {
+func (i *UsageExportBucket) ToUsageExportBucketOutput() UsageExportBucketOutput {
 	return i.ToUsageExportBucketOutputWithContext(context.Background())
 }
 
-func (i UsageExportBucket) ToUsageExportBucketOutputWithContext(ctx context.Context) UsageExportBucketOutput {
+func (i *UsageExportBucket) ToUsageExportBucketOutputWithContext(ctx context.Context) UsageExportBucketOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketOutput)
 }
 
@@ -129,7 +129,7 @@ type UsageExportBucketOutput struct {
 }
 
 func (UsageExportBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*UsageExportBucketOutput)(nil)).Elem()
+	return reflect.TypeOf((*UsageExportBucket)(nil))
 }
 
 func (o UsageExportBucketOutput) ToUsageExportBucketOutput() UsageExportBucketOutput {

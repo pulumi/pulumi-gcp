@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///  $ pulumi import gcp:activedirectory/domain:Domain default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:activedirectory/domain:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

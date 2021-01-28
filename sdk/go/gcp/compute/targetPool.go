@@ -289,15 +289,15 @@ type TargetPoolInput interface {
 	ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput
 }
 
-func (TargetPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetPool)(nil)).Elem()
+func (*TargetPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetPool)(nil))
 }
 
-func (i TargetPool) ToTargetPoolOutput() TargetPoolOutput {
+func (i *TargetPool) ToTargetPoolOutput() TargetPoolOutput {
 	return i.ToTargetPoolOutputWithContext(context.Background())
 }
 
-func (i TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput {
+func (i *TargetPool) ToTargetPoolOutputWithContext(ctx context.Context) TargetPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetPoolOutput)
 }
 
@@ -306,7 +306,7 @@ type TargetPoolOutput struct {
 }
 
 func (TargetPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*TargetPool)(nil))
 }
 
 func (o TargetPoolOutput) ToTargetPoolOutput() TargetPoolOutput {

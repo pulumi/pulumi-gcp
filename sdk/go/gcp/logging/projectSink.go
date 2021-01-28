@@ -291,15 +291,15 @@ type ProjectSinkInput interface {
 	ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput
 }
 
-func (ProjectSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectSink)(nil)).Elem()
+func (*ProjectSink) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProjectSink)(nil))
 }
 
-func (i ProjectSink) ToProjectSinkOutput() ProjectSinkOutput {
+func (i *ProjectSink) ToProjectSinkOutput() ProjectSinkOutput {
 	return i.ToProjectSinkOutputWithContext(context.Background())
 }
 
-func (i ProjectSink) ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput {
+func (i *ProjectSink) ToProjectSinkOutputWithContext(ctx context.Context) ProjectSinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkOutput)
 }
 
@@ -308,7 +308,7 @@ type ProjectSinkOutput struct {
 }
 
 func (ProjectSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProjectSinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*ProjectSink)(nil))
 }
 
 func (o ProjectSinkOutput) ToProjectSinkOutput() ProjectSinkOutput {

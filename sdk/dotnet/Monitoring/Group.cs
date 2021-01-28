@@ -75,6 +75,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/group:Group default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

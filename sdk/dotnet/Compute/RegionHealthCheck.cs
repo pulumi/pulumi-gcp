@@ -396,6 +396,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionHealthCheck:RegionHealthCheck default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionHealthCheck:RegionHealthCheck")]
     public partial class RegionHealthCheck : Pulumi.CustomResource
     {
         /// <summary>

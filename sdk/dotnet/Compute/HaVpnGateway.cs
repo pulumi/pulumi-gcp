@@ -240,6 +240,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/haVpnGateway:HaVpnGateway default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/haVpnGateway:HaVpnGateway")]
     public partial class HaVpnGateway : Pulumi.CustomResource
     {
         /// <summary>

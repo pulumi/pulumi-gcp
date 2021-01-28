@@ -286,15 +286,15 @@ type RepositoryIamMemberInput interface {
 	ToRepositoryIamMemberOutputWithContext(ctx context.Context) RepositoryIamMemberOutput
 }
 
-func (RepositoryIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryIamMember)(nil)).Elem()
+func (*RepositoryIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryIamMember)(nil))
 }
 
-func (i RepositoryIamMember) ToRepositoryIamMemberOutput() RepositoryIamMemberOutput {
+func (i *RepositoryIamMember) ToRepositoryIamMemberOutput() RepositoryIamMemberOutput {
 	return i.ToRepositoryIamMemberOutputWithContext(context.Background())
 }
 
-func (i RepositoryIamMember) ToRepositoryIamMemberOutputWithContext(ctx context.Context) RepositoryIamMemberOutput {
+func (i *RepositoryIamMember) ToRepositoryIamMemberOutputWithContext(ctx context.Context) RepositoryIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberOutput)
 }
 
@@ -303,7 +303,7 @@ type RepositoryIamMemberOutput struct {
 }
 
 func (RepositoryIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RepositoryIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*RepositoryIamMember)(nil))
 }
 
 func (o RepositoryIamMemberOutput) ToRepositoryIamMemberOutput() RepositoryIamMemberOutput {

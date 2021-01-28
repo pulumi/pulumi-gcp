@@ -280,15 +280,15 @@ type AppProfileInput interface {
 	ToAppProfileOutputWithContext(ctx context.Context) AppProfileOutput
 }
 
-func (AppProfile) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProfile)(nil)).Elem()
+func (*AppProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppProfile)(nil))
 }
 
-func (i AppProfile) ToAppProfileOutput() AppProfileOutput {
+func (i *AppProfile) ToAppProfileOutput() AppProfileOutput {
 	return i.ToAppProfileOutputWithContext(context.Background())
 }
 
-func (i AppProfile) ToAppProfileOutputWithContext(ctx context.Context) AppProfileOutput {
+func (i *AppProfile) ToAppProfileOutputWithContext(ctx context.Context) AppProfileOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileOutput)
 }
 
@@ -297,7 +297,7 @@ type AppProfileOutput struct {
 }
 
 func (AppProfileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppProfileOutput)(nil)).Elem()
+	return reflect.TypeOf((*AppProfile)(nil))
 }
 
 func (o AppProfileOutput) ToAppProfileOutput() AppProfileOutput {

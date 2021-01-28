@@ -182,15 +182,15 @@ type OrganizationExclusionInput interface {
 	ToOrganizationExclusionOutputWithContext(ctx context.Context) OrganizationExclusionOutput
 }
 
-func (OrganizationExclusion) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationExclusion)(nil)).Elem()
+func (*OrganizationExclusion) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationExclusion)(nil))
 }
 
-func (i OrganizationExclusion) ToOrganizationExclusionOutput() OrganizationExclusionOutput {
+func (i *OrganizationExclusion) ToOrganizationExclusionOutput() OrganizationExclusionOutput {
 	return i.ToOrganizationExclusionOutputWithContext(context.Background())
 }
 
-func (i OrganizationExclusion) ToOrganizationExclusionOutputWithContext(ctx context.Context) OrganizationExclusionOutput {
+func (i *OrganizationExclusion) ToOrganizationExclusionOutputWithContext(ctx context.Context) OrganizationExclusionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionOutput)
 }
 
@@ -199,7 +199,7 @@ type OrganizationExclusionOutput struct {
 }
 
 func (OrganizationExclusionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationExclusionOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationExclusion)(nil))
 }
 
 func (o OrganizationExclusionOutput) ToOrganizationExclusionOutput() OrganizationExclusionOutput {

@@ -351,15 +351,15 @@ type SSLPolicyInput interface {
 	ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput
 }
 
-func (SSLPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SSLPolicy)(nil)).Elem()
+func (*SSLPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SSLPolicy)(nil))
 }
 
-func (i SSLPolicy) ToSSLPolicyOutput() SSLPolicyOutput {
+func (i *SSLPolicy) ToSSLPolicyOutput() SSLPolicyOutput {
 	return i.ToSSLPolicyOutputWithContext(context.Background())
 }
 
-func (i SSLPolicy) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput {
+func (i *SSLPolicy) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyOutput)
 }
 
@@ -368,7 +368,7 @@ type SSLPolicyOutput struct {
 }
 
 func (SSLPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SSLPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*SSLPolicy)(nil))
 }
 
 func (o SSLPolicyOutput) ToSSLPolicyOutput() SSLPolicyOutput {

@@ -236,15 +236,15 @@ type TagTemplateInput interface {
 	ToTagTemplateOutputWithContext(ctx context.Context) TagTemplateOutput
 }
 
-func (TagTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagTemplate)(nil)).Elem()
+func (*TagTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplate)(nil))
 }
 
-func (i TagTemplate) ToTagTemplateOutput() TagTemplateOutput {
+func (i *TagTemplate) ToTagTemplateOutput() TagTemplateOutput {
 	return i.ToTagTemplateOutputWithContext(context.Background())
 }
 
-func (i TagTemplate) ToTagTemplateOutputWithContext(ctx context.Context) TagTemplateOutput {
+func (i *TagTemplate) ToTagTemplateOutputWithContext(ctx context.Context) TagTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateOutput)
 }
 
@@ -253,7 +253,7 @@ type TagTemplateOutput struct {
 }
 
 func (TagTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TagTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*TagTemplate)(nil))
 }
 
 func (o TagTemplateOutput) ToTagTemplateOutput() TagTemplateOutput {

@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.CloudFunctions
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:cloudfunctions/functionIamMember:FunctionIamMember")]
     public partial class FunctionIamMember : Pulumi.CustomResource
     {
         /// <summary>

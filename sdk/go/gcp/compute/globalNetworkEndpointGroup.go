@@ -257,15 +257,15 @@ type GlobalNetworkEndpointGroupInput interface {
 	ToGlobalNetworkEndpointGroupOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupOutput
 }
 
-func (GlobalNetworkEndpointGroup) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalNetworkEndpointGroup)(nil)).Elem()
+func (*GlobalNetworkEndpointGroup) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalNetworkEndpointGroup)(nil))
 }
 
-func (i GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutput() GlobalNetworkEndpointGroupOutput {
+func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutput() GlobalNetworkEndpointGroupOutput {
 	return i.ToGlobalNetworkEndpointGroupOutputWithContext(context.Background())
 }
 
-func (i GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupOutput {
+func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupOutput)
 }
 
@@ -274,7 +274,7 @@ type GlobalNetworkEndpointGroupOutput struct {
 }
 
 func (GlobalNetworkEndpointGroupOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalNetworkEndpointGroupOutput)(nil)).Elem()
+	return reflect.TypeOf((*GlobalNetworkEndpointGroup)(nil))
 }
 
 func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupOutput() GlobalNetworkEndpointGroupOutput {

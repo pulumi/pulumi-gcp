@@ -268,15 +268,15 @@ type AttestorIamBindingInput interface {
 	ToAttestorIamBindingOutputWithContext(ctx context.Context) AttestorIamBindingOutput
 }
 
-func (AttestorIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamBinding)(nil)).Elem()
+func (*AttestorIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttestorIamBinding)(nil))
 }
 
-func (i AttestorIamBinding) ToAttestorIamBindingOutput() AttestorIamBindingOutput {
+func (i *AttestorIamBinding) ToAttestorIamBindingOutput() AttestorIamBindingOutput {
 	return i.ToAttestorIamBindingOutputWithContext(context.Background())
 }
 
-func (i AttestorIamBinding) ToAttestorIamBindingOutputWithContext(ctx context.Context) AttestorIamBindingOutput {
+func (i *AttestorIamBinding) ToAttestorIamBindingOutputWithContext(ctx context.Context) AttestorIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingOutput)
 }
 
@@ -285,7 +285,7 @@ type AttestorIamBindingOutput struct {
 }
 
 func (AttestorIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttestorIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*AttestorIamBinding)(nil))
 }
 
 func (o AttestorIamBindingOutput) ToAttestorIamBindingOutput() AttestorIamBindingOutput {

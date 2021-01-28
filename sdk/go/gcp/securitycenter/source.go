@@ -187,15 +187,15 @@ type SourceInput interface {
 	ToSourceOutputWithContext(ctx context.Context) SourceOutput
 }
 
-func (Source) ElementType() reflect.Type {
-	return reflect.TypeOf((*Source)(nil)).Elem()
+func (*Source) ElementType() reflect.Type {
+	return reflect.TypeOf((*Source)(nil))
 }
 
-func (i Source) ToSourceOutput() SourceOutput {
+func (i *Source) ToSourceOutput() SourceOutput {
 	return i.ToSourceOutputWithContext(context.Background())
 }
 
-func (i Source) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
+func (i *Source) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceOutput)
 }
 
@@ -204,7 +204,7 @@ type SourceOutput struct {
 }
 
 func (SourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceOutput)(nil)).Elem()
+	return reflect.TypeOf((*Source)(nil))
 }
 
 func (o SourceOutput) ToSourceOutput() SourceOutput {

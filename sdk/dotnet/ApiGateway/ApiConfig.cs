@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.ApiGateway
     ///  $ pulumi import gcp:apigateway/apiConfig:ApiConfig default {{api}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:apigateway/apiConfig:ApiConfig")]
     public partial class ApiConfig : Pulumi.CustomResource
     {
         /// <summary>

@@ -505,15 +505,15 @@ type RouterNatInput interface {
 	ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput
 }
 
-func (RouterNat) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterNat)(nil)).Elem()
+func (*RouterNat) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterNat)(nil))
 }
 
-func (i RouterNat) ToRouterNatOutput() RouterNatOutput {
+func (i *RouterNat) ToRouterNatOutput() RouterNatOutput {
 	return i.ToRouterNatOutputWithContext(context.Background())
 }
 
-func (i RouterNat) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
+func (i *RouterNat) ToRouterNatOutputWithContext(ctx context.Context) RouterNatOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatOutput)
 }
 
@@ -522,7 +522,7 @@ type RouterNatOutput struct {
 }
 
 func (RouterNatOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RouterNatOutput)(nil)).Elem()
+	return reflect.TypeOf((*RouterNat)(nil))
 }
 
 func (o RouterNatOutput) ToRouterNatOutput() RouterNatOutput {

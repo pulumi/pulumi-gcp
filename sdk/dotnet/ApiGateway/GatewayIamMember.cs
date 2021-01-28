@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.ApiGateway
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:apigateway/gatewayIamMember:GatewayIamMember")]
     public partial class GatewayIamMember : Pulumi.CustomResource
     {
         [Output("condition")]

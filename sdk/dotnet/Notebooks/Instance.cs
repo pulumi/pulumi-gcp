@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Notebooks
     ///  $ pulumi import gcp:notebooks/instance:Instance default {{location}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:notebooks/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

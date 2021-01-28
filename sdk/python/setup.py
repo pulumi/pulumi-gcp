@@ -48,7 +48,7 @@ setup(name='pulumi_gcp',
       packages=find_packages(),
       package_data={
           'pulumi_gcp': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

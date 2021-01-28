@@ -59,6 +59,7 @@ namespace Pulumi.Gcp.Organizations
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:organizations/iAMBinding:IAMBinding")]
     public partial class IAMBinding : Pulumi.CustomResource
     {
         [Output("condition")]

@@ -195,15 +195,15 @@ type TenantInput interface {
 	ToTenantOutputWithContext(ctx context.Context) TenantOutput
 }
 
-func (Tenant) ElementType() reflect.Type {
-	return reflect.TypeOf((*Tenant)(nil)).Elem()
+func (*Tenant) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tenant)(nil))
 }
 
-func (i Tenant) ToTenantOutput() TenantOutput {
+func (i *Tenant) ToTenantOutput() TenantOutput {
 	return i.ToTenantOutputWithContext(context.Background())
 }
 
-func (i Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
+func (i *Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOutput)
 }
 
@@ -212,7 +212,7 @@ type TenantOutput struct {
 }
 
 func (TenantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TenantOutput)(nil)).Elem()
+	return reflect.TypeOf((*Tenant)(nil))
 }
 
 func (o TenantOutput) ToTenantOutput() TenantOutput {

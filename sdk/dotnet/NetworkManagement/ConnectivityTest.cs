@@ -170,6 +170,7 @@ namespace Pulumi.Gcp.NetworkManagement
     ///  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:networkmanagement/connectivityTest:ConnectivityTest")]
     public partial class ConnectivityTest : Pulumi.CustomResource
     {
         /// <summary>

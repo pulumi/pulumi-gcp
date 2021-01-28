@@ -108,6 +108,7 @@ namespace Pulumi.Gcp.BigQuery
     ///  $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:bigquery/appProfile:AppProfile")]
     public partial class AppProfile : Pulumi.CustomResource
     {
         /// <summary>

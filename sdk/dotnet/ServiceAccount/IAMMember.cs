@@ -217,6 +217,7 @@ namespace Pulumi.Gcp.ServiceAccount
     ///  $ pulumi import gcp:serviceAccount/iAMMember:IAMMember admin-account-iam "projects/{your-project-id}/serviceAccounts/{your-service-account-email} roles/iam.serviceAccountUser user:foo@example.com expires_after_2019_12_31"
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:serviceAccount/iAMMember:IAMMember")]
     public partial class IAMMember : Pulumi.CustomResource
     {
         /// <summary>

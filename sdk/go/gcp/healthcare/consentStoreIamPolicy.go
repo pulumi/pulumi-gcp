@@ -155,15 +155,15 @@ type ConsentStoreIamPolicyInput interface {
 	ToConsentStoreIamPolicyOutputWithContext(ctx context.Context) ConsentStoreIamPolicyOutput
 }
 
-func (ConsentStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStoreIamPolicy)(nil)).Elem()
+func (*ConsentStoreIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStoreIamPolicy)(nil))
 }
 
-func (i ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutput() ConsentStoreIamPolicyOutput {
+func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutput() ConsentStoreIamPolicyOutput {
 	return i.ToConsentStoreIamPolicyOutputWithContext(context.Background())
 }
 
-func (i ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutputWithContext(ctx context.Context) ConsentStoreIamPolicyOutput {
+func (i *ConsentStoreIamPolicy) ToConsentStoreIamPolicyOutputWithContext(ctx context.Context) ConsentStoreIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamPolicyOutput)
 }
 
@@ -172,7 +172,7 @@ type ConsentStoreIamPolicyOutput struct {
 }
 
 func (ConsentStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStoreIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConsentStoreIamPolicy)(nil))
 }
 
 func (o ConsentStoreIamPolicyOutput) ToConsentStoreIamPolicyOutput() ConsentStoreIamPolicyOutput {

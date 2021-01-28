@@ -224,15 +224,15 @@ type FirewallRuleInput interface {
 	ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput
 }
 
-func (FirewallRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallRule)(nil)).Elem()
+func (*FirewallRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallRule)(nil))
 }
 
-func (i FirewallRule) ToFirewallRuleOutput() FirewallRuleOutput {
+func (i *FirewallRule) ToFirewallRuleOutput() FirewallRuleOutput {
 	return i.ToFirewallRuleOutputWithContext(context.Background())
 }
 
-func (i FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
+func (i *FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) FirewallRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
 }
 
@@ -241,7 +241,7 @@ type FirewallRuleOutput struct {
 }
 
 func (FirewallRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FirewallRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*FirewallRule)(nil))
 }
 
 func (o FirewallRuleOutput) ToFirewallRuleOutput() FirewallRuleOutput {

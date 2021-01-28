@@ -319,15 +319,15 @@ type NoteInput interface {
 	ToNoteOutputWithContext(ctx context.Context) NoteOutput
 }
 
-func (Note) ElementType() reflect.Type {
-	return reflect.TypeOf((*Note)(nil)).Elem()
+func (*Note) ElementType() reflect.Type {
+	return reflect.TypeOf((*Note)(nil))
 }
 
-func (i Note) ToNoteOutput() NoteOutput {
+func (i *Note) ToNoteOutput() NoteOutput {
 	return i.ToNoteOutputWithContext(context.Background())
 }
 
-func (i Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
+func (i *Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteOutput)
 }
 
@@ -336,7 +336,7 @@ type NoteOutput struct {
 }
 
 func (NoteOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NoteOutput)(nil)).Elem()
+	return reflect.TypeOf((*Note)(nil))
 }
 
 func (o NoteOutput) ToNoteOutput() NoteOutput {

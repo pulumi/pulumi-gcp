@@ -204,15 +204,15 @@ type DataStoreIndexInput interface {
 	ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput
 }
 
-func (DataStoreIndex) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataStoreIndex)(nil)).Elem()
+func (*DataStoreIndex) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreIndex)(nil))
 }
 
-func (i DataStoreIndex) ToDataStoreIndexOutput() DataStoreIndexOutput {
+func (i *DataStoreIndex) ToDataStoreIndexOutput() DataStoreIndexOutput {
 	return i.ToDataStoreIndexOutputWithContext(context.Background())
 }
 
-func (i DataStoreIndex) ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput {
+func (i *DataStoreIndex) ToDataStoreIndexOutputWithContext(ctx context.Context) DataStoreIndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexOutput)
 }
 
@@ -221,7 +221,7 @@ type DataStoreIndexOutput struct {
 }
 
 func (DataStoreIndexOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataStoreIndexOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataStoreIndex)(nil))
 }
 
 func (o DataStoreIndexOutput) ToDataStoreIndexOutput() DataStoreIndexOutput {

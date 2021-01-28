@@ -94,6 +94,7 @@ namespace Pulumi.Gcp.CloudTasks
     ///  $ pulumi import gcp:cloudtasks/queue:Queue default {{location}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudtasks/queue:Queue")]
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>

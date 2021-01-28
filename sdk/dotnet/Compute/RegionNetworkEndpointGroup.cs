@@ -223,6 +223,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup")]
     public partial class RegionNetworkEndpointGroup : Pulumi.CustomResource
     {
         /// <summary>

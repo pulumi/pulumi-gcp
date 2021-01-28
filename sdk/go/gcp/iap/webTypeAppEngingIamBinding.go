@@ -175,15 +175,15 @@ type WebTypeAppEngingIamBindingInput interface {
 	ToWebTypeAppEngingIamBindingOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingOutput
 }
 
-func (WebTypeAppEngingIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeAppEngingIamBinding)(nil)).Elem()
+func (*WebTypeAppEngingIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebTypeAppEngingIamBinding)(nil))
 }
 
-func (i WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutput() WebTypeAppEngingIamBindingOutput {
+func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutput() WebTypeAppEngingIamBindingOutput {
 	return i.ToWebTypeAppEngingIamBindingOutputWithContext(context.Background())
 }
 
-func (i WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingOutput {
+func (i *WebTypeAppEngingIamBinding) ToWebTypeAppEngingIamBindingOutputWithContext(ctx context.Context) WebTypeAppEngingIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeAppEngingIamBindingOutput)
 }
 
@@ -192,7 +192,7 @@ type WebTypeAppEngingIamBindingOutput struct {
 }
 
 func (WebTypeAppEngingIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeAppEngingIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebTypeAppEngingIamBinding)(nil))
 }
 
 func (o WebTypeAppEngingIamBindingOutput) ToWebTypeAppEngingIamBindingOutput() WebTypeAppEngingIamBindingOutput {

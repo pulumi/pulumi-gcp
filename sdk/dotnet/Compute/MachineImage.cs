@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/machineImage:MachineImage default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/machineImage:MachineImage")]
     public partial class MachineImage : Pulumi.CustomResource
     {
         /// <summary>

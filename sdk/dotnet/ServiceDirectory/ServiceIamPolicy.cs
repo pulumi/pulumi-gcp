@@ -120,6 +120,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:servicedirectory/serviceIamPolicy:ServiceIamPolicy")]
     public partial class ServiceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

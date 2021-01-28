@@ -83,6 +83,7 @@ namespace Pulumi.Gcp.CloudRun
     ///  $ pulumi import gcp:cloudrun/domainMapping:DomainMapping default {{location}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudrun/domainMapping:DomainMapping")]
     public partial class DomainMapping : Pulumi.CustomResource
     {
         /// <summary>

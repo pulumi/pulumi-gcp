@@ -40,6 +40,7 @@ namespace Pulumi.Gcp.Memcache
     ///  $ pulumi import gcp:memcache/instance:Instance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:memcache/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

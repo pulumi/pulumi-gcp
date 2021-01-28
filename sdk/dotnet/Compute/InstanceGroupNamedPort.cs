@@ -91,6 +91,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort default {{group}}/{{port}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort")]
     public partial class InstanceGroupNamedPort : Pulumi.CustomResource
     {
         /// <summary>

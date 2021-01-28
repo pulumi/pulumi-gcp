@@ -152,15 +152,15 @@ type TunnelInstanceIAMPolicyInput interface {
 	ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput
 }
 
-func (TunnelInstanceIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMPolicy)(nil)).Elem()
+func (*TunnelInstanceIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelInstanceIAMPolicy)(nil))
 }
 
-func (i TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput {
+func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput {
 	return i.ToTunnelInstanceIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput {
+func (i *TunnelInstanceIAMPolicy) ToTunnelInstanceIAMPolicyOutputWithContext(ctx context.Context) TunnelInstanceIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMPolicyOutput)
 }
 
@@ -169,7 +169,7 @@ type TunnelInstanceIAMPolicyOutput struct {
 }
 
 func (TunnelInstanceIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*TunnelInstanceIAMPolicy)(nil))
 }
 
 func (o TunnelInstanceIAMPolicyOutput) ToTunnelInstanceIAMPolicyOutput() TunnelInstanceIAMPolicyOutput {

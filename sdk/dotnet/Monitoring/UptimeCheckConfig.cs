@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig")]
     public partial class UptimeCheckConfig : Pulumi.CustomResource
     {
         /// <summary>

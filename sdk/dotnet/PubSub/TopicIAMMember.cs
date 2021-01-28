@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:pubsub/topicIAMMember:TopicIAMMember")]
     public partial class TopicIAMMember : Pulumi.CustomResource
     {
         [Output("condition")]

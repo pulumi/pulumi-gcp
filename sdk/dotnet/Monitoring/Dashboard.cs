@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/dashboard:Dashboard default {{dashboard_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/dashboard:Dashboard")]
     public partial class Dashboard : Pulumi.CustomResource
     {
         /// <summary>

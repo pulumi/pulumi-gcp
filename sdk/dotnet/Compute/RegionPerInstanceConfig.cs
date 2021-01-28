@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default {{region_instance_group_manager}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig")]
     public partial class RegionPerInstanceConfig : Pulumi.CustomResource
     {
         /// <summary>

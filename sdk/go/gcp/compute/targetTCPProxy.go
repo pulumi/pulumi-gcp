@@ -262,15 +262,15 @@ type TargetTCPProxyInput interface {
 	ToTargetTCPProxyOutputWithContext(ctx context.Context) TargetTCPProxyOutput
 }
 
-func (TargetTCPProxy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetTCPProxy)(nil)).Elem()
+func (*TargetTCPProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetTCPProxy)(nil))
 }
 
-func (i TargetTCPProxy) ToTargetTCPProxyOutput() TargetTCPProxyOutput {
+func (i *TargetTCPProxy) ToTargetTCPProxyOutput() TargetTCPProxyOutput {
 	return i.ToTargetTCPProxyOutputWithContext(context.Background())
 }
 
-func (i TargetTCPProxy) ToTargetTCPProxyOutputWithContext(ctx context.Context) TargetTCPProxyOutput {
+func (i *TargetTCPProxy) ToTargetTCPProxyOutputWithContext(ctx context.Context) TargetTCPProxyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyOutput)
 }
 
@@ -279,7 +279,7 @@ type TargetTCPProxyOutput struct {
 }
 
 func (TargetTCPProxyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetTCPProxyOutput)(nil)).Elem()
+	return reflect.TypeOf((*TargetTCPProxy)(nil))
 }
 
 func (o TargetTCPProxyOutput) ToTargetTCPProxyOutput() TargetTCPProxyOutput {

@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.Iot
     ///  $ pulumi import gcp:iot/device:Device default {{registry}}/devices/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:iot/device:Device")]
     public partial class Device : Pulumi.CustomResource
     {
         /// <summary>

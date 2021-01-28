@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///  $ pulumi import gcp:certificateauthority/authority:Authority default {{location}}/{{certificate_authority_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:certificateauthority/authority:Authority")]
     public partial class Authority : Pulumi.CustomResource
     {
         /// <summary>

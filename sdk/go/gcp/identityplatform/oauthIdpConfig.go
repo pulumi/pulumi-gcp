@@ -202,15 +202,15 @@ type OauthIdpConfigInput interface {
 	ToOauthIdpConfigOutputWithContext(ctx context.Context) OauthIdpConfigOutput
 }
 
-func (OauthIdpConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*OauthIdpConfig)(nil)).Elem()
+func (*OauthIdpConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*OauthIdpConfig)(nil))
 }
 
-func (i OauthIdpConfig) ToOauthIdpConfigOutput() OauthIdpConfigOutput {
+func (i *OauthIdpConfig) ToOauthIdpConfigOutput() OauthIdpConfigOutput {
 	return i.ToOauthIdpConfigOutputWithContext(context.Background())
 }
 
-func (i OauthIdpConfig) ToOauthIdpConfigOutputWithContext(ctx context.Context) OauthIdpConfigOutput {
+func (i *OauthIdpConfig) ToOauthIdpConfigOutputWithContext(ctx context.Context) OauthIdpConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigOutput)
 }
 
@@ -219,7 +219,7 @@ type OauthIdpConfigOutput struct {
 }
 
 func (OauthIdpConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OauthIdpConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*OauthIdpConfig)(nil))
 }
 
 func (o OauthIdpConfigOutput) ToOauthIdpConfigOutput() OauthIdpConfigOutput {

@@ -273,15 +273,15 @@ type JobIAMBindingInput interface {
 	ToJobIAMBindingOutputWithContext(ctx context.Context) JobIAMBindingOutput
 }
 
-func (JobIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMBinding)(nil)).Elem()
+func (*JobIAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIAMBinding)(nil))
 }
 
-func (i JobIAMBinding) ToJobIAMBindingOutput() JobIAMBindingOutput {
+func (i *JobIAMBinding) ToJobIAMBindingOutput() JobIAMBindingOutput {
 	return i.ToJobIAMBindingOutputWithContext(context.Background())
 }
 
-func (i JobIAMBinding) ToJobIAMBindingOutputWithContext(ctx context.Context) JobIAMBindingOutput {
+func (i *JobIAMBinding) ToJobIAMBindingOutputWithContext(ctx context.Context) JobIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingOutput)
 }
 
@@ -290,7 +290,7 @@ type JobIAMBindingOutput struct {
 }
 
 func (JobIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobIAMBinding)(nil))
 }
 
 func (o JobIAMBindingOutput) ToJobIAMBindingOutput() JobIAMBindingOutput {

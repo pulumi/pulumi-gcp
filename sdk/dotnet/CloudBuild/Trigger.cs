@@ -182,6 +182,7 @@ namespace Pulumi.Gcp.CloudBuild
     ///  $ pulumi import gcp:cloudbuild/trigger:Trigger default {{trigger_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudbuild/trigger:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>

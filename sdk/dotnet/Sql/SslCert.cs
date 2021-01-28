@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// Since the contents of the certificate cannot be accessed after its creation, this resource cannot be imported.
     /// </summary>
+    [GcpResourceType("gcp:sql/sslCert:SslCert")]
     public partial class SslCert : Pulumi.CustomResource
     {
         /// <summary>

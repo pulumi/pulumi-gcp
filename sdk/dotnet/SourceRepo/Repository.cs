@@ -83,6 +83,7 @@ namespace Pulumi.Gcp.SourceRepo
     ///  $ pulumi import gcp:sourcerepo/repository:Repository default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:sourcerepo/repository:Repository")]
     public partial class Repository : Pulumi.CustomResource
     {
         /// <summary>

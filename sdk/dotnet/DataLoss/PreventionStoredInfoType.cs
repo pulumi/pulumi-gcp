@@ -136,6 +136,7 @@ namespace Pulumi.Gcp.DataLoss
     ///  $ pulumi import gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType default {{parent}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:dataloss/preventionStoredInfoType:PreventionStoredInfoType")]
     public partial class PreventionStoredInfoType : Pulumi.CustomResource
     {
         /// <summary>

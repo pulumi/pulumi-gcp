@@ -162,6 +162,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionSslCertificate:RegionSslCertificate")]
     public partial class RegionSslCertificate : Pulumi.CustomResource
     {
         /// <summary>

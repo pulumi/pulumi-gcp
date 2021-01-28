@@ -200,15 +200,15 @@ type BucketIAMBindingInput interface {
 	ToBucketIAMBindingOutputWithContext(ctx context.Context) BucketIAMBindingOutput
 }
 
-func (BucketIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMBinding)(nil)).Elem()
+func (*BucketIAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketIAMBinding)(nil))
 }
 
-func (i BucketIAMBinding) ToBucketIAMBindingOutput() BucketIAMBindingOutput {
+func (i *BucketIAMBinding) ToBucketIAMBindingOutput() BucketIAMBindingOutput {
 	return i.ToBucketIAMBindingOutputWithContext(context.Background())
 }
 
-func (i BucketIAMBinding) ToBucketIAMBindingOutputWithContext(ctx context.Context) BucketIAMBindingOutput {
+func (i *BucketIAMBinding) ToBucketIAMBindingOutputWithContext(ctx context.Context) BucketIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMBindingOutput)
 }
 
@@ -217,7 +217,7 @@ type BucketIAMBindingOutput struct {
 }
 
 func (BucketIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketIAMBinding)(nil))
 }
 
 func (o BucketIAMBindingOutput) ToBucketIAMBindingOutput() BucketIAMBindingOutput {

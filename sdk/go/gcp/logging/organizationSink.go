@@ -329,15 +329,15 @@ type OrganizationSinkInput interface {
 	ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput
 }
 
-func (OrganizationSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationSink)(nil)).Elem()
+func (*OrganizationSink) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationSink)(nil))
 }
 
-func (i OrganizationSink) ToOrganizationSinkOutput() OrganizationSinkOutput {
+func (i *OrganizationSink) ToOrganizationSinkOutput() OrganizationSinkOutput {
 	return i.ToOrganizationSinkOutputWithContext(context.Background())
 }
 
-func (i OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput {
+func (i *OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Context) OrganizationSinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkOutput)
 }
 
@@ -346,7 +346,7 @@ type OrganizationSinkOutput struct {
 }
 
 func (OrganizationSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OrganizationSinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationSink)(nil))
 }
 
 func (o OrganizationSinkOutput) ToOrganizationSinkOutput() OrganizationSinkOutput {

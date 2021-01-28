@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:runtimeconfig/configIamMember:ConfigIamMember")]
     public partial class ConfigIamMember : Pulumi.CustomResource
     {
         [Output("condition")]

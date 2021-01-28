@@ -79,6 +79,7 @@ namespace Pulumi.Gcp.Container
     /// 
     ///  For example, the following fields will show diffs if set in config- `min_master_version` - `remove_default_node_pool`
     /// </summary>
+    [GcpResourceType("gcp:container/cluster:Cluster")]
     public partial class Cluster : Pulumi.CustomResource
     {
         /// <summary>

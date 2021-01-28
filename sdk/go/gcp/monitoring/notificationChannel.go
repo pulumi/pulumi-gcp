@@ -336,15 +336,15 @@ type NotificationChannelInput interface {
 	ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput
 }
 
-func (NotificationChannel) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationChannel)(nil)).Elem()
+func (*NotificationChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannel)(nil))
 }
 
-func (i NotificationChannel) ToNotificationChannelOutput() NotificationChannelOutput {
+func (i *NotificationChannel) ToNotificationChannelOutput() NotificationChannelOutput {
 	return i.ToNotificationChannelOutputWithContext(context.Background())
 }
 
-func (i NotificationChannel) ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput {
+func (i *NotificationChannel) ToNotificationChannelOutputWithContext(ctx context.Context) NotificationChannelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelOutput)
 }
 
@@ -353,7 +353,7 @@ type NotificationChannelOutput struct {
 }
 
 func (NotificationChannelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NotificationChannelOutput)(nil)).Elem()
+	return reflect.TypeOf((*NotificationChannel)(nil))
 }
 
 func (o NotificationChannelOutput) ToNotificationChannelOutput() NotificationChannelOutput {

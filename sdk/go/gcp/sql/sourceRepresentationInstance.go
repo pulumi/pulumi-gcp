@@ -206,15 +206,15 @@ type SourceRepresentationInstanceInput interface {
 	ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput
 }
 
-func (SourceRepresentationInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceRepresentationInstance)(nil)).Elem()
+func (*SourceRepresentationInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceRepresentationInstance)(nil))
 }
 
-func (i SourceRepresentationInstance) ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput {
+func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput {
 	return i.ToSourceRepresentationInstanceOutputWithContext(context.Background())
 }
 
-func (i SourceRepresentationInstance) ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput {
+func (i *SourceRepresentationInstance) ToSourceRepresentationInstanceOutputWithContext(ctx context.Context) SourceRepresentationInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SourceRepresentationInstanceOutput)
 }
 
@@ -223,7 +223,7 @@ type SourceRepresentationInstanceOutput struct {
 }
 
 func (SourceRepresentationInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SourceRepresentationInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*SourceRepresentationInstance)(nil))
 }
 
 func (o SourceRepresentationInstanceOutput) ToSourceRepresentationInstanceOutput() SourceRepresentationInstanceOutput {

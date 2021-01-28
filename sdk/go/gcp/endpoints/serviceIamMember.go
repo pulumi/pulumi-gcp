@@ -250,15 +250,15 @@ type ServiceIamMemberInput interface {
 	ToServiceIamMemberOutputWithContext(ctx context.Context) ServiceIamMemberOutput
 }
 
-func (ServiceIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIamMember)(nil)).Elem()
+func (*ServiceIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamMember)(nil))
 }
 
-func (i ServiceIamMember) ToServiceIamMemberOutput() ServiceIamMemberOutput {
+func (i *ServiceIamMember) ToServiceIamMemberOutput() ServiceIamMemberOutput {
 	return i.ToServiceIamMemberOutputWithContext(context.Background())
 }
 
-func (i ServiceIamMember) ToServiceIamMemberOutputWithContext(ctx context.Context) ServiceIamMemberOutput {
+func (i *ServiceIamMember) ToServiceIamMemberOutputWithContext(ctx context.Context) ServiceIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberOutput)
 }
 
@@ -267,7 +267,7 @@ type ServiceIamMemberOutput struct {
 }
 
 func (ServiceIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceIamMember)(nil))
 }
 
 func (o ServiceIamMemberOutput) ToServiceIamMemberOutput() ServiceIamMemberOutput {

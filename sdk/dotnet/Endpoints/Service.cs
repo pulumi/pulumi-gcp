@@ -16,6 +16,7 @@ namespace Pulumi.Gcp.Endpoints
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:endpoints/service:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

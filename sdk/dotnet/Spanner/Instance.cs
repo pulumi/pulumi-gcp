@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.Spanner
     ///  $ pulumi import gcp:spanner/instance:Instance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:spanner/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

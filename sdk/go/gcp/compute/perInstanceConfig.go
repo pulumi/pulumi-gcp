@@ -255,15 +255,15 @@ type PerInstanceConfigInput interface {
 	ToPerInstanceConfigOutputWithContext(ctx context.Context) PerInstanceConfigOutput
 }
 
-func (PerInstanceConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*PerInstanceConfig)(nil)).Elem()
+func (*PerInstanceConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*PerInstanceConfig)(nil))
 }
 
-func (i PerInstanceConfig) ToPerInstanceConfigOutput() PerInstanceConfigOutput {
+func (i *PerInstanceConfig) ToPerInstanceConfigOutput() PerInstanceConfigOutput {
 	return i.ToPerInstanceConfigOutputWithContext(context.Background())
 }
 
-func (i PerInstanceConfig) ToPerInstanceConfigOutputWithContext(ctx context.Context) PerInstanceConfigOutput {
+func (i *PerInstanceConfig) ToPerInstanceConfigOutputWithContext(ctx context.Context) PerInstanceConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigOutput)
 }
 
@@ -272,7 +272,7 @@ type PerInstanceConfigOutput struct {
 }
 
 func (PerInstanceConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PerInstanceConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*PerInstanceConfig)(nil))
 }
 
 func (o PerInstanceConfigOutput) ToPerInstanceConfigOutput() PerInstanceConfigOutput {

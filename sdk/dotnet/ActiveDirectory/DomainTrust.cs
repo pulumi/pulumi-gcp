@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.ActiveDirectory
     ///  $ pulumi import gcp:activedirectory/domainTrust:DomainTrust default {{domain}}/{{target_domain_name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:activedirectory/domainTrust:DomainTrust")]
     public partial class DomainTrust : Pulumi.CustomResource
     {
         /// <summary>

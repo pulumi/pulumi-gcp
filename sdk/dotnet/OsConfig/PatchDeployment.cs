@@ -309,6 +309,7 @@ namespace Pulumi.Gcp.OsConfig
     ///  $ pulumi import gcp:osconfig/patchDeployment:PatchDeployment default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:osconfig/patchDeployment:PatchDeployment")]
     public partial class PatchDeployment : Pulumi.CustomResource
     {
         /// <summary>

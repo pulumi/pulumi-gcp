@@ -320,6 +320,7 @@ namespace Pulumi.Gcp.DataLoss
     ///  $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate")]
     public partial class PreventionInspectTemplate : Pulumi.CustomResource
     {
         /// <summary>

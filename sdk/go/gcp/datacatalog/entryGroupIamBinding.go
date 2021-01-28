@@ -270,15 +270,15 @@ type EntryGroupIamBindingInput interface {
 	ToEntryGroupIamBindingOutputWithContext(ctx context.Context) EntryGroupIamBindingOutput
 }
 
-func (EntryGroupIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamBinding)(nil)).Elem()
+func (*EntryGroupIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryGroupIamBinding)(nil))
 }
 
-func (i EntryGroupIamBinding) ToEntryGroupIamBindingOutput() EntryGroupIamBindingOutput {
+func (i *EntryGroupIamBinding) ToEntryGroupIamBindingOutput() EntryGroupIamBindingOutput {
 	return i.ToEntryGroupIamBindingOutputWithContext(context.Background())
 }
 
-func (i EntryGroupIamBinding) ToEntryGroupIamBindingOutputWithContext(ctx context.Context) EntryGroupIamBindingOutput {
+func (i *EntryGroupIamBinding) ToEntryGroupIamBindingOutputWithContext(ctx context.Context) EntryGroupIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingOutput)
 }
 
@@ -287,7 +287,7 @@ type EntryGroupIamBindingOutput struct {
 }
 
 func (EntryGroupIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EntryGroupIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*EntryGroupIamBinding)(nil))
 }
 
 func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingOutput() EntryGroupIamBindingOutput {
