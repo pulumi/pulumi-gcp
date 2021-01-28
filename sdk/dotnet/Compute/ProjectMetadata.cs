@@ -52,6 +52,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/projectMetadata:ProjectMetadata foo my-project-id`
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/projectMetadata:ProjectMetadata")]
     public partial class ProjectMetadata : Pulumi.CustomResource
     {
         /// <summary>

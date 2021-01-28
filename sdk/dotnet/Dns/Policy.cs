@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.Dns
     ///  $ pulumi import gcp:dns/policy:Policy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:dns/policy:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

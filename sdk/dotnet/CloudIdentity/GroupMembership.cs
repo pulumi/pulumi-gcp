@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.CloudIdentity
     ///  $ pulumi import gcp:cloudidentity/groupMembership:GroupMembership default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudidentity/groupMembership:GroupMembership")]
     public partial class GroupMembership : Pulumi.CustomResource
     {
         /// <summary>

@@ -257,6 +257,7 @@ namespace Pulumi.Gcp.Dns
     ///  $ pulumi import gcp:dns/managedZone:ManagedZone default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:dns/managedZone:ManagedZone")]
     public partial class ManagedZone : Pulumi.CustomResource
     {
         /// <summary>

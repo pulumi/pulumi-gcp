@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.SecretManager
     ///  $ pulumi import gcp:secretmanager/secret:Secret default {{secret_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:secretmanager/secret:Secret")]
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>

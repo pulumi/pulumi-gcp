@@ -344,15 +344,15 @@ type FolderSinkInput interface {
 	ToFolderSinkOutputWithContext(ctx context.Context) FolderSinkOutput
 }
 
-func (FolderSink) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderSink)(nil)).Elem()
+func (*FolderSink) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderSink)(nil))
 }
 
-func (i FolderSink) ToFolderSinkOutput() FolderSinkOutput {
+func (i *FolderSink) ToFolderSinkOutput() FolderSinkOutput {
 	return i.ToFolderSinkOutputWithContext(context.Background())
 }
 
-func (i FolderSink) ToFolderSinkOutputWithContext(ctx context.Context) FolderSinkOutput {
+func (i *FolderSink) ToFolderSinkOutputWithContext(ctx context.Context) FolderSinkOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkOutput)
 }
 
@@ -361,7 +361,7 @@ type FolderSinkOutput struct {
 }
 
 func (FolderSinkOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderSinkOutput)(nil)).Elem()
+	return reflect.TypeOf((*FolderSink)(nil))
 }
 
 func (o FolderSinkOutput) ToFolderSinkOutput() FolderSinkOutput {

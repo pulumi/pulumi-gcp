@@ -284,15 +284,15 @@ type DatabaseIAMBindingInput interface {
 	ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput
 }
 
-func (DatabaseIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMBinding)(nil)).Elem()
+func (*DatabaseIAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIAMBinding)(nil))
 }
 
-func (i DatabaseIAMBinding) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput {
+func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput {
 	return i.ToDatabaseIAMBindingOutputWithContext(context.Background())
 }
 
-func (i DatabaseIAMBinding) ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput {
+func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutputWithContext(ctx context.Context) DatabaseIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingOutput)
 }
 
@@ -301,7 +301,7 @@ type DatabaseIAMBindingOutput struct {
 }
 
 func (DatabaseIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseIAMBinding)(nil))
 }
 
 func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutput() DatabaseIAMBindingOutput {

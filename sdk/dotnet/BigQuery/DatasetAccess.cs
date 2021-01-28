@@ -14,6 +14,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:bigquery/datasetAccess:DatasetAccess")]
     public partial class DatasetAccess : Pulumi.CustomResource
     {
         /// <summary>

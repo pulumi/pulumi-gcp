@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Kms
     ///  $ pulumi import gcp:kms/keyRingImportJob:KeyRingImportJob default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:kms/keyRingImportJob:KeyRingImportJob")]
     public partial class KeyRingImportJob : Pulumi.CustomResource
     {
         /// <summary>

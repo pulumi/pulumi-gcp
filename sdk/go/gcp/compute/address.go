@@ -478,15 +478,15 @@ type AddressInput interface {
 	ToAddressOutputWithContext(ctx context.Context) AddressOutput
 }
 
-func (Address) ElementType() reflect.Type {
-	return reflect.TypeOf((*Address)(nil)).Elem()
+func (*Address) ElementType() reflect.Type {
+	return reflect.TypeOf((*Address)(nil))
 }
 
-func (i Address) ToAddressOutput() AddressOutput {
+func (i *Address) ToAddressOutput() AddressOutput {
 	return i.ToAddressOutputWithContext(context.Background())
 }
 
-func (i Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput {
+func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
@@ -495,7 +495,7 @@ type AddressOutput struct {
 }
 
 func (AddressOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AddressOutput)(nil)).Elem()
+	return reflect.TypeOf((*Address)(nil))
 }
 
 func (o AddressOutput) ToAddressOutput() AddressOutput {

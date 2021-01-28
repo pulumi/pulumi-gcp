@@ -545,15 +545,15 @@ type ManagedZoneInput interface {
 	ToManagedZoneOutputWithContext(ctx context.Context) ManagedZoneOutput
 }
 
-func (ManagedZone) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedZone)(nil)).Elem()
+func (*ManagedZone) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZone)(nil))
 }
 
-func (i ManagedZone) ToManagedZoneOutput() ManagedZoneOutput {
+func (i *ManagedZone) ToManagedZoneOutput() ManagedZoneOutput {
 	return i.ToManagedZoneOutputWithContext(context.Background())
 }
 
-func (i ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) ManagedZoneOutput {
+func (i *ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) ManagedZoneOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneOutput)
 }
 
@@ -562,7 +562,7 @@ type ManagedZoneOutput struct {
 }
 
 func (ManagedZoneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ManagedZoneOutput)(nil)).Elem()
+	return reflect.TypeOf((*ManagedZone)(nil))
 }
 
 func (o ManagedZoneOutput) ToManagedZoneOutput() ManagedZoneOutput {

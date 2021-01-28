@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:artifactregistry/repositoryIamMember:RepositoryIamMember")]
     public partial class RepositoryIamMember : Pulumi.CustomResource
     {
         [Output("condition")]

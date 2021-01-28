@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.Projects
     ///  $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket my_project your-project-id
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:projects/usageExportBucket:UsageExportBucket")]
     public partial class UsageExportBucket : Pulumi.CustomResource
     {
         /// <summary>

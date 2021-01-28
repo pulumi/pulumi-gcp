@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Dataproc
     ///  $ pulumi import gcp:dataproc/autoscalingPolicy:AutoscalingPolicy default {{location}}/{{policy_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:dataproc/autoscalingPolicy:AutoscalingPolicy")]
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
         /// <summary>

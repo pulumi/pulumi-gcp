@@ -291,15 +291,15 @@ type FunctionIamMemberInput interface {
 	ToFunctionIamMemberOutputWithContext(ctx context.Context) FunctionIamMemberOutput
 }
 
-func (FunctionIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionIamMember)(nil)).Elem()
+func (*FunctionIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionIamMember)(nil))
 }
 
-func (i FunctionIamMember) ToFunctionIamMemberOutput() FunctionIamMemberOutput {
+func (i *FunctionIamMember) ToFunctionIamMemberOutput() FunctionIamMemberOutput {
 	return i.ToFunctionIamMemberOutputWithContext(context.Background())
 }
 
-func (i FunctionIamMember) ToFunctionIamMemberOutputWithContext(ctx context.Context) FunctionIamMemberOutput {
+func (i *FunctionIamMember) ToFunctionIamMemberOutputWithContext(ctx context.Context) FunctionIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamMemberOutput)
 }
 
@@ -308,7 +308,7 @@ type FunctionIamMemberOutput struct {
 }
 
 func (FunctionIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FunctionIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*FunctionIamMember)(nil))
 }
 
 func (o FunctionIamMemberOutput) ToFunctionIamMemberOutput() FunctionIamMemberOutput {

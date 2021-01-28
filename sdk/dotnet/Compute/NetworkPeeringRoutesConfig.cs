@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig default {{network}}/{{peering}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig")]
     public partial class NetworkPeeringRoutesConfig : Pulumi.CustomResource
     {
         /// <summary>

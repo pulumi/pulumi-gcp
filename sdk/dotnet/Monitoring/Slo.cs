@@ -106,6 +106,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/slo:Slo default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/slo:Slo")]
     public partial class Slo : Pulumi.CustomResource
     {
         /// <summary>

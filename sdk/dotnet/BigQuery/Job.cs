@@ -273,6 +273,7 @@ namespace Pulumi.Gcp.BigQuery
     ///  $ pulumi import gcp:bigquery/job:Job default {{job_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:bigquery/job:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

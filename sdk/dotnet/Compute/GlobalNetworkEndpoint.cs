@@ -63,6 +63,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default {{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint")]
     public partial class GlobalNetworkEndpoint : Pulumi.CustomResource
     {
         /// <summary>

@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/sharedVPCHostProject:SharedVPCHostProject host host-project-id
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/sharedVPCHostProject:SharedVPCHostProject")]
     public partial class SharedVPCHostProject : Pulumi.CustomResource
     {
         /// <summary>

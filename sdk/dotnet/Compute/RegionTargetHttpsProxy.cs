@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy")]
     public partial class RegionTargetHttpsProxy : Pulumi.CustomResource
     {
         /// <summary>

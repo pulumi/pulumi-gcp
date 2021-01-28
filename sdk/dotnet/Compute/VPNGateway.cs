@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/vPNGateway:VPNGateway default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/vPNGateway:VPNGateway")]
     public partial class VPNGateway : Pulumi.CustomResource
     {
         /// <summary>

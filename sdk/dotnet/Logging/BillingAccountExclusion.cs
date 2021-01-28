@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/billingAccountExclusion:BillingAccountExclusion my_exclusion billingAccounts/my-billing_account/exclusions/my-exclusion
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/billingAccountExclusion:BillingAccountExclusion")]
     public partial class BillingAccountExclusion : Pulumi.CustomResource
     {
         /// <summary>

@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.Sql
     /// 
     ///  config and set on the server. When importing, double-check that your config has all the fields set that you expect- just seeing no diff isn't sufficient to know that your config could reproduce the imported resource.
     /// </summary>
+    [GcpResourceType("gcp:sql/databaseInstance:DatabaseInstance")]
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>

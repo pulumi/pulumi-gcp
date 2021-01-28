@@ -195,15 +195,15 @@ type FolderExclusionInput interface {
 	ToFolderExclusionOutputWithContext(ctx context.Context) FolderExclusionOutput
 }
 
-func (FolderExclusion) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderExclusion)(nil)).Elem()
+func (*FolderExclusion) ElementType() reflect.Type {
+	return reflect.TypeOf((*FolderExclusion)(nil))
 }
 
-func (i FolderExclusion) ToFolderExclusionOutput() FolderExclusionOutput {
+func (i *FolderExclusion) ToFolderExclusionOutput() FolderExclusionOutput {
 	return i.ToFolderExclusionOutputWithContext(context.Background())
 }
 
-func (i FolderExclusion) ToFolderExclusionOutputWithContext(ctx context.Context) FolderExclusionOutput {
+func (i *FolderExclusion) ToFolderExclusionOutputWithContext(ctx context.Context) FolderExclusionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionOutput)
 }
 
@@ -212,7 +212,7 @@ type FolderExclusionOutput struct {
 }
 
 func (FolderExclusionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FolderExclusionOutput)(nil)).Elem()
+	return reflect.TypeOf((*FolderExclusion)(nil))
 }
 
 func (o FolderExclusionOutput) ToFolderExclusionOutput() FolderExclusionOutput {

@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:compute/instanceFromTemplate:InstanceFromTemplate")]
     public partial class InstanceFromTemplate : Pulumi.CustomResource
     {
         /// <summary>

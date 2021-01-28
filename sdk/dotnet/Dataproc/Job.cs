@@ -95,6 +95,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:dataproc/job:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

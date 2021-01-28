@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///  $ pulumi import gcp:accesscontextmanager/accessLevel:AccessLevel default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:accesscontextmanager/accessLevel:AccessLevel")]
     public partial class AccessLevel : Pulumi.CustomResource
     {
         /// <summary>

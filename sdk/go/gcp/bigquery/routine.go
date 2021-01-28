@@ -335,15 +335,15 @@ type RoutineInput interface {
 	ToRoutineOutputWithContext(ctx context.Context) RoutineOutput
 }
 
-func (Routine) ElementType() reflect.Type {
-	return reflect.TypeOf((*Routine)(nil)).Elem()
+func (*Routine) ElementType() reflect.Type {
+	return reflect.TypeOf((*Routine)(nil))
 }
 
-func (i Routine) ToRoutineOutput() RoutineOutput {
+func (i *Routine) ToRoutineOutput() RoutineOutput {
 	return i.ToRoutineOutputWithContext(context.Background())
 }
 
-func (i Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput {
+func (i *Routine) ToRoutineOutputWithContext(ctx context.Context) RoutineOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RoutineOutput)
 }
 
@@ -352,7 +352,7 @@ type RoutineOutput struct {
 }
 
 func (RoutineOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RoutineOutput)(nil)).Elem()
+	return reflect.TypeOf((*Routine)(nil))
 }
 
 func (o RoutineOutput) ToRoutineOutput() RoutineOutput {

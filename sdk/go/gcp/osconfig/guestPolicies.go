@@ -503,15 +503,15 @@ type GuestPoliciesInput interface {
 	ToGuestPoliciesOutputWithContext(ctx context.Context) GuestPoliciesOutput
 }
 
-func (GuestPolicies) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestPolicies)(nil)).Elem()
+func (*GuestPolicies) ElementType() reflect.Type {
+	return reflect.TypeOf((*GuestPolicies)(nil))
 }
 
-func (i GuestPolicies) ToGuestPoliciesOutput() GuestPoliciesOutput {
+func (i *GuestPolicies) ToGuestPoliciesOutput() GuestPoliciesOutput {
 	return i.ToGuestPoliciesOutputWithContext(context.Background())
 }
 
-func (i GuestPolicies) ToGuestPoliciesOutputWithContext(ctx context.Context) GuestPoliciesOutput {
+func (i *GuestPolicies) ToGuestPoliciesOutputWithContext(ctx context.Context) GuestPoliciesOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesOutput)
 }
 
@@ -520,7 +520,7 @@ type GuestPoliciesOutput struct {
 }
 
 func (GuestPoliciesOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GuestPoliciesOutput)(nil)).Elem()
+	return reflect.TypeOf((*GuestPolicies)(nil))
 }
 
 func (o GuestPoliciesOutput) ToGuestPoliciesOutput() GuestPoliciesOutput {

@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.CloudAsset
     ///  $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default {{folder_id}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudasset/folderFeed:FolderFeed")]
     public partial class FolderFeed : Pulumi.CustomResource
     {
         /// <summary>

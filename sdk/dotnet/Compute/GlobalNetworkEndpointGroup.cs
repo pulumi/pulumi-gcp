@@ -79,6 +79,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup")]
     public partial class GlobalNetworkEndpointGroup : Pulumi.CustomResource
     {
         /// <summary>

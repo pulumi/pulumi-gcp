@@ -284,15 +284,15 @@ type DatabaseIAMMemberInput interface {
 	ToDatabaseIAMMemberOutputWithContext(ctx context.Context) DatabaseIAMMemberOutput
 }
 
-func (DatabaseIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMMember)(nil)).Elem()
+func (*DatabaseIAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseIAMMember)(nil))
 }
 
-func (i DatabaseIAMMember) ToDatabaseIAMMemberOutput() DatabaseIAMMemberOutput {
+func (i *DatabaseIAMMember) ToDatabaseIAMMemberOutput() DatabaseIAMMemberOutput {
 	return i.ToDatabaseIAMMemberOutputWithContext(context.Background())
 }
 
-func (i DatabaseIAMMember) ToDatabaseIAMMemberOutputWithContext(ctx context.Context) DatabaseIAMMemberOutput {
+func (i *DatabaseIAMMember) ToDatabaseIAMMemberOutputWithContext(ctx context.Context) DatabaseIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberOutput)
 }
 
@@ -301,7 +301,7 @@ type DatabaseIAMMemberOutput struct {
 }
 
 func (DatabaseIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseIAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseIAMMember)(nil))
 }
 
 func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberOutput() DatabaseIAMMemberOutput {

@@ -188,15 +188,15 @@ type AppEngineServiceIamBindingInput interface {
 	ToAppEngineServiceIamBindingOutputWithContext(ctx context.Context) AppEngineServiceIamBindingOutput
 }
 
-func (AppEngineServiceIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamBinding)(nil)).Elem()
+func (*AppEngineServiceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineServiceIamBinding)(nil))
 }
 
-func (i AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutput() AppEngineServiceIamBindingOutput {
+func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutput() AppEngineServiceIamBindingOutput {
 	return i.ToAppEngineServiceIamBindingOutputWithContext(context.Background())
 }
 
-func (i AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutputWithContext(ctx context.Context) AppEngineServiceIamBindingOutput {
+func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutputWithContext(ctx context.Context) AppEngineServiceIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingOutput)
 }
 
@@ -205,7 +205,7 @@ type AppEngineServiceIamBindingOutput struct {
 }
 
 func (AppEngineServiceIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*AppEngineServiceIamBinding)(nil))
 }
 
 func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingOutput() AppEngineServiceIamBindingOutput {

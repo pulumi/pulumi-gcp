@@ -175,15 +175,15 @@ type WebBackendServiceIamBindingInput interface {
 	ToWebBackendServiceIamBindingOutputWithContext(ctx context.Context) WebBackendServiceIamBindingOutput
 }
 
-func (WebBackendServiceIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebBackendServiceIamBinding)(nil)).Elem()
+func (*WebBackendServiceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebBackendServiceIamBinding)(nil))
 }
 
-func (i WebBackendServiceIamBinding) ToWebBackendServiceIamBindingOutput() WebBackendServiceIamBindingOutput {
+func (i *WebBackendServiceIamBinding) ToWebBackendServiceIamBindingOutput() WebBackendServiceIamBindingOutput {
 	return i.ToWebBackendServiceIamBindingOutputWithContext(context.Background())
 }
 
-func (i WebBackendServiceIamBinding) ToWebBackendServiceIamBindingOutputWithContext(ctx context.Context) WebBackendServiceIamBindingOutput {
+func (i *WebBackendServiceIamBinding) ToWebBackendServiceIamBindingOutputWithContext(ctx context.Context) WebBackendServiceIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamBindingOutput)
 }
 
@@ -192,7 +192,7 @@ type WebBackendServiceIamBindingOutput struct {
 }
 
 func (WebBackendServiceIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebBackendServiceIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebBackendServiceIamBinding)(nil))
 }
 
 func (o WebBackendServiceIamBindingOutput) ToWebBackendServiceIamBindingOutput() WebBackendServiceIamBindingOutput {

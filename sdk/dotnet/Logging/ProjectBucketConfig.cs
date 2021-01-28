@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/projectBucketConfig:ProjectBucketConfig default projects/{{project}}/locations/{{location}}/buckets/{{bucket_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/projectBucketConfig:ProjectBucketConfig")]
     public partial class ProjectBucketConfig : Pulumi.CustomResource
     {
         /// <summary>

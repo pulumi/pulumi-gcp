@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.SecretManager
     ///  $ pulumi import gcp:secretmanager/secretVersion:SecretVersion default {{name}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:secretmanager/secretVersion:SecretVersion")]
     public partial class SecretVersion : Pulumi.CustomResource
     {
         /// <summary>

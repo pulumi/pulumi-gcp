@@ -301,15 +301,15 @@ type AccessLevelConditionInput interface {
 	ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput
 }
 
-func (AccessLevelCondition) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessLevelCondition)(nil)).Elem()
+func (*AccessLevelCondition) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessLevelCondition)(nil))
 }
 
-func (i AccessLevelCondition) ToAccessLevelConditionOutput() AccessLevelConditionOutput {
+func (i *AccessLevelCondition) ToAccessLevelConditionOutput() AccessLevelConditionOutput {
 	return i.ToAccessLevelConditionOutputWithContext(context.Background())
 }
 
-func (i AccessLevelCondition) ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput {
+func (i *AccessLevelCondition) ToAccessLevelConditionOutputWithContext(ctx context.Context) AccessLevelConditionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionOutput)
 }
 
@@ -318,7 +318,7 @@ type AccessLevelConditionOutput struct {
 }
 
 func (AccessLevelConditionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccessLevelConditionOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccessLevelCondition)(nil))
 }
 
 func (o AccessLevelConditionOutput) ToAccessLevelConditionOutput() AccessLevelConditionOutput {

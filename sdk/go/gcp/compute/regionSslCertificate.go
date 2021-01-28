@@ -265,15 +265,15 @@ type RegionSslCertificateInput interface {
 	ToRegionSslCertificateOutputWithContext(ctx context.Context) RegionSslCertificateOutput
 }
 
-func (RegionSslCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSslCertificate)(nil)).Elem()
+func (*RegionSslCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSslCertificate)(nil))
 }
 
-func (i RegionSslCertificate) ToRegionSslCertificateOutput() RegionSslCertificateOutput {
+func (i *RegionSslCertificate) ToRegionSslCertificateOutput() RegionSslCertificateOutput {
 	return i.ToRegionSslCertificateOutputWithContext(context.Background())
 }
 
-func (i RegionSslCertificate) ToRegionSslCertificateOutputWithContext(ctx context.Context) RegionSslCertificateOutput {
+func (i *RegionSslCertificate) ToRegionSslCertificateOutputWithContext(ctx context.Context) RegionSslCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateOutput)
 }
 
@@ -282,7 +282,7 @@ type RegionSslCertificateOutput struct {
 }
 
 func (RegionSslCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionSslCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegionSslCertificate)(nil))
 }
 
 func (o RegionSslCertificateOutput) ToRegionSslCertificateOutput() RegionSslCertificateOutput {

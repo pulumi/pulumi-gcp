@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.AppEngine
     ///  $ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion default {{service}}/{{version_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:appengine/standardAppVersion:StandardAppVersion")]
     public partial class StandardAppVersion : Pulumi.CustomResource
     {
         /// <summary>

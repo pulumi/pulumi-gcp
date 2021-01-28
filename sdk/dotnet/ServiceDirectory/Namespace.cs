@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///  $ pulumi import gcp:servicedirectory/namespace:Namespace default {{location}}/{{namespace_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:servicedirectory/namespace:Namespace")]
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>

@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Organizations
     ///  $ pulumi import gcp:organizations/iamAuditConfig:IamAuditConfig config "your-organization-id foo.googleapis.com"
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:organizations/iamAuditConfig:IamAuditConfig")]
     public partial class IamAuditConfig : Pulumi.CustomResource
     {
         /// <summary>

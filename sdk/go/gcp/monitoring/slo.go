@@ -419,15 +419,15 @@ type SloInput interface {
 	ToSloOutputWithContext(ctx context.Context) SloOutput
 }
 
-func (Slo) ElementType() reflect.Type {
-	return reflect.TypeOf((*Slo)(nil)).Elem()
+func (*Slo) ElementType() reflect.Type {
+	return reflect.TypeOf((*Slo)(nil))
 }
 
-func (i Slo) ToSloOutput() SloOutput {
+func (i *Slo) ToSloOutput() SloOutput {
 	return i.ToSloOutputWithContext(context.Background())
 }
 
-func (i Slo) ToSloOutputWithContext(ctx context.Context) SloOutput {
+func (i *Slo) ToSloOutputWithContext(ctx context.Context) SloOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SloOutput)
 }
 
@@ -436,7 +436,7 @@ type SloOutput struct {
 }
 
 func (SloOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SloOutput)(nil)).Elem()
+	return reflect.TypeOf((*Slo)(nil))
 }
 
 func (o SloOutput) ToSloOutput() SloOutput {

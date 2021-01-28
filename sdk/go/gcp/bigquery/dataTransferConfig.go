@@ -441,15 +441,15 @@ type DataTransferConfigInput interface {
 	ToDataTransferConfigOutputWithContext(ctx context.Context) DataTransferConfigOutput
 }
 
-func (DataTransferConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataTransferConfig)(nil)).Elem()
+func (*DataTransferConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataTransferConfig)(nil))
 }
 
-func (i DataTransferConfig) ToDataTransferConfigOutput() DataTransferConfigOutput {
+func (i *DataTransferConfig) ToDataTransferConfigOutput() DataTransferConfigOutput {
 	return i.ToDataTransferConfigOutputWithContext(context.Background())
 }
 
-func (i DataTransferConfig) ToDataTransferConfigOutputWithContext(ctx context.Context) DataTransferConfigOutput {
+func (i *DataTransferConfig) ToDataTransferConfigOutputWithContext(ctx context.Context) DataTransferConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigOutput)
 }
 
@@ -458,7 +458,7 @@ type DataTransferConfigOutput struct {
 }
 
 func (DataTransferConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DataTransferConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*DataTransferConfig)(nil))
 }
 
 func (o DataTransferConfigOutput) ToDataTransferConfigOutput() DataTransferConfigOutput {

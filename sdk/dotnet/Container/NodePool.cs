@@ -69,6 +69,7 @@ namespace Pulumi.Gcp.Container
     ///  $ pulumi import gcp:container/nodePool:NodePool mainpool us-east1-a/my-cluster/main-pool
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:container/nodePool:NodePool")]
     public partial class NodePool : Pulumi.CustomResource
     {
         /// <summary>

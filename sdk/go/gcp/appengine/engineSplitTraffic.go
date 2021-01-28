@@ -151,15 +151,15 @@ type EngineSplitTrafficInput interface {
 	ToEngineSplitTrafficOutputWithContext(ctx context.Context) EngineSplitTrafficOutput
 }
 
-func (EngineSplitTraffic) ElementType() reflect.Type {
-	return reflect.TypeOf((*EngineSplitTraffic)(nil)).Elem()
+func (*EngineSplitTraffic) ElementType() reflect.Type {
+	return reflect.TypeOf((*EngineSplitTraffic)(nil))
 }
 
-func (i EngineSplitTraffic) ToEngineSplitTrafficOutput() EngineSplitTrafficOutput {
+func (i *EngineSplitTraffic) ToEngineSplitTrafficOutput() EngineSplitTrafficOutput {
 	return i.ToEngineSplitTrafficOutputWithContext(context.Background())
 }
 
-func (i EngineSplitTraffic) ToEngineSplitTrafficOutputWithContext(ctx context.Context) EngineSplitTrafficOutput {
+func (i *EngineSplitTraffic) ToEngineSplitTrafficOutputWithContext(ctx context.Context) EngineSplitTrafficOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficOutput)
 }
 
@@ -168,7 +168,7 @@ type EngineSplitTrafficOutput struct {
 }
 
 func (EngineSplitTrafficOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*EngineSplitTrafficOutput)(nil)).Elem()
+	return reflect.TypeOf((*EngineSplitTraffic)(nil))
 }
 
 func (o EngineSplitTrafficOutput) ToEngineSplitTrafficOutput() EngineSplitTrafficOutput {

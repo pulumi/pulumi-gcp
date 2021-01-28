@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     ///  `false` in state. If you've set it to `true` in config, run `terraform apply` to update the value set in state. If you delete this resource before updating the value, objects in the bucket will not be destroyed.
     /// </summary>
+    [GcpResourceType("gcp:storage/bucket:Bucket")]
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>

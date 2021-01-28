@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///  $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding")]
     public partial class GcpUserAccessBinding : Pulumi.CustomResource
     {
         /// <summary>

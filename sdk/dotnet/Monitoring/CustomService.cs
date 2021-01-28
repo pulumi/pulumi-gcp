@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/customService:CustomService default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/customService:CustomService")]
     public partial class CustomService : Pulumi.CustomResource
     {
         /// <summary>

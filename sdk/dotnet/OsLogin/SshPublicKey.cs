@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.OsLogin
     ///  $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default {{user}}/{{fingerprint}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:oslogin/sshPublicKey:SshPublicKey")]
     public partial class SshPublicKey : Pulumi.CustomResource
     {
         /// <summary>

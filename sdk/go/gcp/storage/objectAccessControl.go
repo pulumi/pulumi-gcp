@@ -263,15 +263,15 @@ type ObjectAccessControlInput interface {
 	ToObjectAccessControlOutputWithContext(ctx context.Context) ObjectAccessControlOutput
 }
 
-func (ObjectAccessControl) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControl)(nil)).Elem()
+func (*ObjectAccessControl) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectAccessControl)(nil))
 }
 
-func (i ObjectAccessControl) ToObjectAccessControlOutput() ObjectAccessControlOutput {
+func (i *ObjectAccessControl) ToObjectAccessControlOutput() ObjectAccessControlOutput {
 	return i.ToObjectAccessControlOutputWithContext(context.Background())
 }
 
-func (i ObjectAccessControl) ToObjectAccessControlOutputWithContext(ctx context.Context) ObjectAccessControlOutput {
+func (i *ObjectAccessControl) ToObjectAccessControlOutputWithContext(ctx context.Context) ObjectAccessControlOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlOutput)
 }
 
@@ -280,7 +280,7 @@ type ObjectAccessControlOutput struct {
 }
 
 func (ObjectAccessControlOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectAccessControlOutput)(nil)).Elem()
+	return reflect.TypeOf((*ObjectAccessControl)(nil))
 }
 
 func (o ObjectAccessControlOutput) ToObjectAccessControlOutput() ObjectAccessControlOutput {

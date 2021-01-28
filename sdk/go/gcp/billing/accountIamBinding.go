@@ -104,15 +104,15 @@ type AccountIamBindingInput interface {
 	ToAccountIamBindingOutputWithContext(ctx context.Context) AccountIamBindingOutput
 }
 
-func (AccountIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountIamBinding)(nil)).Elem()
+func (*AccountIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamBinding)(nil))
 }
 
-func (i AccountIamBinding) ToAccountIamBindingOutput() AccountIamBindingOutput {
+func (i *AccountIamBinding) ToAccountIamBindingOutput() AccountIamBindingOutput {
 	return i.ToAccountIamBindingOutputWithContext(context.Background())
 }
 
-func (i AccountIamBinding) ToAccountIamBindingOutputWithContext(ctx context.Context) AccountIamBindingOutput {
+func (i *AccountIamBinding) ToAccountIamBindingOutputWithContext(ctx context.Context) AccountIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingOutput)
 }
 
@@ -121,7 +121,7 @@ type AccountIamBindingOutput struct {
 }
 
 func (AccountIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountIamBinding)(nil))
 }
 
 func (o AccountIamBindingOutput) ToAccountIamBindingOutput() AccountIamBindingOutput {

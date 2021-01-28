@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/networkPeering:NetworkPeering peering_network project-name/network-name/peering-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/networkPeering:NetworkPeering")]
     public partial class NetworkPeering : Pulumi.CustomResource
     {
         /// <summary>

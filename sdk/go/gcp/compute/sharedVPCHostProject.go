@@ -137,15 +137,15 @@ type SharedVPCHostProjectInput interface {
 	ToSharedVPCHostProjectOutputWithContext(ctx context.Context) SharedVPCHostProjectOutput
 }
 
-func (SharedVPCHostProject) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedVPCHostProject)(nil)).Elem()
+func (*SharedVPCHostProject) ElementType() reflect.Type {
+	return reflect.TypeOf((*SharedVPCHostProject)(nil))
 }
 
-func (i SharedVPCHostProject) ToSharedVPCHostProjectOutput() SharedVPCHostProjectOutput {
+func (i *SharedVPCHostProject) ToSharedVPCHostProjectOutput() SharedVPCHostProjectOutput {
 	return i.ToSharedVPCHostProjectOutputWithContext(context.Background())
 }
 
-func (i SharedVPCHostProject) ToSharedVPCHostProjectOutputWithContext(ctx context.Context) SharedVPCHostProjectOutput {
+func (i *SharedVPCHostProject) ToSharedVPCHostProjectOutputWithContext(ctx context.Context) SharedVPCHostProjectOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectOutput)
 }
 
@@ -154,7 +154,7 @@ type SharedVPCHostProjectOutput struct {
 }
 
 func (SharedVPCHostProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SharedVPCHostProjectOutput)(nil)).Elem()
+	return reflect.TypeOf((*SharedVPCHostProject)(nil))
 }
 
 func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectOutput() SharedVPCHostProjectOutput {

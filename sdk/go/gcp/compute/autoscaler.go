@@ -415,15 +415,15 @@ type AutoscalerInput interface {
 	ToAutoscalerOutputWithContext(ctx context.Context) AutoscalerOutput
 }
 
-func (Autoscaler) ElementType() reflect.Type {
-	return reflect.TypeOf((*Autoscaler)(nil)).Elem()
+func (*Autoscaler) ElementType() reflect.Type {
+	return reflect.TypeOf((*Autoscaler)(nil))
 }
 
-func (i Autoscaler) ToAutoscalerOutput() AutoscalerOutput {
+func (i *Autoscaler) ToAutoscalerOutput() AutoscalerOutput {
 	return i.ToAutoscalerOutputWithContext(context.Background())
 }
 
-func (i Autoscaler) ToAutoscalerOutputWithContext(ctx context.Context) AutoscalerOutput {
+func (i *Autoscaler) ToAutoscalerOutputWithContext(ctx context.Context) AutoscalerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalerOutput)
 }
 
@@ -432,7 +432,7 @@ type AutoscalerOutput struct {
 }
 
 func (AutoscalerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AutoscalerOutput)(nil)).Elem()
+	return reflect.TypeOf((*Autoscaler)(nil))
 }
 
 func (o AutoscalerOutput) ToAutoscalerOutput() AutoscalerOutput {

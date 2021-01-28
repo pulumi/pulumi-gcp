@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:compute/machineImageIamMember:MachineImageIamMember")]
     public partial class MachineImageIamMember : Pulumi.CustomResource
     {
         /// <summary>

@@ -280,15 +280,15 @@ type NetworkEndpointInput interface {
 	ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput
 }
 
-func (NetworkEndpoint) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpoint)(nil)).Elem()
+func (*NetworkEndpoint) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpoint)(nil))
 }
 
-func (i NetworkEndpoint) ToNetworkEndpointOutput() NetworkEndpointOutput {
+func (i *NetworkEndpoint) ToNetworkEndpointOutput() NetworkEndpointOutput {
 	return i.ToNetworkEndpointOutputWithContext(context.Background())
 }
 
-func (i NetworkEndpoint) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
+func (i *NetworkEndpoint) ToNetworkEndpointOutputWithContext(ctx context.Context) NetworkEndpointOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointOutput)
 }
 
@@ -297,7 +297,7 @@ type NetworkEndpointOutput struct {
 }
 
 func (NetworkEndpointOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkEndpointOutput)(nil)).Elem()
+	return reflect.TypeOf((*NetworkEndpoint)(nil))
 }
 
 func (o NetworkEndpointOutput) ToNetworkEndpointOutput() NetworkEndpointOutput {

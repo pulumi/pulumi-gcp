@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.DataCatalog
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding")]
     public partial class PolicyTagIamBinding : Pulumi.CustomResource
     {
         [Output("condition")]

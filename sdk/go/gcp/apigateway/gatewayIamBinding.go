@@ -185,15 +185,15 @@ type GatewayIamBindingInput interface {
 	ToGatewayIamBindingOutputWithContext(ctx context.Context) GatewayIamBindingOutput
 }
 
-func (GatewayIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamBinding)(nil)).Elem()
+func (*GatewayIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIamBinding)(nil))
 }
 
-func (i GatewayIamBinding) ToGatewayIamBindingOutput() GatewayIamBindingOutput {
+func (i *GatewayIamBinding) ToGatewayIamBindingOutput() GatewayIamBindingOutput {
 	return i.ToGatewayIamBindingOutputWithContext(context.Background())
 }
 
-func (i GatewayIamBinding) ToGatewayIamBindingOutputWithContext(ctx context.Context) GatewayIamBindingOutput {
+func (i *GatewayIamBinding) ToGatewayIamBindingOutputWithContext(ctx context.Context) GatewayIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamBindingOutput)
 }
 
@@ -202,7 +202,7 @@ type GatewayIamBindingOutput struct {
 }
 
 func (GatewayIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*GatewayIamBinding)(nil))
 }
 
 func (o GatewayIamBindingOutput) ToGatewayIamBindingOutput() GatewayIamBindingOutput {

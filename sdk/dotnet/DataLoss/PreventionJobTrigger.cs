@@ -93,6 +93,7 @@ namespace Pulumi.Gcp.DataLoss
     ///  $ pulumi import gcp:dataloss/preventionJobTrigger:PreventionJobTrigger default {{parent}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:dataloss/preventionJobTrigger:PreventionJobTrigger")]
     public partial class PreventionJobTrigger : Pulumi.CustomResource
     {
         /// <summary>

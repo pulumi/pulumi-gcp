@@ -200,6 +200,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/vPNTunnel:VPNTunnel default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/vPNTunnel:VPNTunnel")]
     public partial class VPNTunnel : Pulumi.CustomResource
     {
         /// <summary>

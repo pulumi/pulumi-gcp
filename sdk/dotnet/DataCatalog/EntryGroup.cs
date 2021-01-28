@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///  $ pulumi import gcp:datacatalog/entryGroup:EntryGroup default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datacatalog/entryGroup:EntryGroup")]
     public partial class EntryGroup : Pulumi.CustomResource
     {
         /// <summary>

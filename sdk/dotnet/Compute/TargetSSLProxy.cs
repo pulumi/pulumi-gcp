@@ -83,6 +83,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/targetSSLProxy:TargetSSLProxy")]
     public partial class TargetSSLProxy : Pulumi.CustomResource
     {
         /// <summary>

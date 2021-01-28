@@ -50,6 +50,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/organizationBucketConfig:OrganizationBucketConfig")]
     public partial class OrganizationBucketConfig : Pulumi.CustomResource
     {
         /// <summary>

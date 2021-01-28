@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Firestore
     ///  $ pulumi import gcp:firestore/index:Index default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:firestore/index:Index")]
     public partial class Index : Pulumi.CustomResource
     {
         /// <summary>

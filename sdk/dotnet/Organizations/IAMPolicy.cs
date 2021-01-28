@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Organizations
 {
+    [GcpResourceType("gcp:organizations/iAMPolicy:IAMPolicy")]
     public partial class IAMPolicy : Pulumi.CustomResource
     {
         [Output("etag")]

@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/routerPeer:RouterPeer default {{router}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/routerPeer:RouterPeer")]
     public partial class RouterPeer : Pulumi.CustomResource
     {
         /// <summary>

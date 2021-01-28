@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:projects/serviceIdentity:ServiceIdentity")]
     public partial class ServiceIdentity : Pulumi.CustomResource
     {
         /// <summary>

@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.Storage
     ///  $ pulumi import gcp:storage/notification:Notification notification default_bucket/notificationConfigs/102
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:storage/notification:Notification")]
     public partial class Notification : Pulumi.CustomResource
     {
         /// <summary>

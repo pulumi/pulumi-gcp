@@ -68,6 +68,7 @@ namespace Pulumi.Gcp.AppEngine
     ///  $ pulumi import gcp:appengine/firewallRule:FirewallRule default {{priority}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:appengine/firewallRule:FirewallRule")]
     public partial class FirewallRule : Pulumi.CustomResource
     {
         /// <summary>

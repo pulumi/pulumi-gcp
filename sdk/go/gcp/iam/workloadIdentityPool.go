@@ -192,15 +192,15 @@ type WorkloadIdentityPoolInput interface {
 	ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput
 }
 
-func (WorkloadIdentityPool) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadIdentityPool)(nil)).Elem()
+func (*WorkloadIdentityPool) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadIdentityPool)(nil))
 }
 
-func (i WorkloadIdentityPool) ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput {
+func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput {
 	return i.ToWorkloadIdentityPoolOutputWithContext(context.Background())
 }
 
-func (i WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
+func (i *WorkloadIdentityPool) ToWorkloadIdentityPoolOutputWithContext(ctx context.Context) WorkloadIdentityPoolOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WorkloadIdentityPoolOutput)
 }
 
@@ -209,7 +209,7 @@ type WorkloadIdentityPoolOutput struct {
 }
 
 func (WorkloadIdentityPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WorkloadIdentityPoolOutput)(nil)).Elem()
+	return reflect.TypeOf((*WorkloadIdentityPool)(nil))
 }
 
 func (o WorkloadIdentityPoolOutput) ToWorkloadIdentityPoolOutput() WorkloadIdentityPoolOutput {

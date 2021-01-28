@@ -210,6 +210,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     ///  NoteThe record name must include the trailing dot at the end.
     /// </summary>
+    [GcpResourceType("gcp:dns/recordSet:RecordSet")]
     public partial class RecordSet : Pulumi.CustomResource
     {
         /// <summary>

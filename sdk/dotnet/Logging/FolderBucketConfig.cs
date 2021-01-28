@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/folderBucketConfig:FolderBucketConfig default folders/{{folder}}/locations/{{location}}/buckets/{{bucket_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/folderBucketConfig:FolderBucketConfig")]
     public partial class FolderBucketConfig : Pulumi.CustomResource
     {
         /// <summary>

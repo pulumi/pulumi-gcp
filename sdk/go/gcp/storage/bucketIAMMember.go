@@ -160,15 +160,15 @@ type BucketIAMMemberInput interface {
 	ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput
 }
 
-func (BucketIAMMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMMember)(nil)).Elem()
+func (*BucketIAMMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketIAMMember)(nil))
 }
 
-func (i BucketIAMMember) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
+func (i *BucketIAMMember) ToBucketIAMMemberOutput() BucketIAMMemberOutput {
 	return i.ToBucketIAMMemberOutputWithContext(context.Background())
 }
 
-func (i BucketIAMMember) ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput {
+func (i *BucketIAMMember) ToBucketIAMMemberOutputWithContext(ctx context.Context) BucketIAMMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberOutput)
 }
 
@@ -177,7 +177,7 @@ type BucketIAMMemberOutput struct {
 }
 
 func (BucketIAMMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketIAMMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketIAMMember)(nil))
 }
 
 func (o BucketIAMMemberOutput) ToBucketIAMMemberOutput() BucketIAMMemberOutput {

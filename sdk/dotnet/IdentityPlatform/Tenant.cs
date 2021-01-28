@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///  $ pulumi import gcp:identityplatform/tenant:Tenant default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:identityplatform/tenant:Tenant")]
     public partial class Tenant : Pulumi.CustomResource
     {
         /// <summary>

@@ -267,15 +267,15 @@ type DicomStoreIamBindingInput interface {
 	ToDicomStoreIamBindingOutputWithContext(ctx context.Context) DicomStoreIamBindingOutput
 }
 
-func (DicomStoreIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamBinding)(nil)).Elem()
+func (*DicomStoreIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreIamBinding)(nil))
 }
 
-func (i DicomStoreIamBinding) ToDicomStoreIamBindingOutput() DicomStoreIamBindingOutput {
+func (i *DicomStoreIamBinding) ToDicomStoreIamBindingOutput() DicomStoreIamBindingOutput {
 	return i.ToDicomStoreIamBindingOutputWithContext(context.Background())
 }
 
-func (i DicomStoreIamBinding) ToDicomStoreIamBindingOutputWithContext(ctx context.Context) DicomStoreIamBindingOutput {
+func (i *DicomStoreIamBinding) ToDicomStoreIamBindingOutputWithContext(ctx context.Context) DicomStoreIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamBindingOutput)
 }
 
@@ -284,7 +284,7 @@ type DicomStoreIamBindingOutput struct {
 }
 
 func (DicomStoreIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*DicomStoreIamBinding)(nil))
 }
 
 func (o DicomStoreIamBindingOutput) ToDicomStoreIamBindingOutput() DicomStoreIamBindingOutput {

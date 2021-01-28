@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Dataflow
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:dataflow/flexTemplateJob:FlexTemplateJob")]
     public partial class FlexTemplateJob : Pulumi.CustomResource
     {
         /// <summary>

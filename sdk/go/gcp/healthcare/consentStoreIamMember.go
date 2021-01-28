@@ -173,15 +173,15 @@ type ConsentStoreIamMemberInput interface {
 	ToConsentStoreIamMemberOutputWithContext(ctx context.Context) ConsentStoreIamMemberOutput
 }
 
-func (ConsentStoreIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStoreIamMember)(nil)).Elem()
+func (*ConsentStoreIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStoreIamMember)(nil))
 }
 
-func (i ConsentStoreIamMember) ToConsentStoreIamMemberOutput() ConsentStoreIamMemberOutput {
+func (i *ConsentStoreIamMember) ToConsentStoreIamMemberOutput() ConsentStoreIamMemberOutput {
 	return i.ToConsentStoreIamMemberOutputWithContext(context.Background())
 }
 
-func (i ConsentStoreIamMember) ToConsentStoreIamMemberOutputWithContext(ctx context.Context) ConsentStoreIamMemberOutput {
+func (i *ConsentStoreIamMember) ToConsentStoreIamMemberOutputWithContext(ctx context.Context) ConsentStoreIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamMemberOutput)
 }
 
@@ -190,7 +190,7 @@ type ConsentStoreIamMemberOutput struct {
 }
 
 func (ConsentStoreIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStoreIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConsentStoreIamMember)(nil))
 }
 
 func (o ConsentStoreIamMemberOutput) ToConsentStoreIamMemberOutput() ConsentStoreIamMemberOutput {

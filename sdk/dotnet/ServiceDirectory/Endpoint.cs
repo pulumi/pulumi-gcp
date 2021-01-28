@@ -81,6 +81,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     ///  $ pulumi import gcp:servicedirectory/endpoint:Endpoint default {{location}}/{{namespace_id}}/{{service_id}}/{{endpoint_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:servicedirectory/endpoint:Endpoint")]
     public partial class Endpoint : Pulumi.CustomResource
     {
         /// <summary>

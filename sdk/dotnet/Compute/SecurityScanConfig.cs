@@ -74,6 +74,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/securityScanConfig:SecurityScanConfig default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/securityScanConfig:SecurityScanConfig")]
     public partial class SecurityScanConfig : Pulumi.CustomResource
     {
         /// <summary>

@@ -373,15 +373,15 @@ type InstanceGroupManagerInput interface {
 	ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput
 }
 
-func (InstanceGroupManager) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManager)(nil)).Elem()
+func (*InstanceGroupManager) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupManager)(nil))
 }
 
-func (i InstanceGroupManager) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {
+func (i *InstanceGroupManager) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {
 	return i.ToInstanceGroupManagerOutputWithContext(context.Background())
 }
 
-func (i InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
+func (i *InstanceGroupManager) ToInstanceGroupManagerOutputWithContext(ctx context.Context) InstanceGroupManagerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceGroupManagerOutput)
 }
 
@@ -390,7 +390,7 @@ type InstanceGroupManagerOutput struct {
 }
 
 func (InstanceGroupManagerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceGroupManagerOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceGroupManager)(nil))
 }
 
 func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutput() InstanceGroupManagerOutput {

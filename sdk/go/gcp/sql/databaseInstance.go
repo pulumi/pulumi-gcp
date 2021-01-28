@@ -355,15 +355,15 @@ type DatabaseInstanceInput interface {
 	ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput
 }
 
-func (DatabaseInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseInstance)(nil)).Elem()
+func (*DatabaseInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstance)(nil))
 }
 
-func (i DatabaseInstance) ToDatabaseInstanceOutput() DatabaseInstanceOutput {
+func (i *DatabaseInstance) ToDatabaseInstanceOutput() DatabaseInstanceOutput {
 	return i.ToDatabaseInstanceOutputWithContext(context.Background())
 }
 
-func (i DatabaseInstance) ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput {
+func (i *DatabaseInstance) ToDatabaseInstanceOutputWithContext(ctx context.Context) DatabaseInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceOutput)
 }
 
@@ -372,7 +372,7 @@ type DatabaseInstanceOutput struct {
 }
 
 func (DatabaseInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatabaseInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseInstance)(nil))
 }
 
 func (o DatabaseInstanceOutput) ToDatabaseInstanceOutput() DatabaseInstanceOutput {

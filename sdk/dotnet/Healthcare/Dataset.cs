@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/dataset:Dataset default {{location}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/dataset:Dataset")]
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>

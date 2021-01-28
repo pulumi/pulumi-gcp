@@ -143,6 +143,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/externalVpnGateway:ExternalVpnGateway default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/externalVpnGateway:ExternalVpnGateway")]
     public partial class ExternalVpnGateway : Pulumi.CustomResource
     {
         /// <summary>

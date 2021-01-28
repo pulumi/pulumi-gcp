@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// This resource does not support import
     /// </summary>
+    [GcpResourceType("gcp:projects/defaultServiceAccounts:DefaultServiceAccounts")]
     public partial class DefaultServiceAccounts : Pulumi.CustomResource
     {
         /// <summary>

@@ -139,6 +139,7 @@ namespace Pulumi.Gcp.Projects
     ///  $ pulumi import gcp:projects/organizationPolicy:OrganizationPolicy policy test-project:serviceuser.services
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:projects/organizationPolicy:OrganizationPolicy")]
     public partial class OrganizationPolicy : Pulumi.CustomResource
     {
         /// <summary>

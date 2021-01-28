@@ -107,6 +107,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/metricDescriptor:MetricDescriptor default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/metricDescriptor:MetricDescriptor")]
     public partial class MetricDescriptor : Pulumi.CustomResource
     {
         /// <summary>

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Folder
 {
+    [GcpResourceType("gcp:folder/iAMMember:IAMMember")]
     public partial class IAMMember : Pulumi.CustomResource
     {
         [Output("condition")]

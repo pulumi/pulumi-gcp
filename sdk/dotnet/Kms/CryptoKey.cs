@@ -90,6 +90,7 @@ namespace Pulumi.Gcp.Kms
     ///  $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:kms/cryptoKey:CryptoKey")]
     public partial class CryptoKey : Pulumi.CustomResource
     {
         /// <summary>

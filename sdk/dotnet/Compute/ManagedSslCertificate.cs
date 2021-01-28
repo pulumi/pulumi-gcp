@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/managedSslCertificate:ManagedSslCertificate")]
     public partial class ManagedSslCertificate : Pulumi.CustomResource
     {
         /// <summary>

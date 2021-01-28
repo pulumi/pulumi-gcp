@@ -288,15 +288,15 @@ type CryptoKeyInput interface {
 	ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyOutput
 }
 
-func (CryptoKey) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKey)(nil)).Elem()
+func (*CryptoKey) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKey)(nil))
 }
 
-func (i CryptoKey) ToCryptoKeyOutput() CryptoKeyOutput {
+func (i *CryptoKey) ToCryptoKeyOutput() CryptoKeyOutput {
 	return i.ToCryptoKeyOutputWithContext(context.Background())
 }
 
-func (i CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyOutput {
+func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyOutput)
 }
 
@@ -305,7 +305,7 @@ type CryptoKeyOutput struct {
 }
 
 func (CryptoKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyOutput)(nil)).Elem()
+	return reflect.TypeOf((*CryptoKey)(nil))
 }
 
 func (o CryptoKeyOutput) ToCryptoKeyOutput() CryptoKeyOutput {

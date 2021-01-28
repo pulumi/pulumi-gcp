@@ -376,15 +376,15 @@ type CryptoKeyIAMBindingInput interface {
 	ToCryptoKeyIAMBindingOutputWithContext(ctx context.Context) CryptoKeyIAMBindingOutput
 }
 
-func (CryptoKeyIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMBinding)(nil)).Elem()
+func (*CryptoKeyIAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyIAMBinding)(nil))
 }
 
-func (i CryptoKeyIAMBinding) ToCryptoKeyIAMBindingOutput() CryptoKeyIAMBindingOutput {
+func (i *CryptoKeyIAMBinding) ToCryptoKeyIAMBindingOutput() CryptoKeyIAMBindingOutput {
 	return i.ToCryptoKeyIAMBindingOutputWithContext(context.Background())
 }
 
-func (i CryptoKeyIAMBinding) ToCryptoKeyIAMBindingOutputWithContext(ctx context.Context) CryptoKeyIAMBindingOutput {
+func (i *CryptoKeyIAMBinding) ToCryptoKeyIAMBindingOutputWithContext(ctx context.Context) CryptoKeyIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMBindingOutput)
 }
 
@@ -393,7 +393,7 @@ type CryptoKeyIAMBindingOutput struct {
 }
 
 func (CryptoKeyIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CryptoKeyIAMBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*CryptoKeyIAMBinding)(nil))
 }
 
 func (o CryptoKeyIAMBindingOutput) ToCryptoKeyIAMBindingOutput() CryptoKeyIAMBindingOutput {

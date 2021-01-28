@@ -215,6 +215,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/hl7Store:Hl7Store")]
     public partial class Hl7Store : Pulumi.CustomResource
     {
         /// <summary>

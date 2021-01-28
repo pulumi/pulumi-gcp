@@ -221,15 +221,15 @@ type IAMBindingInput interface {
 	ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput
 }
 
-func (IAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMBinding)(nil)).Elem()
+func (*IAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMBinding)(nil))
 }
 
-func (i IAMBinding) ToIAMBindingOutput() IAMBindingOutput {
+func (i *IAMBinding) ToIAMBindingOutput() IAMBindingOutput {
 	return i.ToIAMBindingOutputWithContext(context.Background())
 }
 
-func (i IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
+func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingOutput)
 }
 
@@ -238,7 +238,7 @@ type IAMBindingOutput struct {
 }
 
 func (IAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*IAMBinding)(nil))
 }
 
 func (o IAMBindingOutput) ToIAMBindingOutput() IAMBindingOutput {

@@ -63,6 +63,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/httpsHealthCheck:HttpsHealthCheck default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/httpsHealthCheck:HttpsHealthCheck")]
     public partial class HttpsHealthCheck : Pulumi.CustomResource
     {
         /// <summary>

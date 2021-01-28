@@ -180,15 +180,15 @@ type TunnelInstanceIAMBindingInput interface {
 	ToTunnelInstanceIAMBindingOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingOutput
 }
 
-func (TunnelInstanceIAMBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMBinding)(nil)).Elem()
+func (*TunnelInstanceIAMBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*TunnelInstanceIAMBinding)(nil))
 }
 
-func (i TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutput() TunnelInstanceIAMBindingOutput {
+func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutput() TunnelInstanceIAMBindingOutput {
 	return i.ToTunnelInstanceIAMBindingOutputWithContext(context.Background())
 }
 
-func (i TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingOutput {
+func (i *TunnelInstanceIAMBinding) ToTunnelInstanceIAMBindingOutputWithContext(ctx context.Context) TunnelInstanceIAMBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelInstanceIAMBindingOutput)
 }
 
@@ -197,7 +197,7 @@ type TunnelInstanceIAMBindingOutput struct {
 }
 
 func (TunnelInstanceIAMBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TunnelInstanceIAMBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*TunnelInstanceIAMBinding)(nil))
 }
 
 func (o TunnelInstanceIAMBindingOutput) ToTunnelInstanceIAMBindingOutput() TunnelInstanceIAMBindingOutput {

@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:sourcerepo/repositoryIamBinding:RepositoryIamBinding")]
     public partial class RepositoryIamBinding : Pulumi.CustomResource
     {
         [Output("condition")]

@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/folderExclusion:FolderExclusion")]
     public partial class FolderExclusion : Pulumi.CustomResource
     {
         /// <summary>

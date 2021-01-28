@@ -249,15 +249,15 @@ type DicomStoreIamPolicyInput interface {
 	ToDicomStoreIamPolicyOutputWithContext(ctx context.Context) DicomStoreIamPolicyOutput
 }
 
-func (DicomStoreIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamPolicy)(nil)).Elem()
+func (*DicomStoreIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DicomStoreIamPolicy)(nil))
 }
 
-func (i DicomStoreIamPolicy) ToDicomStoreIamPolicyOutput() DicomStoreIamPolicyOutput {
+func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutput() DicomStoreIamPolicyOutput {
 	return i.ToDicomStoreIamPolicyOutputWithContext(context.Background())
 }
 
-func (i DicomStoreIamPolicy) ToDicomStoreIamPolicyOutputWithContext(ctx context.Context) DicomStoreIamPolicyOutput {
+func (i *DicomStoreIamPolicy) ToDicomStoreIamPolicyOutputWithContext(ctx context.Context) DicomStoreIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamPolicyOutput)
 }
 
@@ -266,7 +266,7 @@ type DicomStoreIamPolicyOutput struct {
 }
 
 func (DicomStoreIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DicomStoreIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DicomStoreIamPolicy)(nil))
 }
 
 func (o DicomStoreIamPolicyOutput) ToDicomStoreIamPolicyOutput() DicomStoreIamPolicyOutput {

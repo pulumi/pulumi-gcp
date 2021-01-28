@@ -190,15 +190,15 @@ type ConsentStoreInput interface {
 	ToConsentStoreOutputWithContext(ctx context.Context) ConsentStoreOutput
 }
 
-func (ConsentStore) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStore)(nil)).Elem()
+func (*ConsentStore) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStore)(nil))
 }
 
-func (i ConsentStore) ToConsentStoreOutput() ConsentStoreOutput {
+func (i *ConsentStore) ToConsentStoreOutput() ConsentStoreOutput {
 	return i.ToConsentStoreOutputWithContext(context.Background())
 }
 
-func (i ConsentStore) ToConsentStoreOutputWithContext(ctx context.Context) ConsentStoreOutput {
+func (i *ConsentStore) ToConsentStoreOutputWithContext(ctx context.Context) ConsentStoreOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreOutput)
 }
 
@@ -207,7 +207,7 @@ type ConsentStoreOutput struct {
 }
 
 func (ConsentStoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConsentStoreOutput)(nil)).Elem()
+	return reflect.TypeOf((*ConsentStore)(nil))
 }
 
 func (o ConsentStoreOutput) ToConsentStoreOutput() ConsentStoreOutput {

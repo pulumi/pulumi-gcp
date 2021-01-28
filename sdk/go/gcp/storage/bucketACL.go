@@ -164,15 +164,15 @@ type BucketACLInput interface {
 	ToBucketACLOutputWithContext(ctx context.Context) BucketACLOutput
 }
 
-func (BucketACL) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketACL)(nil)).Elem()
+func (*BucketACL) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketACL)(nil))
 }
 
-func (i BucketACL) ToBucketACLOutput() BucketACLOutput {
+func (i *BucketACL) ToBucketACLOutput() BucketACLOutput {
 	return i.ToBucketACLOutputWithContext(context.Background())
 }
 
-func (i BucketACL) ToBucketACLOutputWithContext(ctx context.Context) BucketACLOutput {
+func (i *BucketACL) ToBucketACLOutputWithContext(ctx context.Context) BucketACLOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BucketACLOutput)
 }
 
@@ -181,7 +181,7 @@ type BucketACLOutput struct {
 }
 
 func (BucketACLOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketACLOutput)(nil)).Elem()
+	return reflect.TypeOf((*BucketACL)(nil))
 }
 
 func (o BucketACLOutput) ToBucketACLOutput() BucketACLOutput {

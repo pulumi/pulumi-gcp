@@ -44,6 +44,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier default project-id`
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier")]
     public partial class ProjectDefaultNetworkTier : Pulumi.CustomResource
     {
         /// <summary>

@@ -162,15 +162,15 @@ type WebIamBindingInput interface {
 	ToWebIamBindingOutputWithContext(ctx context.Context) WebIamBindingOutput
 }
 
-func (WebIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebIamBinding)(nil)).Elem()
+func (*WebIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebIamBinding)(nil))
 }
 
-func (i WebIamBinding) ToWebIamBindingOutput() WebIamBindingOutput {
+func (i *WebIamBinding) ToWebIamBindingOutput() WebIamBindingOutput {
 	return i.ToWebIamBindingOutputWithContext(context.Background())
 }
 
-func (i WebIamBinding) ToWebIamBindingOutputWithContext(ctx context.Context) WebIamBindingOutput {
+func (i *WebIamBinding) ToWebIamBindingOutputWithContext(ctx context.Context) WebIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamBindingOutput)
 }
 
@@ -179,7 +179,7 @@ type WebIamBindingOutput struct {
 }
 
 func (WebIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebIamBinding)(nil))
 }
 
 func (o WebIamBindingOutput) ToWebIamBindingOutput() WebIamBindingOutput {

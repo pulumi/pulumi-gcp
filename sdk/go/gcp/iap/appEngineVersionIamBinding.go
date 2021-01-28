@@ -201,15 +201,15 @@ type AppEngineVersionIamBindingInput interface {
 	ToAppEngineVersionIamBindingOutputWithContext(ctx context.Context) AppEngineVersionIamBindingOutput
 }
 
-func (AppEngineVersionIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineVersionIamBinding)(nil)).Elem()
+func (*AppEngineVersionIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineVersionIamBinding)(nil))
 }
 
-func (i AppEngineVersionIamBinding) ToAppEngineVersionIamBindingOutput() AppEngineVersionIamBindingOutput {
+func (i *AppEngineVersionIamBinding) ToAppEngineVersionIamBindingOutput() AppEngineVersionIamBindingOutput {
 	return i.ToAppEngineVersionIamBindingOutputWithContext(context.Background())
 }
 
-func (i AppEngineVersionIamBinding) ToAppEngineVersionIamBindingOutputWithContext(ctx context.Context) AppEngineVersionIamBindingOutput {
+func (i *AppEngineVersionIamBinding) ToAppEngineVersionIamBindingOutputWithContext(ctx context.Context) AppEngineVersionIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamBindingOutput)
 }
 
@@ -218,7 +218,7 @@ type AppEngineVersionIamBindingOutput struct {
 }
 
 func (AppEngineVersionIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineVersionIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*AppEngineVersionIamBinding)(nil))
 }
 
 func (o AppEngineVersionIamBindingOutput) ToAppEngineVersionIamBindingOutput() AppEngineVersionIamBindingOutput {

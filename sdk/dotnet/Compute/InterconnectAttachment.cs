@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/interconnectAttachment:InterconnectAttachment default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/interconnectAttachment:InterconnectAttachment")]
     public partial class InterconnectAttachment : Pulumi.CustomResource
     {
         /// <summary>

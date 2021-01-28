@@ -92,6 +92,7 @@ namespace Pulumi.Gcp.Redis
     ///  $ pulumi import gcp:redis/instance:Instance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:redis/instance:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

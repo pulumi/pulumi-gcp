@@ -95,6 +95,7 @@ namespace Pulumi.Gcp.BigQuery
     ///  $ pulumi import gcp:bigquery/table:Table default gcp-project/foo/bar
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:bigquery/table:Table")]
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>

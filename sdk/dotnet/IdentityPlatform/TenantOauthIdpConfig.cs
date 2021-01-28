@@ -61,6 +61,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default {{tenant}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig")]
     public partial class TenantOauthIdpConfig : Pulumi.CustomResource
     {
         /// <summary>

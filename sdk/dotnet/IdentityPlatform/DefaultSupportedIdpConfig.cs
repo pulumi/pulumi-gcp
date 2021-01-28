@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default {{idp_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig")]
     public partial class DefaultSupportedIdpConfig : Pulumi.CustomResource
     {
         /// <summary>

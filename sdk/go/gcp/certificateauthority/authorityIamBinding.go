@@ -104,15 +104,15 @@ type AuthorityIamBindingInput interface {
 	ToAuthorityIamBindingOutputWithContext(ctx context.Context) AuthorityIamBindingOutput
 }
 
-func (AuthorityIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorityIamBinding)(nil)).Elem()
+func (*AuthorityIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorityIamBinding)(nil))
 }
 
-func (i AuthorityIamBinding) ToAuthorityIamBindingOutput() AuthorityIamBindingOutput {
+func (i *AuthorityIamBinding) ToAuthorityIamBindingOutput() AuthorityIamBindingOutput {
 	return i.ToAuthorityIamBindingOutputWithContext(context.Background())
 }
 
-func (i AuthorityIamBinding) ToAuthorityIamBindingOutputWithContext(ctx context.Context) AuthorityIamBindingOutput {
+func (i *AuthorityIamBinding) ToAuthorityIamBindingOutputWithContext(ctx context.Context) AuthorityIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamBindingOutput)
 }
 
@@ -121,7 +121,7 @@ type AuthorityIamBindingOutput struct {
 }
 
 func (AuthorityIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuthorityIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*AuthorityIamBinding)(nil))
 }
 
 func (o AuthorityIamBindingOutput) ToAuthorityIamBindingOutput() AuthorityIamBindingOutput {

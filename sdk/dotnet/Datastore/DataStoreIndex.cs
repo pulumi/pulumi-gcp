@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Datastore
     ///  $ pulumi import gcp:datastore/dataStoreIndex:DataStoreIndex default {{index_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datastore/dataStoreIndex:DataStoreIndex")]
     public partial class DataStoreIndex : Pulumi.CustomResource
     {
         /// <summary>

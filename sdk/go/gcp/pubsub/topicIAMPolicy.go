@@ -250,15 +250,15 @@ type TopicIAMPolicyInput interface {
 	ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput
 }
 
-func (TopicIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMPolicy)(nil)).Elem()
+func (*TopicIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIAMPolicy)(nil))
 }
 
-func (i TopicIAMPolicy) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
+func (i *TopicIAMPolicy) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {
 	return i.ToTopicIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i TopicIAMPolicy) ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput {
+func (i *TopicIAMPolicy) ToTopicIAMPolicyOutputWithContext(ctx context.Context) TopicIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyOutput)
 }
 
@@ -267,7 +267,7 @@ type TopicIAMPolicyOutput struct {
 }
 
 func (TopicIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TopicIAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*TopicIAMPolicy)(nil))
 }
 
 func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutput() TopicIAMPolicyOutput {

@@ -519,15 +519,15 @@ type RegionDiskInput interface {
 	ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput
 }
 
-func (RegionDisk) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDisk)(nil)).Elem()
+func (*RegionDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionDisk)(nil))
 }
 
-func (i RegionDisk) ToRegionDiskOutput() RegionDiskOutput {
+func (i *RegionDisk) ToRegionDiskOutput() RegionDiskOutput {
 	return i.ToRegionDiskOutputWithContext(context.Background())
 }
 
-func (i RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
+func (i *RegionDisk) ToRegionDiskOutputWithContext(ctx context.Context) RegionDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskOutput)
 }
 
@@ -536,7 +536,7 @@ type RegionDiskOutput struct {
 }
 
 func (RegionDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionDiskOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegionDisk)(nil))
 }
 
 func (o RegionDiskOutput) ToRegionDiskOutput() RegionDiskOutput {

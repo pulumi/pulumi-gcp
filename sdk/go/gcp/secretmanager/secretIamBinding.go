@@ -263,15 +263,15 @@ type SecretIamBindingInput interface {
 	ToSecretIamBindingOutputWithContext(ctx context.Context) SecretIamBindingOutput
 }
 
-func (SecretIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamBinding)(nil)).Elem()
+func (*SecretIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretIamBinding)(nil))
 }
 
-func (i SecretIamBinding) ToSecretIamBindingOutput() SecretIamBindingOutput {
+func (i *SecretIamBinding) ToSecretIamBindingOutput() SecretIamBindingOutput {
 	return i.ToSecretIamBindingOutputWithContext(context.Background())
 }
 
-func (i SecretIamBinding) ToSecretIamBindingOutputWithContext(ctx context.Context) SecretIamBindingOutput {
+func (i *SecretIamBinding) ToSecretIamBindingOutputWithContext(ctx context.Context) SecretIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamBindingOutput)
 }
 
@@ -280,7 +280,7 @@ type SecretIamBindingOutput struct {
 }
 
 func (SecretIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecretIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*SecretIamBinding)(nil))
 }
 
 func (o SecretIamBindingOutput) ToSecretIamBindingOutput() SecretIamBindingOutput {

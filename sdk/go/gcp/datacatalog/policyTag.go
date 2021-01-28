@@ -175,15 +175,15 @@ type PolicyTagInput interface {
 	ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput
 }
 
-func (PolicyTag) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTag)(nil)).Elem()
+func (*PolicyTag) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyTag)(nil))
 }
 
-func (i PolicyTag) ToPolicyTagOutput() PolicyTagOutput {
+func (i *PolicyTag) ToPolicyTagOutput() PolicyTagOutput {
 	return i.ToPolicyTagOutputWithContext(context.Background())
 }
 
-func (i PolicyTag) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput {
+func (i *PolicyTag) ToPolicyTagOutputWithContext(ctx context.Context) PolicyTagOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagOutput)
 }
 
@@ -192,7 +192,7 @@ type PolicyTagOutput struct {
 }
 
 func (PolicyTagOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PolicyTagOutput)(nil)).Elem()
+	return reflect.TypeOf((*PolicyTag)(nil))
 }
 
 func (o PolicyTagOutput) ToPolicyTagOutput() PolicyTagOutput {

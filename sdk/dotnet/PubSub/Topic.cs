@@ -110,6 +110,7 @@ namespace Pulumi.Gcp.PubSub
     ///  $ pulumi import gcp:pubsub/topic:Topic default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:pubsub/topic:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>

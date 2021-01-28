@@ -495,15 +495,15 @@ type InstanceFromTemplateInput interface {
 	ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput
 }
 
-func (InstanceFromTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFromTemplate)(nil)).Elem()
+func (*InstanceFromTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFromTemplate)(nil))
 }
 
-func (i InstanceFromTemplate) ToInstanceFromTemplateOutput() InstanceFromTemplateOutput {
+func (i *InstanceFromTemplate) ToInstanceFromTemplateOutput() InstanceFromTemplateOutput {
 	return i.ToInstanceFromTemplateOutputWithContext(context.Background())
 }
 
-func (i InstanceFromTemplate) ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput {
+func (i *InstanceFromTemplate) ToInstanceFromTemplateOutputWithContext(ctx context.Context) InstanceFromTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateOutput)
 }
 
@@ -512,7 +512,7 @@ type InstanceFromTemplateOutput struct {
 }
 
 func (InstanceFromTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*InstanceFromTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*InstanceFromTemplate)(nil))
 }
 
 func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutput() InstanceFromTemplateOutput {

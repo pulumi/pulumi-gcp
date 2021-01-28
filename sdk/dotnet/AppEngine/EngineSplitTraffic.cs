@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.AppEngine
     ///  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default {{service}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:appengine/engineSplitTraffic:EngineSplitTraffic")]
     public partial class EngineSplitTraffic : Pulumi.CustomResource
     {
         /// <summary>

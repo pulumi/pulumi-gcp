@@ -246,15 +246,15 @@ type SSLCertificateInput interface {
 	ToSSLCertificateOutputWithContext(ctx context.Context) SSLCertificateOutput
 }
 
-func (SSLCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*SSLCertificate)(nil)).Elem()
+func (*SSLCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*SSLCertificate)(nil))
 }
 
-func (i SSLCertificate) ToSSLCertificateOutput() SSLCertificateOutput {
+func (i *SSLCertificate) ToSSLCertificateOutput() SSLCertificateOutput {
 	return i.ToSSLCertificateOutputWithContext(context.Background())
 }
 
-func (i SSLCertificate) ToSSLCertificateOutputWithContext(ctx context.Context) SSLCertificateOutput {
+func (i *SSLCertificate) ToSSLCertificateOutputWithContext(ctx context.Context) SSLCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateOutput)
 }
 
@@ -263,7 +263,7 @@ type SSLCertificateOutput struct {
 }
 
 func (SSLCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SSLCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*SSLCertificate)(nil))
 }
 
 func (o SSLCertificateOutput) ToSSLCertificateOutput() SSLCertificateOutput {

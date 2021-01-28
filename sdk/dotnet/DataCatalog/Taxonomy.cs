@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.DataCatalog
     ///  $ pulumi import gcp:datacatalog/taxonomy:Taxonomy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:datacatalog/taxonomy:Taxonomy")]
     public partial class Taxonomy : Pulumi.CustomResource
     {
         /// <summary>

@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/projectExclusion:ProjectExclusion my_exclusion projects/my-project/exclusions/my-exclusion
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/projectExclusion:ProjectExclusion")]
     public partial class ProjectExclusion : Pulumi.CustomResource
     {
         /// <summary>

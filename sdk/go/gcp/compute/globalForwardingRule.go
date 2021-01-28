@@ -798,15 +798,15 @@ type GlobalForwardingRuleInput interface {
 	ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput
 }
 
-func (GlobalForwardingRule) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalForwardingRule)(nil)).Elem()
+func (*GlobalForwardingRule) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlobalForwardingRule)(nil))
 }
 
-func (i GlobalForwardingRule) ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput {
+func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput {
 	return i.ToGlobalForwardingRuleOutputWithContext(context.Background())
 }
 
-func (i GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
+func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx context.Context) GlobalForwardingRuleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
 }
 
@@ -815,7 +815,7 @@ type GlobalForwardingRuleOutput struct {
 }
 
 func (GlobalForwardingRuleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GlobalForwardingRuleOutput)(nil)).Elem()
+	return reflect.TypeOf((*GlobalForwardingRule)(nil))
 }
 
 func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutput() GlobalForwardingRuleOutput {

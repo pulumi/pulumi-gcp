@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.CloudAsset
     ///  $ pulumi import gcp:cloudasset/organizationFeed:OrganizationFeed default {{org_id}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudasset/organizationFeed:OrganizationFeed")]
     public partial class OrganizationFeed : Pulumi.CustomResource
     {
         /// <summary>

@@ -167,6 +167,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/address:Address default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/address:Address")]
     public partial class Address : Pulumi.CustomResource
     {
         /// <summary>

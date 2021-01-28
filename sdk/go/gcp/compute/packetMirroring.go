@@ -377,15 +377,15 @@ type PacketMirroringInput interface {
 	ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput
 }
 
-func (PacketMirroring) ElementType() reflect.Type {
-	return reflect.TypeOf((*PacketMirroring)(nil)).Elem()
+func (*PacketMirroring) ElementType() reflect.Type {
+	return reflect.TypeOf((*PacketMirroring)(nil))
 }
 
-func (i PacketMirroring) ToPacketMirroringOutput() PacketMirroringOutput {
+func (i *PacketMirroring) ToPacketMirroringOutput() PacketMirroringOutput {
 	return i.ToPacketMirroringOutputWithContext(context.Background())
 }
 
-func (i PacketMirroring) ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput {
+func (i *PacketMirroring) ToPacketMirroringOutputWithContext(ctx context.Context) PacketMirroringOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PacketMirroringOutput)
 }
 
@@ -394,7 +394,7 @@ type PacketMirroringOutput struct {
 }
 
 func (PacketMirroringOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PacketMirroringOutput)(nil)).Elem()
+	return reflect.TypeOf((*PacketMirroring)(nil))
 }
 
 func (o PacketMirroringOutput) ToPacketMirroringOutput() PacketMirroringOutput {

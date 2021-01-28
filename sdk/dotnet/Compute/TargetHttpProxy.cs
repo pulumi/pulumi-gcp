@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/targetHttpProxy:TargetHttpProxy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/targetHttpProxy:TargetHttpProxy")]
     public partial class TargetHttpProxy : Pulumi.CustomResource
     {
         /// <summary>

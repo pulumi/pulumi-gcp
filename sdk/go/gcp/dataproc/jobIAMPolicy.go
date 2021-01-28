@@ -250,15 +250,15 @@ type JobIAMPolicyInput interface {
 	ToJobIAMPolicyOutputWithContext(ctx context.Context) JobIAMPolicyOutput
 }
 
-func (JobIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMPolicy)(nil)).Elem()
+func (*JobIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobIAMPolicy)(nil))
 }
 
-func (i JobIAMPolicy) ToJobIAMPolicyOutput() JobIAMPolicyOutput {
+func (i *JobIAMPolicy) ToJobIAMPolicyOutput() JobIAMPolicyOutput {
 	return i.ToJobIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i JobIAMPolicy) ToJobIAMPolicyOutputWithContext(ctx context.Context) JobIAMPolicyOutput {
+func (i *JobIAMPolicy) ToJobIAMPolicyOutputWithContext(ctx context.Context) JobIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMPolicyOutput)
 }
 
@@ -267,7 +267,7 @@ type JobIAMPolicyOutput struct {
 }
 
 func (JobIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*JobIAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*JobIAMPolicy)(nil))
 }
 
 func (o JobIAMPolicyOutput) ToJobIAMPolicyOutput() JobIAMPolicyOutput {

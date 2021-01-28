@@ -117,6 +117,7 @@ namespace Pulumi.Gcp.GameServices
     ///  $ pulumi import gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout default {{deployment_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:gameservices/gameServerDeploymentRollout:GameServerDeploymentRollout")]
     public partial class GameServerDeploymentRollout : Pulumi.CustomResource
     {
         /// <summary>

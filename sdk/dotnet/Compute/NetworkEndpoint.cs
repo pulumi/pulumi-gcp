@@ -109,6 +109,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/networkEndpoint:NetworkEndpoint default {{network_endpoint_group}}/{{instance}}/{{ip_address}}/{{port}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/networkEndpoint:NetworkEndpoint")]
     public partial class NetworkEndpoint : Pulumi.CustomResource
     {
         /// <summary>

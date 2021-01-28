@@ -241,15 +241,15 @@ type RegionTargetHttpsProxyInput interface {
 	ToRegionTargetHttpsProxyOutputWithContext(ctx context.Context) RegionTargetHttpsProxyOutput
 }
 
-func (RegionTargetHttpsProxy) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionTargetHttpsProxy)(nil)).Elem()
+func (*RegionTargetHttpsProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionTargetHttpsProxy)(nil))
 }
 
-func (i RegionTargetHttpsProxy) ToRegionTargetHttpsProxyOutput() RegionTargetHttpsProxyOutput {
+func (i *RegionTargetHttpsProxy) ToRegionTargetHttpsProxyOutput() RegionTargetHttpsProxyOutput {
 	return i.ToRegionTargetHttpsProxyOutputWithContext(context.Background())
 }
 
-func (i RegionTargetHttpsProxy) ToRegionTargetHttpsProxyOutputWithContext(ctx context.Context) RegionTargetHttpsProxyOutput {
+func (i *RegionTargetHttpsProxy) ToRegionTargetHttpsProxyOutputWithContext(ctx context.Context) RegionTargetHttpsProxyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyOutput)
 }
 
@@ -258,7 +258,7 @@ type RegionTargetHttpsProxyOutput struct {
 }
 
 func (RegionTargetHttpsProxyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionTargetHttpsProxyOutput)(nil)).Elem()
+	return reflect.TypeOf((*RegionTargetHttpsProxy)(nil))
 }
 
 func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyOutput() RegionTargetHttpsProxyOutput {

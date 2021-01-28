@@ -267,15 +267,15 @@ type FhirStoreIamBindingInput interface {
 	ToFhirStoreIamBindingOutputWithContext(ctx context.Context) FhirStoreIamBindingOutput
 }
 
-func (FhirStoreIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamBinding)(nil)).Elem()
+func (*FhirStoreIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreIamBinding)(nil))
 }
 
-func (i FhirStoreIamBinding) ToFhirStoreIamBindingOutput() FhirStoreIamBindingOutput {
+func (i *FhirStoreIamBinding) ToFhirStoreIamBindingOutput() FhirStoreIamBindingOutput {
 	return i.ToFhirStoreIamBindingOutputWithContext(context.Background())
 }
 
-func (i FhirStoreIamBinding) ToFhirStoreIamBindingOutputWithContext(ctx context.Context) FhirStoreIamBindingOutput {
+func (i *FhirStoreIamBinding) ToFhirStoreIamBindingOutputWithContext(ctx context.Context) FhirStoreIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingOutput)
 }
 
@@ -284,7 +284,7 @@ type FhirStoreIamBindingOutput struct {
 }
 
 func (FhirStoreIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FhirStoreIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*FhirStoreIamBinding)(nil))
 }
 
 func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingOutput() FhirStoreIamBindingOutput {

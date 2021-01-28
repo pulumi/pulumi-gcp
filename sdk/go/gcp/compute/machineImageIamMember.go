@@ -175,15 +175,15 @@ type MachineImageIamMemberInput interface {
 	ToMachineImageIamMemberOutputWithContext(ctx context.Context) MachineImageIamMemberOutput
 }
 
-func (MachineImageIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImageIamMember)(nil)).Elem()
+func (*MachineImageIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineImageIamMember)(nil))
 }
 
-func (i MachineImageIamMember) ToMachineImageIamMemberOutput() MachineImageIamMemberOutput {
+func (i *MachineImageIamMember) ToMachineImageIamMemberOutput() MachineImageIamMemberOutput {
 	return i.ToMachineImageIamMemberOutputWithContext(context.Background())
 }
 
-func (i MachineImageIamMember) ToMachineImageIamMemberOutputWithContext(ctx context.Context) MachineImageIamMemberOutput {
+func (i *MachineImageIamMember) ToMachineImageIamMemberOutputWithContext(ctx context.Context) MachineImageIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamMemberOutput)
 }
 
@@ -192,7 +192,7 @@ type MachineImageIamMemberOutput struct {
 }
 
 func (MachineImageIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*MachineImageIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*MachineImageIamMember)(nil))
 }
 
 func (o MachineImageIamMemberOutput) ToMachineImageIamMemberOutput() MachineImageIamMemberOutput {

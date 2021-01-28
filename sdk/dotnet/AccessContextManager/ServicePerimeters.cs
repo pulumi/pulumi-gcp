@@ -115,6 +115,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///  $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:accesscontextmanager/servicePerimeters:ServicePerimeters")]
     public partial class ServicePerimeters : Pulumi.CustomResource
     {
         /// <summary>

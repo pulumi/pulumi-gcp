@@ -85,6 +85,7 @@ namespace Pulumi.Gcp.BigQuery
     ///  $ pulumi import gcp:bigquery/dataTransferConfig:DataTransferConfig default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:bigquery/dataTransferConfig:DataTransferConfig")]
     public partial class DataTransferConfig : Pulumi.CustomResource
     {
         /// <summary>

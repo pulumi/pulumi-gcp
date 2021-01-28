@@ -160,15 +160,15 @@ type AppEngineServiceIamPolicyInput interface {
 	ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput
 }
 
-func (AppEngineServiceIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamPolicy)(nil)).Elem()
+func (*AppEngineServiceIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineServiceIamPolicy)(nil))
 }
 
-func (i AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput {
+func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput {
 	return i.ToAppEngineServiceIamPolicyOutputWithContext(context.Background())
 }
 
-func (i AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput {
+func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyOutput)
 }
 
@@ -177,7 +177,7 @@ type AppEngineServiceIamPolicyOutput struct {
 }
 
 func (AppEngineServiceIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppEngineServiceIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*AppEngineServiceIamPolicy)(nil))
 }
 
 func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutput() AppEngineServiceIamPolicyOutput {

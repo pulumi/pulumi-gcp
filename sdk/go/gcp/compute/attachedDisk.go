@@ -259,15 +259,15 @@ type AttachedDiskInput interface {
 	ToAttachedDiskOutputWithContext(ctx context.Context) AttachedDiskOutput
 }
 
-func (AttachedDisk) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttachedDisk)(nil)).Elem()
+func (*AttachedDisk) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttachedDisk)(nil))
 }
 
-func (i AttachedDisk) ToAttachedDiskOutput() AttachedDiskOutput {
+func (i *AttachedDisk) ToAttachedDiskOutput() AttachedDiskOutput {
 	return i.ToAttachedDiskOutputWithContext(context.Background())
 }
 
-func (i AttachedDisk) ToAttachedDiskOutputWithContext(ctx context.Context) AttachedDiskOutput {
+func (i *AttachedDisk) ToAttachedDiskOutputWithContext(ctx context.Context) AttachedDiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskOutput)
 }
 
@@ -276,7 +276,7 @@ type AttachedDiskOutput struct {
 }
 
 func (AttachedDiskOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AttachedDiskOutput)(nil)).Elem()
+	return reflect.TypeOf((*AttachedDisk)(nil))
 }
 
 func (o AttachedDiskOutput) ToAttachedDiskOutput() AttachedDiskOutput {

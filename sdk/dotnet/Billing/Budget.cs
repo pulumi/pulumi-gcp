@@ -234,6 +234,7 @@ namespace Pulumi.Gcp.Billing
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:billing/budget:Budget")]
     public partial class Budget : Pulumi.CustomResource
     {
         /// <summary>

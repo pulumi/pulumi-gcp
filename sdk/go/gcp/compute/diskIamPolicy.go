@@ -267,15 +267,15 @@ type DiskIamPolicyInput interface {
 	ToDiskIamPolicyOutputWithContext(ctx context.Context) DiskIamPolicyOutput
 }
 
-func (DiskIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskIamPolicy)(nil)).Elem()
+func (*DiskIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskIamPolicy)(nil))
 }
 
-func (i DiskIamPolicy) ToDiskIamPolicyOutput() DiskIamPolicyOutput {
+func (i *DiskIamPolicy) ToDiskIamPolicyOutput() DiskIamPolicyOutput {
 	return i.ToDiskIamPolicyOutputWithContext(context.Background())
 }
 
-func (i DiskIamPolicy) ToDiskIamPolicyOutputWithContext(ctx context.Context) DiskIamPolicyOutput {
+func (i *DiskIamPolicy) ToDiskIamPolicyOutputWithContext(ctx context.Context) DiskIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamPolicyOutput)
 }
 
@@ -284,7 +284,7 @@ type DiskIamPolicyOutput struct {
 }
 
 func (DiskIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DiskIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DiskIamPolicy)(nil))
 }
 
 func (o DiskIamPolicyOutput) ToDiskIamPolicyOutput() DiskIamPolicyOutput {

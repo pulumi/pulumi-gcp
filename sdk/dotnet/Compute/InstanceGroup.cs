@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/instanceGroup:InstanceGroup webservers projects/big-project/zones/us-central1-a/instanceGroups/terraform-webservers
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/instanceGroup:InstanceGroup")]
     public partial class InstanceGroup : Pulumi.CustomResource
     {
         /// <summary>

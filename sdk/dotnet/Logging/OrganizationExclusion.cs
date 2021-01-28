@@ -46,6 +46,7 @@ namespace Pulumi.Gcp.Logging
     ///  $ pulumi import gcp:logging/organizationExclusion:OrganizationExclusion my_exclusion organizations/{{organization}}/exclusions/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:logging/organizationExclusion:OrganizationExclusion")]
     public partial class OrganizationExclusion : Pulumi.CustomResource
     {
         /// <summary>

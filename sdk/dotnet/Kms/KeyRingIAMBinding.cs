@@ -230,6 +230,7 @@ namespace Pulumi.Gcp.Kms
     ///  $ pulumi import gcp:kms/keyRingIAMBinding:KeyRingIAMBinding key_ring_iam your-project-id/location-name/key-ring-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:kms/keyRingIAMBinding:KeyRingIAMBinding")]
     public partial class KeyRingIAMBinding : Pulumi.CustomResource
     {
         /// <summary>

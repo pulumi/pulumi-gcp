@@ -190,15 +190,15 @@ type BillingAccountBucketConfigInput interface {
 	ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput
 }
 
-func (BillingAccountBucketConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountBucketConfig)(nil)).Elem()
+func (*BillingAccountBucketConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*BillingAccountBucketConfig)(nil))
 }
 
-func (i BillingAccountBucketConfig) ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput {
+func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput {
 	return i.ToBillingAccountBucketConfigOutputWithContext(context.Background())
 }
 
-func (i BillingAccountBucketConfig) ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput {
+func (i *BillingAccountBucketConfig) ToBillingAccountBucketConfigOutputWithContext(ctx context.Context) BillingAccountBucketConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountBucketConfigOutput)
 }
 
@@ -207,7 +207,7 @@ type BillingAccountBucketConfigOutput struct {
 }
 
 func (BillingAccountBucketConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BillingAccountBucketConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*BillingAccountBucketConfig)(nil))
 }
 
 func (o BillingAccountBucketConfigOutput) ToBillingAccountBucketConfigOutput() BillingAccountBucketConfigOutput {

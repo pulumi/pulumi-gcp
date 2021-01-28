@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:storage/bucketACL:BucketACL")]
     public partial class BucketACL : Pulumi.CustomResource
     {
         /// <summary>

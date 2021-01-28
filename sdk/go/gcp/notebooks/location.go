@@ -119,15 +119,15 @@ type LocationInput interface {
 	ToLocationOutputWithContext(ctx context.Context) LocationOutput
 }
 
-func (Location) ElementType() reflect.Type {
-	return reflect.TypeOf((*Location)(nil)).Elem()
+func (*Location) ElementType() reflect.Type {
+	return reflect.TypeOf((*Location)(nil))
 }
 
-func (i Location) ToLocationOutput() LocationOutput {
+func (i *Location) ToLocationOutput() LocationOutput {
 	return i.ToLocationOutputWithContext(context.Background())
 }
 
-func (i Location) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
+func (i *Location) ToLocationOutputWithContext(ctx context.Context) LocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LocationOutput)
 }
 
@@ -136,7 +136,7 @@ type LocationOutput struct {
 }
 
 func (LocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LocationOutput)(nil)).Elem()
+	return reflect.TypeOf((*Location)(nil))
 }
 
 func (o LocationOutput) ToLocationOutput() LocationOutput {

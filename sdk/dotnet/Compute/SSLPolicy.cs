@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/sSLPolicy:SSLPolicy")]
     public partial class SSLPolicy : Pulumi.CustomResource
     {
         /// <summary>

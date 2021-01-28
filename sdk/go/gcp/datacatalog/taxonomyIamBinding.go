@@ -170,15 +170,15 @@ type TaxonomyIamBindingInput interface {
 	ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput
 }
 
-func (TaxonomyIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamBinding)(nil)).Elem()
+func (*TaxonomyIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyIamBinding)(nil))
 }
 
-func (i TaxonomyIamBinding) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput {
+func (i *TaxonomyIamBinding) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput {
 	return i.ToTaxonomyIamBindingOutputWithContext(context.Background())
 }
 
-func (i TaxonomyIamBinding) ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput {
+func (i *TaxonomyIamBinding) ToTaxonomyIamBindingOutputWithContext(ctx context.Context) TaxonomyIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingOutput)
 }
 
@@ -187,7 +187,7 @@ type TaxonomyIamBindingOutput struct {
 }
 
 func (TaxonomyIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TaxonomyIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*TaxonomyIamBinding)(nil))
 }
 
 func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutput() TaxonomyIamBindingOutput {

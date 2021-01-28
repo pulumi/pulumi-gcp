@@ -64,6 +64,7 @@ namespace Pulumi.Gcp.Diagflow
     ///  $ pulumi import gcp:diagflow/agent:Agent default {{project}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:diagflow/agent:Agent")]
     public partial class Agent : Pulumi.CustomResource
     {
         /// <summary>

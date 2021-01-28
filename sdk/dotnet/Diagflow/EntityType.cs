@@ -80,6 +80,7 @@ namespace Pulumi.Gcp.Diagflow
     ///  $ pulumi import gcp:diagflow/entityType:EntityType default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:diagflow/entityType:EntityType")]
     public partial class EntityType : Pulumi.CustomResource
     {
         /// <summary>

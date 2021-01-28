@@ -134,6 +134,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager appserver {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/instanceGroupManager:InstanceGroupManager")]
     public partial class InstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>

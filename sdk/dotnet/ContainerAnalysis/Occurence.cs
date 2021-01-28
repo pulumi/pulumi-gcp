@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.ContainerAnalysis
     ///  $ pulumi import gcp:containeranalysis/occurence:Occurence default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:containeranalysis/occurence:Occurence")]
     public partial class Occurence : Pulumi.CustomResource
     {
         /// <summary>

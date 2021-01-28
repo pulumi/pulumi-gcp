@@ -138,15 +138,15 @@ type GcpUserAccessBindingInput interface {
 	ToGcpUserAccessBindingOutputWithContext(ctx context.Context) GcpUserAccessBindingOutput
 }
 
-func (GcpUserAccessBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcpUserAccessBinding)(nil)).Elem()
+func (*GcpUserAccessBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*GcpUserAccessBinding)(nil))
 }
 
-func (i GcpUserAccessBinding) ToGcpUserAccessBindingOutput() GcpUserAccessBindingOutput {
+func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutput() GcpUserAccessBindingOutput {
 	return i.ToGcpUserAccessBindingOutputWithContext(context.Background())
 }
 
-func (i GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx context.Context) GcpUserAccessBindingOutput {
+func (i *GcpUserAccessBinding) ToGcpUserAccessBindingOutputWithContext(ctx context.Context) GcpUserAccessBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GcpUserAccessBindingOutput)
 }
 
@@ -155,7 +155,7 @@ type GcpUserAccessBindingOutput struct {
 }
 
 func (GcpUserAccessBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GcpUserAccessBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*GcpUserAccessBinding)(nil))
 }
 
 func (o GcpUserAccessBindingOutput) ToGcpUserAccessBindingOutput() GcpUserAccessBindingOutput {

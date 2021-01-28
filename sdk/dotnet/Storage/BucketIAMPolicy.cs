@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:storage/bucketIAMPolicy:BucketIAMPolicy")]
     public partial class BucketIAMPolicy : Pulumi.CustomResource
     {
         /// <summary>

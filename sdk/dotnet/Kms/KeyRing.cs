@@ -58,6 +58,7 @@ namespace Pulumi.Gcp.Kms
     ///  $ pulumi import gcp:kms/keyRing:KeyRing default {{location}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:kms/keyRing:KeyRing")]
     public partial class KeyRing : Pulumi.CustomResource
     {
         /// <summary>

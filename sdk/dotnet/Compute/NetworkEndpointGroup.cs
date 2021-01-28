@@ -84,6 +84,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/networkEndpointGroup:NetworkEndpointGroup default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/networkEndpointGroup:NetworkEndpointGroup")]
     public partial class NetworkEndpointGroup : Pulumi.CustomResource
     {
         /// <summary>

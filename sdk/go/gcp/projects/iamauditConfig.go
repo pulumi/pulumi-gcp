@@ -413,15 +413,15 @@ type IAMAuditConfigInput interface {
 	ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput
 }
 
-func (IAMAuditConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMAuditConfig)(nil)).Elem()
+func (*IAMAuditConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*IAMAuditConfig)(nil))
 }
 
-func (i IAMAuditConfig) ToIAMAuditConfigOutput() IAMAuditConfigOutput {
+func (i *IAMAuditConfig) ToIAMAuditConfigOutput() IAMAuditConfigOutput {
 	return i.ToIAMAuditConfigOutputWithContext(context.Background())
 }
 
-func (i IAMAuditConfig) ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput {
+func (i *IAMAuditConfig) ToIAMAuditConfigOutputWithContext(ctx context.Context) IAMAuditConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigOutput)
 }
 
@@ -430,7 +430,7 @@ type IAMAuditConfigOutput struct {
 }
 
 func (IAMAuditConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IAMAuditConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*IAMAuditConfig)(nil))
 }
 
 func (o IAMAuditConfigOutput) ToIAMAuditConfigOutput() IAMAuditConfigOutput {

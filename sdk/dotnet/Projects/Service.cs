@@ -48,6 +48,7 @@ namespace Pulumi.Gcp.Projects
     /// 
     ///  Note that unlike other resources that fail if they already exist, `terraform apply` can be successfully used to verify already enabled services. This means that when importing existing resources into Terraform, you can either import the `google_project_service` resources or treat them as new infrastructure and run `terraform apply` to add them to state.
     /// </summary>
+    [GcpResourceType("gcp:projects/service:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

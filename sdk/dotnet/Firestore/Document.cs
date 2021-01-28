@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Firestore
     ///  $ pulumi import gcp:firestore/document:Document default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:firestore/document:Document")]
     public partial class Document : Pulumi.CustomResource
     {
         /// <summary>

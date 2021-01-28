@@ -411,15 +411,15 @@ type TargetGrpcProxyInput interface {
 	ToTargetGrpcProxyOutputWithContext(ctx context.Context) TargetGrpcProxyOutput
 }
 
-func (TargetGrpcProxy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetGrpcProxy)(nil)).Elem()
+func (*TargetGrpcProxy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetGrpcProxy)(nil))
 }
 
-func (i TargetGrpcProxy) ToTargetGrpcProxyOutput() TargetGrpcProxyOutput {
+func (i *TargetGrpcProxy) ToTargetGrpcProxyOutput() TargetGrpcProxyOutput {
 	return i.ToTargetGrpcProxyOutputWithContext(context.Background())
 }
 
-func (i TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context) TargetGrpcProxyOutput {
+func (i *TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context) TargetGrpcProxyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyOutput)
 }
 
@@ -428,7 +428,7 @@ type TargetGrpcProxyOutput struct {
 }
 
 func (TargetGrpcProxyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetGrpcProxyOutput)(nil)).Elem()
+	return reflect.TypeOf((*TargetGrpcProxy)(nil))
 }
 
 func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutput() TargetGrpcProxyOutput {

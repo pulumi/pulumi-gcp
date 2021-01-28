@@ -586,15 +586,15 @@ type VPNTunnelInput interface {
 	ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput
 }
 
-func (VPNTunnel) ElementType() reflect.Type {
-	return reflect.TypeOf((*VPNTunnel)(nil)).Elem()
+func (*VPNTunnel) ElementType() reflect.Type {
+	return reflect.TypeOf((*VPNTunnel)(nil))
 }
 
-func (i VPNTunnel) ToVPNTunnelOutput() VPNTunnelOutput {
+func (i *VPNTunnel) ToVPNTunnelOutput() VPNTunnelOutput {
 	return i.ToVPNTunnelOutputWithContext(context.Background())
 }
 
-func (i VPNTunnel) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput {
+func (i *VPNTunnel) ToVPNTunnelOutputWithContext(ctx context.Context) VPNTunnelOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(VPNTunnelOutput)
 }
 
@@ -603,7 +603,7 @@ type VPNTunnelOutput struct {
 }
 
 func (VPNTunnelOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VPNTunnelOutput)(nil)).Elem()
+	return reflect.TypeOf((*VPNTunnel)(nil))
 }
 
 func (o VPNTunnelOutput) ToVPNTunnelOutput() VPNTunnelOutput {

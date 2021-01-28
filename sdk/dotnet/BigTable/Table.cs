@@ -70,6 +70,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     ///  The following fields can't be read and will show diffs if set in config when imported- `split_keys`
     /// </summary>
+    [GcpResourceType("gcp:bigtable/table:Table")]
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>

@@ -632,15 +632,15 @@ type FlexibleAppVersionInput interface {
 	ToFlexibleAppVersionOutputWithContext(ctx context.Context) FlexibleAppVersionOutput
 }
 
-func (FlexibleAppVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexibleAppVersion)(nil)).Elem()
+func (*FlexibleAppVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleAppVersion)(nil))
 }
 
-func (i FlexibleAppVersion) ToFlexibleAppVersionOutput() FlexibleAppVersionOutput {
+func (i *FlexibleAppVersion) ToFlexibleAppVersionOutput() FlexibleAppVersionOutput {
 	return i.ToFlexibleAppVersionOutputWithContext(context.Background())
 }
 
-func (i FlexibleAppVersion) ToFlexibleAppVersionOutputWithContext(ctx context.Context) FlexibleAppVersionOutput {
+func (i *FlexibleAppVersion) ToFlexibleAppVersionOutputWithContext(ctx context.Context) FlexibleAppVersionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexibleAppVersionOutput)
 }
 
@@ -649,7 +649,7 @@ type FlexibleAppVersionOutput struct {
 }
 
 func (FlexibleAppVersionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexibleAppVersionOutput)(nil)).Elem()
+	return reflect.TypeOf((*FlexibleAppVersion)(nil))
 }
 
 func (o FlexibleAppVersionOutput) ToFlexibleAppVersionOutput() FlexibleAppVersionOutput {

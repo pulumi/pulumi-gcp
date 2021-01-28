@@ -140,6 +140,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/targetInstance:TargetInstance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/targetInstance:TargetInstance")]
     public partial class TargetInstance : Pulumi.CustomResource
     {
         /// <summary>

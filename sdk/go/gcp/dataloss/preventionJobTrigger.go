@@ -249,15 +249,15 @@ type PreventionJobTriggerInput interface {
 	ToPreventionJobTriggerOutputWithContext(ctx context.Context) PreventionJobTriggerOutput
 }
 
-func (PreventionJobTrigger) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionJobTrigger)(nil)).Elem()
+func (*PreventionJobTrigger) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionJobTrigger)(nil))
 }
 
-func (i PreventionJobTrigger) ToPreventionJobTriggerOutput() PreventionJobTriggerOutput {
+func (i *PreventionJobTrigger) ToPreventionJobTriggerOutput() PreventionJobTriggerOutput {
 	return i.ToPreventionJobTriggerOutputWithContext(context.Background())
 }
 
-func (i PreventionJobTrigger) ToPreventionJobTriggerOutputWithContext(ctx context.Context) PreventionJobTriggerOutput {
+func (i *PreventionJobTrigger) ToPreventionJobTriggerOutputWithContext(ctx context.Context) PreventionJobTriggerOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionJobTriggerOutput)
 }
 
@@ -266,7 +266,7 @@ type PreventionJobTriggerOutput struct {
 }
 
 func (PreventionJobTriggerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionJobTriggerOutput)(nil)).Elem()
+	return reflect.TypeOf((*PreventionJobTrigger)(nil))
 }
 
 func (o PreventionJobTriggerOutput) ToPreventionJobTriggerOutput() PreventionJobTriggerOutput {

@@ -104,15 +104,15 @@ type AccountIamMemberInput interface {
 	ToAccountIamMemberOutputWithContext(ctx context.Context) AccountIamMemberOutput
 }
 
-func (AccountIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountIamMember)(nil)).Elem()
+func (*AccountIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccountIamMember)(nil))
 }
 
-func (i AccountIamMember) ToAccountIamMemberOutput() AccountIamMemberOutput {
+func (i *AccountIamMember) ToAccountIamMemberOutput() AccountIamMemberOutput {
 	return i.ToAccountIamMemberOutputWithContext(context.Background())
 }
 
-func (i AccountIamMember) ToAccountIamMemberOutputWithContext(ctx context.Context) AccountIamMemberOutput {
+func (i *AccountIamMember) ToAccountIamMemberOutputWithContext(ctx context.Context) AccountIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberOutput)
 }
 
@@ -121,7 +121,7 @@ type AccountIamMemberOutput struct {
 }
 
 func (AccountIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AccountIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*AccountIamMember)(nil))
 }
 
 func (o AccountIamMemberOutput) ToAccountIamMemberOutput() AccountIamMemberOutput {

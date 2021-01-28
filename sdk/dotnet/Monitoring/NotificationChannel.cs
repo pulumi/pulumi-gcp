@@ -94,6 +94,7 @@ namespace Pulumi.Gcp.Monitoring
     ///  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:monitoring/notificationChannel:NotificationChannel")]
     public partial class NotificationChannel : Pulumi.CustomResource
     {
         /// <summary>

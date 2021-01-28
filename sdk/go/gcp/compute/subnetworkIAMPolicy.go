@@ -172,15 +172,15 @@ type SubnetworkIAMPolicyInput interface {
 	ToSubnetworkIAMPolicyOutputWithContext(ctx context.Context) SubnetworkIAMPolicyOutput
 }
 
-func (SubnetworkIAMPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkIAMPolicy)(nil)).Elem()
+func (*SubnetworkIAMPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetworkIAMPolicy)(nil))
 }
 
-func (i SubnetworkIAMPolicy) ToSubnetworkIAMPolicyOutput() SubnetworkIAMPolicyOutput {
+func (i *SubnetworkIAMPolicy) ToSubnetworkIAMPolicyOutput() SubnetworkIAMPolicyOutput {
 	return i.ToSubnetworkIAMPolicyOutputWithContext(context.Background())
 }
 
-func (i SubnetworkIAMPolicy) ToSubnetworkIAMPolicyOutputWithContext(ctx context.Context) SubnetworkIAMPolicyOutput {
+func (i *SubnetworkIAMPolicy) ToSubnetworkIAMPolicyOutputWithContext(ctx context.Context) SubnetworkIAMPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMPolicyOutput)
 }
 
@@ -189,7 +189,7 @@ type SubnetworkIAMPolicyOutput struct {
 }
 
 func (SubnetworkIAMPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SubnetworkIAMPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*SubnetworkIAMPolicy)(nil))
 }
 
 func (o SubnetworkIAMPolicyOutput) ToSubnetworkIAMPolicyOutput() SubnetworkIAMPolicyOutput {

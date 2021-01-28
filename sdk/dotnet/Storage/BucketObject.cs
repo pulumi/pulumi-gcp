@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Storage
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:storage/bucketObject:BucketObject")]
     public partial class BucketObject : Pulumi.CustomResource
     {
         /// <summary>

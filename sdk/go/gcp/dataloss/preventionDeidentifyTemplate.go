@@ -257,15 +257,15 @@ type PreventionDeidentifyTemplateInput interface {
 	ToPreventionDeidentifyTemplateOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateOutput
 }
 
-func (PreventionDeidentifyTemplate) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionDeidentifyTemplate)(nil)).Elem()
+func (*PreventionDeidentifyTemplate) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreventionDeidentifyTemplate)(nil))
 }
 
-func (i PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutput() PreventionDeidentifyTemplateOutput {
+func (i *PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutput() PreventionDeidentifyTemplateOutput {
 	return i.ToPreventionDeidentifyTemplateOutputWithContext(context.Background())
 }
 
-func (i PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateOutput {
+func (i *PreventionDeidentifyTemplate) ToPreventionDeidentifyTemplateOutputWithContext(ctx context.Context) PreventionDeidentifyTemplateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionDeidentifyTemplateOutput)
 }
 
@@ -274,7 +274,7 @@ type PreventionDeidentifyTemplateOutput struct {
 }
 
 func (PreventionDeidentifyTemplateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PreventionDeidentifyTemplateOutput)(nil)).Elem()
+	return reflect.TypeOf((*PreventionDeidentifyTemplate)(nil))
 }
 
 func (o PreventionDeidentifyTemplateOutput) ToPreventionDeidentifyTemplateOutput() PreventionDeidentifyTemplateOutput {

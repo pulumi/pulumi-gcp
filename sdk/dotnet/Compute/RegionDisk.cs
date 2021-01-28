@@ -95,6 +95,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionDisk:RegionDisk default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionDisk:RegionDisk")]
     public partial class RegionDisk : Pulumi.CustomResource
     {
         /// <summary>

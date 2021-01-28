@@ -684,6 +684,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionUrlMap:RegionUrlMap")]
     public partial class RegionUrlMap : Pulumi.CustomResource
     {
         /// <summary>

@@ -172,15 +172,15 @@ type BrandInput interface {
 	ToBrandOutputWithContext(ctx context.Context) BrandOutput
 }
 
-func (Brand) ElementType() reflect.Type {
-	return reflect.TypeOf((*Brand)(nil)).Elem()
+func (*Brand) ElementType() reflect.Type {
+	return reflect.TypeOf((*Brand)(nil))
 }
 
-func (i Brand) ToBrandOutput() BrandOutput {
+func (i *Brand) ToBrandOutput() BrandOutput {
 	return i.ToBrandOutputWithContext(context.Background())
 }
 
-func (i Brand) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
+func (i *Brand) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandOutput)
 }
 
@@ -189,7 +189,7 @@ type BrandOutput struct {
 }
 
 func (BrandOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BrandOutput)(nil)).Elem()
+	return reflect.TypeOf((*Brand)(nil))
 }
 
 func (o BrandOutput) ToBrandOutput() BrandOutput {

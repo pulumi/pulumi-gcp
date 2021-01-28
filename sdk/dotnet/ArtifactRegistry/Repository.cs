@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///  $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:artifactregistry/repository:Repository")]
     public partial class Repository : Pulumi.CustomResource
     {
         /// <summary>

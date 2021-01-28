@@ -37,6 +37,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition")]
     public partial class AccessLevelCondition : Pulumi.CustomResource
     {
         /// <summary>

@@ -157,6 +157,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/packetMirroring:PacketMirroring default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/packetMirroring:PacketMirroring")]
     public partial class PacketMirroring : Pulumi.CustomResource
     {
         /// <summary>

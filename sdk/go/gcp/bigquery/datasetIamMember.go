@@ -269,15 +269,15 @@ type DatasetIamMemberInput interface {
 	ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput
 }
 
-func (DatasetIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamMember)(nil)).Elem()
+func (*DatasetIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamMember)(nil))
 }
 
-func (i DatasetIamMember) ToDatasetIamMemberOutput() DatasetIamMemberOutput {
+func (i *DatasetIamMember) ToDatasetIamMemberOutput() DatasetIamMemberOutput {
 	return i.ToDatasetIamMemberOutputWithContext(context.Background())
 }
 
-func (i DatasetIamMember) ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput {
+func (i *DatasetIamMember) ToDatasetIamMemberOutputWithContext(ctx context.Context) DatasetIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberOutput)
 }
 
@@ -286,7 +286,7 @@ type DatasetIamMemberOutput struct {
 }
 
 func (DatasetIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatasetIamMember)(nil))
 }
 
 func (o DatasetIamMemberOutput) ToDatasetIamMemberOutput() DatasetIamMemberOutput {

@@ -158,15 +158,15 @@ type IamAuditConfigInput interface {
 	ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput
 }
 
-func (IamAuditConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamAuditConfig)(nil)).Elem()
+func (*IamAuditConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*IamAuditConfig)(nil))
 }
 
-func (i IamAuditConfig) ToIamAuditConfigOutput() IamAuditConfigOutput {
+func (i *IamAuditConfig) ToIamAuditConfigOutput() IamAuditConfigOutput {
 	return i.ToIamAuditConfigOutputWithContext(context.Background())
 }
 
-func (i IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput {
+func (i *IamAuditConfig) ToIamAuditConfigOutputWithContext(ctx context.Context) IamAuditConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IamAuditConfigOutput)
 }
 
@@ -175,7 +175,7 @@ type IamAuditConfigOutput struct {
 }
 
 func (IamAuditConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*IamAuditConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*IamAuditConfig)(nil))
 }
 
 func (o IamAuditConfigOutput) ToIamAuditConfigOutput() IamAuditConfigOutput {

@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Billing
 {
+    [GcpResourceType("gcp:billing/accountIamBinding:AccountIamBinding")]
     public partial class AccountIamBinding : Pulumi.CustomResource
     {
         [Output("billingAccountId")]

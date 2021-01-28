@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.CertificateAuthority
 {
+    [GcpResourceType("gcp:certificateauthority/authorityIamMember:AuthorityIamMember")]
     public partial class AuthorityIamMember : Pulumi.CustomResource
     {
         [Output("certificateAuthority")]

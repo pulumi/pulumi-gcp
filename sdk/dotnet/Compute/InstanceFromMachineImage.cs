@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Compute
 {
+    [GcpResourceType("gcp:compute/instanceFromMachineImage:InstanceFromMachineImage")]
     public partial class InstanceFromMachineImage : Pulumi.CustomResource
     {
         /// <summary>

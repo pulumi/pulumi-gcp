@@ -99,6 +99,7 @@ namespace Pulumi.Gcp.BigTable
     /// 
     /// This resource does not support import.
     /// </summary>
+    [GcpResourceType("gcp:bigtable/gCPolicy:GCPolicy")]
     public partial class GCPolicy : Pulumi.CustomResource
     {
         /// <summary>

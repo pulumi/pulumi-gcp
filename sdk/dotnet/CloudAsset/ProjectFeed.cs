@@ -36,6 +36,7 @@ namespace Pulumi.Gcp.CloudAsset
     ///  $ pulumi import gcp:cloudasset/projectFeed:ProjectFeed default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudasset/projectFeed:ProjectFeed")]
     public partial class ProjectFeed : Pulumi.CustomResource
     {
         /// <summary>

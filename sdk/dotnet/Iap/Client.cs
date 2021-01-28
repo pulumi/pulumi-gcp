@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.Iap
     ///  $ pulumi import gcp:iap/client:Client default {{brand}}/{{client_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:iap/client:Client")]
     public partial class Client : Pulumi.CustomResource
     {
         /// <summary>

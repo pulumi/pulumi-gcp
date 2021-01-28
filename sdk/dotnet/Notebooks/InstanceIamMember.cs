@@ -129,6 +129,7 @@ namespace Pulumi.Gcp.Notebooks
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:notebooks/instanceIamMember:InstanceIamMember")]
     public partial class InstanceIamMember : Pulumi.CustomResource
     {
         [Output("condition")]

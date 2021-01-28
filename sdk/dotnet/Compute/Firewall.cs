@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/firewall:Firewall default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/firewall:Firewall")]
     public partial class Firewall : Pulumi.CustomResource
     {
         /// <summary>

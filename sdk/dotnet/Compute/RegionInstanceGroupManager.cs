@@ -122,6 +122,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager appserver appserver-igm
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager")]
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>

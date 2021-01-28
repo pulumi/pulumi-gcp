@@ -235,15 +235,15 @@ type LienInput interface {
 	ToLienOutputWithContext(ctx context.Context) LienOutput
 }
 
-func (Lien) ElementType() reflect.Type {
-	return reflect.TypeOf((*Lien)(nil)).Elem()
+func (*Lien) ElementType() reflect.Type {
+	return reflect.TypeOf((*Lien)(nil))
 }
 
-func (i Lien) ToLienOutput() LienOutput {
+func (i *Lien) ToLienOutput() LienOutput {
 	return i.ToLienOutputWithContext(context.Background())
 }
 
-func (i Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
+func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienOutput)
 }
 
@@ -252,7 +252,7 @@ type LienOutput struct {
 }
 
 func (LienOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*LienOutput)(nil)).Elem()
+	return reflect.TypeOf((*Lien)(nil))
 }
 
 func (o LienOutput) ToLienOutput() LienOutput {

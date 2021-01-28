@@ -245,15 +245,15 @@ type TableIamPolicyInput interface {
 	ToTableIamPolicyOutputWithContext(ctx context.Context) TableIamPolicyOutput
 }
 
-func (TableIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableIamPolicy)(nil)).Elem()
+func (*TableIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableIamPolicy)(nil))
 }
 
-func (i TableIamPolicy) ToTableIamPolicyOutput() TableIamPolicyOutput {
+func (i *TableIamPolicy) ToTableIamPolicyOutput() TableIamPolicyOutput {
 	return i.ToTableIamPolicyOutputWithContext(context.Background())
 }
 
-func (i TableIamPolicy) ToTableIamPolicyOutputWithContext(ctx context.Context) TableIamPolicyOutput {
+func (i *TableIamPolicy) ToTableIamPolicyOutputWithContext(ctx context.Context) TableIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyOutput)
 }
 
@@ -262,7 +262,7 @@ type TableIamPolicyOutput struct {
 }
 
 func (TableIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TableIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*TableIamPolicy)(nil))
 }
 
 func (o TableIamPolicyOutput) ToTableIamPolicyOutput() TableIamPolicyOutput {

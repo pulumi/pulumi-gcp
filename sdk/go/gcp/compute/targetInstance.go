@@ -369,15 +369,15 @@ type TargetInstanceInput interface {
 	ToTargetInstanceOutputWithContext(ctx context.Context) TargetInstanceOutput
 }
 
-func (TargetInstance) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetInstance)(nil)).Elem()
+func (*TargetInstance) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetInstance)(nil))
 }
 
-func (i TargetInstance) ToTargetInstanceOutput() TargetInstanceOutput {
+func (i *TargetInstance) ToTargetInstanceOutput() TargetInstanceOutput {
 	return i.ToTargetInstanceOutputWithContext(context.Background())
 }
 
-func (i TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) TargetInstanceOutput {
+func (i *TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) TargetInstanceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceOutput)
 }
 
@@ -386,7 +386,7 @@ type TargetInstanceOutput struct {
 }
 
 func (TargetInstanceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TargetInstanceOutput)(nil)).Elem()
+	return reflect.TypeOf((*TargetInstance)(nil))
 }
 
 func (o TargetInstanceOutput) ToTargetInstanceOutput() TargetInstanceOutput {

@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding dicom_store_iam your-project-id/location-name/dataset-name/dicom-store-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding")]
     public partial class DicomStoreIamBinding : Pulumi.CustomResource
     {
         [Output("condition")]

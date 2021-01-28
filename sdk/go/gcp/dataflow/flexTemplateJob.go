@@ -237,15 +237,15 @@ type FlexTemplateJobInput interface {
 	ToFlexTemplateJobOutputWithContext(ctx context.Context) FlexTemplateJobOutput
 }
 
-func (FlexTemplateJob) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexTemplateJob)(nil)).Elem()
+func (*FlexTemplateJob) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexTemplateJob)(nil))
 }
 
-func (i FlexTemplateJob) ToFlexTemplateJobOutput() FlexTemplateJobOutput {
+func (i *FlexTemplateJob) ToFlexTemplateJobOutput() FlexTemplateJobOutput {
 	return i.ToFlexTemplateJobOutputWithContext(context.Background())
 }
 
-func (i FlexTemplateJob) ToFlexTemplateJobOutputWithContext(ctx context.Context) FlexTemplateJobOutput {
+func (i *FlexTemplateJob) ToFlexTemplateJobOutputWithContext(ctx context.Context) FlexTemplateJobOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobOutput)
 }
 
@@ -254,7 +254,7 @@ type FlexTemplateJobOutput struct {
 }
 
 func (FlexTemplateJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FlexTemplateJobOutput)(nil)).Elem()
+	return reflect.TypeOf((*FlexTemplateJob)(nil))
 }
 
 func (o FlexTemplateJobOutput) ToFlexTemplateJobOutput() FlexTemplateJobOutput {

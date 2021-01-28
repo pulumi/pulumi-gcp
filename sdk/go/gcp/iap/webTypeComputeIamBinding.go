@@ -162,15 +162,15 @@ type WebTypeComputeIamBindingInput interface {
 	ToWebTypeComputeIamBindingOutputWithContext(ctx context.Context) WebTypeComputeIamBindingOutput
 }
 
-func (WebTypeComputeIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamBinding)(nil)).Elem()
+func (*WebTypeComputeIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebTypeComputeIamBinding)(nil))
 }
 
-func (i WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutput() WebTypeComputeIamBindingOutput {
+func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutput() WebTypeComputeIamBindingOutput {
 	return i.ToWebTypeComputeIamBindingOutputWithContext(context.Background())
 }
 
-func (i WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutputWithContext(ctx context.Context) WebTypeComputeIamBindingOutput {
+func (i *WebTypeComputeIamBinding) ToWebTypeComputeIamBindingOutputWithContext(ctx context.Context) WebTypeComputeIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(WebTypeComputeIamBindingOutput)
 }
 
@@ -179,7 +179,7 @@ type WebTypeComputeIamBindingOutput struct {
 }
 
 func (WebTypeComputeIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*WebTypeComputeIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*WebTypeComputeIamBinding)(nil))
 }
 
 func (o WebTypeComputeIamBindingOutput) ToWebTypeComputeIamBindingOutput() WebTypeComputeIamBindingOutput {

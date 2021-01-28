@@ -26,6 +26,7 @@ namespace Pulumi.Gcp.Iam
     ///  $ pulumi import gcp:iam/workloadIdentityPool:WorkloadIdentityPool default {{workload_identity_pool_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:iam/workloadIdentityPool:WorkloadIdentityPool")]
     public partial class WorkloadIdentityPool : Pulumi.CustomResource
     {
         /// <summary>

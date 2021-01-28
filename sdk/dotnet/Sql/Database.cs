@@ -66,6 +66,7 @@ namespace Pulumi.Gcp.Sql
     ///  $ pulumi import gcp:sql/database:Database default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:sql/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

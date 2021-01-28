@@ -185,15 +185,15 @@ type GatewayIamMemberInput interface {
 	ToGatewayIamMemberOutputWithContext(ctx context.Context) GatewayIamMemberOutput
 }
 
-func (GatewayIamMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamMember)(nil)).Elem()
+func (*GatewayIamMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayIamMember)(nil))
 }
 
-func (i GatewayIamMember) ToGatewayIamMemberOutput() GatewayIamMemberOutput {
+func (i *GatewayIamMember) ToGatewayIamMemberOutput() GatewayIamMemberOutput {
 	return i.ToGatewayIamMemberOutputWithContext(context.Background())
 }
 
-func (i GatewayIamMember) ToGatewayIamMemberOutputWithContext(ctx context.Context) GatewayIamMemberOutput {
+func (i *GatewayIamMember) ToGatewayIamMemberOutputWithContext(ctx context.Context) GatewayIamMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamMemberOutput)
 }
 
@@ -202,7 +202,7 @@ type GatewayIamMemberOutput struct {
 }
 
 func (GatewayIamMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GatewayIamMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*GatewayIamMember)(nil))
 }
 
 func (o GatewayIamMemberOutput) ToGatewayIamMemberOutput() GatewayIamMemberOutput {

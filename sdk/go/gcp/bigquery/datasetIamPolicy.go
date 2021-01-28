@@ -251,15 +251,15 @@ type DatasetIamPolicyInput interface {
 	ToDatasetIamPolicyOutputWithContext(ctx context.Context) DatasetIamPolicyOutput
 }
 
-func (DatasetIamPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamPolicy)(nil)).Elem()
+func (*DatasetIamPolicy) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetIamPolicy)(nil))
 }
 
-func (i DatasetIamPolicy) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {
+func (i *DatasetIamPolicy) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {
 	return i.ToDatasetIamPolicyOutputWithContext(context.Background())
 }
 
-func (i DatasetIamPolicy) ToDatasetIamPolicyOutputWithContext(ctx context.Context) DatasetIamPolicyOutput {
+func (i *DatasetIamPolicy) ToDatasetIamPolicyOutputWithContext(ctx context.Context) DatasetIamPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyOutput)
 }
 
@@ -268,7 +268,7 @@ type DatasetIamPolicyOutput struct {
 }
 
 func (DatasetIamPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetIamPolicyOutput)(nil)).Elem()
+	return reflect.TypeOf((*DatasetIamPolicy)(nil))
 }
 
 func (o DatasetIamPolicyOutput) ToDatasetIamPolicyOutput() DatasetIamPolicyOutput {

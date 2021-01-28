@@ -298,6 +298,7 @@ namespace Pulumi.Gcp.CloudRun
     ///  $ pulumi import gcp:cloudrun/service:Service default {{location}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:cloudrun/service:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

@@ -35,6 +35,7 @@ namespace Pulumi.Gcp.Iap
     ///  $ pulumi import gcp:iap/brand:Brand default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:iap/brand:Brand")]
     public partial class Brand : Pulumi.CustomResource
     {
         /// <summary>

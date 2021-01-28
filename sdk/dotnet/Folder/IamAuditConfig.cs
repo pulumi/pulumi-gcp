@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Gcp.Folder
 {
+    [GcpResourceType("gcp:folder/iamAuditConfig:IamAuditConfig")]
     public partial class IamAuditConfig : Pulumi.CustomResource
     {
         /// <summary>

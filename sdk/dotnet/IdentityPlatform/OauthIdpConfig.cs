@@ -56,6 +56,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///  $ pulumi import gcp:identityplatform/oauthIdpConfig:OauthIdpConfig default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:identityplatform/oauthIdpConfig:OauthIdpConfig")]
     public partial class OauthIdpConfig : Pulumi.CustomResource
     {
         /// <summary>

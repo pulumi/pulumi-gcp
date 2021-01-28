@@ -249,15 +249,15 @@ type OccurenceInput interface {
 	ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput
 }
 
-func (Occurence) ElementType() reflect.Type {
-	return reflect.TypeOf((*Occurence)(nil)).Elem()
+func (*Occurence) ElementType() reflect.Type {
+	return reflect.TypeOf((*Occurence)(nil))
 }
 
-func (i Occurence) ToOccurenceOutput() OccurenceOutput {
+func (i *Occurence) ToOccurenceOutput() OccurenceOutput {
 	return i.ToOccurenceOutputWithContext(context.Background())
 }
 
-func (i Occurence) ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput {
+func (i *Occurence) ToOccurenceOutputWithContext(ctx context.Context) OccurenceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(OccurenceOutput)
 }
 
@@ -266,7 +266,7 @@ type OccurenceOutput struct {
 }
 
 func (OccurenceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OccurenceOutput)(nil)).Elem()
+	return reflect.TypeOf((*Occurence)(nil))
 }
 
 func (o OccurenceOutput) ToOccurenceOutput() OccurenceOutput {

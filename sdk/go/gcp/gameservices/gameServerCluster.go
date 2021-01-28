@@ -208,15 +208,15 @@ type GameServerClusterInput interface {
 	ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput
 }
 
-func (GameServerCluster) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerCluster)(nil)).Elem()
+func (*GameServerCluster) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerCluster)(nil))
 }
 
-func (i GameServerCluster) ToGameServerClusterOutput() GameServerClusterOutput {
+func (i *GameServerCluster) ToGameServerClusterOutput() GameServerClusterOutput {
 	return i.ToGameServerClusterOutputWithContext(context.Background())
 }
 
-func (i GameServerCluster) ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput {
+func (i *GameServerCluster) ToGameServerClusterOutputWithContext(ctx context.Context) GameServerClusterOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerClusterOutput)
 }
 
@@ -225,7 +225,7 @@ type GameServerClusterOutput struct {
 }
 
 func (GameServerClusterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerClusterOutput)(nil)).Elem()
+	return reflect.TypeOf((*GameServerCluster)(nil))
 }
 
 func (o GameServerClusterOutput) ToGameServerClusterOutput() GameServerClusterOutput {

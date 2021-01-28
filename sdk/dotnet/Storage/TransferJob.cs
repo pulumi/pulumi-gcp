@@ -126,6 +126,7 @@ namespace Pulumi.Gcp.Storage
     ///  $ pulumi import gcp:storage/transferJob:TransferJob nightly-backup-transfer-job my-project-1asd32/8422144862922355674
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:storage/transferJob:TransferJob")]
     public partial class TransferJob : Pulumi.CustomResource
     {
         /// <summary>

@@ -77,6 +77,7 @@ namespace Pulumi.Gcp.AccessContextManager
     ///  $ pulumi import gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource default {{perimeter_name}}/{{resource}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource")]
     public partial class ServicePerimeterResource : Pulumi.CustomResource
     {
         /// <summary>

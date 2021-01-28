@@ -244,15 +244,15 @@ type ServiceIamBindingInput interface {
 	ToServiceIamBindingOutputWithContext(ctx context.Context) ServiceIamBindingOutput
 }
 
-func (ServiceIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIamBinding)(nil)).Elem()
+func (*ServiceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceIamBinding)(nil))
 }
 
-func (i ServiceIamBinding) ToServiceIamBindingOutput() ServiceIamBindingOutput {
+func (i *ServiceIamBinding) ToServiceIamBindingOutput() ServiceIamBindingOutput {
 	return i.ToServiceIamBindingOutputWithContext(context.Background())
 }
 
-func (i ServiceIamBinding) ToServiceIamBindingOutputWithContext(ctx context.Context) ServiceIamBindingOutput {
+func (i *ServiceIamBinding) ToServiceIamBindingOutputWithContext(ctx context.Context) ServiceIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingOutput)
 }
 
@@ -261,7 +261,7 @@ type ServiceIamBindingOutput struct {
 }
 
 func (ServiceIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServiceIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServiceIamBinding)(nil))
 }
 
 func (o ServiceIamBindingOutput) ToServiceIamBindingOutput() ServiceIamBindingOutput {

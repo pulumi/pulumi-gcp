@@ -76,6 +76,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///  $ pulumi import gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig default {{tenant}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig")]
     public partial class TenantInboundSamlConfig : Pulumi.CustomResource
     {
         /// <summary>

@@ -148,6 +148,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/sSLCertificate:SSLCertificate default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/sSLCertificate:SSLCertificate")]
     public partial class SSLCertificate : Pulumi.CustomResource
     {
         /// <summary>

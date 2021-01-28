@@ -69,6 +69,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/targetPool:TargetPool default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/targetPool:TargetPool")]
     public partial class TargetPool : Pulumi.CustomResource
     {
         /// <summary>

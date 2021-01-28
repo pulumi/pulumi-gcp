@@ -181,15 +181,15 @@ type ObjectACLInput interface {
 	ToObjectACLOutputWithContext(ctx context.Context) ObjectACLOutput
 }
 
-func (ObjectACL) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectACL)(nil)).Elem()
+func (*ObjectACL) ElementType() reflect.Type {
+	return reflect.TypeOf((*ObjectACL)(nil))
 }
 
-func (i ObjectACL) ToObjectACLOutput() ObjectACLOutput {
+func (i *ObjectACL) ToObjectACLOutput() ObjectACLOutput {
 	return i.ToObjectACLOutputWithContext(context.Background())
 }
 
-func (i ObjectACL) ToObjectACLOutputWithContext(ctx context.Context) ObjectACLOutput {
+func (i *ObjectACL) ToObjectACLOutputWithContext(ctx context.Context) ObjectACLOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLOutput)
 }
 
@@ -198,7 +198,7 @@ type ObjectACLOutput struct {
 }
 
 func (ObjectACLOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectACLOutput)(nil)).Elem()
+	return reflect.TypeOf((*ObjectACL)(nil))
 }
 
 func (o ObjectACLOutput) ToObjectACLOutput() ObjectACLOutput {

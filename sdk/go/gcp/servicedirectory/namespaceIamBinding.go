@@ -244,15 +244,15 @@ type NamespaceIamBindingInput interface {
 	ToNamespaceIamBindingOutputWithContext(ctx context.Context) NamespaceIamBindingOutput
 }
 
-func (NamespaceIamBinding) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamBinding)(nil)).Elem()
+func (*NamespaceIamBinding) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamespaceIamBinding)(nil))
 }
 
-func (i NamespaceIamBinding) ToNamespaceIamBindingOutput() NamespaceIamBindingOutput {
+func (i *NamespaceIamBinding) ToNamespaceIamBindingOutput() NamespaceIamBindingOutput {
 	return i.ToNamespaceIamBindingOutputWithContext(context.Background())
 }
 
-func (i NamespaceIamBinding) ToNamespaceIamBindingOutputWithContext(ctx context.Context) NamespaceIamBindingOutput {
+func (i *NamespaceIamBinding) ToNamespaceIamBindingOutputWithContext(ctx context.Context) NamespaceIamBindingOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingOutput)
 }
 
@@ -261,7 +261,7 @@ type NamespaceIamBindingOutput struct {
 }
 
 func (NamespaceIamBindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamespaceIamBindingOutput)(nil)).Elem()
+	return reflect.TypeOf((*NamespaceIamBinding)(nil))
 }
 
 func (o NamespaceIamBindingOutput) ToNamespaceIamBindingOutput() NamespaceIamBindingOutput {

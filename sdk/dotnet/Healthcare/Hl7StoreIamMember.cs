@@ -125,6 +125,7 @@ namespace Pulumi.Gcp.Healthcare
     ///  $ pulumi import gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember hl7_v2_store_iam your-project-id/location-name/dataset-name/hl7-v2-store-name
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember")]
     public partial class Hl7StoreIamMember : Pulumi.CustomResource
     {
         [Output("condition")]

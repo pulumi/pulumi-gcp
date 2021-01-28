@@ -212,15 +212,15 @@ type GameServerConfigInput interface {
 	ToGameServerConfigOutputWithContext(ctx context.Context) GameServerConfigOutput
 }
 
-func (GameServerConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerConfig)(nil)).Elem()
+func (*GameServerConfig) ElementType() reflect.Type {
+	return reflect.TypeOf((*GameServerConfig)(nil))
 }
 
-func (i GameServerConfig) ToGameServerConfigOutput() GameServerConfigOutput {
+func (i *GameServerConfig) ToGameServerConfigOutput() GameServerConfigOutput {
 	return i.ToGameServerConfigOutputWithContext(context.Background())
 }
 
-func (i GameServerConfig) ToGameServerConfigOutputWithContext(ctx context.Context) GameServerConfigOutput {
+func (i *GameServerConfig) ToGameServerConfigOutputWithContext(ctx context.Context) GameServerConfigOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigOutput)
 }
 
@@ -229,7 +229,7 @@ type GameServerConfigOutput struct {
 }
 
 func (GameServerConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GameServerConfigOutput)(nil)).Elem()
+	return reflect.TypeOf((*GameServerConfig)(nil))
 }
 
 func (o GameServerConfigOutput) ToGameServerConfigOutput() GameServerConfigOutput {

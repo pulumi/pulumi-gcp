@@ -75,6 +75,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/attachedDisk:AttachedDisk default {{project}}/{{zone}}/{{instance.name}}/{{disk.name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/attachedDisk:AttachedDisk")]
     public partial class AttachedDisk : Pulumi.CustomResource
     {
         /// <summary>

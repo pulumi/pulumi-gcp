@@ -60,6 +60,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///  $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default {{tenant}}/{{idp_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig")]
     public partial class TenantDefaultSupportedIdpConfig : Pulumi.CustomResource
     {
         /// <summary>

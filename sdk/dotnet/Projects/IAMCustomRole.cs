@@ -67,6 +67,7 @@ namespace Pulumi.Gcp.Projects
     ///  $ pulumi import gcp:projects/iAMCustomRole:IAMCustomRole default {{role_id}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:projects/iAMCustomRole:IAMCustomRole")]
     public partial class IAMCustomRole : Pulumi.CustomResource
     {
         /// <summary>

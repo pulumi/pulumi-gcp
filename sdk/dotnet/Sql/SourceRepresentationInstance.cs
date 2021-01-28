@@ -55,6 +55,7 @@ namespace Pulumi.Gcp.Sql
     ///  $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance")]
     public partial class SourceRepresentationInstance : Pulumi.CustomResource
     {
         /// <summary>

@@ -89,6 +89,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/snapshot:Snapshot default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/snapshot:Snapshot")]
     public partial class Snapshot : Pulumi.CustomResource
     {
         /// <summary>

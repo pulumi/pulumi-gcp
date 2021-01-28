@@ -149,6 +149,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     ///  $ pulumi import gcp:binaryauthorization/attestor:Attestor default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:binaryauthorization/attestor:Attestor")]
     public partial class Attestor : Pulumi.CustomResource
     {
         /// <summary>

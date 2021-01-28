@@ -71,6 +71,7 @@ namespace Pulumi.Gcp.Spanner
     ///  $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:spanner/database:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

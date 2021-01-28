@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// full name of the custom role, e.g. `[projects/my-project|organizations/my-org]/roles/my-custom-role`.
     /// </summary>
+    [GcpResourceType("gcp:bigquery/iamPolicy:IamPolicy")]
     public partial class IamPolicy : Pulumi.CustomResource
     {
         [Output("datasetId")]

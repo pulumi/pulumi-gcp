@@ -156,6 +156,7 @@ namespace Pulumi.Gcp.Compute
     ///  $ pulumi import gcp:compute/subnetwork:Subnetwork default {{name}}
     /// ```
     /// </summary>
+    [GcpResourceType("gcp:compute/subnetwork:Subnetwork")]
     public partial class Subnetwork : Pulumi.CustomResource
     {
         /// <summary>

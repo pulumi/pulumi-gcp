@@ -150,6 +150,7 @@ namespace Pulumi.Gcp.Kms
     /// ```
     /// </summary>
     [Obsolete(@"gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry")]
+    [GcpResourceType("gcp:kms/registry:Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>
