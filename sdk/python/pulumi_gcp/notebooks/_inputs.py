@@ -15,6 +15,7 @@ __all__ = [
     'InstanceContainerImageArgs',
     'InstanceIamBindingConditionArgs',
     'InstanceIamMemberConditionArgs',
+    'InstanceShieldedInstanceConfigArgs',
     'InstanceVmImageArgs',
 ]
 
@@ -122,7 +123,7 @@ class InstanceAcceleratorConfigArgs:
         """
         :param pulumi.Input[int] core_count: Count of cores of this accelerator.
         :param pulumi.Input[str] type: Type of this accelerator.
-               Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
+               Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
         """
         pulumi.set(__self__, "core_count", core_count)
         pulumi.set(__self__, "type", type)
@@ -144,7 +145,7 @@ class InstanceAcceleratorConfigArgs:
     def type(self) -> pulumi.Input[str]:
         """
         Type of this accelerator.
-        Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
+        Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
         """
         return pulumi.get(self, "type")
 
@@ -269,6 +270,75 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class InstanceShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_integrity_monitoring: Optional[pulumi.Input[bool]] = None,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None,
+                 enable_vtpm: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_integrity_monitoring: Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+               boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+               This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+               Enabled by default.
+        :param pulumi.Input[bool] enable_secure_boot: Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+               authentic software by verifying the digital signature of all boot components, and halting the boot process
+               if signature verification fails.
+               Disabled by default.
+        :param pulumi.Input[bool] enable_vtpm: Defines whether the instance has the vTPM enabled.
+               Enabled by default.
+        """
+        if enable_integrity_monitoring is not None:
+            pulumi.set(__self__, "enable_integrity_monitoring", enable_integrity_monitoring)
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+        if enable_vtpm is not None:
+            pulumi.set(__self__, "enable_vtpm", enable_vtpm)
+
+    @property
+    @pulumi.getter(name="enableIntegrityMonitoring")
+    def enable_integrity_monitoring(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+        boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+        This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+        Enabled by default.
+        """
+        return pulumi.get(self, "enable_integrity_monitoring")
+
+    @enable_integrity_monitoring.setter
+    def enable_integrity_monitoring(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_integrity_monitoring", value)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+        authentic software by verifying the digital signature of all boot components, and halting the boot process
+        if signature verification fails.
+        Disabled by default.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
+
+    @property
+    @pulumi.getter(name="enableVtpm")
+    def enable_vtpm(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance has the vTPM enabled.
+        Enabled by default.
+        """
+        return pulumi.get(self, "enable_vtpm")
+
+    @enable_vtpm.setter
+    def enable_vtpm(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_vtpm", value)
 
 
 @pulumi.input_type

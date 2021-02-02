@@ -64,9 +64,6 @@ class DomainMappingMetadata(dict):
         """
         :param str namespace: In Cloud Run the namespace must be equal to either the
                project ID or project number.
-        :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: http://kubernetes.io/docs/user-guide/annotations
         :param int generation: -
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
@@ -114,11 +111,6 @@ class DomainMappingMetadata(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, str]]:
-        """
-        Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: http://kubernetes.io/docs/user-guide/annotations
-        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -426,9 +418,6 @@ class ServiceMetadata(dict):
                  self_link: Optional[str] = None,
                  uid: Optional[str] = None):
         """
-        :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: http://kubernetes.io/docs/user-guide/annotations
         :param int generation: -
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
@@ -470,11 +459,6 @@ class ServiceMetadata(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, str]]:
-        """
-        Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: http://kubernetes.io/docs/user-guide/annotations
-        """
         return pulumi.get(self, "annotations")
 
     @property
@@ -685,9 +669,6 @@ class ServiceTemplateMetadata(dict):
                  self_link: Optional[str] = None,
                  uid: Optional[str] = None):
         """
-        :param Mapping[str, str] annotations: Annotations is a key value map stored with a resource that
-               may be set by external tools to store and retrieve arbitrary metadata. More
-               info: http://kubernetes.io/docs/user-guide/annotations
         :param int generation: -
                A sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize
@@ -732,11 +713,6 @@ class ServiceTemplateMetadata(dict):
     @property
     @pulumi.getter
     def annotations(self) -> Optional[Mapping[str, str]]:
-        """
-        Annotations is a key value map stored with a resource that
-        may be set by external tools to store and retrieve arbitrary metadata. More
-        info: http://kubernetes.io/docs/user-guide/annotations
-        """
         return pulumi.get(self, "annotations")
 
     @property

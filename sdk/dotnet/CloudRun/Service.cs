@@ -185,15 +185,7 @@ namespace Pulumi.Gcp.CloudRun
     ///     {
     ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
     ///         {
-    ///             AutogenerateRevisionName = true,
     ///             Location = "us-central1",
-    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-    ///             {
-    ///                 Annotations = 
-    ///                 {
-    ///                     { "generated-by", "magic-modules" },
-    ///                 },
-    ///             },
     ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///             {
     ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
@@ -202,32 +194,40 @@ namespace Pulumi.Gcp.CloudRun
     ///                     {
     ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
     ///                         {
-    ///                             Env = 
+    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                             Envs = 
     ///                             {
-    ///                                 
+    ///                                 new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerEnvArgs
     ///                                 {
-    ///                                     { "name", "SOURCE" },
-    ///                                     { "value", "remote" },
+    ///                                     Name = "SOURCE",
+    ///                                     Value = "remote",
     ///                                 },
-    ///                                 
+    ///                                 new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerEnvArgs
     ///                                 {
-    ///                                     { "name", "TARGET" },
-    ///                                     { "value", "home" },
+    ///                                     Name = "TARGET",
+    ///                                     Value = "home",
     ///                                 },
     ///                             },
-    ///                             Image = "us-docker.pkg.dev/cloudrun/container/hello",
     ///                         },
     ///                     },
+    ///                 },
+    ///             },
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Annotations = 
+    ///                 {
+    ///                     { "generated-by", "magic-modules" },
     ///                 },
     ///             },
     ///             Traffics = 
     ///             {
     ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
     ///                 {
-    ///                     LatestRevision = true,
     ///                     Percent = 100,
+    ///                     LatestRevision = true,
     ///                 },
     ///             },
+    ///             AutogenerateRevisionName = true,
     ///         });
     ///     }
     /// 

@@ -13,11 +13,6 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class ServiceMetadata
     {
-        /// <summary>
-        /// Annotations is a key value map stored with a resource that
-        /// may be set by external tools to store and retrieve arbitrary metadata. More
-        /// info: http://kubernetes.io/docs/user-guide/annotations
-        /// </summary>
         public readonly ImmutableDictionary<string, string>? Annotations;
         /// <summary>
         /// -

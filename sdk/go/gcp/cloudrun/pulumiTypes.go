@@ -11,9 +11,6 @@ import (
 )
 
 type DomainMappingMetadata struct {
-	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -57,9 +54,6 @@ type DomainMappingMetadataInput interface {
 }
 
 type DomainMappingMetadataArgs struct {
-	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -167,10 +161,6 @@ func (o DomainMappingMetadataOutput) ToDomainMappingMetadataPtrOutputWithContext
 		return &v
 	}).(DomainMappingMetadataPtrOutput)
 }
-
-// Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: http://kubernetes.io/docs/user-guide/annotations
 func (o DomainMappingMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DomainMappingMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -239,9 +229,6 @@ func (o DomainMappingMetadataPtrOutput) Elem() DomainMappingMetadataOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) DomainMappingMetadata { return *v }).(DomainMappingMetadataOutput)
 }
 
-// Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: http://kubernetes.io/docs/user-guide/annotations
 func (o DomainMappingMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *DomainMappingMetadata) map[string]string {
 		if v == nil {
@@ -1166,9 +1153,6 @@ func (o IamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 }
 
 type ServiceMetadata struct {
-	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -1212,9 +1196,6 @@ type ServiceMetadataInput interface {
 }
 
 type ServiceMetadataArgs struct {
-	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -1322,10 +1303,6 @@ func (o ServiceMetadataOutput) ToServiceMetadataPtrOutputWithContext(ctx context
 		return &v
 	}).(ServiceMetadataPtrOutput)
 }
-
-// Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: http://kubernetes.io/docs/user-guide/annotations
 func (o ServiceMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -1394,9 +1371,6 @@ func (o ServiceMetadataPtrOutput) Elem() ServiceMetadataOutput {
 	return o.ApplyT(func(v *ServiceMetadata) ServiceMetadata { return *v }).(ServiceMetadataOutput)
 }
 
-// Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: http://kubernetes.io/docs/user-guide/annotations
 func (o ServiceMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceMetadata) map[string]string {
 		if v == nil {
@@ -1875,9 +1849,6 @@ func (o ServiceTemplatePtrOutput) Spec() ServiceTemplateSpecPtrOutput {
 }
 
 type ServiceTemplateMetadata struct {
-	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations map[string]string `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -1923,9 +1894,6 @@ type ServiceTemplateMetadataInput interface {
 }
 
 type ServiceTemplateMetadataArgs struct {
-	// Annotations is a key value map stored with a resource that
-	// may be set by external tools to store and retrieve arbitrary metadata. More
-	// info: http://kubernetes.io/docs/user-guide/annotations
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// -
 	// A sequence number representing a specific generation of the desired state.
@@ -2035,10 +2003,6 @@ func (o ServiceTemplateMetadataOutput) ToServiceTemplateMetadataPtrOutputWithCon
 		return &v
 	}).(ServiceTemplateMetadataPtrOutput)
 }
-
-// Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: http://kubernetes.io/docs/user-guide/annotations
 func (o ServiceTemplateMetadataOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ServiceTemplateMetadata) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2112,9 +2076,6 @@ func (o ServiceTemplateMetadataPtrOutput) Elem() ServiceTemplateMetadataOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) ServiceTemplateMetadata { return *v }).(ServiceTemplateMetadataOutput)
 }
 
-// Annotations is a key value map stored with a resource that
-// may be set by external tools to store and retrieve arbitrary metadata. More
-// info: http://kubernetes.io/docs/user-guide/annotations
 func (o ServiceTemplateMetadataPtrOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServiceTemplateMetadata) map[string]string {
 		if v == nil {

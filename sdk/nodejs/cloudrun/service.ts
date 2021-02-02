@@ -116,17 +116,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const defaultService = new gcp.cloudrun.Service("default", {
- *     autogenerateRevisionName: true,
+ * const _default = new gcp.cloudrun.Service("default", {
  *     location: "us-central1",
- *     metadata: {
- *         annotations: {
- *             "generated-by": "magic-modules",
- *         },
- *     },
  *     template: {
  *         spec: {
  *             containers: [{
+ *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *                 envs: [
  *                     {
  *                         name: "SOURCE",
@@ -137,14 +132,19 @@ import * as utilities from "../utilities";
  *                         value: "home",
  *                     },
  *                 ],
- *                 image: "us-docker.pkg.dev/cloudrun/container/hello",
  *             }],
  *         },
  *     },
+ *     metadata: {
+ *         annotations: {
+ *             "generated-by": "magic-modules",
+ *         },
+ *     },
  *     traffics: [{
- *         latestRevision: true,
  *         percent: 100,
+ *         latestRevision: true,
  *     }],
+ *     autogenerateRevisionName: true,
  * });
  * ```
  * ### Cloud Run Service Traffic Split

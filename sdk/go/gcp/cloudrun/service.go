@@ -187,38 +187,38 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
-// 			AutogenerateRevisionName: pulumi.Bool(true),
-// 			Location:                 pulumi.String("us-central1"),
+// 			Location: pulumi.String("us-central1"),
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+// 							Envs: cloudrun.ServiceTemplateSpecContainerEnvArray{
+// 								&cloudrun.ServiceTemplateSpecContainerEnvArgs{
+// 									Name:  pulumi.String("SOURCE"),
+// 									Value: pulumi.String("remote"),
+// 								},
+// 								&cloudrun.ServiceTemplateSpecContainerEnvArgs{
+// 									Name:  pulumi.String("TARGET"),
+// 									Value: pulumi.String("home"),
+// 								},
+// 							},
+// 						},
+// 					},
+// 				},
+// 			},
 // 			Metadata: &cloudrun.ServiceMetadataArgs{
 // 				Annotations: pulumi.StringMap{
 // 					"generated-by": pulumi.String("magic-modules"),
 // 				},
 // 			},
-// 			Template: &cloudrun.ServiceTemplateArgs{
-// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
-// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
-// 						&cloudrun.ServiceTemplateSpecContainerArgs{
-// 							Env: pulumi.StringMapArray{
-// 								pulumi.StringMap{
-// 									"name":  pulumi.String("SOURCE"),
-// 									"value": pulumi.String("remote"),
-// 								},
-// 								pulumi.StringMap{
-// 									"name":  pulumi.String("TARGET"),
-// 									"value": pulumi.String("home"),
-// 								},
-// 							},
-// 							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
-// 						},
-// 					},
-// 				},
-// 			},
 // 			Traffics: cloudrun.ServiceTrafficArray{
 // 				&cloudrun.ServiceTrafficArgs{
-// 					LatestRevision: pulumi.Bool(true),
 // 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
 // 				},
 // 			},
+// 			AutogenerateRevisionName: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err

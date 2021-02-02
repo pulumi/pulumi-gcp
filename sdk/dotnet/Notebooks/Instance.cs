@@ -306,13 +306,13 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// the notebook instance will not register with the proxy..
+        /// The notebook instance will not register with the proxy..
         /// </summary>
         [Output("noProxyAccess")]
         public Output<bool?> NoProxyAccess { get; private set; } = null!;
 
         /// <summary>
-        /// no public IP will be assigned to this instance.
+        /// No public IP will be assigned to this instance.
         /// </summary>
         [Output("noPublicIp")]
         public Output<bool?> NoPublicIp { get; private set; } = null!;
@@ -355,6 +355,23 @@ namespace Pulumi.Gcp.Notebooks
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+        /// If not specified, the following scopes are defined:
+        /// - https://www.googleapis.com/auth/cloud-platform
+        /// - https://www.googleapis.com/auth/userinfo.email
+        /// </summary>
+        [Output("serviceAccountScopes")]
+        public Output<ImmutableArray<string>> ServiceAccountScopes { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        /// Not all combinations are valid
+        /// Structure is documented below.
+        /// </summary>
+        [Output("shieldedInstanceConfig")]
+        public Output<Outputs.InstanceShieldedInstanceConfig> ShieldedInstanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The state of this instance.
         /// </summary>
         [Output("state")]
@@ -366,6 +383,12 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         [Output("subnet")]
         public Output<string> Subnet { get; private set; } = null!;
+
+        /// <summary>
+        /// The Compute Engine tags to add to runtime.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
         /// Instance update time.
@@ -570,13 +593,13 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// the notebook instance will not register with the proxy..
+        /// The notebook instance will not register with the proxy..
         /// </summary>
         [Input("noProxyAccess")]
         public Input<bool>? NoProxyAccess { get; set; }
 
         /// <summary>
-        /// no public IP will be assigned to this instance.
+        /// No public IP will be assigned to this instance.
         /// </summary>
         [Input("noPublicIp")]
         public Input<bool>? NoPublicIp { get; set; }
@@ -612,12 +635,47 @@ namespace Pulumi.Gcp.Notebooks
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        [Input("serviceAccountScopes")]
+        private InputList<string>? _serviceAccountScopes;
+
+        /// <summary>
+        /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+        /// If not specified, the following scopes are defined:
+        /// - https://www.googleapis.com/auth/cloud-platform
+        /// - https://www.googleapis.com/auth/userinfo.email
+        /// </summary>
+        public InputList<string> ServiceAccountScopes
+        {
+            get => _serviceAccountScopes ?? (_serviceAccountScopes = new InputList<string>());
+            set => _serviceAccountScopes = value;
+        }
+
+        /// <summary>
+        /// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        /// Not all combinations are valid
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.InstanceShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
+
         /// <summary>
         /// The name of the subnet that this instance is in.
         /// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The Compute Engine tags to add to runtime.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Instance update time.
@@ -783,13 +841,13 @@ namespace Pulumi.Gcp.Notebooks
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// the notebook instance will not register with the proxy..
+        /// The notebook instance will not register with the proxy..
         /// </summary>
         [Input("noProxyAccess")]
         public Input<bool>? NoProxyAccess { get; set; }
 
         /// <summary>
-        /// no public IP will be assigned to this instance.
+        /// No public IP will be assigned to this instance.
         /// </summary>
         [Input("noPublicIp")]
         public Input<bool>? NoPublicIp { get; set; }
@@ -831,6 +889,29 @@ namespace Pulumi.Gcp.Notebooks
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        [Input("serviceAccountScopes")]
+        private InputList<string>? _serviceAccountScopes;
+
+        /// <summary>
+        /// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+        /// If not specified, the following scopes are defined:
+        /// - https://www.googleapis.com/auth/cloud-platform
+        /// - https://www.googleapis.com/auth/userinfo.email
+        /// </summary>
+        public InputList<string> ServiceAccountScopes
+        {
+            get => _serviceAccountScopes ?? (_serviceAccountScopes = new InputList<string>());
+            set => _serviceAccountScopes = value;
+        }
+
+        /// <summary>
+        /// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        /// Not all combinations are valid
+        /// Structure is documented below.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.InstanceShieldedInstanceConfigGetArgs>? ShieldedInstanceConfig { get; set; }
+
         /// <summary>
         /// The state of this instance.
         /// </summary>
@@ -843,6 +924,18 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         [Input("subnet")]
         public Input<string>? Subnet { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// The Compute Engine tags to add to runtime.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Instance update time.

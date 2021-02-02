@@ -2375,6 +2375,9 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Spanner
 			"google_spanner_instance": {Tok: gcpDataSource(gcpSpanner, "getInstance")},
+
+			//runtime config
+			"google_runtimeconfig_config": {Tok: gcpDataSource(gcpRuntimeConfig, "getConfig")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

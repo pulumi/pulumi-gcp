@@ -949,6 +949,10 @@ type ClusterClusterConfig struct {
 	// with other clusters in the same region/zone also choosing to use the auto generation
 	// option.
 	StagingBucket *string `pulumi:"stagingBucket"`
+	// The Cloud Storage temp bucket used to store ephemeral cluster
+	// and jobs data, such as Spark and MapReduce history files.
+	// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
+	TempBucket *string `pulumi:"tempBucket"`
 	// The Google Compute Engine config settings for the worker instances
 	// in a cluster.. Structure defined below.
 	WorkerConfig *ClusterClusterConfigWorkerConfig `pulumi:"workerConfig"`
@@ -1007,6 +1011,10 @@ type ClusterClusterConfigArgs struct {
 	// with other clusters in the same region/zone also choosing to use the auto generation
 	// option.
 	StagingBucket pulumi.StringPtrInput `pulumi:"stagingBucket"`
+	// The Cloud Storage temp bucket used to store ephemeral cluster
+	// and jobs data, such as Spark and MapReduce history files.
+	// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
+	TempBucket pulumi.StringPtrInput `pulumi:"tempBucket"`
 	// The Google Compute Engine config settings for the worker instances
 	// in a cluster.. Structure defined below.
 	WorkerConfig ClusterClusterConfigWorkerConfigPtrInput `pulumi:"workerConfig"`
@@ -1170,6 +1178,13 @@ func (o ClusterClusterConfigOutput) StagingBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.StagingBucket }).(pulumi.StringPtrOutput)
 }
 
+// The Cloud Storage temp bucket used to store ephemeral cluster
+// and jobs data, such as Spark and MapReduce history files.
+// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
+func (o ClusterClusterConfigOutput) TempBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.TempBucket }).(pulumi.StringPtrOutput)
+}
+
 // The Google Compute Engine config settings for the worker instances
 // in a cluster.. Structure defined below.
 func (o ClusterClusterConfigOutput) WorkerConfig() ClusterClusterConfigWorkerConfigPtrOutput {
@@ -1328,6 +1343,18 @@ func (o ClusterClusterConfigPtrOutput) StagingBucket() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.StagingBucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage temp bucket used to store ephemeral cluster
+// and jobs data, such as Spark and MapReduce history files.
+// Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
+func (o ClusterClusterConfigPtrOutput) TempBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TempBucket
 	}).(pulumi.StringPtrOutput)
 }
 

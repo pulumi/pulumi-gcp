@@ -77,6 +77,12 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly string? StagingBucket;
         /// <summary>
+        /// The Cloud Storage temp bucket used to store ephemeral cluster
+        /// and jobs data, such as Spark and MapReduce history files.
+        /// Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+        /// </summary>
+        public readonly string? TempBucket;
+        /// <summary>
         /// The Google Compute Engine config settings for the worker instances
         /// in a cluster.. Structure defined below.
         /// </summary>
@@ -108,6 +114,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? stagingBucket,
 
+            string? tempBucket,
+
             Outputs.ClusterClusterConfigWorkerConfig? workerConfig)
         {
             AutoscalingConfig = autoscalingConfig;
@@ -122,6 +130,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             SecurityConfig = securityConfig;
             SoftwareConfig = softwareConfig;
             StagingBucket = stagingBucket;
+            TempBucket = tempBucket;
             WorkerConfig = workerConfig;
         }
     }

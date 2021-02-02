@@ -68,7 +68,7 @@ export class Instance extends pulumi.CustomResource {
      * The full name of the GCE network to connect the instance to.  If not provided,
      * 'default' will be used.
      */
-    public readonly authorizedNetwork!: pulumi.Output<string | undefined>;
+    public readonly authorizedNetwork!: pulumi.Output<string>;
     /**
      * Creation timestamp in RFC3339 text format.
      */

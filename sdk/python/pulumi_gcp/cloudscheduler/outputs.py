@@ -344,6 +344,7 @@ class JobPubsubTarget(dict):
                Pubsub message must contain either non-empty data, or at least one attribute.
         :param str data: The message payload for PubsubMessage.
                Pubsub message must contain either non-empty data, or at least one attribute.
+               A base64-encoded string.
         """
         pulumi.set(__self__, "topic_name", topic_name)
         if attributes is not None:
@@ -377,6 +378,7 @@ class JobPubsubTarget(dict):
         """
         The message payload for PubsubMessage.
         Pubsub message must contain either non-empty data, or at least one attribute.
+        A base64-encoded string.
         """
         return pulumi.get(self, "data")
 

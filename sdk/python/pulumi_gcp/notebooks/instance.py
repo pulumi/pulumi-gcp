@@ -41,7 +41,10 @@ class Instance(pulumi.CustomResource):
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
                  subnet: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None,
                  __props__=None,
@@ -200,8 +203,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
-        :param pulumi.Input[bool] no_proxy_access: the notebook instance will not register with the proxy..
-        :param pulumi.Input[bool] no_public_ip: no public IP will be assigned to this instance.
+        :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
+        :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a
                notebook instance fully boots up. The path must be a URL
@@ -213,8 +216,16 @@ class Instance(pulumi.CustomResource):
                the same project, but you must have the service account user
                permission to use the instance. If not specified,
                the Compute Engine default service account is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances.
+               If not specified, the following scopes are defined:
+               - https://www.googleapis.com/auth/cloud-platform
+               - https://www.googleapis.com/auth/userinfo.email
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+               Not all combinations are valid
+               Structure is documented below.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input[pulumi.InputType['InstanceVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -264,7 +275,10 @@ class Instance(pulumi.CustomResource):
             __props__['post_startup_script'] = post_startup_script
             __props__['project'] = project
             __props__['service_account'] = service_account
+            __props__['service_account_scopes'] = service_account_scopes
+            __props__['shielded_instance_config'] = shielded_instance_config
             __props__['subnet'] = subnet
+            __props__['tags'] = tags
             __props__['update_time'] = update_time
             __props__['vm_image'] = vm_image
             __props__['proxy_uri'] = None
@@ -304,8 +318,11 @@ class Instance(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             proxy_uri: Optional[pulumi.Input[str]] = None,
             service_account: Optional[pulumi.Input[str]] = None,
+            service_account_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subnet: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
             vm_image: Optional[pulumi.Input[pulumi.InputType['InstanceVmImageArgs']]] = None) -> 'Instance':
         """
@@ -356,8 +373,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in.
                Format: projects/{project_id}/global/networks/{network_id}
-        :param pulumi.Input[bool] no_proxy_access: the notebook instance will not register with the proxy..
-        :param pulumi.Input[bool] no_public_ip: no public IP will be assigned to this instance.
+        :param pulumi.Input[bool] no_proxy_access: The notebook instance will not register with the proxy..
+        :param pulumi.Input[bool] no_public_ip: No public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: If true, the data disk will not be auto deleted when deleting the instance.
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a
                notebook instance fully boots up. The path must be a URL
@@ -370,9 +387,17 @@ class Instance(pulumi.CustomResource):
                the same project, but you must have the service account user
                permission to use the instance. If not specified,
                the Compute Engine default service account is used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_account_scopes: Optional. The URIs of service account scopes to be included in Compute Engine instances.
+               If not specified, the following scopes are defined:
+               - https://www.googleapis.com/auth/cloud-platform
+               - https://www.googleapis.com/auth/userinfo.email
+        :param pulumi.Input[pulumi.InputType['InstanceShieldedInstanceConfigArgs']] shielded_instance_config: A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+               Not all combinations are valid
+               Structure is documented below.
         :param pulumi.Input[str] state: The state of this instance.
         :param pulumi.Input[str] subnet: The name of the subnet that this instance is in.
                Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to runtime.
         :param pulumi.Input[str] update_time: Instance update time.
         :param pulumi.Input[pulumi.InputType['InstanceVmImageArgs']] vm_image: Use a Compute Engine VM image to start the notebook instance.
                Structure is documented below.
@@ -406,8 +431,11 @@ class Instance(pulumi.CustomResource):
         __props__["project"] = project
         __props__["proxy_uri"] = proxy_uri
         __props__["service_account"] = service_account
+        __props__["service_account_scopes"] = service_account_scopes
+        __props__["shielded_instance_config"] = shielded_instance_config
         __props__["state"] = state
         __props__["subnet"] = subnet
+        __props__["tags"] = tags
         __props__["update_time"] = update_time
         __props__["vm_image"] = vm_image
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -583,7 +611,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="noProxyAccess")
     def no_proxy_access(self) -> pulumi.Output[Optional[bool]]:
         """
-        the notebook instance will not register with the proxy..
+        The notebook instance will not register with the proxy..
         """
         return pulumi.get(self, "no_proxy_access")
 
@@ -591,7 +619,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="noPublicIp")
     def no_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
-        no public IP will be assigned to this instance.
+        No public IP will be assigned to this instance.
         """
         return pulumi.get(self, "no_public_ip")
 
@@ -643,6 +671,27 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "service_account")
 
     @property
+    @pulumi.getter(name="serviceAccountScopes")
+    def service_account_scopes(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        Optional. The URIs of service account scopes to be included in Compute Engine instances.
+        If not specified, the following scopes are defined:
+        - https://www.googleapis.com/auth/cloud-platform
+        - https://www.googleapis.com/auth/userinfo.email
+        """
+        return pulumi.get(self, "service_account_scopes")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> pulumi.Output['outputs.InstanceShieldedInstanceConfig']:
+        """
+        A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+        Not all combinations are valid
+        Structure is documented below.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
@@ -658,6 +707,14 @@ class Instance(pulumi.CustomResource):
         Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
         """
         return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The Compute Engine tags to add to runtime.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="updateTime")

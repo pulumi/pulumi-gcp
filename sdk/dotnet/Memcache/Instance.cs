@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Memcache
         /// 'default' will be used.
         /// </summary>
         [Output("authorizedNetwork")]
-        public Output<string?> AuthorizedNetwork { get; private set; } = null!;
+        public Output<string> AuthorizedNetwork { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.

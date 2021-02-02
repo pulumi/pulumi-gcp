@@ -1014,6 +1014,7 @@ type JobPubsubTarget struct {
 	Attributes map[string]string `pulumi:"attributes"`
 	// The message payload for PubsubMessage.
 	// Pubsub message must contain either non-empty data, or at least one attribute.
+	// A base64-encoded string.
 	Data *string `pulumi:"data"`
 	// The full resource name for the Cloud Pub/Sub topic to which
 	// messages will be published when a job is delivered. ~>**NOTE:**
@@ -1039,6 +1040,7 @@ type JobPubsubTargetArgs struct {
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// The message payload for PubsubMessage.
 	// Pubsub message must contain either non-empty data, or at least one attribute.
+	// A base64-encoded string.
 	Data pulumi.StringPtrInput `pulumi:"data"`
 	// The full resource name for the Cloud Pub/Sub topic to which
 	// messages will be published when a job is delivered. ~>**NOTE:**
@@ -1132,6 +1134,7 @@ func (o JobPubsubTargetOutput) Attributes() pulumi.StringMapOutput {
 
 // The message payload for PubsubMessage.
 // Pubsub message must contain either non-empty data, or at least one attribute.
+// A base64-encoded string.
 func (o JobPubsubTargetOutput) Data() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobPubsubTarget) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
@@ -1175,6 +1178,7 @@ func (o JobPubsubTargetPtrOutput) Attributes() pulumi.StringMapOutput {
 
 // The message payload for PubsubMessage.
 // Pubsub message must contain either non-empty data, or at least one attribute.
+// A base64-encoded string.
 func (o JobPubsubTargetPtrOutput) Data() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobPubsubTarget) *string {
 		if v == nil {

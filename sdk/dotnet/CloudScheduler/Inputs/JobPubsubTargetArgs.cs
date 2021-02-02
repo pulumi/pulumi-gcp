@@ -28,6 +28,7 @@ namespace Pulumi.Gcp.CloudScheduler.Inputs
         /// <summary>
         /// The message payload for PubsubMessage.
         /// Pubsub message must contain either non-empty data, or at least one attribute.
+        /// A base64-encoded string.
         /// </summary>
         [Input("data")]
         public Input<string>? Data { get; set; }

@@ -543,6 +543,7 @@
         "runtimeconfig/configIamBinding.ts",
         "runtimeconfig/configIamMember.ts",
         "runtimeconfig/configIamPolicy.ts",
+        "runtimeconfig/getConfig.ts",
         "runtimeconfig/index.ts",
         "runtimeconfig/variable.ts",
         "secretmanager/getSecretVersion.ts",

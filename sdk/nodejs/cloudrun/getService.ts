@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Get information about a Google Cloud Run. For more information see
+ * Get information about a Google Cloud Run Service. For more information see
  * the [official documentation](https://cloud.google.com/run/docs/)
  * and [API](https://cloud.google.com/run/docs/apis).
  *

@@ -359,6 +359,7 @@ class ClusterClusterConfig(dict):
                  security_config: Optional['outputs.ClusterClusterConfigSecurityConfig'] = None,
                  software_config: Optional['outputs.ClusterClusterConfigSoftwareConfig'] = None,
                  staging_bucket: Optional[str] = None,
+                 temp_bucket: Optional[str] = None,
                  worker_config: Optional['outputs.ClusterClusterConfigWorkerConfig'] = None):
         """
         :param 'ClusterClusterConfigAutoscalingConfigArgs' autoscaling_config: The autoscaling policy config associated with the cluster.
@@ -390,6 +391,9 @@ class ClusterClusterConfig(dict):
                an auto generated bucket which is solely dedicated to your cluster; it may be shared
                with other clusters in the same region/zone also choosing to use the auto generation
                option.
+        :param str temp_bucket: The Cloud Storage temp bucket used to store ephemeral cluster
+               and jobs data, such as Spark and MapReduce history files.
+               Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
         :param 'ClusterClusterConfigWorkerConfigArgs' worker_config: The Google Compute Engine config settings for the worker instances
                in a cluster.. Structure defined below.
         """
@@ -417,6 +421,8 @@ class ClusterClusterConfig(dict):
             pulumi.set(__self__, "software_config", software_config)
         if staging_bucket is not None:
             pulumi.set(__self__, "staging_bucket", staging_bucket)
+        if temp_bucket is not None:
+            pulumi.set(__self__, "temp_bucket", temp_bucket)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
 
@@ -530,6 +536,16 @@ class ClusterClusterConfig(dict):
         option.
         """
         return pulumi.get(self, "staging_bucket")
+
+    @property
+    @pulumi.getter(name="tempBucket")
+    def temp_bucket(self) -> Optional[str]:
+        """
+        The Cloud Storage temp bucket used to store ephemeral cluster
+        and jobs data, such as Spark and MapReduce history files.
+        Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+        """
+        return pulumi.get(self, "temp_bucket")
 
     @property
     @pulumi.getter(name="workerConfig")

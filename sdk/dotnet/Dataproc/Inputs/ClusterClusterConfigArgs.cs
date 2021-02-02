@@ -106,6 +106,14 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? StagingBucket { get; set; }
 
         /// <summary>
+        /// The Cloud Storage temp bucket used to store ephemeral cluster
+        /// and jobs data, such as Spark and MapReduce history files.
+        /// Note: If you don't explicitly specify a `temp_bucket` then GCP will auto create / assign one for you.
+        /// </summary>
+        [Input("tempBucket")]
+        public Input<string>? TempBucket { get; set; }
+
+        /// <summary>
         /// The Google Compute Engine config settings for the worker instances
         /// in a cluster.. Structure defined below.
         /// </summary>

@@ -8732,10 +8732,7 @@ type ClusterPrivateClusterConfig struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
-	// Controls cluster master global
-	// access settings. If unset, the provider will no longer manage this field and will
-	// not modify the previously-set value. Structure is documented below.
+	EnablePrivateNodes       *bool                                                `pulumi:"enablePrivateNodes"`
 	MasterGlobalAccessConfig *ClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -8774,10 +8771,7 @@ type ClusterPrivateClusterConfigArgs struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
-	// Controls cluster master global
-	// access settings. If unset, the provider will no longer manage this field and will
-	// not modify the previously-set value. Structure is documented below.
+	EnablePrivateNodes       pulumi.BoolPtrInput                                         `pulumi:"enablePrivateNodes"`
 	MasterGlobalAccessConfig ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -8888,9 +8882,6 @@ func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOu
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
-// Controls cluster master global
-// access settings. If unset, the provider will no longer manage this field and will
-// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		return v.MasterGlobalAccessConfig
@@ -8967,9 +8958,6 @@ func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Controls cluster master global
-// access settings. If unset, the provider will no longer manage this field and will
-// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		if v == nil {

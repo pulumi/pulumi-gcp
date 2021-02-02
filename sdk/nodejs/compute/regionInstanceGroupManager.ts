@@ -8,10 +8,15 @@ import * as utilities from "../utilities";
 /**
  * The Google Compute Engine Regional Instance Group Manager API creates and manages pools
  * of homogeneous Compute Engine virtual machine instances from a common instance
- * template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
- * and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+ * template.
  *
- * > **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+ * To get more information about regionInstanceGroupManagers, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+ * * How-to Guides
+ *     * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+ *
+ * > **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
  *
  * ## Example Usage
  * ### With Top Level Instance Template (`Google` Provider)
@@ -131,6 +136,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+     */
+    public readonly distributionPolicyTargetShape!: pulumi.Output<string>;
+    /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
      */
@@ -211,6 +220,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["distributionPolicyTargetShape"] = state ? state.distributionPolicyTargetShape : undefined;
             inputs["distributionPolicyZones"] = state ? state.distributionPolicyZones : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
             inputs["instanceGroup"] = state ? state.instanceGroup : undefined;
@@ -236,6 +246,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = args ? args.baseInstanceName : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["distributionPolicyTargetShape"] = args ? args.distributionPolicyTargetShape : undefined;
             inputs["distributionPolicyZones"] = args ? args.distributionPolicyZones : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namedPorts"] = args ? args.namedPorts : undefined;
@@ -285,6 +296,10 @@ export interface RegionInstanceGroupManagerState {
      * group manager.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+     */
+    readonly distributionPolicyTargetShape?: pulumi.Input<string>;
     /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
@@ -375,6 +390,10 @@ export interface RegionInstanceGroupManagerArgs {
      * group manager.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+     */
+    readonly distributionPolicyTargetShape?: pulumi.Input<string>;
     /**
      * The distribution policy for this managed instance
      * group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
