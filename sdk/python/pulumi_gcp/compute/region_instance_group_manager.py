@@ -20,6 +20,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
                  base_instance_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
                  distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  named_ports: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerNamedPortArgs']]]]] = None,
@@ -37,10 +38,15 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         """
         The Google Compute Engine Regional Instance Group Manager API creates and manages pools
         of homogeneous Compute Engine virtual machine instances from a common instance
-        template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
-        and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+        template.
 
-        > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+        To get more information about regionInstanceGroupManagers, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+        * How-to Guides
+            * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+
+        > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
 
         ## Example Usage
         ### With Top Level Instance Template (`Google` Provider)
@@ -121,6 +127,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                name.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
+        :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] name: - Version name.
@@ -164,6 +171,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                 raise TypeError("Missing required property 'base_instance_name'")
             __props__['base_instance_name'] = base_instance_name
             __props__['description'] = description
+            __props__['distribution_policy_target_shape'] = distribution_policy_target_shape
             __props__['distribution_policy_zones'] = distribution_policy_zones
             __props__['name'] = name
             __props__['named_ports'] = named_ports
@@ -193,6 +201,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             auto_healing_policies: Optional[pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']]] = None,
             base_instance_name: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            distribution_policy_target_shape: Optional[pulumi.Input[str]] = None,
             distribution_policy_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
@@ -224,6 +233,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                name.
         :param pulumi.Input[str] description: An optional textual description of the instance
                group manager.
+        :param pulumi.Input[str] distribution_policy_target_shape: The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] distribution_policy_zones: The distribution policy for this managed instance
                group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
         :param pulumi.Input[str] fingerprint: The fingerprint of the instance group manager.
@@ -255,6 +265,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__["auto_healing_policies"] = auto_healing_policies
         __props__["base_instance_name"] = base_instance_name
         __props__["description"] = description
+        __props__["distribution_policy_target_shape"] = distribution_policy_target_shape
         __props__["distribution_policy_zones"] = distribution_policy_zones
         __props__["fingerprint"] = fingerprint
         __props__["instance_group"] = instance_group
@@ -301,6 +312,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         group manager.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="distributionPolicyTargetShape")
+    def distribution_policy_target_shape(self) -> pulumi.Output[str]:
+        """
+        The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+        """
+        return pulumi.get(self, "distribution_policy_target_shape")
 
     @property
     @pulumi.getter(name="distributionPolicyZones")

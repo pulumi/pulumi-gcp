@@ -201,7 +201,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="authorizedNetwork")
-    def authorized_network(self) -> pulumi.Output[Optional[str]]:
+    def authorized_network(self) -> pulumi.Output[str]:
         """
         The full name of the GCE network to connect the instance to.  If not provided,
         'default' will be used.

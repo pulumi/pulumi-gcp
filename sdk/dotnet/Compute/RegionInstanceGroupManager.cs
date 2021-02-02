@@ -12,10 +12,15 @@ namespace Pulumi.Gcp.Compute
     /// <summary>
     /// The Google Compute Engine Regional Instance Group Manager API creates and manages pools
     /// of homogeneous Compute Engine virtual machine instances from a common instance
-    /// template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
-    /// and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+    /// template.
     /// 
-    /// &gt; **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+    /// To get more information about regionInstanceGroupManagers, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+    /// * How-to Guides
+    ///     * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+    /// 
+    /// &gt; **Note:** Use [gcp.compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
     /// 
     /// ## Example Usage
     /// ### With Top Level Instance Template (`Google` Provider)
@@ -149,6 +154,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+        /// </summary>
+        [Output("distributionPolicyTargetShape")]
+        public Output<string> DistributionPolicyTargetShape { get; private set; } = null!;
 
         /// <summary>
         /// The distribution policy for this managed instance
@@ -314,6 +325,12 @@ namespace Pulumi.Gcp.Compute
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+        /// </summary>
+        [Input("distributionPolicyTargetShape")]
+        public Input<string>? DistributionPolicyTargetShape { get; set; }
+
         [Input("distributionPolicyZones")]
         private InputList<string>? _distributionPolicyZones;
 
@@ -450,6 +467,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+        /// </summary>
+        [Input("distributionPolicyTargetShape")]
+        public Input<string>? DistributionPolicyTargetShape { get; set; }
 
         [Input("distributionPolicyZones")]
         private InputList<string>? _distributionPolicyZones;

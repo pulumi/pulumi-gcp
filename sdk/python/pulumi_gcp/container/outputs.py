@@ -2663,9 +2663,6 @@ class ClusterPrivateClusterConfig(dict):
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
-        :param 'ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs' master_global_access_config: Controls cluster master global
-               access settings. If unset, the provider will no longer manage this field and will
-               not modify the previously-set value. Structure is documented below.
         :param str master_ipv4_cidr_block: The IP range in CIDR notation to use for
                the hosted master network. This range will be used for assigning private IP
                addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -2716,11 +2713,6 @@ class ClusterPrivateClusterConfig(dict):
     @property
     @pulumi.getter(name="masterGlobalAccessConfig")
     def master_global_access_config(self) -> Optional['outputs.ClusterPrivateClusterConfigMasterGlobalAccessConfig']:
-        """
-        Controls cluster master global
-        access settings. If unset, the provider will no longer manage this field and will
-        not modify the previously-set value. Structure is documented below.
-        """
         return pulumi.get(self, "master_global_access_config")
 
     @property

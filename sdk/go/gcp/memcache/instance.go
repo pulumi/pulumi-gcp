@@ -45,7 +45,7 @@ type Instance struct {
 
 	// The full name of the GCE network to connect the instance to.  If not provided,
 	// 'default' will be used.
-	AuthorizedNetwork pulumi.StringPtrOutput `pulumi:"authorizedNetwork"`
+	AuthorizedNetwork pulumi.StringOutput `pulumi:"authorizedNetwork"`
 	// Creation timestamp in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Endpoint for Discovery API

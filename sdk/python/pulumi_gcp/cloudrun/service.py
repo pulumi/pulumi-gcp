@@ -132,34 +132,34 @@ class Service(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrun.Service("default",
-            autogenerate_revision_name=True,
             location="us-central1",
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        envs=[
+                            gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                                name="SOURCE",
+                                value="remote",
+                            ),
+                            gcp.cloudrun.ServiceTemplateSpecContainerEnvArgs(
+                                name="TARGET",
+                                value="home",
+                            ),
+                        ],
+                    )],
+                ),
+            ),
             metadata=gcp.cloudrun.ServiceMetadataArgs(
                 annotations={
                     "generated-by": "magic-modules",
                 },
             ),
-            template=gcp.cloudrun.ServiceTemplateArgs(
-                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
-                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
-                        env=[
-                            {
-                                "name": "SOURCE",
-                                "value": "remote",
-                            },
-                            {
-                                "name": "TARGET",
-                                "value": "home",
-                            },
-                        ],
-                        image="us-docker.pkg.dev/cloudrun/container/hello",
-                    )],
-                ),
-            ),
             traffics=[gcp.cloudrun.ServiceTrafficArgs(
-                latest_revision=True,
                 percent=100,
-            )])
+                latest_revision=True,
+            )],
+            autogenerate_revision_name=True)
         ```
         ### Cloud Run Service Traffic Split
 

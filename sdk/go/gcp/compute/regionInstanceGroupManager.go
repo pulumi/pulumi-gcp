@@ -13,10 +13,15 @@ import (
 
 // The Google Compute Engine Regional Instance Group Manager API creates and manages pools
 // of homogeneous Compute Engine virtual machine instances from a common instance
-// template. For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
-// and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+// template.
 //
-// > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a single-zone instance group manager.
+// To get more information about regionInstanceGroupManagers, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroupManagers)
+// * How-to Guides
+//     * [Regional Instance Groups Guide](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+//
+// > **Note:** Use [compute.InstanceGroupManager](https://www.terraform.io/docs/providers/google/r/compute_instance_group_manager.html) to create a zonal instance group manager.
 //
 // ## Example Usage
 // ### With Multiple Versions
@@ -77,6 +82,8 @@ type RegionInstanceGroupManager struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+	DistributionPolicyTargetShape pulumi.StringOutput `pulumi:"distributionPolicyTargetShape"`
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones pulumi.StringArrayOutput `pulumi:"distributionPolicyZones"`
@@ -164,6 +171,8 @@ type regionInstanceGroupManagerState struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description *string `pulumi:"description"`
+	// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+	DistributionPolicyTargetShape *string `pulumi:"distributionPolicyTargetShape"`
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones []string `pulumi:"distributionPolicyZones"`
@@ -217,6 +226,8 @@ type RegionInstanceGroupManagerState struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrInput
+	// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+	DistributionPolicyTargetShape pulumi.StringPtrInput
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones pulumi.StringArrayInput
@@ -274,6 +285,8 @@ type regionInstanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description *string `pulumi:"description"`
+	// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+	DistributionPolicyTargetShape *string `pulumi:"distributionPolicyTargetShape"`
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones []string `pulumi:"distributionPolicyZones"`
@@ -322,6 +335,8 @@ type RegionInstanceGroupManagerArgs struct {
 	// An optional textual description of the instance
 	// group manager.
 	Description pulumi.StringPtrInput
+	// The shape to which the group converges either proactively or on resize events (depending on the value set in update_policy.0.instance_redistribution_type). For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/regional-mig-distribution-shape).
+	DistributionPolicyTargetShape pulumi.StringPtrInput
 	// The distribution policy for this managed instance
 	// group. You can specify one or more values. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups#selectingzones).
 	DistributionPolicyZones pulumi.StringArrayInput

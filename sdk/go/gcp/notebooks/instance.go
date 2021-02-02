@@ -248,9 +248,9 @@ type Instance struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringOutput `pulumi:"network"`
-	// the notebook instance will not register with the proxy..
+	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrOutput `pulumi:"noProxyAccess"`
-	// no public IP will be assigned to this instance.
+	// No public IP will be assigned to this instance.
 	NoPublicIp pulumi.BoolPtrOutput `pulumi:"noPublicIp"`
 	// If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolPtrOutput `pulumi:"noRemoveDataDisk"`
@@ -269,11 +269,22 @@ type Instance struct {
 	// permission to use the instance. If not specified,
 	// the Compute Engine default service account is used.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+	// If not specified, the following scopes are defined:
+	// - https://www.googleapis.com/auth/cloud-platform
+	// - https://www.googleapis.com/auth/userinfo.email
+	ServiceAccountScopes pulumi.StringArrayOutput `pulumi:"serviceAccountScopes"`
+	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+	// Not all combinations are valid
+	// Structure is documented below.
+	ShieldedInstanceConfig InstanceShieldedInstanceConfigOutput `pulumi:"shieldedInstanceConfig"`
 	// The state of this instance.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet pulumi.StringOutput `pulumi:"subnet"`
+	// The Compute Engine tags to add to runtime.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Instance update time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -375,9 +386,9 @@ type instanceState struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network *string `pulumi:"network"`
-	// the notebook instance will not register with the proxy..
+	// The notebook instance will not register with the proxy..
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
-	// no public IP will be assigned to this instance.
+	// No public IP will be assigned to this instance.
 	NoPublicIp *bool `pulumi:"noPublicIp"`
 	// If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
@@ -396,11 +407,22 @@ type instanceState struct {
 	// permission to use the instance. If not specified,
 	// the Compute Engine default service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+	// If not specified, the following scopes are defined:
+	// - https://www.googleapis.com/auth/cloud-platform
+	// - https://www.googleapis.com/auth/userinfo.email
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+	// Not all combinations are valid
+	// Structure is documented below.
+	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// The state of this instance.
 	State *string `pulumi:"state"`
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet *string `pulumi:"subnet"`
+	// The Compute Engine tags to add to runtime.
+	Tags []string `pulumi:"tags"`
 	// Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -468,9 +490,9 @@ type InstanceState struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringPtrInput
-	// the notebook instance will not register with the proxy..
+	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrInput
-	// no public IP will be assigned to this instance.
+	// No public IP will be assigned to this instance.
 	NoPublicIp pulumi.BoolPtrInput
 	// If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolPtrInput
@@ -489,11 +511,22 @@ type InstanceState struct {
 	// permission to use the instance. If not specified,
 	// the Compute Engine default service account is used.
 	ServiceAccount pulumi.StringPtrInput
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+	// If not specified, the following scopes are defined:
+	// - https://www.googleapis.com/auth/cloud-platform
+	// - https://www.googleapis.com/auth/userinfo.email
+	ServiceAccountScopes pulumi.StringArrayInput
+	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+	// Not all combinations are valid
+	// Structure is documented below.
+	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
 	// The state of this instance.
 	State pulumi.StringPtrInput
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet pulumi.StringPtrInput
+	// The Compute Engine tags to add to runtime.
+	Tags pulumi.StringArrayInput
 	// Instance update time.
 	UpdateTime pulumi.StringPtrInput
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -565,9 +598,9 @@ type instanceArgs struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network *string `pulumi:"network"`
-	// the notebook instance will not register with the proxy..
+	// The notebook instance will not register with the proxy..
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
-	// no public IP will be assigned to this instance.
+	// No public IP will be assigned to this instance.
 	NoPublicIp *bool `pulumi:"noPublicIp"`
 	// If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
@@ -584,9 +617,20 @@ type instanceArgs struct {
 	// permission to use the instance. If not specified,
 	// the Compute Engine default service account is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+	// If not specified, the following scopes are defined:
+	// - https://www.googleapis.com/auth/cloud-platform
+	// - https://www.googleapis.com/auth/userinfo.email
+	ServiceAccountScopes []string `pulumi:"serviceAccountScopes"`
+	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+	// Not all combinations are valid
+	// Structure is documented below.
+	ShieldedInstanceConfig *InstanceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet *string `pulumi:"subnet"`
+	// The Compute Engine tags to add to runtime.
+	Tags []string `pulumi:"tags"`
 	// Instance update time.
 	UpdateTime *string `pulumi:"updateTime"`
 	// Use a Compute Engine VM image to start the notebook instance.
@@ -655,9 +699,9 @@ type InstanceArgs struct {
 	// The name of the VPC that this instance is in.
 	// Format: projects/{project_id}/global/networks/{network_id}
 	Network pulumi.StringPtrInput
-	// the notebook instance will not register with the proxy..
+	// The notebook instance will not register with the proxy..
 	NoProxyAccess pulumi.BoolPtrInput
-	// no public IP will be assigned to this instance.
+	// No public IP will be assigned to this instance.
 	NoPublicIp pulumi.BoolPtrInput
 	// If true, the data disk will not be auto deleted when deleting the instance.
 	NoRemoveDataDisk pulumi.BoolPtrInput
@@ -674,9 +718,20 @@ type InstanceArgs struct {
 	// permission to use the instance. If not specified,
 	// the Compute Engine default service account is used.
 	ServiceAccount pulumi.StringPtrInput
+	// Optional. The URIs of service account scopes to be included in Compute Engine instances.
+	// If not specified, the following scopes are defined:
+	// - https://www.googleapis.com/auth/cloud-platform
+	// - https://www.googleapis.com/auth/userinfo.email
+	ServiceAccountScopes pulumi.StringArrayInput
+	// A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+	// Not all combinations are valid
+	// Structure is documented below.
+	ShieldedInstanceConfig InstanceShieldedInstanceConfigPtrInput
 	// The name of the subnet that this instance is in.
 	// Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
 	Subnet pulumi.StringPtrInput
+	// The Compute Engine tags to add to runtime.
+	Tags pulumi.StringArrayInput
 	// Instance update time.
 	UpdateTime pulumi.StringPtrInput
 	// Use a Compute Engine VM image to start the notebook instance.

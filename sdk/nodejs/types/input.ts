@@ -3752,11 +3752,6 @@ export namespace cloudidentity {
 
 export namespace cloudrun {
     export interface DomainMappingMetadata {
-        /**
-         * Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: http://kubernetes.io/docs/user-guide/annotations
-         */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * -
@@ -3857,11 +3852,6 @@ export namespace cloudrun {
     }
 
     export interface ServiceMetadata {
-        /**
-         * Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: http://kubernetes.io/docs/user-guide/annotations
-         */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * -
@@ -3935,11 +3925,6 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplateMetadata {
-        /**
-         * Annotations is a key value map stored with a resource that
-         * may be set by external tools to store and retrieve arbitrary metadata. More
-         * info: http://kubernetes.io/docs/user-guide/annotations
-         */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * -
@@ -4345,6 +4330,7 @@ export namespace cloudscheduler {
         /**
          * The message payload for PubsubMessage.
          * Pubsub message must contain either non-empty data, or at least one attribute.
+         * A base64-encoded string.
          */
         data?: pulumi.Input<string>;
         /**
@@ -13136,11 +13122,6 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
-        /**
-         * Controls cluster master global
-         * access settings. If unset, the provider will no longer manage this field and will
-         * not modify the previously-set value. Structure is documented below.
-         */
         masterGlobalAccessConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfigMasterGlobalAccessConfig>;
         /**
          * The IP range in CIDR notation to use for
@@ -14697,6 +14678,12 @@ export namespace dataproc {
          * option.
          */
         stagingBucket?: pulumi.Input<string>;
+        /**
+         * The Cloud Storage temp bucket used to store ephemeral cluster
+         * and jobs data, such as Spark and MapReduce history files.
+         * Note: If you don't explicitly specify a `tempBucket` then GCP will auto create / assign one for you.
+         */
+        tempBucket?: pulumi.Input<string>;
         /**
          * The Google Compute Engine config settings for the worker instances
          * in a cluster.. Structure defined below.
@@ -18242,7 +18229,7 @@ export namespace notebooks {
         coreCount: pulumi.Input<number>;
         /**
          * Type of this accelerator.
-         * Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
+         * Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
          */
         type: pulumi.Input<string>;
     }
@@ -18269,6 +18256,28 @@ export namespace notebooks {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface InstanceShieldedInstanceConfig {
+        /**
+         * Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+         * boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+         * This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+         * Enabled by default.
+         */
+        enableIntegrityMonitoring?: pulumi.Input<boolean>;
+        /**
+         * Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+         * authentic software by verifying the digital signature of all boot components, and halting the boot process
+         * if signature verification fails.
+         * Disabled by default.
+         */
+        enableSecureBoot?: pulumi.Input<boolean>;
+        /**
+         * Defines whether the instance has the vTPM enabled.
+         * Enabled by default.
+         */
+        enableVtpm?: pulumi.Input<boolean>;
     }
 
     export interface InstanceVmImage {

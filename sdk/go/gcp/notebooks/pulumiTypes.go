@@ -341,7 +341,7 @@ type InstanceAcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount int `pulumi:"coreCount"`
 	// Type of this accelerator.
-	// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
+	// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
 	Type string `pulumi:"type"`
 }
 
@@ -360,7 +360,7 @@ type InstanceAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.IntInput `pulumi:"coreCount"`
 	// Type of this accelerator.
-	// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
+	// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -447,7 +447,7 @@ func (o InstanceAcceleratorConfigOutput) CoreCount() pulumi.IntOutput {
 }
 
 // Type of this accelerator.
-// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
+// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
 func (o InstanceAcceleratorConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceAcceleratorConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -481,7 +481,7 @@ func (o InstanceAcceleratorConfigPtrOutput) CoreCount() pulumi.IntPtrOutput {
 }
 
 // Type of this accelerator.
-// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `TPU_V2`, and `TPU_V3`.
+// Possible values are `ACCELERATOR_TYPE_UNSPECIFIED`, `NVIDIA_TESLA_K80`, `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`, `NVIDIA_TESLA_A100`, `TPU_V2`, and `TPU_V3`.
 func (o InstanceAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceAcceleratorConfig) *string {
 		if v == nil {
@@ -957,6 +957,203 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceShieldedInstanceConfig struct {
+	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+	// boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+	// This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+	// Enabled by default.
+	EnableIntegrityMonitoring *bool `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+	// authentic software by verifying the digital signature of all boot components, and halting the boot process
+	// if signature verification fails.
+	// Disabled by default.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled.
+	// Enabled by default.
+	EnableVtpm *bool `pulumi:"enableVtpm"`
+}
+
+// InstanceShieldedInstanceConfigInput is an input type that accepts InstanceShieldedInstanceConfigArgs and InstanceShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `InstanceShieldedInstanceConfigInput` via:
+//
+//          InstanceShieldedInstanceConfigArgs{...}
+type InstanceShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToInstanceShieldedInstanceConfigOutput() InstanceShieldedInstanceConfigOutput
+	ToInstanceShieldedInstanceConfigOutputWithContext(context.Context) InstanceShieldedInstanceConfigOutput
+}
+
+type InstanceShieldedInstanceConfigArgs struct {
+	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+	// boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+	// This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+	// Enabled by default.
+	EnableIntegrityMonitoring pulumi.BoolPtrInput `pulumi:"enableIntegrityMonitoring"`
+	// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+	// authentic software by verifying the digital signature of all boot components, and halting the boot process
+	// if signature verification fails.
+	// Disabled by default.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+	// Defines whether the instance has the vTPM enabled.
+	// Enabled by default.
+	EnableVtpm pulumi.BoolPtrInput `pulumi:"enableVtpm"`
+}
+
+func (InstanceShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i InstanceShieldedInstanceConfigArgs) ToInstanceShieldedInstanceConfigOutput() InstanceShieldedInstanceConfigOutput {
+	return i.ToInstanceShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceShieldedInstanceConfigArgs) ToInstanceShieldedInstanceConfigOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceShieldedInstanceConfigOutput)
+}
+
+func (i InstanceShieldedInstanceConfigArgs) ToInstanceShieldedInstanceConfigPtrOutput() InstanceShieldedInstanceConfigPtrOutput {
+	return i.ToInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceShieldedInstanceConfigArgs) ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceShieldedInstanceConfigOutput).ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceShieldedInstanceConfigPtrInput is an input type that accepts InstanceShieldedInstanceConfigArgs, InstanceShieldedInstanceConfigPtr and InstanceShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceShieldedInstanceConfigPtrInput` via:
+//
+//          InstanceShieldedInstanceConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceShieldedInstanceConfigPtrOutput() InstanceShieldedInstanceConfigPtrOutput
+	ToInstanceShieldedInstanceConfigPtrOutputWithContext(context.Context) InstanceShieldedInstanceConfigPtrOutput
+}
+
+type instanceShieldedInstanceConfigPtrType InstanceShieldedInstanceConfigArgs
+
+func InstanceShieldedInstanceConfigPtr(v *InstanceShieldedInstanceConfigArgs) InstanceShieldedInstanceConfigPtrInput {
+	return (*instanceShieldedInstanceConfigPtrType)(v)
+}
+
+func (*instanceShieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *instanceShieldedInstanceConfigPtrType) ToInstanceShieldedInstanceConfigPtrOutput() InstanceShieldedInstanceConfigPtrOutput {
+	return i.ToInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceShieldedInstanceConfigPtrType) ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceShieldedInstanceConfigPtrOutput)
+}
+
+type InstanceShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigOutput() InstanceShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigPtrOutput() InstanceShieldedInstanceConfigPtrOutput {
+	return o.ToInstanceShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceShieldedInstanceConfigOutput) ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigPtrOutput {
+	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *InstanceShieldedInstanceConfig {
+		return &v
+	}).(InstanceShieldedInstanceConfigPtrOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+// boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+// This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+// Enabled by default.
+func (o InstanceShieldedInstanceConfigOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *bool { return v.EnableIntegrityMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+// authentic software by verifying the digital signature of all boot components, and halting the boot process
+// if signature verification fails.
+// Disabled by default.
+func (o InstanceShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has the vTPM enabled.
+// Enabled by default.
+func (o InstanceShieldedInstanceConfigOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceShieldedInstanceConfig) *bool { return v.EnableVtpm }).(pulumi.BoolPtrOutput)
+}
+
+type InstanceShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o InstanceShieldedInstanceConfigPtrOutput) ToInstanceShieldedInstanceConfigPtrOutput() InstanceShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceShieldedInstanceConfigPtrOutput) ToInstanceShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) InstanceShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o InstanceShieldedInstanceConfigPtrOutput) Elem() InstanceShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) InstanceShieldedInstanceConfig { return *v }).(InstanceShieldedInstanceConfigOutput)
+}
+
+// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the
+// boot integrity of the instance. The attestation is performed against the integrity policy baseline.
+// This baseline is initially derived from the implicitly trusted boot image when the instance is created.
+// Enabled by default.
+func (o InstanceShieldedInstanceConfigPtrOutput) EnableIntegrityMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableIntegrityMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs
+// authentic software by verifying the digital signature of all boot components, and halting the boot process
+// if signature verification fails.
+// Disabled by default.
+func (o InstanceShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Defines whether the instance has the vTPM enabled.
+// Enabled by default.
+func (o InstanceShieldedInstanceConfigPtrOutput) EnableVtpm() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableVtpm
+	}).(pulumi.BoolPtrOutput)
+}
+
 type InstanceVmImage struct {
 	// Use this VM image family to find the image; the newest image in this family will be used.
 	ImageFamily *string `pulumi:"imageFamily"`
@@ -1143,6 +1340,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(InstanceShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceVmImageOutput{})
 	pulumi.RegisterOutputType(InstanceVmImagePtrOutput{})
 }

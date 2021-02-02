@@ -120,7 +120,7 @@ def get_service(location: Optional[str] = None,
                 project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceResult:
     """
-    Get information about a Google Cloud Run. For more information see
+    Get information about a Google Cloud Run Service. For more information see
     the [official documentation](https://cloud.google.com/run/docs/)
     and [API](https://cloud.google.com/run/docs/apis).
 

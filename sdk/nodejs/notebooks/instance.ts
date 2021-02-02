@@ -247,11 +247,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * the notebook instance will not register with the proxy..
+     * The notebook instance will not register with the proxy..
      */
     public readonly noProxyAccess!: pulumi.Output<boolean | undefined>;
     /**
-     * no public IP will be assigned to this instance.
+     * No public IP will be assigned to this instance.
      */
     public readonly noPublicIp!: pulumi.Output<boolean | undefined>;
     /**
@@ -282,6 +282,19 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
+     * Optional. The URIs of service account scopes to be included in Compute Engine instances.
+     * If not specified, the following scopes are defined:
+     * - https://www.googleapis.com/auth/cloud-platform
+     * - https://www.googleapis.com/auth/userinfo.email
+     */
+    public readonly serviceAccountScopes!: pulumi.Output<string[] | undefined>;
+    /**
+     * A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+     * Not all combinations are valid
+     * Structure is documented below.
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.notebooks.InstanceShieldedInstanceConfig>;
+    /**
      * The state of this instance.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -290,6 +303,10 @@ export class Instance extends pulumi.CustomResource {
      * Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
      */
     public readonly subnet!: pulumi.Output<string>;
+    /**
+     * The Compute Engine tags to add to runtime.
+     */
+    public readonly tags!: pulumi.Output<string[] | undefined>;
     /**
      * Instance update time.
      */
@@ -337,8 +354,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
             inputs["proxyUri"] = state ? state.proxyUri : undefined;
             inputs["serviceAccount"] = state ? state.serviceAccount : undefined;
+            inputs["serviceAccountScopes"] = state ? state.serviceAccountScopes : undefined;
+            inputs["shieldedInstanceConfig"] = state ? state.shieldedInstanceConfig : undefined;
             inputs["state"] = state ? state.state : undefined;
             inputs["subnet"] = state ? state.subnet : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["updateTime"] = state ? state.updateTime : undefined;
             inputs["vmImage"] = state ? state.vmImage : undefined;
         } else {
@@ -373,7 +393,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["serviceAccountScopes"] = args ? args.serviceAccountScopes : undefined;
+            inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["subnet"] = args ? args.subnet : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["vmImage"] = args ? args.vmImage : undefined;
             inputs["proxyUri"] = undefined /*out*/;
@@ -490,11 +513,11 @@ export interface InstanceState {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * the notebook instance will not register with the proxy..
+     * The notebook instance will not register with the proxy..
      */
     readonly noProxyAccess?: pulumi.Input<boolean>;
     /**
-     * no public IP will be assigned to this instance.
+     * No public IP will be assigned to this instance.
      */
     readonly noPublicIp?: pulumi.Input<boolean>;
     /**
@@ -525,6 +548,19 @@ export interface InstanceState {
      */
     readonly serviceAccount?: pulumi.Input<string>;
     /**
+     * Optional. The URIs of service account scopes to be included in Compute Engine instances.
+     * If not specified, the following scopes are defined:
+     * - https://www.googleapis.com/auth/cloud-platform
+     * - https://www.googleapis.com/auth/userinfo.email
+     */
+    readonly serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+     * Not all combinations are valid
+     * Structure is documented below.
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.InstanceShieldedInstanceConfig>;
+    /**
      * The state of this instance.
      */
     readonly state?: pulumi.Input<string>;
@@ -533,6 +569,10 @@ export interface InstanceState {
      * Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
      */
     readonly subnet?: pulumi.Input<string>;
+    /**
+     * The Compute Engine tags to add to runtime.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance update time.
      */
@@ -644,11 +684,11 @@ export interface InstanceArgs {
      */
     readonly network?: pulumi.Input<string>;
     /**
-     * the notebook instance will not register with the proxy..
+     * The notebook instance will not register with the proxy..
      */
     readonly noProxyAccess?: pulumi.Input<boolean>;
     /**
-     * no public IP will be assigned to this instance.
+     * No public IP will be assigned to this instance.
      */
     readonly noPublicIp?: pulumi.Input<boolean>;
     /**
@@ -675,10 +715,27 @@ export interface InstanceArgs {
      */
     readonly serviceAccount?: pulumi.Input<string>;
     /**
+     * Optional. The URIs of service account scopes to be included in Compute Engine instances.
+     * If not specified, the following scopes are defined:
+     * - https://www.googleapis.com/auth/cloud-platform
+     * - https://www.googleapis.com/auth/userinfo.email
+     */
+    readonly serviceAccountScopes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set of Shielded Instance options. Check [Images using supported Shielded VM features]
+     * Not all combinations are valid
+     * Structure is documented below.
+     */
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.InstanceShieldedInstanceConfig>;
+    /**
      * The name of the subnet that this instance is in.
      * Format: projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}
      */
     readonly subnet?: pulumi.Input<string>;
+    /**
+     * The Compute Engine tags to add to runtime.
+     */
+    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Instance update time.
      */

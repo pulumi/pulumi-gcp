@@ -9,6 +9,7 @@ export * from "./config";
 export * from "./configIamBinding";
 export * from "./configIamMember";
 export * from "./configIamPolicy";
+export * from "./getConfig";
 export * from "./variable";
 
 // Import resources to register:
