@@ -14,10 +14,15 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class SloBasicSli
     {
         /// <summary>
+        /// Availability based SLI, dervied from count of requests made to this service that return successfully.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SloBasicSliAvailability? Availability;
+        /// <summary>
         /// Parameters for a latency threshold SLI.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.SloBasicSliLatency Latency;
+        public readonly Outputs.SloBasicSliLatency? Latency;
         /// <summary>
         /// An optional set of locations to which this SLI is relevant.
         /// Telemetry from other locations will not be used to calculate
@@ -48,7 +53,9 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
         [OutputConstructor]
         private SloBasicSli(
-            Outputs.SloBasicSliLatency latency,
+            Outputs.SloBasicSliAvailability? availability,
+
+            Outputs.SloBasicSliLatency? latency,
 
             ImmutableArray<string> locations,
 
@@ -56,6 +63,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             ImmutableArray<string> versions)
         {
+            Availability = availability;
             Latency = latency;
             Locations = locations;
             Methods = methods;

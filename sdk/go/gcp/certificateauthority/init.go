@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewAuthorityIamMember(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy":
 		r, err = NewAuthorityIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:certificateauthority/certificate:Certificate":
+		r, err = NewCertificate(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -59,6 +61,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"certificateauthority/authorityIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"certificateauthority/certificate",
 		&module{version},
 	)
 }

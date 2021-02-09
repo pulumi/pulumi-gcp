@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -31,6 +30,8 @@ import (
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
+	// Configuration for creating a new instance as a clone of another instance.
+	Clone DatabaseInstanceClonePtrOutput `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName pulumi.StringOutput `pulumi:"connectionName"`
@@ -88,7 +89,7 @@ type DatabaseInstance struct {
 	// instance.
 	ServiceAccountEmailAddress pulumi.StringOutput `pulumi:"serviceAccountEmailAddress"`
 	// The settings to use for the database. The
-	// configuration is detailed below.
+	// configuration is detailed below. Required if `clone` is not set.
 	Settings DatabaseInstanceSettingsOutput `pulumi:"settings"`
 }
 
@@ -96,12 +97,9 @@ type DatabaseInstance struct {
 func NewDatabaseInstance(ctx *pulumi.Context,
 	name string, args *DatabaseInstanceArgs, opts ...pulumi.ResourceOption) (*DatabaseInstance, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &DatabaseInstanceArgs{}
 	}
 
-	if args.Settings == nil {
-		return nil, errors.New("invalid value for required argument 'Settings'")
-	}
 	var resource DatabaseInstance
 	err := ctx.RegisterResource("gcp:sql/databaseInstance:DatabaseInstance", name, args, &resource, opts...)
 	if err != nil {
@@ -124,6 +122,8 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
+	// Configuration for creating a new instance as a clone of another instance.
+	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName *string `pulumi:"connectionName"`
@@ -181,11 +181,13 @@ type databaseInstanceState struct {
 	// instance.
 	ServiceAccountEmailAddress *string `pulumi:"serviceAccountEmailAddress"`
 	// The settings to use for the database. The
-	// configuration is detailed below.
+	// configuration is detailed below. Required if `clone` is not set.
 	Settings *DatabaseInstanceSettings `pulumi:"settings"`
 }
 
 type DatabaseInstanceState struct {
+	// Configuration for creating a new instance as a clone of another instance.
+	Clone DatabaseInstanceClonePtrInput
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
 	ConnectionName pulumi.StringPtrInput
@@ -243,7 +245,7 @@ type DatabaseInstanceState struct {
 	// instance.
 	ServiceAccountEmailAddress pulumi.StringPtrInput
 	// The settings to use for the database. The
-	// configuration is detailed below.
+	// configuration is detailed below. Required if `clone` is not set.
 	Settings DatabaseInstanceSettingsPtrInput
 }
 
@@ -252,6 +254,8 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
+	// Configuration for creating a new instance as a clone of another instance.
+	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -293,12 +297,14 @@ type databaseInstanceArgs struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The settings to use for the database. The
-	// configuration is detailed below.
-	Settings DatabaseInstanceSettings `pulumi:"settings"`
+	// configuration is detailed below. Required if `clone` is not set.
+	Settings *DatabaseInstanceSettings `pulumi:"settings"`
 }
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
+	// Configuration for creating a new instance as a clone of another instance.
+	Clone DatabaseInstanceClonePtrInput
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
 	// `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -340,8 +346,8 @@ type DatabaseInstanceArgs struct {
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
 	// The settings to use for the database. The
-	// configuration is detailed below.
-	Settings DatabaseInstanceSettingsInput
+	// configuration is detailed below. Required if `clone` is not set.
+	Settings DatabaseInstanceSettingsPtrInput
 }
 
 func (DatabaseInstanceArgs) ElementType() reflect.Type {

@@ -10,6 +10,7 @@ from .. import _utilities, _tables
 from . import outputs
 
 __all__ = [
+    'DatabaseInstanceClone',
     'DatabaseInstanceIpAddress',
     'DatabaseInstanceReplicaConfiguration',
     'DatabaseInstanceRestoreBackupContext',
@@ -22,6 +23,7 @@ __all__ = [
     'DatabaseInstanceSettingsLocationPreference',
     'DatabaseInstanceSettingsMaintenanceWindow',
     'GetCaCertsCertResult',
+    'GetDatabaseInstanceCloneResult',
     'GetDatabaseInstanceIpAddressResult',
     'GetDatabaseInstanceReplicaConfigurationResult',
     'GetDatabaseInstanceRestoreBackupContextResult',
@@ -34,6 +36,38 @@ __all__ = [
     'GetDatabaseInstanceSettingLocationPreferenceResult',
     'GetDatabaseInstanceSettingMaintenanceWindowResult',
 ]
+
+@pulumi.output_type
+class DatabaseInstanceClone(dict):
+    def __init__(__self__, *,
+                 point_in_time: str,
+                 source_instance_name: str):
+        """
+        :param str point_in_time: The timestamp of the point in time that should be restored.
+        :param str source_instance_name: Name of the source instance which will be cloned.
+        """
+        pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "source_instance_name", source_instance_name)
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> str:
+        """
+        The timestamp of the point in time that should be restored.
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @property
+    @pulumi.getter(name="sourceInstanceName")
+    def source_instance_name(self) -> str:
+        """
+        Name of the source instance which will be cloned.
+        """
+        return pulumi.get(self, "source_instance_name")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
 
 @pulumi.output_type
 class DatabaseInstanceIpAddress(dict):
@@ -84,13 +118,13 @@ class DatabaseInstanceReplicaConfiguration(dict):
         """
         :param str ca_certificate: PEM representation of the trusted CA's x509
                certificate.
-        :param str client_certificate: PEM representation of the slave's x509
+        :param str client_certificate: PEM representation of the replica's x509
                certificate.
-        :param str client_key: PEM representation of the slave's private key. The
+        :param str client_key: PEM representation of the replica's private key. The
                corresponding public key in encoded in the `client_certificate`.
         :param int connect_retry_interval: The number of seconds
                between connect retries.
-        :param str dump_file_path: Path to a SQL file in GCS from which slave
+        :param str dump_file_path: Path to a SQL file in GCS from which replica
                instances are created. Format is `gs://bucket/filename`.
         :param bool failover_target: Specifies if the replica is the failover target.
                If the field is set to true the replica will be designated as a failover replica.
@@ -139,7 +173,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[str]:
         """
-        PEM representation of the slave's x509
+        PEM representation of the replica's x509
         certificate.
         """
         return pulumi.get(self, "client_certificate")
@@ -148,7 +182,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
         """
-        PEM representation of the slave's private key. The
+        PEM representation of the replica's private key. The
         corresponding public key in encoded in the `client_certificate`.
         """
         return pulumi.get(self, "client_key")
@@ -166,7 +200,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
     @pulumi.getter(name="dumpFilePath")
     def dump_file_path(self) -> Optional[str]:
         """
-        Path to a SQL file in GCS from which slave
+        Path to a SQL file in GCS from which replica
         instances are created. Format is `gs://bucket/filename`.
         """
         return pulumi.get(self, "dump_file_path")
@@ -927,6 +961,25 @@ class GetCaCertsCertResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseInstanceCloneResult(dict):
+    def __init__(__self__, *,
+                 point_in_time: str,
+                 source_instance_name: str):
+        pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "source_instance_name", source_instance_name)
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> str:
+        return pulumi.get(self, "point_in_time")
+
+    @property
+    @pulumi.getter(name="sourceInstanceName")
+    def source_instance_name(self) -> str:
+        return pulumi.get(self, "source_instance_name")
+
+
+@pulumi.output_type
 class GetDatabaseInstanceIpAddressResult(dict):
     def __init__(__self__, *,
                  ip_address: str,
@@ -968,10 +1021,10 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
                  verify_server_certificate: bool):
         """
         :param str ca_certificate: PEM representation of the trusted CA's x509 certificate.
-        :param str client_certificate: PEM representation of the slave's x509 certificate.
-        :param str client_key: PEM representation of the slave's private key.
+        :param str client_certificate: PEM representation of the replica's x509 certificate.
+        :param str client_key: PEM representation of the replica's private key.
         :param int connect_retry_interval: The number of seconds between connect retries.
-        :param str dump_file_path: Path to a SQL file in GCS from which slave instances are created.
+        :param str dump_file_path: Path to a SQL file in GCS from which replica instances are created.
         :param bool failover_target: Specifies if the replica is the failover target.
         :param int master_heartbeat_period: Time in ms between replication heartbeats.
         :param str password: Password for the replication connection.
@@ -1002,7 +1055,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> str:
         """
-        PEM representation of the slave's x509 certificate.
+        PEM representation of the replica's x509 certificate.
         """
         return pulumi.get(self, "client_certificate")
 
@@ -1010,7 +1063,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> str:
         """
-        PEM representation of the slave's private key.
+        PEM representation of the replica's private key.
         """
         return pulumi.get(self, "client_key")
 
@@ -1026,7 +1079,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
     @pulumi.getter(name="dumpFilePath")
     def dump_file_path(self) -> str:
         """
-        Path to a SQL file in GCS from which slave instances are created.
+        Path to a SQL file in GCS from which replica instances are created.
         """
         return pulumi.get(self, "dump_file_path")
 

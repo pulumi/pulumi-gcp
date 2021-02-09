@@ -51,6 +51,7 @@ export interface GetDatabaseInstanceArgs {
  * A collection of values returned by getDatabaseInstance.
  */
 export interface GetDatabaseInstanceResult {
+    readonly clones: outputs.sql.GetDatabaseInstanceClone[];
     /**
      * The connection name of the instance to be used in connection strings.
      */

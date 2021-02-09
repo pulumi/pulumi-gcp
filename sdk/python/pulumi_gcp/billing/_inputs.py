@@ -331,12 +331,11 @@ class BudgetBudgetFilterArgs:
                Possible values are `INCLUDE_ALL_CREDITS`, `EXCLUDE_ALL_CREDITS`, and `INCLUDE_SPECIFIED_CREDITS`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A single label and value pair specifying that usage from only
                this set of labeled resources should be included in the budget.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: A set of projects of the form projects/{project_id},
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: A set of projects of the form projects/{project_number},
                specifying that usage from only this set of projects should be
                included in the budget. If omitted, the report will include
                all usage for the billing account, regardless of which project
-               the usage occurred on. Only zero or one project can be
-               specified currently.
+               the usage occurred on.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: A set of services of the form services/{service_id},
                specifying that usage from only this set of services should be
                included in the budget. If omitted, the report will include
@@ -412,12 +411,11 @@ class BudgetBudgetFilterArgs:
     @pulumi.getter
     def projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of projects of the form projects/{project_id},
+        A set of projects of the form projects/{project_number},
         specifying that usage from only this set of projects should be
         included in the budget. If omitted, the report will include
         all usage for the billing account, regardless of which project
-        the usage occurred on. Only zero or one project can be
-        specified currently.
+        the usage occurred on.
         """
         return pulumi.get(self, "projects")
 

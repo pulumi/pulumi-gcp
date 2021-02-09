@@ -941,12 +941,11 @@ type BudgetBudgetFilter struct {
 	// A single label and value pair specifying that usage from only
 	// this set of labeled resources should be included in the budget.
 	Labels map[string]string `pulumi:"labels"`
-	// A set of projects of the form projects/{project_id},
+	// A set of projects of the form projects/{project_number},
 	// specifying that usage from only this set of projects should be
 	// included in the budget. If omitted, the report will include
 	// all usage for the billing account, regardless of which project
-	// the usage occurred on. Only zero or one project can be
-	// specified currently.
+	// the usage occurred on.
 	Projects []string `pulumi:"projects"`
 	// A set of services of the form services/{service_id},
 	// specifying that usage from only this set of services should be
@@ -991,12 +990,11 @@ type BudgetBudgetFilterArgs struct {
 	// A single label and value pair specifying that usage from only
 	// this set of labeled resources should be included in the budget.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// A set of projects of the form projects/{project_id},
+	// A set of projects of the form projects/{project_number},
 	// specifying that usage from only this set of projects should be
 	// included in the budget. If omitted, the report will include
 	// all usage for the billing account, regardless of which project
-	// the usage occurred on. Only zero or one project can be
-	// specified currently.
+	// the usage occurred on.
 	Projects pulumi.StringArrayInput `pulumi:"projects"`
 	// A set of services of the form services/{service_id},
 	// specifying that usage from only this set of services should be
@@ -1115,12 +1113,11 @@ func (o BudgetBudgetFilterOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// A set of projects of the form projects/{project_id},
+// A set of projects of the form projects/{project_number},
 // specifying that usage from only this set of projects should be
 // included in the budget. If omitted, the report will include
 // all usage for the billing account, regardless of which project
-// the usage occurred on. Only zero or one project can be
-// specified currently.
+// the usage occurred on.
 func (o BudgetBudgetFilterOutput) Projects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BudgetBudgetFilter) []string { return v.Projects }).(pulumi.StringArrayOutput)
 }
@@ -1202,12 +1199,11 @@ func (o BudgetBudgetFilterPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// A set of projects of the form projects/{project_id},
+// A set of projects of the form projects/{project_number},
 // specifying that usage from only this set of projects should be
 // included in the budget. If omitted, the report will include
 // all usage for the billing account, regardless of which project
-// the usage occurred on. Only zero or one project can be
-// specified currently.
+// the usage occurred on.
 func (o BudgetBudgetFilterPtrOutput) Projects() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BudgetBudgetFilter) []string {
 		if v == nil {

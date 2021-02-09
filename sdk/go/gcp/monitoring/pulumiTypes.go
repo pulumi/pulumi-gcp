@@ -3814,9 +3814,12 @@ func (o NotificationChannelSensitiveLabelsPtrOutput) ServiceKey() pulumi.StringP
 }
 
 type SloBasicSli struct {
+	// Availability based SLI, dervied from count of requests made to this service that return successfully.
+	// Structure is documented below.
+	Availability *SloBasicSliAvailability `pulumi:"availability"`
 	// Parameters for a latency threshold SLI.
 	// Structure is documented below.
-	Latency SloBasicSliLatency `pulumi:"latency"`
+	Latency *SloBasicSliLatency `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
 	// performance for this SLI. If omitted, this SLI applies to all
@@ -3852,9 +3855,12 @@ type SloBasicSliInput interface {
 }
 
 type SloBasicSliArgs struct {
+	// Availability based SLI, dervied from count of requests made to this service that return successfully.
+	// Structure is documented below.
+	Availability SloBasicSliAvailabilityPtrInput `pulumi:"availability"`
 	// Parameters for a latency threshold SLI.
 	// Structure is documented below.
-	Latency SloBasicSliLatencyInput `pulumi:"latency"`
+	Latency SloBasicSliLatencyPtrInput `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
 	// performance for this SLI. If omitted, this SLI applies to all
@@ -3955,10 +3961,16 @@ func (o SloBasicSliOutput) ToSloBasicSliPtrOutputWithContext(ctx context.Context
 	}).(SloBasicSliPtrOutput)
 }
 
+// Availability based SLI, dervied from count of requests made to this service that return successfully.
+// Structure is documented below.
+func (o SloBasicSliOutput) Availability() SloBasicSliAvailabilityPtrOutput {
+	return o.ApplyT(func(v SloBasicSli) *SloBasicSliAvailability { return v.Availability }).(SloBasicSliAvailabilityPtrOutput)
+}
+
 // Parameters for a latency threshold SLI.
 // Structure is documented below.
-func (o SloBasicSliOutput) Latency() SloBasicSliLatencyOutput {
-	return o.ApplyT(func(v SloBasicSli) SloBasicSliLatency { return v.Latency }).(SloBasicSliLatencyOutput)
+func (o SloBasicSliOutput) Latency() SloBasicSliLatencyPtrOutput {
+	return o.ApplyT(func(v SloBasicSli) *SloBasicSliLatency { return v.Latency }).(SloBasicSliLatencyPtrOutput)
 }
 
 // An optional set of locations to which this SLI is relevant.
@@ -4009,6 +4021,17 @@ func (o SloBasicSliPtrOutput) Elem() SloBasicSliOutput {
 	return o.ApplyT(func(v *SloBasicSli) SloBasicSli { return *v }).(SloBasicSliOutput)
 }
 
+// Availability based SLI, dervied from count of requests made to this service that return successfully.
+// Structure is documented below.
+func (o SloBasicSliPtrOutput) Availability() SloBasicSliAvailabilityPtrOutput {
+	return o.ApplyT(func(v *SloBasicSli) *SloBasicSliAvailability {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(SloBasicSliAvailabilityPtrOutput)
+}
+
 // Parameters for a latency threshold SLI.
 // Structure is documented below.
 func (o SloBasicSliPtrOutput) Latency() SloBasicSliLatencyPtrOutput {
@@ -4016,7 +4039,7 @@ func (o SloBasicSliPtrOutput) Latency() SloBasicSliLatencyPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Latency
+		return v.Latency
 	}).(SloBasicSliLatencyPtrOutput)
 }
 
@@ -4063,6 +4086,137 @@ func (o SloBasicSliPtrOutput) Versions() pulumi.StringArrayOutput {
 		}
 		return v.Versions
 	}).(pulumi.StringArrayOutput)
+}
+
+type SloBasicSliAvailability struct {
+	// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SloBasicSliAvailabilityInput is an input type that accepts SloBasicSliAvailabilityArgs and SloBasicSliAvailabilityOutput values.
+// You can construct a concrete instance of `SloBasicSliAvailabilityInput` via:
+//
+//          SloBasicSliAvailabilityArgs{...}
+type SloBasicSliAvailabilityInput interface {
+	pulumi.Input
+
+	ToSloBasicSliAvailabilityOutput() SloBasicSliAvailabilityOutput
+	ToSloBasicSliAvailabilityOutputWithContext(context.Context) SloBasicSliAvailabilityOutput
+}
+
+type SloBasicSliAvailabilityArgs struct {
+	// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SloBasicSliAvailabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloBasicSliAvailability)(nil)).Elem()
+}
+
+func (i SloBasicSliAvailabilityArgs) ToSloBasicSliAvailabilityOutput() SloBasicSliAvailabilityOutput {
+	return i.ToSloBasicSliAvailabilityOutputWithContext(context.Background())
+}
+
+func (i SloBasicSliAvailabilityArgs) ToSloBasicSliAvailabilityOutputWithContext(ctx context.Context) SloBasicSliAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliAvailabilityOutput)
+}
+
+func (i SloBasicSliAvailabilityArgs) ToSloBasicSliAvailabilityPtrOutput() SloBasicSliAvailabilityPtrOutput {
+	return i.ToSloBasicSliAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i SloBasicSliAvailabilityArgs) ToSloBasicSliAvailabilityPtrOutputWithContext(ctx context.Context) SloBasicSliAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliAvailabilityOutput).ToSloBasicSliAvailabilityPtrOutputWithContext(ctx)
+}
+
+// SloBasicSliAvailabilityPtrInput is an input type that accepts SloBasicSliAvailabilityArgs, SloBasicSliAvailabilityPtr and SloBasicSliAvailabilityPtrOutput values.
+// You can construct a concrete instance of `SloBasicSliAvailabilityPtrInput` via:
+//
+//          SloBasicSliAvailabilityArgs{...}
+//
+//  or:
+//
+//          nil
+type SloBasicSliAvailabilityPtrInput interface {
+	pulumi.Input
+
+	ToSloBasicSliAvailabilityPtrOutput() SloBasicSliAvailabilityPtrOutput
+	ToSloBasicSliAvailabilityPtrOutputWithContext(context.Context) SloBasicSliAvailabilityPtrOutput
+}
+
+type sloBasicSliAvailabilityPtrType SloBasicSliAvailabilityArgs
+
+func SloBasicSliAvailabilityPtr(v *SloBasicSliAvailabilityArgs) SloBasicSliAvailabilityPtrInput {
+	return (*sloBasicSliAvailabilityPtrType)(v)
+}
+
+func (*sloBasicSliAvailabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloBasicSliAvailability)(nil)).Elem()
+}
+
+func (i *sloBasicSliAvailabilityPtrType) ToSloBasicSliAvailabilityPtrOutput() SloBasicSliAvailabilityPtrOutput {
+	return i.ToSloBasicSliAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *sloBasicSliAvailabilityPtrType) ToSloBasicSliAvailabilityPtrOutputWithContext(ctx context.Context) SloBasicSliAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloBasicSliAvailabilityPtrOutput)
+}
+
+type SloBasicSliAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (SloBasicSliAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloBasicSliAvailability)(nil)).Elem()
+}
+
+func (o SloBasicSliAvailabilityOutput) ToSloBasicSliAvailabilityOutput() SloBasicSliAvailabilityOutput {
+	return o
+}
+
+func (o SloBasicSliAvailabilityOutput) ToSloBasicSliAvailabilityOutputWithContext(ctx context.Context) SloBasicSliAvailabilityOutput {
+	return o
+}
+
+func (o SloBasicSliAvailabilityOutput) ToSloBasicSliAvailabilityPtrOutput() SloBasicSliAvailabilityPtrOutput {
+	return o.ToSloBasicSliAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (o SloBasicSliAvailabilityOutput) ToSloBasicSliAvailabilityPtrOutputWithContext(ctx context.Context) SloBasicSliAvailabilityPtrOutput {
+	return o.ApplyT(func(v SloBasicSliAvailability) *SloBasicSliAvailability {
+		return &v
+	}).(SloBasicSliAvailabilityPtrOutput)
+}
+
+// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+func (o SloBasicSliAvailabilityOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SloBasicSliAvailability) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SloBasicSliAvailabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (SloBasicSliAvailabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloBasicSliAvailability)(nil)).Elem()
+}
+
+func (o SloBasicSliAvailabilityPtrOutput) ToSloBasicSliAvailabilityPtrOutput() SloBasicSliAvailabilityPtrOutput {
+	return o
+}
+
+func (o SloBasicSliAvailabilityPtrOutput) ToSloBasicSliAvailabilityPtrOutputWithContext(ctx context.Context) SloBasicSliAvailabilityPtrOutput {
+	return o
+}
+
+func (o SloBasicSliAvailabilityPtrOutput) Elem() SloBasicSliAvailabilityOutput {
+	return o.ApplyT(func(v *SloBasicSliAvailability) SloBasicSliAvailability { return *v }).(SloBasicSliAvailabilityOutput)
+}
+
+// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+func (o SloBasicSliAvailabilityPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SloBasicSliAvailability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SloBasicSliLatency struct {
@@ -8978,6 +9132,8 @@ func init() {
 	pulumi.RegisterOutputType(NotificationChannelSensitiveLabelsPtrOutput{})
 	pulumi.RegisterOutputType(SloBasicSliOutput{})
 	pulumi.RegisterOutputType(SloBasicSliPtrOutput{})
+	pulumi.RegisterOutputType(SloBasicSliAvailabilityOutput{})
+	pulumi.RegisterOutputType(SloBasicSliAvailabilityPtrOutput{})
 	pulumi.RegisterOutputType(SloBasicSliLatencyOutput{})
 	pulumi.RegisterOutputType(SloBasicSliLatencyPtrOutput{})
 	pulumi.RegisterOutputType(SloRequestBasedSliOutput{})

@@ -53,6 +53,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
+     * Configuration for creating a new instance as a clone of another instance.
+     */
+    public readonly clone!: pulumi.Output<outputs.sql.DatabaseInstanceClone | undefined>;
+    /**
      * The connection name of the instance to be used in
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
      */
@@ -140,7 +144,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
     public /*out*/ readonly serviceAccountEmailAddress!: pulumi.Output<string>;
     /**
      * The settings to use for the database. The
-     * configuration is detailed below.
+     * configuration is detailed below. Required if `clone` is not set.
      */
     public readonly settings!: pulumi.Output<outputs.sql.DatabaseInstanceSettings>;
 
@@ -151,11 +155,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: DatabaseInstanceArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: DatabaseInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseInstanceArgs | DatabaseInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
+            inputs["clone"] = state ? state.clone : undefined;
             inputs["connectionName"] = state ? state.connectionName : undefined;
             inputs["databaseVersion"] = state ? state.databaseVersion : undefined;
             inputs["deletionProtection"] = state ? state.deletionProtection : undefined;
@@ -177,9 +182,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["settings"] = state ? state.settings : undefined;
         } else {
             const args = argsOrState as DatabaseInstanceArgs | undefined;
-            if ((!args || args.settings === undefined) && !(opts && opts.urn)) {
-                throw new Error("Missing required property 'settings'");
-            }
+            inputs["clone"] = args ? args.clone : undefined;
             inputs["databaseVersion"] = args ? args.databaseVersion : undefined;
             inputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             inputs["encryptionKeyName"] = args ? args.encryptionKeyName : undefined;
@@ -215,6 +218,10 @@ export class DatabaseInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseInstance resources.
  */
 export interface DatabaseInstanceState {
+    /**
+     * Configuration for creating a new instance as a clone of another instance.
+     */
+    readonly clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
     /**
      * The connection name of the instance to be used in
      * connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -303,7 +310,7 @@ export interface DatabaseInstanceState {
     readonly serviceAccountEmailAddress?: pulumi.Input<string>;
     /**
      * The settings to use for the database. The
-     * configuration is detailed below.
+     * configuration is detailed below. Required if `clone` is not set.
      */
     readonly settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings>;
 }
@@ -312,6 +319,10 @@ export interface DatabaseInstanceState {
  * The set of arguments for constructing a DatabaseInstance resource.
  */
 export interface DatabaseInstanceArgs {
+    /**
+     * Configuration for creating a new instance as a clone of another instance.
+     */
+    readonly clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
     /**
      * The MySQL, PostgreSQL or
      * SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
@@ -372,7 +383,7 @@ export interface DatabaseInstanceArgs {
     readonly rootPassword?: pulumi.Input<string>;
     /**
      * The settings to use for the database. The
-     * configuration is detailed below.
+     * configuration is detailed below. Required if `clone` is not set.
      */
-    readonly settings: pulumi.Input<inputs.sql.DatabaseInstanceSettings>;
+    readonly settings?: pulumi.Input<inputs.sql.DatabaseInstanceSettings>;
 }

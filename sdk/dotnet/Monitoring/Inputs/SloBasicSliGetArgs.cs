@@ -13,11 +13,18 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class SloBasicSliGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Availability based SLI, dervied from count of requests made to this service that return successfully.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("availability")]
+        public Input<Inputs.SloBasicSliAvailabilityGetArgs>? Availability { get; set; }
+
+        /// <summary>
         /// Parameters for a latency threshold SLI.
         /// Structure is documented below.
         /// </summary>
-        [Input("latency", required: true)]
-        public Input<Inputs.SloBasicSliLatencyGetArgs> Latency { get; set; } = null!;
+        [Input("latency")]
+        public Input<Inputs.SloBasicSliLatencyGetArgs>? Latency { get; set; }
 
         [Input("locations")]
         private InputList<string>? _locations;

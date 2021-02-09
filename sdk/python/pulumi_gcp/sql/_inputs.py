@@ -9,6 +9,7 @@ from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
 
 __all__ = [
+    'DatabaseInstanceCloneArgs',
     'DatabaseInstanceIpAddressArgs',
     'DatabaseInstanceReplicaConfigurationArgs',
     'DatabaseInstanceRestoreBackupContextArgs',
@@ -21,6 +22,43 @@ __all__ = [
     'DatabaseInstanceSettingsLocationPreferenceArgs',
     'DatabaseInstanceSettingsMaintenanceWindowArgs',
 ]
+
+@pulumi.input_type
+class DatabaseInstanceCloneArgs:
+    def __init__(__self__, *,
+                 point_in_time: pulumi.Input[str],
+                 source_instance_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] point_in_time: The timestamp of the point in time that should be restored.
+        :param pulumi.Input[str] source_instance_name: Name of the source instance which will be cloned.
+        """
+        pulumi.set(__self__, "point_in_time", point_in_time)
+        pulumi.set(__self__, "source_instance_name", source_instance_name)
+
+    @property
+    @pulumi.getter(name="pointInTime")
+    def point_in_time(self) -> pulumi.Input[str]:
+        """
+        The timestamp of the point in time that should be restored.
+        """
+        return pulumi.get(self, "point_in_time")
+
+    @point_in_time.setter
+    def point_in_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "point_in_time", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceName")
+    def source_instance_name(self) -> pulumi.Input[str]:
+        """
+        Name of the source instance which will be cloned.
+        """
+        return pulumi.get(self, "source_instance_name")
+
+    @source_instance_name.setter
+    def source_instance_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_instance_name", value)
+
 
 @pulumi.input_type
 class DatabaseInstanceIpAddressArgs:
@@ -80,13 +118,13 @@ class DatabaseInstanceReplicaConfigurationArgs:
         """
         :param pulumi.Input[str] ca_certificate: PEM representation of the trusted CA's x509
                certificate.
-        :param pulumi.Input[str] client_certificate: PEM representation of the slave's x509
+        :param pulumi.Input[str] client_certificate: PEM representation of the replica's x509
                certificate.
-        :param pulumi.Input[str] client_key: PEM representation of the slave's private key. The
+        :param pulumi.Input[str] client_key: PEM representation of the replica's private key. The
                corresponding public key in encoded in the `client_certificate`.
         :param pulumi.Input[int] connect_retry_interval: The number of seconds
                between connect retries.
-        :param pulumi.Input[str] dump_file_path: Path to a SQL file in GCS from which slave
+        :param pulumi.Input[str] dump_file_path: Path to a SQL file in GCS from which replica
                instances are created. Format is `gs://bucket/filename`.
         :param pulumi.Input[bool] failover_target: Specifies if the replica is the failover target.
                If the field is set to true the replica will be designated as a failover replica.
@@ -139,7 +177,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
     @pulumi.getter(name="clientCertificate")
     def client_certificate(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM representation of the slave's x509
+        PEM representation of the replica's x509
         certificate.
         """
         return pulumi.get(self, "client_certificate")
@@ -152,7 +190,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[pulumi.Input[str]]:
         """
-        PEM representation of the slave's private key. The
+        PEM representation of the replica's private key. The
         corresponding public key in encoded in the `client_certificate`.
         """
         return pulumi.get(self, "client_key")
@@ -178,7 +216,7 @@ class DatabaseInstanceReplicaConfigurationArgs:
     @pulumi.getter(name="dumpFilePath")
     def dump_file_path(self) -> Optional[pulumi.Input[str]]:
         """
-        Path to a SQL file in GCS from which slave
+        Path to a SQL file in GCS from which replica
         instances are created. Format is `gs://bucket/filename`.
         """
         return pulumi.get(self, "dump_file_path")

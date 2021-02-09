@@ -19,6 +19,30 @@ __all__ = [
     'AuthorityIamMemberConditionArgs',
     'AuthorityIssuingOptionsArgs',
     'AuthorityKeySpecArgs',
+    'CertificateCertificateDescriptionArgs',
+    'CertificateCertificateDescriptionAuthorityKeyIdArgs',
+    'CertificateCertificateDescriptionCertFingerprintArgs',
+    'CertificateCertificateDescriptionConfigValuesArgs',
+    'CertificateCertificateDescriptionConfigValuesKeyUsageArgs',
+    'CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs',
+    'CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs',
+    'CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs',
+    'CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs',
+    'CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs',
+    'CertificateCertificateDescriptionPublicKeyArgs',
+    'CertificateCertificateDescriptionSubjectDescriptionArgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectArgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs',
+    'CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs',
+    'CertificateCertificateDescriptionSubjectKeyIdArgs',
+    'CertificateConfigArgs',
+    'CertificateConfigPublicKeyArgs',
+    'CertificateConfigReusableConfigArgs',
+    'CertificateConfigSubjectConfigArgs',
+    'CertificateConfigSubjectConfigSubjectArgs',
+    'CertificateConfigSubjectConfigSubjectAltNameArgs',
+    'CertificateRevocationDetailArgs',
 ]
 
 @pulumi.input_type
@@ -535,5 +559,1268 @@ class AuthorityKeySpecArgs:
     @cloud_kms_key_version.setter
     def cloud_kms_key_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_kms_key_version", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionArgs:
+    def __init__(__self__, *,
+                 public_key: pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs'],
+                 aia_issuing_certificate_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 authority_key_id: Optional[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']] = None,
+                 cert_fingerprint: Optional[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']] = None,
+                 config_values: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesArgs']] = None,
+                 crl_distribution_points: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 subject_description: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']] = None,
+                 subject_key_id: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']] = None):
+        """
+        :param pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs'] public_key: A PublicKey describes a public key.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "public_key", public_key)
+        if aia_issuing_certificate_urls is not None:
+            pulumi.set(__self__, "aia_issuing_certificate_urls", aia_issuing_certificate_urls)
+        if authority_key_id is not None:
+            pulumi.set(__self__, "authority_key_id", authority_key_id)
+        if cert_fingerprint is not None:
+            pulumi.set(__self__, "cert_fingerprint", cert_fingerprint)
+        if config_values is not None:
+            pulumi.set(__self__, "config_values", config_values)
+        if crl_distribution_points is not None:
+            pulumi.set(__self__, "crl_distribution_points", crl_distribution_points)
+        if subject_description is not None:
+            pulumi.set(__self__, "subject_description", subject_description)
+        if subject_key_id is not None:
+            pulumi.set(__self__, "subject_key_id", subject_key_id)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']:
+        """
+        A PublicKey describes a public key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input['CertificateCertificateDescriptionPublicKeyArgs']):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="aiaIssuingCertificateUrls")
+    def aia_issuing_certificate_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "aia_issuing_certificate_urls")
+
+    @aia_issuing_certificate_urls.setter
+    def aia_issuing_certificate_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "aia_issuing_certificate_urls", value)
+
+    @property
+    @pulumi.getter(name="authorityKeyId")
+    def authority_key_id(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]:
+        return pulumi.get(self, "authority_key_id")
+
+    @authority_key_id.setter
+    def authority_key_id(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionAuthorityKeyIdArgs']]):
+        pulumi.set(self, "authority_key_id", value)
+
+    @property
+    @pulumi.getter(name="certFingerprint")
+    def cert_fingerprint(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]:
+        return pulumi.get(self, "cert_fingerprint")
+
+    @cert_fingerprint.setter
+    def cert_fingerprint(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionCertFingerprintArgs']]):
+        pulumi.set(self, "cert_fingerprint", value)
+
+    @property
+    @pulumi.getter(name="configValues")
+    def config_values(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesArgs']]:
+        return pulumi.get(self, "config_values")
+
+    @config_values.setter
+    def config_values(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesArgs']]):
+        pulumi.set(self, "config_values", value)
+
+    @property
+    @pulumi.getter(name="crlDistributionPoints")
+    def crl_distribution_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "crl_distribution_points")
+
+    @crl_distribution_points.setter
+    def crl_distribution_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "crl_distribution_points", value)
+
+    @property
+    @pulumi.getter(name="subjectDescription")
+    def subject_description(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]:
+        return pulumi.get(self, "subject_description")
+
+    @subject_description.setter
+    def subject_description(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionArgs']]):
+        pulumi.set(self, "subject_description", value)
+
+    @property
+    @pulumi.getter(name="subjectKeyId")
+    def subject_key_id(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]:
+        return pulumi.get(self, "subject_key_id")
+
+    @subject_key_id.setter
+    def subject_key_id(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectKeyIdArgs']]):
+        pulumi.set(self, "subject_key_id", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionAuthorityKeyIdArgs:
+    def __init__(__self__, *,
+                 key_id: Optional[pulumi.Input[str]] = None):
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionCertFingerprintArgs:
+    def __init__(__self__, *,
+                 sha256_hash: Optional[pulumi.Input[str]] = None):
+        if sha256_hash is not None:
+            pulumi.set(__self__, "sha256_hash", sha256_hash)
+
+    @property
+    @pulumi.getter(name="sha256Hash")
+    def sha256_hash(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "sha256_hash")
+
+    @sha256_hash.setter
+    def sha256_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sha256_hash", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionConfigValuesArgs:
+    def __init__(__self__, *,
+                 key_usage: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageArgs']] = None):
+        if key_usage is not None:
+            pulumi.set(__self__, "key_usage", key_usage)
+
+    @property
+    @pulumi.getter(name="keyUsage")
+    def key_usage(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageArgs']]:
+        return pulumi.get(self, "key_usage")
+
+    @key_usage.setter
+    def key_usage(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageArgs']]):
+        pulumi.set(self, "key_usage", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionConfigValuesKeyUsageArgs:
+    def __init__(__self__, *,
+                 unknown_extended_key_usages: pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs']]],
+                 base_key_usage: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs']] = None,
+                 extended_key_usage: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs']] = None):
+        pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
+        if base_key_usage is not None:
+            pulumi.set(__self__, "base_key_usage", base_key_usage)
+        if extended_key_usage is not None:
+            pulumi.set(__self__, "extended_key_usage", extended_key_usage)
+
+    @property
+    @pulumi.getter(name="unknownExtendedKeyUsages")
+    def unknown_extended_key_usages(self) -> pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs']]]:
+        return pulumi.get(self, "unknown_extended_key_usages")
+
+    @unknown_extended_key_usages.setter
+    def unknown_extended_key_usages(self, value: pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs']]]):
+        pulumi.set(self, "unknown_extended_key_usages", value)
+
+    @property
+    @pulumi.getter(name="baseKeyUsage")
+    def base_key_usage(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs']]:
+        return pulumi.get(self, "base_key_usage")
+
+    @base_key_usage.setter
+    def base_key_usage(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs']]):
+        pulumi.set(self, "base_key_usage", value)
+
+    @property
+    @pulumi.getter(name="extendedKeyUsage")
+    def extended_key_usage(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs']]:
+        return pulumi.get(self, "extended_key_usage")
+
+    @extended_key_usage.setter
+    def extended_key_usage(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs']]):
+        pulumi.set(self, "extended_key_usage", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs:
+    def __init__(__self__, *,
+                 key_usage_options: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs']] = None):
+        if key_usage_options is not None:
+            pulumi.set(__self__, "key_usage_options", key_usage_options)
+
+    @property
+    @pulumi.getter(name="keyUsageOptions")
+    def key_usage_options(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs']]:
+        return pulumi.get(self, "key_usage_options")
+
+    @key_usage_options.setter
+    def key_usage_options(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs']]):
+        pulumi.set(self, "key_usage_options", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs:
+    def __init__(__self__, *,
+                 cert_sign: Optional[pulumi.Input[bool]] = None,
+                 content_commitment: Optional[pulumi.Input[bool]] = None,
+                 crl_sign: Optional[pulumi.Input[bool]] = None,
+                 data_encipherment: Optional[pulumi.Input[bool]] = None,
+                 decipher_only: Optional[pulumi.Input[bool]] = None,
+                 digital_signature: Optional[pulumi.Input[bool]] = None,
+                 encipher_only: Optional[pulumi.Input[bool]] = None,
+                 key_agreement: Optional[pulumi.Input[bool]] = None,
+                 key_encipherment: Optional[pulumi.Input[bool]] = None):
+        if cert_sign is not None:
+            pulumi.set(__self__, "cert_sign", cert_sign)
+        if content_commitment is not None:
+            pulumi.set(__self__, "content_commitment", content_commitment)
+        if crl_sign is not None:
+            pulumi.set(__self__, "crl_sign", crl_sign)
+        if data_encipherment is not None:
+            pulumi.set(__self__, "data_encipherment", data_encipherment)
+        if decipher_only is not None:
+            pulumi.set(__self__, "decipher_only", decipher_only)
+        if digital_signature is not None:
+            pulumi.set(__self__, "digital_signature", digital_signature)
+        if encipher_only is not None:
+            pulumi.set(__self__, "encipher_only", encipher_only)
+        if key_agreement is not None:
+            pulumi.set(__self__, "key_agreement", key_agreement)
+        if key_encipherment is not None:
+            pulumi.set(__self__, "key_encipherment", key_encipherment)
+
+    @property
+    @pulumi.getter(name="certSign")
+    def cert_sign(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "cert_sign")
+
+    @cert_sign.setter
+    def cert_sign(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cert_sign", value)
+
+    @property
+    @pulumi.getter(name="contentCommitment")
+    def content_commitment(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "content_commitment")
+
+    @content_commitment.setter
+    def content_commitment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "content_commitment", value)
+
+    @property
+    @pulumi.getter(name="crlSign")
+    def crl_sign(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "crl_sign")
+
+    @crl_sign.setter
+    def crl_sign(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "crl_sign", value)
+
+    @property
+    @pulumi.getter(name="dataEncipherment")
+    def data_encipherment(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "data_encipherment")
+
+    @data_encipherment.setter
+    def data_encipherment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "data_encipherment", value)
+
+    @property
+    @pulumi.getter(name="decipherOnly")
+    def decipher_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "decipher_only")
+
+    @decipher_only.setter
+    def decipher_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "decipher_only", value)
+
+    @property
+    @pulumi.getter(name="digitalSignature")
+    def digital_signature(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "digital_signature")
+
+    @digital_signature.setter
+    def digital_signature(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "digital_signature", value)
+
+    @property
+    @pulumi.getter(name="encipherOnly")
+    def encipher_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "encipher_only")
+
+    @encipher_only.setter
+    def encipher_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "encipher_only", value)
+
+    @property
+    @pulumi.getter(name="keyAgreement")
+    def key_agreement(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "key_agreement")
+
+    @key_agreement.setter
+    def key_agreement(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "key_agreement", value)
+
+    @property
+    @pulumi.getter(name="keyEncipherment")
+    def key_encipherment(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "key_encipherment")
+
+    @key_encipherment.setter
+    def key_encipherment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "key_encipherment", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs:
+    def __init__(__self__, *,
+                 client_auth: Optional[pulumi.Input[bool]] = None,
+                 code_signing: Optional[pulumi.Input[bool]] = None,
+                 email_protection: Optional[pulumi.Input[bool]] = None,
+                 ocsp_signing: Optional[pulumi.Input[bool]] = None,
+                 server_auth: Optional[pulumi.Input[bool]] = None,
+                 time_stamping: Optional[pulumi.Input[bool]] = None):
+        if client_auth is not None:
+            pulumi.set(__self__, "client_auth", client_auth)
+        if code_signing is not None:
+            pulumi.set(__self__, "code_signing", code_signing)
+        if email_protection is not None:
+            pulumi.set(__self__, "email_protection", email_protection)
+        if ocsp_signing is not None:
+            pulumi.set(__self__, "ocsp_signing", ocsp_signing)
+        if server_auth is not None:
+            pulumi.set(__self__, "server_auth", server_auth)
+        if time_stamping is not None:
+            pulumi.set(__self__, "time_stamping", time_stamping)
+
+    @property
+    @pulumi.getter(name="clientAuth")
+    def client_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "client_auth")
+
+    @client_auth.setter
+    def client_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "client_auth", value)
+
+    @property
+    @pulumi.getter(name="codeSigning")
+    def code_signing(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "code_signing")
+
+    @code_signing.setter
+    def code_signing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "code_signing", value)
+
+    @property
+    @pulumi.getter(name="emailProtection")
+    def email_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "email_protection")
+
+    @email_protection.setter
+    def email_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "email_protection", value)
+
+    @property
+    @pulumi.getter(name="ocspSigning")
+    def ocsp_signing(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "ocsp_signing")
+
+    @ocsp_signing.setter
+    def ocsp_signing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ocsp_signing", value)
+
+    @property
+    @pulumi.getter(name="serverAuth")
+    def server_auth(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "server_auth")
+
+    @server_auth.setter
+    def server_auth(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "server_auth", value)
+
+    @property
+    @pulumi.getter(name="timeStamping")
+    def time_stamping(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "time_stamping")
+
+    @time_stamping.setter
+    def time_stamping(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "time_stamping", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs:
+    def __init__(__self__, *,
+                 obect_id: pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs']):
+        pulumi.set(__self__, "obect_id", obect_id)
+
+    @property
+    @pulumi.getter(name="obectId")
+    def obect_id(self) -> pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs']:
+        return pulumi.get(self, "obect_id")
+
+    @obect_id.setter
+    def obect_id(self, value: pulumi.Input['CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs']):
+        pulumi.set(self, "obect_id", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs:
+    def __init__(__self__, *,
+                 object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
+        return pulumi.get(self, "object_id_paths")
+
+    @object_id_paths.setter
+    def object_id_paths(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(self, "object_id_paths", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionPublicKeyArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+               Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+        :param pulumi.Input[str] key: Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+        """
+        pulumi.set(__self__, "type", type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+        Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionSubjectDescriptionArgs:
+    def __init__(__self__, *,
+                 common_name: Optional[pulumi.Input[str]] = None,
+                 hex_serial_number: Optional[pulumi.Input[str]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 not_after_time: Optional[pulumi.Input[str]] = None,
+                 not_before_time: Optional[pulumi.Input[str]] = None,
+                 subject: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']] = None,
+                 subject_alt_name: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']] = None):
+        """
+        :param pulumi.Input[str] common_name: The common name of the distinguished name.
+        :param pulumi.Input[str] lifetime: The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+               "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+               fractional digits, terminated by 's'. Example: "3.5s".
+        :param pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs'] subject: Contains distinguished name fields such as the location and organization.
+               Structure is documented below.
+        :param pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs'] subject_alt_name: The subject alternative name fields.
+               Structure is documented below.
+        """
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+        if hex_serial_number is not None:
+            pulumi.set(__self__, "hex_serial_number", hex_serial_number)
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+        if not_after_time is not None:
+            pulumi.set(__self__, "not_after_time", not_after_time)
+        if not_before_time is not None:
+            pulumi.set(__self__, "not_before_time", not_before_time)
+        if subject is not None:
+            pulumi.set(__self__, "subject", subject)
+        if subject_alt_name is not None:
+            pulumi.set(__self__, "subject_alt_name", subject_alt_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The common name of the distinguished name.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter(name="hexSerialNumber")
+    def hex_serial_number(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hex_serial_number")
+
+    @hex_serial_number.setter
+    def hex_serial_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hex_serial_number", value)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+        "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+        fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifetime", value)
+
+    @property
+    @pulumi.getter(name="notAfterTime")
+    def not_after_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "not_after_time")
+
+    @not_after_time.setter
+    def not_after_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "not_after_time", value)
+
+    @property
+    @pulumi.getter(name="notBeforeTime")
+    def not_before_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "not_before_time")
+
+    @not_before_time.setter
+    def not_before_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "not_before_time", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]:
+        """
+        Contains distinguished name fields such as the location and organization.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectArgs']]):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter(name="subjectAltName")
+    def subject_alt_name(self) -> Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]:
+        """
+        The subject alternative name fields.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_alt_name")
+
+    @subject_alt_name.setter
+    def subject_alt_name(self, value: Optional[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs']]):
+        pulumi.set(self, "subject_alt_name", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionSubjectDescriptionSubjectArgs:
+    def __init__(__self__, *,
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 locality: Optional[pulumi.Input[str]] = None,
+                 organization: Optional[pulumi.Input[str]] = None,
+                 organizational_unit: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
+                 province: Optional[pulumi.Input[str]] = None,
+                 street_address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] country_code: The country code of the subject.
+        :param pulumi.Input[str] locality: The locality or city of the subject.
+        :param pulumi.Input[str] organization: The organization of the subject.
+        :param pulumi.Input[str] organizational_unit: The organizational unit of the subject.
+        :param pulumi.Input[str] postal_code: The postal code of the subject.
+        :param pulumi.Input[str] province: The province, territory, or regional state of the subject.
+        :param pulumi.Input[str] street_address: The street address of the subject.
+        """
+        if country_code is not None:
+            pulumi.set(__self__, "country_code", country_code)
+        if locality is not None:
+            pulumi.set(__self__, "locality", locality)
+        if organization is not None:
+            pulumi.set(__self__, "organization", organization)
+        if organizational_unit is not None:
+            pulumi.set(__self__, "organizational_unit", organizational_unit)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
+        if province is not None:
+            pulumi.set(__self__, "province", province)
+        if street_address is not None:
+            pulumi.set(__self__, "street_address", street_address)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The country code of the subject.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country_code", value)
+
+    @property
+    @pulumi.getter
+    def locality(self) -> Optional[pulumi.Input[str]]:
+        """
+        The locality or city of the subject.
+        """
+        return pulumi.get(self, "locality")
+
+    @locality.setter
+    def locality(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locality", value)
+
+    @property
+    @pulumi.getter
+    def organization(self) -> Optional[pulumi.Input[str]]:
+        """
+        The organization of the subject.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organization", value)
+
+    @property
+    @pulumi.getter(name="organizationalUnit")
+    def organizational_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The organizational unit of the subject.
+        """
+        return pulumi.get(self, "organizational_unit")
+
+    @organizational_unit.setter
+    def organizational_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organizational_unit", value)
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The postal code of the subject.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @postal_code.setter
+    def postal_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "postal_code", value)
+
+    @property
+    @pulumi.getter
+    def province(self) -> Optional[pulumi.Input[str]]:
+        """
+        The province, territory, or regional state of the subject.
+        """
+        return pulumi.get(self, "province")
+
+    @province.setter
+    def province(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "province", value)
+
+    @property
+    @pulumi.getter(name="streetAddress")
+    def street_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The street address of the subject.
+        """
+        return pulumi.get(self, "street_address")
+
+    @street_address.setter
+    def street_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "street_address", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs:
+    def __init__(__self__, *,
+                 custom_sans: pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]],
+                 dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_names: Contains only valid, fully-qualified host names.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_addresses: Contains only valid RFC 2822 E-mail addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Contains only valid RFC 3986 URIs.
+        """
+        pulumi.set(__self__, "custom_sans", custom_sans)
+        if dns_names is not None:
+            pulumi.set(__self__, "dns_names", dns_names)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ip_addresses is not None:
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="customSans")
+    def custom_sans(self) -> pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]]:
+        return pulumi.get(self, "custom_sans")
+
+    @custom_sans.setter
+    def custom_sans(self, value: pulumi.Input[Sequence[pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs']]]):
+        pulumi.set(self, "custom_sans", value)
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid, fully-qualified host names.
+        """
+        return pulumi.get(self, "dns_names")
+
+    @dns_names.setter
+    def dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_names", value)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid RFC 2822 E-mail addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        """
+        return pulumi.get(self, "ip_addresses")
+
+    @ip_addresses.setter
+    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_addresses", value)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid RFC 3986 URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @uris.setter
+    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs:
+    def __init__(__self__, *,
+                 critical: pulumi.Input[bool],
+                 obect_id: pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs'],
+                 value: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "critical", critical)
+        pulumi.set(__self__, "obect_id", obect_id)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> pulumi.Input[bool]:
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter(name="obectId")
+    def obect_id(self) -> pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']:
+        return pulumi.get(self, "obect_id")
+
+    @obect_id.setter
+    def obect_id(self, value: pulumi.Input['CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs']):
+        pulumi.set(self, "obect_id", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs:
+    def __init__(__self__, *,
+                 object_id_paths: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(__self__, "object_id_paths", object_id_paths)
+
+    @property
+    @pulumi.getter(name="objectIdPaths")
+    def object_id_paths(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
+        return pulumi.get(self, "object_id_paths")
+
+    @object_id_paths.setter
+    def object_id_paths(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(self, "object_id_paths", value)
+
+
+@pulumi.input_type
+class CertificateCertificateDescriptionSubjectKeyIdArgs:
+    def __init__(__self__, *,
+                 key_id: Optional[pulumi.Input[str]] = None):
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+
+@pulumi.input_type
+class CertificateConfigArgs:
+    def __init__(__self__, *,
+                 public_key: pulumi.Input['CertificateConfigPublicKeyArgs'],
+                 reusable_config: pulumi.Input['CertificateConfigReusableConfigArgs'],
+                 subject_config: pulumi.Input['CertificateConfigSubjectConfigArgs']):
+        """
+        :param pulumi.Input['CertificateConfigPublicKeyArgs'] public_key: A PublicKey describes a public key.
+               Structure is documented below.
+        :param pulumi.Input['CertificateConfigReusableConfigArgs'] reusable_config: A resource path to a ReusableConfig in the format
+               `projects/*/locations/*/reusableConfigs/*`.
+        :param pulumi.Input['CertificateConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "public_key", public_key)
+        pulumi.set(__self__, "reusable_config", reusable_config)
+        pulumi.set(__self__, "subject_config", subject_config)
+
+    @property
+    @pulumi.getter(name="publicKey")
+    def public_key(self) -> pulumi.Input['CertificateConfigPublicKeyArgs']:
+        """
+        A PublicKey describes a public key.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "public_key")
+
+    @public_key.setter
+    def public_key(self, value: pulumi.Input['CertificateConfigPublicKeyArgs']):
+        pulumi.set(self, "public_key", value)
+
+    @property
+    @pulumi.getter(name="reusableConfig")
+    def reusable_config(self) -> pulumi.Input['CertificateConfigReusableConfigArgs']:
+        """
+        A resource path to a ReusableConfig in the format
+        `projects/*/locations/*/reusableConfigs/*`.
+        """
+        return pulumi.get(self, "reusable_config")
+
+    @reusable_config.setter
+    def reusable_config(self, value: pulumi.Input['CertificateConfigReusableConfigArgs']):
+        pulumi.set(self, "reusable_config", value)
+
+    @property
+    @pulumi.getter(name="subjectConfig")
+    def subject_config(self) -> pulumi.Input['CertificateConfigSubjectConfigArgs']:
+        """
+        Specifies some of the values in a certificate that are related to the subject.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_config")
+
+    @subject_config.setter
+    def subject_config(self, value: pulumi.Input['CertificateConfigSubjectConfigArgs']):
+        pulumi.set(self, "subject_config", value)
+
+
+@pulumi.input_type
+class CertificateConfigPublicKeyArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 key: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+               Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+        :param pulumi.Input[str] key: Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+        """
+        pulumi.set(__self__, "type", type)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+        Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+
+@pulumi.input_type
+class CertificateConfigReusableConfigArgs:
+    def __init__(__self__, *,
+                 reusable_config: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] reusable_config: A resource path to a ReusableConfig in the format
+               `projects/*/locations/*/reusableConfigs/*`.
+        """
+        pulumi.set(__self__, "reusable_config", reusable_config)
+
+    @property
+    @pulumi.getter(name="reusableConfig")
+    def reusable_config(self) -> pulumi.Input[str]:
+        """
+        A resource path to a ReusableConfig in the format
+        `projects/*/locations/*/reusableConfigs/*`.
+        """
+        return pulumi.get(self, "reusable_config")
+
+    @reusable_config.setter
+    def reusable_config(self, value: pulumi.Input[str]):
+        pulumi.set(self, "reusable_config", value)
+
+
+@pulumi.input_type
+class CertificateConfigSubjectConfigArgs:
+    def __init__(__self__, *,
+                 common_name: pulumi.Input[str],
+                 subject: pulumi.Input['CertificateConfigSubjectConfigSubjectArgs'],
+                 subject_alt_name: Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs']] = None):
+        """
+        :param pulumi.Input[str] common_name: The common name of the distinguished name.
+        :param pulumi.Input['CertificateConfigSubjectConfigSubjectArgs'] subject: Contains distinguished name fields such as the location and organization.
+               Structure is documented below.
+        :param pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs'] subject_alt_name: The subject alternative name fields.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "common_name", common_name)
+        pulumi.set(__self__, "subject", subject)
+        if subject_alt_name is not None:
+            pulumi.set(__self__, "subject_alt_name", subject_alt_name)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> pulumi.Input[str]:
+        """
+        The common name of the distinguished name.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "common_name", value)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input['CertificateConfigSubjectConfigSubjectArgs']:
+        """
+        Contains distinguished name fields such as the location and organization.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input['CertificateConfigSubjectConfigSubjectArgs']):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter(name="subjectAltName")
+    def subject_alt_name(self) -> Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs']]:
+        """
+        The subject alternative name fields.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "subject_alt_name")
+
+    @subject_alt_name.setter
+    def subject_alt_name(self, value: Optional[pulumi.Input['CertificateConfigSubjectConfigSubjectAltNameArgs']]):
+        pulumi.set(self, "subject_alt_name", value)
+
+
+@pulumi.input_type
+class CertificateConfigSubjectConfigSubjectArgs:
+    def __init__(__self__, *,
+                 organization: pulumi.Input[str],
+                 country_code: Optional[pulumi.Input[str]] = None,
+                 locality: Optional[pulumi.Input[str]] = None,
+                 organizational_unit: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
+                 province: Optional[pulumi.Input[str]] = None,
+                 street_address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] organization: The organization of the subject.
+        :param pulumi.Input[str] country_code: The country code of the subject.
+        :param pulumi.Input[str] locality: The locality or city of the subject.
+        :param pulumi.Input[str] organizational_unit: The organizational unit of the subject.
+        :param pulumi.Input[str] postal_code: The postal code of the subject.
+        :param pulumi.Input[str] province: The province, territory, or regional state of the subject.
+        :param pulumi.Input[str] street_address: The street address of the subject.
+        """
+        pulumi.set(__self__, "organization", organization)
+        if country_code is not None:
+            pulumi.set(__self__, "country_code", country_code)
+        if locality is not None:
+            pulumi.set(__self__, "locality", locality)
+        if organizational_unit is not None:
+            pulumi.set(__self__, "organizational_unit", organizational_unit)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
+        if province is not None:
+            pulumi.set(__self__, "province", province)
+        if street_address is not None:
+            pulumi.set(__self__, "street_address", street_address)
+
+    @property
+    @pulumi.getter
+    def organization(self) -> pulumi.Input[str]:
+        """
+        The organization of the subject.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization", value)
+
+    @property
+    @pulumi.getter(name="countryCode")
+    def country_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The country code of the subject.
+        """
+        return pulumi.get(self, "country_code")
+
+    @country_code.setter
+    def country_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country_code", value)
+
+    @property
+    @pulumi.getter
+    def locality(self) -> Optional[pulumi.Input[str]]:
+        """
+        The locality or city of the subject.
+        """
+        return pulumi.get(self, "locality")
+
+    @locality.setter
+    def locality(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "locality", value)
+
+    @property
+    @pulumi.getter(name="organizationalUnit")
+    def organizational_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The organizational unit of the subject.
+        """
+        return pulumi.get(self, "organizational_unit")
+
+    @organizational_unit.setter
+    def organizational_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "organizational_unit", value)
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The postal code of the subject.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @postal_code.setter
+    def postal_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "postal_code", value)
+
+    @property
+    @pulumi.getter
+    def province(self) -> Optional[pulumi.Input[str]]:
+        """
+        The province, territory, or regional state of the subject.
+        """
+        return pulumi.get(self, "province")
+
+    @province.setter
+    def province(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "province", value)
+
+    @property
+    @pulumi.getter(name="streetAddress")
+    def street_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The street address of the subject.
+        """
+        return pulumi.get(self, "street_address")
+
+    @street_address.setter
+    def street_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "street_address", value)
+
+
+@pulumi.input_type
+class CertificateConfigSubjectConfigSubjectAltNameArgs:
+    def __init__(__self__, *,
+                 dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_names: Contains only valid, fully-qualified host names.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_addresses: Contains only valid RFC 2822 E-mail addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Contains only valid RFC 3986 URIs.
+        """
+        if dns_names is not None:
+            pulumi.set(__self__, "dns_names", dns_names)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ip_addresses is not None:
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid, fully-qualified host names.
+        """
+        return pulumi.get(self, "dns_names")
+
+    @dns_names.setter
+    def dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_names", value)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid RFC 2822 E-mail addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        """
+        return pulumi.get(self, "ip_addresses")
+
+    @ip_addresses.setter
+    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_addresses", value)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid RFC 3986 URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @uris.setter
+    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class CertificateRevocationDetailArgs:
+    def __init__(__self__, *,
+                 revocation_state: Optional[pulumi.Input[str]] = None,
+                 revocation_time: Optional[pulumi.Input[str]] = None):
+        if revocation_state is not None:
+            pulumi.set(__self__, "revocation_state", revocation_state)
+        if revocation_time is not None:
+            pulumi.set(__self__, "revocation_time", revocation_time)
+
+    @property
+    @pulumi.getter(name="revocationState")
+    def revocation_state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "revocation_state")
+
+    @revocation_state.setter
+    def revocation_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revocation_state", value)
+
+    @property
+    @pulumi.getter(name="revocationTime")
+    def revocation_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "revocation_time")
+
+    @revocation_time.setter
+    def revocation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revocation_time", value)
 
 

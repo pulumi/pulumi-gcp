@@ -43,7 +43,7 @@ func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getAccount.
 type LookupAccountArgs struct {
-	// The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
+	// The Google service account ID. This be one of:
 	AccountId string `pulumi:"accountId"`
 	// The ID of the project that the service account is present in.
 	// Defaults to the provider project configuration.

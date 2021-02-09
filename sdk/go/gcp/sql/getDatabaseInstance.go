@@ -50,6 +50,7 @@ type LookupDatabaseInstanceArgs struct {
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
+	Clones []GetDatabaseInstanceClone `pulumi:"clones"`
 	// The connection name of the instance to be used in connection strings.
 	ConnectionName string `pulumi:"connectionName"`
 	// The MySQL, PostgreSQL or SQL Server (beta) version to use.

@@ -65,6 +65,7 @@ namespace Pulumi.Gcp.Sql
     [OutputType]
     public sealed class GetDatabaseInstanceResult
     {
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> Clones;
         /// <summary>
         /// The connection name of the instance to be used in connection strings.
         /// </summary>
@@ -133,6 +134,8 @@ namespace Pulumi.Gcp.Sql
 
         [OutputConstructor]
         private GetDatabaseInstanceResult(
+            ImmutableArray<Outputs.GetDatabaseInstanceCloneResult> clones,
+
             string connectionName,
 
             string databaseVersion,
@@ -173,6 +176,7 @@ namespace Pulumi.Gcp.Sql
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingResult> settings)
         {
+            Clones = clones;
             ConnectionName = connectionName;
             DatabaseVersion = databaseVersion;
             DeletionProtection = deletionProtection;

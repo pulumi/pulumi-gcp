@@ -9,12 +9,14 @@ export * from "./authority";
 export * from "./authorityIamBinding";
 export * from "./authorityIamMember";
 export * from "./authorityIamPolicy";
+export * from "./certificate";
 
 // Import resources to register:
 import { Authority } from "./authority";
 import { AuthorityIamBinding } from "./authorityIamBinding";
 import { AuthorityIamMember } from "./authorityIamMember";
 import { AuthorityIamPolicy } from "./authorityIamPolicy";
+import { Certificate } from "./certificate";
 
 const _module = {
     version: utilities.getVersion(),
@@ -28,6 +30,8 @@ const _module = {
                 return new AuthorityIamMember(name, <any>undefined, { urn })
             case "gcp:certificateauthority/authorityIamPolicy:AuthorityIamPolicy":
                 return new AuthorityIamPolicy(name, <any>undefined, { urn })
+            case "gcp:certificateauthority/certificate:Certificate":
+                return new Certificate(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -37,3 +41,4 @@ pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authority", _
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authorityIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authorityIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "certificateauthority/authorityIamPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "certificateauthority/certificate", _module)

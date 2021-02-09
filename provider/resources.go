@@ -1908,6 +1908,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// Certificate Authority
 			"google_privateca_certificate_authority": {Tok: gcpResource(gcpCertificateAuthority, "Authority")},
+			"google_privateca_certificate":           {Tok: gcpResource(gcpCertificateAuthority, "Certificate")},
 			"google_privateca_certificate_authority_iam_binding": {
 				Tok: gcpResource(gcpCertificateAuthority, "AuthorityIamBinding"),
 				Docs: &tfbridge.DocInfo{
