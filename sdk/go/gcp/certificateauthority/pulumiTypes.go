@@ -1669,6 +1669,3721 @@ func (o AuthorityKeySpecPtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CertificateCertificateDescription struct {
+	AiaIssuingCertificateUrls []string                                          `pulumi:"aiaIssuingCertificateUrls"`
+	AuthorityKeyId            *CertificateCertificateDescriptionAuthorityKeyId  `pulumi:"authorityKeyId"`
+	CertFingerprint           *CertificateCertificateDescriptionCertFingerprint `pulumi:"certFingerprint"`
+	ConfigValues              *CertificateCertificateDescriptionConfigValues    `pulumi:"configValues"`
+	CrlDistributionPoints     []string                                          `pulumi:"crlDistributionPoints"`
+	// A PublicKey describes a public key.
+	// Structure is documented below.
+	PublicKey          CertificateCertificateDescriptionPublicKey           `pulumi:"publicKey"`
+	SubjectDescription *CertificateCertificateDescriptionSubjectDescription `pulumi:"subjectDescription"`
+	SubjectKeyId       *CertificateCertificateDescriptionSubjectKeyId       `pulumi:"subjectKeyId"`
+}
+
+// CertificateCertificateDescriptionInput is an input type that accepts CertificateCertificateDescriptionArgs and CertificateCertificateDescriptionOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionInput` via:
+//
+//          CertificateCertificateDescriptionArgs{...}
+type CertificateCertificateDescriptionInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionOutput() CertificateCertificateDescriptionOutput
+	ToCertificateCertificateDescriptionOutputWithContext(context.Context) CertificateCertificateDescriptionOutput
+}
+
+type CertificateCertificateDescriptionArgs struct {
+	AiaIssuingCertificateUrls pulumi.StringArrayInput                                  `pulumi:"aiaIssuingCertificateUrls"`
+	AuthorityKeyId            CertificateCertificateDescriptionAuthorityKeyIdPtrInput  `pulumi:"authorityKeyId"`
+	CertFingerprint           CertificateCertificateDescriptionCertFingerprintPtrInput `pulumi:"certFingerprint"`
+	ConfigValues              CertificateCertificateDescriptionConfigValuesPtrInput    `pulumi:"configValues"`
+	CrlDistributionPoints     pulumi.StringArrayInput                                  `pulumi:"crlDistributionPoints"`
+	// A PublicKey describes a public key.
+	// Structure is documented below.
+	PublicKey          CertificateCertificateDescriptionPublicKeyInput             `pulumi:"publicKey"`
+	SubjectDescription CertificateCertificateDescriptionSubjectDescriptionPtrInput `pulumi:"subjectDescription"`
+	SubjectKeyId       CertificateCertificateDescriptionSubjectKeyIdPtrInput       `pulumi:"subjectKeyId"`
+}
+
+func (CertificateCertificateDescriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescription)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionArgs) ToCertificateCertificateDescriptionOutput() CertificateCertificateDescriptionOutput {
+	return i.ToCertificateCertificateDescriptionOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionArgs) ToCertificateCertificateDescriptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionOutput)
+}
+
+// CertificateCertificateDescriptionArrayInput is an input type that accepts CertificateCertificateDescriptionArray and CertificateCertificateDescriptionArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionArrayInput` via:
+//
+//          CertificateCertificateDescriptionArray{ CertificateCertificateDescriptionArgs{...} }
+type CertificateCertificateDescriptionArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionArrayOutput() CertificateCertificateDescriptionArrayOutput
+	ToCertificateCertificateDescriptionArrayOutputWithContext(context.Context) CertificateCertificateDescriptionArrayOutput
+}
+
+type CertificateCertificateDescriptionArray []CertificateCertificateDescriptionInput
+
+func (CertificateCertificateDescriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescription)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionArray) ToCertificateCertificateDescriptionArrayOutput() CertificateCertificateDescriptionArrayOutput {
+	return i.ToCertificateCertificateDescriptionArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionArray) ToCertificateCertificateDescriptionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionArrayOutput)
+}
+
+type CertificateCertificateDescriptionOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescription)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionOutput) ToCertificateCertificateDescriptionOutput() CertificateCertificateDescriptionOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionOutput) ToCertificateCertificateDescriptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionOutput) AiaIssuingCertificateUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.AiaIssuingCertificateUrls }).(pulumi.StringArrayOutput)
+}
+
+func (o CertificateCertificateDescriptionOutput) AuthorityKeyId() CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) *CertificateCertificateDescriptionAuthorityKeyId {
+		return v.AuthorityKeyId
+	}).(CertificateCertificateDescriptionAuthorityKeyIdPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionOutput) CertFingerprint() CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) *CertificateCertificateDescriptionCertFingerprint {
+		return v.CertFingerprint
+	}).(CertificateCertificateDescriptionCertFingerprintPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionOutput) ConfigValues() CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) *CertificateCertificateDescriptionConfigValues {
+		return v.ConfigValues
+	}).(CertificateCertificateDescriptionConfigValuesPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionOutput) CrlDistributionPoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) []string { return v.CrlDistributionPoints }).(pulumi.StringArrayOutput)
+}
+
+// A PublicKey describes a public key.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionOutput) PublicKey() CertificateCertificateDescriptionPublicKeyOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) CertificateCertificateDescriptionPublicKey {
+		return v.PublicKey
+	}).(CertificateCertificateDescriptionPublicKeyOutput)
+}
+
+func (o CertificateCertificateDescriptionOutput) SubjectDescription() CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) *CertificateCertificateDescriptionSubjectDescription {
+		return v.SubjectDescription
+	}).(CertificateCertificateDescriptionSubjectDescriptionPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionOutput) SubjectKeyId() CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescription) *CertificateCertificateDescriptionSubjectKeyId {
+		return v.SubjectKeyId
+	}).(CertificateCertificateDescriptionSubjectKeyIdPtrOutput)
+}
+
+type CertificateCertificateDescriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescription)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionArrayOutput) ToCertificateCertificateDescriptionArrayOutput() CertificateCertificateDescriptionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionArrayOutput) ToCertificateCertificateDescriptionArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescription {
+		return vs[0].([]CertificateCertificateDescription)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionOutput)
+}
+
+type CertificateCertificateDescriptionAuthorityKeyId struct {
+	KeyId *string `pulumi:"keyId"`
+}
+
+// CertificateCertificateDescriptionAuthorityKeyIdInput is an input type that accepts CertificateCertificateDescriptionAuthorityKeyIdArgs and CertificateCertificateDescriptionAuthorityKeyIdOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionAuthorityKeyIdInput` via:
+//
+//          CertificateCertificateDescriptionAuthorityKeyIdArgs{...}
+type CertificateCertificateDescriptionAuthorityKeyIdInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionAuthorityKeyIdOutput() CertificateCertificateDescriptionAuthorityKeyIdOutput
+	ToCertificateCertificateDescriptionAuthorityKeyIdOutputWithContext(context.Context) CertificateCertificateDescriptionAuthorityKeyIdOutput
+}
+
+type CertificateCertificateDescriptionAuthorityKeyIdArgs struct {
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+}
+
+func (CertificateCertificateDescriptionAuthorityKeyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionAuthorityKeyId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionAuthorityKeyIdArgs) ToCertificateCertificateDescriptionAuthorityKeyIdOutput() CertificateCertificateDescriptionAuthorityKeyIdOutput {
+	return i.ToCertificateCertificateDescriptionAuthorityKeyIdOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionAuthorityKeyIdArgs) ToCertificateCertificateDescriptionAuthorityKeyIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionAuthorityKeyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionAuthorityKeyIdOutput)
+}
+
+func (i CertificateCertificateDescriptionAuthorityKeyIdArgs) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutput() CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return i.ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionAuthorityKeyIdArgs) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionAuthorityKeyIdOutput).ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionAuthorityKeyIdPtrInput is an input type that accepts CertificateCertificateDescriptionAuthorityKeyIdArgs, CertificateCertificateDescriptionAuthorityKeyIdPtr and CertificateCertificateDescriptionAuthorityKeyIdPtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionAuthorityKeyIdPtrInput` via:
+//
+//          CertificateCertificateDescriptionAuthorityKeyIdArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionAuthorityKeyIdPtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutput() CertificateCertificateDescriptionAuthorityKeyIdPtrOutput
+	ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(context.Context) CertificateCertificateDescriptionAuthorityKeyIdPtrOutput
+}
+
+type certificateCertificateDescriptionAuthorityKeyIdPtrType CertificateCertificateDescriptionAuthorityKeyIdArgs
+
+func CertificateCertificateDescriptionAuthorityKeyIdPtr(v *CertificateCertificateDescriptionAuthorityKeyIdArgs) CertificateCertificateDescriptionAuthorityKeyIdPtrInput {
+	return (*certificateCertificateDescriptionAuthorityKeyIdPtrType)(v)
+}
+
+func (*certificateCertificateDescriptionAuthorityKeyIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionAuthorityKeyId)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionAuthorityKeyIdPtrType) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutput() CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return i.ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionAuthorityKeyIdPtrType) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionAuthorityKeyIdPtrOutput)
+}
+
+type CertificateCertificateDescriptionAuthorityKeyIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionAuthorityKeyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionAuthorityKeyId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) ToCertificateCertificateDescriptionAuthorityKeyIdOutput() CertificateCertificateDescriptionAuthorityKeyIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) ToCertificateCertificateDescriptionAuthorityKeyIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionAuthorityKeyIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutput() CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return o.ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionAuthorityKeyId) *CertificateCertificateDescriptionAuthorityKeyId {
+		return &v
+	}).(CertificateCertificateDescriptionAuthorityKeyIdPtrOutput)
+}
+func (o CertificateCertificateDescriptionAuthorityKeyIdOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionAuthorityKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionAuthorityKeyIdPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionAuthorityKeyIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionAuthorityKeyId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdPtrOutput) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutput() CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdPtrOutput) ToCertificateCertificateDescriptionAuthorityKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionAuthorityKeyIdPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdPtrOutput) Elem() CertificateCertificateDescriptionAuthorityKeyIdOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionAuthorityKeyId) CertificateCertificateDescriptionAuthorityKeyId {
+		return *v
+	}).(CertificateCertificateDescriptionAuthorityKeyIdOutput)
+}
+
+func (o CertificateCertificateDescriptionAuthorityKeyIdPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionAuthorityKeyId) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionCertFingerprint struct {
+	Sha256Hash *string `pulumi:"sha256Hash"`
+}
+
+// CertificateCertificateDescriptionCertFingerprintInput is an input type that accepts CertificateCertificateDescriptionCertFingerprintArgs and CertificateCertificateDescriptionCertFingerprintOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionCertFingerprintInput` via:
+//
+//          CertificateCertificateDescriptionCertFingerprintArgs{...}
+type CertificateCertificateDescriptionCertFingerprintInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionCertFingerprintOutput() CertificateCertificateDescriptionCertFingerprintOutput
+	ToCertificateCertificateDescriptionCertFingerprintOutputWithContext(context.Context) CertificateCertificateDescriptionCertFingerprintOutput
+}
+
+type CertificateCertificateDescriptionCertFingerprintArgs struct {
+	Sha256Hash pulumi.StringPtrInput `pulumi:"sha256Hash"`
+}
+
+func (CertificateCertificateDescriptionCertFingerprintArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionCertFingerprint)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionCertFingerprintArgs) ToCertificateCertificateDescriptionCertFingerprintOutput() CertificateCertificateDescriptionCertFingerprintOutput {
+	return i.ToCertificateCertificateDescriptionCertFingerprintOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionCertFingerprintArgs) ToCertificateCertificateDescriptionCertFingerprintOutputWithContext(ctx context.Context) CertificateCertificateDescriptionCertFingerprintOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionCertFingerprintOutput)
+}
+
+func (i CertificateCertificateDescriptionCertFingerprintArgs) ToCertificateCertificateDescriptionCertFingerprintPtrOutput() CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return i.ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionCertFingerprintArgs) ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionCertFingerprintOutput).ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionCertFingerprintPtrInput is an input type that accepts CertificateCertificateDescriptionCertFingerprintArgs, CertificateCertificateDescriptionCertFingerprintPtr and CertificateCertificateDescriptionCertFingerprintPtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionCertFingerprintPtrInput` via:
+//
+//          CertificateCertificateDescriptionCertFingerprintArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionCertFingerprintPtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionCertFingerprintPtrOutput() CertificateCertificateDescriptionCertFingerprintPtrOutput
+	ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(context.Context) CertificateCertificateDescriptionCertFingerprintPtrOutput
+}
+
+type certificateCertificateDescriptionCertFingerprintPtrType CertificateCertificateDescriptionCertFingerprintArgs
+
+func CertificateCertificateDescriptionCertFingerprintPtr(v *CertificateCertificateDescriptionCertFingerprintArgs) CertificateCertificateDescriptionCertFingerprintPtrInput {
+	return (*certificateCertificateDescriptionCertFingerprintPtrType)(v)
+}
+
+func (*certificateCertificateDescriptionCertFingerprintPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionCertFingerprint)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionCertFingerprintPtrType) ToCertificateCertificateDescriptionCertFingerprintPtrOutput() CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return i.ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionCertFingerprintPtrType) ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionCertFingerprintPtrOutput)
+}
+
+type CertificateCertificateDescriptionCertFingerprintOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionCertFingerprintOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionCertFingerprint)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintOutput) ToCertificateCertificateDescriptionCertFingerprintOutput() CertificateCertificateDescriptionCertFingerprintOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintOutput) ToCertificateCertificateDescriptionCertFingerprintOutputWithContext(ctx context.Context) CertificateCertificateDescriptionCertFingerprintOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintOutput) ToCertificateCertificateDescriptionCertFingerprintPtrOutput() CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return o.ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintOutput) ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionCertFingerprint) *CertificateCertificateDescriptionCertFingerprint {
+		return &v
+	}).(CertificateCertificateDescriptionCertFingerprintPtrOutput)
+}
+func (o CertificateCertificateDescriptionCertFingerprintOutput) Sha256Hash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionCertFingerprint) *string { return v.Sha256Hash }).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionCertFingerprintPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionCertFingerprintPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionCertFingerprint)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintPtrOutput) ToCertificateCertificateDescriptionCertFingerprintPtrOutput() CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintPtrOutput) ToCertificateCertificateDescriptionCertFingerprintPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionCertFingerprintPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintPtrOutput) Elem() CertificateCertificateDescriptionCertFingerprintOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionCertFingerprint) CertificateCertificateDescriptionCertFingerprint {
+		return *v
+	}).(CertificateCertificateDescriptionCertFingerprintOutput)
+}
+
+func (o CertificateCertificateDescriptionCertFingerprintPtrOutput) Sha256Hash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionCertFingerprint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sha256Hash
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValues struct {
+	KeyUsage *CertificateCertificateDescriptionConfigValuesKeyUsage `pulumi:"keyUsage"`
+}
+
+// CertificateCertificateDescriptionConfigValuesInput is an input type that accepts CertificateCertificateDescriptionConfigValuesArgs and CertificateCertificateDescriptionConfigValuesOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesArgs{...}
+type CertificateCertificateDescriptionConfigValuesInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesOutput() CertificateCertificateDescriptionConfigValuesOutput
+	ToCertificateCertificateDescriptionConfigValuesOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesArgs struct {
+	KeyUsage CertificateCertificateDescriptionConfigValuesKeyUsagePtrInput `pulumi:"keyUsage"`
+}
+
+func (CertificateCertificateDescriptionConfigValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValues)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesArgs) ToCertificateCertificateDescriptionConfigValuesOutput() CertificateCertificateDescriptionConfigValuesOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesArgs) ToCertificateCertificateDescriptionConfigValuesOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesOutput)
+}
+
+func (i CertificateCertificateDescriptionConfigValuesArgs) ToCertificateCertificateDescriptionConfigValuesPtrOutput() CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesArgs) ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesOutput).ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionConfigValuesPtrInput is an input type that accepts CertificateCertificateDescriptionConfigValuesArgs, CertificateCertificateDescriptionConfigValuesPtr and CertificateCertificateDescriptionConfigValuesPtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesPtrInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionConfigValuesPtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesPtrOutput() CertificateCertificateDescriptionConfigValuesPtrOutput
+	ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesPtrOutput
+}
+
+type certificateCertificateDescriptionConfigValuesPtrType CertificateCertificateDescriptionConfigValuesArgs
+
+func CertificateCertificateDescriptionConfigValuesPtr(v *CertificateCertificateDescriptionConfigValuesArgs) CertificateCertificateDescriptionConfigValuesPtrInput {
+	return (*certificateCertificateDescriptionConfigValuesPtrType)(v)
+}
+
+func (*certificateCertificateDescriptionConfigValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValues)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionConfigValuesPtrType) ToCertificateCertificateDescriptionConfigValuesPtrOutput() CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionConfigValuesPtrType) ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValues)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesOutput) ToCertificateCertificateDescriptionConfigValuesOutput() CertificateCertificateDescriptionConfigValuesOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesOutput) ToCertificateCertificateDescriptionConfigValuesOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesOutput) ToCertificateCertificateDescriptionConfigValuesPtrOutput() CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return o.ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionConfigValuesOutput) ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValues) *CertificateCertificateDescriptionConfigValues {
+		return &v
+	}).(CertificateCertificateDescriptionConfigValuesPtrOutput)
+}
+func (o CertificateCertificateDescriptionConfigValuesOutput) KeyUsage() CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValues) *CertificateCertificateDescriptionConfigValuesKeyUsage {
+		return v.KeyUsage
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValues)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesPtrOutput) ToCertificateCertificateDescriptionConfigValuesPtrOutput() CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesPtrOutput) ToCertificateCertificateDescriptionConfigValuesPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesPtrOutput) Elem() CertificateCertificateDescriptionConfigValuesOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValues) CertificateCertificateDescriptionConfigValues {
+		return *v
+	}).(CertificateCertificateDescriptionConfigValuesOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesPtrOutput) KeyUsage() CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValues) *CertificateCertificateDescriptionConfigValuesKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.KeyUsage
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsage struct {
+	BaseKeyUsage             *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage             `pulumi:"baseKeyUsage"`
+	ExtendedKeyUsage         *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage         `pulumi:"extendedKeyUsage"`
+	UnknownExtendedKeyUsages []CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage `pulumi:"unknownExtendedKeyUsages"`
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageArgs and CertificateCertificateDescriptionConfigValuesKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageArgs{...}
+type CertificateCertificateDescriptionConfigValuesKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageArgs struct {
+	BaseKeyUsage             CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrInput              `pulumi:"baseKeyUsage"`
+	ExtendedKeyUsage         CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrInput          `pulumi:"extendedKeyUsage"`
+	UnknownExtendedKeyUsages CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayInput `pulumi:"unknownExtendedKeyUsages"`
+}
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageOutput)
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageOutput).ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsagePtrInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageArgs, CertificateCertificateDescriptionConfigValuesKeyUsagePtr and CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsagePtrInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionConfigValuesKeyUsagePtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput
+}
+
+type certificateCertificateDescriptionConfigValuesKeyUsagePtrType CertificateCertificateDescriptionConfigValuesKeyUsageArgs
+
+func CertificateCertificateDescriptionConfigValuesKeyUsagePtr(v *CertificateCertificateDescriptionConfigValuesKeyUsageArgs) CertificateCertificateDescriptionConfigValuesKeyUsagePtrInput {
+	return (*certificateCertificateDescriptionConfigValuesKeyUsagePtrType)(v)
+}
+
+func (*certificateCertificateDescriptionConfigValuesKeyUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsage)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsagePtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsagePtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return o.ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsage {
+		return &v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput)
+}
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageOutput) BaseKeyUsage() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage {
+		return v.BaseKeyUsage
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageOutput) ExtendedKeyUsage() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage {
+		return v.ExtendedKeyUsage
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageOutput) UnknownExtendedKeyUsages() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsage) []CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage {
+		return v.UnknownExtendedKeyUsages
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput) Elem() CertificateCertificateDescriptionConfigValuesKeyUsageOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsage) CertificateCertificateDescriptionConfigValuesKeyUsage {
+		return *v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput) BaseKeyUsage() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.BaseKeyUsage
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput) ExtendedKeyUsage() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.ExtendedKeyUsage
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput) UnknownExtendedKeyUsages() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsage) []CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage {
+		if v == nil {
+			return nil
+		}
+		return v.UnknownExtendedKeyUsages
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage struct {
+	KeyUsageOptions *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions `pulumi:"keyUsageOptions"`
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs and CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs{...}
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs struct {
+	KeyUsageOptions CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrInput `pulumi:"keyUsageOptions"`
+}
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput)
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput).ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs, CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtr and CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput
+}
+
+type certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrType CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs
+
+func CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtr(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageArgs) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrInput {
+	return (*certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrType)(v)
+}
+
+func (*certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage {
+		return &v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput)
+}
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput) KeyUsageOptions() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions {
+		return v.KeyUsageOptions
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput) Elem() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage {
+		return *v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput) KeyUsageOptions() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions {
+		if v == nil {
+			return nil
+		}
+		return v.KeyUsageOptions
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions struct {
+	CertSign          *bool `pulumi:"certSign"`
+	ContentCommitment *bool `pulumi:"contentCommitment"`
+	CrlSign           *bool `pulumi:"crlSign"`
+	DataEncipherment  *bool `pulumi:"dataEncipherment"`
+	DecipherOnly      *bool `pulumi:"decipherOnly"`
+	DigitalSignature  *bool `pulumi:"digitalSignature"`
+	EncipherOnly      *bool `pulumi:"encipherOnly"`
+	KeyAgreement      *bool `pulumi:"keyAgreement"`
+	KeyEncipherment   *bool `pulumi:"keyEncipherment"`
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs and CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs{...}
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs struct {
+	CertSign          pulumi.BoolPtrInput `pulumi:"certSign"`
+	ContentCommitment pulumi.BoolPtrInput `pulumi:"contentCommitment"`
+	CrlSign           pulumi.BoolPtrInput `pulumi:"crlSign"`
+	DataEncipherment  pulumi.BoolPtrInput `pulumi:"dataEncipherment"`
+	DecipherOnly      pulumi.BoolPtrInput `pulumi:"decipherOnly"`
+	DigitalSignature  pulumi.BoolPtrInput `pulumi:"digitalSignature"`
+	EncipherOnly      pulumi.BoolPtrInput `pulumi:"encipherOnly"`
+	KeyAgreement      pulumi.BoolPtrInput `pulumi:"keyAgreement"`
+	KeyEncipherment   pulumi.BoolPtrInput `pulumi:"keyEncipherment"`
+}
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput)
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput).ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs, CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtr and CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput
+}
+
+type certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrType CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs
+
+func CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtr(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsArgs) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrInput {
+	return (*certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrType)(v)
+}
+
+func (*certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return o.ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions {
+		return &v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput)
+}
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) CertSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.CertSign
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) ContentCommitment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.ContentCommitment
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) CrlSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.CrlSign
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) DataEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.DataEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) DecipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.DecipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) DigitalSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.DigitalSignature
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) EncipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.EncipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) KeyAgreement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.KeyAgreement
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput) KeyEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		return v.KeyEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) Elem() CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions {
+		return *v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) CertSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CertSign
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) ContentCommitment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContentCommitment
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) CrlSign() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CrlSign
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) DataEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DataEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) DecipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DecipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) DigitalSignature() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DigitalSignature
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) EncipherOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EncipherOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) KeyAgreement() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeyAgreement
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput) KeyEncipherment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeyEncipherment
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage struct {
+	ClientAuth      *bool `pulumi:"clientAuth"`
+	CodeSigning     *bool `pulumi:"codeSigning"`
+	EmailProtection *bool `pulumi:"emailProtection"`
+	OcspSigning     *bool `pulumi:"ocspSigning"`
+	ServerAuth      *bool `pulumi:"serverAuth"`
+	TimeStamping    *bool `pulumi:"timeStamping"`
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs and CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs{...}
+type CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs struct {
+	ClientAuth      pulumi.BoolPtrInput `pulumi:"clientAuth"`
+	CodeSigning     pulumi.BoolPtrInput `pulumi:"codeSigning"`
+	EmailProtection pulumi.BoolPtrInput `pulumi:"emailProtection"`
+	OcspSigning     pulumi.BoolPtrInput `pulumi:"ocspSigning"`
+	ServerAuth      pulumi.BoolPtrInput `pulumi:"serverAuth"`
+	TimeStamping    pulumi.BoolPtrInput `pulumi:"timeStamping"`
+}
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput)
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput).ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs, CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtr and CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput
+}
+
+type certificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrType CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs
+
+func CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtr(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageArgs) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrInput {
+	return (*certificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrType)(v)
+}
+
+func (*certificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrType) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage {
+		return &v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput)
+}
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) ClientAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		return v.ClientAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) CodeSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		return v.CodeSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) EmailProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		return v.EmailProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) OcspSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		return v.OcspSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) ServerAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		return v.ServerAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput) TimeStamping() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		return v.TimeStamping
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) Elem() CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage {
+		return *v
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) ClientAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) CodeSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CodeSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) EmailProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EmailProtection
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) OcspSigning() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OcspSigning
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) ServerAuth() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ServerAuth
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput) TimeStamping() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsage) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.TimeStamping
+	}).(pulumi.BoolPtrOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage struct {
+	ObectId CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId `pulumi:"obectId"`
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs and CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs{...}
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs struct {
+	ObectId CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdInput `pulumi:"obectId"`
+}
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArray and CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArray{ CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArgs{...} }
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArray []CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageInput
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArray) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArray) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput) ObectId() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId {
+		return v.ObectId
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage {
+		return vs[0].([]CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsage)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId struct {
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdInput is an input type that accepts CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs and CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdInput` via:
+//
+//          CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs{...}
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput
+	ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutputWithContext(context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs struct {
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput {
+	return i.ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdArgs) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput)
+}
+
+type CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput() CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput) ToCertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectId) []int {
+		return v.ObjectIdPaths
+	}).(pulumi.IntArrayOutput)
+}
+
+type CertificateCertificateDescriptionPublicKey struct {
+	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+	Key *string `pulumi:"key"`
+	// Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+	// Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+	Type string `pulumi:"type"`
+}
+
+// CertificateCertificateDescriptionPublicKeyInput is an input type that accepts CertificateCertificateDescriptionPublicKeyArgs and CertificateCertificateDescriptionPublicKeyOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionPublicKeyInput` via:
+//
+//          CertificateCertificateDescriptionPublicKeyArgs{...}
+type CertificateCertificateDescriptionPublicKeyInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionPublicKeyOutput() CertificateCertificateDescriptionPublicKeyOutput
+	ToCertificateCertificateDescriptionPublicKeyOutputWithContext(context.Context) CertificateCertificateDescriptionPublicKeyOutput
+}
+
+type CertificateCertificateDescriptionPublicKeyArgs struct {
+	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+	// Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (CertificateCertificateDescriptionPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionPublicKey)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionPublicKeyArgs) ToCertificateCertificateDescriptionPublicKeyOutput() CertificateCertificateDescriptionPublicKeyOutput {
+	return i.ToCertificateCertificateDescriptionPublicKeyOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionPublicKeyArgs) ToCertificateCertificateDescriptionPublicKeyOutputWithContext(ctx context.Context) CertificateCertificateDescriptionPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionPublicKeyOutput)
+}
+
+type CertificateCertificateDescriptionPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionPublicKey)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionPublicKeyOutput) ToCertificateCertificateDescriptionPublicKeyOutput() CertificateCertificateDescriptionPublicKeyOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionPublicKeyOutput) ToCertificateCertificateDescriptionPublicKeyOutputWithContext(ctx context.Context) CertificateCertificateDescriptionPublicKeyOutput {
+	return o
+}
+
+// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+func (o CertificateCertificateDescriptionPublicKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionPublicKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+// Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+func (o CertificateCertificateDescriptionPublicKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionPublicKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescription struct {
+	// The common name of the distinguished name.
+	CommonName      *string `pulumi:"commonName"`
+	HexSerialNumber *string `pulumi:"hexSerialNumber"`
+	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+	// fractional digits, terminated by 's'. Example: "3.5s".
+	Lifetime      *string `pulumi:"lifetime"`
+	NotAfterTime  *string `pulumi:"notAfterTime"`
+	NotBeforeTime *string `pulumi:"notBeforeTime"`
+	// Contains distinguished name fields such as the location and organization.
+	// Structure is documented below.
+	Subject *CertificateCertificateDescriptionSubjectDescriptionSubject `pulumi:"subject"`
+	// The subject alternative name fields.
+	// Structure is documented below.
+	SubjectAltName *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName `pulumi:"subjectAltName"`
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionArgs and CertificateCertificateDescriptionSubjectDescriptionOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionArgs{...}
+type CertificateCertificateDescriptionSubjectDescriptionInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionOutput() CertificateCertificateDescriptionSubjectDescriptionOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionOutput
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionArgs struct {
+	// The common name of the distinguished name.
+	CommonName      pulumi.StringPtrInput `pulumi:"commonName"`
+	HexSerialNumber pulumi.StringPtrInput `pulumi:"hexSerialNumber"`
+	// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+	// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+	// fractional digits, terminated by 's'. Example: "3.5s".
+	Lifetime      pulumi.StringPtrInput `pulumi:"lifetime"`
+	NotAfterTime  pulumi.StringPtrInput `pulumi:"notAfterTime"`
+	NotBeforeTime pulumi.StringPtrInput `pulumi:"notBeforeTime"`
+	// Contains distinguished name fields such as the location and organization.
+	// Structure is documented below.
+	Subject CertificateCertificateDescriptionSubjectDescriptionSubjectPtrInput `pulumi:"subject"`
+	// The subject alternative name fields.
+	// Structure is documented below.
+	SubjectAltName CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrInput `pulumi:"subjectAltName"`
+}
+
+func (CertificateCertificateDescriptionSubjectDescriptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescription)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionArgs) ToCertificateCertificateDescriptionSubjectDescriptionOutput() CertificateCertificateDescriptionSubjectDescriptionOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionArgs) ToCertificateCertificateDescriptionSubjectDescriptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionOutput)
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionArgs) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutput() CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionArgs) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionOutput).ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionPtrInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionArgs, CertificateCertificateDescriptionSubjectDescriptionPtr and CertificateCertificateDescriptionSubjectDescriptionPtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionPtrInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionSubjectDescriptionPtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionPtrOutput() CertificateCertificateDescriptionSubjectDescriptionPtrOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionPtrOutput
+}
+
+type certificateCertificateDescriptionSubjectDescriptionPtrType CertificateCertificateDescriptionSubjectDescriptionArgs
+
+func CertificateCertificateDescriptionSubjectDescriptionPtr(v *CertificateCertificateDescriptionSubjectDescriptionArgs) CertificateCertificateDescriptionSubjectDescriptionPtrInput {
+	return (*certificateCertificateDescriptionSubjectDescriptionPtrType)(v)
+}
+
+func (*certificateCertificateDescriptionSubjectDescriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectDescription)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionSubjectDescriptionPtrType) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutput() CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionSubjectDescriptionPtrType) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionPtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescription)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) ToCertificateCertificateDescriptionSubjectDescriptionOutput() CertificateCertificateDescriptionSubjectDescriptionOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) ToCertificateCertificateDescriptionSubjectDescriptionOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutput() CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return o.ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *CertificateCertificateDescriptionSubjectDescription {
+		return &v
+	}).(CertificateCertificateDescriptionSubjectDescriptionPtrOutput)
+}
+
+// The common name of the distinguished name.
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.CommonName }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) HexSerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.HexSerialNumber }).(pulumi.StringPtrOutput)
+}
+
+// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+// fractional digits, terminated by 's'. Example: "3.5s".
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) Lifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.Lifetime }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) NotAfterTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.NotAfterTime }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) NotBeforeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *string { return v.NotBeforeTime }).(pulumi.StringPtrOutput)
+}
+
+// Contains distinguished name fields such as the location and organization.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) Subject() CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *CertificateCertificateDescriptionSubjectDescriptionSubject {
+		return v.Subject
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput)
+}
+
+// The subject alternative name fields.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionSubjectDescriptionOutput) SubjectAltName() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescription) *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
+		return v.SubjectAltName
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectDescription)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutput() CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) ToCertificateCertificateDescriptionSubjectDescriptionPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) Elem() CertificateCertificateDescriptionSubjectDescriptionOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) CertificateCertificateDescriptionSubjectDescription {
+		return *v
+	}).(CertificateCertificateDescriptionSubjectDescriptionOutput)
+}
+
+// The common name of the distinguished name.
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) HexSerialNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HexSerialNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// The desired lifetime of the CA certificate. Used to create the "notBeforeTime" and
+// "notAfterTime" fields inside an X.509 certificate. A duration in seconds with up to nine
+// fractional digits, terminated by 's'. Example: "3.5s".
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) Lifetime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Lifetime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) NotAfterTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotAfterTime
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) NotBeforeTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotBeforeTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains distinguished name fields such as the location and organization.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) Subject() CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) *CertificateCertificateDescriptionSubjectDescriptionSubject {
+		if v == nil {
+			return nil
+		}
+		return v.Subject
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput)
+}
+
+// The subject alternative name fields.
+// Structure is documented below.
+func (o CertificateCertificateDescriptionSubjectDescriptionPtrOutput) SubjectAltName() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescription) *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAltName
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubject struct {
+	// The country code of the subject.
+	CountryCode *string `pulumi:"countryCode"`
+	// The locality or city of the subject.
+	Locality *string `pulumi:"locality"`
+	// The organization of the subject.
+	Organization *string `pulumi:"organization"`
+	// The organizational unit of the subject.
+	OrganizationalUnit *string `pulumi:"organizationalUnit"`
+	// The postal code of the subject.
+	PostalCode *string `pulumi:"postalCode"`
+	// The province, territory, or regional state of the subject.
+	Province *string `pulumi:"province"`
+	// The street address of the subject.
+	StreetAddress *string `pulumi:"streetAddress"`
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionSubjectInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionSubjectArgs{...}
+type CertificateCertificateDescriptionSubjectDescriptionSubjectInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectOutput
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectArgs struct {
+	// The country code of the subject.
+	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
+	// The locality or city of the subject.
+	Locality pulumi.StringPtrInput `pulumi:"locality"`
+	// The organization of the subject.
+	Organization pulumi.StringPtrInput `pulumi:"organization"`
+	// The organizational unit of the subject.
+	OrganizationalUnit pulumi.StringPtrInput `pulumi:"organizationalUnit"`
+	// The postal code of the subject.
+	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
+	// The province, territory, or regional state of the subject.
+	Province pulumi.StringPtrInput `pulumi:"province"`
+	// The street address of the subject.
+	StreetAddress pulumi.StringPtrInput `pulumi:"streetAddress"`
+}
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubject)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectOutput)
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectOutput).ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionSubjectPtrInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectArgs, CertificateCertificateDescriptionSubjectDescriptionSubjectPtr and CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectPtrInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionSubjectArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionSubjectDescriptionSubjectPtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput
+}
+
+type certificateCertificateDescriptionSubjectDescriptionSubjectPtrType CertificateCertificateDescriptionSubjectDescriptionSubjectArgs
+
+func CertificateCertificateDescriptionSubjectDescriptionSubjectPtr(v *CertificateCertificateDescriptionSubjectDescriptionSubjectArgs) CertificateCertificateDescriptionSubjectDescriptionSubjectPtrInput {
+	return (*certificateCertificateDescriptionSubjectDescriptionSubjectPtrType)(v)
+}
+
+func (*certificateCertificateDescriptionSubjectDescriptionSubjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectDescriptionSubject)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionSubjectDescriptionSubjectPtrType) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionSubjectDescriptionSubjectPtrType) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubject)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return o.ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *CertificateCertificateDescriptionSubjectDescriptionSubject {
+		return &v
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput)
+}
+
+// The country code of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// The locality or city of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *string { return v.Locality }).(pulumi.StringPtrOutput)
+}
+
+// The organization of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *string { return v.Organization }).(pulumi.StringPtrOutput)
+}
+
+// The organizational unit of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		return v.OrganizationalUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The postal code of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// The province, territory, or regional state of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) Province() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *string { return v.Province }).(pulumi.StringPtrOutput)
+}
+
+// The street address of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubject) *string { return v.StreetAddress }).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectDescriptionSubject)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) Elem() CertificateCertificateDescriptionSubjectDescriptionSubjectOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) CertificateCertificateDescriptionSubjectDescriptionSubject {
+		return *v
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectOutput)
+}
+
+// The country code of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The locality or city of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Locality
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organizational unit of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationalUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The postal code of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The province, territory, or regional state of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) Province() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Province
+	}).(pulumi.StringPtrOutput)
+}
+
+// The street address of the subject.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltName struct {
+	CustomSans []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan `pulumi:"customSans"`
+	// Contains only valid, fully-qualified host names.
+	DnsNames []string `pulumi:"dnsNames"`
+	// Contains only valid RFC 2822 E-mail addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+	IpAddresses []string `pulumi:"ipAddresses"`
+	// Contains only valid RFC 3986 URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs{...}
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs struct {
+	CustomSans CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput `pulumi:"customSans"`
+	// Contains only valid, fully-qualified host names.
+	DnsNames pulumi.StringArrayInput `pulumi:"dnsNames"`
+	// Contains only valid RFC 2822 E-mail addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	// Contains only valid RFC 3986 URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubjectAltName)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput)
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput).ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs, CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtr and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput
+}
+
+type certificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrType CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs
+
+func CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtr(v *CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameArgs) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrInput {
+	return (*certificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrType)(v)
+}
+
+func (*certificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectDescriptionSubjectAltName)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrType) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrType) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubjectAltName)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return o.ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
+		return &v
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput)
+}
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) CustomSans() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
+		return v.CustomSans
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput)
+}
+
+// Contains only valid, fully-qualified host names.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) DnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string { return v.DnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 2822 E-mail addresses.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string {
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string {
+		return v.IpAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 3986 URIs.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectDescriptionSubjectAltName)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) Elem() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) CertificateCertificateDescriptionSubjectDescriptionSubjectAltName {
+		return *v
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) CustomSans() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
+		if v == nil {
+			return nil
+		}
+		return v.CustomSans
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput)
+}
+
+// Contains only valid, fully-qualified host names.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) DnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 2822 E-mail addresses.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 3986 URIs.
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectDescriptionSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Uris
+	}).(pulumi.StringArrayOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan struct {
+	Critical bool                                                                              `pulumi:"critical"`
+	ObectId  CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId `pulumi:"obectId"`
+	Value    *string                                                                           `pulumi:"value"`
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs{...}
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs struct {
+	Critical pulumi.BoolInput                                                                       `pulumi:"critical"`
+	ObectId  CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdInput `pulumi:"obectId"`
+	Value    pulumi.StringPtrInput                                                                  `pulumi:"value"`
+}
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput)
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray{ CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArgs{...} }
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray []CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanInput
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArray) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan) bool {
+		return v.Critical
+	}).(pulumi.BoolOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) ObectId() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId {
+		return v.ObectId
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput) Index(i pulumi.IntInput) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan {
+		return vs[0].([]CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSan)[vs[1].(int)]
+	}).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId struct {
+	ObjectIdPaths []int `pulumi:"objectIdPaths"`
+}
+
+// CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdInput is an input type that accepts CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs and CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdInput` via:
+//
+//          CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs{...}
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput
+	ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs struct {
+	ObjectIdPaths pulumi.IntArrayInput `pulumi:"objectIdPaths"`
+}
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput {
+	return i.ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdArgs) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput)
+}
+
+type CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput() CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ToCertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput) ObjectIdPaths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId) []int {
+		return v.ObjectIdPaths
+	}).(pulumi.IntArrayOutput)
+}
+
+type CertificateCertificateDescriptionSubjectKeyId struct {
+	KeyId *string `pulumi:"keyId"`
+}
+
+// CertificateCertificateDescriptionSubjectKeyIdInput is an input type that accepts CertificateCertificateDescriptionSubjectKeyIdArgs and CertificateCertificateDescriptionSubjectKeyIdOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectKeyIdInput` via:
+//
+//          CertificateCertificateDescriptionSubjectKeyIdArgs{...}
+type CertificateCertificateDescriptionSubjectKeyIdInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectKeyIdOutput() CertificateCertificateDescriptionSubjectKeyIdOutput
+	ToCertificateCertificateDescriptionSubjectKeyIdOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectKeyIdOutput
+}
+
+type CertificateCertificateDescriptionSubjectKeyIdArgs struct {
+	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
+}
+
+func (CertificateCertificateDescriptionSubjectKeyIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectKeyId)(nil)).Elem()
+}
+
+func (i CertificateCertificateDescriptionSubjectKeyIdArgs) ToCertificateCertificateDescriptionSubjectKeyIdOutput() CertificateCertificateDescriptionSubjectKeyIdOutput {
+	return i.ToCertificateCertificateDescriptionSubjectKeyIdOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectKeyIdArgs) ToCertificateCertificateDescriptionSubjectKeyIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectKeyIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectKeyIdOutput)
+}
+
+func (i CertificateCertificateDescriptionSubjectKeyIdArgs) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutput() CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateCertificateDescriptionSubjectKeyIdArgs) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectKeyIdOutput).ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(ctx)
+}
+
+// CertificateCertificateDescriptionSubjectKeyIdPtrInput is an input type that accepts CertificateCertificateDescriptionSubjectKeyIdArgs, CertificateCertificateDescriptionSubjectKeyIdPtr and CertificateCertificateDescriptionSubjectKeyIdPtrOutput values.
+// You can construct a concrete instance of `CertificateCertificateDescriptionSubjectKeyIdPtrInput` via:
+//
+//          CertificateCertificateDescriptionSubjectKeyIdArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateCertificateDescriptionSubjectKeyIdPtrInput interface {
+	pulumi.Input
+
+	ToCertificateCertificateDescriptionSubjectKeyIdPtrOutput() CertificateCertificateDescriptionSubjectKeyIdPtrOutput
+	ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(context.Context) CertificateCertificateDescriptionSubjectKeyIdPtrOutput
+}
+
+type certificateCertificateDescriptionSubjectKeyIdPtrType CertificateCertificateDescriptionSubjectKeyIdArgs
+
+func CertificateCertificateDescriptionSubjectKeyIdPtr(v *CertificateCertificateDescriptionSubjectKeyIdArgs) CertificateCertificateDescriptionSubjectKeyIdPtrInput {
+	return (*certificateCertificateDescriptionSubjectKeyIdPtrType)(v)
+}
+
+func (*certificateCertificateDescriptionSubjectKeyIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectKeyId)(nil)).Elem()
+}
+
+func (i *certificateCertificateDescriptionSubjectKeyIdPtrType) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutput() CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return i.ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateCertificateDescriptionSubjectKeyIdPtrType) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateCertificateDescriptionSubjectKeyIdPtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectKeyIdOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectKeyIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateCertificateDescriptionSubjectKeyId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertificateDescriptionSubjectKeyIdOutput() CertificateCertificateDescriptionSubjectKeyIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertificateDescriptionSubjectKeyIdOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectKeyIdOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutput() CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return o.ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectKeyId) *CertificateCertificateDescriptionSubjectKeyId {
+		return &v
+	}).(CertificateCertificateDescriptionSubjectKeyIdPtrOutput)
+}
+func (o CertificateCertificateDescriptionSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+}
+
+type CertificateCertificateDescriptionSubjectKeyIdPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateCertificateDescriptionSubjectKeyIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateCertificateDescriptionSubjectKeyId)(nil)).Elem()
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdPtrOutput) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutput() CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdPtrOutput) ToCertificateCertificateDescriptionSubjectKeyIdPtrOutputWithContext(ctx context.Context) CertificateCertificateDescriptionSubjectKeyIdPtrOutput {
+	return o
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdPtrOutput) Elem() CertificateCertificateDescriptionSubjectKeyIdOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectKeyId) CertificateCertificateDescriptionSubjectKeyId {
+		return *v
+	}).(CertificateCertificateDescriptionSubjectKeyIdOutput)
+}
+
+func (o CertificateCertificateDescriptionSubjectKeyIdPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateCertificateDescriptionSubjectKeyId) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateConfig struct {
+	// A PublicKey describes a public key.
+	// Structure is documented below.
+	PublicKey CertificateConfigPublicKey `pulumi:"publicKey"`
+	// A resource path to a ReusableConfig in the format
+	// `projects/*/locations/*/reusableConfigs/*`.
+	ReusableConfig CertificateConfigReusableConfig `pulumi:"reusableConfig"`
+	// Specifies some of the values in a certificate that are related to the subject.
+	// Structure is documented below.
+	SubjectConfig CertificateConfigSubjectConfig `pulumi:"subjectConfig"`
+}
+
+// CertificateConfigInput is an input type that accepts CertificateConfigArgs and CertificateConfigOutput values.
+// You can construct a concrete instance of `CertificateConfigInput` via:
+//
+//          CertificateConfigArgs{...}
+type CertificateConfigInput interface {
+	pulumi.Input
+
+	ToCertificateConfigOutput() CertificateConfigOutput
+	ToCertificateConfigOutputWithContext(context.Context) CertificateConfigOutput
+}
+
+type CertificateConfigArgs struct {
+	// A PublicKey describes a public key.
+	// Structure is documented below.
+	PublicKey CertificateConfigPublicKeyInput `pulumi:"publicKey"`
+	// A resource path to a ReusableConfig in the format
+	// `projects/*/locations/*/reusableConfigs/*`.
+	ReusableConfig CertificateConfigReusableConfigInput `pulumi:"reusableConfig"`
+	// Specifies some of the values in a certificate that are related to the subject.
+	// Structure is documented below.
+	SubjectConfig CertificateConfigSubjectConfigInput `pulumi:"subjectConfig"`
+}
+
+func (CertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfig)(nil)).Elem()
+}
+
+func (i CertificateConfigArgs) ToCertificateConfigOutput() CertificateConfigOutput {
+	return i.ToCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigArgs) ToCertificateConfigOutputWithContext(ctx context.Context) CertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigOutput)
+}
+
+func (i CertificateConfigArgs) ToCertificateConfigPtrOutput() CertificateConfigPtrOutput {
+	return i.ToCertificateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigArgs) ToCertificateConfigPtrOutputWithContext(ctx context.Context) CertificateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigOutput).ToCertificateConfigPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigPtrInput is an input type that accepts CertificateConfigArgs, CertificateConfigPtr and CertificateConfigPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigPtrInput` via:
+//
+//          CertificateConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateConfigPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigPtrOutput() CertificateConfigPtrOutput
+	ToCertificateConfigPtrOutputWithContext(context.Context) CertificateConfigPtrOutput
+}
+
+type certificateConfigPtrType CertificateConfigArgs
+
+func CertificateConfigPtr(v *CertificateConfigArgs) CertificateConfigPtrInput {
+	return (*certificateConfigPtrType)(v)
+}
+
+func (*certificateConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfig)(nil)).Elem()
+}
+
+func (i *certificateConfigPtrType) ToCertificateConfigPtrOutput() CertificateConfigPtrOutput {
+	return i.ToCertificateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigPtrType) ToCertificateConfigPtrOutputWithContext(ctx context.Context) CertificateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigPtrOutput)
+}
+
+type CertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfig)(nil)).Elem()
+}
+
+func (o CertificateConfigOutput) ToCertificateConfigOutput() CertificateConfigOutput {
+	return o
+}
+
+func (o CertificateConfigOutput) ToCertificateConfigOutputWithContext(ctx context.Context) CertificateConfigOutput {
+	return o
+}
+
+func (o CertificateConfigOutput) ToCertificateConfigPtrOutput() CertificateConfigPtrOutput {
+	return o.ToCertificateConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigOutput) ToCertificateConfigPtrOutputWithContext(ctx context.Context) CertificateConfigPtrOutput {
+	return o.ApplyT(func(v CertificateConfig) *CertificateConfig {
+		return &v
+	}).(CertificateConfigPtrOutput)
+}
+
+// A PublicKey describes a public key.
+// Structure is documented below.
+func (o CertificateConfigOutput) PublicKey() CertificateConfigPublicKeyOutput {
+	return o.ApplyT(func(v CertificateConfig) CertificateConfigPublicKey { return v.PublicKey }).(CertificateConfigPublicKeyOutput)
+}
+
+// A resource path to a ReusableConfig in the format
+// `projects/*/locations/*/reusableConfigs/*`.
+func (o CertificateConfigOutput) ReusableConfig() CertificateConfigReusableConfigOutput {
+	return o.ApplyT(func(v CertificateConfig) CertificateConfigReusableConfig { return v.ReusableConfig }).(CertificateConfigReusableConfigOutput)
+}
+
+// Specifies some of the values in a certificate that are related to the subject.
+// Structure is documented below.
+func (o CertificateConfigOutput) SubjectConfig() CertificateConfigSubjectConfigOutput {
+	return o.ApplyT(func(v CertificateConfig) CertificateConfigSubjectConfig { return v.SubjectConfig }).(CertificateConfigSubjectConfigOutput)
+}
+
+type CertificateConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfig)(nil)).Elem()
+}
+
+func (o CertificateConfigPtrOutput) ToCertificateConfigPtrOutput() CertificateConfigPtrOutput {
+	return o
+}
+
+func (o CertificateConfigPtrOutput) ToCertificateConfigPtrOutputWithContext(ctx context.Context) CertificateConfigPtrOutput {
+	return o
+}
+
+func (o CertificateConfigPtrOutput) Elem() CertificateConfigOutput {
+	return o.ApplyT(func(v *CertificateConfig) CertificateConfig { return *v }).(CertificateConfigOutput)
+}
+
+// A PublicKey describes a public key.
+// Structure is documented below.
+func (o CertificateConfigPtrOutput) PublicKey() CertificateConfigPublicKeyPtrOutput {
+	return o.ApplyT(func(v *CertificateConfig) *CertificateConfigPublicKey {
+		if v == nil {
+			return nil
+		}
+		return &v.PublicKey
+	}).(CertificateConfigPublicKeyPtrOutput)
+}
+
+// A resource path to a ReusableConfig in the format
+// `projects/*/locations/*/reusableConfigs/*`.
+func (o CertificateConfigPtrOutput) ReusableConfig() CertificateConfigReusableConfigPtrOutput {
+	return o.ApplyT(func(v *CertificateConfig) *CertificateConfigReusableConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.ReusableConfig
+	}).(CertificateConfigReusableConfigPtrOutput)
+}
+
+// Specifies some of the values in a certificate that are related to the subject.
+// Structure is documented below.
+func (o CertificateConfigPtrOutput) SubjectConfig() CertificateConfigSubjectConfigPtrOutput {
+	return o.ApplyT(func(v *CertificateConfig) *CertificateConfigSubjectConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.SubjectConfig
+	}).(CertificateConfigSubjectConfigPtrOutput)
+}
+
+type CertificateConfigPublicKey struct {
+	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+	Key *string `pulumi:"key"`
+	// Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+	// Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+	Type string `pulumi:"type"`
+}
+
+// CertificateConfigPublicKeyInput is an input type that accepts CertificateConfigPublicKeyArgs and CertificateConfigPublicKeyOutput values.
+// You can construct a concrete instance of `CertificateConfigPublicKeyInput` via:
+//
+//          CertificateConfigPublicKeyArgs{...}
+type CertificateConfigPublicKeyInput interface {
+	pulumi.Input
+
+	ToCertificateConfigPublicKeyOutput() CertificateConfigPublicKeyOutput
+	ToCertificateConfigPublicKeyOutputWithContext(context.Context) CertificateConfigPublicKeyOutput
+}
+
+type CertificateConfigPublicKeyArgs struct {
+	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+	// Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (CertificateConfigPublicKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigPublicKey)(nil)).Elem()
+}
+
+func (i CertificateConfigPublicKeyArgs) ToCertificateConfigPublicKeyOutput() CertificateConfigPublicKeyOutput {
+	return i.ToCertificateConfigPublicKeyOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigPublicKeyArgs) ToCertificateConfigPublicKeyOutputWithContext(ctx context.Context) CertificateConfigPublicKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigPublicKeyOutput)
+}
+
+func (i CertificateConfigPublicKeyArgs) ToCertificateConfigPublicKeyPtrOutput() CertificateConfigPublicKeyPtrOutput {
+	return i.ToCertificateConfigPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigPublicKeyArgs) ToCertificateConfigPublicKeyPtrOutputWithContext(ctx context.Context) CertificateConfigPublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigPublicKeyOutput).ToCertificateConfigPublicKeyPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigPublicKeyPtrInput is an input type that accepts CertificateConfigPublicKeyArgs, CertificateConfigPublicKeyPtr and CertificateConfigPublicKeyPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigPublicKeyPtrInput` via:
+//
+//          CertificateConfigPublicKeyArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateConfigPublicKeyPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigPublicKeyPtrOutput() CertificateConfigPublicKeyPtrOutput
+	ToCertificateConfigPublicKeyPtrOutputWithContext(context.Context) CertificateConfigPublicKeyPtrOutput
+}
+
+type certificateConfigPublicKeyPtrType CertificateConfigPublicKeyArgs
+
+func CertificateConfigPublicKeyPtr(v *CertificateConfigPublicKeyArgs) CertificateConfigPublicKeyPtrInput {
+	return (*certificateConfigPublicKeyPtrType)(v)
+}
+
+func (*certificateConfigPublicKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigPublicKey)(nil)).Elem()
+}
+
+func (i *certificateConfigPublicKeyPtrType) ToCertificateConfigPublicKeyPtrOutput() CertificateConfigPublicKeyPtrOutput {
+	return i.ToCertificateConfigPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigPublicKeyPtrType) ToCertificateConfigPublicKeyPtrOutputWithContext(ctx context.Context) CertificateConfigPublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigPublicKeyPtrOutput)
+}
+
+type CertificateConfigPublicKeyOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigPublicKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigPublicKey)(nil)).Elem()
+}
+
+func (o CertificateConfigPublicKeyOutput) ToCertificateConfigPublicKeyOutput() CertificateConfigPublicKeyOutput {
+	return o
+}
+
+func (o CertificateConfigPublicKeyOutput) ToCertificateConfigPublicKeyOutputWithContext(ctx context.Context) CertificateConfigPublicKeyOutput {
+	return o
+}
+
+func (o CertificateConfigPublicKeyOutput) ToCertificateConfigPublicKeyPtrOutput() CertificateConfigPublicKeyPtrOutput {
+	return o.ToCertificateConfigPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigPublicKeyOutput) ToCertificateConfigPublicKeyPtrOutputWithContext(ctx context.Context) CertificateConfigPublicKeyPtrOutput {
+	return o.ApplyT(func(v CertificateConfigPublicKey) *CertificateConfigPublicKey {
+		return &v
+	}).(CertificateConfigPublicKeyPtrOutput)
+}
+
+// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+func (o CertificateConfigPublicKeyOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigPublicKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+// Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+func (o CertificateConfigPublicKeyOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateConfigPublicKey) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type CertificateConfigPublicKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigPublicKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigPublicKey)(nil)).Elem()
+}
+
+func (o CertificateConfigPublicKeyPtrOutput) ToCertificateConfigPublicKeyPtrOutput() CertificateConfigPublicKeyPtrOutput {
+	return o
+}
+
+func (o CertificateConfigPublicKeyPtrOutput) ToCertificateConfigPublicKeyPtrOutputWithContext(ctx context.Context) CertificateConfigPublicKeyPtrOutput {
+	return o
+}
+
+func (o CertificateConfigPublicKeyPtrOutput) Elem() CertificateConfigPublicKeyOutput {
+	return o.ApplyT(func(v *CertificateConfigPublicKey) CertificateConfigPublicKey { return *v }).(CertificateConfigPublicKeyOutput)
+}
+
+// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 SubjectPublicKeyInfo structure containing an algorithm identifier and a key. A base64-encoded string.
+func (o CertificateConfigPublicKeyPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigPublicKey) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// Types of public keys that are supported. At a minimum, we support RSA and ECDSA, for the key sizes or curves listed: https://cloud.google.com/kms/docs/algorithms#asymmetric_signing_algorithms
+// Possible values are `KEY_TYPE_UNSPECIFIED`, `PEM_RSA_KEY`, and `PEM_EC_KEY`.
+func (o CertificateConfigPublicKeyPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigPublicKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateConfigReusableConfig struct {
+	// A resource path to a ReusableConfig in the format
+	// `projects/*/locations/*/reusableConfigs/*`.
+	ReusableConfig string `pulumi:"reusableConfig"`
+}
+
+// CertificateConfigReusableConfigInput is an input type that accepts CertificateConfigReusableConfigArgs and CertificateConfigReusableConfigOutput values.
+// You can construct a concrete instance of `CertificateConfigReusableConfigInput` via:
+//
+//          CertificateConfigReusableConfigArgs{...}
+type CertificateConfigReusableConfigInput interface {
+	pulumi.Input
+
+	ToCertificateConfigReusableConfigOutput() CertificateConfigReusableConfigOutput
+	ToCertificateConfigReusableConfigOutputWithContext(context.Context) CertificateConfigReusableConfigOutput
+}
+
+type CertificateConfigReusableConfigArgs struct {
+	// A resource path to a ReusableConfig in the format
+	// `projects/*/locations/*/reusableConfigs/*`.
+	ReusableConfig pulumi.StringInput `pulumi:"reusableConfig"`
+}
+
+func (CertificateConfigReusableConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigReusableConfig)(nil)).Elem()
+}
+
+func (i CertificateConfigReusableConfigArgs) ToCertificateConfigReusableConfigOutput() CertificateConfigReusableConfigOutput {
+	return i.ToCertificateConfigReusableConfigOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigReusableConfigArgs) ToCertificateConfigReusableConfigOutputWithContext(ctx context.Context) CertificateConfigReusableConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigReusableConfigOutput)
+}
+
+func (i CertificateConfigReusableConfigArgs) ToCertificateConfigReusableConfigPtrOutput() CertificateConfigReusableConfigPtrOutput {
+	return i.ToCertificateConfigReusableConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigReusableConfigArgs) ToCertificateConfigReusableConfigPtrOutputWithContext(ctx context.Context) CertificateConfigReusableConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigReusableConfigOutput).ToCertificateConfigReusableConfigPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigReusableConfigPtrInput is an input type that accepts CertificateConfigReusableConfigArgs, CertificateConfigReusableConfigPtr and CertificateConfigReusableConfigPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigReusableConfigPtrInput` via:
+//
+//          CertificateConfigReusableConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateConfigReusableConfigPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigReusableConfigPtrOutput() CertificateConfigReusableConfigPtrOutput
+	ToCertificateConfigReusableConfigPtrOutputWithContext(context.Context) CertificateConfigReusableConfigPtrOutput
+}
+
+type certificateConfigReusableConfigPtrType CertificateConfigReusableConfigArgs
+
+func CertificateConfigReusableConfigPtr(v *CertificateConfigReusableConfigArgs) CertificateConfigReusableConfigPtrInput {
+	return (*certificateConfigReusableConfigPtrType)(v)
+}
+
+func (*certificateConfigReusableConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigReusableConfig)(nil)).Elem()
+}
+
+func (i *certificateConfigReusableConfigPtrType) ToCertificateConfigReusableConfigPtrOutput() CertificateConfigReusableConfigPtrOutput {
+	return i.ToCertificateConfigReusableConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigReusableConfigPtrType) ToCertificateConfigReusableConfigPtrOutputWithContext(ctx context.Context) CertificateConfigReusableConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigReusableConfigPtrOutput)
+}
+
+type CertificateConfigReusableConfigOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigReusableConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigReusableConfig)(nil)).Elem()
+}
+
+func (o CertificateConfigReusableConfigOutput) ToCertificateConfigReusableConfigOutput() CertificateConfigReusableConfigOutput {
+	return o
+}
+
+func (o CertificateConfigReusableConfigOutput) ToCertificateConfigReusableConfigOutputWithContext(ctx context.Context) CertificateConfigReusableConfigOutput {
+	return o
+}
+
+func (o CertificateConfigReusableConfigOutput) ToCertificateConfigReusableConfigPtrOutput() CertificateConfigReusableConfigPtrOutput {
+	return o.ToCertificateConfigReusableConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigReusableConfigOutput) ToCertificateConfigReusableConfigPtrOutputWithContext(ctx context.Context) CertificateConfigReusableConfigPtrOutput {
+	return o.ApplyT(func(v CertificateConfigReusableConfig) *CertificateConfigReusableConfig {
+		return &v
+	}).(CertificateConfigReusableConfigPtrOutput)
+}
+
+// A resource path to a ReusableConfig in the format
+// `projects/*/locations/*/reusableConfigs/*`.
+func (o CertificateConfigReusableConfigOutput) ReusableConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateConfigReusableConfig) string { return v.ReusableConfig }).(pulumi.StringOutput)
+}
+
+type CertificateConfigReusableConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigReusableConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigReusableConfig)(nil)).Elem()
+}
+
+func (o CertificateConfigReusableConfigPtrOutput) ToCertificateConfigReusableConfigPtrOutput() CertificateConfigReusableConfigPtrOutput {
+	return o
+}
+
+func (o CertificateConfigReusableConfigPtrOutput) ToCertificateConfigReusableConfigPtrOutputWithContext(ctx context.Context) CertificateConfigReusableConfigPtrOutput {
+	return o
+}
+
+func (o CertificateConfigReusableConfigPtrOutput) Elem() CertificateConfigReusableConfigOutput {
+	return o.ApplyT(func(v *CertificateConfigReusableConfig) CertificateConfigReusableConfig { return *v }).(CertificateConfigReusableConfigOutput)
+}
+
+// A resource path to a ReusableConfig in the format
+// `projects/*/locations/*/reusableConfigs/*`.
+func (o CertificateConfigReusableConfigPtrOutput) ReusableConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigReusableConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReusableConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateConfigSubjectConfig struct {
+	// The common name of the distinguished name.
+	CommonName string `pulumi:"commonName"`
+	// Contains distinguished name fields such as the location and organization.
+	// Structure is documented below.
+	Subject CertificateConfigSubjectConfigSubject `pulumi:"subject"`
+	// The subject alternative name fields.
+	// Structure is documented below.
+	SubjectAltName *CertificateConfigSubjectConfigSubjectAltName `pulumi:"subjectAltName"`
+}
+
+// CertificateConfigSubjectConfigInput is an input type that accepts CertificateConfigSubjectConfigArgs and CertificateConfigSubjectConfigOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectConfigInput` via:
+//
+//          CertificateConfigSubjectConfigArgs{...}
+type CertificateConfigSubjectConfigInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectConfigOutput() CertificateConfigSubjectConfigOutput
+	ToCertificateConfigSubjectConfigOutputWithContext(context.Context) CertificateConfigSubjectConfigOutput
+}
+
+type CertificateConfigSubjectConfigArgs struct {
+	// The common name of the distinguished name.
+	CommonName pulumi.StringInput `pulumi:"commonName"`
+	// Contains distinguished name fields such as the location and organization.
+	// Structure is documented below.
+	Subject CertificateConfigSubjectConfigSubjectInput `pulumi:"subject"`
+	// The subject alternative name fields.
+	// Structure is documented below.
+	SubjectAltName CertificateConfigSubjectConfigSubjectAltNamePtrInput `pulumi:"subjectAltName"`
+}
+
+func (CertificateConfigSubjectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectConfig)(nil)).Elem()
+}
+
+func (i CertificateConfigSubjectConfigArgs) ToCertificateConfigSubjectConfigOutput() CertificateConfigSubjectConfigOutput {
+	return i.ToCertificateConfigSubjectConfigOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectConfigArgs) ToCertificateConfigSubjectConfigOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigOutput)
+}
+
+func (i CertificateConfigSubjectConfigArgs) ToCertificateConfigSubjectConfigPtrOutput() CertificateConfigSubjectConfigPtrOutput {
+	return i.ToCertificateConfigSubjectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectConfigArgs) ToCertificateConfigSubjectConfigPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigOutput).ToCertificateConfigSubjectConfigPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigSubjectConfigPtrInput is an input type that accepts CertificateConfigSubjectConfigArgs, CertificateConfigSubjectConfigPtr and CertificateConfigSubjectConfigPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectConfigPtrInput` via:
+//
+//          CertificateConfigSubjectConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateConfigSubjectConfigPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectConfigPtrOutput() CertificateConfigSubjectConfigPtrOutput
+	ToCertificateConfigSubjectConfigPtrOutputWithContext(context.Context) CertificateConfigSubjectConfigPtrOutput
+}
+
+type certificateConfigSubjectConfigPtrType CertificateConfigSubjectConfigArgs
+
+func CertificateConfigSubjectConfigPtr(v *CertificateConfigSubjectConfigArgs) CertificateConfigSubjectConfigPtrInput {
+	return (*certificateConfigSubjectConfigPtrType)(v)
+}
+
+func (*certificateConfigSubjectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectConfig)(nil)).Elem()
+}
+
+func (i *certificateConfigSubjectConfigPtrType) ToCertificateConfigSubjectConfigPtrOutput() CertificateConfigSubjectConfigPtrOutput {
+	return i.ToCertificateConfigSubjectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigSubjectConfigPtrType) ToCertificateConfigSubjectConfigPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigPtrOutput)
+}
+
+type CertificateConfigSubjectConfigOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectConfig)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectConfigOutput) ToCertificateConfigSubjectConfigOutput() CertificateConfigSubjectConfigOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigOutput) ToCertificateConfigSubjectConfigOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigOutput) ToCertificateConfigSubjectConfigPtrOutput() CertificateConfigSubjectConfigPtrOutput {
+	return o.ToCertificateConfigSubjectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigSubjectConfigOutput) ToCertificateConfigSubjectConfigPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfig) *CertificateConfigSubjectConfig {
+		return &v
+	}).(CertificateConfigSubjectConfigPtrOutput)
+}
+
+// The common name of the distinguished name.
+func (o CertificateConfigSubjectConfigOutput) CommonName() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfig) string { return v.CommonName }).(pulumi.StringOutput)
+}
+
+// Contains distinguished name fields such as the location and organization.
+// Structure is documented below.
+func (o CertificateConfigSubjectConfigOutput) Subject() CertificateConfigSubjectConfigSubjectOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfig) CertificateConfigSubjectConfigSubject { return v.Subject }).(CertificateConfigSubjectConfigSubjectOutput)
+}
+
+// The subject alternative name fields.
+// Structure is documented below.
+func (o CertificateConfigSubjectConfigOutput) SubjectAltName() CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfig) *CertificateConfigSubjectConfigSubjectAltName {
+		return v.SubjectAltName
+	}).(CertificateConfigSubjectConfigSubjectAltNamePtrOutput)
+}
+
+type CertificateConfigSubjectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectConfig)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectConfigPtrOutput) ToCertificateConfigSubjectConfigPtrOutput() CertificateConfigSubjectConfigPtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigPtrOutput) ToCertificateConfigSubjectConfigPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigPtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigPtrOutput) Elem() CertificateConfigSubjectConfigOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfig) CertificateConfigSubjectConfig { return *v }).(CertificateConfigSubjectConfigOutput)
+}
+
+// The common name of the distinguished name.
+func (o CertificateConfigSubjectConfigPtrOutput) CommonName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CommonName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains distinguished name fields such as the location and organization.
+// Structure is documented below.
+func (o CertificateConfigSubjectConfigPtrOutput) Subject() CertificateConfigSubjectConfigSubjectPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfig) *CertificateConfigSubjectConfigSubject {
+		if v == nil {
+			return nil
+		}
+		return &v.Subject
+	}).(CertificateConfigSubjectConfigSubjectPtrOutput)
+}
+
+// The subject alternative name fields.
+// Structure is documented below.
+func (o CertificateConfigSubjectConfigPtrOutput) SubjectAltName() CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfig) *CertificateConfigSubjectConfigSubjectAltName {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAltName
+	}).(CertificateConfigSubjectConfigSubjectAltNamePtrOutput)
+}
+
+type CertificateConfigSubjectConfigSubject struct {
+	// The country code of the subject.
+	CountryCode *string `pulumi:"countryCode"`
+	// The locality or city of the subject.
+	Locality *string `pulumi:"locality"`
+	// The organization of the subject.
+	Organization string `pulumi:"organization"`
+	// The organizational unit of the subject.
+	OrganizationalUnit *string `pulumi:"organizationalUnit"`
+	// The postal code of the subject.
+	PostalCode *string `pulumi:"postalCode"`
+	// The province, territory, or regional state of the subject.
+	Province *string `pulumi:"province"`
+	// The street address of the subject.
+	StreetAddress *string `pulumi:"streetAddress"`
+}
+
+// CertificateConfigSubjectConfigSubjectInput is an input type that accepts CertificateConfigSubjectConfigSubjectArgs and CertificateConfigSubjectConfigSubjectOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectInput` via:
+//
+//          CertificateConfigSubjectConfigSubjectArgs{...}
+type CertificateConfigSubjectConfigSubjectInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectConfigSubjectOutput() CertificateConfigSubjectConfigSubjectOutput
+	ToCertificateConfigSubjectConfigSubjectOutputWithContext(context.Context) CertificateConfigSubjectConfigSubjectOutput
+}
+
+type CertificateConfigSubjectConfigSubjectArgs struct {
+	// The country code of the subject.
+	CountryCode pulumi.StringPtrInput `pulumi:"countryCode"`
+	// The locality or city of the subject.
+	Locality pulumi.StringPtrInput `pulumi:"locality"`
+	// The organization of the subject.
+	Organization pulumi.StringInput `pulumi:"organization"`
+	// The organizational unit of the subject.
+	OrganizationalUnit pulumi.StringPtrInput `pulumi:"organizationalUnit"`
+	// The postal code of the subject.
+	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
+	// The province, territory, or regional state of the subject.
+	Province pulumi.StringPtrInput `pulumi:"province"`
+	// The street address of the subject.
+	StreetAddress pulumi.StringPtrInput `pulumi:"streetAddress"`
+}
+
+func (CertificateConfigSubjectConfigSubjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (i CertificateConfigSubjectConfigSubjectArgs) ToCertificateConfigSubjectConfigSubjectOutput() CertificateConfigSubjectConfigSubjectOutput {
+	return i.ToCertificateConfigSubjectConfigSubjectOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectConfigSubjectArgs) ToCertificateConfigSubjectConfigSubjectOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigSubjectOutput)
+}
+
+func (i CertificateConfigSubjectConfigSubjectArgs) ToCertificateConfigSubjectConfigSubjectPtrOutput() CertificateConfigSubjectConfigSubjectPtrOutput {
+	return i.ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectConfigSubjectArgs) ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigSubjectOutput).ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(ctx)
+}
+
+// CertificateConfigSubjectConfigSubjectPtrInput is an input type that accepts CertificateConfigSubjectConfigSubjectArgs, CertificateConfigSubjectConfigSubjectPtr and CertificateConfigSubjectConfigSubjectPtrOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectPtrInput` via:
+//
+//          CertificateConfigSubjectConfigSubjectArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateConfigSubjectConfigSubjectPtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectConfigSubjectPtrOutput() CertificateConfigSubjectConfigSubjectPtrOutput
+	ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(context.Context) CertificateConfigSubjectConfigSubjectPtrOutput
+}
+
+type certificateConfigSubjectConfigSubjectPtrType CertificateConfigSubjectConfigSubjectArgs
+
+func CertificateConfigSubjectConfigSubjectPtr(v *CertificateConfigSubjectConfigSubjectArgs) CertificateConfigSubjectConfigSubjectPtrInput {
+	return (*certificateConfigSubjectConfigSubjectPtrType)(v)
+}
+
+func (*certificateConfigSubjectConfigSubjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (i *certificateConfigSubjectConfigSubjectPtrType) ToCertificateConfigSubjectConfigSubjectPtrOutput() CertificateConfigSubjectConfigSubjectPtrOutput {
+	return i.ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigSubjectConfigSubjectPtrType) ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigSubjectPtrOutput)
+}
+
+type CertificateConfigSubjectConfigSubjectOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectConfigSubjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectConfigSubjectOutput) ToCertificateConfigSubjectConfigSubjectOutput() CertificateConfigSubjectConfigSubjectOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectOutput) ToCertificateConfigSubjectConfigSubjectOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectOutput) ToCertificateConfigSubjectConfigSubjectPtrOutput() CertificateConfigSubjectConfigSubjectPtrOutput {
+	return o.ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigSubjectConfigSubjectOutput) ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *CertificateConfigSubjectConfigSubject {
+		return &v
+	}).(CertificateConfigSubjectConfigSubjectPtrOutput)
+}
+
+// The country code of the subject.
+func (o CertificateConfigSubjectConfigSubjectOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *string { return v.CountryCode }).(pulumi.StringPtrOutput)
+}
+
+// The locality or city of the subject.
+func (o CertificateConfigSubjectConfigSubjectOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *string { return v.Locality }).(pulumi.StringPtrOutput)
+}
+
+// The organization of the subject.
+func (o CertificateConfigSubjectConfigSubjectOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// The organizational unit of the subject.
+func (o CertificateConfigSubjectConfigSubjectOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *string { return v.OrganizationalUnit }).(pulumi.StringPtrOutput)
+}
+
+// The postal code of the subject.
+func (o CertificateConfigSubjectConfigSubjectOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// The province, territory, or regional state of the subject.
+func (o CertificateConfigSubjectConfigSubjectOutput) Province() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *string { return v.Province }).(pulumi.StringPtrOutput)
+}
+
+// The street address of the subject.
+func (o CertificateConfigSubjectConfigSubjectOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubject) *string { return v.StreetAddress }).(pulumi.StringPtrOutput)
+}
+
+type CertificateConfigSubjectConfigSubjectPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectConfigSubjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectConfigSubject)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) ToCertificateConfigSubjectConfigSubjectPtrOutput() CertificateConfigSubjectConfigSubjectPtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) ToCertificateConfigSubjectConfigSubjectPtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectPtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) Elem() CertificateConfigSubjectConfigSubjectOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) CertificateConfigSubjectConfigSubject { return *v }).(CertificateConfigSubjectConfigSubjectOutput)
+}
+
+// The country code of the subject.
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) CountryCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CountryCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The locality or city of the subject.
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Locality
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organization of the subject.
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+// The organizational unit of the subject.
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) OrganizationalUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OrganizationalUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+// The postal code of the subject.
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The province, territory, or regional state of the subject.
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) Province() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Province
+	}).(pulumi.StringPtrOutput)
+}
+
+// The street address of the subject.
+func (o CertificateConfigSubjectConfigSubjectPtrOutput) StreetAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubject) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StreetAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateConfigSubjectConfigSubjectAltName struct {
+	// Contains only valid, fully-qualified host names.
+	DnsNames []string `pulumi:"dnsNames"`
+	// Contains only valid RFC 2822 E-mail addresses.
+	EmailAddresses []string `pulumi:"emailAddresses"`
+	// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+	IpAddresses []string `pulumi:"ipAddresses"`
+	// Contains only valid RFC 3986 URIs.
+	Uris []string `pulumi:"uris"`
+}
+
+// CertificateConfigSubjectConfigSubjectAltNameInput is an input type that accepts CertificateConfigSubjectConfigSubjectAltNameArgs and CertificateConfigSubjectConfigSubjectAltNameOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectAltNameInput` via:
+//
+//          CertificateConfigSubjectConfigSubjectAltNameArgs{...}
+type CertificateConfigSubjectConfigSubjectAltNameInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectConfigSubjectAltNameOutput() CertificateConfigSubjectConfigSubjectAltNameOutput
+	ToCertificateConfigSubjectConfigSubjectAltNameOutputWithContext(context.Context) CertificateConfigSubjectConfigSubjectAltNameOutput
+}
+
+type CertificateConfigSubjectConfigSubjectAltNameArgs struct {
+	// Contains only valid, fully-qualified host names.
+	DnsNames pulumi.StringArrayInput `pulumi:"dnsNames"`
+	// Contains only valid RFC 2822 E-mail addresses.
+	EmailAddresses pulumi.StringArrayInput `pulumi:"emailAddresses"`
+	// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+	IpAddresses pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	// Contains only valid RFC 3986 URIs.
+	Uris pulumi.StringArrayInput `pulumi:"uris"`
+}
+
+func (CertificateConfigSubjectConfigSubjectAltNameArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (i CertificateConfigSubjectConfigSubjectAltNameArgs) ToCertificateConfigSubjectConfigSubjectAltNameOutput() CertificateConfigSubjectConfigSubjectAltNameOutput {
+	return i.ToCertificateConfigSubjectConfigSubjectAltNameOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectConfigSubjectAltNameArgs) ToCertificateConfigSubjectConfigSubjectAltNameOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectAltNameOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigSubjectAltNameOutput)
+}
+
+func (i CertificateConfigSubjectConfigSubjectAltNameArgs) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutput() CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return i.ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(context.Background())
+}
+
+func (i CertificateConfigSubjectConfigSubjectAltNameArgs) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigSubjectAltNameOutput).ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(ctx)
+}
+
+// CertificateConfigSubjectConfigSubjectAltNamePtrInput is an input type that accepts CertificateConfigSubjectConfigSubjectAltNameArgs, CertificateConfigSubjectConfigSubjectAltNamePtr and CertificateConfigSubjectConfigSubjectAltNamePtrOutput values.
+// You can construct a concrete instance of `CertificateConfigSubjectConfigSubjectAltNamePtrInput` via:
+//
+//          CertificateConfigSubjectConfigSubjectAltNameArgs{...}
+//
+//  or:
+//
+//          nil
+type CertificateConfigSubjectConfigSubjectAltNamePtrInput interface {
+	pulumi.Input
+
+	ToCertificateConfigSubjectConfigSubjectAltNamePtrOutput() CertificateConfigSubjectConfigSubjectAltNamePtrOutput
+	ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(context.Context) CertificateConfigSubjectConfigSubjectAltNamePtrOutput
+}
+
+type certificateConfigSubjectConfigSubjectAltNamePtrType CertificateConfigSubjectConfigSubjectAltNameArgs
+
+func CertificateConfigSubjectConfigSubjectAltNamePtr(v *CertificateConfigSubjectConfigSubjectAltNameArgs) CertificateConfigSubjectConfigSubjectAltNamePtrInput {
+	return (*certificateConfigSubjectConfigSubjectAltNamePtrType)(v)
+}
+
+func (*certificateConfigSubjectConfigSubjectAltNamePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (i *certificateConfigSubjectConfigSubjectAltNamePtrType) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutput() CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return i.ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(context.Background())
+}
+
+func (i *certificateConfigSubjectConfigSubjectAltNamePtrType) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateConfigSubjectConfigSubjectAltNamePtrOutput)
+}
+
+type CertificateConfigSubjectConfigSubjectAltNameOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectConfigSubjectAltNameOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) ToCertificateConfigSubjectConfigSubjectAltNameOutput() CertificateConfigSubjectConfigSubjectAltNameOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) ToCertificateConfigSubjectConfigSubjectAltNameOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectAltNameOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutput() CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return o.ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubjectAltName) *CertificateConfigSubjectConfigSubjectAltName {
+		return &v
+	}).(CertificateConfigSubjectConfigSubjectAltNamePtrOutput)
+}
+
+// Contains only valid, fully-qualified host names.
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) DnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubjectAltName) []string { return v.DnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 2822 E-mail addresses.
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubjectAltName) []string { return v.EmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubjectAltName) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 3986 URIs.
+func (o CertificateConfigSubjectConfigSubjectAltNameOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CertificateConfigSubjectConfigSubjectAltName) []string { return v.Uris }).(pulumi.StringArrayOutput)
+}
+
+type CertificateConfigSubjectConfigSubjectAltNamePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateConfigSubjectConfigSubjectAltNamePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CertificateConfigSubjectConfigSubjectAltName)(nil)).Elem()
+}
+
+func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutput() CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) ToCertificateConfigSubjectConfigSubjectAltNamePtrOutputWithContext(ctx context.Context) CertificateConfigSubjectConfigSubjectAltNamePtrOutput {
+	return o
+}
+
+func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) Elem() CertificateConfigSubjectConfigSubjectAltNameOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubjectAltName) CertificateConfigSubjectConfigSubjectAltName {
+		return *v
+	}).(CertificateConfigSubjectConfigSubjectAltNameOutput)
+}
+
+// Contains only valid, fully-qualified host names.
+func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) DnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 2822 E-mail addresses.
+func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) EmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains only valid RFC 3986 URIs.
+func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CertificateConfigSubjectConfigSubjectAltName) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Uris
+	}).(pulumi.StringArrayOutput)
+}
+
+type CertificateRevocationDetail struct {
+	RevocationState *string `pulumi:"revocationState"`
+	RevocationTime  *string `pulumi:"revocationTime"`
+}
+
+// CertificateRevocationDetailInput is an input type that accepts CertificateRevocationDetailArgs and CertificateRevocationDetailOutput values.
+// You can construct a concrete instance of `CertificateRevocationDetailInput` via:
+//
+//          CertificateRevocationDetailArgs{...}
+type CertificateRevocationDetailInput interface {
+	pulumi.Input
+
+	ToCertificateRevocationDetailOutput() CertificateRevocationDetailOutput
+	ToCertificateRevocationDetailOutputWithContext(context.Context) CertificateRevocationDetailOutput
+}
+
+type CertificateRevocationDetailArgs struct {
+	RevocationState pulumi.StringPtrInput `pulumi:"revocationState"`
+	RevocationTime  pulumi.StringPtrInput `pulumi:"revocationTime"`
+}
+
+func (CertificateRevocationDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateRevocationDetail)(nil)).Elem()
+}
+
+func (i CertificateRevocationDetailArgs) ToCertificateRevocationDetailOutput() CertificateRevocationDetailOutput {
+	return i.ToCertificateRevocationDetailOutputWithContext(context.Background())
+}
+
+func (i CertificateRevocationDetailArgs) ToCertificateRevocationDetailOutputWithContext(ctx context.Context) CertificateRevocationDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRevocationDetailOutput)
+}
+
+// CertificateRevocationDetailArrayInput is an input type that accepts CertificateRevocationDetailArray and CertificateRevocationDetailArrayOutput values.
+// You can construct a concrete instance of `CertificateRevocationDetailArrayInput` via:
+//
+//          CertificateRevocationDetailArray{ CertificateRevocationDetailArgs{...} }
+type CertificateRevocationDetailArrayInput interface {
+	pulumi.Input
+
+	ToCertificateRevocationDetailArrayOutput() CertificateRevocationDetailArrayOutput
+	ToCertificateRevocationDetailArrayOutputWithContext(context.Context) CertificateRevocationDetailArrayOutput
+}
+
+type CertificateRevocationDetailArray []CertificateRevocationDetailInput
+
+func (CertificateRevocationDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateRevocationDetail)(nil)).Elem()
+}
+
+func (i CertificateRevocationDetailArray) ToCertificateRevocationDetailArrayOutput() CertificateRevocationDetailArrayOutput {
+	return i.ToCertificateRevocationDetailArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateRevocationDetailArray) ToCertificateRevocationDetailArrayOutputWithContext(ctx context.Context) CertificateRevocationDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateRevocationDetailArrayOutput)
+}
+
+type CertificateRevocationDetailOutput struct{ *pulumi.OutputState }
+
+func (CertificateRevocationDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateRevocationDetail)(nil)).Elem()
+}
+
+func (o CertificateRevocationDetailOutput) ToCertificateRevocationDetailOutput() CertificateRevocationDetailOutput {
+	return o
+}
+
+func (o CertificateRevocationDetailOutput) ToCertificateRevocationDetailOutputWithContext(ctx context.Context) CertificateRevocationDetailOutput {
+	return o
+}
+
+func (o CertificateRevocationDetailOutput) RevocationState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateRevocationDetail) *string { return v.RevocationState }).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateRevocationDetailOutput) RevocationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateRevocationDetail) *string { return v.RevocationTime }).(pulumi.StringPtrOutput)
+}
+
+type CertificateRevocationDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateRevocationDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateRevocationDetail)(nil)).Elem()
+}
+
+func (o CertificateRevocationDetailArrayOutput) ToCertificateRevocationDetailArrayOutput() CertificateRevocationDetailArrayOutput {
+	return o
+}
+
+func (o CertificateRevocationDetailArrayOutput) ToCertificateRevocationDetailArrayOutputWithContext(ctx context.Context) CertificateRevocationDetailArrayOutput {
+	return o
+}
+
+func (o CertificateRevocationDetailArrayOutput) Index(i pulumi.IntInput) CertificateRevocationDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateRevocationDetail {
+		return vs[0].([]CertificateRevocationDetail)[vs[1].(int)]
+	}).(CertificateRevocationDetailOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorityAccessUrlOutput{})
 	pulumi.RegisterOutputType(AuthorityAccessUrlArrayOutput{})
@@ -1690,4 +5405,49 @@ func init() {
 	pulumi.RegisterOutputType(AuthorityIssuingOptionsPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityKeySpecOutput{})
 	pulumi.RegisterOutputType(AuthorityKeySpecPtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionAuthorityKeyIdOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionAuthorityKeyIdPtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionCertFingerprintOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionCertFingerprintPtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesPtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsagePtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsagePtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageBaseKeyUsageKeyUsageOptionsPtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageExtendedKeyUsagePtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionConfigValuesKeyUsageUnknownExtendedKeyUsageObectIdOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionPublicKeyOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionPtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectPtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNamePtrOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanArrayOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectIdOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectKeyIdOutput{})
+	pulumi.RegisterOutputType(CertificateCertificateDescriptionSubjectKeyIdPtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigOutput{})
+	pulumi.RegisterOutputType(CertificateConfigPtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigPublicKeyOutput{})
+	pulumi.RegisterOutputType(CertificateConfigPublicKeyPtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigReusableConfigOutput{})
+	pulumi.RegisterOutputType(CertificateConfigReusableConfigPtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectConfigOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectConfigPtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectConfigSubjectOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectConfigSubjectPtrOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectConfigSubjectAltNameOutput{})
+	pulumi.RegisterOutputType(CertificateConfigSubjectConfigSubjectAltNamePtrOutput{})
+	pulumi.RegisterOutputType(CertificateRevocationDetailOutput{})
+	pulumi.RegisterOutputType(CertificateRevocationDetailArrayOutput{})
 }

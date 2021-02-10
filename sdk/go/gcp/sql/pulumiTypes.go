@@ -10,6 +10,156 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+type DatabaseInstanceClone struct {
+	// The timestamp of the point in time that should be restored.
+	PointInTime string `pulumi:"pointInTime"`
+	// Name of the source instance which will be cloned.
+	SourceInstanceName string `pulumi:"sourceInstanceName"`
+}
+
+// DatabaseInstanceCloneInput is an input type that accepts DatabaseInstanceCloneArgs and DatabaseInstanceCloneOutput values.
+// You can construct a concrete instance of `DatabaseInstanceCloneInput` via:
+//
+//          DatabaseInstanceCloneArgs{...}
+type DatabaseInstanceCloneInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceCloneOutput() DatabaseInstanceCloneOutput
+	ToDatabaseInstanceCloneOutputWithContext(context.Context) DatabaseInstanceCloneOutput
+}
+
+type DatabaseInstanceCloneArgs struct {
+	// The timestamp of the point in time that should be restored.
+	PointInTime pulumi.StringInput `pulumi:"pointInTime"`
+	// Name of the source instance which will be cloned.
+	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
+}
+
+func (DatabaseInstanceCloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceClone)(nil)).Elem()
+}
+
+func (i DatabaseInstanceCloneArgs) ToDatabaseInstanceCloneOutput() DatabaseInstanceCloneOutput {
+	return i.ToDatabaseInstanceCloneOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceCloneArgs) ToDatabaseInstanceCloneOutputWithContext(ctx context.Context) DatabaseInstanceCloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceCloneOutput)
+}
+
+func (i DatabaseInstanceCloneArgs) ToDatabaseInstanceClonePtrOutput() DatabaseInstanceClonePtrOutput {
+	return i.ToDatabaseInstanceClonePtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceCloneArgs) ToDatabaseInstanceClonePtrOutputWithContext(ctx context.Context) DatabaseInstanceClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceCloneOutput).ToDatabaseInstanceClonePtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceClonePtrInput is an input type that accepts DatabaseInstanceCloneArgs, DatabaseInstanceClonePtr and DatabaseInstanceClonePtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceClonePtrInput` via:
+//
+//          DatabaseInstanceCloneArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseInstanceClonePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceClonePtrOutput() DatabaseInstanceClonePtrOutput
+	ToDatabaseInstanceClonePtrOutputWithContext(context.Context) DatabaseInstanceClonePtrOutput
+}
+
+type databaseInstanceClonePtrType DatabaseInstanceCloneArgs
+
+func DatabaseInstanceClonePtr(v *DatabaseInstanceCloneArgs) DatabaseInstanceClonePtrInput {
+	return (*databaseInstanceClonePtrType)(v)
+}
+
+func (*databaseInstanceClonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceClone)(nil)).Elem()
+}
+
+func (i *databaseInstanceClonePtrType) ToDatabaseInstanceClonePtrOutput() DatabaseInstanceClonePtrOutput {
+	return i.ToDatabaseInstanceClonePtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceClonePtrType) ToDatabaseInstanceClonePtrOutputWithContext(ctx context.Context) DatabaseInstanceClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceClonePtrOutput)
+}
+
+type DatabaseInstanceCloneOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceCloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceClone)(nil)).Elem()
+}
+
+func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceCloneOutput() DatabaseInstanceCloneOutput {
+	return o
+}
+
+func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceCloneOutputWithContext(ctx context.Context) DatabaseInstanceCloneOutput {
+	return o
+}
+
+func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceClonePtrOutput() DatabaseInstanceClonePtrOutput {
+	return o.ToDatabaseInstanceClonePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceCloneOutput) ToDatabaseInstanceClonePtrOutputWithContext(ctx context.Context) DatabaseInstanceClonePtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) *DatabaseInstanceClone {
+		return &v
+	}).(DatabaseInstanceClonePtrOutput)
+}
+
+// The timestamp of the point in time that should be restored.
+func (o DatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+// Name of the source instance which will be cloned.
+func (o DatabaseInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceClone) string { return v.SourceInstanceName }).(pulumi.StringOutput)
+}
+
+type DatabaseInstanceClonePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceClonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceClone)(nil)).Elem()
+}
+
+func (o DatabaseInstanceClonePtrOutput) ToDatabaseInstanceClonePtrOutput() DatabaseInstanceClonePtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceClonePtrOutput) ToDatabaseInstanceClonePtrOutputWithContext(ctx context.Context) DatabaseInstanceClonePtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceClonePtrOutput) Elem() DatabaseInstanceCloneOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) DatabaseInstanceClone { return *v }).(DatabaseInstanceCloneOutput)
+}
+
+// The timestamp of the point in time that should be restored.
+func (o DatabaseInstanceClonePtrOutput) PointInTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PointInTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the source instance which will be cloned.
+func (o DatabaseInstanceClonePtrOutput) SourceInstanceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceClone) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceInstanceName
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatabaseInstanceIpAddress struct {
 	IpAddress    *string `pulumi:"ipAddress"`
 	TimeToRetire *string `pulumi:"timeToRetire"`
@@ -120,16 +270,16 @@ type DatabaseInstanceReplicaConfiguration struct {
 	// PEM representation of the trusted CA's x509
 	// certificate.
 	CaCertificate *string `pulumi:"caCertificate"`
-	// PEM representation of the slave's x509
+	// PEM representation of the replica's x509
 	// certificate.
 	ClientCertificate *string `pulumi:"clientCertificate"`
-	// PEM representation of the slave's private key. The
+	// PEM representation of the replica's private key. The
 	// corresponding public key in encoded in the `clientCertificate`.
 	ClientKey *string `pulumi:"clientKey"`
 	// The number of seconds
 	// between connect retries.
 	ConnectRetryInterval *int `pulumi:"connectRetryInterval"`
-	// Path to a SQL file in GCS from which slave
+	// Path to a SQL file in GCS from which replica
 	// instances are created. Format is `gs://bucket/filename`.
 	DumpFilePath *string `pulumi:"dumpFilePath"`
 	// Specifies if the replica is the failover target.
@@ -165,16 +315,16 @@ type DatabaseInstanceReplicaConfigurationArgs struct {
 	// PEM representation of the trusted CA's x509
 	// certificate.
 	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
-	// PEM representation of the slave's x509
+	// PEM representation of the replica's x509
 	// certificate.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
-	// PEM representation of the slave's private key. The
+	// PEM representation of the replica's private key. The
 	// corresponding public key in encoded in the `clientCertificate`.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The number of seconds
 	// between connect retries.
 	ConnectRetryInterval pulumi.IntPtrInput `pulumi:"connectRetryInterval"`
-	// Path to a SQL file in GCS from which slave
+	// Path to a SQL file in GCS from which replica
 	// instances are created. Format is `gs://bucket/filename`.
 	DumpFilePath pulumi.StringPtrInput `pulumi:"dumpFilePath"`
 	// Specifies if the replica is the failover target.
@@ -278,13 +428,13 @@ func (o DatabaseInstanceReplicaConfigurationOutput) CaCertificate() pulumi.Strin
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
-// PEM representation of the slave's x509
+// PEM representation of the replica's x509
 // certificate.
 func (o DatabaseInstanceReplicaConfigurationOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientCertificate }).(pulumi.StringPtrOutput)
 }
 
-// PEM representation of the slave's private key. The
+// PEM representation of the replica's private key. The
 // corresponding public key in encoded in the `clientCertificate`.
 func (o DatabaseInstanceReplicaConfigurationOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
@@ -296,7 +446,7 @@ func (o DatabaseInstanceReplicaConfigurationOutput) ConnectRetryInterval() pulum
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *int { return v.ConnectRetryInterval }).(pulumi.IntPtrOutput)
 }
 
-// Path to a SQL file in GCS from which slave
+// Path to a SQL file in GCS from which replica
 // instances are created. Format is `gs://bucket/filename`.
 func (o DatabaseInstanceReplicaConfigurationOutput) DumpFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.DumpFilePath }).(pulumi.StringPtrOutput)
@@ -365,7 +515,7 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) CaCertificate() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM representation of the slave's x509
+// PEM representation of the replica's x509
 // certificate.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
@@ -376,7 +526,7 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientCertificate() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// PEM representation of the slave's private key. The
+// PEM representation of the replica's private key. The
 // corresponding public key in encoded in the `clientCertificate`.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
@@ -398,7 +548,7 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) ConnectRetryInterval() pu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Path to a SQL file in GCS from which slave
+// Path to a SQL file in GCS from which replica
 // instances are created. Format is `gs://bucket/filename`.
 func (o DatabaseInstanceReplicaConfigurationPtrOutput) DumpFilePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *string {
@@ -2409,6 +2559,106 @@ func (o GetCaCertsCertArrayOutput) Index(i pulumi.IntInput) GetCaCertsCertOutput
 	}).(GetCaCertsCertOutput)
 }
 
+type GetDatabaseInstanceClone struct {
+	PointInTime        string `pulumi:"pointInTime"`
+	SourceInstanceName string `pulumi:"sourceInstanceName"`
+}
+
+// GetDatabaseInstanceCloneInput is an input type that accepts GetDatabaseInstanceCloneArgs and GetDatabaseInstanceCloneOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceCloneInput` via:
+//
+//          GetDatabaseInstanceCloneArgs{...}
+type GetDatabaseInstanceCloneInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceCloneOutput() GetDatabaseInstanceCloneOutput
+	ToGetDatabaseInstanceCloneOutputWithContext(context.Context) GetDatabaseInstanceCloneOutput
+}
+
+type GetDatabaseInstanceCloneArgs struct {
+	PointInTime        pulumi.StringInput `pulumi:"pointInTime"`
+	SourceInstanceName pulumi.StringInput `pulumi:"sourceInstanceName"`
+}
+
+func (GetDatabaseInstanceCloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceClone)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceCloneArgs) ToGetDatabaseInstanceCloneOutput() GetDatabaseInstanceCloneOutput {
+	return i.ToGetDatabaseInstanceCloneOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceCloneArgs) ToGetDatabaseInstanceCloneOutputWithContext(ctx context.Context) GetDatabaseInstanceCloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceCloneOutput)
+}
+
+// GetDatabaseInstanceCloneArrayInput is an input type that accepts GetDatabaseInstanceCloneArray and GetDatabaseInstanceCloneArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceCloneArrayInput` via:
+//
+//          GetDatabaseInstanceCloneArray{ GetDatabaseInstanceCloneArgs{...} }
+type GetDatabaseInstanceCloneArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceCloneArrayOutput() GetDatabaseInstanceCloneArrayOutput
+	ToGetDatabaseInstanceCloneArrayOutputWithContext(context.Context) GetDatabaseInstanceCloneArrayOutput
+}
+
+type GetDatabaseInstanceCloneArray []GetDatabaseInstanceCloneInput
+
+func (GetDatabaseInstanceCloneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceClone)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceCloneArray) ToGetDatabaseInstanceCloneArrayOutput() GetDatabaseInstanceCloneArrayOutput {
+	return i.ToGetDatabaseInstanceCloneArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceCloneArray) ToGetDatabaseInstanceCloneArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceCloneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceCloneArrayOutput)
+}
+
+type GetDatabaseInstanceCloneOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceCloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceClone)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceCloneOutput) ToGetDatabaseInstanceCloneOutput() GetDatabaseInstanceCloneOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceCloneOutput) ToGetDatabaseInstanceCloneOutputWithContext(ctx context.Context) GetDatabaseInstanceCloneOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceCloneOutput) PointInTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.PointInTime }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceCloneOutput) SourceInstanceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceClone) string { return v.SourceInstanceName }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceCloneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceCloneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceClone)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceCloneArrayOutput) ToGetDatabaseInstanceCloneArrayOutput() GetDatabaseInstanceCloneArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceCloneArrayOutput) ToGetDatabaseInstanceCloneArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceCloneArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceCloneArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceCloneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceClone {
+		return vs[0].([]GetDatabaseInstanceClone)[vs[1].(int)]
+	}).(GetDatabaseInstanceCloneOutput)
+}
+
 type GetDatabaseInstanceIpAddress struct {
 	IpAddress    string `pulumi:"ipAddress"`
 	TimeToRetire string `pulumi:"timeToRetire"`
@@ -2518,13 +2768,13 @@ func (o GetDatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDat
 type GetDatabaseInstanceReplicaConfiguration struct {
 	// PEM representation of the trusted CA's x509 certificate.
 	CaCertificate string `pulumi:"caCertificate"`
-	// PEM representation of the slave's x509 certificate.
+	// PEM representation of the replica's x509 certificate.
 	ClientCertificate string `pulumi:"clientCertificate"`
-	// PEM representation of the slave's private key.
+	// PEM representation of the replica's private key.
 	ClientKey string `pulumi:"clientKey"`
 	// The number of seconds between connect retries.
 	ConnectRetryInterval int `pulumi:"connectRetryInterval"`
-	// Path to a SQL file in GCS from which slave instances are created.
+	// Path to a SQL file in GCS from which replica instances are created.
 	DumpFilePath string `pulumi:"dumpFilePath"`
 	// Specifies if the replica is the failover target.
 	FailoverTarget bool `pulumi:"failoverTarget"`
@@ -2553,13 +2803,13 @@ type GetDatabaseInstanceReplicaConfigurationInput interface {
 type GetDatabaseInstanceReplicaConfigurationArgs struct {
 	// PEM representation of the trusted CA's x509 certificate.
 	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
-	// PEM representation of the slave's x509 certificate.
+	// PEM representation of the replica's x509 certificate.
 	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
-	// PEM representation of the slave's private key.
+	// PEM representation of the replica's private key.
 	ClientKey pulumi.StringInput `pulumi:"clientKey"`
 	// The number of seconds between connect retries.
 	ConnectRetryInterval pulumi.IntInput `pulumi:"connectRetryInterval"`
-	// Path to a SQL file in GCS from which slave instances are created.
+	// Path to a SQL file in GCS from which replica instances are created.
 	DumpFilePath pulumi.StringInput `pulumi:"dumpFilePath"`
 	// Specifies if the replica is the failover target.
 	FailoverTarget pulumi.BoolInput `pulumi:"failoverTarget"`
@@ -2630,12 +2880,12 @@ func (o GetDatabaseInstanceReplicaConfigurationOutput) CaCertificate() pulumi.St
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.CaCertificate }).(pulumi.StringOutput)
 }
 
-// PEM representation of the slave's x509 certificate.
+// PEM representation of the replica's x509 certificate.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) ClientCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.ClientCertificate }).(pulumi.StringOutput)
 }
 
-// PEM representation of the slave's private key.
+// PEM representation of the replica's private key.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) ClientKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.ClientKey }).(pulumi.StringOutput)
 }
@@ -2645,7 +2895,7 @@ func (o GetDatabaseInstanceReplicaConfigurationOutput) ConnectRetryInterval() pu
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) int { return v.ConnectRetryInterval }).(pulumi.IntOutput)
 }
 
-// Path to a SQL file in GCS from which slave instances are created.
+// Path to a SQL file in GCS from which replica instances are created.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) DumpFilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.DumpFilePath }).(pulumi.StringOutput)
 }
@@ -3880,6 +4130,8 @@ func (o GetDatabaseInstanceSettingMaintenanceWindowArrayOutput) Index(i pulumi.I
 }
 
 func init() {
+	pulumi.RegisterOutputType(DatabaseInstanceCloneOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceClonePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationOutput{})
@@ -3904,6 +4156,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertOutput{})
 	pulumi.RegisterOutputType(GetCaCertsCertArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceCloneOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceCloneArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationOutput{})

@@ -27,6 +27,7 @@ __all__ = [
     'MetricDescriptorMetadata',
     'NotificationChannelSensitiveLabels',
     'SloBasicSli',
+    'SloBasicSliAvailability',
     'SloBasicSliLatency',
     'SloRequestBasedSli',
     'SloRequestBasedSliDistributionCut',
@@ -1623,11 +1624,14 @@ class NotificationChannelSensitiveLabels(dict):
 @pulumi.output_type
 class SloBasicSli(dict):
     def __init__(__self__, *,
-                 latency: 'outputs.SloBasicSliLatency',
+                 availability: Optional['outputs.SloBasicSliAvailability'] = None,
+                 latency: Optional['outputs.SloBasicSliLatency'] = None,
                  locations: Optional[Sequence[str]] = None,
                  methods: Optional[Sequence[str]] = None,
                  versions: Optional[Sequence[str]] = None):
         """
+        :param 'SloBasicSliAvailabilityArgs' availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
+               Structure is documented below.
         :param 'SloBasicSliLatencyArgs' latency: Parameters for a latency threshold SLI.
                Structure is documented below.
         :param Sequence[str] locations: An optional set of locations to which this SLI is relevant.
@@ -1649,7 +1653,10 @@ class SloBasicSli(dict):
                that don't support breaking down by version, setting this
                field will result in an error.
         """
-        pulumi.set(__self__, "latency", latency)
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if latency is not None:
+            pulumi.set(__self__, "latency", latency)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if methods is not None:
@@ -1659,7 +1666,16 @@ class SloBasicSli(dict):
 
     @property
     @pulumi.getter
-    def latency(self) -> 'outputs.SloBasicSliLatency':
+    def availability(self) -> Optional['outputs.SloBasicSliAvailability']:
+        """
+        Availability based SLI, dervied from count of requests made to this service that return successfully.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "availability")
+
+    @property
+    @pulumi.getter
+    def latency(self) -> Optional['outputs.SloBasicSliLatency']:
         """
         Parameters for a latency threshold SLI.
         Structure is documented below.
@@ -1704,6 +1720,28 @@ class SloBasicSli(dict):
         field will result in an error.
         """
         return pulumi.get(self, "versions")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SloBasicSliAvailability(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

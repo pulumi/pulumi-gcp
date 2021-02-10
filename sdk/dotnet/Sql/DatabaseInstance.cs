@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.Sql
     public partial class DatabaseInstance : Pulumi.CustomResource
     {
         /// <summary>
+        /// Configuration for creating a new instance as a clone of another instance.
+        /// </summary>
+        [Output("clone")]
+        public Output<Outputs.DatabaseInstanceClone?> Clone { get; private set; } = null!;
+
+        /// <summary>
         /// The connection name of the instance to be used in
         /// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         /// </summary>
@@ -155,7 +161,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The settings to use for the database. The
-        /// configuration is detailed below.
+        /// configuration is detailed below. Required if `clone` is not set.
         /// </summary>
         [Output("settings")]
         public Output<Outputs.DatabaseInstanceSettings> Settings { get; private set; } = null!;
@@ -168,7 +174,7 @@ namespace Pulumi.Gcp.Sql
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public DatabaseInstance(string name, DatabaseInstanceArgs args, CustomResourceOptions? options = null)
+        public DatabaseInstance(string name, DatabaseInstanceArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:sql/databaseInstance:DatabaseInstance", name, args ?? new DatabaseInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -206,6 +212,12 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for creating a new instance as a clone of another instance.
+        /// </summary>
+        [Input("clone")]
+        public Input<Inputs.DatabaseInstanceCloneArgs>? Clone { get; set; }
+
         /// <summary>
         /// The MySQL, PostgreSQL or
         /// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
@@ -286,10 +298,10 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The settings to use for the database. The
-        /// configuration is detailed below.
+        /// configuration is detailed below. Required if `clone` is not set.
         /// </summary>
-        [Input("settings", required: true)]
-        public Input<Inputs.DatabaseInstanceSettingsArgs> Settings { get; set; } = null!;
+        [Input("settings")]
+        public Input<Inputs.DatabaseInstanceSettingsArgs>? Settings { get; set; }
 
         public DatabaseInstanceArgs()
         {
@@ -298,6 +310,12 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class DatabaseInstanceState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration for creating a new instance as a clone of another instance.
+        /// </summary>
+        [Input("clone")]
+        public Input<Inputs.DatabaseInstanceCloneGetArgs>? Clone { get; set; }
+
         /// <summary>
         /// The connection name of the instance to be used in
         /// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -432,7 +450,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The settings to use for the database. The
-        /// configuration is detailed below.
+        /// configuration is detailed below. Required if `clone` is not set.
         /// </summary>
         [Input("settings")]
         public Input<Inputs.DatabaseInstanceSettingsGetArgs>? Settings { get; set; }

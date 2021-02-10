@@ -26,6 +26,7 @@ __all__ = [
     'MetricDescriptorMetadataArgs',
     'NotificationChannelSensitiveLabelsArgs',
     'SloBasicSliArgs',
+    'SloBasicSliAvailabilityArgs',
     'SloBasicSliLatencyArgs',
     'SloRequestBasedSliArgs',
     'SloRequestBasedSliDistributionCutArgs',
@@ -1773,11 +1774,14 @@ class NotificationChannelSensitiveLabelsArgs:
 @pulumi.input_type
 class SloBasicSliArgs:
     def __init__(__self__, *,
-                 latency: pulumi.Input['SloBasicSliLatencyArgs'],
+                 availability: Optional[pulumi.Input['SloBasicSliAvailabilityArgs']] = None,
+                 latency: Optional[pulumi.Input['SloBasicSliLatencyArgs']] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
+        :param pulumi.Input['SloBasicSliAvailabilityArgs'] availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
+               Structure is documented below.
         :param pulumi.Input['SloBasicSliLatencyArgs'] latency: Parameters for a latency threshold SLI.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: An optional set of locations to which this SLI is relevant.
@@ -1799,7 +1803,10 @@ class SloBasicSliArgs:
                that don't support breaking down by version, setting this
                field will result in an error.
         """
-        pulumi.set(__self__, "latency", latency)
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if latency is not None:
+            pulumi.set(__self__, "latency", latency)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if methods is not None:
@@ -1809,7 +1816,20 @@ class SloBasicSliArgs:
 
     @property
     @pulumi.getter
-    def latency(self) -> pulumi.Input['SloBasicSliLatencyArgs']:
+    def availability(self) -> Optional[pulumi.Input['SloBasicSliAvailabilityArgs']]:
+        """
+        Availability based SLI, dervied from count of requests made to this service that return successfully.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "availability")
+
+    @availability.setter
+    def availability(self, value: Optional[pulumi.Input['SloBasicSliAvailabilityArgs']]):
+        pulumi.set(self, "availability", value)
+
+    @property
+    @pulumi.getter
+    def latency(self) -> Optional[pulumi.Input['SloBasicSliLatencyArgs']]:
         """
         Parameters for a latency threshold SLI.
         Structure is documented below.
@@ -1817,7 +1837,7 @@ class SloBasicSliArgs:
         return pulumi.get(self, "latency")
 
     @latency.setter
-    def latency(self, value: pulumi.Input['SloBasicSliLatencyArgs']):
+    def latency(self, value: Optional[pulumi.Input['SloBasicSliLatencyArgs']]):
         pulumi.set(self, "latency", value)
 
     @property
@@ -1870,6 +1890,29 @@ class SloBasicSliArgs:
     @versions.setter
     def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "versions", value)
+
+
+@pulumi.input_type
+class SloBasicSliAvailabilityArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

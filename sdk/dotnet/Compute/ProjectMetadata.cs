@@ -43,6 +43,33 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// }
     /// ```
+    /// ### Adding An SSH Key
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         //A key set in project metadata is propagated to every instance in the project.
+    ///         //This resource configuration is prone to causing frequent diffs as Google adds SSH Keys when the SSH Button is pressed in the console.
+    ///         //It is better to use OS Login instead.
+    ///         var mySshKey = new Gcp.Compute.ProjectMetadata("mySshKey", new Gcp.Compute.ProjectMetadataArgs
+    ///         {
+    ///             Metadata = 
+    ///             {
+    ///                 { "ssh-keys", @"      dev:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT dev
+    ///       foo:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILg6UtHDNyMNAh0GjaytsJdrUxjtLy3APXqZfNZhvCeT bar
+    ///     
+    /// " },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

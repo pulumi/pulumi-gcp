@@ -20,7 +20,10 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, clones=None, connection_name=None, database_version=None, deletion_protection=None, encryption_key_name=None, first_ip_address=None, id=None, ip_addresses=None, master_instance_name=None, name=None, private_ip_address=None, project=None, public_ip_address=None, region=None, replica_configurations=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+        if clones and not isinstance(clones, list):
+            raise TypeError("Expected argument 'clones' to be a list")
+        pulumi.set(__self__, "clones", clones)
         if connection_name and not isinstance(connection_name, str):
             raise TypeError("Expected argument 'connection_name' to be a str")
         pulumi.set(__self__, "connection_name", connection_name)
@@ -81,6 +84,11 @@ class GetDatabaseInstanceResult:
         if settings and not isinstance(settings, list):
             raise TypeError("Expected argument 'settings' to be a list")
         pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter
+    def clones(self) -> Sequence['outputs.GetDatabaseInstanceCloneResult']:
+        return pulumi.get(self, "clones")
 
     @property
     @pulumi.getter(name="connectionName")
@@ -234,6 +242,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
         if False:
             yield self
         return GetDatabaseInstanceResult(
+            clones=self.clones,
             connection_name=self.connection_name,
             database_version=self.database_version,
             deletion_protection=self.deletion_protection,
@@ -285,6 +294,7 @@ def get_database_instance(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('gcp:sql/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult).value
 
     return AwaitableGetDatabaseInstanceResult(
+        clones=__ret__.clones,
         connection_name=__ret__.connection_name,
         database_version=__ret__.database_version,
         deletion_protection=__ret__.deletion_protection,

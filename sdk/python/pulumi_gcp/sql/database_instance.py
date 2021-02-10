@@ -17,6 +17,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 clone: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']]] = None,
                  database_version: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -52,6 +53,7 @@ class DatabaseInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: Configuration for creating a new instance as a clone of another instance.
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
                SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
                `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`,`POSTGRES_10`, `POSTGRES_11`,
@@ -83,7 +85,7 @@ class DatabaseInstance(pulumi.CustomResource):
                configuration is detailed below.
         :param pulumi.Input[str] root_password: Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']] settings: The settings to use for the database. The
-               configuration is detailed below.
+               configuration is detailed below. Required if `clone` is not set.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -102,6 +104,7 @@ class DatabaseInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['clone'] = clone
             __props__['database_version'] = database_version
             __props__['deletion_protection'] = deletion_protection
             __props__['encryption_key_name'] = encryption_key_name
@@ -112,8 +115,6 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__['replica_configuration'] = replica_configuration
             __props__['restore_backup_context'] = restore_backup_context
             __props__['root_password'] = root_password
-            if settings is None and not opts.urn:
-                raise TypeError("Missing required property 'settings'")
             __props__['settings'] = settings
             __props__['connection_name'] = None
             __props__['first_ip_address'] = None
@@ -133,6 +134,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            clone: Optional[pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']]] = None,
             connection_name: Optional[pulumi.Input[str]] = None,
             database_version: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
@@ -159,6 +161,7 @@ class DatabaseInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['DatabaseInstanceCloneArgs']] clone: Configuration for creating a new instance as a clone of another instance.
         :param pulumi.Input[str] connection_name: The connection name of the instance to be used in
                connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
         :param pulumi.Input[str] database_version: The MySQL, PostgreSQL or
@@ -198,12 +201,13 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] service_account_email_address: The service account email address assigned to the
                instance.
         :param pulumi.Input[pulumi.InputType['DatabaseInstanceSettingsArgs']] settings: The settings to use for the database. The
-               configuration is detailed below.
+               configuration is detailed below. Required if `clone` is not set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["clone"] = clone
         __props__["connection_name"] = connection_name
         __props__["database_version"] = database_version
         __props__["deletion_protection"] = deletion_protection
@@ -224,6 +228,14 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__["service_account_email_address"] = service_account_email_address
         __props__["settings"] = settings
         return DatabaseInstance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def clone(self) -> pulumi.Output[Optional['outputs.DatabaseInstanceClone']]:
+        """
+        Configuration for creating a new instance as a clone of another instance.
+        """
+        return pulumi.get(self, "clone")
 
     @property
     @pulumi.getter(name="connectionName")
@@ -388,7 +400,7 @@ class DatabaseInstance(pulumi.CustomResource):
     def settings(self) -> pulumi.Output['outputs.DatabaseInstanceSettings']:
         """
         The settings to use for the database. The
-        configuration is detailed below.
+        configuration is detailed below. Required if `clone` is not set.
         """
         return pulumi.get(self, "settings")
 

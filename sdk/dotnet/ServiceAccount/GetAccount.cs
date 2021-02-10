@@ -47,7 +47,7 @@ namespace Pulumi.Gcp.ServiceAccount
     public sealed class GetAccountArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Service account id.  (This is the part of the service account's email field that comes before the @ symbol.)
+        /// The Google service account ID. This be one of:
         /// </summary>
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;

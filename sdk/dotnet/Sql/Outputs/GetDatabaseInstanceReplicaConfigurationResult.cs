@@ -18,11 +18,11 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string CaCertificate;
         /// <summary>
-        /// PEM representation of the slave's x509 certificate.
+        /// PEM representation of the replica's x509 certificate.
         /// </summary>
         public readonly string ClientCertificate;
         /// <summary>
-        /// PEM representation of the slave's private key.
+        /// PEM representation of the replica's private key.
         /// </summary>
         public readonly string ClientKey;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly int ConnectRetryInterval;
         /// <summary>
-        /// Path to a SQL file in GCS from which slave instances are created.
+        /// Path to a SQL file in GCS from which replica instances are created.
         /// </summary>
         public readonly string DumpFilePath;
         /// <summary>
