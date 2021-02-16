@@ -122,7 +122,8 @@ export class InboundSamlConfig extends pulumi.CustomResource {
     constructor(name: string, args: InboundSamlConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InboundSamlConfigArgs | InboundSamlConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InboundSamlConfigState | undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -132,13 +133,13 @@ export class InboundSamlConfig extends pulumi.CustomResource {
             inputs["spConfig"] = state ? state.spConfig : undefined;
         } else {
             const args = argsOrState as InboundSamlConfigArgs | undefined;
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.idpConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.idpConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'idpConfig'");
             }
-            if ((!args || args.spConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.spConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spConfig'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -148,12 +149,8 @@ export class InboundSamlConfig extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["spConfig"] = args ? args.spConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InboundSamlConfig.__pulumiType, name, inputs, opts);
     }

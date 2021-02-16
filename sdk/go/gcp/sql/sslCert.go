@@ -229,6 +229,85 @@ func (i *SslCert) ToSslCertOutputWithContext(ctx context.Context) SslCertOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(SslCertOutput)
 }
 
+func (i *SslCert) ToSslCertPtrOutput() SslCertPtrOutput {
+	return i.ToSslCertPtrOutputWithContext(context.Background())
+}
+
+func (i *SslCert) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertPtrOutput)
+}
+
+type SslCertPtrInput interface {
+	pulumi.Input
+
+	ToSslCertPtrOutput() SslCertPtrOutput
+	ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput
+}
+
+type sslCertPtrType SslCertArgs
+
+func (*sslCertPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslCert)(nil))
+}
+
+func (i *sslCertPtrType) ToSslCertPtrOutput() SslCertPtrOutput {
+	return i.ToSslCertPtrOutputWithContext(context.Background())
+}
+
+func (i *sslCertPtrType) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertPtrOutput)
+}
+
+// SslCertArrayInput is an input type that accepts SslCertArray and SslCertArrayOutput values.
+// You can construct a concrete instance of `SslCertArrayInput` via:
+//
+//          SslCertArray{ SslCertArgs{...} }
+type SslCertArrayInput interface {
+	pulumi.Input
+
+	ToSslCertArrayOutput() SslCertArrayOutput
+	ToSslCertArrayOutputWithContext(context.Context) SslCertArrayOutput
+}
+
+type SslCertArray []SslCertInput
+
+func (SslCertArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SslCert)(nil))
+}
+
+func (i SslCertArray) ToSslCertArrayOutput() SslCertArrayOutput {
+	return i.ToSslCertArrayOutputWithContext(context.Background())
+}
+
+func (i SslCertArray) ToSslCertArrayOutputWithContext(ctx context.Context) SslCertArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertArrayOutput)
+}
+
+// SslCertMapInput is an input type that accepts SslCertMap and SslCertMapOutput values.
+// You can construct a concrete instance of `SslCertMapInput` via:
+//
+//          SslCertMap{ "key": SslCertArgs{...} }
+type SslCertMapInput interface {
+	pulumi.Input
+
+	ToSslCertMapOutput() SslCertMapOutput
+	ToSslCertMapOutputWithContext(context.Context) SslCertMapOutput
+}
+
+type SslCertMap map[string]SslCertInput
+
+func (SslCertMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SslCert)(nil))
+}
+
+func (i SslCertMap) ToSslCertMapOutput() SslCertMapOutput {
+	return i.ToSslCertMapOutputWithContext(context.Background())
+}
+
+func (i SslCertMap) ToSslCertMapOutputWithContext(ctx context.Context) SslCertMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SslCertMapOutput)
+}
+
 type SslCertOutput struct {
 	*pulumi.OutputState
 }
@@ -245,6 +324,75 @@ func (o SslCertOutput) ToSslCertOutputWithContext(ctx context.Context) SslCertOu
 	return o
 }
 
+func (o SslCertOutput) ToSslCertPtrOutput() SslCertPtrOutput {
+	return o.ToSslCertPtrOutputWithContext(context.Background())
+}
+
+func (o SslCertOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
+	return o.ApplyT(func(v SslCert) *SslCert {
+		return &v
+	}).(SslCertPtrOutput)
+}
+
+type SslCertPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SslCertPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SslCert)(nil))
+}
+
+func (o SslCertPtrOutput) ToSslCertPtrOutput() SslCertPtrOutput {
+	return o
+}
+
+func (o SslCertPtrOutput) ToSslCertPtrOutputWithContext(ctx context.Context) SslCertPtrOutput {
+	return o
+}
+
+type SslCertArrayOutput struct{ *pulumi.OutputState }
+
+func (SslCertArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SslCert)(nil))
+}
+
+func (o SslCertArrayOutput) ToSslCertArrayOutput() SslCertArrayOutput {
+	return o
+}
+
+func (o SslCertArrayOutput) ToSslCertArrayOutputWithContext(ctx context.Context) SslCertArrayOutput {
+	return o
+}
+
+func (o SslCertArrayOutput) Index(i pulumi.IntInput) SslCertOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SslCert {
+		return vs[0].([]SslCert)[vs[1].(int)]
+	}).(SslCertOutput)
+}
+
+type SslCertMapOutput struct{ *pulumi.OutputState }
+
+func (SslCertMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SslCert)(nil))
+}
+
+func (o SslCertMapOutput) ToSslCertMapOutput() SslCertMapOutput {
+	return o
+}
+
+func (o SslCertMapOutput) ToSslCertMapOutputWithContext(ctx context.Context) SslCertMapOutput {
+	return o
+}
+
+func (o SslCertMapOutput) MapIndex(k pulumi.StringInput) SslCertOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SslCert {
+		return vs[0].(map[string]SslCert)[vs[1].(string)]
+	}).(SslCertOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SslCertOutput{})
+	pulumi.RegisterOutputType(SslCertPtrOutput{})
+	pulumi.RegisterOutputType(SslCertArrayOutput{})
+	pulumi.RegisterOutputType(SslCertMapOutput{})
 }

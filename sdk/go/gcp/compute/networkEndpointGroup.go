@@ -320,6 +320,85 @@ func (i *NetworkEndpointGroup) ToNetworkEndpointGroupOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupOutput)
 }
 
+func (i *NetworkEndpointGroup) ToNetworkEndpointGroupPtrOutput() NetworkEndpointGroupPtrOutput {
+	return i.ToNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkEndpointGroup) ToNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPtrOutput)
+}
+
+type NetworkEndpointGroupPtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupPtrOutput() NetworkEndpointGroupPtrOutput
+	ToNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPtrOutput
+}
+
+type networkEndpointGroupPtrType NetworkEndpointGroupArgs
+
+func (*networkEndpointGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroup)(nil))
+}
+
+func (i *networkEndpointGroupPtrType) ToNetworkEndpointGroupPtrOutput() NetworkEndpointGroupPtrOutput {
+	return i.ToNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *networkEndpointGroupPtrType) ToNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPtrOutput)
+}
+
+// NetworkEndpointGroupArrayInput is an input type that accepts NetworkEndpointGroupArray and NetworkEndpointGroupArrayOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupArrayInput` via:
+//
+//          NetworkEndpointGroupArray{ NetworkEndpointGroupArgs{...} }
+type NetworkEndpointGroupArrayInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupArrayOutput() NetworkEndpointGroupArrayOutput
+	ToNetworkEndpointGroupArrayOutputWithContext(context.Context) NetworkEndpointGroupArrayOutput
+}
+
+type NetworkEndpointGroupArray []NetworkEndpointGroupInput
+
+func (NetworkEndpointGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NetworkEndpointGroup)(nil))
+}
+
+func (i NetworkEndpointGroupArray) ToNetworkEndpointGroupArrayOutput() NetworkEndpointGroupArrayOutput {
+	return i.ToNetworkEndpointGroupArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupArray) ToNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) NetworkEndpointGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupArrayOutput)
+}
+
+// NetworkEndpointGroupMapInput is an input type that accepts NetworkEndpointGroupMap and NetworkEndpointGroupMapOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupMapInput` via:
+//
+//          NetworkEndpointGroupMap{ "key": NetworkEndpointGroupArgs{...} }
+type NetworkEndpointGroupMapInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupMapOutput() NetworkEndpointGroupMapOutput
+	ToNetworkEndpointGroupMapOutputWithContext(context.Context) NetworkEndpointGroupMapOutput
+}
+
+type NetworkEndpointGroupMap map[string]NetworkEndpointGroupInput
+
+func (NetworkEndpointGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NetworkEndpointGroup)(nil))
+}
+
+func (i NetworkEndpointGroupMap) ToNetworkEndpointGroupMapOutput() NetworkEndpointGroupMapOutput {
+	return i.ToNetworkEndpointGroupMapOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupMap) ToNetworkEndpointGroupMapOutputWithContext(ctx context.Context) NetworkEndpointGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupMapOutput)
+}
+
 type NetworkEndpointGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -336,6 +415,75 @@ func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupOutputWithContext(ctx 
 	return o
 }
 
+func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupPtrOutput() NetworkEndpointGroupPtrOutput {
+	return o.ToNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupOutput) ToNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPtrOutput {
+	return o.ApplyT(func(v NetworkEndpointGroup) *NetworkEndpointGroup {
+		return &v
+	}).(NetworkEndpointGroupPtrOutput)
+}
+
+type NetworkEndpointGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkEndpointGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroup)(nil))
+}
+
+func (o NetworkEndpointGroupPtrOutput) ToNetworkEndpointGroupPtrOutput() NetworkEndpointGroupPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPtrOutput) ToNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPtrOutput {
+	return o
+}
+
+type NetworkEndpointGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkEndpointGroup)(nil))
+}
+
+func (o NetworkEndpointGroupArrayOutput) ToNetworkEndpointGroupArrayOutput() NetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupArrayOutput) ToNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) NetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupArrayOutput) Index(i pulumi.IntInput) NetworkEndpointGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkEndpointGroup {
+		return vs[0].([]NetworkEndpointGroup)[vs[1].(int)]
+	}).(NetworkEndpointGroupOutput)
+}
+
+type NetworkEndpointGroupMapOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworkEndpointGroup)(nil))
+}
+
+func (o NetworkEndpointGroupMapOutput) ToNetworkEndpointGroupMapOutput() NetworkEndpointGroupMapOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupMapOutput) ToNetworkEndpointGroupMapOutputWithContext(ctx context.Context) NetworkEndpointGroupMapOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) NetworkEndpointGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkEndpointGroup {
+		return vs[0].(map[string]NetworkEndpointGroup)[vs[1].(string)]
+	}).(NetworkEndpointGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkEndpointGroupOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupPtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupArrayOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupMapOutput{})
 }

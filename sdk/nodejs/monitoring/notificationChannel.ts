@@ -169,7 +169,8 @@ export class NotificationChannel extends pulumi.CustomResource {
     constructor(name: string, args: NotificationChannelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NotificationChannelArgs | NotificationChannelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NotificationChannelState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -183,7 +184,7 @@ export class NotificationChannel extends pulumi.CustomResource {
             inputs["verificationStatus"] = state ? state.verificationStatus : undefined;
         } else {
             const args = argsOrState as NotificationChannelArgs | undefined;
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -197,12 +198,8 @@ export class NotificationChannel extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["verificationStatus"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NotificationChannel.__pulumiType, name, inputs, opts);
     }

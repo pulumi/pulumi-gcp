@@ -315,6 +315,85 @@ func (i *SecurityScanConfig) ToSecurityScanConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigOutput)
 }
 
+func (i *SecurityScanConfig) ToSecurityScanConfigPtrOutput() SecurityScanConfigPtrOutput {
+	return i.ToSecurityScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *SecurityScanConfig) ToSecurityScanConfigPtrOutputWithContext(ctx context.Context) SecurityScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigPtrOutput)
+}
+
+type SecurityScanConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigPtrOutput() SecurityScanConfigPtrOutput
+	ToSecurityScanConfigPtrOutputWithContext(ctx context.Context) SecurityScanConfigPtrOutput
+}
+
+type securityScanConfigPtrType SecurityScanConfigArgs
+
+func (*securityScanConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityScanConfig)(nil))
+}
+
+func (i *securityScanConfigPtrType) ToSecurityScanConfigPtrOutput() SecurityScanConfigPtrOutput {
+	return i.ToSecurityScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityScanConfigPtrType) ToSecurityScanConfigPtrOutputWithContext(ctx context.Context) SecurityScanConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigPtrOutput)
+}
+
+// SecurityScanConfigArrayInput is an input type that accepts SecurityScanConfigArray and SecurityScanConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityScanConfigArrayInput` via:
+//
+//          SecurityScanConfigArray{ SecurityScanConfigArgs{...} }
+type SecurityScanConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigArrayOutput() SecurityScanConfigArrayOutput
+	ToSecurityScanConfigArrayOutputWithContext(context.Context) SecurityScanConfigArrayOutput
+}
+
+type SecurityScanConfigArray []SecurityScanConfigInput
+
+func (SecurityScanConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SecurityScanConfig)(nil))
+}
+
+func (i SecurityScanConfigArray) ToSecurityScanConfigArrayOutput() SecurityScanConfigArrayOutput {
+	return i.ToSecurityScanConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityScanConfigArray) ToSecurityScanConfigArrayOutputWithContext(ctx context.Context) SecurityScanConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigArrayOutput)
+}
+
+// SecurityScanConfigMapInput is an input type that accepts SecurityScanConfigMap and SecurityScanConfigMapOutput values.
+// You can construct a concrete instance of `SecurityScanConfigMapInput` via:
+//
+//          SecurityScanConfigMap{ "key": SecurityScanConfigArgs{...} }
+type SecurityScanConfigMapInput interface {
+	pulumi.Input
+
+	ToSecurityScanConfigMapOutput() SecurityScanConfigMapOutput
+	ToSecurityScanConfigMapOutputWithContext(context.Context) SecurityScanConfigMapOutput
+}
+
+type SecurityScanConfigMap map[string]SecurityScanConfigInput
+
+func (SecurityScanConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SecurityScanConfig)(nil))
+}
+
+func (i SecurityScanConfigMap) ToSecurityScanConfigMapOutput() SecurityScanConfigMapOutput {
+	return i.ToSecurityScanConfigMapOutputWithContext(context.Background())
+}
+
+func (i SecurityScanConfigMap) ToSecurityScanConfigMapOutputWithContext(ctx context.Context) SecurityScanConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityScanConfigMapOutput)
+}
+
 type SecurityScanConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -331,6 +410,75 @@ func (o SecurityScanConfigOutput) ToSecurityScanConfigOutputWithContext(ctx cont
 	return o
 }
 
+func (o SecurityScanConfigOutput) ToSecurityScanConfigPtrOutput() SecurityScanConfigPtrOutput {
+	return o.ToSecurityScanConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityScanConfigOutput) ToSecurityScanConfigPtrOutputWithContext(ctx context.Context) SecurityScanConfigPtrOutput {
+	return o.ApplyT(func(v SecurityScanConfig) *SecurityScanConfig {
+		return &v
+	}).(SecurityScanConfigPtrOutput)
+}
+
+type SecurityScanConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityScanConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityScanConfig)(nil))
+}
+
+func (o SecurityScanConfigPtrOutput) ToSecurityScanConfigPtrOutput() SecurityScanConfigPtrOutput {
+	return o
+}
+
+func (o SecurityScanConfigPtrOutput) ToSecurityScanConfigPtrOutputWithContext(ctx context.Context) SecurityScanConfigPtrOutput {
+	return o
+}
+
+type SecurityScanConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityScanConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityScanConfig)(nil))
+}
+
+func (o SecurityScanConfigArrayOutput) ToSecurityScanConfigArrayOutput() SecurityScanConfigArrayOutput {
+	return o
+}
+
+func (o SecurityScanConfigArrayOutput) ToSecurityScanConfigArrayOutputWithContext(ctx context.Context) SecurityScanConfigArrayOutput {
+	return o
+}
+
+func (o SecurityScanConfigArrayOutput) Index(i pulumi.IntInput) SecurityScanConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityScanConfig {
+		return vs[0].([]SecurityScanConfig)[vs[1].(int)]
+	}).(SecurityScanConfigOutput)
+}
+
+type SecurityScanConfigMapOutput struct{ *pulumi.OutputState }
+
+func (SecurityScanConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SecurityScanConfig)(nil))
+}
+
+func (o SecurityScanConfigMapOutput) ToSecurityScanConfigMapOutput() SecurityScanConfigMapOutput {
+	return o
+}
+
+func (o SecurityScanConfigMapOutput) ToSecurityScanConfigMapOutputWithContext(ctx context.Context) SecurityScanConfigMapOutput {
+	return o
+}
+
+func (o SecurityScanConfigMapOutput) MapIndex(k pulumi.StringInput) SecurityScanConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecurityScanConfig {
+		return vs[0].(map[string]SecurityScanConfig)[vs[1].(string)]
+	}).(SecurityScanConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityScanConfigOutput{})
+	pulumi.RegisterOutputType(SecurityScanConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityScanConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityScanConfigMapOutput{})
 }

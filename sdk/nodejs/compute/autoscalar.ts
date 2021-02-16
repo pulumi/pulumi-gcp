@@ -249,7 +249,8 @@ export class Autoscalar extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: AutoscalarArgs | AutoscalarState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AutoscalarState | undefined;
             inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -261,10 +262,10 @@ export class Autoscalar extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as AutoscalarArgs | undefined;
-            if ((!args || args.autoscalingPolicy === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.autoscalingPolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'autoscalingPolicy'");
             }
-            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
@@ -276,12 +277,8 @@ export class Autoscalar extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Autoscalar.__pulumiType, name, inputs, opts);
     }

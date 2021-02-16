@@ -229,7 +229,8 @@ export class Entry extends pulumi.CustomResource {
     constructor(name: string, args: EntryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EntryArgs | EntryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EntryState | undefined;
             inputs["bigqueryDateShardedSpecs"] = state ? state.bigqueryDateShardedSpecs : undefined;
             inputs["bigqueryTableSpecs"] = state ? state.bigqueryTableSpecs : undefined;
@@ -247,10 +248,10 @@ export class Entry extends pulumi.CustomResource {
             inputs["userSpecifiedType"] = state ? state.userSpecifiedType : undefined;
         } else {
             const args = argsOrState as EntryArgs | undefined;
-            if ((!args || args.entryGroup === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entryGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryGroup'");
             }
-            if ((!args || args.entryId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -268,12 +269,8 @@ export class Entry extends pulumi.CustomResource {
             inputs["integratedSystem"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Entry.__pulumiType, name, inputs, opts);
     }

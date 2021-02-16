@@ -87,7 +87,8 @@ export class TaxonomyIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: TaxonomyIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TaxonomyIamPolicyArgs | TaxonomyIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TaxonomyIamPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -96,10 +97,10 @@ export class TaxonomyIamPolicy extends pulumi.CustomResource {
             inputs["taxonomy"] = state ? state.taxonomy : undefined;
         } else {
             const args = argsOrState as TaxonomyIamPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.taxonomy === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.taxonomy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'taxonomy'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;
@@ -108,12 +109,8 @@ export class TaxonomyIamPolicy extends pulumi.CustomResource {
             inputs["taxonomy"] = args ? args.taxonomy : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TaxonomyIamPolicy.__pulumiType, name, inputs, opts);
     }

@@ -224,6 +224,85 @@ func (i *LiteTopic) ToLiteTopicOutputWithContext(ctx context.Context) LiteTopicO
 	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicOutput)
 }
 
+func (i *LiteTopic) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
+	return i.ToLiteTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *LiteTopic) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPtrOutput)
+}
+
+type LiteTopicPtrInput interface {
+	pulumi.Input
+
+	ToLiteTopicPtrOutput() LiteTopicPtrOutput
+	ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput
+}
+
+type liteTopicPtrType LiteTopicArgs
+
+func (*liteTopicPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopic)(nil))
+}
+
+func (i *liteTopicPtrType) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
+	return i.ToLiteTopicPtrOutputWithContext(context.Background())
+}
+
+func (i *liteTopicPtrType) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicPtrOutput)
+}
+
+// LiteTopicArrayInput is an input type that accepts LiteTopicArray and LiteTopicArrayOutput values.
+// You can construct a concrete instance of `LiteTopicArrayInput` via:
+//
+//          LiteTopicArray{ LiteTopicArgs{...} }
+type LiteTopicArrayInput interface {
+	pulumi.Input
+
+	ToLiteTopicArrayOutput() LiteTopicArrayOutput
+	ToLiteTopicArrayOutputWithContext(context.Context) LiteTopicArrayOutput
+}
+
+type LiteTopicArray []LiteTopicInput
+
+func (LiteTopicArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LiteTopic)(nil))
+}
+
+func (i LiteTopicArray) ToLiteTopicArrayOutput() LiteTopicArrayOutput {
+	return i.ToLiteTopicArrayOutputWithContext(context.Background())
+}
+
+func (i LiteTopicArray) ToLiteTopicArrayOutputWithContext(ctx context.Context) LiteTopicArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicArrayOutput)
+}
+
+// LiteTopicMapInput is an input type that accepts LiteTopicMap and LiteTopicMapOutput values.
+// You can construct a concrete instance of `LiteTopicMapInput` via:
+//
+//          LiteTopicMap{ "key": LiteTopicArgs{...} }
+type LiteTopicMapInput interface {
+	pulumi.Input
+
+	ToLiteTopicMapOutput() LiteTopicMapOutput
+	ToLiteTopicMapOutputWithContext(context.Context) LiteTopicMapOutput
+}
+
+type LiteTopicMap map[string]LiteTopicInput
+
+func (LiteTopicMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LiteTopic)(nil))
+}
+
+func (i LiteTopicMap) ToLiteTopicMapOutput() LiteTopicMapOutput {
+	return i.ToLiteTopicMapOutputWithContext(context.Background())
+}
+
+func (i LiteTopicMap) ToLiteTopicMapOutputWithContext(ctx context.Context) LiteTopicMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteTopicMapOutput)
+}
+
 type LiteTopicOutput struct {
 	*pulumi.OutputState
 }
@@ -240,6 +319,75 @@ func (o LiteTopicOutput) ToLiteTopicOutputWithContext(ctx context.Context) LiteT
 	return o
 }
 
+func (o LiteTopicOutput) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
+	return o.ToLiteTopicPtrOutputWithContext(context.Background())
+}
+
+func (o LiteTopicOutput) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
+	return o.ApplyT(func(v LiteTopic) *LiteTopic {
+		return &v
+	}).(LiteTopicPtrOutput)
+}
+
+type LiteTopicPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LiteTopicPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteTopic)(nil))
+}
+
+func (o LiteTopicPtrOutput) ToLiteTopicPtrOutput() LiteTopicPtrOutput {
+	return o
+}
+
+func (o LiteTopicPtrOutput) ToLiteTopicPtrOutputWithContext(ctx context.Context) LiteTopicPtrOutput {
+	return o
+}
+
+type LiteTopicArrayOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LiteTopic)(nil))
+}
+
+func (o LiteTopicArrayOutput) ToLiteTopicArrayOutput() LiteTopicArrayOutput {
+	return o
+}
+
+func (o LiteTopicArrayOutput) ToLiteTopicArrayOutputWithContext(ctx context.Context) LiteTopicArrayOutput {
+	return o
+}
+
+func (o LiteTopicArrayOutput) Index(i pulumi.IntInput) LiteTopicOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiteTopic {
+		return vs[0].([]LiteTopic)[vs[1].(int)]
+	}).(LiteTopicOutput)
+}
+
+type LiteTopicMapOutput struct{ *pulumi.OutputState }
+
+func (LiteTopicMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LiteTopic)(nil))
+}
+
+func (o LiteTopicMapOutput) ToLiteTopicMapOutput() LiteTopicMapOutput {
+	return o
+}
+
+func (o LiteTopicMapOutput) ToLiteTopicMapOutputWithContext(ctx context.Context) LiteTopicMapOutput {
+	return o
+}
+
+func (o LiteTopicMapOutput) MapIndex(k pulumi.StringInput) LiteTopicOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LiteTopic {
+		return vs[0].(map[string]LiteTopic)[vs[1].(string)]
+	}).(LiteTopicOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LiteTopicOutput{})
+	pulumi.RegisterOutputType(LiteTopicPtrOutput{})
+	pulumi.RegisterOutputType(LiteTopicArrayOutput{})
+	pulumi.RegisterOutputType(LiteTopicMapOutput{})
 }

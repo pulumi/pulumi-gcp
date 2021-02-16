@@ -126,7 +126,8 @@ export class SecurityPolicy extends pulumi.CustomResource {
     constructor(name: string, args?: SecurityPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecurityPolicyArgs | SecurityPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecurityPolicyState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["fingerprint"] = state ? state.fingerprint : undefined;
@@ -143,12 +144,8 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecurityPolicy.__pulumiType, name, inputs, opts);
     }

@@ -80,7 +80,8 @@ export class WebApp extends pulumi.CustomResource {
     constructor(name: string, args: WebAppArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebAppArgs | WebAppState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WebAppState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -88,7 +89,7 @@ export class WebApp extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as WebAppArgs | undefined;
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -96,12 +97,8 @@ export class WebApp extends pulumi.CustomResource {
             inputs["appId"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WebApp.__pulumiType, name, inputs, opts);
     }

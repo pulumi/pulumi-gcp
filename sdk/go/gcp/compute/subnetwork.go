@@ -549,6 +549,85 @@ func (i *Subnetwork) ToSubnetworkOutputWithContext(ctx context.Context) Subnetwo
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkOutput)
 }
 
+func (i *Subnetwork) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
+	return i.ToSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *Subnetwork) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkPtrOutput)
+}
+
+type SubnetworkPtrInput interface {
+	pulumi.Input
+
+	ToSubnetworkPtrOutput() SubnetworkPtrOutput
+	ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput
+}
+
+type subnetworkPtrType SubnetworkArgs
+
+func (*subnetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Subnetwork)(nil))
+}
+
+func (i *subnetworkPtrType) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
+	return i.ToSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetworkPtrType) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkPtrOutput)
+}
+
+// SubnetworkArrayInput is an input type that accepts SubnetworkArray and SubnetworkArrayOutput values.
+// You can construct a concrete instance of `SubnetworkArrayInput` via:
+//
+//          SubnetworkArray{ SubnetworkArgs{...} }
+type SubnetworkArrayInput interface {
+	pulumi.Input
+
+	ToSubnetworkArrayOutput() SubnetworkArrayOutput
+	ToSubnetworkArrayOutputWithContext(context.Context) SubnetworkArrayOutput
+}
+
+type SubnetworkArray []SubnetworkInput
+
+func (SubnetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Subnetwork)(nil))
+}
+
+func (i SubnetworkArray) ToSubnetworkArrayOutput() SubnetworkArrayOutput {
+	return i.ToSubnetworkArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetworkArray) ToSubnetworkArrayOutputWithContext(ctx context.Context) SubnetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkArrayOutput)
+}
+
+// SubnetworkMapInput is an input type that accepts SubnetworkMap and SubnetworkMapOutput values.
+// You can construct a concrete instance of `SubnetworkMapInput` via:
+//
+//          SubnetworkMap{ "key": SubnetworkArgs{...} }
+type SubnetworkMapInput interface {
+	pulumi.Input
+
+	ToSubnetworkMapOutput() SubnetworkMapOutput
+	ToSubnetworkMapOutputWithContext(context.Context) SubnetworkMapOutput
+}
+
+type SubnetworkMap map[string]SubnetworkInput
+
+func (SubnetworkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Subnetwork)(nil))
+}
+
+func (i SubnetworkMap) ToSubnetworkMapOutput() SubnetworkMapOutput {
+	return i.ToSubnetworkMapOutputWithContext(context.Background())
+}
+
+func (i SubnetworkMap) ToSubnetworkMapOutputWithContext(ctx context.Context) SubnetworkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkMapOutput)
+}
+
 type SubnetworkOutput struct {
 	*pulumi.OutputState
 }
@@ -565,6 +644,75 @@ func (o SubnetworkOutput) ToSubnetworkOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
+func (o SubnetworkOutput) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
+	return o.ToSubnetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetworkOutput) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
+	return o.ApplyT(func(v Subnetwork) *Subnetwork {
+		return &v
+	}).(SubnetworkPtrOutput)
+}
+
+type SubnetworkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Subnetwork)(nil))
+}
+
+func (o SubnetworkPtrOutput) ToSubnetworkPtrOutput() SubnetworkPtrOutput {
+	return o
+}
+
+func (o SubnetworkPtrOutput) ToSubnetworkPtrOutputWithContext(ctx context.Context) SubnetworkPtrOutput {
+	return o
+}
+
+type SubnetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Subnetwork)(nil))
+}
+
+func (o SubnetworkArrayOutput) ToSubnetworkArrayOutput() SubnetworkArrayOutput {
+	return o
+}
+
+func (o SubnetworkArrayOutput) ToSubnetworkArrayOutputWithContext(ctx context.Context) SubnetworkArrayOutput {
+	return o
+}
+
+func (o SubnetworkArrayOutput) Index(i pulumi.IntInput) SubnetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Subnetwork {
+		return vs[0].([]Subnetwork)[vs[1].(int)]
+	}).(SubnetworkOutput)
+}
+
+type SubnetworkMapOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Subnetwork)(nil))
+}
+
+func (o SubnetworkMapOutput) ToSubnetworkMapOutput() SubnetworkMapOutput {
+	return o
+}
+
+func (o SubnetworkMapOutput) ToSubnetworkMapOutputWithContext(ctx context.Context) SubnetworkMapOutput {
+	return o
+}
+
+func (o SubnetworkMapOutput) MapIndex(k pulumi.StringInput) SubnetworkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Subnetwork {
+		return vs[0].(map[string]Subnetwork)[vs[1].(string)]
+	}).(SubnetworkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubnetworkOutput{})
+	pulumi.RegisterOutputType(SubnetworkPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkArrayOutput{})
+	pulumi.RegisterOutputType(SubnetworkMapOutput{})
 }

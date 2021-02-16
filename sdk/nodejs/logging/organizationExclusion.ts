@@ -96,7 +96,8 @@ export class OrganizationExclusion extends pulumi.CustomResource {
     constructor(name: string, args: OrganizationExclusionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationExclusionArgs | OrganizationExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrganizationExclusionState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
@@ -105,10 +106,10 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             inputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as OrganizationExclusionArgs | undefined;
-            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.filter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -117,12 +118,8 @@ export class OrganizationExclusion extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["orgId"] = args ? args.orgId : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OrganizationExclusion.__pulumiType, name, inputs, opts);
     }

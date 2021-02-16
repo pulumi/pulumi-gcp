@@ -174,6 +174,85 @@ func (i *WebIamBinding) ToWebIamBindingOutputWithContext(ctx context.Context) We
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamBindingOutput)
 }
 
+func (i *WebIamBinding) ToWebIamBindingPtrOutput() WebIamBindingPtrOutput {
+	return i.ToWebIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *WebIamBinding) ToWebIamBindingPtrOutputWithContext(ctx context.Context) WebIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamBindingPtrOutput)
+}
+
+type WebIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToWebIamBindingPtrOutput() WebIamBindingPtrOutput
+	ToWebIamBindingPtrOutputWithContext(ctx context.Context) WebIamBindingPtrOutput
+}
+
+type webIamBindingPtrType WebIamBindingArgs
+
+func (*webIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebIamBinding)(nil))
+}
+
+func (i *webIamBindingPtrType) ToWebIamBindingPtrOutput() WebIamBindingPtrOutput {
+	return i.ToWebIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *webIamBindingPtrType) ToWebIamBindingPtrOutputWithContext(ctx context.Context) WebIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamBindingPtrOutput)
+}
+
+// WebIamBindingArrayInput is an input type that accepts WebIamBindingArray and WebIamBindingArrayOutput values.
+// You can construct a concrete instance of `WebIamBindingArrayInput` via:
+//
+//          WebIamBindingArray{ WebIamBindingArgs{...} }
+type WebIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToWebIamBindingArrayOutput() WebIamBindingArrayOutput
+	ToWebIamBindingArrayOutputWithContext(context.Context) WebIamBindingArrayOutput
+}
+
+type WebIamBindingArray []WebIamBindingInput
+
+func (WebIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WebIamBinding)(nil))
+}
+
+func (i WebIamBindingArray) ToWebIamBindingArrayOutput() WebIamBindingArrayOutput {
+	return i.ToWebIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i WebIamBindingArray) ToWebIamBindingArrayOutputWithContext(ctx context.Context) WebIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamBindingArrayOutput)
+}
+
+// WebIamBindingMapInput is an input type that accepts WebIamBindingMap and WebIamBindingMapOutput values.
+// You can construct a concrete instance of `WebIamBindingMapInput` via:
+//
+//          WebIamBindingMap{ "key": WebIamBindingArgs{...} }
+type WebIamBindingMapInput interface {
+	pulumi.Input
+
+	ToWebIamBindingMapOutput() WebIamBindingMapOutput
+	ToWebIamBindingMapOutputWithContext(context.Context) WebIamBindingMapOutput
+}
+
+type WebIamBindingMap map[string]WebIamBindingInput
+
+func (WebIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WebIamBinding)(nil))
+}
+
+func (i WebIamBindingMap) ToWebIamBindingMapOutput() WebIamBindingMapOutput {
+	return i.ToWebIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i WebIamBindingMap) ToWebIamBindingMapOutputWithContext(ctx context.Context) WebIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamBindingMapOutput)
+}
+
 type WebIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -190,6 +269,75 @@ func (o WebIamBindingOutput) ToWebIamBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o WebIamBindingOutput) ToWebIamBindingPtrOutput() WebIamBindingPtrOutput {
+	return o.ToWebIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o WebIamBindingOutput) ToWebIamBindingPtrOutputWithContext(ctx context.Context) WebIamBindingPtrOutput {
+	return o.ApplyT(func(v WebIamBinding) *WebIamBinding {
+		return &v
+	}).(WebIamBindingPtrOutput)
+}
+
+type WebIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebIamBinding)(nil))
+}
+
+func (o WebIamBindingPtrOutput) ToWebIamBindingPtrOutput() WebIamBindingPtrOutput {
+	return o
+}
+
+func (o WebIamBindingPtrOutput) ToWebIamBindingPtrOutputWithContext(ctx context.Context) WebIamBindingPtrOutput {
+	return o
+}
+
+type WebIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (WebIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebIamBinding)(nil))
+}
+
+func (o WebIamBindingArrayOutput) ToWebIamBindingArrayOutput() WebIamBindingArrayOutput {
+	return o
+}
+
+func (o WebIamBindingArrayOutput) ToWebIamBindingArrayOutputWithContext(ctx context.Context) WebIamBindingArrayOutput {
+	return o
+}
+
+func (o WebIamBindingArrayOutput) Index(i pulumi.IntInput) WebIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebIamBinding {
+		return vs[0].([]WebIamBinding)[vs[1].(int)]
+	}).(WebIamBindingOutput)
+}
+
+type WebIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (WebIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WebIamBinding)(nil))
+}
+
+func (o WebIamBindingMapOutput) ToWebIamBindingMapOutput() WebIamBindingMapOutput {
+	return o
+}
+
+func (o WebIamBindingMapOutput) ToWebIamBindingMapOutputWithContext(ctx context.Context) WebIamBindingMapOutput {
+	return o
+}
+
+func (o WebIamBindingMapOutput) MapIndex(k pulumi.StringInput) WebIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebIamBinding {
+		return vs[0].(map[string]WebIamBinding)[vs[1].(string)]
+	}).(WebIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebIamBindingOutput{})
+	pulumi.RegisterOutputType(WebIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(WebIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(WebIamBindingMapOutput{})
 }

@@ -313,6 +313,85 @@ func (i *AccessLevelCondition) ToAccessLevelConditionOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionOutput)
 }
 
+func (i *AccessLevelCondition) ToAccessLevelConditionPtrOutput() AccessLevelConditionPtrOutput {
+	return i.ToAccessLevelConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessLevelCondition) ToAccessLevelConditionPtrOutputWithContext(ctx context.Context) AccessLevelConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionPtrOutput)
+}
+
+type AccessLevelConditionPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionPtrOutput() AccessLevelConditionPtrOutput
+	ToAccessLevelConditionPtrOutputWithContext(ctx context.Context) AccessLevelConditionPtrOutput
+}
+
+type accessLevelConditionPtrType AccessLevelConditionArgs
+
+func (*accessLevelConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelCondition)(nil))
+}
+
+func (i *accessLevelConditionPtrType) ToAccessLevelConditionPtrOutput() AccessLevelConditionPtrOutput {
+	return i.ToAccessLevelConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelConditionPtrType) ToAccessLevelConditionPtrOutputWithContext(ctx context.Context) AccessLevelConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionPtrOutput)
+}
+
+// AccessLevelConditionArrayInput is an input type that accepts AccessLevelConditionArray and AccessLevelConditionArrayOutput values.
+// You can construct a concrete instance of `AccessLevelConditionArrayInput` via:
+//
+//          AccessLevelConditionArray{ AccessLevelConditionArgs{...} }
+type AccessLevelConditionArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionArrayOutput() AccessLevelConditionArrayOutput
+	ToAccessLevelConditionArrayOutputWithContext(context.Context) AccessLevelConditionArrayOutput
+}
+
+type AccessLevelConditionArray []AccessLevelConditionInput
+
+func (AccessLevelConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessLevelCondition)(nil))
+}
+
+func (i AccessLevelConditionArray) ToAccessLevelConditionArrayOutput() AccessLevelConditionArrayOutput {
+	return i.ToAccessLevelConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelConditionArray) ToAccessLevelConditionArrayOutputWithContext(ctx context.Context) AccessLevelConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionArrayOutput)
+}
+
+// AccessLevelConditionMapInput is an input type that accepts AccessLevelConditionMap and AccessLevelConditionMapOutput values.
+// You can construct a concrete instance of `AccessLevelConditionMapInput` via:
+//
+//          AccessLevelConditionMap{ "key": AccessLevelConditionArgs{...} }
+type AccessLevelConditionMapInput interface {
+	pulumi.Input
+
+	ToAccessLevelConditionMapOutput() AccessLevelConditionMapOutput
+	ToAccessLevelConditionMapOutputWithContext(context.Context) AccessLevelConditionMapOutput
+}
+
+type AccessLevelConditionMap map[string]AccessLevelConditionInput
+
+func (AccessLevelConditionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessLevelCondition)(nil))
+}
+
+func (i AccessLevelConditionMap) ToAccessLevelConditionMapOutput() AccessLevelConditionMapOutput {
+	return i.ToAccessLevelConditionMapOutputWithContext(context.Background())
+}
+
+func (i AccessLevelConditionMap) ToAccessLevelConditionMapOutputWithContext(ctx context.Context) AccessLevelConditionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelConditionMapOutput)
+}
+
 type AccessLevelConditionOutput struct {
 	*pulumi.OutputState
 }
@@ -329,6 +408,75 @@ func (o AccessLevelConditionOutput) ToAccessLevelConditionOutputWithContext(ctx 
 	return o
 }
 
+func (o AccessLevelConditionOutput) ToAccessLevelConditionPtrOutput() AccessLevelConditionPtrOutput {
+	return o.ToAccessLevelConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelConditionOutput) ToAccessLevelConditionPtrOutputWithContext(ctx context.Context) AccessLevelConditionPtrOutput {
+	return o.ApplyT(func(v AccessLevelCondition) *AccessLevelCondition {
+		return &v
+	}).(AccessLevelConditionPtrOutput)
+}
+
+type AccessLevelConditionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessLevelConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevelCondition)(nil))
+}
+
+func (o AccessLevelConditionPtrOutput) ToAccessLevelConditionPtrOutput() AccessLevelConditionPtrOutput {
+	return o
+}
+
+func (o AccessLevelConditionPtrOutput) ToAccessLevelConditionPtrOutputWithContext(ctx context.Context) AccessLevelConditionPtrOutput {
+	return o
+}
+
+type AccessLevelConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevelCondition)(nil))
+}
+
+func (o AccessLevelConditionArrayOutput) ToAccessLevelConditionArrayOutput() AccessLevelConditionArrayOutput {
+	return o
+}
+
+func (o AccessLevelConditionArrayOutput) ToAccessLevelConditionArrayOutputWithContext(ctx context.Context) AccessLevelConditionArrayOutput {
+	return o
+}
+
+func (o AccessLevelConditionArrayOutput) Index(i pulumi.IntInput) AccessLevelConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevelCondition {
+		return vs[0].([]AccessLevelCondition)[vs[1].(int)]
+	}).(AccessLevelConditionOutput)
+}
+
+type AccessLevelConditionMapOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelConditionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessLevelCondition)(nil))
+}
+
+func (o AccessLevelConditionMapOutput) ToAccessLevelConditionMapOutput() AccessLevelConditionMapOutput {
+	return o
+}
+
+func (o AccessLevelConditionMapOutput) ToAccessLevelConditionMapOutputWithContext(ctx context.Context) AccessLevelConditionMapOutput {
+	return o
+}
+
+func (o AccessLevelConditionMapOutput) MapIndex(k pulumi.StringInput) AccessLevelConditionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessLevelCondition {
+		return vs[0].(map[string]AccessLevelCondition)[vs[1].(string)]
+	}).(AccessLevelConditionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessLevelConditionOutput{})
+	pulumi.RegisterOutputType(AccessLevelConditionPtrOutput{})
+	pulumi.RegisterOutputType(AccessLevelConditionArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelConditionMapOutput{})
 }

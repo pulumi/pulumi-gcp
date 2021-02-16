@@ -134,7 +134,8 @@ export class TargetTCPProxy extends pulumi.CustomResource {
     constructor(name: string, args: TargetTCPProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetTCPProxyArgs | TargetTCPProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetTCPProxyState | undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -146,7 +147,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as TargetTCPProxyArgs | undefined;
-            if ((!args || args.backendService === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.backendService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backendService'");
             }
             inputs["backendService"] = args ? args.backendService : undefined;
@@ -158,12 +159,8 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetTCPProxy.__pulumiType, name, inputs, opts);
     }

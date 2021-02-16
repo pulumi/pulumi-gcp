@@ -84,7 +84,8 @@ export class IamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: IamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamPolicyArgs | IamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IamPolicyState | undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -93,13 +94,13 @@ export class IamPolicy extends pulumi.CustomResource {
             inputs["tableId"] = state ? state.tableId : undefined;
         } else {
             const args = argsOrState as IamPolicyArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.tableId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
             inputs["datasetId"] = args ? args.datasetId : undefined;
@@ -108,12 +109,8 @@ export class IamPolicy extends pulumi.CustomResource {
             inputs["tableId"] = args ? args.tableId : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IamPolicy.__pulumiType, name, inputs, opts);
     }

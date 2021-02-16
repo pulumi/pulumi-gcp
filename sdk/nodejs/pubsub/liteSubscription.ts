@@ -129,7 +129,8 @@ export class LiteSubscription extends pulumi.CustomResource {
     constructor(name: string, args: LiteSubscriptionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LiteSubscriptionArgs | LiteSubscriptionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LiteSubscriptionState | undefined;
             inputs["deliveryConfig"] = state ? state.deliveryConfig : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -139,7 +140,7 @@ export class LiteSubscription extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as LiteSubscriptionArgs | undefined;
-            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["deliveryConfig"] = args ? args.deliveryConfig : undefined;
@@ -149,12 +150,8 @@ export class LiteSubscription extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LiteSubscription.__pulumiType, name, inputs, opts);
     }

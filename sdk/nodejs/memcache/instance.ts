@@ -144,7 +144,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -163,10 +164,10 @@ export class Instance extends pulumi.CustomResource {
             inputs["zones"] = state ? state.zones : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.nodeConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodeConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeConfig'");
             }
-            if ((!args || args.nodeCount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.nodeCount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
@@ -185,12 +186,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["memcacheFullVersion"] = undefined /*out*/;
             inputs["memcacheNodes"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

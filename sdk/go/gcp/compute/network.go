@@ -327,6 +327,85 @@ func (i *Network) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkOutput)
 }
 
+func (i *Network) ToNetworkPtrOutput() NetworkPtrOutput {
+	return i.ToNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *Network) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPtrOutput)
+}
+
+type NetworkPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPtrOutput() NetworkPtrOutput
+	ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput
+}
+
+type networkPtrType NetworkArgs
+
+func (*networkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Network)(nil))
+}
+
+func (i *networkPtrType) ToNetworkPtrOutput() NetworkPtrOutput {
+	return i.ToNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *networkPtrType) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPtrOutput)
+}
+
+// NetworkArrayInput is an input type that accepts NetworkArray and NetworkArrayOutput values.
+// You can construct a concrete instance of `NetworkArrayInput` via:
+//
+//          NetworkArray{ NetworkArgs{...} }
+type NetworkArrayInput interface {
+	pulumi.Input
+
+	ToNetworkArrayOutput() NetworkArrayOutput
+	ToNetworkArrayOutputWithContext(context.Context) NetworkArrayOutput
+}
+
+type NetworkArray []NetworkInput
+
+func (NetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Network)(nil))
+}
+
+func (i NetworkArray) ToNetworkArrayOutput() NetworkArrayOutput {
+	return i.ToNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkArray) ToNetworkArrayOutputWithContext(ctx context.Context) NetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkArrayOutput)
+}
+
+// NetworkMapInput is an input type that accepts NetworkMap and NetworkMapOutput values.
+// You can construct a concrete instance of `NetworkMapInput` via:
+//
+//          NetworkMap{ "key": NetworkArgs{...} }
+type NetworkMapInput interface {
+	pulumi.Input
+
+	ToNetworkMapOutput() NetworkMapOutput
+	ToNetworkMapOutputWithContext(context.Context) NetworkMapOutput
+}
+
+type NetworkMap map[string]NetworkInput
+
+func (NetworkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Network)(nil))
+}
+
+func (i NetworkMap) ToNetworkMapOutput() NetworkMapOutput {
+	return i.ToNetworkMapOutputWithContext(context.Background())
+}
+
+func (i NetworkMap) ToNetworkMapOutputWithContext(ctx context.Context) NetworkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkMapOutput)
+}
+
 type NetworkOutput struct {
 	*pulumi.OutputState
 }
@@ -343,6 +422,75 @@ func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOu
 	return o
 }
 
+func (o NetworkOutput) ToNetworkPtrOutput() NetworkPtrOutput {
+	return o.ToNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkOutput) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
+	return o.ApplyT(func(v Network) *Network {
+		return &v
+	}).(NetworkPtrOutput)
+}
+
+type NetworkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Network)(nil))
+}
+
+func (o NetworkPtrOutput) ToNetworkPtrOutput() NetworkPtrOutput {
+	return o
+}
+
+func (o NetworkPtrOutput) ToNetworkPtrOutputWithContext(ctx context.Context) NetworkPtrOutput {
+	return o
+}
+
+type NetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Network)(nil))
+}
+
+func (o NetworkArrayOutput) ToNetworkArrayOutput() NetworkArrayOutput {
+	return o
+}
+
+func (o NetworkArrayOutput) ToNetworkArrayOutputWithContext(ctx context.Context) NetworkArrayOutput {
+	return o
+}
+
+func (o NetworkArrayOutput) Index(i pulumi.IntInput) NetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Network {
+		return vs[0].([]Network)[vs[1].(int)]
+	}).(NetworkOutput)
+}
+
+type NetworkMapOutput struct{ *pulumi.OutputState }
+
+func (NetworkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Network)(nil))
+}
+
+func (o NetworkMapOutput) ToNetworkMapOutput() NetworkMapOutput {
+	return o
+}
+
+func (o NetworkMapOutput) ToNetworkMapOutputWithContext(ctx context.Context) NetworkMapOutput {
+	return o
+}
+
+func (o NetworkMapOutput) MapIndex(k pulumi.StringInput) NetworkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Network {
+		return vs[0].(map[string]Network)[vs[1].(string)]
+	}).(NetworkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkOutput{})
+	pulumi.RegisterOutputType(NetworkPtrOutput{})
+	pulumi.RegisterOutputType(NetworkArrayOutput{})
+	pulumi.RegisterOutputType(NetworkMapOutput{})
 }

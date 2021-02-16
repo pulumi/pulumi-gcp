@@ -111,7 +111,8 @@ export class OauthIdpConfig extends pulumi.CustomResource {
     constructor(name: string, args: OauthIdpConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OauthIdpConfigArgs | OauthIdpConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OauthIdpConfigState | undefined;
             inputs["clientId"] = state ? state.clientId : undefined;
             inputs["clientSecret"] = state ? state.clientSecret : undefined;
@@ -122,10 +123,10 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as OauthIdpConfigArgs | undefined;
-            if ((!args || args.clientId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clientId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.issuer === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.issuer === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'issuer'");
             }
             inputs["clientId"] = args ? args.clientId : undefined;
@@ -136,12 +137,8 @@ export class OauthIdpConfig extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OauthIdpConfig.__pulumiType, name, inputs, opts);
     }

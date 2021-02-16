@@ -158,7 +158,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
     constructor(name: string, args?: DatabaseInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseInstanceArgs | DatabaseInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseInstanceState | undefined;
             inputs["clone"] = state ? state.clone : undefined;
             inputs["connectionName"] = state ? state.connectionName : undefined;
@@ -203,12 +204,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
             inputs["serverCaCerts"] = undefined /*out*/;
             inputs["serviceAccountEmailAddress"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatabaseInstance.__pulumiType, name, inputs, opts);
     }

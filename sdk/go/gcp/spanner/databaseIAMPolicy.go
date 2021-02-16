@@ -278,6 +278,85 @@ func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyOutput)
 }
 
+func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyPtrOutput() DatabaseIAMPolicyPtrOutput {
+	return i.ToDatabaseIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *DatabaseIAMPolicy) ToDatabaseIAMPolicyPtrOutputWithContext(ctx context.Context) DatabaseIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyPtrOutput)
+}
+
+type DatabaseIAMPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMPolicyPtrOutput() DatabaseIAMPolicyPtrOutput
+	ToDatabaseIAMPolicyPtrOutputWithContext(ctx context.Context) DatabaseIAMPolicyPtrOutput
+}
+
+type databaseIAMPolicyPtrType DatabaseIAMPolicyArgs
+
+func (*databaseIAMPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIAMPolicy)(nil))
+}
+
+func (i *databaseIAMPolicyPtrType) ToDatabaseIAMPolicyPtrOutput() DatabaseIAMPolicyPtrOutput {
+	return i.ToDatabaseIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseIAMPolicyPtrType) ToDatabaseIAMPolicyPtrOutputWithContext(ctx context.Context) DatabaseIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyPtrOutput)
+}
+
+// DatabaseIAMPolicyArrayInput is an input type that accepts DatabaseIAMPolicyArray and DatabaseIAMPolicyArrayOutput values.
+// You can construct a concrete instance of `DatabaseIAMPolicyArrayInput` via:
+//
+//          DatabaseIAMPolicyArray{ DatabaseIAMPolicyArgs{...} }
+type DatabaseIAMPolicyArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPolicyArrayOutput
+	ToDatabaseIAMPolicyArrayOutputWithContext(context.Context) DatabaseIAMPolicyArrayOutput
+}
+
+type DatabaseIAMPolicyArray []DatabaseIAMPolicyInput
+
+func (DatabaseIAMPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatabaseIAMPolicy)(nil))
+}
+
+func (i DatabaseIAMPolicyArray) ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPolicyArrayOutput {
+	return i.ToDatabaseIAMPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseIAMPolicyArray) ToDatabaseIAMPolicyArrayOutputWithContext(ctx context.Context) DatabaseIAMPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyArrayOutput)
+}
+
+// DatabaseIAMPolicyMapInput is an input type that accepts DatabaseIAMPolicyMap and DatabaseIAMPolicyMapOutput values.
+// You can construct a concrete instance of `DatabaseIAMPolicyMapInput` via:
+//
+//          DatabaseIAMPolicyMap{ "key": DatabaseIAMPolicyArgs{...} }
+type DatabaseIAMPolicyMapInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMPolicyMapOutput() DatabaseIAMPolicyMapOutput
+	ToDatabaseIAMPolicyMapOutputWithContext(context.Context) DatabaseIAMPolicyMapOutput
+}
+
+type DatabaseIAMPolicyMap map[string]DatabaseIAMPolicyInput
+
+func (DatabaseIAMPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatabaseIAMPolicy)(nil))
+}
+
+func (i DatabaseIAMPolicyMap) ToDatabaseIAMPolicyMapOutput() DatabaseIAMPolicyMapOutput {
+	return i.ToDatabaseIAMPolicyMapOutputWithContext(context.Background())
+}
+
+func (i DatabaseIAMPolicyMap) ToDatabaseIAMPolicyMapOutputWithContext(ctx context.Context) DatabaseIAMPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMPolicyMapOutput)
+}
+
 type DatabaseIAMPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -294,6 +373,75 @@ func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyOutputWithContext(ctx contex
 	return o
 }
 
+func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyPtrOutput() DatabaseIAMPolicyPtrOutput {
+	return o.ToDatabaseIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseIAMPolicyOutput) ToDatabaseIAMPolicyPtrOutputWithContext(ctx context.Context) DatabaseIAMPolicyPtrOutput {
+	return o.ApplyT(func(v DatabaseIAMPolicy) *DatabaseIAMPolicy {
+		return &v
+	}).(DatabaseIAMPolicyPtrOutput)
+}
+
+type DatabaseIAMPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseIAMPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIAMPolicy)(nil))
+}
+
+func (o DatabaseIAMPolicyPtrOutput) ToDatabaseIAMPolicyPtrOutput() DatabaseIAMPolicyPtrOutput {
+	return o
+}
+
+func (o DatabaseIAMPolicyPtrOutput) ToDatabaseIAMPolicyPtrOutputWithContext(ctx context.Context) DatabaseIAMPolicyPtrOutput {
+	return o
+}
+
+type DatabaseIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIAMPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseIAMPolicy)(nil))
+}
+
+func (o DatabaseIAMPolicyArrayOutput) ToDatabaseIAMPolicyArrayOutput() DatabaseIAMPolicyArrayOutput {
+	return o
+}
+
+func (o DatabaseIAMPolicyArrayOutput) ToDatabaseIAMPolicyArrayOutputWithContext(ctx context.Context) DatabaseIAMPolicyArrayOutput {
+	return o
+}
+
+func (o DatabaseIAMPolicyArrayOutput) Index(i pulumi.IntInput) DatabaseIAMPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseIAMPolicy {
+		return vs[0].([]DatabaseIAMPolicy)[vs[1].(int)]
+	}).(DatabaseIAMPolicyOutput)
+}
+
+type DatabaseIAMPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIAMPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseIAMPolicy)(nil))
+}
+
+func (o DatabaseIAMPolicyMapOutput) ToDatabaseIAMPolicyMapOutput() DatabaseIAMPolicyMapOutput {
+	return o
+}
+
+func (o DatabaseIAMPolicyMapOutput) ToDatabaseIAMPolicyMapOutputWithContext(ctx context.Context) DatabaseIAMPolicyMapOutput {
+	return o
+}
+
+func (o DatabaseIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseIAMPolicy {
+		return vs[0].(map[string]DatabaseIAMPolicy)[vs[1].(string)]
+	}).(DatabaseIAMPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseIAMPolicyOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMPolicyPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMPolicyArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMPolicyMapOutput{})
 }

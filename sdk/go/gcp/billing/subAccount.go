@@ -145,6 +145,85 @@ func (i *SubAccount) ToSubAccountOutputWithContext(ctx context.Context) SubAccou
 	return pulumi.ToOutputWithContext(ctx, i).(SubAccountOutput)
 }
 
+func (i *SubAccount) ToSubAccountPtrOutput() SubAccountPtrOutput {
+	return i.ToSubAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *SubAccount) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubAccountPtrOutput)
+}
+
+type SubAccountPtrInput interface {
+	pulumi.Input
+
+	ToSubAccountPtrOutput() SubAccountPtrOutput
+	ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput
+}
+
+type subAccountPtrType SubAccountArgs
+
+func (*subAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubAccount)(nil))
+}
+
+func (i *subAccountPtrType) ToSubAccountPtrOutput() SubAccountPtrOutput {
+	return i.ToSubAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *subAccountPtrType) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubAccountPtrOutput)
+}
+
+// SubAccountArrayInput is an input type that accepts SubAccountArray and SubAccountArrayOutput values.
+// You can construct a concrete instance of `SubAccountArrayInput` via:
+//
+//          SubAccountArray{ SubAccountArgs{...} }
+type SubAccountArrayInput interface {
+	pulumi.Input
+
+	ToSubAccountArrayOutput() SubAccountArrayOutput
+	ToSubAccountArrayOutputWithContext(context.Context) SubAccountArrayOutput
+}
+
+type SubAccountArray []SubAccountInput
+
+func (SubAccountArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SubAccount)(nil))
+}
+
+func (i SubAccountArray) ToSubAccountArrayOutput() SubAccountArrayOutput {
+	return i.ToSubAccountArrayOutputWithContext(context.Background())
+}
+
+func (i SubAccountArray) ToSubAccountArrayOutputWithContext(ctx context.Context) SubAccountArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubAccountArrayOutput)
+}
+
+// SubAccountMapInput is an input type that accepts SubAccountMap and SubAccountMapOutput values.
+// You can construct a concrete instance of `SubAccountMapInput` via:
+//
+//          SubAccountMap{ "key": SubAccountArgs{...} }
+type SubAccountMapInput interface {
+	pulumi.Input
+
+	ToSubAccountMapOutput() SubAccountMapOutput
+	ToSubAccountMapOutputWithContext(context.Context) SubAccountMapOutput
+}
+
+type SubAccountMap map[string]SubAccountInput
+
+func (SubAccountMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SubAccount)(nil))
+}
+
+func (i SubAccountMap) ToSubAccountMapOutput() SubAccountMapOutput {
+	return i.ToSubAccountMapOutputWithContext(context.Background())
+}
+
+func (i SubAccountMap) ToSubAccountMapOutputWithContext(ctx context.Context) SubAccountMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubAccountMapOutput)
+}
+
 type SubAccountOutput struct {
 	*pulumi.OutputState
 }
@@ -161,6 +240,75 @@ func (o SubAccountOutput) ToSubAccountOutputWithContext(ctx context.Context) Sub
 	return o
 }
 
+func (o SubAccountOutput) ToSubAccountPtrOutput() SubAccountPtrOutput {
+	return o.ToSubAccountPtrOutputWithContext(context.Background())
+}
+
+func (o SubAccountOutput) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
+	return o.ApplyT(func(v SubAccount) *SubAccount {
+		return &v
+	}).(SubAccountPtrOutput)
+}
+
+type SubAccountPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubAccount)(nil))
+}
+
+func (o SubAccountPtrOutput) ToSubAccountPtrOutput() SubAccountPtrOutput {
+	return o
+}
+
+func (o SubAccountPtrOutput) ToSubAccountPtrOutputWithContext(ctx context.Context) SubAccountPtrOutput {
+	return o
+}
+
+type SubAccountArrayOutput struct{ *pulumi.OutputState }
+
+func (SubAccountArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubAccount)(nil))
+}
+
+func (o SubAccountArrayOutput) ToSubAccountArrayOutput() SubAccountArrayOutput {
+	return o
+}
+
+func (o SubAccountArrayOutput) ToSubAccountArrayOutputWithContext(ctx context.Context) SubAccountArrayOutput {
+	return o
+}
+
+func (o SubAccountArrayOutput) Index(i pulumi.IntInput) SubAccountOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubAccount {
+		return vs[0].([]SubAccount)[vs[1].(int)]
+	}).(SubAccountOutput)
+}
+
+type SubAccountMapOutput struct{ *pulumi.OutputState }
+
+func (SubAccountMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SubAccount)(nil))
+}
+
+func (o SubAccountMapOutput) ToSubAccountMapOutput() SubAccountMapOutput {
+	return o
+}
+
+func (o SubAccountMapOutput) ToSubAccountMapOutputWithContext(ctx context.Context) SubAccountMapOutput {
+	return o
+}
+
+func (o SubAccountMapOutput) MapIndex(k pulumi.StringInput) SubAccountOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubAccount {
+		return vs[0].(map[string]SubAccount)[vs[1].(string)]
+	}).(SubAccountOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubAccountOutput{})
+	pulumi.RegisterOutputType(SubAccountPtrOutput{})
+	pulumi.RegisterOutputType(SubAccountArrayOutput{})
+	pulumi.RegisterOutputType(SubAccountMapOutput{})
 }

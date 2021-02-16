@@ -280,6 +280,85 @@ func (i *AttestorIamMember) ToAttestorIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberOutput)
 }
 
+func (i *AttestorIamMember) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
+	return i.ToAttestorIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *AttestorIamMember) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberPtrOutput)
+}
+
+type AttestorIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput
+	ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput
+}
+
+type attestorIamMemberPtrType AttestorIamMemberArgs
+
+func (*attestorIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestorIamMember)(nil))
+}
+
+func (i *attestorIamMemberPtrType) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
+	return i.ToAttestorIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *attestorIamMemberPtrType) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberPtrOutput)
+}
+
+// AttestorIamMemberArrayInput is an input type that accepts AttestorIamMemberArray and AttestorIamMemberArrayOutput values.
+// You can construct a concrete instance of `AttestorIamMemberArrayInput` via:
+//
+//          AttestorIamMemberArray{ AttestorIamMemberArgs{...} }
+type AttestorIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToAttestorIamMemberArrayOutput() AttestorIamMemberArrayOutput
+	ToAttestorIamMemberArrayOutputWithContext(context.Context) AttestorIamMemberArrayOutput
+}
+
+type AttestorIamMemberArray []AttestorIamMemberInput
+
+func (AttestorIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AttestorIamMember)(nil))
+}
+
+func (i AttestorIamMemberArray) ToAttestorIamMemberArrayOutput() AttestorIamMemberArrayOutput {
+	return i.ToAttestorIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i AttestorIamMemberArray) ToAttestorIamMemberArrayOutputWithContext(ctx context.Context) AttestorIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberArrayOutput)
+}
+
+// AttestorIamMemberMapInput is an input type that accepts AttestorIamMemberMap and AttestorIamMemberMapOutput values.
+// You can construct a concrete instance of `AttestorIamMemberMapInput` via:
+//
+//          AttestorIamMemberMap{ "key": AttestorIamMemberArgs{...} }
+type AttestorIamMemberMapInput interface {
+	pulumi.Input
+
+	ToAttestorIamMemberMapOutput() AttestorIamMemberMapOutput
+	ToAttestorIamMemberMapOutputWithContext(context.Context) AttestorIamMemberMapOutput
+}
+
+type AttestorIamMemberMap map[string]AttestorIamMemberInput
+
+func (AttestorIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AttestorIamMember)(nil))
+}
+
+func (i AttestorIamMemberMap) ToAttestorIamMemberMapOutput() AttestorIamMemberMapOutput {
+	return i.ToAttestorIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i AttestorIamMemberMap) ToAttestorIamMemberMapOutputWithContext(ctx context.Context) AttestorIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamMemberMapOutput)
+}
+
 type AttestorIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -296,6 +375,75 @@ func (o AttestorIamMemberOutput) ToAttestorIamMemberOutputWithContext(ctx contex
 	return o
 }
 
+func (o AttestorIamMemberOutput) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
+	return o.ToAttestorIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o AttestorIamMemberOutput) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
+	return o.ApplyT(func(v AttestorIamMember) *AttestorIamMember {
+		return &v
+	}).(AttestorIamMemberPtrOutput)
+}
+
+type AttestorIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttestorIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestorIamMember)(nil))
+}
+
+func (o AttestorIamMemberPtrOutput) ToAttestorIamMemberPtrOutput() AttestorIamMemberPtrOutput {
+	return o
+}
+
+func (o AttestorIamMemberPtrOutput) ToAttestorIamMemberPtrOutputWithContext(ctx context.Context) AttestorIamMemberPtrOutput {
+	return o
+}
+
+type AttestorIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (AttestorIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttestorIamMember)(nil))
+}
+
+func (o AttestorIamMemberArrayOutput) ToAttestorIamMemberArrayOutput() AttestorIamMemberArrayOutput {
+	return o
+}
+
+func (o AttestorIamMemberArrayOutput) ToAttestorIamMemberArrayOutputWithContext(ctx context.Context) AttestorIamMemberArrayOutput {
+	return o
+}
+
+func (o AttestorIamMemberArrayOutput) Index(i pulumi.IntInput) AttestorIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorIamMember {
+		return vs[0].([]AttestorIamMember)[vs[1].(int)]
+	}).(AttestorIamMemberOutput)
+}
+
+type AttestorIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (AttestorIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AttestorIamMember)(nil))
+}
+
+func (o AttestorIamMemberMapOutput) ToAttestorIamMemberMapOutput() AttestorIamMemberMapOutput {
+	return o
+}
+
+func (o AttestorIamMemberMapOutput) ToAttestorIamMemberMapOutputWithContext(ctx context.Context) AttestorIamMemberMapOutput {
+	return o
+}
+
+func (o AttestorIamMemberMapOutput) MapIndex(k pulumi.StringInput) AttestorIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AttestorIamMember {
+		return vs[0].(map[string]AttestorIamMember)[vs[1].(string)]
+	}).(AttestorIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttestorIamMemberOutput{})
+	pulumi.RegisterOutputType(AttestorIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(AttestorIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(AttestorIamMemberMapOutput{})
 }

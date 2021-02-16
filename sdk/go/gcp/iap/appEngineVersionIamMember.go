@@ -213,6 +213,85 @@ func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberOutput)
 }
 
+func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
+	return i.ToAppEngineVersionIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *AppEngineVersionIamMember) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberPtrOutput)
+}
+
+type AppEngineVersionIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput
+	ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput
+}
+
+type appEngineVersionIamMemberPtrType AppEngineVersionIamMemberArgs
+
+func (*appEngineVersionIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineVersionIamMember)(nil))
+}
+
+func (i *appEngineVersionIamMemberPtrType) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
+	return i.ToAppEngineVersionIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *appEngineVersionIamMemberPtrType) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberPtrOutput)
+}
+
+// AppEngineVersionIamMemberArrayInput is an input type that accepts AppEngineVersionIamMemberArray and AppEngineVersionIamMemberArrayOutput values.
+// You can construct a concrete instance of `AppEngineVersionIamMemberArrayInput` via:
+//
+//          AppEngineVersionIamMemberArray{ AppEngineVersionIamMemberArgs{...} }
+type AppEngineVersionIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToAppEngineVersionIamMemberArrayOutput() AppEngineVersionIamMemberArrayOutput
+	ToAppEngineVersionIamMemberArrayOutputWithContext(context.Context) AppEngineVersionIamMemberArrayOutput
+}
+
+type AppEngineVersionIamMemberArray []AppEngineVersionIamMemberInput
+
+func (AppEngineVersionIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AppEngineVersionIamMember)(nil))
+}
+
+func (i AppEngineVersionIamMemberArray) ToAppEngineVersionIamMemberArrayOutput() AppEngineVersionIamMemberArrayOutput {
+	return i.ToAppEngineVersionIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i AppEngineVersionIamMemberArray) ToAppEngineVersionIamMemberArrayOutputWithContext(ctx context.Context) AppEngineVersionIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberArrayOutput)
+}
+
+// AppEngineVersionIamMemberMapInput is an input type that accepts AppEngineVersionIamMemberMap and AppEngineVersionIamMemberMapOutput values.
+// You can construct a concrete instance of `AppEngineVersionIamMemberMapInput` via:
+//
+//          AppEngineVersionIamMemberMap{ "key": AppEngineVersionIamMemberArgs{...} }
+type AppEngineVersionIamMemberMapInput interface {
+	pulumi.Input
+
+	ToAppEngineVersionIamMemberMapOutput() AppEngineVersionIamMemberMapOutput
+	ToAppEngineVersionIamMemberMapOutputWithContext(context.Context) AppEngineVersionIamMemberMapOutput
+}
+
+type AppEngineVersionIamMemberMap map[string]AppEngineVersionIamMemberInput
+
+func (AppEngineVersionIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AppEngineVersionIamMember)(nil))
+}
+
+func (i AppEngineVersionIamMemberMap) ToAppEngineVersionIamMemberMapOutput() AppEngineVersionIamMemberMapOutput {
+	return i.ToAppEngineVersionIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i AppEngineVersionIamMemberMap) ToAppEngineVersionIamMemberMapOutputWithContext(ctx context.Context) AppEngineVersionIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionIamMemberMapOutput)
+}
+
 type AppEngineVersionIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -229,6 +308,75 @@ func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberOutputWithCo
 	return o
 }
 
+func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
+	return o.ToAppEngineVersionIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineVersionIamMemberOutput) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
+	return o.ApplyT(func(v AppEngineVersionIamMember) *AppEngineVersionIamMember {
+		return &v
+	}).(AppEngineVersionIamMemberPtrOutput)
+}
+
+type AppEngineVersionIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppEngineVersionIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineVersionIamMember)(nil))
+}
+
+func (o AppEngineVersionIamMemberPtrOutput) ToAppEngineVersionIamMemberPtrOutput() AppEngineVersionIamMemberPtrOutput {
+	return o
+}
+
+func (o AppEngineVersionIamMemberPtrOutput) ToAppEngineVersionIamMemberPtrOutputWithContext(ctx context.Context) AppEngineVersionIamMemberPtrOutput {
+	return o
+}
+
+type AppEngineVersionIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (AppEngineVersionIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppEngineVersionIamMember)(nil))
+}
+
+func (o AppEngineVersionIamMemberArrayOutput) ToAppEngineVersionIamMemberArrayOutput() AppEngineVersionIamMemberArrayOutput {
+	return o
+}
+
+func (o AppEngineVersionIamMemberArrayOutput) ToAppEngineVersionIamMemberArrayOutputWithContext(ctx context.Context) AppEngineVersionIamMemberArrayOutput {
+	return o
+}
+
+func (o AppEngineVersionIamMemberArrayOutput) Index(i pulumi.IntInput) AppEngineVersionIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEngineVersionIamMember {
+		return vs[0].([]AppEngineVersionIamMember)[vs[1].(int)]
+	}).(AppEngineVersionIamMemberOutput)
+}
+
+type AppEngineVersionIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (AppEngineVersionIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AppEngineVersionIamMember)(nil))
+}
+
+func (o AppEngineVersionIamMemberMapOutput) ToAppEngineVersionIamMemberMapOutput() AppEngineVersionIamMemberMapOutput {
+	return o
+}
+
+func (o AppEngineVersionIamMemberMapOutput) ToAppEngineVersionIamMemberMapOutputWithContext(ctx context.Context) AppEngineVersionIamMemberMapOutput {
+	return o
+}
+
+func (o AppEngineVersionIamMemberMapOutput) MapIndex(k pulumi.StringInput) AppEngineVersionIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppEngineVersionIamMember {
+		return vs[0].(map[string]AppEngineVersionIamMember)[vs[1].(string)]
+	}).(AppEngineVersionIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppEngineVersionIamMemberOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionIamMemberMapOutput{})
 }

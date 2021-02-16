@@ -267,6 +267,85 @@ func (i *PerInstanceConfig) ToPerInstanceConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigOutput)
 }
 
+func (i *PerInstanceConfig) ToPerInstanceConfigPtrOutput() PerInstanceConfigPtrOutput {
+	return i.ToPerInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *PerInstanceConfig) ToPerInstanceConfigPtrOutputWithContext(ctx context.Context) PerInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigPtrOutput)
+}
+
+type PerInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPerInstanceConfigPtrOutput() PerInstanceConfigPtrOutput
+	ToPerInstanceConfigPtrOutputWithContext(ctx context.Context) PerInstanceConfigPtrOutput
+}
+
+type perInstanceConfigPtrType PerInstanceConfigArgs
+
+func (*perInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerInstanceConfig)(nil))
+}
+
+func (i *perInstanceConfigPtrType) ToPerInstanceConfigPtrOutput() PerInstanceConfigPtrOutput {
+	return i.ToPerInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *perInstanceConfigPtrType) ToPerInstanceConfigPtrOutputWithContext(ctx context.Context) PerInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigPtrOutput)
+}
+
+// PerInstanceConfigArrayInput is an input type that accepts PerInstanceConfigArray and PerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `PerInstanceConfigArrayInput` via:
+//
+//          PerInstanceConfigArray{ PerInstanceConfigArgs{...} }
+type PerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToPerInstanceConfigArrayOutput() PerInstanceConfigArrayOutput
+	ToPerInstanceConfigArrayOutputWithContext(context.Context) PerInstanceConfigArrayOutput
+}
+
+type PerInstanceConfigArray []PerInstanceConfigInput
+
+func (PerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PerInstanceConfig)(nil))
+}
+
+func (i PerInstanceConfigArray) ToPerInstanceConfigArrayOutput() PerInstanceConfigArrayOutput {
+	return i.ToPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i PerInstanceConfigArray) ToPerInstanceConfigArrayOutputWithContext(ctx context.Context) PerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigArrayOutput)
+}
+
+// PerInstanceConfigMapInput is an input type that accepts PerInstanceConfigMap and PerInstanceConfigMapOutput values.
+// You can construct a concrete instance of `PerInstanceConfigMapInput` via:
+//
+//          PerInstanceConfigMap{ "key": PerInstanceConfigArgs{...} }
+type PerInstanceConfigMapInput interface {
+	pulumi.Input
+
+	ToPerInstanceConfigMapOutput() PerInstanceConfigMapOutput
+	ToPerInstanceConfigMapOutputWithContext(context.Context) PerInstanceConfigMapOutput
+}
+
+type PerInstanceConfigMap map[string]PerInstanceConfigInput
+
+func (PerInstanceConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PerInstanceConfig)(nil))
+}
+
+func (i PerInstanceConfigMap) ToPerInstanceConfigMapOutput() PerInstanceConfigMapOutput {
+	return i.ToPerInstanceConfigMapOutputWithContext(context.Background())
+}
+
+func (i PerInstanceConfigMap) ToPerInstanceConfigMapOutputWithContext(ctx context.Context) PerInstanceConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PerInstanceConfigMapOutput)
+}
+
 type PerInstanceConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -283,6 +362,75 @@ func (o PerInstanceConfigOutput) ToPerInstanceConfigOutputWithContext(ctx contex
 	return o
 }
 
+func (o PerInstanceConfigOutput) ToPerInstanceConfigPtrOutput() PerInstanceConfigPtrOutput {
+	return o.ToPerInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PerInstanceConfigOutput) ToPerInstanceConfigPtrOutputWithContext(ctx context.Context) PerInstanceConfigPtrOutput {
+	return o.ApplyT(func(v PerInstanceConfig) *PerInstanceConfig {
+		return &v
+	}).(PerInstanceConfigPtrOutput)
+}
+
+type PerInstanceConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PerInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PerInstanceConfig)(nil))
+}
+
+func (o PerInstanceConfigPtrOutput) ToPerInstanceConfigPtrOutput() PerInstanceConfigPtrOutput {
+	return o
+}
+
+func (o PerInstanceConfigPtrOutput) ToPerInstanceConfigPtrOutputWithContext(ctx context.Context) PerInstanceConfigPtrOutput {
+	return o
+}
+
+type PerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (PerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PerInstanceConfig)(nil))
+}
+
+func (o PerInstanceConfigArrayOutput) ToPerInstanceConfigArrayOutput() PerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o PerInstanceConfigArrayOutput) ToPerInstanceConfigArrayOutputWithContext(ctx context.Context) PerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o PerInstanceConfigArrayOutput) Index(i pulumi.IntInput) PerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PerInstanceConfig {
+		return vs[0].([]PerInstanceConfig)[vs[1].(int)]
+	}).(PerInstanceConfigOutput)
+}
+
+type PerInstanceConfigMapOutput struct{ *pulumi.OutputState }
+
+func (PerInstanceConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PerInstanceConfig)(nil))
+}
+
+func (o PerInstanceConfigMapOutput) ToPerInstanceConfigMapOutput() PerInstanceConfigMapOutput {
+	return o
+}
+
+func (o PerInstanceConfigMapOutput) ToPerInstanceConfigMapOutputWithContext(ctx context.Context) PerInstanceConfigMapOutput {
+	return o
+}
+
+func (o PerInstanceConfigMapOutput) MapIndex(k pulumi.StringInput) PerInstanceConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PerInstanceConfig {
+		return vs[0].(map[string]PerInstanceConfig)[vs[1].(string)]
+	}).(PerInstanceConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(PerInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PerInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(PerInstanceConfigMapOutput{})
 }

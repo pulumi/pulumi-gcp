@@ -119,7 +119,8 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
     constructor(name: string, args: NetworkPeeringRoutesConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkPeeringRoutesConfigArgs | NetworkPeeringRoutesConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkPeeringRoutesConfigState | undefined;
             inputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
             inputs["importCustomRoutes"] = state ? state.importCustomRoutes : undefined;
@@ -128,16 +129,16 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as NetworkPeeringRoutesConfigArgs | undefined;
-            if ((!args || args.exportCustomRoutes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.exportCustomRoutes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'exportCustomRoutes'");
             }
-            if ((!args || args.importCustomRoutes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.importCustomRoutes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importCustomRoutes'");
             }
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.peering === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peering === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peering'");
             }
             inputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
@@ -146,12 +147,8 @@ export class NetworkPeeringRoutesConfig extends pulumi.CustomResource {
             inputs["peering"] = args ? args.peering : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkPeeringRoutesConfig.__pulumiType, name, inputs, opts);
     }

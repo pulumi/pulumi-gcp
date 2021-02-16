@@ -103,6 +103,85 @@ func (i *AuthorityIamPolicy) ToAuthorityIamPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamPolicyOutput)
 }
 
+func (i *AuthorityIamPolicy) ToAuthorityIamPolicyPtrOutput() AuthorityIamPolicyPtrOutput {
+	return i.ToAuthorityIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthorityIamPolicy) ToAuthorityIamPolicyPtrOutputWithContext(ctx context.Context) AuthorityIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamPolicyPtrOutput)
+}
+
+type AuthorityIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAuthorityIamPolicyPtrOutput() AuthorityIamPolicyPtrOutput
+	ToAuthorityIamPolicyPtrOutputWithContext(ctx context.Context) AuthorityIamPolicyPtrOutput
+}
+
+type authorityIamPolicyPtrType AuthorityIamPolicyArgs
+
+func (*authorityIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityIamPolicy)(nil))
+}
+
+func (i *authorityIamPolicyPtrType) ToAuthorityIamPolicyPtrOutput() AuthorityIamPolicyPtrOutput {
+	return i.ToAuthorityIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *authorityIamPolicyPtrType) ToAuthorityIamPolicyPtrOutputWithContext(ctx context.Context) AuthorityIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamPolicyPtrOutput)
+}
+
+// AuthorityIamPolicyArrayInput is an input type that accepts AuthorityIamPolicyArray and AuthorityIamPolicyArrayOutput values.
+// You can construct a concrete instance of `AuthorityIamPolicyArrayInput` via:
+//
+//          AuthorityIamPolicyArray{ AuthorityIamPolicyArgs{...} }
+type AuthorityIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAuthorityIamPolicyArrayOutput() AuthorityIamPolicyArrayOutput
+	ToAuthorityIamPolicyArrayOutputWithContext(context.Context) AuthorityIamPolicyArrayOutput
+}
+
+type AuthorityIamPolicyArray []AuthorityIamPolicyInput
+
+func (AuthorityIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthorityIamPolicy)(nil))
+}
+
+func (i AuthorityIamPolicyArray) ToAuthorityIamPolicyArrayOutput() AuthorityIamPolicyArrayOutput {
+	return i.ToAuthorityIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AuthorityIamPolicyArray) ToAuthorityIamPolicyArrayOutputWithContext(ctx context.Context) AuthorityIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamPolicyArrayOutput)
+}
+
+// AuthorityIamPolicyMapInput is an input type that accepts AuthorityIamPolicyMap and AuthorityIamPolicyMapOutput values.
+// You can construct a concrete instance of `AuthorityIamPolicyMapInput` via:
+//
+//          AuthorityIamPolicyMap{ "key": AuthorityIamPolicyArgs{...} }
+type AuthorityIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToAuthorityIamPolicyMapOutput() AuthorityIamPolicyMapOutput
+	ToAuthorityIamPolicyMapOutputWithContext(context.Context) AuthorityIamPolicyMapOutput
+}
+
+type AuthorityIamPolicyMap map[string]AuthorityIamPolicyInput
+
+func (AuthorityIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthorityIamPolicy)(nil))
+}
+
+func (i AuthorityIamPolicyMap) ToAuthorityIamPolicyMapOutput() AuthorityIamPolicyMapOutput {
+	return i.ToAuthorityIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i AuthorityIamPolicyMap) ToAuthorityIamPolicyMapOutputWithContext(ctx context.Context) AuthorityIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamPolicyMapOutput)
+}
+
 type AuthorityIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -119,6 +198,75 @@ func (o AuthorityIamPolicyOutput) ToAuthorityIamPolicyOutputWithContext(ctx cont
 	return o
 }
 
+func (o AuthorityIamPolicyOutput) ToAuthorityIamPolicyPtrOutput() AuthorityIamPolicyPtrOutput {
+	return o.ToAuthorityIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorityIamPolicyOutput) ToAuthorityIamPolicyPtrOutputWithContext(ctx context.Context) AuthorityIamPolicyPtrOutput {
+	return o.ApplyT(func(v AuthorityIamPolicy) *AuthorityIamPolicy {
+		return &v
+	}).(AuthorityIamPolicyPtrOutput)
+}
+
+type AuthorityIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorityIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityIamPolicy)(nil))
+}
+
+func (o AuthorityIamPolicyPtrOutput) ToAuthorityIamPolicyPtrOutput() AuthorityIamPolicyPtrOutput {
+	return o
+}
+
+func (o AuthorityIamPolicyPtrOutput) ToAuthorityIamPolicyPtrOutputWithContext(ctx context.Context) AuthorityIamPolicyPtrOutput {
+	return o
+}
+
+type AuthorityIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorityIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorityIamPolicy)(nil))
+}
+
+func (o AuthorityIamPolicyArrayOutput) ToAuthorityIamPolicyArrayOutput() AuthorityIamPolicyArrayOutput {
+	return o
+}
+
+func (o AuthorityIamPolicyArrayOutput) ToAuthorityIamPolicyArrayOutputWithContext(ctx context.Context) AuthorityIamPolicyArrayOutput {
+	return o
+}
+
+func (o AuthorityIamPolicyArrayOutput) Index(i pulumi.IntInput) AuthorityIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorityIamPolicy {
+		return vs[0].([]AuthorityIamPolicy)[vs[1].(int)]
+	}).(AuthorityIamPolicyOutput)
+}
+
+type AuthorityIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (AuthorityIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthorityIamPolicy)(nil))
+}
+
+func (o AuthorityIamPolicyMapOutput) ToAuthorityIamPolicyMapOutput() AuthorityIamPolicyMapOutput {
+	return o
+}
+
+func (o AuthorityIamPolicyMapOutput) ToAuthorityIamPolicyMapOutputWithContext(ctx context.Context) AuthorityIamPolicyMapOutput {
+	return o
+}
+
+func (o AuthorityIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AuthorityIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthorityIamPolicy {
+		return vs[0].(map[string]AuthorityIamPolicy)[vs[1].(string)]
+	}).(AuthorityIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorityIamPolicyOutput{})
+	pulumi.RegisterOutputType(AuthorityIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AuthorityIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AuthorityIamPolicyMapOutput{})
 }

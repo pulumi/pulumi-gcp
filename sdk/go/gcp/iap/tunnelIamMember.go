@@ -174,6 +174,85 @@ func (i *TunnelIamMember) ToTunnelIamMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberOutput)
 }
 
+func (i *TunnelIamMember) ToTunnelIamMemberPtrOutput() TunnelIamMemberPtrOutput {
+	return i.ToTunnelIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *TunnelIamMember) ToTunnelIamMemberPtrOutputWithContext(ctx context.Context) TunnelIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberPtrOutput)
+}
+
+type TunnelIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToTunnelIamMemberPtrOutput() TunnelIamMemberPtrOutput
+	ToTunnelIamMemberPtrOutputWithContext(ctx context.Context) TunnelIamMemberPtrOutput
+}
+
+type tunnelIamMemberPtrType TunnelIamMemberArgs
+
+func (*tunnelIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelIamMember)(nil))
+}
+
+func (i *tunnelIamMemberPtrType) ToTunnelIamMemberPtrOutput() TunnelIamMemberPtrOutput {
+	return i.ToTunnelIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelIamMemberPtrType) ToTunnelIamMemberPtrOutputWithContext(ctx context.Context) TunnelIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberPtrOutput)
+}
+
+// TunnelIamMemberArrayInput is an input type that accepts TunnelIamMemberArray and TunnelIamMemberArrayOutput values.
+// You can construct a concrete instance of `TunnelIamMemberArrayInput` via:
+//
+//          TunnelIamMemberArray{ TunnelIamMemberArgs{...} }
+type TunnelIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToTunnelIamMemberArrayOutput() TunnelIamMemberArrayOutput
+	ToTunnelIamMemberArrayOutputWithContext(context.Context) TunnelIamMemberArrayOutput
+}
+
+type TunnelIamMemberArray []TunnelIamMemberInput
+
+func (TunnelIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TunnelIamMember)(nil))
+}
+
+func (i TunnelIamMemberArray) ToTunnelIamMemberArrayOutput() TunnelIamMemberArrayOutput {
+	return i.ToTunnelIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelIamMemberArray) ToTunnelIamMemberArrayOutputWithContext(ctx context.Context) TunnelIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberArrayOutput)
+}
+
+// TunnelIamMemberMapInput is an input type that accepts TunnelIamMemberMap and TunnelIamMemberMapOutput values.
+// You can construct a concrete instance of `TunnelIamMemberMapInput` via:
+//
+//          TunnelIamMemberMap{ "key": TunnelIamMemberArgs{...} }
+type TunnelIamMemberMapInput interface {
+	pulumi.Input
+
+	ToTunnelIamMemberMapOutput() TunnelIamMemberMapOutput
+	ToTunnelIamMemberMapOutputWithContext(context.Context) TunnelIamMemberMapOutput
+}
+
+type TunnelIamMemberMap map[string]TunnelIamMemberInput
+
+func (TunnelIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TunnelIamMember)(nil))
+}
+
+func (i TunnelIamMemberMap) ToTunnelIamMemberMapOutput() TunnelIamMemberMapOutput {
+	return i.ToTunnelIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i TunnelIamMemberMap) ToTunnelIamMemberMapOutputWithContext(ctx context.Context) TunnelIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamMemberMapOutput)
+}
+
 type TunnelIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -190,6 +269,75 @@ func (o TunnelIamMemberOutput) ToTunnelIamMemberOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o TunnelIamMemberOutput) ToTunnelIamMemberPtrOutput() TunnelIamMemberPtrOutput {
+	return o.ToTunnelIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelIamMemberOutput) ToTunnelIamMemberPtrOutputWithContext(ctx context.Context) TunnelIamMemberPtrOutput {
+	return o.ApplyT(func(v TunnelIamMember) *TunnelIamMember {
+		return &v
+	}).(TunnelIamMemberPtrOutput)
+}
+
+type TunnelIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TunnelIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelIamMember)(nil))
+}
+
+func (o TunnelIamMemberPtrOutput) ToTunnelIamMemberPtrOutput() TunnelIamMemberPtrOutput {
+	return o
+}
+
+func (o TunnelIamMemberPtrOutput) ToTunnelIamMemberPtrOutputWithContext(ctx context.Context) TunnelIamMemberPtrOutput {
+	return o
+}
+
+type TunnelIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelIamMember)(nil))
+}
+
+func (o TunnelIamMemberArrayOutput) ToTunnelIamMemberArrayOutput() TunnelIamMemberArrayOutput {
+	return o
+}
+
+func (o TunnelIamMemberArrayOutput) ToTunnelIamMemberArrayOutputWithContext(ctx context.Context) TunnelIamMemberArrayOutput {
+	return o
+}
+
+func (o TunnelIamMemberArrayOutput) Index(i pulumi.IntInput) TunnelIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelIamMember {
+		return vs[0].([]TunnelIamMember)[vs[1].(int)]
+	}).(TunnelIamMemberOutput)
+}
+
+type TunnelIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (TunnelIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TunnelIamMember)(nil))
+}
+
+func (o TunnelIamMemberMapOutput) ToTunnelIamMemberMapOutput() TunnelIamMemberMapOutput {
+	return o
+}
+
+func (o TunnelIamMemberMapOutput) ToTunnelIamMemberMapOutputWithContext(ctx context.Context) TunnelIamMemberMapOutput {
+	return o
+}
+
+func (o TunnelIamMemberMapOutput) MapIndex(k pulumi.StringInput) TunnelIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TunnelIamMember {
+		return vs[0].(map[string]TunnelIamMember)[vs[1].(string)]
+	}).(TunnelIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TunnelIamMemberOutput{})
+	pulumi.RegisterOutputType(TunnelIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(TunnelIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(TunnelIamMemberMapOutput{})
 }

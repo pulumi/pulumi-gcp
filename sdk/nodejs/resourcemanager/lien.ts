@@ -106,7 +106,8 @@ export class Lien extends pulumi.CustomResource {
     constructor(name: string, args: LienArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LienArgs | LienState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LienState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -116,16 +117,16 @@ export class Lien extends pulumi.CustomResource {
             inputs["restrictions"] = state ? state.restrictions : undefined;
         } else {
             const args = argsOrState as LienArgs | undefined;
-            if ((!args || args.origin === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.origin === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'origin'");
             }
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.reason === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.reason === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reason'");
             }
-            if ((!args || args.restrictions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.restrictions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'restrictions'");
             }
             inputs["origin"] = args ? args.origin : undefined;
@@ -135,12 +136,8 @@ export class Lien extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Lien.__pulumiType, name, inputs, opts);
     }

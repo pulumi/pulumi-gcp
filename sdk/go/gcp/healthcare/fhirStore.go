@@ -520,6 +520,85 @@ func (i *FhirStore) ToFhirStoreOutputWithContext(ctx context.Context) FhirStoreO
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreOutput)
 }
 
+func (i *FhirStore) ToFhirStorePtrOutput() FhirStorePtrOutput {
+	return i.ToFhirStorePtrOutputWithContext(context.Background())
+}
+
+func (i *FhirStore) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStorePtrOutput)
+}
+
+type FhirStorePtrInput interface {
+	pulumi.Input
+
+	ToFhirStorePtrOutput() FhirStorePtrOutput
+	ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput
+}
+
+type fhirStorePtrType FhirStoreArgs
+
+func (*fhirStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStore)(nil))
+}
+
+func (i *fhirStorePtrType) ToFhirStorePtrOutput() FhirStorePtrOutput {
+	return i.ToFhirStorePtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStorePtrType) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStorePtrOutput)
+}
+
+// FhirStoreArrayInput is an input type that accepts FhirStoreArray and FhirStoreArrayOutput values.
+// You can construct a concrete instance of `FhirStoreArrayInput` via:
+//
+//          FhirStoreArray{ FhirStoreArgs{...} }
+type FhirStoreArrayInput interface {
+	pulumi.Input
+
+	ToFhirStoreArrayOutput() FhirStoreArrayOutput
+	ToFhirStoreArrayOutputWithContext(context.Context) FhirStoreArrayOutput
+}
+
+type FhirStoreArray []FhirStoreInput
+
+func (FhirStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FhirStore)(nil))
+}
+
+func (i FhirStoreArray) ToFhirStoreArrayOutput() FhirStoreArrayOutput {
+	return i.ToFhirStoreArrayOutputWithContext(context.Background())
+}
+
+func (i FhirStoreArray) ToFhirStoreArrayOutputWithContext(ctx context.Context) FhirStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreArrayOutput)
+}
+
+// FhirStoreMapInput is an input type that accepts FhirStoreMap and FhirStoreMapOutput values.
+// You can construct a concrete instance of `FhirStoreMapInput` via:
+//
+//          FhirStoreMap{ "key": FhirStoreArgs{...} }
+type FhirStoreMapInput interface {
+	pulumi.Input
+
+	ToFhirStoreMapOutput() FhirStoreMapOutput
+	ToFhirStoreMapOutputWithContext(context.Context) FhirStoreMapOutput
+}
+
+type FhirStoreMap map[string]FhirStoreInput
+
+func (FhirStoreMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FhirStore)(nil))
+}
+
+func (i FhirStoreMap) ToFhirStoreMapOutput() FhirStoreMapOutput {
+	return i.ToFhirStoreMapOutputWithContext(context.Background())
+}
+
+func (i FhirStoreMap) ToFhirStoreMapOutputWithContext(ctx context.Context) FhirStoreMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreMapOutput)
+}
+
 type FhirStoreOutput struct {
 	*pulumi.OutputState
 }
@@ -536,6 +615,75 @@ func (o FhirStoreOutput) ToFhirStoreOutputWithContext(ctx context.Context) FhirS
 	return o
 }
 
+func (o FhirStoreOutput) ToFhirStorePtrOutput() FhirStorePtrOutput {
+	return o.ToFhirStorePtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreOutput) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
+	return o.ApplyT(func(v FhirStore) *FhirStore {
+		return &v
+	}).(FhirStorePtrOutput)
+}
+
+type FhirStorePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FhirStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStore)(nil))
+}
+
+func (o FhirStorePtrOutput) ToFhirStorePtrOutput() FhirStorePtrOutput {
+	return o
+}
+
+func (o FhirStorePtrOutput) ToFhirStorePtrOutputWithContext(ctx context.Context) FhirStorePtrOutput {
+	return o
+}
+
+type FhirStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStore)(nil))
+}
+
+func (o FhirStoreArrayOutput) ToFhirStoreArrayOutput() FhirStoreArrayOutput {
+	return o
+}
+
+func (o FhirStoreArrayOutput) ToFhirStoreArrayOutputWithContext(ctx context.Context) FhirStoreArrayOutput {
+	return o
+}
+
+func (o FhirStoreArrayOutput) Index(i pulumi.IntInput) FhirStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStore {
+		return vs[0].([]FhirStore)[vs[1].(int)]
+	}).(FhirStoreOutput)
+}
+
+type FhirStoreMapOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FhirStore)(nil))
+}
+
+func (o FhirStoreMapOutput) ToFhirStoreMapOutput() FhirStoreMapOutput {
+	return o
+}
+
+func (o FhirStoreMapOutput) ToFhirStoreMapOutputWithContext(ctx context.Context) FhirStoreMapOutput {
+	return o
+}
+
+func (o FhirStoreMapOutput) MapIndex(k pulumi.StringInput) FhirStoreOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStore {
+		return vs[0].(map[string]FhirStore)[vs[1].(string)]
+	}).(FhirStoreOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FhirStoreOutput{})
+	pulumi.RegisterOutputType(FhirStorePtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreArrayOutput{})
+	pulumi.RegisterOutputType(FhirStoreMapOutput{})
 }

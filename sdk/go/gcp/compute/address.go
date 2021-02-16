@@ -490,6 +490,85 @@ func (i *Address) ToAddressOutputWithContext(ctx context.Context) AddressOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(AddressOutput)
 }
 
+func (i *Address) ToAddressPtrOutput() AddressPtrOutput {
+	return i.ToAddressPtrOutputWithContext(context.Background())
+}
+
+func (i *Address) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressPtrOutput)
+}
+
+type AddressPtrInput interface {
+	pulumi.Input
+
+	ToAddressPtrOutput() AddressPtrOutput
+	ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput
+}
+
+type addressPtrType AddressArgs
+
+func (*addressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Address)(nil))
+}
+
+func (i *addressPtrType) ToAddressPtrOutput() AddressPtrOutput {
+	return i.ToAddressPtrOutputWithContext(context.Background())
+}
+
+func (i *addressPtrType) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressPtrOutput)
+}
+
+// AddressArrayInput is an input type that accepts AddressArray and AddressArrayOutput values.
+// You can construct a concrete instance of `AddressArrayInput` via:
+//
+//          AddressArray{ AddressArgs{...} }
+type AddressArrayInput interface {
+	pulumi.Input
+
+	ToAddressArrayOutput() AddressArrayOutput
+	ToAddressArrayOutputWithContext(context.Context) AddressArrayOutput
+}
+
+type AddressArray []AddressInput
+
+func (AddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Address)(nil))
+}
+
+func (i AddressArray) ToAddressArrayOutput() AddressArrayOutput {
+	return i.ToAddressArrayOutputWithContext(context.Background())
+}
+
+func (i AddressArray) ToAddressArrayOutputWithContext(ctx context.Context) AddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressArrayOutput)
+}
+
+// AddressMapInput is an input type that accepts AddressMap and AddressMapOutput values.
+// You can construct a concrete instance of `AddressMapInput` via:
+//
+//          AddressMap{ "key": AddressArgs{...} }
+type AddressMapInput interface {
+	pulumi.Input
+
+	ToAddressMapOutput() AddressMapOutput
+	ToAddressMapOutputWithContext(context.Context) AddressMapOutput
+}
+
+type AddressMap map[string]AddressInput
+
+func (AddressMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Address)(nil))
+}
+
+func (i AddressMap) ToAddressMapOutput() AddressMapOutput {
+	return i.ToAddressMapOutputWithContext(context.Background())
+}
+
+func (i AddressMap) ToAddressMapOutputWithContext(ctx context.Context) AddressMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressMapOutput)
+}
+
 type AddressOutput struct {
 	*pulumi.OutputState
 }
@@ -506,6 +585,75 @@ func (o AddressOutput) ToAddressOutputWithContext(ctx context.Context) AddressOu
 	return o
 }
 
+func (o AddressOutput) ToAddressPtrOutput() AddressPtrOutput {
+	return o.ToAddressPtrOutputWithContext(context.Background())
+}
+
+func (o AddressOutput) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
+	return o.ApplyT(func(v Address) *Address {
+		return &v
+	}).(AddressPtrOutput)
+}
+
+type AddressPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AddressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Address)(nil))
+}
+
+func (o AddressPtrOutput) ToAddressPtrOutput() AddressPtrOutput {
+	return o
+}
+
+func (o AddressPtrOutput) ToAddressPtrOutputWithContext(ctx context.Context) AddressPtrOutput {
+	return o
+}
+
+type AddressArrayOutput struct{ *pulumi.OutputState }
+
+func (AddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Address)(nil))
+}
+
+func (o AddressArrayOutput) ToAddressArrayOutput() AddressArrayOutput {
+	return o
+}
+
+func (o AddressArrayOutput) ToAddressArrayOutputWithContext(ctx context.Context) AddressArrayOutput {
+	return o
+}
+
+func (o AddressArrayOutput) Index(i pulumi.IntInput) AddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Address {
+		return vs[0].([]Address)[vs[1].(int)]
+	}).(AddressOutput)
+}
+
+type AddressMapOutput struct{ *pulumi.OutputState }
+
+func (AddressMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Address)(nil))
+}
+
+func (o AddressMapOutput) ToAddressMapOutput() AddressMapOutput {
+	return o
+}
+
+func (o AddressMapOutput) ToAddressMapOutputWithContext(ctx context.Context) AddressMapOutput {
+	return o
+}
+
+func (o AddressMapOutput) MapIndex(k pulumi.StringInput) AddressOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Address {
+		return vs[0].(map[string]Address)[vs[1].(string)]
+	}).(AddressOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AddressOutput{})
+	pulumi.RegisterOutputType(AddressPtrOutput{})
+	pulumi.RegisterOutputType(AddressArrayOutput{})
+	pulumi.RegisterOutputType(AddressMapOutput{})
 }

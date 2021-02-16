@@ -90,24 +90,21 @@ export class DefaultObjectACL extends pulumi.CustomResource {
     constructor(name: string, args: DefaultObjectACLArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DefaultObjectACLArgs | DefaultObjectACLState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DefaultObjectACLState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["roleEntities"] = state ? state.roleEntities : undefined;
         } else {
             const args = argsOrState as DefaultObjectACLArgs | undefined;
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["roleEntities"] = args ? args.roleEntities : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DefaultObjectACL.__pulumiType, name, inputs, opts);
     }

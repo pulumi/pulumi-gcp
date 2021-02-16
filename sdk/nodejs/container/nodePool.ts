@@ -214,7 +214,8 @@ export class NodePool extends pulumi.CustomResource {
     constructor(name: string, args: NodePoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodePoolArgs | NodePoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NodePoolState | undefined;
             inputs["autoscaling"] = state ? state.autoscaling : undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
@@ -233,7 +234,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as NodePoolArgs | undefined;
-            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
             inputs["autoscaling"] = args ? args.autoscaling : undefined;
@@ -252,12 +253,8 @@ export class NodePool extends pulumi.CustomResource {
             inputs["version"] = args ? args.version : undefined;
             inputs["instanceGroupUrls"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodePool.__pulumiType, name, inputs, opts);
     }

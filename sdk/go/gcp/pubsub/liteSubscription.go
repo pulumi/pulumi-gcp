@@ -233,6 +233,85 @@ func (i *LiteSubscription) ToLiteSubscriptionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionOutput)
 }
 
+func (i *LiteSubscription) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
+	return i.ToLiteSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *LiteSubscription) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionPtrOutput)
+}
+
+type LiteSubscriptionPtrInput interface {
+	pulumi.Input
+
+	ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput
+	ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput
+}
+
+type liteSubscriptionPtrType LiteSubscriptionArgs
+
+func (*liteSubscriptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteSubscription)(nil))
+}
+
+func (i *liteSubscriptionPtrType) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
+	return i.ToLiteSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (i *liteSubscriptionPtrType) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionPtrOutput)
+}
+
+// LiteSubscriptionArrayInput is an input type that accepts LiteSubscriptionArray and LiteSubscriptionArrayOutput values.
+// You can construct a concrete instance of `LiteSubscriptionArrayInput` via:
+//
+//          LiteSubscriptionArray{ LiteSubscriptionArgs{...} }
+type LiteSubscriptionArrayInput interface {
+	pulumi.Input
+
+	ToLiteSubscriptionArrayOutput() LiteSubscriptionArrayOutput
+	ToLiteSubscriptionArrayOutputWithContext(context.Context) LiteSubscriptionArrayOutput
+}
+
+type LiteSubscriptionArray []LiteSubscriptionInput
+
+func (LiteSubscriptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*LiteSubscription)(nil))
+}
+
+func (i LiteSubscriptionArray) ToLiteSubscriptionArrayOutput() LiteSubscriptionArrayOutput {
+	return i.ToLiteSubscriptionArrayOutputWithContext(context.Background())
+}
+
+func (i LiteSubscriptionArray) ToLiteSubscriptionArrayOutputWithContext(ctx context.Context) LiteSubscriptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionArrayOutput)
+}
+
+// LiteSubscriptionMapInput is an input type that accepts LiteSubscriptionMap and LiteSubscriptionMapOutput values.
+// You can construct a concrete instance of `LiteSubscriptionMapInput` via:
+//
+//          LiteSubscriptionMap{ "key": LiteSubscriptionArgs{...} }
+type LiteSubscriptionMapInput interface {
+	pulumi.Input
+
+	ToLiteSubscriptionMapOutput() LiteSubscriptionMapOutput
+	ToLiteSubscriptionMapOutputWithContext(context.Context) LiteSubscriptionMapOutput
+}
+
+type LiteSubscriptionMap map[string]LiteSubscriptionInput
+
+func (LiteSubscriptionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*LiteSubscription)(nil))
+}
+
+func (i LiteSubscriptionMap) ToLiteSubscriptionMapOutput() LiteSubscriptionMapOutput {
+	return i.ToLiteSubscriptionMapOutputWithContext(context.Background())
+}
+
+func (i LiteSubscriptionMap) ToLiteSubscriptionMapOutputWithContext(ctx context.Context) LiteSubscriptionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LiteSubscriptionMapOutput)
+}
+
 type LiteSubscriptionOutput struct {
 	*pulumi.OutputState
 }
@@ -249,6 +328,75 @@ func (o LiteSubscriptionOutput) ToLiteSubscriptionOutputWithContext(ctx context.
 	return o
 }
 
+func (o LiteSubscriptionOutput) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
+	return o.ToLiteSubscriptionPtrOutputWithContext(context.Background())
+}
+
+func (o LiteSubscriptionOutput) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
+	return o.ApplyT(func(v LiteSubscription) *LiteSubscription {
+		return &v
+	}).(LiteSubscriptionPtrOutput)
+}
+
+type LiteSubscriptionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LiteSubscriptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LiteSubscription)(nil))
+}
+
+func (o LiteSubscriptionPtrOutput) ToLiteSubscriptionPtrOutput() LiteSubscriptionPtrOutput {
+	return o
+}
+
+func (o LiteSubscriptionPtrOutput) ToLiteSubscriptionPtrOutputWithContext(ctx context.Context) LiteSubscriptionPtrOutput {
+	return o
+}
+
+type LiteSubscriptionArrayOutput struct{ *pulumi.OutputState }
+
+func (LiteSubscriptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LiteSubscription)(nil))
+}
+
+func (o LiteSubscriptionArrayOutput) ToLiteSubscriptionArrayOutput() LiteSubscriptionArrayOutput {
+	return o
+}
+
+func (o LiteSubscriptionArrayOutput) ToLiteSubscriptionArrayOutputWithContext(ctx context.Context) LiteSubscriptionArrayOutput {
+	return o
+}
+
+func (o LiteSubscriptionArrayOutput) Index(i pulumi.IntInput) LiteSubscriptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LiteSubscription {
+		return vs[0].([]LiteSubscription)[vs[1].(int)]
+	}).(LiteSubscriptionOutput)
+}
+
+type LiteSubscriptionMapOutput struct{ *pulumi.OutputState }
+
+func (LiteSubscriptionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]LiteSubscription)(nil))
+}
+
+func (o LiteSubscriptionMapOutput) ToLiteSubscriptionMapOutput() LiteSubscriptionMapOutput {
+	return o
+}
+
+func (o LiteSubscriptionMapOutput) ToLiteSubscriptionMapOutputWithContext(ctx context.Context) LiteSubscriptionMapOutput {
+	return o
+}
+
+func (o LiteSubscriptionMapOutput) MapIndex(k pulumi.StringInput) LiteSubscriptionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) LiteSubscription {
+		return vs[0].(map[string]LiteSubscription)[vs[1].(string)]
+	}).(LiteSubscriptionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LiteSubscriptionOutput{})
+	pulumi.RegisterOutputType(LiteSubscriptionPtrOutput{})
+	pulumi.RegisterOutputType(LiteSubscriptionArrayOutput{})
+	pulumi.RegisterOutputType(LiteSubscriptionMapOutput{})
 }

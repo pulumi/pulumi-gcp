@@ -160,6 +160,85 @@ func (i *Client) ToClientOutputWithContext(ctx context.Context) ClientOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ClientOutput)
 }
 
+func (i *Client) ToClientPtrOutput() ClientPtrOutput {
+	return i.ToClientPtrOutputWithContext(context.Background())
+}
+
+func (i *Client) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientPtrOutput)
+}
+
+type ClientPtrInput interface {
+	pulumi.Input
+
+	ToClientPtrOutput() ClientPtrOutput
+	ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput
+}
+
+type clientPtrType ClientArgs
+
+func (*clientPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Client)(nil))
+}
+
+func (i *clientPtrType) ToClientPtrOutput() ClientPtrOutput {
+	return i.ToClientPtrOutputWithContext(context.Background())
+}
+
+func (i *clientPtrType) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientPtrOutput)
+}
+
+// ClientArrayInput is an input type that accepts ClientArray and ClientArrayOutput values.
+// You can construct a concrete instance of `ClientArrayInput` via:
+//
+//          ClientArray{ ClientArgs{...} }
+type ClientArrayInput interface {
+	pulumi.Input
+
+	ToClientArrayOutput() ClientArrayOutput
+	ToClientArrayOutputWithContext(context.Context) ClientArrayOutput
+}
+
+type ClientArray []ClientInput
+
+func (ClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Client)(nil))
+}
+
+func (i ClientArray) ToClientArrayOutput() ClientArrayOutput {
+	return i.ToClientArrayOutputWithContext(context.Background())
+}
+
+func (i ClientArray) ToClientArrayOutputWithContext(ctx context.Context) ClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientArrayOutput)
+}
+
+// ClientMapInput is an input type that accepts ClientMap and ClientMapOutput values.
+// You can construct a concrete instance of `ClientMapInput` via:
+//
+//          ClientMap{ "key": ClientArgs{...} }
+type ClientMapInput interface {
+	pulumi.Input
+
+	ToClientMapOutput() ClientMapOutput
+	ToClientMapOutputWithContext(context.Context) ClientMapOutput
+}
+
+type ClientMap map[string]ClientInput
+
+func (ClientMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Client)(nil))
+}
+
+func (i ClientMap) ToClientMapOutput() ClientMapOutput {
+	return i.ToClientMapOutputWithContext(context.Background())
+}
+
+func (i ClientMap) ToClientMapOutputWithContext(ctx context.Context) ClientMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientMapOutput)
+}
+
 type ClientOutput struct {
 	*pulumi.OutputState
 }
@@ -176,6 +255,75 @@ func (o ClientOutput) ToClientOutputWithContext(ctx context.Context) ClientOutpu
 	return o
 }
 
+func (o ClientOutput) ToClientPtrOutput() ClientPtrOutput {
+	return o.ToClientPtrOutputWithContext(context.Background())
+}
+
+func (o ClientOutput) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
+	return o.ApplyT(func(v Client) *Client {
+		return &v
+	}).(ClientPtrOutput)
+}
+
+type ClientPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Client)(nil))
+}
+
+func (o ClientPtrOutput) ToClientPtrOutput() ClientPtrOutput {
+	return o
+}
+
+func (o ClientPtrOutput) ToClientPtrOutputWithContext(ctx context.Context) ClientPtrOutput {
+	return o
+}
+
+type ClientArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Client)(nil))
+}
+
+func (o ClientArrayOutput) ToClientArrayOutput() ClientArrayOutput {
+	return o
+}
+
+func (o ClientArrayOutput) ToClientArrayOutputWithContext(ctx context.Context) ClientArrayOutput {
+	return o
+}
+
+func (o ClientArrayOutput) Index(i pulumi.IntInput) ClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Client {
+		return vs[0].([]Client)[vs[1].(int)]
+	}).(ClientOutput)
+}
+
+type ClientMapOutput struct{ *pulumi.OutputState }
+
+func (ClientMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Client)(nil))
+}
+
+func (o ClientMapOutput) ToClientMapOutput() ClientMapOutput {
+	return o
+}
+
+func (o ClientMapOutput) ToClientMapOutputWithContext(ctx context.Context) ClientMapOutput {
+	return o
+}
+
+func (o ClientMapOutput) MapIndex(k pulumi.StringInput) ClientOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Client {
+		return vs[0].(map[string]Client)[vs[1].(string)]
+	}).(ClientOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClientOutput{})
+	pulumi.RegisterOutputType(ClientPtrOutput{})
+	pulumi.RegisterOutputType(ClientArrayOutput{})
+	pulumi.RegisterOutputType(ClientMapOutput{})
 }

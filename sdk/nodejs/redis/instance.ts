@@ -224,7 +224,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["alternativeLocationId"] = state ? state.alternativeLocationId : undefined;
             inputs["authEnabled"] = state ? state.authEnabled : undefined;
@@ -249,7 +250,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tier"] = state ? state.tier : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.memorySizeGb === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.memorySizeGb === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'memorySizeGb'");
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
@@ -274,12 +275,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["persistenceIamIdentity"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

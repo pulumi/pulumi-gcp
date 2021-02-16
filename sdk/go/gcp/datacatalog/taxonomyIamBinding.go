@@ -182,6 +182,85 @@ func (i *TaxonomyIamBinding) ToTaxonomyIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingOutput)
 }
 
+func (i *TaxonomyIamBinding) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
+	return i.ToTaxonomyIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *TaxonomyIamBinding) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingPtrOutput)
+}
+
+type TaxonomyIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput
+	ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput
+}
+
+type taxonomyIamBindingPtrType TaxonomyIamBindingArgs
+
+func (*taxonomyIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamBinding)(nil))
+}
+
+func (i *taxonomyIamBindingPtrType) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
+	return i.ToTaxonomyIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *taxonomyIamBindingPtrType) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingPtrOutput)
+}
+
+// TaxonomyIamBindingArrayInput is an input type that accepts TaxonomyIamBindingArray and TaxonomyIamBindingArrayOutput values.
+// You can construct a concrete instance of `TaxonomyIamBindingArrayInput` via:
+//
+//          TaxonomyIamBindingArray{ TaxonomyIamBindingArgs{...} }
+type TaxonomyIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamBindingArrayOutput() TaxonomyIamBindingArrayOutput
+	ToTaxonomyIamBindingArrayOutputWithContext(context.Context) TaxonomyIamBindingArrayOutput
+}
+
+type TaxonomyIamBindingArray []TaxonomyIamBindingInput
+
+func (TaxonomyIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TaxonomyIamBinding)(nil))
+}
+
+func (i TaxonomyIamBindingArray) ToTaxonomyIamBindingArrayOutput() TaxonomyIamBindingArrayOutput {
+	return i.ToTaxonomyIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamBindingArray) ToTaxonomyIamBindingArrayOutputWithContext(ctx context.Context) TaxonomyIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingArrayOutput)
+}
+
+// TaxonomyIamBindingMapInput is an input type that accepts TaxonomyIamBindingMap and TaxonomyIamBindingMapOutput values.
+// You can construct a concrete instance of `TaxonomyIamBindingMapInput` via:
+//
+//          TaxonomyIamBindingMap{ "key": TaxonomyIamBindingArgs{...} }
+type TaxonomyIamBindingMapInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamBindingMapOutput() TaxonomyIamBindingMapOutput
+	ToTaxonomyIamBindingMapOutputWithContext(context.Context) TaxonomyIamBindingMapOutput
+}
+
+type TaxonomyIamBindingMap map[string]TaxonomyIamBindingInput
+
+func (TaxonomyIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TaxonomyIamBinding)(nil))
+}
+
+func (i TaxonomyIamBindingMap) ToTaxonomyIamBindingMapOutput() TaxonomyIamBindingMapOutput {
+	return i.ToTaxonomyIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamBindingMap) ToTaxonomyIamBindingMapOutputWithContext(ctx context.Context) TaxonomyIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamBindingMapOutput)
+}
+
 type TaxonomyIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -198,6 +277,75 @@ func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingOutputWithContext(ctx cont
 	return o
 }
 
+func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
+	return o.ToTaxonomyIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyIamBindingOutput) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
+	return o.ApplyT(func(v TaxonomyIamBinding) *TaxonomyIamBinding {
+		return &v
+	}).(TaxonomyIamBindingPtrOutput)
+}
+
+type TaxonomyIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TaxonomyIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamBinding)(nil))
+}
+
+func (o TaxonomyIamBindingPtrOutput) ToTaxonomyIamBindingPtrOutput() TaxonomyIamBindingPtrOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingPtrOutput) ToTaxonomyIamBindingPtrOutputWithContext(ctx context.Context) TaxonomyIamBindingPtrOutput {
+	return o
+}
+
+type TaxonomyIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaxonomyIamBinding)(nil))
+}
+
+func (o TaxonomyIamBindingArrayOutput) ToTaxonomyIamBindingArrayOutput() TaxonomyIamBindingArrayOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingArrayOutput) ToTaxonomyIamBindingArrayOutputWithContext(ctx context.Context) TaxonomyIamBindingArrayOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingArrayOutput) Index(i pulumi.IntInput) TaxonomyIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyIamBinding {
+		return vs[0].([]TaxonomyIamBinding)[vs[1].(int)]
+	}).(TaxonomyIamBindingOutput)
+}
+
+type TaxonomyIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TaxonomyIamBinding)(nil))
+}
+
+func (o TaxonomyIamBindingMapOutput) ToTaxonomyIamBindingMapOutput() TaxonomyIamBindingMapOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingMapOutput) ToTaxonomyIamBindingMapOutputWithContext(ctx context.Context) TaxonomyIamBindingMapOutput {
+	return o
+}
+
+func (o TaxonomyIamBindingMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TaxonomyIamBinding {
+		return vs[0].(map[string]TaxonomyIamBinding)[vs[1].(string)]
+	}).(TaxonomyIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TaxonomyIamBindingOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamBindingMapOutput{})
 }

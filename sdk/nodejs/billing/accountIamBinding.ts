@@ -49,7 +49,8 @@ export class AccountIamBinding extends pulumi.CustomResource {
     constructor(name: string, args: AccountIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountIamBindingArgs | AccountIamBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccountIamBindingState | undefined;
             inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
             inputs["condition"] = state ? state.condition : undefined;
@@ -58,13 +59,13 @@ export class AccountIamBinding extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as AccountIamBindingArgs | undefined;
-            if ((!args || args.billingAccountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
@@ -73,12 +74,8 @@ export class AccountIamBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccountIamBinding.__pulumiType, name, inputs, opts);
     }

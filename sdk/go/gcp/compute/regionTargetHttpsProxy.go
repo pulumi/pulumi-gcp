@@ -253,6 +253,85 @@ func (i *RegionTargetHttpsProxy) ToRegionTargetHttpsProxyOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyOutput)
 }
 
+func (i *RegionTargetHttpsProxy) ToRegionTargetHttpsProxyPtrOutput() RegionTargetHttpsProxyPtrOutput {
+	return i.ToRegionTargetHttpsProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionTargetHttpsProxy) ToRegionTargetHttpsProxyPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyPtrOutput)
+}
+
+type RegionTargetHttpsProxyPtrInput interface {
+	pulumi.Input
+
+	ToRegionTargetHttpsProxyPtrOutput() RegionTargetHttpsProxyPtrOutput
+	ToRegionTargetHttpsProxyPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyPtrOutput
+}
+
+type regionTargetHttpsProxyPtrType RegionTargetHttpsProxyArgs
+
+func (*regionTargetHttpsProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionTargetHttpsProxy)(nil))
+}
+
+func (i *regionTargetHttpsProxyPtrType) ToRegionTargetHttpsProxyPtrOutput() RegionTargetHttpsProxyPtrOutput {
+	return i.ToRegionTargetHttpsProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *regionTargetHttpsProxyPtrType) ToRegionTargetHttpsProxyPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyPtrOutput)
+}
+
+// RegionTargetHttpsProxyArrayInput is an input type that accepts RegionTargetHttpsProxyArray and RegionTargetHttpsProxyArrayOutput values.
+// You can construct a concrete instance of `RegionTargetHttpsProxyArrayInput` via:
+//
+//          RegionTargetHttpsProxyArray{ RegionTargetHttpsProxyArgs{...} }
+type RegionTargetHttpsProxyArrayInput interface {
+	pulumi.Input
+
+	ToRegionTargetHttpsProxyArrayOutput() RegionTargetHttpsProxyArrayOutput
+	ToRegionTargetHttpsProxyArrayOutputWithContext(context.Context) RegionTargetHttpsProxyArrayOutput
+}
+
+type RegionTargetHttpsProxyArray []RegionTargetHttpsProxyInput
+
+func (RegionTargetHttpsProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionTargetHttpsProxy)(nil))
+}
+
+func (i RegionTargetHttpsProxyArray) ToRegionTargetHttpsProxyArrayOutput() RegionTargetHttpsProxyArrayOutput {
+	return i.ToRegionTargetHttpsProxyArrayOutputWithContext(context.Background())
+}
+
+func (i RegionTargetHttpsProxyArray) ToRegionTargetHttpsProxyArrayOutputWithContext(ctx context.Context) RegionTargetHttpsProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyArrayOutput)
+}
+
+// RegionTargetHttpsProxyMapInput is an input type that accepts RegionTargetHttpsProxyMap and RegionTargetHttpsProxyMapOutput values.
+// You can construct a concrete instance of `RegionTargetHttpsProxyMapInput` via:
+//
+//          RegionTargetHttpsProxyMap{ "key": RegionTargetHttpsProxyArgs{...} }
+type RegionTargetHttpsProxyMapInput interface {
+	pulumi.Input
+
+	ToRegionTargetHttpsProxyMapOutput() RegionTargetHttpsProxyMapOutput
+	ToRegionTargetHttpsProxyMapOutputWithContext(context.Context) RegionTargetHttpsProxyMapOutput
+}
+
+type RegionTargetHttpsProxyMap map[string]RegionTargetHttpsProxyInput
+
+func (RegionTargetHttpsProxyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionTargetHttpsProxy)(nil))
+}
+
+func (i RegionTargetHttpsProxyMap) ToRegionTargetHttpsProxyMapOutput() RegionTargetHttpsProxyMapOutput {
+	return i.ToRegionTargetHttpsProxyMapOutputWithContext(context.Background())
+}
+
+func (i RegionTargetHttpsProxyMap) ToRegionTargetHttpsProxyMapOutputWithContext(ctx context.Context) RegionTargetHttpsProxyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionTargetHttpsProxyMapOutput)
+}
+
 type RegionTargetHttpsProxyOutput struct {
 	*pulumi.OutputState
 }
@@ -269,6 +348,75 @@ func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyOutputWithContext(
 	return o
 }
 
+func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyPtrOutput() RegionTargetHttpsProxyPtrOutput {
+	return o.ToRegionTargetHttpsProxyPtrOutputWithContext(context.Background())
+}
+
+func (o RegionTargetHttpsProxyOutput) ToRegionTargetHttpsProxyPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyPtrOutput {
+	return o.ApplyT(func(v RegionTargetHttpsProxy) *RegionTargetHttpsProxy {
+		return &v
+	}).(RegionTargetHttpsProxyPtrOutput)
+}
+
+type RegionTargetHttpsProxyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionTargetHttpsProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionTargetHttpsProxy)(nil))
+}
+
+func (o RegionTargetHttpsProxyPtrOutput) ToRegionTargetHttpsProxyPtrOutput() RegionTargetHttpsProxyPtrOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyPtrOutput) ToRegionTargetHttpsProxyPtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyPtrOutput {
+	return o
+}
+
+type RegionTargetHttpsProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionTargetHttpsProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionTargetHttpsProxy)(nil))
+}
+
+func (o RegionTargetHttpsProxyArrayOutput) ToRegionTargetHttpsProxyArrayOutput() RegionTargetHttpsProxyArrayOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyArrayOutput) ToRegionTargetHttpsProxyArrayOutputWithContext(ctx context.Context) RegionTargetHttpsProxyArrayOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyArrayOutput) Index(i pulumi.IntInput) RegionTargetHttpsProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionTargetHttpsProxy {
+		return vs[0].([]RegionTargetHttpsProxy)[vs[1].(int)]
+	}).(RegionTargetHttpsProxyOutput)
+}
+
+type RegionTargetHttpsProxyMapOutput struct{ *pulumi.OutputState }
+
+func (RegionTargetHttpsProxyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionTargetHttpsProxy)(nil))
+}
+
+func (o RegionTargetHttpsProxyMapOutput) ToRegionTargetHttpsProxyMapOutput() RegionTargetHttpsProxyMapOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyMapOutput) ToRegionTargetHttpsProxyMapOutputWithContext(ctx context.Context) RegionTargetHttpsProxyMapOutput {
+	return o
+}
+
+func (o RegionTargetHttpsProxyMapOutput) MapIndex(k pulumi.StringInput) RegionTargetHttpsProxyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionTargetHttpsProxy {
+		return vs[0].(map[string]RegionTargetHttpsProxy)[vs[1].(string)]
+	}).(RegionTargetHttpsProxyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyOutput{})
+	pulumi.RegisterOutputType(RegionTargetHttpsProxyPtrOutput{})
+	pulumi.RegisterOutputType(RegionTargetHttpsProxyArrayOutput{})
+	pulumi.RegisterOutputType(RegionTargetHttpsProxyMapOutput{})
 }

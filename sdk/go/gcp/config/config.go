@@ -105,11 +105,7 @@ func GetContainerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:containerCustomEndpoint")
 }
 func GetCredentials(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "gcp:credentials")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON").(string)
+	return config.Get(ctx, "gcp:credentials")
 }
 func GetDataCatalogCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataCatalogCustomEndpoint")

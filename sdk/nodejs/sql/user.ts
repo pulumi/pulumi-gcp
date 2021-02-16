@@ -142,7 +142,8 @@ export class User extends pulumi.CustomResource {
     constructor(name: string, args: UserArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UserArgs | UserState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as UserState | undefined;
             inputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             inputs["host"] = state ? state.host : undefined;
@@ -153,7 +154,7 @@ export class User extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
@@ -164,12 +165,8 @@ export class User extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(User.__pulumiType, name, inputs, opts);
     }

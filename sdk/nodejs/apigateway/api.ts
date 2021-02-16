@@ -90,7 +90,8 @@ export class Api extends pulumi.CustomResource {
     constructor(name: string, args: ApiArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiArgs | ApiState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApiState | undefined;
             inputs["apiId"] = state ? state.apiId : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -101,7 +102,7 @@ export class Api extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ApiArgs | undefined;
-            if ((!args || args.apiId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.apiId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiId'");
             }
             inputs["apiId"] = args ? args.apiId : undefined;
@@ -112,12 +113,8 @@ export class Api extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Api.__pulumiType, name, inputs, opts);
     }

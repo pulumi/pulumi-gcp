@@ -485,7 +485,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
     constructor(name: string, args?: RegionUrlMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionUrlMapArgs | RegionUrlMapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegionUrlMapState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["defaultService"] = state ? state.defaultService : undefined;
@@ -516,12 +517,8 @@ export class RegionUrlMap extends pulumi.CustomResource {
             inputs["mapId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegionUrlMap.__pulumiType, name, inputs, opts);
     }

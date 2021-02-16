@@ -343,6 +343,85 @@ func (i *ExternalVpnGateway) ToExternalVpnGatewayOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayOutput)
 }
 
+func (i *ExternalVpnGateway) ToExternalVpnGatewayPtrOutput() ExternalVpnGatewayPtrOutput {
+	return i.ToExternalVpnGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *ExternalVpnGateway) ToExternalVpnGatewayPtrOutputWithContext(ctx context.Context) ExternalVpnGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayPtrOutput)
+}
+
+type ExternalVpnGatewayPtrInput interface {
+	pulumi.Input
+
+	ToExternalVpnGatewayPtrOutput() ExternalVpnGatewayPtrOutput
+	ToExternalVpnGatewayPtrOutputWithContext(ctx context.Context) ExternalVpnGatewayPtrOutput
+}
+
+type externalVpnGatewayPtrType ExternalVpnGatewayArgs
+
+func (*externalVpnGatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalVpnGateway)(nil))
+}
+
+func (i *externalVpnGatewayPtrType) ToExternalVpnGatewayPtrOutput() ExternalVpnGatewayPtrOutput {
+	return i.ToExternalVpnGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *externalVpnGatewayPtrType) ToExternalVpnGatewayPtrOutputWithContext(ctx context.Context) ExternalVpnGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayPtrOutput)
+}
+
+// ExternalVpnGatewayArrayInput is an input type that accepts ExternalVpnGatewayArray and ExternalVpnGatewayArrayOutput values.
+// You can construct a concrete instance of `ExternalVpnGatewayArrayInput` via:
+//
+//          ExternalVpnGatewayArray{ ExternalVpnGatewayArgs{...} }
+type ExternalVpnGatewayArrayInput interface {
+	pulumi.Input
+
+	ToExternalVpnGatewayArrayOutput() ExternalVpnGatewayArrayOutput
+	ToExternalVpnGatewayArrayOutputWithContext(context.Context) ExternalVpnGatewayArrayOutput
+}
+
+type ExternalVpnGatewayArray []ExternalVpnGatewayInput
+
+func (ExternalVpnGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ExternalVpnGateway)(nil))
+}
+
+func (i ExternalVpnGatewayArray) ToExternalVpnGatewayArrayOutput() ExternalVpnGatewayArrayOutput {
+	return i.ToExternalVpnGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalVpnGatewayArray) ToExternalVpnGatewayArrayOutputWithContext(ctx context.Context) ExternalVpnGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayArrayOutput)
+}
+
+// ExternalVpnGatewayMapInput is an input type that accepts ExternalVpnGatewayMap and ExternalVpnGatewayMapOutput values.
+// You can construct a concrete instance of `ExternalVpnGatewayMapInput` via:
+//
+//          ExternalVpnGatewayMap{ "key": ExternalVpnGatewayArgs{...} }
+type ExternalVpnGatewayMapInput interface {
+	pulumi.Input
+
+	ToExternalVpnGatewayMapOutput() ExternalVpnGatewayMapOutput
+	ToExternalVpnGatewayMapOutputWithContext(context.Context) ExternalVpnGatewayMapOutput
+}
+
+type ExternalVpnGatewayMap map[string]ExternalVpnGatewayInput
+
+func (ExternalVpnGatewayMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ExternalVpnGateway)(nil))
+}
+
+func (i ExternalVpnGatewayMap) ToExternalVpnGatewayMapOutput() ExternalVpnGatewayMapOutput {
+	return i.ToExternalVpnGatewayMapOutputWithContext(context.Background())
+}
+
+func (i ExternalVpnGatewayMap) ToExternalVpnGatewayMapOutputWithContext(ctx context.Context) ExternalVpnGatewayMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalVpnGatewayMapOutput)
+}
+
 type ExternalVpnGatewayOutput struct {
 	*pulumi.OutputState
 }
@@ -359,6 +438,75 @@ func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayOutputWithContext(ctx cont
 	return o
 }
 
+func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayPtrOutput() ExternalVpnGatewayPtrOutput {
+	return o.ToExternalVpnGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o ExternalVpnGatewayOutput) ToExternalVpnGatewayPtrOutputWithContext(ctx context.Context) ExternalVpnGatewayPtrOutput {
+	return o.ApplyT(func(v ExternalVpnGateway) *ExternalVpnGateway {
+		return &v
+	}).(ExternalVpnGatewayPtrOutput)
+}
+
+type ExternalVpnGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ExternalVpnGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExternalVpnGateway)(nil))
+}
+
+func (o ExternalVpnGatewayPtrOutput) ToExternalVpnGatewayPtrOutput() ExternalVpnGatewayPtrOutput {
+	return o
+}
+
+func (o ExternalVpnGatewayPtrOutput) ToExternalVpnGatewayPtrOutputWithContext(ctx context.Context) ExternalVpnGatewayPtrOutput {
+	return o
+}
+
+type ExternalVpnGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalVpnGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalVpnGateway)(nil))
+}
+
+func (o ExternalVpnGatewayArrayOutput) ToExternalVpnGatewayArrayOutput() ExternalVpnGatewayArrayOutput {
+	return o
+}
+
+func (o ExternalVpnGatewayArrayOutput) ToExternalVpnGatewayArrayOutputWithContext(ctx context.Context) ExternalVpnGatewayArrayOutput {
+	return o
+}
+
+func (o ExternalVpnGatewayArrayOutput) Index(i pulumi.IntInput) ExternalVpnGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalVpnGateway {
+		return vs[0].([]ExternalVpnGateway)[vs[1].(int)]
+	}).(ExternalVpnGatewayOutput)
+}
+
+type ExternalVpnGatewayMapOutput struct{ *pulumi.OutputState }
+
+func (ExternalVpnGatewayMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ExternalVpnGateway)(nil))
+}
+
+func (o ExternalVpnGatewayMapOutput) ToExternalVpnGatewayMapOutput() ExternalVpnGatewayMapOutput {
+	return o
+}
+
+func (o ExternalVpnGatewayMapOutput) ToExternalVpnGatewayMapOutputWithContext(ctx context.Context) ExternalVpnGatewayMapOutput {
+	return o
+}
+
+func (o ExternalVpnGatewayMapOutput) MapIndex(k pulumi.StringInput) ExternalVpnGatewayOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ExternalVpnGateway {
+		return vs[0].(map[string]ExternalVpnGateway)[vs[1].(string)]
+	}).(ExternalVpnGatewayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ExternalVpnGatewayOutput{})
+	pulumi.RegisterOutputType(ExternalVpnGatewayPtrOutput{})
+	pulumi.RegisterOutputType(ExternalVpnGatewayArrayOutput{})
+	pulumi.RegisterOutputType(ExternalVpnGatewayMapOutput{})
 }

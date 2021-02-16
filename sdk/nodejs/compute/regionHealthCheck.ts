@@ -404,7 +404,8 @@ export class RegionHealthCheck extends pulumi.CustomResource {
     constructor(name: string, args?: RegionHealthCheckArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionHealthCheckArgs | RegionHealthCheckState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegionHealthCheckState | undefined;
             inputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -445,12 +446,8 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegionHealthCheck.__pulumiType, name, inputs, opts);
     }

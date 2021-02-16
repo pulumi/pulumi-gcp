@@ -257,6 +257,85 @@ func (i *AccessLevel) ToAccessLevelOutputWithContext(ctx context.Context) Access
 	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelOutput)
 }
 
+func (i *AccessLevel) ToAccessLevelPtrOutput() AccessLevelPtrOutput {
+	return i.ToAccessLevelPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessLevel) ToAccessLevelPtrOutputWithContext(ctx context.Context) AccessLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelPtrOutput)
+}
+
+type AccessLevelPtrInput interface {
+	pulumi.Input
+
+	ToAccessLevelPtrOutput() AccessLevelPtrOutput
+	ToAccessLevelPtrOutputWithContext(ctx context.Context) AccessLevelPtrOutput
+}
+
+type accessLevelPtrType AccessLevelArgs
+
+func (*accessLevelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevel)(nil))
+}
+
+func (i *accessLevelPtrType) ToAccessLevelPtrOutput() AccessLevelPtrOutput {
+	return i.ToAccessLevelPtrOutputWithContext(context.Background())
+}
+
+func (i *accessLevelPtrType) ToAccessLevelPtrOutputWithContext(ctx context.Context) AccessLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelPtrOutput)
+}
+
+// AccessLevelArrayInput is an input type that accepts AccessLevelArray and AccessLevelArrayOutput values.
+// You can construct a concrete instance of `AccessLevelArrayInput` via:
+//
+//          AccessLevelArray{ AccessLevelArgs{...} }
+type AccessLevelArrayInput interface {
+	pulumi.Input
+
+	ToAccessLevelArrayOutput() AccessLevelArrayOutput
+	ToAccessLevelArrayOutputWithContext(context.Context) AccessLevelArrayOutput
+}
+
+type AccessLevelArray []AccessLevelInput
+
+func (AccessLevelArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessLevel)(nil))
+}
+
+func (i AccessLevelArray) ToAccessLevelArrayOutput() AccessLevelArrayOutput {
+	return i.ToAccessLevelArrayOutputWithContext(context.Background())
+}
+
+func (i AccessLevelArray) ToAccessLevelArrayOutputWithContext(ctx context.Context) AccessLevelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelArrayOutput)
+}
+
+// AccessLevelMapInput is an input type that accepts AccessLevelMap and AccessLevelMapOutput values.
+// You can construct a concrete instance of `AccessLevelMapInput` via:
+//
+//          AccessLevelMap{ "key": AccessLevelArgs{...} }
+type AccessLevelMapInput interface {
+	pulumi.Input
+
+	ToAccessLevelMapOutput() AccessLevelMapOutput
+	ToAccessLevelMapOutputWithContext(context.Context) AccessLevelMapOutput
+}
+
+type AccessLevelMap map[string]AccessLevelInput
+
+func (AccessLevelMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessLevel)(nil))
+}
+
+func (i AccessLevelMap) ToAccessLevelMapOutput() AccessLevelMapOutput {
+	return i.ToAccessLevelMapOutputWithContext(context.Background())
+}
+
+func (i AccessLevelMap) ToAccessLevelMapOutputWithContext(ctx context.Context) AccessLevelMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessLevelMapOutput)
+}
+
 type AccessLevelOutput struct {
 	*pulumi.OutputState
 }
@@ -273,6 +352,75 @@ func (o AccessLevelOutput) ToAccessLevelOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o AccessLevelOutput) ToAccessLevelPtrOutput() AccessLevelPtrOutput {
+	return o.ToAccessLevelPtrOutputWithContext(context.Background())
+}
+
+func (o AccessLevelOutput) ToAccessLevelPtrOutputWithContext(ctx context.Context) AccessLevelPtrOutput {
+	return o.ApplyT(func(v AccessLevel) *AccessLevel {
+		return &v
+	}).(AccessLevelPtrOutput)
+}
+
+type AccessLevelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessLevelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessLevel)(nil))
+}
+
+func (o AccessLevelPtrOutput) ToAccessLevelPtrOutput() AccessLevelPtrOutput {
+	return o
+}
+
+func (o AccessLevelPtrOutput) ToAccessLevelPtrOutputWithContext(ctx context.Context) AccessLevelPtrOutput {
+	return o
+}
+
+type AccessLevelArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessLevel)(nil))
+}
+
+func (o AccessLevelArrayOutput) ToAccessLevelArrayOutput() AccessLevelArrayOutput {
+	return o
+}
+
+func (o AccessLevelArrayOutput) ToAccessLevelArrayOutputWithContext(ctx context.Context) AccessLevelArrayOutput {
+	return o
+}
+
+func (o AccessLevelArrayOutput) Index(i pulumi.IntInput) AccessLevelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessLevel {
+		return vs[0].([]AccessLevel)[vs[1].(int)]
+	}).(AccessLevelOutput)
+}
+
+type AccessLevelMapOutput struct{ *pulumi.OutputState }
+
+func (AccessLevelMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessLevel)(nil))
+}
+
+func (o AccessLevelMapOutput) ToAccessLevelMapOutput() AccessLevelMapOutput {
+	return o
+}
+
+func (o AccessLevelMapOutput) ToAccessLevelMapOutputWithContext(ctx context.Context) AccessLevelMapOutput {
+	return o
+}
+
+func (o AccessLevelMapOutput) MapIndex(k pulumi.StringInput) AccessLevelOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessLevel {
+		return vs[0].(map[string]AccessLevel)[vs[1].(string)]
+	}).(AccessLevelOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessLevelOutput{})
+	pulumi.RegisterOutputType(AccessLevelPtrOutput{})
+	pulumi.RegisterOutputType(AccessLevelArrayOutput{})
+	pulumi.RegisterOutputType(AccessLevelMapOutput{})
 }

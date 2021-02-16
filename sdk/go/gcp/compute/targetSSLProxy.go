@@ -275,6 +275,85 @@ func (i *TargetSSLProxy) ToTargetSSLProxyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyOutput)
 }
 
+func (i *TargetSSLProxy) ToTargetSSLProxyPtrOutput() TargetSSLProxyPtrOutput {
+	return i.ToTargetSSLProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *TargetSSLProxy) ToTargetSSLProxyPtrOutputWithContext(ctx context.Context) TargetSSLProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyPtrOutput)
+}
+
+type TargetSSLProxyPtrInput interface {
+	pulumi.Input
+
+	ToTargetSSLProxyPtrOutput() TargetSSLProxyPtrOutput
+	ToTargetSSLProxyPtrOutputWithContext(ctx context.Context) TargetSSLProxyPtrOutput
+}
+
+type targetSSLProxyPtrType TargetSSLProxyArgs
+
+func (*targetSSLProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetSSLProxy)(nil))
+}
+
+func (i *targetSSLProxyPtrType) ToTargetSSLProxyPtrOutput() TargetSSLProxyPtrOutput {
+	return i.ToTargetSSLProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *targetSSLProxyPtrType) ToTargetSSLProxyPtrOutputWithContext(ctx context.Context) TargetSSLProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyPtrOutput)
+}
+
+// TargetSSLProxyArrayInput is an input type that accepts TargetSSLProxyArray and TargetSSLProxyArrayOutput values.
+// You can construct a concrete instance of `TargetSSLProxyArrayInput` via:
+//
+//          TargetSSLProxyArray{ TargetSSLProxyArgs{...} }
+type TargetSSLProxyArrayInput interface {
+	pulumi.Input
+
+	ToTargetSSLProxyArrayOutput() TargetSSLProxyArrayOutput
+	ToTargetSSLProxyArrayOutputWithContext(context.Context) TargetSSLProxyArrayOutput
+}
+
+type TargetSSLProxyArray []TargetSSLProxyInput
+
+func (TargetSSLProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TargetSSLProxy)(nil))
+}
+
+func (i TargetSSLProxyArray) ToTargetSSLProxyArrayOutput() TargetSSLProxyArrayOutput {
+	return i.ToTargetSSLProxyArrayOutputWithContext(context.Background())
+}
+
+func (i TargetSSLProxyArray) ToTargetSSLProxyArrayOutputWithContext(ctx context.Context) TargetSSLProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyArrayOutput)
+}
+
+// TargetSSLProxyMapInput is an input type that accepts TargetSSLProxyMap and TargetSSLProxyMapOutput values.
+// You can construct a concrete instance of `TargetSSLProxyMapInput` via:
+//
+//          TargetSSLProxyMap{ "key": TargetSSLProxyArgs{...} }
+type TargetSSLProxyMapInput interface {
+	pulumi.Input
+
+	ToTargetSSLProxyMapOutput() TargetSSLProxyMapOutput
+	ToTargetSSLProxyMapOutputWithContext(context.Context) TargetSSLProxyMapOutput
+}
+
+type TargetSSLProxyMap map[string]TargetSSLProxyInput
+
+func (TargetSSLProxyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TargetSSLProxy)(nil))
+}
+
+func (i TargetSSLProxyMap) ToTargetSSLProxyMapOutput() TargetSSLProxyMapOutput {
+	return i.ToTargetSSLProxyMapOutputWithContext(context.Background())
+}
+
+func (i TargetSSLProxyMap) ToTargetSSLProxyMapOutputWithContext(ctx context.Context) TargetSSLProxyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetSSLProxyMapOutput)
+}
+
 type TargetSSLProxyOutput struct {
 	*pulumi.OutputState
 }
@@ -291,6 +370,75 @@ func (o TargetSSLProxyOutput) ToTargetSSLProxyOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o TargetSSLProxyOutput) ToTargetSSLProxyPtrOutput() TargetSSLProxyPtrOutput {
+	return o.ToTargetSSLProxyPtrOutputWithContext(context.Background())
+}
+
+func (o TargetSSLProxyOutput) ToTargetSSLProxyPtrOutputWithContext(ctx context.Context) TargetSSLProxyPtrOutput {
+	return o.ApplyT(func(v TargetSSLProxy) *TargetSSLProxy {
+		return &v
+	}).(TargetSSLProxyPtrOutput)
+}
+
+type TargetSSLProxyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetSSLProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetSSLProxy)(nil))
+}
+
+func (o TargetSSLProxyPtrOutput) ToTargetSSLProxyPtrOutput() TargetSSLProxyPtrOutput {
+	return o
+}
+
+func (o TargetSSLProxyPtrOutput) ToTargetSSLProxyPtrOutputWithContext(ctx context.Context) TargetSSLProxyPtrOutput {
+	return o
+}
+
+type TargetSSLProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetSSLProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetSSLProxy)(nil))
+}
+
+func (o TargetSSLProxyArrayOutput) ToTargetSSLProxyArrayOutput() TargetSSLProxyArrayOutput {
+	return o
+}
+
+func (o TargetSSLProxyArrayOutput) ToTargetSSLProxyArrayOutputWithContext(ctx context.Context) TargetSSLProxyArrayOutput {
+	return o
+}
+
+func (o TargetSSLProxyArrayOutput) Index(i pulumi.IntInput) TargetSSLProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetSSLProxy {
+		return vs[0].([]TargetSSLProxy)[vs[1].(int)]
+	}).(TargetSSLProxyOutput)
+}
+
+type TargetSSLProxyMapOutput struct{ *pulumi.OutputState }
+
+func (TargetSSLProxyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetSSLProxy)(nil))
+}
+
+func (o TargetSSLProxyMapOutput) ToTargetSSLProxyMapOutput() TargetSSLProxyMapOutput {
+	return o
+}
+
+func (o TargetSSLProxyMapOutput) ToTargetSSLProxyMapOutputWithContext(ctx context.Context) TargetSSLProxyMapOutput {
+	return o
+}
+
+func (o TargetSSLProxyMapOutput) MapIndex(k pulumi.StringInput) TargetSSLProxyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetSSLProxy {
+		return vs[0].(map[string]TargetSSLProxy)[vs[1].(string)]
+	}).(TargetSSLProxyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TargetSSLProxyOutput{})
+	pulumi.RegisterOutputType(TargetSSLProxyPtrOutput{})
+	pulumi.RegisterOutputType(TargetSSLProxyArrayOutput{})
+	pulumi.RegisterOutputType(TargetSSLProxyMapOutput{})
 }

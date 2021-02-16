@@ -147,7 +147,8 @@ export class TopicIAMMember extends pulumi.CustomResource {
     constructor(name: string, args: TopicIAMMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicIAMMemberArgs | TopicIAMMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TopicIAMMemberState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -157,13 +158,13 @@ export class TopicIAMMember extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as TopicIAMMemberArgs | undefined;
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -173,12 +174,8 @@ export class TopicIAMMember extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TopicIAMMember.__pulumiType, name, inputs, opts);
     }

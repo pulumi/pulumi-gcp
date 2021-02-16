@@ -84,7 +84,8 @@ export class Taxonomy extends pulumi.CustomResource {
     constructor(name: string, args: TaxonomyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TaxonomyArgs | TaxonomyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TaxonomyState | undefined;
             inputs["activatedPolicyTypes"] = state ? state.activatedPolicyTypes : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -94,7 +95,7 @@ export class Taxonomy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as TaxonomyArgs | undefined;
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["activatedPolicyTypes"] = args ? args.activatedPolicyTypes : undefined;
@@ -104,12 +105,8 @@ export class Taxonomy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Taxonomy.__pulumiType, name, inputs, opts);
     }

@@ -521,6 +521,85 @@ func (i *ConnectivityTest) ToConnectivityTestOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestOutput)
 }
 
+func (i *ConnectivityTest) ToConnectivityTestPtrOutput() ConnectivityTestPtrOutput {
+	return i.ToConnectivityTestPtrOutputWithContext(context.Background())
+}
+
+func (i *ConnectivityTest) ToConnectivityTestPtrOutputWithContext(ctx context.Context) ConnectivityTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestPtrOutput)
+}
+
+type ConnectivityTestPtrInput interface {
+	pulumi.Input
+
+	ToConnectivityTestPtrOutput() ConnectivityTestPtrOutput
+	ToConnectivityTestPtrOutputWithContext(ctx context.Context) ConnectivityTestPtrOutput
+}
+
+type connectivityTestPtrType ConnectivityTestArgs
+
+func (*connectivityTestPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTest)(nil))
+}
+
+func (i *connectivityTestPtrType) ToConnectivityTestPtrOutput() ConnectivityTestPtrOutput {
+	return i.ToConnectivityTestPtrOutputWithContext(context.Background())
+}
+
+func (i *connectivityTestPtrType) ToConnectivityTestPtrOutputWithContext(ctx context.Context) ConnectivityTestPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestPtrOutput)
+}
+
+// ConnectivityTestArrayInput is an input type that accepts ConnectivityTestArray and ConnectivityTestArrayOutput values.
+// You can construct a concrete instance of `ConnectivityTestArrayInput` via:
+//
+//          ConnectivityTestArray{ ConnectivityTestArgs{...} }
+type ConnectivityTestArrayInput interface {
+	pulumi.Input
+
+	ToConnectivityTestArrayOutput() ConnectivityTestArrayOutput
+	ToConnectivityTestArrayOutputWithContext(context.Context) ConnectivityTestArrayOutput
+}
+
+type ConnectivityTestArray []ConnectivityTestInput
+
+func (ConnectivityTestArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ConnectivityTest)(nil))
+}
+
+func (i ConnectivityTestArray) ToConnectivityTestArrayOutput() ConnectivityTestArrayOutput {
+	return i.ToConnectivityTestArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestArray) ToConnectivityTestArrayOutputWithContext(ctx context.Context) ConnectivityTestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestArrayOutput)
+}
+
+// ConnectivityTestMapInput is an input type that accepts ConnectivityTestMap and ConnectivityTestMapOutput values.
+// You can construct a concrete instance of `ConnectivityTestMapInput` via:
+//
+//          ConnectivityTestMap{ "key": ConnectivityTestArgs{...} }
+type ConnectivityTestMapInput interface {
+	pulumi.Input
+
+	ToConnectivityTestMapOutput() ConnectivityTestMapOutput
+	ToConnectivityTestMapOutputWithContext(context.Context) ConnectivityTestMapOutput
+}
+
+type ConnectivityTestMap map[string]ConnectivityTestInput
+
+func (ConnectivityTestMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ConnectivityTest)(nil))
+}
+
+func (i ConnectivityTestMap) ToConnectivityTestMapOutput() ConnectivityTestMapOutput {
+	return i.ToConnectivityTestMapOutputWithContext(context.Background())
+}
+
+func (i ConnectivityTestMap) ToConnectivityTestMapOutputWithContext(ctx context.Context) ConnectivityTestMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectivityTestMapOutput)
+}
+
 type ConnectivityTestOutput struct {
 	*pulumi.OutputState
 }
@@ -537,6 +616,75 @@ func (o ConnectivityTestOutput) ToConnectivityTestOutputWithContext(ctx context.
 	return o
 }
 
+func (o ConnectivityTestOutput) ToConnectivityTestPtrOutput() ConnectivityTestPtrOutput {
+	return o.ToConnectivityTestPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectivityTestOutput) ToConnectivityTestPtrOutputWithContext(ctx context.Context) ConnectivityTestPtrOutput {
+	return o.ApplyT(func(v ConnectivityTest) *ConnectivityTest {
+		return &v
+	}).(ConnectivityTestPtrOutput)
+}
+
+type ConnectivityTestPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectivityTestPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConnectivityTest)(nil))
+}
+
+func (o ConnectivityTestPtrOutput) ToConnectivityTestPtrOutput() ConnectivityTestPtrOutput {
+	return o
+}
+
+func (o ConnectivityTestPtrOutput) ToConnectivityTestPtrOutputWithContext(ctx context.Context) ConnectivityTestPtrOutput {
+	return o
+}
+
+type ConnectivityTestArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConnectivityTest)(nil))
+}
+
+func (o ConnectivityTestArrayOutput) ToConnectivityTestArrayOutput() ConnectivityTestArrayOutput {
+	return o
+}
+
+func (o ConnectivityTestArrayOutput) ToConnectivityTestArrayOutputWithContext(ctx context.Context) ConnectivityTestArrayOutput {
+	return o
+}
+
+func (o ConnectivityTestArrayOutput) Index(i pulumi.IntInput) ConnectivityTestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConnectivityTest {
+		return vs[0].([]ConnectivityTest)[vs[1].(int)]
+	}).(ConnectivityTestOutput)
+}
+
+type ConnectivityTestMapOutput struct{ *pulumi.OutputState }
+
+func (ConnectivityTestMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ConnectivityTest)(nil))
+}
+
+func (o ConnectivityTestMapOutput) ToConnectivityTestMapOutput() ConnectivityTestMapOutput {
+	return o
+}
+
+func (o ConnectivityTestMapOutput) ToConnectivityTestMapOutputWithContext(ctx context.Context) ConnectivityTestMapOutput {
+	return o
+}
+
+func (o ConnectivityTestMapOutput) MapIndex(k pulumi.StringInput) ConnectivityTestOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConnectivityTest {
+		return vs[0].(map[string]ConnectivityTest)[vs[1].(string)]
+	}).(ConnectivityTestOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConnectivityTestOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestPtrOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestArrayOutput{})
+	pulumi.RegisterOutputType(ConnectivityTestMapOutput{})
 }

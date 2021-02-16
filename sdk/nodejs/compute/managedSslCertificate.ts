@@ -194,7 +194,8 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
     constructor(name: string, args?: ManagedSslCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ManagedSslCertificateArgs | ManagedSslCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ManagedSslCertificateState | undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -219,15 +220,11 @@ export class ManagedSslCertificate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["subjectAlternativeNames"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         const aliasOpts = { aliases: [{ type: "gcp:compute/mangedSslCertificate:MangedSslCertificate" }] };
-        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(ManagedSslCertificate.__pulumiType, name, inputs, opts);
     }
 }

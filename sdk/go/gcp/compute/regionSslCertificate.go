@@ -277,6 +277,85 @@ func (i *RegionSslCertificate) ToRegionSslCertificateOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateOutput)
 }
 
+func (i *RegionSslCertificate) ToRegionSslCertificatePtrOutput() RegionSslCertificatePtrOutput {
+	return i.ToRegionSslCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *RegionSslCertificate) ToRegionSslCertificatePtrOutputWithContext(ctx context.Context) RegionSslCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificatePtrOutput)
+}
+
+type RegionSslCertificatePtrInput interface {
+	pulumi.Input
+
+	ToRegionSslCertificatePtrOutput() RegionSslCertificatePtrOutput
+	ToRegionSslCertificatePtrOutputWithContext(ctx context.Context) RegionSslCertificatePtrOutput
+}
+
+type regionSslCertificatePtrType RegionSslCertificateArgs
+
+func (*regionSslCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSslCertificate)(nil))
+}
+
+func (i *regionSslCertificatePtrType) ToRegionSslCertificatePtrOutput() RegionSslCertificatePtrOutput {
+	return i.ToRegionSslCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *regionSslCertificatePtrType) ToRegionSslCertificatePtrOutputWithContext(ctx context.Context) RegionSslCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificatePtrOutput)
+}
+
+// RegionSslCertificateArrayInput is an input type that accepts RegionSslCertificateArray and RegionSslCertificateArrayOutput values.
+// You can construct a concrete instance of `RegionSslCertificateArrayInput` via:
+//
+//          RegionSslCertificateArray{ RegionSslCertificateArgs{...} }
+type RegionSslCertificateArrayInput interface {
+	pulumi.Input
+
+	ToRegionSslCertificateArrayOutput() RegionSslCertificateArrayOutput
+	ToRegionSslCertificateArrayOutputWithContext(context.Context) RegionSslCertificateArrayOutput
+}
+
+type RegionSslCertificateArray []RegionSslCertificateInput
+
+func (RegionSslCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionSslCertificate)(nil))
+}
+
+func (i RegionSslCertificateArray) ToRegionSslCertificateArrayOutput() RegionSslCertificateArrayOutput {
+	return i.ToRegionSslCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i RegionSslCertificateArray) ToRegionSslCertificateArrayOutputWithContext(ctx context.Context) RegionSslCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateArrayOutput)
+}
+
+// RegionSslCertificateMapInput is an input type that accepts RegionSslCertificateMap and RegionSslCertificateMapOutput values.
+// You can construct a concrete instance of `RegionSslCertificateMapInput` via:
+//
+//          RegionSslCertificateMap{ "key": RegionSslCertificateArgs{...} }
+type RegionSslCertificateMapInput interface {
+	pulumi.Input
+
+	ToRegionSslCertificateMapOutput() RegionSslCertificateMapOutput
+	ToRegionSslCertificateMapOutputWithContext(context.Context) RegionSslCertificateMapOutput
+}
+
+type RegionSslCertificateMap map[string]RegionSslCertificateInput
+
+func (RegionSslCertificateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionSslCertificate)(nil))
+}
+
+func (i RegionSslCertificateMap) ToRegionSslCertificateMapOutput() RegionSslCertificateMapOutput {
+	return i.ToRegionSslCertificateMapOutputWithContext(context.Background())
+}
+
+func (i RegionSslCertificateMap) ToRegionSslCertificateMapOutputWithContext(ctx context.Context) RegionSslCertificateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionSslCertificateMapOutput)
+}
+
 type RegionSslCertificateOutput struct {
 	*pulumi.OutputState
 }
@@ -293,6 +372,75 @@ func (o RegionSslCertificateOutput) ToRegionSslCertificateOutputWithContext(ctx 
 	return o
 }
 
+func (o RegionSslCertificateOutput) ToRegionSslCertificatePtrOutput() RegionSslCertificatePtrOutput {
+	return o.ToRegionSslCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o RegionSslCertificateOutput) ToRegionSslCertificatePtrOutputWithContext(ctx context.Context) RegionSslCertificatePtrOutput {
+	return o.ApplyT(func(v RegionSslCertificate) *RegionSslCertificate {
+		return &v
+	}).(RegionSslCertificatePtrOutput)
+}
+
+type RegionSslCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionSslCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSslCertificate)(nil))
+}
+
+func (o RegionSslCertificatePtrOutput) ToRegionSslCertificatePtrOutput() RegionSslCertificatePtrOutput {
+	return o
+}
+
+func (o RegionSslCertificatePtrOutput) ToRegionSslCertificatePtrOutputWithContext(ctx context.Context) RegionSslCertificatePtrOutput {
+	return o
+}
+
+type RegionSslCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionSslCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionSslCertificate)(nil))
+}
+
+func (o RegionSslCertificateArrayOutput) ToRegionSslCertificateArrayOutput() RegionSslCertificateArrayOutput {
+	return o
+}
+
+func (o RegionSslCertificateArrayOutput) ToRegionSslCertificateArrayOutputWithContext(ctx context.Context) RegionSslCertificateArrayOutput {
+	return o
+}
+
+func (o RegionSslCertificateArrayOutput) Index(i pulumi.IntInput) RegionSslCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionSslCertificate {
+		return vs[0].([]RegionSslCertificate)[vs[1].(int)]
+	}).(RegionSslCertificateOutput)
+}
+
+type RegionSslCertificateMapOutput struct{ *pulumi.OutputState }
+
+func (RegionSslCertificateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionSslCertificate)(nil))
+}
+
+func (o RegionSslCertificateMapOutput) ToRegionSslCertificateMapOutput() RegionSslCertificateMapOutput {
+	return o
+}
+
+func (o RegionSslCertificateMapOutput) ToRegionSslCertificateMapOutputWithContext(ctx context.Context) RegionSslCertificateMapOutput {
+	return o
+}
+
+func (o RegionSslCertificateMapOutput) MapIndex(k pulumi.StringInput) RegionSslCertificateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionSslCertificate {
+		return vs[0].(map[string]RegionSslCertificate)[vs[1].(string)]
+	}).(RegionSslCertificateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionSslCertificateOutput{})
+	pulumi.RegisterOutputType(RegionSslCertificatePtrOutput{})
+	pulumi.RegisterOutputType(RegionSslCertificateArrayOutput{})
+	pulumi.RegisterOutputType(RegionSslCertificateMapOutput{})
 }

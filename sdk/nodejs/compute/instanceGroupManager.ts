@@ -215,7 +215,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     constructor(name: string, args: InstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGroupManagerArgs | InstanceGroupManagerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceGroupManagerState | undefined;
             inputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
@@ -236,10 +237,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupManagerArgs | undefined;
-            if ((!args || args.baseInstanceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.baseInstanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'baseInstanceName'");
             }
-            if ((!args || args.versions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.versions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versions'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
@@ -260,12 +261,8 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             inputs["operation"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceGroupManager.__pulumiType, name, inputs, opts);
     }

@@ -172,7 +172,8 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
     constructor(name: string, args: TargetHttpsProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetHttpsProxyArgs | TargetHttpsProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetHttpsProxyState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -186,10 +187,10 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as TargetHttpsProxyArgs | undefined;
-            if ((!args || args.sslCertificates === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sslCertificates === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sslCertificates'");
             }
-            if ((!args || args.urlMap === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.urlMap === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -203,12 +204,8 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetHttpsProxy.__pulumiType, name, inputs, opts);
     }

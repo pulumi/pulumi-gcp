@@ -297,6 +297,85 @@ func (i *DiskIamBinding) ToDiskIamBindingOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingOutput)
 }
 
+func (i *DiskIamBinding) ToDiskIamBindingPtrOutput() DiskIamBindingPtrOutput {
+	return i.ToDiskIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *DiskIamBinding) ToDiskIamBindingPtrOutputWithContext(ctx context.Context) DiskIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingPtrOutput)
+}
+
+type DiskIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToDiskIamBindingPtrOutput() DiskIamBindingPtrOutput
+	ToDiskIamBindingPtrOutputWithContext(ctx context.Context) DiskIamBindingPtrOutput
+}
+
+type diskIamBindingPtrType DiskIamBindingArgs
+
+func (*diskIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskIamBinding)(nil))
+}
+
+func (i *diskIamBindingPtrType) ToDiskIamBindingPtrOutput() DiskIamBindingPtrOutput {
+	return i.ToDiskIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *diskIamBindingPtrType) ToDiskIamBindingPtrOutputWithContext(ctx context.Context) DiskIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingPtrOutput)
+}
+
+// DiskIamBindingArrayInput is an input type that accepts DiskIamBindingArray and DiskIamBindingArrayOutput values.
+// You can construct a concrete instance of `DiskIamBindingArrayInput` via:
+//
+//          DiskIamBindingArray{ DiskIamBindingArgs{...} }
+type DiskIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToDiskIamBindingArrayOutput() DiskIamBindingArrayOutput
+	ToDiskIamBindingArrayOutputWithContext(context.Context) DiskIamBindingArrayOutput
+}
+
+type DiskIamBindingArray []DiskIamBindingInput
+
+func (DiskIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DiskIamBinding)(nil))
+}
+
+func (i DiskIamBindingArray) ToDiskIamBindingArrayOutput() DiskIamBindingArrayOutput {
+	return i.ToDiskIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i DiskIamBindingArray) ToDiskIamBindingArrayOutputWithContext(ctx context.Context) DiskIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingArrayOutput)
+}
+
+// DiskIamBindingMapInput is an input type that accepts DiskIamBindingMap and DiskIamBindingMapOutput values.
+// You can construct a concrete instance of `DiskIamBindingMapInput` via:
+//
+//          DiskIamBindingMap{ "key": DiskIamBindingArgs{...} }
+type DiskIamBindingMapInput interface {
+	pulumi.Input
+
+	ToDiskIamBindingMapOutput() DiskIamBindingMapOutput
+	ToDiskIamBindingMapOutputWithContext(context.Context) DiskIamBindingMapOutput
+}
+
+type DiskIamBindingMap map[string]DiskIamBindingInput
+
+func (DiskIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DiskIamBinding)(nil))
+}
+
+func (i DiskIamBindingMap) ToDiskIamBindingMapOutput() DiskIamBindingMapOutput {
+	return i.ToDiskIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i DiskIamBindingMap) ToDiskIamBindingMapOutputWithContext(ctx context.Context) DiskIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskIamBindingMapOutput)
+}
+
 type DiskIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -313,6 +392,75 @@ func (o DiskIamBindingOutput) ToDiskIamBindingOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DiskIamBindingOutput) ToDiskIamBindingPtrOutput() DiskIamBindingPtrOutput {
+	return o.ToDiskIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o DiskIamBindingOutput) ToDiskIamBindingPtrOutputWithContext(ctx context.Context) DiskIamBindingPtrOutput {
+	return o.ApplyT(func(v DiskIamBinding) *DiskIamBinding {
+		return &v
+	}).(DiskIamBindingPtrOutput)
+}
+
+type DiskIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiskIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskIamBinding)(nil))
+}
+
+func (o DiskIamBindingPtrOutput) ToDiskIamBindingPtrOutput() DiskIamBindingPtrOutput {
+	return o
+}
+
+func (o DiskIamBindingPtrOutput) ToDiskIamBindingPtrOutputWithContext(ctx context.Context) DiskIamBindingPtrOutput {
+	return o
+}
+
+type DiskIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (DiskIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DiskIamBinding)(nil))
+}
+
+func (o DiskIamBindingArrayOutput) ToDiskIamBindingArrayOutput() DiskIamBindingArrayOutput {
+	return o
+}
+
+func (o DiskIamBindingArrayOutput) ToDiskIamBindingArrayOutputWithContext(ctx context.Context) DiskIamBindingArrayOutput {
+	return o
+}
+
+func (o DiskIamBindingArrayOutput) Index(i pulumi.IntInput) DiskIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskIamBinding {
+		return vs[0].([]DiskIamBinding)[vs[1].(int)]
+	}).(DiskIamBindingOutput)
+}
+
+type DiskIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (DiskIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DiskIamBinding)(nil))
+}
+
+func (o DiskIamBindingMapOutput) ToDiskIamBindingMapOutput() DiskIamBindingMapOutput {
+	return o
+}
+
+func (o DiskIamBindingMapOutput) ToDiskIamBindingMapOutputWithContext(ctx context.Context) DiskIamBindingMapOutput {
+	return o
+}
+
+func (o DiskIamBindingMapOutput) MapIndex(k pulumi.StringInput) DiskIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DiskIamBinding {
+		return vs[0].(map[string]DiskIamBinding)[vs[1].(string)]
+	}).(DiskIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DiskIamBindingOutput{})
+	pulumi.RegisterOutputType(DiskIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(DiskIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(DiskIamBindingMapOutput{})
 }

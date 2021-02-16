@@ -326,6 +326,85 @@ func (i *RegionAutoscaler) ToRegionAutoscalerOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerOutput)
 }
 
+func (i *RegionAutoscaler) ToRegionAutoscalerPtrOutput() RegionAutoscalerPtrOutput {
+	return i.ToRegionAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionAutoscaler) ToRegionAutoscalerPtrOutputWithContext(ctx context.Context) RegionAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerPtrOutput)
+}
+
+type RegionAutoscalerPtrInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerPtrOutput() RegionAutoscalerPtrOutput
+	ToRegionAutoscalerPtrOutputWithContext(ctx context.Context) RegionAutoscalerPtrOutput
+}
+
+type regionAutoscalerPtrType RegionAutoscalerArgs
+
+func (*regionAutoscalerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionAutoscaler)(nil))
+}
+
+func (i *regionAutoscalerPtrType) ToRegionAutoscalerPtrOutput() RegionAutoscalerPtrOutput {
+	return i.ToRegionAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (i *regionAutoscalerPtrType) ToRegionAutoscalerPtrOutputWithContext(ctx context.Context) RegionAutoscalerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerPtrOutput)
+}
+
+// RegionAutoscalerArrayInput is an input type that accepts RegionAutoscalerArray and RegionAutoscalerArrayOutput values.
+// You can construct a concrete instance of `RegionAutoscalerArrayInput` via:
+//
+//          RegionAutoscalerArray{ RegionAutoscalerArgs{...} }
+type RegionAutoscalerArrayInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerArrayOutput() RegionAutoscalerArrayOutput
+	ToRegionAutoscalerArrayOutputWithContext(context.Context) RegionAutoscalerArrayOutput
+}
+
+type RegionAutoscalerArray []RegionAutoscalerInput
+
+func (RegionAutoscalerArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionAutoscaler)(nil))
+}
+
+func (i RegionAutoscalerArray) ToRegionAutoscalerArrayOutput() RegionAutoscalerArrayOutput {
+	return i.ToRegionAutoscalerArrayOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerArray) ToRegionAutoscalerArrayOutputWithContext(ctx context.Context) RegionAutoscalerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerArrayOutput)
+}
+
+// RegionAutoscalerMapInput is an input type that accepts RegionAutoscalerMap and RegionAutoscalerMapOutput values.
+// You can construct a concrete instance of `RegionAutoscalerMapInput` via:
+//
+//          RegionAutoscalerMap{ "key": RegionAutoscalerArgs{...} }
+type RegionAutoscalerMapInput interface {
+	pulumi.Input
+
+	ToRegionAutoscalerMapOutput() RegionAutoscalerMapOutput
+	ToRegionAutoscalerMapOutputWithContext(context.Context) RegionAutoscalerMapOutput
+}
+
+type RegionAutoscalerMap map[string]RegionAutoscalerInput
+
+func (RegionAutoscalerMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionAutoscaler)(nil))
+}
+
+func (i RegionAutoscalerMap) ToRegionAutoscalerMapOutput() RegionAutoscalerMapOutput {
+	return i.ToRegionAutoscalerMapOutputWithContext(context.Background())
+}
+
+func (i RegionAutoscalerMap) ToRegionAutoscalerMapOutputWithContext(ctx context.Context) RegionAutoscalerMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionAutoscalerMapOutput)
+}
+
 type RegionAutoscalerOutput struct {
 	*pulumi.OutputState
 }
@@ -342,6 +421,75 @@ func (o RegionAutoscalerOutput) ToRegionAutoscalerOutputWithContext(ctx context.
 	return o
 }
 
+func (o RegionAutoscalerOutput) ToRegionAutoscalerPtrOutput() RegionAutoscalerPtrOutput {
+	return o.ToRegionAutoscalerPtrOutputWithContext(context.Background())
+}
+
+func (o RegionAutoscalerOutput) ToRegionAutoscalerPtrOutputWithContext(ctx context.Context) RegionAutoscalerPtrOutput {
+	return o.ApplyT(func(v RegionAutoscaler) *RegionAutoscaler {
+		return &v
+	}).(RegionAutoscalerPtrOutput)
+}
+
+type RegionAutoscalerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionAutoscalerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionAutoscaler)(nil))
+}
+
+func (o RegionAutoscalerPtrOutput) ToRegionAutoscalerPtrOutput() RegionAutoscalerPtrOutput {
+	return o
+}
+
+func (o RegionAutoscalerPtrOutput) ToRegionAutoscalerPtrOutputWithContext(ctx context.Context) RegionAutoscalerPtrOutput {
+	return o
+}
+
+type RegionAutoscalerArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionAutoscaler)(nil))
+}
+
+func (o RegionAutoscalerArrayOutput) ToRegionAutoscalerArrayOutput() RegionAutoscalerArrayOutput {
+	return o
+}
+
+func (o RegionAutoscalerArrayOutput) ToRegionAutoscalerArrayOutputWithContext(ctx context.Context) RegionAutoscalerArrayOutput {
+	return o
+}
+
+func (o RegionAutoscalerArrayOutput) Index(i pulumi.IntInput) RegionAutoscalerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionAutoscaler {
+		return vs[0].([]RegionAutoscaler)[vs[1].(int)]
+	}).(RegionAutoscalerOutput)
+}
+
+type RegionAutoscalerMapOutput struct{ *pulumi.OutputState }
+
+func (RegionAutoscalerMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionAutoscaler)(nil))
+}
+
+func (o RegionAutoscalerMapOutput) ToRegionAutoscalerMapOutput() RegionAutoscalerMapOutput {
+	return o
+}
+
+func (o RegionAutoscalerMapOutput) ToRegionAutoscalerMapOutputWithContext(ctx context.Context) RegionAutoscalerMapOutput {
+	return o
+}
+
+func (o RegionAutoscalerMapOutput) MapIndex(k pulumi.StringInput) RegionAutoscalerOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionAutoscaler {
+		return vs[0].(map[string]RegionAutoscaler)[vs[1].(string)]
+	}).(RegionAutoscalerOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionAutoscalerOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerPtrOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerArrayOutput{})
+	pulumi.RegisterOutputType(RegionAutoscalerMapOutput{})
 }

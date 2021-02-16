@@ -256,6 +256,85 @@ func (i *NamespaceIamMember) ToNamespaceIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberOutput)
 }
 
+func (i *NamespaceIamMember) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
+	return i.ToNamespaceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *NamespaceIamMember) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberPtrOutput)
+}
+
+type NamespaceIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput
+	ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput
+}
+
+type namespaceIamMemberPtrType NamespaceIamMemberArgs
+
+func (*namespaceIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceIamMember)(nil))
+}
+
+func (i *namespaceIamMemberPtrType) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
+	return i.ToNamespaceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceIamMemberPtrType) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberPtrOutput)
+}
+
+// NamespaceIamMemberArrayInput is an input type that accepts NamespaceIamMemberArray and NamespaceIamMemberArrayOutput values.
+// You can construct a concrete instance of `NamespaceIamMemberArrayInput` via:
+//
+//          NamespaceIamMemberArray{ NamespaceIamMemberArgs{...} }
+type NamespaceIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceIamMemberArrayOutput() NamespaceIamMemberArrayOutput
+	ToNamespaceIamMemberArrayOutputWithContext(context.Context) NamespaceIamMemberArrayOutput
+}
+
+type NamespaceIamMemberArray []NamespaceIamMemberInput
+
+func (NamespaceIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NamespaceIamMember)(nil))
+}
+
+func (i NamespaceIamMemberArray) ToNamespaceIamMemberArrayOutput() NamespaceIamMemberArrayOutput {
+	return i.ToNamespaceIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceIamMemberArray) ToNamespaceIamMemberArrayOutputWithContext(ctx context.Context) NamespaceIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberArrayOutput)
+}
+
+// NamespaceIamMemberMapInput is an input type that accepts NamespaceIamMemberMap and NamespaceIamMemberMapOutput values.
+// You can construct a concrete instance of `NamespaceIamMemberMapInput` via:
+//
+//          NamespaceIamMemberMap{ "key": NamespaceIamMemberArgs{...} }
+type NamespaceIamMemberMapInput interface {
+	pulumi.Input
+
+	ToNamespaceIamMemberMapOutput() NamespaceIamMemberMapOutput
+	ToNamespaceIamMemberMapOutputWithContext(context.Context) NamespaceIamMemberMapOutput
+}
+
+type NamespaceIamMemberMap map[string]NamespaceIamMemberInput
+
+func (NamespaceIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NamespaceIamMember)(nil))
+}
+
+func (i NamespaceIamMemberMap) ToNamespaceIamMemberMapOutput() NamespaceIamMemberMapOutput {
+	return i.ToNamespaceIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i NamespaceIamMemberMap) ToNamespaceIamMemberMapOutputWithContext(ctx context.Context) NamespaceIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamMemberMapOutput)
+}
+
 type NamespaceIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -272,6 +351,75 @@ func (o NamespaceIamMemberOutput) ToNamespaceIamMemberOutputWithContext(ctx cont
 	return o
 }
 
+func (o NamespaceIamMemberOutput) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
+	return o.ToNamespaceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceIamMemberOutput) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
+	return o.ApplyT(func(v NamespaceIamMember) *NamespaceIamMember {
+		return &v
+	}).(NamespaceIamMemberPtrOutput)
+}
+
+type NamespaceIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamespaceIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceIamMember)(nil))
+}
+
+func (o NamespaceIamMemberPtrOutput) ToNamespaceIamMemberPtrOutput() NamespaceIamMemberPtrOutput {
+	return o
+}
+
+func (o NamespaceIamMemberPtrOutput) ToNamespaceIamMemberPtrOutputWithContext(ctx context.Context) NamespaceIamMemberPtrOutput {
+	return o
+}
+
+type NamespaceIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceIamMember)(nil))
+}
+
+func (o NamespaceIamMemberArrayOutput) ToNamespaceIamMemberArrayOutput() NamespaceIamMemberArrayOutput {
+	return o
+}
+
+func (o NamespaceIamMemberArrayOutput) ToNamespaceIamMemberArrayOutputWithContext(ctx context.Context) NamespaceIamMemberArrayOutput {
+	return o
+}
+
+func (o NamespaceIamMemberArrayOutput) Index(i pulumi.IntInput) NamespaceIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceIamMember {
+		return vs[0].([]NamespaceIamMember)[vs[1].(int)]
+	}).(NamespaceIamMemberOutput)
+}
+
+type NamespaceIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (NamespaceIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NamespaceIamMember)(nil))
+}
+
+func (o NamespaceIamMemberMapOutput) ToNamespaceIamMemberMapOutput() NamespaceIamMemberMapOutput {
+	return o
+}
+
+func (o NamespaceIamMemberMapOutput) ToNamespaceIamMemberMapOutputWithContext(ctx context.Context) NamespaceIamMemberMapOutput {
+	return o
+}
+
+func (o NamespaceIamMemberMapOutput) MapIndex(k pulumi.StringInput) NamespaceIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespaceIamMember {
+		return vs[0].(map[string]NamespaceIamMember)[vs[1].(string)]
+	}).(NamespaceIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NamespaceIamMemberOutput{})
+	pulumi.RegisterOutputType(NamespaceIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceIamMemberMapOutput{})
 }

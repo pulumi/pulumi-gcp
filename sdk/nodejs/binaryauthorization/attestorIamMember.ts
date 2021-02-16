@@ -147,7 +147,8 @@ export class AttestorIamMember extends pulumi.CustomResource {
     constructor(name: string, args: AttestorIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttestorIamMemberArgs | AttestorIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AttestorIamMemberState | undefined;
             inputs["attestor"] = state ? state.attestor : undefined;
             inputs["condition"] = state ? state.condition : undefined;
@@ -157,13 +158,13 @@ export class AttestorIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as AttestorIamMemberArgs | undefined;
-            if ((!args || args.attestor === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.attestor === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestor'");
             }
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["attestor"] = args ? args.attestor : undefined;
@@ -173,12 +174,8 @@ export class AttestorIamMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AttestorIamMember.__pulumiType, name, inputs, opts);
     }

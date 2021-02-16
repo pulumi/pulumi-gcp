@@ -131,7 +131,8 @@ export class FlexTemplateJob extends pulumi.CustomResource {
     constructor(name: string, args: FlexTemplateJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlexTemplateJobArgs | FlexTemplateJobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FlexTemplateJobState | undefined;
             inputs["containerSpecGcsPath"] = state ? state.containerSpecGcsPath : undefined;
             inputs["jobId"] = state ? state.jobId : undefined;
@@ -144,7 +145,7 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as FlexTemplateJobArgs | undefined;
-            if ((!args || args.containerSpecGcsPath === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.containerSpecGcsPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'containerSpecGcsPath'");
             }
             inputs["containerSpecGcsPath"] = args ? args.containerSpecGcsPath : undefined;
@@ -157,12 +158,8 @@ export class FlexTemplateJob extends pulumi.CustomResource {
             inputs["jobId"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FlexTemplateJob.__pulumiType, name, inputs, opts);
     }

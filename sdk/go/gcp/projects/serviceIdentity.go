@@ -176,6 +176,85 @@ func (i *ServiceIdentity) ToServiceIdentityOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityOutput)
 }
 
+func (i *ServiceIdentity) ToServiceIdentityPtrOutput() ServiceIdentityPtrOutput {
+	return i.ToServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceIdentity) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityPtrOutput)
+}
+
+type ServiceIdentityPtrInput interface {
+	pulumi.Input
+
+	ToServiceIdentityPtrOutput() ServiceIdentityPtrOutput
+	ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput
+}
+
+type serviceIdentityPtrType ServiceIdentityArgs
+
+func (*serviceIdentityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIdentity)(nil))
+}
+
+func (i *serviceIdentityPtrType) ToServiceIdentityPtrOutput() ServiceIdentityPtrOutput {
+	return i.ToServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIdentityPtrType) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityPtrOutput)
+}
+
+// ServiceIdentityArrayInput is an input type that accepts ServiceIdentityArray and ServiceIdentityArrayOutput values.
+// You can construct a concrete instance of `ServiceIdentityArrayInput` via:
+//
+//          ServiceIdentityArray{ ServiceIdentityArgs{...} }
+type ServiceIdentityArrayInput interface {
+	pulumi.Input
+
+	ToServiceIdentityArrayOutput() ServiceIdentityArrayOutput
+	ToServiceIdentityArrayOutputWithContext(context.Context) ServiceIdentityArrayOutput
+}
+
+type ServiceIdentityArray []ServiceIdentityInput
+
+func (ServiceIdentityArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceIdentity)(nil))
+}
+
+func (i ServiceIdentityArray) ToServiceIdentityArrayOutput() ServiceIdentityArrayOutput {
+	return i.ToServiceIdentityArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIdentityArray) ToServiceIdentityArrayOutputWithContext(ctx context.Context) ServiceIdentityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityArrayOutput)
+}
+
+// ServiceIdentityMapInput is an input type that accepts ServiceIdentityMap and ServiceIdentityMapOutput values.
+// You can construct a concrete instance of `ServiceIdentityMapInput` via:
+//
+//          ServiceIdentityMap{ "key": ServiceIdentityArgs{...} }
+type ServiceIdentityMapInput interface {
+	pulumi.Input
+
+	ToServiceIdentityMapOutput() ServiceIdentityMapOutput
+	ToServiceIdentityMapOutputWithContext(context.Context) ServiceIdentityMapOutput
+}
+
+type ServiceIdentityMap map[string]ServiceIdentityInput
+
+func (ServiceIdentityMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceIdentity)(nil))
+}
+
+func (i ServiceIdentityMap) ToServiceIdentityMapOutput() ServiceIdentityMapOutput {
+	return i.ToServiceIdentityMapOutputWithContext(context.Background())
+}
+
+func (i ServiceIdentityMap) ToServiceIdentityMapOutputWithContext(ctx context.Context) ServiceIdentityMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIdentityMapOutput)
+}
+
 type ServiceIdentityOutput struct {
 	*pulumi.OutputState
 }
@@ -192,6 +271,75 @@ func (o ServiceIdentityOutput) ToServiceIdentityOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ServiceIdentityOutput) ToServiceIdentityPtrOutput() ServiceIdentityPtrOutput {
+	return o.ToServiceIdentityPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIdentityOutput) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
+	return o.ApplyT(func(v ServiceIdentity) *ServiceIdentity {
+		return &v
+	}).(ServiceIdentityPtrOutput)
+}
+
+type ServiceIdentityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceIdentityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIdentity)(nil))
+}
+
+func (o ServiceIdentityPtrOutput) ToServiceIdentityPtrOutput() ServiceIdentityPtrOutput {
+	return o
+}
+
+func (o ServiceIdentityPtrOutput) ToServiceIdentityPtrOutputWithContext(ctx context.Context) ServiceIdentityPtrOutput {
+	return o
+}
+
+type ServiceIdentityArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIdentityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIdentity)(nil))
+}
+
+func (o ServiceIdentityArrayOutput) ToServiceIdentityArrayOutput() ServiceIdentityArrayOutput {
+	return o
+}
+
+func (o ServiceIdentityArrayOutput) ToServiceIdentityArrayOutputWithContext(ctx context.Context) ServiceIdentityArrayOutput {
+	return o
+}
+
+func (o ServiceIdentityArrayOutput) Index(i pulumi.IntInput) ServiceIdentityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIdentity {
+		return vs[0].([]ServiceIdentity)[vs[1].(int)]
+	}).(ServiceIdentityOutput)
+}
+
+type ServiceIdentityMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceIdentityMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceIdentity)(nil))
+}
+
+func (o ServiceIdentityMapOutput) ToServiceIdentityMapOutput() ServiceIdentityMapOutput {
+	return o
+}
+
+func (o ServiceIdentityMapOutput) ToServiceIdentityMapOutputWithContext(ctx context.Context) ServiceIdentityMapOutput {
+	return o
+}
+
+func (o ServiceIdentityMapOutput) MapIndex(k pulumi.StringInput) ServiceIdentityOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceIdentity {
+		return vs[0].(map[string]ServiceIdentity)[vs[1].(string)]
+	}).(ServiceIdentityOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceIdentityOutput{})
+	pulumi.RegisterOutputType(ServiceIdentityPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIdentityArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIdentityMapOutput{})
 }

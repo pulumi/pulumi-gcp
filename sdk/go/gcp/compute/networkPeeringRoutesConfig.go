@@ -232,6 +232,85 @@ func (i *NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigOutput)
 }
 
+func (i *NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigPtrOutput() NetworkPeeringRoutesConfigPtrOutput {
+	return i.ToNetworkPeeringRoutesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *NetworkPeeringRoutesConfig) ToNetworkPeeringRoutesConfigPtrOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigPtrOutput)
+}
+
+type NetworkPeeringRoutesConfigPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPeeringRoutesConfigPtrOutput() NetworkPeeringRoutesConfigPtrOutput
+	ToNetworkPeeringRoutesConfigPtrOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigPtrOutput
+}
+
+type networkPeeringRoutesConfigPtrType NetworkPeeringRoutesConfigArgs
+
+func (*networkPeeringRoutesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPeeringRoutesConfig)(nil))
+}
+
+func (i *networkPeeringRoutesConfigPtrType) ToNetworkPeeringRoutesConfigPtrOutput() NetworkPeeringRoutesConfigPtrOutput {
+	return i.ToNetworkPeeringRoutesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *networkPeeringRoutesConfigPtrType) ToNetworkPeeringRoutesConfigPtrOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigPtrOutput)
+}
+
+// NetworkPeeringRoutesConfigArrayInput is an input type that accepts NetworkPeeringRoutesConfigArray and NetworkPeeringRoutesConfigArrayOutput values.
+// You can construct a concrete instance of `NetworkPeeringRoutesConfigArrayInput` via:
+//
+//          NetworkPeeringRoutesConfigArray{ NetworkPeeringRoutesConfigArgs{...} }
+type NetworkPeeringRoutesConfigArrayInput interface {
+	pulumi.Input
+
+	ToNetworkPeeringRoutesConfigArrayOutput() NetworkPeeringRoutesConfigArrayOutput
+	ToNetworkPeeringRoutesConfigArrayOutputWithContext(context.Context) NetworkPeeringRoutesConfigArrayOutput
+}
+
+type NetworkPeeringRoutesConfigArray []NetworkPeeringRoutesConfigInput
+
+func (NetworkPeeringRoutesConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NetworkPeeringRoutesConfig)(nil))
+}
+
+func (i NetworkPeeringRoutesConfigArray) ToNetworkPeeringRoutesConfigArrayOutput() NetworkPeeringRoutesConfigArrayOutput {
+	return i.ToNetworkPeeringRoutesConfigArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkPeeringRoutesConfigArray) ToNetworkPeeringRoutesConfigArrayOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigArrayOutput)
+}
+
+// NetworkPeeringRoutesConfigMapInput is an input type that accepts NetworkPeeringRoutesConfigMap and NetworkPeeringRoutesConfigMapOutput values.
+// You can construct a concrete instance of `NetworkPeeringRoutesConfigMapInput` via:
+//
+//          NetworkPeeringRoutesConfigMap{ "key": NetworkPeeringRoutesConfigArgs{...} }
+type NetworkPeeringRoutesConfigMapInput interface {
+	pulumi.Input
+
+	ToNetworkPeeringRoutesConfigMapOutput() NetworkPeeringRoutesConfigMapOutput
+	ToNetworkPeeringRoutesConfigMapOutputWithContext(context.Context) NetworkPeeringRoutesConfigMapOutput
+}
+
+type NetworkPeeringRoutesConfigMap map[string]NetworkPeeringRoutesConfigInput
+
+func (NetworkPeeringRoutesConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NetworkPeeringRoutesConfig)(nil))
+}
+
+func (i NetworkPeeringRoutesConfigMap) ToNetworkPeeringRoutesConfigMapOutput() NetworkPeeringRoutesConfigMapOutput {
+	return i.ToNetworkPeeringRoutesConfigMapOutputWithContext(context.Background())
+}
+
+func (i NetworkPeeringRoutesConfigMap) ToNetworkPeeringRoutesConfigMapOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPeeringRoutesConfigMapOutput)
+}
+
 type NetworkPeeringRoutesConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -248,6 +327,75 @@ func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigOutputWith
 	return o
 }
 
+func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigPtrOutput() NetworkPeeringRoutesConfigPtrOutput {
+	return o.ToNetworkPeeringRoutesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPeeringRoutesConfigOutput) ToNetworkPeeringRoutesConfigPtrOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigPtrOutput {
+	return o.ApplyT(func(v NetworkPeeringRoutesConfig) *NetworkPeeringRoutesConfig {
+		return &v
+	}).(NetworkPeeringRoutesConfigPtrOutput)
+}
+
+type NetworkPeeringRoutesConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NetworkPeeringRoutesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPeeringRoutesConfig)(nil))
+}
+
+func (o NetworkPeeringRoutesConfigPtrOutput) ToNetworkPeeringRoutesConfigPtrOutput() NetworkPeeringRoutesConfigPtrOutput {
+	return o
+}
+
+func (o NetworkPeeringRoutesConfigPtrOutput) ToNetworkPeeringRoutesConfigPtrOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigPtrOutput {
+	return o
+}
+
+type NetworkPeeringRoutesConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkPeeringRoutesConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkPeeringRoutesConfig)(nil))
+}
+
+func (o NetworkPeeringRoutesConfigArrayOutput) ToNetworkPeeringRoutesConfigArrayOutput() NetworkPeeringRoutesConfigArrayOutput {
+	return o
+}
+
+func (o NetworkPeeringRoutesConfigArrayOutput) ToNetworkPeeringRoutesConfigArrayOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigArrayOutput {
+	return o
+}
+
+func (o NetworkPeeringRoutesConfigArrayOutput) Index(i pulumi.IntInput) NetworkPeeringRoutesConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkPeeringRoutesConfig {
+		return vs[0].([]NetworkPeeringRoutesConfig)[vs[1].(int)]
+	}).(NetworkPeeringRoutesConfigOutput)
+}
+
+type NetworkPeeringRoutesConfigMapOutput struct{ *pulumi.OutputState }
+
+func (NetworkPeeringRoutesConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NetworkPeeringRoutesConfig)(nil))
+}
+
+func (o NetworkPeeringRoutesConfigMapOutput) ToNetworkPeeringRoutesConfigMapOutput() NetworkPeeringRoutesConfigMapOutput {
+	return o
+}
+
+func (o NetworkPeeringRoutesConfigMapOutput) ToNetworkPeeringRoutesConfigMapOutputWithContext(ctx context.Context) NetworkPeeringRoutesConfigMapOutput {
+	return o
+}
+
+func (o NetworkPeeringRoutesConfigMapOutput) MapIndex(k pulumi.StringInput) NetworkPeeringRoutesConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NetworkPeeringRoutesConfig {
+		return vs[0].(map[string]NetworkPeeringRoutesConfig)[vs[1].(string)]
+	}).(NetworkPeeringRoutesConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NetworkPeeringRoutesConfigOutput{})
+	pulumi.RegisterOutputType(NetworkPeeringRoutesConfigPtrOutput{})
+	pulumi.RegisterOutputType(NetworkPeeringRoutesConfigArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPeeringRoutesConfigMapOutput{})
 }

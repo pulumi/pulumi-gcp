@@ -104,7 +104,8 @@ export class FolderBucketConfig extends pulumi.CustomResource {
     constructor(name: string, args: FolderBucketConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderBucketConfigArgs | FolderBucketConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FolderBucketConfigState | undefined;
             inputs["bucketId"] = state ? state.bucketId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -115,13 +116,13 @@ export class FolderBucketConfig extends pulumi.CustomResource {
             inputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as FolderBucketConfigArgs | undefined;
-            if ((!args || args.bucketId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucketId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.folder === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["bucketId"] = args ? args.bucketId : undefined;
@@ -132,12 +133,8 @@ export class FolderBucketConfig extends pulumi.CustomResource {
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FolderBucketConfig.__pulumiType, name, inputs, opts);
     }

@@ -229,6 +229,85 @@ func (i *Connector) ToConnectorOutputWithContext(ctx context.Context) ConnectorO
 	return pulumi.ToOutputWithContext(ctx, i).(ConnectorOutput)
 }
 
+func (i *Connector) ToConnectorPtrOutput() ConnectorPtrOutput {
+	return i.ToConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i *Connector) ToConnectorPtrOutputWithContext(ctx context.Context) ConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorPtrOutput)
+}
+
+type ConnectorPtrInput interface {
+	pulumi.Input
+
+	ToConnectorPtrOutput() ConnectorPtrOutput
+	ToConnectorPtrOutputWithContext(ctx context.Context) ConnectorPtrOutput
+}
+
+type connectorPtrType ConnectorArgs
+
+func (*connectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Connector)(nil))
+}
+
+func (i *connectorPtrType) ToConnectorPtrOutput() ConnectorPtrOutput {
+	return i.ToConnectorPtrOutputWithContext(context.Background())
+}
+
+func (i *connectorPtrType) ToConnectorPtrOutputWithContext(ctx context.Context) ConnectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorPtrOutput)
+}
+
+// ConnectorArrayInput is an input type that accepts ConnectorArray and ConnectorArrayOutput values.
+// You can construct a concrete instance of `ConnectorArrayInput` via:
+//
+//          ConnectorArray{ ConnectorArgs{...} }
+type ConnectorArrayInput interface {
+	pulumi.Input
+
+	ToConnectorArrayOutput() ConnectorArrayOutput
+	ToConnectorArrayOutputWithContext(context.Context) ConnectorArrayOutput
+}
+
+type ConnectorArray []ConnectorInput
+
+func (ConnectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Connector)(nil))
+}
+
+func (i ConnectorArray) ToConnectorArrayOutput() ConnectorArrayOutput {
+	return i.ToConnectorArrayOutputWithContext(context.Background())
+}
+
+func (i ConnectorArray) ToConnectorArrayOutputWithContext(ctx context.Context) ConnectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorArrayOutput)
+}
+
+// ConnectorMapInput is an input type that accepts ConnectorMap and ConnectorMapOutput values.
+// You can construct a concrete instance of `ConnectorMapInput` via:
+//
+//          ConnectorMap{ "key": ConnectorArgs{...} }
+type ConnectorMapInput interface {
+	pulumi.Input
+
+	ToConnectorMapOutput() ConnectorMapOutput
+	ToConnectorMapOutputWithContext(context.Context) ConnectorMapOutput
+}
+
+type ConnectorMap map[string]ConnectorInput
+
+func (ConnectorMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Connector)(nil))
+}
+
+func (i ConnectorMap) ToConnectorMapOutput() ConnectorMapOutput {
+	return i.ToConnectorMapOutputWithContext(context.Background())
+}
+
+func (i ConnectorMap) ToConnectorMapOutputWithContext(ctx context.Context) ConnectorMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConnectorMapOutput)
+}
+
 type ConnectorOutput struct {
 	*pulumi.OutputState
 }
@@ -245,6 +324,75 @@ func (o ConnectorOutput) ToConnectorOutputWithContext(ctx context.Context) Conne
 	return o
 }
 
+func (o ConnectorOutput) ToConnectorPtrOutput() ConnectorPtrOutput {
+	return o.ToConnectorPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectorOutput) ToConnectorPtrOutputWithContext(ctx context.Context) ConnectorPtrOutput {
+	return o.ApplyT(func(v Connector) *Connector {
+		return &v
+	}).(ConnectorPtrOutput)
+}
+
+type ConnectorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConnectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Connector)(nil))
+}
+
+func (o ConnectorPtrOutput) ToConnectorPtrOutput() ConnectorPtrOutput {
+	return o
+}
+
+func (o ConnectorPtrOutput) ToConnectorPtrOutputWithContext(ctx context.Context) ConnectorPtrOutput {
+	return o
+}
+
+type ConnectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ConnectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Connector)(nil))
+}
+
+func (o ConnectorArrayOutput) ToConnectorArrayOutput() ConnectorArrayOutput {
+	return o
+}
+
+func (o ConnectorArrayOutput) ToConnectorArrayOutputWithContext(ctx context.Context) ConnectorArrayOutput {
+	return o
+}
+
+func (o ConnectorArrayOutput) Index(i pulumi.IntInput) ConnectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Connector {
+		return vs[0].([]Connector)[vs[1].(int)]
+	}).(ConnectorOutput)
+}
+
+type ConnectorMapOutput struct{ *pulumi.OutputState }
+
+func (ConnectorMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Connector)(nil))
+}
+
+func (o ConnectorMapOutput) ToConnectorMapOutput() ConnectorMapOutput {
+	return o
+}
+
+func (o ConnectorMapOutput) ToConnectorMapOutputWithContext(ctx context.Context) ConnectorMapOutput {
+	return o
+}
+
+func (o ConnectorMapOutput) MapIndex(k pulumi.StringInput) ConnectorOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Connector {
+		return vs[0].(map[string]Connector)[vs[1].(string)]
+	}).(ConnectorOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConnectorOutput{})
+	pulumi.RegisterOutputType(ConnectorPtrOutput{})
+	pulumi.RegisterOutputType(ConnectorArrayOutput{})
+	pulumi.RegisterOutputType(ConnectorMapOutput{})
 }

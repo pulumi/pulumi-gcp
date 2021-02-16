@@ -87,7 +87,8 @@ export class ApiIamBinding extends pulumi.CustomResource {
     constructor(name: string, args: ApiIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiIamBindingArgs | ApiIamBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApiIamBindingState | undefined;
             inputs["api"] = state ? state.api : undefined;
             inputs["condition"] = state ? state.condition : undefined;
@@ -97,13 +98,13 @@ export class ApiIamBinding extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ApiIamBindingArgs | undefined;
-            if ((!args || args.api === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.api === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'api'");
             }
-            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["api"] = args ? args.api : undefined;
@@ -113,12 +114,8 @@ export class ApiIamBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApiIamBinding.__pulumiType, name, inputs, opts);
     }

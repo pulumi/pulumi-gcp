@@ -196,7 +196,8 @@ export class Metric extends pulumi.CustomResource {
     constructor(name: string, args: MetricArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MetricArgs | MetricState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MetricState | undefined;
             inputs["bucketOptions"] = state ? state.bucketOptions : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -208,10 +209,10 @@ export class Metric extends pulumi.CustomResource {
             inputs["valueExtractor"] = state ? state.valueExtractor : undefined;
         } else {
             const args = argsOrState as MetricArgs | undefined;
-            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.filter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            if ((!args || args.metricDescriptor === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metricDescriptor === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metricDescriptor'");
             }
             inputs["bucketOptions"] = args ? args.bucketOptions : undefined;
@@ -223,12 +224,8 @@ export class Metric extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["valueExtractor"] = args ? args.valueExtractor : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Metric.__pulumiType, name, inputs, opts);
     }

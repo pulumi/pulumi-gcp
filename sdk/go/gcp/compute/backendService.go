@@ -933,6 +933,85 @@ func (i *BackendService) ToBackendServiceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceOutput)
 }
 
+func (i *BackendService) ToBackendServicePtrOutput() BackendServicePtrOutput {
+	return i.ToBackendServicePtrOutputWithContext(context.Background())
+}
+
+func (i *BackendService) ToBackendServicePtrOutputWithContext(ctx context.Context) BackendServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServicePtrOutput)
+}
+
+type BackendServicePtrInput interface {
+	pulumi.Input
+
+	ToBackendServicePtrOutput() BackendServicePtrOutput
+	ToBackendServicePtrOutputWithContext(ctx context.Context) BackendServicePtrOutput
+}
+
+type backendServicePtrType BackendServiceArgs
+
+func (*backendServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendService)(nil))
+}
+
+func (i *backendServicePtrType) ToBackendServicePtrOutput() BackendServicePtrOutput {
+	return i.ToBackendServicePtrOutputWithContext(context.Background())
+}
+
+func (i *backendServicePtrType) ToBackendServicePtrOutputWithContext(ctx context.Context) BackendServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServicePtrOutput)
+}
+
+// BackendServiceArrayInput is an input type that accepts BackendServiceArray and BackendServiceArrayOutput values.
+// You can construct a concrete instance of `BackendServiceArrayInput` via:
+//
+//          BackendServiceArray{ BackendServiceArgs{...} }
+type BackendServiceArrayInput interface {
+	pulumi.Input
+
+	ToBackendServiceArrayOutput() BackendServiceArrayOutput
+	ToBackendServiceArrayOutputWithContext(context.Context) BackendServiceArrayOutput
+}
+
+type BackendServiceArray []BackendServiceInput
+
+func (BackendServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BackendService)(nil))
+}
+
+func (i BackendServiceArray) ToBackendServiceArrayOutput() BackendServiceArrayOutput {
+	return i.ToBackendServiceArrayOutputWithContext(context.Background())
+}
+
+func (i BackendServiceArray) ToBackendServiceArrayOutputWithContext(ctx context.Context) BackendServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceArrayOutput)
+}
+
+// BackendServiceMapInput is an input type that accepts BackendServiceMap and BackendServiceMapOutput values.
+// You can construct a concrete instance of `BackendServiceMapInput` via:
+//
+//          BackendServiceMap{ "key": BackendServiceArgs{...} }
+type BackendServiceMapInput interface {
+	pulumi.Input
+
+	ToBackendServiceMapOutput() BackendServiceMapOutput
+	ToBackendServiceMapOutputWithContext(context.Context) BackendServiceMapOutput
+}
+
+type BackendServiceMap map[string]BackendServiceInput
+
+func (BackendServiceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BackendService)(nil))
+}
+
+func (i BackendServiceMap) ToBackendServiceMapOutput() BackendServiceMapOutput {
+	return i.ToBackendServiceMapOutputWithContext(context.Background())
+}
+
+func (i BackendServiceMap) ToBackendServiceMapOutputWithContext(ctx context.Context) BackendServiceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendServiceMapOutput)
+}
+
 type BackendServiceOutput struct {
 	*pulumi.OutputState
 }
@@ -949,6 +1028,75 @@ func (o BackendServiceOutput) ToBackendServiceOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o BackendServiceOutput) ToBackendServicePtrOutput() BackendServicePtrOutput {
+	return o.ToBackendServicePtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceOutput) ToBackendServicePtrOutputWithContext(ctx context.Context) BackendServicePtrOutput {
+	return o.ApplyT(func(v BackendService) *BackendService {
+		return &v
+	}).(BackendServicePtrOutput)
+}
+
+type BackendServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendService)(nil))
+}
+
+func (o BackendServicePtrOutput) ToBackendServicePtrOutput() BackendServicePtrOutput {
+	return o
+}
+
+func (o BackendServicePtrOutput) ToBackendServicePtrOutputWithContext(ctx context.Context) BackendServicePtrOutput {
+	return o
+}
+
+type BackendServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendService)(nil))
+}
+
+func (o BackendServiceArrayOutput) ToBackendServiceArrayOutput() BackendServiceArrayOutput {
+	return o
+}
+
+func (o BackendServiceArrayOutput) ToBackendServiceArrayOutputWithContext(ctx context.Context) BackendServiceArrayOutput {
+	return o
+}
+
+func (o BackendServiceArrayOutput) Index(i pulumi.IntInput) BackendServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendService {
+		return vs[0].([]BackendService)[vs[1].(int)]
+	}).(BackendServiceOutput)
+}
+
+type BackendServiceMapOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BackendService)(nil))
+}
+
+func (o BackendServiceMapOutput) ToBackendServiceMapOutput() BackendServiceMapOutput {
+	return o
+}
+
+func (o BackendServiceMapOutput) ToBackendServiceMapOutputWithContext(ctx context.Context) BackendServiceMapOutput {
+	return o
+}
+
+func (o BackendServiceMapOutput) MapIndex(k pulumi.StringInput) BackendServiceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackendService {
+		return vs[0].(map[string]BackendService)[vs[1].(string)]
+	}).(BackendServiceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BackendServiceOutput{})
+	pulumi.RegisterOutputType(BackendServicePtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceArrayOutput{})
+	pulumi.RegisterOutputType(BackendServiceMapOutput{})
 }

@@ -197,7 +197,8 @@ export class InstanceGroup extends pulumi.CustomResource {
     constructor(name: string, args?: InstanceGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGroupArgs | InstanceGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["instances"] = state ? state.instances : undefined;
@@ -220,12 +221,8 @@ export class InstanceGroup extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceGroup.__pulumiType, name, inputs, opts);
     }

@@ -201,7 +201,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     constructor(name: string, args: InterconnectAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InterconnectAttachmentArgs | InterconnectAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InterconnectAttachmentState | undefined;
             inputs["adminEnabled"] = state ? state.adminEnabled : undefined;
             inputs["bandwidth"] = state ? state.bandwidth : undefined;
@@ -226,7 +227,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["vlanTag8021q"] = state ? state.vlanTag8021q : undefined;
         } else {
             const args = argsOrState as InterconnectAttachmentArgs | undefined;
-            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
             inputs["adminEnabled"] = args ? args.adminEnabled : undefined;
@@ -251,12 +252,8 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InterconnectAttachment.__pulumiType, name, inputs, opts);
     }

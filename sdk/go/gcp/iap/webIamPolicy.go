@@ -146,6 +146,85 @@ func (i *WebIamPolicy) ToWebIamPolicyOutputWithContext(ctx context.Context) WebI
 	return pulumi.ToOutputWithContext(ctx, i).(WebIamPolicyOutput)
 }
 
+func (i *WebIamPolicy) ToWebIamPolicyPtrOutput() WebIamPolicyPtrOutput {
+	return i.ToWebIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *WebIamPolicy) ToWebIamPolicyPtrOutputWithContext(ctx context.Context) WebIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamPolicyPtrOutput)
+}
+
+type WebIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToWebIamPolicyPtrOutput() WebIamPolicyPtrOutput
+	ToWebIamPolicyPtrOutputWithContext(ctx context.Context) WebIamPolicyPtrOutput
+}
+
+type webIamPolicyPtrType WebIamPolicyArgs
+
+func (*webIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebIamPolicy)(nil))
+}
+
+func (i *webIamPolicyPtrType) ToWebIamPolicyPtrOutput() WebIamPolicyPtrOutput {
+	return i.ToWebIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *webIamPolicyPtrType) ToWebIamPolicyPtrOutputWithContext(ctx context.Context) WebIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamPolicyPtrOutput)
+}
+
+// WebIamPolicyArrayInput is an input type that accepts WebIamPolicyArray and WebIamPolicyArrayOutput values.
+// You can construct a concrete instance of `WebIamPolicyArrayInput` via:
+//
+//          WebIamPolicyArray{ WebIamPolicyArgs{...} }
+type WebIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToWebIamPolicyArrayOutput() WebIamPolicyArrayOutput
+	ToWebIamPolicyArrayOutputWithContext(context.Context) WebIamPolicyArrayOutput
+}
+
+type WebIamPolicyArray []WebIamPolicyInput
+
+func (WebIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WebIamPolicy)(nil))
+}
+
+func (i WebIamPolicyArray) ToWebIamPolicyArrayOutput() WebIamPolicyArrayOutput {
+	return i.ToWebIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i WebIamPolicyArray) ToWebIamPolicyArrayOutputWithContext(ctx context.Context) WebIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamPolicyArrayOutput)
+}
+
+// WebIamPolicyMapInput is an input type that accepts WebIamPolicyMap and WebIamPolicyMapOutput values.
+// You can construct a concrete instance of `WebIamPolicyMapInput` via:
+//
+//          WebIamPolicyMap{ "key": WebIamPolicyArgs{...} }
+type WebIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToWebIamPolicyMapOutput() WebIamPolicyMapOutput
+	ToWebIamPolicyMapOutputWithContext(context.Context) WebIamPolicyMapOutput
+}
+
+type WebIamPolicyMap map[string]WebIamPolicyInput
+
+func (WebIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WebIamPolicy)(nil))
+}
+
+func (i WebIamPolicyMap) ToWebIamPolicyMapOutput() WebIamPolicyMapOutput {
+	return i.ToWebIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i WebIamPolicyMap) ToWebIamPolicyMapOutputWithContext(ctx context.Context) WebIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebIamPolicyMapOutput)
+}
+
 type WebIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -162,6 +241,75 @@ func (o WebIamPolicyOutput) ToWebIamPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o WebIamPolicyOutput) ToWebIamPolicyPtrOutput() WebIamPolicyPtrOutput {
+	return o.ToWebIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o WebIamPolicyOutput) ToWebIamPolicyPtrOutputWithContext(ctx context.Context) WebIamPolicyPtrOutput {
+	return o.ApplyT(func(v WebIamPolicy) *WebIamPolicy {
+		return &v
+	}).(WebIamPolicyPtrOutput)
+}
+
+type WebIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebIamPolicy)(nil))
+}
+
+func (o WebIamPolicyPtrOutput) ToWebIamPolicyPtrOutput() WebIamPolicyPtrOutput {
+	return o
+}
+
+func (o WebIamPolicyPtrOutput) ToWebIamPolicyPtrOutputWithContext(ctx context.Context) WebIamPolicyPtrOutput {
+	return o
+}
+
+type WebIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (WebIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebIamPolicy)(nil))
+}
+
+func (o WebIamPolicyArrayOutput) ToWebIamPolicyArrayOutput() WebIamPolicyArrayOutput {
+	return o
+}
+
+func (o WebIamPolicyArrayOutput) ToWebIamPolicyArrayOutputWithContext(ctx context.Context) WebIamPolicyArrayOutput {
+	return o
+}
+
+func (o WebIamPolicyArrayOutput) Index(i pulumi.IntInput) WebIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebIamPolicy {
+		return vs[0].([]WebIamPolicy)[vs[1].(int)]
+	}).(WebIamPolicyOutput)
+}
+
+type WebIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (WebIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WebIamPolicy)(nil))
+}
+
+func (o WebIamPolicyMapOutput) ToWebIamPolicyMapOutput() WebIamPolicyMapOutput {
+	return o
+}
+
+func (o WebIamPolicyMapOutput) ToWebIamPolicyMapOutputWithContext(ctx context.Context) WebIamPolicyMapOutput {
+	return o
+}
+
+func (o WebIamPolicyMapOutput) MapIndex(k pulumi.StringInput) WebIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebIamPolicy {
+		return vs[0].(map[string]WebIamPolicy)[vs[1].(string)]
+	}).(WebIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebIamPolicyOutput{})
+	pulumi.RegisterOutputType(WebIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(WebIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(WebIamPolicyMapOutput{})
 }

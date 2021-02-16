@@ -172,6 +172,85 @@ func (i *ApiIamBinding) ToApiIamBindingOutputWithContext(ctx context.Context) Ap
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingOutput)
 }
 
+func (i *ApiIamBinding) ToApiIamBindingPtrOutput() ApiIamBindingPtrOutput {
+	return i.ToApiIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *ApiIamBinding) ToApiIamBindingPtrOutputWithContext(ctx context.Context) ApiIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingPtrOutput)
+}
+
+type ApiIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToApiIamBindingPtrOutput() ApiIamBindingPtrOutput
+	ToApiIamBindingPtrOutputWithContext(ctx context.Context) ApiIamBindingPtrOutput
+}
+
+type apiIamBindingPtrType ApiIamBindingArgs
+
+func (*apiIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiIamBinding)(nil))
+}
+
+func (i *apiIamBindingPtrType) ToApiIamBindingPtrOutput() ApiIamBindingPtrOutput {
+	return i.ToApiIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *apiIamBindingPtrType) ToApiIamBindingPtrOutputWithContext(ctx context.Context) ApiIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingPtrOutput)
+}
+
+// ApiIamBindingArrayInput is an input type that accepts ApiIamBindingArray and ApiIamBindingArrayOutput values.
+// You can construct a concrete instance of `ApiIamBindingArrayInput` via:
+//
+//          ApiIamBindingArray{ ApiIamBindingArgs{...} }
+type ApiIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToApiIamBindingArrayOutput() ApiIamBindingArrayOutput
+	ToApiIamBindingArrayOutputWithContext(context.Context) ApiIamBindingArrayOutput
+}
+
+type ApiIamBindingArray []ApiIamBindingInput
+
+func (ApiIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApiIamBinding)(nil))
+}
+
+func (i ApiIamBindingArray) ToApiIamBindingArrayOutput() ApiIamBindingArrayOutput {
+	return i.ToApiIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i ApiIamBindingArray) ToApiIamBindingArrayOutputWithContext(ctx context.Context) ApiIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingArrayOutput)
+}
+
+// ApiIamBindingMapInput is an input type that accepts ApiIamBindingMap and ApiIamBindingMapOutput values.
+// You can construct a concrete instance of `ApiIamBindingMapInput` via:
+//
+//          ApiIamBindingMap{ "key": ApiIamBindingArgs{...} }
+type ApiIamBindingMapInput interface {
+	pulumi.Input
+
+	ToApiIamBindingMapOutput() ApiIamBindingMapOutput
+	ToApiIamBindingMapOutputWithContext(context.Context) ApiIamBindingMapOutput
+}
+
+type ApiIamBindingMap map[string]ApiIamBindingInput
+
+func (ApiIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApiIamBinding)(nil))
+}
+
+func (i ApiIamBindingMap) ToApiIamBindingMapOutput() ApiIamBindingMapOutput {
+	return i.ToApiIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i ApiIamBindingMap) ToApiIamBindingMapOutputWithContext(ctx context.Context) ApiIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamBindingMapOutput)
+}
+
 type ApiIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -188,6 +267,75 @@ func (o ApiIamBindingOutput) ToApiIamBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o ApiIamBindingOutput) ToApiIamBindingPtrOutput() ApiIamBindingPtrOutput {
+	return o.ToApiIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o ApiIamBindingOutput) ToApiIamBindingPtrOutputWithContext(ctx context.Context) ApiIamBindingPtrOutput {
+	return o.ApplyT(func(v ApiIamBinding) *ApiIamBinding {
+		return &v
+	}).(ApiIamBindingPtrOutput)
+}
+
+type ApiIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiIamBinding)(nil))
+}
+
+func (o ApiIamBindingPtrOutput) ToApiIamBindingPtrOutput() ApiIamBindingPtrOutput {
+	return o
+}
+
+func (o ApiIamBindingPtrOutput) ToApiIamBindingPtrOutputWithContext(ctx context.Context) ApiIamBindingPtrOutput {
+	return o
+}
+
+type ApiIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiIamBinding)(nil))
+}
+
+func (o ApiIamBindingArrayOutput) ToApiIamBindingArrayOutput() ApiIamBindingArrayOutput {
+	return o
+}
+
+func (o ApiIamBindingArrayOutput) ToApiIamBindingArrayOutputWithContext(ctx context.Context) ApiIamBindingArrayOutput {
+	return o
+}
+
+func (o ApiIamBindingArrayOutput) Index(i pulumi.IntInput) ApiIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiIamBinding {
+		return vs[0].([]ApiIamBinding)[vs[1].(int)]
+	}).(ApiIamBindingOutput)
+}
+
+type ApiIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (ApiIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApiIamBinding)(nil))
+}
+
+func (o ApiIamBindingMapOutput) ToApiIamBindingMapOutput() ApiIamBindingMapOutput {
+	return o
+}
+
+func (o ApiIamBindingMapOutput) ToApiIamBindingMapOutputWithContext(ctx context.Context) ApiIamBindingMapOutput {
+	return o
+}
+
+func (o ApiIamBindingMapOutput) MapIndex(k pulumi.StringInput) ApiIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiIamBinding {
+		return vs[0].(map[string]ApiIamBinding)[vs[1].(string)]
+	}).(ApiIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiIamBindingOutput{})
+	pulumi.RegisterOutputType(ApiIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(ApiIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(ApiIamBindingMapOutput{})
 }

@@ -365,6 +365,85 @@ func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyOutput)
 }
 
+func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
+	return i.ToCryptoKeyIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *CryptoKeyIAMPolicy) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyPtrOutput)
+}
+
+type CryptoKeyIAMPolicyPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput
+	ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput
+}
+
+type cryptoKeyIAMPolicyPtrType CryptoKeyIAMPolicyArgs
+
+func (*cryptoKeyIAMPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil))
+}
+
+func (i *cryptoKeyIAMPolicyPtrType) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
+	return i.ToCryptoKeyIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyIAMPolicyPtrType) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyPtrOutput)
+}
+
+// CryptoKeyIAMPolicyArrayInput is an input type that accepts CryptoKeyIAMPolicyArray and CryptoKeyIAMPolicyArrayOutput values.
+// You can construct a concrete instance of `CryptoKeyIAMPolicyArrayInput` via:
+//
+//          CryptoKeyIAMPolicyArray{ CryptoKeyIAMPolicyArgs{...} }
+type CryptoKeyIAMPolicyArrayInput interface {
+	pulumi.Input
+
+	ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMPolicyArrayOutput
+	ToCryptoKeyIAMPolicyArrayOutputWithContext(context.Context) CryptoKeyIAMPolicyArrayOutput
+}
+
+type CryptoKeyIAMPolicyArray []CryptoKeyIAMPolicyInput
+
+func (CryptoKeyIAMPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CryptoKeyIAMPolicy)(nil))
+}
+
+func (i CryptoKeyIAMPolicyArray) ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMPolicyArrayOutput {
+	return i.ToCryptoKeyIAMPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyIAMPolicyArray) ToCryptoKeyIAMPolicyArrayOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyArrayOutput)
+}
+
+// CryptoKeyIAMPolicyMapInput is an input type that accepts CryptoKeyIAMPolicyMap and CryptoKeyIAMPolicyMapOutput values.
+// You can construct a concrete instance of `CryptoKeyIAMPolicyMapInput` via:
+//
+//          CryptoKeyIAMPolicyMap{ "key": CryptoKeyIAMPolicyArgs{...} }
+type CryptoKeyIAMPolicyMapInput interface {
+	pulumi.Input
+
+	ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIAMPolicyMapOutput
+	ToCryptoKeyIAMPolicyMapOutputWithContext(context.Context) CryptoKeyIAMPolicyMapOutput
+}
+
+type CryptoKeyIAMPolicyMap map[string]CryptoKeyIAMPolicyInput
+
+func (CryptoKeyIAMPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CryptoKeyIAMPolicy)(nil))
+}
+
+func (i CryptoKeyIAMPolicyMap) ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIAMPolicyMapOutput {
+	return i.ToCryptoKeyIAMPolicyMapOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyIAMPolicyMap) ToCryptoKeyIAMPolicyMapOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMPolicyMapOutput)
+}
+
 type CryptoKeyIAMPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -381,6 +460,75 @@ func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyOutputWithContext(ctx cont
 	return o
 }
 
+func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
+	return o.ToCryptoKeyIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyIAMPolicyOutput) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
+	return o.ApplyT(func(v CryptoKeyIAMPolicy) *CryptoKeyIAMPolicy {
+		return &v
+	}).(CryptoKeyIAMPolicyPtrOutput)
+}
+
+type CryptoKeyIAMPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CryptoKeyIAMPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIAMPolicy)(nil))
+}
+
+func (o CryptoKeyIAMPolicyPtrOutput) ToCryptoKeyIAMPolicyPtrOutput() CryptoKeyIAMPolicyPtrOutput {
+	return o
+}
+
+func (o CryptoKeyIAMPolicyPtrOutput) ToCryptoKeyIAMPolicyPtrOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyPtrOutput {
+	return o
+}
+
+type CryptoKeyIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyIAMPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CryptoKeyIAMPolicy)(nil))
+}
+
+func (o CryptoKeyIAMPolicyArrayOutput) ToCryptoKeyIAMPolicyArrayOutput() CryptoKeyIAMPolicyArrayOutput {
+	return o
+}
+
+func (o CryptoKeyIAMPolicyArrayOutput) ToCryptoKeyIAMPolicyArrayOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyArrayOutput {
+	return o
+}
+
+func (o CryptoKeyIAMPolicyArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKeyIAMPolicy {
+		return vs[0].([]CryptoKeyIAMPolicy)[vs[1].(int)]
+	}).(CryptoKeyIAMPolicyOutput)
+}
+
+type CryptoKeyIAMPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyIAMPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CryptoKeyIAMPolicy)(nil))
+}
+
+func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutput() CryptoKeyIAMPolicyMapOutput {
+	return o
+}
+
+func (o CryptoKeyIAMPolicyMapOutput) ToCryptoKeyIAMPolicyMapOutputWithContext(ctx context.Context) CryptoKeyIAMPolicyMapOutput {
+	return o
+}
+
+func (o CryptoKeyIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CryptoKeyIAMPolicy {
+		return vs[0].(map[string]CryptoKeyIAMPolicy)[vs[1].(string)]
+	}).(CryptoKeyIAMPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CryptoKeyIAMPolicyOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIAMPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIAMPolicyArrayOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIAMPolicyMapOutput{})
 }

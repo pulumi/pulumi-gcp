@@ -176,6 +176,85 @@ func (i *BucketACL) ToBucketACLOutputWithContext(ctx context.Context) BucketACLO
 	return pulumi.ToOutputWithContext(ctx, i).(BucketACLOutput)
 }
 
+func (i *BucketACL) ToBucketACLPtrOutput() BucketACLPtrOutput {
+	return i.ToBucketACLPtrOutputWithContext(context.Background())
+}
+
+func (i *BucketACL) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketACLPtrOutput)
+}
+
+type BucketACLPtrInput interface {
+	pulumi.Input
+
+	ToBucketACLPtrOutput() BucketACLPtrOutput
+	ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput
+}
+
+type bucketACLPtrType BucketACLArgs
+
+func (*bucketACLPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketACL)(nil))
+}
+
+func (i *bucketACLPtrType) ToBucketACLPtrOutput() BucketACLPtrOutput {
+	return i.ToBucketACLPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketACLPtrType) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketACLPtrOutput)
+}
+
+// BucketACLArrayInput is an input type that accepts BucketACLArray and BucketACLArrayOutput values.
+// You can construct a concrete instance of `BucketACLArrayInput` via:
+//
+//          BucketACLArray{ BucketACLArgs{...} }
+type BucketACLArrayInput interface {
+	pulumi.Input
+
+	ToBucketACLArrayOutput() BucketACLArrayOutput
+	ToBucketACLArrayOutputWithContext(context.Context) BucketACLArrayOutput
+}
+
+type BucketACLArray []BucketACLInput
+
+func (BucketACLArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BucketACL)(nil))
+}
+
+func (i BucketACLArray) ToBucketACLArrayOutput() BucketACLArrayOutput {
+	return i.ToBucketACLArrayOutputWithContext(context.Background())
+}
+
+func (i BucketACLArray) ToBucketACLArrayOutputWithContext(ctx context.Context) BucketACLArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketACLArrayOutput)
+}
+
+// BucketACLMapInput is an input type that accepts BucketACLMap and BucketACLMapOutput values.
+// You can construct a concrete instance of `BucketACLMapInput` via:
+//
+//          BucketACLMap{ "key": BucketACLArgs{...} }
+type BucketACLMapInput interface {
+	pulumi.Input
+
+	ToBucketACLMapOutput() BucketACLMapOutput
+	ToBucketACLMapOutputWithContext(context.Context) BucketACLMapOutput
+}
+
+type BucketACLMap map[string]BucketACLInput
+
+func (BucketACLMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BucketACL)(nil))
+}
+
+func (i BucketACLMap) ToBucketACLMapOutput() BucketACLMapOutput {
+	return i.ToBucketACLMapOutputWithContext(context.Background())
+}
+
+func (i BucketACLMap) ToBucketACLMapOutputWithContext(ctx context.Context) BucketACLMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketACLMapOutput)
+}
+
 type BucketACLOutput struct {
 	*pulumi.OutputState
 }
@@ -192,6 +271,75 @@ func (o BucketACLOutput) ToBucketACLOutputWithContext(ctx context.Context) Bucke
 	return o
 }
 
+func (o BucketACLOutput) ToBucketACLPtrOutput() BucketACLPtrOutput {
+	return o.ToBucketACLPtrOutputWithContext(context.Background())
+}
+
+func (o BucketACLOutput) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
+	return o.ApplyT(func(v BucketACL) *BucketACL {
+		return &v
+	}).(BucketACLPtrOutput)
+}
+
+type BucketACLPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketACLPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketACL)(nil))
+}
+
+func (o BucketACLPtrOutput) ToBucketACLPtrOutput() BucketACLPtrOutput {
+	return o
+}
+
+func (o BucketACLPtrOutput) ToBucketACLPtrOutputWithContext(ctx context.Context) BucketACLPtrOutput {
+	return o
+}
+
+type BucketACLArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketACLArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketACL)(nil))
+}
+
+func (o BucketACLArrayOutput) ToBucketACLArrayOutput() BucketACLArrayOutput {
+	return o
+}
+
+func (o BucketACLArrayOutput) ToBucketACLArrayOutputWithContext(ctx context.Context) BucketACLArrayOutput {
+	return o
+}
+
+func (o BucketACLArrayOutput) Index(i pulumi.IntInput) BucketACLOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketACL {
+		return vs[0].([]BucketACL)[vs[1].(int)]
+	}).(BucketACLOutput)
+}
+
+type BucketACLMapOutput struct{ *pulumi.OutputState }
+
+func (BucketACLMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BucketACL)(nil))
+}
+
+func (o BucketACLMapOutput) ToBucketACLMapOutput() BucketACLMapOutput {
+	return o
+}
+
+func (o BucketACLMapOutput) ToBucketACLMapOutputWithContext(ctx context.Context) BucketACLMapOutput {
+	return o
+}
+
+func (o BucketACLMapOutput) MapIndex(k pulumi.StringInput) BucketACLOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BucketACL {
+		return vs[0].(map[string]BucketACL)[vs[1].(string)]
+	}).(BucketACLOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketACLOutput{})
+	pulumi.RegisterOutputType(BucketACLPtrOutput{})
+	pulumi.RegisterOutputType(BucketACLArrayOutput{})
+	pulumi.RegisterOutputType(BucketACLMapOutput{})
 }

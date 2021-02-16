@@ -267,6 +267,85 @@ func (i *ClusterIAMPolicy) ToClusterIAMPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyOutput)
 }
 
+func (i *ClusterIAMPolicy) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
+	return i.ToClusterIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterIAMPolicy) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyPtrOutput)
+}
+
+type ClusterIAMPolicyPtrInput interface {
+	pulumi.Input
+
+	ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput
+	ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput
+}
+
+type clusterIAMPolicyPtrType ClusterIAMPolicyArgs
+
+func (*clusterIAMPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIAMPolicy)(nil))
+}
+
+func (i *clusterIAMPolicyPtrType) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
+	return i.ToClusterIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterIAMPolicyPtrType) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyPtrOutput)
+}
+
+// ClusterIAMPolicyArrayInput is an input type that accepts ClusterIAMPolicyArray and ClusterIAMPolicyArrayOutput values.
+// You can construct a concrete instance of `ClusterIAMPolicyArrayInput` via:
+//
+//          ClusterIAMPolicyArray{ ClusterIAMPolicyArgs{...} }
+type ClusterIAMPolicyArrayInput interface {
+	pulumi.Input
+
+	ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput
+	ToClusterIAMPolicyArrayOutputWithContext(context.Context) ClusterIAMPolicyArrayOutput
+}
+
+type ClusterIAMPolicyArray []ClusterIAMPolicyInput
+
+func (ClusterIAMPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterIAMPolicy)(nil))
+}
+
+func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput {
+	return i.ToClusterIAMPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterIAMPolicyArray) ToClusterIAMPolicyArrayOutputWithContext(ctx context.Context) ClusterIAMPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyArrayOutput)
+}
+
+// ClusterIAMPolicyMapInput is an input type that accepts ClusterIAMPolicyMap and ClusterIAMPolicyMapOutput values.
+// You can construct a concrete instance of `ClusterIAMPolicyMapInput` via:
+//
+//          ClusterIAMPolicyMap{ "key": ClusterIAMPolicyArgs{...} }
+type ClusterIAMPolicyMapInput interface {
+	pulumi.Input
+
+	ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput
+	ToClusterIAMPolicyMapOutputWithContext(context.Context) ClusterIAMPolicyMapOutput
+}
+
+type ClusterIAMPolicyMap map[string]ClusterIAMPolicyInput
+
+func (ClusterIAMPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterIAMPolicy)(nil))
+}
+
+func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput {
+	return i.ToClusterIAMPolicyMapOutputWithContext(context.Background())
+}
+
+func (i ClusterIAMPolicyMap) ToClusterIAMPolicyMapOutputWithContext(ctx context.Context) ClusterIAMPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMPolicyMapOutput)
+}
+
 type ClusterIAMPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -283,6 +362,75 @@ func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyOutputWithContext(ctx context.
 	return o
 }
 
+func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
+	return o.ToClusterIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterIAMPolicyOutput) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
+	return o.ApplyT(func(v ClusterIAMPolicy) *ClusterIAMPolicy {
+		return &v
+	}).(ClusterIAMPolicyPtrOutput)
+}
+
+type ClusterIAMPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterIAMPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIAMPolicy)(nil))
+}
+
+func (o ClusterIAMPolicyPtrOutput) ToClusterIAMPolicyPtrOutput() ClusterIAMPolicyPtrOutput {
+	return o
+}
+
+func (o ClusterIAMPolicyPtrOutput) ToClusterIAMPolicyPtrOutputWithContext(ctx context.Context) ClusterIAMPolicyPtrOutput {
+	return o
+}
+
+type ClusterIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterIAMPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIAMPolicy)(nil))
+}
+
+func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutput() ClusterIAMPolicyArrayOutput {
+	return o
+}
+
+func (o ClusterIAMPolicyArrayOutput) ToClusterIAMPolicyArrayOutputWithContext(ctx context.Context) ClusterIAMPolicyArrayOutput {
+	return o
+}
+
+func (o ClusterIAMPolicyArrayOutput) Index(i pulumi.IntInput) ClusterIAMPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIAMPolicy {
+		return vs[0].([]ClusterIAMPolicy)[vs[1].(int)]
+	}).(ClusterIAMPolicyOutput)
+}
+
+type ClusterIAMPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterIAMPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterIAMPolicy)(nil))
+}
+
+func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutput() ClusterIAMPolicyMapOutput {
+	return o
+}
+
+func (o ClusterIAMPolicyMapOutput) ToClusterIAMPolicyMapOutputWithContext(ctx context.Context) ClusterIAMPolicyMapOutput {
+	return o
+}
+
+func (o ClusterIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterIAMPolicy {
+		return vs[0].(map[string]ClusterIAMPolicy)[vs[1].(string)]
+	}).(ClusterIAMPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterIAMPolicyOutput{})
+	pulumi.RegisterOutputType(ClusterIAMPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIAMPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ClusterIAMPolicyMapOutput{})
 }

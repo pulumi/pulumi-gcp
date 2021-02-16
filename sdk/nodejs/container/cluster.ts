@@ -454,7 +454,8 @@ export class Cluster extends pulumi.CustomResource {
     constructor(name: string, args?: ClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterArgs | ClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterState | undefined;
             inputs["addonsConfig"] = state ? state.addonsConfig : undefined;
             inputs["authenticatorGroupsConfig"] = state ? state.authenticatorGroupsConfig : undefined;
@@ -565,12 +566,8 @@ export class Cluster extends pulumi.CustomResource {
             inputs["servicesIpv4Cidr"] = undefined /*out*/;
             inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Cluster.__pulumiType, name, inputs, opts);
     }

@@ -156,7 +156,8 @@ export class FunctionIamMember extends pulumi.CustomResource {
     constructor(name: string, args: FunctionIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionIamMemberArgs | FunctionIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FunctionIamMemberState | undefined;
             inputs["cloudFunction"] = state ? state.cloudFunction : undefined;
             inputs["condition"] = state ? state.condition : undefined;
@@ -167,13 +168,13 @@ export class FunctionIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as FunctionIamMemberArgs | undefined;
-            if ((!args || args.cloudFunction === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cloudFunction === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cloudFunction'");
             }
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
@@ -184,12 +185,8 @@ export class FunctionIamMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FunctionIamMember.__pulumiType, name, inputs, opts);
     }

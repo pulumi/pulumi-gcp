@@ -153,7 +153,8 @@ export class TargetHttpProxy extends pulumi.CustomResource {
     constructor(name: string, args: TargetHttpProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetHttpProxyArgs | TargetHttpProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetHttpProxyState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -164,7 +165,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["urlMap"] = state ? state.urlMap : undefined;
         } else {
             const args = argsOrState as TargetHttpProxyArgs | undefined;
-            if ((!args || args.urlMap === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.urlMap === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'urlMap'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -175,12 +176,8 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetHttpProxy.__pulumiType, name, inputs, opts);
     }

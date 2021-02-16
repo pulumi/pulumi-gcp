@@ -177,7 +177,8 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     constructor(name: string, args: WorkloadIdentityPoolProviderArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkloadIdentityPoolProviderArgs | WorkloadIdentityPoolProviderState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolProviderState | undefined;
             inputs["attributeCondition"] = state ? state.attributeCondition : undefined;
             inputs["attributeMapping"] = state ? state.attributeMapping : undefined;
@@ -193,10 +194,10 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             inputs["workloadIdentityPoolProviderId"] = state ? state.workloadIdentityPoolProviderId : undefined;
         } else {
             const args = argsOrState as WorkloadIdentityPoolProviderArgs | undefined;
-            if ((!args || args.workloadIdentityPoolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            if ((!args || args.workloadIdentityPoolProviderId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workloadIdentityPoolProviderId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolProviderId'");
             }
             inputs["attributeCondition"] = args ? args.attributeCondition : undefined;
@@ -212,12 +213,8 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WorkloadIdentityPoolProvider.__pulumiType, name, inputs, opts);
     }

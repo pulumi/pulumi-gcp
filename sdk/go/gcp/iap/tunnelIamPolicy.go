@@ -146,6 +146,85 @@ func (i *TunnelIamPolicy) ToTunnelIamPolicyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamPolicyOutput)
 }
 
+func (i *TunnelIamPolicy) ToTunnelIamPolicyPtrOutput() TunnelIamPolicyPtrOutput {
+	return i.ToTunnelIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *TunnelIamPolicy) ToTunnelIamPolicyPtrOutputWithContext(ctx context.Context) TunnelIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamPolicyPtrOutput)
+}
+
+type TunnelIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTunnelIamPolicyPtrOutput() TunnelIamPolicyPtrOutput
+	ToTunnelIamPolicyPtrOutputWithContext(ctx context.Context) TunnelIamPolicyPtrOutput
+}
+
+type tunnelIamPolicyPtrType TunnelIamPolicyArgs
+
+func (*tunnelIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelIamPolicy)(nil))
+}
+
+func (i *tunnelIamPolicyPtrType) ToTunnelIamPolicyPtrOutput() TunnelIamPolicyPtrOutput {
+	return i.ToTunnelIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelIamPolicyPtrType) ToTunnelIamPolicyPtrOutputWithContext(ctx context.Context) TunnelIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamPolicyPtrOutput)
+}
+
+// TunnelIamPolicyArrayInput is an input type that accepts TunnelIamPolicyArray and TunnelIamPolicyArrayOutput values.
+// You can construct a concrete instance of `TunnelIamPolicyArrayInput` via:
+//
+//          TunnelIamPolicyArray{ TunnelIamPolicyArgs{...} }
+type TunnelIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTunnelIamPolicyArrayOutput() TunnelIamPolicyArrayOutput
+	ToTunnelIamPolicyArrayOutputWithContext(context.Context) TunnelIamPolicyArrayOutput
+}
+
+type TunnelIamPolicyArray []TunnelIamPolicyInput
+
+func (TunnelIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TunnelIamPolicy)(nil))
+}
+
+func (i TunnelIamPolicyArray) ToTunnelIamPolicyArrayOutput() TunnelIamPolicyArrayOutput {
+	return i.ToTunnelIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelIamPolicyArray) ToTunnelIamPolicyArrayOutputWithContext(ctx context.Context) TunnelIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamPolicyArrayOutput)
+}
+
+// TunnelIamPolicyMapInput is an input type that accepts TunnelIamPolicyMap and TunnelIamPolicyMapOutput values.
+// You can construct a concrete instance of `TunnelIamPolicyMapInput` via:
+//
+//          TunnelIamPolicyMap{ "key": TunnelIamPolicyArgs{...} }
+type TunnelIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToTunnelIamPolicyMapOutput() TunnelIamPolicyMapOutput
+	ToTunnelIamPolicyMapOutputWithContext(context.Context) TunnelIamPolicyMapOutput
+}
+
+type TunnelIamPolicyMap map[string]TunnelIamPolicyInput
+
+func (TunnelIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TunnelIamPolicy)(nil))
+}
+
+func (i TunnelIamPolicyMap) ToTunnelIamPolicyMapOutput() TunnelIamPolicyMapOutput {
+	return i.ToTunnelIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i TunnelIamPolicyMap) ToTunnelIamPolicyMapOutputWithContext(ctx context.Context) TunnelIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamPolicyMapOutput)
+}
+
 type TunnelIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -162,6 +241,75 @@ func (o TunnelIamPolicyOutput) ToTunnelIamPolicyOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o TunnelIamPolicyOutput) ToTunnelIamPolicyPtrOutput() TunnelIamPolicyPtrOutput {
+	return o.ToTunnelIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelIamPolicyOutput) ToTunnelIamPolicyPtrOutputWithContext(ctx context.Context) TunnelIamPolicyPtrOutput {
+	return o.ApplyT(func(v TunnelIamPolicy) *TunnelIamPolicy {
+		return &v
+	}).(TunnelIamPolicyPtrOutput)
+}
+
+type TunnelIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TunnelIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelIamPolicy)(nil))
+}
+
+func (o TunnelIamPolicyPtrOutput) ToTunnelIamPolicyPtrOutput() TunnelIamPolicyPtrOutput {
+	return o
+}
+
+func (o TunnelIamPolicyPtrOutput) ToTunnelIamPolicyPtrOutputWithContext(ctx context.Context) TunnelIamPolicyPtrOutput {
+	return o
+}
+
+type TunnelIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelIamPolicy)(nil))
+}
+
+func (o TunnelIamPolicyArrayOutput) ToTunnelIamPolicyArrayOutput() TunnelIamPolicyArrayOutput {
+	return o
+}
+
+func (o TunnelIamPolicyArrayOutput) ToTunnelIamPolicyArrayOutputWithContext(ctx context.Context) TunnelIamPolicyArrayOutput {
+	return o
+}
+
+func (o TunnelIamPolicyArrayOutput) Index(i pulumi.IntInput) TunnelIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelIamPolicy {
+		return vs[0].([]TunnelIamPolicy)[vs[1].(int)]
+	}).(TunnelIamPolicyOutput)
+}
+
+type TunnelIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (TunnelIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TunnelIamPolicy)(nil))
+}
+
+func (o TunnelIamPolicyMapOutput) ToTunnelIamPolicyMapOutput() TunnelIamPolicyMapOutput {
+	return o
+}
+
+func (o TunnelIamPolicyMapOutput) ToTunnelIamPolicyMapOutputWithContext(ctx context.Context) TunnelIamPolicyMapOutput {
+	return o
+}
+
+func (o TunnelIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TunnelIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TunnelIamPolicy {
+		return vs[0].(map[string]TunnelIamPolicy)[vs[1].(string)]
+	}).(TunnelIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TunnelIamPolicyOutput{})
+	pulumi.RegisterOutputType(TunnelIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TunnelIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TunnelIamPolicyMapOutput{})
 }

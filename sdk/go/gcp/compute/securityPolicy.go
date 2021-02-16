@@ -219,6 +219,85 @@ func (i *SecurityPolicy) ToSecurityPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyOutput)
 }
 
+func (i *SecurityPolicy) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
+	return i.ToSecurityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *SecurityPolicy) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyPtrOutput)
+}
+
+type SecurityPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput
+	ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput
+}
+
+type securityPolicyPtrType SecurityPolicyArgs
+
+func (*securityPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicy)(nil))
+}
+
+func (i *securityPolicyPtrType) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
+	return i.ToSecurityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyPtrType) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyPtrOutput)
+}
+
+// SecurityPolicyArrayInput is an input type that accepts SecurityPolicyArray and SecurityPolicyArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyArrayInput` via:
+//
+//          SecurityPolicyArray{ SecurityPolicyArgs{...} }
+type SecurityPolicyArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyArrayOutput() SecurityPolicyArrayOutput
+	ToSecurityPolicyArrayOutputWithContext(context.Context) SecurityPolicyArrayOutput
+}
+
+type SecurityPolicyArray []SecurityPolicyInput
+
+func (SecurityPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SecurityPolicy)(nil))
+}
+
+func (i SecurityPolicyArray) ToSecurityPolicyArrayOutput() SecurityPolicyArrayOutput {
+	return i.ToSecurityPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyArray) ToSecurityPolicyArrayOutputWithContext(ctx context.Context) SecurityPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyArrayOutput)
+}
+
+// SecurityPolicyMapInput is an input type that accepts SecurityPolicyMap and SecurityPolicyMapOutput values.
+// You can construct a concrete instance of `SecurityPolicyMapInput` via:
+//
+//          SecurityPolicyMap{ "key": SecurityPolicyArgs{...} }
+type SecurityPolicyMapInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyMapOutput() SecurityPolicyMapOutput
+	ToSecurityPolicyMapOutputWithContext(context.Context) SecurityPolicyMapOutput
+}
+
+type SecurityPolicyMap map[string]SecurityPolicyInput
+
+func (SecurityPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SecurityPolicy)(nil))
+}
+
+func (i SecurityPolicyMap) ToSecurityPolicyMapOutput() SecurityPolicyMapOutput {
+	return i.ToSecurityPolicyMapOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyMap) ToSecurityPolicyMapOutputWithContext(ctx context.Context) SecurityPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyMapOutput)
+}
+
 type SecurityPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -235,6 +314,75 @@ func (o SecurityPolicyOutput) ToSecurityPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SecurityPolicyOutput) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
+	return o.ToSecurityPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyOutput) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
+	return o.ApplyT(func(v SecurityPolicy) *SecurityPolicy {
+		return &v
+	}).(SecurityPolicyPtrOutput)
+}
+
+type SecurityPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecurityPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicy)(nil))
+}
+
+func (o SecurityPolicyPtrOutput) ToSecurityPolicyPtrOutput() SecurityPolicyPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyPtrOutput) ToSecurityPolicyPtrOutputWithContext(ctx context.Context) SecurityPolicyPtrOutput {
+	return o
+}
+
+type SecurityPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicy)(nil))
+}
+
+func (o SecurityPolicyArrayOutput) ToSecurityPolicyArrayOutput() SecurityPolicyArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyArrayOutput) ToSecurityPolicyArrayOutputWithContext(ctx context.Context) SecurityPolicyArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyArrayOutput) Index(i pulumi.IntInput) SecurityPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicy {
+		return vs[0].([]SecurityPolicy)[vs[1].(int)]
+	}).(SecurityPolicyOutput)
+}
+
+type SecurityPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SecurityPolicy)(nil))
+}
+
+func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutput() SecurityPolicyMapOutput {
+	return o
+}
+
+func (o SecurityPolicyMapOutput) ToSecurityPolicyMapOutputWithContext(ctx context.Context) SecurityPolicyMapOutput {
+	return o
+}
+
+func (o SecurityPolicyMapOutput) MapIndex(k pulumi.StringInput) SecurityPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecurityPolicy {
+		return vs[0].(map[string]SecurityPolicy)[vs[1].(string)]
+	}).(SecurityPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecurityPolicyOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyMapOutput{})
 }

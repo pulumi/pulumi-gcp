@@ -219,6 +219,85 @@ func (i *TenantInboundSamlConfig) ToTenantInboundSamlConfigOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigOutput)
 }
 
+func (i *TenantInboundSamlConfig) ToTenantInboundSamlConfigPtrOutput() TenantInboundSamlConfigPtrOutput {
+	return i.ToTenantInboundSamlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *TenantInboundSamlConfig) ToTenantInboundSamlConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigPtrOutput)
+}
+
+type TenantInboundSamlConfigPtrInput interface {
+	pulumi.Input
+
+	ToTenantInboundSamlConfigPtrOutput() TenantInboundSamlConfigPtrOutput
+	ToTenantInboundSamlConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigPtrOutput
+}
+
+type tenantInboundSamlConfigPtrType TenantInboundSamlConfigArgs
+
+func (*tenantInboundSamlConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantInboundSamlConfig)(nil))
+}
+
+func (i *tenantInboundSamlConfigPtrType) ToTenantInboundSamlConfigPtrOutput() TenantInboundSamlConfigPtrOutput {
+	return i.ToTenantInboundSamlConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantInboundSamlConfigPtrType) ToTenantInboundSamlConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigPtrOutput)
+}
+
+// TenantInboundSamlConfigArrayInput is an input type that accepts TenantInboundSamlConfigArray and TenantInboundSamlConfigArrayOutput values.
+// You can construct a concrete instance of `TenantInboundSamlConfigArrayInput` via:
+//
+//          TenantInboundSamlConfigArray{ TenantInboundSamlConfigArgs{...} }
+type TenantInboundSamlConfigArrayInput interface {
+	pulumi.Input
+
+	ToTenantInboundSamlConfigArrayOutput() TenantInboundSamlConfigArrayOutput
+	ToTenantInboundSamlConfigArrayOutputWithContext(context.Context) TenantInboundSamlConfigArrayOutput
+}
+
+type TenantInboundSamlConfigArray []TenantInboundSamlConfigInput
+
+func (TenantInboundSamlConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TenantInboundSamlConfig)(nil))
+}
+
+func (i TenantInboundSamlConfigArray) ToTenantInboundSamlConfigArrayOutput() TenantInboundSamlConfigArrayOutput {
+	return i.ToTenantInboundSamlConfigArrayOutputWithContext(context.Background())
+}
+
+func (i TenantInboundSamlConfigArray) ToTenantInboundSamlConfigArrayOutputWithContext(ctx context.Context) TenantInboundSamlConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigArrayOutput)
+}
+
+// TenantInboundSamlConfigMapInput is an input type that accepts TenantInboundSamlConfigMap and TenantInboundSamlConfigMapOutput values.
+// You can construct a concrete instance of `TenantInboundSamlConfigMapInput` via:
+//
+//          TenantInboundSamlConfigMap{ "key": TenantInboundSamlConfigArgs{...} }
+type TenantInboundSamlConfigMapInput interface {
+	pulumi.Input
+
+	ToTenantInboundSamlConfigMapOutput() TenantInboundSamlConfigMapOutput
+	ToTenantInboundSamlConfigMapOutputWithContext(context.Context) TenantInboundSamlConfigMapOutput
+}
+
+type TenantInboundSamlConfigMap map[string]TenantInboundSamlConfigInput
+
+func (TenantInboundSamlConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TenantInboundSamlConfig)(nil))
+}
+
+func (i TenantInboundSamlConfigMap) ToTenantInboundSamlConfigMapOutput() TenantInboundSamlConfigMapOutput {
+	return i.ToTenantInboundSamlConfigMapOutputWithContext(context.Background())
+}
+
+func (i TenantInboundSamlConfigMap) ToTenantInboundSamlConfigMapOutputWithContext(ctx context.Context) TenantInboundSamlConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantInboundSamlConfigMapOutput)
+}
+
 type TenantInboundSamlConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -235,6 +314,75 @@ func (o TenantInboundSamlConfigOutput) ToTenantInboundSamlConfigOutputWithContex
 	return o
 }
 
+func (o TenantInboundSamlConfigOutput) ToTenantInboundSamlConfigPtrOutput() TenantInboundSamlConfigPtrOutput {
+	return o.ToTenantInboundSamlConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TenantInboundSamlConfigOutput) ToTenantInboundSamlConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigPtrOutput {
+	return o.ApplyT(func(v TenantInboundSamlConfig) *TenantInboundSamlConfig {
+		return &v
+	}).(TenantInboundSamlConfigPtrOutput)
+}
+
+type TenantInboundSamlConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TenantInboundSamlConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TenantInboundSamlConfig)(nil))
+}
+
+func (o TenantInboundSamlConfigPtrOutput) ToTenantInboundSamlConfigPtrOutput() TenantInboundSamlConfigPtrOutput {
+	return o
+}
+
+func (o TenantInboundSamlConfigPtrOutput) ToTenantInboundSamlConfigPtrOutputWithContext(ctx context.Context) TenantInboundSamlConfigPtrOutput {
+	return o
+}
+
+type TenantInboundSamlConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (TenantInboundSamlConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TenantInboundSamlConfig)(nil))
+}
+
+func (o TenantInboundSamlConfigArrayOutput) ToTenantInboundSamlConfigArrayOutput() TenantInboundSamlConfigArrayOutput {
+	return o
+}
+
+func (o TenantInboundSamlConfigArrayOutput) ToTenantInboundSamlConfigArrayOutputWithContext(ctx context.Context) TenantInboundSamlConfigArrayOutput {
+	return o
+}
+
+func (o TenantInboundSamlConfigArrayOutput) Index(i pulumi.IntInput) TenantInboundSamlConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TenantInboundSamlConfig {
+		return vs[0].([]TenantInboundSamlConfig)[vs[1].(int)]
+	}).(TenantInboundSamlConfigOutput)
+}
+
+type TenantInboundSamlConfigMapOutput struct{ *pulumi.OutputState }
+
+func (TenantInboundSamlConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TenantInboundSamlConfig)(nil))
+}
+
+func (o TenantInboundSamlConfigMapOutput) ToTenantInboundSamlConfigMapOutput() TenantInboundSamlConfigMapOutput {
+	return o
+}
+
+func (o TenantInboundSamlConfigMapOutput) ToTenantInboundSamlConfigMapOutputWithContext(ctx context.Context) TenantInboundSamlConfigMapOutput {
+	return o
+}
+
+func (o TenantInboundSamlConfigMapOutput) MapIndex(k pulumi.StringInput) TenantInboundSamlConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TenantInboundSamlConfig {
+		return vs[0].(map[string]TenantInboundSamlConfig)[vs[1].(string)]
+	}).(TenantInboundSamlConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TenantInboundSamlConfigOutput{})
+	pulumi.RegisterOutputType(TenantInboundSamlConfigPtrOutput{})
+	pulumi.RegisterOutputType(TenantInboundSamlConfigArrayOutput{})
+	pulumi.RegisterOutputType(TenantInboundSamlConfigMapOutput{})
 }

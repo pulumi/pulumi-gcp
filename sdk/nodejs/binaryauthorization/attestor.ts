@@ -156,7 +156,8 @@ export class Attestor extends pulumi.CustomResource {
     constructor(name: string, args: AttestorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttestorArgs | AttestorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AttestorState | undefined;
             inputs["attestationAuthorityNote"] = state ? state.attestationAuthorityNote : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -164,7 +165,7 @@ export class Attestor extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as AttestorArgs | undefined;
-            if ((!args || args.attestationAuthorityNote === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.attestationAuthorityNote === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestationAuthorityNote'");
             }
             inputs["attestationAuthorityNote"] = args ? args.attestationAuthorityNote : undefined;
@@ -172,12 +173,8 @@ export class Attestor extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Attestor.__pulumiType, name, inputs, opts);
     }

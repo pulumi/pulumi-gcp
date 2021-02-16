@@ -256,6 +256,85 @@ func (i *EngineModel) ToEngineModelOutputWithContext(ctx context.Context) Engine
 	return pulumi.ToOutputWithContext(ctx, i).(EngineModelOutput)
 }
 
+func (i *EngineModel) ToEngineModelPtrOutput() EngineModelPtrOutput {
+	return i.ToEngineModelPtrOutputWithContext(context.Background())
+}
+
+func (i *EngineModel) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineModelPtrOutput)
+}
+
+type EngineModelPtrInput interface {
+	pulumi.Input
+
+	ToEngineModelPtrOutput() EngineModelPtrOutput
+	ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput
+}
+
+type engineModelPtrType EngineModelArgs
+
+func (*engineModelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineModel)(nil))
+}
+
+func (i *engineModelPtrType) ToEngineModelPtrOutput() EngineModelPtrOutput {
+	return i.ToEngineModelPtrOutputWithContext(context.Background())
+}
+
+func (i *engineModelPtrType) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineModelPtrOutput)
+}
+
+// EngineModelArrayInput is an input type that accepts EngineModelArray and EngineModelArrayOutput values.
+// You can construct a concrete instance of `EngineModelArrayInput` via:
+//
+//          EngineModelArray{ EngineModelArgs{...} }
+type EngineModelArrayInput interface {
+	pulumi.Input
+
+	ToEngineModelArrayOutput() EngineModelArrayOutput
+	ToEngineModelArrayOutputWithContext(context.Context) EngineModelArrayOutput
+}
+
+type EngineModelArray []EngineModelInput
+
+func (EngineModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EngineModel)(nil))
+}
+
+func (i EngineModelArray) ToEngineModelArrayOutput() EngineModelArrayOutput {
+	return i.ToEngineModelArrayOutputWithContext(context.Background())
+}
+
+func (i EngineModelArray) ToEngineModelArrayOutputWithContext(ctx context.Context) EngineModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineModelArrayOutput)
+}
+
+// EngineModelMapInput is an input type that accepts EngineModelMap and EngineModelMapOutput values.
+// You can construct a concrete instance of `EngineModelMapInput` via:
+//
+//          EngineModelMap{ "key": EngineModelArgs{...} }
+type EngineModelMapInput interface {
+	pulumi.Input
+
+	ToEngineModelMapOutput() EngineModelMapOutput
+	ToEngineModelMapOutputWithContext(context.Context) EngineModelMapOutput
+}
+
+type EngineModelMap map[string]EngineModelInput
+
+func (EngineModelMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EngineModel)(nil))
+}
+
+func (i EngineModelMap) ToEngineModelMapOutput() EngineModelMapOutput {
+	return i.ToEngineModelMapOutputWithContext(context.Background())
+}
+
+func (i EngineModelMap) ToEngineModelMapOutputWithContext(ctx context.Context) EngineModelMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineModelMapOutput)
+}
+
 type EngineModelOutput struct {
 	*pulumi.OutputState
 }
@@ -272,6 +351,75 @@ func (o EngineModelOutput) ToEngineModelOutputWithContext(ctx context.Context) E
 	return o
 }
 
+func (o EngineModelOutput) ToEngineModelPtrOutput() EngineModelPtrOutput {
+	return o.ToEngineModelPtrOutputWithContext(context.Background())
+}
+
+func (o EngineModelOutput) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
+	return o.ApplyT(func(v EngineModel) *EngineModel {
+		return &v
+	}).(EngineModelPtrOutput)
+}
+
+type EngineModelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EngineModelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineModel)(nil))
+}
+
+func (o EngineModelPtrOutput) ToEngineModelPtrOutput() EngineModelPtrOutput {
+	return o
+}
+
+func (o EngineModelPtrOutput) ToEngineModelPtrOutputWithContext(ctx context.Context) EngineModelPtrOutput {
+	return o
+}
+
+type EngineModelArrayOutput struct{ *pulumi.OutputState }
+
+func (EngineModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EngineModel)(nil))
+}
+
+func (o EngineModelArrayOutput) ToEngineModelArrayOutput() EngineModelArrayOutput {
+	return o
+}
+
+func (o EngineModelArrayOutput) ToEngineModelArrayOutputWithContext(ctx context.Context) EngineModelArrayOutput {
+	return o
+}
+
+func (o EngineModelArrayOutput) Index(i pulumi.IntInput) EngineModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EngineModel {
+		return vs[0].([]EngineModel)[vs[1].(int)]
+	}).(EngineModelOutput)
+}
+
+type EngineModelMapOutput struct{ *pulumi.OutputState }
+
+func (EngineModelMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EngineModel)(nil))
+}
+
+func (o EngineModelMapOutput) ToEngineModelMapOutput() EngineModelMapOutput {
+	return o
+}
+
+func (o EngineModelMapOutput) ToEngineModelMapOutputWithContext(ctx context.Context) EngineModelMapOutput {
+	return o
+}
+
+func (o EngineModelMapOutput) MapIndex(k pulumi.StringInput) EngineModelOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EngineModel {
+		return vs[0].(map[string]EngineModel)[vs[1].(string)]
+	}).(EngineModelOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EngineModelOutput{})
+	pulumi.RegisterOutputType(EngineModelPtrOutput{})
+	pulumi.RegisterOutputType(EngineModelArrayOutput{})
+	pulumi.RegisterOutputType(EngineModelMapOutput{})
 }

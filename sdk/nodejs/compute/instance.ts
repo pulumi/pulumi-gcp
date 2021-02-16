@@ -273,7 +273,8 @@ export class Instance extends pulumi.CustomResource {
     constructor(name: string, args: InstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceArgs | InstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
@@ -310,13 +311,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.bootDisk === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bootDisk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bootDisk'");
             }
-            if ((!args || args.machineType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.machineType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
-            if ((!args || args.networkInterfaces === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkInterfaces === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaces'");
             }
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
@@ -353,12 +354,8 @@ export class Instance extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Instance.__pulumiType, name, inputs, opts);
     }

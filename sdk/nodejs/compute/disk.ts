@@ -262,7 +262,8 @@ export class Disk extends pulumi.CustomResource {
     constructor(name: string, args?: DiskArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskArgs | DiskState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DiskState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -315,12 +316,8 @@ export class Disk extends pulumi.CustomResource {
             inputs["sourceSnapshotId"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Disk.__pulumiType, name, inputs, opts);
     }

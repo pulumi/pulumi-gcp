@@ -363,6 +363,85 @@ func (i *SSLPolicy) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPolicyO
 	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyOutput)
 }
 
+func (i *SSLPolicy) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
+	return i.ToSSLPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *SSLPolicy) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyPtrOutput)
+}
+
+type SSLPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSSLPolicyPtrOutput() SSLPolicyPtrOutput
+	ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput
+}
+
+type sslpolicyPtrType SSLPolicyArgs
+
+func (*sslpolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SSLPolicy)(nil))
+}
+
+func (i *sslpolicyPtrType) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
+	return i.ToSSLPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *sslpolicyPtrType) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyPtrOutput)
+}
+
+// SSLPolicyArrayInput is an input type that accepts SSLPolicyArray and SSLPolicyArrayOutput values.
+// You can construct a concrete instance of `SSLPolicyArrayInput` via:
+//
+//          SSLPolicyArray{ SSLPolicyArgs{...} }
+type SSLPolicyArrayInput interface {
+	pulumi.Input
+
+	ToSSLPolicyArrayOutput() SSLPolicyArrayOutput
+	ToSSLPolicyArrayOutputWithContext(context.Context) SSLPolicyArrayOutput
+}
+
+type SSLPolicyArray []SSLPolicyInput
+
+func (SSLPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SSLPolicy)(nil))
+}
+
+func (i SSLPolicyArray) ToSSLPolicyArrayOutput() SSLPolicyArrayOutput {
+	return i.ToSSLPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i SSLPolicyArray) ToSSLPolicyArrayOutputWithContext(ctx context.Context) SSLPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyArrayOutput)
+}
+
+// SSLPolicyMapInput is an input type that accepts SSLPolicyMap and SSLPolicyMapOutput values.
+// You can construct a concrete instance of `SSLPolicyMapInput` via:
+//
+//          SSLPolicyMap{ "key": SSLPolicyArgs{...} }
+type SSLPolicyMapInput interface {
+	pulumi.Input
+
+	ToSSLPolicyMapOutput() SSLPolicyMapOutput
+	ToSSLPolicyMapOutputWithContext(context.Context) SSLPolicyMapOutput
+}
+
+type SSLPolicyMap map[string]SSLPolicyInput
+
+func (SSLPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SSLPolicy)(nil))
+}
+
+func (i SSLPolicyMap) ToSSLPolicyMapOutput() SSLPolicyMapOutput {
+	return i.ToSSLPolicyMapOutputWithContext(context.Background())
+}
+
+func (i SSLPolicyMap) ToSSLPolicyMapOutputWithContext(ctx context.Context) SSLPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLPolicyMapOutput)
+}
+
 type SSLPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -379,6 +458,75 @@ func (o SSLPolicyOutput) ToSSLPolicyOutputWithContext(ctx context.Context) SSLPo
 	return o
 }
 
+func (o SSLPolicyOutput) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
+	return o.ToSSLPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SSLPolicyOutput) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
+	return o.ApplyT(func(v SSLPolicy) *SSLPolicy {
+		return &v
+	}).(SSLPolicyPtrOutput)
+}
+
+type SSLPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SSLPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SSLPolicy)(nil))
+}
+
+func (o SSLPolicyPtrOutput) ToSSLPolicyPtrOutput() SSLPolicyPtrOutput {
+	return o
+}
+
+func (o SSLPolicyPtrOutput) ToSSLPolicyPtrOutputWithContext(ctx context.Context) SSLPolicyPtrOutput {
+	return o
+}
+
+type SSLPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (SSLPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SSLPolicy)(nil))
+}
+
+func (o SSLPolicyArrayOutput) ToSSLPolicyArrayOutput() SSLPolicyArrayOutput {
+	return o
+}
+
+func (o SSLPolicyArrayOutput) ToSSLPolicyArrayOutputWithContext(ctx context.Context) SSLPolicyArrayOutput {
+	return o
+}
+
+func (o SSLPolicyArrayOutput) Index(i pulumi.IntInput) SSLPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SSLPolicy {
+		return vs[0].([]SSLPolicy)[vs[1].(int)]
+	}).(SSLPolicyOutput)
+}
+
+type SSLPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (SSLPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SSLPolicy)(nil))
+}
+
+func (o SSLPolicyMapOutput) ToSSLPolicyMapOutput() SSLPolicyMapOutput {
+	return o
+}
+
+func (o SSLPolicyMapOutput) ToSSLPolicyMapOutputWithContext(ctx context.Context) SSLPolicyMapOutput {
+	return o
+}
+
+func (o SSLPolicyMapOutput) MapIndex(k pulumi.StringInput) SSLPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SSLPolicy {
+		return vs[0].(map[string]SSLPolicy)[vs[1].(string)]
+	}).(SSLPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SSLPolicyOutput{})
+	pulumi.RegisterOutputType(SSLPolicyPtrOutput{})
+	pulumi.RegisterOutputType(SSLPolicyArrayOutput{})
+	pulumi.RegisterOutputType(SSLPolicyMapOutput{})
 }

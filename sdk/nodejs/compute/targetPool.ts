@@ -142,7 +142,8 @@ export class TargetPool extends pulumi.CustomResource {
     constructor(name: string, args?: TargetPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetPoolArgs | TargetPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetPoolState | undefined;
             inputs["backupPool"] = state ? state.backupPool : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -167,12 +168,8 @@ export class TargetPool extends pulumi.CustomResource {
             inputs["sessionAffinity"] = args ? args.sessionAffinity : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetPool.__pulumiType, name, inputs, opts);
     }

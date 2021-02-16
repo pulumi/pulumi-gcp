@@ -118,7 +118,8 @@ export class FirewallRule extends pulumi.CustomResource {
     constructor(name: string, args: FirewallRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallRuleArgs | FirewallRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FirewallRuleState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -127,10 +128,10 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["sourceRange"] = state ? state.sourceRange : undefined;
         } else {
             const args = argsOrState as FirewallRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.sourceRange === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceRange'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -139,12 +140,8 @@ export class FirewallRule extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["sourceRange"] = args ? args.sourceRange : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FirewallRule.__pulumiType, name, inputs, opts);
     }

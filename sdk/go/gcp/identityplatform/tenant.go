@@ -207,6 +207,85 @@ func (i *Tenant) ToTenantOutputWithContext(ctx context.Context) TenantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(TenantOutput)
 }
 
+func (i *Tenant) ToTenantPtrOutput() TenantPtrOutput {
+	return i.ToTenantPtrOutputWithContext(context.Background())
+}
+
+func (i *Tenant) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantPtrOutput)
+}
+
+type TenantPtrInput interface {
+	pulumi.Input
+
+	ToTenantPtrOutput() TenantPtrOutput
+	ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput
+}
+
+type tenantPtrType TenantArgs
+
+func (*tenantPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Tenant)(nil))
+}
+
+func (i *tenantPtrType) ToTenantPtrOutput() TenantPtrOutput {
+	return i.ToTenantPtrOutputWithContext(context.Background())
+}
+
+func (i *tenantPtrType) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantPtrOutput)
+}
+
+// TenantArrayInput is an input type that accepts TenantArray and TenantArrayOutput values.
+// You can construct a concrete instance of `TenantArrayInput` via:
+//
+//          TenantArray{ TenantArgs{...} }
+type TenantArrayInput interface {
+	pulumi.Input
+
+	ToTenantArrayOutput() TenantArrayOutput
+	ToTenantArrayOutputWithContext(context.Context) TenantArrayOutput
+}
+
+type TenantArray []TenantInput
+
+func (TenantArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Tenant)(nil))
+}
+
+func (i TenantArray) ToTenantArrayOutput() TenantArrayOutput {
+	return i.ToTenantArrayOutputWithContext(context.Background())
+}
+
+func (i TenantArray) ToTenantArrayOutputWithContext(ctx context.Context) TenantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantArrayOutput)
+}
+
+// TenantMapInput is an input type that accepts TenantMap and TenantMapOutput values.
+// You can construct a concrete instance of `TenantMapInput` via:
+//
+//          TenantMap{ "key": TenantArgs{...} }
+type TenantMapInput interface {
+	pulumi.Input
+
+	ToTenantMapOutput() TenantMapOutput
+	ToTenantMapOutputWithContext(context.Context) TenantMapOutput
+}
+
+type TenantMap map[string]TenantInput
+
+func (TenantMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Tenant)(nil))
+}
+
+func (i TenantMap) ToTenantMapOutput() TenantMapOutput {
+	return i.ToTenantMapOutputWithContext(context.Background())
+}
+
+func (i TenantMap) ToTenantMapOutputWithContext(ctx context.Context) TenantMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TenantMapOutput)
+}
+
 type TenantOutput struct {
 	*pulumi.OutputState
 }
@@ -223,6 +302,75 @@ func (o TenantOutput) ToTenantOutputWithContext(ctx context.Context) TenantOutpu
 	return o
 }
 
+func (o TenantOutput) ToTenantPtrOutput() TenantPtrOutput {
+	return o.ToTenantPtrOutputWithContext(context.Background())
+}
+
+func (o TenantOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
+	return o.ApplyT(func(v Tenant) *Tenant {
+		return &v
+	}).(TenantPtrOutput)
+}
+
+type TenantPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TenantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Tenant)(nil))
+}
+
+func (o TenantPtrOutput) ToTenantPtrOutput() TenantPtrOutput {
+	return o
+}
+
+func (o TenantPtrOutput) ToTenantPtrOutputWithContext(ctx context.Context) TenantPtrOutput {
+	return o
+}
+
+type TenantArrayOutput struct{ *pulumi.OutputState }
+
+func (TenantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Tenant)(nil))
+}
+
+func (o TenantArrayOutput) ToTenantArrayOutput() TenantArrayOutput {
+	return o
+}
+
+func (o TenantArrayOutput) ToTenantArrayOutputWithContext(ctx context.Context) TenantArrayOutput {
+	return o
+}
+
+func (o TenantArrayOutput) Index(i pulumi.IntInput) TenantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Tenant {
+		return vs[0].([]Tenant)[vs[1].(int)]
+	}).(TenantOutput)
+}
+
+type TenantMapOutput struct{ *pulumi.OutputState }
+
+func (TenantMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Tenant)(nil))
+}
+
+func (o TenantMapOutput) ToTenantMapOutput() TenantMapOutput {
+	return o
+}
+
+func (o TenantMapOutput) ToTenantMapOutputWithContext(ctx context.Context) TenantMapOutput {
+	return o
+}
+
+func (o TenantMapOutput) MapIndex(k pulumi.StringInput) TenantOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Tenant {
+		return vs[0].(map[string]Tenant)[vs[1].(string)]
+	}).(TenantOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TenantOutput{})
+	pulumi.RegisterOutputType(TenantPtrOutput{})
+	pulumi.RegisterOutputType(TenantArrayOutput{})
+	pulumi.RegisterOutputType(TenantMapOutput{})
 }

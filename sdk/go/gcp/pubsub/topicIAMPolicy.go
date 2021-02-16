@@ -262,6 +262,85 @@ func (i *TopicIAMPolicy) ToTopicIAMPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyOutput)
 }
 
+func (i *TopicIAMPolicy) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
+	return i.ToTopicIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *TopicIAMPolicy) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyPtrOutput)
+}
+
+type TopicIAMPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput
+	ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput
+}
+
+type topicIAMPolicyPtrType TopicIAMPolicyArgs
+
+func (*topicIAMPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIAMPolicy)(nil))
+}
+
+func (i *topicIAMPolicyPtrType) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
+	return i.ToTopicIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIAMPolicyPtrType) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyPtrOutput)
+}
+
+// TopicIAMPolicyArrayInput is an input type that accepts TopicIAMPolicyArray and TopicIAMPolicyArrayOutput values.
+// You can construct a concrete instance of `TopicIAMPolicyArrayInput` via:
+//
+//          TopicIAMPolicyArray{ TopicIAMPolicyArgs{...} }
+type TopicIAMPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOutput
+	ToTopicIAMPolicyArrayOutputWithContext(context.Context) TopicIAMPolicyArrayOutput
+}
+
+type TopicIAMPolicyArray []TopicIAMPolicyInput
+
+func (TopicIAMPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TopicIAMPolicy)(nil))
+}
+
+func (i TopicIAMPolicyArray) ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOutput {
+	return i.ToTopicIAMPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TopicIAMPolicyArray) ToTopicIAMPolicyArrayOutputWithContext(ctx context.Context) TopicIAMPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyArrayOutput)
+}
+
+// TopicIAMPolicyMapInput is an input type that accepts TopicIAMPolicyMap and TopicIAMPolicyMapOutput values.
+// You can construct a concrete instance of `TopicIAMPolicyMapInput` via:
+//
+//          TopicIAMPolicyMap{ "key": TopicIAMPolicyArgs{...} }
+type TopicIAMPolicyMapInput interface {
+	pulumi.Input
+
+	ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOutput
+	ToTopicIAMPolicyMapOutputWithContext(context.Context) TopicIAMPolicyMapOutput
+}
+
+type TopicIAMPolicyMap map[string]TopicIAMPolicyInput
+
+func (TopicIAMPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TopicIAMPolicy)(nil))
+}
+
+func (i TopicIAMPolicyMap) ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOutput {
+	return i.ToTopicIAMPolicyMapOutputWithContext(context.Background())
+}
+
+func (i TopicIAMPolicyMap) ToTopicIAMPolicyMapOutputWithContext(ctx context.Context) TopicIAMPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMPolicyMapOutput)
+}
+
 type TopicIAMPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -278,6 +357,75 @@ func (o TopicIAMPolicyOutput) ToTopicIAMPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o TopicIAMPolicyOutput) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
+	return o.ToTopicIAMPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIAMPolicyOutput) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
+	return o.ApplyT(func(v TopicIAMPolicy) *TopicIAMPolicy {
+		return &v
+	}).(TopicIAMPolicyPtrOutput)
+}
+
+type TopicIAMPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicIAMPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIAMPolicy)(nil))
+}
+
+func (o TopicIAMPolicyPtrOutput) ToTopicIAMPolicyPtrOutput() TopicIAMPolicyPtrOutput {
+	return o
+}
+
+func (o TopicIAMPolicyPtrOutput) ToTopicIAMPolicyPtrOutputWithContext(ctx context.Context) TopicIAMPolicyPtrOutput {
+	return o
+}
+
+type TopicIAMPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TopicIAMPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TopicIAMPolicy)(nil))
+}
+
+func (o TopicIAMPolicyArrayOutput) ToTopicIAMPolicyArrayOutput() TopicIAMPolicyArrayOutput {
+	return o
+}
+
+func (o TopicIAMPolicyArrayOutput) ToTopicIAMPolicyArrayOutputWithContext(ctx context.Context) TopicIAMPolicyArrayOutput {
+	return o
+}
+
+func (o TopicIAMPolicyArrayOutput) Index(i pulumi.IntInput) TopicIAMPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TopicIAMPolicy {
+		return vs[0].([]TopicIAMPolicy)[vs[1].(int)]
+	}).(TopicIAMPolicyOutput)
+}
+
+type TopicIAMPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (TopicIAMPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TopicIAMPolicy)(nil))
+}
+
+func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutput() TopicIAMPolicyMapOutput {
+	return o
+}
+
+func (o TopicIAMPolicyMapOutput) ToTopicIAMPolicyMapOutputWithContext(ctx context.Context) TopicIAMPolicyMapOutput {
+	return o
+}
+
+func (o TopicIAMPolicyMapOutput) MapIndex(k pulumi.StringInput) TopicIAMPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TopicIAMPolicy {
+		return vs[0].(map[string]TopicIAMPolicy)[vs[1].(string)]
+	}).(TopicIAMPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TopicIAMPolicyOutput{})
+	pulumi.RegisterOutputType(TopicIAMPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TopicIAMPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TopicIAMPolicyMapOutput{})
 }

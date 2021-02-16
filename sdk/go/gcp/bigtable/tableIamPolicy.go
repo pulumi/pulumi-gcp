@@ -257,6 +257,85 @@ func (i *TableIamPolicy) ToTableIamPolicyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyOutput)
 }
 
+func (i *TableIamPolicy) ToTableIamPolicyPtrOutput() TableIamPolicyPtrOutput {
+	return i.ToTableIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *TableIamPolicy) ToTableIamPolicyPtrOutputWithContext(ctx context.Context) TableIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyPtrOutput)
+}
+
+type TableIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTableIamPolicyPtrOutput() TableIamPolicyPtrOutput
+	ToTableIamPolicyPtrOutputWithContext(ctx context.Context) TableIamPolicyPtrOutput
+}
+
+type tableIamPolicyPtrType TableIamPolicyArgs
+
+func (*tableIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableIamPolicy)(nil))
+}
+
+func (i *tableIamPolicyPtrType) ToTableIamPolicyPtrOutput() TableIamPolicyPtrOutput {
+	return i.ToTableIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *tableIamPolicyPtrType) ToTableIamPolicyPtrOutputWithContext(ctx context.Context) TableIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyPtrOutput)
+}
+
+// TableIamPolicyArrayInput is an input type that accepts TableIamPolicyArray and TableIamPolicyArrayOutput values.
+// You can construct a concrete instance of `TableIamPolicyArrayInput` via:
+//
+//          TableIamPolicyArray{ TableIamPolicyArgs{...} }
+type TableIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTableIamPolicyArrayOutput() TableIamPolicyArrayOutput
+	ToTableIamPolicyArrayOutputWithContext(context.Context) TableIamPolicyArrayOutput
+}
+
+type TableIamPolicyArray []TableIamPolicyInput
+
+func (TableIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TableIamPolicy)(nil))
+}
+
+func (i TableIamPolicyArray) ToTableIamPolicyArrayOutput() TableIamPolicyArrayOutput {
+	return i.ToTableIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TableIamPolicyArray) ToTableIamPolicyArrayOutputWithContext(ctx context.Context) TableIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyArrayOutput)
+}
+
+// TableIamPolicyMapInput is an input type that accepts TableIamPolicyMap and TableIamPolicyMapOutput values.
+// You can construct a concrete instance of `TableIamPolicyMapInput` via:
+//
+//          TableIamPolicyMap{ "key": TableIamPolicyArgs{...} }
+type TableIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToTableIamPolicyMapOutput() TableIamPolicyMapOutput
+	ToTableIamPolicyMapOutputWithContext(context.Context) TableIamPolicyMapOutput
+}
+
+type TableIamPolicyMap map[string]TableIamPolicyInput
+
+func (TableIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TableIamPolicy)(nil))
+}
+
+func (i TableIamPolicyMap) ToTableIamPolicyMapOutput() TableIamPolicyMapOutput {
+	return i.ToTableIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i TableIamPolicyMap) ToTableIamPolicyMapOutputWithContext(ctx context.Context) TableIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableIamPolicyMapOutput)
+}
+
 type TableIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -273,6 +352,75 @@ func (o TableIamPolicyOutput) ToTableIamPolicyOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o TableIamPolicyOutput) ToTableIamPolicyPtrOutput() TableIamPolicyPtrOutput {
+	return o.ToTableIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TableIamPolicyOutput) ToTableIamPolicyPtrOutputWithContext(ctx context.Context) TableIamPolicyPtrOutput {
+	return o.ApplyT(func(v TableIamPolicy) *TableIamPolicy {
+		return &v
+	}).(TableIamPolicyPtrOutput)
+}
+
+type TableIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TableIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableIamPolicy)(nil))
+}
+
+func (o TableIamPolicyPtrOutput) ToTableIamPolicyPtrOutput() TableIamPolicyPtrOutput {
+	return o
+}
+
+func (o TableIamPolicyPtrOutput) ToTableIamPolicyPtrOutputWithContext(ctx context.Context) TableIamPolicyPtrOutput {
+	return o
+}
+
+type TableIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TableIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TableIamPolicy)(nil))
+}
+
+func (o TableIamPolicyArrayOutput) ToTableIamPolicyArrayOutput() TableIamPolicyArrayOutput {
+	return o
+}
+
+func (o TableIamPolicyArrayOutput) ToTableIamPolicyArrayOutputWithContext(ctx context.Context) TableIamPolicyArrayOutput {
+	return o
+}
+
+func (o TableIamPolicyArrayOutput) Index(i pulumi.IntInput) TableIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TableIamPolicy {
+		return vs[0].([]TableIamPolicy)[vs[1].(int)]
+	}).(TableIamPolicyOutput)
+}
+
+type TableIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (TableIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TableIamPolicy)(nil))
+}
+
+func (o TableIamPolicyMapOutput) ToTableIamPolicyMapOutput() TableIamPolicyMapOutput {
+	return o
+}
+
+func (o TableIamPolicyMapOutput) ToTableIamPolicyMapOutputWithContext(ctx context.Context) TableIamPolicyMapOutput {
+	return o
+}
+
+func (o TableIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TableIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TableIamPolicy {
+		return vs[0].(map[string]TableIamPolicy)[vs[1].(string)]
+	}).(TableIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TableIamPolicyOutput{})
+	pulumi.RegisterOutputType(TableIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TableIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TableIamPolicyMapOutput{})
 }

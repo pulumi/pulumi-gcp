@@ -143,7 +143,8 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
     constructor(name: string, args: TopicIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TopicIAMPolicyArgs | TopicIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TopicIAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -151,10 +152,10 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
             inputs["topic"] = state ? state.topic : undefined;
         } else {
             const args = argsOrState as TopicIAMPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.topic === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.topic === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topic'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;
@@ -162,12 +163,8 @@ export class TopicIAMPolicy extends pulumi.CustomResource {
             inputs["topic"] = args ? args.topic : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TopicIAMPolicy.__pulumiType, name, inputs, opts);
     }

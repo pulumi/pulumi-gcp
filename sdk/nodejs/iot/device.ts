@@ -170,7 +170,8 @@ export class Device extends pulumi.CustomResource {
     constructor(name: string, args: DeviceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeviceArgs | DeviceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DeviceState | undefined;
             inputs["blocked"] = state ? state.blocked : undefined;
             inputs["configs"] = state ? state.configs : undefined;
@@ -191,7 +192,7 @@ export class Device extends pulumi.CustomResource {
             inputs["states"] = state ? state.states : undefined;
         } else {
             const args = argsOrState as DeviceArgs | undefined;
-            if ((!args || args.registry === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.registry === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'registry'");
             }
             inputs["blocked"] = args ? args.blocked : undefined;
@@ -212,12 +213,8 @@ export class Device extends pulumi.CustomResource {
             inputs["numId"] = undefined /*out*/;
             inputs["states"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Device.__pulumiType, name, inputs, opts);
     }

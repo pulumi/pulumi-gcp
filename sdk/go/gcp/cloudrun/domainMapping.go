@@ -235,6 +235,85 @@ func (i *DomainMapping) ToDomainMappingOutputWithContext(ctx context.Context) Do
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingOutput)
 }
 
+func (i *DomainMapping) ToDomainMappingPtrOutput() DomainMappingPtrOutput {
+	return i.ToDomainMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *DomainMapping) ToDomainMappingPtrOutputWithContext(ctx context.Context) DomainMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingPtrOutput)
+}
+
+type DomainMappingPtrInput interface {
+	pulumi.Input
+
+	ToDomainMappingPtrOutput() DomainMappingPtrOutput
+	ToDomainMappingPtrOutputWithContext(ctx context.Context) DomainMappingPtrOutput
+}
+
+type domainMappingPtrType DomainMappingArgs
+
+func (*domainMappingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainMapping)(nil))
+}
+
+func (i *domainMappingPtrType) ToDomainMappingPtrOutput() DomainMappingPtrOutput {
+	return i.ToDomainMappingPtrOutputWithContext(context.Background())
+}
+
+func (i *domainMappingPtrType) ToDomainMappingPtrOutputWithContext(ctx context.Context) DomainMappingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingPtrOutput)
+}
+
+// DomainMappingArrayInput is an input type that accepts DomainMappingArray and DomainMappingArrayOutput values.
+// You can construct a concrete instance of `DomainMappingArrayInput` via:
+//
+//          DomainMappingArray{ DomainMappingArgs{...} }
+type DomainMappingArrayInput interface {
+	pulumi.Input
+
+	ToDomainMappingArrayOutput() DomainMappingArrayOutput
+	ToDomainMappingArrayOutputWithContext(context.Context) DomainMappingArrayOutput
+}
+
+type DomainMappingArray []DomainMappingInput
+
+func (DomainMappingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DomainMapping)(nil))
+}
+
+func (i DomainMappingArray) ToDomainMappingArrayOutput() DomainMappingArrayOutput {
+	return i.ToDomainMappingArrayOutputWithContext(context.Background())
+}
+
+func (i DomainMappingArray) ToDomainMappingArrayOutputWithContext(ctx context.Context) DomainMappingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingArrayOutput)
+}
+
+// DomainMappingMapInput is an input type that accepts DomainMappingMap and DomainMappingMapOutput values.
+// You can construct a concrete instance of `DomainMappingMapInput` via:
+//
+//          DomainMappingMap{ "key": DomainMappingArgs{...} }
+type DomainMappingMapInput interface {
+	pulumi.Input
+
+	ToDomainMappingMapOutput() DomainMappingMapOutput
+	ToDomainMappingMapOutputWithContext(context.Context) DomainMappingMapOutput
+}
+
+type DomainMappingMap map[string]DomainMappingInput
+
+func (DomainMappingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DomainMapping)(nil))
+}
+
+func (i DomainMappingMap) ToDomainMappingMapOutput() DomainMappingMapOutput {
+	return i.ToDomainMappingMapOutputWithContext(context.Background())
+}
+
+func (i DomainMappingMap) ToDomainMappingMapOutputWithContext(ctx context.Context) DomainMappingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DomainMappingMapOutput)
+}
+
 type DomainMappingOutput struct {
 	*pulumi.OutputState
 }
@@ -251,6 +330,75 @@ func (o DomainMappingOutput) ToDomainMappingOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o DomainMappingOutput) ToDomainMappingPtrOutput() DomainMappingPtrOutput {
+	return o.ToDomainMappingPtrOutputWithContext(context.Background())
+}
+
+func (o DomainMappingOutput) ToDomainMappingPtrOutputWithContext(ctx context.Context) DomainMappingPtrOutput {
+	return o.ApplyT(func(v DomainMapping) *DomainMapping {
+		return &v
+	}).(DomainMappingPtrOutput)
+}
+
+type DomainMappingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DomainMappingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DomainMapping)(nil))
+}
+
+func (o DomainMappingPtrOutput) ToDomainMappingPtrOutput() DomainMappingPtrOutput {
+	return o
+}
+
+func (o DomainMappingPtrOutput) ToDomainMappingPtrOutputWithContext(ctx context.Context) DomainMappingPtrOutput {
+	return o
+}
+
+type DomainMappingArrayOutput struct{ *pulumi.OutputState }
+
+func (DomainMappingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DomainMapping)(nil))
+}
+
+func (o DomainMappingArrayOutput) ToDomainMappingArrayOutput() DomainMappingArrayOutput {
+	return o
+}
+
+func (o DomainMappingArrayOutput) ToDomainMappingArrayOutputWithContext(ctx context.Context) DomainMappingArrayOutput {
+	return o
+}
+
+func (o DomainMappingArrayOutput) Index(i pulumi.IntInput) DomainMappingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DomainMapping {
+		return vs[0].([]DomainMapping)[vs[1].(int)]
+	}).(DomainMappingOutput)
+}
+
+type DomainMappingMapOutput struct{ *pulumi.OutputState }
+
+func (DomainMappingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DomainMapping)(nil))
+}
+
+func (o DomainMappingMapOutput) ToDomainMappingMapOutput() DomainMappingMapOutput {
+	return o
+}
+
+func (o DomainMappingMapOutput) ToDomainMappingMapOutputWithContext(ctx context.Context) DomainMappingMapOutput {
+	return o
+}
+
+func (o DomainMappingMapOutput) MapIndex(k pulumi.StringInput) DomainMappingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DomainMapping {
+		return vs[0].(map[string]DomainMapping)[vs[1].(string)]
+	}).(DomainMappingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DomainMappingOutput{})
+	pulumi.RegisterOutputType(DomainMappingPtrOutput{})
+	pulumi.RegisterOutputType(DomainMappingArrayOutput{})
+	pulumi.RegisterOutputType(DomainMappingMapOutput{})
 }

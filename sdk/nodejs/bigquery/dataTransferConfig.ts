@@ -188,7 +188,8 @@ export class DataTransferConfig extends pulumi.CustomResource {
     constructor(name: string, args: DataTransferConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DataTransferConfigArgs | DataTransferConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DataTransferConfigState | undefined;
             inputs["dataRefreshWindowDays"] = state ? state.dataRefreshWindowDays : undefined;
             inputs["dataSourceId"] = state ? state.dataSourceId : undefined;
@@ -207,16 +208,16 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["serviceAccountName"] = state ? state.serviceAccountName : undefined;
         } else {
             const args = argsOrState as DataTransferConfigArgs | undefined;
-            if ((!args || args.dataSourceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dataSourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataSourceId'");
             }
-            if ((!args || args.destinationDatasetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destinationDatasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destinationDatasetId'");
             }
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.params === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.params === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'params'");
             }
             inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
@@ -235,12 +236,8 @@ export class DataTransferConfig extends pulumi.CustomResource {
             inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DataTransferConfig.__pulumiType, name, inputs, opts);
     }

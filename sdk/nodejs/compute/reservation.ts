@@ -149,7 +149,8 @@ export class Reservation extends pulumi.CustomResource {
     constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReservationArgs | ReservationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
             inputs["commitment"] = state ? state.commitment : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -163,10 +164,10 @@ export class Reservation extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
-            if ((!args || args.specificReservation === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.specificReservation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'specificReservation'");
             }
-            if ((!args || args.zone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -180,12 +181,8 @@ export class Reservation extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Reservation.__pulumiType, name, inputs, opts);
     }

@@ -123,7 +123,8 @@ export class FolderFeed extends pulumi.CustomResource {
     constructor(name: string, args: FolderFeedArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FolderFeedArgs | FolderFeedState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FolderFeedState | undefined;
             inputs["assetNames"] = state ? state.assetNames : undefined;
             inputs["assetTypes"] = state ? state.assetTypes : undefined;
@@ -137,16 +138,16 @@ export class FolderFeed extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as FolderFeedArgs | undefined;
-            if ((!args || args.billingProject === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingProject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingProject'");
             }
-            if ((!args || args.feedId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.feedId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedId'");
             }
-            if ((!args || args.feedOutputConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.feedOutputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedOutputConfig'");
             }
-            if ((!args || args.folder === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.folder === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'folder'");
             }
             inputs["assetNames"] = args ? args.assetNames : undefined;
@@ -160,12 +161,8 @@ export class FolderFeed extends pulumi.CustomResource {
             inputs["folderId"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FolderFeed.__pulumiType, name, inputs, opts);
     }

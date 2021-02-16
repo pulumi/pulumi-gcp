@@ -174,6 +174,85 @@ func (i *TunnelIamBinding) ToTunnelIamBindingOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingOutput)
 }
 
+func (i *TunnelIamBinding) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
+	return i.ToTunnelIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *TunnelIamBinding) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingPtrOutput)
+}
+
+type TunnelIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput
+	ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput
+}
+
+type tunnelIamBindingPtrType TunnelIamBindingArgs
+
+func (*tunnelIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelIamBinding)(nil))
+}
+
+func (i *tunnelIamBindingPtrType) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
+	return i.ToTunnelIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *tunnelIamBindingPtrType) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingPtrOutput)
+}
+
+// TunnelIamBindingArrayInput is an input type that accepts TunnelIamBindingArray and TunnelIamBindingArrayOutput values.
+// You can construct a concrete instance of `TunnelIamBindingArrayInput` via:
+//
+//          TunnelIamBindingArray{ TunnelIamBindingArgs{...} }
+type TunnelIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToTunnelIamBindingArrayOutput() TunnelIamBindingArrayOutput
+	ToTunnelIamBindingArrayOutputWithContext(context.Context) TunnelIamBindingArrayOutput
+}
+
+type TunnelIamBindingArray []TunnelIamBindingInput
+
+func (TunnelIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TunnelIamBinding)(nil))
+}
+
+func (i TunnelIamBindingArray) ToTunnelIamBindingArrayOutput() TunnelIamBindingArrayOutput {
+	return i.ToTunnelIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i TunnelIamBindingArray) ToTunnelIamBindingArrayOutputWithContext(ctx context.Context) TunnelIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingArrayOutput)
+}
+
+// TunnelIamBindingMapInput is an input type that accepts TunnelIamBindingMap and TunnelIamBindingMapOutput values.
+// You can construct a concrete instance of `TunnelIamBindingMapInput` via:
+//
+//          TunnelIamBindingMap{ "key": TunnelIamBindingArgs{...} }
+type TunnelIamBindingMapInput interface {
+	pulumi.Input
+
+	ToTunnelIamBindingMapOutput() TunnelIamBindingMapOutput
+	ToTunnelIamBindingMapOutputWithContext(context.Context) TunnelIamBindingMapOutput
+}
+
+type TunnelIamBindingMap map[string]TunnelIamBindingInput
+
+func (TunnelIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TunnelIamBinding)(nil))
+}
+
+func (i TunnelIamBindingMap) ToTunnelIamBindingMapOutput() TunnelIamBindingMapOutput {
+	return i.ToTunnelIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i TunnelIamBindingMap) ToTunnelIamBindingMapOutputWithContext(ctx context.Context) TunnelIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TunnelIamBindingMapOutput)
+}
+
 type TunnelIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -190,6 +269,75 @@ func (o TunnelIamBindingOutput) ToTunnelIamBindingOutputWithContext(ctx context.
 	return o
 }
 
+func (o TunnelIamBindingOutput) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
+	return o.ToTunnelIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o TunnelIamBindingOutput) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
+	return o.ApplyT(func(v TunnelIamBinding) *TunnelIamBinding {
+		return &v
+	}).(TunnelIamBindingPtrOutput)
+}
+
+type TunnelIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TunnelIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TunnelIamBinding)(nil))
+}
+
+func (o TunnelIamBindingPtrOutput) ToTunnelIamBindingPtrOutput() TunnelIamBindingPtrOutput {
+	return o
+}
+
+func (o TunnelIamBindingPtrOutput) ToTunnelIamBindingPtrOutputWithContext(ctx context.Context) TunnelIamBindingPtrOutput {
+	return o
+}
+
+type TunnelIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (TunnelIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TunnelIamBinding)(nil))
+}
+
+func (o TunnelIamBindingArrayOutput) ToTunnelIamBindingArrayOutput() TunnelIamBindingArrayOutput {
+	return o
+}
+
+func (o TunnelIamBindingArrayOutput) ToTunnelIamBindingArrayOutputWithContext(ctx context.Context) TunnelIamBindingArrayOutput {
+	return o
+}
+
+func (o TunnelIamBindingArrayOutput) Index(i pulumi.IntInput) TunnelIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TunnelIamBinding {
+		return vs[0].([]TunnelIamBinding)[vs[1].(int)]
+	}).(TunnelIamBindingOutput)
+}
+
+type TunnelIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (TunnelIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TunnelIamBinding)(nil))
+}
+
+func (o TunnelIamBindingMapOutput) ToTunnelIamBindingMapOutput() TunnelIamBindingMapOutput {
+	return o
+}
+
+func (o TunnelIamBindingMapOutput) ToTunnelIamBindingMapOutputWithContext(ctx context.Context) TunnelIamBindingMapOutput {
+	return o
+}
+
+func (o TunnelIamBindingMapOutput) MapIndex(k pulumi.StringInput) TunnelIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TunnelIamBinding {
+		return vs[0].(map[string]TunnelIamBinding)[vs[1].(string)]
+	}).(TunnelIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TunnelIamBindingOutput{})
+	pulumi.RegisterOutputType(TunnelIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(TunnelIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(TunnelIamBindingMapOutput{})
 }

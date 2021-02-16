@@ -154,7 +154,8 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
     constructor(name: string, args?: HttpsHealthCheckArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HttpsHealthCheckArgs | HttpsHealthCheckState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HttpsHealthCheckState | undefined;
             inputs["checkIntervalSec"] = state ? state.checkIntervalSec : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -183,12 +184,8 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HttpsHealthCheck.__pulumiType, name, inputs, opts);
     }

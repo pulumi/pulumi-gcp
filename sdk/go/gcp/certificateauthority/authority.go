@@ -409,6 +409,85 @@ func (i *Authority) ToAuthorityOutputWithContext(ctx context.Context) AuthorityO
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityOutput)
 }
 
+func (i *Authority) ToAuthorityPtrOutput() AuthorityPtrOutput {
+	return i.ToAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i *Authority) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityPtrOutput)
+}
+
+type AuthorityPtrInput interface {
+	pulumi.Input
+
+	ToAuthorityPtrOutput() AuthorityPtrOutput
+	ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput
+}
+
+type authorityPtrType AuthorityArgs
+
+func (*authorityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Authority)(nil))
+}
+
+func (i *authorityPtrType) ToAuthorityPtrOutput() AuthorityPtrOutput {
+	return i.ToAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i *authorityPtrType) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityPtrOutput)
+}
+
+// AuthorityArrayInput is an input type that accepts AuthorityArray and AuthorityArrayOutput values.
+// You can construct a concrete instance of `AuthorityArrayInput` via:
+//
+//          AuthorityArray{ AuthorityArgs{...} }
+type AuthorityArrayInput interface {
+	pulumi.Input
+
+	ToAuthorityArrayOutput() AuthorityArrayOutput
+	ToAuthorityArrayOutputWithContext(context.Context) AuthorityArrayOutput
+}
+
+type AuthorityArray []AuthorityInput
+
+func (AuthorityArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Authority)(nil))
+}
+
+func (i AuthorityArray) ToAuthorityArrayOutput() AuthorityArrayOutput {
+	return i.ToAuthorityArrayOutputWithContext(context.Background())
+}
+
+func (i AuthorityArray) ToAuthorityArrayOutputWithContext(ctx context.Context) AuthorityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityArrayOutput)
+}
+
+// AuthorityMapInput is an input type that accepts AuthorityMap and AuthorityMapOutput values.
+// You can construct a concrete instance of `AuthorityMapInput` via:
+//
+//          AuthorityMap{ "key": AuthorityArgs{...} }
+type AuthorityMapInput interface {
+	pulumi.Input
+
+	ToAuthorityMapOutput() AuthorityMapOutput
+	ToAuthorityMapOutputWithContext(context.Context) AuthorityMapOutput
+}
+
+type AuthorityMap map[string]AuthorityInput
+
+func (AuthorityMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Authority)(nil))
+}
+
+func (i AuthorityMap) ToAuthorityMapOutput() AuthorityMapOutput {
+	return i.ToAuthorityMapOutputWithContext(context.Background())
+}
+
+func (i AuthorityMap) ToAuthorityMapOutputWithContext(ctx context.Context) AuthorityMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityMapOutput)
+}
+
 type AuthorityOutput struct {
 	*pulumi.OutputState
 }
@@ -425,6 +504,75 @@ func (o AuthorityOutput) ToAuthorityOutputWithContext(ctx context.Context) Autho
 	return o
 }
 
+func (o AuthorityOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
+	return o.ToAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorityOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
+	return o.ApplyT(func(v Authority) *Authority {
+		return &v
+	}).(AuthorityPtrOutput)
+}
+
+type AuthorityPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Authority)(nil))
+}
+
+func (o AuthorityPtrOutput) ToAuthorityPtrOutput() AuthorityPtrOutput {
+	return o
+}
+
+func (o AuthorityPtrOutput) ToAuthorityPtrOutputWithContext(ctx context.Context) AuthorityPtrOutput {
+	return o
+}
+
+type AuthorityArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Authority)(nil))
+}
+
+func (o AuthorityArrayOutput) ToAuthorityArrayOutput() AuthorityArrayOutput {
+	return o
+}
+
+func (o AuthorityArrayOutput) ToAuthorityArrayOutputWithContext(ctx context.Context) AuthorityArrayOutput {
+	return o
+}
+
+func (o AuthorityArrayOutput) Index(i pulumi.IntInput) AuthorityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Authority {
+		return vs[0].([]Authority)[vs[1].(int)]
+	}).(AuthorityOutput)
+}
+
+type AuthorityMapOutput struct{ *pulumi.OutputState }
+
+func (AuthorityMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Authority)(nil))
+}
+
+func (o AuthorityMapOutput) ToAuthorityMapOutput() AuthorityMapOutput {
+	return o
+}
+
+func (o AuthorityMapOutput) ToAuthorityMapOutputWithContext(ctx context.Context) AuthorityMapOutput {
+	return o
+}
+
+func (o AuthorityMapOutput) MapIndex(k pulumi.StringInput) AuthorityOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Authority {
+		return vs[0].(map[string]Authority)[vs[1].(string)]
+	}).(AuthorityOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorityOutput{})
+	pulumi.RegisterOutputType(AuthorityPtrOutput{})
+	pulumi.RegisterOutputType(AuthorityArrayOutput{})
+	pulumi.RegisterOutputType(AuthorityMapOutput{})
 }

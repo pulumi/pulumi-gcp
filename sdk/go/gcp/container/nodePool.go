@@ -433,6 +433,85 @@ func (i *NodePool) ToNodePoolOutputWithContext(ctx context.Context) NodePoolOutp
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolOutput)
 }
 
+func (i *NodePool) ToNodePoolPtrOutput() NodePoolPtrOutput {
+	return i.ToNodePoolPtrOutputWithContext(context.Background())
+}
+
+func (i *NodePool) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPtrOutput)
+}
+
+type NodePoolPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolPtrOutput() NodePoolPtrOutput
+	ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput
+}
+
+type nodePoolPtrType NodePoolArgs
+
+func (*nodePoolPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePool)(nil))
+}
+
+func (i *nodePoolPtrType) ToNodePoolPtrOutput() NodePoolPtrOutput {
+	return i.ToNodePoolPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolPtrType) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolPtrOutput)
+}
+
+// NodePoolArrayInput is an input type that accepts NodePoolArray and NodePoolArrayOutput values.
+// You can construct a concrete instance of `NodePoolArrayInput` via:
+//
+//          NodePoolArray{ NodePoolArgs{...} }
+type NodePoolArrayInput interface {
+	pulumi.Input
+
+	ToNodePoolArrayOutput() NodePoolArrayOutput
+	ToNodePoolArrayOutputWithContext(context.Context) NodePoolArrayOutput
+}
+
+type NodePoolArray []NodePoolInput
+
+func (NodePoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NodePool)(nil))
+}
+
+func (i NodePoolArray) ToNodePoolArrayOutput() NodePoolArrayOutput {
+	return i.ToNodePoolArrayOutputWithContext(context.Background())
+}
+
+func (i NodePoolArray) ToNodePoolArrayOutputWithContext(ctx context.Context) NodePoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolArrayOutput)
+}
+
+// NodePoolMapInput is an input type that accepts NodePoolMap and NodePoolMapOutput values.
+// You can construct a concrete instance of `NodePoolMapInput` via:
+//
+//          NodePoolMap{ "key": NodePoolArgs{...} }
+type NodePoolMapInput interface {
+	pulumi.Input
+
+	ToNodePoolMapOutput() NodePoolMapOutput
+	ToNodePoolMapOutputWithContext(context.Context) NodePoolMapOutput
+}
+
+type NodePoolMap map[string]NodePoolInput
+
+func (NodePoolMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NodePool)(nil))
+}
+
+func (i NodePoolMap) ToNodePoolMapOutput() NodePoolMapOutput {
+	return i.ToNodePoolMapOutputWithContext(context.Background())
+}
+
+func (i NodePoolMap) ToNodePoolMapOutputWithContext(ctx context.Context) NodePoolMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolMapOutput)
+}
+
 type NodePoolOutput struct {
 	*pulumi.OutputState
 }
@@ -449,6 +528,75 @@ func (o NodePoolOutput) ToNodePoolOutputWithContext(ctx context.Context) NodePoo
 	return o
 }
 
+func (o NodePoolOutput) ToNodePoolPtrOutput() NodePoolPtrOutput {
+	return o.ToNodePoolPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolOutput) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
+	return o.ApplyT(func(v NodePool) *NodePool {
+		return &v
+	}).(NodePoolPtrOutput)
+}
+
+type NodePoolPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodePoolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePool)(nil))
+}
+
+func (o NodePoolPtrOutput) ToNodePoolPtrOutput() NodePoolPtrOutput {
+	return o
+}
+
+func (o NodePoolPtrOutput) ToNodePoolPtrOutputWithContext(ctx context.Context) NodePoolPtrOutput {
+	return o
+}
+
+type NodePoolArrayOutput struct{ *pulumi.OutputState }
+
+func (NodePoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodePool)(nil))
+}
+
+func (o NodePoolArrayOutput) ToNodePoolArrayOutput() NodePoolArrayOutput {
+	return o
+}
+
+func (o NodePoolArrayOutput) ToNodePoolArrayOutputWithContext(ctx context.Context) NodePoolArrayOutput {
+	return o
+}
+
+func (o NodePoolArrayOutput) Index(i pulumi.IntInput) NodePoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePool {
+		return vs[0].([]NodePool)[vs[1].(int)]
+	}).(NodePoolOutput)
+}
+
+type NodePoolMapOutput struct{ *pulumi.OutputState }
+
+func (NodePoolMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NodePool)(nil))
+}
+
+func (o NodePoolMapOutput) ToNodePoolMapOutput() NodePoolMapOutput {
+	return o
+}
+
+func (o NodePoolMapOutput) ToNodePoolMapOutputWithContext(ctx context.Context) NodePoolMapOutput {
+	return o
+}
+
+func (o NodePoolMapOutput) MapIndex(k pulumi.StringInput) NodePoolOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodePool {
+		return vs[0].(map[string]NodePool)[vs[1].(string)]
+	}).(NodePoolOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NodePoolOutput{})
+	pulumi.RegisterOutputType(NodePoolPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolMapOutput{})
 }

@@ -163,7 +163,8 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
     constructor(name: string, args: PreventionDeidentifyTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionDeidentifyTemplateArgs | PreventionDeidentifyTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PreventionDeidentifyTemplateState | undefined;
             inputs["deidentifyConfig"] = state ? state.deidentifyConfig : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -172,10 +173,10 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
             inputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as PreventionDeidentifyTemplateArgs | undefined;
-            if ((!args || args.deidentifyConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deidentifyConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deidentifyConfig'");
             }
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["deidentifyConfig"] = args ? args.deidentifyConfig : undefined;
@@ -184,12 +185,8 @@ export class PreventionDeidentifyTemplate extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PreventionDeidentifyTemplate.__pulumiType, name, inputs, opts);
     }

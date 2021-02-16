@@ -129,7 +129,8 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
     constructor(name: string, args: BackendServiceSignedUrlKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendServiceSignedUrlKeyArgs | BackendServiceSignedUrlKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BackendServiceSignedUrlKeyState | undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["keyValue"] = state ? state.keyValue : undefined;
@@ -137,10 +138,10 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as BackendServiceSignedUrlKeyArgs | undefined;
-            if ((!args || args.backendService === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.backendService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backendService'");
             }
-            if ((!args || args.keyValue === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyValue === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyValue'");
             }
             inputs["backendService"] = args ? args.backendService : undefined;
@@ -148,12 +149,8 @@ export class BackendServiceSignedUrlKey extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackendServiceSignedUrlKey.__pulumiType, name, inputs, opts);
     }

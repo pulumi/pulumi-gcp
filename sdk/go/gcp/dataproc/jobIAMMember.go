@@ -285,6 +285,85 @@ func (i *JobIAMMember) ToJobIAMMemberOutputWithContext(ctx context.Context) JobI
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberOutput)
 }
 
+func (i *JobIAMMember) ToJobIAMMemberPtrOutput() JobIAMMemberPtrOutput {
+	return i.ToJobIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *JobIAMMember) ToJobIAMMemberPtrOutputWithContext(ctx context.Context) JobIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberPtrOutput)
+}
+
+type JobIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToJobIAMMemberPtrOutput() JobIAMMemberPtrOutput
+	ToJobIAMMemberPtrOutputWithContext(ctx context.Context) JobIAMMemberPtrOutput
+}
+
+type jobIAMMemberPtrType JobIAMMemberArgs
+
+func (*jobIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIAMMember)(nil))
+}
+
+func (i *jobIAMMemberPtrType) ToJobIAMMemberPtrOutput() JobIAMMemberPtrOutput {
+	return i.ToJobIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *jobIAMMemberPtrType) ToJobIAMMemberPtrOutputWithContext(ctx context.Context) JobIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberPtrOutput)
+}
+
+// JobIAMMemberArrayInput is an input type that accepts JobIAMMemberArray and JobIAMMemberArrayOutput values.
+// You can construct a concrete instance of `JobIAMMemberArrayInput` via:
+//
+//          JobIAMMemberArray{ JobIAMMemberArgs{...} }
+type JobIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput
+	ToJobIAMMemberArrayOutputWithContext(context.Context) JobIAMMemberArrayOutput
+}
+
+type JobIAMMemberArray []JobIAMMemberInput
+
+func (JobIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*JobIAMMember)(nil))
+}
+
+func (i JobIAMMemberArray) ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput {
+	return i.ToJobIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i JobIAMMemberArray) ToJobIAMMemberArrayOutputWithContext(ctx context.Context) JobIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberArrayOutput)
+}
+
+// JobIAMMemberMapInput is an input type that accepts JobIAMMemberMap and JobIAMMemberMapOutput values.
+// You can construct a concrete instance of `JobIAMMemberMapInput` via:
+//
+//          JobIAMMemberMap{ "key": JobIAMMemberArgs{...} }
+type JobIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToJobIAMMemberMapOutput() JobIAMMemberMapOutput
+	ToJobIAMMemberMapOutputWithContext(context.Context) JobIAMMemberMapOutput
+}
+
+type JobIAMMemberMap map[string]JobIAMMemberInput
+
+func (JobIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*JobIAMMember)(nil))
+}
+
+func (i JobIAMMemberMap) ToJobIAMMemberMapOutput() JobIAMMemberMapOutput {
+	return i.ToJobIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i JobIAMMemberMap) ToJobIAMMemberMapOutputWithContext(ctx context.Context) JobIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMMemberMapOutput)
+}
+
 type JobIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -301,6 +380,75 @@ func (o JobIAMMemberOutput) ToJobIAMMemberOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o JobIAMMemberOutput) ToJobIAMMemberPtrOutput() JobIAMMemberPtrOutput {
+	return o.ToJobIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o JobIAMMemberOutput) ToJobIAMMemberPtrOutputWithContext(ctx context.Context) JobIAMMemberPtrOutput {
+	return o.ApplyT(func(v JobIAMMember) *JobIAMMember {
+		return &v
+	}).(JobIAMMemberPtrOutput)
+}
+
+type JobIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIAMMember)(nil))
+}
+
+func (o JobIAMMemberPtrOutput) ToJobIAMMemberPtrOutput() JobIAMMemberPtrOutput {
+	return o
+}
+
+func (o JobIAMMemberPtrOutput) ToJobIAMMemberPtrOutputWithContext(ctx context.Context) JobIAMMemberPtrOutput {
+	return o
+}
+
+type JobIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (JobIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobIAMMember)(nil))
+}
+
+func (o JobIAMMemberArrayOutput) ToJobIAMMemberArrayOutput() JobIAMMemberArrayOutput {
+	return o
+}
+
+func (o JobIAMMemberArrayOutput) ToJobIAMMemberArrayOutputWithContext(ctx context.Context) JobIAMMemberArrayOutput {
+	return o
+}
+
+func (o JobIAMMemberArrayOutput) Index(i pulumi.IntInput) JobIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobIAMMember {
+		return vs[0].([]JobIAMMember)[vs[1].(int)]
+	}).(JobIAMMemberOutput)
+}
+
+type JobIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (JobIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobIAMMember)(nil))
+}
+
+func (o JobIAMMemberMapOutput) ToJobIAMMemberMapOutput() JobIAMMemberMapOutput {
+	return o
+}
+
+func (o JobIAMMemberMapOutput) ToJobIAMMemberMapOutputWithContext(ctx context.Context) JobIAMMemberMapOutput {
+	return o
+}
+
+func (o JobIAMMemberMapOutput) MapIndex(k pulumi.StringInput) JobIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobIAMMember {
+		return vs[0].(map[string]JobIAMMember)[vs[1].(string)]
+	}).(JobIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(JobIAMMemberOutput{})
+	pulumi.RegisterOutputType(JobIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(JobIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(JobIAMMemberMapOutput{})
 }

@@ -207,6 +207,85 @@ func (i *FolderExclusion) ToFolderExclusionOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionOutput)
 }
 
+func (i *FolderExclusion) ToFolderExclusionPtrOutput() FolderExclusionPtrOutput {
+	return i.ToFolderExclusionPtrOutputWithContext(context.Background())
+}
+
+func (i *FolderExclusion) ToFolderExclusionPtrOutputWithContext(ctx context.Context) FolderExclusionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionPtrOutput)
+}
+
+type FolderExclusionPtrInput interface {
+	pulumi.Input
+
+	ToFolderExclusionPtrOutput() FolderExclusionPtrOutput
+	ToFolderExclusionPtrOutputWithContext(ctx context.Context) FolderExclusionPtrOutput
+}
+
+type folderExclusionPtrType FolderExclusionArgs
+
+func (*folderExclusionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderExclusion)(nil))
+}
+
+func (i *folderExclusionPtrType) ToFolderExclusionPtrOutput() FolderExclusionPtrOutput {
+	return i.ToFolderExclusionPtrOutputWithContext(context.Background())
+}
+
+func (i *folderExclusionPtrType) ToFolderExclusionPtrOutputWithContext(ctx context.Context) FolderExclusionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionPtrOutput)
+}
+
+// FolderExclusionArrayInput is an input type that accepts FolderExclusionArray and FolderExclusionArrayOutput values.
+// You can construct a concrete instance of `FolderExclusionArrayInput` via:
+//
+//          FolderExclusionArray{ FolderExclusionArgs{...} }
+type FolderExclusionArrayInput interface {
+	pulumi.Input
+
+	ToFolderExclusionArrayOutput() FolderExclusionArrayOutput
+	ToFolderExclusionArrayOutputWithContext(context.Context) FolderExclusionArrayOutput
+}
+
+type FolderExclusionArray []FolderExclusionInput
+
+func (FolderExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FolderExclusion)(nil))
+}
+
+func (i FolderExclusionArray) ToFolderExclusionArrayOutput() FolderExclusionArrayOutput {
+	return i.ToFolderExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i FolderExclusionArray) ToFolderExclusionArrayOutputWithContext(ctx context.Context) FolderExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionArrayOutput)
+}
+
+// FolderExclusionMapInput is an input type that accepts FolderExclusionMap and FolderExclusionMapOutput values.
+// You can construct a concrete instance of `FolderExclusionMapInput` via:
+//
+//          FolderExclusionMap{ "key": FolderExclusionArgs{...} }
+type FolderExclusionMapInput interface {
+	pulumi.Input
+
+	ToFolderExclusionMapOutput() FolderExclusionMapOutput
+	ToFolderExclusionMapOutputWithContext(context.Context) FolderExclusionMapOutput
+}
+
+type FolderExclusionMap map[string]FolderExclusionInput
+
+func (FolderExclusionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FolderExclusion)(nil))
+}
+
+func (i FolderExclusionMap) ToFolderExclusionMapOutput() FolderExclusionMapOutput {
+	return i.ToFolderExclusionMapOutputWithContext(context.Background())
+}
+
+func (i FolderExclusionMap) ToFolderExclusionMapOutputWithContext(ctx context.Context) FolderExclusionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderExclusionMapOutput)
+}
+
 type FolderExclusionOutput struct {
 	*pulumi.OutputState
 }
@@ -223,6 +302,75 @@ func (o FolderExclusionOutput) ToFolderExclusionOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o FolderExclusionOutput) ToFolderExclusionPtrOutput() FolderExclusionPtrOutput {
+	return o.ToFolderExclusionPtrOutputWithContext(context.Background())
+}
+
+func (o FolderExclusionOutput) ToFolderExclusionPtrOutputWithContext(ctx context.Context) FolderExclusionPtrOutput {
+	return o.ApplyT(func(v FolderExclusion) *FolderExclusion {
+		return &v
+	}).(FolderExclusionPtrOutput)
+}
+
+type FolderExclusionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FolderExclusionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderExclusion)(nil))
+}
+
+func (o FolderExclusionPtrOutput) ToFolderExclusionPtrOutput() FolderExclusionPtrOutput {
+	return o
+}
+
+func (o FolderExclusionPtrOutput) ToFolderExclusionPtrOutputWithContext(ctx context.Context) FolderExclusionPtrOutput {
+	return o
+}
+
+type FolderExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderExclusion)(nil))
+}
+
+func (o FolderExclusionArrayOutput) ToFolderExclusionArrayOutput() FolderExclusionArrayOutput {
+	return o
+}
+
+func (o FolderExclusionArrayOutput) ToFolderExclusionArrayOutputWithContext(ctx context.Context) FolderExclusionArrayOutput {
+	return o
+}
+
+func (o FolderExclusionArrayOutput) Index(i pulumi.IntInput) FolderExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderExclusion {
+		return vs[0].([]FolderExclusion)[vs[1].(int)]
+	}).(FolderExclusionOutput)
+}
+
+type FolderExclusionMapOutput struct{ *pulumi.OutputState }
+
+func (FolderExclusionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FolderExclusion)(nil))
+}
+
+func (o FolderExclusionMapOutput) ToFolderExclusionMapOutput() FolderExclusionMapOutput {
+	return o
+}
+
+func (o FolderExclusionMapOutput) ToFolderExclusionMapOutputWithContext(ctx context.Context) FolderExclusionMapOutput {
+	return o
+}
+
+func (o FolderExclusionMapOutput) MapIndex(k pulumi.StringInput) FolderExclusionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FolderExclusion {
+		return vs[0].(map[string]FolderExclusion)[vs[1].(string)]
+	}).(FolderExclusionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FolderExclusionOutput{})
+	pulumi.RegisterOutputType(FolderExclusionPtrOutput{})
+	pulumi.RegisterOutputType(FolderExclusionArrayOutput{})
+	pulumi.RegisterOutputType(FolderExclusionMapOutput{})
 }

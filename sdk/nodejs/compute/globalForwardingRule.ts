@@ -336,7 +336,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     constructor(name: string, args: GlobalForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalForwardingRuleArgs | GlobalForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GlobalForwardingRuleState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["ipAddress"] = state ? state.ipAddress : undefined;
@@ -354,7 +355,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as GlobalForwardingRuleArgs | undefined;
-            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -372,12 +373,8 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["labelFingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GlobalForwardingRule.__pulumiType, name, inputs, opts);
     }

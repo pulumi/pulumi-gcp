@@ -423,6 +423,85 @@ func (i *TargetGrpcProxy) ToTargetGrpcProxyOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyOutput)
 }
 
+func (i *TargetGrpcProxy) ToTargetGrpcProxyPtrOutput() TargetGrpcProxyPtrOutput {
+	return i.ToTargetGrpcProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *TargetGrpcProxy) ToTargetGrpcProxyPtrOutputWithContext(ctx context.Context) TargetGrpcProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyPtrOutput)
+}
+
+type TargetGrpcProxyPtrInput interface {
+	pulumi.Input
+
+	ToTargetGrpcProxyPtrOutput() TargetGrpcProxyPtrOutput
+	ToTargetGrpcProxyPtrOutputWithContext(ctx context.Context) TargetGrpcProxyPtrOutput
+}
+
+type targetGrpcProxyPtrType TargetGrpcProxyArgs
+
+func (*targetGrpcProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetGrpcProxy)(nil))
+}
+
+func (i *targetGrpcProxyPtrType) ToTargetGrpcProxyPtrOutput() TargetGrpcProxyPtrOutput {
+	return i.ToTargetGrpcProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *targetGrpcProxyPtrType) ToTargetGrpcProxyPtrOutputWithContext(ctx context.Context) TargetGrpcProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyPtrOutput)
+}
+
+// TargetGrpcProxyArrayInput is an input type that accepts TargetGrpcProxyArray and TargetGrpcProxyArrayOutput values.
+// You can construct a concrete instance of `TargetGrpcProxyArrayInput` via:
+//
+//          TargetGrpcProxyArray{ TargetGrpcProxyArgs{...} }
+type TargetGrpcProxyArrayInput interface {
+	pulumi.Input
+
+	ToTargetGrpcProxyArrayOutput() TargetGrpcProxyArrayOutput
+	ToTargetGrpcProxyArrayOutputWithContext(context.Context) TargetGrpcProxyArrayOutput
+}
+
+type TargetGrpcProxyArray []TargetGrpcProxyInput
+
+func (TargetGrpcProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TargetGrpcProxy)(nil))
+}
+
+func (i TargetGrpcProxyArray) ToTargetGrpcProxyArrayOutput() TargetGrpcProxyArrayOutput {
+	return i.ToTargetGrpcProxyArrayOutputWithContext(context.Background())
+}
+
+func (i TargetGrpcProxyArray) ToTargetGrpcProxyArrayOutputWithContext(ctx context.Context) TargetGrpcProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyArrayOutput)
+}
+
+// TargetGrpcProxyMapInput is an input type that accepts TargetGrpcProxyMap and TargetGrpcProxyMapOutput values.
+// You can construct a concrete instance of `TargetGrpcProxyMapInput` via:
+//
+//          TargetGrpcProxyMap{ "key": TargetGrpcProxyArgs{...} }
+type TargetGrpcProxyMapInput interface {
+	pulumi.Input
+
+	ToTargetGrpcProxyMapOutput() TargetGrpcProxyMapOutput
+	ToTargetGrpcProxyMapOutputWithContext(context.Context) TargetGrpcProxyMapOutput
+}
+
+type TargetGrpcProxyMap map[string]TargetGrpcProxyInput
+
+func (TargetGrpcProxyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TargetGrpcProxy)(nil))
+}
+
+func (i TargetGrpcProxyMap) ToTargetGrpcProxyMapOutput() TargetGrpcProxyMapOutput {
+	return i.ToTargetGrpcProxyMapOutputWithContext(context.Background())
+}
+
+func (i TargetGrpcProxyMap) ToTargetGrpcProxyMapOutputWithContext(ctx context.Context) TargetGrpcProxyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetGrpcProxyMapOutput)
+}
+
 type TargetGrpcProxyOutput struct {
 	*pulumi.OutputState
 }
@@ -439,6 +518,75 @@ func (o TargetGrpcProxyOutput) ToTargetGrpcProxyOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o TargetGrpcProxyOutput) ToTargetGrpcProxyPtrOutput() TargetGrpcProxyPtrOutput {
+	return o.ToTargetGrpcProxyPtrOutputWithContext(context.Background())
+}
+
+func (o TargetGrpcProxyOutput) ToTargetGrpcProxyPtrOutputWithContext(ctx context.Context) TargetGrpcProxyPtrOutput {
+	return o.ApplyT(func(v TargetGrpcProxy) *TargetGrpcProxy {
+		return &v
+	}).(TargetGrpcProxyPtrOutput)
+}
+
+type TargetGrpcProxyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetGrpcProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetGrpcProxy)(nil))
+}
+
+func (o TargetGrpcProxyPtrOutput) ToTargetGrpcProxyPtrOutput() TargetGrpcProxyPtrOutput {
+	return o
+}
+
+func (o TargetGrpcProxyPtrOutput) ToTargetGrpcProxyPtrOutputWithContext(ctx context.Context) TargetGrpcProxyPtrOutput {
+	return o
+}
+
+type TargetGrpcProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetGrpcProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetGrpcProxy)(nil))
+}
+
+func (o TargetGrpcProxyArrayOutput) ToTargetGrpcProxyArrayOutput() TargetGrpcProxyArrayOutput {
+	return o
+}
+
+func (o TargetGrpcProxyArrayOutput) ToTargetGrpcProxyArrayOutputWithContext(ctx context.Context) TargetGrpcProxyArrayOutput {
+	return o
+}
+
+func (o TargetGrpcProxyArrayOutput) Index(i pulumi.IntInput) TargetGrpcProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetGrpcProxy {
+		return vs[0].([]TargetGrpcProxy)[vs[1].(int)]
+	}).(TargetGrpcProxyOutput)
+}
+
+type TargetGrpcProxyMapOutput struct{ *pulumi.OutputState }
+
+func (TargetGrpcProxyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetGrpcProxy)(nil))
+}
+
+func (o TargetGrpcProxyMapOutput) ToTargetGrpcProxyMapOutput() TargetGrpcProxyMapOutput {
+	return o
+}
+
+func (o TargetGrpcProxyMapOutput) ToTargetGrpcProxyMapOutputWithContext(ctx context.Context) TargetGrpcProxyMapOutput {
+	return o
+}
+
+func (o TargetGrpcProxyMapOutput) MapIndex(k pulumi.StringInput) TargetGrpcProxyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetGrpcProxy {
+		return vs[0].(map[string]TargetGrpcProxy)[vs[1].(string)]
+	}).(TargetGrpcProxyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TargetGrpcProxyOutput{})
+	pulumi.RegisterOutputType(TargetGrpcProxyPtrOutput{})
+	pulumi.RegisterOutputType(TargetGrpcProxyArrayOutput{})
+	pulumi.RegisterOutputType(TargetGrpcProxyMapOutput{})
 }

@@ -280,6 +280,85 @@ func (i *AttestorIamBinding) ToAttestorIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingOutput)
 }
 
+func (i *AttestorIamBinding) ToAttestorIamBindingPtrOutput() AttestorIamBindingPtrOutput {
+	return i.ToAttestorIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *AttestorIamBinding) ToAttestorIamBindingPtrOutputWithContext(ctx context.Context) AttestorIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingPtrOutput)
+}
+
+type AttestorIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToAttestorIamBindingPtrOutput() AttestorIamBindingPtrOutput
+	ToAttestorIamBindingPtrOutputWithContext(ctx context.Context) AttestorIamBindingPtrOutput
+}
+
+type attestorIamBindingPtrType AttestorIamBindingArgs
+
+func (*attestorIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestorIamBinding)(nil))
+}
+
+func (i *attestorIamBindingPtrType) ToAttestorIamBindingPtrOutput() AttestorIamBindingPtrOutput {
+	return i.ToAttestorIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *attestorIamBindingPtrType) ToAttestorIamBindingPtrOutputWithContext(ctx context.Context) AttestorIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingPtrOutput)
+}
+
+// AttestorIamBindingArrayInput is an input type that accepts AttestorIamBindingArray and AttestorIamBindingArrayOutput values.
+// You can construct a concrete instance of `AttestorIamBindingArrayInput` via:
+//
+//          AttestorIamBindingArray{ AttestorIamBindingArgs{...} }
+type AttestorIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToAttestorIamBindingArrayOutput() AttestorIamBindingArrayOutput
+	ToAttestorIamBindingArrayOutputWithContext(context.Context) AttestorIamBindingArrayOutput
+}
+
+type AttestorIamBindingArray []AttestorIamBindingInput
+
+func (AttestorIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AttestorIamBinding)(nil))
+}
+
+func (i AttestorIamBindingArray) ToAttestorIamBindingArrayOutput() AttestorIamBindingArrayOutput {
+	return i.ToAttestorIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i AttestorIamBindingArray) ToAttestorIamBindingArrayOutputWithContext(ctx context.Context) AttestorIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingArrayOutput)
+}
+
+// AttestorIamBindingMapInput is an input type that accepts AttestorIamBindingMap and AttestorIamBindingMapOutput values.
+// You can construct a concrete instance of `AttestorIamBindingMapInput` via:
+//
+//          AttestorIamBindingMap{ "key": AttestorIamBindingArgs{...} }
+type AttestorIamBindingMapInput interface {
+	pulumi.Input
+
+	ToAttestorIamBindingMapOutput() AttestorIamBindingMapOutput
+	ToAttestorIamBindingMapOutputWithContext(context.Context) AttestorIamBindingMapOutput
+}
+
+type AttestorIamBindingMap map[string]AttestorIamBindingInput
+
+func (AttestorIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AttestorIamBinding)(nil))
+}
+
+func (i AttestorIamBindingMap) ToAttestorIamBindingMapOutput() AttestorIamBindingMapOutput {
+	return i.ToAttestorIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i AttestorIamBindingMap) ToAttestorIamBindingMapOutputWithContext(ctx context.Context) AttestorIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamBindingMapOutput)
+}
+
 type AttestorIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -296,6 +375,75 @@ func (o AttestorIamBindingOutput) ToAttestorIamBindingOutputWithContext(ctx cont
 	return o
 }
 
+func (o AttestorIamBindingOutput) ToAttestorIamBindingPtrOutput() AttestorIamBindingPtrOutput {
+	return o.ToAttestorIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o AttestorIamBindingOutput) ToAttestorIamBindingPtrOutputWithContext(ctx context.Context) AttestorIamBindingPtrOutput {
+	return o.ApplyT(func(v AttestorIamBinding) *AttestorIamBinding {
+		return &v
+	}).(AttestorIamBindingPtrOutput)
+}
+
+type AttestorIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttestorIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestorIamBinding)(nil))
+}
+
+func (o AttestorIamBindingPtrOutput) ToAttestorIamBindingPtrOutput() AttestorIamBindingPtrOutput {
+	return o
+}
+
+func (o AttestorIamBindingPtrOutput) ToAttestorIamBindingPtrOutputWithContext(ctx context.Context) AttestorIamBindingPtrOutput {
+	return o
+}
+
+type AttestorIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (AttestorIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttestorIamBinding)(nil))
+}
+
+func (o AttestorIamBindingArrayOutput) ToAttestorIamBindingArrayOutput() AttestorIamBindingArrayOutput {
+	return o
+}
+
+func (o AttestorIamBindingArrayOutput) ToAttestorIamBindingArrayOutputWithContext(ctx context.Context) AttestorIamBindingArrayOutput {
+	return o
+}
+
+func (o AttestorIamBindingArrayOutput) Index(i pulumi.IntInput) AttestorIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorIamBinding {
+		return vs[0].([]AttestorIamBinding)[vs[1].(int)]
+	}).(AttestorIamBindingOutput)
+}
+
+type AttestorIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (AttestorIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AttestorIamBinding)(nil))
+}
+
+func (o AttestorIamBindingMapOutput) ToAttestorIamBindingMapOutput() AttestorIamBindingMapOutput {
+	return o
+}
+
+func (o AttestorIamBindingMapOutput) ToAttestorIamBindingMapOutputWithContext(ctx context.Context) AttestorIamBindingMapOutput {
+	return o
+}
+
+func (o AttestorIamBindingMapOutput) MapIndex(k pulumi.StringInput) AttestorIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AttestorIamBinding {
+		return vs[0].(map[string]AttestorIamBinding)[vs[1].(string)]
+	}).(AttestorIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttestorIamBindingOutput{})
+	pulumi.RegisterOutputType(AttestorIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(AttestorIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(AttestorIamBindingMapOutput{})
 }

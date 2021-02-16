@@ -154,15 +154,6 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:              "https://github.com/pulumi/pulumi-gcp",
 		TFProviderModuleVersion: "v3",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"credentials": {
-				Default: &tfbridge.DefaultInfo{
-					EnvVars: []string{
-						"GOOGLE_CREDENTIALS",
-						"GOOGLE_CLOUD_KEYFILE_JSON",
-						"GCLOUD_KEYFILE_JSON",
-					},
-				},
-			},
 			"project": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{

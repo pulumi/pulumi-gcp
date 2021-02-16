@@ -82,7 +82,8 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
     constructor(name: string, args: OrganizationSecurityPolicyAssociationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationSecurityPolicyAssociationArgs | OrganizationSecurityPolicyAssociationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyAssociationState | undefined;
             inputs["attachmentId"] = state ? state.attachmentId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -90,10 +91,10 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
             inputs["policyId"] = state ? state.policyId : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyAssociationArgs | undefined;
-            if ((!args || args.attachmentId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.attachmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attachmentId'");
             }
-            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
             inputs["attachmentId"] = args ? args.attachmentId : undefined;
@@ -101,12 +102,8 @@ export class OrganizationSecurityPolicyAssociation extends pulumi.CustomResource
             inputs["policyId"] = args ? args.policyId : undefined;
             inputs["displayName"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OrganizationSecurityPolicyAssociation.__pulumiType, name, inputs, opts);
     }

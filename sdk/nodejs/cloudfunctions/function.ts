@@ -225,7 +225,8 @@ export class Function extends pulumi.CustomResource {
     constructor(name: string, args: FunctionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionArgs | FunctionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FunctionState | undefined;
             inputs["availableMemoryMb"] = state ? state.availableMemoryMb : undefined;
             inputs["buildEnvironmentVariables"] = state ? state.buildEnvironmentVariables : undefined;
@@ -251,7 +252,7 @@ export class Function extends pulumi.CustomResource {
             inputs["vpcConnectorEgressSettings"] = state ? state.vpcConnectorEgressSettings : undefined;
         } else {
             const args = argsOrState as FunctionArgs | undefined;
-            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.runtime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
             inputs["availableMemoryMb"] = args ? args.availableMemoryMb : undefined;
@@ -277,12 +278,8 @@ export class Function extends pulumi.CustomResource {
             inputs["vpcConnector"] = args ? args.vpcConnector : undefined;
             inputs["vpcConnectorEgressSettings"] = args ? args.vpcConnectorEgressSettings : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Function.__pulumiType, name, inputs, opts);
     }

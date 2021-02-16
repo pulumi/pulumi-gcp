@@ -184,6 +184,85 @@ func (i *Brand) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(BrandOutput)
 }
 
+func (i *Brand) ToBrandPtrOutput() BrandPtrOutput {
+	return i.ToBrandPtrOutputWithContext(context.Background())
+}
+
+func (i *Brand) ToBrandPtrOutputWithContext(ctx context.Context) BrandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandPtrOutput)
+}
+
+type BrandPtrInput interface {
+	pulumi.Input
+
+	ToBrandPtrOutput() BrandPtrOutput
+	ToBrandPtrOutputWithContext(ctx context.Context) BrandPtrOutput
+}
+
+type brandPtrType BrandArgs
+
+func (*brandPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Brand)(nil))
+}
+
+func (i *brandPtrType) ToBrandPtrOutput() BrandPtrOutput {
+	return i.ToBrandPtrOutputWithContext(context.Background())
+}
+
+func (i *brandPtrType) ToBrandPtrOutputWithContext(ctx context.Context) BrandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandPtrOutput)
+}
+
+// BrandArrayInput is an input type that accepts BrandArray and BrandArrayOutput values.
+// You can construct a concrete instance of `BrandArrayInput` via:
+//
+//          BrandArray{ BrandArgs{...} }
+type BrandArrayInput interface {
+	pulumi.Input
+
+	ToBrandArrayOutput() BrandArrayOutput
+	ToBrandArrayOutputWithContext(context.Context) BrandArrayOutput
+}
+
+type BrandArray []BrandInput
+
+func (BrandArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Brand)(nil))
+}
+
+func (i BrandArray) ToBrandArrayOutput() BrandArrayOutput {
+	return i.ToBrandArrayOutputWithContext(context.Background())
+}
+
+func (i BrandArray) ToBrandArrayOutputWithContext(ctx context.Context) BrandArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandArrayOutput)
+}
+
+// BrandMapInput is an input type that accepts BrandMap and BrandMapOutput values.
+// You can construct a concrete instance of `BrandMapInput` via:
+//
+//          BrandMap{ "key": BrandArgs{...} }
+type BrandMapInput interface {
+	pulumi.Input
+
+	ToBrandMapOutput() BrandMapOutput
+	ToBrandMapOutputWithContext(context.Context) BrandMapOutput
+}
+
+type BrandMap map[string]BrandInput
+
+func (BrandMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Brand)(nil))
+}
+
+func (i BrandMap) ToBrandMapOutput() BrandMapOutput {
+	return i.ToBrandMapOutputWithContext(context.Background())
+}
+
+func (i BrandMap) ToBrandMapOutputWithContext(ctx context.Context) BrandMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BrandMapOutput)
+}
+
 type BrandOutput struct {
 	*pulumi.OutputState
 }
@@ -200,6 +279,75 @@ func (o BrandOutput) ToBrandOutputWithContext(ctx context.Context) BrandOutput {
 	return o
 }
 
+func (o BrandOutput) ToBrandPtrOutput() BrandPtrOutput {
+	return o.ToBrandPtrOutputWithContext(context.Background())
+}
+
+func (o BrandOutput) ToBrandPtrOutputWithContext(ctx context.Context) BrandPtrOutput {
+	return o.ApplyT(func(v Brand) *Brand {
+		return &v
+	}).(BrandPtrOutput)
+}
+
+type BrandPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BrandPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Brand)(nil))
+}
+
+func (o BrandPtrOutput) ToBrandPtrOutput() BrandPtrOutput {
+	return o
+}
+
+func (o BrandPtrOutput) ToBrandPtrOutputWithContext(ctx context.Context) BrandPtrOutput {
+	return o
+}
+
+type BrandArrayOutput struct{ *pulumi.OutputState }
+
+func (BrandArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Brand)(nil))
+}
+
+func (o BrandArrayOutput) ToBrandArrayOutput() BrandArrayOutput {
+	return o
+}
+
+func (o BrandArrayOutput) ToBrandArrayOutputWithContext(ctx context.Context) BrandArrayOutput {
+	return o
+}
+
+func (o BrandArrayOutput) Index(i pulumi.IntInput) BrandOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Brand {
+		return vs[0].([]Brand)[vs[1].(int)]
+	}).(BrandOutput)
+}
+
+type BrandMapOutput struct{ *pulumi.OutputState }
+
+func (BrandMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Brand)(nil))
+}
+
+func (o BrandMapOutput) ToBrandMapOutput() BrandMapOutput {
+	return o
+}
+
+func (o BrandMapOutput) ToBrandMapOutputWithContext(ctx context.Context) BrandMapOutput {
+	return o
+}
+
+func (o BrandMapOutput) MapIndex(k pulumi.StringInput) BrandOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Brand {
+		return vs[0].(map[string]Brand)[vs[1].(string)]
+	}).(BrandOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BrandOutput{})
+	pulumi.RegisterOutputType(BrandPtrOutput{})
+	pulumi.RegisterOutputType(BrandArrayOutput{})
+	pulumi.RegisterOutputType(BrandMapOutput{})
 }

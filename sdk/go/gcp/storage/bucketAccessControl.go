@@ -267,6 +267,85 @@ func (i *BucketAccessControl) ToBucketAccessControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlOutput)
 }
 
+func (i *BucketAccessControl) ToBucketAccessControlPtrOutput() BucketAccessControlPtrOutput {
+	return i.ToBucketAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *BucketAccessControl) ToBucketAccessControlPtrOutputWithContext(ctx context.Context) BucketAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlPtrOutput)
+}
+
+type BucketAccessControlPtrInput interface {
+	pulumi.Input
+
+	ToBucketAccessControlPtrOutput() BucketAccessControlPtrOutput
+	ToBucketAccessControlPtrOutputWithContext(ctx context.Context) BucketAccessControlPtrOutput
+}
+
+type bucketAccessControlPtrType BucketAccessControlArgs
+
+func (*bucketAccessControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAccessControl)(nil))
+}
+
+func (i *bucketAccessControlPtrType) ToBucketAccessControlPtrOutput() BucketAccessControlPtrOutput {
+	return i.ToBucketAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketAccessControlPtrType) ToBucketAccessControlPtrOutputWithContext(ctx context.Context) BucketAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlPtrOutput)
+}
+
+// BucketAccessControlArrayInput is an input type that accepts BucketAccessControlArray and BucketAccessControlArrayOutput values.
+// You can construct a concrete instance of `BucketAccessControlArrayInput` via:
+//
+//          BucketAccessControlArray{ BucketAccessControlArgs{...} }
+type BucketAccessControlArrayInput interface {
+	pulumi.Input
+
+	ToBucketAccessControlArrayOutput() BucketAccessControlArrayOutput
+	ToBucketAccessControlArrayOutputWithContext(context.Context) BucketAccessControlArrayOutput
+}
+
+type BucketAccessControlArray []BucketAccessControlInput
+
+func (BucketAccessControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BucketAccessControl)(nil))
+}
+
+func (i BucketAccessControlArray) ToBucketAccessControlArrayOutput() BucketAccessControlArrayOutput {
+	return i.ToBucketAccessControlArrayOutputWithContext(context.Background())
+}
+
+func (i BucketAccessControlArray) ToBucketAccessControlArrayOutputWithContext(ctx context.Context) BucketAccessControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlArrayOutput)
+}
+
+// BucketAccessControlMapInput is an input type that accepts BucketAccessControlMap and BucketAccessControlMapOutput values.
+// You can construct a concrete instance of `BucketAccessControlMapInput` via:
+//
+//          BucketAccessControlMap{ "key": BucketAccessControlArgs{...} }
+type BucketAccessControlMapInput interface {
+	pulumi.Input
+
+	ToBucketAccessControlMapOutput() BucketAccessControlMapOutput
+	ToBucketAccessControlMapOutputWithContext(context.Context) BucketAccessControlMapOutput
+}
+
+type BucketAccessControlMap map[string]BucketAccessControlInput
+
+func (BucketAccessControlMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BucketAccessControl)(nil))
+}
+
+func (i BucketAccessControlMap) ToBucketAccessControlMapOutput() BucketAccessControlMapOutput {
+	return i.ToBucketAccessControlMapOutputWithContext(context.Background())
+}
+
+func (i BucketAccessControlMap) ToBucketAccessControlMapOutputWithContext(ctx context.Context) BucketAccessControlMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketAccessControlMapOutput)
+}
+
 type BucketAccessControlOutput struct {
 	*pulumi.OutputState
 }
@@ -283,6 +362,75 @@ func (o BucketAccessControlOutput) ToBucketAccessControlOutputWithContext(ctx co
 	return o
 }
 
+func (o BucketAccessControlOutput) ToBucketAccessControlPtrOutput() BucketAccessControlPtrOutput {
+	return o.ToBucketAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (o BucketAccessControlOutput) ToBucketAccessControlPtrOutputWithContext(ctx context.Context) BucketAccessControlPtrOutput {
+	return o.ApplyT(func(v BucketAccessControl) *BucketAccessControl {
+		return &v
+	}).(BucketAccessControlPtrOutput)
+}
+
+type BucketAccessControlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketAccessControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketAccessControl)(nil))
+}
+
+func (o BucketAccessControlPtrOutput) ToBucketAccessControlPtrOutput() BucketAccessControlPtrOutput {
+	return o
+}
+
+func (o BucketAccessControlPtrOutput) ToBucketAccessControlPtrOutputWithContext(ctx context.Context) BucketAccessControlPtrOutput {
+	return o
+}
+
+type BucketAccessControlArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketAccessControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketAccessControl)(nil))
+}
+
+func (o BucketAccessControlArrayOutput) ToBucketAccessControlArrayOutput() BucketAccessControlArrayOutput {
+	return o
+}
+
+func (o BucketAccessControlArrayOutput) ToBucketAccessControlArrayOutputWithContext(ctx context.Context) BucketAccessControlArrayOutput {
+	return o
+}
+
+func (o BucketAccessControlArrayOutput) Index(i pulumi.IntInput) BucketAccessControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketAccessControl {
+		return vs[0].([]BucketAccessControl)[vs[1].(int)]
+	}).(BucketAccessControlOutput)
+}
+
+type BucketAccessControlMapOutput struct{ *pulumi.OutputState }
+
+func (BucketAccessControlMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BucketAccessControl)(nil))
+}
+
+func (o BucketAccessControlMapOutput) ToBucketAccessControlMapOutput() BucketAccessControlMapOutput {
+	return o
+}
+
+func (o BucketAccessControlMapOutput) ToBucketAccessControlMapOutputWithContext(ctx context.Context) BucketAccessControlMapOutput {
+	return o
+}
+
+func (o BucketAccessControlMapOutput) MapIndex(k pulumi.StringInput) BucketAccessControlOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BucketAccessControl {
+		return vs[0].(map[string]BucketAccessControl)[vs[1].(string)]
+	}).(BucketAccessControlOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketAccessControlOutput{})
+	pulumi.RegisterOutputType(BucketAccessControlPtrOutput{})
+	pulumi.RegisterOutputType(BucketAccessControlArrayOutput{})
+	pulumi.RegisterOutputType(BucketAccessControlMapOutput{})
 }

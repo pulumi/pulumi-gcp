@@ -256,6 +256,85 @@ func (i *NamespaceIamBinding) ToNamespaceIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingOutput)
 }
 
+func (i *NamespaceIamBinding) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
+	return i.ToNamespaceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *NamespaceIamBinding) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingPtrOutput)
+}
+
+type NamespaceIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput
+	ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput
+}
+
+type namespaceIamBindingPtrType NamespaceIamBindingArgs
+
+func (*namespaceIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceIamBinding)(nil))
+}
+
+func (i *namespaceIamBindingPtrType) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
+	return i.ToNamespaceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceIamBindingPtrType) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingPtrOutput)
+}
+
+// NamespaceIamBindingArrayInput is an input type that accepts NamespaceIamBindingArray and NamespaceIamBindingArrayOutput values.
+// You can construct a concrete instance of `NamespaceIamBindingArrayInput` via:
+//
+//          NamespaceIamBindingArray{ NamespaceIamBindingArgs{...} }
+type NamespaceIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceIamBindingArrayOutput() NamespaceIamBindingArrayOutput
+	ToNamespaceIamBindingArrayOutputWithContext(context.Context) NamespaceIamBindingArrayOutput
+}
+
+type NamespaceIamBindingArray []NamespaceIamBindingInput
+
+func (NamespaceIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NamespaceIamBinding)(nil))
+}
+
+func (i NamespaceIamBindingArray) ToNamespaceIamBindingArrayOutput() NamespaceIamBindingArrayOutput {
+	return i.ToNamespaceIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceIamBindingArray) ToNamespaceIamBindingArrayOutputWithContext(ctx context.Context) NamespaceIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingArrayOutput)
+}
+
+// NamespaceIamBindingMapInput is an input type that accepts NamespaceIamBindingMap and NamespaceIamBindingMapOutput values.
+// You can construct a concrete instance of `NamespaceIamBindingMapInput` via:
+//
+//          NamespaceIamBindingMap{ "key": NamespaceIamBindingArgs{...} }
+type NamespaceIamBindingMapInput interface {
+	pulumi.Input
+
+	ToNamespaceIamBindingMapOutput() NamespaceIamBindingMapOutput
+	ToNamespaceIamBindingMapOutputWithContext(context.Context) NamespaceIamBindingMapOutput
+}
+
+type NamespaceIamBindingMap map[string]NamespaceIamBindingInput
+
+func (NamespaceIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NamespaceIamBinding)(nil))
+}
+
+func (i NamespaceIamBindingMap) ToNamespaceIamBindingMapOutput() NamespaceIamBindingMapOutput {
+	return i.ToNamespaceIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i NamespaceIamBindingMap) ToNamespaceIamBindingMapOutputWithContext(ctx context.Context) NamespaceIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamBindingMapOutput)
+}
+
 type NamespaceIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -272,6 +351,75 @@ func (o NamespaceIamBindingOutput) ToNamespaceIamBindingOutputWithContext(ctx co
 	return o
 }
 
+func (o NamespaceIamBindingOutput) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
+	return o.ToNamespaceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceIamBindingOutput) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
+	return o.ApplyT(func(v NamespaceIamBinding) *NamespaceIamBinding {
+		return &v
+	}).(NamespaceIamBindingPtrOutput)
+}
+
+type NamespaceIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamespaceIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceIamBinding)(nil))
+}
+
+func (o NamespaceIamBindingPtrOutput) ToNamespaceIamBindingPtrOutput() NamespaceIamBindingPtrOutput {
+	return o
+}
+
+func (o NamespaceIamBindingPtrOutput) ToNamespaceIamBindingPtrOutputWithContext(ctx context.Context) NamespaceIamBindingPtrOutput {
+	return o
+}
+
+type NamespaceIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceIamBinding)(nil))
+}
+
+func (o NamespaceIamBindingArrayOutput) ToNamespaceIamBindingArrayOutput() NamespaceIamBindingArrayOutput {
+	return o
+}
+
+func (o NamespaceIamBindingArrayOutput) ToNamespaceIamBindingArrayOutputWithContext(ctx context.Context) NamespaceIamBindingArrayOutput {
+	return o
+}
+
+func (o NamespaceIamBindingArrayOutput) Index(i pulumi.IntInput) NamespaceIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceIamBinding {
+		return vs[0].([]NamespaceIamBinding)[vs[1].(int)]
+	}).(NamespaceIamBindingOutput)
+}
+
+type NamespaceIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (NamespaceIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NamespaceIamBinding)(nil))
+}
+
+func (o NamespaceIamBindingMapOutput) ToNamespaceIamBindingMapOutput() NamespaceIamBindingMapOutput {
+	return o
+}
+
+func (o NamespaceIamBindingMapOutput) ToNamespaceIamBindingMapOutputWithContext(ctx context.Context) NamespaceIamBindingMapOutput {
+	return o
+}
+
+func (o NamespaceIamBindingMapOutput) MapIndex(k pulumi.StringInput) NamespaceIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespaceIamBinding {
+		return vs[0].(map[string]NamespaceIamBinding)[vs[1].(string)]
+	}).(NamespaceIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NamespaceIamBindingOutput{})
+	pulumi.RegisterOutputType(NamespaceIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceIamBindingMapOutput{})
 }

@@ -256,6 +256,85 @@ func (i *ServiceIamBinding) ToServiceIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingOutput)
 }
 
+func (i *ServiceIamBinding) ToServiceIamBindingPtrOutput() ServiceIamBindingPtrOutput {
+	return i.ToServiceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceIamBinding) ToServiceIamBindingPtrOutputWithContext(ctx context.Context) ServiceIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingPtrOutput)
+}
+
+type ServiceIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToServiceIamBindingPtrOutput() ServiceIamBindingPtrOutput
+	ToServiceIamBindingPtrOutputWithContext(ctx context.Context) ServiceIamBindingPtrOutput
+}
+
+type serviceIamBindingPtrType ServiceIamBindingArgs
+
+func (*serviceIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamBinding)(nil))
+}
+
+func (i *serviceIamBindingPtrType) ToServiceIamBindingPtrOutput() ServiceIamBindingPtrOutput {
+	return i.ToServiceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIamBindingPtrType) ToServiceIamBindingPtrOutputWithContext(ctx context.Context) ServiceIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingPtrOutput)
+}
+
+// ServiceIamBindingArrayInput is an input type that accepts ServiceIamBindingArray and ServiceIamBindingArrayOutput values.
+// You can construct a concrete instance of `ServiceIamBindingArrayInput` via:
+//
+//          ServiceIamBindingArray{ ServiceIamBindingArgs{...} }
+type ServiceIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToServiceIamBindingArrayOutput() ServiceIamBindingArrayOutput
+	ToServiceIamBindingArrayOutputWithContext(context.Context) ServiceIamBindingArrayOutput
+}
+
+type ServiceIamBindingArray []ServiceIamBindingInput
+
+func (ServiceIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceIamBinding)(nil))
+}
+
+func (i ServiceIamBindingArray) ToServiceIamBindingArrayOutput() ServiceIamBindingArrayOutput {
+	return i.ToServiceIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIamBindingArray) ToServiceIamBindingArrayOutputWithContext(ctx context.Context) ServiceIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingArrayOutput)
+}
+
+// ServiceIamBindingMapInput is an input type that accepts ServiceIamBindingMap and ServiceIamBindingMapOutput values.
+// You can construct a concrete instance of `ServiceIamBindingMapInput` via:
+//
+//          ServiceIamBindingMap{ "key": ServiceIamBindingArgs{...} }
+type ServiceIamBindingMapInput interface {
+	pulumi.Input
+
+	ToServiceIamBindingMapOutput() ServiceIamBindingMapOutput
+	ToServiceIamBindingMapOutputWithContext(context.Context) ServiceIamBindingMapOutput
+}
+
+type ServiceIamBindingMap map[string]ServiceIamBindingInput
+
+func (ServiceIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceIamBinding)(nil))
+}
+
+func (i ServiceIamBindingMap) ToServiceIamBindingMapOutput() ServiceIamBindingMapOutput {
+	return i.ToServiceIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i ServiceIamBindingMap) ToServiceIamBindingMapOutputWithContext(ctx context.Context) ServiceIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamBindingMapOutput)
+}
+
 type ServiceIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -272,6 +351,75 @@ func (o ServiceIamBindingOutput) ToServiceIamBindingOutputWithContext(ctx contex
 	return o
 }
 
+func (o ServiceIamBindingOutput) ToServiceIamBindingPtrOutput() ServiceIamBindingPtrOutput {
+	return o.ToServiceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIamBindingOutput) ToServiceIamBindingPtrOutputWithContext(ctx context.Context) ServiceIamBindingPtrOutput {
+	return o.ApplyT(func(v ServiceIamBinding) *ServiceIamBinding {
+		return &v
+	}).(ServiceIamBindingPtrOutput)
+}
+
+type ServiceIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamBinding)(nil))
+}
+
+func (o ServiceIamBindingPtrOutput) ToServiceIamBindingPtrOutput() ServiceIamBindingPtrOutput {
+	return o
+}
+
+func (o ServiceIamBindingPtrOutput) ToServiceIamBindingPtrOutputWithContext(ctx context.Context) ServiceIamBindingPtrOutput {
+	return o
+}
+
+type ServiceIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIamBinding)(nil))
+}
+
+func (o ServiceIamBindingArrayOutput) ToServiceIamBindingArrayOutput() ServiceIamBindingArrayOutput {
+	return o
+}
+
+func (o ServiceIamBindingArrayOutput) ToServiceIamBindingArrayOutputWithContext(ctx context.Context) ServiceIamBindingArrayOutput {
+	return o
+}
+
+func (o ServiceIamBindingArrayOutput) Index(i pulumi.IntInput) ServiceIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIamBinding {
+		return vs[0].([]ServiceIamBinding)[vs[1].(int)]
+	}).(ServiceIamBindingOutput)
+}
+
+type ServiceIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceIamBinding)(nil))
+}
+
+func (o ServiceIamBindingMapOutput) ToServiceIamBindingMapOutput() ServiceIamBindingMapOutput {
+	return o
+}
+
+func (o ServiceIamBindingMapOutput) ToServiceIamBindingMapOutputWithContext(ctx context.Context) ServiceIamBindingMapOutput {
+	return o
+}
+
+func (o ServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) ServiceIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceIamBinding {
+		return vs[0].(map[string]ServiceIamBinding)[vs[1].(string)]
+	}).(ServiceIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceIamBindingOutput{})
+	pulumi.RegisterOutputType(ServiceIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIamBindingMapOutput{})
 }

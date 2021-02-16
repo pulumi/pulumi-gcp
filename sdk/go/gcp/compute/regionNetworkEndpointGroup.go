@@ -472,6 +472,85 @@ func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupOutput)
 }
 
+func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupPtrOutput() RegionNetworkEndpointGroupPtrOutput {
+	return i.ToRegionNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionNetworkEndpointGroup) ToRegionNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupPtrOutput)
+}
+
+type RegionNetworkEndpointGroupPtrInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupPtrOutput() RegionNetworkEndpointGroupPtrOutput
+	ToRegionNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupPtrOutput
+}
+
+type regionNetworkEndpointGroupPtrType RegionNetworkEndpointGroupArgs
+
+func (*regionNetworkEndpointGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroup)(nil))
+}
+
+func (i *regionNetworkEndpointGroupPtrType) ToRegionNetworkEndpointGroupPtrOutput() RegionNetworkEndpointGroupPtrOutput {
+	return i.ToRegionNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *regionNetworkEndpointGroupPtrType) ToRegionNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupPtrOutput)
+}
+
+// RegionNetworkEndpointGroupArrayInput is an input type that accepts RegionNetworkEndpointGroupArray and RegionNetworkEndpointGroupArrayOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupArrayInput` via:
+//
+//          RegionNetworkEndpointGroupArray{ RegionNetworkEndpointGroupArgs{...} }
+type RegionNetworkEndpointGroupArrayInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupArrayOutput() RegionNetworkEndpointGroupArrayOutput
+	ToRegionNetworkEndpointGroupArrayOutputWithContext(context.Context) RegionNetworkEndpointGroupArrayOutput
+}
+
+type RegionNetworkEndpointGroupArray []RegionNetworkEndpointGroupInput
+
+func (RegionNetworkEndpointGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionNetworkEndpointGroup)(nil))
+}
+
+func (i RegionNetworkEndpointGroupArray) ToRegionNetworkEndpointGroupArrayOutput() RegionNetworkEndpointGroupArrayOutput {
+	return i.ToRegionNetworkEndpointGroupArrayOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupArray) ToRegionNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupArrayOutput)
+}
+
+// RegionNetworkEndpointGroupMapInput is an input type that accepts RegionNetworkEndpointGroupMap and RegionNetworkEndpointGroupMapOutput values.
+// You can construct a concrete instance of `RegionNetworkEndpointGroupMapInput` via:
+//
+//          RegionNetworkEndpointGroupMap{ "key": RegionNetworkEndpointGroupArgs{...} }
+type RegionNetworkEndpointGroupMapInput interface {
+	pulumi.Input
+
+	ToRegionNetworkEndpointGroupMapOutput() RegionNetworkEndpointGroupMapOutput
+	ToRegionNetworkEndpointGroupMapOutputWithContext(context.Context) RegionNetworkEndpointGroupMapOutput
+}
+
+type RegionNetworkEndpointGroupMap map[string]RegionNetworkEndpointGroupInput
+
+func (RegionNetworkEndpointGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionNetworkEndpointGroup)(nil))
+}
+
+func (i RegionNetworkEndpointGroupMap) ToRegionNetworkEndpointGroupMapOutput() RegionNetworkEndpointGroupMapOutput {
+	return i.ToRegionNetworkEndpointGroupMapOutputWithContext(context.Background())
+}
+
+func (i RegionNetworkEndpointGroupMap) ToRegionNetworkEndpointGroupMapOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionNetworkEndpointGroupMapOutput)
+}
+
 type RegionNetworkEndpointGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -488,6 +567,75 @@ func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupOutputWith
 	return o
 }
 
+func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupPtrOutput() RegionNetworkEndpointGroupPtrOutput {
+	return o.ToRegionNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (o RegionNetworkEndpointGroupOutput) ToRegionNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupPtrOutput {
+	return o.ApplyT(func(v RegionNetworkEndpointGroup) *RegionNetworkEndpointGroup {
+		return &v
+	}).(RegionNetworkEndpointGroupPtrOutput)
+}
+
+type RegionNetworkEndpointGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionNetworkEndpointGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionNetworkEndpointGroup)(nil))
+}
+
+func (o RegionNetworkEndpointGroupPtrOutput) ToRegionNetworkEndpointGroupPtrOutput() RegionNetworkEndpointGroupPtrOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupPtrOutput) ToRegionNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupPtrOutput {
+	return o
+}
+
+type RegionNetworkEndpointGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionNetworkEndpointGroup)(nil))
+}
+
+func (o RegionNetworkEndpointGroupArrayOutput) ToRegionNetworkEndpointGroupArrayOutput() RegionNetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupArrayOutput) ToRegionNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupArrayOutput) Index(i pulumi.IntInput) RegionNetworkEndpointGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionNetworkEndpointGroup {
+		return vs[0].([]RegionNetworkEndpointGroup)[vs[1].(int)]
+	}).(RegionNetworkEndpointGroupOutput)
+}
+
+type RegionNetworkEndpointGroupMapOutput struct{ *pulumi.OutputState }
+
+func (RegionNetworkEndpointGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionNetworkEndpointGroup)(nil))
+}
+
+func (o RegionNetworkEndpointGroupMapOutput) ToRegionNetworkEndpointGroupMapOutput() RegionNetworkEndpointGroupMapOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupMapOutput) ToRegionNetworkEndpointGroupMapOutputWithContext(ctx context.Context) RegionNetworkEndpointGroupMapOutput {
+	return o
+}
+
+func (o RegionNetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) RegionNetworkEndpointGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionNetworkEndpointGroup {
+		return vs[0].(map[string]RegionNetworkEndpointGroup)[vs[1].(string)]
+	}).(RegionNetworkEndpointGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupPtrOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupArrayOutput{})
+	pulumi.RegisterOutputType(RegionNetworkEndpointGroupMapOutput{})
 }

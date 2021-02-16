@@ -180,6 +180,85 @@ func (i *AccessApprovalSettings) ToAccessApprovalSettingsOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsOutput)
 }
 
+func (i *AccessApprovalSettings) ToAccessApprovalSettingsPtrOutput() AccessApprovalSettingsPtrOutput {
+	return i.ToAccessApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessApprovalSettings) ToAccessApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsPtrOutput)
+}
+
+type AccessApprovalSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAccessApprovalSettingsPtrOutput() AccessApprovalSettingsPtrOutput
+	ToAccessApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessApprovalSettingsPtrOutput
+}
+
+type accessApprovalSettingsPtrType AccessApprovalSettingsArgs
+
+func (*accessApprovalSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApprovalSettings)(nil))
+}
+
+func (i *accessApprovalSettingsPtrType) ToAccessApprovalSettingsPtrOutput() AccessApprovalSettingsPtrOutput {
+	return i.ToAccessApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *accessApprovalSettingsPtrType) ToAccessApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsPtrOutput)
+}
+
+// AccessApprovalSettingsArrayInput is an input type that accepts AccessApprovalSettingsArray and AccessApprovalSettingsArrayOutput values.
+// You can construct a concrete instance of `AccessApprovalSettingsArrayInput` via:
+//
+//          AccessApprovalSettingsArray{ AccessApprovalSettingsArgs{...} }
+type AccessApprovalSettingsArrayInput interface {
+	pulumi.Input
+
+	ToAccessApprovalSettingsArrayOutput() AccessApprovalSettingsArrayOutput
+	ToAccessApprovalSettingsArrayOutputWithContext(context.Context) AccessApprovalSettingsArrayOutput
+}
+
+type AccessApprovalSettingsArray []AccessApprovalSettingsInput
+
+func (AccessApprovalSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessApprovalSettings)(nil))
+}
+
+func (i AccessApprovalSettingsArray) ToAccessApprovalSettingsArrayOutput() AccessApprovalSettingsArrayOutput {
+	return i.ToAccessApprovalSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i AccessApprovalSettingsArray) ToAccessApprovalSettingsArrayOutputWithContext(ctx context.Context) AccessApprovalSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsArrayOutput)
+}
+
+// AccessApprovalSettingsMapInput is an input type that accepts AccessApprovalSettingsMap and AccessApprovalSettingsMapOutput values.
+// You can construct a concrete instance of `AccessApprovalSettingsMapInput` via:
+//
+//          AccessApprovalSettingsMap{ "key": AccessApprovalSettingsArgs{...} }
+type AccessApprovalSettingsMapInput interface {
+	pulumi.Input
+
+	ToAccessApprovalSettingsMapOutput() AccessApprovalSettingsMapOutput
+	ToAccessApprovalSettingsMapOutputWithContext(context.Context) AccessApprovalSettingsMapOutput
+}
+
+type AccessApprovalSettingsMap map[string]AccessApprovalSettingsInput
+
+func (AccessApprovalSettingsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessApprovalSettings)(nil))
+}
+
+func (i AccessApprovalSettingsMap) ToAccessApprovalSettingsMapOutput() AccessApprovalSettingsMapOutput {
+	return i.ToAccessApprovalSettingsMapOutputWithContext(context.Background())
+}
+
+func (i AccessApprovalSettingsMap) ToAccessApprovalSettingsMapOutputWithContext(ctx context.Context) AccessApprovalSettingsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessApprovalSettingsMapOutput)
+}
+
 type AccessApprovalSettingsOutput struct {
 	*pulumi.OutputState
 }
@@ -196,6 +275,75 @@ func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsOutputWithContext(
 	return o
 }
 
+func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsPtrOutput() AccessApprovalSettingsPtrOutput {
+	return o.ToAccessApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AccessApprovalSettingsOutput) ToAccessApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessApprovalSettingsPtrOutput {
+	return o.ApplyT(func(v AccessApprovalSettings) *AccessApprovalSettings {
+		return &v
+	}).(AccessApprovalSettingsPtrOutput)
+}
+
+type AccessApprovalSettingsPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessApprovalSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessApprovalSettings)(nil))
+}
+
+func (o AccessApprovalSettingsPtrOutput) ToAccessApprovalSettingsPtrOutput() AccessApprovalSettingsPtrOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsPtrOutput) ToAccessApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessApprovalSettingsPtrOutput {
+	return o
+}
+
+type AccessApprovalSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessApprovalSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessApprovalSettings)(nil))
+}
+
+func (o AccessApprovalSettingsArrayOutput) ToAccessApprovalSettingsArrayOutput() AccessApprovalSettingsArrayOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsArrayOutput) ToAccessApprovalSettingsArrayOutputWithContext(ctx context.Context) AccessApprovalSettingsArrayOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsArrayOutput) Index(i pulumi.IntInput) AccessApprovalSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessApprovalSettings {
+		return vs[0].([]AccessApprovalSettings)[vs[1].(int)]
+	}).(AccessApprovalSettingsOutput)
+}
+
+type AccessApprovalSettingsMapOutput struct{ *pulumi.OutputState }
+
+func (AccessApprovalSettingsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessApprovalSettings)(nil))
+}
+
+func (o AccessApprovalSettingsMapOutput) ToAccessApprovalSettingsMapOutput() AccessApprovalSettingsMapOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsMapOutput) ToAccessApprovalSettingsMapOutputWithContext(ctx context.Context) AccessApprovalSettingsMapOutput {
+	return o
+}
+
+func (o AccessApprovalSettingsMapOutput) MapIndex(k pulumi.StringInput) AccessApprovalSettingsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessApprovalSettings {
+		return vs[0].(map[string]AccessApprovalSettings)[vs[1].(string)]
+	}).(AccessApprovalSettingsOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessApprovalSettingsOutput{})
+	pulumi.RegisterOutputType(AccessApprovalSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AccessApprovalSettingsArrayOutput{})
+	pulumi.RegisterOutputType(AccessApprovalSettingsMapOutput{})
 }

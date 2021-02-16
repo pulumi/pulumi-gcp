@@ -230,7 +230,8 @@ export class Address extends pulumi.CustomResource {
     constructor(name: string, args?: AddressArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AddressArgs | AddressState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AddressState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["addressType"] = state ? state.addressType : undefined;
@@ -263,12 +264,8 @@ export class Address extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["users"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Address.__pulumiType, name, inputs, opts);
     }

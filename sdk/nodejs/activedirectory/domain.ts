@@ -117,7 +117,8 @@ export class Domain extends pulumi.CustomResource {
     constructor(name: string, args: DomainArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainArgs | DomainState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainState | undefined;
             inputs["admin"] = state ? state.admin : undefined;
             inputs["authorizedNetworks"] = state ? state.authorizedNetworks : undefined;
@@ -130,13 +131,13 @@ export class Domain extends pulumi.CustomResource {
             inputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.domainName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.locations === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.locations === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locations'");
             }
-            if ((!args || args.reservedIpRange === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.reservedIpRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'reservedIpRange'");
             }
             inputs["admin"] = args ? args.admin : undefined;
@@ -149,12 +150,8 @@ export class Domain extends pulumi.CustomResource {
             inputs["fqdn"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Domain.__pulumiType, name, inputs, opts);
     }

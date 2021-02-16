@@ -139,7 +139,8 @@ export class BucketObject extends pulumi.CustomResource {
     constructor(name: string, args: BucketObjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketObjectArgs | BucketObjectState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BucketObjectState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["cacheControl"] = state ? state.cacheControl : undefined;
@@ -160,7 +161,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["storageClass"] = state ? state.storageClass : undefined;
         } else {
             const args = argsOrState as BucketObjectArgs | undefined;
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
@@ -181,12 +182,8 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["outputName"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BucketObject.__pulumiType, name, inputs, opts);
     }

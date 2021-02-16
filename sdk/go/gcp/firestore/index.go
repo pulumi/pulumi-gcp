@@ -256,6 +256,85 @@ func (i *Index) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(IndexOutput)
 }
 
+func (i *Index) ToIndexPtrOutput() IndexPtrOutput {
+	return i.ToIndexPtrOutputWithContext(context.Background())
+}
+
+func (i *Index) ToIndexPtrOutputWithContext(ctx context.Context) IndexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexPtrOutput)
+}
+
+type IndexPtrInput interface {
+	pulumi.Input
+
+	ToIndexPtrOutput() IndexPtrOutput
+	ToIndexPtrOutputWithContext(ctx context.Context) IndexPtrOutput
+}
+
+type indexPtrType IndexArgs
+
+func (*indexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Index)(nil))
+}
+
+func (i *indexPtrType) ToIndexPtrOutput() IndexPtrOutput {
+	return i.ToIndexPtrOutputWithContext(context.Background())
+}
+
+func (i *indexPtrType) ToIndexPtrOutputWithContext(ctx context.Context) IndexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexPtrOutput)
+}
+
+// IndexArrayInput is an input type that accepts IndexArray and IndexArrayOutput values.
+// You can construct a concrete instance of `IndexArrayInput` via:
+//
+//          IndexArray{ IndexArgs{...} }
+type IndexArrayInput interface {
+	pulumi.Input
+
+	ToIndexArrayOutput() IndexArrayOutput
+	ToIndexArrayOutputWithContext(context.Context) IndexArrayOutput
+}
+
+type IndexArray []IndexInput
+
+func (IndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Index)(nil))
+}
+
+func (i IndexArray) ToIndexArrayOutput() IndexArrayOutput {
+	return i.ToIndexArrayOutputWithContext(context.Background())
+}
+
+func (i IndexArray) ToIndexArrayOutputWithContext(ctx context.Context) IndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexArrayOutput)
+}
+
+// IndexMapInput is an input type that accepts IndexMap and IndexMapOutput values.
+// You can construct a concrete instance of `IndexMapInput` via:
+//
+//          IndexMap{ "key": IndexArgs{...} }
+type IndexMapInput interface {
+	pulumi.Input
+
+	ToIndexMapOutput() IndexMapOutput
+	ToIndexMapOutputWithContext(context.Context) IndexMapOutput
+}
+
+type IndexMap map[string]IndexInput
+
+func (IndexMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Index)(nil))
+}
+
+func (i IndexMap) ToIndexMapOutput() IndexMapOutput {
+	return i.ToIndexMapOutputWithContext(context.Background())
+}
+
+func (i IndexMap) ToIndexMapOutputWithContext(ctx context.Context) IndexMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IndexMapOutput)
+}
+
 type IndexOutput struct {
 	*pulumi.OutputState
 }
@@ -272,6 +351,75 @@ func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
 }
 
+func (o IndexOutput) ToIndexPtrOutput() IndexPtrOutput {
+	return o.ToIndexPtrOutputWithContext(context.Background())
+}
+
+func (o IndexOutput) ToIndexPtrOutputWithContext(ctx context.Context) IndexPtrOutput {
+	return o.ApplyT(func(v Index) *Index {
+		return &v
+	}).(IndexPtrOutput)
+}
+
+type IndexPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IndexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Index)(nil))
+}
+
+func (o IndexPtrOutput) ToIndexPtrOutput() IndexPtrOutput {
+	return o
+}
+
+func (o IndexPtrOutput) ToIndexPtrOutputWithContext(ctx context.Context) IndexPtrOutput {
+	return o
+}
+
+type IndexArrayOutput struct{ *pulumi.OutputState }
+
+func (IndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Index)(nil))
+}
+
+func (o IndexArrayOutput) ToIndexArrayOutput() IndexArrayOutput {
+	return o
+}
+
+func (o IndexArrayOutput) ToIndexArrayOutputWithContext(ctx context.Context) IndexArrayOutput {
+	return o
+}
+
+func (o IndexArrayOutput) Index(i pulumi.IntInput) IndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Index {
+		return vs[0].([]Index)[vs[1].(int)]
+	}).(IndexOutput)
+}
+
+type IndexMapOutput struct{ *pulumi.OutputState }
+
+func (IndexMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Index)(nil))
+}
+
+func (o IndexMapOutput) ToIndexMapOutput() IndexMapOutput {
+	return o
+}
+
+func (o IndexMapOutput) ToIndexMapOutputWithContext(ctx context.Context) IndexMapOutput {
+	return o
+}
+
+func (o IndexMapOutput) MapIndex(k pulumi.StringInput) IndexOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Index {
+		return vs[0].(map[string]Index)[vs[1].(string)]
+	}).(IndexOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(IndexOutput{})
+	pulumi.RegisterOutputType(IndexPtrOutput{})
+	pulumi.RegisterOutputType(IndexArrayOutput{})
+	pulumi.RegisterOutputType(IndexMapOutput{})
 }

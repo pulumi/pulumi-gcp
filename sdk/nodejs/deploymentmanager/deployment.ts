@@ -165,7 +165,8 @@ export class Deployment extends pulumi.CustomResource {
     constructor(name: string, args: DeploymentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DeploymentArgs | DeploymentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DeploymentState | undefined;
             inputs["createPolicy"] = state ? state.createPolicy : undefined;
             inputs["deletePolicy"] = state ? state.deletePolicy : undefined;
@@ -180,7 +181,7 @@ export class Deployment extends pulumi.CustomResource {
             inputs["target"] = state ? state.target : undefined;
         } else {
             const args = argsOrState as DeploymentArgs | undefined;
-            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["createPolicy"] = args ? args.createPolicy : undefined;
@@ -195,12 +196,8 @@ export class Deployment extends pulumi.CustomResource {
             inputs["manifest"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Deployment.__pulumiType, name, inputs, opts);
     }

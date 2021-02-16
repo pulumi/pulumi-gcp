@@ -409,6 +409,85 @@ func (i *PreventionInspectTemplate) ToPreventionInspectTemplateOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateOutput)
 }
 
+func (i *PreventionInspectTemplate) ToPreventionInspectTemplatePtrOutput() PreventionInspectTemplatePtrOutput {
+	return i.ToPreventionInspectTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *PreventionInspectTemplate) ToPreventionInspectTemplatePtrOutputWithContext(ctx context.Context) PreventionInspectTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplatePtrOutput)
+}
+
+type PreventionInspectTemplatePtrInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplatePtrOutput() PreventionInspectTemplatePtrOutput
+	ToPreventionInspectTemplatePtrOutputWithContext(ctx context.Context) PreventionInspectTemplatePtrOutput
+}
+
+type preventionInspectTemplatePtrType PreventionInspectTemplateArgs
+
+func (*preventionInspectTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplate)(nil))
+}
+
+func (i *preventionInspectTemplatePtrType) ToPreventionInspectTemplatePtrOutput() PreventionInspectTemplatePtrOutput {
+	return i.ToPreventionInspectTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *preventionInspectTemplatePtrType) ToPreventionInspectTemplatePtrOutputWithContext(ctx context.Context) PreventionInspectTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplatePtrOutput)
+}
+
+// PreventionInspectTemplateArrayInput is an input type that accepts PreventionInspectTemplateArray and PreventionInspectTemplateArrayOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateArrayInput` via:
+//
+//          PreventionInspectTemplateArray{ PreventionInspectTemplateArgs{...} }
+type PreventionInspectTemplateArrayInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateArrayOutput() PreventionInspectTemplateArrayOutput
+	ToPreventionInspectTemplateArrayOutputWithContext(context.Context) PreventionInspectTemplateArrayOutput
+}
+
+type PreventionInspectTemplateArray []PreventionInspectTemplateInput
+
+func (PreventionInspectTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PreventionInspectTemplate)(nil))
+}
+
+func (i PreventionInspectTemplateArray) ToPreventionInspectTemplateArrayOutput() PreventionInspectTemplateArrayOutput {
+	return i.ToPreventionInspectTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateArray) ToPreventionInspectTemplateArrayOutputWithContext(ctx context.Context) PreventionInspectTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateArrayOutput)
+}
+
+// PreventionInspectTemplateMapInput is an input type that accepts PreventionInspectTemplateMap and PreventionInspectTemplateMapOutput values.
+// You can construct a concrete instance of `PreventionInspectTemplateMapInput` via:
+//
+//          PreventionInspectTemplateMap{ "key": PreventionInspectTemplateArgs{...} }
+type PreventionInspectTemplateMapInput interface {
+	pulumi.Input
+
+	ToPreventionInspectTemplateMapOutput() PreventionInspectTemplateMapOutput
+	ToPreventionInspectTemplateMapOutputWithContext(context.Context) PreventionInspectTemplateMapOutput
+}
+
+type PreventionInspectTemplateMap map[string]PreventionInspectTemplateInput
+
+func (PreventionInspectTemplateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PreventionInspectTemplate)(nil))
+}
+
+func (i PreventionInspectTemplateMap) ToPreventionInspectTemplateMapOutput() PreventionInspectTemplateMapOutput {
+	return i.ToPreventionInspectTemplateMapOutputWithContext(context.Background())
+}
+
+func (i PreventionInspectTemplateMap) ToPreventionInspectTemplateMapOutputWithContext(ctx context.Context) PreventionInspectTemplateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PreventionInspectTemplateMapOutput)
+}
+
 type PreventionInspectTemplateOutput struct {
 	*pulumi.OutputState
 }
@@ -425,6 +504,75 @@ func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplateOutputWithCo
 	return o
 }
 
+func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplatePtrOutput() PreventionInspectTemplatePtrOutput {
+	return o.ToPreventionInspectTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o PreventionInspectTemplateOutput) ToPreventionInspectTemplatePtrOutputWithContext(ctx context.Context) PreventionInspectTemplatePtrOutput {
+	return o.ApplyT(func(v PreventionInspectTemplate) *PreventionInspectTemplate {
+		return &v
+	}).(PreventionInspectTemplatePtrOutput)
+}
+
+type PreventionInspectTemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PreventionInspectTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PreventionInspectTemplate)(nil))
+}
+
+func (o PreventionInspectTemplatePtrOutput) ToPreventionInspectTemplatePtrOutput() PreventionInspectTemplatePtrOutput {
+	return o
+}
+
+func (o PreventionInspectTemplatePtrOutput) ToPreventionInspectTemplatePtrOutputWithContext(ctx context.Context) PreventionInspectTemplatePtrOutput {
+	return o
+}
+
+type PreventionInspectTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PreventionInspectTemplate)(nil))
+}
+
+func (o PreventionInspectTemplateArrayOutput) ToPreventionInspectTemplateArrayOutput() PreventionInspectTemplateArrayOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateArrayOutput) ToPreventionInspectTemplateArrayOutputWithContext(ctx context.Context) PreventionInspectTemplateArrayOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateArrayOutput) Index(i pulumi.IntInput) PreventionInspectTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PreventionInspectTemplate {
+		return vs[0].([]PreventionInspectTemplate)[vs[1].(int)]
+	}).(PreventionInspectTemplateOutput)
+}
+
+type PreventionInspectTemplateMapOutput struct{ *pulumi.OutputState }
+
+func (PreventionInspectTemplateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PreventionInspectTemplate)(nil))
+}
+
+func (o PreventionInspectTemplateMapOutput) ToPreventionInspectTemplateMapOutput() PreventionInspectTemplateMapOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateMapOutput) ToPreventionInspectTemplateMapOutputWithContext(ctx context.Context) PreventionInspectTemplateMapOutput {
+	return o
+}
+
+func (o PreventionInspectTemplateMapOutput) MapIndex(k pulumi.StringInput) PreventionInspectTemplateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PreventionInspectTemplate {
+		return vs[0].(map[string]PreventionInspectTemplate)[vs[1].(string)]
+	}).(PreventionInspectTemplateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PreventionInspectTemplateOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplatePtrOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateArrayOutput{})
+	pulumi.RegisterOutputType(PreventionInspectTemplateMapOutput{})
 }

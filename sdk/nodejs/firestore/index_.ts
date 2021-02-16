@@ -130,7 +130,8 @@ export class Index extends pulumi.CustomResource {
     constructor(name: string, args: IndexArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IndexArgs | IndexState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IndexState | undefined;
             inputs["collection"] = state ? state.collection : undefined;
             inputs["database"] = state ? state.database : undefined;
@@ -140,10 +141,10 @@ export class Index extends pulumi.CustomResource {
             inputs["queryScope"] = state ? state.queryScope : undefined;
         } else {
             const args = argsOrState as IndexArgs | undefined;
-            if ((!args || args.collection === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.collection === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'collection'");
             }
-            if ((!args || args.fields === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.fields === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
             inputs["collection"] = args ? args.collection : undefined;
@@ -153,12 +154,8 @@ export class Index extends pulumi.CustomResource {
             inputs["queryScope"] = args ? args.queryScope : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Index.__pulumiType, name, inputs, opts);
     }

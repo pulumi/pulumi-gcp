@@ -515,6 +515,85 @@ func (i *GuestPolicies) ToGuestPoliciesOutputWithContext(ctx context.Context) Gu
 	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesOutput)
 }
 
+func (i *GuestPolicies) ToGuestPoliciesPtrOutput() GuestPoliciesPtrOutput {
+	return i.ToGuestPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i *GuestPolicies) ToGuestPoliciesPtrOutputWithContext(ctx context.Context) GuestPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPtrOutput)
+}
+
+type GuestPoliciesPtrInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesPtrOutput() GuestPoliciesPtrOutput
+	ToGuestPoliciesPtrOutputWithContext(ctx context.Context) GuestPoliciesPtrOutput
+}
+
+type guestPoliciesPtrType GuestPoliciesArgs
+
+func (*guestPoliciesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPolicies)(nil))
+}
+
+func (i *guestPoliciesPtrType) ToGuestPoliciesPtrOutput() GuestPoliciesPtrOutput {
+	return i.ToGuestPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (i *guestPoliciesPtrType) ToGuestPoliciesPtrOutputWithContext(ctx context.Context) GuestPoliciesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesPtrOutput)
+}
+
+// GuestPoliciesArrayInput is an input type that accepts GuestPoliciesArray and GuestPoliciesArrayOutput values.
+// You can construct a concrete instance of `GuestPoliciesArrayInput` via:
+//
+//          GuestPoliciesArray{ GuestPoliciesArgs{...} }
+type GuestPoliciesArrayInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesArrayOutput() GuestPoliciesArrayOutput
+	ToGuestPoliciesArrayOutputWithContext(context.Context) GuestPoliciesArrayOutput
+}
+
+type GuestPoliciesArray []GuestPoliciesInput
+
+func (GuestPoliciesArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GuestPolicies)(nil))
+}
+
+func (i GuestPoliciesArray) ToGuestPoliciesArrayOutput() GuestPoliciesArrayOutput {
+	return i.ToGuestPoliciesArrayOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesArray) ToGuestPoliciesArrayOutputWithContext(ctx context.Context) GuestPoliciesArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesArrayOutput)
+}
+
+// GuestPoliciesMapInput is an input type that accepts GuestPoliciesMap and GuestPoliciesMapOutput values.
+// You can construct a concrete instance of `GuestPoliciesMapInput` via:
+//
+//          GuestPoliciesMap{ "key": GuestPoliciesArgs{...} }
+type GuestPoliciesMapInput interface {
+	pulumi.Input
+
+	ToGuestPoliciesMapOutput() GuestPoliciesMapOutput
+	ToGuestPoliciesMapOutputWithContext(context.Context) GuestPoliciesMapOutput
+}
+
+type GuestPoliciesMap map[string]GuestPoliciesInput
+
+func (GuestPoliciesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GuestPolicies)(nil))
+}
+
+func (i GuestPoliciesMap) ToGuestPoliciesMapOutput() GuestPoliciesMapOutput {
+	return i.ToGuestPoliciesMapOutputWithContext(context.Background())
+}
+
+func (i GuestPoliciesMap) ToGuestPoliciesMapOutputWithContext(ctx context.Context) GuestPoliciesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GuestPoliciesMapOutput)
+}
+
 type GuestPoliciesOutput struct {
 	*pulumi.OutputState
 }
@@ -531,6 +610,75 @@ func (o GuestPoliciesOutput) ToGuestPoliciesOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o GuestPoliciesOutput) ToGuestPoliciesPtrOutput() GuestPoliciesPtrOutput {
+	return o.ToGuestPoliciesPtrOutputWithContext(context.Background())
+}
+
+func (o GuestPoliciesOutput) ToGuestPoliciesPtrOutputWithContext(ctx context.Context) GuestPoliciesPtrOutput {
+	return o.ApplyT(func(v GuestPolicies) *GuestPolicies {
+		return &v
+	}).(GuestPoliciesPtrOutput)
+}
+
+type GuestPoliciesPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GuestPoliciesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GuestPolicies)(nil))
+}
+
+func (o GuestPoliciesPtrOutput) ToGuestPoliciesPtrOutput() GuestPoliciesPtrOutput {
+	return o
+}
+
+func (o GuestPoliciesPtrOutput) ToGuestPoliciesPtrOutputWithContext(ctx context.Context) GuestPoliciesPtrOutput {
+	return o
+}
+
+type GuestPoliciesArrayOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GuestPolicies)(nil))
+}
+
+func (o GuestPoliciesArrayOutput) ToGuestPoliciesArrayOutput() GuestPoliciesArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesArrayOutput) ToGuestPoliciesArrayOutputWithContext(ctx context.Context) GuestPoliciesArrayOutput {
+	return o
+}
+
+func (o GuestPoliciesArrayOutput) Index(i pulumi.IntInput) GuestPoliciesOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GuestPolicies {
+		return vs[0].([]GuestPolicies)[vs[1].(int)]
+	}).(GuestPoliciesOutput)
+}
+
+type GuestPoliciesMapOutput struct{ *pulumi.OutputState }
+
+func (GuestPoliciesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GuestPolicies)(nil))
+}
+
+func (o GuestPoliciesMapOutput) ToGuestPoliciesMapOutput() GuestPoliciesMapOutput {
+	return o
+}
+
+func (o GuestPoliciesMapOutput) ToGuestPoliciesMapOutputWithContext(ctx context.Context) GuestPoliciesMapOutput {
+	return o
+}
+
+func (o GuestPoliciesMapOutput) MapIndex(k pulumi.StringInput) GuestPoliciesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GuestPolicies {
+		return vs[0].(map[string]GuestPolicies)[vs[1].(string)]
+	}).(GuestPoliciesOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GuestPoliciesOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesPtrOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesArrayOutput{})
+	pulumi.RegisterOutputType(GuestPoliciesMapOutput{})
 }

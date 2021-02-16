@@ -282,6 +282,85 @@ func (i *EntryGroupIamMember) ToEntryGroupIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberOutput)
 }
 
+func (i *EntryGroupIamMember) ToEntryGroupIamMemberPtrOutput() EntryGroupIamMemberPtrOutput {
+	return i.ToEntryGroupIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *EntryGroupIamMember) ToEntryGroupIamMemberPtrOutputWithContext(ctx context.Context) EntryGroupIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberPtrOutput)
+}
+
+type EntryGroupIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToEntryGroupIamMemberPtrOutput() EntryGroupIamMemberPtrOutput
+	ToEntryGroupIamMemberPtrOutputWithContext(ctx context.Context) EntryGroupIamMemberPtrOutput
+}
+
+type entryGroupIamMemberPtrType EntryGroupIamMemberArgs
+
+func (*entryGroupIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryGroupIamMember)(nil))
+}
+
+func (i *entryGroupIamMemberPtrType) ToEntryGroupIamMemberPtrOutput() EntryGroupIamMemberPtrOutput {
+	return i.ToEntryGroupIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *entryGroupIamMemberPtrType) ToEntryGroupIamMemberPtrOutputWithContext(ctx context.Context) EntryGroupIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberPtrOutput)
+}
+
+// EntryGroupIamMemberArrayInput is an input type that accepts EntryGroupIamMemberArray and EntryGroupIamMemberArrayOutput values.
+// You can construct a concrete instance of `EntryGroupIamMemberArrayInput` via:
+//
+//          EntryGroupIamMemberArray{ EntryGroupIamMemberArgs{...} }
+type EntryGroupIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToEntryGroupIamMemberArrayOutput() EntryGroupIamMemberArrayOutput
+	ToEntryGroupIamMemberArrayOutputWithContext(context.Context) EntryGroupIamMemberArrayOutput
+}
+
+type EntryGroupIamMemberArray []EntryGroupIamMemberInput
+
+func (EntryGroupIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EntryGroupIamMember)(nil))
+}
+
+func (i EntryGroupIamMemberArray) ToEntryGroupIamMemberArrayOutput() EntryGroupIamMemberArrayOutput {
+	return i.ToEntryGroupIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i EntryGroupIamMemberArray) ToEntryGroupIamMemberArrayOutputWithContext(ctx context.Context) EntryGroupIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberArrayOutput)
+}
+
+// EntryGroupIamMemberMapInput is an input type that accepts EntryGroupIamMemberMap and EntryGroupIamMemberMapOutput values.
+// You can construct a concrete instance of `EntryGroupIamMemberMapInput` via:
+//
+//          EntryGroupIamMemberMap{ "key": EntryGroupIamMemberArgs{...} }
+type EntryGroupIamMemberMapInput interface {
+	pulumi.Input
+
+	ToEntryGroupIamMemberMapOutput() EntryGroupIamMemberMapOutput
+	ToEntryGroupIamMemberMapOutputWithContext(context.Context) EntryGroupIamMemberMapOutput
+}
+
+type EntryGroupIamMemberMap map[string]EntryGroupIamMemberInput
+
+func (EntryGroupIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EntryGroupIamMember)(nil))
+}
+
+func (i EntryGroupIamMemberMap) ToEntryGroupIamMemberMapOutput() EntryGroupIamMemberMapOutput {
+	return i.ToEntryGroupIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i EntryGroupIamMemberMap) ToEntryGroupIamMemberMapOutputWithContext(ctx context.Context) EntryGroupIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamMemberMapOutput)
+}
+
 type EntryGroupIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -298,6 +377,75 @@ func (o EntryGroupIamMemberOutput) ToEntryGroupIamMemberOutputWithContext(ctx co
 	return o
 }
 
+func (o EntryGroupIamMemberOutput) ToEntryGroupIamMemberPtrOutput() EntryGroupIamMemberPtrOutput {
+	return o.ToEntryGroupIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o EntryGroupIamMemberOutput) ToEntryGroupIamMemberPtrOutputWithContext(ctx context.Context) EntryGroupIamMemberPtrOutput {
+	return o.ApplyT(func(v EntryGroupIamMember) *EntryGroupIamMember {
+		return &v
+	}).(EntryGroupIamMemberPtrOutput)
+}
+
+type EntryGroupIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EntryGroupIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryGroupIamMember)(nil))
+}
+
+func (o EntryGroupIamMemberPtrOutput) ToEntryGroupIamMemberPtrOutput() EntryGroupIamMemberPtrOutput {
+	return o
+}
+
+func (o EntryGroupIamMemberPtrOutput) ToEntryGroupIamMemberPtrOutputWithContext(ctx context.Context) EntryGroupIamMemberPtrOutput {
+	return o
+}
+
+type EntryGroupIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryGroupIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryGroupIamMember)(nil))
+}
+
+func (o EntryGroupIamMemberArrayOutput) ToEntryGroupIamMemberArrayOutput() EntryGroupIamMemberArrayOutput {
+	return o
+}
+
+func (o EntryGroupIamMemberArrayOutput) ToEntryGroupIamMemberArrayOutputWithContext(ctx context.Context) EntryGroupIamMemberArrayOutput {
+	return o
+}
+
+func (o EntryGroupIamMemberArrayOutput) Index(i pulumi.IntInput) EntryGroupIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryGroupIamMember {
+		return vs[0].([]EntryGroupIamMember)[vs[1].(int)]
+	}).(EntryGroupIamMemberOutput)
+}
+
+type EntryGroupIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (EntryGroupIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EntryGroupIamMember)(nil))
+}
+
+func (o EntryGroupIamMemberMapOutput) ToEntryGroupIamMemberMapOutput() EntryGroupIamMemberMapOutput {
+	return o
+}
+
+func (o EntryGroupIamMemberMapOutput) ToEntryGroupIamMemberMapOutputWithContext(ctx context.Context) EntryGroupIamMemberMapOutput {
+	return o
+}
+
+func (o EntryGroupIamMemberMapOutput) MapIndex(k pulumi.StringInput) EntryGroupIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EntryGroupIamMember {
+		return vs[0].(map[string]EntryGroupIamMember)[vs[1].(string)]
+	}).(EntryGroupIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EntryGroupIamMemberOutput{})
+	pulumi.RegisterOutputType(EntryGroupIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(EntryGroupIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(EntryGroupIamMemberMapOutput{})
 }

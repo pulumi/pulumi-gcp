@@ -119,7 +119,8 @@ export class IAMCustomRole extends pulumi.CustomResource {
     constructor(name: string, args: IAMCustomRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IAMCustomRoleArgs | IAMCustomRoleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IAMCustomRoleState | undefined;
             inputs["deleted"] = state ? state.deleted : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -131,16 +132,16 @@ export class IAMCustomRole extends pulumi.CustomResource {
             inputs["title"] = state ? state.title : undefined;
         } else {
             const args = argsOrState as IAMCustomRoleArgs | undefined;
-            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.permissions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.permissions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissions'");
             }
-            if ((!args || args.roleId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.roleId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'roleId'");
             }
-            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -152,12 +153,8 @@ export class IAMCustomRole extends pulumi.CustomResource {
             inputs["deleted"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IAMCustomRole.__pulumiType, name, inputs, opts);
     }

@@ -130,7 +130,8 @@ export class Endpoint extends pulumi.CustomResource {
     constructor(name: string, args: EndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EndpointArgs | EndpointState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EndpointState | undefined;
             inputs["address"] = state ? state.address : undefined;
             inputs["endpointId"] = state ? state.endpointId : undefined;
@@ -140,10 +141,10 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as EndpointArgs | undefined;
-            if ((!args || args.endpointId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.endpointId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointId'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["address"] = args ? args.address : undefined;
@@ -153,12 +154,8 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Endpoint.__pulumiType, name, inputs, opts);
     }

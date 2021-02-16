@@ -171,7 +171,7 @@ container_beta_custom_endpoint = __config__.get('containerBetaCustomEndpoint')
 
 container_custom_endpoint = __config__.get('containerCustomEndpoint')
 
-credentials = __config__.get('credentials') or _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
+credentials = __config__.get('credentials')
 
 data_catalog_custom_endpoint = __config__.get('dataCatalogCustomEndpoint')
 

@@ -1146,6 +1146,85 @@ func (i *URLMap) ToURLMapOutputWithContext(ctx context.Context) URLMapOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(URLMapOutput)
 }
 
+func (i *URLMap) ToURLMapPtrOutput() URLMapPtrOutput {
+	return i.ToURLMapPtrOutputWithContext(context.Background())
+}
+
+func (i *URLMap) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPtrOutput)
+}
+
+type URLMapPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPtrOutput() URLMapPtrOutput
+	ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput
+}
+
+type urlmapPtrType URLMapArgs
+
+func (*urlmapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMap)(nil))
+}
+
+func (i *urlmapPtrType) ToURLMapPtrOutput() URLMapPtrOutput {
+	return i.ToURLMapPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPtrType) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPtrOutput)
+}
+
+// URLMapArrayInput is an input type that accepts URLMapArray and URLMapArrayOutput values.
+// You can construct a concrete instance of `URLMapArrayInput` via:
+//
+//          URLMapArray{ URLMapArgs{...} }
+type URLMapArrayInput interface {
+	pulumi.Input
+
+	ToURLMapArrayOutput() URLMapArrayOutput
+	ToURLMapArrayOutputWithContext(context.Context) URLMapArrayOutput
+}
+
+type URLMapArray []URLMapInput
+
+func (URLMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*URLMap)(nil))
+}
+
+func (i URLMapArray) ToURLMapArrayOutput() URLMapArrayOutput {
+	return i.ToURLMapArrayOutputWithContext(context.Background())
+}
+
+func (i URLMapArray) ToURLMapArrayOutputWithContext(ctx context.Context) URLMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapArrayOutput)
+}
+
+// URLMapMapInput is an input type that accepts URLMapMap and URLMapMapOutput values.
+// You can construct a concrete instance of `URLMapMapInput` via:
+//
+//          URLMapMap{ "key": URLMapArgs{...} }
+type URLMapMapInput interface {
+	pulumi.Input
+
+	ToURLMapMapOutput() URLMapMapOutput
+	ToURLMapMapOutputWithContext(context.Context) URLMapMapOutput
+}
+
+type URLMapMap map[string]URLMapInput
+
+func (URLMapMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*URLMap)(nil))
+}
+
+func (i URLMapMap) ToURLMapMapOutput() URLMapMapOutput {
+	return i.ToURLMapMapOutputWithContext(context.Background())
+}
+
+func (i URLMapMap) ToURLMapMapOutputWithContext(ctx context.Context) URLMapMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapMapOutput)
+}
+
 type URLMapOutput struct {
 	*pulumi.OutputState
 }
@@ -1162,6 +1241,75 @@ func (o URLMapOutput) ToURLMapOutputWithContext(ctx context.Context) URLMapOutpu
 	return o
 }
 
+func (o URLMapOutput) ToURLMapPtrOutput() URLMapPtrOutput {
+	return o.ToURLMapPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapOutput) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
+	return o.ApplyT(func(v URLMap) *URLMap {
+		return &v
+	}).(URLMapPtrOutput)
+}
+
+type URLMapPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (URLMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMap)(nil))
+}
+
+func (o URLMapPtrOutput) ToURLMapPtrOutput() URLMapPtrOutput {
+	return o
+}
+
+func (o URLMapPtrOutput) ToURLMapPtrOutputWithContext(ctx context.Context) URLMapPtrOutput {
+	return o
+}
+
+type URLMapArrayOutput struct{ *pulumi.OutputState }
+
+func (URLMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]URLMap)(nil))
+}
+
+func (o URLMapArrayOutput) ToURLMapArrayOutput() URLMapArrayOutput {
+	return o
+}
+
+func (o URLMapArrayOutput) ToURLMapArrayOutputWithContext(ctx context.Context) URLMapArrayOutput {
+	return o
+}
+
+func (o URLMapArrayOutput) Index(i pulumi.IntInput) URLMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) URLMap {
+		return vs[0].([]URLMap)[vs[1].(int)]
+	}).(URLMapOutput)
+}
+
+type URLMapMapOutput struct{ *pulumi.OutputState }
+
+func (URLMapMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]URLMap)(nil))
+}
+
+func (o URLMapMapOutput) ToURLMapMapOutput() URLMapMapOutput {
+	return o
+}
+
+func (o URLMapMapOutput) ToURLMapMapOutputWithContext(ctx context.Context) URLMapMapOutput {
+	return o
+}
+
+func (o URLMapMapOutput) MapIndex(k pulumi.StringInput) URLMapOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) URLMap {
+		return vs[0].(map[string]URLMap)[vs[1].(string)]
+	}).(URLMapOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(URLMapOutput{})
+	pulumi.RegisterOutputType(URLMapPtrOutput{})
+	pulumi.RegisterOutputType(URLMapArrayOutput{})
+	pulumi.RegisterOutputType(URLMapMapOutput{})
 }

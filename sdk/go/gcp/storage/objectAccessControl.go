@@ -275,6 +275,85 @@ func (i *ObjectAccessControl) ToObjectAccessControlOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlOutput)
 }
 
+func (i *ObjectAccessControl) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
+	return i.ToObjectAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *ObjectAccessControl) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlPtrOutput)
+}
+
+type ObjectAccessControlPtrInput interface {
+	pulumi.Input
+
+	ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput
+	ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput
+}
+
+type objectAccessControlPtrType ObjectAccessControlArgs
+
+func (*objectAccessControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectAccessControl)(nil))
+}
+
+func (i *objectAccessControlPtrType) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
+	return i.ToObjectAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *objectAccessControlPtrType) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlPtrOutput)
+}
+
+// ObjectAccessControlArrayInput is an input type that accepts ObjectAccessControlArray and ObjectAccessControlArrayOutput values.
+// You can construct a concrete instance of `ObjectAccessControlArrayInput` via:
+//
+//          ObjectAccessControlArray{ ObjectAccessControlArgs{...} }
+type ObjectAccessControlArrayInput interface {
+	pulumi.Input
+
+	ToObjectAccessControlArrayOutput() ObjectAccessControlArrayOutput
+	ToObjectAccessControlArrayOutputWithContext(context.Context) ObjectAccessControlArrayOutput
+}
+
+type ObjectAccessControlArray []ObjectAccessControlInput
+
+func (ObjectAccessControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ObjectAccessControl)(nil))
+}
+
+func (i ObjectAccessControlArray) ToObjectAccessControlArrayOutput() ObjectAccessControlArrayOutput {
+	return i.ToObjectAccessControlArrayOutputWithContext(context.Background())
+}
+
+func (i ObjectAccessControlArray) ToObjectAccessControlArrayOutputWithContext(ctx context.Context) ObjectAccessControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlArrayOutput)
+}
+
+// ObjectAccessControlMapInput is an input type that accepts ObjectAccessControlMap and ObjectAccessControlMapOutput values.
+// You can construct a concrete instance of `ObjectAccessControlMapInput` via:
+//
+//          ObjectAccessControlMap{ "key": ObjectAccessControlArgs{...} }
+type ObjectAccessControlMapInput interface {
+	pulumi.Input
+
+	ToObjectAccessControlMapOutput() ObjectAccessControlMapOutput
+	ToObjectAccessControlMapOutputWithContext(context.Context) ObjectAccessControlMapOutput
+}
+
+type ObjectAccessControlMap map[string]ObjectAccessControlInput
+
+func (ObjectAccessControlMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ObjectAccessControl)(nil))
+}
+
+func (i ObjectAccessControlMap) ToObjectAccessControlMapOutput() ObjectAccessControlMapOutput {
+	return i.ToObjectAccessControlMapOutputWithContext(context.Background())
+}
+
+func (i ObjectAccessControlMap) ToObjectAccessControlMapOutputWithContext(ctx context.Context) ObjectAccessControlMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectAccessControlMapOutput)
+}
+
 type ObjectAccessControlOutput struct {
 	*pulumi.OutputState
 }
@@ -291,6 +370,75 @@ func (o ObjectAccessControlOutput) ToObjectAccessControlOutputWithContext(ctx co
 	return o
 }
 
+func (o ObjectAccessControlOutput) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
+	return o.ToObjectAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectAccessControlOutput) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
+	return o.ApplyT(func(v ObjectAccessControl) *ObjectAccessControl {
+		return &v
+	}).(ObjectAccessControlPtrOutput)
+}
+
+type ObjectAccessControlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ObjectAccessControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectAccessControl)(nil))
+}
+
+func (o ObjectAccessControlPtrOutput) ToObjectAccessControlPtrOutput() ObjectAccessControlPtrOutput {
+	return o
+}
+
+func (o ObjectAccessControlPtrOutput) ToObjectAccessControlPtrOutputWithContext(ctx context.Context) ObjectAccessControlPtrOutput {
+	return o
+}
+
+type ObjectAccessControlArrayOutput struct{ *pulumi.OutputState }
+
+func (ObjectAccessControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectAccessControl)(nil))
+}
+
+func (o ObjectAccessControlArrayOutput) ToObjectAccessControlArrayOutput() ObjectAccessControlArrayOutput {
+	return o
+}
+
+func (o ObjectAccessControlArrayOutput) ToObjectAccessControlArrayOutputWithContext(ctx context.Context) ObjectAccessControlArrayOutput {
+	return o
+}
+
+func (o ObjectAccessControlArrayOutput) Index(i pulumi.IntInput) ObjectAccessControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectAccessControl {
+		return vs[0].([]ObjectAccessControl)[vs[1].(int)]
+	}).(ObjectAccessControlOutput)
+}
+
+type ObjectAccessControlMapOutput struct{ *pulumi.OutputState }
+
+func (ObjectAccessControlMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ObjectAccessControl)(nil))
+}
+
+func (o ObjectAccessControlMapOutput) ToObjectAccessControlMapOutput() ObjectAccessControlMapOutput {
+	return o
+}
+
+func (o ObjectAccessControlMapOutput) ToObjectAccessControlMapOutputWithContext(ctx context.Context) ObjectAccessControlMapOutput {
+	return o
+}
+
+func (o ObjectAccessControlMapOutput) MapIndex(k pulumi.StringInput) ObjectAccessControlOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectAccessControl {
+		return vs[0].(map[string]ObjectAccessControl)[vs[1].(string)]
+	}).(ObjectAccessControlOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ObjectAccessControlOutput{})
+	pulumi.RegisterOutputType(ObjectAccessControlPtrOutput{})
+	pulumi.RegisterOutputType(ObjectAccessControlArrayOutput{})
+	pulumi.RegisterOutputType(ObjectAccessControlMapOutput{})
 }

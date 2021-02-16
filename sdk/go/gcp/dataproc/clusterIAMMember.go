@@ -290,6 +290,85 @@ func (i *ClusterIAMMember) ToClusterIAMMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberOutput)
 }
 
+func (i *ClusterIAMMember) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
+	return i.ToClusterIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterIAMMember) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberPtrOutput)
+}
+
+type ClusterIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput
+	ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput
+}
+
+type clusterIAMMemberPtrType ClusterIAMMemberArgs
+
+func (*clusterIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIAMMember)(nil))
+}
+
+func (i *clusterIAMMemberPtrType) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
+	return i.ToClusterIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterIAMMemberPtrType) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberPtrOutput)
+}
+
+// ClusterIAMMemberArrayInput is an input type that accepts ClusterIAMMemberArray and ClusterIAMMemberArrayOutput values.
+// You can construct a concrete instance of `ClusterIAMMemberArrayInput` via:
+//
+//          ClusterIAMMemberArray{ ClusterIAMMemberArgs{...} }
+type ClusterIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToClusterIAMMemberArrayOutput() ClusterIAMMemberArrayOutput
+	ToClusterIAMMemberArrayOutputWithContext(context.Context) ClusterIAMMemberArrayOutput
+}
+
+type ClusterIAMMemberArray []ClusterIAMMemberInput
+
+func (ClusterIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterIAMMember)(nil))
+}
+
+func (i ClusterIAMMemberArray) ToClusterIAMMemberArrayOutput() ClusterIAMMemberArrayOutput {
+	return i.ToClusterIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterIAMMemberArray) ToClusterIAMMemberArrayOutputWithContext(ctx context.Context) ClusterIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberArrayOutput)
+}
+
+// ClusterIAMMemberMapInput is an input type that accepts ClusterIAMMemberMap and ClusterIAMMemberMapOutput values.
+// You can construct a concrete instance of `ClusterIAMMemberMapInput` via:
+//
+//          ClusterIAMMemberMap{ "key": ClusterIAMMemberArgs{...} }
+type ClusterIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToClusterIAMMemberMapOutput() ClusterIAMMemberMapOutput
+	ToClusterIAMMemberMapOutputWithContext(context.Context) ClusterIAMMemberMapOutput
+}
+
+type ClusterIAMMemberMap map[string]ClusterIAMMemberInput
+
+func (ClusterIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterIAMMember)(nil))
+}
+
+func (i ClusterIAMMemberMap) ToClusterIAMMemberMapOutput() ClusterIAMMemberMapOutput {
+	return i.ToClusterIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i ClusterIAMMemberMap) ToClusterIAMMemberMapOutputWithContext(ctx context.Context) ClusterIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMMemberMapOutput)
+}
+
 type ClusterIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -306,6 +385,75 @@ func (o ClusterIAMMemberOutput) ToClusterIAMMemberOutputWithContext(ctx context.
 	return o
 }
 
+func (o ClusterIAMMemberOutput) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
+	return o.ToClusterIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterIAMMemberOutput) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
+	return o.ApplyT(func(v ClusterIAMMember) *ClusterIAMMember {
+		return &v
+	}).(ClusterIAMMemberPtrOutput)
+}
+
+type ClusterIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIAMMember)(nil))
+}
+
+func (o ClusterIAMMemberPtrOutput) ToClusterIAMMemberPtrOutput() ClusterIAMMemberPtrOutput {
+	return o
+}
+
+func (o ClusterIAMMemberPtrOutput) ToClusterIAMMemberPtrOutputWithContext(ctx context.Context) ClusterIAMMemberPtrOutput {
+	return o
+}
+
+type ClusterIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIAMMember)(nil))
+}
+
+func (o ClusterIAMMemberArrayOutput) ToClusterIAMMemberArrayOutput() ClusterIAMMemberArrayOutput {
+	return o
+}
+
+func (o ClusterIAMMemberArrayOutput) ToClusterIAMMemberArrayOutputWithContext(ctx context.Context) ClusterIAMMemberArrayOutput {
+	return o
+}
+
+func (o ClusterIAMMemberArrayOutput) Index(i pulumi.IntInput) ClusterIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIAMMember {
+		return vs[0].([]ClusterIAMMember)[vs[1].(int)]
+	}).(ClusterIAMMemberOutput)
+}
+
+type ClusterIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterIAMMember)(nil))
+}
+
+func (o ClusterIAMMemberMapOutput) ToClusterIAMMemberMapOutput() ClusterIAMMemberMapOutput {
+	return o
+}
+
+func (o ClusterIAMMemberMapOutput) ToClusterIAMMemberMapOutputWithContext(ctx context.Context) ClusterIAMMemberMapOutput {
+	return o
+}
+
+func (o ClusterIAMMemberMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterIAMMember {
+		return vs[0].(map[string]ClusterIAMMember)[vs[1].(string)]
+	}).(ClusterIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterIAMMemberOutput{})
+	pulumi.RegisterOutputType(ClusterIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(ClusterIAMMemberMapOutput{})
 }

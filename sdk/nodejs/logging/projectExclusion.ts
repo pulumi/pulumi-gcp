@@ -96,7 +96,8 @@ export class ProjectExclusion extends pulumi.CustomResource {
     constructor(name: string, args: ProjectExclusionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectExclusionArgs | ProjectExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectExclusionState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
@@ -105,7 +106,7 @@ export class ProjectExclusion extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectExclusionArgs | undefined;
-            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.filter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -114,12 +115,8 @@ export class ProjectExclusion extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectExclusion.__pulumiType, name, inputs, opts);
     }

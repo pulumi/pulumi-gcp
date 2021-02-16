@@ -283,6 +283,85 @@ func (i *DatasetIamBinding) ToDatasetIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingOutput)
 }
 
+func (i *DatasetIamBinding) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
+	return i.ToDatasetIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *DatasetIamBinding) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingPtrOutput)
+}
+
+type DatasetIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput
+	ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput
+}
+
+type datasetIamBindingPtrType DatasetIamBindingArgs
+
+func (*datasetIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamBinding)(nil))
+}
+
+func (i *datasetIamBindingPtrType) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
+	return i.ToDatasetIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetIamBindingPtrType) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingPtrOutput)
+}
+
+// DatasetIamBindingArrayInput is an input type that accepts DatasetIamBindingArray and DatasetIamBindingArrayOutput values.
+// You can construct a concrete instance of `DatasetIamBindingArrayInput` via:
+//
+//          DatasetIamBindingArray{ DatasetIamBindingArgs{...} }
+type DatasetIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToDatasetIamBindingArrayOutput() DatasetIamBindingArrayOutput
+	ToDatasetIamBindingArrayOutputWithContext(context.Context) DatasetIamBindingArrayOutput
+}
+
+type DatasetIamBindingArray []DatasetIamBindingInput
+
+func (DatasetIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatasetIamBinding)(nil))
+}
+
+func (i DatasetIamBindingArray) ToDatasetIamBindingArrayOutput() DatasetIamBindingArrayOutput {
+	return i.ToDatasetIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetIamBindingArray) ToDatasetIamBindingArrayOutputWithContext(ctx context.Context) DatasetIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingArrayOutput)
+}
+
+// DatasetIamBindingMapInput is an input type that accepts DatasetIamBindingMap and DatasetIamBindingMapOutput values.
+// You can construct a concrete instance of `DatasetIamBindingMapInput` via:
+//
+//          DatasetIamBindingMap{ "key": DatasetIamBindingArgs{...} }
+type DatasetIamBindingMapInput interface {
+	pulumi.Input
+
+	ToDatasetIamBindingMapOutput() DatasetIamBindingMapOutput
+	ToDatasetIamBindingMapOutputWithContext(context.Context) DatasetIamBindingMapOutput
+}
+
+type DatasetIamBindingMap map[string]DatasetIamBindingInput
+
+func (DatasetIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatasetIamBinding)(nil))
+}
+
+func (i DatasetIamBindingMap) ToDatasetIamBindingMapOutput() DatasetIamBindingMapOutput {
+	return i.ToDatasetIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i DatasetIamBindingMap) ToDatasetIamBindingMapOutputWithContext(ctx context.Context) DatasetIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamBindingMapOutput)
+}
+
 type DatasetIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -299,6 +378,75 @@ func (o DatasetIamBindingOutput) ToDatasetIamBindingOutputWithContext(ctx contex
 	return o
 }
 
+func (o DatasetIamBindingOutput) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
+	return o.ToDatasetIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetIamBindingOutput) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
+	return o.ApplyT(func(v DatasetIamBinding) *DatasetIamBinding {
+		return &v
+	}).(DatasetIamBindingPtrOutput)
+}
+
+type DatasetIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamBinding)(nil))
+}
+
+func (o DatasetIamBindingPtrOutput) ToDatasetIamBindingPtrOutput() DatasetIamBindingPtrOutput {
+	return o
+}
+
+func (o DatasetIamBindingPtrOutput) ToDatasetIamBindingPtrOutputWithContext(ctx context.Context) DatasetIamBindingPtrOutput {
+	return o
+}
+
+type DatasetIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetIamBinding)(nil))
+}
+
+func (o DatasetIamBindingArrayOutput) ToDatasetIamBindingArrayOutput() DatasetIamBindingArrayOutput {
+	return o
+}
+
+func (o DatasetIamBindingArrayOutput) ToDatasetIamBindingArrayOutputWithContext(ctx context.Context) DatasetIamBindingArrayOutput {
+	return o
+}
+
+func (o DatasetIamBindingArrayOutput) Index(i pulumi.IntInput) DatasetIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetIamBinding {
+		return vs[0].([]DatasetIamBinding)[vs[1].(int)]
+	}).(DatasetIamBindingOutput)
+}
+
+type DatasetIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatasetIamBinding)(nil))
+}
+
+func (o DatasetIamBindingMapOutput) ToDatasetIamBindingMapOutput() DatasetIamBindingMapOutput {
+	return o
+}
+
+func (o DatasetIamBindingMapOutput) ToDatasetIamBindingMapOutputWithContext(ctx context.Context) DatasetIamBindingMapOutput {
+	return o
+}
+
+func (o DatasetIamBindingMapOutput) MapIndex(k pulumi.StringInput) DatasetIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetIamBinding {
+		return vs[0].(map[string]DatasetIamBinding)[vs[1].(string)]
+	}).(DatasetIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetIamBindingOutput{})
+	pulumi.RegisterOutputType(DatasetIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(DatasetIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(DatasetIamBindingMapOutput{})
 }

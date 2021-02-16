@@ -254,6 +254,85 @@ func (i *MachineImage) ToMachineImageOutputWithContext(ctx context.Context) Mach
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageOutput)
 }
 
+func (i *MachineImage) ToMachineImagePtrOutput() MachineImagePtrOutput {
+	return i.ToMachineImagePtrOutputWithContext(context.Background())
+}
+
+func (i *MachineImage) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImagePtrOutput)
+}
+
+type MachineImagePtrInput interface {
+	pulumi.Input
+
+	ToMachineImagePtrOutput() MachineImagePtrOutput
+	ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput
+}
+
+type machineImagePtrType MachineImageArgs
+
+func (*machineImagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImage)(nil))
+}
+
+func (i *machineImagePtrType) ToMachineImagePtrOutput() MachineImagePtrOutput {
+	return i.ToMachineImagePtrOutputWithContext(context.Background())
+}
+
+func (i *machineImagePtrType) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImagePtrOutput)
+}
+
+// MachineImageArrayInput is an input type that accepts MachineImageArray and MachineImageArrayOutput values.
+// You can construct a concrete instance of `MachineImageArrayInput` via:
+//
+//          MachineImageArray{ MachineImageArgs{...} }
+type MachineImageArrayInput interface {
+	pulumi.Input
+
+	ToMachineImageArrayOutput() MachineImageArrayOutput
+	ToMachineImageArrayOutputWithContext(context.Context) MachineImageArrayOutput
+}
+
+type MachineImageArray []MachineImageInput
+
+func (MachineImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MachineImage)(nil))
+}
+
+func (i MachineImageArray) ToMachineImageArrayOutput() MachineImageArrayOutput {
+	return i.ToMachineImageArrayOutputWithContext(context.Background())
+}
+
+func (i MachineImageArray) ToMachineImageArrayOutputWithContext(ctx context.Context) MachineImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageArrayOutput)
+}
+
+// MachineImageMapInput is an input type that accepts MachineImageMap and MachineImageMapOutput values.
+// You can construct a concrete instance of `MachineImageMapInput` via:
+//
+//          MachineImageMap{ "key": MachineImageArgs{...} }
+type MachineImageMapInput interface {
+	pulumi.Input
+
+	ToMachineImageMapOutput() MachineImageMapOutput
+	ToMachineImageMapOutputWithContext(context.Context) MachineImageMapOutput
+}
+
+type MachineImageMap map[string]MachineImageInput
+
+func (MachineImageMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MachineImage)(nil))
+}
+
+func (i MachineImageMap) ToMachineImageMapOutput() MachineImageMapOutput {
+	return i.ToMachineImageMapOutputWithContext(context.Background())
+}
+
+func (i MachineImageMap) ToMachineImageMapOutputWithContext(ctx context.Context) MachineImageMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageMapOutput)
+}
+
 type MachineImageOutput struct {
 	*pulumi.OutputState
 }
@@ -270,6 +349,75 @@ func (o MachineImageOutput) ToMachineImageOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o MachineImageOutput) ToMachineImagePtrOutput() MachineImagePtrOutput {
+	return o.ToMachineImagePtrOutputWithContext(context.Background())
+}
+
+func (o MachineImageOutput) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
+	return o.ApplyT(func(v MachineImage) *MachineImage {
+		return &v
+	}).(MachineImagePtrOutput)
+}
+
+type MachineImagePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MachineImagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImage)(nil))
+}
+
+func (o MachineImagePtrOutput) ToMachineImagePtrOutput() MachineImagePtrOutput {
+	return o
+}
+
+func (o MachineImagePtrOutput) ToMachineImagePtrOutputWithContext(ctx context.Context) MachineImagePtrOutput {
+	return o
+}
+
+type MachineImageArrayOutput struct{ *pulumi.OutputState }
+
+func (MachineImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MachineImage)(nil))
+}
+
+func (o MachineImageArrayOutput) ToMachineImageArrayOutput() MachineImageArrayOutput {
+	return o
+}
+
+func (o MachineImageArrayOutput) ToMachineImageArrayOutputWithContext(ctx context.Context) MachineImageArrayOutput {
+	return o
+}
+
+func (o MachineImageArrayOutput) Index(i pulumi.IntInput) MachineImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineImage {
+		return vs[0].([]MachineImage)[vs[1].(int)]
+	}).(MachineImageOutput)
+}
+
+type MachineImageMapOutput struct{ *pulumi.OutputState }
+
+func (MachineImageMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MachineImage)(nil))
+}
+
+func (o MachineImageMapOutput) ToMachineImageMapOutput() MachineImageMapOutput {
+	return o
+}
+
+func (o MachineImageMapOutput) ToMachineImageMapOutputWithContext(ctx context.Context) MachineImageMapOutput {
+	return o
+}
+
+func (o MachineImageMapOutput) MapIndex(k pulumi.StringInput) MachineImageOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MachineImage {
+		return vs[0].(map[string]MachineImage)[vs[1].(string)]
+	}).(MachineImageOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MachineImageOutput{})
+	pulumi.RegisterOutputType(MachineImagePtrOutput{})
+	pulumi.RegisterOutputType(MachineImageArrayOutput{})
+	pulumi.RegisterOutputType(MachineImageMapOutput{})
 }

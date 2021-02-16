@@ -116,6 +116,85 @@ func (i *AuthorityIamMember) ToAuthorityIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamMemberOutput)
 }
 
+func (i *AuthorityIamMember) ToAuthorityIamMemberPtrOutput() AuthorityIamMemberPtrOutput {
+	return i.ToAuthorityIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthorityIamMember) ToAuthorityIamMemberPtrOutputWithContext(ctx context.Context) AuthorityIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamMemberPtrOutput)
+}
+
+type AuthorityIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToAuthorityIamMemberPtrOutput() AuthorityIamMemberPtrOutput
+	ToAuthorityIamMemberPtrOutputWithContext(ctx context.Context) AuthorityIamMemberPtrOutput
+}
+
+type authorityIamMemberPtrType AuthorityIamMemberArgs
+
+func (*authorityIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityIamMember)(nil))
+}
+
+func (i *authorityIamMemberPtrType) ToAuthorityIamMemberPtrOutput() AuthorityIamMemberPtrOutput {
+	return i.ToAuthorityIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *authorityIamMemberPtrType) ToAuthorityIamMemberPtrOutputWithContext(ctx context.Context) AuthorityIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamMemberPtrOutput)
+}
+
+// AuthorityIamMemberArrayInput is an input type that accepts AuthorityIamMemberArray and AuthorityIamMemberArrayOutput values.
+// You can construct a concrete instance of `AuthorityIamMemberArrayInput` via:
+//
+//          AuthorityIamMemberArray{ AuthorityIamMemberArgs{...} }
+type AuthorityIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToAuthorityIamMemberArrayOutput() AuthorityIamMemberArrayOutput
+	ToAuthorityIamMemberArrayOutputWithContext(context.Context) AuthorityIamMemberArrayOutput
+}
+
+type AuthorityIamMemberArray []AuthorityIamMemberInput
+
+func (AuthorityIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthorityIamMember)(nil))
+}
+
+func (i AuthorityIamMemberArray) ToAuthorityIamMemberArrayOutput() AuthorityIamMemberArrayOutput {
+	return i.ToAuthorityIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i AuthorityIamMemberArray) ToAuthorityIamMemberArrayOutputWithContext(ctx context.Context) AuthorityIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamMemberArrayOutput)
+}
+
+// AuthorityIamMemberMapInput is an input type that accepts AuthorityIamMemberMap and AuthorityIamMemberMapOutput values.
+// You can construct a concrete instance of `AuthorityIamMemberMapInput` via:
+//
+//          AuthorityIamMemberMap{ "key": AuthorityIamMemberArgs{...} }
+type AuthorityIamMemberMapInput interface {
+	pulumi.Input
+
+	ToAuthorityIamMemberMapOutput() AuthorityIamMemberMapOutput
+	ToAuthorityIamMemberMapOutputWithContext(context.Context) AuthorityIamMemberMapOutput
+}
+
+type AuthorityIamMemberMap map[string]AuthorityIamMemberInput
+
+func (AuthorityIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthorityIamMember)(nil))
+}
+
+func (i AuthorityIamMemberMap) ToAuthorityIamMemberMapOutput() AuthorityIamMemberMapOutput {
+	return i.ToAuthorityIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i AuthorityIamMemberMap) ToAuthorityIamMemberMapOutputWithContext(ctx context.Context) AuthorityIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamMemberMapOutput)
+}
+
 type AuthorityIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -132,6 +211,75 @@ func (o AuthorityIamMemberOutput) ToAuthorityIamMemberOutputWithContext(ctx cont
 	return o
 }
 
+func (o AuthorityIamMemberOutput) ToAuthorityIamMemberPtrOutput() AuthorityIamMemberPtrOutput {
+	return o.ToAuthorityIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorityIamMemberOutput) ToAuthorityIamMemberPtrOutputWithContext(ctx context.Context) AuthorityIamMemberPtrOutput {
+	return o.ApplyT(func(v AuthorityIamMember) *AuthorityIamMember {
+		return &v
+	}).(AuthorityIamMemberPtrOutput)
+}
+
+type AuthorityIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorityIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityIamMember)(nil))
+}
+
+func (o AuthorityIamMemberPtrOutput) ToAuthorityIamMemberPtrOutput() AuthorityIamMemberPtrOutput {
+	return o
+}
+
+func (o AuthorityIamMemberPtrOutput) ToAuthorityIamMemberPtrOutputWithContext(ctx context.Context) AuthorityIamMemberPtrOutput {
+	return o
+}
+
+type AuthorityIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorityIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorityIamMember)(nil))
+}
+
+func (o AuthorityIamMemberArrayOutput) ToAuthorityIamMemberArrayOutput() AuthorityIamMemberArrayOutput {
+	return o
+}
+
+func (o AuthorityIamMemberArrayOutput) ToAuthorityIamMemberArrayOutputWithContext(ctx context.Context) AuthorityIamMemberArrayOutput {
+	return o
+}
+
+func (o AuthorityIamMemberArrayOutput) Index(i pulumi.IntInput) AuthorityIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorityIamMember {
+		return vs[0].([]AuthorityIamMember)[vs[1].(int)]
+	}).(AuthorityIamMemberOutput)
+}
+
+type AuthorityIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (AuthorityIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthorityIamMember)(nil))
+}
+
+func (o AuthorityIamMemberMapOutput) ToAuthorityIamMemberMapOutput() AuthorityIamMemberMapOutput {
+	return o
+}
+
+func (o AuthorityIamMemberMapOutput) ToAuthorityIamMemberMapOutputWithContext(ctx context.Context) AuthorityIamMemberMapOutput {
+	return o
+}
+
+func (o AuthorityIamMemberMapOutput) MapIndex(k pulumi.StringInput) AuthorityIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthorityIamMember {
+		return vs[0].(map[string]AuthorityIamMember)[vs[1].(string)]
+	}).(AuthorityIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorityIamMemberOutput{})
+	pulumi.RegisterOutputType(AuthorityIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(AuthorityIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(AuthorityIamMemberMapOutput{})
 }

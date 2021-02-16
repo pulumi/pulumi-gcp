@@ -333,7 +333,8 @@ export class InstanceTemplate extends pulumi.CustomResource {
     constructor(name: string, args: InstanceTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceTemplateArgs | InstanceTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceTemplateState | undefined;
             inputs["canIpForward"] = state ? state.canIpForward : undefined;
             inputs["confidentialInstanceConfig"] = state ? state.confidentialInstanceConfig : undefined;
@@ -361,10 +362,10 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["tagsFingerprint"] = state ? state.tagsFingerprint : undefined;
         } else {
             const args = argsOrState as InstanceTemplateArgs | undefined;
-            if ((!args || args.disks === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.disks === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'disks'");
             }
-            if ((!args || args.machineType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.machineType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
             inputs["canIpForward"] = args ? args.canIpForward : undefined;
@@ -392,12 +393,8 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceTemplate.__pulumiType, name, inputs, opts);
     }

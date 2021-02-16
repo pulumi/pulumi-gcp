@@ -72,7 +72,7 @@ namespace Pulumi.Gcp
 
         public static string? ContainerCustomEndpoint { get; set; } = __config.Get("containerCustomEndpoint");
 
-        public static string? Credentials { get; set; } = __config.Get("credentials") ?? Utilities.GetEnv("GOOGLE_CREDENTIALS", "GOOGLE_CLOUD_KEYFILE_JSON", "GCLOUD_KEYFILE_JSON");
+        public static string? Credentials { get; set; } = __config.Get("credentials");
 
         public static string? DataCatalogCustomEndpoint { get; set; } = __config.Get("dataCatalogCustomEndpoint");
 

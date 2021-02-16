@@ -810,6 +810,85 @@ func (i *GlobalForwardingRule) ToGlobalForwardingRuleOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleOutput)
 }
 
+func (i *GlobalForwardingRule) ToGlobalForwardingRulePtrOutput() GlobalForwardingRulePtrOutput {
+	return i.ToGlobalForwardingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *GlobalForwardingRule) ToGlobalForwardingRulePtrOutputWithContext(ctx context.Context) GlobalForwardingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRulePtrOutput)
+}
+
+type GlobalForwardingRulePtrInput interface {
+	pulumi.Input
+
+	ToGlobalForwardingRulePtrOutput() GlobalForwardingRulePtrOutput
+	ToGlobalForwardingRulePtrOutputWithContext(ctx context.Context) GlobalForwardingRulePtrOutput
+}
+
+type globalForwardingRulePtrType GlobalForwardingRuleArgs
+
+func (*globalForwardingRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalForwardingRule)(nil))
+}
+
+func (i *globalForwardingRulePtrType) ToGlobalForwardingRulePtrOutput() GlobalForwardingRulePtrOutput {
+	return i.ToGlobalForwardingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *globalForwardingRulePtrType) ToGlobalForwardingRulePtrOutputWithContext(ctx context.Context) GlobalForwardingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRulePtrOutput)
+}
+
+// GlobalForwardingRuleArrayInput is an input type that accepts GlobalForwardingRuleArray and GlobalForwardingRuleArrayOutput values.
+// You can construct a concrete instance of `GlobalForwardingRuleArrayInput` via:
+//
+//          GlobalForwardingRuleArray{ GlobalForwardingRuleArgs{...} }
+type GlobalForwardingRuleArrayInput interface {
+	pulumi.Input
+
+	ToGlobalForwardingRuleArrayOutput() GlobalForwardingRuleArrayOutput
+	ToGlobalForwardingRuleArrayOutputWithContext(context.Context) GlobalForwardingRuleArrayOutput
+}
+
+type GlobalForwardingRuleArray []GlobalForwardingRuleInput
+
+func (GlobalForwardingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GlobalForwardingRule)(nil))
+}
+
+func (i GlobalForwardingRuleArray) ToGlobalForwardingRuleArrayOutput() GlobalForwardingRuleArrayOutput {
+	return i.ToGlobalForwardingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GlobalForwardingRuleArray) ToGlobalForwardingRuleArrayOutputWithContext(ctx context.Context) GlobalForwardingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleArrayOutput)
+}
+
+// GlobalForwardingRuleMapInput is an input type that accepts GlobalForwardingRuleMap and GlobalForwardingRuleMapOutput values.
+// You can construct a concrete instance of `GlobalForwardingRuleMapInput` via:
+//
+//          GlobalForwardingRuleMap{ "key": GlobalForwardingRuleArgs{...} }
+type GlobalForwardingRuleMapInput interface {
+	pulumi.Input
+
+	ToGlobalForwardingRuleMapOutput() GlobalForwardingRuleMapOutput
+	ToGlobalForwardingRuleMapOutputWithContext(context.Context) GlobalForwardingRuleMapOutput
+}
+
+type GlobalForwardingRuleMap map[string]GlobalForwardingRuleInput
+
+func (GlobalForwardingRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GlobalForwardingRule)(nil))
+}
+
+func (i GlobalForwardingRuleMap) ToGlobalForwardingRuleMapOutput() GlobalForwardingRuleMapOutput {
+	return i.ToGlobalForwardingRuleMapOutputWithContext(context.Background())
+}
+
+func (i GlobalForwardingRuleMap) ToGlobalForwardingRuleMapOutputWithContext(ctx context.Context) GlobalForwardingRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalForwardingRuleMapOutput)
+}
+
 type GlobalForwardingRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -826,6 +905,75 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx 
 	return o
 }
 
+func (o GlobalForwardingRuleOutput) ToGlobalForwardingRulePtrOutput() GlobalForwardingRulePtrOutput {
+	return o.ToGlobalForwardingRulePtrOutputWithContext(context.Background())
+}
+
+func (o GlobalForwardingRuleOutput) ToGlobalForwardingRulePtrOutputWithContext(ctx context.Context) GlobalForwardingRulePtrOutput {
+	return o.ApplyT(func(v GlobalForwardingRule) *GlobalForwardingRule {
+		return &v
+	}).(GlobalForwardingRulePtrOutput)
+}
+
+type GlobalForwardingRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalForwardingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalForwardingRule)(nil))
+}
+
+func (o GlobalForwardingRulePtrOutput) ToGlobalForwardingRulePtrOutput() GlobalForwardingRulePtrOutput {
+	return o
+}
+
+func (o GlobalForwardingRulePtrOutput) ToGlobalForwardingRulePtrOutputWithContext(ctx context.Context) GlobalForwardingRulePtrOutput {
+	return o
+}
+
+type GlobalForwardingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GlobalForwardingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalForwardingRule)(nil))
+}
+
+func (o GlobalForwardingRuleArrayOutput) ToGlobalForwardingRuleArrayOutput() GlobalForwardingRuleArrayOutput {
+	return o
+}
+
+func (o GlobalForwardingRuleArrayOutput) ToGlobalForwardingRuleArrayOutputWithContext(ctx context.Context) GlobalForwardingRuleArrayOutput {
+	return o
+}
+
+func (o GlobalForwardingRuleArrayOutput) Index(i pulumi.IntInput) GlobalForwardingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalForwardingRule {
+		return vs[0].([]GlobalForwardingRule)[vs[1].(int)]
+	}).(GlobalForwardingRuleOutput)
+}
+
+type GlobalForwardingRuleMapOutput struct{ *pulumi.OutputState }
+
+func (GlobalForwardingRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GlobalForwardingRule)(nil))
+}
+
+func (o GlobalForwardingRuleMapOutput) ToGlobalForwardingRuleMapOutput() GlobalForwardingRuleMapOutput {
+	return o
+}
+
+func (o GlobalForwardingRuleMapOutput) ToGlobalForwardingRuleMapOutputWithContext(ctx context.Context) GlobalForwardingRuleMapOutput {
+	return o
+}
+
+func (o GlobalForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) GlobalForwardingRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GlobalForwardingRule {
+		return vs[0].(map[string]GlobalForwardingRule)[vs[1].(string)]
+	}).(GlobalForwardingRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GlobalForwardingRuleOutput{})
+	pulumi.RegisterOutputType(GlobalForwardingRulePtrOutput{})
+	pulumi.RegisterOutputType(GlobalForwardingRuleArrayOutput{})
+	pulumi.RegisterOutputType(GlobalForwardingRuleMapOutput{})
 }

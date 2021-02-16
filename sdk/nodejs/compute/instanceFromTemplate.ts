@@ -235,7 +235,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
     constructor(name: string, args: InstanceFromTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceFromTemplateArgs | InstanceFromTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceFromTemplateState | undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
@@ -273,7 +274,7 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceFromTemplateArgs | undefined;
-            if ((!args || args.sourceInstanceTemplate === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceInstanceTemplate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstanceTemplate'");
             }
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
@@ -311,12 +312,8 @@ export class InstanceFromTemplate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceFromTemplate.__pulumiType, name, inputs, opts);
     }

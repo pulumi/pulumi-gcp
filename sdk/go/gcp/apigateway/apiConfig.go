@@ -222,6 +222,85 @@ func (i *ApiConfig) ToApiConfigOutputWithContext(ctx context.Context) ApiConfigO
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigOutput)
 }
 
+func (i *ApiConfig) ToApiConfigPtrOutput() ApiConfigPtrOutput {
+	return i.ToApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ApiConfig) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigPtrOutput)
+}
+
+type ApiConfigPtrInput interface {
+	pulumi.Input
+
+	ToApiConfigPtrOutput() ApiConfigPtrOutput
+	ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput
+}
+
+type apiConfigPtrType ApiConfigArgs
+
+func (*apiConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiConfig)(nil))
+}
+
+func (i *apiConfigPtrType) ToApiConfigPtrOutput() ApiConfigPtrOutput {
+	return i.ToApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *apiConfigPtrType) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigPtrOutput)
+}
+
+// ApiConfigArrayInput is an input type that accepts ApiConfigArray and ApiConfigArrayOutput values.
+// You can construct a concrete instance of `ApiConfigArrayInput` via:
+//
+//          ApiConfigArray{ ApiConfigArgs{...} }
+type ApiConfigArrayInput interface {
+	pulumi.Input
+
+	ToApiConfigArrayOutput() ApiConfigArrayOutput
+	ToApiConfigArrayOutputWithContext(context.Context) ApiConfigArrayOutput
+}
+
+type ApiConfigArray []ApiConfigInput
+
+func (ApiConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApiConfig)(nil))
+}
+
+func (i ApiConfigArray) ToApiConfigArrayOutput() ApiConfigArrayOutput {
+	return i.ToApiConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ApiConfigArray) ToApiConfigArrayOutputWithContext(ctx context.Context) ApiConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigArrayOutput)
+}
+
+// ApiConfigMapInput is an input type that accepts ApiConfigMap and ApiConfigMapOutput values.
+// You can construct a concrete instance of `ApiConfigMapInput` via:
+//
+//          ApiConfigMap{ "key": ApiConfigArgs{...} }
+type ApiConfigMapInput interface {
+	pulumi.Input
+
+	ToApiConfigMapOutput() ApiConfigMapOutput
+	ToApiConfigMapOutputWithContext(context.Context) ApiConfigMapOutput
+}
+
+type ApiConfigMap map[string]ApiConfigInput
+
+func (ApiConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApiConfig)(nil))
+}
+
+func (i ApiConfigMap) ToApiConfigMapOutput() ApiConfigMapOutput {
+	return i.ToApiConfigMapOutputWithContext(context.Background())
+}
+
+func (i ApiConfigMap) ToApiConfigMapOutputWithContext(ctx context.Context) ApiConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigMapOutput)
+}
+
 type ApiConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -238,6 +317,75 @@ func (o ApiConfigOutput) ToApiConfigOutputWithContext(ctx context.Context) ApiCo
 	return o
 }
 
+func (o ApiConfigOutput) ToApiConfigPtrOutput() ApiConfigPtrOutput {
+	return o.ToApiConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApiConfigOutput) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
+	return o.ApplyT(func(v ApiConfig) *ApiConfig {
+		return &v
+	}).(ApiConfigPtrOutput)
+}
+
+type ApiConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiConfig)(nil))
+}
+
+func (o ApiConfigPtrOutput) ToApiConfigPtrOutput() ApiConfigPtrOutput {
+	return o
+}
+
+func (o ApiConfigPtrOutput) ToApiConfigPtrOutputWithContext(ctx context.Context) ApiConfigPtrOutput {
+	return o
+}
+
+type ApiConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiConfig)(nil))
+}
+
+func (o ApiConfigArrayOutput) ToApiConfigArrayOutput() ApiConfigArrayOutput {
+	return o
+}
+
+func (o ApiConfigArrayOutput) ToApiConfigArrayOutputWithContext(ctx context.Context) ApiConfigArrayOutput {
+	return o
+}
+
+func (o ApiConfigArrayOutput) Index(i pulumi.IntInput) ApiConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiConfig {
+		return vs[0].([]ApiConfig)[vs[1].(int)]
+	}).(ApiConfigOutput)
+}
+
+type ApiConfigMapOutput struct{ *pulumi.OutputState }
+
+func (ApiConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApiConfig)(nil))
+}
+
+func (o ApiConfigMapOutput) ToApiConfigMapOutput() ApiConfigMapOutput {
+	return o
+}
+
+func (o ApiConfigMapOutput) ToApiConfigMapOutputWithContext(ctx context.Context) ApiConfigMapOutput {
+	return o
+}
+
+func (o ApiConfigMapOutput) MapIndex(k pulumi.StringInput) ApiConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiConfig {
+		return vs[0].(map[string]ApiConfig)[vs[1].(string)]
+	}).(ApiConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiConfigOutput{})
+	pulumi.RegisterOutputType(ApiConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApiConfigArrayOutput{})
+	pulumi.RegisterOutputType(ApiConfigMapOutput{})
 }

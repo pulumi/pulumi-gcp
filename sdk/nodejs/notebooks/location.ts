@@ -75,7 +75,8 @@ export class Location extends pulumi.CustomResource {
     constructor(name: string, args?: LocationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LocationArgs | LocationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LocationState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -86,12 +87,8 @@ export class Location extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Location.__pulumiType, name, inputs, opts);
     }

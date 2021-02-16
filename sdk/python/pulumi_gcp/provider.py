@@ -170,8 +170,6 @@ class Provider(pulumi.ProviderResource):
             __props__['container_analysis_custom_endpoint'] = container_analysis_custom_endpoint
             __props__['container_beta_custom_endpoint'] = container_beta_custom_endpoint
             __props__['container_custom_endpoint'] = container_custom_endpoint
-            if credentials is None:
-                credentials = _utilities.get_env('GOOGLE_CREDENTIALS', 'GOOGLE_CLOUD_KEYFILE_JSON', 'GCLOUD_KEYFILE_JSON')
             __props__['credentials'] = credentials
             __props__['data_catalog_custom_endpoint'] = data_catalog_custom_endpoint
             __props__['data_fusion_custom_endpoint'] = data_fusion_custom_endpoint

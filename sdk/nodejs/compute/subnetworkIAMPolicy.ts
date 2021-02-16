@@ -93,7 +93,8 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
     constructor(name: string, args: SubnetworkIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetworkIAMPolicyArgs | SubnetworkIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubnetworkIAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -102,10 +103,10 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
             const args = argsOrState as SubnetworkIAMPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.subnetwork === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subnetwork === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetwork'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;
@@ -114,12 +115,8 @@ export class SubnetworkIAMPolicy extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SubnetworkIAMPolicy.__pulumiType, name, inputs, opts);
     }

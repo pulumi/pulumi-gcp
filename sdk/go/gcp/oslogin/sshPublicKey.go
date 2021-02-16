@@ -157,6 +157,85 @@ func (i *SshPublicKey) ToSshPublicKeyOutputWithContext(ctx context.Context) SshP
 	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyOutput)
 }
 
+func (i *SshPublicKey) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
+	return i.ToSshPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *SshPublicKey) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyPtrOutput)
+}
+
+type SshPublicKeyPtrInput interface {
+	pulumi.Input
+
+	ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput
+	ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput
+}
+
+type sshPublicKeyPtrType SshPublicKeyArgs
+
+func (*sshPublicKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshPublicKey)(nil))
+}
+
+func (i *sshPublicKeyPtrType) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
+	return i.ToSshPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *sshPublicKeyPtrType) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyPtrOutput)
+}
+
+// SshPublicKeyArrayInput is an input type that accepts SshPublicKeyArray and SshPublicKeyArrayOutput values.
+// You can construct a concrete instance of `SshPublicKeyArrayInput` via:
+//
+//          SshPublicKeyArray{ SshPublicKeyArgs{...} }
+type SshPublicKeyArrayInput interface {
+	pulumi.Input
+
+	ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput
+	ToSshPublicKeyArrayOutputWithContext(context.Context) SshPublicKeyArrayOutput
+}
+
+type SshPublicKeyArray []SshPublicKeyInput
+
+func (SshPublicKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SshPublicKey)(nil))
+}
+
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
+	return i.ToSshPublicKeyArrayOutputWithContext(context.Background())
+}
+
+func (i SshPublicKeyArray) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyArrayOutput)
+}
+
+// SshPublicKeyMapInput is an input type that accepts SshPublicKeyMap and SshPublicKeyMapOutput values.
+// You can construct a concrete instance of `SshPublicKeyMapInput` via:
+//
+//          SshPublicKeyMap{ "key": SshPublicKeyArgs{...} }
+type SshPublicKeyMapInput interface {
+	pulumi.Input
+
+	ToSshPublicKeyMapOutput() SshPublicKeyMapOutput
+	ToSshPublicKeyMapOutputWithContext(context.Context) SshPublicKeyMapOutput
+}
+
+type SshPublicKeyMap map[string]SshPublicKeyInput
+
+func (SshPublicKeyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SshPublicKey)(nil))
+}
+
+func (i SshPublicKeyMap) ToSshPublicKeyMapOutput() SshPublicKeyMapOutput {
+	return i.ToSshPublicKeyMapOutputWithContext(context.Background())
+}
+
+func (i SshPublicKeyMap) ToSshPublicKeyMapOutputWithContext(ctx context.Context) SshPublicKeyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SshPublicKeyMapOutput)
+}
+
 type SshPublicKeyOutput struct {
 	*pulumi.OutputState
 }
@@ -173,6 +252,75 @@ func (o SshPublicKeyOutput) ToSshPublicKeyOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o SshPublicKeyOutput) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
+	return o.ToSshPublicKeyPtrOutputWithContext(context.Background())
+}
+
+func (o SshPublicKeyOutput) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
+	return o.ApplyT(func(v SshPublicKey) *SshPublicKey {
+		return &v
+	}).(SshPublicKeyPtrOutput)
+}
+
+type SshPublicKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SshPublicKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SshPublicKey)(nil))
+}
+
+func (o SshPublicKeyPtrOutput) ToSshPublicKeyPtrOutput() SshPublicKeyPtrOutput {
+	return o
+}
+
+func (o SshPublicKeyPtrOutput) ToSshPublicKeyPtrOutputWithContext(ctx context.Context) SshPublicKeyPtrOutput {
+	return o
+}
+
+type SshPublicKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SshPublicKey)(nil))
+}
+
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutput() SshPublicKeyArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyArrayOutput) ToSshPublicKeyArrayOutputWithContext(ctx context.Context) SshPublicKeyArrayOutput {
+	return o
+}
+
+func (o SshPublicKeyArrayOutput) Index(i pulumi.IntInput) SshPublicKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SshPublicKey {
+		return vs[0].([]SshPublicKey)[vs[1].(int)]
+	}).(SshPublicKeyOutput)
+}
+
+type SshPublicKeyMapOutput struct{ *pulumi.OutputState }
+
+func (SshPublicKeyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SshPublicKey)(nil))
+}
+
+func (o SshPublicKeyMapOutput) ToSshPublicKeyMapOutput() SshPublicKeyMapOutput {
+	return o
+}
+
+func (o SshPublicKeyMapOutput) ToSshPublicKeyMapOutputWithContext(ctx context.Context) SshPublicKeyMapOutput {
+	return o
+}
+
+func (o SshPublicKeyMapOutput) MapIndex(k pulumi.StringInput) SshPublicKeyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SshPublicKey {
+		return vs[0].(map[string]SshPublicKey)[vs[1].(string)]
+	}).(SshPublicKeyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SshPublicKeyOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyPtrOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(SshPublicKeyMapOutput{})
 }

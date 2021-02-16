@@ -244,6 +244,85 @@ func (i *DicomStore) ToDicomStoreOutputWithContext(ctx context.Context) DicomSto
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreOutput)
 }
 
+func (i *DicomStore) ToDicomStorePtrOutput() DicomStorePtrOutput {
+	return i.ToDicomStorePtrOutputWithContext(context.Background())
+}
+
+func (i *DicomStore) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStorePtrOutput)
+}
+
+type DicomStorePtrInput interface {
+	pulumi.Input
+
+	ToDicomStorePtrOutput() DicomStorePtrOutput
+	ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput
+}
+
+type dicomStorePtrType DicomStoreArgs
+
+func (*dicomStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomStore)(nil))
+}
+
+func (i *dicomStorePtrType) ToDicomStorePtrOutput() DicomStorePtrOutput {
+	return i.ToDicomStorePtrOutputWithContext(context.Background())
+}
+
+func (i *dicomStorePtrType) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStorePtrOutput)
+}
+
+// DicomStoreArrayInput is an input type that accepts DicomStoreArray and DicomStoreArrayOutput values.
+// You can construct a concrete instance of `DicomStoreArrayInput` via:
+//
+//          DicomStoreArray{ DicomStoreArgs{...} }
+type DicomStoreArrayInput interface {
+	pulumi.Input
+
+	ToDicomStoreArrayOutput() DicomStoreArrayOutput
+	ToDicomStoreArrayOutputWithContext(context.Context) DicomStoreArrayOutput
+}
+
+type DicomStoreArray []DicomStoreInput
+
+func (DicomStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DicomStore)(nil))
+}
+
+func (i DicomStoreArray) ToDicomStoreArrayOutput() DicomStoreArrayOutput {
+	return i.ToDicomStoreArrayOutputWithContext(context.Background())
+}
+
+func (i DicomStoreArray) ToDicomStoreArrayOutputWithContext(ctx context.Context) DicomStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreArrayOutput)
+}
+
+// DicomStoreMapInput is an input type that accepts DicomStoreMap and DicomStoreMapOutput values.
+// You can construct a concrete instance of `DicomStoreMapInput` via:
+//
+//          DicomStoreMap{ "key": DicomStoreArgs{...} }
+type DicomStoreMapInput interface {
+	pulumi.Input
+
+	ToDicomStoreMapOutput() DicomStoreMapOutput
+	ToDicomStoreMapOutputWithContext(context.Context) DicomStoreMapOutput
+}
+
+type DicomStoreMap map[string]DicomStoreInput
+
+func (DicomStoreMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DicomStore)(nil))
+}
+
+func (i DicomStoreMap) ToDicomStoreMapOutput() DicomStoreMapOutput {
+	return i.ToDicomStoreMapOutputWithContext(context.Background())
+}
+
+func (i DicomStoreMap) ToDicomStoreMapOutputWithContext(ctx context.Context) DicomStoreMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreMapOutput)
+}
+
 type DicomStoreOutput struct {
 	*pulumi.OutputState
 }
@@ -260,6 +339,75 @@ func (o DicomStoreOutput) ToDicomStoreOutputWithContext(ctx context.Context) Dic
 	return o
 }
 
+func (o DicomStoreOutput) ToDicomStorePtrOutput() DicomStorePtrOutput {
+	return o.ToDicomStorePtrOutputWithContext(context.Background())
+}
+
+func (o DicomStoreOutput) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
+	return o.ApplyT(func(v DicomStore) *DicomStore {
+		return &v
+	}).(DicomStorePtrOutput)
+}
+
+type DicomStorePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DicomStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomStore)(nil))
+}
+
+func (o DicomStorePtrOutput) ToDicomStorePtrOutput() DicomStorePtrOutput {
+	return o
+}
+
+func (o DicomStorePtrOutput) ToDicomStorePtrOutputWithContext(ctx context.Context) DicomStorePtrOutput {
+	return o
+}
+
+type DicomStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (DicomStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DicomStore)(nil))
+}
+
+func (o DicomStoreArrayOutput) ToDicomStoreArrayOutput() DicomStoreArrayOutput {
+	return o
+}
+
+func (o DicomStoreArrayOutput) ToDicomStoreArrayOutputWithContext(ctx context.Context) DicomStoreArrayOutput {
+	return o
+}
+
+func (o DicomStoreArrayOutput) Index(i pulumi.IntInput) DicomStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DicomStore {
+		return vs[0].([]DicomStore)[vs[1].(int)]
+	}).(DicomStoreOutput)
+}
+
+type DicomStoreMapOutput struct{ *pulumi.OutputState }
+
+func (DicomStoreMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DicomStore)(nil))
+}
+
+func (o DicomStoreMapOutput) ToDicomStoreMapOutput() DicomStoreMapOutput {
+	return o
+}
+
+func (o DicomStoreMapOutput) ToDicomStoreMapOutputWithContext(ctx context.Context) DicomStoreMapOutput {
+	return o
+}
+
+func (o DicomStoreMapOutput) MapIndex(k pulumi.StringInput) DicomStoreOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DicomStore {
+		return vs[0].(map[string]DicomStore)[vs[1].(string)]
+	}).(DicomStoreOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DicomStoreOutput{})
+	pulumi.RegisterOutputType(DicomStorePtrOutput{})
+	pulumi.RegisterOutputType(DicomStoreArrayOutput{})
+	pulumi.RegisterOutputType(DicomStoreMapOutput{})
 }

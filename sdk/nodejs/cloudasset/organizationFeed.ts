@@ -119,7 +119,8 @@ export class OrganizationFeed extends pulumi.CustomResource {
     constructor(name: string, args: OrganizationFeedArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationFeedArgs | OrganizationFeedState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrganizationFeedState | undefined;
             inputs["assetNames"] = state ? state.assetNames : undefined;
             inputs["assetTypes"] = state ? state.assetTypes : undefined;
@@ -132,16 +133,16 @@ export class OrganizationFeed extends pulumi.CustomResource {
             inputs["orgId"] = state ? state.orgId : undefined;
         } else {
             const args = argsOrState as OrganizationFeedArgs | undefined;
-            if ((!args || args.billingProject === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingProject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingProject'");
             }
-            if ((!args || args.feedId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.feedId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedId'");
             }
-            if ((!args || args.feedOutputConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.feedOutputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'feedOutputConfig'");
             }
-            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["assetNames"] = args ? args.assetNames : undefined;
@@ -154,12 +155,8 @@ export class OrganizationFeed extends pulumi.CustomResource {
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OrganizationFeed.__pulumiType, name, inputs, opts);
     }

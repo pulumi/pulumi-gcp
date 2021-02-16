@@ -141,7 +141,8 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
     constructor(name: string, args: PreventionJobTriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionJobTriggerArgs | PreventionJobTriggerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PreventionJobTriggerState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -153,10 +154,10 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             inputs["triggers"] = state ? state.triggers : undefined;
         } else {
             const args = argsOrState as PreventionJobTriggerArgs | undefined;
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.triggers === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.triggers === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggers'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -168,12 +169,8 @@ export class PreventionJobTrigger extends pulumi.CustomResource {
             inputs["lastRunTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PreventionJobTrigger.__pulumiType, name, inputs, opts);
     }

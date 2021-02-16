@@ -187,6 +187,85 @@ func (i *WebBackendServiceIamMember) ToWebBackendServiceIamMemberOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberOutput)
 }
 
+func (i *WebBackendServiceIamMember) ToWebBackendServiceIamMemberPtrOutput() WebBackendServiceIamMemberPtrOutput {
+	return i.ToWebBackendServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *WebBackendServiceIamMember) ToWebBackendServiceIamMemberPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberPtrOutput)
+}
+
+type WebBackendServiceIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToWebBackendServiceIamMemberPtrOutput() WebBackendServiceIamMemberPtrOutput
+	ToWebBackendServiceIamMemberPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberPtrOutput
+}
+
+type webBackendServiceIamMemberPtrType WebBackendServiceIamMemberArgs
+
+func (*webBackendServiceIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebBackendServiceIamMember)(nil))
+}
+
+func (i *webBackendServiceIamMemberPtrType) ToWebBackendServiceIamMemberPtrOutput() WebBackendServiceIamMemberPtrOutput {
+	return i.ToWebBackendServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *webBackendServiceIamMemberPtrType) ToWebBackendServiceIamMemberPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberPtrOutput)
+}
+
+// WebBackendServiceIamMemberArrayInput is an input type that accepts WebBackendServiceIamMemberArray and WebBackendServiceIamMemberArrayOutput values.
+// You can construct a concrete instance of `WebBackendServiceIamMemberArrayInput` via:
+//
+//          WebBackendServiceIamMemberArray{ WebBackendServiceIamMemberArgs{...} }
+type WebBackendServiceIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToWebBackendServiceIamMemberArrayOutput() WebBackendServiceIamMemberArrayOutput
+	ToWebBackendServiceIamMemberArrayOutputWithContext(context.Context) WebBackendServiceIamMemberArrayOutput
+}
+
+type WebBackendServiceIamMemberArray []WebBackendServiceIamMemberInput
+
+func (WebBackendServiceIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*WebBackendServiceIamMember)(nil))
+}
+
+func (i WebBackendServiceIamMemberArray) ToWebBackendServiceIamMemberArrayOutput() WebBackendServiceIamMemberArrayOutput {
+	return i.ToWebBackendServiceIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i WebBackendServiceIamMemberArray) ToWebBackendServiceIamMemberArrayOutputWithContext(ctx context.Context) WebBackendServiceIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberArrayOutput)
+}
+
+// WebBackendServiceIamMemberMapInput is an input type that accepts WebBackendServiceIamMemberMap and WebBackendServiceIamMemberMapOutput values.
+// You can construct a concrete instance of `WebBackendServiceIamMemberMapInput` via:
+//
+//          WebBackendServiceIamMemberMap{ "key": WebBackendServiceIamMemberArgs{...} }
+type WebBackendServiceIamMemberMapInput interface {
+	pulumi.Input
+
+	ToWebBackendServiceIamMemberMapOutput() WebBackendServiceIamMemberMapOutput
+	ToWebBackendServiceIamMemberMapOutputWithContext(context.Context) WebBackendServiceIamMemberMapOutput
+}
+
+type WebBackendServiceIamMemberMap map[string]WebBackendServiceIamMemberInput
+
+func (WebBackendServiceIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*WebBackendServiceIamMember)(nil))
+}
+
+func (i WebBackendServiceIamMemberMap) ToWebBackendServiceIamMemberMapOutput() WebBackendServiceIamMemberMapOutput {
+	return i.ToWebBackendServiceIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i WebBackendServiceIamMemberMap) ToWebBackendServiceIamMemberMapOutputWithContext(ctx context.Context) WebBackendServiceIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WebBackendServiceIamMemberMapOutput)
+}
+
 type WebBackendServiceIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -203,6 +282,75 @@ func (o WebBackendServiceIamMemberOutput) ToWebBackendServiceIamMemberOutputWith
 	return o
 }
 
+func (o WebBackendServiceIamMemberOutput) ToWebBackendServiceIamMemberPtrOutput() WebBackendServiceIamMemberPtrOutput {
+	return o.ToWebBackendServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o WebBackendServiceIamMemberOutput) ToWebBackendServiceIamMemberPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberPtrOutput {
+	return o.ApplyT(func(v WebBackendServiceIamMember) *WebBackendServiceIamMember {
+		return &v
+	}).(WebBackendServiceIamMemberPtrOutput)
+}
+
+type WebBackendServiceIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (WebBackendServiceIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WebBackendServiceIamMember)(nil))
+}
+
+func (o WebBackendServiceIamMemberPtrOutput) ToWebBackendServiceIamMemberPtrOutput() WebBackendServiceIamMemberPtrOutput {
+	return o
+}
+
+func (o WebBackendServiceIamMemberPtrOutput) ToWebBackendServiceIamMemberPtrOutputWithContext(ctx context.Context) WebBackendServiceIamMemberPtrOutput {
+	return o
+}
+
+type WebBackendServiceIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (WebBackendServiceIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WebBackendServiceIamMember)(nil))
+}
+
+func (o WebBackendServiceIamMemberArrayOutput) ToWebBackendServiceIamMemberArrayOutput() WebBackendServiceIamMemberArrayOutput {
+	return o
+}
+
+func (o WebBackendServiceIamMemberArrayOutput) ToWebBackendServiceIamMemberArrayOutputWithContext(ctx context.Context) WebBackendServiceIamMemberArrayOutput {
+	return o
+}
+
+func (o WebBackendServiceIamMemberArrayOutput) Index(i pulumi.IntInput) WebBackendServiceIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WebBackendServiceIamMember {
+		return vs[0].([]WebBackendServiceIamMember)[vs[1].(int)]
+	}).(WebBackendServiceIamMemberOutput)
+}
+
+type WebBackendServiceIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (WebBackendServiceIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]WebBackendServiceIamMember)(nil))
+}
+
+func (o WebBackendServiceIamMemberMapOutput) ToWebBackendServiceIamMemberMapOutput() WebBackendServiceIamMemberMapOutput {
+	return o
+}
+
+func (o WebBackendServiceIamMemberMapOutput) ToWebBackendServiceIamMemberMapOutputWithContext(ctx context.Context) WebBackendServiceIamMemberMapOutput {
+	return o
+}
+
+func (o WebBackendServiceIamMemberMapOutput) MapIndex(k pulumi.StringInput) WebBackendServiceIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) WebBackendServiceIamMember {
+		return vs[0].(map[string]WebBackendServiceIamMember)[vs[1].(string)]
+	}).(WebBackendServiceIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(WebBackendServiceIamMemberOutput{})
+	pulumi.RegisterOutputType(WebBackendServiceIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(WebBackendServiceIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(WebBackendServiceIamMemberMapOutput{})
 }

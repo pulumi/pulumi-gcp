@@ -181,6 +181,85 @@ func (i *KeyRing) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingOutput)
 }
 
+func (i *KeyRing) ToKeyRingPtrOutput() KeyRingPtrOutput {
+	return i.ToKeyRingPtrOutputWithContext(context.Background())
+}
+
+func (i *KeyRing) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingPtrOutput)
+}
+
+type KeyRingPtrInput interface {
+	pulumi.Input
+
+	ToKeyRingPtrOutput() KeyRingPtrOutput
+	ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput
+}
+
+type keyRingPtrType KeyRingArgs
+
+func (*keyRingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRing)(nil))
+}
+
+func (i *keyRingPtrType) ToKeyRingPtrOutput() KeyRingPtrOutput {
+	return i.ToKeyRingPtrOutputWithContext(context.Background())
+}
+
+func (i *keyRingPtrType) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingPtrOutput)
+}
+
+// KeyRingArrayInput is an input type that accepts KeyRingArray and KeyRingArrayOutput values.
+// You can construct a concrete instance of `KeyRingArrayInput` via:
+//
+//          KeyRingArray{ KeyRingArgs{...} }
+type KeyRingArrayInput interface {
+	pulumi.Input
+
+	ToKeyRingArrayOutput() KeyRingArrayOutput
+	ToKeyRingArrayOutputWithContext(context.Context) KeyRingArrayOutput
+}
+
+type KeyRingArray []KeyRingInput
+
+func (KeyRingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*KeyRing)(nil))
+}
+
+func (i KeyRingArray) ToKeyRingArrayOutput() KeyRingArrayOutput {
+	return i.ToKeyRingArrayOutputWithContext(context.Background())
+}
+
+func (i KeyRingArray) ToKeyRingArrayOutputWithContext(ctx context.Context) KeyRingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingArrayOutput)
+}
+
+// KeyRingMapInput is an input type that accepts KeyRingMap and KeyRingMapOutput values.
+// You can construct a concrete instance of `KeyRingMapInput` via:
+//
+//          KeyRingMap{ "key": KeyRingArgs{...} }
+type KeyRingMapInput interface {
+	pulumi.Input
+
+	ToKeyRingMapOutput() KeyRingMapOutput
+	ToKeyRingMapOutputWithContext(context.Context) KeyRingMapOutput
+}
+
+type KeyRingMap map[string]KeyRingInput
+
+func (KeyRingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*KeyRing)(nil))
+}
+
+func (i KeyRingMap) ToKeyRingMapOutput() KeyRingMapOutput {
+	return i.ToKeyRingMapOutputWithContext(context.Background())
+}
+
+func (i KeyRingMap) ToKeyRingMapOutputWithContext(ctx context.Context) KeyRingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingMapOutput)
+}
+
 type KeyRingOutput struct {
 	*pulumi.OutputState
 }
@@ -197,6 +276,75 @@ func (o KeyRingOutput) ToKeyRingOutputWithContext(ctx context.Context) KeyRingOu
 	return o
 }
 
+func (o KeyRingOutput) ToKeyRingPtrOutput() KeyRingPtrOutput {
+	return o.ToKeyRingPtrOutputWithContext(context.Background())
+}
+
+func (o KeyRingOutput) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
+	return o.ApplyT(func(v KeyRing) *KeyRing {
+		return &v
+	}).(KeyRingPtrOutput)
+}
+
+type KeyRingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyRingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRing)(nil))
+}
+
+func (o KeyRingPtrOutput) ToKeyRingPtrOutput() KeyRingPtrOutput {
+	return o
+}
+
+func (o KeyRingPtrOutput) ToKeyRingPtrOutputWithContext(ctx context.Context) KeyRingPtrOutput {
+	return o
+}
+
+type KeyRingArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyRingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyRing)(nil))
+}
+
+func (o KeyRingArrayOutput) ToKeyRingArrayOutput() KeyRingArrayOutput {
+	return o
+}
+
+func (o KeyRingArrayOutput) ToKeyRingArrayOutputWithContext(ctx context.Context) KeyRingArrayOutput {
+	return o
+}
+
+func (o KeyRingArrayOutput) Index(i pulumi.IntInput) KeyRingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRing {
+		return vs[0].([]KeyRing)[vs[1].(int)]
+	}).(KeyRingOutput)
+}
+
+type KeyRingMapOutput struct{ *pulumi.OutputState }
+
+func (KeyRingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]KeyRing)(nil))
+}
+
+func (o KeyRingMapOutput) ToKeyRingMapOutput() KeyRingMapOutput {
+	return o
+}
+
+func (o KeyRingMapOutput) ToKeyRingMapOutputWithContext(ctx context.Context) KeyRingMapOutput {
+	return o
+}
+
+func (o KeyRingMapOutput) MapIndex(k pulumi.StringInput) KeyRingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyRing {
+		return vs[0].(map[string]KeyRing)[vs[1].(string)]
+	}).(KeyRingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeyRingOutput{})
+	pulumi.RegisterOutputType(KeyRingPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingArrayOutput{})
+	pulumi.RegisterOutputType(KeyRingMapOutput{})
 }

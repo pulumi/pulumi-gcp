@@ -90,7 +90,8 @@ export class GatewayIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: GatewayIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayIamPolicyArgs | GatewayIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GatewayIamPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["gateway"] = state ? state.gateway : undefined;
@@ -99,10 +100,10 @@ export class GatewayIamPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as GatewayIamPolicyArgs | undefined;
-            if ((!args || args.gateway === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.gateway === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gateway'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["gateway"] = args ? args.gateway : undefined;
@@ -111,12 +112,8 @@ export class GatewayIamPolicy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GatewayIamPolicy.__pulumiType, name, inputs, opts);
     }

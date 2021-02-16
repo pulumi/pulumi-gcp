@@ -76,7 +76,8 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
     constructor(name: string, args: AccessApprovalSettingsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessApprovalSettingsArgs | AccessApprovalSettingsState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessApprovalSettingsState | undefined;
             inputs["enrolledAncestor"] = state ? state.enrolledAncestor : undefined;
             inputs["enrolledServices"] = state ? state.enrolledServices : undefined;
@@ -86,10 +87,10 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
             inputs["projectId"] = state ? state.projectId : undefined;
         } else {
             const args = argsOrState as AccessApprovalSettingsArgs | undefined;
-            if ((!args || args.enrolledServices === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.enrolledServices === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'enrolledServices'");
             }
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["enrolledServices"] = args ? args.enrolledServices : undefined;
@@ -99,12 +100,8 @@ export class AccessApprovalSettings extends pulumi.CustomResource {
             inputs["enrolledAncestor"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessApprovalSettings.__pulumiType, name, inputs, opts);
     }

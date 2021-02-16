@@ -1002,6 +1002,85 @@ func (i *RegionBackendService) ToRegionBackendServiceOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceOutput)
 }
 
+func (i *RegionBackendService) ToRegionBackendServicePtrOutput() RegionBackendServicePtrOutput {
+	return i.ToRegionBackendServicePtrOutputWithContext(context.Background())
+}
+
+func (i *RegionBackendService) ToRegionBackendServicePtrOutputWithContext(ctx context.Context) RegionBackendServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServicePtrOutput)
+}
+
+type RegionBackendServicePtrInput interface {
+	pulumi.Input
+
+	ToRegionBackendServicePtrOutput() RegionBackendServicePtrOutput
+	ToRegionBackendServicePtrOutputWithContext(ctx context.Context) RegionBackendServicePtrOutput
+}
+
+type regionBackendServicePtrType RegionBackendServiceArgs
+
+func (*regionBackendServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendService)(nil))
+}
+
+func (i *regionBackendServicePtrType) ToRegionBackendServicePtrOutput() RegionBackendServicePtrOutput {
+	return i.ToRegionBackendServicePtrOutputWithContext(context.Background())
+}
+
+func (i *regionBackendServicePtrType) ToRegionBackendServicePtrOutputWithContext(ctx context.Context) RegionBackendServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServicePtrOutput)
+}
+
+// RegionBackendServiceArrayInput is an input type that accepts RegionBackendServiceArray and RegionBackendServiceArrayOutput values.
+// You can construct a concrete instance of `RegionBackendServiceArrayInput` via:
+//
+//          RegionBackendServiceArray{ RegionBackendServiceArgs{...} }
+type RegionBackendServiceArrayInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceArrayOutput() RegionBackendServiceArrayOutput
+	ToRegionBackendServiceArrayOutputWithContext(context.Context) RegionBackendServiceArrayOutput
+}
+
+type RegionBackendServiceArray []RegionBackendServiceInput
+
+func (RegionBackendServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionBackendService)(nil))
+}
+
+func (i RegionBackendServiceArray) ToRegionBackendServiceArrayOutput() RegionBackendServiceArrayOutput {
+	return i.ToRegionBackendServiceArrayOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceArray) ToRegionBackendServiceArrayOutputWithContext(ctx context.Context) RegionBackendServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceArrayOutput)
+}
+
+// RegionBackendServiceMapInput is an input type that accepts RegionBackendServiceMap and RegionBackendServiceMapOutput values.
+// You can construct a concrete instance of `RegionBackendServiceMapInput` via:
+//
+//          RegionBackendServiceMap{ "key": RegionBackendServiceArgs{...} }
+type RegionBackendServiceMapInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceMapOutput() RegionBackendServiceMapOutput
+	ToRegionBackendServiceMapOutputWithContext(context.Context) RegionBackendServiceMapOutput
+}
+
+type RegionBackendServiceMap map[string]RegionBackendServiceInput
+
+func (RegionBackendServiceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionBackendService)(nil))
+}
+
+func (i RegionBackendServiceMap) ToRegionBackendServiceMapOutput() RegionBackendServiceMapOutput {
+	return i.ToRegionBackendServiceMapOutputWithContext(context.Background())
+}
+
+func (i RegionBackendServiceMap) ToRegionBackendServiceMapOutputWithContext(ctx context.Context) RegionBackendServiceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionBackendServiceMapOutput)
+}
+
 type RegionBackendServiceOutput struct {
 	*pulumi.OutputState
 }
@@ -1018,6 +1097,75 @@ func (o RegionBackendServiceOutput) ToRegionBackendServiceOutputWithContext(ctx 
 	return o
 }
 
+func (o RegionBackendServiceOutput) ToRegionBackendServicePtrOutput() RegionBackendServicePtrOutput {
+	return o.ToRegionBackendServicePtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceOutput) ToRegionBackendServicePtrOutputWithContext(ctx context.Context) RegionBackendServicePtrOutput {
+	return o.ApplyT(func(v RegionBackendService) *RegionBackendService {
+		return &v
+	}).(RegionBackendServicePtrOutput)
+}
+
+type RegionBackendServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionBackendServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendService)(nil))
+}
+
+func (o RegionBackendServicePtrOutput) ToRegionBackendServicePtrOutput() RegionBackendServicePtrOutput {
+	return o
+}
+
+func (o RegionBackendServicePtrOutput) ToRegionBackendServicePtrOutputWithContext(ctx context.Context) RegionBackendServicePtrOutput {
+	return o
+}
+
+type RegionBackendServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionBackendService)(nil))
+}
+
+func (o RegionBackendServiceArrayOutput) ToRegionBackendServiceArrayOutput() RegionBackendServiceArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceArrayOutput) ToRegionBackendServiceArrayOutputWithContext(ctx context.Context) RegionBackendServiceArrayOutput {
+	return o
+}
+
+func (o RegionBackendServiceArrayOutput) Index(i pulumi.IntInput) RegionBackendServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionBackendService {
+		return vs[0].([]RegionBackendService)[vs[1].(int)]
+	}).(RegionBackendServiceOutput)
+}
+
+type RegionBackendServiceMapOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionBackendService)(nil))
+}
+
+func (o RegionBackendServiceMapOutput) ToRegionBackendServiceMapOutput() RegionBackendServiceMapOutput {
+	return o
+}
+
+func (o RegionBackendServiceMapOutput) ToRegionBackendServiceMapOutputWithContext(ctx context.Context) RegionBackendServiceMapOutput {
+	return o
+}
+
+func (o RegionBackendServiceMapOutput) MapIndex(k pulumi.StringInput) RegionBackendServiceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionBackendService {
+		return vs[0].(map[string]RegionBackendService)[vs[1].(string)]
+	}).(RegionBackendServiceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionBackendServiceOutput{})
+	pulumi.RegisterOutputType(RegionBackendServicePtrOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceArrayOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceMapOutput{})
 }

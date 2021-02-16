@@ -129,7 +129,8 @@ export class OrganizationSink extends pulumi.CustomResource {
     constructor(name: string, args: OrganizationSinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationSinkArgs | OrganizationSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrganizationSinkState | undefined;
             inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -143,10 +144,10 @@ export class OrganizationSink extends pulumi.CustomResource {
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as OrganizationSinkArgs | undefined;
-            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
@@ -160,12 +161,8 @@ export class OrganizationSink extends pulumi.CustomResource {
             inputs["orgId"] = args ? args.orgId : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OrganizationSink.__pulumiType, name, inputs, opts);
     }

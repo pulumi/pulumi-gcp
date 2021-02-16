@@ -385,6 +385,85 @@ func (i *ManagedSslCertificate) ToManagedSslCertificateOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedSslCertificateOutput)
 }
 
+func (i *ManagedSslCertificate) ToManagedSslCertificatePtrOutput() ManagedSslCertificatePtrOutput {
+	return i.ToManagedSslCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *ManagedSslCertificate) ToManagedSslCertificatePtrOutputWithContext(ctx context.Context) ManagedSslCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedSslCertificatePtrOutput)
+}
+
+type ManagedSslCertificatePtrInput interface {
+	pulumi.Input
+
+	ToManagedSslCertificatePtrOutput() ManagedSslCertificatePtrOutput
+	ToManagedSslCertificatePtrOutputWithContext(ctx context.Context) ManagedSslCertificatePtrOutput
+}
+
+type managedSslCertificatePtrType ManagedSslCertificateArgs
+
+func (*managedSslCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedSslCertificate)(nil))
+}
+
+func (i *managedSslCertificatePtrType) ToManagedSslCertificatePtrOutput() ManagedSslCertificatePtrOutput {
+	return i.ToManagedSslCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *managedSslCertificatePtrType) ToManagedSslCertificatePtrOutputWithContext(ctx context.Context) ManagedSslCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedSslCertificatePtrOutput)
+}
+
+// ManagedSslCertificateArrayInput is an input type that accepts ManagedSslCertificateArray and ManagedSslCertificateArrayOutput values.
+// You can construct a concrete instance of `ManagedSslCertificateArrayInput` via:
+//
+//          ManagedSslCertificateArray{ ManagedSslCertificateArgs{...} }
+type ManagedSslCertificateArrayInput interface {
+	pulumi.Input
+
+	ToManagedSslCertificateArrayOutput() ManagedSslCertificateArrayOutput
+	ToManagedSslCertificateArrayOutputWithContext(context.Context) ManagedSslCertificateArrayOutput
+}
+
+type ManagedSslCertificateArray []ManagedSslCertificateInput
+
+func (ManagedSslCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ManagedSslCertificate)(nil))
+}
+
+func (i ManagedSslCertificateArray) ToManagedSslCertificateArrayOutput() ManagedSslCertificateArrayOutput {
+	return i.ToManagedSslCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedSslCertificateArray) ToManagedSslCertificateArrayOutputWithContext(ctx context.Context) ManagedSslCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedSslCertificateArrayOutput)
+}
+
+// ManagedSslCertificateMapInput is an input type that accepts ManagedSslCertificateMap and ManagedSslCertificateMapOutput values.
+// You can construct a concrete instance of `ManagedSslCertificateMapInput` via:
+//
+//          ManagedSslCertificateMap{ "key": ManagedSslCertificateArgs{...} }
+type ManagedSslCertificateMapInput interface {
+	pulumi.Input
+
+	ToManagedSslCertificateMapOutput() ManagedSslCertificateMapOutput
+	ToManagedSslCertificateMapOutputWithContext(context.Context) ManagedSslCertificateMapOutput
+}
+
+type ManagedSslCertificateMap map[string]ManagedSslCertificateInput
+
+func (ManagedSslCertificateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ManagedSslCertificate)(nil))
+}
+
+func (i ManagedSslCertificateMap) ToManagedSslCertificateMapOutput() ManagedSslCertificateMapOutput {
+	return i.ToManagedSslCertificateMapOutputWithContext(context.Background())
+}
+
+func (i ManagedSslCertificateMap) ToManagedSslCertificateMapOutputWithContext(ctx context.Context) ManagedSslCertificateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedSslCertificateMapOutput)
+}
+
 type ManagedSslCertificateOutput struct {
 	*pulumi.OutputState
 }
@@ -401,6 +480,75 @@ func (o ManagedSslCertificateOutput) ToManagedSslCertificateOutputWithContext(ct
 	return o
 }
 
+func (o ManagedSslCertificateOutput) ToManagedSslCertificatePtrOutput() ManagedSslCertificatePtrOutput {
+	return o.ToManagedSslCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedSslCertificateOutput) ToManagedSslCertificatePtrOutputWithContext(ctx context.Context) ManagedSslCertificatePtrOutput {
+	return o.ApplyT(func(v ManagedSslCertificate) *ManagedSslCertificate {
+		return &v
+	}).(ManagedSslCertificatePtrOutput)
+}
+
+type ManagedSslCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedSslCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedSslCertificate)(nil))
+}
+
+func (o ManagedSslCertificatePtrOutput) ToManagedSslCertificatePtrOutput() ManagedSslCertificatePtrOutput {
+	return o
+}
+
+func (o ManagedSslCertificatePtrOutput) ToManagedSslCertificatePtrOutputWithContext(ctx context.Context) ManagedSslCertificatePtrOutput {
+	return o
+}
+
+type ManagedSslCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedSslCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedSslCertificate)(nil))
+}
+
+func (o ManagedSslCertificateArrayOutput) ToManagedSslCertificateArrayOutput() ManagedSslCertificateArrayOutput {
+	return o
+}
+
+func (o ManagedSslCertificateArrayOutput) ToManagedSslCertificateArrayOutputWithContext(ctx context.Context) ManagedSslCertificateArrayOutput {
+	return o
+}
+
+func (o ManagedSslCertificateArrayOutput) Index(i pulumi.IntInput) ManagedSslCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedSslCertificate {
+		return vs[0].([]ManagedSslCertificate)[vs[1].(int)]
+	}).(ManagedSslCertificateOutput)
+}
+
+type ManagedSslCertificateMapOutput struct{ *pulumi.OutputState }
+
+func (ManagedSslCertificateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ManagedSslCertificate)(nil))
+}
+
+func (o ManagedSslCertificateMapOutput) ToManagedSslCertificateMapOutput() ManagedSslCertificateMapOutput {
+	return o
+}
+
+func (o ManagedSslCertificateMapOutput) ToManagedSslCertificateMapOutputWithContext(ctx context.Context) ManagedSslCertificateMapOutput {
+	return o
+}
+
+func (o ManagedSslCertificateMapOutput) MapIndex(k pulumi.StringInput) ManagedSslCertificateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ManagedSslCertificate {
+		return vs[0].(map[string]ManagedSslCertificate)[vs[1].(string)]
+	}).(ManagedSslCertificateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagedSslCertificateOutput{})
+	pulumi.RegisterOutputType(ManagedSslCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ManagedSslCertificateArrayOutput{})
+	pulumi.RegisterOutputType(ManagedSslCertificateMapOutput{})
 }

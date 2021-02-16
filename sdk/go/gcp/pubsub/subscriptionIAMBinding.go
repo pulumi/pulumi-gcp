@@ -273,6 +273,85 @@ func (i *SubscriptionIAMBinding) ToSubscriptionIAMBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingOutput)
 }
 
+func (i *SubscriptionIAMBinding) ToSubscriptionIAMBindingPtrOutput() SubscriptionIAMBindingPtrOutput {
+	return i.ToSubscriptionIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *SubscriptionIAMBinding) ToSubscriptionIAMBindingPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingPtrOutput)
+}
+
+type SubscriptionIAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionIAMBindingPtrOutput() SubscriptionIAMBindingPtrOutput
+	ToSubscriptionIAMBindingPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingPtrOutput
+}
+
+type subscriptionIAMBindingPtrType SubscriptionIAMBindingArgs
+
+func (*subscriptionIAMBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIAMBinding)(nil))
+}
+
+func (i *subscriptionIAMBindingPtrType) ToSubscriptionIAMBindingPtrOutput() SubscriptionIAMBindingPtrOutput {
+	return i.ToSubscriptionIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionIAMBindingPtrType) ToSubscriptionIAMBindingPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingPtrOutput)
+}
+
+// SubscriptionIAMBindingArrayInput is an input type that accepts SubscriptionIAMBindingArray and SubscriptionIAMBindingArrayOutput values.
+// You can construct a concrete instance of `SubscriptionIAMBindingArrayInput` via:
+//
+//          SubscriptionIAMBindingArray{ SubscriptionIAMBindingArgs{...} }
+type SubscriptionIAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToSubscriptionIAMBindingArrayOutput() SubscriptionIAMBindingArrayOutput
+	ToSubscriptionIAMBindingArrayOutputWithContext(context.Context) SubscriptionIAMBindingArrayOutput
+}
+
+type SubscriptionIAMBindingArray []SubscriptionIAMBindingInput
+
+func (SubscriptionIAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SubscriptionIAMBinding)(nil))
+}
+
+func (i SubscriptionIAMBindingArray) ToSubscriptionIAMBindingArrayOutput() SubscriptionIAMBindingArrayOutput {
+	return i.ToSubscriptionIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i SubscriptionIAMBindingArray) ToSubscriptionIAMBindingArrayOutputWithContext(ctx context.Context) SubscriptionIAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingArrayOutput)
+}
+
+// SubscriptionIAMBindingMapInput is an input type that accepts SubscriptionIAMBindingMap and SubscriptionIAMBindingMapOutput values.
+// You can construct a concrete instance of `SubscriptionIAMBindingMapInput` via:
+//
+//          SubscriptionIAMBindingMap{ "key": SubscriptionIAMBindingArgs{...} }
+type SubscriptionIAMBindingMapInput interface {
+	pulumi.Input
+
+	ToSubscriptionIAMBindingMapOutput() SubscriptionIAMBindingMapOutput
+	ToSubscriptionIAMBindingMapOutputWithContext(context.Context) SubscriptionIAMBindingMapOutput
+}
+
+type SubscriptionIAMBindingMap map[string]SubscriptionIAMBindingInput
+
+func (SubscriptionIAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SubscriptionIAMBinding)(nil))
+}
+
+func (i SubscriptionIAMBindingMap) ToSubscriptionIAMBindingMapOutput() SubscriptionIAMBindingMapOutput {
+	return i.ToSubscriptionIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i SubscriptionIAMBindingMap) ToSubscriptionIAMBindingMapOutputWithContext(ctx context.Context) SubscriptionIAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMBindingMapOutput)
+}
+
 type SubscriptionIAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -289,6 +368,75 @@ func (o SubscriptionIAMBindingOutput) ToSubscriptionIAMBindingOutputWithContext(
 	return o
 }
 
+func (o SubscriptionIAMBindingOutput) ToSubscriptionIAMBindingPtrOutput() SubscriptionIAMBindingPtrOutput {
+	return o.ToSubscriptionIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionIAMBindingOutput) ToSubscriptionIAMBindingPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingPtrOutput {
+	return o.ApplyT(func(v SubscriptionIAMBinding) *SubscriptionIAMBinding {
+		return &v
+	}).(SubscriptionIAMBindingPtrOutput)
+}
+
+type SubscriptionIAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionIAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIAMBinding)(nil))
+}
+
+func (o SubscriptionIAMBindingPtrOutput) ToSubscriptionIAMBindingPtrOutput() SubscriptionIAMBindingPtrOutput {
+	return o
+}
+
+func (o SubscriptionIAMBindingPtrOutput) ToSubscriptionIAMBindingPtrOutputWithContext(ctx context.Context) SubscriptionIAMBindingPtrOutput {
+	return o
+}
+
+type SubscriptionIAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubscriptionIAMBinding)(nil))
+}
+
+func (o SubscriptionIAMBindingArrayOutput) ToSubscriptionIAMBindingArrayOutput() SubscriptionIAMBindingArrayOutput {
+	return o
+}
+
+func (o SubscriptionIAMBindingArrayOutput) ToSubscriptionIAMBindingArrayOutputWithContext(ctx context.Context) SubscriptionIAMBindingArrayOutput {
+	return o
+}
+
+func (o SubscriptionIAMBindingArrayOutput) Index(i pulumi.IntInput) SubscriptionIAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubscriptionIAMBinding {
+		return vs[0].([]SubscriptionIAMBinding)[vs[1].(int)]
+	}).(SubscriptionIAMBindingOutput)
+}
+
+type SubscriptionIAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SubscriptionIAMBinding)(nil))
+}
+
+func (o SubscriptionIAMBindingMapOutput) ToSubscriptionIAMBindingMapOutput() SubscriptionIAMBindingMapOutput {
+	return o
+}
+
+func (o SubscriptionIAMBindingMapOutput) ToSubscriptionIAMBindingMapOutputWithContext(ctx context.Context) SubscriptionIAMBindingMapOutput {
+	return o
+}
+
+func (o SubscriptionIAMBindingMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubscriptionIAMBinding {
+		return vs[0].(map[string]SubscriptionIAMBinding)[vs[1].(string)]
+	}).(SubscriptionIAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubscriptionIAMBindingOutput{})
+	pulumi.RegisterOutputType(SubscriptionIAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionIAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(SubscriptionIAMBindingMapOutput{})
 }

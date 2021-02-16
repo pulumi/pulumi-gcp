@@ -212,6 +212,85 @@ func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberOutput)
 }
 
+func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
+	return i.ToSubnetworkIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *SubnetworkIAMMember) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberPtrOutput)
+}
+
+type SubnetworkIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput
+	ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput
+}
+
+type subnetworkIAMMemberPtrType SubnetworkIAMMemberArgs
+
+func (*subnetworkIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMMember)(nil))
+}
+
+func (i *subnetworkIAMMemberPtrType) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
+	return i.ToSubnetworkIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetworkIAMMemberPtrType) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberPtrOutput)
+}
+
+// SubnetworkIAMMemberArrayInput is an input type that accepts SubnetworkIAMMemberArray and SubnetworkIAMMemberArrayOutput values.
+// You can construct a concrete instance of `SubnetworkIAMMemberArrayInput` via:
+//
+//          SubnetworkIAMMemberArray{ SubnetworkIAMMemberArgs{...} }
+type SubnetworkIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMMemberArrayOutput() SubnetworkIAMMemberArrayOutput
+	ToSubnetworkIAMMemberArrayOutputWithContext(context.Context) SubnetworkIAMMemberArrayOutput
+}
+
+type SubnetworkIAMMemberArray []SubnetworkIAMMemberInput
+
+func (SubnetworkIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SubnetworkIAMMember)(nil))
+}
+
+func (i SubnetworkIAMMemberArray) ToSubnetworkIAMMemberArrayOutput() SubnetworkIAMMemberArrayOutput {
+	return i.ToSubnetworkIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMMemberArray) ToSubnetworkIAMMemberArrayOutputWithContext(ctx context.Context) SubnetworkIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberArrayOutput)
+}
+
+// SubnetworkIAMMemberMapInput is an input type that accepts SubnetworkIAMMemberMap and SubnetworkIAMMemberMapOutput values.
+// You can construct a concrete instance of `SubnetworkIAMMemberMapInput` via:
+//
+//          SubnetworkIAMMemberMap{ "key": SubnetworkIAMMemberArgs{...} }
+type SubnetworkIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMMemberMapOutput() SubnetworkIAMMemberMapOutput
+	ToSubnetworkIAMMemberMapOutputWithContext(context.Context) SubnetworkIAMMemberMapOutput
+}
+
+type SubnetworkIAMMemberMap map[string]SubnetworkIAMMemberInput
+
+func (SubnetworkIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SubnetworkIAMMember)(nil))
+}
+
+func (i SubnetworkIAMMemberMap) ToSubnetworkIAMMemberMapOutput() SubnetworkIAMMemberMapOutput {
+	return i.ToSubnetworkIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMMemberMap) ToSubnetworkIAMMemberMapOutputWithContext(ctx context.Context) SubnetworkIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMMemberMapOutput)
+}
+
 type SubnetworkIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -228,6 +307,75 @@ func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberOutputWithContext(ctx co
 	return o
 }
 
+func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
+	return o.ToSubnetworkIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetworkIAMMemberOutput) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
+	return o.ApplyT(func(v SubnetworkIAMMember) *SubnetworkIAMMember {
+		return &v
+	}).(SubnetworkIAMMemberPtrOutput)
+}
+
+type SubnetworkIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetworkIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMMember)(nil))
+}
+
+func (o SubnetworkIAMMemberPtrOutput) ToSubnetworkIAMMemberPtrOutput() SubnetworkIAMMemberPtrOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberPtrOutput) ToSubnetworkIAMMemberPtrOutputWithContext(ctx context.Context) SubnetworkIAMMemberPtrOutput {
+	return o
+}
+
+type SubnetworkIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetworkIAMMember)(nil))
+}
+
+func (o SubnetworkIAMMemberArrayOutput) ToSubnetworkIAMMemberArrayOutput() SubnetworkIAMMemberArrayOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberArrayOutput) ToSubnetworkIAMMemberArrayOutputWithContext(ctx context.Context) SubnetworkIAMMemberArrayOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberArrayOutput) Index(i pulumi.IntInput) SubnetworkIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkIAMMember {
+		return vs[0].([]SubnetworkIAMMember)[vs[1].(int)]
+	}).(SubnetworkIAMMemberOutput)
+}
+
+type SubnetworkIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SubnetworkIAMMember)(nil))
+}
+
+func (o SubnetworkIAMMemberMapOutput) ToSubnetworkIAMMemberMapOutput() SubnetworkIAMMemberMapOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberMapOutput) ToSubnetworkIAMMemberMapOutputWithContext(ctx context.Context) SubnetworkIAMMemberMapOutput {
+	return o
+}
+
+func (o SubnetworkIAMMemberMapOutput) MapIndex(k pulumi.StringInput) SubnetworkIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubnetworkIAMMember {
+		return vs[0].(map[string]SubnetworkIAMMember)[vs[1].(string)]
+	}).(SubnetworkIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubnetworkIAMMemberOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMMemberMapOutput{})
 }

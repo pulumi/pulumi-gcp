@@ -279,6 +279,85 @@ func (i *DicomStoreIamMember) ToDicomStoreIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberOutput)
 }
 
+func (i *DicomStoreIamMember) ToDicomStoreIamMemberPtrOutput() DicomStoreIamMemberPtrOutput {
+	return i.ToDicomStoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *DicomStoreIamMember) ToDicomStoreIamMemberPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberPtrOutput)
+}
+
+type DicomStoreIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToDicomStoreIamMemberPtrOutput() DicomStoreIamMemberPtrOutput
+	ToDicomStoreIamMemberPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberPtrOutput
+}
+
+type dicomStoreIamMemberPtrType DicomStoreIamMemberArgs
+
+func (*dicomStoreIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomStoreIamMember)(nil))
+}
+
+func (i *dicomStoreIamMemberPtrType) ToDicomStoreIamMemberPtrOutput() DicomStoreIamMemberPtrOutput {
+	return i.ToDicomStoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *dicomStoreIamMemberPtrType) ToDicomStoreIamMemberPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberPtrOutput)
+}
+
+// DicomStoreIamMemberArrayInput is an input type that accepts DicomStoreIamMemberArray and DicomStoreIamMemberArrayOutput values.
+// You can construct a concrete instance of `DicomStoreIamMemberArrayInput` via:
+//
+//          DicomStoreIamMemberArray{ DicomStoreIamMemberArgs{...} }
+type DicomStoreIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToDicomStoreIamMemberArrayOutput() DicomStoreIamMemberArrayOutput
+	ToDicomStoreIamMemberArrayOutputWithContext(context.Context) DicomStoreIamMemberArrayOutput
+}
+
+type DicomStoreIamMemberArray []DicomStoreIamMemberInput
+
+func (DicomStoreIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DicomStoreIamMember)(nil))
+}
+
+func (i DicomStoreIamMemberArray) ToDicomStoreIamMemberArrayOutput() DicomStoreIamMemberArrayOutput {
+	return i.ToDicomStoreIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i DicomStoreIamMemberArray) ToDicomStoreIamMemberArrayOutputWithContext(ctx context.Context) DicomStoreIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberArrayOutput)
+}
+
+// DicomStoreIamMemberMapInput is an input type that accepts DicomStoreIamMemberMap and DicomStoreIamMemberMapOutput values.
+// You can construct a concrete instance of `DicomStoreIamMemberMapInput` via:
+//
+//          DicomStoreIamMemberMap{ "key": DicomStoreIamMemberArgs{...} }
+type DicomStoreIamMemberMapInput interface {
+	pulumi.Input
+
+	ToDicomStoreIamMemberMapOutput() DicomStoreIamMemberMapOutput
+	ToDicomStoreIamMemberMapOutputWithContext(context.Context) DicomStoreIamMemberMapOutput
+}
+
+type DicomStoreIamMemberMap map[string]DicomStoreIamMemberInput
+
+func (DicomStoreIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DicomStoreIamMember)(nil))
+}
+
+func (i DicomStoreIamMemberMap) ToDicomStoreIamMemberMapOutput() DicomStoreIamMemberMapOutput {
+	return i.ToDicomStoreIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i DicomStoreIamMemberMap) ToDicomStoreIamMemberMapOutputWithContext(ctx context.Context) DicomStoreIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DicomStoreIamMemberMapOutput)
+}
+
 type DicomStoreIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -295,6 +374,75 @@ func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberOutputWithContext(ctx co
 	return o
 }
 
+func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberPtrOutput() DicomStoreIamMemberPtrOutput {
+	return o.ToDicomStoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o DicomStoreIamMemberOutput) ToDicomStoreIamMemberPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberPtrOutput {
+	return o.ApplyT(func(v DicomStoreIamMember) *DicomStoreIamMember {
+		return &v
+	}).(DicomStoreIamMemberPtrOutput)
+}
+
+type DicomStoreIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DicomStoreIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DicomStoreIamMember)(nil))
+}
+
+func (o DicomStoreIamMemberPtrOutput) ToDicomStoreIamMemberPtrOutput() DicomStoreIamMemberPtrOutput {
+	return o
+}
+
+func (o DicomStoreIamMemberPtrOutput) ToDicomStoreIamMemberPtrOutputWithContext(ctx context.Context) DicomStoreIamMemberPtrOutput {
+	return o
+}
+
+type DicomStoreIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (DicomStoreIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DicomStoreIamMember)(nil))
+}
+
+func (o DicomStoreIamMemberArrayOutput) ToDicomStoreIamMemberArrayOutput() DicomStoreIamMemberArrayOutput {
+	return o
+}
+
+func (o DicomStoreIamMemberArrayOutput) ToDicomStoreIamMemberArrayOutputWithContext(ctx context.Context) DicomStoreIamMemberArrayOutput {
+	return o
+}
+
+func (o DicomStoreIamMemberArrayOutput) Index(i pulumi.IntInput) DicomStoreIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DicomStoreIamMember {
+		return vs[0].([]DicomStoreIamMember)[vs[1].(int)]
+	}).(DicomStoreIamMemberOutput)
+}
+
+type DicomStoreIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (DicomStoreIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DicomStoreIamMember)(nil))
+}
+
+func (o DicomStoreIamMemberMapOutput) ToDicomStoreIamMemberMapOutput() DicomStoreIamMemberMapOutput {
+	return o
+}
+
+func (o DicomStoreIamMemberMapOutput) ToDicomStoreIamMemberMapOutputWithContext(ctx context.Context) DicomStoreIamMemberMapOutput {
+	return o
+}
+
+func (o DicomStoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) DicomStoreIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DicomStoreIamMember {
+		return vs[0].(map[string]DicomStoreIamMember)[vs[1].(string)]
+	}).(DicomStoreIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DicomStoreIamMemberOutput{})
+	pulumi.RegisterOutputType(DicomStoreIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(DicomStoreIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(DicomStoreIamMemberMapOutput{})
 }

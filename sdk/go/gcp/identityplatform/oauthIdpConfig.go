@@ -214,6 +214,85 @@ func (i *OauthIdpConfig) ToOauthIdpConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigOutput)
 }
 
+func (i *OauthIdpConfig) ToOauthIdpConfigPtrOutput() OauthIdpConfigPtrOutput {
+	return i.ToOauthIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *OauthIdpConfig) ToOauthIdpConfigPtrOutputWithContext(ctx context.Context) OauthIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigPtrOutput)
+}
+
+type OauthIdpConfigPtrInput interface {
+	pulumi.Input
+
+	ToOauthIdpConfigPtrOutput() OauthIdpConfigPtrOutput
+	ToOauthIdpConfigPtrOutputWithContext(ctx context.Context) OauthIdpConfigPtrOutput
+}
+
+type oauthIdpConfigPtrType OauthIdpConfigArgs
+
+func (*oauthIdpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OauthIdpConfig)(nil))
+}
+
+func (i *oauthIdpConfigPtrType) ToOauthIdpConfigPtrOutput() OauthIdpConfigPtrOutput {
+	return i.ToOauthIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *oauthIdpConfigPtrType) ToOauthIdpConfigPtrOutputWithContext(ctx context.Context) OauthIdpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigPtrOutput)
+}
+
+// OauthIdpConfigArrayInput is an input type that accepts OauthIdpConfigArray and OauthIdpConfigArrayOutput values.
+// You can construct a concrete instance of `OauthIdpConfigArrayInput` via:
+//
+//          OauthIdpConfigArray{ OauthIdpConfigArgs{...} }
+type OauthIdpConfigArrayInput interface {
+	pulumi.Input
+
+	ToOauthIdpConfigArrayOutput() OauthIdpConfigArrayOutput
+	ToOauthIdpConfigArrayOutputWithContext(context.Context) OauthIdpConfigArrayOutput
+}
+
+type OauthIdpConfigArray []OauthIdpConfigInput
+
+func (OauthIdpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*OauthIdpConfig)(nil))
+}
+
+func (i OauthIdpConfigArray) ToOauthIdpConfigArrayOutput() OauthIdpConfigArrayOutput {
+	return i.ToOauthIdpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i OauthIdpConfigArray) ToOauthIdpConfigArrayOutputWithContext(ctx context.Context) OauthIdpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigArrayOutput)
+}
+
+// OauthIdpConfigMapInput is an input type that accepts OauthIdpConfigMap and OauthIdpConfigMapOutput values.
+// You can construct a concrete instance of `OauthIdpConfigMapInput` via:
+//
+//          OauthIdpConfigMap{ "key": OauthIdpConfigArgs{...} }
+type OauthIdpConfigMapInput interface {
+	pulumi.Input
+
+	ToOauthIdpConfigMapOutput() OauthIdpConfigMapOutput
+	ToOauthIdpConfigMapOutputWithContext(context.Context) OauthIdpConfigMapOutput
+}
+
+type OauthIdpConfigMap map[string]OauthIdpConfigInput
+
+func (OauthIdpConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*OauthIdpConfig)(nil))
+}
+
+func (i OauthIdpConfigMap) ToOauthIdpConfigMapOutput() OauthIdpConfigMapOutput {
+	return i.ToOauthIdpConfigMapOutputWithContext(context.Background())
+}
+
+func (i OauthIdpConfigMap) ToOauthIdpConfigMapOutputWithContext(ctx context.Context) OauthIdpConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OauthIdpConfigMapOutput)
+}
+
 type OauthIdpConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -230,6 +309,75 @@ func (o OauthIdpConfigOutput) ToOauthIdpConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o OauthIdpConfigOutput) ToOauthIdpConfigPtrOutput() OauthIdpConfigPtrOutput {
+	return o.ToOauthIdpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o OauthIdpConfigOutput) ToOauthIdpConfigPtrOutputWithContext(ctx context.Context) OauthIdpConfigPtrOutput {
+	return o.ApplyT(func(v OauthIdpConfig) *OauthIdpConfig {
+		return &v
+	}).(OauthIdpConfigPtrOutput)
+}
+
+type OauthIdpConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OauthIdpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OauthIdpConfig)(nil))
+}
+
+func (o OauthIdpConfigPtrOutput) ToOauthIdpConfigPtrOutput() OauthIdpConfigPtrOutput {
+	return o
+}
+
+func (o OauthIdpConfigPtrOutput) ToOauthIdpConfigPtrOutputWithContext(ctx context.Context) OauthIdpConfigPtrOutput {
+	return o
+}
+
+type OauthIdpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (OauthIdpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OauthIdpConfig)(nil))
+}
+
+func (o OauthIdpConfigArrayOutput) ToOauthIdpConfigArrayOutput() OauthIdpConfigArrayOutput {
+	return o
+}
+
+func (o OauthIdpConfigArrayOutput) ToOauthIdpConfigArrayOutputWithContext(ctx context.Context) OauthIdpConfigArrayOutput {
+	return o
+}
+
+func (o OauthIdpConfigArrayOutput) Index(i pulumi.IntInput) OauthIdpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OauthIdpConfig {
+		return vs[0].([]OauthIdpConfig)[vs[1].(int)]
+	}).(OauthIdpConfigOutput)
+}
+
+type OauthIdpConfigMapOutput struct{ *pulumi.OutputState }
+
+func (OauthIdpConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]OauthIdpConfig)(nil))
+}
+
+func (o OauthIdpConfigMapOutput) ToOauthIdpConfigMapOutput() OauthIdpConfigMapOutput {
+	return o
+}
+
+func (o OauthIdpConfigMapOutput) ToOauthIdpConfigMapOutputWithContext(ctx context.Context) OauthIdpConfigMapOutput {
+	return o
+}
+
+func (o OauthIdpConfigMapOutput) MapIndex(k pulumi.StringInput) OauthIdpConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OauthIdpConfig {
+		return vs[0].(map[string]OauthIdpConfig)[vs[1].(string)]
+	}).(OauthIdpConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(OauthIdpConfigOutput{})
+	pulumi.RegisterOutputType(OauthIdpConfigPtrOutput{})
+	pulumi.RegisterOutputType(OauthIdpConfigArrayOutput{})
+	pulumi.RegisterOutputType(OauthIdpConfigMapOutput{})
 }

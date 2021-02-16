@@ -123,7 +123,8 @@ export class Database extends pulumi.CustomResource {
     constructor(name: string, args: DatabaseArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatabaseArgs | DatabaseState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatabaseState | undefined;
             inputs["charset"] = state ? state.charset : undefined;
             inputs["collation"] = state ? state.collation : undefined;
@@ -133,7 +134,7 @@ export class Database extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as DatabaseArgs | undefined;
-            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["charset"] = args ? args.charset : undefined;
@@ -143,12 +144,8 @@ export class Database extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Database.__pulumiType, name, inputs, opts);
     }

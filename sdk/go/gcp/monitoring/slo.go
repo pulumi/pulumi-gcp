@@ -431,6 +431,85 @@ func (i *Slo) ToSloOutputWithContext(ctx context.Context) SloOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SloOutput)
 }
 
+func (i *Slo) ToSloPtrOutput() SloPtrOutput {
+	return i.ToSloPtrOutputWithContext(context.Background())
+}
+
+func (i *Slo) ToSloPtrOutputWithContext(ctx context.Context) SloPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloPtrOutput)
+}
+
+type SloPtrInput interface {
+	pulumi.Input
+
+	ToSloPtrOutput() SloPtrOutput
+	ToSloPtrOutputWithContext(ctx context.Context) SloPtrOutput
+}
+
+type sloPtrType SloArgs
+
+func (*sloPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Slo)(nil))
+}
+
+func (i *sloPtrType) ToSloPtrOutput() SloPtrOutput {
+	return i.ToSloPtrOutputWithContext(context.Background())
+}
+
+func (i *sloPtrType) ToSloPtrOutputWithContext(ctx context.Context) SloPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloPtrOutput)
+}
+
+// SloArrayInput is an input type that accepts SloArray and SloArrayOutput values.
+// You can construct a concrete instance of `SloArrayInput` via:
+//
+//          SloArray{ SloArgs{...} }
+type SloArrayInput interface {
+	pulumi.Input
+
+	ToSloArrayOutput() SloArrayOutput
+	ToSloArrayOutputWithContext(context.Context) SloArrayOutput
+}
+
+type SloArray []SloInput
+
+func (SloArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Slo)(nil))
+}
+
+func (i SloArray) ToSloArrayOutput() SloArrayOutput {
+	return i.ToSloArrayOutputWithContext(context.Background())
+}
+
+func (i SloArray) ToSloArrayOutputWithContext(ctx context.Context) SloArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloArrayOutput)
+}
+
+// SloMapInput is an input type that accepts SloMap and SloMapOutput values.
+// You can construct a concrete instance of `SloMapInput` via:
+//
+//          SloMap{ "key": SloArgs{...} }
+type SloMapInput interface {
+	pulumi.Input
+
+	ToSloMapOutput() SloMapOutput
+	ToSloMapOutputWithContext(context.Context) SloMapOutput
+}
+
+type SloMap map[string]SloInput
+
+func (SloMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Slo)(nil))
+}
+
+func (i SloMap) ToSloMapOutput() SloMapOutput {
+	return i.ToSloMapOutputWithContext(context.Background())
+}
+
+func (i SloMap) ToSloMapOutputWithContext(ctx context.Context) SloMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloMapOutput)
+}
+
 type SloOutput struct {
 	*pulumi.OutputState
 }
@@ -447,6 +526,75 @@ func (o SloOutput) ToSloOutputWithContext(ctx context.Context) SloOutput {
 	return o
 }
 
+func (o SloOutput) ToSloPtrOutput() SloPtrOutput {
+	return o.ToSloPtrOutputWithContext(context.Background())
+}
+
+func (o SloOutput) ToSloPtrOutputWithContext(ctx context.Context) SloPtrOutput {
+	return o.ApplyT(func(v Slo) *Slo {
+		return &v
+	}).(SloPtrOutput)
+}
+
+type SloPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SloPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Slo)(nil))
+}
+
+func (o SloPtrOutput) ToSloPtrOutput() SloPtrOutput {
+	return o
+}
+
+func (o SloPtrOutput) ToSloPtrOutputWithContext(ctx context.Context) SloPtrOutput {
+	return o
+}
+
+type SloArrayOutput struct{ *pulumi.OutputState }
+
+func (SloArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Slo)(nil))
+}
+
+func (o SloArrayOutput) ToSloArrayOutput() SloArrayOutput {
+	return o
+}
+
+func (o SloArrayOutput) ToSloArrayOutputWithContext(ctx context.Context) SloArrayOutput {
+	return o
+}
+
+func (o SloArrayOutput) Index(i pulumi.IntInput) SloOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Slo {
+		return vs[0].([]Slo)[vs[1].(int)]
+	}).(SloOutput)
+}
+
+type SloMapOutput struct{ *pulumi.OutputState }
+
+func (SloMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Slo)(nil))
+}
+
+func (o SloMapOutput) ToSloMapOutput() SloMapOutput {
+	return o
+}
+
+func (o SloMapOutput) ToSloMapOutputWithContext(ctx context.Context) SloMapOutput {
+	return o
+}
+
+func (o SloMapOutput) MapIndex(k pulumi.StringInput) SloOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Slo {
+		return vs[0].(map[string]Slo)[vs[1].(string)]
+	}).(SloOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SloOutput{})
+	pulumi.RegisterOutputType(SloPtrOutput{})
+	pulumi.RegisterOutputType(SloArrayOutput{})
+	pulumi.RegisterOutputType(SloMapOutput{})
 }

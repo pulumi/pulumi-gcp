@@ -104,7 +104,8 @@ export class AccessPolicy extends pulumi.CustomResource {
     constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessPolicyArgs | AccessPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessPolicyState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -113,10 +114,10 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AccessPolicyArgs | undefined;
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            if ((!args || args.title === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.title === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'title'");
             }
             inputs["parent"] = args ? args.parent : undefined;
@@ -125,12 +126,8 @@ export class AccessPolicy extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessPolicy.__pulumiType, name, inputs, opts);
     }

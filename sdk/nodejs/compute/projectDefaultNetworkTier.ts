@@ -80,24 +80,21 @@ export class ProjectDefaultNetworkTier extends pulumi.CustomResource {
     constructor(name: string, args: ProjectDefaultNetworkTierArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectDefaultNetworkTierArgs | ProjectDefaultNetworkTierState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectDefaultNetworkTierState | undefined;
             inputs["networkTier"] = state ? state.networkTier : undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ProjectDefaultNetworkTierArgs | undefined;
-            if ((!args || args.networkTier === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkTier === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkTier'");
             }
             inputs["networkTier"] = args ? args.networkTier : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectDefaultNetworkTier.__pulumiType, name, inputs, opts);
     }

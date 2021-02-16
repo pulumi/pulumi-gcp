@@ -193,6 +193,85 @@ func (i *ObjectACL) ToObjectACLOutputWithContext(ctx context.Context) ObjectACLO
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLOutput)
 }
 
+func (i *ObjectACL) ToObjectACLPtrOutput() ObjectACLPtrOutput {
+	return i.ToObjectACLPtrOutputWithContext(context.Background())
+}
+
+func (i *ObjectACL) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLPtrOutput)
+}
+
+type ObjectACLPtrInput interface {
+	pulumi.Input
+
+	ToObjectACLPtrOutput() ObjectACLPtrOutput
+	ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput
+}
+
+type objectACLPtrType ObjectACLArgs
+
+func (*objectACLPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectACL)(nil))
+}
+
+func (i *objectACLPtrType) ToObjectACLPtrOutput() ObjectACLPtrOutput {
+	return i.ToObjectACLPtrOutputWithContext(context.Background())
+}
+
+func (i *objectACLPtrType) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLPtrOutput)
+}
+
+// ObjectACLArrayInput is an input type that accepts ObjectACLArray and ObjectACLArrayOutput values.
+// You can construct a concrete instance of `ObjectACLArrayInput` via:
+//
+//          ObjectACLArray{ ObjectACLArgs{...} }
+type ObjectACLArrayInput interface {
+	pulumi.Input
+
+	ToObjectACLArrayOutput() ObjectACLArrayOutput
+	ToObjectACLArrayOutputWithContext(context.Context) ObjectACLArrayOutput
+}
+
+type ObjectACLArray []ObjectACLInput
+
+func (ObjectACLArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ObjectACL)(nil))
+}
+
+func (i ObjectACLArray) ToObjectACLArrayOutput() ObjectACLArrayOutput {
+	return i.ToObjectACLArrayOutputWithContext(context.Background())
+}
+
+func (i ObjectACLArray) ToObjectACLArrayOutputWithContext(ctx context.Context) ObjectACLArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLArrayOutput)
+}
+
+// ObjectACLMapInput is an input type that accepts ObjectACLMap and ObjectACLMapOutput values.
+// You can construct a concrete instance of `ObjectACLMapInput` via:
+//
+//          ObjectACLMap{ "key": ObjectACLArgs{...} }
+type ObjectACLMapInput interface {
+	pulumi.Input
+
+	ToObjectACLMapOutput() ObjectACLMapOutput
+	ToObjectACLMapOutputWithContext(context.Context) ObjectACLMapOutput
+}
+
+type ObjectACLMap map[string]ObjectACLInput
+
+func (ObjectACLMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ObjectACL)(nil))
+}
+
+func (i ObjectACLMap) ToObjectACLMapOutput() ObjectACLMapOutput {
+	return i.ToObjectACLMapOutputWithContext(context.Background())
+}
+
+func (i ObjectACLMap) ToObjectACLMapOutputWithContext(ctx context.Context) ObjectACLMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ObjectACLMapOutput)
+}
+
 type ObjectACLOutput struct {
 	*pulumi.OutputState
 }
@@ -209,6 +288,75 @@ func (o ObjectACLOutput) ToObjectACLOutputWithContext(ctx context.Context) Objec
 	return o
 }
 
+func (o ObjectACLOutput) ToObjectACLPtrOutput() ObjectACLPtrOutput {
+	return o.ToObjectACLPtrOutputWithContext(context.Background())
+}
+
+func (o ObjectACLOutput) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
+	return o.ApplyT(func(v ObjectACL) *ObjectACL {
+		return &v
+	}).(ObjectACLPtrOutput)
+}
+
+type ObjectACLPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ObjectACLPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ObjectACL)(nil))
+}
+
+func (o ObjectACLPtrOutput) ToObjectACLPtrOutput() ObjectACLPtrOutput {
+	return o
+}
+
+func (o ObjectACLPtrOutput) ToObjectACLPtrOutputWithContext(ctx context.Context) ObjectACLPtrOutput {
+	return o
+}
+
+type ObjectACLArrayOutput struct{ *pulumi.OutputState }
+
+func (ObjectACLArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ObjectACL)(nil))
+}
+
+func (o ObjectACLArrayOutput) ToObjectACLArrayOutput() ObjectACLArrayOutput {
+	return o
+}
+
+func (o ObjectACLArrayOutput) ToObjectACLArrayOutputWithContext(ctx context.Context) ObjectACLArrayOutput {
+	return o
+}
+
+func (o ObjectACLArrayOutput) Index(i pulumi.IntInput) ObjectACLOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ObjectACL {
+		return vs[0].([]ObjectACL)[vs[1].(int)]
+	}).(ObjectACLOutput)
+}
+
+type ObjectACLMapOutput struct{ *pulumi.OutputState }
+
+func (ObjectACLMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ObjectACL)(nil))
+}
+
+func (o ObjectACLMapOutput) ToObjectACLMapOutput() ObjectACLMapOutput {
+	return o
+}
+
+func (o ObjectACLMapOutput) ToObjectACLMapOutputWithContext(ctx context.Context) ObjectACLMapOutput {
+	return o
+}
+
+func (o ObjectACLMapOutput) MapIndex(k pulumi.StringInput) ObjectACLOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ObjectACL {
+		return vs[0].(map[string]ObjectACL)[vs[1].(string)]
+	}).(ObjectACLOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ObjectACLOutput{})
+	pulumi.RegisterOutputType(ObjectACLPtrOutput{})
+	pulumi.RegisterOutputType(ObjectACLArrayOutput{})
+	pulumi.RegisterOutputType(ObjectACLMapOutput{})
 }

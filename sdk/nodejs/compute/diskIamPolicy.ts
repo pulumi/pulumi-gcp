@@ -149,7 +149,8 @@ export class DiskIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: DiskIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskIamPolicyArgs | DiskIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DiskIamPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -158,7 +159,7 @@ export class DiskIamPolicy extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DiskIamPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -167,12 +168,8 @@ export class DiskIamPolicy extends pulumi.CustomResource {
             inputs["zone"] = args ? args.zone : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DiskIamPolicy.__pulumiType, name, inputs, opts);
     }

@@ -92,7 +92,8 @@ export class ApiConfigIamBinding extends pulumi.CustomResource {
     constructor(name: string, args: ApiConfigIamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiConfigIamBindingArgs | ApiConfigIamBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApiConfigIamBindingState | undefined;
             inputs["api"] = state ? state.api : undefined;
             inputs["apiConfig"] = state ? state.apiConfig : undefined;
@@ -103,16 +104,16 @@ export class ApiConfigIamBinding extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ApiConfigIamBindingArgs | undefined;
-            if ((!args || args.api === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.api === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'api'");
             }
-            if ((!args || args.apiConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.apiConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiConfig'");
             }
-            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["api"] = args ? args.api : undefined;
@@ -123,12 +124,8 @@ export class ApiConfigIamBinding extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApiConfigIamBinding.__pulumiType, name, inputs, opts);
     }

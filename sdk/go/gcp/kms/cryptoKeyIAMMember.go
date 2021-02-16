@@ -388,6 +388,85 @@ func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberOutput)
 }
 
+func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
+	return i.ToCryptoKeyIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *CryptoKeyIAMMember) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberPtrOutput)
+}
+
+type CryptoKeyIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput
+	ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput
+}
+
+type cryptoKeyIAMMemberPtrType CryptoKeyIAMMemberArgs
+
+func (*cryptoKeyIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIAMMember)(nil))
+}
+
+func (i *cryptoKeyIAMMemberPtrType) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
+	return i.ToCryptoKeyIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyIAMMemberPtrType) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberPtrOutput)
+}
+
+// CryptoKeyIAMMemberArrayInput is an input type that accepts CryptoKeyIAMMemberArray and CryptoKeyIAMMemberArrayOutput values.
+// You can construct a concrete instance of `CryptoKeyIAMMemberArrayInput` via:
+//
+//          CryptoKeyIAMMemberArray{ CryptoKeyIAMMemberArgs{...} }
+type CryptoKeyIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToCryptoKeyIAMMemberArrayOutput() CryptoKeyIAMMemberArrayOutput
+	ToCryptoKeyIAMMemberArrayOutputWithContext(context.Context) CryptoKeyIAMMemberArrayOutput
+}
+
+type CryptoKeyIAMMemberArray []CryptoKeyIAMMemberInput
+
+func (CryptoKeyIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CryptoKeyIAMMember)(nil))
+}
+
+func (i CryptoKeyIAMMemberArray) ToCryptoKeyIAMMemberArrayOutput() CryptoKeyIAMMemberArrayOutput {
+	return i.ToCryptoKeyIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyIAMMemberArray) ToCryptoKeyIAMMemberArrayOutputWithContext(ctx context.Context) CryptoKeyIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberArrayOutput)
+}
+
+// CryptoKeyIAMMemberMapInput is an input type that accepts CryptoKeyIAMMemberMap and CryptoKeyIAMMemberMapOutput values.
+// You can construct a concrete instance of `CryptoKeyIAMMemberMapInput` via:
+//
+//          CryptoKeyIAMMemberMap{ "key": CryptoKeyIAMMemberArgs{...} }
+type CryptoKeyIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToCryptoKeyIAMMemberMapOutput() CryptoKeyIAMMemberMapOutput
+	ToCryptoKeyIAMMemberMapOutputWithContext(context.Context) CryptoKeyIAMMemberMapOutput
+}
+
+type CryptoKeyIAMMemberMap map[string]CryptoKeyIAMMemberInput
+
+func (CryptoKeyIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CryptoKeyIAMMember)(nil))
+}
+
+func (i CryptoKeyIAMMemberMap) ToCryptoKeyIAMMemberMapOutput() CryptoKeyIAMMemberMapOutput {
+	return i.ToCryptoKeyIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyIAMMemberMap) ToCryptoKeyIAMMemberMapOutputWithContext(ctx context.Context) CryptoKeyIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyIAMMemberMapOutput)
+}
+
 type CryptoKeyIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -404,6 +483,75 @@ func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberOutputWithContext(ctx cont
 	return o
 }
 
+func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
+	return o.ToCryptoKeyIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyIAMMemberOutput) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
+	return o.ApplyT(func(v CryptoKeyIAMMember) *CryptoKeyIAMMember {
+		return &v
+	}).(CryptoKeyIAMMemberPtrOutput)
+}
+
+type CryptoKeyIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CryptoKeyIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyIAMMember)(nil))
+}
+
+func (o CryptoKeyIAMMemberPtrOutput) ToCryptoKeyIAMMemberPtrOutput() CryptoKeyIAMMemberPtrOutput {
+	return o
+}
+
+func (o CryptoKeyIAMMemberPtrOutput) ToCryptoKeyIAMMemberPtrOutputWithContext(ctx context.Context) CryptoKeyIAMMemberPtrOutput {
+	return o
+}
+
+type CryptoKeyIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CryptoKeyIAMMember)(nil))
+}
+
+func (o CryptoKeyIAMMemberArrayOutput) ToCryptoKeyIAMMemberArrayOutput() CryptoKeyIAMMemberArrayOutput {
+	return o
+}
+
+func (o CryptoKeyIAMMemberArrayOutput) ToCryptoKeyIAMMemberArrayOutputWithContext(ctx context.Context) CryptoKeyIAMMemberArrayOutput {
+	return o
+}
+
+func (o CryptoKeyIAMMemberArrayOutput) Index(i pulumi.IntInput) CryptoKeyIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKeyIAMMember {
+		return vs[0].([]CryptoKeyIAMMember)[vs[1].(int)]
+	}).(CryptoKeyIAMMemberOutput)
+}
+
+type CryptoKeyIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CryptoKeyIAMMember)(nil))
+}
+
+func (o CryptoKeyIAMMemberMapOutput) ToCryptoKeyIAMMemberMapOutput() CryptoKeyIAMMemberMapOutput {
+	return o
+}
+
+func (o CryptoKeyIAMMemberMapOutput) ToCryptoKeyIAMMemberMapOutputWithContext(ctx context.Context) CryptoKeyIAMMemberMapOutput {
+	return o
+}
+
+func (o CryptoKeyIAMMemberMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CryptoKeyIAMMember {
+		return vs[0].(map[string]CryptoKeyIAMMember)[vs[1].(string)]
+	}).(CryptoKeyIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(CryptoKeyIAMMemberMapOutput{})
 }

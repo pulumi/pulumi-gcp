@@ -275,6 +275,85 @@ func (i *SecretIamMember) ToSecretIamMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberOutput)
 }
 
+func (i *SecretIamMember) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
+	return i.ToSecretIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *SecretIamMember) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberPtrOutput)
+}
+
+type SecretIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput
+	ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput
+}
+
+type secretIamMemberPtrType SecretIamMemberArgs
+
+func (*secretIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretIamMember)(nil))
+}
+
+func (i *secretIamMemberPtrType) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
+	return i.ToSecretIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *secretIamMemberPtrType) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberPtrOutput)
+}
+
+// SecretIamMemberArrayInput is an input type that accepts SecretIamMemberArray and SecretIamMemberArrayOutput values.
+// You can construct a concrete instance of `SecretIamMemberArrayInput` via:
+//
+//          SecretIamMemberArray{ SecretIamMemberArgs{...} }
+type SecretIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToSecretIamMemberArrayOutput() SecretIamMemberArrayOutput
+	ToSecretIamMemberArrayOutputWithContext(context.Context) SecretIamMemberArrayOutput
+}
+
+type SecretIamMemberArray []SecretIamMemberInput
+
+func (SecretIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SecretIamMember)(nil))
+}
+
+func (i SecretIamMemberArray) ToSecretIamMemberArrayOutput() SecretIamMemberArrayOutput {
+	return i.ToSecretIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i SecretIamMemberArray) ToSecretIamMemberArrayOutputWithContext(ctx context.Context) SecretIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberArrayOutput)
+}
+
+// SecretIamMemberMapInput is an input type that accepts SecretIamMemberMap and SecretIamMemberMapOutput values.
+// You can construct a concrete instance of `SecretIamMemberMapInput` via:
+//
+//          SecretIamMemberMap{ "key": SecretIamMemberArgs{...} }
+type SecretIamMemberMapInput interface {
+	pulumi.Input
+
+	ToSecretIamMemberMapOutput() SecretIamMemberMapOutput
+	ToSecretIamMemberMapOutputWithContext(context.Context) SecretIamMemberMapOutput
+}
+
+type SecretIamMemberMap map[string]SecretIamMemberInput
+
+func (SecretIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SecretIamMember)(nil))
+}
+
+func (i SecretIamMemberMap) ToSecretIamMemberMapOutput() SecretIamMemberMapOutput {
+	return i.ToSecretIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i SecretIamMemberMap) ToSecretIamMemberMapOutputWithContext(ctx context.Context) SecretIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretIamMemberMapOutput)
+}
+
 type SecretIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -291,6 +370,75 @@ func (o SecretIamMemberOutput) ToSecretIamMemberOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o SecretIamMemberOutput) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
+	return o.ToSecretIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o SecretIamMemberOutput) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
+	return o.ApplyT(func(v SecretIamMember) *SecretIamMember {
+		return &v
+	}).(SecretIamMemberPtrOutput)
+}
+
+type SecretIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretIamMember)(nil))
+}
+
+func (o SecretIamMemberPtrOutput) ToSecretIamMemberPtrOutput() SecretIamMemberPtrOutput {
+	return o
+}
+
+func (o SecretIamMemberPtrOutput) ToSecretIamMemberPtrOutputWithContext(ctx context.Context) SecretIamMemberPtrOutput {
+	return o
+}
+
+type SecretIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretIamMember)(nil))
+}
+
+func (o SecretIamMemberArrayOutput) ToSecretIamMemberArrayOutput() SecretIamMemberArrayOutput {
+	return o
+}
+
+func (o SecretIamMemberArrayOutput) ToSecretIamMemberArrayOutputWithContext(ctx context.Context) SecretIamMemberArrayOutput {
+	return o
+}
+
+func (o SecretIamMemberArrayOutput) Index(i pulumi.IntInput) SecretIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretIamMember {
+		return vs[0].([]SecretIamMember)[vs[1].(int)]
+	}).(SecretIamMemberOutput)
+}
+
+type SecretIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (SecretIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SecretIamMember)(nil))
+}
+
+func (o SecretIamMemberMapOutput) ToSecretIamMemberMapOutput() SecretIamMemberMapOutput {
+	return o
+}
+
+func (o SecretIamMemberMapOutput) ToSecretIamMemberMapOutputWithContext(ctx context.Context) SecretIamMemberMapOutput {
+	return o
+}
+
+func (o SecretIamMemberMapOutput) MapIndex(k pulumi.StringInput) SecretIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretIamMember {
+		return vs[0].(map[string]SecretIamMember)[vs[1].(string)]
+	}).(SecretIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecretIamMemberOutput{})
+	pulumi.RegisterOutputType(SecretIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(SecretIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(SecretIamMemberMapOutput{})
 }

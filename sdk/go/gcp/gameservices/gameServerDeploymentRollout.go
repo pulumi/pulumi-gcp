@@ -200,6 +200,85 @@ func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutOutput)
 }
 
+func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
+	return i.ToGameServerDeploymentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i *GameServerDeploymentRollout) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutPtrOutput)
+}
+
+type GameServerDeploymentRolloutPtrInput interface {
+	pulumi.Input
+
+	ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput
+	ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput
+}
+
+type gameServerDeploymentRolloutPtrType GameServerDeploymentRolloutArgs
+
+func (*gameServerDeploymentRolloutPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerDeploymentRollout)(nil))
+}
+
+func (i *gameServerDeploymentRolloutPtrType) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
+	return i.ToGameServerDeploymentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (i *gameServerDeploymentRolloutPtrType) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutPtrOutput)
+}
+
+// GameServerDeploymentRolloutArrayInput is an input type that accepts GameServerDeploymentRolloutArray and GameServerDeploymentRolloutArrayOutput values.
+// You can construct a concrete instance of `GameServerDeploymentRolloutArrayInput` via:
+//
+//          GameServerDeploymentRolloutArray{ GameServerDeploymentRolloutArgs{...} }
+type GameServerDeploymentRolloutArrayInput interface {
+	pulumi.Input
+
+	ToGameServerDeploymentRolloutArrayOutput() GameServerDeploymentRolloutArrayOutput
+	ToGameServerDeploymentRolloutArrayOutputWithContext(context.Context) GameServerDeploymentRolloutArrayOutput
+}
+
+type GameServerDeploymentRolloutArray []GameServerDeploymentRolloutInput
+
+func (GameServerDeploymentRolloutArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GameServerDeploymentRollout)(nil))
+}
+
+func (i GameServerDeploymentRolloutArray) ToGameServerDeploymentRolloutArrayOutput() GameServerDeploymentRolloutArrayOutput {
+	return i.ToGameServerDeploymentRolloutArrayOutputWithContext(context.Background())
+}
+
+func (i GameServerDeploymentRolloutArray) ToGameServerDeploymentRolloutArrayOutputWithContext(ctx context.Context) GameServerDeploymentRolloutArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutArrayOutput)
+}
+
+// GameServerDeploymentRolloutMapInput is an input type that accepts GameServerDeploymentRolloutMap and GameServerDeploymentRolloutMapOutput values.
+// You can construct a concrete instance of `GameServerDeploymentRolloutMapInput` via:
+//
+//          GameServerDeploymentRolloutMap{ "key": GameServerDeploymentRolloutArgs{...} }
+type GameServerDeploymentRolloutMapInput interface {
+	pulumi.Input
+
+	ToGameServerDeploymentRolloutMapOutput() GameServerDeploymentRolloutMapOutput
+	ToGameServerDeploymentRolloutMapOutputWithContext(context.Context) GameServerDeploymentRolloutMapOutput
+}
+
+type GameServerDeploymentRolloutMap map[string]GameServerDeploymentRolloutInput
+
+func (GameServerDeploymentRolloutMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GameServerDeploymentRollout)(nil))
+}
+
+func (i GameServerDeploymentRolloutMap) ToGameServerDeploymentRolloutMapOutput() GameServerDeploymentRolloutMapOutput {
+	return i.ToGameServerDeploymentRolloutMapOutputWithContext(context.Background())
+}
+
+func (i GameServerDeploymentRolloutMap) ToGameServerDeploymentRolloutMapOutputWithContext(ctx context.Context) GameServerDeploymentRolloutMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentRolloutMapOutput)
+}
+
 type GameServerDeploymentRolloutOutput struct {
 	*pulumi.OutputState
 }
@@ -216,6 +295,75 @@ func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutOutputWi
 	return o
 }
 
+func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
+	return o.ToGameServerDeploymentRolloutPtrOutputWithContext(context.Background())
+}
+
+func (o GameServerDeploymentRolloutOutput) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
+	return o.ApplyT(func(v GameServerDeploymentRollout) *GameServerDeploymentRollout {
+		return &v
+	}).(GameServerDeploymentRolloutPtrOutput)
+}
+
+type GameServerDeploymentRolloutPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GameServerDeploymentRolloutPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerDeploymentRollout)(nil))
+}
+
+func (o GameServerDeploymentRolloutPtrOutput) ToGameServerDeploymentRolloutPtrOutput() GameServerDeploymentRolloutPtrOutput {
+	return o
+}
+
+func (o GameServerDeploymentRolloutPtrOutput) ToGameServerDeploymentRolloutPtrOutputWithContext(ctx context.Context) GameServerDeploymentRolloutPtrOutput {
+	return o
+}
+
+type GameServerDeploymentRolloutArrayOutput struct{ *pulumi.OutputState }
+
+func (GameServerDeploymentRolloutArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GameServerDeploymentRollout)(nil))
+}
+
+func (o GameServerDeploymentRolloutArrayOutput) ToGameServerDeploymentRolloutArrayOutput() GameServerDeploymentRolloutArrayOutput {
+	return o
+}
+
+func (o GameServerDeploymentRolloutArrayOutput) ToGameServerDeploymentRolloutArrayOutputWithContext(ctx context.Context) GameServerDeploymentRolloutArrayOutput {
+	return o
+}
+
+func (o GameServerDeploymentRolloutArrayOutput) Index(i pulumi.IntInput) GameServerDeploymentRolloutOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerDeploymentRollout {
+		return vs[0].([]GameServerDeploymentRollout)[vs[1].(int)]
+	}).(GameServerDeploymentRolloutOutput)
+}
+
+type GameServerDeploymentRolloutMapOutput struct{ *pulumi.OutputState }
+
+func (GameServerDeploymentRolloutMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GameServerDeploymentRollout)(nil))
+}
+
+func (o GameServerDeploymentRolloutMapOutput) ToGameServerDeploymentRolloutMapOutput() GameServerDeploymentRolloutMapOutput {
+	return o
+}
+
+func (o GameServerDeploymentRolloutMapOutput) ToGameServerDeploymentRolloutMapOutputWithContext(ctx context.Context) GameServerDeploymentRolloutMapOutput {
+	return o
+}
+
+func (o GameServerDeploymentRolloutMapOutput) MapIndex(k pulumi.StringInput) GameServerDeploymentRolloutOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GameServerDeploymentRollout {
+		return vs[0].(map[string]GameServerDeploymentRollout)[vs[1].(string)]
+	}).(GameServerDeploymentRolloutOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GameServerDeploymentRolloutOutput{})
+	pulumi.RegisterOutputType(GameServerDeploymentRolloutPtrOutput{})
+	pulumi.RegisterOutputType(GameServerDeploymentRolloutArrayOutput{})
+	pulumi.RegisterOutputType(GameServerDeploymentRolloutMapOutput{})
 }

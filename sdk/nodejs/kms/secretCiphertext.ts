@@ -117,7 +117,8 @@ export class SecretCiphertext extends pulumi.CustomResource {
     constructor(name: string, args: SecretCiphertextArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretCiphertextArgs | SecretCiphertextState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecretCiphertextState | undefined;
             inputs["additionalAuthenticatedData"] = state ? state.additionalAuthenticatedData : undefined;
             inputs["ciphertext"] = state ? state.ciphertext : undefined;
@@ -125,10 +126,10 @@ export class SecretCiphertext extends pulumi.CustomResource {
             inputs["plaintext"] = state ? state.plaintext : undefined;
         } else {
             const args = argsOrState as SecretCiphertextArgs | undefined;
-            if ((!args || args.cryptoKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cryptoKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKey'");
             }
-            if ((!args || args.plaintext === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.plaintext === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'plaintext'");
             }
             inputs["additionalAuthenticatedData"] = args ? args.additionalAuthenticatedData : undefined;
@@ -136,12 +137,8 @@ export class SecretCiphertext extends pulumi.CustomResource {
             inputs["plaintext"] = args ? args.plaintext : undefined;
             inputs["ciphertext"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecretCiphertext.__pulumiType, name, inputs, opts);
     }

@@ -129,7 +129,8 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
     constructor(name: string, args: AutoscalingPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutoscalingPolicyArgs | AutoscalingPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AutoscalingPolicyState | undefined;
             inputs["basicAlgorithm"] = state ? state.basicAlgorithm : undefined;
             inputs["location"] = state ? state.location : undefined;
@@ -140,7 +141,7 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             inputs["workerConfig"] = state ? state.workerConfig : undefined;
         } else {
             const args = argsOrState as AutoscalingPolicyArgs | undefined;
-            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
             inputs["basicAlgorithm"] = args ? args.basicAlgorithm : undefined;
@@ -151,12 +152,8 @@ export class AutoscalingPolicy extends pulumi.CustomResource {
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AutoscalingPolicy.__pulumiType, name, inputs, opts);
     }

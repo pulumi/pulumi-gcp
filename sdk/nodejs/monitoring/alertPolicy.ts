@@ -164,7 +164,8 @@ export class AlertPolicy extends pulumi.CustomResource {
     constructor(name: string, args: AlertPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AlertPolicyArgs | AlertPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AlertPolicyState | undefined;
             inputs["combiner"] = state ? state.combiner : undefined;
             inputs["conditions"] = state ? state.conditions : undefined;
@@ -178,13 +179,13 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["userLabels"] = state ? state.userLabels : undefined;
         } else {
             const args = argsOrState as AlertPolicyArgs | undefined;
-            if ((!args || args.combiner === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.combiner === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'combiner'");
             }
-            if ((!args || args.conditions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.conditions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conditions'");
             }
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["combiner"] = args ? args.combiner : undefined;
@@ -198,12 +199,8 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["creationRecords"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AlertPolicy.__pulumiType, name, inputs, opts);
     }

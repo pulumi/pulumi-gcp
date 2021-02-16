@@ -163,6 +163,85 @@ func (i *EngineSplitTraffic) ToEngineSplitTrafficOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficOutput)
 }
 
+func (i *EngineSplitTraffic) ToEngineSplitTrafficPtrOutput() EngineSplitTrafficPtrOutput {
+	return i.ToEngineSplitTrafficPtrOutputWithContext(context.Background())
+}
+
+func (i *EngineSplitTraffic) ToEngineSplitTrafficPtrOutputWithContext(ctx context.Context) EngineSplitTrafficPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficPtrOutput)
+}
+
+type EngineSplitTrafficPtrInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficPtrOutput() EngineSplitTrafficPtrOutput
+	ToEngineSplitTrafficPtrOutputWithContext(ctx context.Context) EngineSplitTrafficPtrOutput
+}
+
+type engineSplitTrafficPtrType EngineSplitTrafficArgs
+
+func (*engineSplitTrafficPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineSplitTraffic)(nil))
+}
+
+func (i *engineSplitTrafficPtrType) ToEngineSplitTrafficPtrOutput() EngineSplitTrafficPtrOutput {
+	return i.ToEngineSplitTrafficPtrOutputWithContext(context.Background())
+}
+
+func (i *engineSplitTrafficPtrType) ToEngineSplitTrafficPtrOutputWithContext(ctx context.Context) EngineSplitTrafficPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficPtrOutput)
+}
+
+// EngineSplitTrafficArrayInput is an input type that accepts EngineSplitTrafficArray and EngineSplitTrafficArrayOutput values.
+// You can construct a concrete instance of `EngineSplitTrafficArrayInput` via:
+//
+//          EngineSplitTrafficArray{ EngineSplitTrafficArgs{...} }
+type EngineSplitTrafficArrayInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficArrayOutput() EngineSplitTrafficArrayOutput
+	ToEngineSplitTrafficArrayOutputWithContext(context.Context) EngineSplitTrafficArrayOutput
+}
+
+type EngineSplitTrafficArray []EngineSplitTrafficInput
+
+func (EngineSplitTrafficArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EngineSplitTraffic)(nil))
+}
+
+func (i EngineSplitTrafficArray) ToEngineSplitTrafficArrayOutput() EngineSplitTrafficArrayOutput {
+	return i.ToEngineSplitTrafficArrayOutputWithContext(context.Background())
+}
+
+func (i EngineSplitTrafficArray) ToEngineSplitTrafficArrayOutputWithContext(ctx context.Context) EngineSplitTrafficArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficArrayOutput)
+}
+
+// EngineSplitTrafficMapInput is an input type that accepts EngineSplitTrafficMap and EngineSplitTrafficMapOutput values.
+// You can construct a concrete instance of `EngineSplitTrafficMapInput` via:
+//
+//          EngineSplitTrafficMap{ "key": EngineSplitTrafficArgs{...} }
+type EngineSplitTrafficMapInput interface {
+	pulumi.Input
+
+	ToEngineSplitTrafficMapOutput() EngineSplitTrafficMapOutput
+	ToEngineSplitTrafficMapOutputWithContext(context.Context) EngineSplitTrafficMapOutput
+}
+
+type EngineSplitTrafficMap map[string]EngineSplitTrafficInput
+
+func (EngineSplitTrafficMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EngineSplitTraffic)(nil))
+}
+
+func (i EngineSplitTrafficMap) ToEngineSplitTrafficMapOutput() EngineSplitTrafficMapOutput {
+	return i.ToEngineSplitTrafficMapOutputWithContext(context.Background())
+}
+
+func (i EngineSplitTrafficMap) ToEngineSplitTrafficMapOutputWithContext(ctx context.Context) EngineSplitTrafficMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EngineSplitTrafficMapOutput)
+}
+
 type EngineSplitTrafficOutput struct {
 	*pulumi.OutputState
 }
@@ -179,6 +258,75 @@ func (o EngineSplitTrafficOutput) ToEngineSplitTrafficOutputWithContext(ctx cont
 	return o
 }
 
+func (o EngineSplitTrafficOutput) ToEngineSplitTrafficPtrOutput() EngineSplitTrafficPtrOutput {
+	return o.ToEngineSplitTrafficPtrOutputWithContext(context.Background())
+}
+
+func (o EngineSplitTrafficOutput) ToEngineSplitTrafficPtrOutputWithContext(ctx context.Context) EngineSplitTrafficPtrOutput {
+	return o.ApplyT(func(v EngineSplitTraffic) *EngineSplitTraffic {
+		return &v
+	}).(EngineSplitTrafficPtrOutput)
+}
+
+type EngineSplitTrafficPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EngineSplitTrafficPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EngineSplitTraffic)(nil))
+}
+
+func (o EngineSplitTrafficPtrOutput) ToEngineSplitTrafficPtrOutput() EngineSplitTrafficPtrOutput {
+	return o
+}
+
+func (o EngineSplitTrafficPtrOutput) ToEngineSplitTrafficPtrOutputWithContext(ctx context.Context) EngineSplitTrafficPtrOutput {
+	return o
+}
+
+type EngineSplitTrafficArrayOutput struct{ *pulumi.OutputState }
+
+func (EngineSplitTrafficArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EngineSplitTraffic)(nil))
+}
+
+func (o EngineSplitTrafficArrayOutput) ToEngineSplitTrafficArrayOutput() EngineSplitTrafficArrayOutput {
+	return o
+}
+
+func (o EngineSplitTrafficArrayOutput) ToEngineSplitTrafficArrayOutputWithContext(ctx context.Context) EngineSplitTrafficArrayOutput {
+	return o
+}
+
+func (o EngineSplitTrafficArrayOutput) Index(i pulumi.IntInput) EngineSplitTrafficOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EngineSplitTraffic {
+		return vs[0].([]EngineSplitTraffic)[vs[1].(int)]
+	}).(EngineSplitTrafficOutput)
+}
+
+type EngineSplitTrafficMapOutput struct{ *pulumi.OutputState }
+
+func (EngineSplitTrafficMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EngineSplitTraffic)(nil))
+}
+
+func (o EngineSplitTrafficMapOutput) ToEngineSplitTrafficMapOutput() EngineSplitTrafficMapOutput {
+	return o
+}
+
+func (o EngineSplitTrafficMapOutput) ToEngineSplitTrafficMapOutputWithContext(ctx context.Context) EngineSplitTrafficMapOutput {
+	return o
+}
+
+func (o EngineSplitTrafficMapOutput) MapIndex(k pulumi.StringInput) EngineSplitTrafficOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EngineSplitTraffic {
+		return vs[0].(map[string]EngineSplitTraffic)[vs[1].(string)]
+	}).(EngineSplitTrafficOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EngineSplitTrafficOutput{})
+	pulumi.RegisterOutputType(EngineSplitTrafficPtrOutput{})
+	pulumi.RegisterOutputType(EngineSplitTrafficArrayOutput{})
+	pulumi.RegisterOutputType(EngineSplitTrafficMapOutput{})
 }

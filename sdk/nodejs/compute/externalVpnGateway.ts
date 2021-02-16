@@ -187,7 +187,8 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
     constructor(name: string, args?: ExternalVpnGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ExternalVpnGatewayArgs | ExternalVpnGatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ExternalVpnGatewayState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["interfaces"] = state ? state.interfaces : undefined;
@@ -204,12 +205,8 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             inputs["redundancyType"] = args ? args.redundancyType : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ExternalVpnGateway.__pulumiType, name, inputs, opts);
     }

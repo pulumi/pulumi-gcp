@@ -136,7 +136,8 @@ export class SubscriptionIAMPolicy extends pulumi.CustomResource {
     constructor(name: string, args: SubscriptionIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubscriptionIAMPolicyArgs | SubscriptionIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubscriptionIAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -144,10 +145,10 @@ export class SubscriptionIAMPolicy extends pulumi.CustomResource {
             inputs["subscription"] = state ? state.subscription : undefined;
         } else {
             const args = argsOrState as SubscriptionIAMPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.subscription === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subscription === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscription'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;
@@ -155,12 +156,8 @@ export class SubscriptionIAMPolicy extends pulumi.CustomResource {
             inputs["subscription"] = args ? args.subscription : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SubscriptionIAMPolicy.__pulumiType, name, inputs, opts);
     }

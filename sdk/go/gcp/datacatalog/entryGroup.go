@@ -219,6 +219,85 @@ func (i *EntryGroup) ToEntryGroupOutputWithContext(ctx context.Context) EntryGro
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupOutput)
 }
 
+func (i *EntryGroup) ToEntryGroupPtrOutput() EntryGroupPtrOutput {
+	return i.ToEntryGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *EntryGroup) ToEntryGroupPtrOutputWithContext(ctx context.Context) EntryGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupPtrOutput)
+}
+
+type EntryGroupPtrInput interface {
+	pulumi.Input
+
+	ToEntryGroupPtrOutput() EntryGroupPtrOutput
+	ToEntryGroupPtrOutputWithContext(ctx context.Context) EntryGroupPtrOutput
+}
+
+type entryGroupPtrType EntryGroupArgs
+
+func (*entryGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryGroup)(nil))
+}
+
+func (i *entryGroupPtrType) ToEntryGroupPtrOutput() EntryGroupPtrOutput {
+	return i.ToEntryGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *entryGroupPtrType) ToEntryGroupPtrOutputWithContext(ctx context.Context) EntryGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupPtrOutput)
+}
+
+// EntryGroupArrayInput is an input type that accepts EntryGroupArray and EntryGroupArrayOutput values.
+// You can construct a concrete instance of `EntryGroupArrayInput` via:
+//
+//          EntryGroupArray{ EntryGroupArgs{...} }
+type EntryGroupArrayInput interface {
+	pulumi.Input
+
+	ToEntryGroupArrayOutput() EntryGroupArrayOutput
+	ToEntryGroupArrayOutputWithContext(context.Context) EntryGroupArrayOutput
+}
+
+type EntryGroupArray []EntryGroupInput
+
+func (EntryGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EntryGroup)(nil))
+}
+
+func (i EntryGroupArray) ToEntryGroupArrayOutput() EntryGroupArrayOutput {
+	return i.ToEntryGroupArrayOutputWithContext(context.Background())
+}
+
+func (i EntryGroupArray) ToEntryGroupArrayOutputWithContext(ctx context.Context) EntryGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupArrayOutput)
+}
+
+// EntryGroupMapInput is an input type that accepts EntryGroupMap and EntryGroupMapOutput values.
+// You can construct a concrete instance of `EntryGroupMapInput` via:
+//
+//          EntryGroupMap{ "key": EntryGroupArgs{...} }
+type EntryGroupMapInput interface {
+	pulumi.Input
+
+	ToEntryGroupMapOutput() EntryGroupMapOutput
+	ToEntryGroupMapOutputWithContext(context.Context) EntryGroupMapOutput
+}
+
+type EntryGroupMap map[string]EntryGroupInput
+
+func (EntryGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EntryGroup)(nil))
+}
+
+func (i EntryGroupMap) ToEntryGroupMapOutput() EntryGroupMapOutput {
+	return i.ToEntryGroupMapOutputWithContext(context.Background())
+}
+
+func (i EntryGroupMap) ToEntryGroupMapOutputWithContext(ctx context.Context) EntryGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupMapOutput)
+}
+
 type EntryGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -235,6 +314,75 @@ func (o EntryGroupOutput) ToEntryGroupOutputWithContext(ctx context.Context) Ent
 	return o
 }
 
+func (o EntryGroupOutput) ToEntryGroupPtrOutput() EntryGroupPtrOutput {
+	return o.ToEntryGroupPtrOutputWithContext(context.Background())
+}
+
+func (o EntryGroupOutput) ToEntryGroupPtrOutputWithContext(ctx context.Context) EntryGroupPtrOutput {
+	return o.ApplyT(func(v EntryGroup) *EntryGroup {
+		return &v
+	}).(EntryGroupPtrOutput)
+}
+
+type EntryGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EntryGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryGroup)(nil))
+}
+
+func (o EntryGroupPtrOutput) ToEntryGroupPtrOutput() EntryGroupPtrOutput {
+	return o
+}
+
+func (o EntryGroupPtrOutput) ToEntryGroupPtrOutputWithContext(ctx context.Context) EntryGroupPtrOutput {
+	return o
+}
+
+type EntryGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryGroup)(nil))
+}
+
+func (o EntryGroupArrayOutput) ToEntryGroupArrayOutput() EntryGroupArrayOutput {
+	return o
+}
+
+func (o EntryGroupArrayOutput) ToEntryGroupArrayOutputWithContext(ctx context.Context) EntryGroupArrayOutput {
+	return o
+}
+
+func (o EntryGroupArrayOutput) Index(i pulumi.IntInput) EntryGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryGroup {
+		return vs[0].([]EntryGroup)[vs[1].(int)]
+	}).(EntryGroupOutput)
+}
+
+type EntryGroupMapOutput struct{ *pulumi.OutputState }
+
+func (EntryGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EntryGroup)(nil))
+}
+
+func (o EntryGroupMapOutput) ToEntryGroupMapOutput() EntryGroupMapOutput {
+	return o
+}
+
+func (o EntryGroupMapOutput) ToEntryGroupMapOutputWithContext(ctx context.Context) EntryGroupMapOutput {
+	return o
+}
+
+func (o EntryGroupMapOutput) MapIndex(k pulumi.StringInput) EntryGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EntryGroup {
+		return vs[0].(map[string]EntryGroup)[vs[1].(string)]
+	}).(EntryGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EntryGroupOutput{})
+	pulumi.RegisterOutputType(EntryGroupPtrOutput{})
+	pulumi.RegisterOutputType(EntryGroupArrayOutput{})
+	pulumi.RegisterOutputType(EntryGroupMapOutput{})
 }

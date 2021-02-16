@@ -194,6 +194,85 @@ func (i *OrganizationExclusion) ToOrganizationExclusionOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionOutput)
 }
 
+func (i *OrganizationExclusion) ToOrganizationExclusionPtrOutput() OrganizationExclusionPtrOutput {
+	return i.ToOrganizationExclusionPtrOutputWithContext(context.Background())
+}
+
+func (i *OrganizationExclusion) ToOrganizationExclusionPtrOutputWithContext(ctx context.Context) OrganizationExclusionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionPtrOutput)
+}
+
+type OrganizationExclusionPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationExclusionPtrOutput() OrganizationExclusionPtrOutput
+	ToOrganizationExclusionPtrOutputWithContext(ctx context.Context) OrganizationExclusionPtrOutput
+}
+
+type organizationExclusionPtrType OrganizationExclusionArgs
+
+func (*organizationExclusionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationExclusion)(nil))
+}
+
+func (i *organizationExclusionPtrType) ToOrganizationExclusionPtrOutput() OrganizationExclusionPtrOutput {
+	return i.ToOrganizationExclusionPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationExclusionPtrType) ToOrganizationExclusionPtrOutputWithContext(ctx context.Context) OrganizationExclusionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionPtrOutput)
+}
+
+// OrganizationExclusionArrayInput is an input type that accepts OrganizationExclusionArray and OrganizationExclusionArrayOutput values.
+// You can construct a concrete instance of `OrganizationExclusionArrayInput` via:
+//
+//          OrganizationExclusionArray{ OrganizationExclusionArgs{...} }
+type OrganizationExclusionArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationExclusionArrayOutput() OrganizationExclusionArrayOutput
+	ToOrganizationExclusionArrayOutputWithContext(context.Context) OrganizationExclusionArrayOutput
+}
+
+type OrganizationExclusionArray []OrganizationExclusionInput
+
+func (OrganizationExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*OrganizationExclusion)(nil))
+}
+
+func (i OrganizationExclusionArray) ToOrganizationExclusionArrayOutput() OrganizationExclusionArrayOutput {
+	return i.ToOrganizationExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationExclusionArray) ToOrganizationExclusionArrayOutputWithContext(ctx context.Context) OrganizationExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionArrayOutput)
+}
+
+// OrganizationExclusionMapInput is an input type that accepts OrganizationExclusionMap and OrganizationExclusionMapOutput values.
+// You can construct a concrete instance of `OrganizationExclusionMapInput` via:
+//
+//          OrganizationExclusionMap{ "key": OrganizationExclusionArgs{...} }
+type OrganizationExclusionMapInput interface {
+	pulumi.Input
+
+	ToOrganizationExclusionMapOutput() OrganizationExclusionMapOutput
+	ToOrganizationExclusionMapOutputWithContext(context.Context) OrganizationExclusionMapOutput
+}
+
+type OrganizationExclusionMap map[string]OrganizationExclusionInput
+
+func (OrganizationExclusionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*OrganizationExclusion)(nil))
+}
+
+func (i OrganizationExclusionMap) ToOrganizationExclusionMapOutput() OrganizationExclusionMapOutput {
+	return i.ToOrganizationExclusionMapOutputWithContext(context.Background())
+}
+
+func (i OrganizationExclusionMap) ToOrganizationExclusionMapOutputWithContext(ctx context.Context) OrganizationExclusionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationExclusionMapOutput)
+}
+
 type OrganizationExclusionOutput struct {
 	*pulumi.OutputState
 }
@@ -210,6 +289,75 @@ func (o OrganizationExclusionOutput) ToOrganizationExclusionOutputWithContext(ct
 	return o
 }
 
+func (o OrganizationExclusionOutput) ToOrganizationExclusionPtrOutput() OrganizationExclusionPtrOutput {
+	return o.ToOrganizationExclusionPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationExclusionOutput) ToOrganizationExclusionPtrOutputWithContext(ctx context.Context) OrganizationExclusionPtrOutput {
+	return o.ApplyT(func(v OrganizationExclusion) *OrganizationExclusion {
+		return &v
+	}).(OrganizationExclusionPtrOutput)
+}
+
+type OrganizationExclusionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationExclusionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationExclusion)(nil))
+}
+
+func (o OrganizationExclusionPtrOutput) ToOrganizationExclusionPtrOutput() OrganizationExclusionPtrOutput {
+	return o
+}
+
+func (o OrganizationExclusionPtrOutput) ToOrganizationExclusionPtrOutputWithContext(ctx context.Context) OrganizationExclusionPtrOutput {
+	return o
+}
+
+type OrganizationExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationExclusion)(nil))
+}
+
+func (o OrganizationExclusionArrayOutput) ToOrganizationExclusionArrayOutput() OrganizationExclusionArrayOutput {
+	return o
+}
+
+func (o OrganizationExclusionArrayOutput) ToOrganizationExclusionArrayOutputWithContext(ctx context.Context) OrganizationExclusionArrayOutput {
+	return o
+}
+
+func (o OrganizationExclusionArrayOutput) Index(i pulumi.IntInput) OrganizationExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationExclusion {
+		return vs[0].([]OrganizationExclusion)[vs[1].(int)]
+	}).(OrganizationExclusionOutput)
+}
+
+type OrganizationExclusionMapOutput struct{ *pulumi.OutputState }
+
+func (OrganizationExclusionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]OrganizationExclusion)(nil))
+}
+
+func (o OrganizationExclusionMapOutput) ToOrganizationExclusionMapOutput() OrganizationExclusionMapOutput {
+	return o
+}
+
+func (o OrganizationExclusionMapOutput) ToOrganizationExclusionMapOutputWithContext(ctx context.Context) OrganizationExclusionMapOutput {
+	return o
+}
+
+func (o OrganizationExclusionMapOutput) MapIndex(k pulumi.StringInput) OrganizationExclusionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrganizationExclusion {
+		return vs[0].(map[string]OrganizationExclusion)[vs[1].(string)]
+	}).(OrganizationExclusionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationExclusionOutput{})
+	pulumi.RegisterOutputType(OrganizationExclusionPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationExclusionArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationExclusionMapOutput{})
 }

@@ -771,6 +771,85 @@ func (i *RegionHealthCheck) ToRegionHealthCheckOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckOutput)
 }
 
+func (i *RegionHealthCheck) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
+	return i.ToRegionHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionHealthCheck) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckPtrOutput)
+}
+
+type RegionHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput
+	ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput
+}
+
+type regionHealthCheckPtrType RegionHealthCheckArgs
+
+func (*regionHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionHealthCheck)(nil))
+}
+
+func (i *regionHealthCheckPtrType) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
+	return i.ToRegionHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *regionHealthCheckPtrType) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckPtrOutput)
+}
+
+// RegionHealthCheckArrayInput is an input type that accepts RegionHealthCheckArray and RegionHealthCheckArrayOutput values.
+// You can construct a concrete instance of `RegionHealthCheckArrayInput` via:
+//
+//          RegionHealthCheckArray{ RegionHealthCheckArgs{...} }
+type RegionHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckArrayOutput() RegionHealthCheckArrayOutput
+	ToRegionHealthCheckArrayOutputWithContext(context.Context) RegionHealthCheckArrayOutput
+}
+
+type RegionHealthCheckArray []RegionHealthCheckInput
+
+func (RegionHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionHealthCheck)(nil))
+}
+
+func (i RegionHealthCheckArray) ToRegionHealthCheckArrayOutput() RegionHealthCheckArrayOutput {
+	return i.ToRegionHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i RegionHealthCheckArray) ToRegionHealthCheckArrayOutputWithContext(ctx context.Context) RegionHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckArrayOutput)
+}
+
+// RegionHealthCheckMapInput is an input type that accepts RegionHealthCheckMap and RegionHealthCheckMapOutput values.
+// You can construct a concrete instance of `RegionHealthCheckMapInput` via:
+//
+//          RegionHealthCheckMap{ "key": RegionHealthCheckArgs{...} }
+type RegionHealthCheckMapInput interface {
+	pulumi.Input
+
+	ToRegionHealthCheckMapOutput() RegionHealthCheckMapOutput
+	ToRegionHealthCheckMapOutputWithContext(context.Context) RegionHealthCheckMapOutput
+}
+
+type RegionHealthCheckMap map[string]RegionHealthCheckInput
+
+func (RegionHealthCheckMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionHealthCheck)(nil))
+}
+
+func (i RegionHealthCheckMap) ToRegionHealthCheckMapOutput() RegionHealthCheckMapOutput {
+	return i.ToRegionHealthCheckMapOutputWithContext(context.Background())
+}
+
+func (i RegionHealthCheckMap) ToRegionHealthCheckMapOutputWithContext(ctx context.Context) RegionHealthCheckMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionHealthCheckMapOutput)
+}
+
 type RegionHealthCheckOutput struct {
 	*pulumi.OutputState
 }
@@ -787,6 +866,75 @@ func (o RegionHealthCheckOutput) ToRegionHealthCheckOutputWithContext(ctx contex
 	return o
 }
 
+func (o RegionHealthCheckOutput) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
+	return o.ToRegionHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o RegionHealthCheckOutput) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
+	return o.ApplyT(func(v RegionHealthCheck) *RegionHealthCheck {
+		return &v
+	}).(RegionHealthCheckPtrOutput)
+}
+
+type RegionHealthCheckPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionHealthCheck)(nil))
+}
+
+func (o RegionHealthCheckPtrOutput) ToRegionHealthCheckPtrOutput() RegionHealthCheckPtrOutput {
+	return o
+}
+
+func (o RegionHealthCheckPtrOutput) ToRegionHealthCheckPtrOutputWithContext(ctx context.Context) RegionHealthCheckPtrOutput {
+	return o
+}
+
+type RegionHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionHealthCheck)(nil))
+}
+
+func (o RegionHealthCheckArrayOutput) ToRegionHealthCheckArrayOutput() RegionHealthCheckArrayOutput {
+	return o
+}
+
+func (o RegionHealthCheckArrayOutput) ToRegionHealthCheckArrayOutputWithContext(ctx context.Context) RegionHealthCheckArrayOutput {
+	return o
+}
+
+func (o RegionHealthCheckArrayOutput) Index(i pulumi.IntInput) RegionHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionHealthCheck {
+		return vs[0].([]RegionHealthCheck)[vs[1].(int)]
+	}).(RegionHealthCheckOutput)
+}
+
+type RegionHealthCheckMapOutput struct{ *pulumi.OutputState }
+
+func (RegionHealthCheckMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionHealthCheck)(nil))
+}
+
+func (o RegionHealthCheckMapOutput) ToRegionHealthCheckMapOutput() RegionHealthCheckMapOutput {
+	return o
+}
+
+func (o RegionHealthCheckMapOutput) ToRegionHealthCheckMapOutputWithContext(ctx context.Context) RegionHealthCheckMapOutput {
+	return o
+}
+
+func (o RegionHealthCheckMapOutput) MapIndex(k pulumi.StringInput) RegionHealthCheckOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionHealthCheck {
+		return vs[0].(map[string]RegionHealthCheck)[vs[1].(string)]
+	}).(RegionHealthCheckOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionHealthCheckOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(RegionHealthCheckMapOutput{})
 }

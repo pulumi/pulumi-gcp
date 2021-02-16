@@ -279,6 +279,85 @@ func (i *Hl7StoreIamMember) ToHl7StoreIamMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberOutput)
 }
 
+func (i *Hl7StoreIamMember) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
+	return i.ToHl7StoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *Hl7StoreIamMember) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberPtrOutput)
+}
+
+type Hl7StoreIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput
+	ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput
+}
+
+type hl7StoreIamMemberPtrType Hl7StoreIamMemberArgs
+
+func (*hl7StoreIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hl7StoreIamMember)(nil))
+}
+
+func (i *hl7StoreIamMemberPtrType) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
+	return i.ToHl7StoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *hl7StoreIamMemberPtrType) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberPtrOutput)
+}
+
+// Hl7StoreIamMemberArrayInput is an input type that accepts Hl7StoreIamMemberArray and Hl7StoreIamMemberArrayOutput values.
+// You can construct a concrete instance of `Hl7StoreIamMemberArrayInput` via:
+//
+//          Hl7StoreIamMemberArray{ Hl7StoreIamMemberArgs{...} }
+type Hl7StoreIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToHl7StoreIamMemberArrayOutput() Hl7StoreIamMemberArrayOutput
+	ToHl7StoreIamMemberArrayOutputWithContext(context.Context) Hl7StoreIamMemberArrayOutput
+}
+
+type Hl7StoreIamMemberArray []Hl7StoreIamMemberInput
+
+func (Hl7StoreIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Hl7StoreIamMember)(nil))
+}
+
+func (i Hl7StoreIamMemberArray) ToHl7StoreIamMemberArrayOutput() Hl7StoreIamMemberArrayOutput {
+	return i.ToHl7StoreIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i Hl7StoreIamMemberArray) ToHl7StoreIamMemberArrayOutputWithContext(ctx context.Context) Hl7StoreIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberArrayOutput)
+}
+
+// Hl7StoreIamMemberMapInput is an input type that accepts Hl7StoreIamMemberMap and Hl7StoreIamMemberMapOutput values.
+// You can construct a concrete instance of `Hl7StoreIamMemberMapInput` via:
+//
+//          Hl7StoreIamMemberMap{ "key": Hl7StoreIamMemberArgs{...} }
+type Hl7StoreIamMemberMapInput interface {
+	pulumi.Input
+
+	ToHl7StoreIamMemberMapOutput() Hl7StoreIamMemberMapOutput
+	ToHl7StoreIamMemberMapOutputWithContext(context.Context) Hl7StoreIamMemberMapOutput
+}
+
+type Hl7StoreIamMemberMap map[string]Hl7StoreIamMemberInput
+
+func (Hl7StoreIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Hl7StoreIamMember)(nil))
+}
+
+func (i Hl7StoreIamMemberMap) ToHl7StoreIamMemberMapOutput() Hl7StoreIamMemberMapOutput {
+	return i.ToHl7StoreIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i Hl7StoreIamMemberMap) ToHl7StoreIamMemberMapOutputWithContext(ctx context.Context) Hl7StoreIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamMemberMapOutput)
+}
+
 type Hl7StoreIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -295,6 +374,75 @@ func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberOutputWithContext(ctx contex
 	return o
 }
 
+func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
+	return o.ToHl7StoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o Hl7StoreIamMemberOutput) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
+	return o.ApplyT(func(v Hl7StoreIamMember) *Hl7StoreIamMember {
+		return &v
+	}).(Hl7StoreIamMemberPtrOutput)
+}
+
+type Hl7StoreIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (Hl7StoreIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hl7StoreIamMember)(nil))
+}
+
+func (o Hl7StoreIamMemberPtrOutput) ToHl7StoreIamMemberPtrOutput() Hl7StoreIamMemberPtrOutput {
+	return o
+}
+
+func (o Hl7StoreIamMemberPtrOutput) ToHl7StoreIamMemberPtrOutputWithContext(ctx context.Context) Hl7StoreIamMemberPtrOutput {
+	return o
+}
+
+type Hl7StoreIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (Hl7StoreIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7StoreIamMember)(nil))
+}
+
+func (o Hl7StoreIamMemberArrayOutput) ToHl7StoreIamMemberArrayOutput() Hl7StoreIamMemberArrayOutput {
+	return o
+}
+
+func (o Hl7StoreIamMemberArrayOutput) ToHl7StoreIamMemberArrayOutputWithContext(ctx context.Context) Hl7StoreIamMemberArrayOutput {
+	return o
+}
+
+func (o Hl7StoreIamMemberArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hl7StoreIamMember {
+		return vs[0].([]Hl7StoreIamMember)[vs[1].(int)]
+	}).(Hl7StoreIamMemberOutput)
+}
+
+type Hl7StoreIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (Hl7StoreIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Hl7StoreIamMember)(nil))
+}
+
+func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutput() Hl7StoreIamMemberMapOutput {
+	return o
+}
+
+func (o Hl7StoreIamMemberMapOutput) ToHl7StoreIamMemberMapOutputWithContext(ctx context.Context) Hl7StoreIamMemberMapOutput {
+	return o
+}
+
+func (o Hl7StoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hl7StoreIamMember {
+		return vs[0].(map[string]Hl7StoreIamMember)[vs[1].(string)]
+	}).(Hl7StoreIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(Hl7StoreIamMemberOutput{})
+	pulumi.RegisterOutputType(Hl7StoreIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(Hl7StoreIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(Hl7StoreIamMemberMapOutput{})
 }

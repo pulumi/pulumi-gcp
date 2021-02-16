@@ -163,7 +163,8 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
     constructor(name: string, args: PreventionStoredInfoTypeArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PreventionStoredInfoTypeArgs | PreventionStoredInfoTypeState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PreventionStoredInfoTypeState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dictionary"] = state ? state.dictionary : undefined;
@@ -174,7 +175,7 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
             inputs["regex"] = state ? state.regex : undefined;
         } else {
             const args = argsOrState as PreventionStoredInfoTypeArgs | undefined;
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -185,12 +186,8 @@ export class PreventionStoredInfoType extends pulumi.CustomResource {
             inputs["regex"] = args ? args.regex : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PreventionStoredInfoType.__pulumiType, name, inputs, opts);
     }

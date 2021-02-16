@@ -158,7 +158,8 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
     constructor(name: string, args: NetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkEndpointGroupArgs | NetworkEndpointGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkEndpointGroupState | undefined;
             inputs["defaultPort"] = state ? state.defaultPort : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -172,7 +173,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as NetworkEndpointGroupArgs | undefined;
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["defaultPort"] = args ? args.defaultPort : undefined;
@@ -186,12 +187,8 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["size"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkEndpointGroup.__pulumiType, name, inputs, opts);
     }

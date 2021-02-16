@@ -248,6 +248,85 @@ func (i *TagTemplate) ToTagTemplateOutputWithContext(ctx context.Context) TagTem
 	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateOutput)
 }
 
+func (i *TagTemplate) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
+	return i.ToTagTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *TagTemplate) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplatePtrOutput)
+}
+
+type TagTemplatePtrInput interface {
+	pulumi.Input
+
+	ToTagTemplatePtrOutput() TagTemplatePtrOutput
+	ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput
+}
+
+type tagTemplatePtrType TagTemplateArgs
+
+func (*tagTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplate)(nil))
+}
+
+func (i *tagTemplatePtrType) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
+	return i.ToTagTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *tagTemplatePtrType) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplatePtrOutput)
+}
+
+// TagTemplateArrayInput is an input type that accepts TagTemplateArray and TagTemplateArrayOutput values.
+// You can construct a concrete instance of `TagTemplateArrayInput` via:
+//
+//          TagTemplateArray{ TagTemplateArgs{...} }
+type TagTemplateArrayInput interface {
+	pulumi.Input
+
+	ToTagTemplateArrayOutput() TagTemplateArrayOutput
+	ToTagTemplateArrayOutputWithContext(context.Context) TagTemplateArrayOutput
+}
+
+type TagTemplateArray []TagTemplateInput
+
+func (TagTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TagTemplate)(nil))
+}
+
+func (i TagTemplateArray) ToTagTemplateArrayOutput() TagTemplateArrayOutput {
+	return i.ToTagTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i TagTemplateArray) ToTagTemplateArrayOutputWithContext(ctx context.Context) TagTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateArrayOutput)
+}
+
+// TagTemplateMapInput is an input type that accepts TagTemplateMap and TagTemplateMapOutput values.
+// You can construct a concrete instance of `TagTemplateMapInput` via:
+//
+//          TagTemplateMap{ "key": TagTemplateArgs{...} }
+type TagTemplateMapInput interface {
+	pulumi.Input
+
+	ToTagTemplateMapOutput() TagTemplateMapOutput
+	ToTagTemplateMapOutputWithContext(context.Context) TagTemplateMapOutput
+}
+
+type TagTemplateMap map[string]TagTemplateInput
+
+func (TagTemplateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TagTemplate)(nil))
+}
+
+func (i TagTemplateMap) ToTagTemplateMapOutput() TagTemplateMapOutput {
+	return i.ToTagTemplateMapOutputWithContext(context.Background())
+}
+
+func (i TagTemplateMap) ToTagTemplateMapOutputWithContext(ctx context.Context) TagTemplateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateMapOutput)
+}
+
 type TagTemplateOutput struct {
 	*pulumi.OutputState
 }
@@ -264,6 +343,75 @@ func (o TagTemplateOutput) ToTagTemplateOutputWithContext(ctx context.Context) T
 	return o
 }
 
+func (o TagTemplateOutput) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
+	return o.ToTagTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o TagTemplateOutput) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
+	return o.ApplyT(func(v TagTemplate) *TagTemplate {
+		return &v
+	}).(TagTemplatePtrOutput)
+}
+
+type TagTemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TagTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplate)(nil))
+}
+
+func (o TagTemplatePtrOutput) ToTagTemplatePtrOutput() TagTemplatePtrOutput {
+	return o
+}
+
+func (o TagTemplatePtrOutput) ToTagTemplatePtrOutputWithContext(ctx context.Context) TagTemplatePtrOutput {
+	return o
+}
+
+type TagTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagTemplate)(nil))
+}
+
+func (o TagTemplateArrayOutput) ToTagTemplateArrayOutput() TagTemplateArrayOutput {
+	return o
+}
+
+func (o TagTemplateArrayOutput) ToTagTemplateArrayOutputWithContext(ctx context.Context) TagTemplateArrayOutput {
+	return o
+}
+
+func (o TagTemplateArrayOutput) Index(i pulumi.IntInput) TagTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagTemplate {
+		return vs[0].([]TagTemplate)[vs[1].(int)]
+	}).(TagTemplateOutput)
+}
+
+type TagTemplateMapOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TagTemplate)(nil))
+}
+
+func (o TagTemplateMapOutput) ToTagTemplateMapOutput() TagTemplateMapOutput {
+	return o
+}
+
+func (o TagTemplateMapOutput) ToTagTemplateMapOutputWithContext(ctx context.Context) TagTemplateMapOutput {
+	return o
+}
+
+func (o TagTemplateMapOutput) MapIndex(k pulumi.StringInput) TagTemplateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TagTemplate {
+		return vs[0].(map[string]TagTemplate)[vs[1].(string)]
+	}).(TagTemplateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TagTemplateOutput{})
+	pulumi.RegisterOutputType(TagTemplatePtrOutput{})
+	pulumi.RegisterOutputType(TagTemplateArrayOutput{})
+	pulumi.RegisterOutputType(TagTemplateMapOutput{})
 }

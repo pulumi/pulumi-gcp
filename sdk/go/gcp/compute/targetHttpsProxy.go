@@ -294,6 +294,85 @@ func (i *TargetHttpsProxy) ToTargetHttpsProxyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyOutput)
 }
 
+func (i *TargetHttpsProxy) ToTargetHttpsProxyPtrOutput() TargetHttpsProxyPtrOutput {
+	return i.ToTargetHttpsProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *TargetHttpsProxy) ToTargetHttpsProxyPtrOutputWithContext(ctx context.Context) TargetHttpsProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyPtrOutput)
+}
+
+type TargetHttpsProxyPtrInput interface {
+	pulumi.Input
+
+	ToTargetHttpsProxyPtrOutput() TargetHttpsProxyPtrOutput
+	ToTargetHttpsProxyPtrOutputWithContext(ctx context.Context) TargetHttpsProxyPtrOutput
+}
+
+type targetHttpsProxyPtrType TargetHttpsProxyArgs
+
+func (*targetHttpsProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetHttpsProxy)(nil))
+}
+
+func (i *targetHttpsProxyPtrType) ToTargetHttpsProxyPtrOutput() TargetHttpsProxyPtrOutput {
+	return i.ToTargetHttpsProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *targetHttpsProxyPtrType) ToTargetHttpsProxyPtrOutputWithContext(ctx context.Context) TargetHttpsProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyPtrOutput)
+}
+
+// TargetHttpsProxyArrayInput is an input type that accepts TargetHttpsProxyArray and TargetHttpsProxyArrayOutput values.
+// You can construct a concrete instance of `TargetHttpsProxyArrayInput` via:
+//
+//          TargetHttpsProxyArray{ TargetHttpsProxyArgs{...} }
+type TargetHttpsProxyArrayInput interface {
+	pulumi.Input
+
+	ToTargetHttpsProxyArrayOutput() TargetHttpsProxyArrayOutput
+	ToTargetHttpsProxyArrayOutputWithContext(context.Context) TargetHttpsProxyArrayOutput
+}
+
+type TargetHttpsProxyArray []TargetHttpsProxyInput
+
+func (TargetHttpsProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TargetHttpsProxy)(nil))
+}
+
+func (i TargetHttpsProxyArray) ToTargetHttpsProxyArrayOutput() TargetHttpsProxyArrayOutput {
+	return i.ToTargetHttpsProxyArrayOutputWithContext(context.Background())
+}
+
+func (i TargetHttpsProxyArray) ToTargetHttpsProxyArrayOutputWithContext(ctx context.Context) TargetHttpsProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyArrayOutput)
+}
+
+// TargetHttpsProxyMapInput is an input type that accepts TargetHttpsProxyMap and TargetHttpsProxyMapOutput values.
+// You can construct a concrete instance of `TargetHttpsProxyMapInput` via:
+//
+//          TargetHttpsProxyMap{ "key": TargetHttpsProxyArgs{...} }
+type TargetHttpsProxyMapInput interface {
+	pulumi.Input
+
+	ToTargetHttpsProxyMapOutput() TargetHttpsProxyMapOutput
+	ToTargetHttpsProxyMapOutputWithContext(context.Context) TargetHttpsProxyMapOutput
+}
+
+type TargetHttpsProxyMap map[string]TargetHttpsProxyInput
+
+func (TargetHttpsProxyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TargetHttpsProxy)(nil))
+}
+
+func (i TargetHttpsProxyMap) ToTargetHttpsProxyMapOutput() TargetHttpsProxyMapOutput {
+	return i.ToTargetHttpsProxyMapOutputWithContext(context.Background())
+}
+
+func (i TargetHttpsProxyMap) ToTargetHttpsProxyMapOutputWithContext(ctx context.Context) TargetHttpsProxyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetHttpsProxyMapOutput)
+}
+
 type TargetHttpsProxyOutput struct {
 	*pulumi.OutputState
 }
@@ -310,6 +389,75 @@ func (o TargetHttpsProxyOutput) ToTargetHttpsProxyOutputWithContext(ctx context.
 	return o
 }
 
+func (o TargetHttpsProxyOutput) ToTargetHttpsProxyPtrOutput() TargetHttpsProxyPtrOutput {
+	return o.ToTargetHttpsProxyPtrOutputWithContext(context.Background())
+}
+
+func (o TargetHttpsProxyOutput) ToTargetHttpsProxyPtrOutputWithContext(ctx context.Context) TargetHttpsProxyPtrOutput {
+	return o.ApplyT(func(v TargetHttpsProxy) *TargetHttpsProxy {
+		return &v
+	}).(TargetHttpsProxyPtrOutput)
+}
+
+type TargetHttpsProxyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetHttpsProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetHttpsProxy)(nil))
+}
+
+func (o TargetHttpsProxyPtrOutput) ToTargetHttpsProxyPtrOutput() TargetHttpsProxyPtrOutput {
+	return o
+}
+
+func (o TargetHttpsProxyPtrOutput) ToTargetHttpsProxyPtrOutputWithContext(ctx context.Context) TargetHttpsProxyPtrOutput {
+	return o
+}
+
+type TargetHttpsProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetHttpsProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetHttpsProxy)(nil))
+}
+
+func (o TargetHttpsProxyArrayOutput) ToTargetHttpsProxyArrayOutput() TargetHttpsProxyArrayOutput {
+	return o
+}
+
+func (o TargetHttpsProxyArrayOutput) ToTargetHttpsProxyArrayOutputWithContext(ctx context.Context) TargetHttpsProxyArrayOutput {
+	return o
+}
+
+func (o TargetHttpsProxyArrayOutput) Index(i pulumi.IntInput) TargetHttpsProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetHttpsProxy {
+		return vs[0].([]TargetHttpsProxy)[vs[1].(int)]
+	}).(TargetHttpsProxyOutput)
+}
+
+type TargetHttpsProxyMapOutput struct{ *pulumi.OutputState }
+
+func (TargetHttpsProxyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetHttpsProxy)(nil))
+}
+
+func (o TargetHttpsProxyMapOutput) ToTargetHttpsProxyMapOutput() TargetHttpsProxyMapOutput {
+	return o
+}
+
+func (o TargetHttpsProxyMapOutput) ToTargetHttpsProxyMapOutputWithContext(ctx context.Context) TargetHttpsProxyMapOutput {
+	return o
+}
+
+func (o TargetHttpsProxyMapOutput) MapIndex(k pulumi.StringInput) TargetHttpsProxyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetHttpsProxy {
+		return vs[0].(map[string]TargetHttpsProxy)[vs[1].(string)]
+	}).(TargetHttpsProxyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TargetHttpsProxyOutput{})
+	pulumi.RegisterOutputType(TargetHttpsProxyPtrOutput{})
+	pulumi.RegisterOutputType(TargetHttpsProxyArrayOutput{})
+	pulumi.RegisterOutputType(TargetHttpsProxyMapOutput{})
 }

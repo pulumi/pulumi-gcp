@@ -112,24 +112,21 @@ export class ApplicationUrlDispatchRules extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationUrlDispatchRulesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationUrlDispatchRulesArgs | ApplicationUrlDispatchRulesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationUrlDispatchRulesState | undefined;
             inputs["dispatchRules"] = state ? state.dispatchRules : undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ApplicationUrlDispatchRulesArgs | undefined;
-            if ((!args || args.dispatchRules === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dispatchRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dispatchRules'");
             }
             inputs["dispatchRules"] = args ? args.dispatchRules : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApplicationUrlDispatchRules.__pulumiType, name, inputs, opts);
     }

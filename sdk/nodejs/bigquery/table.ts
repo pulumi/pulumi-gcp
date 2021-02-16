@@ -236,7 +236,8 @@ export class Table extends pulumi.CustomResource {
     constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TableState | undefined;
             inputs["clusterings"] = state ? state.clusterings : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
@@ -264,10 +265,10 @@ export class Table extends pulumi.CustomResource {
             inputs["view"] = state ? state.view : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.tableId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
             inputs["clusterings"] = args ? args.clusterings : undefined;
@@ -295,12 +296,8 @@ export class Table extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Table.__pulumiType, name, inputs, opts);
     }

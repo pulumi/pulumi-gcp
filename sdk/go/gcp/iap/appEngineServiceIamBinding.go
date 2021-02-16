@@ -200,6 +200,85 @@ func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingOutput)
 }
 
+func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
+	return i.ToAppEngineServiceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *AppEngineServiceIamBinding) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingPtrOutput)
+}
+
+type AppEngineServiceIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput
+	ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput
+}
+
+type appEngineServiceIamBindingPtrType AppEngineServiceIamBindingArgs
+
+func (*appEngineServiceIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineServiceIamBinding)(nil))
+}
+
+func (i *appEngineServiceIamBindingPtrType) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
+	return i.ToAppEngineServiceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *appEngineServiceIamBindingPtrType) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingPtrOutput)
+}
+
+// AppEngineServiceIamBindingArrayInput is an input type that accepts AppEngineServiceIamBindingArray and AppEngineServiceIamBindingArrayOutput values.
+// You can construct a concrete instance of `AppEngineServiceIamBindingArrayInput` via:
+//
+//          AppEngineServiceIamBindingArray{ AppEngineServiceIamBindingArgs{...} }
+type AppEngineServiceIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamBindingArrayOutput() AppEngineServiceIamBindingArrayOutput
+	ToAppEngineServiceIamBindingArrayOutputWithContext(context.Context) AppEngineServiceIamBindingArrayOutput
+}
+
+type AppEngineServiceIamBindingArray []AppEngineServiceIamBindingInput
+
+func (AppEngineServiceIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AppEngineServiceIamBinding)(nil))
+}
+
+func (i AppEngineServiceIamBindingArray) ToAppEngineServiceIamBindingArrayOutput() AppEngineServiceIamBindingArrayOutput {
+	return i.ToAppEngineServiceIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i AppEngineServiceIamBindingArray) ToAppEngineServiceIamBindingArrayOutputWithContext(ctx context.Context) AppEngineServiceIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingArrayOutput)
+}
+
+// AppEngineServiceIamBindingMapInput is an input type that accepts AppEngineServiceIamBindingMap and AppEngineServiceIamBindingMapOutput values.
+// You can construct a concrete instance of `AppEngineServiceIamBindingMapInput` via:
+//
+//          AppEngineServiceIamBindingMap{ "key": AppEngineServiceIamBindingArgs{...} }
+type AppEngineServiceIamBindingMapInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamBindingMapOutput() AppEngineServiceIamBindingMapOutput
+	ToAppEngineServiceIamBindingMapOutputWithContext(context.Context) AppEngineServiceIamBindingMapOutput
+}
+
+type AppEngineServiceIamBindingMap map[string]AppEngineServiceIamBindingInput
+
+func (AppEngineServiceIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AppEngineServiceIamBinding)(nil))
+}
+
+func (i AppEngineServiceIamBindingMap) ToAppEngineServiceIamBindingMapOutput() AppEngineServiceIamBindingMapOutput {
+	return i.ToAppEngineServiceIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i AppEngineServiceIamBindingMap) ToAppEngineServiceIamBindingMapOutputWithContext(ctx context.Context) AppEngineServiceIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamBindingMapOutput)
+}
+
 type AppEngineServiceIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -216,6 +295,75 @@ func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingOutputWith
 	return o
 }
 
+func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
+	return o.ToAppEngineServiceIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineServiceIamBindingOutput) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
+	return o.ApplyT(func(v AppEngineServiceIamBinding) *AppEngineServiceIamBinding {
+		return &v
+	}).(AppEngineServiceIamBindingPtrOutput)
+}
+
+type AppEngineServiceIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppEngineServiceIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineServiceIamBinding)(nil))
+}
+
+func (o AppEngineServiceIamBindingPtrOutput) ToAppEngineServiceIamBindingPtrOutput() AppEngineServiceIamBindingPtrOutput {
+	return o
+}
+
+func (o AppEngineServiceIamBindingPtrOutput) ToAppEngineServiceIamBindingPtrOutputWithContext(ctx context.Context) AppEngineServiceIamBindingPtrOutput {
+	return o
+}
+
+type AppEngineServiceIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (AppEngineServiceIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppEngineServiceIamBinding)(nil))
+}
+
+func (o AppEngineServiceIamBindingArrayOutput) ToAppEngineServiceIamBindingArrayOutput() AppEngineServiceIamBindingArrayOutput {
+	return o
+}
+
+func (o AppEngineServiceIamBindingArrayOutput) ToAppEngineServiceIamBindingArrayOutputWithContext(ctx context.Context) AppEngineServiceIamBindingArrayOutput {
+	return o
+}
+
+func (o AppEngineServiceIamBindingArrayOutput) Index(i pulumi.IntInput) AppEngineServiceIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEngineServiceIamBinding {
+		return vs[0].([]AppEngineServiceIamBinding)[vs[1].(int)]
+	}).(AppEngineServiceIamBindingOutput)
+}
+
+type AppEngineServiceIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (AppEngineServiceIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AppEngineServiceIamBinding)(nil))
+}
+
+func (o AppEngineServiceIamBindingMapOutput) ToAppEngineServiceIamBindingMapOutput() AppEngineServiceIamBindingMapOutput {
+	return o
+}
+
+func (o AppEngineServiceIamBindingMapOutput) ToAppEngineServiceIamBindingMapOutputWithContext(ctx context.Context) AppEngineServiceIamBindingMapOutput {
+	return o
+}
+
+func (o AppEngineServiceIamBindingMapOutput) MapIndex(k pulumi.StringInput) AppEngineServiceIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppEngineServiceIamBinding {
+		return vs[0].(map[string]AppEngineServiceIamBinding)[vs[1].(string)]
+	}).(AppEngineServiceIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppEngineServiceIamBindingOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamBindingMapOutput{})
 }

@@ -195,6 +195,85 @@ func (i *ProjectExclusion) ToProjectExclusionOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionOutput)
 }
 
+func (i *ProjectExclusion) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
+	return i.ToProjectExclusionPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectExclusion) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionPtrOutput)
+}
+
+type ProjectExclusionPtrInput interface {
+	pulumi.Input
+
+	ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput
+	ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput
+}
+
+type projectExclusionPtrType ProjectExclusionArgs
+
+func (*projectExclusionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectExclusion)(nil))
+}
+
+func (i *projectExclusionPtrType) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
+	return i.ToProjectExclusionPtrOutputWithContext(context.Background())
+}
+
+func (i *projectExclusionPtrType) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionPtrOutput)
+}
+
+// ProjectExclusionArrayInput is an input type that accepts ProjectExclusionArray and ProjectExclusionArrayOutput values.
+// You can construct a concrete instance of `ProjectExclusionArrayInput` via:
+//
+//          ProjectExclusionArray{ ProjectExclusionArgs{...} }
+type ProjectExclusionArrayInput interface {
+	pulumi.Input
+
+	ToProjectExclusionArrayOutput() ProjectExclusionArrayOutput
+	ToProjectExclusionArrayOutputWithContext(context.Context) ProjectExclusionArrayOutput
+}
+
+type ProjectExclusionArray []ProjectExclusionInput
+
+func (ProjectExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectExclusion)(nil))
+}
+
+func (i ProjectExclusionArray) ToProjectExclusionArrayOutput() ProjectExclusionArrayOutput {
+	return i.ToProjectExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectExclusionArray) ToProjectExclusionArrayOutputWithContext(ctx context.Context) ProjectExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionArrayOutput)
+}
+
+// ProjectExclusionMapInput is an input type that accepts ProjectExclusionMap and ProjectExclusionMapOutput values.
+// You can construct a concrete instance of `ProjectExclusionMapInput` via:
+//
+//          ProjectExclusionMap{ "key": ProjectExclusionArgs{...} }
+type ProjectExclusionMapInput interface {
+	pulumi.Input
+
+	ToProjectExclusionMapOutput() ProjectExclusionMapOutput
+	ToProjectExclusionMapOutputWithContext(context.Context) ProjectExclusionMapOutput
+}
+
+type ProjectExclusionMap map[string]ProjectExclusionInput
+
+func (ProjectExclusionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectExclusion)(nil))
+}
+
+func (i ProjectExclusionMap) ToProjectExclusionMapOutput() ProjectExclusionMapOutput {
+	return i.ToProjectExclusionMapOutputWithContext(context.Background())
+}
+
+func (i ProjectExclusionMap) ToProjectExclusionMapOutputWithContext(ctx context.Context) ProjectExclusionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectExclusionMapOutput)
+}
+
 type ProjectExclusionOutput struct {
 	*pulumi.OutputState
 }
@@ -211,6 +290,75 @@ func (o ProjectExclusionOutput) ToProjectExclusionOutputWithContext(ctx context.
 	return o
 }
 
+func (o ProjectExclusionOutput) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
+	return o.ToProjectExclusionPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectExclusionOutput) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
+	return o.ApplyT(func(v ProjectExclusion) *ProjectExclusion {
+		return &v
+	}).(ProjectExclusionPtrOutput)
+}
+
+type ProjectExclusionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectExclusionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectExclusion)(nil))
+}
+
+func (o ProjectExclusionPtrOutput) ToProjectExclusionPtrOutput() ProjectExclusionPtrOutput {
+	return o
+}
+
+func (o ProjectExclusionPtrOutput) ToProjectExclusionPtrOutputWithContext(ctx context.Context) ProjectExclusionPtrOutput {
+	return o
+}
+
+type ProjectExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectExclusion)(nil))
+}
+
+func (o ProjectExclusionArrayOutput) ToProjectExclusionArrayOutput() ProjectExclusionArrayOutput {
+	return o
+}
+
+func (o ProjectExclusionArrayOutput) ToProjectExclusionArrayOutputWithContext(ctx context.Context) ProjectExclusionArrayOutput {
+	return o
+}
+
+func (o ProjectExclusionArrayOutput) Index(i pulumi.IntInput) ProjectExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectExclusion {
+		return vs[0].([]ProjectExclusion)[vs[1].(int)]
+	}).(ProjectExclusionOutput)
+}
+
+type ProjectExclusionMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectExclusionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectExclusion)(nil))
+}
+
+func (o ProjectExclusionMapOutput) ToProjectExclusionMapOutput() ProjectExclusionMapOutput {
+	return o
+}
+
+func (o ProjectExclusionMapOutput) ToProjectExclusionMapOutputWithContext(ctx context.Context) ProjectExclusionMapOutput {
+	return o
+}
+
+func (o ProjectExclusionMapOutput) MapIndex(k pulumi.StringInput) ProjectExclusionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectExclusion {
+		return vs[0].(map[string]ProjectExclusion)[vs[1].(string)]
+	}).(ProjectExclusionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectExclusionOutput{})
+	pulumi.RegisterOutputType(ProjectExclusionPtrOutput{})
+	pulumi.RegisterOutputType(ProjectExclusionArrayOutput{})
+	pulumi.RegisterOutputType(ProjectExclusionMapOutput{})
 }

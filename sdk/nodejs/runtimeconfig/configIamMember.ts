@@ -147,7 +147,8 @@ export class ConfigIamMember extends pulumi.CustomResource {
     constructor(name: string, args: ConfigIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConfigIamMemberArgs | ConfigIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConfigIamMemberState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["config"] = state ? state.config : undefined;
@@ -157,13 +158,13 @@ export class ConfigIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as ConfigIamMemberArgs | undefined;
-            if ((!args || args.config === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -173,12 +174,8 @@ export class ConfigIamMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConfigIamMember.__pulumiType, name, inputs, opts);
     }

@@ -133,7 +133,8 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
     constructor(name: string, args: DefaultObjectAccessControlArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DefaultObjectAccessControlArgs | DefaultObjectAccessControlState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DefaultObjectAccessControlState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["domain"] = state ? state.domain : undefined;
@@ -146,13 +147,13 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as DefaultObjectAccessControlArgs | undefined;
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.entity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entity'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
@@ -165,12 +166,8 @@ export class DefaultObjectAccessControl extends pulumi.CustomResource {
             inputs["generation"] = undefined /*out*/;
             inputs["projectTeams"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DefaultObjectAccessControl.__pulumiType, name, inputs, opts);
     }

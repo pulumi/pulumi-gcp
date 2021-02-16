@@ -148,7 +148,8 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
     constructor(name: string, args: GameServerDeploymentRolloutArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GameServerDeploymentRolloutArgs | GameServerDeploymentRolloutState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GameServerDeploymentRolloutState | undefined;
             inputs["defaultGameServerConfig"] = state ? state.defaultGameServerConfig : undefined;
             inputs["deploymentId"] = state ? state.deploymentId : undefined;
@@ -157,10 +158,10 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GameServerDeploymentRolloutArgs | undefined;
-            if ((!args || args.defaultGameServerConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.defaultGameServerConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultGameServerConfig'");
             }
-            if ((!args || args.deploymentId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deploymentId'");
             }
             inputs["defaultGameServerConfig"] = args ? args.defaultGameServerConfig : undefined;
@@ -169,12 +170,8 @@ export class GameServerDeploymentRollout extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GameServerDeploymentRollout.__pulumiType, name, inputs, opts);
     }

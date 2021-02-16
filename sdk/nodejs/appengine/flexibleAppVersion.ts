@@ -287,7 +287,8 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
     constructor(name: string, args: FlexibleAppVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FlexibleAppVersionArgs | FlexibleAppVersionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FlexibleAppVersionState | undefined;
             inputs["apiConfig"] = state ? state.apiConfig : undefined;
             inputs["automaticScaling"] = state ? state.automaticScaling : undefined;
@@ -320,16 +321,16 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             inputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
         } else {
             const args = argsOrState as FlexibleAppVersionArgs | undefined;
-            if ((!args || args.livenessCheck === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.livenessCheck === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'livenessCheck'");
             }
-            if ((!args || args.readinessCheck === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.readinessCheck === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'readinessCheck'");
             }
-            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.runtime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
@@ -362,12 +363,8 @@ export class FlexibleAppVersion extends pulumi.CustomResource {
             inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FlexibleAppVersion.__pulumiType, name, inputs, opts);
     }

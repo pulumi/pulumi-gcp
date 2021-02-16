@@ -64,26 +64,23 @@ export class UsageExportBucket extends pulumi.CustomResource {
     constructor(name: string, args: UsageExportBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: UsageExportBucketArgs | UsageExportBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as UsageExportBucketState | undefined;
             inputs["bucketName"] = state ? state.bucketName : undefined;
             inputs["prefix"] = state ? state.prefix : undefined;
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as UsageExportBucketArgs | undefined;
-            if ((!args || args.bucketName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucketName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;
             inputs["prefix"] = args ? args.prefix : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(UsageExportBucket.__pulumiType, name, inputs, opts);
     }

@@ -280,6 +280,85 @@ func (i *TopicIAMBinding) ToTopicIAMBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingOutput)
 }
 
+func (i *TopicIAMBinding) ToTopicIAMBindingPtrOutput() TopicIAMBindingPtrOutput {
+	return i.ToTopicIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *TopicIAMBinding) ToTopicIAMBindingPtrOutputWithContext(ctx context.Context) TopicIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingPtrOutput)
+}
+
+type TopicIAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToTopicIAMBindingPtrOutput() TopicIAMBindingPtrOutput
+	ToTopicIAMBindingPtrOutputWithContext(ctx context.Context) TopicIAMBindingPtrOutput
+}
+
+type topicIAMBindingPtrType TopicIAMBindingArgs
+
+func (*topicIAMBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIAMBinding)(nil))
+}
+
+func (i *topicIAMBindingPtrType) ToTopicIAMBindingPtrOutput() TopicIAMBindingPtrOutput {
+	return i.ToTopicIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIAMBindingPtrType) ToTopicIAMBindingPtrOutputWithContext(ctx context.Context) TopicIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingPtrOutput)
+}
+
+// TopicIAMBindingArrayInput is an input type that accepts TopicIAMBindingArray and TopicIAMBindingArrayOutput values.
+// You can construct a concrete instance of `TopicIAMBindingArrayInput` via:
+//
+//          TopicIAMBindingArray{ TopicIAMBindingArgs{...} }
+type TopicIAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToTopicIAMBindingArrayOutput() TopicIAMBindingArrayOutput
+	ToTopicIAMBindingArrayOutputWithContext(context.Context) TopicIAMBindingArrayOutput
+}
+
+type TopicIAMBindingArray []TopicIAMBindingInput
+
+func (TopicIAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TopicIAMBinding)(nil))
+}
+
+func (i TopicIAMBindingArray) ToTopicIAMBindingArrayOutput() TopicIAMBindingArrayOutput {
+	return i.ToTopicIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i TopicIAMBindingArray) ToTopicIAMBindingArrayOutputWithContext(ctx context.Context) TopicIAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingArrayOutput)
+}
+
+// TopicIAMBindingMapInput is an input type that accepts TopicIAMBindingMap and TopicIAMBindingMapOutput values.
+// You can construct a concrete instance of `TopicIAMBindingMapInput` via:
+//
+//          TopicIAMBindingMap{ "key": TopicIAMBindingArgs{...} }
+type TopicIAMBindingMapInput interface {
+	pulumi.Input
+
+	ToTopicIAMBindingMapOutput() TopicIAMBindingMapOutput
+	ToTopicIAMBindingMapOutputWithContext(context.Context) TopicIAMBindingMapOutput
+}
+
+type TopicIAMBindingMap map[string]TopicIAMBindingInput
+
+func (TopicIAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TopicIAMBinding)(nil))
+}
+
+func (i TopicIAMBindingMap) ToTopicIAMBindingMapOutput() TopicIAMBindingMapOutput {
+	return i.ToTopicIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i TopicIAMBindingMap) ToTopicIAMBindingMapOutputWithContext(ctx context.Context) TopicIAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIAMBindingMapOutput)
+}
+
 type TopicIAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -296,6 +375,75 @@ func (o TopicIAMBindingOutput) ToTopicIAMBindingOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o TopicIAMBindingOutput) ToTopicIAMBindingPtrOutput() TopicIAMBindingPtrOutput {
+	return o.ToTopicIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIAMBindingOutput) ToTopicIAMBindingPtrOutputWithContext(ctx context.Context) TopicIAMBindingPtrOutput {
+	return o.ApplyT(func(v TopicIAMBinding) *TopicIAMBinding {
+		return &v
+	}).(TopicIAMBindingPtrOutput)
+}
+
+type TopicIAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TopicIAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIAMBinding)(nil))
+}
+
+func (o TopicIAMBindingPtrOutput) ToTopicIAMBindingPtrOutput() TopicIAMBindingPtrOutput {
+	return o
+}
+
+func (o TopicIAMBindingPtrOutput) ToTopicIAMBindingPtrOutputWithContext(ctx context.Context) TopicIAMBindingPtrOutput {
+	return o
+}
+
+type TopicIAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (TopicIAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TopicIAMBinding)(nil))
+}
+
+func (o TopicIAMBindingArrayOutput) ToTopicIAMBindingArrayOutput() TopicIAMBindingArrayOutput {
+	return o
+}
+
+func (o TopicIAMBindingArrayOutput) ToTopicIAMBindingArrayOutputWithContext(ctx context.Context) TopicIAMBindingArrayOutput {
+	return o
+}
+
+func (o TopicIAMBindingArrayOutput) Index(i pulumi.IntInput) TopicIAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TopicIAMBinding {
+		return vs[0].([]TopicIAMBinding)[vs[1].(int)]
+	}).(TopicIAMBindingOutput)
+}
+
+type TopicIAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (TopicIAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TopicIAMBinding)(nil))
+}
+
+func (o TopicIAMBindingMapOutput) ToTopicIAMBindingMapOutput() TopicIAMBindingMapOutput {
+	return o
+}
+
+func (o TopicIAMBindingMapOutput) ToTopicIAMBindingMapOutputWithContext(ctx context.Context) TopicIAMBindingMapOutput {
+	return o
+}
+
+func (o TopicIAMBindingMapOutput) MapIndex(k pulumi.StringInput) TopicIAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TopicIAMBinding {
+		return vs[0].(map[string]TopicIAMBinding)[vs[1].(string)]
+	}).(TopicIAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TopicIAMBindingOutput{})
+	pulumi.RegisterOutputType(TopicIAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(TopicIAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(TopicIAMBindingMapOutput{})
 }

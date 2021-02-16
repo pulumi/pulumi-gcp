@@ -114,7 +114,8 @@ export class SslCert extends pulumi.CustomResource {
     constructor(name: string, args: SslCertArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SslCertArgs | SslCertState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SslCertState | undefined;
             inputs["cert"] = state ? state.cert : undefined;
             inputs["certSerialNumber"] = state ? state.certSerialNumber : undefined;
@@ -128,10 +129,10 @@ export class SslCert extends pulumi.CustomResource {
             inputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
         } else {
             const args = argsOrState as SslCertArgs | undefined;
-            if ((!args || args.commonName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.commonName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'commonName'");
             }
-            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["commonName"] = args ? args.commonName : undefined;
@@ -145,12 +146,8 @@ export class SslCert extends pulumi.CustomResource {
             inputs["serverCaCert"] = undefined /*out*/;
             inputs["sha1Fingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SslCert.__pulumiType, name, inputs, opts);
     }

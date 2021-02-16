@@ -299,6 +299,85 @@ func (i *OrganizationPolicy) ToOrganizationPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyOutput)
 }
 
+func (i *OrganizationPolicy) ToOrganizationPolicyPtrOutput() OrganizationPolicyPtrOutput {
+	return i.ToOrganizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *OrganizationPolicy) ToOrganizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyPtrOutput)
+}
+
+type OrganizationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationPolicyPtrOutput() OrganizationPolicyPtrOutput
+	ToOrganizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyPtrOutput
+}
+
+type organizationPolicyPtrType OrganizationPolicyArgs
+
+func (*organizationPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationPolicy)(nil))
+}
+
+func (i *organizationPolicyPtrType) ToOrganizationPolicyPtrOutput() OrganizationPolicyPtrOutput {
+	return i.ToOrganizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationPolicyPtrType) ToOrganizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyPtrOutput)
+}
+
+// OrganizationPolicyArrayInput is an input type that accepts OrganizationPolicyArray and OrganizationPolicyArrayOutput values.
+// You can construct a concrete instance of `OrganizationPolicyArrayInput` via:
+//
+//          OrganizationPolicyArray{ OrganizationPolicyArgs{...} }
+type OrganizationPolicyArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationPolicyArrayOutput() OrganizationPolicyArrayOutput
+	ToOrganizationPolicyArrayOutputWithContext(context.Context) OrganizationPolicyArrayOutput
+}
+
+type OrganizationPolicyArray []OrganizationPolicyInput
+
+func (OrganizationPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*OrganizationPolicy)(nil))
+}
+
+func (i OrganizationPolicyArray) ToOrganizationPolicyArrayOutput() OrganizationPolicyArrayOutput {
+	return i.ToOrganizationPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationPolicyArray) ToOrganizationPolicyArrayOutputWithContext(ctx context.Context) OrganizationPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyArrayOutput)
+}
+
+// OrganizationPolicyMapInput is an input type that accepts OrganizationPolicyMap and OrganizationPolicyMapOutput values.
+// You can construct a concrete instance of `OrganizationPolicyMapInput` via:
+//
+//          OrganizationPolicyMap{ "key": OrganizationPolicyArgs{...} }
+type OrganizationPolicyMapInput interface {
+	pulumi.Input
+
+	ToOrganizationPolicyMapOutput() OrganizationPolicyMapOutput
+	ToOrganizationPolicyMapOutputWithContext(context.Context) OrganizationPolicyMapOutput
+}
+
+type OrganizationPolicyMap map[string]OrganizationPolicyInput
+
+func (OrganizationPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*OrganizationPolicy)(nil))
+}
+
+func (i OrganizationPolicyMap) ToOrganizationPolicyMapOutput() OrganizationPolicyMapOutput {
+	return i.ToOrganizationPolicyMapOutputWithContext(context.Background())
+}
+
+func (i OrganizationPolicyMap) ToOrganizationPolicyMapOutputWithContext(ctx context.Context) OrganizationPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationPolicyMapOutput)
+}
+
 type OrganizationPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -315,6 +394,75 @@ func (o OrganizationPolicyOutput) ToOrganizationPolicyOutputWithContext(ctx cont
 	return o
 }
 
+func (o OrganizationPolicyOutput) ToOrganizationPolicyPtrOutput() OrganizationPolicyPtrOutput {
+	return o.ToOrganizationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationPolicyOutput) ToOrganizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyPtrOutput {
+	return o.ApplyT(func(v OrganizationPolicy) *OrganizationPolicy {
+		return &v
+	}).(OrganizationPolicyPtrOutput)
+}
+
+type OrganizationPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationPolicy)(nil))
+}
+
+func (o OrganizationPolicyPtrOutput) ToOrganizationPolicyPtrOutput() OrganizationPolicyPtrOutput {
+	return o
+}
+
+func (o OrganizationPolicyPtrOutput) ToOrganizationPolicyPtrOutputWithContext(ctx context.Context) OrganizationPolicyPtrOutput {
+	return o
+}
+
+type OrganizationPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationPolicy)(nil))
+}
+
+func (o OrganizationPolicyArrayOutput) ToOrganizationPolicyArrayOutput() OrganizationPolicyArrayOutput {
+	return o
+}
+
+func (o OrganizationPolicyArrayOutput) ToOrganizationPolicyArrayOutputWithContext(ctx context.Context) OrganizationPolicyArrayOutput {
+	return o
+}
+
+func (o OrganizationPolicyArrayOutput) Index(i pulumi.IntInput) OrganizationPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationPolicy {
+		return vs[0].([]OrganizationPolicy)[vs[1].(int)]
+	}).(OrganizationPolicyOutput)
+}
+
+type OrganizationPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (OrganizationPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]OrganizationPolicy)(nil))
+}
+
+func (o OrganizationPolicyMapOutput) ToOrganizationPolicyMapOutput() OrganizationPolicyMapOutput {
+	return o
+}
+
+func (o OrganizationPolicyMapOutput) ToOrganizationPolicyMapOutputWithContext(ctx context.Context) OrganizationPolicyMapOutput {
+	return o
+}
+
+func (o OrganizationPolicyMapOutput) MapIndex(k pulumi.StringInput) OrganizationPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrganizationPolicy {
+		return vs[0].(map[string]OrganizationPolicy)[vs[1].(string)]
+	}).(OrganizationPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationPolicyOutput{})
+	pulumi.RegisterOutputType(OrganizationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationPolicyArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationPolicyMapOutput{})
 }

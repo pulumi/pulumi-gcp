@@ -285,6 +285,85 @@ func (i *JobIAMBinding) ToJobIAMBindingOutputWithContext(ctx context.Context) Jo
 	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingOutput)
 }
 
+func (i *JobIAMBinding) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
+	return i.ToJobIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *JobIAMBinding) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingPtrOutput)
+}
+
+type JobIAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput
+	ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput
+}
+
+type jobIAMBindingPtrType JobIAMBindingArgs
+
+func (*jobIAMBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIAMBinding)(nil))
+}
+
+func (i *jobIAMBindingPtrType) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
+	return i.ToJobIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *jobIAMBindingPtrType) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingPtrOutput)
+}
+
+// JobIAMBindingArrayInput is an input type that accepts JobIAMBindingArray and JobIAMBindingArrayOutput values.
+// You can construct a concrete instance of `JobIAMBindingArrayInput` via:
+//
+//          JobIAMBindingArray{ JobIAMBindingArgs{...} }
+type JobIAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToJobIAMBindingArrayOutput() JobIAMBindingArrayOutput
+	ToJobIAMBindingArrayOutputWithContext(context.Context) JobIAMBindingArrayOutput
+}
+
+type JobIAMBindingArray []JobIAMBindingInput
+
+func (JobIAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*JobIAMBinding)(nil))
+}
+
+func (i JobIAMBindingArray) ToJobIAMBindingArrayOutput() JobIAMBindingArrayOutput {
+	return i.ToJobIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i JobIAMBindingArray) ToJobIAMBindingArrayOutputWithContext(ctx context.Context) JobIAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingArrayOutput)
+}
+
+// JobIAMBindingMapInput is an input type that accepts JobIAMBindingMap and JobIAMBindingMapOutput values.
+// You can construct a concrete instance of `JobIAMBindingMapInput` via:
+//
+//          JobIAMBindingMap{ "key": JobIAMBindingArgs{...} }
+type JobIAMBindingMapInput interface {
+	pulumi.Input
+
+	ToJobIAMBindingMapOutput() JobIAMBindingMapOutput
+	ToJobIAMBindingMapOutputWithContext(context.Context) JobIAMBindingMapOutput
+}
+
+type JobIAMBindingMap map[string]JobIAMBindingInput
+
+func (JobIAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*JobIAMBinding)(nil))
+}
+
+func (i JobIAMBindingMap) ToJobIAMBindingMapOutput() JobIAMBindingMapOutput {
+	return i.ToJobIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i JobIAMBindingMap) ToJobIAMBindingMapOutputWithContext(ctx context.Context) JobIAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobIAMBindingMapOutput)
+}
+
 type JobIAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -301,6 +380,75 @@ func (o JobIAMBindingOutput) ToJobIAMBindingOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o JobIAMBindingOutput) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
+	return o.ToJobIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o JobIAMBindingOutput) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
+	return o.ApplyT(func(v JobIAMBinding) *JobIAMBinding {
+		return &v
+	}).(JobIAMBindingPtrOutput)
+}
+
+type JobIAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (JobIAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobIAMBinding)(nil))
+}
+
+func (o JobIAMBindingPtrOutput) ToJobIAMBindingPtrOutput() JobIAMBindingPtrOutput {
+	return o
+}
+
+func (o JobIAMBindingPtrOutput) ToJobIAMBindingPtrOutputWithContext(ctx context.Context) JobIAMBindingPtrOutput {
+	return o
+}
+
+type JobIAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (JobIAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobIAMBinding)(nil))
+}
+
+func (o JobIAMBindingArrayOutput) ToJobIAMBindingArrayOutput() JobIAMBindingArrayOutput {
+	return o
+}
+
+func (o JobIAMBindingArrayOutput) ToJobIAMBindingArrayOutputWithContext(ctx context.Context) JobIAMBindingArrayOutput {
+	return o
+}
+
+func (o JobIAMBindingArrayOutput) Index(i pulumi.IntInput) JobIAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobIAMBinding {
+		return vs[0].([]JobIAMBinding)[vs[1].(int)]
+	}).(JobIAMBindingOutput)
+}
+
+type JobIAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (JobIAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]JobIAMBinding)(nil))
+}
+
+func (o JobIAMBindingMapOutput) ToJobIAMBindingMapOutput() JobIAMBindingMapOutput {
+	return o
+}
+
+func (o JobIAMBindingMapOutput) ToJobIAMBindingMapOutputWithContext(ctx context.Context) JobIAMBindingMapOutput {
+	return o
+}
+
+func (o JobIAMBindingMapOutput) MapIndex(k pulumi.StringInput) JobIAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) JobIAMBinding {
+		return vs[0].(map[string]JobIAMBinding)[vs[1].(string)]
+	}).(JobIAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(JobIAMBindingOutput{})
+	pulumi.RegisterOutputType(JobIAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(JobIAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(JobIAMBindingMapOutput{})
 }

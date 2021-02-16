@@ -129,7 +129,8 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
     constructor(name: string, args: ConsumerQuotaOverrideArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConsumerQuotaOverrideArgs | ConsumerQuotaOverrideState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConsumerQuotaOverrideState | undefined;
             inputs["dimensions"] = state ? state.dimensions : undefined;
             inputs["force"] = state ? state.force : undefined;
@@ -141,16 +142,16 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ConsumerQuotaOverrideArgs | undefined;
-            if ((!args || args.limit === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.limit === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'limit'");
             }
-            if ((!args || args.metric === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metric === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metric'");
             }
-            if ((!args || args.overrideValue === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.overrideValue === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'overrideValue'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["dimensions"] = args ? args.dimensions : undefined;
@@ -162,12 +163,8 @@ export class ConsumerQuotaOverride extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConsumerQuotaOverride.__pulumiType, name, inputs, opts);
     }

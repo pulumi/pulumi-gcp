@@ -122,7 +122,8 @@ export class PerInstanceConfig extends pulumi.CustomResource {
     constructor(name: string, args: PerInstanceConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PerInstanceConfigArgs | PerInstanceConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PerInstanceConfigState | undefined;
             inputs["instanceGroupManager"] = state ? state.instanceGroupManager : undefined;
             inputs["minimalAction"] = state ? state.minimalAction : undefined;
@@ -134,7 +135,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as PerInstanceConfigArgs | undefined;
-            if ((!args || args.instanceGroupManager === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceGroupManager === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceGroupManager'");
             }
             inputs["instanceGroupManager"] = args ? args.instanceGroupManager : undefined;
@@ -146,12 +147,8 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             inputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PerInstanceConfig.__pulumiType, name, inputs, opts);
     }

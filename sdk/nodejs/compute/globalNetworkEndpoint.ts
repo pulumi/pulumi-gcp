@@ -110,7 +110,8 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
     constructor(name: string, args: GlobalNetworkEndpointArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalNetworkEndpointArgs | GlobalNetworkEndpointState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GlobalNetworkEndpointState | undefined;
             inputs["fqdn"] = state ? state.fqdn : undefined;
             inputs["globalNetworkEndpointGroup"] = state ? state.globalNetworkEndpointGroup : undefined;
@@ -119,10 +120,10 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as GlobalNetworkEndpointArgs | undefined;
-            if ((!args || args.globalNetworkEndpointGroup === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.globalNetworkEndpointGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'globalNetworkEndpointGroup'");
             }
-            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["fqdn"] = args ? args.fqdn : undefined;
@@ -131,12 +132,8 @@ export class GlobalNetworkEndpoint extends pulumi.CustomResource {
             inputs["port"] = args ? args.port : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GlobalNetworkEndpoint.__pulumiType, name, inputs, opts);
     }

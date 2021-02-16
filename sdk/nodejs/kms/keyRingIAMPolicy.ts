@@ -201,29 +201,26 @@ export class KeyRingIAMPolicy extends pulumi.CustomResource {
     constructor(name: string, args: KeyRingIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyRingIAMPolicyArgs | KeyRingIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KeyRingIAMPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["keyRingId"] = state ? state.keyRingId : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as KeyRingIAMPolicyArgs | undefined;
-            if ((!args || args.keyRingId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyRingId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRingId'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["keyRingId"] = args ? args.keyRingId : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KeyRingIAMPolicy.__pulumiType, name, inputs, opts);
     }

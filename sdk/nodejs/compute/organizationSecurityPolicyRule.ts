@@ -118,7 +118,8 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
     constructor(name: string, args: OrganizationSecurityPolicyRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationSecurityPolicyRuleArgs | OrganizationSecurityPolicyRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrganizationSecurityPolicyRuleState | undefined;
             inputs["action"] = state ? state.action : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -132,16 +133,16 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
             inputs["targetServiceAccounts"] = state ? state.targetServiceAccounts : undefined;
         } else {
             const args = argsOrState as OrganizationSecurityPolicyRuleArgs | undefined;
-            if ((!args || args.action === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.action === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'action'");
             }
-            if ((!args || args.match === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.match === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'match'");
             }
-            if ((!args || args.policyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyId'");
             }
-            if ((!args || args.priority === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.priority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'priority'");
             }
             inputs["action"] = args ? args.action : undefined;
@@ -155,12 +156,8 @@ export class OrganizationSecurityPolicyRule extends pulumi.CustomResource {
             inputs["targetResources"] = args ? args.targetResources : undefined;
             inputs["targetServiceAccounts"] = args ? args.targetServiceAccounts : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(OrganizationSecurityPolicyRule.__pulumiType, name, inputs, opts);
     }

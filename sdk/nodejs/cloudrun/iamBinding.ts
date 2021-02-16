@@ -154,7 +154,8 @@ export class IamBinding extends pulumi.CustomResource {
     constructor(name: string, args: IamBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamBindingArgs | IamBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IamBindingState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -165,13 +166,13 @@ export class IamBinding extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as IamBindingArgs | undefined;
-            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -182,12 +183,8 @@ export class IamBinding extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IamBinding.__pulumiType, name, inputs, opts);
     }
