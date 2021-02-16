@@ -184,7 +184,8 @@ export class Registry extends pulumi.CustomResource {
     constructor(name: string, args?: RegistryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryArgs | RegistryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegistryState | undefined;
             inputs["credentials"] = state ? state.credentials : undefined;
             inputs["eventNotificationConfigs"] = state ? state.eventNotificationConfigs : undefined;
@@ -207,15 +208,11 @@ export class Registry extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         const aliasOpts = { aliases: [{ type: "gcp:kms/registry:Registry" }] };
-        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Registry.__pulumiType, name, inputs, opts);
     }
 }

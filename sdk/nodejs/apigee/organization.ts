@@ -188,7 +188,8 @@ export class Organization extends pulumi.CustomResource {
     constructor(name: string, args: OrganizationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OrganizationArgs | OrganizationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OrganizationState | undefined;
             inputs["analyticsRegion"] = state ? state.analyticsRegion : undefined;
             inputs["authorizedNetwork"] = state ? state.authorizedNetwork : undefined;
@@ -202,7 +203,7 @@ export class Organization extends pulumi.CustomResource {
             inputs["subscriptionType"] = state ? state.subscriptionType : undefined;
         } else {
             const args = argsOrState as OrganizationArgs | undefined;
-            if ((!args || args.projectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.projectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             inputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
@@ -216,12 +217,8 @@ export class Organization extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["subscriptionType"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Organization.__pulumiType, name, inputs, opts);
     }

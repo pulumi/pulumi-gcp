@@ -219,6 +219,85 @@ func (i *HmacKey) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOutput 
 	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyOutput)
 }
 
+func (i *HmacKey) ToHmacKeyPtrOutput() HmacKeyPtrOutput {
+	return i.ToHmacKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *HmacKey) ToHmacKeyPtrOutputWithContext(ctx context.Context) HmacKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyPtrOutput)
+}
+
+type HmacKeyPtrInput interface {
+	pulumi.Input
+
+	ToHmacKeyPtrOutput() HmacKeyPtrOutput
+	ToHmacKeyPtrOutputWithContext(ctx context.Context) HmacKeyPtrOutput
+}
+
+type hmacKeyPtrType HmacKeyArgs
+
+func (*hmacKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HmacKey)(nil))
+}
+
+func (i *hmacKeyPtrType) ToHmacKeyPtrOutput() HmacKeyPtrOutput {
+	return i.ToHmacKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *hmacKeyPtrType) ToHmacKeyPtrOutputWithContext(ctx context.Context) HmacKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyPtrOutput)
+}
+
+// HmacKeyArrayInput is an input type that accepts HmacKeyArray and HmacKeyArrayOutput values.
+// You can construct a concrete instance of `HmacKeyArrayInput` via:
+//
+//          HmacKeyArray{ HmacKeyArgs{...} }
+type HmacKeyArrayInput interface {
+	pulumi.Input
+
+	ToHmacKeyArrayOutput() HmacKeyArrayOutput
+	ToHmacKeyArrayOutputWithContext(context.Context) HmacKeyArrayOutput
+}
+
+type HmacKeyArray []HmacKeyInput
+
+func (HmacKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*HmacKey)(nil))
+}
+
+func (i HmacKeyArray) ToHmacKeyArrayOutput() HmacKeyArrayOutput {
+	return i.ToHmacKeyArrayOutputWithContext(context.Background())
+}
+
+func (i HmacKeyArray) ToHmacKeyArrayOutputWithContext(ctx context.Context) HmacKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyArrayOutput)
+}
+
+// HmacKeyMapInput is an input type that accepts HmacKeyMap and HmacKeyMapOutput values.
+// You can construct a concrete instance of `HmacKeyMapInput` via:
+//
+//          HmacKeyMap{ "key": HmacKeyArgs{...} }
+type HmacKeyMapInput interface {
+	pulumi.Input
+
+	ToHmacKeyMapOutput() HmacKeyMapOutput
+	ToHmacKeyMapOutputWithContext(context.Context) HmacKeyMapOutput
+}
+
+type HmacKeyMap map[string]HmacKeyInput
+
+func (HmacKeyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*HmacKey)(nil))
+}
+
+func (i HmacKeyMap) ToHmacKeyMapOutput() HmacKeyMapOutput {
+	return i.ToHmacKeyMapOutputWithContext(context.Background())
+}
+
+func (i HmacKeyMap) ToHmacKeyMapOutputWithContext(ctx context.Context) HmacKeyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HmacKeyMapOutput)
+}
+
 type HmacKeyOutput struct {
 	*pulumi.OutputState
 }
@@ -235,6 +314,75 @@ func (o HmacKeyOutput) ToHmacKeyOutputWithContext(ctx context.Context) HmacKeyOu
 	return o
 }
 
+func (o HmacKeyOutput) ToHmacKeyPtrOutput() HmacKeyPtrOutput {
+	return o.ToHmacKeyPtrOutputWithContext(context.Background())
+}
+
+func (o HmacKeyOutput) ToHmacKeyPtrOutputWithContext(ctx context.Context) HmacKeyPtrOutput {
+	return o.ApplyT(func(v HmacKey) *HmacKey {
+		return &v
+	}).(HmacKeyPtrOutput)
+}
+
+type HmacKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (HmacKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HmacKey)(nil))
+}
+
+func (o HmacKeyPtrOutput) ToHmacKeyPtrOutput() HmacKeyPtrOutput {
+	return o
+}
+
+func (o HmacKeyPtrOutput) ToHmacKeyPtrOutputWithContext(ctx context.Context) HmacKeyPtrOutput {
+	return o
+}
+
+type HmacKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (HmacKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HmacKey)(nil))
+}
+
+func (o HmacKeyArrayOutput) ToHmacKeyArrayOutput() HmacKeyArrayOutput {
+	return o
+}
+
+func (o HmacKeyArrayOutput) ToHmacKeyArrayOutputWithContext(ctx context.Context) HmacKeyArrayOutput {
+	return o
+}
+
+func (o HmacKeyArrayOutput) Index(i pulumi.IntInput) HmacKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HmacKey {
+		return vs[0].([]HmacKey)[vs[1].(int)]
+	}).(HmacKeyOutput)
+}
+
+type HmacKeyMapOutput struct{ *pulumi.OutputState }
+
+func (HmacKeyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]HmacKey)(nil))
+}
+
+func (o HmacKeyMapOutput) ToHmacKeyMapOutput() HmacKeyMapOutput {
+	return o
+}
+
+func (o HmacKeyMapOutput) ToHmacKeyMapOutputWithContext(ctx context.Context) HmacKeyMapOutput {
+	return o
+}
+
+func (o HmacKeyMapOutput) MapIndex(k pulumi.StringInput) HmacKeyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) HmacKey {
+		return vs[0].(map[string]HmacKey)[vs[1].(string)]
+	}).(HmacKeyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(HmacKeyOutput{})
+	pulumi.RegisterOutputType(HmacKeyPtrOutput{})
+	pulumi.RegisterOutputType(HmacKeyArrayOutput{})
+	pulumi.RegisterOutputType(HmacKeyMapOutput{})
 }

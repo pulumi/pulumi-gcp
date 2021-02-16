@@ -104,7 +104,8 @@ export class CustomService extends pulumi.CustomResource {
     constructor(name: string, args?: CustomServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CustomServiceArgs | CustomServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CustomServiceState | undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -119,12 +120,8 @@ export class CustomService extends pulumi.CustomResource {
             inputs["telemetry"] = args ? args.telemetry : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CustomService.__pulumiType, name, inputs, opts);
     }

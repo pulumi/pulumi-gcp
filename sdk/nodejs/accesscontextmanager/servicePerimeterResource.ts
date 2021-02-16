@@ -107,27 +107,24 @@ export class ServicePerimeterResource extends pulumi.CustomResource {
     constructor(name: string, args: ServicePerimeterResourceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePerimeterResourceArgs | ServicePerimeterResourceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServicePerimeterResourceState | undefined;
             inputs["perimeterName"] = state ? state.perimeterName : undefined;
             inputs["resource"] = state ? state.resource : undefined;
         } else {
             const args = argsOrState as ServicePerimeterResourceArgs | undefined;
-            if ((!args || args.perimeterName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.perimeterName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'perimeterName'");
             }
-            if ((!args || args.resource === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resource === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resource'");
             }
             inputs["perimeterName"] = args ? args.perimeterName : undefined;
             inputs["resource"] = args ? args.resource : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServicePerimeterResource.__pulumiType, name, inputs, opts);
     }

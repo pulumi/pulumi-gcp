@@ -207,6 +207,85 @@ func (i *GameServerDeployment) ToGameServerDeploymentOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentOutput)
 }
 
+func (i *GameServerDeployment) ToGameServerDeploymentPtrOutput() GameServerDeploymentPtrOutput {
+	return i.ToGameServerDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *GameServerDeployment) ToGameServerDeploymentPtrOutputWithContext(ctx context.Context) GameServerDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentPtrOutput)
+}
+
+type GameServerDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToGameServerDeploymentPtrOutput() GameServerDeploymentPtrOutput
+	ToGameServerDeploymentPtrOutputWithContext(ctx context.Context) GameServerDeploymentPtrOutput
+}
+
+type gameServerDeploymentPtrType GameServerDeploymentArgs
+
+func (*gameServerDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerDeployment)(nil))
+}
+
+func (i *gameServerDeploymentPtrType) ToGameServerDeploymentPtrOutput() GameServerDeploymentPtrOutput {
+	return i.ToGameServerDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *gameServerDeploymentPtrType) ToGameServerDeploymentPtrOutputWithContext(ctx context.Context) GameServerDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentPtrOutput)
+}
+
+// GameServerDeploymentArrayInput is an input type that accepts GameServerDeploymentArray and GameServerDeploymentArrayOutput values.
+// You can construct a concrete instance of `GameServerDeploymentArrayInput` via:
+//
+//          GameServerDeploymentArray{ GameServerDeploymentArgs{...} }
+type GameServerDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGameServerDeploymentArrayOutput() GameServerDeploymentArrayOutput
+	ToGameServerDeploymentArrayOutputWithContext(context.Context) GameServerDeploymentArrayOutput
+}
+
+type GameServerDeploymentArray []GameServerDeploymentInput
+
+func (GameServerDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GameServerDeployment)(nil))
+}
+
+func (i GameServerDeploymentArray) ToGameServerDeploymentArrayOutput() GameServerDeploymentArrayOutput {
+	return i.ToGameServerDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GameServerDeploymentArray) ToGameServerDeploymentArrayOutputWithContext(ctx context.Context) GameServerDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentArrayOutput)
+}
+
+// GameServerDeploymentMapInput is an input type that accepts GameServerDeploymentMap and GameServerDeploymentMapOutput values.
+// You can construct a concrete instance of `GameServerDeploymentMapInput` via:
+//
+//          GameServerDeploymentMap{ "key": GameServerDeploymentArgs{...} }
+type GameServerDeploymentMapInput interface {
+	pulumi.Input
+
+	ToGameServerDeploymentMapOutput() GameServerDeploymentMapOutput
+	ToGameServerDeploymentMapOutputWithContext(context.Context) GameServerDeploymentMapOutput
+}
+
+type GameServerDeploymentMap map[string]GameServerDeploymentInput
+
+func (GameServerDeploymentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GameServerDeployment)(nil))
+}
+
+func (i GameServerDeploymentMap) ToGameServerDeploymentMapOutput() GameServerDeploymentMapOutput {
+	return i.ToGameServerDeploymentMapOutputWithContext(context.Background())
+}
+
+func (i GameServerDeploymentMap) ToGameServerDeploymentMapOutputWithContext(ctx context.Context) GameServerDeploymentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerDeploymentMapOutput)
+}
+
 type GameServerDeploymentOutput struct {
 	*pulumi.OutputState
 }
@@ -223,6 +302,75 @@ func (o GameServerDeploymentOutput) ToGameServerDeploymentOutputWithContext(ctx 
 	return o
 }
 
+func (o GameServerDeploymentOutput) ToGameServerDeploymentPtrOutput() GameServerDeploymentPtrOutput {
+	return o.ToGameServerDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o GameServerDeploymentOutput) ToGameServerDeploymentPtrOutputWithContext(ctx context.Context) GameServerDeploymentPtrOutput {
+	return o.ApplyT(func(v GameServerDeployment) *GameServerDeployment {
+		return &v
+	}).(GameServerDeploymentPtrOutput)
+}
+
+type GameServerDeploymentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GameServerDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerDeployment)(nil))
+}
+
+func (o GameServerDeploymentPtrOutput) ToGameServerDeploymentPtrOutput() GameServerDeploymentPtrOutput {
+	return o
+}
+
+func (o GameServerDeploymentPtrOutput) ToGameServerDeploymentPtrOutputWithContext(ctx context.Context) GameServerDeploymentPtrOutput {
+	return o
+}
+
+type GameServerDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GameServerDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GameServerDeployment)(nil))
+}
+
+func (o GameServerDeploymentArrayOutput) ToGameServerDeploymentArrayOutput() GameServerDeploymentArrayOutput {
+	return o
+}
+
+func (o GameServerDeploymentArrayOutput) ToGameServerDeploymentArrayOutputWithContext(ctx context.Context) GameServerDeploymentArrayOutput {
+	return o
+}
+
+func (o GameServerDeploymentArrayOutput) Index(i pulumi.IntInput) GameServerDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerDeployment {
+		return vs[0].([]GameServerDeployment)[vs[1].(int)]
+	}).(GameServerDeploymentOutput)
+}
+
+type GameServerDeploymentMapOutput struct{ *pulumi.OutputState }
+
+func (GameServerDeploymentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GameServerDeployment)(nil))
+}
+
+func (o GameServerDeploymentMapOutput) ToGameServerDeploymentMapOutput() GameServerDeploymentMapOutput {
+	return o
+}
+
+func (o GameServerDeploymentMapOutput) ToGameServerDeploymentMapOutputWithContext(ctx context.Context) GameServerDeploymentMapOutput {
+	return o
+}
+
+func (o GameServerDeploymentMapOutput) MapIndex(k pulumi.StringInput) GameServerDeploymentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GameServerDeployment {
+		return vs[0].(map[string]GameServerDeployment)[vs[1].(string)]
+	}).(GameServerDeploymentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GameServerDeploymentOutput{})
+	pulumi.RegisterOutputType(GameServerDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(GameServerDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GameServerDeploymentMapOutput{})
 }

@@ -179,6 +179,85 @@ func (i *GatewayIamPolicy) ToGatewayIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyOutput)
 }
 
+func (i *GatewayIamPolicy) ToGatewayIamPolicyPtrOutput() GatewayIamPolicyPtrOutput {
+	return i.ToGatewayIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *GatewayIamPolicy) ToGatewayIamPolicyPtrOutputWithContext(ctx context.Context) GatewayIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyPtrOutput)
+}
+
+type GatewayIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToGatewayIamPolicyPtrOutput() GatewayIamPolicyPtrOutput
+	ToGatewayIamPolicyPtrOutputWithContext(ctx context.Context) GatewayIamPolicyPtrOutput
+}
+
+type gatewayIamPolicyPtrType GatewayIamPolicyArgs
+
+func (*gatewayIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayIamPolicy)(nil))
+}
+
+func (i *gatewayIamPolicyPtrType) ToGatewayIamPolicyPtrOutput() GatewayIamPolicyPtrOutput {
+	return i.ToGatewayIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayIamPolicyPtrType) ToGatewayIamPolicyPtrOutputWithContext(ctx context.Context) GatewayIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyPtrOutput)
+}
+
+// GatewayIamPolicyArrayInput is an input type that accepts GatewayIamPolicyArray and GatewayIamPolicyArrayOutput values.
+// You can construct a concrete instance of `GatewayIamPolicyArrayInput` via:
+//
+//          GatewayIamPolicyArray{ GatewayIamPolicyArgs{...} }
+type GatewayIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToGatewayIamPolicyArrayOutput() GatewayIamPolicyArrayOutput
+	ToGatewayIamPolicyArrayOutputWithContext(context.Context) GatewayIamPolicyArrayOutput
+}
+
+type GatewayIamPolicyArray []GatewayIamPolicyInput
+
+func (GatewayIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GatewayIamPolicy)(nil))
+}
+
+func (i GatewayIamPolicyArray) ToGatewayIamPolicyArrayOutput() GatewayIamPolicyArrayOutput {
+	return i.ToGatewayIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i GatewayIamPolicyArray) ToGatewayIamPolicyArrayOutputWithContext(ctx context.Context) GatewayIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyArrayOutput)
+}
+
+// GatewayIamPolicyMapInput is an input type that accepts GatewayIamPolicyMap and GatewayIamPolicyMapOutput values.
+// You can construct a concrete instance of `GatewayIamPolicyMapInput` via:
+//
+//          GatewayIamPolicyMap{ "key": GatewayIamPolicyArgs{...} }
+type GatewayIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToGatewayIamPolicyMapOutput() GatewayIamPolicyMapOutput
+	ToGatewayIamPolicyMapOutputWithContext(context.Context) GatewayIamPolicyMapOutput
+}
+
+type GatewayIamPolicyMap map[string]GatewayIamPolicyInput
+
+func (GatewayIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GatewayIamPolicy)(nil))
+}
+
+func (i GatewayIamPolicyMap) ToGatewayIamPolicyMapOutput() GatewayIamPolicyMapOutput {
+	return i.ToGatewayIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i GatewayIamPolicyMap) ToGatewayIamPolicyMapOutputWithContext(ctx context.Context) GatewayIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayIamPolicyMapOutput)
+}
+
 type GatewayIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -195,6 +274,75 @@ func (o GatewayIamPolicyOutput) ToGatewayIamPolicyOutputWithContext(ctx context.
 	return o
 }
 
+func (o GatewayIamPolicyOutput) ToGatewayIamPolicyPtrOutput() GatewayIamPolicyPtrOutput {
+	return o.ToGatewayIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayIamPolicyOutput) ToGatewayIamPolicyPtrOutputWithContext(ctx context.Context) GatewayIamPolicyPtrOutput {
+	return o.ApplyT(func(v GatewayIamPolicy) *GatewayIamPolicy {
+		return &v
+	}).(GatewayIamPolicyPtrOutput)
+}
+
+type GatewayIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GatewayIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayIamPolicy)(nil))
+}
+
+func (o GatewayIamPolicyPtrOutput) ToGatewayIamPolicyPtrOutput() GatewayIamPolicyPtrOutput {
+	return o
+}
+
+func (o GatewayIamPolicyPtrOutput) ToGatewayIamPolicyPtrOutputWithContext(ctx context.Context) GatewayIamPolicyPtrOutput {
+	return o
+}
+
+type GatewayIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (GatewayIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GatewayIamPolicy)(nil))
+}
+
+func (o GatewayIamPolicyArrayOutput) ToGatewayIamPolicyArrayOutput() GatewayIamPolicyArrayOutput {
+	return o
+}
+
+func (o GatewayIamPolicyArrayOutput) ToGatewayIamPolicyArrayOutputWithContext(ctx context.Context) GatewayIamPolicyArrayOutput {
+	return o
+}
+
+func (o GatewayIamPolicyArrayOutput) Index(i pulumi.IntInput) GatewayIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GatewayIamPolicy {
+		return vs[0].([]GatewayIamPolicy)[vs[1].(int)]
+	}).(GatewayIamPolicyOutput)
+}
+
+type GatewayIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (GatewayIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GatewayIamPolicy)(nil))
+}
+
+func (o GatewayIamPolicyMapOutput) ToGatewayIamPolicyMapOutput() GatewayIamPolicyMapOutput {
+	return o
+}
+
+func (o GatewayIamPolicyMapOutput) ToGatewayIamPolicyMapOutputWithContext(ctx context.Context) GatewayIamPolicyMapOutput {
+	return o
+}
+
+func (o GatewayIamPolicyMapOutput) MapIndex(k pulumi.StringInput) GatewayIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GatewayIamPolicy {
+		return vs[0].(map[string]GatewayIamPolicy)[vs[1].(string)]
+	}).(GatewayIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GatewayIamPolicyOutput{})
+	pulumi.RegisterOutputType(GatewayIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(GatewayIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GatewayIamPolicyMapOutput{})
 }

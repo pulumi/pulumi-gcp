@@ -153,7 +153,8 @@ export class TargetSSLProxy extends pulumi.CustomResource {
     constructor(name: string, args: TargetSSLProxyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetSSLProxyArgs | TargetSSLProxyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetSSLProxyState | undefined;
             inputs["backendService"] = state ? state.backendService : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -167,10 +168,10 @@ export class TargetSSLProxy extends pulumi.CustomResource {
             inputs["sslPolicy"] = state ? state.sslPolicy : undefined;
         } else {
             const args = argsOrState as TargetSSLProxyArgs | undefined;
-            if ((!args || args.backendService === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.backendService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backendService'");
             }
-            if ((!args || args.sslCertificates === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sslCertificates === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sslCertificates'");
             }
             inputs["backendService"] = args ? args.backendService : undefined;
@@ -184,12 +185,8 @@ export class TargetSSLProxy extends pulumi.CustomResource {
             inputs["proxyId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetSSLProxy.__pulumiType, name, inputs, opts);
     }

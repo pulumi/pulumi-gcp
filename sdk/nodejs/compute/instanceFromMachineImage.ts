@@ -189,7 +189,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
     constructor(name: string, args: InstanceFromMachineImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceFromMachineImageArgs | InstanceFromMachineImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceFromMachineImageState | undefined;
             inputs["allowStoppingForUpdate"] = state ? state.allowStoppingForUpdate : undefined;
             inputs["attachedDisks"] = state ? state.attachedDisks : undefined;
@@ -227,7 +228,7 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceFromMachineImageArgs | undefined;
-            if ((!args || args.sourceMachineImage === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceMachineImage === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceMachineImage'");
             }
             inputs["allowStoppingForUpdate"] = args ? args.allowStoppingForUpdate : undefined;
@@ -265,12 +266,8 @@ export class InstanceFromMachineImage extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["tagsFingerprint"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceFromMachineImage.__pulumiType, name, inputs, opts);
     }

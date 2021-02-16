@@ -216,7 +216,8 @@ export class Job extends pulumi.CustomResource {
     constructor(name: string, args?: JobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as JobState | undefined;
             inputs["appEngineHttpTarget"] = state ? state.appEngineHttpTarget : undefined;
             inputs["attemptDeadline"] = state ? state.attemptDeadline : undefined;
@@ -243,12 +244,8 @@ export class Job extends pulumi.CustomResource {
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Job.__pulumiType, name, inputs, opts);
     }

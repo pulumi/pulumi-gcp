@@ -189,7 +189,8 @@ export class Slo extends pulumi.CustomResource {
     constructor(name: string, args: SloArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SloArgs | SloState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SloState | undefined;
             inputs["basicSli"] = state ? state.basicSli : undefined;
             inputs["calendarPeriod"] = state ? state.calendarPeriod : undefined;
@@ -204,10 +205,10 @@ export class Slo extends pulumi.CustomResource {
             inputs["windowsBasedSli"] = state ? state.windowsBasedSli : undefined;
         } else {
             const args = argsOrState as SloArgs | undefined;
-            if ((!args || args.goal === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.goal === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'goal'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["basicSli"] = args ? args.basicSli : undefined;
@@ -222,12 +223,8 @@ export class Slo extends pulumi.CustomResource {
             inputs["windowsBasedSli"] = args ? args.windowsBasedSli : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Slo.__pulumiType, name, inputs, opts);
     }

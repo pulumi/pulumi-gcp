@@ -258,6 +258,85 @@ func (i *SSLCertificate) ToSSLCertificateOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateOutput)
 }
 
+func (i *SSLCertificate) ToSSLCertificatePtrOutput() SSLCertificatePtrOutput {
+	return i.ToSSLCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *SSLCertificate) ToSSLCertificatePtrOutputWithContext(ctx context.Context) SSLCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificatePtrOutput)
+}
+
+type SSLCertificatePtrInput interface {
+	pulumi.Input
+
+	ToSSLCertificatePtrOutput() SSLCertificatePtrOutput
+	ToSSLCertificatePtrOutputWithContext(ctx context.Context) SSLCertificatePtrOutput
+}
+
+type sslcertificatePtrType SSLCertificateArgs
+
+func (*sslcertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SSLCertificate)(nil))
+}
+
+func (i *sslcertificatePtrType) ToSSLCertificatePtrOutput() SSLCertificatePtrOutput {
+	return i.ToSSLCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *sslcertificatePtrType) ToSSLCertificatePtrOutputWithContext(ctx context.Context) SSLCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificatePtrOutput)
+}
+
+// SSLCertificateArrayInput is an input type that accepts SSLCertificateArray and SSLCertificateArrayOutput values.
+// You can construct a concrete instance of `SSLCertificateArrayInput` via:
+//
+//          SSLCertificateArray{ SSLCertificateArgs{...} }
+type SSLCertificateArrayInput interface {
+	pulumi.Input
+
+	ToSSLCertificateArrayOutput() SSLCertificateArrayOutput
+	ToSSLCertificateArrayOutputWithContext(context.Context) SSLCertificateArrayOutput
+}
+
+type SSLCertificateArray []SSLCertificateInput
+
+func (SSLCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SSLCertificate)(nil))
+}
+
+func (i SSLCertificateArray) ToSSLCertificateArrayOutput() SSLCertificateArrayOutput {
+	return i.ToSSLCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i SSLCertificateArray) ToSSLCertificateArrayOutputWithContext(ctx context.Context) SSLCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateArrayOutput)
+}
+
+// SSLCertificateMapInput is an input type that accepts SSLCertificateMap and SSLCertificateMapOutput values.
+// You can construct a concrete instance of `SSLCertificateMapInput` via:
+//
+//          SSLCertificateMap{ "key": SSLCertificateArgs{...} }
+type SSLCertificateMapInput interface {
+	pulumi.Input
+
+	ToSSLCertificateMapOutput() SSLCertificateMapOutput
+	ToSSLCertificateMapOutputWithContext(context.Context) SSLCertificateMapOutput
+}
+
+type SSLCertificateMap map[string]SSLCertificateInput
+
+func (SSLCertificateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SSLCertificate)(nil))
+}
+
+func (i SSLCertificateMap) ToSSLCertificateMapOutput() SSLCertificateMapOutput {
+	return i.ToSSLCertificateMapOutputWithContext(context.Background())
+}
+
+func (i SSLCertificateMap) ToSSLCertificateMapOutputWithContext(ctx context.Context) SSLCertificateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SSLCertificateMapOutput)
+}
+
 type SSLCertificateOutput struct {
 	*pulumi.OutputState
 }
@@ -274,6 +353,75 @@ func (o SSLCertificateOutput) ToSSLCertificateOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o SSLCertificateOutput) ToSSLCertificatePtrOutput() SSLCertificatePtrOutput {
+	return o.ToSSLCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o SSLCertificateOutput) ToSSLCertificatePtrOutputWithContext(ctx context.Context) SSLCertificatePtrOutput {
+	return o.ApplyT(func(v SSLCertificate) *SSLCertificate {
+		return &v
+	}).(SSLCertificatePtrOutput)
+}
+
+type SSLCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SSLCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SSLCertificate)(nil))
+}
+
+func (o SSLCertificatePtrOutput) ToSSLCertificatePtrOutput() SSLCertificatePtrOutput {
+	return o
+}
+
+func (o SSLCertificatePtrOutput) ToSSLCertificatePtrOutputWithContext(ctx context.Context) SSLCertificatePtrOutput {
+	return o
+}
+
+type SSLCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (SSLCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SSLCertificate)(nil))
+}
+
+func (o SSLCertificateArrayOutput) ToSSLCertificateArrayOutput() SSLCertificateArrayOutput {
+	return o
+}
+
+func (o SSLCertificateArrayOutput) ToSSLCertificateArrayOutputWithContext(ctx context.Context) SSLCertificateArrayOutput {
+	return o
+}
+
+func (o SSLCertificateArrayOutput) Index(i pulumi.IntInput) SSLCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SSLCertificate {
+		return vs[0].([]SSLCertificate)[vs[1].(int)]
+	}).(SSLCertificateOutput)
+}
+
+type SSLCertificateMapOutput struct{ *pulumi.OutputState }
+
+func (SSLCertificateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SSLCertificate)(nil))
+}
+
+func (o SSLCertificateMapOutput) ToSSLCertificateMapOutput() SSLCertificateMapOutput {
+	return o
+}
+
+func (o SSLCertificateMapOutput) ToSSLCertificateMapOutputWithContext(ctx context.Context) SSLCertificateMapOutput {
+	return o
+}
+
+func (o SSLCertificateMapOutput) MapIndex(k pulumi.StringInput) SSLCertificateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SSLCertificate {
+		return vs[0].(map[string]SSLCertificate)[vs[1].(string)]
+	}).(SSLCertificateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SSLCertificateOutput{})
+	pulumi.RegisterOutputType(SSLCertificatePtrOutput{})
+	pulumi.RegisterOutputType(SSLCertificateArrayOutput{})
+	pulumi.RegisterOutputType(SSLCertificateMapOutput{})
 }

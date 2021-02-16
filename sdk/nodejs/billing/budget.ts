@@ -229,7 +229,8 @@ export class Budget extends pulumi.CustomResource {
     constructor(name: string, args: BudgetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BudgetArgs | BudgetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BudgetState | undefined;
             inputs["allUpdatesRule"] = state ? state.allUpdatesRule : undefined;
             inputs["amount"] = state ? state.amount : undefined;
@@ -240,13 +241,13 @@ export class Budget extends pulumi.CustomResource {
             inputs["thresholdRules"] = state ? state.thresholdRules : undefined;
         } else {
             const args = argsOrState as BudgetArgs | undefined;
-            if ((!args || args.amount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.amount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'amount'");
             }
-            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if ((!args || args.thresholdRules === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.thresholdRules === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'thresholdRules'");
             }
             inputs["allUpdatesRule"] = args ? args.allUpdatesRule : undefined;
@@ -257,12 +258,8 @@ export class Budget extends pulumi.CustomResource {
             inputs["thresholdRules"] = args ? args.thresholdRules : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Budget.__pulumiType, name, inputs, opts);
     }

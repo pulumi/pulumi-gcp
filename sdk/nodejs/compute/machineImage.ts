@@ -134,7 +134,8 @@ export class MachineImage extends pulumi.CustomResource {
     constructor(name: string, args: MachineImageArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: MachineImageArgs | MachineImageState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MachineImageState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["guestFlush"] = state ? state.guestFlush : undefined;
@@ -146,7 +147,7 @@ export class MachineImage extends pulumi.CustomResource {
             inputs["storageLocations"] = state ? state.storageLocations : undefined;
         } else {
             const args = argsOrState as MachineImageArgs | undefined;
-            if ((!args || args.sourceInstance === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceInstance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceInstance'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -158,12 +159,8 @@ export class MachineImage extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["storageLocations"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MachineImage.__pulumiType, name, inputs, opts);
     }

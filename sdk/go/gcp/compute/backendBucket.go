@@ -276,6 +276,85 @@ func (i *BackendBucket) ToBackendBucketOutputWithContext(ctx context.Context) Ba
 	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketOutput)
 }
 
+func (i *BackendBucket) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
+	return i.ToBackendBucketPtrOutputWithContext(context.Background())
+}
+
+func (i *BackendBucket) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketPtrOutput)
+}
+
+type BackendBucketPtrInput interface {
+	pulumi.Input
+
+	ToBackendBucketPtrOutput() BackendBucketPtrOutput
+	ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput
+}
+
+type backendBucketPtrType BackendBucketArgs
+
+func (*backendBucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendBucket)(nil))
+}
+
+func (i *backendBucketPtrType) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
+	return i.ToBackendBucketPtrOutputWithContext(context.Background())
+}
+
+func (i *backendBucketPtrType) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketPtrOutput)
+}
+
+// BackendBucketArrayInput is an input type that accepts BackendBucketArray and BackendBucketArrayOutput values.
+// You can construct a concrete instance of `BackendBucketArrayInput` via:
+//
+//          BackendBucketArray{ BackendBucketArgs{...} }
+type BackendBucketArrayInput interface {
+	pulumi.Input
+
+	ToBackendBucketArrayOutput() BackendBucketArrayOutput
+	ToBackendBucketArrayOutputWithContext(context.Context) BackendBucketArrayOutput
+}
+
+type BackendBucketArray []BackendBucketInput
+
+func (BackendBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BackendBucket)(nil))
+}
+
+func (i BackendBucketArray) ToBackendBucketArrayOutput() BackendBucketArrayOutput {
+	return i.ToBackendBucketArrayOutputWithContext(context.Background())
+}
+
+func (i BackendBucketArray) ToBackendBucketArrayOutputWithContext(ctx context.Context) BackendBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketArrayOutput)
+}
+
+// BackendBucketMapInput is an input type that accepts BackendBucketMap and BackendBucketMapOutput values.
+// You can construct a concrete instance of `BackendBucketMapInput` via:
+//
+//          BackendBucketMap{ "key": BackendBucketArgs{...} }
+type BackendBucketMapInput interface {
+	pulumi.Input
+
+	ToBackendBucketMapOutput() BackendBucketMapOutput
+	ToBackendBucketMapOutputWithContext(context.Context) BackendBucketMapOutput
+}
+
+type BackendBucketMap map[string]BackendBucketInput
+
+func (BackendBucketMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BackendBucket)(nil))
+}
+
+func (i BackendBucketMap) ToBackendBucketMapOutput() BackendBucketMapOutput {
+	return i.ToBackendBucketMapOutputWithContext(context.Background())
+}
+
+func (i BackendBucketMap) ToBackendBucketMapOutputWithContext(ctx context.Context) BackendBucketMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackendBucketMapOutput)
+}
+
 type BackendBucketOutput struct {
 	*pulumi.OutputState
 }
@@ -292,6 +371,75 @@ func (o BackendBucketOutput) ToBackendBucketOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o BackendBucketOutput) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
+	return o.ToBackendBucketPtrOutputWithContext(context.Background())
+}
+
+func (o BackendBucketOutput) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
+	return o.ApplyT(func(v BackendBucket) *BackendBucket {
+		return &v
+	}).(BackendBucketPtrOutput)
+}
+
+type BackendBucketPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BackendBucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendBucket)(nil))
+}
+
+func (o BackendBucketPtrOutput) ToBackendBucketPtrOutput() BackendBucketPtrOutput {
+	return o
+}
+
+func (o BackendBucketPtrOutput) ToBackendBucketPtrOutputWithContext(ctx context.Context) BackendBucketPtrOutput {
+	return o
+}
+
+type BackendBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackendBucket)(nil))
+}
+
+func (o BackendBucketArrayOutput) ToBackendBucketArrayOutput() BackendBucketArrayOutput {
+	return o
+}
+
+func (o BackendBucketArrayOutput) ToBackendBucketArrayOutputWithContext(ctx context.Context) BackendBucketArrayOutput {
+	return o
+}
+
+func (o BackendBucketArrayOutput) Index(i pulumi.IntInput) BackendBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackendBucket {
+		return vs[0].([]BackendBucket)[vs[1].(int)]
+	}).(BackendBucketOutput)
+}
+
+type BackendBucketMapOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BackendBucket)(nil))
+}
+
+func (o BackendBucketMapOutput) ToBackendBucketMapOutput() BackendBucketMapOutput {
+	return o
+}
+
+func (o BackendBucketMapOutput) ToBackendBucketMapOutputWithContext(ctx context.Context) BackendBucketMapOutput {
+	return o
+}
+
+func (o BackendBucketMapOutput) MapIndex(k pulumi.StringInput) BackendBucketOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BackendBucket {
+		return vs[0].(map[string]BackendBucket)[vs[1].(string)]
+	}).(BackendBucketOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BackendBucketOutput{})
+	pulumi.RegisterOutputType(BackendBucketPtrOutput{})
+	pulumi.RegisterOutputType(BackendBucketArrayOutput{})
+	pulumi.RegisterOutputType(BackendBucketMapOutput{})
 }

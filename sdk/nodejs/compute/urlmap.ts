@@ -642,7 +642,8 @@ export class URLMap extends pulumi.CustomResource {
     constructor(name: string, args?: URLMapArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: URLMapArgs | URLMapState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as URLMapState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["defaultRouteAction"] = state ? state.defaultRouteAction : undefined;
@@ -675,12 +676,8 @@ export class URLMap extends pulumi.CustomResource {
             inputs["mapId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(URLMap.__pulumiType, name, inputs, opts);
     }

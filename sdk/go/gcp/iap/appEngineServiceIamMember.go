@@ -200,6 +200,85 @@ func (i *AppEngineServiceIamMember) ToAppEngineServiceIamMemberOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamMemberOutput)
 }
 
+func (i *AppEngineServiceIamMember) ToAppEngineServiceIamMemberPtrOutput() AppEngineServiceIamMemberPtrOutput {
+	return i.ToAppEngineServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *AppEngineServiceIamMember) ToAppEngineServiceIamMemberPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamMemberPtrOutput)
+}
+
+type AppEngineServiceIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamMemberPtrOutput() AppEngineServiceIamMemberPtrOutput
+	ToAppEngineServiceIamMemberPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberPtrOutput
+}
+
+type appEngineServiceIamMemberPtrType AppEngineServiceIamMemberArgs
+
+func (*appEngineServiceIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineServiceIamMember)(nil))
+}
+
+func (i *appEngineServiceIamMemberPtrType) ToAppEngineServiceIamMemberPtrOutput() AppEngineServiceIamMemberPtrOutput {
+	return i.ToAppEngineServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *appEngineServiceIamMemberPtrType) ToAppEngineServiceIamMemberPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamMemberPtrOutput)
+}
+
+// AppEngineServiceIamMemberArrayInput is an input type that accepts AppEngineServiceIamMemberArray and AppEngineServiceIamMemberArrayOutput values.
+// You can construct a concrete instance of `AppEngineServiceIamMemberArrayInput` via:
+//
+//          AppEngineServiceIamMemberArray{ AppEngineServiceIamMemberArgs{...} }
+type AppEngineServiceIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamMemberArrayOutput() AppEngineServiceIamMemberArrayOutput
+	ToAppEngineServiceIamMemberArrayOutputWithContext(context.Context) AppEngineServiceIamMemberArrayOutput
+}
+
+type AppEngineServiceIamMemberArray []AppEngineServiceIamMemberInput
+
+func (AppEngineServiceIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AppEngineServiceIamMember)(nil))
+}
+
+func (i AppEngineServiceIamMemberArray) ToAppEngineServiceIamMemberArrayOutput() AppEngineServiceIamMemberArrayOutput {
+	return i.ToAppEngineServiceIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i AppEngineServiceIamMemberArray) ToAppEngineServiceIamMemberArrayOutputWithContext(ctx context.Context) AppEngineServiceIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamMemberArrayOutput)
+}
+
+// AppEngineServiceIamMemberMapInput is an input type that accepts AppEngineServiceIamMemberMap and AppEngineServiceIamMemberMapOutput values.
+// You can construct a concrete instance of `AppEngineServiceIamMemberMapInput` via:
+//
+//          AppEngineServiceIamMemberMap{ "key": AppEngineServiceIamMemberArgs{...} }
+type AppEngineServiceIamMemberMapInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamMemberMapOutput() AppEngineServiceIamMemberMapOutput
+	ToAppEngineServiceIamMemberMapOutputWithContext(context.Context) AppEngineServiceIamMemberMapOutput
+}
+
+type AppEngineServiceIamMemberMap map[string]AppEngineServiceIamMemberInput
+
+func (AppEngineServiceIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AppEngineServiceIamMember)(nil))
+}
+
+func (i AppEngineServiceIamMemberMap) ToAppEngineServiceIamMemberMapOutput() AppEngineServiceIamMemberMapOutput {
+	return i.ToAppEngineServiceIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i AppEngineServiceIamMemberMap) ToAppEngineServiceIamMemberMapOutputWithContext(ctx context.Context) AppEngineServiceIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamMemberMapOutput)
+}
+
 type AppEngineServiceIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -216,6 +295,75 @@ func (o AppEngineServiceIamMemberOutput) ToAppEngineServiceIamMemberOutputWithCo
 	return o
 }
 
+func (o AppEngineServiceIamMemberOutput) ToAppEngineServiceIamMemberPtrOutput() AppEngineServiceIamMemberPtrOutput {
+	return o.ToAppEngineServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineServiceIamMemberOutput) ToAppEngineServiceIamMemberPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberPtrOutput {
+	return o.ApplyT(func(v AppEngineServiceIamMember) *AppEngineServiceIamMember {
+		return &v
+	}).(AppEngineServiceIamMemberPtrOutput)
+}
+
+type AppEngineServiceIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppEngineServiceIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineServiceIamMember)(nil))
+}
+
+func (o AppEngineServiceIamMemberPtrOutput) ToAppEngineServiceIamMemberPtrOutput() AppEngineServiceIamMemberPtrOutput {
+	return o
+}
+
+func (o AppEngineServiceIamMemberPtrOutput) ToAppEngineServiceIamMemberPtrOutputWithContext(ctx context.Context) AppEngineServiceIamMemberPtrOutput {
+	return o
+}
+
+type AppEngineServiceIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (AppEngineServiceIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppEngineServiceIamMember)(nil))
+}
+
+func (o AppEngineServiceIamMemberArrayOutput) ToAppEngineServiceIamMemberArrayOutput() AppEngineServiceIamMemberArrayOutput {
+	return o
+}
+
+func (o AppEngineServiceIamMemberArrayOutput) ToAppEngineServiceIamMemberArrayOutputWithContext(ctx context.Context) AppEngineServiceIamMemberArrayOutput {
+	return o
+}
+
+func (o AppEngineServiceIamMemberArrayOutput) Index(i pulumi.IntInput) AppEngineServiceIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEngineServiceIamMember {
+		return vs[0].([]AppEngineServiceIamMember)[vs[1].(int)]
+	}).(AppEngineServiceIamMemberOutput)
+}
+
+type AppEngineServiceIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (AppEngineServiceIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AppEngineServiceIamMember)(nil))
+}
+
+func (o AppEngineServiceIamMemberMapOutput) ToAppEngineServiceIamMemberMapOutput() AppEngineServiceIamMemberMapOutput {
+	return o
+}
+
+func (o AppEngineServiceIamMemberMapOutput) ToAppEngineServiceIamMemberMapOutputWithContext(ctx context.Context) AppEngineServiceIamMemberMapOutput {
+	return o
+}
+
+func (o AppEngineServiceIamMemberMapOutput) MapIndex(k pulumi.StringInput) AppEngineServiceIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppEngineServiceIamMember {
+		return vs[0].(map[string]AppEngineServiceIamMember)[vs[1].(string)]
+	}).(AppEngineServiceIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppEngineServiceIamMemberOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamMemberMapOutput{})
 }

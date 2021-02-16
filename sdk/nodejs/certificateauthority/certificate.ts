@@ -124,7 +124,8 @@ export class Certificate extends pulumi.CustomResource {
     constructor(name: string, args: CertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CertificateArgs | CertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
             inputs["certificateAuthority"] = state ? state.certificateAuthority : undefined;
             inputs["certificateDescriptions"] = state ? state.certificateDescriptions : undefined;
@@ -142,10 +143,10 @@ export class Certificate extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            if ((!args || args.certificateAuthority === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.certificateAuthority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthority'");
             }
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["certificateAuthority"] = args ? args.certificateAuthority : undefined;
@@ -163,12 +164,8 @@ export class Certificate extends pulumi.CustomResource {
             inputs["revocationDetails"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Certificate.__pulumiType, name, inputs, opts);
     }

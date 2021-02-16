@@ -163,7 +163,8 @@ export class Authority extends pulumi.CustomResource {
     constructor(name: string, args: AuthorityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AuthorityArgs | AuthorityState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AuthorityState | undefined;
             inputs["accessUrls"] = state ? state.accessUrls : undefined;
             inputs["certificateAuthorityId"] = state ? state.certificateAuthorityId : undefined;
@@ -185,16 +186,16 @@ export class Authority extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as AuthorityArgs | undefined;
-            if ((!args || args.certificateAuthorityId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthorityId'");
             }
-            if ((!args || args.config === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.config === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.keySpec === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keySpec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keySpec'");
             }
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
@@ -216,12 +217,8 @@ export class Authority extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Authority.__pulumiType, name, inputs, opts);
     }

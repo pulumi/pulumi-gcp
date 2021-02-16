@@ -234,7 +234,8 @@ export class Route extends pulumi.CustomResource {
     constructor(name: string, args: RouteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouteArgs | RouteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouteState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["destRange"] = state ? state.destRange : undefined;
@@ -253,10 +254,10 @@ export class Route extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as RouteArgs | undefined;
-            if ((!args || args.destRange === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destRange'");
             }
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -275,12 +276,8 @@ export class Route extends pulumi.CustomResource {
             inputs["nextHopNetwork"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Route.__pulumiType, name, inputs, opts);
     }

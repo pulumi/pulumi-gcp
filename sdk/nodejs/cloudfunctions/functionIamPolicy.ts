@@ -152,7 +152,8 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: FunctionIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FunctionIamPolicyArgs | FunctionIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FunctionIamPolicyState | undefined;
             inputs["cloudFunction"] = state ? state.cloudFunction : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -161,10 +162,10 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as FunctionIamPolicyArgs | undefined;
-            if ((!args || args.cloudFunction === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cloudFunction === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cloudFunction'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["cloudFunction"] = args ? args.cloudFunction : undefined;
@@ -173,12 +174,8 @@ export class FunctionIamPolicy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(FunctionIamPolicy.__pulumiType, name, inputs, opts);
     }

@@ -225,7 +225,8 @@ export class ConnectivityTest extends pulumi.CustomResource {
     constructor(name: string, args: ConnectivityTestArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectivityTestArgs | ConnectivityTestState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConnectivityTestState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["destination"] = state ? state.destination : undefined;
@@ -237,10 +238,10 @@ export class ConnectivityTest extends pulumi.CustomResource {
             inputs["source"] = state ? state.source : undefined;
         } else {
             const args = argsOrState as ConnectivityTestArgs | undefined;
-            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.source === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.source === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -252,12 +253,8 @@ export class ConnectivityTest extends pulumi.CustomResource {
             inputs["relatedProjects"] = args ? args.relatedProjects : undefined;
             inputs["source"] = args ? args.source : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConnectivityTest.__pulumiType, name, inputs, opts);
     }

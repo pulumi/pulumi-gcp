@@ -391,6 +391,85 @@ func (i *MetricDescriptor) ToMetricDescriptorOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorOutput)
 }
 
+func (i *MetricDescriptor) ToMetricDescriptorPtrOutput() MetricDescriptorPtrOutput {
+	return i.ToMetricDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i *MetricDescriptor) ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorPtrOutput)
+}
+
+type MetricDescriptorPtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorPtrOutput() MetricDescriptorPtrOutput
+	ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput
+}
+
+type metricDescriptorPtrType MetricDescriptorArgs
+
+func (*metricDescriptorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptor)(nil))
+}
+
+func (i *metricDescriptorPtrType) ToMetricDescriptorPtrOutput() MetricDescriptorPtrOutput {
+	return i.ToMetricDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i *metricDescriptorPtrType) ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorPtrOutput)
+}
+
+// MetricDescriptorArrayInput is an input type that accepts MetricDescriptorArray and MetricDescriptorArrayOutput values.
+// You can construct a concrete instance of `MetricDescriptorArrayInput` via:
+//
+//          MetricDescriptorArray{ MetricDescriptorArgs{...} }
+type MetricDescriptorArrayInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorArrayOutput() MetricDescriptorArrayOutput
+	ToMetricDescriptorArrayOutputWithContext(context.Context) MetricDescriptorArrayOutput
+}
+
+type MetricDescriptorArray []MetricDescriptorInput
+
+func (MetricDescriptorArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MetricDescriptor)(nil))
+}
+
+func (i MetricDescriptorArray) ToMetricDescriptorArrayOutput() MetricDescriptorArrayOutput {
+	return i.ToMetricDescriptorArrayOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorArray) ToMetricDescriptorArrayOutputWithContext(ctx context.Context) MetricDescriptorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorArrayOutput)
+}
+
+// MetricDescriptorMapInput is an input type that accepts MetricDescriptorMap and MetricDescriptorMapOutput values.
+// You can construct a concrete instance of `MetricDescriptorMapInput` via:
+//
+//          MetricDescriptorMap{ "key": MetricDescriptorArgs{...} }
+type MetricDescriptorMapInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMapOutput() MetricDescriptorMapOutput
+	ToMetricDescriptorMapOutputWithContext(context.Context) MetricDescriptorMapOutput
+}
+
+type MetricDescriptorMap map[string]MetricDescriptorInput
+
+func (MetricDescriptorMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MetricDescriptor)(nil))
+}
+
+func (i MetricDescriptorMap) ToMetricDescriptorMapOutput() MetricDescriptorMapOutput {
+	return i.ToMetricDescriptorMapOutputWithContext(context.Background())
+}
+
+func (i MetricDescriptorMap) ToMetricDescriptorMapOutputWithContext(ctx context.Context) MetricDescriptorMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetricDescriptorMapOutput)
+}
+
 type MetricDescriptorOutput struct {
 	*pulumi.OutputState
 }
@@ -407,6 +486,75 @@ func (o MetricDescriptorOutput) ToMetricDescriptorOutputWithContext(ctx context.
 	return o
 }
 
+func (o MetricDescriptorOutput) ToMetricDescriptorPtrOutput() MetricDescriptorPtrOutput {
+	return o.ToMetricDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorOutput) ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput {
+	return o.ApplyT(func(v MetricDescriptor) *MetricDescriptor {
+		return &v
+	}).(MetricDescriptorPtrOutput)
+}
+
+type MetricDescriptorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MetricDescriptorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetricDescriptor)(nil))
+}
+
+func (o MetricDescriptorPtrOutput) ToMetricDescriptorPtrOutput() MetricDescriptorPtrOutput {
+	return o
+}
+
+func (o MetricDescriptorPtrOutput) ToMetricDescriptorPtrOutputWithContext(ctx context.Context) MetricDescriptorPtrOutput {
+	return o
+}
+
+type MetricDescriptorArrayOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MetricDescriptor)(nil))
+}
+
+func (o MetricDescriptorArrayOutput) ToMetricDescriptorArrayOutput() MetricDescriptorArrayOutput {
+	return o
+}
+
+func (o MetricDescriptorArrayOutput) ToMetricDescriptorArrayOutputWithContext(ctx context.Context) MetricDescriptorArrayOutput {
+	return o
+}
+
+func (o MetricDescriptorArrayOutput) Index(i pulumi.IntInput) MetricDescriptorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MetricDescriptor {
+		return vs[0].([]MetricDescriptor)[vs[1].(int)]
+	}).(MetricDescriptorOutput)
+}
+
+type MetricDescriptorMapOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MetricDescriptor)(nil))
+}
+
+func (o MetricDescriptorMapOutput) ToMetricDescriptorMapOutput() MetricDescriptorMapOutput {
+	return o
+}
+
+func (o MetricDescriptorMapOutput) ToMetricDescriptorMapOutputWithContext(ctx context.Context) MetricDescriptorMapOutput {
+	return o
+}
+
+func (o MetricDescriptorMapOutput) MapIndex(k pulumi.StringInput) MetricDescriptorOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MetricDescriptor {
+		return vs[0].(map[string]MetricDescriptor)[vs[1].(string)]
+	}).(MetricDescriptorOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MetricDescriptorOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorPtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorArrayOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMapOutput{})
 }

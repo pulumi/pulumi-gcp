@@ -296,6 +296,85 @@ func (i *DatabaseIAMMember) ToDatabaseIAMMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberOutput)
 }
 
+func (i *DatabaseIAMMember) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
+	return i.ToDatabaseIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *DatabaseIAMMember) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberPtrOutput)
+}
+
+type DatabaseIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput
+	ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput
+}
+
+type databaseIAMMemberPtrType DatabaseIAMMemberArgs
+
+func (*databaseIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIAMMember)(nil))
+}
+
+func (i *databaseIAMMemberPtrType) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
+	return i.ToDatabaseIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseIAMMemberPtrType) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberPtrOutput)
+}
+
+// DatabaseIAMMemberArrayInput is an input type that accepts DatabaseIAMMemberArray and DatabaseIAMMemberArrayOutput values.
+// You can construct a concrete instance of `DatabaseIAMMemberArrayInput` via:
+//
+//          DatabaseIAMMemberArray{ DatabaseIAMMemberArgs{...} }
+type DatabaseIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMMemberArrayOutput() DatabaseIAMMemberArrayOutput
+	ToDatabaseIAMMemberArrayOutputWithContext(context.Context) DatabaseIAMMemberArrayOutput
+}
+
+type DatabaseIAMMemberArray []DatabaseIAMMemberInput
+
+func (DatabaseIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatabaseIAMMember)(nil))
+}
+
+func (i DatabaseIAMMemberArray) ToDatabaseIAMMemberArrayOutput() DatabaseIAMMemberArrayOutput {
+	return i.ToDatabaseIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseIAMMemberArray) ToDatabaseIAMMemberArrayOutputWithContext(ctx context.Context) DatabaseIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberArrayOutput)
+}
+
+// DatabaseIAMMemberMapInput is an input type that accepts DatabaseIAMMemberMap and DatabaseIAMMemberMapOutput values.
+// You can construct a concrete instance of `DatabaseIAMMemberMapInput` via:
+//
+//          DatabaseIAMMemberMap{ "key": DatabaseIAMMemberArgs{...} }
+type DatabaseIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMMemberMapOutput() DatabaseIAMMemberMapOutput
+	ToDatabaseIAMMemberMapOutputWithContext(context.Context) DatabaseIAMMemberMapOutput
+}
+
+type DatabaseIAMMemberMap map[string]DatabaseIAMMemberInput
+
+func (DatabaseIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatabaseIAMMember)(nil))
+}
+
+func (i DatabaseIAMMemberMap) ToDatabaseIAMMemberMapOutput() DatabaseIAMMemberMapOutput {
+	return i.ToDatabaseIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i DatabaseIAMMemberMap) ToDatabaseIAMMemberMapOutputWithContext(ctx context.Context) DatabaseIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMMemberMapOutput)
+}
+
 type DatabaseIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -312,6 +391,75 @@ func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberOutputWithContext(ctx contex
 	return o
 }
 
+func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
+	return o.ToDatabaseIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseIAMMemberOutput) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
+	return o.ApplyT(func(v DatabaseIAMMember) *DatabaseIAMMember {
+		return &v
+	}).(DatabaseIAMMemberPtrOutput)
+}
+
+type DatabaseIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIAMMember)(nil))
+}
+
+func (o DatabaseIAMMemberPtrOutput) ToDatabaseIAMMemberPtrOutput() DatabaseIAMMemberPtrOutput {
+	return o
+}
+
+func (o DatabaseIAMMemberPtrOutput) ToDatabaseIAMMemberPtrOutputWithContext(ctx context.Context) DatabaseIAMMemberPtrOutput {
+	return o
+}
+
+type DatabaseIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseIAMMember)(nil))
+}
+
+func (o DatabaseIAMMemberArrayOutput) ToDatabaseIAMMemberArrayOutput() DatabaseIAMMemberArrayOutput {
+	return o
+}
+
+func (o DatabaseIAMMemberArrayOutput) ToDatabaseIAMMemberArrayOutputWithContext(ctx context.Context) DatabaseIAMMemberArrayOutput {
+	return o
+}
+
+func (o DatabaseIAMMemberArrayOutput) Index(i pulumi.IntInput) DatabaseIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseIAMMember {
+		return vs[0].([]DatabaseIAMMember)[vs[1].(int)]
+	}).(DatabaseIAMMemberOutput)
+}
+
+type DatabaseIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseIAMMember)(nil))
+}
+
+func (o DatabaseIAMMemberMapOutput) ToDatabaseIAMMemberMapOutput() DatabaseIAMMemberMapOutput {
+	return o
+}
+
+func (o DatabaseIAMMemberMapOutput) ToDatabaseIAMMemberMapOutputWithContext(ctx context.Context) DatabaseIAMMemberMapOutput {
+	return o
+}
+
+func (o DatabaseIAMMemberMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseIAMMember {
+		return vs[0].(map[string]DatabaseIAMMember)[vs[1].(string)]
+	}).(DatabaseIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseIAMMemberOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMMemberMapOutput{})
 }

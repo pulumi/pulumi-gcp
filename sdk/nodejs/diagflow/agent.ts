@@ -167,7 +167,8 @@ export class Agent extends pulumi.CustomResource {
     constructor(name: string, args: AgentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AgentArgs | AgentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AgentState | undefined;
             inputs["apiVersion"] = state ? state.apiVersion : undefined;
             inputs["avatarUri"] = state ? state.avatarUri : undefined;
@@ -184,13 +185,13 @@ export class Agent extends pulumi.CustomResource {
             inputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as AgentArgs | undefined;
-            if ((!args || args.defaultLanguageCode === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.defaultLanguageCode === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultLanguageCode'");
             }
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.timeZone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.timeZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'timeZone'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
@@ -207,12 +208,8 @@ export class Agent extends pulumi.CustomResource {
             inputs["timeZone"] = args ? args.timeZone : undefined;
             inputs["avatarUriBackend"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Agent.__pulumiType, name, inputs, opts);
     }

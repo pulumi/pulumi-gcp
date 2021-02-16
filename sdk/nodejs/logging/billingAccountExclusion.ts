@@ -96,7 +96,8 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
     constructor(name: string, args: BillingAccountExclusionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingAccountExclusionArgs | BillingAccountExclusionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BillingAccountExclusionState | undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -105,10 +106,10 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
         } else {
             const args = argsOrState as BillingAccountExclusionArgs | undefined;
-            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if ((!args || args.filter === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.filter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
@@ -117,12 +118,8 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BillingAccountExclusion.__pulumiType, name, inputs, opts);
     }

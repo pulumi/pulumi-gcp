@@ -168,7 +168,8 @@ export class Note extends pulumi.CustomResource {
     constructor(name: string, args: NoteArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NoteArgs | NoteState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NoteState | undefined;
             inputs["attestationAuthority"] = state ? state.attestationAuthority : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -183,7 +184,7 @@ export class Note extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as NoteArgs | undefined;
-            if ((!args || args.attestationAuthority === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.attestationAuthority === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestationAuthority'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
@@ -198,12 +199,8 @@ export class Note extends pulumi.CustomResource {
             inputs["kind"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Note.__pulumiType, name, inputs, opts);
     }

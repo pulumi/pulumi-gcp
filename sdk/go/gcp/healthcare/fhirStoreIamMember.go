@@ -279,6 +279,85 @@ func (i *FhirStoreIamMember) ToFhirStoreIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberOutput)
 }
 
+func (i *FhirStoreIamMember) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
+	return i.ToFhirStoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *FhirStoreIamMember) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberPtrOutput)
+}
+
+type FhirStoreIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput
+	ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput
+}
+
+type fhirStoreIamMemberPtrType FhirStoreIamMemberArgs
+
+func (*fhirStoreIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreIamMember)(nil))
+}
+
+func (i *fhirStoreIamMemberPtrType) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
+	return i.ToFhirStoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreIamMemberPtrType) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberPtrOutput)
+}
+
+// FhirStoreIamMemberArrayInput is an input type that accepts FhirStoreIamMemberArray and FhirStoreIamMemberArrayOutput values.
+// You can construct a concrete instance of `FhirStoreIamMemberArrayInput` via:
+//
+//          FhirStoreIamMemberArray{ FhirStoreIamMemberArgs{...} }
+type FhirStoreIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamMemberArrayOutput() FhirStoreIamMemberArrayOutput
+	ToFhirStoreIamMemberArrayOutputWithContext(context.Context) FhirStoreIamMemberArrayOutput
+}
+
+type FhirStoreIamMemberArray []FhirStoreIamMemberInput
+
+func (FhirStoreIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FhirStoreIamMember)(nil))
+}
+
+func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutput() FhirStoreIamMemberArrayOutput {
+	return i.ToFhirStoreIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i FhirStoreIamMemberArray) ToFhirStoreIamMemberArrayOutputWithContext(ctx context.Context) FhirStoreIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberArrayOutput)
+}
+
+// FhirStoreIamMemberMapInput is an input type that accepts FhirStoreIamMemberMap and FhirStoreIamMemberMapOutput values.
+// You can construct a concrete instance of `FhirStoreIamMemberMapInput` via:
+//
+//          FhirStoreIamMemberMap{ "key": FhirStoreIamMemberArgs{...} }
+type FhirStoreIamMemberMapInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamMemberMapOutput() FhirStoreIamMemberMapOutput
+	ToFhirStoreIamMemberMapOutputWithContext(context.Context) FhirStoreIamMemberMapOutput
+}
+
+type FhirStoreIamMemberMap map[string]FhirStoreIamMemberInput
+
+func (FhirStoreIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FhirStoreIamMember)(nil))
+}
+
+func (i FhirStoreIamMemberMap) ToFhirStoreIamMemberMapOutput() FhirStoreIamMemberMapOutput {
+	return i.ToFhirStoreIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i FhirStoreIamMemberMap) ToFhirStoreIamMemberMapOutputWithContext(ctx context.Context) FhirStoreIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamMemberMapOutput)
+}
+
 type FhirStoreIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -295,6 +374,75 @@ func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberOutputWithContext(ctx cont
 	return o
 }
 
+func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
+	return o.ToFhirStoreIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreIamMemberOutput) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
+	return o.ApplyT(func(v FhirStoreIamMember) *FhirStoreIamMember {
+		return &v
+	}).(FhirStoreIamMemberPtrOutput)
+}
+
+type FhirStoreIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FhirStoreIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreIamMember)(nil))
+}
+
+func (o FhirStoreIamMemberPtrOutput) ToFhirStoreIamMemberPtrOutput() FhirStoreIamMemberPtrOutput {
+	return o
+}
+
+func (o FhirStoreIamMemberPtrOutput) ToFhirStoreIamMemberPtrOutputWithContext(ctx context.Context) FhirStoreIamMemberPtrOutput {
+	return o
+}
+
+type FhirStoreIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStoreIamMember)(nil))
+}
+
+func (o FhirStoreIamMemberArrayOutput) ToFhirStoreIamMemberArrayOutput() FhirStoreIamMemberArrayOutput {
+	return o
+}
+
+func (o FhirStoreIamMemberArrayOutput) ToFhirStoreIamMemberArrayOutputWithContext(ctx context.Context) FhirStoreIamMemberArrayOutput {
+	return o
+}
+
+func (o FhirStoreIamMemberArrayOutput) Index(i pulumi.IntInput) FhirStoreIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreIamMember {
+		return vs[0].([]FhirStoreIamMember)[vs[1].(int)]
+	}).(FhirStoreIamMemberOutput)
+}
+
+type FhirStoreIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FhirStoreIamMember)(nil))
+}
+
+func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutput() FhirStoreIamMemberMapOutput {
+	return o
+}
+
+func (o FhirStoreIamMemberMapOutput) ToFhirStoreIamMemberMapOutputWithContext(ctx context.Context) FhirStoreIamMemberMapOutput {
+	return o
+}
+
+func (o FhirStoreIamMemberMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStoreIamMember {
+		return vs[0].(map[string]FhirStoreIamMember)[vs[1].(string)]
+	}).(FhirStoreIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FhirStoreIamMemberOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamMemberMapOutput{})
 }

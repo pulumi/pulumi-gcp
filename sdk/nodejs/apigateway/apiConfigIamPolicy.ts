@@ -88,7 +88,8 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: ApiConfigIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiConfigIamPolicyArgs | ApiConfigIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApiConfigIamPolicyState | undefined;
             inputs["api"] = state ? state.api : undefined;
             inputs["apiConfig"] = state ? state.apiConfig : undefined;
@@ -97,13 +98,13 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ApiConfigIamPolicyArgs | undefined;
-            if ((!args || args.api === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.api === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'api'");
             }
-            if ((!args || args.apiConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.apiConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiConfig'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["api"] = args ? args.api : undefined;
@@ -112,12 +113,8 @@ export class ApiConfigIamPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApiConfigIamPolicy.__pulumiType, name, inputs, opts);
     }

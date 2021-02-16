@@ -86,7 +86,8 @@ export class WebBackendServiceIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: WebBackendServiceIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebBackendServiceIamPolicyArgs | WebBackendServiceIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WebBackendServiceIamPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
@@ -94,10 +95,10 @@ export class WebBackendServiceIamPolicy extends pulumi.CustomResource {
             inputs["webBackendService"] = state ? state.webBackendService : undefined;
         } else {
             const args = argsOrState as WebBackendServiceIamPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.webBackendService === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.webBackendService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'webBackendService'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;
@@ -105,12 +106,8 @@ export class WebBackendServiceIamPolicy extends pulumi.CustomResource {
             inputs["webBackendService"] = args ? args.webBackendService : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WebBackendServiceIamPolicy.__pulumiType, name, inputs, opts);
     }

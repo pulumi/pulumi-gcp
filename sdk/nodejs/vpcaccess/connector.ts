@@ -122,7 +122,8 @@ export class Connector extends pulumi.CustomResource {
     constructor(name: string, args: ConnectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectorArgs | ConnectorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
             inputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             inputs["maxThroughput"] = state ? state.maxThroughput : undefined;
@@ -135,10 +136,10 @@ export class Connector extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            if ((!args || args.ipCidrRange === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ipCidrRange === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ipCidrRange'");
             }
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
@@ -151,12 +152,8 @@ export class Connector extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Connector.__pulumiType, name, inputs, opts);
     }

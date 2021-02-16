@@ -111,7 +111,8 @@ export class EntryGroup extends pulumi.CustomResource {
     constructor(name: string, args: EntryGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EntryGroupArgs | EntryGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EntryGroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -121,7 +122,7 @@ export class EntryGroup extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as EntryGroupArgs | undefined;
-            if ((!args || args.entryGroupId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entryGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryGroupId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -131,12 +132,8 @@ export class EntryGroup extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EntryGroup.__pulumiType, name, inputs, opts);
     }

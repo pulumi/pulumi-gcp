@@ -104,7 +104,8 @@ export class SecretVersion extends pulumi.CustomResource {
     constructor(name: string, args: SecretVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretVersionArgs | SecretVersionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecretVersionState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["destroyTime"] = state ? state.destroyTime : undefined;
@@ -114,7 +115,7 @@ export class SecretVersion extends pulumi.CustomResource {
             inputs["secretData"] = state ? state.secretData : undefined;
         } else {
             const args = argsOrState as SecretVersionArgs | undefined;
-            if ((!args || args.secret === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.secret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;
@@ -124,12 +125,8 @@ export class SecretVersion extends pulumi.CustomResource {
             inputs["destroyTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SecretVersion.__pulumiType, name, inputs, opts);
     }

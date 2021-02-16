@@ -356,6 +356,85 @@ func (i *FolderSink) ToFolderSinkOutputWithContext(ctx context.Context) FolderSi
 	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkOutput)
 }
 
+func (i *FolderSink) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
+	return i.ToFolderSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *FolderSink) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkPtrOutput)
+}
+
+type FolderSinkPtrInput interface {
+	pulumi.Input
+
+	ToFolderSinkPtrOutput() FolderSinkPtrOutput
+	ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput
+}
+
+type folderSinkPtrType FolderSinkArgs
+
+func (*folderSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderSink)(nil))
+}
+
+func (i *folderSinkPtrType) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
+	return i.ToFolderSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *folderSinkPtrType) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkPtrOutput)
+}
+
+// FolderSinkArrayInput is an input type that accepts FolderSinkArray and FolderSinkArrayOutput values.
+// You can construct a concrete instance of `FolderSinkArrayInput` via:
+//
+//          FolderSinkArray{ FolderSinkArgs{...} }
+type FolderSinkArrayInput interface {
+	pulumi.Input
+
+	ToFolderSinkArrayOutput() FolderSinkArrayOutput
+	ToFolderSinkArrayOutputWithContext(context.Context) FolderSinkArrayOutput
+}
+
+type FolderSinkArray []FolderSinkInput
+
+func (FolderSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FolderSink)(nil))
+}
+
+func (i FolderSinkArray) ToFolderSinkArrayOutput() FolderSinkArrayOutput {
+	return i.ToFolderSinkArrayOutputWithContext(context.Background())
+}
+
+func (i FolderSinkArray) ToFolderSinkArrayOutputWithContext(ctx context.Context) FolderSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkArrayOutput)
+}
+
+// FolderSinkMapInput is an input type that accepts FolderSinkMap and FolderSinkMapOutput values.
+// You can construct a concrete instance of `FolderSinkMapInput` via:
+//
+//          FolderSinkMap{ "key": FolderSinkArgs{...} }
+type FolderSinkMapInput interface {
+	pulumi.Input
+
+	ToFolderSinkMapOutput() FolderSinkMapOutput
+	ToFolderSinkMapOutputWithContext(context.Context) FolderSinkMapOutput
+}
+
+type FolderSinkMap map[string]FolderSinkInput
+
+func (FolderSinkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FolderSink)(nil))
+}
+
+func (i FolderSinkMap) ToFolderSinkMapOutput() FolderSinkMapOutput {
+	return i.ToFolderSinkMapOutputWithContext(context.Background())
+}
+
+func (i FolderSinkMap) ToFolderSinkMapOutputWithContext(ctx context.Context) FolderSinkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderSinkMapOutput)
+}
+
 type FolderSinkOutput struct {
 	*pulumi.OutputState
 }
@@ -372,6 +451,75 @@ func (o FolderSinkOutput) ToFolderSinkOutputWithContext(ctx context.Context) Fol
 	return o
 }
 
+func (o FolderSinkOutput) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
+	return o.ToFolderSinkPtrOutputWithContext(context.Background())
+}
+
+func (o FolderSinkOutput) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
+	return o.ApplyT(func(v FolderSink) *FolderSink {
+		return &v
+	}).(FolderSinkPtrOutput)
+}
+
+type FolderSinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FolderSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderSink)(nil))
+}
+
+func (o FolderSinkPtrOutput) ToFolderSinkPtrOutput() FolderSinkPtrOutput {
+	return o
+}
+
+func (o FolderSinkPtrOutput) ToFolderSinkPtrOutputWithContext(ctx context.Context) FolderSinkPtrOutput {
+	return o
+}
+
+type FolderSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderSink)(nil))
+}
+
+func (o FolderSinkArrayOutput) ToFolderSinkArrayOutput() FolderSinkArrayOutput {
+	return o
+}
+
+func (o FolderSinkArrayOutput) ToFolderSinkArrayOutputWithContext(ctx context.Context) FolderSinkArrayOutput {
+	return o
+}
+
+func (o FolderSinkArrayOutput) Index(i pulumi.IntInput) FolderSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderSink {
+		return vs[0].([]FolderSink)[vs[1].(int)]
+	}).(FolderSinkOutput)
+}
+
+type FolderSinkMapOutput struct{ *pulumi.OutputState }
+
+func (FolderSinkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FolderSink)(nil))
+}
+
+func (o FolderSinkMapOutput) ToFolderSinkMapOutput() FolderSinkMapOutput {
+	return o
+}
+
+func (o FolderSinkMapOutput) ToFolderSinkMapOutputWithContext(ctx context.Context) FolderSinkMapOutput {
+	return o
+}
+
+func (o FolderSinkMapOutput) MapIndex(k pulumi.StringInput) FolderSinkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FolderSink {
+		return vs[0].(map[string]FolderSink)[vs[1].(string)]
+	}).(FolderSinkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FolderSinkOutput{})
+	pulumi.RegisterOutputType(FolderSinkPtrOutput{})
+	pulumi.RegisterOutputType(FolderSinkArrayOutput{})
+	pulumi.RegisterOutputType(FolderSinkMapOutput{})
 }

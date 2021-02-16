@@ -116,6 +116,85 @@ func (i *AuthorityIamBinding) ToAuthorityIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamBindingOutput)
 }
 
+func (i *AuthorityIamBinding) ToAuthorityIamBindingPtrOutput() AuthorityIamBindingPtrOutput {
+	return i.ToAuthorityIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *AuthorityIamBinding) ToAuthorityIamBindingPtrOutputWithContext(ctx context.Context) AuthorityIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamBindingPtrOutput)
+}
+
+type AuthorityIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToAuthorityIamBindingPtrOutput() AuthorityIamBindingPtrOutput
+	ToAuthorityIamBindingPtrOutputWithContext(ctx context.Context) AuthorityIamBindingPtrOutput
+}
+
+type authorityIamBindingPtrType AuthorityIamBindingArgs
+
+func (*authorityIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityIamBinding)(nil))
+}
+
+func (i *authorityIamBindingPtrType) ToAuthorityIamBindingPtrOutput() AuthorityIamBindingPtrOutput {
+	return i.ToAuthorityIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *authorityIamBindingPtrType) ToAuthorityIamBindingPtrOutputWithContext(ctx context.Context) AuthorityIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamBindingPtrOutput)
+}
+
+// AuthorityIamBindingArrayInput is an input type that accepts AuthorityIamBindingArray and AuthorityIamBindingArrayOutput values.
+// You can construct a concrete instance of `AuthorityIamBindingArrayInput` via:
+//
+//          AuthorityIamBindingArray{ AuthorityIamBindingArgs{...} }
+type AuthorityIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToAuthorityIamBindingArrayOutput() AuthorityIamBindingArrayOutput
+	ToAuthorityIamBindingArrayOutputWithContext(context.Context) AuthorityIamBindingArrayOutput
+}
+
+type AuthorityIamBindingArray []AuthorityIamBindingInput
+
+func (AuthorityIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AuthorityIamBinding)(nil))
+}
+
+func (i AuthorityIamBindingArray) ToAuthorityIamBindingArrayOutput() AuthorityIamBindingArrayOutput {
+	return i.ToAuthorityIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i AuthorityIamBindingArray) ToAuthorityIamBindingArrayOutputWithContext(ctx context.Context) AuthorityIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamBindingArrayOutput)
+}
+
+// AuthorityIamBindingMapInput is an input type that accepts AuthorityIamBindingMap and AuthorityIamBindingMapOutput values.
+// You can construct a concrete instance of `AuthorityIamBindingMapInput` via:
+//
+//          AuthorityIamBindingMap{ "key": AuthorityIamBindingArgs{...} }
+type AuthorityIamBindingMapInput interface {
+	pulumi.Input
+
+	ToAuthorityIamBindingMapOutput() AuthorityIamBindingMapOutput
+	ToAuthorityIamBindingMapOutputWithContext(context.Context) AuthorityIamBindingMapOutput
+}
+
+type AuthorityIamBindingMap map[string]AuthorityIamBindingInput
+
+func (AuthorityIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AuthorityIamBinding)(nil))
+}
+
+func (i AuthorityIamBindingMap) ToAuthorityIamBindingMapOutput() AuthorityIamBindingMapOutput {
+	return i.ToAuthorityIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i AuthorityIamBindingMap) ToAuthorityIamBindingMapOutputWithContext(ctx context.Context) AuthorityIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuthorityIamBindingMapOutput)
+}
+
 type AuthorityIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -132,6 +211,75 @@ func (o AuthorityIamBindingOutput) ToAuthorityIamBindingOutputWithContext(ctx co
 	return o
 }
 
+func (o AuthorityIamBindingOutput) ToAuthorityIamBindingPtrOutput() AuthorityIamBindingPtrOutput {
+	return o.ToAuthorityIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorityIamBindingOutput) ToAuthorityIamBindingPtrOutputWithContext(ctx context.Context) AuthorityIamBindingPtrOutput {
+	return o.ApplyT(func(v AuthorityIamBinding) *AuthorityIamBinding {
+		return &v
+	}).(AuthorityIamBindingPtrOutput)
+}
+
+type AuthorityIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AuthorityIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorityIamBinding)(nil))
+}
+
+func (o AuthorityIamBindingPtrOutput) ToAuthorityIamBindingPtrOutput() AuthorityIamBindingPtrOutput {
+	return o
+}
+
+func (o AuthorityIamBindingPtrOutput) ToAuthorityIamBindingPtrOutputWithContext(ctx context.Context) AuthorityIamBindingPtrOutput {
+	return o
+}
+
+type AuthorityIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (AuthorityIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuthorityIamBinding)(nil))
+}
+
+func (o AuthorityIamBindingArrayOutput) ToAuthorityIamBindingArrayOutput() AuthorityIamBindingArrayOutput {
+	return o
+}
+
+func (o AuthorityIamBindingArrayOutput) ToAuthorityIamBindingArrayOutputWithContext(ctx context.Context) AuthorityIamBindingArrayOutput {
+	return o
+}
+
+func (o AuthorityIamBindingArrayOutput) Index(i pulumi.IntInput) AuthorityIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuthorityIamBinding {
+		return vs[0].([]AuthorityIamBinding)[vs[1].(int)]
+	}).(AuthorityIamBindingOutput)
+}
+
+type AuthorityIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (AuthorityIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AuthorityIamBinding)(nil))
+}
+
+func (o AuthorityIamBindingMapOutput) ToAuthorityIamBindingMapOutput() AuthorityIamBindingMapOutput {
+	return o
+}
+
+func (o AuthorityIamBindingMapOutput) ToAuthorityIamBindingMapOutputWithContext(ctx context.Context) AuthorityIamBindingMapOutput {
+	return o
+}
+
+func (o AuthorityIamBindingMapOutput) MapIndex(k pulumi.StringInput) AuthorityIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AuthorityIamBinding {
+		return vs[0].(map[string]AuthorityIamBinding)[vs[1].(string)]
+	}).(AuthorityIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuthorityIamBindingOutput{})
+	pulumi.RegisterOutputType(AuthorityIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(AuthorityIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(AuthorityIamBindingMapOutput{})
 }

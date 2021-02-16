@@ -104,7 +104,8 @@ export class DatasetAccess extends pulumi.CustomResource {
     constructor(name: string, args: DatasetAccessArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatasetAccessArgs | DatasetAccessState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatasetAccessState | undefined;
             inputs["apiUpdatedMember"] = state ? state.apiUpdatedMember : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
@@ -118,7 +119,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             inputs["view"] = state ? state.view : undefined;
         } else {
             const args = argsOrState as DatasetAccessArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
             inputs["datasetId"] = args ? args.datasetId : undefined;
@@ -132,12 +133,8 @@ export class DatasetAccess extends pulumi.CustomResource {
             inputs["view"] = args ? args.view : undefined;
             inputs["apiUpdatedMember"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DatasetAccess.__pulumiType, name, inputs, opts);
     }

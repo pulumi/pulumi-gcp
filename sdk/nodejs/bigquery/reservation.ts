@@ -109,7 +109,8 @@ export class Reservation extends pulumi.CustomResource {
     constructor(name: string, args: ReservationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ReservationArgs | ReservationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ReservationState | undefined;
             inputs["ignoreIdleSlots"] = state ? state.ignoreIdleSlots : undefined;
             inputs["location"] = state ? state.location : undefined;
@@ -118,7 +119,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["slotCapacity"] = state ? state.slotCapacity : undefined;
         } else {
             const args = argsOrState as ReservationArgs | undefined;
-            if ((!args || args.slotCapacity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.slotCapacity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'slotCapacity'");
             }
             inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
@@ -127,12 +128,8 @@ export class Reservation extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["slotCapacity"] = args ? args.slotCapacity : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Reservation.__pulumiType, name, inputs, opts);
     }

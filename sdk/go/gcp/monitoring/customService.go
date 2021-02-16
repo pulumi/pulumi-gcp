@@ -191,6 +191,85 @@ func (i *CustomService) ToCustomServiceOutputWithContext(ctx context.Context) Cu
 	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceOutput)
 }
 
+func (i *CustomService) ToCustomServicePtrOutput() CustomServicePtrOutput {
+	return i.ToCustomServicePtrOutputWithContext(context.Background())
+}
+
+func (i *CustomService) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServicePtrOutput)
+}
+
+type CustomServicePtrInput interface {
+	pulumi.Input
+
+	ToCustomServicePtrOutput() CustomServicePtrOutput
+	ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput
+}
+
+type customServicePtrType CustomServiceArgs
+
+func (*customServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomService)(nil))
+}
+
+func (i *customServicePtrType) ToCustomServicePtrOutput() CustomServicePtrOutput {
+	return i.ToCustomServicePtrOutputWithContext(context.Background())
+}
+
+func (i *customServicePtrType) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServicePtrOutput)
+}
+
+// CustomServiceArrayInput is an input type that accepts CustomServiceArray and CustomServiceArrayOutput values.
+// You can construct a concrete instance of `CustomServiceArrayInput` via:
+//
+//          CustomServiceArray{ CustomServiceArgs{...} }
+type CustomServiceArrayInput interface {
+	pulumi.Input
+
+	ToCustomServiceArrayOutput() CustomServiceArrayOutput
+	ToCustomServiceArrayOutputWithContext(context.Context) CustomServiceArrayOutput
+}
+
+type CustomServiceArray []CustomServiceInput
+
+func (CustomServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CustomService)(nil))
+}
+
+func (i CustomServiceArray) ToCustomServiceArrayOutput() CustomServiceArrayOutput {
+	return i.ToCustomServiceArrayOutputWithContext(context.Background())
+}
+
+func (i CustomServiceArray) ToCustomServiceArrayOutputWithContext(ctx context.Context) CustomServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceArrayOutput)
+}
+
+// CustomServiceMapInput is an input type that accepts CustomServiceMap and CustomServiceMapOutput values.
+// You can construct a concrete instance of `CustomServiceMapInput` via:
+//
+//          CustomServiceMap{ "key": CustomServiceArgs{...} }
+type CustomServiceMapInput interface {
+	pulumi.Input
+
+	ToCustomServiceMapOutput() CustomServiceMapOutput
+	ToCustomServiceMapOutputWithContext(context.Context) CustomServiceMapOutput
+}
+
+type CustomServiceMap map[string]CustomServiceInput
+
+func (CustomServiceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CustomService)(nil))
+}
+
+func (i CustomServiceMap) ToCustomServiceMapOutput() CustomServiceMapOutput {
+	return i.ToCustomServiceMapOutputWithContext(context.Background())
+}
+
+func (i CustomServiceMap) ToCustomServiceMapOutputWithContext(ctx context.Context) CustomServiceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomServiceMapOutput)
+}
+
 type CustomServiceOutput struct {
 	*pulumi.OutputState
 }
@@ -207,6 +286,75 @@ func (o CustomServiceOutput) ToCustomServiceOutputWithContext(ctx context.Contex
 	return o
 }
 
+func (o CustomServiceOutput) ToCustomServicePtrOutput() CustomServicePtrOutput {
+	return o.ToCustomServicePtrOutputWithContext(context.Background())
+}
+
+func (o CustomServiceOutput) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
+	return o.ApplyT(func(v CustomService) *CustomService {
+		return &v
+	}).(CustomServicePtrOutput)
+}
+
+type CustomServicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CustomServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomService)(nil))
+}
+
+func (o CustomServicePtrOutput) ToCustomServicePtrOutput() CustomServicePtrOutput {
+	return o
+}
+
+func (o CustomServicePtrOutput) ToCustomServicePtrOutputWithContext(ctx context.Context) CustomServicePtrOutput {
+	return o
+}
+
+type CustomServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomService)(nil))
+}
+
+func (o CustomServiceArrayOutput) ToCustomServiceArrayOutput() CustomServiceArrayOutput {
+	return o
+}
+
+func (o CustomServiceArrayOutput) ToCustomServiceArrayOutputWithContext(ctx context.Context) CustomServiceArrayOutput {
+	return o
+}
+
+func (o CustomServiceArrayOutput) Index(i pulumi.IntInput) CustomServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomService {
+		return vs[0].([]CustomService)[vs[1].(int)]
+	}).(CustomServiceOutput)
+}
+
+type CustomServiceMapOutput struct{ *pulumi.OutputState }
+
+func (CustomServiceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CustomService)(nil))
+}
+
+func (o CustomServiceMapOutput) ToCustomServiceMapOutput() CustomServiceMapOutput {
+	return o
+}
+
+func (o CustomServiceMapOutput) ToCustomServiceMapOutputWithContext(ctx context.Context) CustomServiceMapOutput {
+	return o
+}
+
+func (o CustomServiceMapOutput) MapIndex(k pulumi.StringInput) CustomServiceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CustomService {
+		return vs[0].(map[string]CustomService)[vs[1].(string)]
+	}).(CustomServiceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CustomServiceOutput{})
+	pulumi.RegisterOutputType(CustomServicePtrOutput{})
+	pulumi.RegisterOutputType(CustomServiceArrayOutput{})
+	pulumi.RegisterOutputType(CustomServiceMapOutput{})
 }

@@ -114,7 +114,8 @@ export class ProjectSink extends pulumi.CustomResource {
     constructor(name: string, args: ProjectSinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectSinkArgs | ProjectSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ProjectSinkState | undefined;
             inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -128,7 +129,7 @@ export class ProjectSink extends pulumi.CustomResource {
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as ProjectSinkArgs | undefined;
-            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
@@ -142,12 +143,8 @@ export class ProjectSink extends pulumi.CustomResource {
             inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ProjectSink.__pulumiType, name, inputs, opts);
     }

@@ -284,7 +284,8 @@ export class GuestPolicies extends pulumi.CustomResource {
     constructor(name: string, args: GuestPoliciesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GuestPoliciesArgs | GuestPoliciesState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GuestPoliciesState | undefined;
             inputs["assignment"] = state ? state.assignment : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -299,10 +300,10 @@ export class GuestPolicies extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as GuestPoliciesArgs | undefined;
-            if ((!args || args.assignment === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.assignment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'assignment'");
             }
-            if ((!args || args.guestPolicyId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.guestPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'guestPolicyId'");
             }
             inputs["assignment"] = args ? args.assignment : undefined;
@@ -317,12 +318,8 @@ export class GuestPolicies extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GuestPolicies.__pulumiType, name, inputs, opts);
     }

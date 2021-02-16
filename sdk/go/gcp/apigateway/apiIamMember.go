@@ -172,6 +172,85 @@ func (i *ApiIamMember) ToApiIamMemberOutputWithContext(ctx context.Context) ApiI
 	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberOutput)
 }
 
+func (i *ApiIamMember) ToApiIamMemberPtrOutput() ApiIamMemberPtrOutput {
+	return i.ToApiIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *ApiIamMember) ToApiIamMemberPtrOutputWithContext(ctx context.Context) ApiIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberPtrOutput)
+}
+
+type ApiIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToApiIamMemberPtrOutput() ApiIamMemberPtrOutput
+	ToApiIamMemberPtrOutputWithContext(ctx context.Context) ApiIamMemberPtrOutput
+}
+
+type apiIamMemberPtrType ApiIamMemberArgs
+
+func (*apiIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiIamMember)(nil))
+}
+
+func (i *apiIamMemberPtrType) ToApiIamMemberPtrOutput() ApiIamMemberPtrOutput {
+	return i.ToApiIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *apiIamMemberPtrType) ToApiIamMemberPtrOutputWithContext(ctx context.Context) ApiIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberPtrOutput)
+}
+
+// ApiIamMemberArrayInput is an input type that accepts ApiIamMemberArray and ApiIamMemberArrayOutput values.
+// You can construct a concrete instance of `ApiIamMemberArrayInput` via:
+//
+//          ApiIamMemberArray{ ApiIamMemberArgs{...} }
+type ApiIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToApiIamMemberArrayOutput() ApiIamMemberArrayOutput
+	ToApiIamMemberArrayOutputWithContext(context.Context) ApiIamMemberArrayOutput
+}
+
+type ApiIamMemberArray []ApiIamMemberInput
+
+func (ApiIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApiIamMember)(nil))
+}
+
+func (i ApiIamMemberArray) ToApiIamMemberArrayOutput() ApiIamMemberArrayOutput {
+	return i.ToApiIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i ApiIamMemberArray) ToApiIamMemberArrayOutputWithContext(ctx context.Context) ApiIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberArrayOutput)
+}
+
+// ApiIamMemberMapInput is an input type that accepts ApiIamMemberMap and ApiIamMemberMapOutput values.
+// You can construct a concrete instance of `ApiIamMemberMapInput` via:
+//
+//          ApiIamMemberMap{ "key": ApiIamMemberArgs{...} }
+type ApiIamMemberMapInput interface {
+	pulumi.Input
+
+	ToApiIamMemberMapOutput() ApiIamMemberMapOutput
+	ToApiIamMemberMapOutputWithContext(context.Context) ApiIamMemberMapOutput
+}
+
+type ApiIamMemberMap map[string]ApiIamMemberInput
+
+func (ApiIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApiIamMember)(nil))
+}
+
+func (i ApiIamMemberMap) ToApiIamMemberMapOutput() ApiIamMemberMapOutput {
+	return i.ToApiIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i ApiIamMemberMap) ToApiIamMemberMapOutputWithContext(ctx context.Context) ApiIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiIamMemberMapOutput)
+}
+
 type ApiIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -188,6 +267,75 @@ func (o ApiIamMemberOutput) ToApiIamMemberOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ApiIamMemberOutput) ToApiIamMemberPtrOutput() ApiIamMemberPtrOutput {
+	return o.ToApiIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o ApiIamMemberOutput) ToApiIamMemberPtrOutputWithContext(ctx context.Context) ApiIamMemberPtrOutput {
+	return o.ApplyT(func(v ApiIamMember) *ApiIamMember {
+		return &v
+	}).(ApiIamMemberPtrOutput)
+}
+
+type ApiIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiIamMember)(nil))
+}
+
+func (o ApiIamMemberPtrOutput) ToApiIamMemberPtrOutput() ApiIamMemberPtrOutput {
+	return o
+}
+
+func (o ApiIamMemberPtrOutput) ToApiIamMemberPtrOutputWithContext(ctx context.Context) ApiIamMemberPtrOutput {
+	return o
+}
+
+type ApiIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiIamMember)(nil))
+}
+
+func (o ApiIamMemberArrayOutput) ToApiIamMemberArrayOutput() ApiIamMemberArrayOutput {
+	return o
+}
+
+func (o ApiIamMemberArrayOutput) ToApiIamMemberArrayOutputWithContext(ctx context.Context) ApiIamMemberArrayOutput {
+	return o
+}
+
+func (o ApiIamMemberArrayOutput) Index(i pulumi.IntInput) ApiIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiIamMember {
+		return vs[0].([]ApiIamMember)[vs[1].(int)]
+	}).(ApiIamMemberOutput)
+}
+
+type ApiIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (ApiIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApiIamMember)(nil))
+}
+
+func (o ApiIamMemberMapOutput) ToApiIamMemberMapOutput() ApiIamMemberMapOutput {
+	return o
+}
+
+func (o ApiIamMemberMapOutput) ToApiIamMemberMapOutputWithContext(ctx context.Context) ApiIamMemberMapOutput {
+	return o
+}
+
+func (o ApiIamMemberMapOutput) MapIndex(k pulumi.StringInput) ApiIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiIamMember {
+		return vs[0].(map[string]ApiIamMember)[vs[1].(string)]
+	}).(ApiIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiIamMemberOutput{})
+	pulumi.RegisterOutputType(ApiIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(ApiIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(ApiIamMemberMapOutput{})
 }

@@ -202,6 +202,85 @@ func (i *ConsentStore) ToConsentStoreOutputWithContext(ctx context.Context) Cons
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreOutput)
 }
 
+func (i *ConsentStore) ToConsentStorePtrOutput() ConsentStorePtrOutput {
+	return i.ToConsentStorePtrOutputWithContext(context.Background())
+}
+
+func (i *ConsentStore) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStorePtrOutput)
+}
+
+type ConsentStorePtrInput interface {
+	pulumi.Input
+
+	ToConsentStorePtrOutput() ConsentStorePtrOutput
+	ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput
+}
+
+type consentStorePtrType ConsentStoreArgs
+
+func (*consentStorePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStore)(nil))
+}
+
+func (i *consentStorePtrType) ToConsentStorePtrOutput() ConsentStorePtrOutput {
+	return i.ToConsentStorePtrOutputWithContext(context.Background())
+}
+
+func (i *consentStorePtrType) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStorePtrOutput)
+}
+
+// ConsentStoreArrayInput is an input type that accepts ConsentStoreArray and ConsentStoreArrayOutput values.
+// You can construct a concrete instance of `ConsentStoreArrayInput` via:
+//
+//          ConsentStoreArray{ ConsentStoreArgs{...} }
+type ConsentStoreArrayInput interface {
+	pulumi.Input
+
+	ToConsentStoreArrayOutput() ConsentStoreArrayOutput
+	ToConsentStoreArrayOutputWithContext(context.Context) ConsentStoreArrayOutput
+}
+
+type ConsentStoreArray []ConsentStoreInput
+
+func (ConsentStoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ConsentStore)(nil))
+}
+
+func (i ConsentStoreArray) ToConsentStoreArrayOutput() ConsentStoreArrayOutput {
+	return i.ToConsentStoreArrayOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreArray) ToConsentStoreArrayOutputWithContext(ctx context.Context) ConsentStoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreArrayOutput)
+}
+
+// ConsentStoreMapInput is an input type that accepts ConsentStoreMap and ConsentStoreMapOutput values.
+// You can construct a concrete instance of `ConsentStoreMapInput` via:
+//
+//          ConsentStoreMap{ "key": ConsentStoreArgs{...} }
+type ConsentStoreMapInput interface {
+	pulumi.Input
+
+	ToConsentStoreMapOutput() ConsentStoreMapOutput
+	ToConsentStoreMapOutputWithContext(context.Context) ConsentStoreMapOutput
+}
+
+type ConsentStoreMap map[string]ConsentStoreInput
+
+func (ConsentStoreMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ConsentStore)(nil))
+}
+
+func (i ConsentStoreMap) ToConsentStoreMapOutput() ConsentStoreMapOutput {
+	return i.ToConsentStoreMapOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreMap) ToConsentStoreMapOutputWithContext(ctx context.Context) ConsentStoreMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreMapOutput)
+}
+
 type ConsentStoreOutput struct {
 	*pulumi.OutputState
 }
@@ -218,6 +297,75 @@ func (o ConsentStoreOutput) ToConsentStoreOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o ConsentStoreOutput) ToConsentStorePtrOutput() ConsentStorePtrOutput {
+	return o.ToConsentStorePtrOutputWithContext(context.Background())
+}
+
+func (o ConsentStoreOutput) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
+	return o.ApplyT(func(v ConsentStore) *ConsentStore {
+		return &v
+	}).(ConsentStorePtrOutput)
+}
+
+type ConsentStorePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConsentStorePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStore)(nil))
+}
+
+func (o ConsentStorePtrOutput) ToConsentStorePtrOutput() ConsentStorePtrOutput {
+	return o
+}
+
+func (o ConsentStorePtrOutput) ToConsentStorePtrOutputWithContext(ctx context.Context) ConsentStorePtrOutput {
+	return o
+}
+
+type ConsentStoreArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsentStore)(nil))
+}
+
+func (o ConsentStoreArrayOutput) ToConsentStoreArrayOutput() ConsentStoreArrayOutput {
+	return o
+}
+
+func (o ConsentStoreArrayOutput) ToConsentStoreArrayOutputWithContext(ctx context.Context) ConsentStoreArrayOutput {
+	return o
+}
+
+func (o ConsentStoreArrayOutput) Index(i pulumi.IntInput) ConsentStoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsentStore {
+		return vs[0].([]ConsentStore)[vs[1].(int)]
+	}).(ConsentStoreOutput)
+}
+
+type ConsentStoreMapOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ConsentStore)(nil))
+}
+
+func (o ConsentStoreMapOutput) ToConsentStoreMapOutput() ConsentStoreMapOutput {
+	return o
+}
+
+func (o ConsentStoreMapOutput) ToConsentStoreMapOutputWithContext(ctx context.Context) ConsentStoreMapOutput {
+	return o
+}
+
+func (o ConsentStoreMapOutput) MapIndex(k pulumi.StringInput) ConsentStoreOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConsentStore {
+		return vs[0].(map[string]ConsentStore)[vs[1].(string)]
+	}).(ConsentStoreOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConsentStoreOutput{})
+	pulumi.RegisterOutputType(ConsentStorePtrOutput{})
+	pulumi.RegisterOutputType(ConsentStoreArrayOutput{})
+	pulumi.RegisterOutputType(ConsentStoreMapOutput{})
 }

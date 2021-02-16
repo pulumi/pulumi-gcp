@@ -101,7 +101,8 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
     constructor(name: string, args: SubnetworkIAMBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SubnetworkIAMBindingArgs | SubnetworkIAMBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SubnetworkIAMBindingState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -112,13 +113,13 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             inputs["subnetwork"] = state ? state.subnetwork : undefined;
         } else {
             const args = argsOrState as SubnetworkIAMBindingArgs | undefined;
-            if ((!args || args.members === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.members === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'members'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.subnetwork === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.subnetwork === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subnetwork'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -129,12 +130,8 @@ export class SubnetworkIAMBinding extends pulumi.CustomResource {
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(SubnetworkIAMBinding.__pulumiType, name, inputs, opts);
     }

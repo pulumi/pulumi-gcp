@@ -95,7 +95,8 @@ export class Brand extends pulumi.CustomResource {
     constructor(name: string, args: BrandArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BrandArgs | BrandState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BrandState | undefined;
             inputs["applicationTitle"] = state ? state.applicationTitle : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -104,10 +105,10 @@ export class Brand extends pulumi.CustomResource {
             inputs["supportEmail"] = state ? state.supportEmail : undefined;
         } else {
             const args = argsOrState as BrandArgs | undefined;
-            if ((!args || args.applicationTitle === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationTitle === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationTitle'");
             }
-            if ((!args || args.supportEmail === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.supportEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'supportEmail'");
             }
             inputs["applicationTitle"] = args ? args.applicationTitle : undefined;
@@ -116,12 +117,8 @@ export class Brand extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["orgInternalOnly"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Brand.__pulumiType, name, inputs, opts);
     }

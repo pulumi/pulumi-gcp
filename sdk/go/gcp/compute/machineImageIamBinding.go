@@ -187,6 +187,85 @@ func (i *MachineImageIamBinding) ToMachineImageIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingOutput)
 }
 
+func (i *MachineImageIamBinding) ToMachineImageIamBindingPtrOutput() MachineImageIamBindingPtrOutput {
+	return i.ToMachineImageIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *MachineImageIamBinding) ToMachineImageIamBindingPtrOutputWithContext(ctx context.Context) MachineImageIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingPtrOutput)
+}
+
+type MachineImageIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToMachineImageIamBindingPtrOutput() MachineImageIamBindingPtrOutput
+	ToMachineImageIamBindingPtrOutputWithContext(ctx context.Context) MachineImageIamBindingPtrOutput
+}
+
+type machineImageIamBindingPtrType MachineImageIamBindingArgs
+
+func (*machineImageIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageIamBinding)(nil))
+}
+
+func (i *machineImageIamBindingPtrType) ToMachineImageIamBindingPtrOutput() MachineImageIamBindingPtrOutput {
+	return i.ToMachineImageIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *machineImageIamBindingPtrType) ToMachineImageIamBindingPtrOutputWithContext(ctx context.Context) MachineImageIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingPtrOutput)
+}
+
+// MachineImageIamBindingArrayInput is an input type that accepts MachineImageIamBindingArray and MachineImageIamBindingArrayOutput values.
+// You can construct a concrete instance of `MachineImageIamBindingArrayInput` via:
+//
+//          MachineImageIamBindingArray{ MachineImageIamBindingArgs{...} }
+type MachineImageIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToMachineImageIamBindingArrayOutput() MachineImageIamBindingArrayOutput
+	ToMachineImageIamBindingArrayOutputWithContext(context.Context) MachineImageIamBindingArrayOutput
+}
+
+type MachineImageIamBindingArray []MachineImageIamBindingInput
+
+func (MachineImageIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*MachineImageIamBinding)(nil))
+}
+
+func (i MachineImageIamBindingArray) ToMachineImageIamBindingArrayOutput() MachineImageIamBindingArrayOutput {
+	return i.ToMachineImageIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamBindingArray) ToMachineImageIamBindingArrayOutputWithContext(ctx context.Context) MachineImageIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingArrayOutput)
+}
+
+// MachineImageIamBindingMapInput is an input type that accepts MachineImageIamBindingMap and MachineImageIamBindingMapOutput values.
+// You can construct a concrete instance of `MachineImageIamBindingMapInput` via:
+//
+//          MachineImageIamBindingMap{ "key": MachineImageIamBindingArgs{...} }
+type MachineImageIamBindingMapInput interface {
+	pulumi.Input
+
+	ToMachineImageIamBindingMapOutput() MachineImageIamBindingMapOutput
+	ToMachineImageIamBindingMapOutputWithContext(context.Context) MachineImageIamBindingMapOutput
+}
+
+type MachineImageIamBindingMap map[string]MachineImageIamBindingInput
+
+func (MachineImageIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*MachineImageIamBinding)(nil))
+}
+
+func (i MachineImageIamBindingMap) ToMachineImageIamBindingMapOutput() MachineImageIamBindingMapOutput {
+	return i.ToMachineImageIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i MachineImageIamBindingMap) ToMachineImageIamBindingMapOutputWithContext(ctx context.Context) MachineImageIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineImageIamBindingMapOutput)
+}
+
 type MachineImageIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -203,6 +282,75 @@ func (o MachineImageIamBindingOutput) ToMachineImageIamBindingOutputWithContext(
 	return o
 }
 
+func (o MachineImageIamBindingOutput) ToMachineImageIamBindingPtrOutput() MachineImageIamBindingPtrOutput {
+	return o.ToMachineImageIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o MachineImageIamBindingOutput) ToMachineImageIamBindingPtrOutputWithContext(ctx context.Context) MachineImageIamBindingPtrOutput {
+	return o.ApplyT(func(v MachineImageIamBinding) *MachineImageIamBinding {
+		return &v
+	}).(MachineImageIamBindingPtrOutput)
+}
+
+type MachineImageIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (MachineImageIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineImageIamBinding)(nil))
+}
+
+func (o MachineImageIamBindingPtrOutput) ToMachineImageIamBindingPtrOutput() MachineImageIamBindingPtrOutput {
+	return o
+}
+
+func (o MachineImageIamBindingPtrOutput) ToMachineImageIamBindingPtrOutputWithContext(ctx context.Context) MachineImageIamBindingPtrOutput {
+	return o
+}
+
+type MachineImageIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (MachineImageIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MachineImageIamBinding)(nil))
+}
+
+func (o MachineImageIamBindingArrayOutput) ToMachineImageIamBindingArrayOutput() MachineImageIamBindingArrayOutput {
+	return o
+}
+
+func (o MachineImageIamBindingArrayOutput) ToMachineImageIamBindingArrayOutputWithContext(ctx context.Context) MachineImageIamBindingArrayOutput {
+	return o
+}
+
+func (o MachineImageIamBindingArrayOutput) Index(i pulumi.IntInput) MachineImageIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MachineImageIamBinding {
+		return vs[0].([]MachineImageIamBinding)[vs[1].(int)]
+	}).(MachineImageIamBindingOutput)
+}
+
+type MachineImageIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (MachineImageIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]MachineImageIamBinding)(nil))
+}
+
+func (o MachineImageIamBindingMapOutput) ToMachineImageIamBindingMapOutput() MachineImageIamBindingMapOutput {
+	return o
+}
+
+func (o MachineImageIamBindingMapOutput) ToMachineImageIamBindingMapOutputWithContext(ctx context.Context) MachineImageIamBindingMapOutput {
+	return o
+}
+
+func (o MachineImageIamBindingMapOutput) MapIndex(k pulumi.StringInput) MachineImageIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) MachineImageIamBinding {
+		return vs[0].(map[string]MachineImageIamBinding)[vs[1].(string)]
+	}).(MachineImageIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(MachineImageIamBindingOutput{})
+	pulumi.RegisterOutputType(MachineImageIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(MachineImageIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(MachineImageIamBindingMapOutput{})
 }

@@ -375,6 +375,85 @@ func (i *UptimeCheckConfig) ToUptimeCheckConfigOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigOutput)
 }
 
+func (i *UptimeCheckConfig) ToUptimeCheckConfigPtrOutput() UptimeCheckConfigPtrOutput {
+	return i.ToUptimeCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *UptimeCheckConfig) ToUptimeCheckConfigPtrOutputWithContext(ctx context.Context) UptimeCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigPtrOutput)
+}
+
+type UptimeCheckConfigPtrInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigPtrOutput() UptimeCheckConfigPtrOutput
+	ToUptimeCheckConfigPtrOutputWithContext(ctx context.Context) UptimeCheckConfigPtrOutput
+}
+
+type uptimeCheckConfigPtrType UptimeCheckConfigArgs
+
+func (*uptimeCheckConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfig)(nil))
+}
+
+func (i *uptimeCheckConfigPtrType) ToUptimeCheckConfigPtrOutput() UptimeCheckConfigPtrOutput {
+	return i.ToUptimeCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *uptimeCheckConfigPtrType) ToUptimeCheckConfigPtrOutputWithContext(ctx context.Context) UptimeCheckConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigPtrOutput)
+}
+
+// UptimeCheckConfigArrayInput is an input type that accepts UptimeCheckConfigArray and UptimeCheckConfigArrayOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigArrayInput` via:
+//
+//          UptimeCheckConfigArray{ UptimeCheckConfigArgs{...} }
+type UptimeCheckConfigArrayInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigArrayOutput() UptimeCheckConfigArrayOutput
+	ToUptimeCheckConfigArrayOutputWithContext(context.Context) UptimeCheckConfigArrayOutput
+}
+
+type UptimeCheckConfigArray []UptimeCheckConfigInput
+
+func (UptimeCheckConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*UptimeCheckConfig)(nil))
+}
+
+func (i UptimeCheckConfigArray) ToUptimeCheckConfigArrayOutput() UptimeCheckConfigArrayOutput {
+	return i.ToUptimeCheckConfigArrayOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigArray) ToUptimeCheckConfigArrayOutputWithContext(ctx context.Context) UptimeCheckConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigArrayOutput)
+}
+
+// UptimeCheckConfigMapInput is an input type that accepts UptimeCheckConfigMap and UptimeCheckConfigMapOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigMapInput` via:
+//
+//          UptimeCheckConfigMap{ "key": UptimeCheckConfigArgs{...} }
+type UptimeCheckConfigMapInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigMapOutput() UptimeCheckConfigMapOutput
+	ToUptimeCheckConfigMapOutputWithContext(context.Context) UptimeCheckConfigMapOutput
+}
+
+type UptimeCheckConfigMap map[string]UptimeCheckConfigInput
+
+func (UptimeCheckConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*UptimeCheckConfig)(nil))
+}
+
+func (i UptimeCheckConfigMap) ToUptimeCheckConfigMapOutput() UptimeCheckConfigMapOutput {
+	return i.ToUptimeCheckConfigMapOutputWithContext(context.Background())
+}
+
+func (i UptimeCheckConfigMap) ToUptimeCheckConfigMapOutputWithContext(ctx context.Context) UptimeCheckConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UptimeCheckConfigMapOutput)
+}
+
 type UptimeCheckConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -391,6 +470,75 @@ func (o UptimeCheckConfigOutput) ToUptimeCheckConfigOutputWithContext(ctx contex
 	return o
 }
 
+func (o UptimeCheckConfigOutput) ToUptimeCheckConfigPtrOutput() UptimeCheckConfigPtrOutput {
+	return o.ToUptimeCheckConfigPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigOutput) ToUptimeCheckConfigPtrOutputWithContext(ctx context.Context) UptimeCheckConfigPtrOutput {
+	return o.ApplyT(func(v UptimeCheckConfig) *UptimeCheckConfig {
+		return &v
+	}).(UptimeCheckConfigPtrOutput)
+}
+
+type UptimeCheckConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UptimeCheckConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UptimeCheckConfig)(nil))
+}
+
+func (o UptimeCheckConfigPtrOutput) ToUptimeCheckConfigPtrOutput() UptimeCheckConfigPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigPtrOutput) ToUptimeCheckConfigPtrOutputWithContext(ctx context.Context) UptimeCheckConfigPtrOutput {
+	return o
+}
+
+type UptimeCheckConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UptimeCheckConfig)(nil))
+}
+
+func (o UptimeCheckConfigArrayOutput) ToUptimeCheckConfigArrayOutput() UptimeCheckConfigArrayOutput {
+	return o
+}
+
+func (o UptimeCheckConfigArrayOutput) ToUptimeCheckConfigArrayOutputWithContext(ctx context.Context) UptimeCheckConfigArrayOutput {
+	return o
+}
+
+func (o UptimeCheckConfigArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeCheckConfig {
+		return vs[0].([]UptimeCheckConfig)[vs[1].(int)]
+	}).(UptimeCheckConfigOutput)
+}
+
+type UptimeCheckConfigMapOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UptimeCheckConfig)(nil))
+}
+
+func (o UptimeCheckConfigMapOutput) ToUptimeCheckConfigMapOutput() UptimeCheckConfigMapOutput {
+	return o
+}
+
+func (o UptimeCheckConfigMapOutput) ToUptimeCheckConfigMapOutputWithContext(ctx context.Context) UptimeCheckConfigMapOutput {
+	return o
+}
+
+func (o UptimeCheckConfigMapOutput) MapIndex(k pulumi.StringInput) UptimeCheckConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UptimeCheckConfig {
+		return vs[0].(map[string]UptimeCheckConfig)[vs[1].(string)]
+	}).(UptimeCheckConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(UptimeCheckConfigOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigArrayOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigMapOutput{})
 }

@@ -140,29 +140,26 @@ export class DicomStoreIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: DicomStoreIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DicomStoreIamPolicyArgs | DicomStoreIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DicomStoreIamPolicyState | undefined;
             inputs["dicomStoreId"] = state ? state.dicomStoreId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as DicomStoreIamPolicyArgs | undefined;
-            if ((!args || args.dicomStoreId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dicomStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dicomStoreId'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DicomStoreIamPolicy.__pulumiType, name, inputs, opts);
     }

@@ -141,7 +141,8 @@ export class EntryGroupIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: EntryGroupIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EntryGroupIamPolicyArgs | EntryGroupIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EntryGroupIamPolicyState | undefined;
             inputs["entryGroup"] = state ? state.entryGroup : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -150,10 +151,10 @@ export class EntryGroupIamPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as EntryGroupIamPolicyArgs | undefined;
-            if ((!args || args.entryGroup === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entryGroup === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryGroup'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["entryGroup"] = args ? args.entryGroup : undefined;
@@ -162,12 +163,8 @@ export class EntryGroupIamPolicy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EntryGroupIamPolicy.__pulumiType, name, inputs, opts);
     }

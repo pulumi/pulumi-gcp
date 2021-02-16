@@ -162,6 +162,85 @@ func (i *PolicyTagIamMember) ToPolicyTagIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberOutput)
 }
 
+func (i *PolicyTagIamMember) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
+	return i.ToPolicyTagIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *PolicyTagIamMember) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberPtrOutput)
+}
+
+type PolicyTagIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput
+	ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput
+}
+
+type policyTagIamMemberPtrType PolicyTagIamMemberArgs
+
+func (*policyTagIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTagIamMember)(nil))
+}
+
+func (i *policyTagIamMemberPtrType) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
+	return i.ToPolicyTagIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *policyTagIamMemberPtrType) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberPtrOutput)
+}
+
+// PolicyTagIamMemberArrayInput is an input type that accepts PolicyTagIamMemberArray and PolicyTagIamMemberArrayOutput values.
+// You can construct a concrete instance of `PolicyTagIamMemberArrayInput` via:
+//
+//          PolicyTagIamMemberArray{ PolicyTagIamMemberArgs{...} }
+type PolicyTagIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamMemberArrayOutput() PolicyTagIamMemberArrayOutput
+	ToPolicyTagIamMemberArrayOutputWithContext(context.Context) PolicyTagIamMemberArrayOutput
+}
+
+type PolicyTagIamMemberArray []PolicyTagIamMemberInput
+
+func (PolicyTagIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*PolicyTagIamMember)(nil))
+}
+
+func (i PolicyTagIamMemberArray) ToPolicyTagIamMemberArrayOutput() PolicyTagIamMemberArrayOutput {
+	return i.ToPolicyTagIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyTagIamMemberArray) ToPolicyTagIamMemberArrayOutputWithContext(ctx context.Context) PolicyTagIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberArrayOutput)
+}
+
+// PolicyTagIamMemberMapInput is an input type that accepts PolicyTagIamMemberMap and PolicyTagIamMemberMapOutput values.
+// You can construct a concrete instance of `PolicyTagIamMemberMapInput` via:
+//
+//          PolicyTagIamMemberMap{ "key": PolicyTagIamMemberArgs{...} }
+type PolicyTagIamMemberMapInput interface {
+	pulumi.Input
+
+	ToPolicyTagIamMemberMapOutput() PolicyTagIamMemberMapOutput
+	ToPolicyTagIamMemberMapOutputWithContext(context.Context) PolicyTagIamMemberMapOutput
+}
+
+type PolicyTagIamMemberMap map[string]PolicyTagIamMemberInput
+
+func (PolicyTagIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*PolicyTagIamMember)(nil))
+}
+
+func (i PolicyTagIamMemberMap) ToPolicyTagIamMemberMapOutput() PolicyTagIamMemberMapOutput {
+	return i.ToPolicyTagIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i PolicyTagIamMemberMap) ToPolicyTagIamMemberMapOutputWithContext(ctx context.Context) PolicyTagIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyTagIamMemberMapOutput)
+}
+
 type PolicyTagIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -178,6 +257,75 @@ func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberOutputWithContext(ctx cont
 	return o
 }
 
+func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
+	return o.ToPolicyTagIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyTagIamMemberOutput) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
+	return o.ApplyT(func(v PolicyTagIamMember) *PolicyTagIamMember {
+		return &v
+	}).(PolicyTagIamMemberPtrOutput)
+}
+
+type PolicyTagIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (PolicyTagIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyTagIamMember)(nil))
+}
+
+func (o PolicyTagIamMemberPtrOutput) ToPolicyTagIamMemberPtrOutput() PolicyTagIamMemberPtrOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberPtrOutput) ToPolicyTagIamMemberPtrOutputWithContext(ctx context.Context) PolicyTagIamMemberPtrOutput {
+	return o
+}
+
+type PolicyTagIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyTagIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyTagIamMember)(nil))
+}
+
+func (o PolicyTagIamMemberArrayOutput) ToPolicyTagIamMemberArrayOutput() PolicyTagIamMemberArrayOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberArrayOutput) ToPolicyTagIamMemberArrayOutputWithContext(ctx context.Context) PolicyTagIamMemberArrayOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberArrayOutput) Index(i pulumi.IntInput) PolicyTagIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyTagIamMember {
+		return vs[0].([]PolicyTagIamMember)[vs[1].(int)]
+	}).(PolicyTagIamMemberOutput)
+}
+
+type PolicyTagIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (PolicyTagIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]PolicyTagIamMember)(nil))
+}
+
+func (o PolicyTagIamMemberMapOutput) ToPolicyTagIamMemberMapOutput() PolicyTagIamMemberMapOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberMapOutput) ToPolicyTagIamMemberMapOutputWithContext(ctx context.Context) PolicyTagIamMemberMapOutput {
+	return o
+}
+
+func (o PolicyTagIamMemberMapOutput) MapIndex(k pulumi.StringInput) PolicyTagIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) PolicyTagIamMember {
+		return vs[0].(map[string]PolicyTagIamMember)[vs[1].(string)]
+	}).(PolicyTagIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(PolicyTagIamMemberOutput{})
+	pulumi.RegisterOutputType(PolicyTagIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(PolicyTagIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(PolicyTagIamMemberMapOutput{})
 }

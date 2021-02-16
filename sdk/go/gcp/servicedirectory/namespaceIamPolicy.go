@@ -238,6 +238,85 @@ func (i *NamespaceIamPolicy) ToNamespaceIamPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyOutput)
 }
 
+func (i *NamespaceIamPolicy) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
+	return i.ToNamespaceIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *NamespaceIamPolicy) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyPtrOutput)
+}
+
+type NamespaceIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput
+	ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput
+}
+
+type namespaceIamPolicyPtrType NamespaceIamPolicyArgs
+
+func (*namespaceIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceIamPolicy)(nil))
+}
+
+func (i *namespaceIamPolicyPtrType) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
+	return i.ToNamespaceIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *namespaceIamPolicyPtrType) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyPtrOutput)
+}
+
+// NamespaceIamPolicyArrayInput is an input type that accepts NamespaceIamPolicyArray and NamespaceIamPolicyArrayOutput values.
+// You can construct a concrete instance of `NamespaceIamPolicyArrayInput` via:
+//
+//          NamespaceIamPolicyArray{ NamespaceIamPolicyArgs{...} }
+type NamespaceIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToNamespaceIamPolicyArrayOutput() NamespaceIamPolicyArrayOutput
+	ToNamespaceIamPolicyArrayOutputWithContext(context.Context) NamespaceIamPolicyArrayOutput
+}
+
+type NamespaceIamPolicyArray []NamespaceIamPolicyInput
+
+func (NamespaceIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NamespaceIamPolicy)(nil))
+}
+
+func (i NamespaceIamPolicyArray) ToNamespaceIamPolicyArrayOutput() NamespaceIamPolicyArrayOutput {
+	return i.ToNamespaceIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i NamespaceIamPolicyArray) ToNamespaceIamPolicyArrayOutputWithContext(ctx context.Context) NamespaceIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyArrayOutput)
+}
+
+// NamespaceIamPolicyMapInput is an input type that accepts NamespaceIamPolicyMap and NamespaceIamPolicyMapOutput values.
+// You can construct a concrete instance of `NamespaceIamPolicyMapInput` via:
+//
+//          NamespaceIamPolicyMap{ "key": NamespaceIamPolicyArgs{...} }
+type NamespaceIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToNamespaceIamPolicyMapOutput() NamespaceIamPolicyMapOutput
+	ToNamespaceIamPolicyMapOutputWithContext(context.Context) NamespaceIamPolicyMapOutput
+}
+
+type NamespaceIamPolicyMap map[string]NamespaceIamPolicyInput
+
+func (NamespaceIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NamespaceIamPolicy)(nil))
+}
+
+func (i NamespaceIamPolicyMap) ToNamespaceIamPolicyMapOutput() NamespaceIamPolicyMapOutput {
+	return i.ToNamespaceIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i NamespaceIamPolicyMap) ToNamespaceIamPolicyMapOutputWithContext(ctx context.Context) NamespaceIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamespaceIamPolicyMapOutput)
+}
+
 type NamespaceIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -254,6 +333,75 @@ func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyOutputWithContext(ctx cont
 	return o
 }
 
+func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
+	return o.ToNamespaceIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o NamespaceIamPolicyOutput) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
+	return o.ApplyT(func(v NamespaceIamPolicy) *NamespaceIamPolicy {
+		return &v
+	}).(NamespaceIamPolicyPtrOutput)
+}
+
+type NamespaceIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NamespaceIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamespaceIamPolicy)(nil))
+}
+
+func (o NamespaceIamPolicyPtrOutput) ToNamespaceIamPolicyPtrOutput() NamespaceIamPolicyPtrOutput {
+	return o
+}
+
+func (o NamespaceIamPolicyPtrOutput) ToNamespaceIamPolicyPtrOutputWithContext(ctx context.Context) NamespaceIamPolicyPtrOutput {
+	return o
+}
+
+type NamespaceIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (NamespaceIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NamespaceIamPolicy)(nil))
+}
+
+func (o NamespaceIamPolicyArrayOutput) ToNamespaceIamPolicyArrayOutput() NamespaceIamPolicyArrayOutput {
+	return o
+}
+
+func (o NamespaceIamPolicyArrayOutput) ToNamespaceIamPolicyArrayOutputWithContext(ctx context.Context) NamespaceIamPolicyArrayOutput {
+	return o
+}
+
+func (o NamespaceIamPolicyArrayOutput) Index(i pulumi.IntInput) NamespaceIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamespaceIamPolicy {
+		return vs[0].([]NamespaceIamPolicy)[vs[1].(int)]
+	}).(NamespaceIamPolicyOutput)
+}
+
+type NamespaceIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (NamespaceIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NamespaceIamPolicy)(nil))
+}
+
+func (o NamespaceIamPolicyMapOutput) ToNamespaceIamPolicyMapOutput() NamespaceIamPolicyMapOutput {
+	return o
+}
+
+func (o NamespaceIamPolicyMapOutput) ToNamespaceIamPolicyMapOutputWithContext(ctx context.Context) NamespaceIamPolicyMapOutput {
+	return o
+}
+
+func (o NamespaceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) NamespaceIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamespaceIamPolicy {
+		return vs[0].(map[string]NamespaceIamPolicy)[vs[1].(string)]
+	}).(NamespaceIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NamespaceIamPolicyOutput{})
+	pulumi.RegisterOutputType(NamespaceIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(NamespaceIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(NamespaceIamPolicyMapOutput{})
 }

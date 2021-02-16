@@ -215,7 +215,8 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     constructor(name: string, args: RegionInstanceGroupManagerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionInstanceGroupManagerArgs | RegionInstanceGroupManagerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegionInstanceGroupManagerState | undefined;
             inputs["autoHealingPolicies"] = state ? state.autoHealingPolicies : undefined;
             inputs["baseInstanceName"] = state ? state.baseInstanceName : undefined;
@@ -237,10 +238,10 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["waitForInstances"] = state ? state.waitForInstances : undefined;
         } else {
             const args = argsOrState as RegionInstanceGroupManagerArgs | undefined;
-            if ((!args || args.baseInstanceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.baseInstanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'baseInstanceName'");
             }
-            if ((!args || args.versions === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.versions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versions'");
             }
             inputs["autoHealingPolicies"] = args ? args.autoHealingPolicies : undefined;
@@ -262,12 +263,8 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["instanceGroup"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegionInstanceGroupManager.__pulumiType, name, inputs, opts);
     }

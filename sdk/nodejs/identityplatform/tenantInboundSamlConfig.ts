@@ -128,7 +128,8 @@ export class TenantInboundSamlConfig extends pulumi.CustomResource {
     constructor(name: string, args: TenantInboundSamlConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TenantInboundSamlConfigArgs | TenantInboundSamlConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TenantInboundSamlConfigState | undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["enabled"] = state ? state.enabled : undefined;
@@ -139,16 +140,16 @@ export class TenantInboundSamlConfig extends pulumi.CustomResource {
             inputs["tenant"] = state ? state.tenant : undefined;
         } else {
             const args = argsOrState as TenantInboundSamlConfigArgs | undefined;
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.idpConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.idpConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'idpConfig'");
             }
-            if ((!args || args.spConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.spConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spConfig'");
             }
-            if ((!args || args.tenant === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tenant === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tenant'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -159,12 +160,8 @@ export class TenantInboundSamlConfig extends pulumi.CustomResource {
             inputs["spConfig"] = args ? args.spConfig : undefined;
             inputs["tenant"] = args ? args.tenant : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TenantInboundSamlConfig.__pulumiType, name, inputs, opts);
     }

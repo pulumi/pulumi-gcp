@@ -557,6 +557,85 @@ func (i *ManagedZone) ToManagedZoneOutputWithContext(ctx context.Context) Manage
 	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneOutput)
 }
 
+func (i *ManagedZone) ToManagedZonePtrOutput() ManagedZonePtrOutput {
+	return i.ToManagedZonePtrOutputWithContext(context.Background())
+}
+
+func (i *ManagedZone) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePtrOutput)
+}
+
+type ManagedZonePtrInput interface {
+	pulumi.Input
+
+	ToManagedZonePtrOutput() ManagedZonePtrOutput
+	ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput
+}
+
+type managedZonePtrType ManagedZoneArgs
+
+func (*managedZonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZone)(nil))
+}
+
+func (i *managedZonePtrType) ToManagedZonePtrOutput() ManagedZonePtrOutput {
+	return i.ToManagedZonePtrOutputWithContext(context.Background())
+}
+
+func (i *managedZonePtrType) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePtrOutput)
+}
+
+// ManagedZoneArrayInput is an input type that accepts ManagedZoneArray and ManagedZoneArrayOutput values.
+// You can construct a concrete instance of `ManagedZoneArrayInput` via:
+//
+//          ManagedZoneArray{ ManagedZoneArgs{...} }
+type ManagedZoneArrayInput interface {
+	pulumi.Input
+
+	ToManagedZoneArrayOutput() ManagedZoneArrayOutput
+	ToManagedZoneArrayOutputWithContext(context.Context) ManagedZoneArrayOutput
+}
+
+type ManagedZoneArray []ManagedZoneInput
+
+func (ManagedZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ManagedZone)(nil))
+}
+
+func (i ManagedZoneArray) ToManagedZoneArrayOutput() ManagedZoneArrayOutput {
+	return i.ToManagedZoneArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneArray) ToManagedZoneArrayOutputWithContext(ctx context.Context) ManagedZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneArrayOutput)
+}
+
+// ManagedZoneMapInput is an input type that accepts ManagedZoneMap and ManagedZoneMapOutput values.
+// You can construct a concrete instance of `ManagedZoneMapInput` via:
+//
+//          ManagedZoneMap{ "key": ManagedZoneArgs{...} }
+type ManagedZoneMapInput interface {
+	pulumi.Input
+
+	ToManagedZoneMapOutput() ManagedZoneMapOutput
+	ToManagedZoneMapOutputWithContext(context.Context) ManagedZoneMapOutput
+}
+
+type ManagedZoneMap map[string]ManagedZoneInput
+
+func (ManagedZoneMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ManagedZone)(nil))
+}
+
+func (i ManagedZoneMap) ToManagedZoneMapOutput() ManagedZoneMapOutput {
+	return i.ToManagedZoneMapOutputWithContext(context.Background())
+}
+
+func (i ManagedZoneMap) ToManagedZoneMapOutputWithContext(ctx context.Context) ManagedZoneMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZoneMapOutput)
+}
+
 type ManagedZoneOutput struct {
 	*pulumi.OutputState
 }
@@ -573,6 +652,75 @@ func (o ManagedZoneOutput) ToManagedZoneOutputWithContext(ctx context.Context) M
 	return o
 }
 
+func (o ManagedZoneOutput) ToManagedZonePtrOutput() ManagedZonePtrOutput {
+	return o.ToManagedZonePtrOutputWithContext(context.Background())
+}
+
+func (o ManagedZoneOutput) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
+	return o.ApplyT(func(v ManagedZone) *ManagedZone {
+		return &v
+	}).(ManagedZonePtrOutput)
+}
+
+type ManagedZonePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ManagedZonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagedZone)(nil))
+}
+
+func (o ManagedZonePtrOutput) ToManagedZonePtrOutput() ManagedZonePtrOutput {
+	return o
+}
+
+func (o ManagedZonePtrOutput) ToManagedZonePtrOutputWithContext(ctx context.Context) ManagedZonePtrOutput {
+	return o
+}
+
+type ManagedZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZone)(nil))
+}
+
+func (o ManagedZoneArrayOutput) ToManagedZoneArrayOutput() ManagedZoneArrayOutput {
+	return o
+}
+
+func (o ManagedZoneArrayOutput) ToManagedZoneArrayOutputWithContext(ctx context.Context) ManagedZoneArrayOutput {
+	return o
+}
+
+func (o ManagedZoneArrayOutput) Index(i pulumi.IntInput) ManagedZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZone {
+		return vs[0].([]ManagedZone)[vs[1].(int)]
+	}).(ManagedZoneOutput)
+}
+
+type ManagedZoneMapOutput struct{ *pulumi.OutputState }
+
+func (ManagedZoneMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ManagedZone)(nil))
+}
+
+func (o ManagedZoneMapOutput) ToManagedZoneMapOutput() ManagedZoneMapOutput {
+	return o
+}
+
+func (o ManagedZoneMapOutput) ToManagedZoneMapOutputWithContext(ctx context.Context) ManagedZoneMapOutput {
+	return o
+}
+
+func (o ManagedZoneMapOutput) MapIndex(k pulumi.StringInput) ManagedZoneOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ManagedZone {
+		return vs[0].(map[string]ManagedZone)[vs[1].(string)]
+	}).(ManagedZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ManagedZoneOutput{})
+	pulumi.RegisterOutputType(ManagedZonePtrOutput{})
+	pulumi.RegisterOutputType(ManagedZoneArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZoneMapOutput{})
 }

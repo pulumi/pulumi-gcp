@@ -647,6 +647,85 @@ func (i *Disk) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DiskOutput)
 }
 
+func (i *Disk) ToDiskPtrOutput() DiskPtrOutput {
+	return i.ToDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *Disk) ToDiskPtrOutputWithContext(ctx context.Context) DiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskPtrOutput)
+}
+
+type DiskPtrInput interface {
+	pulumi.Input
+
+	ToDiskPtrOutput() DiskPtrOutput
+	ToDiskPtrOutputWithContext(ctx context.Context) DiskPtrOutput
+}
+
+type diskPtrType DiskArgs
+
+func (*diskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Disk)(nil))
+}
+
+func (i *diskPtrType) ToDiskPtrOutput() DiskPtrOutput {
+	return i.ToDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *diskPtrType) ToDiskPtrOutputWithContext(ctx context.Context) DiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskPtrOutput)
+}
+
+// DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
+// You can construct a concrete instance of `DiskArrayInput` via:
+//
+//          DiskArray{ DiskArgs{...} }
+type DiskArrayInput interface {
+	pulumi.Input
+
+	ToDiskArrayOutput() DiskArrayOutput
+	ToDiskArrayOutputWithContext(context.Context) DiskArrayOutput
+}
+
+type DiskArray []DiskInput
+
+func (DiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Disk)(nil))
+}
+
+func (i DiskArray) ToDiskArrayOutput() DiskArrayOutput {
+	return i.ToDiskArrayOutputWithContext(context.Background())
+}
+
+func (i DiskArray) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskArrayOutput)
+}
+
+// DiskMapInput is an input type that accepts DiskMap and DiskMapOutput values.
+// You can construct a concrete instance of `DiskMapInput` via:
+//
+//          DiskMap{ "key": DiskArgs{...} }
+type DiskMapInput interface {
+	pulumi.Input
+
+	ToDiskMapOutput() DiskMapOutput
+	ToDiskMapOutputWithContext(context.Context) DiskMapOutput
+}
+
+type DiskMap map[string]DiskInput
+
+func (DiskMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Disk)(nil))
+}
+
+func (i DiskMap) ToDiskMapOutput() DiskMapOutput {
+	return i.ToDiskMapOutputWithContext(context.Background())
+}
+
+func (i DiskMap) ToDiskMapOutputWithContext(ctx context.Context) DiskMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskMapOutput)
+}
+
 type DiskOutput struct {
 	*pulumi.OutputState
 }
@@ -663,6 +742,75 @@ func (o DiskOutput) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 	return o
 }
 
+func (o DiskOutput) ToDiskPtrOutput() DiskPtrOutput {
+	return o.ToDiskPtrOutputWithContext(context.Background())
+}
+
+func (o DiskOutput) ToDiskPtrOutputWithContext(ctx context.Context) DiskPtrOutput {
+	return o.ApplyT(func(v Disk) *Disk {
+		return &v
+	}).(DiskPtrOutput)
+}
+
+type DiskPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Disk)(nil))
+}
+
+func (o DiskPtrOutput) ToDiskPtrOutput() DiskPtrOutput {
+	return o
+}
+
+func (o DiskPtrOutput) ToDiskPtrOutputWithContext(ctx context.Context) DiskPtrOutput {
+	return o
+}
+
+type DiskArrayOutput struct{ *pulumi.OutputState }
+
+func (DiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Disk)(nil))
+}
+
+func (o DiskArrayOutput) ToDiskArrayOutput() DiskArrayOutput {
+	return o
+}
+
+func (o DiskArrayOutput) ToDiskArrayOutputWithContext(ctx context.Context) DiskArrayOutput {
+	return o
+}
+
+func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Disk {
+		return vs[0].([]Disk)[vs[1].(int)]
+	}).(DiskOutput)
+}
+
+type DiskMapOutput struct{ *pulumi.OutputState }
+
+func (DiskMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Disk)(nil))
+}
+
+func (o DiskMapOutput) ToDiskMapOutput() DiskMapOutput {
+	return o
+}
+
+func (o DiskMapOutput) ToDiskMapOutputWithContext(ctx context.Context) DiskMapOutput {
+	return o
+}
+
+func (o DiskMapOutput) MapIndex(k pulumi.StringInput) DiskOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Disk {
+		return vs[0].(map[string]Disk)[vs[1].(string)]
+	}).(DiskOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DiskOutput{})
+	pulumi.RegisterOutputType(DiskPtrOutput{})
+	pulumi.RegisterOutputType(DiskArrayOutput{})
+	pulumi.RegisterOutputType(DiskMapOutput{})
 }

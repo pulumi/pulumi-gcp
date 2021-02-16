@@ -335,6 +335,85 @@ func (i *NodeTemplate) ToNodeTemplateOutputWithContext(ctx context.Context) Node
 	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateOutput)
 }
 
+func (i *NodeTemplate) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
+	return i.ToNodeTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *NodeTemplate) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplatePtrOutput)
+}
+
+type NodeTemplatePtrInput interface {
+	pulumi.Input
+
+	ToNodeTemplatePtrOutput() NodeTemplatePtrOutput
+	ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput
+}
+
+type nodeTemplatePtrType NodeTemplateArgs
+
+func (*nodeTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplate)(nil))
+}
+
+func (i *nodeTemplatePtrType) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
+	return i.ToNodeTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *nodeTemplatePtrType) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplatePtrOutput)
+}
+
+// NodeTemplateArrayInput is an input type that accepts NodeTemplateArray and NodeTemplateArrayOutput values.
+// You can construct a concrete instance of `NodeTemplateArrayInput` via:
+//
+//          NodeTemplateArray{ NodeTemplateArgs{...} }
+type NodeTemplateArrayInput interface {
+	pulumi.Input
+
+	ToNodeTemplateArrayOutput() NodeTemplateArrayOutput
+	ToNodeTemplateArrayOutputWithContext(context.Context) NodeTemplateArrayOutput
+}
+
+type NodeTemplateArray []NodeTemplateInput
+
+func (NodeTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NodeTemplate)(nil))
+}
+
+func (i NodeTemplateArray) ToNodeTemplateArrayOutput() NodeTemplateArrayOutput {
+	return i.ToNodeTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateArray) ToNodeTemplateArrayOutputWithContext(ctx context.Context) NodeTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateArrayOutput)
+}
+
+// NodeTemplateMapInput is an input type that accepts NodeTemplateMap and NodeTemplateMapOutput values.
+// You can construct a concrete instance of `NodeTemplateMapInput` via:
+//
+//          NodeTemplateMap{ "key": NodeTemplateArgs{...} }
+type NodeTemplateMapInput interface {
+	pulumi.Input
+
+	ToNodeTemplateMapOutput() NodeTemplateMapOutput
+	ToNodeTemplateMapOutputWithContext(context.Context) NodeTemplateMapOutput
+}
+
+type NodeTemplateMap map[string]NodeTemplateInput
+
+func (NodeTemplateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NodeTemplate)(nil))
+}
+
+func (i NodeTemplateMap) ToNodeTemplateMapOutput() NodeTemplateMapOutput {
+	return i.ToNodeTemplateMapOutputWithContext(context.Background())
+}
+
+func (i NodeTemplateMap) ToNodeTemplateMapOutputWithContext(ctx context.Context) NodeTemplateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeTemplateMapOutput)
+}
+
 type NodeTemplateOutput struct {
 	*pulumi.OutputState
 }
@@ -351,6 +430,75 @@ func (o NodeTemplateOutput) ToNodeTemplateOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o NodeTemplateOutput) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
+	return o.ToNodeTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o NodeTemplateOutput) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
+	return o.ApplyT(func(v NodeTemplate) *NodeTemplate {
+		return &v
+	}).(NodeTemplatePtrOutput)
+}
+
+type NodeTemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NodeTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeTemplate)(nil))
+}
+
+func (o NodeTemplatePtrOutput) ToNodeTemplatePtrOutput() NodeTemplatePtrOutput {
+	return o
+}
+
+func (o NodeTemplatePtrOutput) ToNodeTemplatePtrOutputWithContext(ctx context.Context) NodeTemplatePtrOutput {
+	return o
+}
+
+type NodeTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeTemplate)(nil))
+}
+
+func (o NodeTemplateArrayOutput) ToNodeTemplateArrayOutput() NodeTemplateArrayOutput {
+	return o
+}
+
+func (o NodeTemplateArrayOutput) ToNodeTemplateArrayOutputWithContext(ctx context.Context) NodeTemplateArrayOutput {
+	return o
+}
+
+func (o NodeTemplateArrayOutput) Index(i pulumi.IntInput) NodeTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeTemplate {
+		return vs[0].([]NodeTemplate)[vs[1].(int)]
+	}).(NodeTemplateOutput)
+}
+
+type NodeTemplateMapOutput struct{ *pulumi.OutputState }
+
+func (NodeTemplateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NodeTemplate)(nil))
+}
+
+func (o NodeTemplateMapOutput) ToNodeTemplateMapOutput() NodeTemplateMapOutput {
+	return o
+}
+
+func (o NodeTemplateMapOutput) ToNodeTemplateMapOutputWithContext(ctx context.Context) NodeTemplateMapOutput {
+	return o
+}
+
+func (o NodeTemplateMapOutput) MapIndex(k pulumi.StringInput) NodeTemplateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NodeTemplate {
+		return vs[0].(map[string]NodeTemplate)[vs[1].(string)]
+	}).(NodeTemplateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NodeTemplateOutput{})
+	pulumi.RegisterOutputType(NodeTemplatePtrOutput{})
+	pulumi.RegisterOutputType(NodeTemplateArrayOutput{})
+	pulumi.RegisterOutputType(NodeTemplateMapOutput{})
 }

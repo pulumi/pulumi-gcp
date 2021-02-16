@@ -119,7 +119,8 @@ export class HmacKey extends pulumi.CustomResource {
     constructor(name: string, args: HmacKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HmacKeyArgs | HmacKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HmacKeyState | undefined;
             inputs["accessId"] = state ? state.accessId : undefined;
             inputs["project"] = state ? state.project : undefined;
@@ -130,7 +131,7 @@ export class HmacKey extends pulumi.CustomResource {
             inputs["updated"] = state ? state.updated : undefined;
         } else {
             const args = argsOrState as HmacKeyArgs | undefined;
-            if ((!args || args.serviceAccountEmail === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
             inputs["project"] = args ? args.project : undefined;
@@ -141,12 +142,8 @@ export class HmacKey extends pulumi.CustomResource {
             inputs["timeCreated"] = undefined /*out*/;
             inputs["updated"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HmacKey.__pulumiType, name, inputs, opts);
     }

@@ -202,6 +202,85 @@ func (i *FolderBucketConfig) ToFolderBucketConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigOutput)
 }
 
+func (i *FolderBucketConfig) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
+	return i.ToFolderBucketConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *FolderBucketConfig) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigPtrOutput)
+}
+
+type FolderBucketConfigPtrInput interface {
+	pulumi.Input
+
+	ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput
+	ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput
+}
+
+type folderBucketConfigPtrType FolderBucketConfigArgs
+
+func (*folderBucketConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderBucketConfig)(nil))
+}
+
+func (i *folderBucketConfigPtrType) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
+	return i.ToFolderBucketConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *folderBucketConfigPtrType) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigPtrOutput)
+}
+
+// FolderBucketConfigArrayInput is an input type that accepts FolderBucketConfigArray and FolderBucketConfigArrayOutput values.
+// You can construct a concrete instance of `FolderBucketConfigArrayInput` via:
+//
+//          FolderBucketConfigArray{ FolderBucketConfigArgs{...} }
+type FolderBucketConfigArrayInput interface {
+	pulumi.Input
+
+	ToFolderBucketConfigArrayOutput() FolderBucketConfigArrayOutput
+	ToFolderBucketConfigArrayOutputWithContext(context.Context) FolderBucketConfigArrayOutput
+}
+
+type FolderBucketConfigArray []FolderBucketConfigInput
+
+func (FolderBucketConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FolderBucketConfig)(nil))
+}
+
+func (i FolderBucketConfigArray) ToFolderBucketConfigArrayOutput() FolderBucketConfigArrayOutput {
+	return i.ToFolderBucketConfigArrayOutputWithContext(context.Background())
+}
+
+func (i FolderBucketConfigArray) ToFolderBucketConfigArrayOutputWithContext(ctx context.Context) FolderBucketConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigArrayOutput)
+}
+
+// FolderBucketConfigMapInput is an input type that accepts FolderBucketConfigMap and FolderBucketConfigMapOutput values.
+// You can construct a concrete instance of `FolderBucketConfigMapInput` via:
+//
+//          FolderBucketConfigMap{ "key": FolderBucketConfigArgs{...} }
+type FolderBucketConfigMapInput interface {
+	pulumi.Input
+
+	ToFolderBucketConfigMapOutput() FolderBucketConfigMapOutput
+	ToFolderBucketConfigMapOutputWithContext(context.Context) FolderBucketConfigMapOutput
+}
+
+type FolderBucketConfigMap map[string]FolderBucketConfigInput
+
+func (FolderBucketConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FolderBucketConfig)(nil))
+}
+
+func (i FolderBucketConfigMap) ToFolderBucketConfigMapOutput() FolderBucketConfigMapOutput {
+	return i.ToFolderBucketConfigMapOutputWithContext(context.Background())
+}
+
+func (i FolderBucketConfigMap) ToFolderBucketConfigMapOutputWithContext(ctx context.Context) FolderBucketConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderBucketConfigMapOutput)
+}
+
 type FolderBucketConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -218,6 +297,75 @@ func (o FolderBucketConfigOutput) ToFolderBucketConfigOutputWithContext(ctx cont
 	return o
 }
 
+func (o FolderBucketConfigOutput) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
+	return o.ToFolderBucketConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FolderBucketConfigOutput) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
+	return o.ApplyT(func(v FolderBucketConfig) *FolderBucketConfig {
+		return &v
+	}).(FolderBucketConfigPtrOutput)
+}
+
+type FolderBucketConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FolderBucketConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderBucketConfig)(nil))
+}
+
+func (o FolderBucketConfigPtrOutput) ToFolderBucketConfigPtrOutput() FolderBucketConfigPtrOutput {
+	return o
+}
+
+func (o FolderBucketConfigPtrOutput) ToFolderBucketConfigPtrOutputWithContext(ctx context.Context) FolderBucketConfigPtrOutput {
+	return o
+}
+
+type FolderBucketConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderBucketConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderBucketConfig)(nil))
+}
+
+func (o FolderBucketConfigArrayOutput) ToFolderBucketConfigArrayOutput() FolderBucketConfigArrayOutput {
+	return o
+}
+
+func (o FolderBucketConfigArrayOutput) ToFolderBucketConfigArrayOutputWithContext(ctx context.Context) FolderBucketConfigArrayOutput {
+	return o
+}
+
+func (o FolderBucketConfigArrayOutput) Index(i pulumi.IntInput) FolderBucketConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderBucketConfig {
+		return vs[0].([]FolderBucketConfig)[vs[1].(int)]
+	}).(FolderBucketConfigOutput)
+}
+
+type FolderBucketConfigMapOutput struct{ *pulumi.OutputState }
+
+func (FolderBucketConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FolderBucketConfig)(nil))
+}
+
+func (o FolderBucketConfigMapOutput) ToFolderBucketConfigMapOutput() FolderBucketConfigMapOutput {
+	return o
+}
+
+func (o FolderBucketConfigMapOutput) ToFolderBucketConfigMapOutputWithContext(ctx context.Context) FolderBucketConfigMapOutput {
+	return o
+}
+
+func (o FolderBucketConfigMapOutput) MapIndex(k pulumi.StringInput) FolderBucketConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FolderBucketConfig {
+		return vs[0].(map[string]FolderBucketConfig)[vs[1].(string)]
+	}).(FolderBucketConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FolderBucketConfigOutput{})
+	pulumi.RegisterOutputType(FolderBucketConfigPtrOutput{})
+	pulumi.RegisterOutputType(FolderBucketConfigArrayOutput{})
+	pulumi.RegisterOutputType(FolderBucketConfigMapOutput{})
 }

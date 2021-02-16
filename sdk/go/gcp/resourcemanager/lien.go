@@ -247,6 +247,85 @@ func (i *Lien) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LienOutput)
 }
 
+func (i *Lien) ToLienPtrOutput() LienPtrOutput {
+	return i.ToLienPtrOutputWithContext(context.Background())
+}
+
+func (i *Lien) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LienPtrOutput)
+}
+
+type LienPtrInput interface {
+	pulumi.Input
+
+	ToLienPtrOutput() LienPtrOutput
+	ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput
+}
+
+type lienPtrType LienArgs
+
+func (*lienPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lien)(nil))
+}
+
+func (i *lienPtrType) ToLienPtrOutput() LienPtrOutput {
+	return i.ToLienPtrOutputWithContext(context.Background())
+}
+
+func (i *lienPtrType) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LienPtrOutput)
+}
+
+// LienArrayInput is an input type that accepts LienArray and LienArrayOutput values.
+// You can construct a concrete instance of `LienArrayInput` via:
+//
+//          LienArray{ LienArgs{...} }
+type LienArrayInput interface {
+	pulumi.Input
+
+	ToLienArrayOutput() LienArrayOutput
+	ToLienArrayOutputWithContext(context.Context) LienArrayOutput
+}
+
+type LienArray []LienInput
+
+func (LienArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Lien)(nil))
+}
+
+func (i LienArray) ToLienArrayOutput() LienArrayOutput {
+	return i.ToLienArrayOutputWithContext(context.Background())
+}
+
+func (i LienArray) ToLienArrayOutputWithContext(ctx context.Context) LienArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LienArrayOutput)
+}
+
+// LienMapInput is an input type that accepts LienMap and LienMapOutput values.
+// You can construct a concrete instance of `LienMapInput` via:
+//
+//          LienMap{ "key": LienArgs{...} }
+type LienMapInput interface {
+	pulumi.Input
+
+	ToLienMapOutput() LienMapOutput
+	ToLienMapOutputWithContext(context.Context) LienMapOutput
+}
+
+type LienMap map[string]LienInput
+
+func (LienMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Lien)(nil))
+}
+
+func (i LienMap) ToLienMapOutput() LienMapOutput {
+	return i.ToLienMapOutputWithContext(context.Background())
+}
+
+func (i LienMap) ToLienMapOutputWithContext(ctx context.Context) LienMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LienMapOutput)
+}
+
 type LienOutput struct {
 	*pulumi.OutputState
 }
@@ -263,6 +342,75 @@ func (o LienOutput) ToLienOutputWithContext(ctx context.Context) LienOutput {
 	return o
 }
 
+func (o LienOutput) ToLienPtrOutput() LienPtrOutput {
+	return o.ToLienPtrOutputWithContext(context.Background())
+}
+
+func (o LienOutput) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
+	return o.ApplyT(func(v Lien) *Lien {
+		return &v
+	}).(LienPtrOutput)
+}
+
+type LienPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (LienPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lien)(nil))
+}
+
+func (o LienPtrOutput) ToLienPtrOutput() LienPtrOutput {
+	return o
+}
+
+func (o LienPtrOutput) ToLienPtrOutputWithContext(ctx context.Context) LienPtrOutput {
+	return o
+}
+
+type LienArrayOutput struct{ *pulumi.OutputState }
+
+func (LienArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Lien)(nil))
+}
+
+func (o LienArrayOutput) ToLienArrayOutput() LienArrayOutput {
+	return o
+}
+
+func (o LienArrayOutput) ToLienArrayOutputWithContext(ctx context.Context) LienArrayOutput {
+	return o
+}
+
+func (o LienArrayOutput) Index(i pulumi.IntInput) LienOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Lien {
+		return vs[0].([]Lien)[vs[1].(int)]
+	}).(LienOutput)
+}
+
+type LienMapOutput struct{ *pulumi.OutputState }
+
+func (LienMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Lien)(nil))
+}
+
+func (o LienMapOutput) ToLienMapOutput() LienMapOutput {
+	return o
+}
+
+func (o LienMapOutput) ToLienMapOutputWithContext(ctx context.Context) LienMapOutput {
+	return o
+}
+
+func (o LienMapOutput) MapIndex(k pulumi.StringInput) LienOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Lien {
+		return vs[0].(map[string]Lien)[vs[1].(string)]
+	}).(LienOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(LienOutput{})
+	pulumi.RegisterOutputType(LienPtrOutput{})
+	pulumi.RegisterOutputType(LienArrayOutput{})
+	pulumi.RegisterOutputType(LienMapOutput{})
 }

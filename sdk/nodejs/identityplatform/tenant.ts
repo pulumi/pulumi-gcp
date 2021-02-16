@@ -109,7 +109,8 @@ export class Tenant extends pulumi.CustomResource {
     constructor(name: string, args: TenantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TenantArgs | TenantState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TenantState | undefined;
             inputs["allowPasswordSignup"] = state ? state.allowPasswordSignup : undefined;
             inputs["disableAuth"] = state ? state.disableAuth : undefined;
@@ -119,7 +120,7 @@ export class Tenant extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as TenantArgs | undefined;
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["allowPasswordSignup"] = args ? args.allowPasswordSignup : undefined;
@@ -129,12 +130,8 @@ export class Tenant extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Tenant.__pulumiType, name, inputs, opts);
     }

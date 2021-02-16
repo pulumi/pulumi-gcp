@@ -414,6 +414,85 @@ func (i *RecordSet) ToRecordSetOutputWithContext(ctx context.Context) RecordSetO
 	return pulumi.ToOutputWithContext(ctx, i).(RecordSetOutput)
 }
 
+func (i *RecordSet) ToRecordSetPtrOutput() RecordSetPtrOutput {
+	return i.ToRecordSetPtrOutputWithContext(context.Background())
+}
+
+func (i *RecordSet) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetPtrOutput)
+}
+
+type RecordSetPtrInput interface {
+	pulumi.Input
+
+	ToRecordSetPtrOutput() RecordSetPtrOutput
+	ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput
+}
+
+type recordSetPtrType RecordSetArgs
+
+func (*recordSetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSet)(nil))
+}
+
+func (i *recordSetPtrType) ToRecordSetPtrOutput() RecordSetPtrOutput {
+	return i.ToRecordSetPtrOutputWithContext(context.Background())
+}
+
+func (i *recordSetPtrType) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetPtrOutput)
+}
+
+// RecordSetArrayInput is an input type that accepts RecordSetArray and RecordSetArrayOutput values.
+// You can construct a concrete instance of `RecordSetArrayInput` via:
+//
+//          RecordSetArray{ RecordSetArgs{...} }
+type RecordSetArrayInput interface {
+	pulumi.Input
+
+	ToRecordSetArrayOutput() RecordSetArrayOutput
+	ToRecordSetArrayOutputWithContext(context.Context) RecordSetArrayOutput
+}
+
+type RecordSetArray []RecordSetInput
+
+func (RecordSetArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RecordSet)(nil))
+}
+
+func (i RecordSetArray) ToRecordSetArrayOutput() RecordSetArrayOutput {
+	return i.ToRecordSetArrayOutputWithContext(context.Background())
+}
+
+func (i RecordSetArray) ToRecordSetArrayOutputWithContext(ctx context.Context) RecordSetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetArrayOutput)
+}
+
+// RecordSetMapInput is an input type that accepts RecordSetMap and RecordSetMapOutput values.
+// You can construct a concrete instance of `RecordSetMapInput` via:
+//
+//          RecordSetMap{ "key": RecordSetArgs{...} }
+type RecordSetMapInput interface {
+	pulumi.Input
+
+	ToRecordSetMapOutput() RecordSetMapOutput
+	ToRecordSetMapOutputWithContext(context.Context) RecordSetMapOutput
+}
+
+type RecordSetMap map[string]RecordSetInput
+
+func (RecordSetMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RecordSet)(nil))
+}
+
+func (i RecordSetMap) ToRecordSetMapOutput() RecordSetMapOutput {
+	return i.ToRecordSetMapOutputWithContext(context.Background())
+}
+
+func (i RecordSetMap) ToRecordSetMapOutputWithContext(ctx context.Context) RecordSetMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecordSetMapOutput)
+}
+
 type RecordSetOutput struct {
 	*pulumi.OutputState
 }
@@ -430,6 +509,75 @@ func (o RecordSetOutput) ToRecordSetOutputWithContext(ctx context.Context) Recor
 	return o
 }
 
+func (o RecordSetOutput) ToRecordSetPtrOutput() RecordSetPtrOutput {
+	return o.ToRecordSetPtrOutputWithContext(context.Background())
+}
+
+func (o RecordSetOutput) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
+	return o.ApplyT(func(v RecordSet) *RecordSet {
+		return &v
+	}).(RecordSetPtrOutput)
+}
+
+type RecordSetPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RecordSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecordSet)(nil))
+}
+
+func (o RecordSetPtrOutput) ToRecordSetPtrOutput() RecordSetPtrOutput {
+	return o
+}
+
+func (o RecordSetPtrOutput) ToRecordSetPtrOutputWithContext(ctx context.Context) RecordSetPtrOutput {
+	return o
+}
+
+type RecordSetArrayOutput struct{ *pulumi.OutputState }
+
+func (RecordSetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RecordSet)(nil))
+}
+
+func (o RecordSetArrayOutput) ToRecordSetArrayOutput() RecordSetArrayOutput {
+	return o
+}
+
+func (o RecordSetArrayOutput) ToRecordSetArrayOutputWithContext(ctx context.Context) RecordSetArrayOutput {
+	return o
+}
+
+func (o RecordSetArrayOutput) Index(i pulumi.IntInput) RecordSetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RecordSet {
+		return vs[0].([]RecordSet)[vs[1].(int)]
+	}).(RecordSetOutput)
+}
+
+type RecordSetMapOutput struct{ *pulumi.OutputState }
+
+func (RecordSetMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RecordSet)(nil))
+}
+
+func (o RecordSetMapOutput) ToRecordSetMapOutput() RecordSetMapOutput {
+	return o
+}
+
+func (o RecordSetMapOutput) ToRecordSetMapOutputWithContext(ctx context.Context) RecordSetMapOutput {
+	return o
+}
+
+func (o RecordSetMapOutput) MapIndex(k pulumi.StringInput) RecordSetOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RecordSet {
+		return vs[0].(map[string]RecordSet)[vs[1].(string)]
+	}).(RecordSetOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RecordSetOutput{})
+	pulumi.RegisterOutputType(RecordSetPtrOutput{})
+	pulumi.RegisterOutputType(RecordSetArrayOutput{})
+	pulumi.RegisterOutputType(RecordSetMapOutput{})
 }

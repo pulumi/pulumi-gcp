@@ -517,6 +517,85 @@ func (i *RouterNat) ToRouterNatOutputWithContext(ctx context.Context) RouterNatO
 	return pulumi.ToOutputWithContext(ctx, i).(RouterNatOutput)
 }
 
+func (i *RouterNat) ToRouterNatPtrOutput() RouterNatPtrOutput {
+	return i.ToRouterNatPtrOutputWithContext(context.Background())
+}
+
+func (i *RouterNat) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatPtrOutput)
+}
+
+type RouterNatPtrInput interface {
+	pulumi.Input
+
+	ToRouterNatPtrOutput() RouterNatPtrOutput
+	ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput
+}
+
+type routerNatPtrType RouterNatArgs
+
+func (*routerNatPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNat)(nil))
+}
+
+func (i *routerNatPtrType) ToRouterNatPtrOutput() RouterNatPtrOutput {
+	return i.ToRouterNatPtrOutputWithContext(context.Background())
+}
+
+func (i *routerNatPtrType) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatPtrOutput)
+}
+
+// RouterNatArrayInput is an input type that accepts RouterNatArray and RouterNatArrayOutput values.
+// You can construct a concrete instance of `RouterNatArrayInput` via:
+//
+//          RouterNatArray{ RouterNatArgs{...} }
+type RouterNatArrayInput interface {
+	pulumi.Input
+
+	ToRouterNatArrayOutput() RouterNatArrayOutput
+	ToRouterNatArrayOutputWithContext(context.Context) RouterNatArrayOutput
+}
+
+type RouterNatArray []RouterNatInput
+
+func (RouterNatArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RouterNat)(nil))
+}
+
+func (i RouterNatArray) ToRouterNatArrayOutput() RouterNatArrayOutput {
+	return i.ToRouterNatArrayOutputWithContext(context.Background())
+}
+
+func (i RouterNatArray) ToRouterNatArrayOutputWithContext(ctx context.Context) RouterNatArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatArrayOutput)
+}
+
+// RouterNatMapInput is an input type that accepts RouterNatMap and RouterNatMapOutput values.
+// You can construct a concrete instance of `RouterNatMapInput` via:
+//
+//          RouterNatMap{ "key": RouterNatArgs{...} }
+type RouterNatMapInput interface {
+	pulumi.Input
+
+	ToRouterNatMapOutput() RouterNatMapOutput
+	ToRouterNatMapOutputWithContext(context.Context) RouterNatMapOutput
+}
+
+type RouterNatMap map[string]RouterNatInput
+
+func (RouterNatMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RouterNat)(nil))
+}
+
+func (i RouterNatMap) ToRouterNatMapOutput() RouterNatMapOutput {
+	return i.ToRouterNatMapOutputWithContext(context.Background())
+}
+
+func (i RouterNatMap) ToRouterNatMapOutputWithContext(ctx context.Context) RouterNatMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterNatMapOutput)
+}
+
 type RouterNatOutput struct {
 	*pulumi.OutputState
 }
@@ -533,6 +612,75 @@ func (o RouterNatOutput) ToRouterNatOutputWithContext(ctx context.Context) Route
 	return o
 }
 
+func (o RouterNatOutput) ToRouterNatPtrOutput() RouterNatPtrOutput {
+	return o.ToRouterNatPtrOutputWithContext(context.Background())
+}
+
+func (o RouterNatOutput) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
+	return o.ApplyT(func(v RouterNat) *RouterNat {
+		return &v
+	}).(RouterNatPtrOutput)
+}
+
+type RouterNatPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RouterNatPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RouterNat)(nil))
+}
+
+func (o RouterNatPtrOutput) ToRouterNatPtrOutput() RouterNatPtrOutput {
+	return o
+}
+
+func (o RouterNatPtrOutput) ToRouterNatPtrOutputWithContext(ctx context.Context) RouterNatPtrOutput {
+	return o
+}
+
+type RouterNatArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterNatArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterNat)(nil))
+}
+
+func (o RouterNatArrayOutput) ToRouterNatArrayOutput() RouterNatArrayOutput {
+	return o
+}
+
+func (o RouterNatArrayOutput) ToRouterNatArrayOutputWithContext(ctx context.Context) RouterNatArrayOutput {
+	return o
+}
+
+func (o RouterNatArrayOutput) Index(i pulumi.IntInput) RouterNatOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterNat {
+		return vs[0].([]RouterNat)[vs[1].(int)]
+	}).(RouterNatOutput)
+}
+
+type RouterNatMapOutput struct{ *pulumi.OutputState }
+
+func (RouterNatMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RouterNat)(nil))
+}
+
+func (o RouterNatMapOutput) ToRouterNatMapOutput() RouterNatMapOutput {
+	return o
+}
+
+func (o RouterNatMapOutput) ToRouterNatMapOutputWithContext(ctx context.Context) RouterNatMapOutput {
+	return o
+}
+
+func (o RouterNatMapOutput) MapIndex(k pulumi.StringInput) RouterNatOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RouterNat {
+		return vs[0].(map[string]RouterNat)[vs[1].(string)]
+	}).(RouterNatOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RouterNatOutput{})
+	pulumi.RegisterOutputType(RouterNatPtrOutput{})
+	pulumi.RegisterOutputType(RouterNatArrayOutput{})
+	pulumi.RegisterOutputType(RouterNatMapOutput{})
 }

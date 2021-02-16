@@ -90,7 +90,8 @@ export class AppEngineServiceIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: AppEngineServiceIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppEngineServiceIamPolicyArgs | AppEngineServiceIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AppEngineServiceIamPolicyState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -99,13 +100,13 @@ export class AppEngineServiceIamPolicy extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as AppEngineServiceIamPolicyArgs | undefined;
-            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["appId"] = args ? args.appId : undefined;
@@ -114,12 +115,8 @@ export class AppEngineServiceIamPolicy extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AppEngineServiceIamPolicy.__pulumiType, name, inputs, opts);
     }

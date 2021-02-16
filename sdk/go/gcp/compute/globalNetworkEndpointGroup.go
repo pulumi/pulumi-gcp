@@ -269,6 +269,85 @@ func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupOutput)
 }
 
+func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupPtrOutput() GlobalNetworkEndpointGroupPtrOutput {
+	return i.ToGlobalNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *GlobalNetworkEndpointGroup) ToGlobalNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupPtrOutput)
+}
+
+type GlobalNetworkEndpointGroupPtrInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointGroupPtrOutput() GlobalNetworkEndpointGroupPtrOutput
+	ToGlobalNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupPtrOutput
+}
+
+type globalNetworkEndpointGroupPtrType GlobalNetworkEndpointGroupArgs
+
+func (*globalNetworkEndpointGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalNetworkEndpointGroup)(nil))
+}
+
+func (i *globalNetworkEndpointGroupPtrType) ToGlobalNetworkEndpointGroupPtrOutput() GlobalNetworkEndpointGroupPtrOutput {
+	return i.ToGlobalNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *globalNetworkEndpointGroupPtrType) ToGlobalNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupPtrOutput)
+}
+
+// GlobalNetworkEndpointGroupArrayInput is an input type that accepts GlobalNetworkEndpointGroupArray and GlobalNetworkEndpointGroupArrayOutput values.
+// You can construct a concrete instance of `GlobalNetworkEndpointGroupArrayInput` via:
+//
+//          GlobalNetworkEndpointGroupArray{ GlobalNetworkEndpointGroupArgs{...} }
+type GlobalNetworkEndpointGroupArrayInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointGroupArrayOutput() GlobalNetworkEndpointGroupArrayOutput
+	ToGlobalNetworkEndpointGroupArrayOutputWithContext(context.Context) GlobalNetworkEndpointGroupArrayOutput
+}
+
+type GlobalNetworkEndpointGroupArray []GlobalNetworkEndpointGroupInput
+
+func (GlobalNetworkEndpointGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GlobalNetworkEndpointGroup)(nil))
+}
+
+func (i GlobalNetworkEndpointGroupArray) ToGlobalNetworkEndpointGroupArrayOutput() GlobalNetworkEndpointGroupArrayOutput {
+	return i.ToGlobalNetworkEndpointGroupArrayOutputWithContext(context.Background())
+}
+
+func (i GlobalNetworkEndpointGroupArray) ToGlobalNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupArrayOutput)
+}
+
+// GlobalNetworkEndpointGroupMapInput is an input type that accepts GlobalNetworkEndpointGroupMap and GlobalNetworkEndpointGroupMapOutput values.
+// You can construct a concrete instance of `GlobalNetworkEndpointGroupMapInput` via:
+//
+//          GlobalNetworkEndpointGroupMap{ "key": GlobalNetworkEndpointGroupArgs{...} }
+type GlobalNetworkEndpointGroupMapInput interface {
+	pulumi.Input
+
+	ToGlobalNetworkEndpointGroupMapOutput() GlobalNetworkEndpointGroupMapOutput
+	ToGlobalNetworkEndpointGroupMapOutputWithContext(context.Context) GlobalNetworkEndpointGroupMapOutput
+}
+
+type GlobalNetworkEndpointGroupMap map[string]GlobalNetworkEndpointGroupInput
+
+func (GlobalNetworkEndpointGroupMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GlobalNetworkEndpointGroup)(nil))
+}
+
+func (i GlobalNetworkEndpointGroupMap) ToGlobalNetworkEndpointGroupMapOutput() GlobalNetworkEndpointGroupMapOutput {
+	return i.ToGlobalNetworkEndpointGroupMapOutputWithContext(context.Background())
+}
+
+func (i GlobalNetworkEndpointGroupMap) ToGlobalNetworkEndpointGroupMapOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlobalNetworkEndpointGroupMapOutput)
+}
+
 type GlobalNetworkEndpointGroupOutput struct {
 	*pulumi.OutputState
 }
@@ -285,6 +364,75 @@ func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupOutputWith
 	return o
 }
 
+func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupPtrOutput() GlobalNetworkEndpointGroupPtrOutput {
+	return o.ToGlobalNetworkEndpointGroupPtrOutputWithContext(context.Background())
+}
+
+func (o GlobalNetworkEndpointGroupOutput) ToGlobalNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupPtrOutput {
+	return o.ApplyT(func(v GlobalNetworkEndpointGroup) *GlobalNetworkEndpointGroup {
+		return &v
+	}).(GlobalNetworkEndpointGroupPtrOutput)
+}
+
+type GlobalNetworkEndpointGroupPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GlobalNetworkEndpointGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlobalNetworkEndpointGroup)(nil))
+}
+
+func (o GlobalNetworkEndpointGroupPtrOutput) ToGlobalNetworkEndpointGroupPtrOutput() GlobalNetworkEndpointGroupPtrOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupPtrOutput) ToGlobalNetworkEndpointGroupPtrOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupPtrOutput {
+	return o
+}
+
+type GlobalNetworkEndpointGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (GlobalNetworkEndpointGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlobalNetworkEndpointGroup)(nil))
+}
+
+func (o GlobalNetworkEndpointGroupArrayOutput) ToGlobalNetworkEndpointGroupArrayOutput() GlobalNetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupArrayOutput) ToGlobalNetworkEndpointGroupArrayOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupArrayOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupArrayOutput) Index(i pulumi.IntInput) GlobalNetworkEndpointGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlobalNetworkEndpointGroup {
+		return vs[0].([]GlobalNetworkEndpointGroup)[vs[1].(int)]
+	}).(GlobalNetworkEndpointGroupOutput)
+}
+
+type GlobalNetworkEndpointGroupMapOutput struct{ *pulumi.OutputState }
+
+func (GlobalNetworkEndpointGroupMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GlobalNetworkEndpointGroup)(nil))
+}
+
+func (o GlobalNetworkEndpointGroupMapOutput) ToGlobalNetworkEndpointGroupMapOutput() GlobalNetworkEndpointGroupMapOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupMapOutput) ToGlobalNetworkEndpointGroupMapOutputWithContext(ctx context.Context) GlobalNetworkEndpointGroupMapOutput {
+	return o
+}
+
+func (o GlobalNetworkEndpointGroupMapOutput) MapIndex(k pulumi.StringInput) GlobalNetworkEndpointGroupOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GlobalNetworkEndpointGroup {
+		return vs[0].(map[string]GlobalNetworkEndpointGroup)[vs[1].(string)]
+	}).(GlobalNetworkEndpointGroupOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupOutput{})
+	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupPtrOutput{})
+	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupArrayOutput{})
+	pulumi.RegisterOutputType(GlobalNetworkEndpointGroupMapOutput{})
 }

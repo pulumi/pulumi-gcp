@@ -102,7 +102,8 @@ export class AppEngineVersionIamMember extends pulumi.CustomResource {
     constructor(name: string, args: AppEngineVersionIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppEngineVersionIamMemberArgs | AppEngineVersionIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AppEngineVersionIamMemberState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["condition"] = state ? state.condition : undefined;
@@ -114,19 +115,19 @@ export class AppEngineVersionIamMember extends pulumi.CustomResource {
             inputs["versionId"] = state ? state.versionId : undefined;
         } else {
             const args = argsOrState as AppEngineVersionIamMemberArgs | undefined;
-            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
-            if ((!args || args.versionId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.versionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'versionId'");
             }
             inputs["appId"] = args ? args.appId : undefined;
@@ -138,12 +139,8 @@ export class AppEngineVersionIamMember extends pulumi.CustomResource {
             inputs["versionId"] = args ? args.versionId : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AppEngineVersionIamMember.__pulumiType, name, inputs, opts);
     }

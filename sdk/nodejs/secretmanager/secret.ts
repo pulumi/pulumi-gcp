@@ -128,7 +128,8 @@ export class Secret extends pulumi.CustomResource {
     constructor(name: string, args: SecretArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: SecretArgs | SecretState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as SecretState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -138,10 +139,10 @@ export class Secret extends pulumi.CustomResource {
             inputs["secretId"] = state ? state.secretId : undefined;
         } else {
             const args = argsOrState as SecretArgs | undefined;
-            if ((!args || args.replication === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.replication === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'replication'");
             }
-            if ((!args || args.secretId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
             inputs["labels"] = args ? args.labels : undefined;
@@ -151,12 +152,8 @@ export class Secret extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Secret.__pulumiType, name, inputs, opts);
     }

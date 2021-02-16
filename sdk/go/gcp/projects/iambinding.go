@@ -445,6 +445,85 @@ func (i *IAMBinding) ToIAMBindingOutputWithContext(ctx context.Context) IAMBindi
 	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingOutput)
 }
 
+func (i *IAMBinding) ToIAMBindingPtrOutput() IAMBindingPtrOutput {
+	return i.ToIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *IAMBinding) ToIAMBindingPtrOutputWithContext(ctx context.Context) IAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingPtrOutput)
+}
+
+type IAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToIAMBindingPtrOutput() IAMBindingPtrOutput
+	ToIAMBindingPtrOutputWithContext(ctx context.Context) IAMBindingPtrOutput
+}
+
+type iambindingPtrType IAMBindingArgs
+
+func (*iambindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMBinding)(nil))
+}
+
+func (i *iambindingPtrType) ToIAMBindingPtrOutput() IAMBindingPtrOutput {
+	return i.ToIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *iambindingPtrType) ToIAMBindingPtrOutputWithContext(ctx context.Context) IAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingPtrOutput)
+}
+
+// IAMBindingArrayInput is an input type that accepts IAMBindingArray and IAMBindingArrayOutput values.
+// You can construct a concrete instance of `IAMBindingArrayInput` via:
+//
+//          IAMBindingArray{ IAMBindingArgs{...} }
+type IAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToIAMBindingArrayOutput() IAMBindingArrayOutput
+	ToIAMBindingArrayOutputWithContext(context.Context) IAMBindingArrayOutput
+}
+
+type IAMBindingArray []IAMBindingInput
+
+func (IAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*IAMBinding)(nil))
+}
+
+func (i IAMBindingArray) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
+	return i.ToIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i IAMBindingArray) ToIAMBindingArrayOutputWithContext(ctx context.Context) IAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingArrayOutput)
+}
+
+// IAMBindingMapInput is an input type that accepts IAMBindingMap and IAMBindingMapOutput values.
+// You can construct a concrete instance of `IAMBindingMapInput` via:
+//
+//          IAMBindingMap{ "key": IAMBindingArgs{...} }
+type IAMBindingMapInput interface {
+	pulumi.Input
+
+	ToIAMBindingMapOutput() IAMBindingMapOutput
+	ToIAMBindingMapOutputWithContext(context.Context) IAMBindingMapOutput
+}
+
+type IAMBindingMap map[string]IAMBindingInput
+
+func (IAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*IAMBinding)(nil))
+}
+
+func (i IAMBindingMap) ToIAMBindingMapOutput() IAMBindingMapOutput {
+	return i.ToIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i IAMBindingMap) ToIAMBindingMapOutputWithContext(ctx context.Context) IAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMBindingMapOutput)
+}
+
 type IAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -461,6 +540,75 @@ func (o IAMBindingOutput) ToIAMBindingOutputWithContext(ctx context.Context) IAM
 	return o
 }
 
+func (o IAMBindingOutput) ToIAMBindingPtrOutput() IAMBindingPtrOutput {
+	return o.ToIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o IAMBindingOutput) ToIAMBindingPtrOutputWithContext(ctx context.Context) IAMBindingPtrOutput {
+	return o.ApplyT(func(v IAMBinding) *IAMBinding {
+		return &v
+	}).(IAMBindingPtrOutput)
+}
+
+type IAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMBinding)(nil))
+}
+
+func (o IAMBindingPtrOutput) ToIAMBindingPtrOutput() IAMBindingPtrOutput {
+	return o
+}
+
+func (o IAMBindingPtrOutput) ToIAMBindingPtrOutputWithContext(ctx context.Context) IAMBindingPtrOutput {
+	return o
+}
+
+type IAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (IAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IAMBinding)(nil))
+}
+
+func (o IAMBindingArrayOutput) ToIAMBindingArrayOutput() IAMBindingArrayOutput {
+	return o
+}
+
+func (o IAMBindingArrayOutput) ToIAMBindingArrayOutputWithContext(ctx context.Context) IAMBindingArrayOutput {
+	return o
+}
+
+func (o IAMBindingArrayOutput) Index(i pulumi.IntInput) IAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMBinding {
+		return vs[0].([]IAMBinding)[vs[1].(int)]
+	}).(IAMBindingOutput)
+}
+
+type IAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (IAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IAMBinding)(nil))
+}
+
+func (o IAMBindingMapOutput) ToIAMBindingMapOutput() IAMBindingMapOutput {
+	return o
+}
+
+func (o IAMBindingMapOutput) ToIAMBindingMapOutputWithContext(ctx context.Context) IAMBindingMapOutput {
+	return o
+}
+
+func (o IAMBindingMapOutput) MapIndex(k pulumi.StringInput) IAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IAMBinding {
+		return vs[0].(map[string]IAMBinding)[vs[1].(string)]
+	}).(IAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(IAMBindingOutput{})
+	pulumi.RegisterOutputType(IAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(IAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(IAMBindingMapOutput{})
 }

@@ -122,7 +122,8 @@ export class Occurence extends pulumi.CustomResource {
     constructor(name: string, args: OccurenceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: OccurenceArgs | OccurenceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as OccurenceState | undefined;
             inputs["attestation"] = state ? state.attestation : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -135,13 +136,13 @@ export class Occurence extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as OccurenceArgs | undefined;
-            if ((!args || args.attestation === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.attestation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestation'");
             }
-            if ((!args || args.noteName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.noteName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'noteName'");
             }
-            if ((!args || args.resourceUri === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.resourceUri === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceUri'");
             }
             inputs["attestation"] = args ? args.attestation : undefined;
@@ -154,12 +155,8 @@ export class Occurence extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Occurence.__pulumiType, name, inputs, opts);
     }

@@ -207,6 +207,85 @@ func (i *InstanceIAMMember) ToInstanceIAMMemberOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberOutput)
 }
 
+func (i *InstanceIAMMember) ToInstanceIAMMemberPtrOutput() InstanceIAMMemberPtrOutput {
+	return i.ToInstanceIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *InstanceIAMMember) ToInstanceIAMMemberPtrOutputWithContext(ctx context.Context) InstanceIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberPtrOutput)
+}
+
+type InstanceIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToInstanceIAMMemberPtrOutput() InstanceIAMMemberPtrOutput
+	ToInstanceIAMMemberPtrOutputWithContext(ctx context.Context) InstanceIAMMemberPtrOutput
+}
+
+type instanceIAMMemberPtrType InstanceIAMMemberArgs
+
+func (*instanceIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIAMMember)(nil))
+}
+
+func (i *instanceIAMMemberPtrType) ToInstanceIAMMemberPtrOutput() InstanceIAMMemberPtrOutput {
+	return i.ToInstanceIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceIAMMemberPtrType) ToInstanceIAMMemberPtrOutputWithContext(ctx context.Context) InstanceIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberPtrOutput)
+}
+
+// InstanceIAMMemberArrayInput is an input type that accepts InstanceIAMMemberArray and InstanceIAMMemberArrayOutput values.
+// You can construct a concrete instance of `InstanceIAMMemberArrayInput` via:
+//
+//          InstanceIAMMemberArray{ InstanceIAMMemberArgs{...} }
+type InstanceIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToInstanceIAMMemberArrayOutput() InstanceIAMMemberArrayOutput
+	ToInstanceIAMMemberArrayOutputWithContext(context.Context) InstanceIAMMemberArrayOutput
+}
+
+type InstanceIAMMemberArray []InstanceIAMMemberInput
+
+func (InstanceIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InstanceIAMMember)(nil))
+}
+
+func (i InstanceIAMMemberArray) ToInstanceIAMMemberArrayOutput() InstanceIAMMemberArrayOutput {
+	return i.ToInstanceIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceIAMMemberArray) ToInstanceIAMMemberArrayOutputWithContext(ctx context.Context) InstanceIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberArrayOutput)
+}
+
+// InstanceIAMMemberMapInput is an input type that accepts InstanceIAMMemberMap and InstanceIAMMemberMapOutput values.
+// You can construct a concrete instance of `InstanceIAMMemberMapInput` via:
+//
+//          InstanceIAMMemberMap{ "key": InstanceIAMMemberArgs{...} }
+type InstanceIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToInstanceIAMMemberMapOutput() InstanceIAMMemberMapOutput
+	ToInstanceIAMMemberMapOutputWithContext(context.Context) InstanceIAMMemberMapOutput
+}
+
+type InstanceIAMMemberMap map[string]InstanceIAMMemberInput
+
+func (InstanceIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InstanceIAMMember)(nil))
+}
+
+func (i InstanceIAMMemberMap) ToInstanceIAMMemberMapOutput() InstanceIAMMemberMapOutput {
+	return i.ToInstanceIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i InstanceIAMMemberMap) ToInstanceIAMMemberMapOutputWithContext(ctx context.Context) InstanceIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMMemberMapOutput)
+}
+
 type InstanceIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -223,6 +302,75 @@ func (o InstanceIAMMemberOutput) ToInstanceIAMMemberOutputWithContext(ctx contex
 	return o
 }
 
+func (o InstanceIAMMemberOutput) ToInstanceIAMMemberPtrOutput() InstanceIAMMemberPtrOutput {
+	return o.ToInstanceIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceIAMMemberOutput) ToInstanceIAMMemberPtrOutputWithContext(ctx context.Context) InstanceIAMMemberPtrOutput {
+	return o.ApplyT(func(v InstanceIAMMember) *InstanceIAMMember {
+		return &v
+	}).(InstanceIAMMemberPtrOutput)
+}
+
+type InstanceIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIAMMember)(nil))
+}
+
+func (o InstanceIAMMemberPtrOutput) ToInstanceIAMMemberPtrOutput() InstanceIAMMemberPtrOutput {
+	return o
+}
+
+func (o InstanceIAMMemberPtrOutput) ToInstanceIAMMemberPtrOutputWithContext(ctx context.Context) InstanceIAMMemberPtrOutput {
+	return o
+}
+
+type InstanceIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIAMMember)(nil))
+}
+
+func (o InstanceIAMMemberArrayOutput) ToInstanceIAMMemberArrayOutput() InstanceIAMMemberArrayOutput {
+	return o
+}
+
+func (o InstanceIAMMemberArrayOutput) ToInstanceIAMMemberArrayOutputWithContext(ctx context.Context) InstanceIAMMemberArrayOutput {
+	return o
+}
+
+func (o InstanceIAMMemberArrayOutput) Index(i pulumi.IntInput) InstanceIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIAMMember {
+		return vs[0].([]InstanceIAMMember)[vs[1].(int)]
+	}).(InstanceIAMMemberOutput)
+}
+
+type InstanceIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceIAMMember)(nil))
+}
+
+func (o InstanceIAMMemberMapOutput) ToInstanceIAMMemberMapOutput() InstanceIAMMemberMapOutput {
+	return o
+}
+
+func (o InstanceIAMMemberMapOutput) ToInstanceIAMMemberMapOutputWithContext(ctx context.Context) InstanceIAMMemberMapOutput {
+	return o
+}
+
+func (o InstanceIAMMemberMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceIAMMember {
+		return vs[0].(map[string]InstanceIAMMember)[vs[1].(string)]
+	}).(InstanceIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceIAMMemberOutput{})
+	pulumi.RegisterOutputType(InstanceIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(InstanceIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIAMMemberMapOutput{})
 }

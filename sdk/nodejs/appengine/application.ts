@@ -141,7 +141,8 @@ export class Application extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["authDomain"] = state ? state.authDomain : undefined;
@@ -159,7 +160,7 @@ export class Application extends pulumi.CustomResource {
             inputs["urlDispatchRules"] = state ? state.urlDispatchRules : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
-            if ((!args || args.locationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.locationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationId'");
             }
             inputs["authDomain"] = args ? args.authDomain : undefined;
@@ -177,12 +178,8 @@ export class Application extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["urlDispatchRules"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Application.__pulumiType, name, inputs, opts);
     }

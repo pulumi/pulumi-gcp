@@ -507,6 +507,85 @@ func (i *InstanceFromTemplate) ToInstanceFromTemplateOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateOutput)
 }
 
+func (i *InstanceFromTemplate) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
+	return i.ToInstanceFromTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *InstanceFromTemplate) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplatePtrOutput)
+}
+
+type InstanceFromTemplatePtrInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput
+	ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput
+}
+
+type instanceFromTemplatePtrType InstanceFromTemplateArgs
+
+func (*instanceFromTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplate)(nil))
+}
+
+func (i *instanceFromTemplatePtrType) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
+	return i.ToInstanceFromTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFromTemplatePtrType) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplatePtrOutput)
+}
+
+// InstanceFromTemplateArrayInput is an input type that accepts InstanceFromTemplateArray and InstanceFromTemplateArrayOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateArrayInput` via:
+//
+//          InstanceFromTemplateArray{ InstanceFromTemplateArgs{...} }
+type InstanceFromTemplateArrayInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateArrayOutput() InstanceFromTemplateArrayOutput
+	ToInstanceFromTemplateArrayOutputWithContext(context.Context) InstanceFromTemplateArrayOutput
+}
+
+type InstanceFromTemplateArray []InstanceFromTemplateInput
+
+func (InstanceFromTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InstanceFromTemplate)(nil))
+}
+
+func (i InstanceFromTemplateArray) ToInstanceFromTemplateArrayOutput() InstanceFromTemplateArrayOutput {
+	return i.ToInstanceFromTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateArray) ToInstanceFromTemplateArrayOutputWithContext(ctx context.Context) InstanceFromTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateArrayOutput)
+}
+
+// InstanceFromTemplateMapInput is an input type that accepts InstanceFromTemplateMap and InstanceFromTemplateMapOutput values.
+// You can construct a concrete instance of `InstanceFromTemplateMapInput` via:
+//
+//          InstanceFromTemplateMap{ "key": InstanceFromTemplateArgs{...} }
+type InstanceFromTemplateMapInput interface {
+	pulumi.Input
+
+	ToInstanceFromTemplateMapOutput() InstanceFromTemplateMapOutput
+	ToInstanceFromTemplateMapOutputWithContext(context.Context) InstanceFromTemplateMapOutput
+}
+
+type InstanceFromTemplateMap map[string]InstanceFromTemplateInput
+
+func (InstanceFromTemplateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InstanceFromTemplate)(nil))
+}
+
+func (i InstanceFromTemplateMap) ToInstanceFromTemplateMapOutput() InstanceFromTemplateMapOutput {
+	return i.ToInstanceFromTemplateMapOutputWithContext(context.Background())
+}
+
+func (i InstanceFromTemplateMap) ToInstanceFromTemplateMapOutputWithContext(ctx context.Context) InstanceFromTemplateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFromTemplateMapOutput)
+}
+
 type InstanceFromTemplateOutput struct {
 	*pulumi.OutputState
 }
@@ -523,6 +602,75 @@ func (o InstanceFromTemplateOutput) ToInstanceFromTemplateOutputWithContext(ctx 
 	return o
 }
 
+func (o InstanceFromTemplateOutput) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
+	return o.ToInstanceFromTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFromTemplateOutput) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplate) *InstanceFromTemplate {
+		return &v
+	}).(InstanceFromTemplatePtrOutput)
+}
+
+type InstanceFromTemplatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceFromTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFromTemplate)(nil))
+}
+
+func (o InstanceFromTemplatePtrOutput) ToInstanceFromTemplatePtrOutput() InstanceFromTemplatePtrOutput {
+	return o
+}
+
+func (o InstanceFromTemplatePtrOutput) ToInstanceFromTemplatePtrOutputWithContext(ctx context.Context) InstanceFromTemplatePtrOutput {
+	return o
+}
+
+type InstanceFromTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceFromTemplate)(nil))
+}
+
+func (o InstanceFromTemplateArrayOutput) ToInstanceFromTemplateArrayOutput() InstanceFromTemplateArrayOutput {
+	return o
+}
+
+func (o InstanceFromTemplateArrayOutput) ToInstanceFromTemplateArrayOutputWithContext(ctx context.Context) InstanceFromTemplateArrayOutput {
+	return o
+}
+
+func (o InstanceFromTemplateArrayOutput) Index(i pulumi.IntInput) InstanceFromTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceFromTemplate {
+		return vs[0].([]InstanceFromTemplate)[vs[1].(int)]
+	}).(InstanceFromTemplateOutput)
+}
+
+type InstanceFromTemplateMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceFromTemplateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceFromTemplate)(nil))
+}
+
+func (o InstanceFromTemplateMapOutput) ToInstanceFromTemplateMapOutput() InstanceFromTemplateMapOutput {
+	return o
+}
+
+func (o InstanceFromTemplateMapOutput) ToInstanceFromTemplateMapOutputWithContext(ctx context.Context) InstanceFromTemplateMapOutput {
+	return o
+}
+
+func (o InstanceFromTemplateMapOutput) MapIndex(k pulumi.StringInput) InstanceFromTemplateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceFromTemplate {
+		return vs[0].(map[string]InstanceFromTemplate)[vs[1].(string)]
+	}).(InstanceFromTemplateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceFromTemplateOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplatePtrOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateArrayOutput{})
+	pulumi.RegisterOutputType(InstanceFromTemplateMapOutput{})
 }

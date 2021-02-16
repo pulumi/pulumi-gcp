@@ -331,6 +331,85 @@ func (i *Note) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NoteOutput)
 }
 
+func (i *Note) ToNotePtrOutput() NotePtrOutput {
+	return i.ToNotePtrOutputWithContext(context.Background())
+}
+
+func (i *Note) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotePtrOutput)
+}
+
+type NotePtrInput interface {
+	pulumi.Input
+
+	ToNotePtrOutput() NotePtrOutput
+	ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput
+}
+
+type notePtrType NoteArgs
+
+func (*notePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Note)(nil))
+}
+
+func (i *notePtrType) ToNotePtrOutput() NotePtrOutput {
+	return i.ToNotePtrOutputWithContext(context.Background())
+}
+
+func (i *notePtrType) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotePtrOutput)
+}
+
+// NoteArrayInput is an input type that accepts NoteArray and NoteArrayOutput values.
+// You can construct a concrete instance of `NoteArrayInput` via:
+//
+//          NoteArray{ NoteArgs{...} }
+type NoteArrayInput interface {
+	pulumi.Input
+
+	ToNoteArrayOutput() NoteArrayOutput
+	ToNoteArrayOutputWithContext(context.Context) NoteArrayOutput
+}
+
+type NoteArray []NoteInput
+
+func (NoteArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Note)(nil))
+}
+
+func (i NoteArray) ToNoteArrayOutput() NoteArrayOutput {
+	return i.ToNoteArrayOutputWithContext(context.Background())
+}
+
+func (i NoteArray) ToNoteArrayOutputWithContext(ctx context.Context) NoteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteArrayOutput)
+}
+
+// NoteMapInput is an input type that accepts NoteMap and NoteMapOutput values.
+// You can construct a concrete instance of `NoteMapInput` via:
+//
+//          NoteMap{ "key": NoteArgs{...} }
+type NoteMapInput interface {
+	pulumi.Input
+
+	ToNoteMapOutput() NoteMapOutput
+	ToNoteMapOutputWithContext(context.Context) NoteMapOutput
+}
+
+type NoteMap map[string]NoteInput
+
+func (NoteMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Note)(nil))
+}
+
+func (i NoteMap) ToNoteMapOutput() NoteMapOutput {
+	return i.ToNoteMapOutputWithContext(context.Background())
+}
+
+func (i NoteMap) ToNoteMapOutputWithContext(ctx context.Context) NoteMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NoteMapOutput)
+}
+
 type NoteOutput struct {
 	*pulumi.OutputState
 }
@@ -347,6 +426,75 @@ func (o NoteOutput) ToNoteOutputWithContext(ctx context.Context) NoteOutput {
 	return o
 }
 
+func (o NoteOutput) ToNotePtrOutput() NotePtrOutput {
+	return o.ToNotePtrOutputWithContext(context.Background())
+}
+
+func (o NoteOutput) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
+	return o.ApplyT(func(v Note) *Note {
+		return &v
+	}).(NotePtrOutput)
+}
+
+type NotePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Note)(nil))
+}
+
+func (o NotePtrOutput) ToNotePtrOutput() NotePtrOutput {
+	return o
+}
+
+func (o NotePtrOutput) ToNotePtrOutputWithContext(ctx context.Context) NotePtrOutput {
+	return o
+}
+
+type NoteArrayOutput struct{ *pulumi.OutputState }
+
+func (NoteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Note)(nil))
+}
+
+func (o NoteArrayOutput) ToNoteArrayOutput() NoteArrayOutput {
+	return o
+}
+
+func (o NoteArrayOutput) ToNoteArrayOutputWithContext(ctx context.Context) NoteArrayOutput {
+	return o
+}
+
+func (o NoteArrayOutput) Index(i pulumi.IntInput) NoteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Note {
+		return vs[0].([]Note)[vs[1].(int)]
+	}).(NoteOutput)
+}
+
+type NoteMapOutput struct{ *pulumi.OutputState }
+
+func (NoteMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Note)(nil))
+}
+
+func (o NoteMapOutput) ToNoteMapOutput() NoteMapOutput {
+	return o
+}
+
+func (o NoteMapOutput) ToNoteMapOutputWithContext(ctx context.Context) NoteMapOutput {
+	return o
+}
+
+func (o NoteMapOutput) MapIndex(k pulumi.StringInput) NoteOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Note {
+		return vs[0].(map[string]Note)[vs[1].(string)]
+	}).(NoteOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NoteOutput{})
+	pulumi.RegisterOutputType(NotePtrOutput{})
+	pulumi.RegisterOutputType(NoteArrayOutput{})
+	pulumi.RegisterOutputType(NoteMapOutput{})
 }

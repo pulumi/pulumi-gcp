@@ -185,6 +185,85 @@ func (i *ConsentStoreIamBinding) ToConsentStoreIamBindingOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingOutput)
 }
 
+func (i *ConsentStoreIamBinding) ToConsentStoreIamBindingPtrOutput() ConsentStoreIamBindingPtrOutput {
+	return i.ToConsentStoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *ConsentStoreIamBinding) ToConsentStoreIamBindingPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingPtrOutput)
+}
+
+type ConsentStoreIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToConsentStoreIamBindingPtrOutput() ConsentStoreIamBindingPtrOutput
+	ToConsentStoreIamBindingPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingPtrOutput
+}
+
+type consentStoreIamBindingPtrType ConsentStoreIamBindingArgs
+
+func (*consentStoreIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStoreIamBinding)(nil))
+}
+
+func (i *consentStoreIamBindingPtrType) ToConsentStoreIamBindingPtrOutput() ConsentStoreIamBindingPtrOutput {
+	return i.ToConsentStoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *consentStoreIamBindingPtrType) ToConsentStoreIamBindingPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingPtrOutput)
+}
+
+// ConsentStoreIamBindingArrayInput is an input type that accepts ConsentStoreIamBindingArray and ConsentStoreIamBindingArrayOutput values.
+// You can construct a concrete instance of `ConsentStoreIamBindingArrayInput` via:
+//
+//          ConsentStoreIamBindingArray{ ConsentStoreIamBindingArgs{...} }
+type ConsentStoreIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToConsentStoreIamBindingArrayOutput() ConsentStoreIamBindingArrayOutput
+	ToConsentStoreIamBindingArrayOutputWithContext(context.Context) ConsentStoreIamBindingArrayOutput
+}
+
+type ConsentStoreIamBindingArray []ConsentStoreIamBindingInput
+
+func (ConsentStoreIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ConsentStoreIamBinding)(nil))
+}
+
+func (i ConsentStoreIamBindingArray) ToConsentStoreIamBindingArrayOutput() ConsentStoreIamBindingArrayOutput {
+	return i.ToConsentStoreIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreIamBindingArray) ToConsentStoreIamBindingArrayOutputWithContext(ctx context.Context) ConsentStoreIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingArrayOutput)
+}
+
+// ConsentStoreIamBindingMapInput is an input type that accepts ConsentStoreIamBindingMap and ConsentStoreIamBindingMapOutput values.
+// You can construct a concrete instance of `ConsentStoreIamBindingMapInput` via:
+//
+//          ConsentStoreIamBindingMap{ "key": ConsentStoreIamBindingArgs{...} }
+type ConsentStoreIamBindingMapInput interface {
+	pulumi.Input
+
+	ToConsentStoreIamBindingMapOutput() ConsentStoreIamBindingMapOutput
+	ToConsentStoreIamBindingMapOutputWithContext(context.Context) ConsentStoreIamBindingMapOutput
+}
+
+type ConsentStoreIamBindingMap map[string]ConsentStoreIamBindingInput
+
+func (ConsentStoreIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ConsentStoreIamBinding)(nil))
+}
+
+func (i ConsentStoreIamBindingMap) ToConsentStoreIamBindingMapOutput() ConsentStoreIamBindingMapOutput {
+	return i.ToConsentStoreIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i ConsentStoreIamBindingMap) ToConsentStoreIamBindingMapOutputWithContext(ctx context.Context) ConsentStoreIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsentStoreIamBindingMapOutput)
+}
+
 type ConsentStoreIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -201,6 +280,75 @@ func (o ConsentStoreIamBindingOutput) ToConsentStoreIamBindingOutputWithContext(
 	return o
 }
 
+func (o ConsentStoreIamBindingOutput) ToConsentStoreIamBindingPtrOutput() ConsentStoreIamBindingPtrOutput {
+	return o.ToConsentStoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentStoreIamBindingOutput) ToConsentStoreIamBindingPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingPtrOutput {
+	return o.ApplyT(func(v ConsentStoreIamBinding) *ConsentStoreIamBinding {
+		return &v
+	}).(ConsentStoreIamBindingPtrOutput)
+}
+
+type ConsentStoreIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConsentStoreIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsentStoreIamBinding)(nil))
+}
+
+func (o ConsentStoreIamBindingPtrOutput) ToConsentStoreIamBindingPtrOutput() ConsentStoreIamBindingPtrOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingPtrOutput) ToConsentStoreIamBindingPtrOutputWithContext(ctx context.Context) ConsentStoreIamBindingPtrOutput {
+	return o
+}
+
+type ConsentStoreIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsentStoreIamBinding)(nil))
+}
+
+func (o ConsentStoreIamBindingArrayOutput) ToConsentStoreIamBindingArrayOutput() ConsentStoreIamBindingArrayOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingArrayOutput) ToConsentStoreIamBindingArrayOutputWithContext(ctx context.Context) ConsentStoreIamBindingArrayOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingArrayOutput) Index(i pulumi.IntInput) ConsentStoreIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsentStoreIamBinding {
+		return vs[0].([]ConsentStoreIamBinding)[vs[1].(int)]
+	}).(ConsentStoreIamBindingOutput)
+}
+
+type ConsentStoreIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (ConsentStoreIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ConsentStoreIamBinding)(nil))
+}
+
+func (o ConsentStoreIamBindingMapOutput) ToConsentStoreIamBindingMapOutput() ConsentStoreIamBindingMapOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingMapOutput) ToConsentStoreIamBindingMapOutputWithContext(ctx context.Context) ConsentStoreIamBindingMapOutput {
+	return o
+}
+
+func (o ConsentStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) ConsentStoreIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConsentStoreIamBinding {
+		return vs[0].(map[string]ConsentStoreIamBinding)[vs[1].(string)]
+	}).(ConsentStoreIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConsentStoreIamBindingOutput{})
+	pulumi.RegisterOutputType(ConsentStoreIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(ConsentStoreIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(ConsentStoreIamBindingMapOutput{})
 }

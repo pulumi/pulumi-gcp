@@ -132,7 +132,8 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
     constructor(name: string, args: InstanceGroupNamedPortArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InstanceGroupNamedPortArgs | InstanceGroupNamedPortState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as InstanceGroupNamedPortState | undefined;
             inputs["group"] = state ? state.group : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -141,10 +142,10 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as InstanceGroupNamedPortArgs | undefined;
-            if ((!args || args.group === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.group === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'group'");
             }
-            if ((!args || args.port === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.port === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'port'");
             }
             inputs["group"] = args ? args.group : undefined;
@@ -153,12 +154,8 @@ export class InstanceGroupNamedPort extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(InstanceGroupNamedPort.__pulumiType, name, inputs, opts);
     }

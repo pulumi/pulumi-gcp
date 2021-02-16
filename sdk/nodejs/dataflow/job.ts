@@ -184,7 +184,8 @@ export class Job extends pulumi.CustomResource {
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as JobState | undefined;
             inputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
             inputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
@@ -209,10 +210,10 @@ export class Job extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.tempGcsLocation === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tempGcsLocation === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tempGcsLocation'");
             }
-            if ((!args || args.templateGcsPath === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.templateGcsPath === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
             inputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;
@@ -237,12 +238,8 @@ export class Job extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Job.__pulumiType, name, inputs, opts);
     }

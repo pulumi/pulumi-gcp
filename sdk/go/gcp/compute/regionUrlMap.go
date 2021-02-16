@@ -849,6 +849,85 @@ func (i *RegionUrlMap) ToRegionUrlMapOutputWithContext(ctx context.Context) Regi
 	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapOutput)
 }
 
+func (i *RegionUrlMap) ToRegionUrlMapPtrOutput() RegionUrlMapPtrOutput {
+	return i.ToRegionUrlMapPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionUrlMap) ToRegionUrlMapPtrOutputWithContext(ctx context.Context) RegionUrlMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPtrOutput)
+}
+
+type RegionUrlMapPtrInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapPtrOutput() RegionUrlMapPtrOutput
+	ToRegionUrlMapPtrOutputWithContext(ctx context.Context) RegionUrlMapPtrOutput
+}
+
+type regionUrlMapPtrType RegionUrlMapArgs
+
+func (*regionUrlMapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMap)(nil))
+}
+
+func (i *regionUrlMapPtrType) ToRegionUrlMapPtrOutput() RegionUrlMapPtrOutput {
+	return i.ToRegionUrlMapPtrOutputWithContext(context.Background())
+}
+
+func (i *regionUrlMapPtrType) ToRegionUrlMapPtrOutputWithContext(ctx context.Context) RegionUrlMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapPtrOutput)
+}
+
+// RegionUrlMapArrayInput is an input type that accepts RegionUrlMapArray and RegionUrlMapArrayOutput values.
+// You can construct a concrete instance of `RegionUrlMapArrayInput` via:
+//
+//          RegionUrlMapArray{ RegionUrlMapArgs{...} }
+type RegionUrlMapArrayInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapArrayOutput() RegionUrlMapArrayOutput
+	ToRegionUrlMapArrayOutputWithContext(context.Context) RegionUrlMapArrayOutput
+}
+
+type RegionUrlMapArray []RegionUrlMapInput
+
+func (RegionUrlMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionUrlMap)(nil))
+}
+
+func (i RegionUrlMapArray) ToRegionUrlMapArrayOutput() RegionUrlMapArrayOutput {
+	return i.ToRegionUrlMapArrayOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapArray) ToRegionUrlMapArrayOutputWithContext(ctx context.Context) RegionUrlMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapArrayOutput)
+}
+
+// RegionUrlMapMapInput is an input type that accepts RegionUrlMapMap and RegionUrlMapMapOutput values.
+// You can construct a concrete instance of `RegionUrlMapMapInput` via:
+//
+//          RegionUrlMapMap{ "key": RegionUrlMapArgs{...} }
+type RegionUrlMapMapInput interface {
+	pulumi.Input
+
+	ToRegionUrlMapMapOutput() RegionUrlMapMapOutput
+	ToRegionUrlMapMapOutputWithContext(context.Context) RegionUrlMapMapOutput
+}
+
+type RegionUrlMapMap map[string]RegionUrlMapInput
+
+func (RegionUrlMapMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionUrlMap)(nil))
+}
+
+func (i RegionUrlMapMap) ToRegionUrlMapMapOutput() RegionUrlMapMapOutput {
+	return i.ToRegionUrlMapMapOutputWithContext(context.Background())
+}
+
+func (i RegionUrlMapMap) ToRegionUrlMapMapOutputWithContext(ctx context.Context) RegionUrlMapMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionUrlMapMapOutput)
+}
+
 type RegionUrlMapOutput struct {
 	*pulumi.OutputState
 }
@@ -865,6 +944,75 @@ func (o RegionUrlMapOutput) ToRegionUrlMapOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o RegionUrlMapOutput) ToRegionUrlMapPtrOutput() RegionUrlMapPtrOutput {
+	return o.ToRegionUrlMapPtrOutputWithContext(context.Background())
+}
+
+func (o RegionUrlMapOutput) ToRegionUrlMapPtrOutputWithContext(ctx context.Context) RegionUrlMapPtrOutput {
+	return o.ApplyT(func(v RegionUrlMap) *RegionUrlMap {
+		return &v
+	}).(RegionUrlMapPtrOutput)
+}
+
+type RegionUrlMapPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionUrlMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionUrlMap)(nil))
+}
+
+func (o RegionUrlMapPtrOutput) ToRegionUrlMapPtrOutput() RegionUrlMapPtrOutput {
+	return o
+}
+
+func (o RegionUrlMapPtrOutput) ToRegionUrlMapPtrOutputWithContext(ctx context.Context) RegionUrlMapPtrOutput {
+	return o
+}
+
+type RegionUrlMapArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionUrlMap)(nil))
+}
+
+func (o RegionUrlMapArrayOutput) ToRegionUrlMapArrayOutput() RegionUrlMapArrayOutput {
+	return o
+}
+
+func (o RegionUrlMapArrayOutput) ToRegionUrlMapArrayOutputWithContext(ctx context.Context) RegionUrlMapArrayOutput {
+	return o
+}
+
+func (o RegionUrlMapArrayOutput) Index(i pulumi.IntInput) RegionUrlMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionUrlMap {
+		return vs[0].([]RegionUrlMap)[vs[1].(int)]
+	}).(RegionUrlMapOutput)
+}
+
+type RegionUrlMapMapOutput struct{ *pulumi.OutputState }
+
+func (RegionUrlMapMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionUrlMap)(nil))
+}
+
+func (o RegionUrlMapMapOutput) ToRegionUrlMapMapOutput() RegionUrlMapMapOutput {
+	return o
+}
+
+func (o RegionUrlMapMapOutput) ToRegionUrlMapMapOutputWithContext(ctx context.Context) RegionUrlMapMapOutput {
+	return o
+}
+
+func (o RegionUrlMapMapOutput) MapIndex(k pulumi.StringInput) RegionUrlMapOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionUrlMap {
+		return vs[0].(map[string]RegionUrlMap)[vs[1].(string)]
+	}).(RegionUrlMapOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionUrlMapOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapPtrOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapArrayOutput{})
+	pulumi.RegisterOutputType(RegionUrlMapMapOutput{})
 }

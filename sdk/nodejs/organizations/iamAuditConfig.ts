@@ -87,7 +87,8 @@ export class IamAuditConfig extends pulumi.CustomResource {
     constructor(name: string, args: IamAuditConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamAuditConfigArgs | IamAuditConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IamAuditConfigState | undefined;
             inputs["auditLogConfigs"] = state ? state.auditLogConfigs : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -95,13 +96,13 @@ export class IamAuditConfig extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as IamAuditConfigArgs | undefined;
-            if ((!args || args.auditLogConfigs === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.auditLogConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'auditLogConfigs'");
             }
-            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["auditLogConfigs"] = args ? args.auditLogConfigs : undefined;
@@ -109,12 +110,8 @@ export class IamAuditConfig extends pulumi.CustomResource {
             inputs["service"] = args ? args.service : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IamAuditConfig.__pulumiType, name, inputs, opts);
     }

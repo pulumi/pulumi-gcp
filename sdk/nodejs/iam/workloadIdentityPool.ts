@@ -98,7 +98,8 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
     constructor(name: string, args: WorkloadIdentityPoolArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WorkloadIdentityPoolArgs | WorkloadIdentityPoolState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WorkloadIdentityPoolState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["disabled"] = state ? state.disabled : undefined;
@@ -109,7 +110,7 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             inputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
         } else {
             const args = argsOrState as WorkloadIdentityPoolArgs | undefined;
-            if ((!args || args.workloadIdentityPoolId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -120,12 +121,8 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WorkloadIdentityPool.__pulumiType, name, inputs, opts);
     }

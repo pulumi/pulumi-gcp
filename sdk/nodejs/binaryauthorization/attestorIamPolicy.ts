@@ -143,7 +143,8 @@ export class AttestorIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: AttestorIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AttestorIamPolicyArgs | AttestorIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AttestorIamPolicyState | undefined;
             inputs["attestor"] = state ? state.attestor : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -151,10 +152,10 @@ export class AttestorIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as AttestorIamPolicyArgs | undefined;
-            if ((!args || args.attestor === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.attestor === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestor'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["attestor"] = args ? args.attestor : undefined;
@@ -162,12 +163,8 @@ export class AttestorIamPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AttestorIamPolicy.__pulumiType, name, inputs, opts);
     }

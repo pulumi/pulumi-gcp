@@ -289,6 +289,85 @@ func (i *FolderFeed) ToFolderFeedOutputWithContext(ctx context.Context) FolderFe
 	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedOutput)
 }
 
+func (i *FolderFeed) ToFolderFeedPtrOutput() FolderFeedPtrOutput {
+	return i.ToFolderFeedPtrOutputWithContext(context.Background())
+}
+
+func (i *FolderFeed) ToFolderFeedPtrOutputWithContext(ctx context.Context) FolderFeedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedPtrOutput)
+}
+
+type FolderFeedPtrInput interface {
+	pulumi.Input
+
+	ToFolderFeedPtrOutput() FolderFeedPtrOutput
+	ToFolderFeedPtrOutputWithContext(ctx context.Context) FolderFeedPtrOutput
+}
+
+type folderFeedPtrType FolderFeedArgs
+
+func (*folderFeedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderFeed)(nil))
+}
+
+func (i *folderFeedPtrType) ToFolderFeedPtrOutput() FolderFeedPtrOutput {
+	return i.ToFolderFeedPtrOutputWithContext(context.Background())
+}
+
+func (i *folderFeedPtrType) ToFolderFeedPtrOutputWithContext(ctx context.Context) FolderFeedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedPtrOutput)
+}
+
+// FolderFeedArrayInput is an input type that accepts FolderFeedArray and FolderFeedArrayOutput values.
+// You can construct a concrete instance of `FolderFeedArrayInput` via:
+//
+//          FolderFeedArray{ FolderFeedArgs{...} }
+type FolderFeedArrayInput interface {
+	pulumi.Input
+
+	ToFolderFeedArrayOutput() FolderFeedArrayOutput
+	ToFolderFeedArrayOutputWithContext(context.Context) FolderFeedArrayOutput
+}
+
+type FolderFeedArray []FolderFeedInput
+
+func (FolderFeedArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FolderFeed)(nil))
+}
+
+func (i FolderFeedArray) ToFolderFeedArrayOutput() FolderFeedArrayOutput {
+	return i.ToFolderFeedArrayOutputWithContext(context.Background())
+}
+
+func (i FolderFeedArray) ToFolderFeedArrayOutputWithContext(ctx context.Context) FolderFeedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedArrayOutput)
+}
+
+// FolderFeedMapInput is an input type that accepts FolderFeedMap and FolderFeedMapOutput values.
+// You can construct a concrete instance of `FolderFeedMapInput` via:
+//
+//          FolderFeedMap{ "key": FolderFeedArgs{...} }
+type FolderFeedMapInput interface {
+	pulumi.Input
+
+	ToFolderFeedMapOutput() FolderFeedMapOutput
+	ToFolderFeedMapOutputWithContext(context.Context) FolderFeedMapOutput
+}
+
+type FolderFeedMap map[string]FolderFeedInput
+
+func (FolderFeedMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FolderFeed)(nil))
+}
+
+func (i FolderFeedMap) ToFolderFeedMapOutput() FolderFeedMapOutput {
+	return i.ToFolderFeedMapOutputWithContext(context.Background())
+}
+
+func (i FolderFeedMap) ToFolderFeedMapOutputWithContext(ctx context.Context) FolderFeedMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderFeedMapOutput)
+}
+
 type FolderFeedOutput struct {
 	*pulumi.OutputState
 }
@@ -305,6 +384,75 @@ func (o FolderFeedOutput) ToFolderFeedOutputWithContext(ctx context.Context) Fol
 	return o
 }
 
+func (o FolderFeedOutput) ToFolderFeedPtrOutput() FolderFeedPtrOutput {
+	return o.ToFolderFeedPtrOutputWithContext(context.Background())
+}
+
+func (o FolderFeedOutput) ToFolderFeedPtrOutputWithContext(ctx context.Context) FolderFeedPtrOutput {
+	return o.ApplyT(func(v FolderFeed) *FolderFeed {
+		return &v
+	}).(FolderFeedPtrOutput)
+}
+
+type FolderFeedPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FolderFeedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FolderFeed)(nil))
+}
+
+func (o FolderFeedPtrOutput) ToFolderFeedPtrOutput() FolderFeedPtrOutput {
+	return o
+}
+
+func (o FolderFeedPtrOutput) ToFolderFeedPtrOutputWithContext(ctx context.Context) FolderFeedPtrOutput {
+	return o
+}
+
+type FolderFeedArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderFeedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FolderFeed)(nil))
+}
+
+func (o FolderFeedArrayOutput) ToFolderFeedArrayOutput() FolderFeedArrayOutput {
+	return o
+}
+
+func (o FolderFeedArrayOutput) ToFolderFeedArrayOutputWithContext(ctx context.Context) FolderFeedArrayOutput {
+	return o
+}
+
+func (o FolderFeedArrayOutput) Index(i pulumi.IntInput) FolderFeedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FolderFeed {
+		return vs[0].([]FolderFeed)[vs[1].(int)]
+	}).(FolderFeedOutput)
+}
+
+type FolderFeedMapOutput struct{ *pulumi.OutputState }
+
+func (FolderFeedMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FolderFeed)(nil))
+}
+
+func (o FolderFeedMapOutput) ToFolderFeedMapOutput() FolderFeedMapOutput {
+	return o
+}
+
+func (o FolderFeedMapOutput) ToFolderFeedMapOutputWithContext(ctx context.Context) FolderFeedMapOutput {
+	return o
+}
+
+func (o FolderFeedMapOutput) MapIndex(k pulumi.StringInput) FolderFeedOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FolderFeed {
+		return vs[0].(map[string]FolderFeed)[vs[1].(string)]
+	}).(FolderFeedOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FolderFeedOutput{})
+	pulumi.RegisterOutputType(FolderFeedPtrOutput{})
+	pulumi.RegisterOutputType(FolderFeedArrayOutput{})
+	pulumi.RegisterOutputType(FolderFeedMapOutput{})
 }

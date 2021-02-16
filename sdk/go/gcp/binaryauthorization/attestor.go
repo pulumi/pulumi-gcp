@@ -276,6 +276,85 @@ func (i *Attestor) ToAttestorOutputWithContext(ctx context.Context) AttestorOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorOutput)
 }
 
+func (i *Attestor) ToAttestorPtrOutput() AttestorPtrOutput {
+	return i.ToAttestorPtrOutputWithContext(context.Background())
+}
+
+func (i *Attestor) ToAttestorPtrOutputWithContext(ctx context.Context) AttestorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorPtrOutput)
+}
+
+type AttestorPtrInput interface {
+	pulumi.Input
+
+	ToAttestorPtrOutput() AttestorPtrOutput
+	ToAttestorPtrOutputWithContext(ctx context.Context) AttestorPtrOutput
+}
+
+type attestorPtrType AttestorArgs
+
+func (*attestorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Attestor)(nil))
+}
+
+func (i *attestorPtrType) ToAttestorPtrOutput() AttestorPtrOutput {
+	return i.ToAttestorPtrOutputWithContext(context.Background())
+}
+
+func (i *attestorPtrType) ToAttestorPtrOutputWithContext(ctx context.Context) AttestorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorPtrOutput)
+}
+
+// AttestorArrayInput is an input type that accepts AttestorArray and AttestorArrayOutput values.
+// You can construct a concrete instance of `AttestorArrayInput` via:
+//
+//          AttestorArray{ AttestorArgs{...} }
+type AttestorArrayInput interface {
+	pulumi.Input
+
+	ToAttestorArrayOutput() AttestorArrayOutput
+	ToAttestorArrayOutputWithContext(context.Context) AttestorArrayOutput
+}
+
+type AttestorArray []AttestorInput
+
+func (AttestorArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Attestor)(nil))
+}
+
+func (i AttestorArray) ToAttestorArrayOutput() AttestorArrayOutput {
+	return i.ToAttestorArrayOutputWithContext(context.Background())
+}
+
+func (i AttestorArray) ToAttestorArrayOutputWithContext(ctx context.Context) AttestorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorArrayOutput)
+}
+
+// AttestorMapInput is an input type that accepts AttestorMap and AttestorMapOutput values.
+// You can construct a concrete instance of `AttestorMapInput` via:
+//
+//          AttestorMap{ "key": AttestorArgs{...} }
+type AttestorMapInput interface {
+	pulumi.Input
+
+	ToAttestorMapOutput() AttestorMapOutput
+	ToAttestorMapOutputWithContext(context.Context) AttestorMapOutput
+}
+
+type AttestorMap map[string]AttestorInput
+
+func (AttestorMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Attestor)(nil))
+}
+
+func (i AttestorMap) ToAttestorMapOutput() AttestorMapOutput {
+	return i.ToAttestorMapOutputWithContext(context.Background())
+}
+
+func (i AttestorMap) ToAttestorMapOutputWithContext(ctx context.Context) AttestorMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorMapOutput)
+}
+
 type AttestorOutput struct {
 	*pulumi.OutputState
 }
@@ -292,6 +371,75 @@ func (o AttestorOutput) ToAttestorOutputWithContext(ctx context.Context) Attesto
 	return o
 }
 
+func (o AttestorOutput) ToAttestorPtrOutput() AttestorPtrOutput {
+	return o.ToAttestorPtrOutputWithContext(context.Background())
+}
+
+func (o AttestorOutput) ToAttestorPtrOutputWithContext(ctx context.Context) AttestorPtrOutput {
+	return o.ApplyT(func(v Attestor) *Attestor {
+		return &v
+	}).(AttestorPtrOutput)
+}
+
+type AttestorPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttestorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Attestor)(nil))
+}
+
+func (o AttestorPtrOutput) ToAttestorPtrOutput() AttestorPtrOutput {
+	return o
+}
+
+func (o AttestorPtrOutput) ToAttestorPtrOutputWithContext(ctx context.Context) AttestorPtrOutput {
+	return o
+}
+
+type AttestorArrayOutput struct{ *pulumi.OutputState }
+
+func (AttestorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Attestor)(nil))
+}
+
+func (o AttestorArrayOutput) ToAttestorArrayOutput() AttestorArrayOutput {
+	return o
+}
+
+func (o AttestorArrayOutput) ToAttestorArrayOutputWithContext(ctx context.Context) AttestorArrayOutput {
+	return o
+}
+
+func (o AttestorArrayOutput) Index(i pulumi.IntInput) AttestorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Attestor {
+		return vs[0].([]Attestor)[vs[1].(int)]
+	}).(AttestorOutput)
+}
+
+type AttestorMapOutput struct{ *pulumi.OutputState }
+
+func (AttestorMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Attestor)(nil))
+}
+
+func (o AttestorMapOutput) ToAttestorMapOutput() AttestorMapOutput {
+	return o
+}
+
+func (o AttestorMapOutput) ToAttestorMapOutputWithContext(ctx context.Context) AttestorMapOutput {
+	return o
+}
+
+func (o AttestorMapOutput) MapIndex(k pulumi.StringInput) AttestorOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Attestor {
+		return vs[0].(map[string]Attestor)[vs[1].(string)]
+	}).(AttestorOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttestorOutput{})
+	pulumi.RegisterOutputType(AttestorPtrOutput{})
+	pulumi.RegisterOutputType(AttestorArrayOutput{})
+	pulumi.RegisterOutputType(AttestorMapOutput{})
 }

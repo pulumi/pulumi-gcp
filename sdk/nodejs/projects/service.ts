@@ -91,7 +91,8 @@ export class Service extends pulumi.CustomResource {
     constructor(name: string, args: ServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceArgs | ServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServiceState | undefined;
             inputs["disableDependentServices"] = state ? state.disableDependentServices : undefined;
             inputs["disableOnDestroy"] = state ? state.disableOnDestroy : undefined;
@@ -99,7 +100,7 @@ export class Service extends pulumi.CustomResource {
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["disableDependentServices"] = args ? args.disableDependentServices : undefined;
@@ -107,12 +108,8 @@ export class Service extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["service"] = args ? args.service : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Service.__pulumiType, name, inputs, opts);
     }

@@ -361,7 +361,8 @@ export class Tag extends pulumi.CustomResource {
     constructor(name: string, args: TagArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TagArgs | TagState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TagState | undefined;
             inputs["column"] = state ? state.column : undefined;
             inputs["fields"] = state ? state.fields : undefined;
@@ -371,10 +372,10 @@ export class Tag extends pulumi.CustomResource {
             inputs["templateDisplayname"] = state ? state.templateDisplayname : undefined;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            if ((!args || args.fields === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.fields === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fields'");
             }
-            if ((!args || args.template === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.template === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'template'");
             }
             inputs["column"] = args ? args.column : undefined;
@@ -384,12 +385,8 @@ export class Tag extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["templateDisplayname"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Tag.__pulumiType, name, inputs, opts);
     }

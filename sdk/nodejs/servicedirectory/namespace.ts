@@ -114,7 +114,8 @@ export class Namespace extends pulumi.CustomResource {
     constructor(name: string, args: NamespaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamespaceArgs | NamespaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NamespaceState | undefined;
             inputs["labels"] = state ? state.labels : undefined;
             inputs["location"] = state ? state.location : undefined;
@@ -123,10 +124,10 @@ export class Namespace extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as NamespaceArgs | undefined;
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.namespaceId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespaceId'");
             }
             inputs["labels"] = args ? args.labels : undefined;
@@ -135,12 +136,8 @@ export class Namespace extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Namespace.__pulumiType, name, inputs, opts);
     }

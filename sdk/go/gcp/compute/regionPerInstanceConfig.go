@@ -268,6 +268,85 @@ func (i *RegionPerInstanceConfig) ToRegionPerInstanceConfigOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigOutput)
 }
 
+func (i *RegionPerInstanceConfig) ToRegionPerInstanceConfigPtrOutput() RegionPerInstanceConfigPtrOutput {
+	return i.ToRegionPerInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionPerInstanceConfig) ToRegionPerInstanceConfigPtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigPtrOutput)
+}
+
+type RegionPerInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToRegionPerInstanceConfigPtrOutput() RegionPerInstanceConfigPtrOutput
+	ToRegionPerInstanceConfigPtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPtrOutput
+}
+
+type regionPerInstanceConfigPtrType RegionPerInstanceConfigArgs
+
+func (*regionPerInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionPerInstanceConfig)(nil))
+}
+
+func (i *regionPerInstanceConfigPtrType) ToRegionPerInstanceConfigPtrOutput() RegionPerInstanceConfigPtrOutput {
+	return i.ToRegionPerInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *regionPerInstanceConfigPtrType) ToRegionPerInstanceConfigPtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigPtrOutput)
+}
+
+// RegionPerInstanceConfigArrayInput is an input type that accepts RegionPerInstanceConfigArray and RegionPerInstanceConfigArrayOutput values.
+// You can construct a concrete instance of `RegionPerInstanceConfigArrayInput` via:
+//
+//          RegionPerInstanceConfigArray{ RegionPerInstanceConfigArgs{...} }
+type RegionPerInstanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToRegionPerInstanceConfigArrayOutput() RegionPerInstanceConfigArrayOutput
+	ToRegionPerInstanceConfigArrayOutputWithContext(context.Context) RegionPerInstanceConfigArrayOutput
+}
+
+type RegionPerInstanceConfigArray []RegionPerInstanceConfigInput
+
+func (RegionPerInstanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionPerInstanceConfig)(nil))
+}
+
+func (i RegionPerInstanceConfigArray) ToRegionPerInstanceConfigArrayOutput() RegionPerInstanceConfigArrayOutput {
+	return i.ToRegionPerInstanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i RegionPerInstanceConfigArray) ToRegionPerInstanceConfigArrayOutputWithContext(ctx context.Context) RegionPerInstanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigArrayOutput)
+}
+
+// RegionPerInstanceConfigMapInput is an input type that accepts RegionPerInstanceConfigMap and RegionPerInstanceConfigMapOutput values.
+// You can construct a concrete instance of `RegionPerInstanceConfigMapInput` via:
+//
+//          RegionPerInstanceConfigMap{ "key": RegionPerInstanceConfigArgs{...} }
+type RegionPerInstanceConfigMapInput interface {
+	pulumi.Input
+
+	ToRegionPerInstanceConfigMapOutput() RegionPerInstanceConfigMapOutput
+	ToRegionPerInstanceConfigMapOutputWithContext(context.Context) RegionPerInstanceConfigMapOutput
+}
+
+type RegionPerInstanceConfigMap map[string]RegionPerInstanceConfigInput
+
+func (RegionPerInstanceConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionPerInstanceConfig)(nil))
+}
+
+func (i RegionPerInstanceConfigMap) ToRegionPerInstanceConfigMapOutput() RegionPerInstanceConfigMapOutput {
+	return i.ToRegionPerInstanceConfigMapOutputWithContext(context.Background())
+}
+
+func (i RegionPerInstanceConfigMap) ToRegionPerInstanceConfigMapOutputWithContext(ctx context.Context) RegionPerInstanceConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionPerInstanceConfigMapOutput)
+}
+
 type RegionPerInstanceConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -284,6 +363,75 @@ func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigOutputWithContex
 	return o
 }
 
+func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigPtrOutput() RegionPerInstanceConfigPtrOutput {
+	return o.ToRegionPerInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RegionPerInstanceConfigOutput) ToRegionPerInstanceConfigPtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPtrOutput {
+	return o.ApplyT(func(v RegionPerInstanceConfig) *RegionPerInstanceConfig {
+		return &v
+	}).(RegionPerInstanceConfigPtrOutput)
+}
+
+type RegionPerInstanceConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionPerInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionPerInstanceConfig)(nil))
+}
+
+func (o RegionPerInstanceConfigPtrOutput) ToRegionPerInstanceConfigPtrOutput() RegionPerInstanceConfigPtrOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigPtrOutput) ToRegionPerInstanceConfigPtrOutputWithContext(ctx context.Context) RegionPerInstanceConfigPtrOutput {
+	return o
+}
+
+type RegionPerInstanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionPerInstanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionPerInstanceConfig)(nil))
+}
+
+func (o RegionPerInstanceConfigArrayOutput) ToRegionPerInstanceConfigArrayOutput() RegionPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigArrayOutput) ToRegionPerInstanceConfigArrayOutputWithContext(ctx context.Context) RegionPerInstanceConfigArrayOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigArrayOutput) Index(i pulumi.IntInput) RegionPerInstanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionPerInstanceConfig {
+		return vs[0].([]RegionPerInstanceConfig)[vs[1].(int)]
+	}).(RegionPerInstanceConfigOutput)
+}
+
+type RegionPerInstanceConfigMapOutput struct{ *pulumi.OutputState }
+
+func (RegionPerInstanceConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionPerInstanceConfig)(nil))
+}
+
+func (o RegionPerInstanceConfigMapOutput) ToRegionPerInstanceConfigMapOutput() RegionPerInstanceConfigMapOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigMapOutput) ToRegionPerInstanceConfigMapOutputWithContext(ctx context.Context) RegionPerInstanceConfigMapOutput {
+	return o
+}
+
+func (o RegionPerInstanceConfigMapOutput) MapIndex(k pulumi.StringInput) RegionPerInstanceConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionPerInstanceConfig {
+		return vs[0].(map[string]RegionPerInstanceConfig)[vs[1].(string)]
+	}).(RegionPerInstanceConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionPerInstanceConfigOutput{})
+	pulumi.RegisterOutputType(RegionPerInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(RegionPerInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(RegionPerInstanceConfigMapOutput{})
 }

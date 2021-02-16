@@ -121,7 +121,8 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
     constructor(name: string, args: DiskResourcePolicyAttachmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DiskResourcePolicyAttachmentArgs | DiskResourcePolicyAttachmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DiskResourcePolicyAttachmentState | undefined;
             inputs["disk"] = state ? state.disk : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -129,7 +130,7 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as DiskResourcePolicyAttachmentArgs | undefined;
-            if ((!args || args.disk === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.disk === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'disk'");
             }
             inputs["disk"] = args ? args.disk : undefined;
@@ -137,12 +138,8 @@ export class DiskResourcePolicyAttachment extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DiskResourcePolicyAttachment.__pulumiType, name, inputs, opts);
     }

@@ -92,7 +92,8 @@ export class Variable extends pulumi.CustomResource {
     constructor(name: string, args: VariableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VariableArgs | VariableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VariableState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["parent"] = state ? state.parent : undefined;
@@ -102,7 +103,7 @@ export class Variable extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as VariableArgs | undefined;
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["name"] = args ? args.name : undefined;
@@ -112,12 +113,8 @@ export class Variable extends pulumi.CustomResource {
             inputs["value"] = args ? args.value : undefined;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Variable.__pulumiType, name, inputs, opts);
     }

@@ -78,7 +78,8 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
     constructor(name: string, args: GcpUserAccessBindingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GcpUserAccessBindingArgs | GcpUserAccessBindingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GcpUserAccessBindingState | undefined;
             inputs["accessLevels"] = state ? state.accessLevels : undefined;
             inputs["groupKey"] = state ? state.groupKey : undefined;
@@ -86,13 +87,13 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             inputs["organizationId"] = state ? state.organizationId : undefined;
         } else {
             const args = argsOrState as GcpUserAccessBindingArgs | undefined;
-            if ((!args || args.accessLevels === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.accessLevels === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessLevels'");
             }
-            if ((!args || args.groupKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.groupKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupKey'");
             }
-            if ((!args || args.organizationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
             inputs["accessLevels"] = args ? args.accessLevels : undefined;
@@ -100,12 +101,8 @@ export class GcpUserAccessBinding extends pulumi.CustomResource {
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GcpUserAccessBinding.__pulumiType, name, inputs, opts);
     }

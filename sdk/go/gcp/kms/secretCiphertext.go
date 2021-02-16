@@ -222,6 +222,85 @@ func (i *SecretCiphertext) ToSecretCiphertextOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextOutput)
 }
 
+func (i *SecretCiphertext) ToSecretCiphertextPtrOutput() SecretCiphertextPtrOutput {
+	return i.ToSecretCiphertextPtrOutputWithContext(context.Background())
+}
+
+func (i *SecretCiphertext) ToSecretCiphertextPtrOutputWithContext(ctx context.Context) SecretCiphertextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextPtrOutput)
+}
+
+type SecretCiphertextPtrInput interface {
+	pulumi.Input
+
+	ToSecretCiphertextPtrOutput() SecretCiphertextPtrOutput
+	ToSecretCiphertextPtrOutputWithContext(ctx context.Context) SecretCiphertextPtrOutput
+}
+
+type secretCiphertextPtrType SecretCiphertextArgs
+
+func (*secretCiphertextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretCiphertext)(nil))
+}
+
+func (i *secretCiphertextPtrType) ToSecretCiphertextPtrOutput() SecretCiphertextPtrOutput {
+	return i.ToSecretCiphertextPtrOutputWithContext(context.Background())
+}
+
+func (i *secretCiphertextPtrType) ToSecretCiphertextPtrOutputWithContext(ctx context.Context) SecretCiphertextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextPtrOutput)
+}
+
+// SecretCiphertextArrayInput is an input type that accepts SecretCiphertextArray and SecretCiphertextArrayOutput values.
+// You can construct a concrete instance of `SecretCiphertextArrayInput` via:
+//
+//          SecretCiphertextArray{ SecretCiphertextArgs{...} }
+type SecretCiphertextArrayInput interface {
+	pulumi.Input
+
+	ToSecretCiphertextArrayOutput() SecretCiphertextArrayOutput
+	ToSecretCiphertextArrayOutputWithContext(context.Context) SecretCiphertextArrayOutput
+}
+
+type SecretCiphertextArray []SecretCiphertextInput
+
+func (SecretCiphertextArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SecretCiphertext)(nil))
+}
+
+func (i SecretCiphertextArray) ToSecretCiphertextArrayOutput() SecretCiphertextArrayOutput {
+	return i.ToSecretCiphertextArrayOutputWithContext(context.Background())
+}
+
+func (i SecretCiphertextArray) ToSecretCiphertextArrayOutputWithContext(ctx context.Context) SecretCiphertextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextArrayOutput)
+}
+
+// SecretCiphertextMapInput is an input type that accepts SecretCiphertextMap and SecretCiphertextMapOutput values.
+// You can construct a concrete instance of `SecretCiphertextMapInput` via:
+//
+//          SecretCiphertextMap{ "key": SecretCiphertextArgs{...} }
+type SecretCiphertextMapInput interface {
+	pulumi.Input
+
+	ToSecretCiphertextMapOutput() SecretCiphertextMapOutput
+	ToSecretCiphertextMapOutputWithContext(context.Context) SecretCiphertextMapOutput
+}
+
+type SecretCiphertextMap map[string]SecretCiphertextInput
+
+func (SecretCiphertextMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SecretCiphertext)(nil))
+}
+
+func (i SecretCiphertextMap) ToSecretCiphertextMapOutput() SecretCiphertextMapOutput {
+	return i.ToSecretCiphertextMapOutputWithContext(context.Background())
+}
+
+func (i SecretCiphertextMap) ToSecretCiphertextMapOutputWithContext(ctx context.Context) SecretCiphertextMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretCiphertextMapOutput)
+}
+
 type SecretCiphertextOutput struct {
 	*pulumi.OutputState
 }
@@ -238,6 +317,75 @@ func (o SecretCiphertextOutput) ToSecretCiphertextOutputWithContext(ctx context.
 	return o
 }
 
+func (o SecretCiphertextOutput) ToSecretCiphertextPtrOutput() SecretCiphertextPtrOutput {
+	return o.ToSecretCiphertextPtrOutputWithContext(context.Background())
+}
+
+func (o SecretCiphertextOutput) ToSecretCiphertextPtrOutputWithContext(ctx context.Context) SecretCiphertextPtrOutput {
+	return o.ApplyT(func(v SecretCiphertext) *SecretCiphertext {
+		return &v
+	}).(SecretCiphertextPtrOutput)
+}
+
+type SecretCiphertextPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SecretCiphertextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretCiphertext)(nil))
+}
+
+func (o SecretCiphertextPtrOutput) ToSecretCiphertextPtrOutput() SecretCiphertextPtrOutput {
+	return o
+}
+
+func (o SecretCiphertextPtrOutput) ToSecretCiphertextPtrOutputWithContext(ctx context.Context) SecretCiphertextPtrOutput {
+	return o
+}
+
+type SecretCiphertextArrayOutput struct{ *pulumi.OutputState }
+
+func (SecretCiphertextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecretCiphertext)(nil))
+}
+
+func (o SecretCiphertextArrayOutput) ToSecretCiphertextArrayOutput() SecretCiphertextArrayOutput {
+	return o
+}
+
+func (o SecretCiphertextArrayOutput) ToSecretCiphertextArrayOutputWithContext(ctx context.Context) SecretCiphertextArrayOutput {
+	return o
+}
+
+func (o SecretCiphertextArrayOutput) Index(i pulumi.IntInput) SecretCiphertextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecretCiphertext {
+		return vs[0].([]SecretCiphertext)[vs[1].(int)]
+	}).(SecretCiphertextOutput)
+}
+
+type SecretCiphertextMapOutput struct{ *pulumi.OutputState }
+
+func (SecretCiphertextMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SecretCiphertext)(nil))
+}
+
+func (o SecretCiphertextMapOutput) ToSecretCiphertextMapOutput() SecretCiphertextMapOutput {
+	return o
+}
+
+func (o SecretCiphertextMapOutput) ToSecretCiphertextMapOutputWithContext(ctx context.Context) SecretCiphertextMapOutput {
+	return o
+}
+
+func (o SecretCiphertextMapOutput) MapIndex(k pulumi.StringInput) SecretCiphertextOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SecretCiphertext {
+		return vs[0].(map[string]SecretCiphertext)[vs[1].(string)]
+	}).(SecretCiphertextOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SecretCiphertextOutput{})
+	pulumi.RegisterOutputType(SecretCiphertextPtrOutput{})
+	pulumi.RegisterOutputType(SecretCiphertextArrayOutput{})
+	pulumi.RegisterOutputType(SecretCiphertextMapOutput{})
 }

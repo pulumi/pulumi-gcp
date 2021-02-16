@@ -274,7 +274,8 @@ export class ManagedZone extends pulumi.CustomResource {
     constructor(name: string, args: ManagedZoneArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ManagedZoneArgs | ManagedZoneState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ManagedZoneState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["dnsName"] = state ? state.dnsName : undefined;
@@ -292,7 +293,7 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as ManagedZoneArgs | undefined;
-            if ((!args || args.dnsName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dnsName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dnsName'");
             }
             inputs["description"] = (args ? args.description : undefined) || "Managed by Pulumi";
@@ -310,12 +311,8 @@ export class ManagedZone extends pulumi.CustomResource {
             inputs["visibility"] = args ? args.visibility : undefined;
             inputs["nameServers"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ManagedZone.__pulumiType, name, inputs, opts);
     }

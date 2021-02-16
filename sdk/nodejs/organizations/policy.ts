@@ -159,7 +159,8 @@ export class Policy extends pulumi.CustomResource {
     constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
             inputs["booleanPolicy"] = state ? state.booleanPolicy : undefined;
             inputs["constraint"] = state ? state.constraint : undefined;
@@ -171,10 +172,10 @@ export class Policy extends pulumi.CustomResource {
             inputs["version"] = state ? state.version : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.constraint === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.constraint === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'constraint'");
             }
-            if ((!args || args.orgId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.orgId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'orgId'");
             }
             inputs["booleanPolicy"] = args ? args.booleanPolicy : undefined;
@@ -186,12 +187,8 @@ export class Policy extends pulumi.CustomResource {
             inputs["etag"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Policy.__pulumiType, name, inputs, opts);
     }

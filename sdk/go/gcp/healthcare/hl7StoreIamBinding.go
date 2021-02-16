@@ -279,6 +279,85 @@ func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingOutput)
 }
 
+func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
+	return i.ToHl7StoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *Hl7StoreIamBinding) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingPtrOutput)
+}
+
+type Hl7StoreIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput
+	ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput
+}
+
+type hl7StoreIamBindingPtrType Hl7StoreIamBindingArgs
+
+func (*hl7StoreIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hl7StoreIamBinding)(nil))
+}
+
+func (i *hl7StoreIamBindingPtrType) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
+	return i.ToHl7StoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *hl7StoreIamBindingPtrType) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingPtrOutput)
+}
+
+// Hl7StoreIamBindingArrayInput is an input type that accepts Hl7StoreIamBindingArray and Hl7StoreIamBindingArrayOutput values.
+// You can construct a concrete instance of `Hl7StoreIamBindingArrayInput` via:
+//
+//          Hl7StoreIamBindingArray{ Hl7StoreIamBindingArgs{...} }
+type Hl7StoreIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToHl7StoreIamBindingArrayOutput() Hl7StoreIamBindingArrayOutput
+	ToHl7StoreIamBindingArrayOutputWithContext(context.Context) Hl7StoreIamBindingArrayOutput
+}
+
+type Hl7StoreIamBindingArray []Hl7StoreIamBindingInput
+
+func (Hl7StoreIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Hl7StoreIamBinding)(nil))
+}
+
+func (i Hl7StoreIamBindingArray) ToHl7StoreIamBindingArrayOutput() Hl7StoreIamBindingArrayOutput {
+	return i.ToHl7StoreIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i Hl7StoreIamBindingArray) ToHl7StoreIamBindingArrayOutputWithContext(ctx context.Context) Hl7StoreIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingArrayOutput)
+}
+
+// Hl7StoreIamBindingMapInput is an input type that accepts Hl7StoreIamBindingMap and Hl7StoreIamBindingMapOutput values.
+// You can construct a concrete instance of `Hl7StoreIamBindingMapInput` via:
+//
+//          Hl7StoreIamBindingMap{ "key": Hl7StoreIamBindingArgs{...} }
+type Hl7StoreIamBindingMapInput interface {
+	pulumi.Input
+
+	ToHl7StoreIamBindingMapOutput() Hl7StoreIamBindingMapOutput
+	ToHl7StoreIamBindingMapOutputWithContext(context.Context) Hl7StoreIamBindingMapOutput
+}
+
+type Hl7StoreIamBindingMap map[string]Hl7StoreIamBindingInput
+
+func (Hl7StoreIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Hl7StoreIamBinding)(nil))
+}
+
+func (i Hl7StoreIamBindingMap) ToHl7StoreIamBindingMapOutput() Hl7StoreIamBindingMapOutput {
+	return i.ToHl7StoreIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i Hl7StoreIamBindingMap) ToHl7StoreIamBindingMapOutputWithContext(ctx context.Context) Hl7StoreIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Hl7StoreIamBindingMapOutput)
+}
+
 type Hl7StoreIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -295,6 +374,75 @@ func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingOutputWithContext(ctx cont
 	return o
 }
 
+func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
+	return o.ToHl7StoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o Hl7StoreIamBindingOutput) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
+	return o.ApplyT(func(v Hl7StoreIamBinding) *Hl7StoreIamBinding {
+		return &v
+	}).(Hl7StoreIamBindingPtrOutput)
+}
+
+type Hl7StoreIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (Hl7StoreIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Hl7StoreIamBinding)(nil))
+}
+
+func (o Hl7StoreIamBindingPtrOutput) ToHl7StoreIamBindingPtrOutput() Hl7StoreIamBindingPtrOutput {
+	return o
+}
+
+func (o Hl7StoreIamBindingPtrOutput) ToHl7StoreIamBindingPtrOutputWithContext(ctx context.Context) Hl7StoreIamBindingPtrOutput {
+	return o
+}
+
+type Hl7StoreIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (Hl7StoreIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Hl7StoreIamBinding)(nil))
+}
+
+func (o Hl7StoreIamBindingArrayOutput) ToHl7StoreIamBindingArrayOutput() Hl7StoreIamBindingArrayOutput {
+	return o
+}
+
+func (o Hl7StoreIamBindingArrayOutput) ToHl7StoreIamBindingArrayOutputWithContext(ctx context.Context) Hl7StoreIamBindingArrayOutput {
+	return o
+}
+
+func (o Hl7StoreIamBindingArrayOutput) Index(i pulumi.IntInput) Hl7StoreIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Hl7StoreIamBinding {
+		return vs[0].([]Hl7StoreIamBinding)[vs[1].(int)]
+	}).(Hl7StoreIamBindingOutput)
+}
+
+type Hl7StoreIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (Hl7StoreIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Hl7StoreIamBinding)(nil))
+}
+
+func (o Hl7StoreIamBindingMapOutput) ToHl7StoreIamBindingMapOutput() Hl7StoreIamBindingMapOutput {
+	return o
+}
+
+func (o Hl7StoreIamBindingMapOutput) ToHl7StoreIamBindingMapOutputWithContext(ctx context.Context) Hl7StoreIamBindingMapOutput {
+	return o
+}
+
+func (o Hl7StoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) Hl7StoreIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Hl7StoreIamBinding {
+		return vs[0].(map[string]Hl7StoreIamBinding)[vs[1].(string)]
+	}).(Hl7StoreIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(Hl7StoreIamBindingOutput{})
+	pulumi.RegisterOutputType(Hl7StoreIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(Hl7StoreIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(Hl7StoreIamBindingMapOutput{})
 }

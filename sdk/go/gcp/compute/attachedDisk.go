@@ -271,6 +271,85 @@ func (i *AttachedDisk) ToAttachedDiskOutputWithContext(ctx context.Context) Atta
 	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskOutput)
 }
 
+func (i *AttachedDisk) ToAttachedDiskPtrOutput() AttachedDiskPtrOutput {
+	return i.ToAttachedDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *AttachedDisk) ToAttachedDiskPtrOutputWithContext(ctx context.Context) AttachedDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskPtrOutput)
+}
+
+type AttachedDiskPtrInput interface {
+	pulumi.Input
+
+	ToAttachedDiskPtrOutput() AttachedDiskPtrOutput
+	ToAttachedDiskPtrOutputWithContext(ctx context.Context) AttachedDiskPtrOutput
+}
+
+type attachedDiskPtrType AttachedDiskArgs
+
+func (*attachedDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedDisk)(nil))
+}
+
+func (i *attachedDiskPtrType) ToAttachedDiskPtrOutput() AttachedDiskPtrOutput {
+	return i.ToAttachedDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *attachedDiskPtrType) ToAttachedDiskPtrOutputWithContext(ctx context.Context) AttachedDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskPtrOutput)
+}
+
+// AttachedDiskArrayInput is an input type that accepts AttachedDiskArray and AttachedDiskArrayOutput values.
+// You can construct a concrete instance of `AttachedDiskArrayInput` via:
+//
+//          AttachedDiskArray{ AttachedDiskArgs{...} }
+type AttachedDiskArrayInput interface {
+	pulumi.Input
+
+	ToAttachedDiskArrayOutput() AttachedDiskArrayOutput
+	ToAttachedDiskArrayOutputWithContext(context.Context) AttachedDiskArrayOutput
+}
+
+type AttachedDiskArray []AttachedDiskInput
+
+func (AttachedDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AttachedDisk)(nil))
+}
+
+func (i AttachedDiskArray) ToAttachedDiskArrayOutput() AttachedDiskArrayOutput {
+	return i.ToAttachedDiskArrayOutputWithContext(context.Background())
+}
+
+func (i AttachedDiskArray) ToAttachedDiskArrayOutputWithContext(ctx context.Context) AttachedDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskArrayOutput)
+}
+
+// AttachedDiskMapInput is an input type that accepts AttachedDiskMap and AttachedDiskMapOutput values.
+// You can construct a concrete instance of `AttachedDiskMapInput` via:
+//
+//          AttachedDiskMap{ "key": AttachedDiskArgs{...} }
+type AttachedDiskMapInput interface {
+	pulumi.Input
+
+	ToAttachedDiskMapOutput() AttachedDiskMapOutput
+	ToAttachedDiskMapOutputWithContext(context.Context) AttachedDiskMapOutput
+}
+
+type AttachedDiskMap map[string]AttachedDiskInput
+
+func (AttachedDiskMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AttachedDisk)(nil))
+}
+
+func (i AttachedDiskMap) ToAttachedDiskMapOutput() AttachedDiskMapOutput {
+	return i.ToAttachedDiskMapOutputWithContext(context.Background())
+}
+
+func (i AttachedDiskMap) ToAttachedDiskMapOutputWithContext(ctx context.Context) AttachedDiskMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttachedDiskMapOutput)
+}
+
 type AttachedDiskOutput struct {
 	*pulumi.OutputState
 }
@@ -287,6 +366,75 @@ func (o AttachedDiskOutput) ToAttachedDiskOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AttachedDiskOutput) ToAttachedDiskPtrOutput() AttachedDiskPtrOutput {
+	return o.ToAttachedDiskPtrOutputWithContext(context.Background())
+}
+
+func (o AttachedDiskOutput) ToAttachedDiskPtrOutputWithContext(ctx context.Context) AttachedDiskPtrOutput {
+	return o.ApplyT(func(v AttachedDisk) *AttachedDisk {
+		return &v
+	}).(AttachedDiskPtrOutput)
+}
+
+type AttachedDiskPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttachedDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttachedDisk)(nil))
+}
+
+func (o AttachedDiskPtrOutput) ToAttachedDiskPtrOutput() AttachedDiskPtrOutput {
+	return o
+}
+
+func (o AttachedDiskPtrOutput) ToAttachedDiskPtrOutputWithContext(ctx context.Context) AttachedDiskPtrOutput {
+	return o
+}
+
+type AttachedDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (AttachedDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttachedDisk)(nil))
+}
+
+func (o AttachedDiskArrayOutput) ToAttachedDiskArrayOutput() AttachedDiskArrayOutput {
+	return o
+}
+
+func (o AttachedDiskArrayOutput) ToAttachedDiskArrayOutputWithContext(ctx context.Context) AttachedDiskArrayOutput {
+	return o
+}
+
+func (o AttachedDiskArrayOutput) Index(i pulumi.IntInput) AttachedDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttachedDisk {
+		return vs[0].([]AttachedDisk)[vs[1].(int)]
+	}).(AttachedDiskOutput)
+}
+
+type AttachedDiskMapOutput struct{ *pulumi.OutputState }
+
+func (AttachedDiskMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AttachedDisk)(nil))
+}
+
+func (o AttachedDiskMapOutput) ToAttachedDiskMapOutput() AttachedDiskMapOutput {
+	return o
+}
+
+func (o AttachedDiskMapOutput) ToAttachedDiskMapOutputWithContext(ctx context.Context) AttachedDiskMapOutput {
+	return o
+}
+
+func (o AttachedDiskMapOutput) MapIndex(k pulumi.StringInput) AttachedDiskOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AttachedDisk {
+		return vs[0].(map[string]AttachedDisk)[vs[1].(string)]
+	}).(AttachedDiskOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttachedDiskOutput{})
+	pulumi.RegisterOutputType(AttachedDiskPtrOutput{})
+	pulumi.RegisterOutputType(AttachedDiskArrayOutput{})
+	pulumi.RegisterOutputType(AttachedDiskMapOutput{})
 }

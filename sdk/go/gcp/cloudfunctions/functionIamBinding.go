@@ -303,6 +303,85 @@ func (i *FunctionIamBinding) ToFunctionIamBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingOutput)
 }
 
+func (i *FunctionIamBinding) ToFunctionIamBindingPtrOutput() FunctionIamBindingPtrOutput {
+	return i.ToFunctionIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *FunctionIamBinding) ToFunctionIamBindingPtrOutputWithContext(ctx context.Context) FunctionIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingPtrOutput)
+}
+
+type FunctionIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToFunctionIamBindingPtrOutput() FunctionIamBindingPtrOutput
+	ToFunctionIamBindingPtrOutputWithContext(ctx context.Context) FunctionIamBindingPtrOutput
+}
+
+type functionIamBindingPtrType FunctionIamBindingArgs
+
+func (*functionIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionIamBinding)(nil))
+}
+
+func (i *functionIamBindingPtrType) ToFunctionIamBindingPtrOutput() FunctionIamBindingPtrOutput {
+	return i.ToFunctionIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *functionIamBindingPtrType) ToFunctionIamBindingPtrOutputWithContext(ctx context.Context) FunctionIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingPtrOutput)
+}
+
+// FunctionIamBindingArrayInput is an input type that accepts FunctionIamBindingArray and FunctionIamBindingArrayOutput values.
+// You can construct a concrete instance of `FunctionIamBindingArrayInput` via:
+//
+//          FunctionIamBindingArray{ FunctionIamBindingArgs{...} }
+type FunctionIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToFunctionIamBindingArrayOutput() FunctionIamBindingArrayOutput
+	ToFunctionIamBindingArrayOutputWithContext(context.Context) FunctionIamBindingArrayOutput
+}
+
+type FunctionIamBindingArray []FunctionIamBindingInput
+
+func (FunctionIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FunctionIamBinding)(nil))
+}
+
+func (i FunctionIamBindingArray) ToFunctionIamBindingArrayOutput() FunctionIamBindingArrayOutput {
+	return i.ToFunctionIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i FunctionIamBindingArray) ToFunctionIamBindingArrayOutputWithContext(ctx context.Context) FunctionIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingArrayOutput)
+}
+
+// FunctionIamBindingMapInput is an input type that accepts FunctionIamBindingMap and FunctionIamBindingMapOutput values.
+// You can construct a concrete instance of `FunctionIamBindingMapInput` via:
+//
+//          FunctionIamBindingMap{ "key": FunctionIamBindingArgs{...} }
+type FunctionIamBindingMapInput interface {
+	pulumi.Input
+
+	ToFunctionIamBindingMapOutput() FunctionIamBindingMapOutput
+	ToFunctionIamBindingMapOutputWithContext(context.Context) FunctionIamBindingMapOutput
+}
+
+type FunctionIamBindingMap map[string]FunctionIamBindingInput
+
+func (FunctionIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FunctionIamBinding)(nil))
+}
+
+func (i FunctionIamBindingMap) ToFunctionIamBindingMapOutput() FunctionIamBindingMapOutput {
+	return i.ToFunctionIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i FunctionIamBindingMap) ToFunctionIamBindingMapOutputWithContext(ctx context.Context) FunctionIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FunctionIamBindingMapOutput)
+}
+
 type FunctionIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -319,6 +398,75 @@ func (o FunctionIamBindingOutput) ToFunctionIamBindingOutputWithContext(ctx cont
 	return o
 }
 
+func (o FunctionIamBindingOutput) ToFunctionIamBindingPtrOutput() FunctionIamBindingPtrOutput {
+	return o.ToFunctionIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionIamBindingOutput) ToFunctionIamBindingPtrOutputWithContext(ctx context.Context) FunctionIamBindingPtrOutput {
+	return o.ApplyT(func(v FunctionIamBinding) *FunctionIamBinding {
+		return &v
+	}).(FunctionIamBindingPtrOutput)
+}
+
+type FunctionIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FunctionIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FunctionIamBinding)(nil))
+}
+
+func (o FunctionIamBindingPtrOutput) ToFunctionIamBindingPtrOutput() FunctionIamBindingPtrOutput {
+	return o
+}
+
+func (o FunctionIamBindingPtrOutput) ToFunctionIamBindingPtrOutputWithContext(ctx context.Context) FunctionIamBindingPtrOutput {
+	return o
+}
+
+type FunctionIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (FunctionIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FunctionIamBinding)(nil))
+}
+
+func (o FunctionIamBindingArrayOutput) ToFunctionIamBindingArrayOutput() FunctionIamBindingArrayOutput {
+	return o
+}
+
+func (o FunctionIamBindingArrayOutput) ToFunctionIamBindingArrayOutputWithContext(ctx context.Context) FunctionIamBindingArrayOutput {
+	return o
+}
+
+func (o FunctionIamBindingArrayOutput) Index(i pulumi.IntInput) FunctionIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FunctionIamBinding {
+		return vs[0].([]FunctionIamBinding)[vs[1].(int)]
+	}).(FunctionIamBindingOutput)
+}
+
+type FunctionIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (FunctionIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FunctionIamBinding)(nil))
+}
+
+func (o FunctionIamBindingMapOutput) ToFunctionIamBindingMapOutput() FunctionIamBindingMapOutput {
+	return o
+}
+
+func (o FunctionIamBindingMapOutput) ToFunctionIamBindingMapOutputWithContext(ctx context.Context) FunctionIamBindingMapOutput {
+	return o
+}
+
+func (o FunctionIamBindingMapOutput) MapIndex(k pulumi.StringInput) FunctionIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FunctionIamBinding {
+		return vs[0].(map[string]FunctionIamBinding)[vs[1].(string)]
+	}).(FunctionIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FunctionIamBindingOutput{})
+	pulumi.RegisterOutputType(FunctionIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(FunctionIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(FunctionIamBindingMapOutput{})
 }

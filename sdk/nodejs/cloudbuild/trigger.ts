@@ -242,7 +242,8 @@ export class Trigger extends pulumi.CustomResource {
     constructor(name: string, args?: TriggerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TriggerArgs | TriggerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TriggerState | undefined;
             inputs["build"] = state ? state.build : undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
@@ -275,12 +276,8 @@ export class Trigger extends pulumi.CustomResource {
             inputs["createTime"] = undefined /*out*/;
             inputs["triggerId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Trigger.__pulumiType, name, inputs, opts);
     }

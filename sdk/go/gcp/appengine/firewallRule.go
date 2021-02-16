@@ -236,6 +236,85 @@ func (i *FirewallRule) ToFirewallRuleOutputWithContext(ctx context.Context) Fire
 	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleOutput)
 }
 
+func (i *FirewallRule) ToFirewallRulePtrOutput() FirewallRulePtrOutput {
+	return i.ToFirewallRulePtrOutputWithContext(context.Background())
+}
+
+func (i *FirewallRule) ToFirewallRulePtrOutputWithContext(ctx context.Context) FirewallRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePtrOutput)
+}
+
+type FirewallRulePtrInput interface {
+	pulumi.Input
+
+	ToFirewallRulePtrOutput() FirewallRulePtrOutput
+	ToFirewallRulePtrOutputWithContext(ctx context.Context) FirewallRulePtrOutput
+}
+
+type firewallRulePtrType FirewallRuleArgs
+
+func (*firewallRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRule)(nil))
+}
+
+func (i *firewallRulePtrType) ToFirewallRulePtrOutput() FirewallRulePtrOutput {
+	return i.ToFirewallRulePtrOutputWithContext(context.Background())
+}
+
+func (i *firewallRulePtrType) ToFirewallRulePtrOutputWithContext(ctx context.Context) FirewallRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRulePtrOutput)
+}
+
+// FirewallRuleArrayInput is an input type that accepts FirewallRuleArray and FirewallRuleArrayOutput values.
+// You can construct a concrete instance of `FirewallRuleArrayInput` via:
+//
+//          FirewallRuleArray{ FirewallRuleArgs{...} }
+type FirewallRuleArrayInput interface {
+	pulumi.Input
+
+	ToFirewallRuleArrayOutput() FirewallRuleArrayOutput
+	ToFirewallRuleArrayOutputWithContext(context.Context) FirewallRuleArrayOutput
+}
+
+type FirewallRuleArray []FirewallRuleInput
+
+func (FirewallRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FirewallRule)(nil))
+}
+
+func (i FirewallRuleArray) ToFirewallRuleArrayOutput() FirewallRuleArrayOutput {
+	return i.ToFirewallRuleArrayOutputWithContext(context.Background())
+}
+
+func (i FirewallRuleArray) ToFirewallRuleArrayOutputWithContext(ctx context.Context) FirewallRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleArrayOutput)
+}
+
+// FirewallRuleMapInput is an input type that accepts FirewallRuleMap and FirewallRuleMapOutput values.
+// You can construct a concrete instance of `FirewallRuleMapInput` via:
+//
+//          FirewallRuleMap{ "key": FirewallRuleArgs{...} }
+type FirewallRuleMapInput interface {
+	pulumi.Input
+
+	ToFirewallRuleMapOutput() FirewallRuleMapOutput
+	ToFirewallRuleMapOutputWithContext(context.Context) FirewallRuleMapOutput
+}
+
+type FirewallRuleMap map[string]FirewallRuleInput
+
+func (FirewallRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FirewallRule)(nil))
+}
+
+func (i FirewallRuleMap) ToFirewallRuleMapOutput() FirewallRuleMapOutput {
+	return i.ToFirewallRuleMapOutputWithContext(context.Background())
+}
+
+func (i FirewallRuleMap) ToFirewallRuleMapOutputWithContext(ctx context.Context) FirewallRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallRuleMapOutput)
+}
+
 type FirewallRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -252,6 +331,75 @@ func (o FirewallRuleOutput) ToFirewallRuleOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o FirewallRuleOutput) ToFirewallRulePtrOutput() FirewallRulePtrOutput {
+	return o.ToFirewallRulePtrOutputWithContext(context.Background())
+}
+
+func (o FirewallRuleOutput) ToFirewallRulePtrOutputWithContext(ctx context.Context) FirewallRulePtrOutput {
+	return o.ApplyT(func(v FirewallRule) *FirewallRule {
+		return &v
+	}).(FirewallRulePtrOutput)
+}
+
+type FirewallRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FirewallRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallRule)(nil))
+}
+
+func (o FirewallRulePtrOutput) ToFirewallRulePtrOutput() FirewallRulePtrOutput {
+	return o
+}
+
+func (o FirewallRulePtrOutput) ToFirewallRulePtrOutputWithContext(ctx context.Context) FirewallRulePtrOutput {
+	return o
+}
+
+type FirewallRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (FirewallRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FirewallRule)(nil))
+}
+
+func (o FirewallRuleArrayOutput) ToFirewallRuleArrayOutput() FirewallRuleArrayOutput {
+	return o
+}
+
+func (o FirewallRuleArrayOutput) ToFirewallRuleArrayOutputWithContext(ctx context.Context) FirewallRuleArrayOutput {
+	return o
+}
+
+func (o FirewallRuleArrayOutput) Index(i pulumi.IntInput) FirewallRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallRule {
+		return vs[0].([]FirewallRule)[vs[1].(int)]
+	}).(FirewallRuleOutput)
+}
+
+type FirewallRuleMapOutput struct{ *pulumi.OutputState }
+
+func (FirewallRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FirewallRule)(nil))
+}
+
+func (o FirewallRuleMapOutput) ToFirewallRuleMapOutput() FirewallRuleMapOutput {
+	return o
+}
+
+func (o FirewallRuleMapOutput) ToFirewallRuleMapOutputWithContext(ctx context.Context) FirewallRuleMapOutput {
+	return o
+}
+
+func (o FirewallRuleMapOutput) MapIndex(k pulumi.StringInput) FirewallRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FirewallRule {
+		return vs[0].(map[string]FirewallRule)[vs[1].(string)]
+	}).(FirewallRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FirewallRuleOutput{})
+	pulumi.RegisterOutputType(FirewallRulePtrOutput{})
+	pulumi.RegisterOutputType(FirewallRuleArrayOutput{})
+	pulumi.RegisterOutputType(FirewallRuleMapOutput{})
 }

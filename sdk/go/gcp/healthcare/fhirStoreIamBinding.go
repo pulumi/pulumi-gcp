@@ -279,6 +279,85 @@ func (i *FhirStoreIamBinding) ToFhirStoreIamBindingOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingOutput)
 }
 
+func (i *FhirStoreIamBinding) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
+	return i.ToFhirStoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *FhirStoreIamBinding) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingPtrOutput)
+}
+
+type FhirStoreIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput
+	ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput
+}
+
+type fhirStoreIamBindingPtrType FhirStoreIamBindingArgs
+
+func (*fhirStoreIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreIamBinding)(nil))
+}
+
+func (i *fhirStoreIamBindingPtrType) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
+	return i.ToFhirStoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreIamBindingPtrType) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingPtrOutput)
+}
+
+// FhirStoreIamBindingArrayInput is an input type that accepts FhirStoreIamBindingArray and FhirStoreIamBindingArrayOutput values.
+// You can construct a concrete instance of `FhirStoreIamBindingArrayInput` via:
+//
+//          FhirStoreIamBindingArray{ FhirStoreIamBindingArgs{...} }
+type FhirStoreIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamBindingArrayOutput() FhirStoreIamBindingArrayOutput
+	ToFhirStoreIamBindingArrayOutputWithContext(context.Context) FhirStoreIamBindingArrayOutput
+}
+
+type FhirStoreIamBindingArray []FhirStoreIamBindingInput
+
+func (FhirStoreIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FhirStoreIamBinding)(nil))
+}
+
+func (i FhirStoreIamBindingArray) ToFhirStoreIamBindingArrayOutput() FhirStoreIamBindingArrayOutput {
+	return i.ToFhirStoreIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i FhirStoreIamBindingArray) ToFhirStoreIamBindingArrayOutputWithContext(ctx context.Context) FhirStoreIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingArrayOutput)
+}
+
+// FhirStoreIamBindingMapInput is an input type that accepts FhirStoreIamBindingMap and FhirStoreIamBindingMapOutput values.
+// You can construct a concrete instance of `FhirStoreIamBindingMapInput` via:
+//
+//          FhirStoreIamBindingMap{ "key": FhirStoreIamBindingArgs{...} }
+type FhirStoreIamBindingMapInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamBindingMapOutput() FhirStoreIamBindingMapOutput
+	ToFhirStoreIamBindingMapOutputWithContext(context.Context) FhirStoreIamBindingMapOutput
+}
+
+type FhirStoreIamBindingMap map[string]FhirStoreIamBindingInput
+
+func (FhirStoreIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FhirStoreIamBinding)(nil))
+}
+
+func (i FhirStoreIamBindingMap) ToFhirStoreIamBindingMapOutput() FhirStoreIamBindingMapOutput {
+	return i.ToFhirStoreIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i FhirStoreIamBindingMap) ToFhirStoreIamBindingMapOutputWithContext(ctx context.Context) FhirStoreIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamBindingMapOutput)
+}
+
 type FhirStoreIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -295,6 +374,75 @@ func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingOutputWithContext(ctx co
 	return o
 }
 
+func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
+	return o.ToFhirStoreIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreIamBindingOutput) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
+	return o.ApplyT(func(v FhirStoreIamBinding) *FhirStoreIamBinding {
+		return &v
+	}).(FhirStoreIamBindingPtrOutput)
+}
+
+type FhirStoreIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FhirStoreIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreIamBinding)(nil))
+}
+
+func (o FhirStoreIamBindingPtrOutput) ToFhirStoreIamBindingPtrOutput() FhirStoreIamBindingPtrOutput {
+	return o
+}
+
+func (o FhirStoreIamBindingPtrOutput) ToFhirStoreIamBindingPtrOutputWithContext(ctx context.Context) FhirStoreIamBindingPtrOutput {
+	return o
+}
+
+type FhirStoreIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStoreIamBinding)(nil))
+}
+
+func (o FhirStoreIamBindingArrayOutput) ToFhirStoreIamBindingArrayOutput() FhirStoreIamBindingArrayOutput {
+	return o
+}
+
+func (o FhirStoreIamBindingArrayOutput) ToFhirStoreIamBindingArrayOutputWithContext(ctx context.Context) FhirStoreIamBindingArrayOutput {
+	return o
+}
+
+func (o FhirStoreIamBindingArrayOutput) Index(i pulumi.IntInput) FhirStoreIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreIamBinding {
+		return vs[0].([]FhirStoreIamBinding)[vs[1].(int)]
+	}).(FhirStoreIamBindingOutput)
+}
+
+type FhirStoreIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FhirStoreIamBinding)(nil))
+}
+
+func (o FhirStoreIamBindingMapOutput) ToFhirStoreIamBindingMapOutput() FhirStoreIamBindingMapOutput {
+	return o
+}
+
+func (o FhirStoreIamBindingMapOutput) ToFhirStoreIamBindingMapOutputWithContext(ctx context.Context) FhirStoreIamBindingMapOutput {
+	return o
+}
+
+func (o FhirStoreIamBindingMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStoreIamBinding {
+		return vs[0].(map[string]FhirStoreIamBinding)[vs[1].(string)]
+	}).(FhirStoreIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FhirStoreIamBindingOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamBindingMapOutput{})
 }

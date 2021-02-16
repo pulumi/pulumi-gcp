@@ -106,7 +106,8 @@ export class ApiConfig extends pulumi.CustomResource {
     constructor(name: string, args: ApiConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApiConfigArgs | ApiConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApiConfigState | undefined;
             inputs["api"] = state ? state.api : undefined;
             inputs["apiConfigId"] = state ? state.apiConfigId : undefined;
@@ -120,10 +121,10 @@ export class ApiConfig extends pulumi.CustomResource {
             inputs["serviceConfigId"] = state ? state.serviceConfigId : undefined;
         } else {
             const args = argsOrState as ApiConfigArgs | undefined;
-            if ((!args || args.api === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.api === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'api'");
             }
-            if ((!args || args.openapiDocuments === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.openapiDocuments === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'openapiDocuments'");
             }
             inputs["api"] = args ? args.api : undefined;
@@ -137,12 +138,8 @@ export class ApiConfig extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["serviceConfigId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApiConfig.__pulumiType, name, inputs, opts);
     }

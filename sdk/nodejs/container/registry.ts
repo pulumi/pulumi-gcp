@@ -93,7 +93,8 @@ export class Registry extends pulumi.CustomResource {
     constructor(name: string, args?: RegistryArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegistryArgs | RegistryState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegistryState | undefined;
             inputs["bucketSelfLink"] = state ? state.bucketSelfLink : undefined;
             inputs["location"] = state ? state.location : undefined;
@@ -104,12 +105,8 @@ export class Registry extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["bucketSelfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Registry.__pulumiType, name, inputs, opts);
     }

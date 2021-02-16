@@ -140,29 +140,26 @@ export class Hl7StoreIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: Hl7StoreIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: Hl7StoreIamPolicyArgs | Hl7StoreIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as Hl7StoreIamPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["hl7V2StoreId"] = state ? state.hl7V2StoreId : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as Hl7StoreIamPolicyArgs | undefined;
-            if ((!args || args.hl7V2StoreId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.hl7V2StoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'hl7V2StoreId'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Hl7StoreIamPolicy.__pulumiType, name, inputs, opts);
     }

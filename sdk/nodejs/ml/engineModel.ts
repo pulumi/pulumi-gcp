@@ -131,7 +131,8 @@ export class EngineModel extends pulumi.CustomResource {
     constructor(name: string, args?: EngineModelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EngineModelArgs | EngineModelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EngineModelState | undefined;
             inputs["defaultVersion"] = state ? state.defaultVersion : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -152,12 +153,8 @@ export class EngineModel extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["regions"] = args ? args.regions : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(EngineModel.__pulumiType, name, inputs, opts);
     }

@@ -138,7 +138,8 @@ export class Router extends pulumi.CustomResource {
     constructor(name: string, args: RouterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterArgs | RouterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterState | undefined;
             inputs["bgp"] = state ? state.bgp : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -150,7 +151,7 @@ export class Router extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RouterArgs | undefined;
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["bgp"] = args ? args.bgp : undefined;
@@ -162,12 +163,8 @@ export class Router extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Router.__pulumiType, name, inputs, opts);
     }

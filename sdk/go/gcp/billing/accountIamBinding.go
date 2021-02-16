@@ -116,6 +116,85 @@ func (i *AccountIamBinding) ToAccountIamBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingOutput)
 }
 
+func (i *AccountIamBinding) ToAccountIamBindingPtrOutput() AccountIamBindingPtrOutput {
+	return i.ToAccountIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *AccountIamBinding) ToAccountIamBindingPtrOutputWithContext(ctx context.Context) AccountIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingPtrOutput)
+}
+
+type AccountIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToAccountIamBindingPtrOutput() AccountIamBindingPtrOutput
+	ToAccountIamBindingPtrOutputWithContext(ctx context.Context) AccountIamBindingPtrOutput
+}
+
+type accountIamBindingPtrType AccountIamBindingArgs
+
+func (*accountIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountIamBinding)(nil))
+}
+
+func (i *accountIamBindingPtrType) ToAccountIamBindingPtrOutput() AccountIamBindingPtrOutput {
+	return i.ToAccountIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *accountIamBindingPtrType) ToAccountIamBindingPtrOutputWithContext(ctx context.Context) AccountIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingPtrOutput)
+}
+
+// AccountIamBindingArrayInput is an input type that accepts AccountIamBindingArray and AccountIamBindingArrayOutput values.
+// You can construct a concrete instance of `AccountIamBindingArrayInput` via:
+//
+//          AccountIamBindingArray{ AccountIamBindingArgs{...} }
+type AccountIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToAccountIamBindingArrayOutput() AccountIamBindingArrayOutput
+	ToAccountIamBindingArrayOutputWithContext(context.Context) AccountIamBindingArrayOutput
+}
+
+type AccountIamBindingArray []AccountIamBindingInput
+
+func (AccountIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccountIamBinding)(nil))
+}
+
+func (i AccountIamBindingArray) ToAccountIamBindingArrayOutput() AccountIamBindingArrayOutput {
+	return i.ToAccountIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i AccountIamBindingArray) ToAccountIamBindingArrayOutputWithContext(ctx context.Context) AccountIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingArrayOutput)
+}
+
+// AccountIamBindingMapInput is an input type that accepts AccountIamBindingMap and AccountIamBindingMapOutput values.
+// You can construct a concrete instance of `AccountIamBindingMapInput` via:
+//
+//          AccountIamBindingMap{ "key": AccountIamBindingArgs{...} }
+type AccountIamBindingMapInput interface {
+	pulumi.Input
+
+	ToAccountIamBindingMapOutput() AccountIamBindingMapOutput
+	ToAccountIamBindingMapOutputWithContext(context.Context) AccountIamBindingMapOutput
+}
+
+type AccountIamBindingMap map[string]AccountIamBindingInput
+
+func (AccountIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccountIamBinding)(nil))
+}
+
+func (i AccountIamBindingMap) ToAccountIamBindingMapOutput() AccountIamBindingMapOutput {
+	return i.ToAccountIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i AccountIamBindingMap) ToAccountIamBindingMapOutputWithContext(ctx context.Context) AccountIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamBindingMapOutput)
+}
+
 type AccountIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -132,6 +211,75 @@ func (o AccountIamBindingOutput) ToAccountIamBindingOutputWithContext(ctx contex
 	return o
 }
 
+func (o AccountIamBindingOutput) ToAccountIamBindingPtrOutput() AccountIamBindingPtrOutput {
+	return o.ToAccountIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o AccountIamBindingOutput) ToAccountIamBindingPtrOutputWithContext(ctx context.Context) AccountIamBindingPtrOutput {
+	return o.ApplyT(func(v AccountIamBinding) *AccountIamBinding {
+		return &v
+	}).(AccountIamBindingPtrOutput)
+}
+
+type AccountIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountIamBinding)(nil))
+}
+
+func (o AccountIamBindingPtrOutput) ToAccountIamBindingPtrOutput() AccountIamBindingPtrOutput {
+	return o
+}
+
+func (o AccountIamBindingPtrOutput) ToAccountIamBindingPtrOutputWithContext(ctx context.Context) AccountIamBindingPtrOutput {
+	return o
+}
+
+type AccountIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountIamBinding)(nil))
+}
+
+func (o AccountIamBindingArrayOutput) ToAccountIamBindingArrayOutput() AccountIamBindingArrayOutput {
+	return o
+}
+
+func (o AccountIamBindingArrayOutput) ToAccountIamBindingArrayOutputWithContext(ctx context.Context) AccountIamBindingArrayOutput {
+	return o
+}
+
+func (o AccountIamBindingArrayOutput) Index(i pulumi.IntInput) AccountIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountIamBinding {
+		return vs[0].([]AccountIamBinding)[vs[1].(int)]
+	}).(AccountIamBindingOutput)
+}
+
+type AccountIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (AccountIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccountIamBinding)(nil))
+}
+
+func (o AccountIamBindingMapOutput) ToAccountIamBindingMapOutput() AccountIamBindingMapOutput {
+	return o
+}
+
+func (o AccountIamBindingMapOutput) ToAccountIamBindingMapOutputWithContext(ctx context.Context) AccountIamBindingMapOutput {
+	return o
+}
+
+func (o AccountIamBindingMapOutput) MapIndex(k pulumi.StringInput) AccountIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccountIamBinding {
+		return vs[0].(map[string]AccountIamBinding)[vs[1].(string)]
+	}).(AccountIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountIamBindingOutput{})
+	pulumi.RegisterOutputType(AccountIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(AccountIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(AccountIamBindingMapOutput{})
 }

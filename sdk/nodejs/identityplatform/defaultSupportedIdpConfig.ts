@@ -116,7 +116,8 @@ export class DefaultSupportedIdpConfig extends pulumi.CustomResource {
     constructor(name: string, args: DefaultSupportedIdpConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DefaultSupportedIdpConfigArgs | DefaultSupportedIdpConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DefaultSupportedIdpConfigState | undefined;
             inputs["clientId"] = state ? state.clientId : undefined;
             inputs["clientSecret"] = state ? state.clientSecret : undefined;
@@ -126,13 +127,13 @@ export class DefaultSupportedIdpConfig extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as DefaultSupportedIdpConfigArgs | undefined;
-            if ((!args || args.clientId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clientId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientId'");
             }
-            if ((!args || args.clientSecret === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clientSecret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clientSecret'");
             }
-            if ((!args || args.idpId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.idpId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'idpId'");
             }
             inputs["clientId"] = args ? args.clientId : undefined;
@@ -142,12 +143,8 @@ export class DefaultSupportedIdpConfig extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DefaultSupportedIdpConfig.__pulumiType, name, inputs, opts);
     }

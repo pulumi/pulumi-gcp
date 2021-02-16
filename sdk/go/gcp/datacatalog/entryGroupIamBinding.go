@@ -282,6 +282,85 @@ func (i *EntryGroupIamBinding) ToEntryGroupIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingOutput)
 }
 
+func (i *EntryGroupIamBinding) ToEntryGroupIamBindingPtrOutput() EntryGroupIamBindingPtrOutput {
+	return i.ToEntryGroupIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *EntryGroupIamBinding) ToEntryGroupIamBindingPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingPtrOutput)
+}
+
+type EntryGroupIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToEntryGroupIamBindingPtrOutput() EntryGroupIamBindingPtrOutput
+	ToEntryGroupIamBindingPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingPtrOutput
+}
+
+type entryGroupIamBindingPtrType EntryGroupIamBindingArgs
+
+func (*entryGroupIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryGroupIamBinding)(nil))
+}
+
+func (i *entryGroupIamBindingPtrType) ToEntryGroupIamBindingPtrOutput() EntryGroupIamBindingPtrOutput {
+	return i.ToEntryGroupIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *entryGroupIamBindingPtrType) ToEntryGroupIamBindingPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingPtrOutput)
+}
+
+// EntryGroupIamBindingArrayInput is an input type that accepts EntryGroupIamBindingArray and EntryGroupIamBindingArrayOutput values.
+// You can construct a concrete instance of `EntryGroupIamBindingArrayInput` via:
+//
+//          EntryGroupIamBindingArray{ EntryGroupIamBindingArgs{...} }
+type EntryGroupIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToEntryGroupIamBindingArrayOutput() EntryGroupIamBindingArrayOutput
+	ToEntryGroupIamBindingArrayOutputWithContext(context.Context) EntryGroupIamBindingArrayOutput
+}
+
+type EntryGroupIamBindingArray []EntryGroupIamBindingInput
+
+func (EntryGroupIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*EntryGroupIamBinding)(nil))
+}
+
+func (i EntryGroupIamBindingArray) ToEntryGroupIamBindingArrayOutput() EntryGroupIamBindingArrayOutput {
+	return i.ToEntryGroupIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i EntryGroupIamBindingArray) ToEntryGroupIamBindingArrayOutputWithContext(ctx context.Context) EntryGroupIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingArrayOutput)
+}
+
+// EntryGroupIamBindingMapInput is an input type that accepts EntryGroupIamBindingMap and EntryGroupIamBindingMapOutput values.
+// You can construct a concrete instance of `EntryGroupIamBindingMapInput` via:
+//
+//          EntryGroupIamBindingMap{ "key": EntryGroupIamBindingArgs{...} }
+type EntryGroupIamBindingMapInput interface {
+	pulumi.Input
+
+	ToEntryGroupIamBindingMapOutput() EntryGroupIamBindingMapOutput
+	ToEntryGroupIamBindingMapOutputWithContext(context.Context) EntryGroupIamBindingMapOutput
+}
+
+type EntryGroupIamBindingMap map[string]EntryGroupIamBindingInput
+
+func (EntryGroupIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*EntryGroupIamBinding)(nil))
+}
+
+func (i EntryGroupIamBindingMap) ToEntryGroupIamBindingMapOutput() EntryGroupIamBindingMapOutput {
+	return i.ToEntryGroupIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i EntryGroupIamBindingMap) ToEntryGroupIamBindingMapOutputWithContext(ctx context.Context) EntryGroupIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryGroupIamBindingMapOutput)
+}
+
 type EntryGroupIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -298,6 +377,75 @@ func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingOutputWithContext(ctx 
 	return o
 }
 
+func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingPtrOutput() EntryGroupIamBindingPtrOutput {
+	return o.ToEntryGroupIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o EntryGroupIamBindingOutput) ToEntryGroupIamBindingPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingPtrOutput {
+	return o.ApplyT(func(v EntryGroupIamBinding) *EntryGroupIamBinding {
+		return &v
+	}).(EntryGroupIamBindingPtrOutput)
+}
+
+type EntryGroupIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EntryGroupIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EntryGroupIamBinding)(nil))
+}
+
+func (o EntryGroupIamBindingPtrOutput) ToEntryGroupIamBindingPtrOutput() EntryGroupIamBindingPtrOutput {
+	return o
+}
+
+func (o EntryGroupIamBindingPtrOutput) ToEntryGroupIamBindingPtrOutputWithContext(ctx context.Context) EntryGroupIamBindingPtrOutput {
+	return o
+}
+
+type EntryGroupIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryGroupIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntryGroupIamBinding)(nil))
+}
+
+func (o EntryGroupIamBindingArrayOutput) ToEntryGroupIamBindingArrayOutput() EntryGroupIamBindingArrayOutput {
+	return o
+}
+
+func (o EntryGroupIamBindingArrayOutput) ToEntryGroupIamBindingArrayOutputWithContext(ctx context.Context) EntryGroupIamBindingArrayOutput {
+	return o
+}
+
+func (o EntryGroupIamBindingArrayOutput) Index(i pulumi.IntInput) EntryGroupIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntryGroupIamBinding {
+		return vs[0].([]EntryGroupIamBinding)[vs[1].(int)]
+	}).(EntryGroupIamBindingOutput)
+}
+
+type EntryGroupIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (EntryGroupIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]EntryGroupIamBinding)(nil))
+}
+
+func (o EntryGroupIamBindingMapOutput) ToEntryGroupIamBindingMapOutput() EntryGroupIamBindingMapOutput {
+	return o
+}
+
+func (o EntryGroupIamBindingMapOutput) ToEntryGroupIamBindingMapOutputWithContext(ctx context.Context) EntryGroupIamBindingMapOutput {
+	return o
+}
+
+func (o EntryGroupIamBindingMapOutput) MapIndex(k pulumi.StringInput) EntryGroupIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) EntryGroupIamBinding {
+		return vs[0].(map[string]EntryGroupIamBinding)[vs[1].(string)]
+	}).(EntryGroupIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EntryGroupIamBindingOutput{})
+	pulumi.RegisterOutputType(EntryGroupIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(EntryGroupIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(EntryGroupIamBindingMapOutput{})
 }

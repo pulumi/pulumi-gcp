@@ -261,6 +261,85 @@ func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyOutput)
 }
 
+func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
+	return i.ToFhirStoreIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *FhirStoreIamPolicy) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyPtrOutput)
+}
+
+type FhirStoreIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput
+	ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput
+}
+
+type fhirStoreIamPolicyPtrType FhirStoreIamPolicyArgs
+
+func (*fhirStoreIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreIamPolicy)(nil))
+}
+
+func (i *fhirStoreIamPolicyPtrType) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
+	return i.ToFhirStoreIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *fhirStoreIamPolicyPtrType) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyPtrOutput)
+}
+
+// FhirStoreIamPolicyArrayInput is an input type that accepts FhirStoreIamPolicyArray and FhirStoreIamPolicyArrayOutput values.
+// You can construct a concrete instance of `FhirStoreIamPolicyArrayInput` via:
+//
+//          FhirStoreIamPolicyArray{ FhirStoreIamPolicyArgs{...} }
+type FhirStoreIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamPolicyArrayOutput() FhirStoreIamPolicyArrayOutput
+	ToFhirStoreIamPolicyArrayOutputWithContext(context.Context) FhirStoreIamPolicyArrayOutput
+}
+
+type FhirStoreIamPolicyArray []FhirStoreIamPolicyInput
+
+func (FhirStoreIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FhirStoreIamPolicy)(nil))
+}
+
+func (i FhirStoreIamPolicyArray) ToFhirStoreIamPolicyArrayOutput() FhirStoreIamPolicyArrayOutput {
+	return i.ToFhirStoreIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i FhirStoreIamPolicyArray) ToFhirStoreIamPolicyArrayOutputWithContext(ctx context.Context) FhirStoreIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyArrayOutput)
+}
+
+// FhirStoreIamPolicyMapInput is an input type that accepts FhirStoreIamPolicyMap and FhirStoreIamPolicyMapOutput values.
+// You can construct a concrete instance of `FhirStoreIamPolicyMapInput` via:
+//
+//          FhirStoreIamPolicyMap{ "key": FhirStoreIamPolicyArgs{...} }
+type FhirStoreIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToFhirStoreIamPolicyMapOutput() FhirStoreIamPolicyMapOutput
+	ToFhirStoreIamPolicyMapOutputWithContext(context.Context) FhirStoreIamPolicyMapOutput
+}
+
+type FhirStoreIamPolicyMap map[string]FhirStoreIamPolicyInput
+
+func (FhirStoreIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FhirStoreIamPolicy)(nil))
+}
+
+func (i FhirStoreIamPolicyMap) ToFhirStoreIamPolicyMapOutput() FhirStoreIamPolicyMapOutput {
+	return i.ToFhirStoreIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i FhirStoreIamPolicyMap) ToFhirStoreIamPolicyMapOutputWithContext(ctx context.Context) FhirStoreIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FhirStoreIamPolicyMapOutput)
+}
+
 type FhirStoreIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -277,6 +356,75 @@ func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyOutputWithContext(ctx cont
 	return o
 }
 
+func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
+	return o.ToFhirStoreIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreIamPolicyOutput) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
+	return o.ApplyT(func(v FhirStoreIamPolicy) *FhirStoreIamPolicy {
+		return &v
+	}).(FhirStoreIamPolicyPtrOutput)
+}
+
+type FhirStoreIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FhirStoreIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FhirStoreIamPolicy)(nil))
+}
+
+func (o FhirStoreIamPolicyPtrOutput) ToFhirStoreIamPolicyPtrOutput() FhirStoreIamPolicyPtrOutput {
+	return o
+}
+
+func (o FhirStoreIamPolicyPtrOutput) ToFhirStoreIamPolicyPtrOutputWithContext(ctx context.Context) FhirStoreIamPolicyPtrOutput {
+	return o
+}
+
+type FhirStoreIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FhirStoreIamPolicy)(nil))
+}
+
+func (o FhirStoreIamPolicyArrayOutput) ToFhirStoreIamPolicyArrayOutput() FhirStoreIamPolicyArrayOutput {
+	return o
+}
+
+func (o FhirStoreIamPolicyArrayOutput) ToFhirStoreIamPolicyArrayOutputWithContext(ctx context.Context) FhirStoreIamPolicyArrayOutput {
+	return o
+}
+
+func (o FhirStoreIamPolicyArrayOutput) Index(i pulumi.IntInput) FhirStoreIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FhirStoreIamPolicy {
+		return vs[0].([]FhirStoreIamPolicy)[vs[1].(int)]
+	}).(FhirStoreIamPolicyOutput)
+}
+
+type FhirStoreIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FhirStoreIamPolicy)(nil))
+}
+
+func (o FhirStoreIamPolicyMapOutput) ToFhirStoreIamPolicyMapOutput() FhirStoreIamPolicyMapOutput {
+	return o
+}
+
+func (o FhirStoreIamPolicyMapOutput) ToFhirStoreIamPolicyMapOutputWithContext(ctx context.Context) FhirStoreIamPolicyMapOutput {
+	return o
+}
+
+func (o FhirStoreIamPolicyMapOutput) MapIndex(k pulumi.StringInput) FhirStoreIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FhirStoreIamPolicy {
+		return vs[0].(map[string]FhirStoreIamPolicy)[vs[1].(string)]
+	}).(FhirStoreIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FhirStoreIamPolicyOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(FhirStoreIamPolicyMapOutput{})
 }

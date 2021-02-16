@@ -453,6 +453,85 @@ func (i *DataTransferConfig) ToDataTransferConfigOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigOutput)
 }
 
+func (i *DataTransferConfig) ToDataTransferConfigPtrOutput() DataTransferConfigPtrOutput {
+	return i.ToDataTransferConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *DataTransferConfig) ToDataTransferConfigPtrOutputWithContext(ctx context.Context) DataTransferConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigPtrOutput)
+}
+
+type DataTransferConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigPtrOutput() DataTransferConfigPtrOutput
+	ToDataTransferConfigPtrOutputWithContext(ctx context.Context) DataTransferConfigPtrOutput
+}
+
+type dataTransferConfigPtrType DataTransferConfigArgs
+
+func (*dataTransferConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfig)(nil))
+}
+
+func (i *dataTransferConfigPtrType) ToDataTransferConfigPtrOutput() DataTransferConfigPtrOutput {
+	return i.ToDataTransferConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataTransferConfigPtrType) ToDataTransferConfigPtrOutputWithContext(ctx context.Context) DataTransferConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigPtrOutput)
+}
+
+// DataTransferConfigArrayInput is an input type that accepts DataTransferConfigArray and DataTransferConfigArrayOutput values.
+// You can construct a concrete instance of `DataTransferConfigArrayInput` via:
+//
+//          DataTransferConfigArray{ DataTransferConfigArgs{...} }
+type DataTransferConfigArrayInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigArrayOutput() DataTransferConfigArrayOutput
+	ToDataTransferConfigArrayOutputWithContext(context.Context) DataTransferConfigArrayOutput
+}
+
+type DataTransferConfigArray []DataTransferConfigInput
+
+func (DataTransferConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DataTransferConfig)(nil))
+}
+
+func (i DataTransferConfigArray) ToDataTransferConfigArrayOutput() DataTransferConfigArrayOutput {
+	return i.ToDataTransferConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigArray) ToDataTransferConfigArrayOutputWithContext(ctx context.Context) DataTransferConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigArrayOutput)
+}
+
+// DataTransferConfigMapInput is an input type that accepts DataTransferConfigMap and DataTransferConfigMapOutput values.
+// You can construct a concrete instance of `DataTransferConfigMapInput` via:
+//
+//          DataTransferConfigMap{ "key": DataTransferConfigArgs{...} }
+type DataTransferConfigMapInput interface {
+	pulumi.Input
+
+	ToDataTransferConfigMapOutput() DataTransferConfigMapOutput
+	ToDataTransferConfigMapOutputWithContext(context.Context) DataTransferConfigMapOutput
+}
+
+type DataTransferConfigMap map[string]DataTransferConfigInput
+
+func (DataTransferConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DataTransferConfig)(nil))
+}
+
+func (i DataTransferConfigMap) ToDataTransferConfigMapOutput() DataTransferConfigMapOutput {
+	return i.ToDataTransferConfigMapOutputWithContext(context.Background())
+}
+
+func (i DataTransferConfigMap) ToDataTransferConfigMapOutputWithContext(ctx context.Context) DataTransferConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataTransferConfigMapOutput)
+}
+
 type DataTransferConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -469,6 +548,75 @@ func (o DataTransferConfigOutput) ToDataTransferConfigOutputWithContext(ctx cont
 	return o
 }
 
+func (o DataTransferConfigOutput) ToDataTransferConfigPtrOutput() DataTransferConfigPtrOutput {
+	return o.ToDataTransferConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataTransferConfigOutput) ToDataTransferConfigPtrOutputWithContext(ctx context.Context) DataTransferConfigPtrOutput {
+	return o.ApplyT(func(v DataTransferConfig) *DataTransferConfig {
+		return &v
+	}).(DataTransferConfigPtrOutput)
+}
+
+type DataTransferConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataTransferConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataTransferConfig)(nil))
+}
+
+func (o DataTransferConfigPtrOutput) ToDataTransferConfigPtrOutput() DataTransferConfigPtrOutput {
+	return o
+}
+
+func (o DataTransferConfigPtrOutput) ToDataTransferConfigPtrOutputWithContext(ctx context.Context) DataTransferConfigPtrOutput {
+	return o
+}
+
+type DataTransferConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataTransferConfig)(nil))
+}
+
+func (o DataTransferConfigArrayOutput) ToDataTransferConfigArrayOutput() DataTransferConfigArrayOutput {
+	return o
+}
+
+func (o DataTransferConfigArrayOutput) ToDataTransferConfigArrayOutputWithContext(ctx context.Context) DataTransferConfigArrayOutput {
+	return o
+}
+
+func (o DataTransferConfigArrayOutput) Index(i pulumi.IntInput) DataTransferConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataTransferConfig {
+		return vs[0].([]DataTransferConfig)[vs[1].(int)]
+	}).(DataTransferConfigOutput)
+}
+
+type DataTransferConfigMapOutput struct{ *pulumi.OutputState }
+
+func (DataTransferConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DataTransferConfig)(nil))
+}
+
+func (o DataTransferConfigMapOutput) ToDataTransferConfigMapOutput() DataTransferConfigMapOutput {
+	return o
+}
+
+func (o DataTransferConfigMapOutput) ToDataTransferConfigMapOutputWithContext(ctx context.Context) DataTransferConfigMapOutput {
+	return o
+}
+
+func (o DataTransferConfigMapOutput) MapIndex(k pulumi.StringInput) DataTransferConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DataTransferConfig {
+		return vs[0].(map[string]DataTransferConfig)[vs[1].(string)]
+	}).(DataTransferConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataTransferConfigOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigArrayOutput{})
+	pulumi.RegisterOutputType(DataTransferConfigMapOutput{})
 }

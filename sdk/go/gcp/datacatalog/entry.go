@@ -438,6 +438,85 @@ func (i *Entry) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EntryOutput)
 }
 
+func (i *Entry) ToEntryPtrOutput() EntryPtrOutput {
+	return i.ToEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *Entry) ToEntryPtrOutputWithContext(ctx context.Context) EntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryPtrOutput)
+}
+
+type EntryPtrInput interface {
+	pulumi.Input
+
+	ToEntryPtrOutput() EntryPtrOutput
+	ToEntryPtrOutputWithContext(ctx context.Context) EntryPtrOutput
+}
+
+type entryPtrType EntryArgs
+
+func (*entryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Entry)(nil))
+}
+
+func (i *entryPtrType) ToEntryPtrOutput() EntryPtrOutput {
+	return i.ToEntryPtrOutputWithContext(context.Background())
+}
+
+func (i *entryPtrType) ToEntryPtrOutputWithContext(ctx context.Context) EntryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryPtrOutput)
+}
+
+// EntryArrayInput is an input type that accepts EntryArray and EntryArrayOutput values.
+// You can construct a concrete instance of `EntryArrayInput` via:
+//
+//          EntryArray{ EntryArgs{...} }
+type EntryArrayInput interface {
+	pulumi.Input
+
+	ToEntryArrayOutput() EntryArrayOutput
+	ToEntryArrayOutputWithContext(context.Context) EntryArrayOutput
+}
+
+type EntryArray []EntryInput
+
+func (EntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Entry)(nil))
+}
+
+func (i EntryArray) ToEntryArrayOutput() EntryArrayOutput {
+	return i.ToEntryArrayOutputWithContext(context.Background())
+}
+
+func (i EntryArray) ToEntryArrayOutputWithContext(ctx context.Context) EntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryArrayOutput)
+}
+
+// EntryMapInput is an input type that accepts EntryMap and EntryMapOutput values.
+// You can construct a concrete instance of `EntryMapInput` via:
+//
+//          EntryMap{ "key": EntryArgs{...} }
+type EntryMapInput interface {
+	pulumi.Input
+
+	ToEntryMapOutput() EntryMapOutput
+	ToEntryMapOutputWithContext(context.Context) EntryMapOutput
+}
+
+type EntryMap map[string]EntryInput
+
+func (EntryMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Entry)(nil))
+}
+
+func (i EntryMap) ToEntryMapOutput() EntryMapOutput {
+	return i.ToEntryMapOutputWithContext(context.Background())
+}
+
+func (i EntryMap) ToEntryMapOutputWithContext(ctx context.Context) EntryMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EntryMapOutput)
+}
+
 type EntryOutput struct {
 	*pulumi.OutputState
 }
@@ -454,6 +533,75 @@ func (o EntryOutput) ToEntryOutputWithContext(ctx context.Context) EntryOutput {
 	return o
 }
 
+func (o EntryOutput) ToEntryPtrOutput() EntryPtrOutput {
+	return o.ToEntryPtrOutputWithContext(context.Background())
+}
+
+func (o EntryOutput) ToEntryPtrOutputWithContext(ctx context.Context) EntryPtrOutput {
+	return o.ApplyT(func(v Entry) *Entry {
+		return &v
+	}).(EntryPtrOutput)
+}
+
+type EntryPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (EntryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Entry)(nil))
+}
+
+func (o EntryPtrOutput) ToEntryPtrOutput() EntryPtrOutput {
+	return o
+}
+
+func (o EntryPtrOutput) ToEntryPtrOutputWithContext(ctx context.Context) EntryPtrOutput {
+	return o
+}
+
+type EntryArrayOutput struct{ *pulumi.OutputState }
+
+func (EntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Entry)(nil))
+}
+
+func (o EntryArrayOutput) ToEntryArrayOutput() EntryArrayOutput {
+	return o
+}
+
+func (o EntryArrayOutput) ToEntryArrayOutputWithContext(ctx context.Context) EntryArrayOutput {
+	return o
+}
+
+func (o EntryArrayOutput) Index(i pulumi.IntInput) EntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Entry {
+		return vs[0].([]Entry)[vs[1].(int)]
+	}).(EntryOutput)
+}
+
+type EntryMapOutput struct{ *pulumi.OutputState }
+
+func (EntryMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Entry)(nil))
+}
+
+func (o EntryMapOutput) ToEntryMapOutput() EntryMapOutput {
+	return o
+}
+
+func (o EntryMapOutput) ToEntryMapOutputWithContext(ctx context.Context) EntryMapOutput {
+	return o
+}
+
+func (o EntryMapOutput) MapIndex(k pulumi.StringInput) EntryOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Entry {
+		return vs[0].(map[string]Entry)[vs[1].(string)]
+	}).(EntryOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(EntryOutput{})
+	pulumi.RegisterOutputType(EntryPtrOutput{})
+	pulumi.RegisterOutputType(EntryArrayOutput{})
+	pulumi.RegisterOutputType(EntryMapOutput{})
 }

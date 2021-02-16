@@ -265,6 +265,85 @@ func (i *DefaultObjectAccessControl) ToDefaultObjectAccessControlOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlOutput)
 }
 
+func (i *DefaultObjectAccessControl) ToDefaultObjectAccessControlPtrOutput() DefaultObjectAccessControlPtrOutput {
+	return i.ToDefaultObjectAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *DefaultObjectAccessControl) ToDefaultObjectAccessControlPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlPtrOutput)
+}
+
+type DefaultObjectAccessControlPtrInput interface {
+	pulumi.Input
+
+	ToDefaultObjectAccessControlPtrOutput() DefaultObjectAccessControlPtrOutput
+	ToDefaultObjectAccessControlPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlPtrOutput
+}
+
+type defaultObjectAccessControlPtrType DefaultObjectAccessControlArgs
+
+func (*defaultObjectAccessControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultObjectAccessControl)(nil))
+}
+
+func (i *defaultObjectAccessControlPtrType) ToDefaultObjectAccessControlPtrOutput() DefaultObjectAccessControlPtrOutput {
+	return i.ToDefaultObjectAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultObjectAccessControlPtrType) ToDefaultObjectAccessControlPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlPtrOutput)
+}
+
+// DefaultObjectAccessControlArrayInput is an input type that accepts DefaultObjectAccessControlArray and DefaultObjectAccessControlArrayOutput values.
+// You can construct a concrete instance of `DefaultObjectAccessControlArrayInput` via:
+//
+//          DefaultObjectAccessControlArray{ DefaultObjectAccessControlArgs{...} }
+type DefaultObjectAccessControlArrayInput interface {
+	pulumi.Input
+
+	ToDefaultObjectAccessControlArrayOutput() DefaultObjectAccessControlArrayOutput
+	ToDefaultObjectAccessControlArrayOutputWithContext(context.Context) DefaultObjectAccessControlArrayOutput
+}
+
+type DefaultObjectAccessControlArray []DefaultObjectAccessControlInput
+
+func (DefaultObjectAccessControlArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DefaultObjectAccessControl)(nil))
+}
+
+func (i DefaultObjectAccessControlArray) ToDefaultObjectAccessControlArrayOutput() DefaultObjectAccessControlArrayOutput {
+	return i.ToDefaultObjectAccessControlArrayOutputWithContext(context.Background())
+}
+
+func (i DefaultObjectAccessControlArray) ToDefaultObjectAccessControlArrayOutputWithContext(ctx context.Context) DefaultObjectAccessControlArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlArrayOutput)
+}
+
+// DefaultObjectAccessControlMapInput is an input type that accepts DefaultObjectAccessControlMap and DefaultObjectAccessControlMapOutput values.
+// You can construct a concrete instance of `DefaultObjectAccessControlMapInput` via:
+//
+//          DefaultObjectAccessControlMap{ "key": DefaultObjectAccessControlArgs{...} }
+type DefaultObjectAccessControlMapInput interface {
+	pulumi.Input
+
+	ToDefaultObjectAccessControlMapOutput() DefaultObjectAccessControlMapOutput
+	ToDefaultObjectAccessControlMapOutputWithContext(context.Context) DefaultObjectAccessControlMapOutput
+}
+
+type DefaultObjectAccessControlMap map[string]DefaultObjectAccessControlInput
+
+func (DefaultObjectAccessControlMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DefaultObjectAccessControl)(nil))
+}
+
+func (i DefaultObjectAccessControlMap) ToDefaultObjectAccessControlMapOutput() DefaultObjectAccessControlMapOutput {
+	return i.ToDefaultObjectAccessControlMapOutputWithContext(context.Background())
+}
+
+func (i DefaultObjectAccessControlMap) ToDefaultObjectAccessControlMapOutputWithContext(ctx context.Context) DefaultObjectAccessControlMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectAccessControlMapOutput)
+}
+
 type DefaultObjectAccessControlOutput struct {
 	*pulumi.OutputState
 }
@@ -281,6 +360,75 @@ func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlOutputWith
 	return o
 }
 
+func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlPtrOutput() DefaultObjectAccessControlPtrOutput {
+	return o.ToDefaultObjectAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultObjectAccessControlOutput) ToDefaultObjectAccessControlPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlPtrOutput {
+	return o.ApplyT(func(v DefaultObjectAccessControl) *DefaultObjectAccessControl {
+		return &v
+	}).(DefaultObjectAccessControlPtrOutput)
+}
+
+type DefaultObjectAccessControlPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultObjectAccessControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultObjectAccessControl)(nil))
+}
+
+func (o DefaultObjectAccessControlPtrOutput) ToDefaultObjectAccessControlPtrOutput() DefaultObjectAccessControlPtrOutput {
+	return o
+}
+
+func (o DefaultObjectAccessControlPtrOutput) ToDefaultObjectAccessControlPtrOutputWithContext(ctx context.Context) DefaultObjectAccessControlPtrOutput {
+	return o
+}
+
+type DefaultObjectAccessControlArrayOutput struct{ *pulumi.OutputState }
+
+func (DefaultObjectAccessControlArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultObjectAccessControl)(nil))
+}
+
+func (o DefaultObjectAccessControlArrayOutput) ToDefaultObjectAccessControlArrayOutput() DefaultObjectAccessControlArrayOutput {
+	return o
+}
+
+func (o DefaultObjectAccessControlArrayOutput) ToDefaultObjectAccessControlArrayOutputWithContext(ctx context.Context) DefaultObjectAccessControlArrayOutput {
+	return o
+}
+
+func (o DefaultObjectAccessControlArrayOutput) Index(i pulumi.IntInput) DefaultObjectAccessControlOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultObjectAccessControl {
+		return vs[0].([]DefaultObjectAccessControl)[vs[1].(int)]
+	}).(DefaultObjectAccessControlOutput)
+}
+
+type DefaultObjectAccessControlMapOutput struct{ *pulumi.OutputState }
+
+func (DefaultObjectAccessControlMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DefaultObjectAccessControl)(nil))
+}
+
+func (o DefaultObjectAccessControlMapOutput) ToDefaultObjectAccessControlMapOutput() DefaultObjectAccessControlMapOutput {
+	return o
+}
+
+func (o DefaultObjectAccessControlMapOutput) ToDefaultObjectAccessControlMapOutputWithContext(ctx context.Context) DefaultObjectAccessControlMapOutput {
+	return o
+}
+
+func (o DefaultObjectAccessControlMapOutput) MapIndex(k pulumi.StringInput) DefaultObjectAccessControlOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DefaultObjectAccessControl {
+		return vs[0].(map[string]DefaultObjectAccessControl)[vs[1].(string)]
+	}).(DefaultObjectAccessControlOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultObjectAccessControlOutput{})
+	pulumi.RegisterOutputType(DefaultObjectAccessControlPtrOutput{})
+	pulumi.RegisterOutputType(DefaultObjectAccessControlArrayOutput{})
+	pulumi.RegisterOutputType(DefaultObjectAccessControlMapOutput{})
 }

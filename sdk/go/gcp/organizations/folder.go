@@ -203,6 +203,85 @@ func (i *Folder) ToFolderOutputWithContext(ctx context.Context) FolderOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(FolderOutput)
 }
 
+func (i *Folder) ToFolderPtrOutput() FolderPtrOutput {
+	return i.ToFolderPtrOutputWithContext(context.Background())
+}
+
+func (i *Folder) ToFolderPtrOutputWithContext(ctx context.Context) FolderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderPtrOutput)
+}
+
+type FolderPtrInput interface {
+	pulumi.Input
+
+	ToFolderPtrOutput() FolderPtrOutput
+	ToFolderPtrOutputWithContext(ctx context.Context) FolderPtrOutput
+}
+
+type folderPtrType FolderArgs
+
+func (*folderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Folder)(nil))
+}
+
+func (i *folderPtrType) ToFolderPtrOutput() FolderPtrOutput {
+	return i.ToFolderPtrOutputWithContext(context.Background())
+}
+
+func (i *folderPtrType) ToFolderPtrOutputWithContext(ctx context.Context) FolderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderPtrOutput)
+}
+
+// FolderArrayInput is an input type that accepts FolderArray and FolderArrayOutput values.
+// You can construct a concrete instance of `FolderArrayInput` via:
+//
+//          FolderArray{ FolderArgs{...} }
+type FolderArrayInput interface {
+	pulumi.Input
+
+	ToFolderArrayOutput() FolderArrayOutput
+	ToFolderArrayOutputWithContext(context.Context) FolderArrayOutput
+}
+
+type FolderArray []FolderInput
+
+func (FolderArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Folder)(nil))
+}
+
+func (i FolderArray) ToFolderArrayOutput() FolderArrayOutput {
+	return i.ToFolderArrayOutputWithContext(context.Background())
+}
+
+func (i FolderArray) ToFolderArrayOutputWithContext(ctx context.Context) FolderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderArrayOutput)
+}
+
+// FolderMapInput is an input type that accepts FolderMap and FolderMapOutput values.
+// You can construct a concrete instance of `FolderMapInput` via:
+//
+//          FolderMap{ "key": FolderArgs{...} }
+type FolderMapInput interface {
+	pulumi.Input
+
+	ToFolderMapOutput() FolderMapOutput
+	ToFolderMapOutputWithContext(context.Context) FolderMapOutput
+}
+
+type FolderMap map[string]FolderInput
+
+func (FolderMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Folder)(nil))
+}
+
+func (i FolderMap) ToFolderMapOutput() FolderMapOutput {
+	return i.ToFolderMapOutputWithContext(context.Background())
+}
+
+func (i FolderMap) ToFolderMapOutputWithContext(ctx context.Context) FolderMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FolderMapOutput)
+}
+
 type FolderOutput struct {
 	*pulumi.OutputState
 }
@@ -219,6 +298,75 @@ func (o FolderOutput) ToFolderOutputWithContext(ctx context.Context) FolderOutpu
 	return o
 }
 
+func (o FolderOutput) ToFolderPtrOutput() FolderPtrOutput {
+	return o.ToFolderPtrOutputWithContext(context.Background())
+}
+
+func (o FolderOutput) ToFolderPtrOutputWithContext(ctx context.Context) FolderPtrOutput {
+	return o.ApplyT(func(v Folder) *Folder {
+		return &v
+	}).(FolderPtrOutput)
+}
+
+type FolderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FolderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Folder)(nil))
+}
+
+func (o FolderPtrOutput) ToFolderPtrOutput() FolderPtrOutput {
+	return o
+}
+
+func (o FolderPtrOutput) ToFolderPtrOutputWithContext(ctx context.Context) FolderPtrOutput {
+	return o
+}
+
+type FolderArrayOutput struct{ *pulumi.OutputState }
+
+func (FolderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Folder)(nil))
+}
+
+func (o FolderArrayOutput) ToFolderArrayOutput() FolderArrayOutput {
+	return o
+}
+
+func (o FolderArrayOutput) ToFolderArrayOutputWithContext(ctx context.Context) FolderArrayOutput {
+	return o
+}
+
+func (o FolderArrayOutput) Index(i pulumi.IntInput) FolderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Folder {
+		return vs[0].([]Folder)[vs[1].(int)]
+	}).(FolderOutput)
+}
+
+type FolderMapOutput struct{ *pulumi.OutputState }
+
+func (FolderMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Folder)(nil))
+}
+
+func (o FolderMapOutput) ToFolderMapOutput() FolderMapOutput {
+	return o
+}
+
+func (o FolderMapOutput) ToFolderMapOutputWithContext(ctx context.Context) FolderMapOutput {
+	return o
+}
+
+func (o FolderMapOutput) MapIndex(k pulumi.StringInput) FolderOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Folder {
+		return vs[0].(map[string]Folder)[vs[1].(string)]
+	}).(FolderOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FolderOutput{})
+	pulumi.RegisterOutputType(FolderPtrOutput{})
+	pulumi.RegisterOutputType(FolderArrayOutput{})
+	pulumi.RegisterOutputType(FolderMapOutput{})
 }

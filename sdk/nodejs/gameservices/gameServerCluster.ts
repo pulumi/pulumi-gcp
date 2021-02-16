@@ -133,7 +133,8 @@ export class GameServerCluster extends pulumi.CustomResource {
     constructor(name: string, args: GameServerClusterArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GameServerClusterArgs | GameServerClusterState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GameServerClusterState | undefined;
             inputs["clusterId"] = state ? state.clusterId : undefined;
             inputs["connectionInfo"] = state ? state.connectionInfo : undefined;
@@ -145,13 +146,13 @@ export class GameServerCluster extends pulumi.CustomResource {
             inputs["realmId"] = state ? state.realmId : undefined;
         } else {
             const args = argsOrState as GameServerClusterArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.connectionInfo === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.connectionInfo === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionInfo'");
             }
-            if ((!args || args.realmId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.realmId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmId'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
@@ -163,12 +164,8 @@ export class GameServerCluster extends pulumi.CustomResource {
             inputs["realmId"] = args ? args.realmId : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GameServerCluster.__pulumiType, name, inputs, opts);
     }

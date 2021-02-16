@@ -172,6 +172,85 @@ func (i *BucketIAMMember) ToBucketIAMMemberOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberOutput)
 }
 
+func (i *BucketIAMMember) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
+	return i.ToBucketIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *BucketIAMMember) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberPtrOutput)
+}
+
+type BucketIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput
+	ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput
+}
+
+type bucketIAMMemberPtrType BucketIAMMemberArgs
+
+func (*bucketIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIAMMember)(nil))
+}
+
+func (i *bucketIAMMemberPtrType) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
+	return i.ToBucketIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketIAMMemberPtrType) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberPtrOutput)
+}
+
+// BucketIAMMemberArrayInput is an input type that accepts BucketIAMMemberArray and BucketIAMMemberArrayOutput values.
+// You can construct a concrete instance of `BucketIAMMemberArrayInput` via:
+//
+//          BucketIAMMemberArray{ BucketIAMMemberArgs{...} }
+type BucketIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput
+	ToBucketIAMMemberArrayOutputWithContext(context.Context) BucketIAMMemberArrayOutput
+}
+
+type BucketIAMMemberArray []BucketIAMMemberInput
+
+func (BucketIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BucketIAMMember)(nil))
+}
+
+func (i BucketIAMMemberArray) ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput {
+	return i.ToBucketIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i BucketIAMMemberArray) ToBucketIAMMemberArrayOutputWithContext(ctx context.Context) BucketIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberArrayOutput)
+}
+
+// BucketIAMMemberMapInput is an input type that accepts BucketIAMMemberMap and BucketIAMMemberMapOutput values.
+// You can construct a concrete instance of `BucketIAMMemberMapInput` via:
+//
+//          BucketIAMMemberMap{ "key": BucketIAMMemberArgs{...} }
+type BucketIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput
+	ToBucketIAMMemberMapOutputWithContext(context.Context) BucketIAMMemberMapOutput
+}
+
+type BucketIAMMemberMap map[string]BucketIAMMemberInput
+
+func (BucketIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BucketIAMMember)(nil))
+}
+
+func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput {
+	return i.ToBucketIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i BucketIAMMemberMap) ToBucketIAMMemberMapOutputWithContext(ctx context.Context) BucketIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketIAMMemberMapOutput)
+}
+
 type BucketIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -188,6 +267,75 @@ func (o BucketIAMMemberOutput) ToBucketIAMMemberOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o BucketIAMMemberOutput) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
+	return o.ToBucketIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o BucketIAMMemberOutput) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
+	return o.ApplyT(func(v BucketIAMMember) *BucketIAMMember {
+		return &v
+	}).(BucketIAMMemberPtrOutput)
+}
+
+type BucketIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BucketIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketIAMMember)(nil))
+}
+
+func (o BucketIAMMemberPtrOutput) ToBucketIAMMemberPtrOutput() BucketIAMMemberPtrOutput {
+	return o
+}
+
+func (o BucketIAMMemberPtrOutput) ToBucketIAMMemberPtrOutputWithContext(ctx context.Context) BucketIAMMemberPtrOutput {
+	return o
+}
+
+type BucketIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketIAMMember)(nil))
+}
+
+func (o BucketIAMMemberArrayOutput) ToBucketIAMMemberArrayOutput() BucketIAMMemberArrayOutput {
+	return o
+}
+
+func (o BucketIAMMemberArrayOutput) ToBucketIAMMemberArrayOutputWithContext(ctx context.Context) BucketIAMMemberArrayOutput {
+	return o
+}
+
+func (o BucketIAMMemberArrayOutput) Index(i pulumi.IntInput) BucketIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketIAMMember {
+		return vs[0].([]BucketIAMMember)[vs[1].(int)]
+	}).(BucketIAMMemberOutput)
+}
+
+type BucketIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (BucketIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BucketIAMMember)(nil))
+}
+
+func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutput() BucketIAMMemberMapOutput {
+	return o
+}
+
+func (o BucketIAMMemberMapOutput) ToBucketIAMMemberMapOutputWithContext(ctx context.Context) BucketIAMMemberMapOutput {
+	return o
+}
+
+func (o BucketIAMMemberMapOutput) MapIndex(k pulumi.StringInput) BucketIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BucketIAMMember {
+		return vs[0].(map[string]BucketIAMMember)[vs[1].(string)]
+	}).(BucketIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BucketIAMMemberOutput{})
+	pulumi.RegisterOutputType(BucketIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(BucketIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(BucketIAMMemberMapOutput{})
 }

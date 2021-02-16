@@ -95,26 +95,23 @@ export class ServiceIdentity extends pulumi.CustomResource {
     constructor(name: string, args: ServiceIdentityArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServiceIdentityArgs | ServiceIdentityState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServiceIdentityState | undefined;
             inputs["email"] = state ? state.email : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["service"] = state ? state.service : undefined;
         } else {
             const args = argsOrState as ServiceIdentityArgs | undefined;
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["project"] = args ? args.project : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["email"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServiceIdentity.__pulumiType, name, inputs, opts);
     }

@@ -204,7 +204,8 @@ export class RegionSslCertificate extends pulumi.CustomResource {
     constructor(name: string, args: RegionSslCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionSslCertificateArgs | RegionSslCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegionSslCertificateState | undefined;
             inputs["certificate"] = state ? state.certificate : undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
@@ -218,10 +219,10 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RegionSslCertificateArgs | undefined;
-            if ((!args || args.certificate === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.certificate === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificate'");
             }
-            if ((!args || args.privateKey === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.privateKey === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'privateKey'");
             }
             inputs["certificate"] = args ? args.certificate : undefined;
@@ -235,12 +236,8 @@ export class RegionSslCertificate extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegionSslCertificate.__pulumiType, name, inputs, opts);
     }

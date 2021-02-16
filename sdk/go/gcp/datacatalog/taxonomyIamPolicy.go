@@ -164,6 +164,85 @@ func (i *TaxonomyIamPolicy) ToTaxonomyIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyOutput)
 }
 
+func (i *TaxonomyIamPolicy) ToTaxonomyIamPolicyPtrOutput() TaxonomyIamPolicyPtrOutput {
+	return i.ToTaxonomyIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *TaxonomyIamPolicy) ToTaxonomyIamPolicyPtrOutputWithContext(ctx context.Context) TaxonomyIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyPtrOutput)
+}
+
+type TaxonomyIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamPolicyPtrOutput() TaxonomyIamPolicyPtrOutput
+	ToTaxonomyIamPolicyPtrOutputWithContext(ctx context.Context) TaxonomyIamPolicyPtrOutput
+}
+
+type taxonomyIamPolicyPtrType TaxonomyIamPolicyArgs
+
+func (*taxonomyIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamPolicy)(nil))
+}
+
+func (i *taxonomyIamPolicyPtrType) ToTaxonomyIamPolicyPtrOutput() TaxonomyIamPolicyPtrOutput {
+	return i.ToTaxonomyIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *taxonomyIamPolicyPtrType) ToTaxonomyIamPolicyPtrOutputWithContext(ctx context.Context) TaxonomyIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyPtrOutput)
+}
+
+// TaxonomyIamPolicyArrayInput is an input type that accepts TaxonomyIamPolicyArray and TaxonomyIamPolicyArrayOutput values.
+// You can construct a concrete instance of `TaxonomyIamPolicyArrayInput` via:
+//
+//          TaxonomyIamPolicyArray{ TaxonomyIamPolicyArgs{...} }
+type TaxonomyIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamPolicyArrayOutput() TaxonomyIamPolicyArrayOutput
+	ToTaxonomyIamPolicyArrayOutputWithContext(context.Context) TaxonomyIamPolicyArrayOutput
+}
+
+type TaxonomyIamPolicyArray []TaxonomyIamPolicyInput
+
+func (TaxonomyIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TaxonomyIamPolicy)(nil))
+}
+
+func (i TaxonomyIamPolicyArray) ToTaxonomyIamPolicyArrayOutput() TaxonomyIamPolicyArrayOutput {
+	return i.ToTaxonomyIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamPolicyArray) ToTaxonomyIamPolicyArrayOutputWithContext(ctx context.Context) TaxonomyIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyArrayOutput)
+}
+
+// TaxonomyIamPolicyMapInput is an input type that accepts TaxonomyIamPolicyMap and TaxonomyIamPolicyMapOutput values.
+// You can construct a concrete instance of `TaxonomyIamPolicyMapInput` via:
+//
+//          TaxonomyIamPolicyMap{ "key": TaxonomyIamPolicyArgs{...} }
+type TaxonomyIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToTaxonomyIamPolicyMapOutput() TaxonomyIamPolicyMapOutput
+	ToTaxonomyIamPolicyMapOutputWithContext(context.Context) TaxonomyIamPolicyMapOutput
+}
+
+type TaxonomyIamPolicyMap map[string]TaxonomyIamPolicyInput
+
+func (TaxonomyIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TaxonomyIamPolicy)(nil))
+}
+
+func (i TaxonomyIamPolicyMap) ToTaxonomyIamPolicyMapOutput() TaxonomyIamPolicyMapOutput {
+	return i.ToTaxonomyIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i TaxonomyIamPolicyMap) ToTaxonomyIamPolicyMapOutputWithContext(ctx context.Context) TaxonomyIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TaxonomyIamPolicyMapOutput)
+}
+
 type TaxonomyIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -180,6 +259,75 @@ func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyOutputWithContext(ctx contex
 	return o
 }
 
+func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyPtrOutput() TaxonomyIamPolicyPtrOutput {
+	return o.ToTaxonomyIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyIamPolicyOutput) ToTaxonomyIamPolicyPtrOutputWithContext(ctx context.Context) TaxonomyIamPolicyPtrOutput {
+	return o.ApplyT(func(v TaxonomyIamPolicy) *TaxonomyIamPolicy {
+		return &v
+	}).(TaxonomyIamPolicyPtrOutput)
+}
+
+type TaxonomyIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TaxonomyIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TaxonomyIamPolicy)(nil))
+}
+
+func (o TaxonomyIamPolicyPtrOutput) ToTaxonomyIamPolicyPtrOutput() TaxonomyIamPolicyPtrOutput {
+	return o
+}
+
+func (o TaxonomyIamPolicyPtrOutput) ToTaxonomyIamPolicyPtrOutputWithContext(ctx context.Context) TaxonomyIamPolicyPtrOutput {
+	return o
+}
+
+type TaxonomyIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TaxonomyIamPolicy)(nil))
+}
+
+func (o TaxonomyIamPolicyArrayOutput) ToTaxonomyIamPolicyArrayOutput() TaxonomyIamPolicyArrayOutput {
+	return o
+}
+
+func (o TaxonomyIamPolicyArrayOutput) ToTaxonomyIamPolicyArrayOutputWithContext(ctx context.Context) TaxonomyIamPolicyArrayOutput {
+	return o
+}
+
+func (o TaxonomyIamPolicyArrayOutput) Index(i pulumi.IntInput) TaxonomyIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyIamPolicy {
+		return vs[0].([]TaxonomyIamPolicy)[vs[1].(int)]
+	}).(TaxonomyIamPolicyOutput)
+}
+
+type TaxonomyIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TaxonomyIamPolicy)(nil))
+}
+
+func (o TaxonomyIamPolicyMapOutput) ToTaxonomyIamPolicyMapOutput() TaxonomyIamPolicyMapOutput {
+	return o
+}
+
+func (o TaxonomyIamPolicyMapOutput) ToTaxonomyIamPolicyMapOutputWithContext(ctx context.Context) TaxonomyIamPolicyMapOutput {
+	return o
+}
+
+func (o TaxonomyIamPolicyMapOutput) MapIndex(k pulumi.StringInput) TaxonomyIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TaxonomyIamPolicy {
+		return vs[0].(map[string]TaxonomyIamPolicy)[vs[1].(string)]
+	}).(TaxonomyIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TaxonomyIamPolicyOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(TaxonomyIamPolicyMapOutput{})
 }

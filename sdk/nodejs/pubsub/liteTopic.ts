@@ -123,7 +123,8 @@ export class LiteTopic extends pulumi.CustomResource {
     constructor(name: string, args?: LiteTopicArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: LiteTopicArgs | LiteTopicState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as LiteTopicState | undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["partitionConfig"] = state ? state.partitionConfig : undefined;
@@ -140,12 +141,8 @@ export class LiteTopic extends pulumi.CustomResource {
             inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(LiteTopic.__pulumiType, name, inputs, opts);
     }

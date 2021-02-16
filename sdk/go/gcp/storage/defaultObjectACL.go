@@ -169,6 +169,85 @@ func (i *DefaultObjectACL) ToDefaultObjectACLOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLOutput)
 }
 
+func (i *DefaultObjectACL) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
+	return i.ToDefaultObjectACLPtrOutputWithContext(context.Background())
+}
+
+func (i *DefaultObjectACL) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLPtrOutput)
+}
+
+type DefaultObjectACLPtrInput interface {
+	pulumi.Input
+
+	ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput
+	ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput
+}
+
+type defaultObjectACLPtrType DefaultObjectACLArgs
+
+func (*defaultObjectACLPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultObjectACL)(nil))
+}
+
+func (i *defaultObjectACLPtrType) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
+	return i.ToDefaultObjectACLPtrOutputWithContext(context.Background())
+}
+
+func (i *defaultObjectACLPtrType) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLPtrOutput)
+}
+
+// DefaultObjectACLArrayInput is an input type that accepts DefaultObjectACLArray and DefaultObjectACLArrayOutput values.
+// You can construct a concrete instance of `DefaultObjectACLArrayInput` via:
+//
+//          DefaultObjectACLArray{ DefaultObjectACLArgs{...} }
+type DefaultObjectACLArrayInput interface {
+	pulumi.Input
+
+	ToDefaultObjectACLArrayOutput() DefaultObjectACLArrayOutput
+	ToDefaultObjectACLArrayOutputWithContext(context.Context) DefaultObjectACLArrayOutput
+}
+
+type DefaultObjectACLArray []DefaultObjectACLInput
+
+func (DefaultObjectACLArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DefaultObjectACL)(nil))
+}
+
+func (i DefaultObjectACLArray) ToDefaultObjectACLArrayOutput() DefaultObjectACLArrayOutput {
+	return i.ToDefaultObjectACLArrayOutputWithContext(context.Background())
+}
+
+func (i DefaultObjectACLArray) ToDefaultObjectACLArrayOutputWithContext(ctx context.Context) DefaultObjectACLArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLArrayOutput)
+}
+
+// DefaultObjectACLMapInput is an input type that accepts DefaultObjectACLMap and DefaultObjectACLMapOutput values.
+// You can construct a concrete instance of `DefaultObjectACLMapInput` via:
+//
+//          DefaultObjectACLMap{ "key": DefaultObjectACLArgs{...} }
+type DefaultObjectACLMapInput interface {
+	pulumi.Input
+
+	ToDefaultObjectACLMapOutput() DefaultObjectACLMapOutput
+	ToDefaultObjectACLMapOutputWithContext(context.Context) DefaultObjectACLMapOutput
+}
+
+type DefaultObjectACLMap map[string]DefaultObjectACLInput
+
+func (DefaultObjectACLMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DefaultObjectACL)(nil))
+}
+
+func (i DefaultObjectACLMap) ToDefaultObjectACLMapOutput() DefaultObjectACLMapOutput {
+	return i.ToDefaultObjectACLMapOutputWithContext(context.Background())
+}
+
+func (i DefaultObjectACLMap) ToDefaultObjectACLMapOutputWithContext(ctx context.Context) DefaultObjectACLMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DefaultObjectACLMapOutput)
+}
+
 type DefaultObjectACLOutput struct {
 	*pulumi.OutputState
 }
@@ -185,6 +264,75 @@ func (o DefaultObjectACLOutput) ToDefaultObjectACLOutputWithContext(ctx context.
 	return o
 }
 
+func (o DefaultObjectACLOutput) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
+	return o.ToDefaultObjectACLPtrOutputWithContext(context.Background())
+}
+
+func (o DefaultObjectACLOutput) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
+	return o.ApplyT(func(v DefaultObjectACL) *DefaultObjectACL {
+		return &v
+	}).(DefaultObjectACLPtrOutput)
+}
+
+type DefaultObjectACLPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DefaultObjectACLPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DefaultObjectACL)(nil))
+}
+
+func (o DefaultObjectACLPtrOutput) ToDefaultObjectACLPtrOutput() DefaultObjectACLPtrOutput {
+	return o
+}
+
+func (o DefaultObjectACLPtrOutput) ToDefaultObjectACLPtrOutputWithContext(ctx context.Context) DefaultObjectACLPtrOutput {
+	return o
+}
+
+type DefaultObjectACLArrayOutput struct{ *pulumi.OutputState }
+
+func (DefaultObjectACLArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DefaultObjectACL)(nil))
+}
+
+func (o DefaultObjectACLArrayOutput) ToDefaultObjectACLArrayOutput() DefaultObjectACLArrayOutput {
+	return o
+}
+
+func (o DefaultObjectACLArrayOutput) ToDefaultObjectACLArrayOutputWithContext(ctx context.Context) DefaultObjectACLArrayOutput {
+	return o
+}
+
+func (o DefaultObjectACLArrayOutput) Index(i pulumi.IntInput) DefaultObjectACLOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DefaultObjectACL {
+		return vs[0].([]DefaultObjectACL)[vs[1].(int)]
+	}).(DefaultObjectACLOutput)
+}
+
+type DefaultObjectACLMapOutput struct{ *pulumi.OutputState }
+
+func (DefaultObjectACLMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DefaultObjectACL)(nil))
+}
+
+func (o DefaultObjectACLMapOutput) ToDefaultObjectACLMapOutput() DefaultObjectACLMapOutput {
+	return o
+}
+
+func (o DefaultObjectACLMapOutput) ToDefaultObjectACLMapOutputWithContext(ctx context.Context) DefaultObjectACLMapOutput {
+	return o
+}
+
+func (o DefaultObjectACLMapOutput) MapIndex(k pulumi.StringInput) DefaultObjectACLOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DefaultObjectACL {
+		return vs[0].(map[string]DefaultObjectACL)[vs[1].(string)]
+	}).(DefaultObjectACLOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DefaultObjectACLOutput{})
+	pulumi.RegisterOutputType(DefaultObjectACLPtrOutput{})
+	pulumi.RegisterOutputType(DefaultObjectACLArrayOutput{})
+	pulumi.RegisterOutputType(DefaultObjectACLMapOutput{})
 }

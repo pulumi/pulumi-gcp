@@ -183,6 +183,85 @@ func (i *AccessPolicy) ToAccessPolicyOutputWithContext(ctx context.Context) Acce
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyOutput)
 }
 
+func (i *AccessPolicy) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
+	return i.ToAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *AccessPolicy) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyPtrOutput)
+}
+
+type AccessPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAccessPolicyPtrOutput() AccessPolicyPtrOutput
+	ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput
+}
+
+type accessPolicyPtrType AccessPolicyArgs
+
+func (*accessPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicy)(nil))
+}
+
+func (i *accessPolicyPtrType) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
+	return i.ToAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPolicyPtrType) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyPtrOutput)
+}
+
+// AccessPolicyArrayInput is an input type that accepts AccessPolicyArray and AccessPolicyArrayOutput values.
+// You can construct a concrete instance of `AccessPolicyArrayInput` via:
+//
+//          AccessPolicyArray{ AccessPolicyArgs{...} }
+type AccessPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAccessPolicyArrayOutput() AccessPolicyArrayOutput
+	ToAccessPolicyArrayOutputWithContext(context.Context) AccessPolicyArrayOutput
+}
+
+type AccessPolicyArray []AccessPolicyInput
+
+func (AccessPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccessPolicy)(nil))
+}
+
+func (i AccessPolicyArray) ToAccessPolicyArrayOutput() AccessPolicyArrayOutput {
+	return i.ToAccessPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyArray) ToAccessPolicyArrayOutputWithContext(ctx context.Context) AccessPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyArrayOutput)
+}
+
+// AccessPolicyMapInput is an input type that accepts AccessPolicyMap and AccessPolicyMapOutput values.
+// You can construct a concrete instance of `AccessPolicyMapInput` via:
+//
+//          AccessPolicyMap{ "key": AccessPolicyArgs{...} }
+type AccessPolicyMapInput interface {
+	pulumi.Input
+
+	ToAccessPolicyMapOutput() AccessPolicyMapOutput
+	ToAccessPolicyMapOutputWithContext(context.Context) AccessPolicyMapOutput
+}
+
+type AccessPolicyMap map[string]AccessPolicyInput
+
+func (AccessPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccessPolicy)(nil))
+}
+
+func (i AccessPolicyMap) ToAccessPolicyMapOutput() AccessPolicyMapOutput {
+	return i.ToAccessPolicyMapOutputWithContext(context.Background())
+}
+
+func (i AccessPolicyMap) ToAccessPolicyMapOutputWithContext(ctx context.Context) AccessPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPolicyMapOutput)
+}
+
 type AccessPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -199,6 +278,75 @@ func (o AccessPolicyOutput) ToAccessPolicyOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o AccessPolicyOutput) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
+	return o.ToAccessPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPolicyOutput) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
+	return o.ApplyT(func(v AccessPolicy) *AccessPolicy {
+		return &v
+	}).(AccessPolicyPtrOutput)
+}
+
+type AccessPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccessPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPolicy)(nil))
+}
+
+func (o AccessPolicyPtrOutput) ToAccessPolicyPtrOutput() AccessPolicyPtrOutput {
+	return o
+}
+
+func (o AccessPolicyPtrOutput) ToAccessPolicyPtrOutputWithContext(ctx context.Context) AccessPolicyPtrOutput {
+	return o
+}
+
+type AccessPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPolicy)(nil))
+}
+
+func (o AccessPolicyArrayOutput) ToAccessPolicyArrayOutput() AccessPolicyArrayOutput {
+	return o
+}
+
+func (o AccessPolicyArrayOutput) ToAccessPolicyArrayOutputWithContext(ctx context.Context) AccessPolicyArrayOutput {
+	return o
+}
+
+func (o AccessPolicyArrayOutput) Index(i pulumi.IntInput) AccessPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPolicy {
+		return vs[0].([]AccessPolicy)[vs[1].(int)]
+	}).(AccessPolicyOutput)
+}
+
+type AccessPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (AccessPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccessPolicy)(nil))
+}
+
+func (o AccessPolicyMapOutput) ToAccessPolicyMapOutput() AccessPolicyMapOutput {
+	return o
+}
+
+func (o AccessPolicyMapOutput) ToAccessPolicyMapOutputWithContext(ctx context.Context) AccessPolicyMapOutput {
+	return o
+}
+
+func (o AccessPolicyMapOutput) MapIndex(k pulumi.StringInput) AccessPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccessPolicy {
+		return vs[0].(map[string]AccessPolicy)[vs[1].(string)]
+	}).(AccessPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccessPolicyOutput{})
+	pulumi.RegisterOutputType(AccessPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AccessPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AccessPolicyMapOutput{})
 }

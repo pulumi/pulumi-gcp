@@ -135,7 +135,8 @@ export class BackendBucket extends pulumi.CustomResource {
     constructor(name: string, args: BackendBucketArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendBucketArgs | BackendBucketState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BackendBucketState | undefined;
             inputs["bucketName"] = state ? state.bucketName : undefined;
             inputs["cdnPolicy"] = state ? state.cdnPolicy : undefined;
@@ -148,7 +149,7 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as BackendBucketArgs | undefined;
-            if ((!args || args.bucketName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucketName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketName'");
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;
@@ -161,12 +162,8 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackendBucket.__pulumiType, name, inputs, opts);
     }

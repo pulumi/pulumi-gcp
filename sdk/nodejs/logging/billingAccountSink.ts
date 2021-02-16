@@ -125,7 +125,8 @@ export class BillingAccountSink extends pulumi.CustomResource {
     constructor(name: string, args: BillingAccountSinkArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingAccountSinkArgs | BillingAccountSinkState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BillingAccountSinkState | undefined;
             inputs["bigqueryOptions"] = state ? state.bigqueryOptions : undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
@@ -138,10 +139,10 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["writerIdentity"] = state ? state.writerIdentity : undefined;
         } else {
             const args = argsOrState as BillingAccountSinkArgs | undefined;
-            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if ((!args || args.destination === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
@@ -154,12 +155,8 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["writerIdentity"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BillingAccountSink.__pulumiType, name, inputs, opts);
     }

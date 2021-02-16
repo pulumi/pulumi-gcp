@@ -196,6 +196,85 @@ func (i *ServicePerimeterResource) ToServicePerimeterResourceOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceOutput)
 }
 
+func (i *ServicePerimeterResource) ToServicePerimeterResourcePtrOutput() ServicePerimeterResourcePtrOutput {
+	return i.ToServicePerimeterResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *ServicePerimeterResource) ToServicePerimeterResourcePtrOutputWithContext(ctx context.Context) ServicePerimeterResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourcePtrOutput)
+}
+
+type ServicePerimeterResourcePtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterResourcePtrOutput() ServicePerimeterResourcePtrOutput
+	ToServicePerimeterResourcePtrOutputWithContext(ctx context.Context) ServicePerimeterResourcePtrOutput
+}
+
+type servicePerimeterResourcePtrType ServicePerimeterResourceArgs
+
+func (*servicePerimeterResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterResource)(nil))
+}
+
+func (i *servicePerimeterResourcePtrType) ToServicePerimeterResourcePtrOutput() ServicePerimeterResourcePtrOutput {
+	return i.ToServicePerimeterResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterResourcePtrType) ToServicePerimeterResourcePtrOutputWithContext(ctx context.Context) ServicePerimeterResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourcePtrOutput)
+}
+
+// ServicePerimeterResourceArrayInput is an input type that accepts ServicePerimeterResourceArray and ServicePerimeterResourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterResourceArrayInput` via:
+//
+//          ServicePerimeterResourceArray{ ServicePerimeterResourceArgs{...} }
+type ServicePerimeterResourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterResourceArrayOutput() ServicePerimeterResourceArrayOutput
+	ToServicePerimeterResourceArrayOutputWithContext(context.Context) ServicePerimeterResourceArrayOutput
+}
+
+type ServicePerimeterResourceArray []ServicePerimeterResourceInput
+
+func (ServicePerimeterResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServicePerimeterResource)(nil))
+}
+
+func (i ServicePerimeterResourceArray) ToServicePerimeterResourceArrayOutput() ServicePerimeterResourceArrayOutput {
+	return i.ToServicePerimeterResourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterResourceArray) ToServicePerimeterResourceArrayOutputWithContext(ctx context.Context) ServicePerimeterResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceArrayOutput)
+}
+
+// ServicePerimeterResourceMapInput is an input type that accepts ServicePerimeterResourceMap and ServicePerimeterResourceMapOutput values.
+// You can construct a concrete instance of `ServicePerimeterResourceMapInput` via:
+//
+//          ServicePerimeterResourceMap{ "key": ServicePerimeterResourceArgs{...} }
+type ServicePerimeterResourceMapInput interface {
+	pulumi.Input
+
+	ToServicePerimeterResourceMapOutput() ServicePerimeterResourceMapOutput
+	ToServicePerimeterResourceMapOutputWithContext(context.Context) ServicePerimeterResourceMapOutput
+}
+
+type ServicePerimeterResourceMap map[string]ServicePerimeterResourceInput
+
+func (ServicePerimeterResourceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServicePerimeterResource)(nil))
+}
+
+func (i ServicePerimeterResourceMap) ToServicePerimeterResourceMapOutput() ServicePerimeterResourceMapOutput {
+	return i.ToServicePerimeterResourceMapOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterResourceMap) ToServicePerimeterResourceMapOutputWithContext(ctx context.Context) ServicePerimeterResourceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterResourceMapOutput)
+}
+
 type ServicePerimeterResourceOutput struct {
 	*pulumi.OutputState
 }
@@ -212,6 +291,75 @@ func (o ServicePerimeterResourceOutput) ToServicePerimeterResourceOutputWithCont
 	return o
 }
 
+func (o ServicePerimeterResourceOutput) ToServicePerimeterResourcePtrOutput() ServicePerimeterResourcePtrOutput {
+	return o.ToServicePerimeterResourcePtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterResourceOutput) ToServicePerimeterResourcePtrOutputWithContext(ctx context.Context) ServicePerimeterResourcePtrOutput {
+	return o.ApplyT(func(v ServicePerimeterResource) *ServicePerimeterResource {
+		return &v
+	}).(ServicePerimeterResourcePtrOutput)
+}
+
+type ServicePerimeterResourcePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePerimeterResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterResource)(nil))
+}
+
+func (o ServicePerimeterResourcePtrOutput) ToServicePerimeterResourcePtrOutput() ServicePerimeterResourcePtrOutput {
+	return o
+}
+
+func (o ServicePerimeterResourcePtrOutput) ToServicePerimeterResourcePtrOutputWithContext(ctx context.Context) ServicePerimeterResourcePtrOutput {
+	return o
+}
+
+type ServicePerimeterResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterResource)(nil))
+}
+
+func (o ServicePerimeterResourceArrayOutput) ToServicePerimeterResourceArrayOutput() ServicePerimeterResourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterResourceArrayOutput) ToServicePerimeterResourceArrayOutputWithContext(ctx context.Context) ServicePerimeterResourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterResourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterResource {
+		return vs[0].([]ServicePerimeterResource)[vs[1].(int)]
+	}).(ServicePerimeterResourceOutput)
+}
+
+type ServicePerimeterResourceMapOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterResourceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServicePerimeterResource)(nil))
+}
+
+func (o ServicePerimeterResourceMapOutput) ToServicePerimeterResourceMapOutput() ServicePerimeterResourceMapOutput {
+	return o
+}
+
+func (o ServicePerimeterResourceMapOutput) ToServicePerimeterResourceMapOutputWithContext(ctx context.Context) ServicePerimeterResourceMapOutput {
+	return o
+}
+
+func (o ServicePerimeterResourceMapOutput) MapIndex(k pulumi.StringInput) ServicePerimeterResourceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServicePerimeterResource {
+		return vs[0].(map[string]ServicePerimeterResource)[vs[1].(string)]
+	}).(ServicePerimeterResourceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServicePerimeterResourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterResourcePtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterResourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterResourceMapOutput{})
 }

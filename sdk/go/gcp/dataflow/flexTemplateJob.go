@@ -249,6 +249,85 @@ func (i *FlexTemplateJob) ToFlexTemplateJobOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobOutput)
 }
 
+func (i *FlexTemplateJob) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
+	return i.ToFlexTemplateJobPtrOutputWithContext(context.Background())
+}
+
+func (i *FlexTemplateJob) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobPtrOutput)
+}
+
+type FlexTemplateJobPtrInput interface {
+	pulumi.Input
+
+	ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput
+	ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput
+}
+
+type flexTemplateJobPtrType FlexTemplateJobArgs
+
+func (*flexTemplateJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexTemplateJob)(nil))
+}
+
+func (i *flexTemplateJobPtrType) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
+	return i.ToFlexTemplateJobPtrOutputWithContext(context.Background())
+}
+
+func (i *flexTemplateJobPtrType) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobPtrOutput)
+}
+
+// FlexTemplateJobArrayInput is an input type that accepts FlexTemplateJobArray and FlexTemplateJobArrayOutput values.
+// You can construct a concrete instance of `FlexTemplateJobArrayInput` via:
+//
+//          FlexTemplateJobArray{ FlexTemplateJobArgs{...} }
+type FlexTemplateJobArrayInput interface {
+	pulumi.Input
+
+	ToFlexTemplateJobArrayOutput() FlexTemplateJobArrayOutput
+	ToFlexTemplateJobArrayOutputWithContext(context.Context) FlexTemplateJobArrayOutput
+}
+
+type FlexTemplateJobArray []FlexTemplateJobInput
+
+func (FlexTemplateJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*FlexTemplateJob)(nil))
+}
+
+func (i FlexTemplateJobArray) ToFlexTemplateJobArrayOutput() FlexTemplateJobArrayOutput {
+	return i.ToFlexTemplateJobArrayOutputWithContext(context.Background())
+}
+
+func (i FlexTemplateJobArray) ToFlexTemplateJobArrayOutputWithContext(ctx context.Context) FlexTemplateJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobArrayOutput)
+}
+
+// FlexTemplateJobMapInput is an input type that accepts FlexTemplateJobMap and FlexTemplateJobMapOutput values.
+// You can construct a concrete instance of `FlexTemplateJobMapInput` via:
+//
+//          FlexTemplateJobMap{ "key": FlexTemplateJobArgs{...} }
+type FlexTemplateJobMapInput interface {
+	pulumi.Input
+
+	ToFlexTemplateJobMapOutput() FlexTemplateJobMapOutput
+	ToFlexTemplateJobMapOutputWithContext(context.Context) FlexTemplateJobMapOutput
+}
+
+type FlexTemplateJobMap map[string]FlexTemplateJobInput
+
+func (FlexTemplateJobMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*FlexTemplateJob)(nil))
+}
+
+func (i FlexTemplateJobMap) ToFlexTemplateJobMapOutput() FlexTemplateJobMapOutput {
+	return i.ToFlexTemplateJobMapOutputWithContext(context.Background())
+}
+
+func (i FlexTemplateJobMap) ToFlexTemplateJobMapOutputWithContext(ctx context.Context) FlexTemplateJobMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexTemplateJobMapOutput)
+}
+
 type FlexTemplateJobOutput struct {
 	*pulumi.OutputState
 }
@@ -265,6 +344,75 @@ func (o FlexTemplateJobOutput) ToFlexTemplateJobOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o FlexTemplateJobOutput) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
+	return o.ToFlexTemplateJobPtrOutputWithContext(context.Background())
+}
+
+func (o FlexTemplateJobOutput) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
+	return o.ApplyT(func(v FlexTemplateJob) *FlexTemplateJob {
+		return &v
+	}).(FlexTemplateJobPtrOutput)
+}
+
+type FlexTemplateJobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (FlexTemplateJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexTemplateJob)(nil))
+}
+
+func (o FlexTemplateJobPtrOutput) ToFlexTemplateJobPtrOutput() FlexTemplateJobPtrOutput {
+	return o
+}
+
+func (o FlexTemplateJobPtrOutput) ToFlexTemplateJobPtrOutputWithContext(ctx context.Context) FlexTemplateJobPtrOutput {
+	return o
+}
+
+type FlexTemplateJobArrayOutput struct{ *pulumi.OutputState }
+
+func (FlexTemplateJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FlexTemplateJob)(nil))
+}
+
+func (o FlexTemplateJobArrayOutput) ToFlexTemplateJobArrayOutput() FlexTemplateJobArrayOutput {
+	return o
+}
+
+func (o FlexTemplateJobArrayOutput) ToFlexTemplateJobArrayOutputWithContext(ctx context.Context) FlexTemplateJobArrayOutput {
+	return o
+}
+
+func (o FlexTemplateJobArrayOutput) Index(i pulumi.IntInput) FlexTemplateJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FlexTemplateJob {
+		return vs[0].([]FlexTemplateJob)[vs[1].(int)]
+	}).(FlexTemplateJobOutput)
+}
+
+type FlexTemplateJobMapOutput struct{ *pulumi.OutputState }
+
+func (FlexTemplateJobMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]FlexTemplateJob)(nil))
+}
+
+func (o FlexTemplateJobMapOutput) ToFlexTemplateJobMapOutput() FlexTemplateJobMapOutput {
+	return o
+}
+
+func (o FlexTemplateJobMapOutput) ToFlexTemplateJobMapOutputWithContext(ctx context.Context) FlexTemplateJobMapOutput {
+	return o
+}
+
+func (o FlexTemplateJobMapOutput) MapIndex(k pulumi.StringInput) FlexTemplateJobOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) FlexTemplateJob {
+		return vs[0].(map[string]FlexTemplateJob)[vs[1].(string)]
+	}).(FlexTemplateJobOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(FlexTemplateJobOutput{})
+	pulumi.RegisterOutputType(FlexTemplateJobPtrOutput{})
+	pulumi.RegisterOutputType(FlexTemplateJobArrayOutput{})
+	pulumi.RegisterOutputType(FlexTemplateJobMapOutput{})
 }

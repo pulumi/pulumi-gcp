@@ -185,7 +185,8 @@ export class Environment extends pulumi.CustomResource {
     constructor(name: string, args?: EnvironmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EnvironmentArgs | EnvironmentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as EnvironmentState | undefined;
             inputs["config"] = state ? state.config : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -200,12 +201,8 @@ export class Environment extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Environment.__pulumiType, name, inputs, opts);
     }

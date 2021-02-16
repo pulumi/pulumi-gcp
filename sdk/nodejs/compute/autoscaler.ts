@@ -243,7 +243,8 @@ export class Autoscaler extends pulumi.CustomResource {
     constructor(name: string, args: AutoscalerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AutoscalerArgs | AutoscalerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AutoscalerState | undefined;
             inputs["autoscalingPolicy"] = state ? state.autoscalingPolicy : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -255,10 +256,10 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as AutoscalerArgs | undefined;
-            if ((!args || args.autoscalingPolicy === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.autoscalingPolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'autoscalingPolicy'");
             }
-            if ((!args || args.target === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.target === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
             inputs["autoscalingPolicy"] = args ? args.autoscalingPolicy : undefined;
@@ -270,15 +271,11 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         const aliasOpts = { aliases: [{ type: "gcp:compute/autoscalar:Autoscalar" }] };
-        opts = opts ? pulumi.mergeOptions(opts, aliasOpts) : aliasOpts;
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Autoscaler.__pulumiType, name, inputs, opts);
     }
 }

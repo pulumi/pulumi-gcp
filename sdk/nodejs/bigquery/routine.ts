@@ -153,7 +153,8 @@ export class Routine extends pulumi.CustomResource {
     constructor(name: string, args: RoutineArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RoutineArgs | RoutineState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RoutineState | undefined;
             inputs["arguments"] = state ? state.arguments : undefined;
             inputs["creationTime"] = state ? state.creationTime : undefined;
@@ -170,13 +171,13 @@ export class Routine extends pulumi.CustomResource {
             inputs["routineType"] = state ? state.routineType : undefined;
         } else {
             const args = argsOrState as RoutineArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.definitionBody === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.definitionBody === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'definitionBody'");
             }
-            if ((!args || args.routineId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.routineId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'routineId'");
             }
             inputs["arguments"] = args ? args.arguments : undefined;
@@ -193,12 +194,8 @@ export class Routine extends pulumi.CustomResource {
             inputs["creationTime"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Routine.__pulumiType, name, inputs, opts);
     }

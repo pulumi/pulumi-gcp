@@ -238,6 +238,85 @@ func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmen
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentOutput)
 }
 
+func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
+	return i.ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionDiskResourcePolicyAttachment) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentPtrOutput)
+}
+
+type RegionDiskResourcePolicyAttachmentPtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput
+	ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput
+}
+
+type regionDiskResourcePolicyAttachmentPtrType RegionDiskResourcePolicyAttachmentArgs
+
+func (*regionDiskResourcePolicyAttachmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskResourcePolicyAttachment)(nil))
+}
+
+func (i *regionDiskResourcePolicyAttachmentPtrType) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
+	return i.ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (i *regionDiskResourcePolicyAttachmentPtrType) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentPtrOutput)
+}
+
+// RegionDiskResourcePolicyAttachmentArrayInput is an input type that accepts RegionDiskResourcePolicyAttachmentArray and RegionDiskResourcePolicyAttachmentArrayOutput values.
+// You can construct a concrete instance of `RegionDiskResourcePolicyAttachmentArrayInput` via:
+//
+//          RegionDiskResourcePolicyAttachmentArray{ RegionDiskResourcePolicyAttachmentArgs{...} }
+type RegionDiskResourcePolicyAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToRegionDiskResourcePolicyAttachmentArrayOutput() RegionDiskResourcePolicyAttachmentArrayOutput
+	ToRegionDiskResourcePolicyAttachmentArrayOutputWithContext(context.Context) RegionDiskResourcePolicyAttachmentArrayOutput
+}
+
+type RegionDiskResourcePolicyAttachmentArray []RegionDiskResourcePolicyAttachmentInput
+
+func (RegionDiskResourcePolicyAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionDiskResourcePolicyAttachment)(nil))
+}
+
+func (i RegionDiskResourcePolicyAttachmentArray) ToRegionDiskResourcePolicyAttachmentArrayOutput() RegionDiskResourcePolicyAttachmentArrayOutput {
+	return i.ToRegionDiskResourcePolicyAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i RegionDiskResourcePolicyAttachmentArray) ToRegionDiskResourcePolicyAttachmentArrayOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentArrayOutput)
+}
+
+// RegionDiskResourcePolicyAttachmentMapInput is an input type that accepts RegionDiskResourcePolicyAttachmentMap and RegionDiskResourcePolicyAttachmentMapOutput values.
+// You can construct a concrete instance of `RegionDiskResourcePolicyAttachmentMapInput` via:
+//
+//          RegionDiskResourcePolicyAttachmentMap{ "key": RegionDiskResourcePolicyAttachmentArgs{...} }
+type RegionDiskResourcePolicyAttachmentMapInput interface {
+	pulumi.Input
+
+	ToRegionDiskResourcePolicyAttachmentMapOutput() RegionDiskResourcePolicyAttachmentMapOutput
+	ToRegionDiskResourcePolicyAttachmentMapOutputWithContext(context.Context) RegionDiskResourcePolicyAttachmentMapOutput
+}
+
+type RegionDiskResourcePolicyAttachmentMap map[string]RegionDiskResourcePolicyAttachmentInput
+
+func (RegionDiskResourcePolicyAttachmentMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionDiskResourcePolicyAttachment)(nil))
+}
+
+func (i RegionDiskResourcePolicyAttachmentMap) ToRegionDiskResourcePolicyAttachmentMapOutput() RegionDiskResourcePolicyAttachmentMapOutput {
+	return i.ToRegionDiskResourcePolicyAttachmentMapOutputWithContext(context.Background())
+}
+
+func (i RegionDiskResourcePolicyAttachmentMap) ToRegionDiskResourcePolicyAttachmentMapOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskResourcePolicyAttachmentMapOutput)
+}
+
 type RegionDiskResourcePolicyAttachmentOutput struct {
 	*pulumi.OutputState
 }
@@ -254,6 +333,75 @@ func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAtta
 	return o
 }
 
+func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
+	return o.ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskResourcePolicyAttachmentOutput) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
+	return o.ApplyT(func(v RegionDiskResourcePolicyAttachment) *RegionDiskResourcePolicyAttachment {
+		return &v
+	}).(RegionDiskResourcePolicyAttachmentPtrOutput)
+}
+
+type RegionDiskResourcePolicyAttachmentPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionDiskResourcePolicyAttachmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskResourcePolicyAttachment)(nil))
+}
+
+func (o RegionDiskResourcePolicyAttachmentPtrOutput) ToRegionDiskResourcePolicyAttachmentPtrOutput() RegionDiskResourcePolicyAttachmentPtrOutput {
+	return o
+}
+
+func (o RegionDiskResourcePolicyAttachmentPtrOutput) ToRegionDiskResourcePolicyAttachmentPtrOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentPtrOutput {
+	return o
+}
+
+type RegionDiskResourcePolicyAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskResourcePolicyAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionDiskResourcePolicyAttachment)(nil))
+}
+
+func (o RegionDiskResourcePolicyAttachmentArrayOutput) ToRegionDiskResourcePolicyAttachmentArrayOutput() RegionDiskResourcePolicyAttachmentArrayOutput {
+	return o
+}
+
+func (o RegionDiskResourcePolicyAttachmentArrayOutput) ToRegionDiskResourcePolicyAttachmentArrayOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentArrayOutput {
+	return o
+}
+
+func (o RegionDiskResourcePolicyAttachmentArrayOutput) Index(i pulumi.IntInput) RegionDiskResourcePolicyAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionDiskResourcePolicyAttachment {
+		return vs[0].([]RegionDiskResourcePolicyAttachment)[vs[1].(int)]
+	}).(RegionDiskResourcePolicyAttachmentOutput)
+}
+
+type RegionDiskResourcePolicyAttachmentMapOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskResourcePolicyAttachmentMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionDiskResourcePolicyAttachment)(nil))
+}
+
+func (o RegionDiskResourcePolicyAttachmentMapOutput) ToRegionDiskResourcePolicyAttachmentMapOutput() RegionDiskResourcePolicyAttachmentMapOutput {
+	return o
+}
+
+func (o RegionDiskResourcePolicyAttachmentMapOutput) ToRegionDiskResourcePolicyAttachmentMapOutputWithContext(ctx context.Context) RegionDiskResourcePolicyAttachmentMapOutput {
+	return o
+}
+
+func (o RegionDiskResourcePolicyAttachmentMapOutput) MapIndex(k pulumi.StringInput) RegionDiskResourcePolicyAttachmentOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionDiskResourcePolicyAttachment {
+		return vs[0].(map[string]RegionDiskResourcePolicyAttachment)[vs[1].(string)]
+	}).(RegionDiskResourcePolicyAttachmentOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentOutput{})
+	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentPtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentArrayOutput{})
+	pulumi.RegisterOutputType(RegionDiskResourcePolicyAttachmentMapOutput{})
 }

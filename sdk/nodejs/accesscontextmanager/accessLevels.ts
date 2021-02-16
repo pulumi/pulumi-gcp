@@ -133,24 +133,21 @@ export class AccessLevels extends pulumi.CustomResource {
     constructor(name: string, args: AccessLevelsArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccessLevelsArgs | AccessLevelsState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccessLevelsState | undefined;
             inputs["accessLevels"] = state ? state.accessLevels : undefined;
             inputs["parent"] = state ? state.parent : undefined;
         } else {
             const args = argsOrState as AccessLevelsArgs | undefined;
-            if ((!args || args.parent === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
             inputs["accessLevels"] = args ? args.accessLevels : undefined;
             inputs["parent"] = args ? args.parent : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccessLevels.__pulumiType, name, inputs, opts);
     }

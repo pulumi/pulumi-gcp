@@ -81,29 +81,26 @@ export class PolicyTagIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: PolicyTagIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyTagIamPolicyArgs | PolicyTagIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PolicyTagIamPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
             inputs["policyTag"] = state ? state.policyTag : undefined;
         } else {
             const args = argsOrState as PolicyTagIamPolicyArgs | undefined;
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
-            if ((!args || args.policyTag === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyTag === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyTag'");
             }
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["policyTag"] = args ? args.policyTag : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PolicyTagIamPolicy.__pulumiType, name, inputs, opts);
     }

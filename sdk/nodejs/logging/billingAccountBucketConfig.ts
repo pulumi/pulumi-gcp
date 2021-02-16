@@ -103,7 +103,8 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
     constructor(name: string, args: BillingAccountBucketConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BillingAccountBucketConfigArgs | BillingAccountBucketConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BillingAccountBucketConfigState | undefined;
             inputs["billingAccount"] = state ? state.billingAccount : undefined;
             inputs["bucketId"] = state ? state.bucketId : undefined;
@@ -114,13 +115,13 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
             inputs["retentionDays"] = state ? state.retentionDays : undefined;
         } else {
             const args = argsOrState as BillingAccountBucketConfigArgs | undefined;
-            if ((!args || args.billingAccount === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingAccount === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccount'");
             }
-            if ((!args || args.bucketId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucketId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketId'");
             }
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
@@ -131,12 +132,8 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BillingAccountBucketConfig.__pulumiType, name, inputs, opts);
     }

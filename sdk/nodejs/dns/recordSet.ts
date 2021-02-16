@@ -193,7 +193,8 @@ export class RecordSet extends pulumi.CustomResource {
     constructor(name: string, args: RecordSetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RecordSetArgs | RecordSetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RecordSetState | undefined;
             inputs["managedZone"] = state ? state.managedZone : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -203,19 +204,19 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as RecordSetArgs | undefined;
-            if ((!args || args.managedZone === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.managedZone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'managedZone'");
             }
-            if ((!args || args.name === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.rrdatas === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.rrdatas === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'rrdatas'");
             }
-            if ((!args || args.ttl === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.ttl === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'ttl'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
             inputs["managedZone"] = args ? args.managedZone : undefined;
@@ -225,12 +226,8 @@ export class RecordSet extends pulumi.CustomResource {
             inputs["ttl"] = args ? args.ttl : undefined;
             inputs["type"] = args ? args.type : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RecordSet.__pulumiType, name, inputs, opts);
     }

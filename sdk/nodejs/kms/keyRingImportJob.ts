@@ -112,7 +112,8 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     constructor(name: string, args: KeyRingImportJobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyRingImportJobArgs | KeyRingImportJobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KeyRingImportJobState | undefined;
             inputs["attestations"] = state ? state.attestations : undefined;
             inputs["expireTime"] = state ? state.expireTime : undefined;
@@ -125,16 +126,16 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             inputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as KeyRingImportJobArgs | undefined;
-            if ((!args || args.importJobId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.importJobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importJobId'");
             }
-            if ((!args || args.importMethod === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.importMethod === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importMethod'");
             }
-            if ((!args || args.keyRing === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyRing === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
-            if ((!args || args.protectionLevel === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.protectionLevel === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'protectionLevel'");
             }
             inputs["importJobId"] = args ? args.importJobId : undefined;
@@ -147,12 +148,8 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             inputs["publicKeys"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(KeyRingImportJob.__pulumiType, name, inputs, opts);
     }

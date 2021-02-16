@@ -262,6 +262,85 @@ func (i *AttestorIamPolicy) ToAttestorIamPolicyOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyOutput)
 }
 
+func (i *AttestorIamPolicy) ToAttestorIamPolicyPtrOutput() AttestorIamPolicyPtrOutput {
+	return i.ToAttestorIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *AttestorIamPolicy) ToAttestorIamPolicyPtrOutputWithContext(ctx context.Context) AttestorIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyPtrOutput)
+}
+
+type AttestorIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAttestorIamPolicyPtrOutput() AttestorIamPolicyPtrOutput
+	ToAttestorIamPolicyPtrOutputWithContext(ctx context.Context) AttestorIamPolicyPtrOutput
+}
+
+type attestorIamPolicyPtrType AttestorIamPolicyArgs
+
+func (*attestorIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestorIamPolicy)(nil))
+}
+
+func (i *attestorIamPolicyPtrType) ToAttestorIamPolicyPtrOutput() AttestorIamPolicyPtrOutput {
+	return i.ToAttestorIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *attestorIamPolicyPtrType) ToAttestorIamPolicyPtrOutputWithContext(ctx context.Context) AttestorIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyPtrOutput)
+}
+
+// AttestorIamPolicyArrayInput is an input type that accepts AttestorIamPolicyArray and AttestorIamPolicyArrayOutput values.
+// You can construct a concrete instance of `AttestorIamPolicyArrayInput` via:
+//
+//          AttestorIamPolicyArray{ AttestorIamPolicyArgs{...} }
+type AttestorIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAttestorIamPolicyArrayOutput() AttestorIamPolicyArrayOutput
+	ToAttestorIamPolicyArrayOutputWithContext(context.Context) AttestorIamPolicyArrayOutput
+}
+
+type AttestorIamPolicyArray []AttestorIamPolicyInput
+
+func (AttestorIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AttestorIamPolicy)(nil))
+}
+
+func (i AttestorIamPolicyArray) ToAttestorIamPolicyArrayOutput() AttestorIamPolicyArrayOutput {
+	return i.ToAttestorIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AttestorIamPolicyArray) ToAttestorIamPolicyArrayOutputWithContext(ctx context.Context) AttestorIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyArrayOutput)
+}
+
+// AttestorIamPolicyMapInput is an input type that accepts AttestorIamPolicyMap and AttestorIamPolicyMapOutput values.
+// You can construct a concrete instance of `AttestorIamPolicyMapInput` via:
+//
+//          AttestorIamPolicyMap{ "key": AttestorIamPolicyArgs{...} }
+type AttestorIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToAttestorIamPolicyMapOutput() AttestorIamPolicyMapOutput
+	ToAttestorIamPolicyMapOutputWithContext(context.Context) AttestorIamPolicyMapOutput
+}
+
+type AttestorIamPolicyMap map[string]AttestorIamPolicyInput
+
+func (AttestorIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AttestorIamPolicy)(nil))
+}
+
+func (i AttestorIamPolicyMap) ToAttestorIamPolicyMapOutput() AttestorIamPolicyMapOutput {
+	return i.ToAttestorIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i AttestorIamPolicyMap) ToAttestorIamPolicyMapOutputWithContext(ctx context.Context) AttestorIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AttestorIamPolicyMapOutput)
+}
+
 type AttestorIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -278,6 +357,75 @@ func (o AttestorIamPolicyOutput) ToAttestorIamPolicyOutputWithContext(ctx contex
 	return o
 }
 
+func (o AttestorIamPolicyOutput) ToAttestorIamPolicyPtrOutput() AttestorIamPolicyPtrOutput {
+	return o.ToAttestorIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AttestorIamPolicyOutput) ToAttestorIamPolicyPtrOutputWithContext(ctx context.Context) AttestorIamPolicyPtrOutput {
+	return o.ApplyT(func(v AttestorIamPolicy) *AttestorIamPolicy {
+		return &v
+	}).(AttestorIamPolicyPtrOutput)
+}
+
+type AttestorIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AttestorIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AttestorIamPolicy)(nil))
+}
+
+func (o AttestorIamPolicyPtrOutput) ToAttestorIamPolicyPtrOutput() AttestorIamPolicyPtrOutput {
+	return o
+}
+
+func (o AttestorIamPolicyPtrOutput) ToAttestorIamPolicyPtrOutputWithContext(ctx context.Context) AttestorIamPolicyPtrOutput {
+	return o
+}
+
+type AttestorIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AttestorIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AttestorIamPolicy)(nil))
+}
+
+func (o AttestorIamPolicyArrayOutput) ToAttestorIamPolicyArrayOutput() AttestorIamPolicyArrayOutput {
+	return o
+}
+
+func (o AttestorIamPolicyArrayOutput) ToAttestorIamPolicyArrayOutputWithContext(ctx context.Context) AttestorIamPolicyArrayOutput {
+	return o
+}
+
+func (o AttestorIamPolicyArrayOutput) Index(i pulumi.IntInput) AttestorIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AttestorIamPolicy {
+		return vs[0].([]AttestorIamPolicy)[vs[1].(int)]
+	}).(AttestorIamPolicyOutput)
+}
+
+type AttestorIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (AttestorIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AttestorIamPolicy)(nil))
+}
+
+func (o AttestorIamPolicyMapOutput) ToAttestorIamPolicyMapOutput() AttestorIamPolicyMapOutput {
+	return o
+}
+
+func (o AttestorIamPolicyMapOutput) ToAttestorIamPolicyMapOutputWithContext(ctx context.Context) AttestorIamPolicyMapOutput {
+	return o
+}
+
+func (o AttestorIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AttestorIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AttestorIamPolicy {
+		return vs[0].(map[string]AttestorIamPolicy)[vs[1].(string)]
+	}).(AttestorIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AttestorIamPolicyOutput{})
+	pulumi.RegisterOutputType(AttestorIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AttestorIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AttestorIamPolicyMapOutput{})
 }

@@ -153,7 +153,8 @@ export class AppProfile extends pulumi.CustomResource {
     constructor(name: string, args: AppProfileArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppProfileArgs | AppProfileState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AppProfileState | undefined;
             inputs["appProfileId"] = state ? state.appProfileId : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -165,7 +166,7 @@ export class AppProfile extends pulumi.CustomResource {
             inputs["singleClusterRouting"] = state ? state.singleClusterRouting : undefined;
         } else {
             const args = argsOrState as AppProfileArgs | undefined;
-            if ((!args || args.appProfileId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appProfileId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appProfileId'");
             }
             inputs["appProfileId"] = args ? args.appProfileId : undefined;
@@ -177,12 +178,8 @@ export class AppProfile extends pulumi.CustomResource {
             inputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AppProfile.__pulumiType, name, inputs, opts);
     }

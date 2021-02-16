@@ -289,6 +289,85 @@ func (i *Reservation) ToReservationOutputWithContext(ctx context.Context) Reserv
 	return pulumi.ToOutputWithContext(ctx, i).(ReservationOutput)
 }
 
+func (i *Reservation) ToReservationPtrOutput() ReservationPtrOutput {
+	return i.ToReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *Reservation) ToReservationPtrOutputWithContext(ctx context.Context) ReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationPtrOutput)
+}
+
+type ReservationPtrInput interface {
+	pulumi.Input
+
+	ToReservationPtrOutput() ReservationPtrOutput
+	ToReservationPtrOutputWithContext(ctx context.Context) ReservationPtrOutput
+}
+
+type reservationPtrType ReservationArgs
+
+func (*reservationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Reservation)(nil))
+}
+
+func (i *reservationPtrType) ToReservationPtrOutput() ReservationPtrOutput {
+	return i.ToReservationPtrOutputWithContext(context.Background())
+}
+
+func (i *reservationPtrType) ToReservationPtrOutputWithContext(ctx context.Context) ReservationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationPtrOutput)
+}
+
+// ReservationArrayInput is an input type that accepts ReservationArray and ReservationArrayOutput values.
+// You can construct a concrete instance of `ReservationArrayInput` via:
+//
+//          ReservationArray{ ReservationArgs{...} }
+type ReservationArrayInput interface {
+	pulumi.Input
+
+	ToReservationArrayOutput() ReservationArrayOutput
+	ToReservationArrayOutputWithContext(context.Context) ReservationArrayOutput
+}
+
+type ReservationArray []ReservationInput
+
+func (ReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Reservation)(nil))
+}
+
+func (i ReservationArray) ToReservationArrayOutput() ReservationArrayOutput {
+	return i.ToReservationArrayOutputWithContext(context.Background())
+}
+
+func (i ReservationArray) ToReservationArrayOutputWithContext(ctx context.Context) ReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationArrayOutput)
+}
+
+// ReservationMapInput is an input type that accepts ReservationMap and ReservationMapOutput values.
+// You can construct a concrete instance of `ReservationMapInput` via:
+//
+//          ReservationMap{ "key": ReservationArgs{...} }
+type ReservationMapInput interface {
+	pulumi.Input
+
+	ToReservationMapOutput() ReservationMapOutput
+	ToReservationMapOutputWithContext(context.Context) ReservationMapOutput
+}
+
+type ReservationMap map[string]ReservationInput
+
+func (ReservationMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Reservation)(nil))
+}
+
+func (i ReservationMap) ToReservationMapOutput() ReservationMapOutput {
+	return i.ToReservationMapOutputWithContext(context.Background())
+}
+
+func (i ReservationMap) ToReservationMapOutputWithContext(ctx context.Context) ReservationMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReservationMapOutput)
+}
+
 type ReservationOutput struct {
 	*pulumi.OutputState
 }
@@ -305,6 +384,75 @@ func (o ReservationOutput) ToReservationOutputWithContext(ctx context.Context) R
 	return o
 }
 
+func (o ReservationOutput) ToReservationPtrOutput() ReservationPtrOutput {
+	return o.ToReservationPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationOutput) ToReservationPtrOutputWithContext(ctx context.Context) ReservationPtrOutput {
+	return o.ApplyT(func(v Reservation) *Reservation {
+		return &v
+	}).(ReservationPtrOutput)
+}
+
+type ReservationPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ReservationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Reservation)(nil))
+}
+
+func (o ReservationPtrOutput) ToReservationPtrOutput() ReservationPtrOutput {
+	return o
+}
+
+func (o ReservationPtrOutput) ToReservationPtrOutputWithContext(ctx context.Context) ReservationPtrOutput {
+	return o
+}
+
+type ReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (ReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Reservation)(nil))
+}
+
+func (o ReservationArrayOutput) ToReservationArrayOutput() ReservationArrayOutput {
+	return o
+}
+
+func (o ReservationArrayOutput) ToReservationArrayOutputWithContext(ctx context.Context) ReservationArrayOutput {
+	return o
+}
+
+func (o ReservationArrayOutput) Index(i pulumi.IntInput) ReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Reservation {
+		return vs[0].([]Reservation)[vs[1].(int)]
+	}).(ReservationOutput)
+}
+
+type ReservationMapOutput struct{ *pulumi.OutputState }
+
+func (ReservationMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Reservation)(nil))
+}
+
+func (o ReservationMapOutput) ToReservationMapOutput() ReservationMapOutput {
+	return o
+}
+
+func (o ReservationMapOutput) ToReservationMapOutputWithContext(ctx context.Context) ReservationMapOutput {
+	return o
+}
+
+func (o ReservationMapOutput) MapIndex(k pulumi.StringInput) ReservationOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Reservation {
+		return vs[0].(map[string]Reservation)[vs[1].(string)]
+	}).(ReservationOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ReservationOutput{})
+	pulumi.RegisterOutputType(ReservationPtrOutput{})
+	pulumi.RegisterOutputType(ReservationArrayOutput{})
+	pulumi.RegisterOutputType(ReservationMapOutput{})
 }

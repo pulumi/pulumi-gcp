@@ -391,7 +391,8 @@ export class BackendService extends pulumi.CustomResource {
     constructor(name: string, args?: BackendServiceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendServiceArgs | BackendServiceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BackendServiceState | undefined;
             inputs["affinityCookieTtlSec"] = state ? state.affinityCookieTtlSec : undefined;
             inputs["backends"] = state ? state.backends : undefined;
@@ -448,12 +449,8 @@ export class BackendService extends pulumi.CustomResource {
             inputs["fingerprint"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackendService.__pulumiType, name, inputs, opts);
     }

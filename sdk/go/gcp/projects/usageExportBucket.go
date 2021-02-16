@@ -124,6 +124,85 @@ func (i *UsageExportBucket) ToUsageExportBucketOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketOutput)
 }
 
+func (i *UsageExportBucket) ToUsageExportBucketPtrOutput() UsageExportBucketPtrOutput {
+	return i.ToUsageExportBucketPtrOutputWithContext(context.Background())
+}
+
+func (i *UsageExportBucket) ToUsageExportBucketPtrOutputWithContext(ctx context.Context) UsageExportBucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketPtrOutput)
+}
+
+type UsageExportBucketPtrInput interface {
+	pulumi.Input
+
+	ToUsageExportBucketPtrOutput() UsageExportBucketPtrOutput
+	ToUsageExportBucketPtrOutputWithContext(ctx context.Context) UsageExportBucketPtrOutput
+}
+
+type usageExportBucketPtrType UsageExportBucketArgs
+
+func (*usageExportBucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsageExportBucket)(nil))
+}
+
+func (i *usageExportBucketPtrType) ToUsageExportBucketPtrOutput() UsageExportBucketPtrOutput {
+	return i.ToUsageExportBucketPtrOutputWithContext(context.Background())
+}
+
+func (i *usageExportBucketPtrType) ToUsageExportBucketPtrOutputWithContext(ctx context.Context) UsageExportBucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketPtrOutput)
+}
+
+// UsageExportBucketArrayInput is an input type that accepts UsageExportBucketArray and UsageExportBucketArrayOutput values.
+// You can construct a concrete instance of `UsageExportBucketArrayInput` via:
+//
+//          UsageExportBucketArray{ UsageExportBucketArgs{...} }
+type UsageExportBucketArrayInput interface {
+	pulumi.Input
+
+	ToUsageExportBucketArrayOutput() UsageExportBucketArrayOutput
+	ToUsageExportBucketArrayOutputWithContext(context.Context) UsageExportBucketArrayOutput
+}
+
+type UsageExportBucketArray []UsageExportBucketInput
+
+func (UsageExportBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*UsageExportBucket)(nil))
+}
+
+func (i UsageExportBucketArray) ToUsageExportBucketArrayOutput() UsageExportBucketArrayOutput {
+	return i.ToUsageExportBucketArrayOutputWithContext(context.Background())
+}
+
+func (i UsageExportBucketArray) ToUsageExportBucketArrayOutputWithContext(ctx context.Context) UsageExportBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketArrayOutput)
+}
+
+// UsageExportBucketMapInput is an input type that accepts UsageExportBucketMap and UsageExportBucketMapOutput values.
+// You can construct a concrete instance of `UsageExportBucketMapInput` via:
+//
+//          UsageExportBucketMap{ "key": UsageExportBucketArgs{...} }
+type UsageExportBucketMapInput interface {
+	pulumi.Input
+
+	ToUsageExportBucketMapOutput() UsageExportBucketMapOutput
+	ToUsageExportBucketMapOutputWithContext(context.Context) UsageExportBucketMapOutput
+}
+
+type UsageExportBucketMap map[string]UsageExportBucketInput
+
+func (UsageExportBucketMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*UsageExportBucket)(nil))
+}
+
+func (i UsageExportBucketMap) ToUsageExportBucketMapOutput() UsageExportBucketMapOutput {
+	return i.ToUsageExportBucketMapOutputWithContext(context.Background())
+}
+
+func (i UsageExportBucketMap) ToUsageExportBucketMapOutputWithContext(ctx context.Context) UsageExportBucketMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsageExportBucketMapOutput)
+}
+
 type UsageExportBucketOutput struct {
 	*pulumi.OutputState
 }
@@ -140,6 +219,75 @@ func (o UsageExportBucketOutput) ToUsageExportBucketOutputWithContext(ctx contex
 	return o
 }
 
+func (o UsageExportBucketOutput) ToUsageExportBucketPtrOutput() UsageExportBucketPtrOutput {
+	return o.ToUsageExportBucketPtrOutputWithContext(context.Background())
+}
+
+func (o UsageExportBucketOutput) ToUsageExportBucketPtrOutputWithContext(ctx context.Context) UsageExportBucketPtrOutput {
+	return o.ApplyT(func(v UsageExportBucket) *UsageExportBucket {
+		return &v
+	}).(UsageExportBucketPtrOutput)
+}
+
+type UsageExportBucketPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (UsageExportBucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UsageExportBucket)(nil))
+}
+
+func (o UsageExportBucketPtrOutput) ToUsageExportBucketPtrOutput() UsageExportBucketPtrOutput {
+	return o
+}
+
+func (o UsageExportBucketPtrOutput) ToUsageExportBucketPtrOutputWithContext(ctx context.Context) UsageExportBucketPtrOutput {
+	return o
+}
+
+type UsageExportBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (UsageExportBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsageExportBucket)(nil))
+}
+
+func (o UsageExportBucketArrayOutput) ToUsageExportBucketArrayOutput() UsageExportBucketArrayOutput {
+	return o
+}
+
+func (o UsageExportBucketArrayOutput) ToUsageExportBucketArrayOutputWithContext(ctx context.Context) UsageExportBucketArrayOutput {
+	return o
+}
+
+func (o UsageExportBucketArrayOutput) Index(i pulumi.IntInput) UsageExportBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsageExportBucket {
+		return vs[0].([]UsageExportBucket)[vs[1].(int)]
+	}).(UsageExportBucketOutput)
+}
+
+type UsageExportBucketMapOutput struct{ *pulumi.OutputState }
+
+func (UsageExportBucketMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]UsageExportBucket)(nil))
+}
+
+func (o UsageExportBucketMapOutput) ToUsageExportBucketMapOutput() UsageExportBucketMapOutput {
+	return o
+}
+
+func (o UsageExportBucketMapOutput) ToUsageExportBucketMapOutputWithContext(ctx context.Context) UsageExportBucketMapOutput {
+	return o
+}
+
+func (o UsageExportBucketMapOutput) MapIndex(k pulumi.StringInput) UsageExportBucketOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) UsageExportBucket {
+		return vs[0].(map[string]UsageExportBucket)[vs[1].(string)]
+	}).(UsageExportBucketOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(UsageExportBucketOutput{})
+	pulumi.RegisterOutputType(UsageExportBucketPtrOutput{})
+	pulumi.RegisterOutputType(UsageExportBucketArrayOutput{})
+	pulumi.RegisterOutputType(UsageExportBucketMapOutput{})
 }

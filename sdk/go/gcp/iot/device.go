@@ -278,6 +278,85 @@ func (i *Device) ToDeviceOutputWithContext(ctx context.Context) DeviceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DeviceOutput)
 }
 
+func (i *Device) ToDevicePtrOutput() DevicePtrOutput {
+	return i.ToDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *Device) ToDevicePtrOutputWithContext(ctx context.Context) DevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePtrOutput)
+}
+
+type DevicePtrInput interface {
+	pulumi.Input
+
+	ToDevicePtrOutput() DevicePtrOutput
+	ToDevicePtrOutputWithContext(ctx context.Context) DevicePtrOutput
+}
+
+type devicePtrType DeviceArgs
+
+func (*devicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Device)(nil))
+}
+
+func (i *devicePtrType) ToDevicePtrOutput() DevicePtrOutput {
+	return i.ToDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *devicePtrType) ToDevicePtrOutputWithContext(ctx context.Context) DevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DevicePtrOutput)
+}
+
+// DeviceArrayInput is an input type that accepts DeviceArray and DeviceArrayOutput values.
+// You can construct a concrete instance of `DeviceArrayInput` via:
+//
+//          DeviceArray{ DeviceArgs{...} }
+type DeviceArrayInput interface {
+	pulumi.Input
+
+	ToDeviceArrayOutput() DeviceArrayOutput
+	ToDeviceArrayOutputWithContext(context.Context) DeviceArrayOutput
+}
+
+type DeviceArray []DeviceInput
+
+func (DeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*Device)(nil))
+}
+
+func (i DeviceArray) ToDeviceArrayOutput() DeviceArrayOutput {
+	return i.ToDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceArray) ToDeviceArrayOutputWithContext(ctx context.Context) DeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceArrayOutput)
+}
+
+// DeviceMapInput is an input type that accepts DeviceMap and DeviceMapOutput values.
+// You can construct a concrete instance of `DeviceMapInput` via:
+//
+//          DeviceMap{ "key": DeviceArgs{...} }
+type DeviceMapInput interface {
+	pulumi.Input
+
+	ToDeviceMapOutput() DeviceMapOutput
+	ToDeviceMapOutputWithContext(context.Context) DeviceMapOutput
+}
+
+type DeviceMap map[string]DeviceInput
+
+func (DeviceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*Device)(nil))
+}
+
+func (i DeviceMap) ToDeviceMapOutput() DeviceMapOutput {
+	return i.ToDeviceMapOutputWithContext(context.Background())
+}
+
+func (i DeviceMap) ToDeviceMapOutputWithContext(ctx context.Context) DeviceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceMapOutput)
+}
+
 type DeviceOutput struct {
 	*pulumi.OutputState
 }
@@ -294,6 +373,75 @@ func (o DeviceOutput) ToDeviceOutputWithContext(ctx context.Context) DeviceOutpu
 	return o
 }
 
+func (o DeviceOutput) ToDevicePtrOutput() DevicePtrOutput {
+	return o.ToDevicePtrOutputWithContext(context.Background())
+}
+
+func (o DeviceOutput) ToDevicePtrOutputWithContext(ctx context.Context) DevicePtrOutput {
+	return o.ApplyT(func(v Device) *Device {
+		return &v
+	}).(DevicePtrOutput)
+}
+
+type DevicePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Device)(nil))
+}
+
+func (o DevicePtrOutput) ToDevicePtrOutput() DevicePtrOutput {
+	return o
+}
+
+func (o DevicePtrOutput) ToDevicePtrOutputWithContext(ctx context.Context) DevicePtrOutput {
+	return o
+}
+
+type DeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Device)(nil))
+}
+
+func (o DeviceArrayOutput) ToDeviceArrayOutput() DeviceArrayOutput {
+	return o
+}
+
+func (o DeviceArrayOutput) ToDeviceArrayOutputWithContext(ctx context.Context) DeviceArrayOutput {
+	return o
+}
+
+func (o DeviceArrayOutput) Index(i pulumi.IntInput) DeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Device {
+		return vs[0].([]Device)[vs[1].(int)]
+	}).(DeviceOutput)
+}
+
+type DeviceMapOutput struct{ *pulumi.OutputState }
+
+func (DeviceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Device)(nil))
+}
+
+func (o DeviceMapOutput) ToDeviceMapOutput() DeviceMapOutput {
+	return o
+}
+
+func (o DeviceMapOutput) ToDeviceMapOutputWithContext(ctx context.Context) DeviceMapOutput {
+	return o
+}
+
+func (o DeviceMapOutput) MapIndex(k pulumi.StringInput) DeviceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Device {
+		return vs[0].(map[string]Device)[vs[1].(string)]
+	}).(DeviceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DeviceOutput{})
+	pulumi.RegisterOutputType(DevicePtrOutput{})
+	pulumi.RegisterOutputType(DeviceArrayOutput{})
+	pulumi.RegisterOutputType(DeviceMapOutput{})
 }

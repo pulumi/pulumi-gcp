@@ -91,7 +91,8 @@ export class Client extends pulumi.CustomResource {
     constructor(name: string, args: ClientArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClientArgs | ClientState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClientState | undefined;
             inputs["brand"] = state ? state.brand : undefined;
             inputs["clientId"] = state ? state.clientId : undefined;
@@ -99,10 +100,10 @@ export class Client extends pulumi.CustomResource {
             inputs["secret"] = state ? state.secret : undefined;
         } else {
             const args = argsOrState as ClientArgs | undefined;
-            if ((!args || args.brand === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.brand === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'brand'");
             }
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["brand"] = args ? args.brand : undefined;
@@ -110,12 +111,8 @@ export class Client extends pulumi.CustomResource {
             inputs["clientId"] = undefined /*out*/;
             inputs["secret"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Client.__pulumiType, name, inputs, opts);
     }

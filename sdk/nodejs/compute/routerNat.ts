@@ -223,7 +223,8 @@ export class RouterNat extends pulumi.CustomResource {
     constructor(name: string, args: RouterNatArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterNatArgs | RouterNatState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterNatState | undefined;
             inputs["drainNatIps"] = state ? state.drainNatIps : undefined;
             inputs["enableEndpointIndependentMapping"] = state ? state.enableEndpointIndependentMapping : undefined;
@@ -243,13 +244,13 @@ export class RouterNat extends pulumi.CustomResource {
             inputs["udpIdleTimeoutSec"] = state ? state.udpIdleTimeoutSec : undefined;
         } else {
             const args = argsOrState as RouterNatArgs | undefined;
-            if ((!args || args.natIpAllocateOption === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.natIpAllocateOption === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'natIpAllocateOption'");
             }
-            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
-            if ((!args || args.sourceSubnetworkIpRangesToNat === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sourceSubnetworkIpRangesToNat === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceSubnetworkIpRangesToNat'");
             }
             inputs["drainNatIps"] = args ? args.drainNatIps : undefined;
@@ -269,12 +270,8 @@ export class RouterNat extends pulumi.CustomResource {
             inputs["tcpTransitoryIdleTimeoutSec"] = args ? args.tcpTransitoryIdleTimeoutSec : undefined;
             inputs["udpIdleTimeoutSec"] = args ? args.udpIdleTimeoutSec : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouterNat.__pulumiType, name, inputs, opts);
     }

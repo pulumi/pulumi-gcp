@@ -274,6 +274,85 @@ func (i *TargetTCPProxy) ToTargetTCPProxyOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyOutput)
 }
 
+func (i *TargetTCPProxy) ToTargetTCPProxyPtrOutput() TargetTCPProxyPtrOutput {
+	return i.ToTargetTCPProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *TargetTCPProxy) ToTargetTCPProxyPtrOutputWithContext(ctx context.Context) TargetTCPProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyPtrOutput)
+}
+
+type TargetTCPProxyPtrInput interface {
+	pulumi.Input
+
+	ToTargetTCPProxyPtrOutput() TargetTCPProxyPtrOutput
+	ToTargetTCPProxyPtrOutputWithContext(ctx context.Context) TargetTCPProxyPtrOutput
+}
+
+type targetTCPProxyPtrType TargetTCPProxyArgs
+
+func (*targetTCPProxyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetTCPProxy)(nil))
+}
+
+func (i *targetTCPProxyPtrType) ToTargetTCPProxyPtrOutput() TargetTCPProxyPtrOutput {
+	return i.ToTargetTCPProxyPtrOutputWithContext(context.Background())
+}
+
+func (i *targetTCPProxyPtrType) ToTargetTCPProxyPtrOutputWithContext(ctx context.Context) TargetTCPProxyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyPtrOutput)
+}
+
+// TargetTCPProxyArrayInput is an input type that accepts TargetTCPProxyArray and TargetTCPProxyArrayOutput values.
+// You can construct a concrete instance of `TargetTCPProxyArrayInput` via:
+//
+//          TargetTCPProxyArray{ TargetTCPProxyArgs{...} }
+type TargetTCPProxyArrayInput interface {
+	pulumi.Input
+
+	ToTargetTCPProxyArrayOutput() TargetTCPProxyArrayOutput
+	ToTargetTCPProxyArrayOutputWithContext(context.Context) TargetTCPProxyArrayOutput
+}
+
+type TargetTCPProxyArray []TargetTCPProxyInput
+
+func (TargetTCPProxyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TargetTCPProxy)(nil))
+}
+
+func (i TargetTCPProxyArray) ToTargetTCPProxyArrayOutput() TargetTCPProxyArrayOutput {
+	return i.ToTargetTCPProxyArrayOutputWithContext(context.Background())
+}
+
+func (i TargetTCPProxyArray) ToTargetTCPProxyArrayOutputWithContext(ctx context.Context) TargetTCPProxyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyArrayOutput)
+}
+
+// TargetTCPProxyMapInput is an input type that accepts TargetTCPProxyMap and TargetTCPProxyMapOutput values.
+// You can construct a concrete instance of `TargetTCPProxyMapInput` via:
+//
+//          TargetTCPProxyMap{ "key": TargetTCPProxyArgs{...} }
+type TargetTCPProxyMapInput interface {
+	pulumi.Input
+
+	ToTargetTCPProxyMapOutput() TargetTCPProxyMapOutput
+	ToTargetTCPProxyMapOutputWithContext(context.Context) TargetTCPProxyMapOutput
+}
+
+type TargetTCPProxyMap map[string]TargetTCPProxyInput
+
+func (TargetTCPProxyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TargetTCPProxy)(nil))
+}
+
+func (i TargetTCPProxyMap) ToTargetTCPProxyMapOutput() TargetTCPProxyMapOutput {
+	return i.ToTargetTCPProxyMapOutputWithContext(context.Background())
+}
+
+func (i TargetTCPProxyMap) ToTargetTCPProxyMapOutputWithContext(ctx context.Context) TargetTCPProxyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetTCPProxyMapOutput)
+}
+
 type TargetTCPProxyOutput struct {
 	*pulumi.OutputState
 }
@@ -290,6 +369,75 @@ func (o TargetTCPProxyOutput) ToTargetTCPProxyOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o TargetTCPProxyOutput) ToTargetTCPProxyPtrOutput() TargetTCPProxyPtrOutput {
+	return o.ToTargetTCPProxyPtrOutputWithContext(context.Background())
+}
+
+func (o TargetTCPProxyOutput) ToTargetTCPProxyPtrOutputWithContext(ctx context.Context) TargetTCPProxyPtrOutput {
+	return o.ApplyT(func(v TargetTCPProxy) *TargetTCPProxy {
+		return &v
+	}).(TargetTCPProxyPtrOutput)
+}
+
+type TargetTCPProxyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetTCPProxyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetTCPProxy)(nil))
+}
+
+func (o TargetTCPProxyPtrOutput) ToTargetTCPProxyPtrOutput() TargetTCPProxyPtrOutput {
+	return o
+}
+
+func (o TargetTCPProxyPtrOutput) ToTargetTCPProxyPtrOutputWithContext(ctx context.Context) TargetTCPProxyPtrOutput {
+	return o
+}
+
+type TargetTCPProxyArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetTCPProxyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetTCPProxy)(nil))
+}
+
+func (o TargetTCPProxyArrayOutput) ToTargetTCPProxyArrayOutput() TargetTCPProxyArrayOutput {
+	return o
+}
+
+func (o TargetTCPProxyArrayOutput) ToTargetTCPProxyArrayOutputWithContext(ctx context.Context) TargetTCPProxyArrayOutput {
+	return o
+}
+
+func (o TargetTCPProxyArrayOutput) Index(i pulumi.IntInput) TargetTCPProxyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetTCPProxy {
+		return vs[0].([]TargetTCPProxy)[vs[1].(int)]
+	}).(TargetTCPProxyOutput)
+}
+
+type TargetTCPProxyMapOutput struct{ *pulumi.OutputState }
+
+func (TargetTCPProxyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetTCPProxy)(nil))
+}
+
+func (o TargetTCPProxyMapOutput) ToTargetTCPProxyMapOutput() TargetTCPProxyMapOutput {
+	return o
+}
+
+func (o TargetTCPProxyMapOutput) ToTargetTCPProxyMapOutputWithContext(ctx context.Context) TargetTCPProxyMapOutput {
+	return o
+}
+
+func (o TargetTCPProxyMapOutput) MapIndex(k pulumi.StringInput) TargetTCPProxyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetTCPProxy {
+		return vs[0].(map[string]TargetTCPProxy)[vs[1].(string)]
+	}).(TargetTCPProxyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TargetTCPProxyOutput{})
+	pulumi.RegisterOutputType(TargetTCPProxyPtrOutput{})
+	pulumi.RegisterOutputType(TargetTCPProxyArrayOutput{})
+	pulumi.RegisterOutputType(TargetTCPProxyMapOutput{})
 }

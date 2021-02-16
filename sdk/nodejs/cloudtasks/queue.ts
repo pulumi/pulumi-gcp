@@ -149,7 +149,8 @@ export class Queue extends pulumi.CustomResource {
     constructor(name: string, args: QueueArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: QueueArgs | QueueState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as QueueState | undefined;
             inputs["appEngineRoutingOverride"] = state ? state.appEngineRoutingOverride : undefined;
             inputs["location"] = state ? state.location : undefined;
@@ -160,7 +161,7 @@ export class Queue extends pulumi.CustomResource {
             inputs["stackdriverLoggingConfig"] = state ? state.stackdriverLoggingConfig : undefined;
         } else {
             const args = argsOrState as QueueArgs | undefined;
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["appEngineRoutingOverride"] = args ? args.appEngineRoutingOverride : undefined;
@@ -171,12 +172,8 @@ export class Queue extends pulumi.CustomResource {
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["stackdriverLoggingConfig"] = args ? args.stackdriverLoggingConfig : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Queue.__pulumiType, name, inputs, opts);
     }

@@ -329,6 +329,85 @@ func (i *BillingAccountSink) ToBillingAccountSinkOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkOutput)
 }
 
+func (i *BillingAccountSink) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
+	return i.ToBillingAccountSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *BillingAccountSink) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkPtrOutput)
+}
+
+type BillingAccountSinkPtrInput interface {
+	pulumi.Input
+
+	ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput
+	ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput
+}
+
+type billingAccountSinkPtrType BillingAccountSinkArgs
+
+func (*billingAccountSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingAccountSink)(nil))
+}
+
+func (i *billingAccountSinkPtrType) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
+	return i.ToBillingAccountSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *billingAccountSinkPtrType) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkPtrOutput)
+}
+
+// BillingAccountSinkArrayInput is an input type that accepts BillingAccountSinkArray and BillingAccountSinkArrayOutput values.
+// You can construct a concrete instance of `BillingAccountSinkArrayInput` via:
+//
+//          BillingAccountSinkArray{ BillingAccountSinkArgs{...} }
+type BillingAccountSinkArrayInput interface {
+	pulumi.Input
+
+	ToBillingAccountSinkArrayOutput() BillingAccountSinkArrayOutput
+	ToBillingAccountSinkArrayOutputWithContext(context.Context) BillingAccountSinkArrayOutput
+}
+
+type BillingAccountSinkArray []BillingAccountSinkInput
+
+func (BillingAccountSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*BillingAccountSink)(nil))
+}
+
+func (i BillingAccountSinkArray) ToBillingAccountSinkArrayOutput() BillingAccountSinkArrayOutput {
+	return i.ToBillingAccountSinkArrayOutputWithContext(context.Background())
+}
+
+func (i BillingAccountSinkArray) ToBillingAccountSinkArrayOutputWithContext(ctx context.Context) BillingAccountSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkArrayOutput)
+}
+
+// BillingAccountSinkMapInput is an input type that accepts BillingAccountSinkMap and BillingAccountSinkMapOutput values.
+// You can construct a concrete instance of `BillingAccountSinkMapInput` via:
+//
+//          BillingAccountSinkMap{ "key": BillingAccountSinkArgs{...} }
+type BillingAccountSinkMapInput interface {
+	pulumi.Input
+
+	ToBillingAccountSinkMapOutput() BillingAccountSinkMapOutput
+	ToBillingAccountSinkMapOutputWithContext(context.Context) BillingAccountSinkMapOutput
+}
+
+type BillingAccountSinkMap map[string]BillingAccountSinkInput
+
+func (BillingAccountSinkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*BillingAccountSink)(nil))
+}
+
+func (i BillingAccountSinkMap) ToBillingAccountSinkMapOutput() BillingAccountSinkMapOutput {
+	return i.ToBillingAccountSinkMapOutputWithContext(context.Background())
+}
+
+func (i BillingAccountSinkMap) ToBillingAccountSinkMapOutputWithContext(ctx context.Context) BillingAccountSinkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BillingAccountSinkMapOutput)
+}
+
 type BillingAccountSinkOutput struct {
 	*pulumi.OutputState
 }
@@ -345,6 +424,75 @@ func (o BillingAccountSinkOutput) ToBillingAccountSinkOutputWithContext(ctx cont
 	return o
 }
 
+func (o BillingAccountSinkOutput) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
+	return o.ToBillingAccountSinkPtrOutputWithContext(context.Background())
+}
+
+func (o BillingAccountSinkOutput) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
+	return o.ApplyT(func(v BillingAccountSink) *BillingAccountSink {
+		return &v
+	}).(BillingAccountSinkPtrOutput)
+}
+
+type BillingAccountSinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (BillingAccountSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BillingAccountSink)(nil))
+}
+
+func (o BillingAccountSinkPtrOutput) ToBillingAccountSinkPtrOutput() BillingAccountSinkPtrOutput {
+	return o
+}
+
+func (o BillingAccountSinkPtrOutput) ToBillingAccountSinkPtrOutputWithContext(ctx context.Context) BillingAccountSinkPtrOutput {
+	return o
+}
+
+type BillingAccountSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (BillingAccountSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BillingAccountSink)(nil))
+}
+
+func (o BillingAccountSinkArrayOutput) ToBillingAccountSinkArrayOutput() BillingAccountSinkArrayOutput {
+	return o
+}
+
+func (o BillingAccountSinkArrayOutput) ToBillingAccountSinkArrayOutputWithContext(ctx context.Context) BillingAccountSinkArrayOutput {
+	return o
+}
+
+func (o BillingAccountSinkArrayOutput) Index(i pulumi.IntInput) BillingAccountSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BillingAccountSink {
+		return vs[0].([]BillingAccountSink)[vs[1].(int)]
+	}).(BillingAccountSinkOutput)
+}
+
+type BillingAccountSinkMapOutput struct{ *pulumi.OutputState }
+
+func (BillingAccountSinkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]BillingAccountSink)(nil))
+}
+
+func (o BillingAccountSinkMapOutput) ToBillingAccountSinkMapOutput() BillingAccountSinkMapOutput {
+	return o
+}
+
+func (o BillingAccountSinkMapOutput) ToBillingAccountSinkMapOutputWithContext(ctx context.Context) BillingAccountSinkMapOutput {
+	return o
+}
+
+func (o BillingAccountSinkMapOutput) MapIndex(k pulumi.StringInput) BillingAccountSinkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) BillingAccountSink {
+		return vs[0].(map[string]BillingAccountSink)[vs[1].(string)]
+	}).(BillingAccountSinkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(BillingAccountSinkOutput{})
+	pulumi.RegisterOutputType(BillingAccountSinkPtrOutput{})
+	pulumi.RegisterOutputType(BillingAccountSinkArrayOutput{})
+	pulumi.RegisterOutputType(BillingAccountSinkMapOutput{})
 }

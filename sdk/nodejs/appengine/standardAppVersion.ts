@@ -231,7 +231,8 @@ export class StandardAppVersion extends pulumi.CustomResource {
     constructor(name: string, args: StandardAppVersionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: StandardAppVersionArgs | StandardAppVersionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as StandardAppVersionState | undefined;
             inputs["automaticScaling"] = state ? state.automaticScaling : undefined;
             inputs["basicScaling"] = state ? state.basicScaling : undefined;
@@ -255,13 +256,13 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["vpcAccessConnector"] = state ? state.vpcAccessConnector : undefined;
         } else {
             const args = argsOrState as StandardAppVersionArgs | undefined;
-            if ((!args || args.deployment === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deployment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deployment'");
             }
-            if ((!args || args.runtime === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.runtime === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtime'");
             }
-            if ((!args || args.service === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
             inputs["automaticScaling"] = args ? args.automaticScaling : undefined;
@@ -285,12 +286,8 @@ export class StandardAppVersion extends pulumi.CustomResource {
             inputs["vpcAccessConnector"] = args ? args.vpcAccessConnector : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(StandardAppVersion.__pulumiType, name, inputs, opts);
     }

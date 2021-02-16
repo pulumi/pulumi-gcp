@@ -187,6 +187,85 @@ func (i *ImageIamBinding) ToImageIamBindingOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingOutput)
 }
 
+func (i *ImageIamBinding) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
+	return i.ToImageIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *ImageIamBinding) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingPtrOutput)
+}
+
+type ImageIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput
+	ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput
+}
+
+type imageIamBindingPtrType ImageIamBindingArgs
+
+func (*imageIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageIamBinding)(nil))
+}
+
+func (i *imageIamBindingPtrType) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
+	return i.ToImageIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *imageIamBindingPtrType) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingPtrOutput)
+}
+
+// ImageIamBindingArrayInput is an input type that accepts ImageIamBindingArray and ImageIamBindingArrayOutput values.
+// You can construct a concrete instance of `ImageIamBindingArrayInput` via:
+//
+//          ImageIamBindingArray{ ImageIamBindingArgs{...} }
+type ImageIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToImageIamBindingArrayOutput() ImageIamBindingArrayOutput
+	ToImageIamBindingArrayOutputWithContext(context.Context) ImageIamBindingArrayOutput
+}
+
+type ImageIamBindingArray []ImageIamBindingInput
+
+func (ImageIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ImageIamBinding)(nil))
+}
+
+func (i ImageIamBindingArray) ToImageIamBindingArrayOutput() ImageIamBindingArrayOutput {
+	return i.ToImageIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i ImageIamBindingArray) ToImageIamBindingArrayOutputWithContext(ctx context.Context) ImageIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingArrayOutput)
+}
+
+// ImageIamBindingMapInput is an input type that accepts ImageIamBindingMap and ImageIamBindingMapOutput values.
+// You can construct a concrete instance of `ImageIamBindingMapInput` via:
+//
+//          ImageIamBindingMap{ "key": ImageIamBindingArgs{...} }
+type ImageIamBindingMapInput interface {
+	pulumi.Input
+
+	ToImageIamBindingMapOutput() ImageIamBindingMapOutput
+	ToImageIamBindingMapOutputWithContext(context.Context) ImageIamBindingMapOutput
+}
+
+type ImageIamBindingMap map[string]ImageIamBindingInput
+
+func (ImageIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ImageIamBinding)(nil))
+}
+
+func (i ImageIamBindingMap) ToImageIamBindingMapOutput() ImageIamBindingMapOutput {
+	return i.ToImageIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i ImageIamBindingMap) ToImageIamBindingMapOutputWithContext(ctx context.Context) ImageIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ImageIamBindingMapOutput)
+}
+
 type ImageIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -203,6 +282,75 @@ func (o ImageIamBindingOutput) ToImageIamBindingOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o ImageIamBindingOutput) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
+	return o.ToImageIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o ImageIamBindingOutput) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
+	return o.ApplyT(func(v ImageIamBinding) *ImageIamBinding {
+		return &v
+	}).(ImageIamBindingPtrOutput)
+}
+
+type ImageIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ImageIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ImageIamBinding)(nil))
+}
+
+func (o ImageIamBindingPtrOutput) ToImageIamBindingPtrOutput() ImageIamBindingPtrOutput {
+	return o
+}
+
+func (o ImageIamBindingPtrOutput) ToImageIamBindingPtrOutputWithContext(ctx context.Context) ImageIamBindingPtrOutput {
+	return o
+}
+
+type ImageIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ImageIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ImageIamBinding)(nil))
+}
+
+func (o ImageIamBindingArrayOutput) ToImageIamBindingArrayOutput() ImageIamBindingArrayOutput {
+	return o
+}
+
+func (o ImageIamBindingArrayOutput) ToImageIamBindingArrayOutputWithContext(ctx context.Context) ImageIamBindingArrayOutput {
+	return o
+}
+
+func (o ImageIamBindingArrayOutput) Index(i pulumi.IntInput) ImageIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ImageIamBinding {
+		return vs[0].([]ImageIamBinding)[vs[1].(int)]
+	}).(ImageIamBindingOutput)
+}
+
+type ImageIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (ImageIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ImageIamBinding)(nil))
+}
+
+func (o ImageIamBindingMapOutput) ToImageIamBindingMapOutput() ImageIamBindingMapOutput {
+	return o
+}
+
+func (o ImageIamBindingMapOutput) ToImageIamBindingMapOutputWithContext(ctx context.Context) ImageIamBindingMapOutput {
+	return o
+}
+
+func (o ImageIamBindingMapOutput) MapIndex(k pulumi.StringInput) ImageIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ImageIamBinding {
+		return vs[0].(map[string]ImageIamBinding)[vs[1].(string)]
+	}).(ImageIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ImageIamBindingOutput{})
+	pulumi.RegisterOutputType(ImageIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(ImageIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(ImageIamBindingMapOutput{})
 }

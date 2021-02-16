@@ -112,7 +112,8 @@ export class Table extends pulumi.CustomResource {
     constructor(name: string, args: TableArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableArgs | TableState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TableState | undefined;
             inputs["columnFamilies"] = state ? state.columnFamilies : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
@@ -121,7 +122,7 @@ export class Table extends pulumi.CustomResource {
             inputs["splitKeys"] = state ? state.splitKeys : undefined;
         } else {
             const args = argsOrState as TableArgs | undefined;
-            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
             inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
@@ -130,12 +131,8 @@ export class Table extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["splitKeys"] = args ? args.splitKeys : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Table.__pulumiType, name, inputs, opts);
     }

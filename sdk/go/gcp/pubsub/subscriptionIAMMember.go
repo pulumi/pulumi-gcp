@@ -273,6 +273,85 @@ func (i *SubscriptionIAMMember) ToSubscriptionIAMMemberOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberOutput)
 }
 
+func (i *SubscriptionIAMMember) ToSubscriptionIAMMemberPtrOutput() SubscriptionIAMMemberPtrOutput {
+	return i.ToSubscriptionIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *SubscriptionIAMMember) ToSubscriptionIAMMemberPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberPtrOutput)
+}
+
+type SubscriptionIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToSubscriptionIAMMemberPtrOutput() SubscriptionIAMMemberPtrOutput
+	ToSubscriptionIAMMemberPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberPtrOutput
+}
+
+type subscriptionIAMMemberPtrType SubscriptionIAMMemberArgs
+
+func (*subscriptionIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIAMMember)(nil))
+}
+
+func (i *subscriptionIAMMemberPtrType) ToSubscriptionIAMMemberPtrOutput() SubscriptionIAMMemberPtrOutput {
+	return i.ToSubscriptionIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *subscriptionIAMMemberPtrType) ToSubscriptionIAMMemberPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberPtrOutput)
+}
+
+// SubscriptionIAMMemberArrayInput is an input type that accepts SubscriptionIAMMemberArray and SubscriptionIAMMemberArrayOutput values.
+// You can construct a concrete instance of `SubscriptionIAMMemberArrayInput` via:
+//
+//          SubscriptionIAMMemberArray{ SubscriptionIAMMemberArgs{...} }
+type SubscriptionIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToSubscriptionIAMMemberArrayOutput() SubscriptionIAMMemberArrayOutput
+	ToSubscriptionIAMMemberArrayOutputWithContext(context.Context) SubscriptionIAMMemberArrayOutput
+}
+
+type SubscriptionIAMMemberArray []SubscriptionIAMMemberInput
+
+func (SubscriptionIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SubscriptionIAMMember)(nil))
+}
+
+func (i SubscriptionIAMMemberArray) ToSubscriptionIAMMemberArrayOutput() SubscriptionIAMMemberArrayOutput {
+	return i.ToSubscriptionIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i SubscriptionIAMMemberArray) ToSubscriptionIAMMemberArrayOutputWithContext(ctx context.Context) SubscriptionIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberArrayOutput)
+}
+
+// SubscriptionIAMMemberMapInput is an input type that accepts SubscriptionIAMMemberMap and SubscriptionIAMMemberMapOutput values.
+// You can construct a concrete instance of `SubscriptionIAMMemberMapInput` via:
+//
+//          SubscriptionIAMMemberMap{ "key": SubscriptionIAMMemberArgs{...} }
+type SubscriptionIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToSubscriptionIAMMemberMapOutput() SubscriptionIAMMemberMapOutput
+	ToSubscriptionIAMMemberMapOutputWithContext(context.Context) SubscriptionIAMMemberMapOutput
+}
+
+type SubscriptionIAMMemberMap map[string]SubscriptionIAMMemberInput
+
+func (SubscriptionIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SubscriptionIAMMember)(nil))
+}
+
+func (i SubscriptionIAMMemberMap) ToSubscriptionIAMMemberMapOutput() SubscriptionIAMMemberMapOutput {
+	return i.ToSubscriptionIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i SubscriptionIAMMemberMap) ToSubscriptionIAMMemberMapOutputWithContext(ctx context.Context) SubscriptionIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubscriptionIAMMemberMapOutput)
+}
+
 type SubscriptionIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -289,6 +368,75 @@ func (o SubscriptionIAMMemberOutput) ToSubscriptionIAMMemberOutputWithContext(ct
 	return o
 }
 
+func (o SubscriptionIAMMemberOutput) ToSubscriptionIAMMemberPtrOutput() SubscriptionIAMMemberPtrOutput {
+	return o.ToSubscriptionIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o SubscriptionIAMMemberOutput) ToSubscriptionIAMMemberPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberPtrOutput {
+	return o.ApplyT(func(v SubscriptionIAMMember) *SubscriptionIAMMember {
+		return &v
+	}).(SubscriptionIAMMemberPtrOutput)
+}
+
+type SubscriptionIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubscriptionIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubscriptionIAMMember)(nil))
+}
+
+func (o SubscriptionIAMMemberPtrOutput) ToSubscriptionIAMMemberPtrOutput() SubscriptionIAMMemberPtrOutput {
+	return o
+}
+
+func (o SubscriptionIAMMemberPtrOutput) ToSubscriptionIAMMemberPtrOutputWithContext(ctx context.Context) SubscriptionIAMMemberPtrOutput {
+	return o
+}
+
+type SubscriptionIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubscriptionIAMMember)(nil))
+}
+
+func (o SubscriptionIAMMemberArrayOutput) ToSubscriptionIAMMemberArrayOutput() SubscriptionIAMMemberArrayOutput {
+	return o
+}
+
+func (o SubscriptionIAMMemberArrayOutput) ToSubscriptionIAMMemberArrayOutputWithContext(ctx context.Context) SubscriptionIAMMemberArrayOutput {
+	return o
+}
+
+func (o SubscriptionIAMMemberArrayOutput) Index(i pulumi.IntInput) SubscriptionIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubscriptionIAMMember {
+		return vs[0].([]SubscriptionIAMMember)[vs[1].(int)]
+	}).(SubscriptionIAMMemberOutput)
+}
+
+type SubscriptionIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (SubscriptionIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SubscriptionIAMMember)(nil))
+}
+
+func (o SubscriptionIAMMemberMapOutput) ToSubscriptionIAMMemberMapOutput() SubscriptionIAMMemberMapOutput {
+	return o
+}
+
+func (o SubscriptionIAMMemberMapOutput) ToSubscriptionIAMMemberMapOutputWithContext(ctx context.Context) SubscriptionIAMMemberMapOutput {
+	return o
+}
+
+func (o SubscriptionIAMMemberMapOutput) MapIndex(k pulumi.StringInput) SubscriptionIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubscriptionIAMMember {
+		return vs[0].(map[string]SubscriptionIAMMember)[vs[1].(string)]
+	}).(SubscriptionIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubscriptionIAMMemberOutput{})
+	pulumi.RegisterOutputType(SubscriptionIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(SubscriptionIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(SubscriptionIAMMemberMapOutput{})
 }

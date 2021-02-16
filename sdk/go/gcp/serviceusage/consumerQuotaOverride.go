@@ -246,6 +246,85 @@ func (i *ConsumerQuotaOverride) ToConsumerQuotaOverrideOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverrideOutput)
 }
 
+func (i *ConsumerQuotaOverride) ToConsumerQuotaOverridePtrOutput() ConsumerQuotaOverridePtrOutput {
+	return i.ToConsumerQuotaOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *ConsumerQuotaOverride) ToConsumerQuotaOverridePtrOutputWithContext(ctx context.Context) ConsumerQuotaOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverridePtrOutput)
+}
+
+type ConsumerQuotaOverridePtrInput interface {
+	pulumi.Input
+
+	ToConsumerQuotaOverridePtrOutput() ConsumerQuotaOverridePtrOutput
+	ToConsumerQuotaOverridePtrOutputWithContext(ctx context.Context) ConsumerQuotaOverridePtrOutput
+}
+
+type consumerQuotaOverridePtrType ConsumerQuotaOverrideArgs
+
+func (*consumerQuotaOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumerQuotaOverride)(nil))
+}
+
+func (i *consumerQuotaOverridePtrType) ToConsumerQuotaOverridePtrOutput() ConsumerQuotaOverridePtrOutput {
+	return i.ToConsumerQuotaOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *consumerQuotaOverridePtrType) ToConsumerQuotaOverridePtrOutputWithContext(ctx context.Context) ConsumerQuotaOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverridePtrOutput)
+}
+
+// ConsumerQuotaOverrideArrayInput is an input type that accepts ConsumerQuotaOverrideArray and ConsumerQuotaOverrideArrayOutput values.
+// You can construct a concrete instance of `ConsumerQuotaOverrideArrayInput` via:
+//
+//          ConsumerQuotaOverrideArray{ ConsumerQuotaOverrideArgs{...} }
+type ConsumerQuotaOverrideArrayInput interface {
+	pulumi.Input
+
+	ToConsumerQuotaOverrideArrayOutput() ConsumerQuotaOverrideArrayOutput
+	ToConsumerQuotaOverrideArrayOutputWithContext(context.Context) ConsumerQuotaOverrideArrayOutput
+}
+
+type ConsumerQuotaOverrideArray []ConsumerQuotaOverrideInput
+
+func (ConsumerQuotaOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ConsumerQuotaOverride)(nil))
+}
+
+func (i ConsumerQuotaOverrideArray) ToConsumerQuotaOverrideArrayOutput() ConsumerQuotaOverrideArrayOutput {
+	return i.ToConsumerQuotaOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i ConsumerQuotaOverrideArray) ToConsumerQuotaOverrideArrayOutputWithContext(ctx context.Context) ConsumerQuotaOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverrideArrayOutput)
+}
+
+// ConsumerQuotaOverrideMapInput is an input type that accepts ConsumerQuotaOverrideMap and ConsumerQuotaOverrideMapOutput values.
+// You can construct a concrete instance of `ConsumerQuotaOverrideMapInput` via:
+//
+//          ConsumerQuotaOverrideMap{ "key": ConsumerQuotaOverrideArgs{...} }
+type ConsumerQuotaOverrideMapInput interface {
+	pulumi.Input
+
+	ToConsumerQuotaOverrideMapOutput() ConsumerQuotaOverrideMapOutput
+	ToConsumerQuotaOverrideMapOutputWithContext(context.Context) ConsumerQuotaOverrideMapOutput
+}
+
+type ConsumerQuotaOverrideMap map[string]ConsumerQuotaOverrideInput
+
+func (ConsumerQuotaOverrideMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ConsumerQuotaOverride)(nil))
+}
+
+func (i ConsumerQuotaOverrideMap) ToConsumerQuotaOverrideMapOutput() ConsumerQuotaOverrideMapOutput {
+	return i.ToConsumerQuotaOverrideMapOutputWithContext(context.Background())
+}
+
+func (i ConsumerQuotaOverrideMap) ToConsumerQuotaOverrideMapOutputWithContext(ctx context.Context) ConsumerQuotaOverrideMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConsumerQuotaOverrideMapOutput)
+}
+
 type ConsumerQuotaOverrideOutput struct {
 	*pulumi.OutputState
 }
@@ -262,6 +341,75 @@ func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverrideOutputWithContext(ct
 	return o
 }
 
+func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverridePtrOutput() ConsumerQuotaOverridePtrOutput {
+	return o.ToConsumerQuotaOverridePtrOutputWithContext(context.Background())
+}
+
+func (o ConsumerQuotaOverrideOutput) ToConsumerQuotaOverridePtrOutputWithContext(ctx context.Context) ConsumerQuotaOverridePtrOutput {
+	return o.ApplyT(func(v ConsumerQuotaOverride) *ConsumerQuotaOverride {
+		return &v
+	}).(ConsumerQuotaOverridePtrOutput)
+}
+
+type ConsumerQuotaOverridePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ConsumerQuotaOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConsumerQuotaOverride)(nil))
+}
+
+func (o ConsumerQuotaOverridePtrOutput) ToConsumerQuotaOverridePtrOutput() ConsumerQuotaOverridePtrOutput {
+	return o
+}
+
+func (o ConsumerQuotaOverridePtrOutput) ToConsumerQuotaOverridePtrOutputWithContext(ctx context.Context) ConsumerQuotaOverridePtrOutput {
+	return o
+}
+
+type ConsumerQuotaOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (ConsumerQuotaOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ConsumerQuotaOverride)(nil))
+}
+
+func (o ConsumerQuotaOverrideArrayOutput) ToConsumerQuotaOverrideArrayOutput() ConsumerQuotaOverrideArrayOutput {
+	return o
+}
+
+func (o ConsumerQuotaOverrideArrayOutput) ToConsumerQuotaOverrideArrayOutputWithContext(ctx context.Context) ConsumerQuotaOverrideArrayOutput {
+	return o
+}
+
+func (o ConsumerQuotaOverrideArrayOutput) Index(i pulumi.IntInput) ConsumerQuotaOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConsumerQuotaOverride {
+		return vs[0].([]ConsumerQuotaOverride)[vs[1].(int)]
+	}).(ConsumerQuotaOverrideOutput)
+}
+
+type ConsumerQuotaOverrideMapOutput struct{ *pulumi.OutputState }
+
+func (ConsumerQuotaOverrideMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ConsumerQuotaOverride)(nil))
+}
+
+func (o ConsumerQuotaOverrideMapOutput) ToConsumerQuotaOverrideMapOutput() ConsumerQuotaOverrideMapOutput {
+	return o
+}
+
+func (o ConsumerQuotaOverrideMapOutput) ToConsumerQuotaOverrideMapOutputWithContext(ctx context.Context) ConsumerQuotaOverrideMapOutput {
+	return o
+}
+
+func (o ConsumerQuotaOverrideMapOutput) MapIndex(k pulumi.StringInput) ConsumerQuotaOverrideOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConsumerQuotaOverride {
+		return vs[0].(map[string]ConsumerQuotaOverride)[vs[1].(string)]
+	}).(ConsumerQuotaOverrideOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ConsumerQuotaOverrideOutput{})
+	pulumi.RegisterOutputType(ConsumerQuotaOverridePtrOutput{})
+	pulumi.RegisterOutputType(ConsumerQuotaOverrideArrayOutput{})
+	pulumi.RegisterOutputType(ConsumerQuotaOverrideMapOutput{})
 }

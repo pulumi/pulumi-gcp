@@ -425,6 +425,85 @@ func (i *IAMAuditConfig) ToIAMAuditConfigOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigOutput)
 }
 
+func (i *IAMAuditConfig) ToIAMAuditConfigPtrOutput() IAMAuditConfigPtrOutput {
+	return i.ToIAMAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *IAMAuditConfig) ToIAMAuditConfigPtrOutputWithContext(ctx context.Context) IAMAuditConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigPtrOutput)
+}
+
+type IAMAuditConfigPtrInput interface {
+	pulumi.Input
+
+	ToIAMAuditConfigPtrOutput() IAMAuditConfigPtrOutput
+	ToIAMAuditConfigPtrOutputWithContext(ctx context.Context) IAMAuditConfigPtrOutput
+}
+
+type iamauditConfigPtrType IAMAuditConfigArgs
+
+func (*iamauditConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMAuditConfig)(nil))
+}
+
+func (i *iamauditConfigPtrType) ToIAMAuditConfigPtrOutput() IAMAuditConfigPtrOutput {
+	return i.ToIAMAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *iamauditConfigPtrType) ToIAMAuditConfigPtrOutputWithContext(ctx context.Context) IAMAuditConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigPtrOutput)
+}
+
+// IAMAuditConfigArrayInput is an input type that accepts IAMAuditConfigArray and IAMAuditConfigArrayOutput values.
+// You can construct a concrete instance of `IAMAuditConfigArrayInput` via:
+//
+//          IAMAuditConfigArray{ IAMAuditConfigArgs{...} }
+type IAMAuditConfigArrayInput interface {
+	pulumi.Input
+
+	ToIAMAuditConfigArrayOutput() IAMAuditConfigArrayOutput
+	ToIAMAuditConfigArrayOutputWithContext(context.Context) IAMAuditConfigArrayOutput
+}
+
+type IAMAuditConfigArray []IAMAuditConfigInput
+
+func (IAMAuditConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*IAMAuditConfig)(nil))
+}
+
+func (i IAMAuditConfigArray) ToIAMAuditConfigArrayOutput() IAMAuditConfigArrayOutput {
+	return i.ToIAMAuditConfigArrayOutputWithContext(context.Background())
+}
+
+func (i IAMAuditConfigArray) ToIAMAuditConfigArrayOutputWithContext(ctx context.Context) IAMAuditConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigArrayOutput)
+}
+
+// IAMAuditConfigMapInput is an input type that accepts IAMAuditConfigMap and IAMAuditConfigMapOutput values.
+// You can construct a concrete instance of `IAMAuditConfigMapInput` via:
+//
+//          IAMAuditConfigMap{ "key": IAMAuditConfigArgs{...} }
+type IAMAuditConfigMapInput interface {
+	pulumi.Input
+
+	ToIAMAuditConfigMapOutput() IAMAuditConfigMapOutput
+	ToIAMAuditConfigMapOutputWithContext(context.Context) IAMAuditConfigMapOutput
+}
+
+type IAMAuditConfigMap map[string]IAMAuditConfigInput
+
+func (IAMAuditConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*IAMAuditConfig)(nil))
+}
+
+func (i IAMAuditConfigMap) ToIAMAuditConfigMapOutput() IAMAuditConfigMapOutput {
+	return i.ToIAMAuditConfigMapOutputWithContext(context.Background())
+}
+
+func (i IAMAuditConfigMap) ToIAMAuditConfigMapOutputWithContext(ctx context.Context) IAMAuditConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IAMAuditConfigMapOutput)
+}
+
 type IAMAuditConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -441,6 +520,75 @@ func (o IAMAuditConfigOutput) ToIAMAuditConfigOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o IAMAuditConfigOutput) ToIAMAuditConfigPtrOutput() IAMAuditConfigPtrOutput {
+	return o.ToIAMAuditConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IAMAuditConfigOutput) ToIAMAuditConfigPtrOutputWithContext(ctx context.Context) IAMAuditConfigPtrOutput {
+	return o.ApplyT(func(v IAMAuditConfig) *IAMAuditConfig {
+		return &v
+	}).(IAMAuditConfigPtrOutput)
+}
+
+type IAMAuditConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (IAMAuditConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IAMAuditConfig)(nil))
+}
+
+func (o IAMAuditConfigPtrOutput) ToIAMAuditConfigPtrOutput() IAMAuditConfigPtrOutput {
+	return o
+}
+
+func (o IAMAuditConfigPtrOutput) ToIAMAuditConfigPtrOutputWithContext(ctx context.Context) IAMAuditConfigPtrOutput {
+	return o
+}
+
+type IAMAuditConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (IAMAuditConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IAMAuditConfig)(nil))
+}
+
+func (o IAMAuditConfigArrayOutput) ToIAMAuditConfigArrayOutput() IAMAuditConfigArrayOutput {
+	return o
+}
+
+func (o IAMAuditConfigArrayOutput) ToIAMAuditConfigArrayOutputWithContext(ctx context.Context) IAMAuditConfigArrayOutput {
+	return o
+}
+
+func (o IAMAuditConfigArrayOutput) Index(i pulumi.IntInput) IAMAuditConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IAMAuditConfig {
+		return vs[0].([]IAMAuditConfig)[vs[1].(int)]
+	}).(IAMAuditConfigOutput)
+}
+
+type IAMAuditConfigMapOutput struct{ *pulumi.OutputState }
+
+func (IAMAuditConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]IAMAuditConfig)(nil))
+}
+
+func (o IAMAuditConfigMapOutput) ToIAMAuditConfigMapOutput() IAMAuditConfigMapOutput {
+	return o
+}
+
+func (o IAMAuditConfigMapOutput) ToIAMAuditConfigMapOutputWithContext(ctx context.Context) IAMAuditConfigMapOutput {
+	return o
+}
+
+func (o IAMAuditConfigMapOutput) MapIndex(k pulumi.StringInput) IAMAuditConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) IAMAuditConfig {
+		return vs[0].(map[string]IAMAuditConfig)[vs[1].(string)]
+	}).(IAMAuditConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(IAMAuditConfigOutput{})
+	pulumi.RegisterOutputType(IAMAuditConfigPtrOutput{})
+	pulumi.RegisterOutputType(IAMAuditConfigArrayOutput{})
+	pulumi.RegisterOutputType(IAMAuditConfigMapOutput{})
 }

@@ -92,7 +92,8 @@ export class IamMember extends pulumi.CustomResource {
     constructor(name: string, args: IamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: IamMemberArgs | IamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as IamMemberState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["datasetId"] = state ? state.datasetId : undefined;
@@ -103,16 +104,16 @@ export class IamMember extends pulumi.CustomResource {
             inputs["tableId"] = state ? state.tableId : undefined;
         } else {
             const args = argsOrState as IamMemberArgs | undefined;
-            if ((!args || args.datasetId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.tableId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.tableId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tableId'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -123,12 +124,8 @@ export class IamMember extends pulumi.CustomResource {
             inputs["tableId"] = args ? args.tableId : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(IamMember.__pulumiType, name, inputs, opts);
     }

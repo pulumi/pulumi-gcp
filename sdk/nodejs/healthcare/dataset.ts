@@ -104,7 +104,8 @@ export class Dataset extends pulumi.CustomResource {
     constructor(name: string, args: DatasetArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DatasetArgs | DatasetState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DatasetState | undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -113,7 +114,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["timeZone"] = state ? state.timeZone : undefined;
         } else {
             const args = argsOrState as DatasetArgs | undefined;
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             inputs["location"] = args ? args.location : undefined;
@@ -122,12 +123,8 @@ export class Dataset extends pulumi.CustomResource {
             inputs["timeZone"] = args ? args.timeZone : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Dataset.__pulumiType, name, inputs, opts);
     }

@@ -86,7 +86,8 @@ export class ImageIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: ImageIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ImageIamPolicyArgs | ImageIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ImageIamPolicyState | undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["image"] = state ? state.image : undefined;
@@ -94,10 +95,10 @@ export class ImageIamPolicy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as ImageIamPolicyArgs | undefined;
-            if ((!args || args.image === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.image === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'image'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["image"] = args ? args.image : undefined;
@@ -105,12 +106,8 @@ export class ImageIamPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ImageIamPolicy.__pulumiType, name, inputs, opts);
     }

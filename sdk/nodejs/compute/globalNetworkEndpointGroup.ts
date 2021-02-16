@@ -131,7 +131,8 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     constructor(name: string, args: GlobalNetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GlobalNetworkEndpointGroupArgs | GlobalNetworkEndpointGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GlobalNetworkEndpointGroupState | undefined;
             inputs["defaultPort"] = state ? state.defaultPort : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -141,7 +142,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as GlobalNetworkEndpointGroupArgs | undefined;
-            if ((!args || args.networkEndpointType === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.networkEndpointType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'networkEndpointType'");
             }
             inputs["defaultPort"] = args ? args.defaultPort : undefined;
@@ -151,12 +152,8 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GlobalNetworkEndpointGroup.__pulumiType, name, inputs, opts);
     }

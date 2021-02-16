@@ -298,6 +298,85 @@ func (i *VPNGateway) ToVPNGatewayOutputWithContext(ctx context.Context) VPNGatew
 	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayOutput)
 }
 
+func (i *VPNGateway) ToVPNGatewayPtrOutput() VPNGatewayPtrOutput {
+	return i.ToVPNGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *VPNGateway) ToVPNGatewayPtrOutputWithContext(ctx context.Context) VPNGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayPtrOutput)
+}
+
+type VPNGatewayPtrInput interface {
+	pulumi.Input
+
+	ToVPNGatewayPtrOutput() VPNGatewayPtrOutput
+	ToVPNGatewayPtrOutputWithContext(ctx context.Context) VPNGatewayPtrOutput
+}
+
+type vpngatewayPtrType VPNGatewayArgs
+
+func (*vpngatewayPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VPNGateway)(nil))
+}
+
+func (i *vpngatewayPtrType) ToVPNGatewayPtrOutput() VPNGatewayPtrOutput {
+	return i.ToVPNGatewayPtrOutputWithContext(context.Background())
+}
+
+func (i *vpngatewayPtrType) ToVPNGatewayPtrOutputWithContext(ctx context.Context) VPNGatewayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayPtrOutput)
+}
+
+// VPNGatewayArrayInput is an input type that accepts VPNGatewayArray and VPNGatewayArrayOutput values.
+// You can construct a concrete instance of `VPNGatewayArrayInput` via:
+//
+//          VPNGatewayArray{ VPNGatewayArgs{...} }
+type VPNGatewayArrayInput interface {
+	pulumi.Input
+
+	ToVPNGatewayArrayOutput() VPNGatewayArrayOutput
+	ToVPNGatewayArrayOutputWithContext(context.Context) VPNGatewayArrayOutput
+}
+
+type VPNGatewayArray []VPNGatewayInput
+
+func (VPNGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*VPNGateway)(nil))
+}
+
+func (i VPNGatewayArray) ToVPNGatewayArrayOutput() VPNGatewayArrayOutput {
+	return i.ToVPNGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i VPNGatewayArray) ToVPNGatewayArrayOutputWithContext(ctx context.Context) VPNGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayArrayOutput)
+}
+
+// VPNGatewayMapInput is an input type that accepts VPNGatewayMap and VPNGatewayMapOutput values.
+// You can construct a concrete instance of `VPNGatewayMapInput` via:
+//
+//          VPNGatewayMap{ "key": VPNGatewayArgs{...} }
+type VPNGatewayMapInput interface {
+	pulumi.Input
+
+	ToVPNGatewayMapOutput() VPNGatewayMapOutput
+	ToVPNGatewayMapOutputWithContext(context.Context) VPNGatewayMapOutput
+}
+
+type VPNGatewayMap map[string]VPNGatewayInput
+
+func (VPNGatewayMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*VPNGateway)(nil))
+}
+
+func (i VPNGatewayMap) ToVPNGatewayMapOutput() VPNGatewayMapOutput {
+	return i.ToVPNGatewayMapOutputWithContext(context.Background())
+}
+
+func (i VPNGatewayMap) ToVPNGatewayMapOutputWithContext(ctx context.Context) VPNGatewayMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VPNGatewayMapOutput)
+}
+
 type VPNGatewayOutput struct {
 	*pulumi.OutputState
 }
@@ -314,6 +393,75 @@ func (o VPNGatewayOutput) ToVPNGatewayOutputWithContext(ctx context.Context) VPN
 	return o
 }
 
+func (o VPNGatewayOutput) ToVPNGatewayPtrOutput() VPNGatewayPtrOutput {
+	return o.ToVPNGatewayPtrOutputWithContext(context.Background())
+}
+
+func (o VPNGatewayOutput) ToVPNGatewayPtrOutputWithContext(ctx context.Context) VPNGatewayPtrOutput {
+	return o.ApplyT(func(v VPNGateway) *VPNGateway {
+		return &v
+	}).(VPNGatewayPtrOutput)
+}
+
+type VPNGatewayPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (VPNGatewayPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VPNGateway)(nil))
+}
+
+func (o VPNGatewayPtrOutput) ToVPNGatewayPtrOutput() VPNGatewayPtrOutput {
+	return o
+}
+
+func (o VPNGatewayPtrOutput) ToVPNGatewayPtrOutputWithContext(ctx context.Context) VPNGatewayPtrOutput {
+	return o
+}
+
+type VPNGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (VPNGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VPNGateway)(nil))
+}
+
+func (o VPNGatewayArrayOutput) ToVPNGatewayArrayOutput() VPNGatewayArrayOutput {
+	return o
+}
+
+func (o VPNGatewayArrayOutput) ToVPNGatewayArrayOutputWithContext(ctx context.Context) VPNGatewayArrayOutput {
+	return o
+}
+
+func (o VPNGatewayArrayOutput) Index(i pulumi.IntInput) VPNGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VPNGateway {
+		return vs[0].([]VPNGateway)[vs[1].(int)]
+	}).(VPNGatewayOutput)
+}
+
+type VPNGatewayMapOutput struct{ *pulumi.OutputState }
+
+func (VPNGatewayMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VPNGateway)(nil))
+}
+
+func (o VPNGatewayMapOutput) ToVPNGatewayMapOutput() VPNGatewayMapOutput {
+	return o
+}
+
+func (o VPNGatewayMapOutput) ToVPNGatewayMapOutputWithContext(ctx context.Context) VPNGatewayMapOutput {
+	return o
+}
+
+func (o VPNGatewayMapOutput) MapIndex(k pulumi.StringInput) VPNGatewayOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VPNGateway {
+		return vs[0].(map[string]VPNGateway)[vs[1].(string)]
+	}).(VPNGatewayOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(VPNGatewayOutput{})
+	pulumi.RegisterOutputType(VPNGatewayPtrOutput{})
+	pulumi.RegisterOutputType(VPNGatewayArrayOutput{})
+	pulumi.RegisterOutputType(VPNGatewayMapOutput{})
 }

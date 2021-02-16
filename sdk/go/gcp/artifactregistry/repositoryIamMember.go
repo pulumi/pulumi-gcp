@@ -298,6 +298,85 @@ func (i *RepositoryIamMember) ToRepositoryIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberOutput)
 }
 
+func (i *RepositoryIamMember) ToRepositoryIamMemberPtrOutput() RepositoryIamMemberPtrOutput {
+	return i.ToRepositoryIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *RepositoryIamMember) ToRepositoryIamMemberPtrOutputWithContext(ctx context.Context) RepositoryIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberPtrOutput)
+}
+
+type RepositoryIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryIamMemberPtrOutput() RepositoryIamMemberPtrOutput
+	ToRepositoryIamMemberPtrOutputWithContext(ctx context.Context) RepositoryIamMemberPtrOutput
+}
+
+type repositoryIamMemberPtrType RepositoryIamMemberArgs
+
+func (*repositoryIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamMember)(nil))
+}
+
+func (i *repositoryIamMemberPtrType) ToRepositoryIamMemberPtrOutput() RepositoryIamMemberPtrOutput {
+	return i.ToRepositoryIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryIamMemberPtrType) ToRepositoryIamMemberPtrOutputWithContext(ctx context.Context) RepositoryIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberPtrOutput)
+}
+
+// RepositoryIamMemberArrayInput is an input type that accepts RepositoryIamMemberArray and RepositoryIamMemberArrayOutput values.
+// You can construct a concrete instance of `RepositoryIamMemberArrayInput` via:
+//
+//          RepositoryIamMemberArray{ RepositoryIamMemberArgs{...} }
+type RepositoryIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryIamMemberArrayOutput() RepositoryIamMemberArrayOutput
+	ToRepositoryIamMemberArrayOutputWithContext(context.Context) RepositoryIamMemberArrayOutput
+}
+
+type RepositoryIamMemberArray []RepositoryIamMemberInput
+
+func (RepositoryIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RepositoryIamMember)(nil))
+}
+
+func (i RepositoryIamMemberArray) ToRepositoryIamMemberArrayOutput() RepositoryIamMemberArrayOutput {
+	return i.ToRepositoryIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamMemberArray) ToRepositoryIamMemberArrayOutputWithContext(ctx context.Context) RepositoryIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberArrayOutput)
+}
+
+// RepositoryIamMemberMapInput is an input type that accepts RepositoryIamMemberMap and RepositoryIamMemberMapOutput values.
+// You can construct a concrete instance of `RepositoryIamMemberMapInput` via:
+//
+//          RepositoryIamMemberMap{ "key": RepositoryIamMemberArgs{...} }
+type RepositoryIamMemberMapInput interface {
+	pulumi.Input
+
+	ToRepositoryIamMemberMapOutput() RepositoryIamMemberMapOutput
+	ToRepositoryIamMemberMapOutputWithContext(context.Context) RepositoryIamMemberMapOutput
+}
+
+type RepositoryIamMemberMap map[string]RepositoryIamMemberInput
+
+func (RepositoryIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RepositoryIamMember)(nil))
+}
+
+func (i RepositoryIamMemberMap) ToRepositoryIamMemberMapOutput() RepositoryIamMemberMapOutput {
+	return i.ToRepositoryIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamMemberMap) ToRepositoryIamMemberMapOutputWithContext(ctx context.Context) RepositoryIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamMemberMapOutput)
+}
+
 type RepositoryIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -314,6 +393,75 @@ func (o RepositoryIamMemberOutput) ToRepositoryIamMemberOutputWithContext(ctx co
 	return o
 }
 
+func (o RepositoryIamMemberOutput) ToRepositoryIamMemberPtrOutput() RepositoryIamMemberPtrOutput {
+	return o.ToRepositoryIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryIamMemberOutput) ToRepositoryIamMemberPtrOutputWithContext(ctx context.Context) RepositoryIamMemberPtrOutput {
+	return o.ApplyT(func(v RepositoryIamMember) *RepositoryIamMember {
+		return &v
+	}).(RepositoryIamMemberPtrOutput)
+}
+
+type RepositoryIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamMember)(nil))
+}
+
+func (o RepositoryIamMemberPtrOutput) ToRepositoryIamMemberPtrOutput() RepositoryIamMemberPtrOutput {
+	return o
+}
+
+func (o RepositoryIamMemberPtrOutput) ToRepositoryIamMemberPtrOutputWithContext(ctx context.Context) RepositoryIamMemberPtrOutput {
+	return o
+}
+
+type RepositoryIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryIamMember)(nil))
+}
+
+func (o RepositoryIamMemberArrayOutput) ToRepositoryIamMemberArrayOutput() RepositoryIamMemberArrayOutput {
+	return o
+}
+
+func (o RepositoryIamMemberArrayOutput) ToRepositoryIamMemberArrayOutputWithContext(ctx context.Context) RepositoryIamMemberArrayOutput {
+	return o
+}
+
+func (o RepositoryIamMemberArrayOutput) Index(i pulumi.IntInput) RepositoryIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryIamMember {
+		return vs[0].([]RepositoryIamMember)[vs[1].(int)]
+	}).(RepositoryIamMemberOutput)
+}
+
+type RepositoryIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RepositoryIamMember)(nil))
+}
+
+func (o RepositoryIamMemberMapOutput) ToRepositoryIamMemberMapOutput() RepositoryIamMemberMapOutput {
+	return o
+}
+
+func (o RepositoryIamMemberMapOutput) ToRepositoryIamMemberMapOutputWithContext(ctx context.Context) RepositoryIamMemberMapOutput {
+	return o
+}
+
+func (o RepositoryIamMemberMapOutput) MapIndex(k pulumi.StringInput) RepositoryIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RepositoryIamMember {
+		return vs[0].(map[string]RepositoryIamMember)[vs[1].(string)]
+	}).(RepositoryIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RepositoryIamMemberOutput{})
+	pulumi.RegisterOutputType(RepositoryIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryIamMemberMapOutput{})
 }

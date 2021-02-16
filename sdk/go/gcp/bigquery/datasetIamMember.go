@@ -281,6 +281,85 @@ func (i *DatasetIamMember) ToDatasetIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberOutput)
 }
 
+func (i *DatasetIamMember) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
+	return i.ToDatasetIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *DatasetIamMember) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberPtrOutput)
+}
+
+type DatasetIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput
+	ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput
+}
+
+type datasetIamMemberPtrType DatasetIamMemberArgs
+
+func (*datasetIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamMember)(nil))
+}
+
+func (i *datasetIamMemberPtrType) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
+	return i.ToDatasetIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetIamMemberPtrType) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberPtrOutput)
+}
+
+// DatasetIamMemberArrayInput is an input type that accepts DatasetIamMemberArray and DatasetIamMemberArrayOutput values.
+// You can construct a concrete instance of `DatasetIamMemberArrayInput` via:
+//
+//          DatasetIamMemberArray{ DatasetIamMemberArgs{...} }
+type DatasetIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToDatasetIamMemberArrayOutput() DatasetIamMemberArrayOutput
+	ToDatasetIamMemberArrayOutputWithContext(context.Context) DatasetIamMemberArrayOutput
+}
+
+type DatasetIamMemberArray []DatasetIamMemberInput
+
+func (DatasetIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatasetIamMember)(nil))
+}
+
+func (i DatasetIamMemberArray) ToDatasetIamMemberArrayOutput() DatasetIamMemberArrayOutput {
+	return i.ToDatasetIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetIamMemberArray) ToDatasetIamMemberArrayOutputWithContext(ctx context.Context) DatasetIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberArrayOutput)
+}
+
+// DatasetIamMemberMapInput is an input type that accepts DatasetIamMemberMap and DatasetIamMemberMapOutput values.
+// You can construct a concrete instance of `DatasetIamMemberMapInput` via:
+//
+//          DatasetIamMemberMap{ "key": DatasetIamMemberArgs{...} }
+type DatasetIamMemberMapInput interface {
+	pulumi.Input
+
+	ToDatasetIamMemberMapOutput() DatasetIamMemberMapOutput
+	ToDatasetIamMemberMapOutputWithContext(context.Context) DatasetIamMemberMapOutput
+}
+
+type DatasetIamMemberMap map[string]DatasetIamMemberInput
+
+func (DatasetIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatasetIamMember)(nil))
+}
+
+func (i DatasetIamMemberMap) ToDatasetIamMemberMapOutput() DatasetIamMemberMapOutput {
+	return i.ToDatasetIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i DatasetIamMemberMap) ToDatasetIamMemberMapOutputWithContext(ctx context.Context) DatasetIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamMemberMapOutput)
+}
+
 type DatasetIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -297,6 +376,75 @@ func (o DatasetIamMemberOutput) ToDatasetIamMemberOutputWithContext(ctx context.
 	return o
 }
 
+func (o DatasetIamMemberOutput) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
+	return o.ToDatasetIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetIamMemberOutput) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
+	return o.ApplyT(func(v DatasetIamMember) *DatasetIamMember {
+		return &v
+	}).(DatasetIamMemberPtrOutput)
+}
+
+type DatasetIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamMember)(nil))
+}
+
+func (o DatasetIamMemberPtrOutput) ToDatasetIamMemberPtrOutput() DatasetIamMemberPtrOutput {
+	return o
+}
+
+func (o DatasetIamMemberPtrOutput) ToDatasetIamMemberPtrOutputWithContext(ctx context.Context) DatasetIamMemberPtrOutput {
+	return o
+}
+
+type DatasetIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetIamMember)(nil))
+}
+
+func (o DatasetIamMemberArrayOutput) ToDatasetIamMemberArrayOutput() DatasetIamMemberArrayOutput {
+	return o
+}
+
+func (o DatasetIamMemberArrayOutput) ToDatasetIamMemberArrayOutputWithContext(ctx context.Context) DatasetIamMemberArrayOutput {
+	return o
+}
+
+func (o DatasetIamMemberArrayOutput) Index(i pulumi.IntInput) DatasetIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetIamMember {
+		return vs[0].([]DatasetIamMember)[vs[1].(int)]
+	}).(DatasetIamMemberOutput)
+}
+
+type DatasetIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatasetIamMember)(nil))
+}
+
+func (o DatasetIamMemberMapOutput) ToDatasetIamMemberMapOutput() DatasetIamMemberMapOutput {
+	return o
+}
+
+func (o DatasetIamMemberMapOutput) ToDatasetIamMemberMapOutputWithContext(ctx context.Context) DatasetIamMemberMapOutput {
+	return o
+}
+
+func (o DatasetIamMemberMapOutput) MapIndex(k pulumi.StringInput) DatasetIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetIamMember {
+		return vs[0].(map[string]DatasetIamMember)[vs[1].(string)]
+	}).(DatasetIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetIamMemberOutput{})
+	pulumi.RegisterOutputType(DatasetIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(DatasetIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(DatasetIamMemberMapOutput{})
 }

@@ -46,29 +46,26 @@ export class AccountIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: AccountIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AccountIamPolicyArgs | AccountIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as AccountIamPolicyState | undefined;
             inputs["billingAccountId"] = state ? state.billingAccountId : undefined;
             inputs["etag"] = state ? state.etag : undefined;
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as AccountIamPolicyArgs | undefined;
-            if ((!args || args.billingAccountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.billingAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'billingAccountId'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(AccountIamPolicy.__pulumiType, name, inputs, opts);
     }

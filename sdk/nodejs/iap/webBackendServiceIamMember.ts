@@ -94,7 +94,8 @@ export class WebBackendServiceIamMember extends pulumi.CustomResource {
     constructor(name: string, args: WebBackendServiceIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebBackendServiceIamMemberArgs | WebBackendServiceIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WebBackendServiceIamMemberState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -104,13 +105,13 @@ export class WebBackendServiceIamMember extends pulumi.CustomResource {
             inputs["webBackendService"] = state ? state.webBackendService : undefined;
         } else {
             const args = argsOrState as WebBackendServiceIamMemberArgs | undefined;
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.webBackendService === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.webBackendService === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'webBackendService'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -120,12 +121,8 @@ export class WebBackendServiceIamMember extends pulumi.CustomResource {
             inputs["webBackendService"] = args ? args.webBackendService : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WebBackendServiceIamMember.__pulumiType, name, inputs, opts);
     }

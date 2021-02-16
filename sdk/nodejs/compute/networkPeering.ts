@@ -118,7 +118,8 @@ export class NetworkPeering extends pulumi.CustomResource {
     constructor(name: string, args: NetworkPeeringArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NetworkPeeringArgs | NetworkPeeringState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NetworkPeeringState | undefined;
             inputs["exportCustomRoutes"] = state ? state.exportCustomRoutes : undefined;
             inputs["exportSubnetRoutesWithPublicIp"] = state ? state.exportSubnetRoutesWithPublicIp : undefined;
@@ -131,10 +132,10 @@ export class NetworkPeering extends pulumi.CustomResource {
             inputs["stateDetails"] = state ? state.stateDetails : undefined;
         } else {
             const args = argsOrState as NetworkPeeringArgs | undefined;
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
-            if ((!args || args.peerNetwork === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerNetwork === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerNetwork'");
             }
             inputs["exportCustomRoutes"] = args ? args.exportCustomRoutes : undefined;
@@ -147,12 +148,8 @@ export class NetworkPeering extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["stateDetails"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NetworkPeering.__pulumiType, name, inputs, opts);
     }

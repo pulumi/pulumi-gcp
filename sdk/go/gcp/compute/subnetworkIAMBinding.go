@@ -212,6 +212,85 @@ func (i *SubnetworkIAMBinding) ToSubnetworkIAMBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingOutput)
 }
 
+func (i *SubnetworkIAMBinding) ToSubnetworkIAMBindingPtrOutput() SubnetworkIAMBindingPtrOutput {
+	return i.ToSubnetworkIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *SubnetworkIAMBinding) ToSubnetworkIAMBindingPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingPtrOutput)
+}
+
+type SubnetworkIAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMBindingPtrOutput() SubnetworkIAMBindingPtrOutput
+	ToSubnetworkIAMBindingPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingPtrOutput
+}
+
+type subnetworkIAMBindingPtrType SubnetworkIAMBindingArgs
+
+func (*subnetworkIAMBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMBinding)(nil))
+}
+
+func (i *subnetworkIAMBindingPtrType) ToSubnetworkIAMBindingPtrOutput() SubnetworkIAMBindingPtrOutput {
+	return i.ToSubnetworkIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *subnetworkIAMBindingPtrType) ToSubnetworkIAMBindingPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingPtrOutput)
+}
+
+// SubnetworkIAMBindingArrayInput is an input type that accepts SubnetworkIAMBindingArray and SubnetworkIAMBindingArrayOutput values.
+// You can construct a concrete instance of `SubnetworkIAMBindingArrayInput` via:
+//
+//          SubnetworkIAMBindingArray{ SubnetworkIAMBindingArgs{...} }
+type SubnetworkIAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMBindingArrayOutput() SubnetworkIAMBindingArrayOutput
+	ToSubnetworkIAMBindingArrayOutputWithContext(context.Context) SubnetworkIAMBindingArrayOutput
+}
+
+type SubnetworkIAMBindingArray []SubnetworkIAMBindingInput
+
+func (SubnetworkIAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SubnetworkIAMBinding)(nil))
+}
+
+func (i SubnetworkIAMBindingArray) ToSubnetworkIAMBindingArrayOutput() SubnetworkIAMBindingArrayOutput {
+	return i.ToSubnetworkIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMBindingArray) ToSubnetworkIAMBindingArrayOutputWithContext(ctx context.Context) SubnetworkIAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingArrayOutput)
+}
+
+// SubnetworkIAMBindingMapInput is an input type that accepts SubnetworkIAMBindingMap and SubnetworkIAMBindingMapOutput values.
+// You can construct a concrete instance of `SubnetworkIAMBindingMapInput` via:
+//
+//          SubnetworkIAMBindingMap{ "key": SubnetworkIAMBindingArgs{...} }
+type SubnetworkIAMBindingMapInput interface {
+	pulumi.Input
+
+	ToSubnetworkIAMBindingMapOutput() SubnetworkIAMBindingMapOutput
+	ToSubnetworkIAMBindingMapOutputWithContext(context.Context) SubnetworkIAMBindingMapOutput
+}
+
+type SubnetworkIAMBindingMap map[string]SubnetworkIAMBindingInput
+
+func (SubnetworkIAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SubnetworkIAMBinding)(nil))
+}
+
+func (i SubnetworkIAMBindingMap) ToSubnetworkIAMBindingMapOutput() SubnetworkIAMBindingMapOutput {
+	return i.ToSubnetworkIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i SubnetworkIAMBindingMap) ToSubnetworkIAMBindingMapOutputWithContext(ctx context.Context) SubnetworkIAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetworkIAMBindingMapOutput)
+}
+
 type SubnetworkIAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -228,6 +307,75 @@ func (o SubnetworkIAMBindingOutput) ToSubnetworkIAMBindingOutputWithContext(ctx 
 	return o
 }
 
+func (o SubnetworkIAMBindingOutput) ToSubnetworkIAMBindingPtrOutput() SubnetworkIAMBindingPtrOutput {
+	return o.ToSubnetworkIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o SubnetworkIAMBindingOutput) ToSubnetworkIAMBindingPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingPtrOutput {
+	return o.ApplyT(func(v SubnetworkIAMBinding) *SubnetworkIAMBinding {
+		return &v
+	}).(SubnetworkIAMBindingPtrOutput)
+}
+
+type SubnetworkIAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SubnetworkIAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetworkIAMBinding)(nil))
+}
+
+func (o SubnetworkIAMBindingPtrOutput) ToSubnetworkIAMBindingPtrOutput() SubnetworkIAMBindingPtrOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingPtrOutput) ToSubnetworkIAMBindingPtrOutputWithContext(ctx context.Context) SubnetworkIAMBindingPtrOutput {
+	return o
+}
+
+type SubnetworkIAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetworkIAMBinding)(nil))
+}
+
+func (o SubnetworkIAMBindingArrayOutput) ToSubnetworkIAMBindingArrayOutput() SubnetworkIAMBindingArrayOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingArrayOutput) ToSubnetworkIAMBindingArrayOutputWithContext(ctx context.Context) SubnetworkIAMBindingArrayOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingArrayOutput) Index(i pulumi.IntInput) SubnetworkIAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetworkIAMBinding {
+		return vs[0].([]SubnetworkIAMBinding)[vs[1].(int)]
+	}).(SubnetworkIAMBindingOutput)
+}
+
+type SubnetworkIAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (SubnetworkIAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SubnetworkIAMBinding)(nil))
+}
+
+func (o SubnetworkIAMBindingMapOutput) ToSubnetworkIAMBindingMapOutput() SubnetworkIAMBindingMapOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingMapOutput) ToSubnetworkIAMBindingMapOutputWithContext(ctx context.Context) SubnetworkIAMBindingMapOutput {
+	return o
+}
+
+func (o SubnetworkIAMBindingMapOutput) MapIndex(k pulumi.StringInput) SubnetworkIAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SubnetworkIAMBinding {
+		return vs[0].(map[string]SubnetworkIAMBinding)[vs[1].(string)]
+	}).(SubnetworkIAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SubnetworkIAMBindingOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(SubnetworkIAMBindingMapOutput{})
 }

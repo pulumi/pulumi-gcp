@@ -141,7 +141,8 @@ export class CryptoKey extends pulumi.CustomResource {
     constructor(name: string, args: CryptoKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: CryptoKeyArgs | CryptoKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as CryptoKeyState | undefined;
             inputs["keyRing"] = state ? state.keyRing : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -153,7 +154,7 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["versionTemplate"] = state ? state.versionTemplate : undefined;
         } else {
             const args = argsOrState as CryptoKeyArgs | undefined;
-            if ((!args || args.keyRing === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyRing === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyRing'");
             }
             inputs["keyRing"] = args ? args.keyRing : undefined;
@@ -165,12 +166,8 @@ export class CryptoKey extends pulumi.CustomResource {
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(CryptoKey.__pulumiType, name, inputs, opts);
     }

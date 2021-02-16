@@ -216,6 +216,85 @@ func (i *DataStoreIndex) ToDataStoreIndexOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexOutput)
 }
 
+func (i *DataStoreIndex) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
+	return i.ToDataStoreIndexPtrOutputWithContext(context.Background())
+}
+
+func (i *DataStoreIndex) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexPtrOutput)
+}
+
+type DataStoreIndexPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput
+	ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput
+}
+
+type dataStoreIndexPtrType DataStoreIndexArgs
+
+func (*dataStoreIndexPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreIndex)(nil))
+}
+
+func (i *dataStoreIndexPtrType) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
+	return i.ToDataStoreIndexPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreIndexPtrType) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexPtrOutput)
+}
+
+// DataStoreIndexArrayInput is an input type that accepts DataStoreIndexArray and DataStoreIndexArrayOutput values.
+// You can construct a concrete instance of `DataStoreIndexArrayInput` via:
+//
+//          DataStoreIndexArray{ DataStoreIndexArgs{...} }
+type DataStoreIndexArrayInput interface {
+	pulumi.Input
+
+	ToDataStoreIndexArrayOutput() DataStoreIndexArrayOutput
+	ToDataStoreIndexArrayOutputWithContext(context.Context) DataStoreIndexArrayOutput
+}
+
+type DataStoreIndexArray []DataStoreIndexInput
+
+func (DataStoreIndexArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DataStoreIndex)(nil))
+}
+
+func (i DataStoreIndexArray) ToDataStoreIndexArrayOutput() DataStoreIndexArrayOutput {
+	return i.ToDataStoreIndexArrayOutputWithContext(context.Background())
+}
+
+func (i DataStoreIndexArray) ToDataStoreIndexArrayOutputWithContext(ctx context.Context) DataStoreIndexArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexArrayOutput)
+}
+
+// DataStoreIndexMapInput is an input type that accepts DataStoreIndexMap and DataStoreIndexMapOutput values.
+// You can construct a concrete instance of `DataStoreIndexMapInput` via:
+//
+//          DataStoreIndexMap{ "key": DataStoreIndexArgs{...} }
+type DataStoreIndexMapInput interface {
+	pulumi.Input
+
+	ToDataStoreIndexMapOutput() DataStoreIndexMapOutput
+	ToDataStoreIndexMapOutputWithContext(context.Context) DataStoreIndexMapOutput
+}
+
+type DataStoreIndexMap map[string]DataStoreIndexInput
+
+func (DataStoreIndexMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DataStoreIndex)(nil))
+}
+
+func (i DataStoreIndexMap) ToDataStoreIndexMapOutput() DataStoreIndexMapOutput {
+	return i.ToDataStoreIndexMapOutputWithContext(context.Background())
+}
+
+func (i DataStoreIndexMap) ToDataStoreIndexMapOutputWithContext(ctx context.Context) DataStoreIndexMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreIndexMapOutput)
+}
+
 type DataStoreIndexOutput struct {
 	*pulumi.OutputState
 }
@@ -232,6 +311,75 @@ func (o DataStoreIndexOutput) ToDataStoreIndexOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o DataStoreIndexOutput) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
+	return o.ToDataStoreIndexPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreIndexOutput) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
+	return o.ApplyT(func(v DataStoreIndex) *DataStoreIndex {
+		return &v
+	}).(DataStoreIndexPtrOutput)
+}
+
+type DataStoreIndexPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DataStoreIndexPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreIndex)(nil))
+}
+
+func (o DataStoreIndexPtrOutput) ToDataStoreIndexPtrOutput() DataStoreIndexPtrOutput {
+	return o
+}
+
+func (o DataStoreIndexPtrOutput) ToDataStoreIndexPtrOutputWithContext(ctx context.Context) DataStoreIndexPtrOutput {
+	return o
+}
+
+type DataStoreIndexArrayOutput struct{ *pulumi.OutputState }
+
+func (DataStoreIndexArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataStoreIndex)(nil))
+}
+
+func (o DataStoreIndexArrayOutput) ToDataStoreIndexArrayOutput() DataStoreIndexArrayOutput {
+	return o
+}
+
+func (o DataStoreIndexArrayOutput) ToDataStoreIndexArrayOutputWithContext(ctx context.Context) DataStoreIndexArrayOutput {
+	return o
+}
+
+func (o DataStoreIndexArrayOutput) Index(i pulumi.IntInput) DataStoreIndexOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataStoreIndex {
+		return vs[0].([]DataStoreIndex)[vs[1].(int)]
+	}).(DataStoreIndexOutput)
+}
+
+type DataStoreIndexMapOutput struct{ *pulumi.OutputState }
+
+func (DataStoreIndexMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DataStoreIndex)(nil))
+}
+
+func (o DataStoreIndexMapOutput) ToDataStoreIndexMapOutput() DataStoreIndexMapOutput {
+	return o
+}
+
+func (o DataStoreIndexMapOutput) ToDataStoreIndexMapOutputWithContext(ctx context.Context) DataStoreIndexMapOutput {
+	return o
+}
+
+func (o DataStoreIndexMapOutput) MapIndex(k pulumi.StringInput) DataStoreIndexOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DataStoreIndex {
+		return vs[0].(map[string]DataStoreIndex)[vs[1].(string)]
+	}).(DataStoreIndexOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DataStoreIndexOutput{})
+	pulumi.RegisterOutputType(DataStoreIndexPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreIndexArrayOutput{})
+	pulumi.RegisterOutputType(DataStoreIndexMapOutput{})
 }

@@ -393,6 +393,85 @@ func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerOutput)
 }
 
+func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerPtrOutput() RegionInstanceGroupManagerPtrOutput {
+	return i.ToRegionInstanceGroupManagerPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionInstanceGroupManager) ToRegionInstanceGroupManagerPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerPtrOutput)
+}
+
+type RegionInstanceGroupManagerPtrInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerPtrOutput() RegionInstanceGroupManagerPtrOutput
+	ToRegionInstanceGroupManagerPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerPtrOutput
+}
+
+type regionInstanceGroupManagerPtrType RegionInstanceGroupManagerArgs
+
+func (*regionInstanceGroupManagerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceGroupManager)(nil))
+}
+
+func (i *regionInstanceGroupManagerPtrType) ToRegionInstanceGroupManagerPtrOutput() RegionInstanceGroupManagerPtrOutput {
+	return i.ToRegionInstanceGroupManagerPtrOutputWithContext(context.Background())
+}
+
+func (i *regionInstanceGroupManagerPtrType) ToRegionInstanceGroupManagerPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerPtrOutput)
+}
+
+// RegionInstanceGroupManagerArrayInput is an input type that accepts RegionInstanceGroupManagerArray and RegionInstanceGroupManagerArrayOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerArrayInput` via:
+//
+//          RegionInstanceGroupManagerArray{ RegionInstanceGroupManagerArgs{...} }
+type RegionInstanceGroupManagerArrayInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerArrayOutput() RegionInstanceGroupManagerArrayOutput
+	ToRegionInstanceGroupManagerArrayOutputWithContext(context.Context) RegionInstanceGroupManagerArrayOutput
+}
+
+type RegionInstanceGroupManagerArray []RegionInstanceGroupManagerInput
+
+func (RegionInstanceGroupManagerArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionInstanceGroupManager)(nil))
+}
+
+func (i RegionInstanceGroupManagerArray) ToRegionInstanceGroupManagerArrayOutput() RegionInstanceGroupManagerArrayOutput {
+	return i.ToRegionInstanceGroupManagerArrayOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerArray) ToRegionInstanceGroupManagerArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerArrayOutput)
+}
+
+// RegionInstanceGroupManagerMapInput is an input type that accepts RegionInstanceGroupManagerMap and RegionInstanceGroupManagerMapOutput values.
+// You can construct a concrete instance of `RegionInstanceGroupManagerMapInput` via:
+//
+//          RegionInstanceGroupManagerMap{ "key": RegionInstanceGroupManagerArgs{...} }
+type RegionInstanceGroupManagerMapInput interface {
+	pulumi.Input
+
+	ToRegionInstanceGroupManagerMapOutput() RegionInstanceGroupManagerMapOutput
+	ToRegionInstanceGroupManagerMapOutputWithContext(context.Context) RegionInstanceGroupManagerMapOutput
+}
+
+type RegionInstanceGroupManagerMap map[string]RegionInstanceGroupManagerInput
+
+func (RegionInstanceGroupManagerMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionInstanceGroupManager)(nil))
+}
+
+func (i RegionInstanceGroupManagerMap) ToRegionInstanceGroupManagerMapOutput() RegionInstanceGroupManagerMapOutput {
+	return i.ToRegionInstanceGroupManagerMapOutputWithContext(context.Background())
+}
+
+func (i RegionInstanceGroupManagerMap) ToRegionInstanceGroupManagerMapOutputWithContext(ctx context.Context) RegionInstanceGroupManagerMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionInstanceGroupManagerMapOutput)
+}
+
 type RegionInstanceGroupManagerOutput struct {
 	*pulumi.OutputState
 }
@@ -409,6 +488,75 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWith
 	return o
 }
 
+func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerPtrOutput() RegionInstanceGroupManagerPtrOutput {
+	return o.ToRegionInstanceGroupManagerPtrOutputWithContext(context.Background())
+}
+
+func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerPtrOutput {
+	return o.ApplyT(func(v RegionInstanceGroupManager) *RegionInstanceGroupManager {
+		return &v
+	}).(RegionInstanceGroupManagerPtrOutput)
+}
+
+type RegionInstanceGroupManagerPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionInstanceGroupManagerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionInstanceGroupManager)(nil))
+}
+
+func (o RegionInstanceGroupManagerPtrOutput) ToRegionInstanceGroupManagerPtrOutput() RegionInstanceGroupManagerPtrOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerPtrOutput) ToRegionInstanceGroupManagerPtrOutputWithContext(ctx context.Context) RegionInstanceGroupManagerPtrOutput {
+	return o
+}
+
+type RegionInstanceGroupManagerArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionInstanceGroupManager)(nil))
+}
+
+func (o RegionInstanceGroupManagerArrayOutput) ToRegionInstanceGroupManagerArrayOutput() RegionInstanceGroupManagerArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerArrayOutput) ToRegionInstanceGroupManagerArrayOutputWithContext(ctx context.Context) RegionInstanceGroupManagerArrayOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerArrayOutput) Index(i pulumi.IntInput) RegionInstanceGroupManagerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionInstanceGroupManager {
+		return vs[0].([]RegionInstanceGroupManager)[vs[1].(int)]
+	}).(RegionInstanceGroupManagerOutput)
+}
+
+type RegionInstanceGroupManagerMapOutput struct{ *pulumi.OutputState }
+
+func (RegionInstanceGroupManagerMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionInstanceGroupManager)(nil))
+}
+
+func (o RegionInstanceGroupManagerMapOutput) ToRegionInstanceGroupManagerMapOutput() RegionInstanceGroupManagerMapOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerMapOutput) ToRegionInstanceGroupManagerMapOutputWithContext(ctx context.Context) RegionInstanceGroupManagerMapOutput {
+	return o
+}
+
+func (o RegionInstanceGroupManagerMapOutput) MapIndex(k pulumi.StringInput) RegionInstanceGroupManagerOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionInstanceGroupManager {
+		return vs[0].(map[string]RegionInstanceGroupManager)[vs[1].(string)]
+	}).(RegionInstanceGroupManagerOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionInstanceGroupManagerOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerPtrOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerArrayOutput{})
+	pulumi.RegisterOutputType(RegionInstanceGroupManagerMapOutput{})
 }

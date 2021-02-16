@@ -149,6 +149,85 @@ func (i *SharedVPCHostProject) ToSharedVPCHostProjectOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectOutput)
 }
 
+func (i *SharedVPCHostProject) ToSharedVPCHostProjectPtrOutput() SharedVPCHostProjectPtrOutput {
+	return i.ToSharedVPCHostProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *SharedVPCHostProject) ToSharedVPCHostProjectPtrOutputWithContext(ctx context.Context) SharedVPCHostProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectPtrOutput)
+}
+
+type SharedVPCHostProjectPtrInput interface {
+	pulumi.Input
+
+	ToSharedVPCHostProjectPtrOutput() SharedVPCHostProjectPtrOutput
+	ToSharedVPCHostProjectPtrOutputWithContext(ctx context.Context) SharedVPCHostProjectPtrOutput
+}
+
+type sharedVPCHostProjectPtrType SharedVPCHostProjectArgs
+
+func (*sharedVPCHostProjectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedVPCHostProject)(nil))
+}
+
+func (i *sharedVPCHostProjectPtrType) ToSharedVPCHostProjectPtrOutput() SharedVPCHostProjectPtrOutput {
+	return i.ToSharedVPCHostProjectPtrOutputWithContext(context.Background())
+}
+
+func (i *sharedVPCHostProjectPtrType) ToSharedVPCHostProjectPtrOutputWithContext(ctx context.Context) SharedVPCHostProjectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectPtrOutput)
+}
+
+// SharedVPCHostProjectArrayInput is an input type that accepts SharedVPCHostProjectArray and SharedVPCHostProjectArrayOutput values.
+// You can construct a concrete instance of `SharedVPCHostProjectArrayInput` via:
+//
+//          SharedVPCHostProjectArray{ SharedVPCHostProjectArgs{...} }
+type SharedVPCHostProjectArrayInput interface {
+	pulumi.Input
+
+	ToSharedVPCHostProjectArrayOutput() SharedVPCHostProjectArrayOutput
+	ToSharedVPCHostProjectArrayOutputWithContext(context.Context) SharedVPCHostProjectArrayOutput
+}
+
+type SharedVPCHostProjectArray []SharedVPCHostProjectInput
+
+func (SharedVPCHostProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*SharedVPCHostProject)(nil))
+}
+
+func (i SharedVPCHostProjectArray) ToSharedVPCHostProjectArrayOutput() SharedVPCHostProjectArrayOutput {
+	return i.ToSharedVPCHostProjectArrayOutputWithContext(context.Background())
+}
+
+func (i SharedVPCHostProjectArray) ToSharedVPCHostProjectArrayOutputWithContext(ctx context.Context) SharedVPCHostProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectArrayOutput)
+}
+
+// SharedVPCHostProjectMapInput is an input type that accepts SharedVPCHostProjectMap and SharedVPCHostProjectMapOutput values.
+// You can construct a concrete instance of `SharedVPCHostProjectMapInput` via:
+//
+//          SharedVPCHostProjectMap{ "key": SharedVPCHostProjectArgs{...} }
+type SharedVPCHostProjectMapInput interface {
+	pulumi.Input
+
+	ToSharedVPCHostProjectMapOutput() SharedVPCHostProjectMapOutput
+	ToSharedVPCHostProjectMapOutputWithContext(context.Context) SharedVPCHostProjectMapOutput
+}
+
+type SharedVPCHostProjectMap map[string]SharedVPCHostProjectInput
+
+func (SharedVPCHostProjectMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*SharedVPCHostProject)(nil))
+}
+
+func (i SharedVPCHostProjectMap) ToSharedVPCHostProjectMapOutput() SharedVPCHostProjectMapOutput {
+	return i.ToSharedVPCHostProjectMapOutputWithContext(context.Background())
+}
+
+func (i SharedVPCHostProjectMap) ToSharedVPCHostProjectMapOutputWithContext(ctx context.Context) SharedVPCHostProjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SharedVPCHostProjectMapOutput)
+}
+
 type SharedVPCHostProjectOutput struct {
 	*pulumi.OutputState
 }
@@ -165,6 +244,75 @@ func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectOutputWithContext(ctx 
 	return o
 }
 
+func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectPtrOutput() SharedVPCHostProjectPtrOutput {
+	return o.ToSharedVPCHostProjectPtrOutputWithContext(context.Background())
+}
+
+func (o SharedVPCHostProjectOutput) ToSharedVPCHostProjectPtrOutputWithContext(ctx context.Context) SharedVPCHostProjectPtrOutput {
+	return o.ApplyT(func(v SharedVPCHostProject) *SharedVPCHostProject {
+		return &v
+	}).(SharedVPCHostProjectPtrOutput)
+}
+
+type SharedVPCHostProjectPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (SharedVPCHostProjectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SharedVPCHostProject)(nil))
+}
+
+func (o SharedVPCHostProjectPtrOutput) ToSharedVPCHostProjectPtrOutput() SharedVPCHostProjectPtrOutput {
+	return o
+}
+
+func (o SharedVPCHostProjectPtrOutput) ToSharedVPCHostProjectPtrOutputWithContext(ctx context.Context) SharedVPCHostProjectPtrOutput {
+	return o
+}
+
+type SharedVPCHostProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (SharedVPCHostProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SharedVPCHostProject)(nil))
+}
+
+func (o SharedVPCHostProjectArrayOutput) ToSharedVPCHostProjectArrayOutput() SharedVPCHostProjectArrayOutput {
+	return o
+}
+
+func (o SharedVPCHostProjectArrayOutput) ToSharedVPCHostProjectArrayOutputWithContext(ctx context.Context) SharedVPCHostProjectArrayOutput {
+	return o
+}
+
+func (o SharedVPCHostProjectArrayOutput) Index(i pulumi.IntInput) SharedVPCHostProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SharedVPCHostProject {
+		return vs[0].([]SharedVPCHostProject)[vs[1].(int)]
+	}).(SharedVPCHostProjectOutput)
+}
+
+type SharedVPCHostProjectMapOutput struct{ *pulumi.OutputState }
+
+func (SharedVPCHostProjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]SharedVPCHostProject)(nil))
+}
+
+func (o SharedVPCHostProjectMapOutput) ToSharedVPCHostProjectMapOutput() SharedVPCHostProjectMapOutput {
+	return o
+}
+
+func (o SharedVPCHostProjectMapOutput) ToSharedVPCHostProjectMapOutputWithContext(ctx context.Context) SharedVPCHostProjectMapOutput {
+	return o
+}
+
+func (o SharedVPCHostProjectMapOutput) MapIndex(k pulumi.StringInput) SharedVPCHostProjectOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) SharedVPCHostProject {
+		return vs[0].(map[string]SharedVPCHostProject)[vs[1].(string)]
+	}).(SharedVPCHostProjectOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(SharedVPCHostProjectOutput{})
+	pulumi.RegisterOutputType(SharedVPCHostProjectPtrOutput{})
+	pulumi.RegisterOutputType(SharedVPCHostProjectArrayOutput{})
+	pulumi.RegisterOutputType(SharedVPCHostProjectMapOutput{})
 }

@@ -161,6 +161,85 @@ func (i *ProjectMetadataItem) ToProjectMetadataItemOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemOutput)
 }
 
+func (i *ProjectMetadataItem) ToProjectMetadataItemPtrOutput() ProjectMetadataItemPtrOutput {
+	return i.ToProjectMetadataItemPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectMetadataItem) ToProjectMetadataItemPtrOutputWithContext(ctx context.Context) ProjectMetadataItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemPtrOutput)
+}
+
+type ProjectMetadataItemPtrInput interface {
+	pulumi.Input
+
+	ToProjectMetadataItemPtrOutput() ProjectMetadataItemPtrOutput
+	ToProjectMetadataItemPtrOutputWithContext(ctx context.Context) ProjectMetadataItemPtrOutput
+}
+
+type projectMetadataItemPtrType ProjectMetadataItemArgs
+
+func (*projectMetadataItemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectMetadataItem)(nil))
+}
+
+func (i *projectMetadataItemPtrType) ToProjectMetadataItemPtrOutput() ProjectMetadataItemPtrOutput {
+	return i.ToProjectMetadataItemPtrOutputWithContext(context.Background())
+}
+
+func (i *projectMetadataItemPtrType) ToProjectMetadataItemPtrOutputWithContext(ctx context.Context) ProjectMetadataItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemPtrOutput)
+}
+
+// ProjectMetadataItemArrayInput is an input type that accepts ProjectMetadataItemArray and ProjectMetadataItemArrayOutput values.
+// You can construct a concrete instance of `ProjectMetadataItemArrayInput` via:
+//
+//          ProjectMetadataItemArray{ ProjectMetadataItemArgs{...} }
+type ProjectMetadataItemArrayInput interface {
+	pulumi.Input
+
+	ToProjectMetadataItemArrayOutput() ProjectMetadataItemArrayOutput
+	ToProjectMetadataItemArrayOutputWithContext(context.Context) ProjectMetadataItemArrayOutput
+}
+
+type ProjectMetadataItemArray []ProjectMetadataItemInput
+
+func (ProjectMetadataItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectMetadataItem)(nil))
+}
+
+func (i ProjectMetadataItemArray) ToProjectMetadataItemArrayOutput() ProjectMetadataItemArrayOutput {
+	return i.ToProjectMetadataItemArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectMetadataItemArray) ToProjectMetadataItemArrayOutputWithContext(ctx context.Context) ProjectMetadataItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemArrayOutput)
+}
+
+// ProjectMetadataItemMapInput is an input type that accepts ProjectMetadataItemMap and ProjectMetadataItemMapOutput values.
+// You can construct a concrete instance of `ProjectMetadataItemMapInput` via:
+//
+//          ProjectMetadataItemMap{ "key": ProjectMetadataItemArgs{...} }
+type ProjectMetadataItemMapInput interface {
+	pulumi.Input
+
+	ToProjectMetadataItemMapOutput() ProjectMetadataItemMapOutput
+	ToProjectMetadataItemMapOutputWithContext(context.Context) ProjectMetadataItemMapOutput
+}
+
+type ProjectMetadataItemMap map[string]ProjectMetadataItemInput
+
+func (ProjectMetadataItemMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectMetadataItem)(nil))
+}
+
+func (i ProjectMetadataItemMap) ToProjectMetadataItemMapOutput() ProjectMetadataItemMapOutput {
+	return i.ToProjectMetadataItemMapOutputWithContext(context.Background())
+}
+
+func (i ProjectMetadataItemMap) ToProjectMetadataItemMapOutputWithContext(ctx context.Context) ProjectMetadataItemMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectMetadataItemMapOutput)
+}
+
 type ProjectMetadataItemOutput struct {
 	*pulumi.OutputState
 }
@@ -177,6 +256,75 @@ func (o ProjectMetadataItemOutput) ToProjectMetadataItemOutputWithContext(ctx co
 	return o
 }
 
+func (o ProjectMetadataItemOutput) ToProjectMetadataItemPtrOutput() ProjectMetadataItemPtrOutput {
+	return o.ToProjectMetadataItemPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectMetadataItemOutput) ToProjectMetadataItemPtrOutputWithContext(ctx context.Context) ProjectMetadataItemPtrOutput {
+	return o.ApplyT(func(v ProjectMetadataItem) *ProjectMetadataItem {
+		return &v
+	}).(ProjectMetadataItemPtrOutput)
+}
+
+type ProjectMetadataItemPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectMetadataItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectMetadataItem)(nil))
+}
+
+func (o ProjectMetadataItemPtrOutput) ToProjectMetadataItemPtrOutput() ProjectMetadataItemPtrOutput {
+	return o
+}
+
+func (o ProjectMetadataItemPtrOutput) ToProjectMetadataItemPtrOutputWithContext(ctx context.Context) ProjectMetadataItemPtrOutput {
+	return o
+}
+
+type ProjectMetadataItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectMetadataItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectMetadataItem)(nil))
+}
+
+func (o ProjectMetadataItemArrayOutput) ToProjectMetadataItemArrayOutput() ProjectMetadataItemArrayOutput {
+	return o
+}
+
+func (o ProjectMetadataItemArrayOutput) ToProjectMetadataItemArrayOutputWithContext(ctx context.Context) ProjectMetadataItemArrayOutput {
+	return o
+}
+
+func (o ProjectMetadataItemArrayOutput) Index(i pulumi.IntInput) ProjectMetadataItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectMetadataItem {
+		return vs[0].([]ProjectMetadataItem)[vs[1].(int)]
+	}).(ProjectMetadataItemOutput)
+}
+
+type ProjectMetadataItemMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectMetadataItemMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectMetadataItem)(nil))
+}
+
+func (o ProjectMetadataItemMapOutput) ToProjectMetadataItemMapOutput() ProjectMetadataItemMapOutput {
+	return o
+}
+
+func (o ProjectMetadataItemMapOutput) ToProjectMetadataItemMapOutputWithContext(ctx context.Context) ProjectMetadataItemMapOutput {
+	return o
+}
+
+func (o ProjectMetadataItemMapOutput) MapIndex(k pulumi.StringInput) ProjectMetadataItemOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectMetadataItem {
+		return vs[0].(map[string]ProjectMetadataItem)[vs[1].(string)]
+	}).(ProjectMetadataItemOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectMetadataItemOutput{})
+	pulumi.RegisterOutputType(ProjectMetadataItemPtrOutput{})
+	pulumi.RegisterOutputType(ProjectMetadataItemArrayOutput{})
+	pulumi.RegisterOutputType(ProjectMetadataItemMapOutput{})
 }

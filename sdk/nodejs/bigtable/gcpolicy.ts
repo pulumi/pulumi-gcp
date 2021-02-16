@@ -128,7 +128,8 @@ export class GCPolicy extends pulumi.CustomResource {
     constructor(name: string, args: GCPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GCPolicyArgs | GCPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GCPolicyState | undefined;
             inputs["columnFamily"] = state ? state.columnFamily : undefined;
             inputs["instanceName"] = state ? state.instanceName : undefined;
@@ -139,13 +140,13 @@ export class GCPolicy extends pulumi.CustomResource {
             inputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as GCPolicyArgs | undefined;
-            if ((!args || args.columnFamily === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.columnFamily === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'columnFamily'");
             }
-            if ((!args || args.instanceName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceName'");
             }
-            if ((!args || args.table === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.table === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'table'");
             }
             inputs["columnFamily"] = args ? args.columnFamily : undefined;
@@ -156,12 +157,8 @@ export class GCPolicy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["table"] = args ? args.table : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GCPolicy.__pulumiType, name, inputs, opts);
     }

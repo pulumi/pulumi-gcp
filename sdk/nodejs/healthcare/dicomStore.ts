@@ -116,7 +116,8 @@ export class DicomStore extends pulumi.CustomResource {
     constructor(name: string, args: DicomStoreArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DicomStoreArgs | DicomStoreState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DicomStoreState | undefined;
             inputs["dataset"] = state ? state.dataset : undefined;
             inputs["labels"] = state ? state.labels : undefined;
@@ -125,7 +126,7 @@ export class DicomStore extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as DicomStoreArgs | undefined;
-            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
             inputs["dataset"] = args ? args.dataset : undefined;
@@ -134,12 +135,8 @@ export class DicomStore extends pulumi.CustomResource {
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DicomStore.__pulumiType, name, inputs, opts);
     }

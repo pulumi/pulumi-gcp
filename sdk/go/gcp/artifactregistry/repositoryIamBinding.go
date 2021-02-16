@@ -298,6 +298,85 @@ func (i *RepositoryIamBinding) ToRepositoryIamBindingOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingOutput)
 }
 
+func (i *RepositoryIamBinding) ToRepositoryIamBindingPtrOutput() RepositoryIamBindingPtrOutput {
+	return i.ToRepositoryIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *RepositoryIamBinding) ToRepositoryIamBindingPtrOutputWithContext(ctx context.Context) RepositoryIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingPtrOutput)
+}
+
+type RepositoryIamBindingPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryIamBindingPtrOutput() RepositoryIamBindingPtrOutput
+	ToRepositoryIamBindingPtrOutputWithContext(ctx context.Context) RepositoryIamBindingPtrOutput
+}
+
+type repositoryIamBindingPtrType RepositoryIamBindingArgs
+
+func (*repositoryIamBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamBinding)(nil))
+}
+
+func (i *repositoryIamBindingPtrType) ToRepositoryIamBindingPtrOutput() RepositoryIamBindingPtrOutput {
+	return i.ToRepositoryIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryIamBindingPtrType) ToRepositoryIamBindingPtrOutputWithContext(ctx context.Context) RepositoryIamBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingPtrOutput)
+}
+
+// RepositoryIamBindingArrayInput is an input type that accepts RepositoryIamBindingArray and RepositoryIamBindingArrayOutput values.
+// You can construct a concrete instance of `RepositoryIamBindingArrayInput` via:
+//
+//          RepositoryIamBindingArray{ RepositoryIamBindingArgs{...} }
+type RepositoryIamBindingArrayInput interface {
+	pulumi.Input
+
+	ToRepositoryIamBindingArrayOutput() RepositoryIamBindingArrayOutput
+	ToRepositoryIamBindingArrayOutputWithContext(context.Context) RepositoryIamBindingArrayOutput
+}
+
+type RepositoryIamBindingArray []RepositoryIamBindingInput
+
+func (RepositoryIamBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RepositoryIamBinding)(nil))
+}
+
+func (i RepositoryIamBindingArray) ToRepositoryIamBindingArrayOutput() RepositoryIamBindingArrayOutput {
+	return i.ToRepositoryIamBindingArrayOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamBindingArray) ToRepositoryIamBindingArrayOutputWithContext(ctx context.Context) RepositoryIamBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingArrayOutput)
+}
+
+// RepositoryIamBindingMapInput is an input type that accepts RepositoryIamBindingMap and RepositoryIamBindingMapOutput values.
+// You can construct a concrete instance of `RepositoryIamBindingMapInput` via:
+//
+//          RepositoryIamBindingMap{ "key": RepositoryIamBindingArgs{...} }
+type RepositoryIamBindingMapInput interface {
+	pulumi.Input
+
+	ToRepositoryIamBindingMapOutput() RepositoryIamBindingMapOutput
+	ToRepositoryIamBindingMapOutputWithContext(context.Context) RepositoryIamBindingMapOutput
+}
+
+type RepositoryIamBindingMap map[string]RepositoryIamBindingInput
+
+func (RepositoryIamBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RepositoryIamBinding)(nil))
+}
+
+func (i RepositoryIamBindingMap) ToRepositoryIamBindingMapOutput() RepositoryIamBindingMapOutput {
+	return i.ToRepositoryIamBindingMapOutputWithContext(context.Background())
+}
+
+func (i RepositoryIamBindingMap) ToRepositoryIamBindingMapOutputWithContext(ctx context.Context) RepositoryIamBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryIamBindingMapOutput)
+}
+
 type RepositoryIamBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -314,6 +393,75 @@ func (o RepositoryIamBindingOutput) ToRepositoryIamBindingOutputWithContext(ctx 
 	return o
 }
 
+func (o RepositoryIamBindingOutput) ToRepositoryIamBindingPtrOutput() RepositoryIamBindingPtrOutput {
+	return o.ToRepositoryIamBindingPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryIamBindingOutput) ToRepositoryIamBindingPtrOutputWithContext(ctx context.Context) RepositoryIamBindingPtrOutput {
+	return o.ApplyT(func(v RepositoryIamBinding) *RepositoryIamBinding {
+		return &v
+	}).(RepositoryIamBindingPtrOutput)
+}
+
+type RepositoryIamBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RepositoryIamBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryIamBinding)(nil))
+}
+
+func (o RepositoryIamBindingPtrOutput) ToRepositoryIamBindingPtrOutput() RepositoryIamBindingPtrOutput {
+	return o
+}
+
+func (o RepositoryIamBindingPtrOutput) ToRepositoryIamBindingPtrOutputWithContext(ctx context.Context) RepositoryIamBindingPtrOutput {
+	return o
+}
+
+type RepositoryIamBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RepositoryIamBinding)(nil))
+}
+
+func (o RepositoryIamBindingArrayOutput) ToRepositoryIamBindingArrayOutput() RepositoryIamBindingArrayOutput {
+	return o
+}
+
+func (o RepositoryIamBindingArrayOutput) ToRepositoryIamBindingArrayOutputWithContext(ctx context.Context) RepositoryIamBindingArrayOutput {
+	return o
+}
+
+func (o RepositoryIamBindingArrayOutput) Index(i pulumi.IntInput) RepositoryIamBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RepositoryIamBinding {
+		return vs[0].([]RepositoryIamBinding)[vs[1].(int)]
+	}).(RepositoryIamBindingOutput)
+}
+
+type RepositoryIamBindingMapOutput struct{ *pulumi.OutputState }
+
+func (RepositoryIamBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RepositoryIamBinding)(nil))
+}
+
+func (o RepositoryIamBindingMapOutput) ToRepositoryIamBindingMapOutput() RepositoryIamBindingMapOutput {
+	return o
+}
+
+func (o RepositoryIamBindingMapOutput) ToRepositoryIamBindingMapOutputWithContext(ctx context.Context) RepositoryIamBindingMapOutput {
+	return o
+}
+
+func (o RepositoryIamBindingMapOutput) MapIndex(k pulumi.StringInput) RepositoryIamBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RepositoryIamBinding {
+		return vs[0].(map[string]RepositoryIamBinding)[vs[1].(string)]
+	}).(RepositoryIamBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RepositoryIamBindingOutput{})
+	pulumi.RegisterOutputType(RepositoryIamBindingPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryIamBindingArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryIamBindingMapOutput{})
 }

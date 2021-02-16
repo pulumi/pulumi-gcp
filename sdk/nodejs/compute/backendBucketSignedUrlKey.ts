@@ -99,7 +99,8 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
     constructor(name: string, args: BackendBucketSignedUrlKeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BackendBucketSignedUrlKeyArgs | BackendBucketSignedUrlKeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BackendBucketSignedUrlKeyState | undefined;
             inputs["backendBucket"] = state ? state.backendBucket : undefined;
             inputs["keyValue"] = state ? state.keyValue : undefined;
@@ -107,10 +108,10 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as BackendBucketSignedUrlKeyArgs | undefined;
-            if ((!args || args.backendBucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.backendBucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backendBucket'");
             }
-            if ((!args || args.keyValue === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.keyValue === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keyValue'");
             }
             inputs["backendBucket"] = args ? args.backendBucket : undefined;
@@ -118,12 +119,8 @@ export class BackendBucketSignedUrlKey extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BackendBucketSignedUrlKey.__pulumiType, name, inputs, opts);
     }

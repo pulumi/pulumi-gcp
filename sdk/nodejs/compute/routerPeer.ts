@@ -171,7 +171,8 @@ export class RouterPeer extends pulumi.CustomResource {
     constructor(name: string, args: RouterPeerArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterPeerArgs | RouterPeerState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterPeerState | undefined;
             inputs["advertiseMode"] = state ? state.advertiseMode : undefined;
             inputs["advertisedGroups"] = state ? state.advertisedGroups : undefined;
@@ -188,16 +189,16 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["router"] = state ? state.router : undefined;
         } else {
             const args = argsOrState as RouterPeerArgs | undefined;
-            if ((!args || args.interface === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.interface === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'interface'");
             }
-            if ((!args || args.peerAsn === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerAsn === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerAsn'");
             }
-            if ((!args || args.peerIpAddress === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.peerIpAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'peerIpAddress'");
             }
-            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
             inputs["advertiseMode"] = args ? args.advertiseMode : undefined;
@@ -214,12 +215,8 @@ export class RouterPeer extends pulumi.CustomResource {
             inputs["ipAddress"] = undefined /*out*/;
             inputs["managementType"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouterPeer.__pulumiType, name, inputs, opts);
     }

@@ -291,6 +291,85 @@ func (i *ProjectFeed) ToProjectFeedOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedOutput)
 }
 
+func (i *ProjectFeed) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
+	return i.ToProjectFeedPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectFeed) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedPtrOutput)
+}
+
+type ProjectFeedPtrInput interface {
+	pulumi.Input
+
+	ToProjectFeedPtrOutput() ProjectFeedPtrOutput
+	ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput
+}
+
+type projectFeedPtrType ProjectFeedArgs
+
+func (*projectFeedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectFeed)(nil))
+}
+
+func (i *projectFeedPtrType) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
+	return i.ToProjectFeedPtrOutputWithContext(context.Background())
+}
+
+func (i *projectFeedPtrType) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedPtrOutput)
+}
+
+// ProjectFeedArrayInput is an input type that accepts ProjectFeedArray and ProjectFeedArrayOutput values.
+// You can construct a concrete instance of `ProjectFeedArrayInput` via:
+//
+//          ProjectFeedArray{ ProjectFeedArgs{...} }
+type ProjectFeedArrayInput interface {
+	pulumi.Input
+
+	ToProjectFeedArrayOutput() ProjectFeedArrayOutput
+	ToProjectFeedArrayOutputWithContext(context.Context) ProjectFeedArrayOutput
+}
+
+type ProjectFeedArray []ProjectFeedInput
+
+func (ProjectFeedArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectFeed)(nil))
+}
+
+func (i ProjectFeedArray) ToProjectFeedArrayOutput() ProjectFeedArrayOutput {
+	return i.ToProjectFeedArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectFeedArray) ToProjectFeedArrayOutputWithContext(ctx context.Context) ProjectFeedArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedArrayOutput)
+}
+
+// ProjectFeedMapInput is an input type that accepts ProjectFeedMap and ProjectFeedMapOutput values.
+// You can construct a concrete instance of `ProjectFeedMapInput` via:
+//
+//          ProjectFeedMap{ "key": ProjectFeedArgs{...} }
+type ProjectFeedMapInput interface {
+	pulumi.Input
+
+	ToProjectFeedMapOutput() ProjectFeedMapOutput
+	ToProjectFeedMapOutputWithContext(context.Context) ProjectFeedMapOutput
+}
+
+type ProjectFeedMap map[string]ProjectFeedInput
+
+func (ProjectFeedMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectFeed)(nil))
+}
+
+func (i ProjectFeedMap) ToProjectFeedMapOutput() ProjectFeedMapOutput {
+	return i.ToProjectFeedMapOutputWithContext(context.Background())
+}
+
+func (i ProjectFeedMap) ToProjectFeedMapOutputWithContext(ctx context.Context) ProjectFeedMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectFeedMapOutput)
+}
+
 type ProjectFeedOutput struct {
 	*pulumi.OutputState
 }
@@ -307,6 +386,75 @@ func (o ProjectFeedOutput) ToProjectFeedOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProjectFeedOutput) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
+	return o.ToProjectFeedPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectFeedOutput) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
+	return o.ApplyT(func(v ProjectFeed) *ProjectFeed {
+		return &v
+	}).(ProjectFeedPtrOutput)
+}
+
+type ProjectFeedPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectFeedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectFeed)(nil))
+}
+
+func (o ProjectFeedPtrOutput) ToProjectFeedPtrOutput() ProjectFeedPtrOutput {
+	return o
+}
+
+func (o ProjectFeedPtrOutput) ToProjectFeedPtrOutputWithContext(ctx context.Context) ProjectFeedPtrOutput {
+	return o
+}
+
+type ProjectFeedArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeedArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectFeed)(nil))
+}
+
+func (o ProjectFeedArrayOutput) ToProjectFeedArrayOutput() ProjectFeedArrayOutput {
+	return o
+}
+
+func (o ProjectFeedArrayOutput) ToProjectFeedArrayOutputWithContext(ctx context.Context) ProjectFeedArrayOutput {
+	return o
+}
+
+func (o ProjectFeedArrayOutput) Index(i pulumi.IntInput) ProjectFeedOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectFeed {
+		return vs[0].([]ProjectFeed)[vs[1].(int)]
+	}).(ProjectFeedOutput)
+}
+
+type ProjectFeedMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectFeedMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectFeed)(nil))
+}
+
+func (o ProjectFeedMapOutput) ToProjectFeedMapOutput() ProjectFeedMapOutput {
+	return o
+}
+
+func (o ProjectFeedMapOutput) ToProjectFeedMapOutputWithContext(ctx context.Context) ProjectFeedMapOutput {
+	return o
+}
+
+func (o ProjectFeedMapOutput) MapIndex(k pulumi.StringInput) ProjectFeedOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectFeed {
+		return vs[0].(map[string]ProjectFeed)[vs[1].(string)]
+	}).(ProjectFeedOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectFeedOutput{})
+	pulumi.RegisterOutputType(ProjectFeedPtrOutput{})
+	pulumi.RegisterOutputType(ProjectFeedArrayOutput{})
+	pulumi.RegisterOutputType(ProjectFeedMapOutput{})
 }

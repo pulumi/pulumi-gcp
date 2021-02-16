@@ -154,6 +154,85 @@ func (i *ProjectDefaultNetworkTier) ToProjectDefaultNetworkTierOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierOutput)
 }
 
+func (i *ProjectDefaultNetworkTier) ToProjectDefaultNetworkTierPtrOutput() ProjectDefaultNetworkTierPtrOutput {
+	return i.ToProjectDefaultNetworkTierPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectDefaultNetworkTier) ToProjectDefaultNetworkTierPtrOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierPtrOutput)
+}
+
+type ProjectDefaultNetworkTierPtrInput interface {
+	pulumi.Input
+
+	ToProjectDefaultNetworkTierPtrOutput() ProjectDefaultNetworkTierPtrOutput
+	ToProjectDefaultNetworkTierPtrOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierPtrOutput
+}
+
+type projectDefaultNetworkTierPtrType ProjectDefaultNetworkTierArgs
+
+func (*projectDefaultNetworkTierPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultNetworkTier)(nil))
+}
+
+func (i *projectDefaultNetworkTierPtrType) ToProjectDefaultNetworkTierPtrOutput() ProjectDefaultNetworkTierPtrOutput {
+	return i.ToProjectDefaultNetworkTierPtrOutputWithContext(context.Background())
+}
+
+func (i *projectDefaultNetworkTierPtrType) ToProjectDefaultNetworkTierPtrOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierPtrOutput)
+}
+
+// ProjectDefaultNetworkTierArrayInput is an input type that accepts ProjectDefaultNetworkTierArray and ProjectDefaultNetworkTierArrayOutput values.
+// You can construct a concrete instance of `ProjectDefaultNetworkTierArrayInput` via:
+//
+//          ProjectDefaultNetworkTierArray{ ProjectDefaultNetworkTierArgs{...} }
+type ProjectDefaultNetworkTierArrayInput interface {
+	pulumi.Input
+
+	ToProjectDefaultNetworkTierArrayOutput() ProjectDefaultNetworkTierArrayOutput
+	ToProjectDefaultNetworkTierArrayOutputWithContext(context.Context) ProjectDefaultNetworkTierArrayOutput
+}
+
+type ProjectDefaultNetworkTierArray []ProjectDefaultNetworkTierInput
+
+func (ProjectDefaultNetworkTierArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectDefaultNetworkTier)(nil))
+}
+
+func (i ProjectDefaultNetworkTierArray) ToProjectDefaultNetworkTierArrayOutput() ProjectDefaultNetworkTierArrayOutput {
+	return i.ToProjectDefaultNetworkTierArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultNetworkTierArray) ToProjectDefaultNetworkTierArrayOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierArrayOutput)
+}
+
+// ProjectDefaultNetworkTierMapInput is an input type that accepts ProjectDefaultNetworkTierMap and ProjectDefaultNetworkTierMapOutput values.
+// You can construct a concrete instance of `ProjectDefaultNetworkTierMapInput` via:
+//
+//          ProjectDefaultNetworkTierMap{ "key": ProjectDefaultNetworkTierArgs{...} }
+type ProjectDefaultNetworkTierMapInput interface {
+	pulumi.Input
+
+	ToProjectDefaultNetworkTierMapOutput() ProjectDefaultNetworkTierMapOutput
+	ToProjectDefaultNetworkTierMapOutputWithContext(context.Context) ProjectDefaultNetworkTierMapOutput
+}
+
+type ProjectDefaultNetworkTierMap map[string]ProjectDefaultNetworkTierInput
+
+func (ProjectDefaultNetworkTierMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectDefaultNetworkTier)(nil))
+}
+
+func (i ProjectDefaultNetworkTierMap) ToProjectDefaultNetworkTierMapOutput() ProjectDefaultNetworkTierMapOutput {
+	return i.ToProjectDefaultNetworkTierMapOutputWithContext(context.Background())
+}
+
+func (i ProjectDefaultNetworkTierMap) ToProjectDefaultNetworkTierMapOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectDefaultNetworkTierMapOutput)
+}
+
 type ProjectDefaultNetworkTierOutput struct {
 	*pulumi.OutputState
 }
@@ -170,6 +249,75 @@ func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierOutputWithCo
 	return o
 }
 
+func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierPtrOutput() ProjectDefaultNetworkTierPtrOutput {
+	return o.ToProjectDefaultNetworkTierPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectDefaultNetworkTierOutput) ToProjectDefaultNetworkTierPtrOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierPtrOutput {
+	return o.ApplyT(func(v ProjectDefaultNetworkTier) *ProjectDefaultNetworkTier {
+		return &v
+	}).(ProjectDefaultNetworkTierPtrOutput)
+}
+
+type ProjectDefaultNetworkTierPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectDefaultNetworkTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectDefaultNetworkTier)(nil))
+}
+
+func (o ProjectDefaultNetworkTierPtrOutput) ToProjectDefaultNetworkTierPtrOutput() ProjectDefaultNetworkTierPtrOutput {
+	return o
+}
+
+func (o ProjectDefaultNetworkTierPtrOutput) ToProjectDefaultNetworkTierPtrOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierPtrOutput {
+	return o
+}
+
+type ProjectDefaultNetworkTierArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultNetworkTierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectDefaultNetworkTier)(nil))
+}
+
+func (o ProjectDefaultNetworkTierArrayOutput) ToProjectDefaultNetworkTierArrayOutput() ProjectDefaultNetworkTierArrayOutput {
+	return o
+}
+
+func (o ProjectDefaultNetworkTierArrayOutput) ToProjectDefaultNetworkTierArrayOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierArrayOutput {
+	return o
+}
+
+func (o ProjectDefaultNetworkTierArrayOutput) Index(i pulumi.IntInput) ProjectDefaultNetworkTierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectDefaultNetworkTier {
+		return vs[0].([]ProjectDefaultNetworkTier)[vs[1].(int)]
+	}).(ProjectDefaultNetworkTierOutput)
+}
+
+type ProjectDefaultNetworkTierMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectDefaultNetworkTierMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectDefaultNetworkTier)(nil))
+}
+
+func (o ProjectDefaultNetworkTierMapOutput) ToProjectDefaultNetworkTierMapOutput() ProjectDefaultNetworkTierMapOutput {
+	return o
+}
+
+func (o ProjectDefaultNetworkTierMapOutput) ToProjectDefaultNetworkTierMapOutputWithContext(ctx context.Context) ProjectDefaultNetworkTierMapOutput {
+	return o
+}
+
+func (o ProjectDefaultNetworkTierMapOutput) MapIndex(k pulumi.StringInput) ProjectDefaultNetworkTierOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectDefaultNetworkTier {
+		return vs[0].(map[string]ProjectDefaultNetworkTier)[vs[1].(string)]
+	}).(ProjectDefaultNetworkTierOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectDefaultNetworkTierOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultNetworkTierPtrOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultNetworkTierArrayOutput{})
+	pulumi.RegisterOutputType(ProjectDefaultNetworkTierMapOutput{})
 }

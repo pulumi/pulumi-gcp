@@ -127,7 +127,8 @@ export class DomainMapping extends pulumi.CustomResource {
     constructor(name: string, args: DomainMappingArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DomainMappingArgs | DomainMappingState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as DomainMappingState | undefined;
             inputs["location"] = state ? state.location : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
@@ -137,13 +138,13 @@ export class DomainMapping extends pulumi.CustomResource {
             inputs["statuses"] = state ? state.statuses : undefined;
         } else {
             const args = argsOrState as DomainMappingArgs | undefined;
-            if ((!args || args.location === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.metadata === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metadata === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadata'");
             }
-            if ((!args || args.spec === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.spec === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'spec'");
             }
             inputs["location"] = args ? args.location : undefined;
@@ -153,12 +154,8 @@ export class DomainMapping extends pulumi.CustomResource {
             inputs["spec"] = args ? args.spec : undefined;
             inputs["statuses"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(DomainMapping.__pulumiType, name, inputs, opts);
     }

@@ -157,7 +157,8 @@ export class Policy extends pulumi.CustomResource {
     constructor(name: string, args: PolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PolicyArgs | PolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
             inputs["admissionWhitelistPatterns"] = state ? state.admissionWhitelistPatterns : undefined;
             inputs["clusterAdmissionRules"] = state ? state.clusterAdmissionRules : undefined;
@@ -167,7 +168,7 @@ export class Policy extends pulumi.CustomResource {
             inputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as PolicyArgs | undefined;
-            if ((!args || args.defaultAdmissionRule === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.defaultAdmissionRule === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'defaultAdmissionRule'");
             }
             inputs["admissionWhitelistPatterns"] = args ? args.admissionWhitelistPatterns : undefined;
@@ -177,12 +178,8 @@ export class Policy extends pulumi.CustomResource {
             inputs["globalPolicyEvaluationMode"] = args ? args.globalPolicyEvaluationMode : undefined;
             inputs["project"] = args ? args.project : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Policy.__pulumiType, name, inputs, opts);
     }

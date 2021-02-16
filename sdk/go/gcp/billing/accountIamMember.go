@@ -116,6 +116,85 @@ func (i *AccountIamMember) ToAccountIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberOutput)
 }
 
+func (i *AccountIamMember) ToAccountIamMemberPtrOutput() AccountIamMemberPtrOutput {
+	return i.ToAccountIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *AccountIamMember) ToAccountIamMemberPtrOutputWithContext(ctx context.Context) AccountIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberPtrOutput)
+}
+
+type AccountIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToAccountIamMemberPtrOutput() AccountIamMemberPtrOutput
+	ToAccountIamMemberPtrOutputWithContext(ctx context.Context) AccountIamMemberPtrOutput
+}
+
+type accountIamMemberPtrType AccountIamMemberArgs
+
+func (*accountIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountIamMember)(nil))
+}
+
+func (i *accountIamMemberPtrType) ToAccountIamMemberPtrOutput() AccountIamMemberPtrOutput {
+	return i.ToAccountIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *accountIamMemberPtrType) ToAccountIamMemberPtrOutputWithContext(ctx context.Context) AccountIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberPtrOutput)
+}
+
+// AccountIamMemberArrayInput is an input type that accepts AccountIamMemberArray and AccountIamMemberArrayOutput values.
+// You can construct a concrete instance of `AccountIamMemberArrayInput` via:
+//
+//          AccountIamMemberArray{ AccountIamMemberArgs{...} }
+type AccountIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToAccountIamMemberArrayOutput() AccountIamMemberArrayOutput
+	ToAccountIamMemberArrayOutputWithContext(context.Context) AccountIamMemberArrayOutput
+}
+
+type AccountIamMemberArray []AccountIamMemberInput
+
+func (AccountIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AccountIamMember)(nil))
+}
+
+func (i AccountIamMemberArray) ToAccountIamMemberArrayOutput() AccountIamMemberArrayOutput {
+	return i.ToAccountIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i AccountIamMemberArray) ToAccountIamMemberArrayOutputWithContext(ctx context.Context) AccountIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberArrayOutput)
+}
+
+// AccountIamMemberMapInput is an input type that accepts AccountIamMemberMap and AccountIamMemberMapOutput values.
+// You can construct a concrete instance of `AccountIamMemberMapInput` via:
+//
+//          AccountIamMemberMap{ "key": AccountIamMemberArgs{...} }
+type AccountIamMemberMapInput interface {
+	pulumi.Input
+
+	ToAccountIamMemberMapOutput() AccountIamMemberMapOutput
+	ToAccountIamMemberMapOutputWithContext(context.Context) AccountIamMemberMapOutput
+}
+
+type AccountIamMemberMap map[string]AccountIamMemberInput
+
+func (AccountIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AccountIamMember)(nil))
+}
+
+func (i AccountIamMemberMap) ToAccountIamMemberMapOutput() AccountIamMemberMapOutput {
+	return i.ToAccountIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i AccountIamMemberMap) ToAccountIamMemberMapOutputWithContext(ctx context.Context) AccountIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccountIamMemberMapOutput)
+}
+
 type AccountIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -132,6 +211,75 @@ func (o AccountIamMemberOutput) ToAccountIamMemberOutputWithContext(ctx context.
 	return o
 }
 
+func (o AccountIamMemberOutput) ToAccountIamMemberPtrOutput() AccountIamMemberPtrOutput {
+	return o.ToAccountIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o AccountIamMemberOutput) ToAccountIamMemberPtrOutputWithContext(ctx context.Context) AccountIamMemberPtrOutput {
+	return o.ApplyT(func(v AccountIamMember) *AccountIamMember {
+		return &v
+	}).(AccountIamMemberPtrOutput)
+}
+
+type AccountIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AccountIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccountIamMember)(nil))
+}
+
+func (o AccountIamMemberPtrOutput) ToAccountIamMemberPtrOutput() AccountIamMemberPtrOutput {
+	return o
+}
+
+func (o AccountIamMemberPtrOutput) ToAccountIamMemberPtrOutputWithContext(ctx context.Context) AccountIamMemberPtrOutput {
+	return o
+}
+
+type AccountIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (AccountIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccountIamMember)(nil))
+}
+
+func (o AccountIamMemberArrayOutput) ToAccountIamMemberArrayOutput() AccountIamMemberArrayOutput {
+	return o
+}
+
+func (o AccountIamMemberArrayOutput) ToAccountIamMemberArrayOutputWithContext(ctx context.Context) AccountIamMemberArrayOutput {
+	return o
+}
+
+func (o AccountIamMemberArrayOutput) Index(i pulumi.IntInput) AccountIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccountIamMember {
+		return vs[0].([]AccountIamMember)[vs[1].(int)]
+	}).(AccountIamMemberOutput)
+}
+
+type AccountIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (AccountIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AccountIamMember)(nil))
+}
+
+func (o AccountIamMemberMapOutput) ToAccountIamMemberMapOutput() AccountIamMemberMapOutput {
+	return o
+}
+
+func (o AccountIamMemberMapOutput) ToAccountIamMemberMapOutputWithContext(ctx context.Context) AccountIamMemberMapOutput {
+	return o
+}
+
+func (o AccountIamMemberMapOutput) MapIndex(k pulumi.StringInput) AccountIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AccountIamMember {
+		return vs[0].(map[string]AccountIamMember)[vs[1].(string)]
+	}).(AccountIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AccountIamMemberOutput{})
+	pulumi.RegisterOutputType(AccountIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(AccountIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(AccountIamMemberMapOutput{})
 }

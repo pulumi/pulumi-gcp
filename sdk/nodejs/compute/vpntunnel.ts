@@ -299,7 +299,8 @@ export class VPNTunnel extends pulumi.CustomResource {
     constructor(name: string, args: VPNTunnelArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: VPNTunnelArgs | VPNTunnelState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as VPNTunnelState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -326,7 +327,7 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["vpnGatewayInterface"] = state ? state.vpnGatewayInterface : undefined;
         } else {
             const args = argsOrState as VPNTunnelArgs | undefined;
-            if ((!args || args.sharedSecret === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.sharedSecret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sharedSecret'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -353,12 +354,8 @@ export class VPNTunnel extends pulumi.CustomResource {
             inputs["sharedSecretHash"] = undefined /*out*/;
             inputs["tunnelId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(VPNTunnel.__pulumiType, name, inputs, opts);
     }

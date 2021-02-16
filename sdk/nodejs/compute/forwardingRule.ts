@@ -551,7 +551,8 @@ export class ForwardingRule extends pulumi.CustomResource {
     constructor(name: string, args?: ForwardingRuleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ForwardingRuleArgs | ForwardingRuleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ForwardingRuleState | undefined;
             inputs["allPorts"] = state ? state.allPorts : undefined;
             inputs["allowGlobalAccess"] = state ? state.allowGlobalAccess : undefined;
@@ -602,12 +603,8 @@ export class ForwardingRule extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["serviceName"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ForwardingRule.__pulumiType, name, inputs, opts);
     }

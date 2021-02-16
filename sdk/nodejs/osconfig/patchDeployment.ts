@@ -321,7 +321,8 @@ export class PatchDeployment extends pulumi.CustomResource {
     constructor(name: string, args: PatchDeploymentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: PatchDeploymentArgs | PatchDeploymentState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as PatchDeploymentState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -338,10 +339,10 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as PatchDeploymentArgs | undefined;
-            if ((!args || args.instanceFilter === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instanceFilter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceFilter'");
             }
-            if ((!args || args.patchDeploymentId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.patchDeploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'patchDeploymentId'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -358,12 +359,8 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(PatchDeployment.__pulumiType, name, inputs, opts);
     }

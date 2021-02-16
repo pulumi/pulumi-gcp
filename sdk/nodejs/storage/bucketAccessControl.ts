@@ -125,7 +125,8 @@ export class BucketAccessControl extends pulumi.CustomResource {
     constructor(name: string, args: BucketAccessControlArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: BucketAccessControlArgs | BucketAccessControlState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as BucketAccessControlState | undefined;
             inputs["bucket"] = state ? state.bucket : undefined;
             inputs["domain"] = state ? state.domain : undefined;
@@ -134,10 +135,10 @@ export class BucketAccessControl extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as BucketAccessControlArgs | undefined;
-            if ((!args || args.bucket === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.bucket === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.entity === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.entity === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entity'");
             }
             inputs["bucket"] = args ? args.bucket : undefined;
@@ -146,12 +147,8 @@ export class BucketAccessControl extends pulumi.CustomResource {
             inputs["domain"] = undefined /*out*/;
             inputs["email"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(BucketAccessControl.__pulumiType, name, inputs, opts);
     }

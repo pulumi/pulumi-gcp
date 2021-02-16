@@ -262,6 +262,85 @@ func (i *ServiceIamMember) ToServiceIamMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberOutput)
 }
 
+func (i *ServiceIamMember) ToServiceIamMemberPtrOutput() ServiceIamMemberPtrOutput {
+	return i.ToServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *ServiceIamMember) ToServiceIamMemberPtrOutputWithContext(ctx context.Context) ServiceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberPtrOutput)
+}
+
+type ServiceIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToServiceIamMemberPtrOutput() ServiceIamMemberPtrOutput
+	ToServiceIamMemberPtrOutputWithContext(ctx context.Context) ServiceIamMemberPtrOutput
+}
+
+type serviceIamMemberPtrType ServiceIamMemberArgs
+
+func (*serviceIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamMember)(nil))
+}
+
+func (i *serviceIamMemberPtrType) ToServiceIamMemberPtrOutput() ServiceIamMemberPtrOutput {
+	return i.ToServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceIamMemberPtrType) ToServiceIamMemberPtrOutputWithContext(ctx context.Context) ServiceIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberPtrOutput)
+}
+
+// ServiceIamMemberArrayInput is an input type that accepts ServiceIamMemberArray and ServiceIamMemberArrayOutput values.
+// You can construct a concrete instance of `ServiceIamMemberArrayInput` via:
+//
+//          ServiceIamMemberArray{ ServiceIamMemberArgs{...} }
+type ServiceIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToServiceIamMemberArrayOutput() ServiceIamMemberArrayOutput
+	ToServiceIamMemberArrayOutputWithContext(context.Context) ServiceIamMemberArrayOutput
+}
+
+type ServiceIamMemberArray []ServiceIamMemberInput
+
+func (ServiceIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServiceIamMember)(nil))
+}
+
+func (i ServiceIamMemberArray) ToServiceIamMemberArrayOutput() ServiceIamMemberArrayOutput {
+	return i.ToServiceIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceIamMemberArray) ToServiceIamMemberArrayOutputWithContext(ctx context.Context) ServiceIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberArrayOutput)
+}
+
+// ServiceIamMemberMapInput is an input type that accepts ServiceIamMemberMap and ServiceIamMemberMapOutput values.
+// You can construct a concrete instance of `ServiceIamMemberMapInput` via:
+//
+//          ServiceIamMemberMap{ "key": ServiceIamMemberArgs{...} }
+type ServiceIamMemberMapInput interface {
+	pulumi.Input
+
+	ToServiceIamMemberMapOutput() ServiceIamMemberMapOutput
+	ToServiceIamMemberMapOutputWithContext(context.Context) ServiceIamMemberMapOutput
+}
+
+type ServiceIamMemberMap map[string]ServiceIamMemberInput
+
+func (ServiceIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServiceIamMember)(nil))
+}
+
+func (i ServiceIamMemberMap) ToServiceIamMemberMapOutput() ServiceIamMemberMapOutput {
+	return i.ToServiceIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i ServiceIamMemberMap) ToServiceIamMemberMapOutputWithContext(ctx context.Context) ServiceIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceIamMemberMapOutput)
+}
+
 type ServiceIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -278,6 +357,75 @@ func (o ServiceIamMemberOutput) ToServiceIamMemberOutputWithContext(ctx context.
 	return o
 }
 
+func (o ServiceIamMemberOutput) ToServiceIamMemberPtrOutput() ServiceIamMemberPtrOutput {
+	return o.ToServiceIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceIamMemberOutput) ToServiceIamMemberPtrOutputWithContext(ctx context.Context) ServiceIamMemberPtrOutput {
+	return o.ApplyT(func(v ServiceIamMember) *ServiceIamMember {
+		return &v
+	}).(ServiceIamMemberPtrOutput)
+}
+
+type ServiceIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServiceIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceIamMember)(nil))
+}
+
+func (o ServiceIamMemberPtrOutput) ToServiceIamMemberPtrOutput() ServiceIamMemberPtrOutput {
+	return o
+}
+
+func (o ServiceIamMemberPtrOutput) ToServiceIamMemberPtrOutputWithContext(ctx context.Context) ServiceIamMemberPtrOutput {
+	return o
+}
+
+type ServiceIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceIamMember)(nil))
+}
+
+func (o ServiceIamMemberArrayOutput) ToServiceIamMemberArrayOutput() ServiceIamMemberArrayOutput {
+	return o
+}
+
+func (o ServiceIamMemberArrayOutput) ToServiceIamMemberArrayOutputWithContext(ctx context.Context) ServiceIamMemberArrayOutput {
+	return o
+}
+
+func (o ServiceIamMemberArrayOutput) Index(i pulumi.IntInput) ServiceIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceIamMember {
+		return vs[0].([]ServiceIamMember)[vs[1].(int)]
+	}).(ServiceIamMemberOutput)
+}
+
+type ServiceIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (ServiceIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServiceIamMember)(nil))
+}
+
+func (o ServiceIamMemberMapOutput) ToServiceIamMemberMapOutput() ServiceIamMemberMapOutput {
+	return o
+}
+
+func (o ServiceIamMemberMapOutput) ToServiceIamMemberMapOutputWithContext(ctx context.Context) ServiceIamMemberMapOutput {
+	return o
+}
+
+func (o ServiceIamMemberMapOutput) MapIndex(k pulumi.StringInput) ServiceIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServiceIamMember {
+		return vs[0].(map[string]ServiceIamMember)[vs[1].(string)]
+	}).(ServiceIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServiceIamMemberOutput{})
+	pulumi.RegisterOutputType(ServiceIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(ServiceIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(ServiceIamMemberMapOutput{})
 }

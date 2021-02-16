@@ -246,7 +246,8 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
     constructor(name: string, args: RegionNetworkEndpointGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RegionNetworkEndpointGroupArgs | RegionNetworkEndpointGroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RegionNetworkEndpointGroupState | undefined;
             inputs["appEngine"] = state ? state.appEngine : undefined;
             inputs["cloudFunction"] = state ? state.cloudFunction : undefined;
@@ -259,7 +260,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["selfLink"] = state ? state.selfLink : undefined;
         } else {
             const args = argsOrState as RegionNetworkEndpointGroupArgs | undefined;
-            if ((!args || args.region === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
             inputs["appEngine"] = args ? args.appEngine : undefined;
@@ -272,12 +273,8 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RegionNetworkEndpointGroup.__pulumiType, name, inputs, opts);
     }

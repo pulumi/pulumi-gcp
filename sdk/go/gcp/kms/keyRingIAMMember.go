@@ -406,6 +406,85 @@ func (i *KeyRingIAMMember) ToKeyRingIAMMemberOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberOutput)
 }
 
+func (i *KeyRingIAMMember) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
+	return i.ToKeyRingIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *KeyRingIAMMember) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberPtrOutput)
+}
+
+type KeyRingIAMMemberPtrInput interface {
+	pulumi.Input
+
+	ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput
+	ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput
+}
+
+type keyRingIAMMemberPtrType KeyRingIAMMemberArgs
+
+func (*keyRingIAMMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIAMMember)(nil))
+}
+
+func (i *keyRingIAMMemberPtrType) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
+	return i.ToKeyRingIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *keyRingIAMMemberPtrType) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberPtrOutput)
+}
+
+// KeyRingIAMMemberArrayInput is an input type that accepts KeyRingIAMMemberArray and KeyRingIAMMemberArrayOutput values.
+// You can construct a concrete instance of `KeyRingIAMMemberArrayInput` via:
+//
+//          KeyRingIAMMemberArray{ KeyRingIAMMemberArgs{...} }
+type KeyRingIAMMemberArrayInput interface {
+	pulumi.Input
+
+	ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberArrayOutput
+	ToKeyRingIAMMemberArrayOutputWithContext(context.Context) KeyRingIAMMemberArrayOutput
+}
+
+type KeyRingIAMMemberArray []KeyRingIAMMemberInput
+
+func (KeyRingIAMMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*KeyRingIAMMember)(nil))
+}
+
+func (i KeyRingIAMMemberArray) ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberArrayOutput {
+	return i.ToKeyRingIAMMemberArrayOutputWithContext(context.Background())
+}
+
+func (i KeyRingIAMMemberArray) ToKeyRingIAMMemberArrayOutputWithContext(ctx context.Context) KeyRingIAMMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberArrayOutput)
+}
+
+// KeyRingIAMMemberMapInput is an input type that accepts KeyRingIAMMemberMap and KeyRingIAMMemberMapOutput values.
+// You can construct a concrete instance of `KeyRingIAMMemberMapInput` via:
+//
+//          KeyRingIAMMemberMap{ "key": KeyRingIAMMemberArgs{...} }
+type KeyRingIAMMemberMapInput interface {
+	pulumi.Input
+
+	ToKeyRingIAMMemberMapOutput() KeyRingIAMMemberMapOutput
+	ToKeyRingIAMMemberMapOutputWithContext(context.Context) KeyRingIAMMemberMapOutput
+}
+
+type KeyRingIAMMemberMap map[string]KeyRingIAMMemberInput
+
+func (KeyRingIAMMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*KeyRingIAMMember)(nil))
+}
+
+func (i KeyRingIAMMemberMap) ToKeyRingIAMMemberMapOutput() KeyRingIAMMemberMapOutput {
+	return i.ToKeyRingIAMMemberMapOutputWithContext(context.Background())
+}
+
+func (i KeyRingIAMMemberMap) ToKeyRingIAMMemberMapOutputWithContext(ctx context.Context) KeyRingIAMMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyRingIAMMemberMapOutput)
+}
+
 type KeyRingIAMMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -422,6 +501,75 @@ func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutputWithContext(ctx context.
 	return o
 }
 
+func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
+	return o.ToKeyRingIAMMemberPtrOutputWithContext(context.Background())
+}
+
+func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
+	return o.ApplyT(func(v KeyRingIAMMember) *KeyRingIAMMember {
+		return &v
+	}).(KeyRingIAMMemberPtrOutput)
+}
+
+type KeyRingIAMMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (KeyRingIAMMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyRingIAMMember)(nil))
+}
+
+func (o KeyRingIAMMemberPtrOutput) ToKeyRingIAMMemberPtrOutput() KeyRingIAMMemberPtrOutput {
+	return o
+}
+
+func (o KeyRingIAMMemberPtrOutput) ToKeyRingIAMMemberPtrOutputWithContext(ctx context.Context) KeyRingIAMMemberPtrOutput {
+	return o
+}
+
+type KeyRingIAMMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (KeyRingIAMMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KeyRingIAMMember)(nil))
+}
+
+func (o KeyRingIAMMemberArrayOutput) ToKeyRingIAMMemberArrayOutput() KeyRingIAMMemberArrayOutput {
+	return o
+}
+
+func (o KeyRingIAMMemberArrayOutput) ToKeyRingIAMMemberArrayOutputWithContext(ctx context.Context) KeyRingIAMMemberArrayOutput {
+	return o
+}
+
+func (o KeyRingIAMMemberArrayOutput) Index(i pulumi.IntInput) KeyRingIAMMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KeyRingIAMMember {
+		return vs[0].([]KeyRingIAMMember)[vs[1].(int)]
+	}).(KeyRingIAMMemberOutput)
+}
+
+type KeyRingIAMMemberMapOutput struct{ *pulumi.OutputState }
+
+func (KeyRingIAMMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]KeyRingIAMMember)(nil))
+}
+
+func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutput() KeyRingIAMMemberMapOutput {
+	return o
+}
+
+func (o KeyRingIAMMemberMapOutput) ToKeyRingIAMMemberMapOutputWithContext(ctx context.Context) KeyRingIAMMemberMapOutput {
+	return o
+}
+
+func (o KeyRingIAMMemberMapOutput) MapIndex(k pulumi.StringInput) KeyRingIAMMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) KeyRingIAMMember {
+		return vs[0].(map[string]KeyRingIAMMember)[vs[1].(string)]
+	}).(KeyRingIAMMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(KeyRingIAMMemberOutput{})
+	pulumi.RegisterOutputType(KeyRingIAMMemberPtrOutput{})
+	pulumi.RegisterOutputType(KeyRingIAMMemberArrayOutput{})
+	pulumi.RegisterOutputType(KeyRingIAMMemberMapOutput{})
 }

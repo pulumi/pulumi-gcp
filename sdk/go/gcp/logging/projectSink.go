@@ -303,6 +303,85 @@ func (i *ProjectSink) ToProjectSinkOutputWithContext(ctx context.Context) Projec
 	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkOutput)
 }
 
+func (i *ProjectSink) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
+	return i.ToProjectSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *ProjectSink) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkPtrOutput)
+}
+
+type ProjectSinkPtrInput interface {
+	pulumi.Input
+
+	ToProjectSinkPtrOutput() ProjectSinkPtrOutput
+	ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput
+}
+
+type projectSinkPtrType ProjectSinkArgs
+
+func (*projectSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectSink)(nil))
+}
+
+func (i *projectSinkPtrType) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
+	return i.ToProjectSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *projectSinkPtrType) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkPtrOutput)
+}
+
+// ProjectSinkArrayInput is an input type that accepts ProjectSinkArray and ProjectSinkArrayOutput values.
+// You can construct a concrete instance of `ProjectSinkArrayInput` via:
+//
+//          ProjectSinkArray{ ProjectSinkArgs{...} }
+type ProjectSinkArrayInput interface {
+	pulumi.Input
+
+	ToProjectSinkArrayOutput() ProjectSinkArrayOutput
+	ToProjectSinkArrayOutputWithContext(context.Context) ProjectSinkArrayOutput
+}
+
+type ProjectSinkArray []ProjectSinkInput
+
+func (ProjectSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ProjectSink)(nil))
+}
+
+func (i ProjectSinkArray) ToProjectSinkArrayOutput() ProjectSinkArrayOutput {
+	return i.ToProjectSinkArrayOutputWithContext(context.Background())
+}
+
+func (i ProjectSinkArray) ToProjectSinkArrayOutputWithContext(ctx context.Context) ProjectSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkArrayOutput)
+}
+
+// ProjectSinkMapInput is an input type that accepts ProjectSinkMap and ProjectSinkMapOutput values.
+// You can construct a concrete instance of `ProjectSinkMapInput` via:
+//
+//          ProjectSinkMap{ "key": ProjectSinkArgs{...} }
+type ProjectSinkMapInput interface {
+	pulumi.Input
+
+	ToProjectSinkMapOutput() ProjectSinkMapOutput
+	ToProjectSinkMapOutputWithContext(context.Context) ProjectSinkMapOutput
+}
+
+type ProjectSinkMap map[string]ProjectSinkInput
+
+func (ProjectSinkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ProjectSink)(nil))
+}
+
+func (i ProjectSinkMap) ToProjectSinkMapOutput() ProjectSinkMapOutput {
+	return i.ToProjectSinkMapOutputWithContext(context.Background())
+}
+
+func (i ProjectSinkMap) ToProjectSinkMapOutputWithContext(ctx context.Context) ProjectSinkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProjectSinkMapOutput)
+}
+
 type ProjectSinkOutput struct {
 	*pulumi.OutputState
 }
@@ -319,6 +398,75 @@ func (o ProjectSinkOutput) ToProjectSinkOutputWithContext(ctx context.Context) P
 	return o
 }
 
+func (o ProjectSinkOutput) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
+	return o.ToProjectSinkPtrOutputWithContext(context.Background())
+}
+
+func (o ProjectSinkOutput) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
+	return o.ApplyT(func(v ProjectSink) *ProjectSink {
+		return &v
+	}).(ProjectSinkPtrOutput)
+}
+
+type ProjectSinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProjectSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ProjectSink)(nil))
+}
+
+func (o ProjectSinkPtrOutput) ToProjectSinkPtrOutput() ProjectSinkPtrOutput {
+	return o
+}
+
+func (o ProjectSinkPtrOutput) ToProjectSinkPtrOutputWithContext(ctx context.Context) ProjectSinkPtrOutput {
+	return o
+}
+
+type ProjectSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (ProjectSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ProjectSink)(nil))
+}
+
+func (o ProjectSinkArrayOutput) ToProjectSinkArrayOutput() ProjectSinkArrayOutput {
+	return o
+}
+
+func (o ProjectSinkArrayOutput) ToProjectSinkArrayOutputWithContext(ctx context.Context) ProjectSinkArrayOutput {
+	return o
+}
+
+func (o ProjectSinkArrayOutput) Index(i pulumi.IntInput) ProjectSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProjectSink {
+		return vs[0].([]ProjectSink)[vs[1].(int)]
+	}).(ProjectSinkOutput)
+}
+
+type ProjectSinkMapOutput struct{ *pulumi.OutputState }
+
+func (ProjectSinkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ProjectSink)(nil))
+}
+
+func (o ProjectSinkMapOutput) ToProjectSinkMapOutput() ProjectSinkMapOutput {
+	return o
+}
+
+func (o ProjectSinkMapOutput) ToProjectSinkMapOutputWithContext(ctx context.Context) ProjectSinkMapOutput {
+	return o
+}
+
+func (o ProjectSinkMapOutput) MapIndex(k pulumi.StringInput) ProjectSinkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ProjectSink {
+		return vs[0].(map[string]ProjectSink)[vs[1].(string)]
+	}).(ProjectSinkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProjectSinkOutput{})
+	pulumi.RegisterOutputType(ProjectSinkPtrOutput{})
+	pulumi.RegisterOutputType(ProjectSinkArrayOutput{})
+	pulumi.RegisterOutputType(ProjectSinkMapOutput{})
 }

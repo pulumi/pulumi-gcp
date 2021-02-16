@@ -188,7 +188,8 @@ export class TargetInstance extends pulumi.CustomResource {
     constructor(name: string, args: TargetInstanceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TargetInstanceArgs | TargetInstanceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TargetInstanceState | undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             inputs["description"] = state ? state.description : undefined;
@@ -201,7 +202,7 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["zone"] = state ? state.zone : undefined;
         } else {
             const args = argsOrState as TargetInstanceArgs | undefined;
-            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -214,12 +215,8 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TargetInstance.__pulumiType, name, inputs, opts);
     }

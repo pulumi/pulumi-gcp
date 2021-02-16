@@ -397,6 +397,85 @@ func (i *AlertPolicy) ToAlertPolicyOutputWithContext(ctx context.Context) AlertP
 	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyOutput)
 }
 
+func (i *AlertPolicy) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
+	return i.ToAlertPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *AlertPolicy) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyPtrOutput)
+}
+
+type AlertPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyPtrOutput() AlertPolicyPtrOutput
+	ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput
+}
+
+type alertPolicyPtrType AlertPolicyArgs
+
+func (*alertPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicy)(nil))
+}
+
+func (i *alertPolicyPtrType) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
+	return i.ToAlertPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *alertPolicyPtrType) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyPtrOutput)
+}
+
+// AlertPolicyArrayInput is an input type that accepts AlertPolicyArray and AlertPolicyArrayOutput values.
+// You can construct a concrete instance of `AlertPolicyArrayInput` via:
+//
+//          AlertPolicyArray{ AlertPolicyArgs{...} }
+type AlertPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAlertPolicyArrayOutput() AlertPolicyArrayOutput
+	ToAlertPolicyArrayOutputWithContext(context.Context) AlertPolicyArrayOutput
+}
+
+type AlertPolicyArray []AlertPolicyInput
+
+func (AlertPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AlertPolicy)(nil))
+}
+
+func (i AlertPolicyArray) ToAlertPolicyArrayOutput() AlertPolicyArrayOutput {
+	return i.ToAlertPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyArray) ToAlertPolicyArrayOutputWithContext(ctx context.Context) AlertPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyArrayOutput)
+}
+
+// AlertPolicyMapInput is an input type that accepts AlertPolicyMap and AlertPolicyMapOutput values.
+// You can construct a concrete instance of `AlertPolicyMapInput` via:
+//
+//          AlertPolicyMap{ "key": AlertPolicyArgs{...} }
+type AlertPolicyMapInput interface {
+	pulumi.Input
+
+	ToAlertPolicyMapOutput() AlertPolicyMapOutput
+	ToAlertPolicyMapOutputWithContext(context.Context) AlertPolicyMapOutput
+}
+
+type AlertPolicyMap map[string]AlertPolicyInput
+
+func (AlertPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AlertPolicy)(nil))
+}
+
+func (i AlertPolicyMap) ToAlertPolicyMapOutput() AlertPolicyMapOutput {
+	return i.ToAlertPolicyMapOutputWithContext(context.Background())
+}
+
+func (i AlertPolicyMap) ToAlertPolicyMapOutputWithContext(ctx context.Context) AlertPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertPolicyMapOutput)
+}
+
 type AlertPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -413,6 +492,75 @@ func (o AlertPolicyOutput) ToAlertPolicyOutputWithContext(ctx context.Context) A
 	return o
 }
 
+func (o AlertPolicyOutput) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
+	return o.ToAlertPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyOutput) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
+	return o.ApplyT(func(v AlertPolicy) *AlertPolicy {
+		return &v
+	}).(AlertPolicyPtrOutput)
+}
+
+type AlertPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AlertPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertPolicy)(nil))
+}
+
+func (o AlertPolicyPtrOutput) ToAlertPolicyPtrOutput() AlertPolicyPtrOutput {
+	return o
+}
+
+func (o AlertPolicyPtrOutput) ToAlertPolicyPtrOutputWithContext(ctx context.Context) AlertPolicyPtrOutput {
+	return o
+}
+
+type AlertPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlertPolicy)(nil))
+}
+
+func (o AlertPolicyArrayOutput) ToAlertPolicyArrayOutput() AlertPolicyArrayOutput {
+	return o
+}
+
+func (o AlertPolicyArrayOutput) ToAlertPolicyArrayOutputWithContext(ctx context.Context) AlertPolicyArrayOutput {
+	return o
+}
+
+func (o AlertPolicyArrayOutput) Index(i pulumi.IntInput) AlertPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlertPolicy {
+		return vs[0].([]AlertPolicy)[vs[1].(int)]
+	}).(AlertPolicyOutput)
+}
+
+type AlertPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlertPolicy)(nil))
+}
+
+func (o AlertPolicyMapOutput) ToAlertPolicyMapOutput() AlertPolicyMapOutput {
+	return o
+}
+
+func (o AlertPolicyMapOutput) ToAlertPolicyMapOutputWithContext(ctx context.Context) AlertPolicyMapOutput {
+	return o
+}
+
+func (o AlertPolicyMapOutput) MapIndex(k pulumi.StringInput) AlertPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlertPolicy {
+		return vs[0].(map[string]AlertPolicy)[vs[1].(string)]
+	}).(AlertPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AlertPolicyOutput{})
+	pulumi.RegisterOutputType(AlertPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AlertPolicyMapOutput{})
 }

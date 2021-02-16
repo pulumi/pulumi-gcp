@@ -118,7 +118,8 @@ export class Key extends pulumi.CustomResource {
     constructor(name: string, args: KeyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: KeyArgs | KeyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as KeyState | undefined;
             inputs["keepers"] = state ? state.keepers : undefined;
             inputs["keyAlgorithm"] = state ? state.keyAlgorithm : undefined;
@@ -133,7 +134,7 @@ export class Key extends pulumi.CustomResource {
             inputs["validBefore"] = state ? state.validBefore : undefined;
         } else {
             const args = argsOrState as KeyArgs | undefined;
-            if ((!args || args.serviceAccountId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["keepers"] = args ? args.keepers : undefined;
@@ -148,12 +149,8 @@ export class Key extends pulumi.CustomResource {
             inputs["validAfter"] = undefined /*out*/;
             inputs["validBefore"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Key.__pulumiType, name, inputs, opts);
     }

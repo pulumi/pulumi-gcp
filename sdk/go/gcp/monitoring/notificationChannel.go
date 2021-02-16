@@ -348,6 +348,85 @@ func (i *NotificationChannel) ToNotificationChannelOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelOutput)
 }
 
+func (i *NotificationChannel) ToNotificationChannelPtrOutput() NotificationChannelPtrOutput {
+	return i.ToNotificationChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *NotificationChannel) ToNotificationChannelPtrOutputWithContext(ctx context.Context) NotificationChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelPtrOutput)
+}
+
+type NotificationChannelPtrInput interface {
+	pulumi.Input
+
+	ToNotificationChannelPtrOutput() NotificationChannelPtrOutput
+	ToNotificationChannelPtrOutputWithContext(ctx context.Context) NotificationChannelPtrOutput
+}
+
+type notificationChannelPtrType NotificationChannelArgs
+
+func (*notificationChannelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationChannel)(nil))
+}
+
+func (i *notificationChannelPtrType) ToNotificationChannelPtrOutput() NotificationChannelPtrOutput {
+	return i.ToNotificationChannelPtrOutputWithContext(context.Background())
+}
+
+func (i *notificationChannelPtrType) ToNotificationChannelPtrOutputWithContext(ctx context.Context) NotificationChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelPtrOutput)
+}
+
+// NotificationChannelArrayInput is an input type that accepts NotificationChannelArray and NotificationChannelArrayOutput values.
+// You can construct a concrete instance of `NotificationChannelArrayInput` via:
+//
+//          NotificationChannelArray{ NotificationChannelArgs{...} }
+type NotificationChannelArrayInput interface {
+	pulumi.Input
+
+	ToNotificationChannelArrayOutput() NotificationChannelArrayOutput
+	ToNotificationChannelArrayOutputWithContext(context.Context) NotificationChannelArrayOutput
+}
+
+type NotificationChannelArray []NotificationChannelInput
+
+func (NotificationChannelArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*NotificationChannel)(nil))
+}
+
+func (i NotificationChannelArray) ToNotificationChannelArrayOutput() NotificationChannelArrayOutput {
+	return i.ToNotificationChannelArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationChannelArray) ToNotificationChannelArrayOutputWithContext(ctx context.Context) NotificationChannelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelArrayOutput)
+}
+
+// NotificationChannelMapInput is an input type that accepts NotificationChannelMap and NotificationChannelMapOutput values.
+// You can construct a concrete instance of `NotificationChannelMapInput` via:
+//
+//          NotificationChannelMap{ "key": NotificationChannelArgs{...} }
+type NotificationChannelMapInput interface {
+	pulumi.Input
+
+	ToNotificationChannelMapOutput() NotificationChannelMapOutput
+	ToNotificationChannelMapOutputWithContext(context.Context) NotificationChannelMapOutput
+}
+
+type NotificationChannelMap map[string]NotificationChannelInput
+
+func (NotificationChannelMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*NotificationChannel)(nil))
+}
+
+func (i NotificationChannelMap) ToNotificationChannelMapOutput() NotificationChannelMapOutput {
+	return i.ToNotificationChannelMapOutputWithContext(context.Background())
+}
+
+func (i NotificationChannelMap) ToNotificationChannelMapOutputWithContext(ctx context.Context) NotificationChannelMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelMapOutput)
+}
+
 type NotificationChannelOutput struct {
 	*pulumi.OutputState
 }
@@ -364,6 +443,75 @@ func (o NotificationChannelOutput) ToNotificationChannelOutputWithContext(ctx co
 	return o
 }
 
+func (o NotificationChannelOutput) ToNotificationChannelPtrOutput() NotificationChannelPtrOutput {
+	return o.ToNotificationChannelPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationChannelOutput) ToNotificationChannelPtrOutputWithContext(ctx context.Context) NotificationChannelPtrOutput {
+	return o.ApplyT(func(v NotificationChannel) *NotificationChannel {
+		return &v
+	}).(NotificationChannelPtrOutput)
+}
+
+type NotificationChannelPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (NotificationChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NotificationChannel)(nil))
+}
+
+func (o NotificationChannelPtrOutput) ToNotificationChannelPtrOutput() NotificationChannelPtrOutput {
+	return o
+}
+
+func (o NotificationChannelPtrOutput) ToNotificationChannelPtrOutputWithContext(ctx context.Context) NotificationChannelPtrOutput {
+	return o
+}
+
+type NotificationChannelArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationChannel)(nil))
+}
+
+func (o NotificationChannelArrayOutput) ToNotificationChannelArrayOutput() NotificationChannelArrayOutput {
+	return o
+}
+
+func (o NotificationChannelArrayOutput) ToNotificationChannelArrayOutputWithContext(ctx context.Context) NotificationChannelArrayOutput {
+	return o
+}
+
+func (o NotificationChannelArrayOutput) Index(i pulumi.IntInput) NotificationChannelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationChannel {
+		return vs[0].([]NotificationChannel)[vs[1].(int)]
+	}).(NotificationChannelOutput)
+}
+
+type NotificationChannelMapOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]NotificationChannel)(nil))
+}
+
+func (o NotificationChannelMapOutput) ToNotificationChannelMapOutput() NotificationChannelMapOutput {
+	return o
+}
+
+func (o NotificationChannelMapOutput) ToNotificationChannelMapOutputWithContext(ctx context.Context) NotificationChannelMapOutput {
+	return o
+}
+
+func (o NotificationChannelMapOutput) MapIndex(k pulumi.StringInput) NotificationChannelOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NotificationChannel {
+		return vs[0].(map[string]NotificationChannel)[vs[1].(string)]
+	}).(NotificationChannelOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(NotificationChannelOutput{})
+	pulumi.RegisterOutputType(NotificationChannelPtrOutput{})
+	pulumi.RegisterOutputType(NotificationChannelArrayOutput{})
+	pulumi.RegisterOutputType(NotificationChannelMapOutput{})
 }

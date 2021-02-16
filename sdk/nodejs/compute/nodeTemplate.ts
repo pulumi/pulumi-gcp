@@ -166,7 +166,8 @@ export class NodeTemplate extends pulumi.CustomResource {
     constructor(name: string, args?: NodeTemplateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NodeTemplateArgs | NodeTemplateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as NodeTemplateState | undefined;
             inputs["cpuOvercommitType"] = state ? state.cpuOvercommitType : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -193,12 +194,8 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(NodeTemplate.__pulumiType, name, inputs, opts);
     }

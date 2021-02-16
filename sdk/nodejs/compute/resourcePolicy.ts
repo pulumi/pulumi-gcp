@@ -163,7 +163,8 @@ export class ResourcePolicy extends pulumi.CustomResource {
     constructor(name: string, args?: ResourcePolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ResourcePolicyArgs | ResourcePolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ResourcePolicyState | undefined;
             inputs["groupPlacementPolicy"] = state ? state.groupPlacementPolicy : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -180,12 +181,8 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["snapshotSchedulePolicy"] = args ? args.snapshotSchedulePolicy : undefined;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ResourcePolicy.__pulumiType, name, inputs, opts);
     }

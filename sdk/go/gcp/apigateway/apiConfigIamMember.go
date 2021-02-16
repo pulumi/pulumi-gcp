@@ -190,6 +190,85 @@ func (i *ApiConfigIamMember) ToApiConfigIamMemberOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberOutput)
 }
 
+func (i *ApiConfigIamMember) ToApiConfigIamMemberPtrOutput() ApiConfigIamMemberPtrOutput {
+	return i.ToApiConfigIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *ApiConfigIamMember) ToApiConfigIamMemberPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberPtrOutput)
+}
+
+type ApiConfigIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToApiConfigIamMemberPtrOutput() ApiConfigIamMemberPtrOutput
+	ToApiConfigIamMemberPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberPtrOutput
+}
+
+type apiConfigIamMemberPtrType ApiConfigIamMemberArgs
+
+func (*apiConfigIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiConfigIamMember)(nil))
+}
+
+func (i *apiConfigIamMemberPtrType) ToApiConfigIamMemberPtrOutput() ApiConfigIamMemberPtrOutput {
+	return i.ToApiConfigIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *apiConfigIamMemberPtrType) ToApiConfigIamMemberPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberPtrOutput)
+}
+
+// ApiConfigIamMemberArrayInput is an input type that accepts ApiConfigIamMemberArray and ApiConfigIamMemberArrayOutput values.
+// You can construct a concrete instance of `ApiConfigIamMemberArrayInput` via:
+//
+//          ApiConfigIamMemberArray{ ApiConfigIamMemberArgs{...} }
+type ApiConfigIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToApiConfigIamMemberArrayOutput() ApiConfigIamMemberArrayOutput
+	ToApiConfigIamMemberArrayOutputWithContext(context.Context) ApiConfigIamMemberArrayOutput
+}
+
+type ApiConfigIamMemberArray []ApiConfigIamMemberInput
+
+func (ApiConfigIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApiConfigIamMember)(nil))
+}
+
+func (i ApiConfigIamMemberArray) ToApiConfigIamMemberArrayOutput() ApiConfigIamMemberArrayOutput {
+	return i.ToApiConfigIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i ApiConfigIamMemberArray) ToApiConfigIamMemberArrayOutputWithContext(ctx context.Context) ApiConfigIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberArrayOutput)
+}
+
+// ApiConfigIamMemberMapInput is an input type that accepts ApiConfigIamMemberMap and ApiConfigIamMemberMapOutput values.
+// You can construct a concrete instance of `ApiConfigIamMemberMapInput` via:
+//
+//          ApiConfigIamMemberMap{ "key": ApiConfigIamMemberArgs{...} }
+type ApiConfigIamMemberMapInput interface {
+	pulumi.Input
+
+	ToApiConfigIamMemberMapOutput() ApiConfigIamMemberMapOutput
+	ToApiConfigIamMemberMapOutputWithContext(context.Context) ApiConfigIamMemberMapOutput
+}
+
+type ApiConfigIamMemberMap map[string]ApiConfigIamMemberInput
+
+func (ApiConfigIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApiConfigIamMember)(nil))
+}
+
+func (i ApiConfigIamMemberMap) ToApiConfigIamMemberMapOutput() ApiConfigIamMemberMapOutput {
+	return i.ToApiConfigIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i ApiConfigIamMemberMap) ToApiConfigIamMemberMapOutputWithContext(ctx context.Context) ApiConfigIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigIamMemberMapOutput)
+}
+
 type ApiConfigIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -206,6 +285,75 @@ func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberOutputWithContext(ctx cont
 	return o
 }
 
+func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberPtrOutput() ApiConfigIamMemberPtrOutput {
+	return o.ToApiConfigIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o ApiConfigIamMemberOutput) ToApiConfigIamMemberPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberPtrOutput {
+	return o.ApplyT(func(v ApiConfigIamMember) *ApiConfigIamMember {
+		return &v
+	}).(ApiConfigIamMemberPtrOutput)
+}
+
+type ApiConfigIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApiConfigIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiConfigIamMember)(nil))
+}
+
+func (o ApiConfigIamMemberPtrOutput) ToApiConfigIamMemberPtrOutput() ApiConfigIamMemberPtrOutput {
+	return o
+}
+
+func (o ApiConfigIamMemberPtrOutput) ToApiConfigIamMemberPtrOutputWithContext(ctx context.Context) ApiConfigIamMemberPtrOutput {
+	return o
+}
+
+type ApiConfigIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (ApiConfigIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApiConfigIamMember)(nil))
+}
+
+func (o ApiConfigIamMemberArrayOutput) ToApiConfigIamMemberArrayOutput() ApiConfigIamMemberArrayOutput {
+	return o
+}
+
+func (o ApiConfigIamMemberArrayOutput) ToApiConfigIamMemberArrayOutputWithContext(ctx context.Context) ApiConfigIamMemberArrayOutput {
+	return o
+}
+
+func (o ApiConfigIamMemberArrayOutput) Index(i pulumi.IntInput) ApiConfigIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApiConfigIamMember {
+		return vs[0].([]ApiConfigIamMember)[vs[1].(int)]
+	}).(ApiConfigIamMemberOutput)
+}
+
+type ApiConfigIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (ApiConfigIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApiConfigIamMember)(nil))
+}
+
+func (o ApiConfigIamMemberMapOutput) ToApiConfigIamMemberMapOutput() ApiConfigIamMemberMapOutput {
+	return o
+}
+
+func (o ApiConfigIamMemberMapOutput) ToApiConfigIamMemberMapOutputWithContext(ctx context.Context) ApiConfigIamMemberMapOutput {
+	return o
+}
+
+func (o ApiConfigIamMemberMapOutput) MapIndex(k pulumi.StringInput) ApiConfigIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApiConfigIamMember {
+		return vs[0].(map[string]ApiConfigIamMember)[vs[1].(string)]
+	}).(ApiConfigIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApiConfigIamMemberOutput{})
+	pulumi.RegisterOutputType(ApiConfigIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(ApiConfigIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(ApiConfigIamMemberMapOutput{})
 }

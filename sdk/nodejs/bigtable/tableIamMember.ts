@@ -144,7 +144,8 @@ export class TableIamMember extends pulumi.CustomResource {
     constructor(name: string, args: TableIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: TableIamMemberArgs | TableIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as TableIamMemberState | undefined;
             inputs["condition"] = state ? state.condition : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -155,16 +156,16 @@ export class TableIamMember extends pulumi.CustomResource {
             inputs["table"] = state ? state.table : undefined;
         } else {
             const args = argsOrState as TableIamMemberArgs | undefined;
-            if ((!args || args.instance === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.instance === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instance'");
             }
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
-            if ((!args || args.table === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.table === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'table'");
             }
             inputs["condition"] = args ? args.condition : undefined;
@@ -175,12 +176,8 @@ export class TableIamMember extends pulumi.CustomResource {
             inputs["table"] = args ? args.table : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(TableIamMember.__pulumiType, name, inputs, opts);
     }

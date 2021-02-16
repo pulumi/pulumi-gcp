@@ -280,6 +280,85 @@ func (i *InstanceIAMBinding) ToInstanceIAMBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingOutput)
 }
 
+func (i *InstanceIAMBinding) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
+	return i.ToInstanceIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *InstanceIAMBinding) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingPtrOutput)
+}
+
+type InstanceIAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput
+	ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput
+}
+
+type instanceIAMBindingPtrType InstanceIAMBindingArgs
+
+func (*instanceIAMBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIAMBinding)(nil))
+}
+
+func (i *instanceIAMBindingPtrType) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
+	return i.ToInstanceIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceIAMBindingPtrType) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingPtrOutput)
+}
+
+// InstanceIAMBindingArrayInput is an input type that accepts InstanceIAMBindingArray and InstanceIAMBindingArrayOutput values.
+// You can construct a concrete instance of `InstanceIAMBindingArrayInput` via:
+//
+//          InstanceIAMBindingArray{ InstanceIAMBindingArgs{...} }
+type InstanceIAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput
+	ToInstanceIAMBindingArrayOutputWithContext(context.Context) InstanceIAMBindingArrayOutput
+}
+
+type InstanceIAMBindingArray []InstanceIAMBindingInput
+
+func (InstanceIAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*InstanceIAMBinding)(nil))
+}
+
+func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
+	return i.ToInstanceIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceIAMBindingArray) ToInstanceIAMBindingArrayOutputWithContext(ctx context.Context) InstanceIAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingArrayOutput)
+}
+
+// InstanceIAMBindingMapInput is an input type that accepts InstanceIAMBindingMap and InstanceIAMBindingMapOutput values.
+// You can construct a concrete instance of `InstanceIAMBindingMapInput` via:
+//
+//          InstanceIAMBindingMap{ "key": InstanceIAMBindingArgs{...} }
+type InstanceIAMBindingMapInput interface {
+	pulumi.Input
+
+	ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput
+	ToInstanceIAMBindingMapOutputWithContext(context.Context) InstanceIAMBindingMapOutput
+}
+
+type InstanceIAMBindingMap map[string]InstanceIAMBindingInput
+
+func (InstanceIAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*InstanceIAMBinding)(nil))
+}
+
+func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
+	return i.ToInstanceIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i InstanceIAMBindingMap) ToInstanceIAMBindingMapOutputWithContext(ctx context.Context) InstanceIAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceIAMBindingMapOutput)
+}
+
 type InstanceIAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -296,6 +375,75 @@ func (o InstanceIAMBindingOutput) ToInstanceIAMBindingOutputWithContext(ctx cont
 	return o
 }
 
+func (o InstanceIAMBindingOutput) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
+	return o.ToInstanceIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceIAMBindingOutput) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
+	return o.ApplyT(func(v InstanceIAMBinding) *InstanceIAMBinding {
+		return &v
+	}).(InstanceIAMBindingPtrOutput)
+}
+
+type InstanceIAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (InstanceIAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceIAMBinding)(nil))
+}
+
+func (o InstanceIAMBindingPtrOutput) ToInstanceIAMBindingPtrOutput() InstanceIAMBindingPtrOutput {
+	return o
+}
+
+func (o InstanceIAMBindingPtrOutput) ToInstanceIAMBindingPtrOutputWithContext(ctx context.Context) InstanceIAMBindingPtrOutput {
+	return o
+}
+
+type InstanceIAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceIAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceIAMBinding)(nil))
+}
+
+func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutput() InstanceIAMBindingArrayOutput {
+	return o
+}
+
+func (o InstanceIAMBindingArrayOutput) ToInstanceIAMBindingArrayOutputWithContext(ctx context.Context) InstanceIAMBindingArrayOutput {
+	return o
+}
+
+func (o InstanceIAMBindingArrayOutput) Index(i pulumi.IntInput) InstanceIAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceIAMBinding {
+		return vs[0].([]InstanceIAMBinding)[vs[1].(int)]
+	}).(InstanceIAMBindingOutput)
+}
+
+type InstanceIAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (InstanceIAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]InstanceIAMBinding)(nil))
+}
+
+func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutput() InstanceIAMBindingMapOutput {
+	return o
+}
+
+func (o InstanceIAMBindingMapOutput) ToInstanceIAMBindingMapOutputWithContext(ctx context.Context) InstanceIAMBindingMapOutput {
+	return o
+}
+
+func (o InstanceIAMBindingMapOutput) MapIndex(k pulumi.StringInput) InstanceIAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) InstanceIAMBinding {
+		return vs[0].(map[string]InstanceIAMBinding)[vs[1].(string)]
+	}).(InstanceIAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(InstanceIAMBindingOutput{})
+	pulumi.RegisterOutputType(InstanceIAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(InstanceIAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(InstanceIAMBindingMapOutput{})
 }

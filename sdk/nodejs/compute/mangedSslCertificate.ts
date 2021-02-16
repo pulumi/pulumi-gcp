@@ -91,7 +91,8 @@ export class MangedSslCertificate extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: MangedSslCertificateArgs | MangedSslCertificateState, opts?: pulumi.CustomResourceOptions) {
         pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate")
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as MangedSslCertificateState | undefined;
             inputs["certificateId"] = state ? state.certificateId : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -116,12 +117,8 @@ export class MangedSslCertificate extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["subjectAlternativeNames"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(MangedSslCertificate.__pulumiType, name, inputs, opts);
     }

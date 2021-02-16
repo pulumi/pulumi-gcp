@@ -87,7 +87,8 @@ export class ConsentStoreIamPolicy extends pulumi.CustomResource {
     constructor(name: string, args: ConsentStoreIamPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConsentStoreIamPolicyArgs | ConsentStoreIamPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ConsentStoreIamPolicyState | undefined;
             inputs["consentStoreId"] = state ? state.consentStoreId : undefined;
             inputs["dataset"] = state ? state.dataset : undefined;
@@ -95,13 +96,13 @@ export class ConsentStoreIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = state ? state.policyData : undefined;
         } else {
             const args = argsOrState as ConsentStoreIamPolicyArgs | undefined;
-            if ((!args || args.consentStoreId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.consentStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
-            if ((!args || args.dataset === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.dataset === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'dataset'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
@@ -109,12 +110,8 @@ export class ConsentStoreIamPolicy extends pulumi.CustomResource {
             inputs["policyData"] = args ? args.policyData : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ConsentStoreIamPolicy.__pulumiType, name, inputs, opts);
     }

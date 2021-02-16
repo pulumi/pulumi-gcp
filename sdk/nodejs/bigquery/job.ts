@@ -293,7 +293,8 @@ export class Job extends pulumi.CustomResource {
     constructor(name: string, args: JobArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: JobArgs | JobState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as JobState | undefined;
             inputs["copy"] = state ? state.copy : undefined;
             inputs["extract"] = state ? state.extract : undefined;
@@ -308,7 +309,7 @@ export class Job extends pulumi.CustomResource {
             inputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
-            if ((!args || args.jobId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.jobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
             inputs["copy"] = args ? args.copy : undefined;
@@ -323,12 +324,8 @@ export class Job extends pulumi.CustomResource {
             inputs["jobType"] = undefined /*out*/;
             inputs["userEmail"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Job.__pulumiType, name, inputs, opts);
     }

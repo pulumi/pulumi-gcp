@@ -172,6 +172,85 @@ func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyOutput)
 }
 
+func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
+	return i.ToAppEngineServiceIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *AppEngineServiceIamPolicy) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyPtrOutput)
+}
+
+type AppEngineServiceIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput
+	ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput
+}
+
+type appEngineServiceIamPolicyPtrType AppEngineServiceIamPolicyArgs
+
+func (*appEngineServiceIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineServiceIamPolicy)(nil))
+}
+
+func (i *appEngineServiceIamPolicyPtrType) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
+	return i.ToAppEngineServiceIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *appEngineServiceIamPolicyPtrType) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyPtrOutput)
+}
+
+// AppEngineServiceIamPolicyArrayInput is an input type that accepts AppEngineServiceIamPolicyArray and AppEngineServiceIamPolicyArrayOutput values.
+// You can construct a concrete instance of `AppEngineServiceIamPolicyArrayInput` via:
+//
+//          AppEngineServiceIamPolicyArray{ AppEngineServiceIamPolicyArgs{...} }
+type AppEngineServiceIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamPolicyArrayOutput() AppEngineServiceIamPolicyArrayOutput
+	ToAppEngineServiceIamPolicyArrayOutputWithContext(context.Context) AppEngineServiceIamPolicyArrayOutput
+}
+
+type AppEngineServiceIamPolicyArray []AppEngineServiceIamPolicyInput
+
+func (AppEngineServiceIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AppEngineServiceIamPolicy)(nil))
+}
+
+func (i AppEngineServiceIamPolicyArray) ToAppEngineServiceIamPolicyArrayOutput() AppEngineServiceIamPolicyArrayOutput {
+	return i.ToAppEngineServiceIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i AppEngineServiceIamPolicyArray) ToAppEngineServiceIamPolicyArrayOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyArrayOutput)
+}
+
+// AppEngineServiceIamPolicyMapInput is an input type that accepts AppEngineServiceIamPolicyMap and AppEngineServiceIamPolicyMapOutput values.
+// You can construct a concrete instance of `AppEngineServiceIamPolicyMapInput` via:
+//
+//          AppEngineServiceIamPolicyMap{ "key": AppEngineServiceIamPolicyArgs{...} }
+type AppEngineServiceIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToAppEngineServiceIamPolicyMapOutput() AppEngineServiceIamPolicyMapOutput
+	ToAppEngineServiceIamPolicyMapOutputWithContext(context.Context) AppEngineServiceIamPolicyMapOutput
+}
+
+type AppEngineServiceIamPolicyMap map[string]AppEngineServiceIamPolicyInput
+
+func (AppEngineServiceIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AppEngineServiceIamPolicy)(nil))
+}
+
+func (i AppEngineServiceIamPolicyMap) ToAppEngineServiceIamPolicyMapOutput() AppEngineServiceIamPolicyMapOutput {
+	return i.ToAppEngineServiceIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i AppEngineServiceIamPolicyMap) ToAppEngineServiceIamPolicyMapOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineServiceIamPolicyMapOutput)
+}
+
 type AppEngineServiceIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -188,6 +267,75 @@ func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyOutputWithCo
 	return o
 }
 
+func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
+	return o.ToAppEngineServiceIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineServiceIamPolicyOutput) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
+	return o.ApplyT(func(v AppEngineServiceIamPolicy) *AppEngineServiceIamPolicy {
+		return &v
+	}).(AppEngineServiceIamPolicyPtrOutput)
+}
+
+type AppEngineServiceIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppEngineServiceIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineServiceIamPolicy)(nil))
+}
+
+func (o AppEngineServiceIamPolicyPtrOutput) ToAppEngineServiceIamPolicyPtrOutput() AppEngineServiceIamPolicyPtrOutput {
+	return o
+}
+
+func (o AppEngineServiceIamPolicyPtrOutput) ToAppEngineServiceIamPolicyPtrOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyPtrOutput {
+	return o
+}
+
+type AppEngineServiceIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (AppEngineServiceIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppEngineServiceIamPolicy)(nil))
+}
+
+func (o AppEngineServiceIamPolicyArrayOutput) ToAppEngineServiceIamPolicyArrayOutput() AppEngineServiceIamPolicyArrayOutput {
+	return o
+}
+
+func (o AppEngineServiceIamPolicyArrayOutput) ToAppEngineServiceIamPolicyArrayOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyArrayOutput {
+	return o
+}
+
+func (o AppEngineServiceIamPolicyArrayOutput) Index(i pulumi.IntInput) AppEngineServiceIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppEngineServiceIamPolicy {
+		return vs[0].([]AppEngineServiceIamPolicy)[vs[1].(int)]
+	}).(AppEngineServiceIamPolicyOutput)
+}
+
+type AppEngineServiceIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (AppEngineServiceIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AppEngineServiceIamPolicy)(nil))
+}
+
+func (o AppEngineServiceIamPolicyMapOutput) ToAppEngineServiceIamPolicyMapOutput() AppEngineServiceIamPolicyMapOutput {
+	return o
+}
+
+func (o AppEngineServiceIamPolicyMapOutput) ToAppEngineServiceIamPolicyMapOutputWithContext(ctx context.Context) AppEngineServiceIamPolicyMapOutput {
+	return o
+}
+
+func (o AppEngineServiceIamPolicyMapOutput) MapIndex(k pulumi.StringInput) AppEngineServiceIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppEngineServiceIamPolicy {
+		return vs[0].(map[string]AppEngineServiceIamPolicy)[vs[1].(string)]
+	}).(AppEngineServiceIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppEngineServiceIamPolicyOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(AppEngineServiceIamPolicyMapOutput{})
 }

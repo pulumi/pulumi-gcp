@@ -268,7 +268,8 @@ export class HaVpnGateway extends pulumi.CustomResource {
     constructor(name: string, args: HaVpnGatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: HaVpnGatewayArgs | HaVpnGatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as HaVpnGatewayState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
@@ -279,7 +280,7 @@ export class HaVpnGateway extends pulumi.CustomResource {
             inputs["vpnInterfaces"] = state ? state.vpnInterfaces : undefined;
         } else {
             const args = argsOrState as HaVpnGatewayArgs | undefined;
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -290,12 +291,8 @@ export class HaVpnGateway extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["vpnInterfaces"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(HaVpnGateway.__pulumiType, name, inputs, opts);
     }

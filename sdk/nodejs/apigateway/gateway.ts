@@ -97,7 +97,8 @@ export class Gateway extends pulumi.CustomResource {
     constructor(name: string, args: GatewayArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GatewayArgs | GatewayState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GatewayState | undefined;
             inputs["apiConfig"] = state ? state.apiConfig : undefined;
             inputs["defaultHostname"] = state ? state.defaultHostname : undefined;
@@ -109,10 +110,10 @@ export class Gateway extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as GatewayArgs | undefined;
-            if ((!args || args.apiConfig === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.apiConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiConfig'");
             }
-            if ((!args || args.gatewayId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.gatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
@@ -124,12 +125,8 @@ export class Gateway extends pulumi.CustomResource {
             inputs["defaultHostname"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Gateway.__pulumiType, name, inputs, opts);
     }

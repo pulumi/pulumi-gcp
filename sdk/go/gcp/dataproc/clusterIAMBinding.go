@@ -290,6 +290,85 @@ func (i *ClusterIAMBinding) ToClusterIAMBindingOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingOutput)
 }
 
+func (i *ClusterIAMBinding) ToClusterIAMBindingPtrOutput() ClusterIAMBindingPtrOutput {
+	return i.ToClusterIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *ClusterIAMBinding) ToClusterIAMBindingPtrOutputWithContext(ctx context.Context) ClusterIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingPtrOutput)
+}
+
+type ClusterIAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToClusterIAMBindingPtrOutput() ClusterIAMBindingPtrOutput
+	ToClusterIAMBindingPtrOutputWithContext(ctx context.Context) ClusterIAMBindingPtrOutput
+}
+
+type clusterIAMBindingPtrType ClusterIAMBindingArgs
+
+func (*clusterIAMBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIAMBinding)(nil))
+}
+
+func (i *clusterIAMBindingPtrType) ToClusterIAMBindingPtrOutput() ClusterIAMBindingPtrOutput {
+	return i.ToClusterIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterIAMBindingPtrType) ToClusterIAMBindingPtrOutputWithContext(ctx context.Context) ClusterIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingPtrOutput)
+}
+
+// ClusterIAMBindingArrayInput is an input type that accepts ClusterIAMBindingArray and ClusterIAMBindingArrayOutput values.
+// You can construct a concrete instance of `ClusterIAMBindingArrayInput` via:
+//
+//          ClusterIAMBindingArray{ ClusterIAMBindingArgs{...} }
+type ClusterIAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToClusterIAMBindingArrayOutput() ClusterIAMBindingArrayOutput
+	ToClusterIAMBindingArrayOutputWithContext(context.Context) ClusterIAMBindingArrayOutput
+}
+
+type ClusterIAMBindingArray []ClusterIAMBindingInput
+
+func (ClusterIAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ClusterIAMBinding)(nil))
+}
+
+func (i ClusterIAMBindingArray) ToClusterIAMBindingArrayOutput() ClusterIAMBindingArrayOutput {
+	return i.ToClusterIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterIAMBindingArray) ToClusterIAMBindingArrayOutputWithContext(ctx context.Context) ClusterIAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingArrayOutput)
+}
+
+// ClusterIAMBindingMapInput is an input type that accepts ClusterIAMBindingMap and ClusterIAMBindingMapOutput values.
+// You can construct a concrete instance of `ClusterIAMBindingMapInput` via:
+//
+//          ClusterIAMBindingMap{ "key": ClusterIAMBindingArgs{...} }
+type ClusterIAMBindingMapInput interface {
+	pulumi.Input
+
+	ToClusterIAMBindingMapOutput() ClusterIAMBindingMapOutput
+	ToClusterIAMBindingMapOutputWithContext(context.Context) ClusterIAMBindingMapOutput
+}
+
+type ClusterIAMBindingMap map[string]ClusterIAMBindingInput
+
+func (ClusterIAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ClusterIAMBinding)(nil))
+}
+
+func (i ClusterIAMBindingMap) ToClusterIAMBindingMapOutput() ClusterIAMBindingMapOutput {
+	return i.ToClusterIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i ClusterIAMBindingMap) ToClusterIAMBindingMapOutputWithContext(ctx context.Context) ClusterIAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterIAMBindingMapOutput)
+}
+
 type ClusterIAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -306,6 +385,75 @@ func (o ClusterIAMBindingOutput) ToClusterIAMBindingOutputWithContext(ctx contex
 	return o
 }
 
+func (o ClusterIAMBindingOutput) ToClusterIAMBindingPtrOutput() ClusterIAMBindingPtrOutput {
+	return o.ToClusterIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterIAMBindingOutput) ToClusterIAMBindingPtrOutputWithContext(ctx context.Context) ClusterIAMBindingPtrOutput {
+	return o.ApplyT(func(v ClusterIAMBinding) *ClusterIAMBinding {
+		return &v
+	}).(ClusterIAMBindingPtrOutput)
+}
+
+type ClusterIAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ClusterIAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterIAMBinding)(nil))
+}
+
+func (o ClusterIAMBindingPtrOutput) ToClusterIAMBindingPtrOutput() ClusterIAMBindingPtrOutput {
+	return o
+}
+
+func (o ClusterIAMBindingPtrOutput) ToClusterIAMBindingPtrOutputWithContext(ctx context.Context) ClusterIAMBindingPtrOutput {
+	return o
+}
+
+type ClusterIAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterIAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterIAMBinding)(nil))
+}
+
+func (o ClusterIAMBindingArrayOutput) ToClusterIAMBindingArrayOutput() ClusterIAMBindingArrayOutput {
+	return o
+}
+
+func (o ClusterIAMBindingArrayOutput) ToClusterIAMBindingArrayOutputWithContext(ctx context.Context) ClusterIAMBindingArrayOutput {
+	return o
+}
+
+func (o ClusterIAMBindingArrayOutput) Index(i pulumi.IntInput) ClusterIAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterIAMBinding {
+		return vs[0].([]ClusterIAMBinding)[vs[1].(int)]
+	}).(ClusterIAMBindingOutput)
+}
+
+type ClusterIAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (ClusterIAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClusterIAMBinding)(nil))
+}
+
+func (o ClusterIAMBindingMapOutput) ToClusterIAMBindingMapOutput() ClusterIAMBindingMapOutput {
+	return o
+}
+
+func (o ClusterIAMBindingMapOutput) ToClusterIAMBindingMapOutputWithContext(ctx context.Context) ClusterIAMBindingMapOutput {
+	return o
+}
+
+func (o ClusterIAMBindingMapOutput) MapIndex(k pulumi.StringInput) ClusterIAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClusterIAMBinding {
+		return vs[0].(map[string]ClusterIAMBinding)[vs[1].(string)]
+	}).(ClusterIAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ClusterIAMBindingOutput{})
+	pulumi.RegisterOutputType(ClusterIAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterIAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(ClusterIAMBindingMapOutput{})
 }

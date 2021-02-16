@@ -142,7 +142,8 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
     constructor(name: string, args: ClusterIAMPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ClusterIAMPolicyArgs | ClusterIAMPolicyState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ClusterIAMPolicyState | undefined;
             inputs["cluster"] = state ? state.cluster : undefined;
             inputs["etag"] = state ? state.etag : undefined;
@@ -151,10 +152,10 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
         } else {
             const args = argsOrState as ClusterIAMPolicyArgs | undefined;
-            if ((!args || args.cluster === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.cluster === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cluster'");
             }
-            if ((!args || args.policyData === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.policyData === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'policyData'");
             }
             inputs["cluster"] = args ? args.cluster : undefined;
@@ -163,12 +164,8 @@ export class ClusterIAMPolicy extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ClusterIAMPolicy.__pulumiType, name, inputs, opts);
     }

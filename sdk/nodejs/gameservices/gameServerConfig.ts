@@ -179,7 +179,8 @@ export class GameServerConfig extends pulumi.CustomResource {
     constructor(name: string, args: GameServerConfigArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GameServerConfigArgs | GameServerConfigState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GameServerConfigState | undefined;
             inputs["configId"] = state ? state.configId : undefined;
             inputs["deploymentId"] = state ? state.deploymentId : undefined;
@@ -192,13 +193,13 @@ export class GameServerConfig extends pulumi.CustomResource {
             inputs["scalingConfigs"] = state ? state.scalingConfigs : undefined;
         } else {
             const args = argsOrState as GameServerConfigArgs | undefined;
-            if ((!args || args.configId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.configId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.deploymentId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.deploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deploymentId'");
             }
-            if ((!args || args.fleetConfigs === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.fleetConfigs === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fleetConfigs'");
             }
             inputs["configId"] = args ? args.configId : undefined;
@@ -211,12 +212,8 @@ export class GameServerConfig extends pulumi.CustomResource {
             inputs["scalingConfigs"] = args ? args.scalingConfigs : undefined;
             inputs["name"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(GameServerConfig.__pulumiType, name, inputs, opts);
     }

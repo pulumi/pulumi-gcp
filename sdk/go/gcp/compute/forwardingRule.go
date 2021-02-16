@@ -1227,6 +1227,85 @@ func (i *ForwardingRule) ToForwardingRuleOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleOutput)
 }
 
+func (i *ForwardingRule) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
+	return i.ToForwardingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *ForwardingRule) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRulePtrOutput)
+}
+
+type ForwardingRulePtrInput interface {
+	pulumi.Input
+
+	ToForwardingRulePtrOutput() ForwardingRulePtrOutput
+	ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput
+}
+
+type forwardingRulePtrType ForwardingRuleArgs
+
+func (*forwardingRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingRule)(nil))
+}
+
+func (i *forwardingRulePtrType) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
+	return i.ToForwardingRulePtrOutputWithContext(context.Background())
+}
+
+func (i *forwardingRulePtrType) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRulePtrOutput)
+}
+
+// ForwardingRuleArrayInput is an input type that accepts ForwardingRuleArray and ForwardingRuleArrayOutput values.
+// You can construct a concrete instance of `ForwardingRuleArrayInput` via:
+//
+//          ForwardingRuleArray{ ForwardingRuleArgs{...} }
+type ForwardingRuleArrayInput interface {
+	pulumi.Input
+
+	ToForwardingRuleArrayOutput() ForwardingRuleArrayOutput
+	ToForwardingRuleArrayOutputWithContext(context.Context) ForwardingRuleArrayOutput
+}
+
+type ForwardingRuleArray []ForwardingRuleInput
+
+func (ForwardingRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ForwardingRule)(nil))
+}
+
+func (i ForwardingRuleArray) ToForwardingRuleArrayOutput() ForwardingRuleArrayOutput {
+	return i.ToForwardingRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleArray) ToForwardingRuleArrayOutputWithContext(ctx context.Context) ForwardingRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleArrayOutput)
+}
+
+// ForwardingRuleMapInput is an input type that accepts ForwardingRuleMap and ForwardingRuleMapOutput values.
+// You can construct a concrete instance of `ForwardingRuleMapInput` via:
+//
+//          ForwardingRuleMap{ "key": ForwardingRuleArgs{...} }
+type ForwardingRuleMapInput interface {
+	pulumi.Input
+
+	ToForwardingRuleMapOutput() ForwardingRuleMapOutput
+	ToForwardingRuleMapOutputWithContext(context.Context) ForwardingRuleMapOutput
+}
+
+type ForwardingRuleMap map[string]ForwardingRuleInput
+
+func (ForwardingRuleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ForwardingRule)(nil))
+}
+
+func (i ForwardingRuleMap) ToForwardingRuleMapOutput() ForwardingRuleMapOutput {
+	return i.ToForwardingRuleMapOutputWithContext(context.Background())
+}
+
+func (i ForwardingRuleMap) ToForwardingRuleMapOutputWithContext(ctx context.Context) ForwardingRuleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardingRuleMapOutput)
+}
+
 type ForwardingRuleOutput struct {
 	*pulumi.OutputState
 }
@@ -1243,6 +1322,75 @@ func (o ForwardingRuleOutput) ToForwardingRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o ForwardingRuleOutput) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
+	return o.ToForwardingRulePtrOutputWithContext(context.Background())
+}
+
+func (o ForwardingRuleOutput) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
+	return o.ApplyT(func(v ForwardingRule) *ForwardingRule {
+		return &v
+	}).(ForwardingRulePtrOutput)
+}
+
+type ForwardingRulePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ForwardingRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardingRule)(nil))
+}
+
+func (o ForwardingRulePtrOutput) ToForwardingRulePtrOutput() ForwardingRulePtrOutput {
+	return o
+}
+
+func (o ForwardingRulePtrOutput) ToForwardingRulePtrOutputWithContext(ctx context.Context) ForwardingRulePtrOutput {
+	return o
+}
+
+type ForwardingRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ForwardingRule)(nil))
+}
+
+func (o ForwardingRuleArrayOutput) ToForwardingRuleArrayOutput() ForwardingRuleArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleArrayOutput) ToForwardingRuleArrayOutputWithContext(ctx context.Context) ForwardingRuleArrayOutput {
+	return o
+}
+
+func (o ForwardingRuleArrayOutput) Index(i pulumi.IntInput) ForwardingRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ForwardingRule {
+		return vs[0].([]ForwardingRule)[vs[1].(int)]
+	}).(ForwardingRuleOutput)
+}
+
+type ForwardingRuleMapOutput struct{ *pulumi.OutputState }
+
+func (ForwardingRuleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ForwardingRule)(nil))
+}
+
+func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutput() ForwardingRuleMapOutput {
+	return o
+}
+
+func (o ForwardingRuleMapOutput) ToForwardingRuleMapOutputWithContext(ctx context.Context) ForwardingRuleMapOutput {
+	return o
+}
+
+func (o ForwardingRuleMapOutput) MapIndex(k pulumi.StringInput) ForwardingRuleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ForwardingRule {
+		return vs[0].(map[string]ForwardingRule)[vs[1].(string)]
+	}).(ForwardingRuleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ForwardingRuleOutput{})
+	pulumi.RegisterOutputType(ForwardingRulePtrOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleArrayOutput{})
+	pulumi.RegisterOutputType(ForwardingRuleMapOutput{})
 }

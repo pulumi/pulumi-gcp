@@ -341,6 +341,85 @@ func (i *OrganizationSink) ToOrganizationSinkOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkOutput)
 }
 
+func (i *OrganizationSink) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
+	return i.ToOrganizationSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *OrganizationSink) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkPtrOutput)
+}
+
+type OrganizationSinkPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput
+	ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput
+}
+
+type organizationSinkPtrType OrganizationSinkArgs
+
+func (*organizationSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSink)(nil))
+}
+
+func (i *organizationSinkPtrType) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
+	return i.ToOrganizationSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationSinkPtrType) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkPtrOutput)
+}
+
+// OrganizationSinkArrayInput is an input type that accepts OrganizationSinkArray and OrganizationSinkArrayOutput values.
+// You can construct a concrete instance of `OrganizationSinkArrayInput` via:
+//
+//          OrganizationSinkArray{ OrganizationSinkArgs{...} }
+type OrganizationSinkArrayInput interface {
+	pulumi.Input
+
+	ToOrganizationSinkArrayOutput() OrganizationSinkArrayOutput
+	ToOrganizationSinkArrayOutputWithContext(context.Context) OrganizationSinkArrayOutput
+}
+
+type OrganizationSinkArray []OrganizationSinkInput
+
+func (OrganizationSinkArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*OrganizationSink)(nil))
+}
+
+func (i OrganizationSinkArray) ToOrganizationSinkArrayOutput() OrganizationSinkArrayOutput {
+	return i.ToOrganizationSinkArrayOutputWithContext(context.Background())
+}
+
+func (i OrganizationSinkArray) ToOrganizationSinkArrayOutputWithContext(ctx context.Context) OrganizationSinkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkArrayOutput)
+}
+
+// OrganizationSinkMapInput is an input type that accepts OrganizationSinkMap and OrganizationSinkMapOutput values.
+// You can construct a concrete instance of `OrganizationSinkMapInput` via:
+//
+//          OrganizationSinkMap{ "key": OrganizationSinkArgs{...} }
+type OrganizationSinkMapInput interface {
+	pulumi.Input
+
+	ToOrganizationSinkMapOutput() OrganizationSinkMapOutput
+	ToOrganizationSinkMapOutputWithContext(context.Context) OrganizationSinkMapOutput
+}
+
+type OrganizationSinkMap map[string]OrganizationSinkInput
+
+func (OrganizationSinkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*OrganizationSink)(nil))
+}
+
+func (i OrganizationSinkMap) ToOrganizationSinkMapOutput() OrganizationSinkMapOutput {
+	return i.ToOrganizationSinkMapOutputWithContext(context.Background())
+}
+
+func (i OrganizationSinkMap) ToOrganizationSinkMapOutputWithContext(ctx context.Context) OrganizationSinkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationSinkMapOutput)
+}
+
 type OrganizationSinkOutput struct {
 	*pulumi.OutputState
 }
@@ -357,6 +436,75 @@ func (o OrganizationSinkOutput) ToOrganizationSinkOutputWithContext(ctx context.
 	return o
 }
 
+func (o OrganizationSinkOutput) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
+	return o.ToOrganizationSinkPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationSinkOutput) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
+	return o.ApplyT(func(v OrganizationSink) *OrganizationSink {
+		return &v
+	}).(OrganizationSinkPtrOutput)
+}
+
+type OrganizationSinkPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (OrganizationSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationSink)(nil))
+}
+
+func (o OrganizationSinkPtrOutput) ToOrganizationSinkPtrOutput() OrganizationSinkPtrOutput {
+	return o
+}
+
+func (o OrganizationSinkPtrOutput) ToOrganizationSinkPtrOutputWithContext(ctx context.Context) OrganizationSinkPtrOutput {
+	return o
+}
+
+type OrganizationSinkArrayOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSinkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]OrganizationSink)(nil))
+}
+
+func (o OrganizationSinkArrayOutput) ToOrganizationSinkArrayOutput() OrganizationSinkArrayOutput {
+	return o
+}
+
+func (o OrganizationSinkArrayOutput) ToOrganizationSinkArrayOutputWithContext(ctx context.Context) OrganizationSinkArrayOutput {
+	return o
+}
+
+func (o OrganizationSinkArrayOutput) Index(i pulumi.IntInput) OrganizationSinkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) OrganizationSink {
+		return vs[0].([]OrganizationSink)[vs[1].(int)]
+	}).(OrganizationSinkOutput)
+}
+
+type OrganizationSinkMapOutput struct{ *pulumi.OutputState }
+
+func (OrganizationSinkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]OrganizationSink)(nil))
+}
+
+func (o OrganizationSinkMapOutput) ToOrganizationSinkMapOutput() OrganizationSinkMapOutput {
+	return o
+}
+
+func (o OrganizationSinkMapOutput) ToOrganizationSinkMapOutputWithContext(ctx context.Context) OrganizationSinkMapOutput {
+	return o
+}
+
+func (o OrganizationSinkMapOutput) MapIndex(k pulumi.StringInput) OrganizationSinkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) OrganizationSink {
+		return vs[0].(map[string]OrganizationSink)[vs[1].(string)]
+	}).(OrganizationSinkOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(OrganizationSinkOutput{})
+	pulumi.RegisterOutputType(OrganizationSinkPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationSinkArrayOutput{})
+	pulumi.RegisterOutputType(OrganizationSinkMapOutput{})
 }

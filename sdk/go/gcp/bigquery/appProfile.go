@@ -292,6 +292,85 @@ func (i *AppProfile) ToAppProfileOutputWithContext(ctx context.Context) AppProfi
 	return pulumi.ToOutputWithContext(ctx, i).(AppProfileOutput)
 }
 
+func (i *AppProfile) ToAppProfilePtrOutput() AppProfilePtrOutput {
+	return i.ToAppProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *AppProfile) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfilePtrOutput)
+}
+
+type AppProfilePtrInput interface {
+	pulumi.Input
+
+	ToAppProfilePtrOutput() AppProfilePtrOutput
+	ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput
+}
+
+type appProfilePtrType AppProfileArgs
+
+func (*appProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfile)(nil))
+}
+
+func (i *appProfilePtrType) ToAppProfilePtrOutput() AppProfilePtrOutput {
+	return i.ToAppProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *appProfilePtrType) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfilePtrOutput)
+}
+
+// AppProfileArrayInput is an input type that accepts AppProfileArray and AppProfileArrayOutput values.
+// You can construct a concrete instance of `AppProfileArrayInput` via:
+//
+//          AppProfileArray{ AppProfileArgs{...} }
+type AppProfileArrayInput interface {
+	pulumi.Input
+
+	ToAppProfileArrayOutput() AppProfileArrayOutput
+	ToAppProfileArrayOutputWithContext(context.Context) AppProfileArrayOutput
+}
+
+type AppProfileArray []AppProfileInput
+
+func (AppProfileArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*AppProfile)(nil))
+}
+
+func (i AppProfileArray) ToAppProfileArrayOutput() AppProfileArrayOutput {
+	return i.ToAppProfileArrayOutputWithContext(context.Background())
+}
+
+func (i AppProfileArray) ToAppProfileArrayOutputWithContext(ctx context.Context) AppProfileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileArrayOutput)
+}
+
+// AppProfileMapInput is an input type that accepts AppProfileMap and AppProfileMapOutput values.
+// You can construct a concrete instance of `AppProfileMapInput` via:
+//
+//          AppProfileMap{ "key": AppProfileArgs{...} }
+type AppProfileMapInput interface {
+	pulumi.Input
+
+	ToAppProfileMapOutput() AppProfileMapOutput
+	ToAppProfileMapOutputWithContext(context.Context) AppProfileMapOutput
+}
+
+type AppProfileMap map[string]AppProfileInput
+
+func (AppProfileMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*AppProfile)(nil))
+}
+
+func (i AppProfileMap) ToAppProfileMapOutput() AppProfileMapOutput {
+	return i.ToAppProfileMapOutputWithContext(context.Background())
+}
+
+func (i AppProfileMap) ToAppProfileMapOutputWithContext(ctx context.Context) AppProfileMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppProfileMapOutput)
+}
+
 type AppProfileOutput struct {
 	*pulumi.OutputState
 }
@@ -308,6 +387,75 @@ func (o AppProfileOutput) ToAppProfileOutputWithContext(ctx context.Context) App
 	return o
 }
 
+func (o AppProfileOutput) ToAppProfilePtrOutput() AppProfilePtrOutput {
+	return o.ToAppProfilePtrOutputWithContext(context.Background())
+}
+
+func (o AppProfileOutput) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
+	return o.ApplyT(func(v AppProfile) *AppProfile {
+		return &v
+	}).(AppProfilePtrOutput)
+}
+
+type AppProfilePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (AppProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppProfile)(nil))
+}
+
+func (o AppProfilePtrOutput) ToAppProfilePtrOutput() AppProfilePtrOutput {
+	return o
+}
+
+func (o AppProfilePtrOutput) ToAppProfilePtrOutputWithContext(ctx context.Context) AppProfilePtrOutput {
+	return o
+}
+
+type AppProfileArrayOutput struct{ *pulumi.OutputState }
+
+func (AppProfileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppProfile)(nil))
+}
+
+func (o AppProfileArrayOutput) ToAppProfileArrayOutput() AppProfileArrayOutput {
+	return o
+}
+
+func (o AppProfileArrayOutput) ToAppProfileArrayOutputWithContext(ctx context.Context) AppProfileArrayOutput {
+	return o
+}
+
+func (o AppProfileArrayOutput) Index(i pulumi.IntInput) AppProfileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppProfile {
+		return vs[0].([]AppProfile)[vs[1].(int)]
+	}).(AppProfileOutput)
+}
+
+type AppProfileMapOutput struct{ *pulumi.OutputState }
+
+func (AppProfileMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AppProfile)(nil))
+}
+
+func (o AppProfileMapOutput) ToAppProfileMapOutput() AppProfileMapOutput {
+	return o
+}
+
+func (o AppProfileMapOutput) ToAppProfileMapOutputWithContext(ctx context.Context) AppProfileMapOutput {
+	return o
+}
+
+func (o AppProfileMapOutput) MapIndex(k pulumi.StringInput) AppProfileOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppProfile {
+		return vs[0].(map[string]AppProfile)[vs[1].(string)]
+	}).(AppProfileOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AppProfileOutput{})
+	pulumi.RegisterOutputType(AppProfilePtrOutput{})
+	pulumi.RegisterOutputType(AppProfileArrayOutput{})
+	pulumi.RegisterOutputType(AppProfileMapOutput{})
 }

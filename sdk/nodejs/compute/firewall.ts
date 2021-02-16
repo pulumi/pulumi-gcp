@@ -248,7 +248,8 @@ export class Firewall extends pulumi.CustomResource {
     constructor(name: string, args: FirewallArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallArgs | FirewallState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
             inputs["allows"] = state ? state.allows : undefined;
             inputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
@@ -271,7 +272,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["targetTags"] = state ? state.targetTags : undefined;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            if ((!args || args.network === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.network === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'network'");
             }
             inputs["allows"] = args ? args.allows : undefined;
@@ -294,12 +295,8 @@ export class Firewall extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Firewall.__pulumiType, name, inputs, opts);
     }

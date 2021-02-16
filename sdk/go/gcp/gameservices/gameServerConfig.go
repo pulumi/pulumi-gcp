@@ -224,6 +224,85 @@ func (i *GameServerConfig) ToGameServerConfigOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigOutput)
 }
 
+func (i *GameServerConfig) ToGameServerConfigPtrOutput() GameServerConfigPtrOutput {
+	return i.ToGameServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *GameServerConfig) ToGameServerConfigPtrOutputWithContext(ctx context.Context) GameServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigPtrOutput)
+}
+
+type GameServerConfigPtrInput interface {
+	pulumi.Input
+
+	ToGameServerConfigPtrOutput() GameServerConfigPtrOutput
+	ToGameServerConfigPtrOutputWithContext(ctx context.Context) GameServerConfigPtrOutput
+}
+
+type gameServerConfigPtrType GameServerConfigArgs
+
+func (*gameServerConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerConfig)(nil))
+}
+
+func (i *gameServerConfigPtrType) ToGameServerConfigPtrOutput() GameServerConfigPtrOutput {
+	return i.ToGameServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gameServerConfigPtrType) ToGameServerConfigPtrOutputWithContext(ctx context.Context) GameServerConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigPtrOutput)
+}
+
+// GameServerConfigArrayInput is an input type that accepts GameServerConfigArray and GameServerConfigArrayOutput values.
+// You can construct a concrete instance of `GameServerConfigArrayInput` via:
+//
+//          GameServerConfigArray{ GameServerConfigArgs{...} }
+type GameServerConfigArrayInput interface {
+	pulumi.Input
+
+	ToGameServerConfigArrayOutput() GameServerConfigArrayOutput
+	ToGameServerConfigArrayOutputWithContext(context.Context) GameServerConfigArrayOutput
+}
+
+type GameServerConfigArray []GameServerConfigInput
+
+func (GameServerConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*GameServerConfig)(nil))
+}
+
+func (i GameServerConfigArray) ToGameServerConfigArrayOutput() GameServerConfigArrayOutput {
+	return i.ToGameServerConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GameServerConfigArray) ToGameServerConfigArrayOutputWithContext(ctx context.Context) GameServerConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigArrayOutput)
+}
+
+// GameServerConfigMapInput is an input type that accepts GameServerConfigMap and GameServerConfigMapOutput values.
+// You can construct a concrete instance of `GameServerConfigMapInput` via:
+//
+//          GameServerConfigMap{ "key": GameServerConfigArgs{...} }
+type GameServerConfigMapInput interface {
+	pulumi.Input
+
+	ToGameServerConfigMapOutput() GameServerConfigMapOutput
+	ToGameServerConfigMapOutputWithContext(context.Context) GameServerConfigMapOutput
+}
+
+type GameServerConfigMap map[string]GameServerConfigInput
+
+func (GameServerConfigMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*GameServerConfig)(nil))
+}
+
+func (i GameServerConfigMap) ToGameServerConfigMapOutput() GameServerConfigMapOutput {
+	return i.ToGameServerConfigMapOutputWithContext(context.Background())
+}
+
+func (i GameServerConfigMap) ToGameServerConfigMapOutputWithContext(ctx context.Context) GameServerConfigMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GameServerConfigMapOutput)
+}
+
 type GameServerConfigOutput struct {
 	*pulumi.OutputState
 }
@@ -240,6 +319,75 @@ func (o GameServerConfigOutput) ToGameServerConfigOutputWithContext(ctx context.
 	return o
 }
 
+func (o GameServerConfigOutput) ToGameServerConfigPtrOutput() GameServerConfigPtrOutput {
+	return o.ToGameServerConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GameServerConfigOutput) ToGameServerConfigPtrOutputWithContext(ctx context.Context) GameServerConfigPtrOutput {
+	return o.ApplyT(func(v GameServerConfig) *GameServerConfig {
+		return &v
+	}).(GameServerConfigPtrOutput)
+}
+
+type GameServerConfigPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (GameServerConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GameServerConfig)(nil))
+}
+
+func (o GameServerConfigPtrOutput) ToGameServerConfigPtrOutput() GameServerConfigPtrOutput {
+	return o
+}
+
+func (o GameServerConfigPtrOutput) ToGameServerConfigPtrOutputWithContext(ctx context.Context) GameServerConfigPtrOutput {
+	return o
+}
+
+type GameServerConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GameServerConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GameServerConfig)(nil))
+}
+
+func (o GameServerConfigArrayOutput) ToGameServerConfigArrayOutput() GameServerConfigArrayOutput {
+	return o
+}
+
+func (o GameServerConfigArrayOutput) ToGameServerConfigArrayOutputWithContext(ctx context.Context) GameServerConfigArrayOutput {
+	return o
+}
+
+func (o GameServerConfigArrayOutput) Index(i pulumi.IntInput) GameServerConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GameServerConfig {
+		return vs[0].([]GameServerConfig)[vs[1].(int)]
+	}).(GameServerConfigOutput)
+}
+
+type GameServerConfigMapOutput struct{ *pulumi.OutputState }
+
+func (GameServerConfigMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GameServerConfig)(nil))
+}
+
+func (o GameServerConfigMapOutput) ToGameServerConfigMapOutput() GameServerConfigMapOutput {
+	return o
+}
+
+func (o GameServerConfigMapOutput) ToGameServerConfigMapOutputWithContext(ctx context.Context) GameServerConfigMapOutput {
+	return o
+}
+
+func (o GameServerConfigMapOutput) MapIndex(k pulumi.StringInput) GameServerConfigOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GameServerConfig {
+		return vs[0].(map[string]GameServerConfig)[vs[1].(string)]
+	}).(GameServerConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GameServerConfigOutput{})
+	pulumi.RegisterOutputType(GameServerConfigPtrOutput{})
+	pulumi.RegisterOutputType(GameServerConfigArrayOutput{})
+	pulumi.RegisterOutputType(GameServerConfigMapOutput{})
 }

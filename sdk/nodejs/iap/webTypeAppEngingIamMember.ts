@@ -94,7 +94,8 @@ export class WebTypeAppEngingIamMember extends pulumi.CustomResource {
     constructor(name: string, args: WebTypeAppEngingIamMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: WebTypeAppEngingIamMemberArgs | WebTypeAppEngingIamMemberState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as WebTypeAppEngingIamMemberState | undefined;
             inputs["appId"] = state ? state.appId : undefined;
             inputs["condition"] = state ? state.condition : undefined;
@@ -104,13 +105,13 @@ export class WebTypeAppEngingIamMember extends pulumi.CustomResource {
             inputs["role"] = state ? state.role : undefined;
         } else {
             const args = argsOrState as WebTypeAppEngingIamMemberArgs | undefined;
-            if ((!args || args.appId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.appId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.member === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.member === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'member'");
             }
-            if ((!args || args.role === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.role === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'role'");
             }
             inputs["appId"] = args ? args.appId : undefined;
@@ -120,12 +121,8 @@ export class WebTypeAppEngingIamMember extends pulumi.CustomResource {
             inputs["role"] = args ? args.role : undefined;
             inputs["etag"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(WebTypeAppEngingIamMember.__pulumiType, name, inputs, opts);
     }

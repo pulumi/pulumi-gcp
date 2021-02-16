@@ -110,7 +110,8 @@ export class RouterInterface extends pulumi.CustomResource {
     constructor(name: string, args: RouterInterfaceArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: RouterInterfaceArgs | RouterInterfaceState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as RouterInterfaceState | undefined;
             inputs["interconnectAttachment"] = state ? state.interconnectAttachment : undefined;
             inputs["ipRange"] = state ? state.ipRange : undefined;
@@ -121,7 +122,7 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["vpnTunnel"] = state ? state.vpnTunnel : undefined;
         } else {
             const args = argsOrState as RouterInterfaceArgs | undefined;
-            if ((!args || args.router === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.router === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'router'");
             }
             inputs["interconnectAttachment"] = args ? args.interconnectAttachment : undefined;
@@ -132,12 +133,8 @@ export class RouterInterface extends pulumi.CustomResource {
             inputs["router"] = args ? args.router : undefined;
             inputs["vpnTunnel"] = args ? args.vpnTunnel : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(RouterInterface.__pulumiType, name, inputs, opts);
     }

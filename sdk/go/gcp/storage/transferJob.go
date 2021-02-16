@@ -281,6 +281,85 @@ func (i *TransferJob) ToTransferJobOutputWithContext(ctx context.Context) Transf
 	return pulumi.ToOutputWithContext(ctx, i).(TransferJobOutput)
 }
 
+func (i *TransferJob) ToTransferJobPtrOutput() TransferJobPtrOutput {
+	return i.ToTransferJobPtrOutputWithContext(context.Background())
+}
+
+func (i *TransferJob) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobPtrOutput)
+}
+
+type TransferJobPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobPtrOutput() TransferJobPtrOutput
+	ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput
+}
+
+type transferJobPtrType TransferJobArgs
+
+func (*transferJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJob)(nil))
+}
+
+func (i *transferJobPtrType) ToTransferJobPtrOutput() TransferJobPtrOutput {
+	return i.ToTransferJobPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobPtrType) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobPtrOutput)
+}
+
+// TransferJobArrayInput is an input type that accepts TransferJobArray and TransferJobArrayOutput values.
+// You can construct a concrete instance of `TransferJobArrayInput` via:
+//
+//          TransferJobArray{ TransferJobArgs{...} }
+type TransferJobArrayInput interface {
+	pulumi.Input
+
+	ToTransferJobArrayOutput() TransferJobArrayOutput
+	ToTransferJobArrayOutputWithContext(context.Context) TransferJobArrayOutput
+}
+
+type TransferJobArray []TransferJobInput
+
+func (TransferJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TransferJob)(nil))
+}
+
+func (i TransferJobArray) ToTransferJobArrayOutput() TransferJobArrayOutput {
+	return i.ToTransferJobArrayOutputWithContext(context.Background())
+}
+
+func (i TransferJobArray) ToTransferJobArrayOutputWithContext(ctx context.Context) TransferJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobArrayOutput)
+}
+
+// TransferJobMapInput is an input type that accepts TransferJobMap and TransferJobMapOutput values.
+// You can construct a concrete instance of `TransferJobMapInput` via:
+//
+//          TransferJobMap{ "key": TransferJobArgs{...} }
+type TransferJobMapInput interface {
+	pulumi.Input
+
+	ToTransferJobMapOutput() TransferJobMapOutput
+	ToTransferJobMapOutputWithContext(context.Context) TransferJobMapOutput
+}
+
+type TransferJobMap map[string]TransferJobInput
+
+func (TransferJobMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TransferJob)(nil))
+}
+
+func (i TransferJobMap) ToTransferJobMapOutput() TransferJobMapOutput {
+	return i.ToTransferJobMapOutputWithContext(context.Background())
+}
+
+func (i TransferJobMap) ToTransferJobMapOutputWithContext(ctx context.Context) TransferJobMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobMapOutput)
+}
+
 type TransferJobOutput struct {
 	*pulumi.OutputState
 }
@@ -297,6 +376,75 @@ func (o TransferJobOutput) ToTransferJobOutputWithContext(ctx context.Context) T
 	return o
 }
 
+func (o TransferJobOutput) ToTransferJobPtrOutput() TransferJobPtrOutput {
+	return o.ToTransferJobPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobOutput) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
+	return o.ApplyT(func(v TransferJob) *TransferJob {
+		return &v
+	}).(TransferJobPtrOutput)
+}
+
+type TransferJobPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TransferJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJob)(nil))
+}
+
+func (o TransferJobPtrOutput) ToTransferJobPtrOutput() TransferJobPtrOutput {
+	return o
+}
+
+func (o TransferJobPtrOutput) ToTransferJobPtrOutputWithContext(ctx context.Context) TransferJobPtrOutput {
+	return o
+}
+
+type TransferJobArrayOutput struct{ *pulumi.OutputState }
+
+func (TransferJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TransferJob)(nil))
+}
+
+func (o TransferJobArrayOutput) ToTransferJobArrayOutput() TransferJobArrayOutput {
+	return o
+}
+
+func (o TransferJobArrayOutput) ToTransferJobArrayOutputWithContext(ctx context.Context) TransferJobArrayOutput {
+	return o
+}
+
+func (o TransferJobArrayOutput) Index(i pulumi.IntInput) TransferJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TransferJob {
+		return vs[0].([]TransferJob)[vs[1].(int)]
+	}).(TransferJobOutput)
+}
+
+type TransferJobMapOutput struct{ *pulumi.OutputState }
+
+func (TransferJobMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TransferJob)(nil))
+}
+
+func (o TransferJobMapOutput) ToTransferJobMapOutput() TransferJobMapOutput {
+	return o
+}
+
+func (o TransferJobMapOutput) ToTransferJobMapOutputWithContext(ctx context.Context) TransferJobMapOutput {
+	return o
+}
+
+func (o TransferJobMapOutput) MapIndex(k pulumi.StringInput) TransferJobOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TransferJob {
+		return vs[0].(map[string]TransferJob)[vs[1].(string)]
+	}).(TransferJobOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TransferJobOutput{})
+	pulumi.RegisterOutputType(TransferJobPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobArrayOutput{})
+	pulumi.RegisterOutputType(TransferJobMapOutput{})
 }

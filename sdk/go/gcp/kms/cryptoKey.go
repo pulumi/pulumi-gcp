@@ -300,6 +300,85 @@ func (i *CryptoKey) ToCryptoKeyOutputWithContext(ctx context.Context) CryptoKeyO
 	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyOutput)
 }
 
+func (i *CryptoKey) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
+	return i.ToCryptoKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *CryptoKey) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyPtrOutput)
+}
+
+type CryptoKeyPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyPtrOutput() CryptoKeyPtrOutput
+	ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput
+}
+
+type cryptoKeyPtrType CryptoKeyArgs
+
+func (*cryptoKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKey)(nil))
+}
+
+func (i *cryptoKeyPtrType) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
+	return i.ToCryptoKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyPtrType) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyPtrOutput)
+}
+
+// CryptoKeyArrayInput is an input type that accepts CryptoKeyArray and CryptoKeyArrayOutput values.
+// You can construct a concrete instance of `CryptoKeyArrayInput` via:
+//
+//          CryptoKeyArray{ CryptoKeyArgs{...} }
+type CryptoKeyArrayInput interface {
+	pulumi.Input
+
+	ToCryptoKeyArrayOutput() CryptoKeyArrayOutput
+	ToCryptoKeyArrayOutputWithContext(context.Context) CryptoKeyArrayOutput
+}
+
+type CryptoKeyArray []CryptoKeyInput
+
+func (CryptoKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*CryptoKey)(nil))
+}
+
+func (i CryptoKeyArray) ToCryptoKeyArrayOutput() CryptoKeyArrayOutput {
+	return i.ToCryptoKeyArrayOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyArray) ToCryptoKeyArrayOutputWithContext(ctx context.Context) CryptoKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyArrayOutput)
+}
+
+// CryptoKeyMapInput is an input type that accepts CryptoKeyMap and CryptoKeyMapOutput values.
+// You can construct a concrete instance of `CryptoKeyMapInput` via:
+//
+//          CryptoKeyMap{ "key": CryptoKeyArgs{...} }
+type CryptoKeyMapInput interface {
+	pulumi.Input
+
+	ToCryptoKeyMapOutput() CryptoKeyMapOutput
+	ToCryptoKeyMapOutputWithContext(context.Context) CryptoKeyMapOutput
+}
+
+type CryptoKeyMap map[string]CryptoKeyInput
+
+func (CryptoKeyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*CryptoKey)(nil))
+}
+
+func (i CryptoKeyMap) ToCryptoKeyMapOutput() CryptoKeyMapOutput {
+	return i.ToCryptoKeyMapOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyMap) ToCryptoKeyMapOutputWithContext(ctx context.Context) CryptoKeyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyMapOutput)
+}
+
 type CryptoKeyOutput struct {
 	*pulumi.OutputState
 }
@@ -316,6 +395,75 @@ func (o CryptoKeyOutput) ToCryptoKeyOutputWithContext(ctx context.Context) Crypt
 	return o
 }
 
+func (o CryptoKeyOutput) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
+	return o.ToCryptoKeyPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyOutput) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
+	return o.ApplyT(func(v CryptoKey) *CryptoKey {
+		return &v
+	}).(CryptoKeyPtrOutput)
+}
+
+type CryptoKeyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (CryptoKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKey)(nil))
+}
+
+func (o CryptoKeyPtrOutput) ToCryptoKeyPtrOutput() CryptoKeyPtrOutput {
+	return o
+}
+
+func (o CryptoKeyPtrOutput) ToCryptoKeyPtrOutputWithContext(ctx context.Context) CryptoKeyPtrOutput {
+	return o
+}
+
+type CryptoKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CryptoKey)(nil))
+}
+
+func (o CryptoKeyArrayOutput) ToCryptoKeyArrayOutput() CryptoKeyArrayOutput {
+	return o
+}
+
+func (o CryptoKeyArrayOutput) ToCryptoKeyArrayOutputWithContext(ctx context.Context) CryptoKeyArrayOutput {
+	return o
+}
+
+func (o CryptoKeyArrayOutput) Index(i pulumi.IntInput) CryptoKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKey {
+		return vs[0].([]CryptoKey)[vs[1].(int)]
+	}).(CryptoKeyOutput)
+}
+
+type CryptoKeyMapOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]CryptoKey)(nil))
+}
+
+func (o CryptoKeyMapOutput) ToCryptoKeyMapOutput() CryptoKeyMapOutput {
+	return o
+}
+
+func (o CryptoKeyMapOutput) ToCryptoKeyMapOutputWithContext(ctx context.Context) CryptoKeyMapOutput {
+	return o
+}
+
+func (o CryptoKeyMapOutput) MapIndex(k pulumi.StringInput) CryptoKeyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) CryptoKey {
+		return vs[0].(map[string]CryptoKey)[vs[1].(string)]
+	}).(CryptoKeyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(CryptoKeyOutput{})
+	pulumi.RegisterOutputType(CryptoKeyPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyArrayOutput{})
+	pulumi.RegisterOutputType(CryptoKeyMapOutput{})
 }

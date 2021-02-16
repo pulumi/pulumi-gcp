@@ -296,6 +296,85 @@ func (i *DatabaseIAMBinding) ToDatabaseIAMBindingOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingOutput)
 }
 
+func (i *DatabaseIAMBinding) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
+	return i.ToDatabaseIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *DatabaseIAMBinding) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingPtrOutput)
+}
+
+type DatabaseIAMBindingPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput
+	ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput
+}
+
+type databaseIAMBindingPtrType DatabaseIAMBindingArgs
+
+func (*databaseIAMBindingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIAMBinding)(nil))
+}
+
+func (i *databaseIAMBindingPtrType) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
+	return i.ToDatabaseIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseIAMBindingPtrType) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingPtrOutput)
+}
+
+// DatabaseIAMBindingArrayInput is an input type that accepts DatabaseIAMBindingArray and DatabaseIAMBindingArrayOutput values.
+// You can construct a concrete instance of `DatabaseIAMBindingArrayInput` via:
+//
+//          DatabaseIAMBindingArray{ DatabaseIAMBindingArgs{...} }
+type DatabaseIAMBindingArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput
+	ToDatabaseIAMBindingArrayOutputWithContext(context.Context) DatabaseIAMBindingArrayOutput
+}
+
+type DatabaseIAMBindingArray []DatabaseIAMBindingInput
+
+func (DatabaseIAMBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatabaseIAMBinding)(nil))
+}
+
+func (i DatabaseIAMBindingArray) ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput {
+	return i.ToDatabaseIAMBindingArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseIAMBindingArray) ToDatabaseIAMBindingArrayOutputWithContext(ctx context.Context) DatabaseIAMBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingArrayOutput)
+}
+
+// DatabaseIAMBindingMapInput is an input type that accepts DatabaseIAMBindingMap and DatabaseIAMBindingMapOutput values.
+// You can construct a concrete instance of `DatabaseIAMBindingMapInput` via:
+//
+//          DatabaseIAMBindingMap{ "key": DatabaseIAMBindingArgs{...} }
+type DatabaseIAMBindingMapInput interface {
+	pulumi.Input
+
+	ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput
+	ToDatabaseIAMBindingMapOutputWithContext(context.Context) DatabaseIAMBindingMapOutput
+}
+
+type DatabaseIAMBindingMap map[string]DatabaseIAMBindingInput
+
+func (DatabaseIAMBindingMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatabaseIAMBinding)(nil))
+}
+
+func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput {
+	return i.ToDatabaseIAMBindingMapOutputWithContext(context.Background())
+}
+
+func (i DatabaseIAMBindingMap) ToDatabaseIAMBindingMapOutputWithContext(ctx context.Context) DatabaseIAMBindingMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseIAMBindingMapOutput)
+}
+
 type DatabaseIAMBindingOutput struct {
 	*pulumi.OutputState
 }
@@ -312,6 +391,75 @@ func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingOutputWithContext(ctx cont
 	return o
 }
 
+func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
+	return o.ToDatabaseIAMBindingPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseIAMBindingOutput) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
+	return o.ApplyT(func(v DatabaseIAMBinding) *DatabaseIAMBinding {
+		return &v
+	}).(DatabaseIAMBindingPtrOutput)
+}
+
+type DatabaseIAMBindingPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatabaseIAMBindingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseIAMBinding)(nil))
+}
+
+func (o DatabaseIAMBindingPtrOutput) ToDatabaseIAMBindingPtrOutput() DatabaseIAMBindingPtrOutput {
+	return o
+}
+
+func (o DatabaseIAMBindingPtrOutput) ToDatabaseIAMBindingPtrOutputWithContext(ctx context.Context) DatabaseIAMBindingPtrOutput {
+	return o
+}
+
+type DatabaseIAMBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIAMBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseIAMBinding)(nil))
+}
+
+func (o DatabaseIAMBindingArrayOutput) ToDatabaseIAMBindingArrayOutput() DatabaseIAMBindingArrayOutput {
+	return o
+}
+
+func (o DatabaseIAMBindingArrayOutput) ToDatabaseIAMBindingArrayOutputWithContext(ctx context.Context) DatabaseIAMBindingArrayOutput {
+	return o
+}
+
+func (o DatabaseIAMBindingArrayOutput) Index(i pulumi.IntInput) DatabaseIAMBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseIAMBinding {
+		return vs[0].([]DatabaseIAMBinding)[vs[1].(int)]
+	}).(DatabaseIAMBindingOutput)
+}
+
+type DatabaseIAMBindingMapOutput struct{ *pulumi.OutputState }
+
+func (DatabaseIAMBindingMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatabaseIAMBinding)(nil))
+}
+
+func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutput() DatabaseIAMBindingMapOutput {
+	return o
+}
+
+func (o DatabaseIAMBindingMapOutput) ToDatabaseIAMBindingMapOutputWithContext(ctx context.Context) DatabaseIAMBindingMapOutput {
+	return o
+}
+
+func (o DatabaseIAMBindingMapOutput) MapIndex(k pulumi.StringInput) DatabaseIAMBindingOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatabaseIAMBinding {
+		return vs[0].(map[string]DatabaseIAMBinding)[vs[1].(string)]
+	}).(DatabaseIAMBindingOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatabaseIAMBindingOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMBindingPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMBindingArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseIAMBindingMapOutput{})
 }

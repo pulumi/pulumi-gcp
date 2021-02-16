@@ -282,6 +282,85 @@ func (i *RegionDiskIamMember) ToRegionDiskIamMemberOutputWithContext(ctx context
 	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberOutput)
 }
 
+func (i *RegionDiskIamMember) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
+	return i.ToRegionDiskIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *RegionDiskIamMember) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberPtrOutput)
+}
+
+type RegionDiskIamMemberPtrInput interface {
+	pulumi.Input
+
+	ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput
+	ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput
+}
+
+type regionDiskIamMemberPtrType RegionDiskIamMemberArgs
+
+func (*regionDiskIamMemberPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskIamMember)(nil))
+}
+
+func (i *regionDiskIamMemberPtrType) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
+	return i.ToRegionDiskIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (i *regionDiskIamMemberPtrType) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberPtrOutput)
+}
+
+// RegionDiskIamMemberArrayInput is an input type that accepts RegionDiskIamMemberArray and RegionDiskIamMemberArrayOutput values.
+// You can construct a concrete instance of `RegionDiskIamMemberArrayInput` via:
+//
+//          RegionDiskIamMemberArray{ RegionDiskIamMemberArgs{...} }
+type RegionDiskIamMemberArrayInput interface {
+	pulumi.Input
+
+	ToRegionDiskIamMemberArrayOutput() RegionDiskIamMemberArrayOutput
+	ToRegionDiskIamMemberArrayOutputWithContext(context.Context) RegionDiskIamMemberArrayOutput
+}
+
+type RegionDiskIamMemberArray []RegionDiskIamMemberInput
+
+func (RegionDiskIamMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*RegionDiskIamMember)(nil))
+}
+
+func (i RegionDiskIamMemberArray) ToRegionDiskIamMemberArrayOutput() RegionDiskIamMemberArrayOutput {
+	return i.ToRegionDiskIamMemberArrayOutputWithContext(context.Background())
+}
+
+func (i RegionDiskIamMemberArray) ToRegionDiskIamMemberArrayOutputWithContext(ctx context.Context) RegionDiskIamMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberArrayOutput)
+}
+
+// RegionDiskIamMemberMapInput is an input type that accepts RegionDiskIamMemberMap and RegionDiskIamMemberMapOutput values.
+// You can construct a concrete instance of `RegionDiskIamMemberMapInput` via:
+//
+//          RegionDiskIamMemberMap{ "key": RegionDiskIamMemberArgs{...} }
+type RegionDiskIamMemberMapInput interface {
+	pulumi.Input
+
+	ToRegionDiskIamMemberMapOutput() RegionDiskIamMemberMapOutput
+	ToRegionDiskIamMemberMapOutputWithContext(context.Context) RegionDiskIamMemberMapOutput
+}
+
+type RegionDiskIamMemberMap map[string]RegionDiskIamMemberInput
+
+func (RegionDiskIamMemberMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*RegionDiskIamMember)(nil))
+}
+
+func (i RegionDiskIamMemberMap) ToRegionDiskIamMemberMapOutput() RegionDiskIamMemberMapOutput {
+	return i.ToRegionDiskIamMemberMapOutputWithContext(context.Background())
+}
+
+func (i RegionDiskIamMemberMap) ToRegionDiskIamMemberMapOutputWithContext(ctx context.Context) RegionDiskIamMemberMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RegionDiskIamMemberMapOutput)
+}
+
 type RegionDiskIamMemberOutput struct {
 	*pulumi.OutputState
 }
@@ -298,6 +377,75 @@ func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberOutputWithContext(ctx co
 	return o
 }
 
+func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
+	return o.ToRegionDiskIamMemberPtrOutputWithContext(context.Background())
+}
+
+func (o RegionDiskIamMemberOutput) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
+	return o.ApplyT(func(v RegionDiskIamMember) *RegionDiskIamMember {
+		return &v
+	}).(RegionDiskIamMemberPtrOutput)
+}
+
+type RegionDiskIamMemberPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (RegionDiskIamMemberPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionDiskIamMember)(nil))
+}
+
+func (o RegionDiskIamMemberPtrOutput) ToRegionDiskIamMemberPtrOutput() RegionDiskIamMemberPtrOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberPtrOutput) ToRegionDiskIamMemberPtrOutputWithContext(ctx context.Context) RegionDiskIamMemberPtrOutput {
+	return o
+}
+
+type RegionDiskIamMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskIamMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RegionDiskIamMember)(nil))
+}
+
+func (o RegionDiskIamMemberArrayOutput) ToRegionDiskIamMemberArrayOutput() RegionDiskIamMemberArrayOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberArrayOutput) ToRegionDiskIamMemberArrayOutputWithContext(ctx context.Context) RegionDiskIamMemberArrayOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberArrayOutput) Index(i pulumi.IntInput) RegionDiskIamMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegionDiskIamMember {
+		return vs[0].([]RegionDiskIamMember)[vs[1].(int)]
+	}).(RegionDiskIamMemberOutput)
+}
+
+type RegionDiskIamMemberMapOutput struct{ *pulumi.OutputState }
+
+func (RegionDiskIamMemberMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]RegionDiskIamMember)(nil))
+}
+
+func (o RegionDiskIamMemberMapOutput) ToRegionDiskIamMemberMapOutput() RegionDiskIamMemberMapOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberMapOutput) ToRegionDiskIamMemberMapOutputWithContext(ctx context.Context) RegionDiskIamMemberMapOutput {
+	return o
+}
+
+func (o RegionDiskIamMemberMapOutput) MapIndex(k pulumi.StringInput) RegionDiskIamMemberOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) RegionDiskIamMember {
+		return vs[0].(map[string]RegionDiskIamMember)[vs[1].(string)]
+	}).(RegionDiskIamMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(RegionDiskIamMemberOutput{})
+	pulumi.RegisterOutputType(RegionDiskIamMemberPtrOutput{})
+	pulumi.RegisterOutputType(RegionDiskIamMemberArrayOutput{})
+	pulumi.RegisterOutputType(RegionDiskIamMemberMapOutput{})
 }

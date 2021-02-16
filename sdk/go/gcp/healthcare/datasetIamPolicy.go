@@ -265,6 +265,85 @@ func (i *DatasetIamPolicy) ToDatasetIamPolicyOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyOutput)
 }
 
+func (i *DatasetIamPolicy) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
+	return i.ToDatasetIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *DatasetIamPolicy) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyPtrOutput)
+}
+
+type DatasetIamPolicyPtrInput interface {
+	pulumi.Input
+
+	ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput
+	ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput
+}
+
+type datasetIamPolicyPtrType DatasetIamPolicyArgs
+
+func (*datasetIamPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamPolicy)(nil))
+}
+
+func (i *datasetIamPolicyPtrType) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
+	return i.ToDatasetIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetIamPolicyPtrType) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyPtrOutput)
+}
+
+// DatasetIamPolicyArrayInput is an input type that accepts DatasetIamPolicyArray and DatasetIamPolicyArrayOutput values.
+// You can construct a concrete instance of `DatasetIamPolicyArrayInput` via:
+//
+//          DatasetIamPolicyArray{ DatasetIamPolicyArgs{...} }
+type DatasetIamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToDatasetIamPolicyArrayOutput() DatasetIamPolicyArrayOutput
+	ToDatasetIamPolicyArrayOutputWithContext(context.Context) DatasetIamPolicyArrayOutput
+}
+
+type DatasetIamPolicyArray []DatasetIamPolicyInput
+
+func (DatasetIamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*DatasetIamPolicy)(nil))
+}
+
+func (i DatasetIamPolicyArray) ToDatasetIamPolicyArrayOutput() DatasetIamPolicyArrayOutput {
+	return i.ToDatasetIamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i DatasetIamPolicyArray) ToDatasetIamPolicyArrayOutputWithContext(ctx context.Context) DatasetIamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyArrayOutput)
+}
+
+// DatasetIamPolicyMapInput is an input type that accepts DatasetIamPolicyMap and DatasetIamPolicyMapOutput values.
+// You can construct a concrete instance of `DatasetIamPolicyMapInput` via:
+//
+//          DatasetIamPolicyMap{ "key": DatasetIamPolicyArgs{...} }
+type DatasetIamPolicyMapInput interface {
+	pulumi.Input
+
+	ToDatasetIamPolicyMapOutput() DatasetIamPolicyMapOutput
+	ToDatasetIamPolicyMapOutputWithContext(context.Context) DatasetIamPolicyMapOutput
+}
+
+type DatasetIamPolicyMap map[string]DatasetIamPolicyInput
+
+func (DatasetIamPolicyMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*DatasetIamPolicy)(nil))
+}
+
+func (i DatasetIamPolicyMap) ToDatasetIamPolicyMapOutput() DatasetIamPolicyMapOutput {
+	return i.ToDatasetIamPolicyMapOutputWithContext(context.Background())
+}
+
+func (i DatasetIamPolicyMap) ToDatasetIamPolicyMapOutputWithContext(ctx context.Context) DatasetIamPolicyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetIamPolicyMapOutput)
+}
+
 type DatasetIamPolicyOutput struct {
 	*pulumi.OutputState
 }
@@ -281,6 +360,75 @@ func (o DatasetIamPolicyOutput) ToDatasetIamPolicyOutputWithContext(ctx context.
 	return o
 }
 
+func (o DatasetIamPolicyOutput) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
+	return o.ToDatasetIamPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetIamPolicyOutput) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
+	return o.ApplyT(func(v DatasetIamPolicy) *DatasetIamPolicy {
+		return &v
+	}).(DatasetIamPolicyPtrOutput)
+}
+
+type DatasetIamPolicyPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (DatasetIamPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetIamPolicy)(nil))
+}
+
+func (o DatasetIamPolicyPtrOutput) ToDatasetIamPolicyPtrOutput() DatasetIamPolicyPtrOutput {
+	return o
+}
+
+func (o DatasetIamPolicyPtrOutput) ToDatasetIamPolicyPtrOutputWithContext(ctx context.Context) DatasetIamPolicyPtrOutput {
+	return o
+}
+
+type DatasetIamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetIamPolicy)(nil))
+}
+
+func (o DatasetIamPolicyArrayOutput) ToDatasetIamPolicyArrayOutput() DatasetIamPolicyArrayOutput {
+	return o
+}
+
+func (o DatasetIamPolicyArrayOutput) ToDatasetIamPolicyArrayOutputWithContext(ctx context.Context) DatasetIamPolicyArrayOutput {
+	return o
+}
+
+func (o DatasetIamPolicyArrayOutput) Index(i pulumi.IntInput) DatasetIamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetIamPolicy {
+		return vs[0].([]DatasetIamPolicy)[vs[1].(int)]
+	}).(DatasetIamPolicyOutput)
+}
+
+type DatasetIamPolicyMapOutput struct{ *pulumi.OutputState }
+
+func (DatasetIamPolicyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]DatasetIamPolicy)(nil))
+}
+
+func (o DatasetIamPolicyMapOutput) ToDatasetIamPolicyMapOutput() DatasetIamPolicyMapOutput {
+	return o
+}
+
+func (o DatasetIamPolicyMapOutput) ToDatasetIamPolicyMapOutputWithContext(ctx context.Context) DatasetIamPolicyMapOutput {
+	return o
+}
+
+func (o DatasetIamPolicyMapOutput) MapIndex(k pulumi.StringInput) DatasetIamPolicyOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DatasetIamPolicy {
+		return vs[0].(map[string]DatasetIamPolicy)[vs[1].(string)]
+	}).(DatasetIamPolicyOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(DatasetIamPolicyOutput{})
+	pulumi.RegisterOutputType(DatasetIamPolicyPtrOutput{})
+	pulumi.RegisterOutputType(DatasetIamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(DatasetIamPolicyMapOutput{})
 }

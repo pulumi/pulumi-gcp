@@ -381,6 +381,85 @@ func (i *TargetInstance) ToTargetInstanceOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceOutput)
 }
 
+func (i *TargetInstance) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
+	return i.ToTargetInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *TargetInstance) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetInstancePtrOutput)
+}
+
+type TargetInstancePtrInput interface {
+	pulumi.Input
+
+	ToTargetInstancePtrOutput() TargetInstancePtrOutput
+	ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput
+}
+
+type targetInstancePtrType TargetInstanceArgs
+
+func (*targetInstancePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetInstance)(nil))
+}
+
+func (i *targetInstancePtrType) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
+	return i.ToTargetInstancePtrOutputWithContext(context.Background())
+}
+
+func (i *targetInstancePtrType) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetInstancePtrOutput)
+}
+
+// TargetInstanceArrayInput is an input type that accepts TargetInstanceArray and TargetInstanceArrayOutput values.
+// You can construct a concrete instance of `TargetInstanceArrayInput` via:
+//
+//          TargetInstanceArray{ TargetInstanceArgs{...} }
+type TargetInstanceArrayInput interface {
+	pulumi.Input
+
+	ToTargetInstanceArrayOutput() TargetInstanceArrayOutput
+	ToTargetInstanceArrayOutputWithContext(context.Context) TargetInstanceArrayOutput
+}
+
+type TargetInstanceArray []TargetInstanceInput
+
+func (TargetInstanceArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*TargetInstance)(nil))
+}
+
+func (i TargetInstanceArray) ToTargetInstanceArrayOutput() TargetInstanceArrayOutput {
+	return i.ToTargetInstanceArrayOutputWithContext(context.Background())
+}
+
+func (i TargetInstanceArray) ToTargetInstanceArrayOutputWithContext(ctx context.Context) TargetInstanceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceArrayOutput)
+}
+
+// TargetInstanceMapInput is an input type that accepts TargetInstanceMap and TargetInstanceMapOutput values.
+// You can construct a concrete instance of `TargetInstanceMapInput` via:
+//
+//          TargetInstanceMap{ "key": TargetInstanceArgs{...} }
+type TargetInstanceMapInput interface {
+	pulumi.Input
+
+	ToTargetInstanceMapOutput() TargetInstanceMapOutput
+	ToTargetInstanceMapOutputWithContext(context.Context) TargetInstanceMapOutput
+}
+
+type TargetInstanceMap map[string]TargetInstanceInput
+
+func (TargetInstanceMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*TargetInstance)(nil))
+}
+
+func (i TargetInstanceMap) ToTargetInstanceMapOutput() TargetInstanceMapOutput {
+	return i.ToTargetInstanceMapOutputWithContext(context.Background())
+}
+
+func (i TargetInstanceMap) ToTargetInstanceMapOutputWithContext(ctx context.Context) TargetInstanceMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetInstanceMapOutput)
+}
+
 type TargetInstanceOutput struct {
 	*pulumi.OutputState
 }
@@ -397,6 +476,75 @@ func (o TargetInstanceOutput) ToTargetInstanceOutputWithContext(ctx context.Cont
 	return o
 }
 
+func (o TargetInstanceOutput) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
+	return o.ToTargetInstancePtrOutputWithContext(context.Background())
+}
+
+func (o TargetInstanceOutput) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
+	return o.ApplyT(func(v TargetInstance) *TargetInstance {
+		return &v
+	}).(TargetInstancePtrOutput)
+}
+
+type TargetInstancePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (TargetInstancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TargetInstance)(nil))
+}
+
+func (o TargetInstancePtrOutput) ToTargetInstancePtrOutput() TargetInstancePtrOutput {
+	return o
+}
+
+func (o TargetInstancePtrOutput) ToTargetInstancePtrOutputWithContext(ctx context.Context) TargetInstancePtrOutput {
+	return o
+}
+
+type TargetInstanceArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetInstanceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetInstance)(nil))
+}
+
+func (o TargetInstanceArrayOutput) ToTargetInstanceArrayOutput() TargetInstanceArrayOutput {
+	return o
+}
+
+func (o TargetInstanceArrayOutput) ToTargetInstanceArrayOutputWithContext(ctx context.Context) TargetInstanceArrayOutput {
+	return o
+}
+
+func (o TargetInstanceArrayOutput) Index(i pulumi.IntInput) TargetInstanceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetInstance {
+		return vs[0].([]TargetInstance)[vs[1].(int)]
+	}).(TargetInstanceOutput)
+}
+
+type TargetInstanceMapOutput struct{ *pulumi.OutputState }
+
+func (TargetInstanceMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]TargetInstance)(nil))
+}
+
+func (o TargetInstanceMapOutput) ToTargetInstanceMapOutput() TargetInstanceMapOutput {
+	return o
+}
+
+func (o TargetInstanceMapOutput) ToTargetInstanceMapOutputWithContext(ctx context.Context) TargetInstanceMapOutput {
+	return o
+}
+
+func (o TargetInstanceMapOutput) MapIndex(k pulumi.StringInput) TargetInstanceOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) TargetInstance {
+		return vs[0].(map[string]TargetInstance)[vs[1].(string)]
+	}).(TargetInstanceOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(TargetInstanceOutput{})
+	pulumi.RegisterOutputType(TargetInstancePtrOutput{})
+	pulumi.RegisterOutputType(TargetInstanceArrayOutput{})
+	pulumi.RegisterOutputType(TargetInstanceMapOutput{})
 }
