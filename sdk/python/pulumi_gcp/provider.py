@@ -60,6 +60,7 @@ class Provider(pulumi.ProviderResource):
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  filestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -182,6 +183,7 @@ class Provider(pulumi.ProviderResource):
             __props__['dialogflow_custom_endpoint'] = dialogflow_custom_endpoint
             __props__['dns_beta_custom_endpoint'] = dns_beta_custom_endpoint
             __props__['dns_custom_endpoint'] = dns_custom_endpoint
+            __props__['essential_contacts_custom_endpoint'] = essential_contacts_custom_endpoint
             __props__['filestore_custom_endpoint'] = filestore_custom_endpoint
             __props__['firebase_custom_endpoint'] = firebase_custom_endpoint
             __props__['firestore_custom_endpoint'] = firestore_custom_endpoint

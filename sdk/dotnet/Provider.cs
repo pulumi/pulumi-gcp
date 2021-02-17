@@ -177,6 +177,9 @@ namespace Pulumi.Gcp
         [Input("dnsCustomEndpoint")]
         public Input<string>? DnsCustomEndpoint { get; set; }
 
+        [Input("essentialContactsCustomEndpoint")]
+        public Input<string>? EssentialContactsCustomEndpoint { get; set; }
+
         [Input("filestoreCustomEndpoint")]
         public Input<string>? FilestoreCustomEndpoint { get; set; }
 

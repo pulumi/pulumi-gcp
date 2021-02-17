@@ -54,6 +54,7 @@ const (
 	gcpDeploymentManager    = "DeploymentManager"    // DeploymentManager resources
 	gcpDiagflow             = "Diagflow"             // Diagflow resources
 	gcpEndPoints            = "Endpoints"            // End Point resources
+	gcpEssentialContacts    = "EssentialContacts"    // Essential Contacts resources
 	gcpFilestore            = "Filestore"            // Filestore resources
 	gcpFirebase             = "Firebase"             // Firebase resources
 	gcpFirestore            = "Firestore"            // Firestore resources
@@ -1918,6 +1919,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "privateca_certificate_authority_iam.html.markdown ",
 				},
 			},
+
+			// essential contacts
+			"google_essential_contacts_contact": {Tok: gcpResource(gcpEssentialContacts, "Contact")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

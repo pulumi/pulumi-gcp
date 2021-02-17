@@ -140,6 +140,9 @@ func GetDnsBetaCustomEndpoint(ctx *pulumi.Context) string {
 func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsCustomEndpoint")
 }
+func GetEssentialContactsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:essentialContactsCustomEndpoint")
+}
 func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:filestoreCustomEndpoint")
 }

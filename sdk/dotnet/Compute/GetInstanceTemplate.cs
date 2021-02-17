@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class GetInstanceTemplateArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A filter to retrieve the instance templates. 
+        /// A filter to retrieve the instance templates.
         /// See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
         /// If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
         /// </summary>

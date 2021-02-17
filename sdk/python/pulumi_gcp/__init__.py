@@ -42,6 +42,7 @@ from . import (
     diagflow,
     dns,
     endpoints,
+    essentialcontacts,
     filestore,
     firebase,
     firestore,

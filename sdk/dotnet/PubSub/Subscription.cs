@@ -254,6 +254,9 @@ namespace Pulumi.Gcp.PubSub
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Path of the subscription in the format projects/{project}/subscriptions/{name}
+        /// </summary>
         [Output("path")]
         public Output<string> Path { get; private set; } = null!;
 
@@ -578,6 +581,9 @@ namespace Pulumi.Gcp.PubSub
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Path of the subscription in the format projects/{project}/subscriptions/{name}
+        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 

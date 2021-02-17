@@ -311,6 +311,7 @@ class Subscription(pulumi.CustomResource):
                A duration in seconds with up to nine fractional digits, terminated
                by 's'. Example: `"600.5s"`.
         :param pulumi.Input[str] name: Name of the subscription.
+        :param pulumi.Input[str] path: Path of the subscription in the format projects/{project}/subscriptions/{name}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']] push_config: If push delivery is used with this subscription, this field is used to
@@ -454,6 +455,9 @@ class Subscription(pulumi.CustomResource):
     @property
     @pulumi.getter
     def path(self) -> pulumi.Output[str]:
+        """
+        Path of the subscription in the format projects/{project}/subscriptions/{name}
+        """
         return pulumi.get(self, "path")
 
     @property

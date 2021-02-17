@@ -4910,6 +4910,7 @@ class InstanceFromMachineImageNetworkInterface(dict):
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
+                 nic_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
@@ -4926,6 +4927,8 @@ class InstanceFromMachineImageNetworkInterface(dict):
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -4959,6 +4962,11 @@ class InstanceFromMachineImageNetworkInterface(dict):
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[str]:
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[str]:
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter
@@ -5388,6 +5396,7 @@ class InstanceFromTemplateNetworkInterface(dict):
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
+                 nic_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
@@ -5404,6 +5413,8 @@ class InstanceFromTemplateNetworkInterface(dict):
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -5437,6 +5448,11 @@ class InstanceFromTemplateNetworkInterface(dict):
     @pulumi.getter(name="networkIp")
     def network_ip(self) -> Optional[str]:
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[str]:
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter
@@ -6100,6 +6116,7 @@ class InstanceNetworkInterface(dict):
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
+                 nic_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
@@ -6118,6 +6135,8 @@ class InstanceNetworkInterface(dict):
                Either `network` or `subnetwork` must be provided.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
+        :param str nic_type: ) The type of vNIC to be used on this interface.
+               Possible values: GVNIC, VIRTIO_NET.
         :param str subnetwork: The name or self_link of the subnetwork to attach this
                interface to. The subnetwork must exist in the same region this instance will be
                created in. If network isn't provided it will be inferred from the subnetwork.
@@ -6137,6 +6156,8 @@ class InstanceNetworkInterface(dict):
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -6191,6 +6212,15 @@ class InstanceNetworkInterface(dict):
         empty, the address will be automatically assigned.
         """
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[str]:
+        """
+        ) The type of vNIC to be used on this interface.
+        Possible values: GVNIC, VIRTIO_NET.
+        """
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter
@@ -6600,6 +6630,7 @@ class InstanceTemplateDisk(dict):
                  interface: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
                  mode: Optional[str] = None,
+                 resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
                  source_image: Optional[str] = None,
                  type: Optional[str] = None):
@@ -6618,7 +6649,7 @@ class InstanceTemplateDisk(dict):
                the size must be exactly 375GB.
         :param str disk_type: The GCE disk type. Can be either `"pd-ssd"`,
                `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
-        :param str interface: Specifies the disk interface to use for attaching this disk, 
+        :param str interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
                than SCSI. Local SSDs can use either NVME or SCSI.
@@ -6627,6 +6658,7 @@ class InstanceTemplateDisk(dict):
         :param str mode: The mode in which to attach this disk, either READ_WRITE
                or READ_ONLY. If you are attaching or creating a boot disk, this must
                read-write mode.
+        :param str resource_policies: -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
                > **Note:** Either `source` or `source_image` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
@@ -6659,6 +6691,8 @@ class InstanceTemplateDisk(dict):
             pulumi.set(__self__, "labels", labels)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if source is not None:
             pulumi.set(__self__, "source", source)
         if source_image is not None:
@@ -6733,7 +6767,7 @@ class InstanceTemplateDisk(dict):
     @pulumi.getter
     def interface(self) -> Optional[str]:
         """
-        Specifies the disk interface to use for attaching this disk, 
+        Specifies the disk interface to use for attaching this disk,
         which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
         and the request will fail if you attempt to attach a persistent disk in any other format
         than SCSI. Local SSDs can use either NVME or SCSI.
@@ -6758,6 +6792,14 @@ class InstanceTemplateDisk(dict):
         read-write mode.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[str]:
+        """
+        -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        """
+        return pulumi.get(self, "resource_policies")
 
     @property
     @pulumi.getter
@@ -6856,6 +6898,7 @@ class InstanceTemplateNetworkInterface(dict):
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
+                 nic_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
@@ -6875,6 +6918,8 @@ class InstanceTemplateNetworkInterface(dict):
                `subnetwork` for custom subnetted networks.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
+        :param str nic_type: ) The type of vNIC to be used on this interface.
+               Possible values: GVNIC, VIRTIO_NET.
         :param str subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
                created in. Either `network` or `subnetwork` must be provided.
@@ -6891,6 +6936,8 @@ class InstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -6946,6 +6993,15 @@ class InstanceTemplateNetworkInterface(dict):
         empty, the address will be automatically assigned.
         """
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[str]:
+        """
+        ) The type of vNIC to be used on this interface.
+        Possible values: GVNIC, VIRTIO_NET.
+        """
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter
@@ -22474,6 +22530,7 @@ class GetInstanceNetworkInterfaceResult(dict):
                  name: str,
                  network: str,
                  network_ip: str,
+                 nic_type: str,
                  subnetwork: str,
                  subnetwork_project: str):
         """
@@ -22491,6 +22548,7 @@ class GetInstanceNetworkInterfaceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_ip", network_ip)
+        pulumi.set(__self__, "nic_type", nic_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "subnetwork_project", subnetwork_project)
 
@@ -22534,6 +22592,11 @@ class GetInstanceNetworkInterfaceResult(dict):
         The private IP address assigned to the instance.
         """
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> str:
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter
@@ -22811,6 +22874,7 @@ class GetInstanceTemplateDiskResult(dict):
                  interface: str,
                  labels: Mapping[str, str],
                  mode: str,
+                 resource_policies: Sequence[str],
                  source: str,
                  source_image: str,
                  type: str):
@@ -22829,7 +22893,7 @@ class GetInstanceTemplateDiskResult(dict):
                the size must be exactly 375GB.
         :param str disk_type: The GCE disk type. Can be either `"pd-ssd"`,
                `"local-ssd"`, `"pd-balanced"` or `"pd-standard"`.
-        :param str interface: Specifies the disk interface to use for attaching this disk, 
+        :param str interface: Specifies the disk interface to use for attaching this disk,
                which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
                and the request will fail if you attempt to attach a persistent disk in any other format
                than SCSI. Local SSDs can use either NVME or SCSI.
@@ -22860,6 +22924,7 @@ class GetInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_image", source_image)
         pulumi.set(__self__, "type", type)
@@ -22931,7 +22996,7 @@ class GetInstanceTemplateDiskResult(dict):
     @pulumi.getter
     def interface(self) -> str:
         """
-        Specifies the disk interface to use for attaching this disk, 
+        Specifies the disk interface to use for attaching this disk,
         which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
         and the request will fail if you attempt to attach a persistent disk in any other format
         than SCSI. Local SSDs can use either NVME or SCSI.
@@ -22956,6 +23021,11 @@ class GetInstanceTemplateDiskResult(dict):
         read-write mode.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Sequence[str]:
+        return pulumi.get(self, "resource_policies")
 
     @property
     @pulumi.getter
@@ -23045,6 +23115,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
                  name: str,
                  network: str,
                  network_ip: str,
+                 nic_type: str,
                  subnetwork: str,
                  subnetwork_project: str):
         """
@@ -23068,6 +23139,7 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_ip", network_ip)
+        pulumi.set(__self__, "nic_type", nic_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "subnetwork_project", subnetwork_project)
 
@@ -23112,6 +23184,11 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         empty, the address will be automatically assigned.
         """
         return pulumi.get(self, "network_ip")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> str:
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter

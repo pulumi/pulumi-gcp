@@ -279,6 +279,10 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly query!: pulumi.Output<outputs.bigquery.JobQuery | undefined>;
     /**
+     * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     */
+    public /*out*/ readonly statuses!: pulumi.Output<outputs.bigquery.JobStatus[]>;
+    /**
      * Email address of the user who ran the job.
      */
     public /*out*/ readonly userEmail!: pulumi.Output<string>;
@@ -306,6 +310,7 @@ export class Job extends pulumi.CustomResource {
             inputs["location"] = state ? state.location : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["query"] = state ? state.query : undefined;
+            inputs["statuses"] = state ? state.statuses : undefined;
             inputs["userEmail"] = state ? state.userEmail : undefined;
         } else {
             const args = argsOrState as JobArgs | undefined;
@@ -322,6 +327,7 @@ export class Job extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["query"] = args ? args.query : undefined;
             inputs["jobType"] = undefined /*out*/;
+            inputs["statuses"] = undefined /*out*/;
             inputs["userEmail"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -380,6 +386,10 @@ export interface JobState {
      * Structure is documented below.
      */
     readonly query?: pulumi.Input<inputs.bigquery.JobQuery>;
+    /**
+     * The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+     */
+    readonly statuses?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatus>[]>;
     /**
      * Email address of the user who ran the job.
      */

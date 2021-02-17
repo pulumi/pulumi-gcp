@@ -42,6 +42,7 @@ import * as deploymentmanager from "./deploymentmanager";
 import * as diagflow from "./diagflow";
 import * as dns from "./dns";
 import * as endpoints from "./endpoints";
+import * as essentialcontacts from "./essentialcontacts";
 import * as filestore from "./filestore";
 import * as firebase from "./firebase";
 import * as firestore from "./firestore";
@@ -115,6 +116,7 @@ export {
     diagflow,
     dns,
     endpoints,
+    essentialcontacts,
     filestore,
     firebase,
     firestore,

@@ -263,6 +263,7 @@ class Job(pulumi.CustomResource):
             __props__['project'] = project
             __props__['query'] = query
             __props__['job_type'] = None
+            __props__['statuses'] = None
             __props__['user_email'] = None
         super(Job, __self__).__init__(
             'gcp:bigquery/job:Job',
@@ -284,6 +285,7 @@ class Job(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             query: Optional[pulumi.Input[pulumi.InputType['JobQueryArgs']]] = None,
+            statuses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]]] = None,
             user_email: Optional[pulumi.Input[str]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
@@ -307,6 +309,7 @@ class Job(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['JobQueryArgs']] query: Configures a query job.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['JobStatusArgs']]]] statuses: The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
         :param pulumi.Input[str] user_email: Email address of the user who ran the job.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -323,6 +326,7 @@ class Job(pulumi.CustomResource):
         __props__["location"] = location
         __props__["project"] = project
         __props__["query"] = query
+        __props__["statuses"] = statuses
         __props__["user_email"] = user_email
         return Job(resource_name, opts=opts, __props__=__props__)
 
@@ -410,6 +414,14 @@ class Job(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "query")
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> pulumi.Output[Sequence['outputs.JobStatus']]:
+        """
+        The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        """
+        return pulumi.get(self, "statuses")
 
     @property
     @pulumi.getter(name="userEmail")

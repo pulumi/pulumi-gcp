@@ -332,6 +332,8 @@
         "endpoints/serviceIamBinding.ts",
         "endpoints/serviceIamMember.ts",
         "endpoints/serviceIamPolicy.ts",
+        "essentialcontacts/contact.ts",
+        "essentialcontacts/index.ts",
         "filestore/index.ts",
         "filestore/instance.ts",
         "firebase/getWebApp.ts",

@@ -87,6 +87,11 @@ export class KeyRing extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+     *
+     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
 
     /**
@@ -141,6 +146,11 @@ export interface KeyRingState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+     *
+     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+     */
     readonly selfLink?: pulumi.Input<string>;
 }
 

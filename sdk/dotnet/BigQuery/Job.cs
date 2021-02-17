@@ -342,6 +342,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.JobQuery?> Query { get; private set; } = null!;
 
         /// <summary>
+        /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        /// </summary>
+        [Output("statuses")]
+        public Output<ImmutableArray<Outputs.JobStatus>> Statuses { get; private set; } = null!;
+
+        /// <summary>
         /// Email address of the user who ran the job.
         /// </summary>
         [Output("userEmail")]
@@ -535,6 +541,18 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("query")]
         public Input<Inputs.JobQueryGetArgs>? Query { get; set; }
+
+        [Input("statuses")]
+        private InputList<Inputs.JobStatusGetArgs>? _statuses;
+
+        /// <summary>
+        /// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+        /// </summary>
+        public InputList<Inputs.JobStatusGetArgs> Statuses
+        {
+            get => _statuses ?? (_statuses = new InputList<Inputs.JobStatusGetArgs>());
+            set => _statuses = value;
+        }
 
         /// <summary>
         /// Email address of the user who ran the job.

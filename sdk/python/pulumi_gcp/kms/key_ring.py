@@ -117,6 +117,7 @@ class KeyRing(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name for the KeyRing.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] self_link: The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -157,6 +158,9 @@ class KeyRing(pulumi.CustomResource):
     @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
+        """
+        The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+        """
         return pulumi.get(self, "self_link")
 
     def translate_output_property(self, prop):

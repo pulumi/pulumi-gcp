@@ -34,6 +34,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The private IP address assigned to the instance.
         /// </summary>
         public readonly string NetworkIp;
+        public readonly string NicType;
         /// <summary>
         /// The name or self_link of the subnetwork attached to this interface.
         /// </summary>
@@ -55,6 +56,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string networkIp,
 
+            string nicType,
+
             string subnetwork,
 
             string subnetworkProject)
@@ -64,6 +67,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Name = name;
             Network = network;
             NetworkIp = networkIp;
+            NicType = nicType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

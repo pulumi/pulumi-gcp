@@ -96,6 +96,8 @@ namespace Pulumi.Gcp
 
         public static string? DnsCustomEndpoint { get; set; } = __config.Get("dnsCustomEndpoint");
 
+        public static string? EssentialContactsCustomEndpoint { get; set; } = __config.Get("essentialContactsCustomEndpoint");
+
         public static string? FilestoreCustomEndpoint { get; set; } = __config.Get("filestoreCustomEndpoint");
 
         public static string? FirebaseCustomEndpoint { get; set; } = __config.Get("firebaseCustomEndpoint");

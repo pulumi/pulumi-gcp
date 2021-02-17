@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, 
+        /// Specifies the disk interface to use for attaching this disk,
         /// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
         /// and the request will fail if you attempt to attach a persistent disk in any other format
         /// than SCSI. Local SSDs can use either NVME or SCSI.
@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        [Input("resourcePolicies")]
+        public Input<string>? ResourcePolicies { get; set; }
 
         /// <summary>
         /// The name (**not self_link**)

@@ -87,6 +87,7 @@ type providerArgs struct {
 	DialogflowCustomEndpoint             *string           `pulumi:"dialogflowCustomEndpoint"`
 	DnsBetaCustomEndpoint                *string           `pulumi:"dnsBetaCustomEndpoint"`
 	DnsCustomEndpoint                    *string           `pulumi:"dnsCustomEndpoint"`
+	EssentialContactsCustomEndpoint      *string           `pulumi:"essentialContactsCustomEndpoint"`
 	FilestoreCustomEndpoint              *string           `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint               *string           `pulumi:"firebaseCustomEndpoint"`
 	FirestoreCustomEndpoint              *string           `pulumi:"firestoreCustomEndpoint"`
@@ -184,6 +185,7 @@ type ProviderArgs struct {
 	DialogflowCustomEndpoint             pulumi.StringPtrInput
 	DnsBetaCustomEndpoint                pulumi.StringPtrInput
 	DnsCustomEndpoint                    pulumi.StringPtrInput
+	EssentialContactsCustomEndpoint      pulumi.StringPtrInput
 	FilestoreCustomEndpoint              pulumi.StringPtrInput
 	FirebaseCustomEndpoint               pulumi.StringPtrInput
 	FirestoreCustomEndpoint              pulumi.StringPtrInput

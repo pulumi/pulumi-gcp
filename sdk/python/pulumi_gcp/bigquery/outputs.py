@@ -40,6 +40,9 @@ __all__ = [
     'JobQueryDestinationTable',
     'JobQueryScriptOptions',
     'JobQueryUserDefinedFunctionResource',
+    'JobStatus',
+    'JobStatusError',
+    'JobStatusErrorResult',
     'RoutineArgument',
     'TableEncryptionConfiguration',
     'TableExternalDataConfiguration',
@@ -1967,6 +1970,114 @@ class JobQueryUserDefinedFunctionResource(dict):
         A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
         """
         return pulumi.get(self, "resource_uri")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class JobStatus(dict):
+    def __init__(__self__, *,
+                 error_results: Optional[Sequence['outputs.JobStatusErrorResult']] = None,
+                 errors: Optional[Sequence['outputs.JobStatusError']] = None,
+                 state: Optional[str] = None):
+        if error_results is not None:
+            pulumi.set(__self__, "error_results", error_results)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="errorResults")
+    def error_results(self) -> Optional[Sequence['outputs.JobStatusErrorResult']]:
+        return pulumi.get(self, "error_results")
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[Sequence['outputs.JobStatusError']]:
+        return pulumi.get(self, "errors")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        return pulumi.get(self, "state")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class JobStatusError(dict):
+    def __init__(__self__, *,
+                 location: Optional[str] = None,
+                 message: Optional[str] = None,
+                 reason: Optional[str] = None):
+        """
+        :param str location: The geographic location of the job. The default value is US.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The geographic location of the job. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        return pulumi.get(self, "reason")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class JobStatusErrorResult(dict):
+    def __init__(__self__, *,
+                 location: Optional[str] = None,
+                 message: Optional[str] = None,
+                 reason: Optional[str] = None):
+        """
+        :param str location: The geographic location of the job. The default value is US.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The geographic location of the job. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[str]:
+        return pulumi.get(self, "reason")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

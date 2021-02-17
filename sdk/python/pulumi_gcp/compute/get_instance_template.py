@@ -380,7 +380,7 @@ def get_instance_template(filter: Optional[str] = None,
     [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
 
 
-    :param str filter: A filter to retrieve the instance templates. 
+    :param str filter: A filter to retrieve the instance templates.
            See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
            If multiple instance templates match, either adjust the filter or specify `most_recent`. One of `name` or `filter` must be provided.
     :param bool most_recent: If `filter` is provided, ensures the most recent template is returned when multiple instance templates match. One of `name` or `filter` must be provided.

@@ -28,6 +28,12 @@ class Group(pulumi.CustomResource):
         """
         A Cloud Identity resource representing a Group.
 
+        To get more information about Group, see:
+
+        * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1beta1/groups)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/identity/docs/how-to/setup)
+
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
         you must specify a `billing_project` and set `user_project_override` to true
         in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.

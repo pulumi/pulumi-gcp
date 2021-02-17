@@ -63,6 +63,16 @@ class InstanceTemplate(pulumi.CustomResource):
             size=10,
             type="pd-ssd",
             zone="us-central1-a")
+        daily_backup = gcp.compute.ResourcePolicy("dailyBackup",
+            region="us-central1",
+            snapshot_schedule_policy=gcp.compute.ResourcePolicySnapshotSchedulePolicyArgs(
+                schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs(
+                    daily_schedule=gcp.compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs(
+                        days_in_cycle=1,
+                        start_time="04:00",
+                    ),
+                ),
+            ))
         default_instance_template = gcp.compute.InstanceTemplate("defaultInstanceTemplate",
             description="This template is used to create app server instances.",
             tags=[
@@ -84,6 +94,7 @@ class InstanceTemplate(pulumi.CustomResource):
                     source_image="debian-cloud/debian-9",
                     auto_delete=True,
                     boot=True,
+                    resource_policies=[daily_backup.id],
                 ),
                 gcp.compute.InstanceTemplateDiskArgs(
                     source=foobar.name,

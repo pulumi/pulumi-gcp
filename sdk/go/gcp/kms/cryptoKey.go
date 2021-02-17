@@ -122,7 +122,10 @@ type CryptoKey struct {
 	// the format of a decimal number with up to 9 fractional digits, followed by the
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrOutput `pulumi:"rotationPeriod"`
-	SelfLink       pulumi.StringOutput    `pulumi:"selfLink"`
+	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+	//
+	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrOutput `pulumi:"skipInitialVersionCreation"`
@@ -181,7 +184,10 @@ type cryptoKeyState struct {
 	// the format of a decimal number with up to 9 fractional digits, followed by the
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod *string `pulumi:"rotationPeriod"`
-	SelfLink       *string `pulumi:"selfLink"`
+	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+	//
+	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+	SelfLink *string `pulumi:"selfLink"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
@@ -209,7 +215,10 @@ type CryptoKeyState struct {
 	// the format of a decimal number with up to 9 fractional digits, followed by the
 	// letter `s` (seconds). It must be greater than a day (ie, 86400).
 	RotationPeriod pulumi.StringPtrInput
-	SelfLink       pulumi.StringPtrInput
+	// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+	//
+	// Deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+	SelfLink pulumi.StringPtrInput
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
 	// You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
 	SkipInitialVersionCreation pulumi.BoolPtrInput

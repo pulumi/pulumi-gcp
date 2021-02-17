@@ -381,6 +381,8 @@ github.com/hashicorp/go-checkpoint v0.5.0/go.mod h1:7nfLNL10NsxqO4iWuW6tWW0HjZuD
 github.com/hashicorp/go-cleanhttp v0.5.0/go.mod h1:JpRdi6/HCYpAwUzNwuwqhbovhLtngrth3wmdIIUrZ80=
 github.com/hashicorp/go-cleanhttp v0.5.1 h1:dH3aiDG9Jvb5r5+bYHsikaOUIpcM0xvgMXVoDkXMzJM=
 github.com/hashicorp/go-cleanhttp v0.5.1/go.mod h1:JpRdi6/HCYpAwUzNwuwqhbovhLtngrth3wmdIIUrZ80=
+github.com/hashicorp/go-cleanhttp v0.5.2 h1:035FKYIWjmULyFRBKPs8TBQoi0x6d9G4xc9neXJWAZQ=
+github.com/hashicorp/go-cleanhttp v0.5.2/go.mod h1:kO/YDlP8L1346E6Sodw+PrpBSV4/SoxCXGY6BqNFT48=
 github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320 h1:1/D3zfFHttUKaCaGKZ/dR2roBXv0vKbSCnssIldfQdI=
 github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320/go.mod h1:EiZBMaudVLy8fmjf9Npq1dq9RalhveqZG5w/yz3mHWs=
 github.com/hashicorp/go-getter v1.4.0 h1:ENHNi8494porjD0ZhIrjlAHnveSFhY7hvOJrV/fsKkw=
@@ -646,8 +648,8 @@ github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e h1:Di
 github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e/go.mod h1:sZ9FUzGO+yM41hsQHs/yIcj/Y993qMdBxBU5mpDmAfQ=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e h1:jl43csgF3BSlNRmjo+TGgjW/uXk9h7+NoR3doKQ0BT4=
 github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e/go.mod h1:JBItawj+j8Ssla5Ib6BC/W9VQkOucBfnX7VRtyx1vw8=
-github.com/pulumi/terraform-provider-google-beta/v3 v3.0.0-20210209154533-a613512aef1b h1:Z+5/Rp1EVvGAZFOuor4iTSbCtVp1VY1zSKWCSMCzmeI=
-github.com/pulumi/terraform-provider-google-beta/v3 v3.0.0-20210209154533-a613512aef1b/go.mod h1:lYm3wOScN4tQ711d7Nw2FX71KgORHLDzQFVmrHKjQNA=
+github.com/pulumi/terraform-provider-google-beta/v3 v3.0.0-20210217194050-03866b6678d8 h1:stJ/bvc32MNst7DPZPji8TJagtPpZVAmRvTnSD7uKXM=
+github.com/pulumi/terraform-provider-google-beta/v3 v3.0.0-20210217194050-03866b6678d8/go.mod h1:SOqsjj8/jfwYa+/zq+d4s1OZczeXjNJ1jrYlUhfT0mM=
 github.com/quasilyte/go-consistent v0.0.0-20190521200055-c6f3937de18c/go.mod h1:5STLWrekHfjyYwxBRVRXNOSewLJ3PWfDJd1VyTS21fI=
 github.com/rjeczalik/notify v0.9.2/go.mod h1:aErll2f0sUX9PXZnVNyeiObbmTlk5jnMoCa4QEjJeqM=
 github.com/rogpeppe/fastuuid v0.0.0-20150106093220-6724a57986af/go.mod h1:XWv6SoW27p1b0cqNHllgS5HIMJraePCO15w5zCzIWYg=

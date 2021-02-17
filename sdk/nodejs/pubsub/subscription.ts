@@ -209,6 +209,11 @@ export class Subscription extends pulumi.CustomResource {
      * Name of the subscription.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Path of the subscription in the format projects/{project}/subscriptions/{name}
+     *
+     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+     */
     public /*out*/ readonly path!: pulumi.Output<string>;
     /**
      * The ID of the project in which the resource belongs.
@@ -371,6 +376,11 @@ export interface SubscriptionState {
      * Name of the subscription.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * Path of the subscription in the format projects/{project}/subscriptions/{name}
+     *
+     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+     */
     readonly path?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.

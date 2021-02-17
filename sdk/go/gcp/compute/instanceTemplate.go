@@ -54,6 +54,20 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
+// 		dailyBackup, err := compute.NewResourcePolicy(ctx, "dailyBackup", &compute.ResourcePolicyArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			SnapshotSchedulePolicy: &compute.ResourcePolicySnapshotSchedulePolicyArgs{
+// 				Schedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleArgs{
+// 					DailySchedule: &compute.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs{
+// 						DaysInCycle: pulumi.Int(1),
+// 						StartTime:   pulumi.String("04:00"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
 // 		_, err = compute.NewInstanceTemplate(ctx, "defaultInstanceTemplate", &compute.InstanceTemplateArgs{
 // 			Description: pulumi.String("This template is used to create app server instances."),
 // 			Tags: pulumi.StringArray{
@@ -75,6 +89,9 @@ import (
 // 					SourceImage: pulumi.String("debian-cloud/debian-9"),
 // 					AutoDelete:  pulumi.Bool(true),
 // 					Boot:        pulumi.Bool(true),
+// 					ResourcePolicies: pulumi.String(pulumi.String{
+// 						dailyBackup.ID(),
+// 					}),
 // 				},
 // 				&compute.InstanceTemplateDiskArgs{
 // 					Source:     foobar.Name,

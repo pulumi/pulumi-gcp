@@ -45,6 +45,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? NetworkIp;
         /// <summary>
+        /// ) The type of vNIC to be used on this interface.
+        /// Possible values: GVNIC, VIRTIO_NET.
+        /// </summary>
+        public readonly string? NicType;
+        /// <summary>
         /// the name of the subnetwork to attach this interface
         /// to. The subnetwork must exist in the same `region` this instance will be
         /// created in. Either `network` or `subnetwork` must be provided.
@@ -68,6 +73,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? networkIp,
 
+            string? nicType,
+
             string? subnetwork,
 
             string? subnetworkProject)
@@ -77,6 +84,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Name = name;
             Network = network;
             NetworkIp = networkIp;
+            NicType = nicType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }
