@@ -51,6 +51,7 @@ export let deploymentManagerCustomEndpoint: string | undefined = __config.get("d
 export let dialogflowCustomEndpoint: string | undefined = __config.get("dialogflowCustomEndpoint");
 export let dnsBetaCustomEndpoint: string | undefined = __config.get("dnsBetaCustomEndpoint");
 export let dnsCustomEndpoint: string | undefined = __config.get("dnsCustomEndpoint");
+export let essentialContactsCustomEndpoint: string | undefined = __config.get("essentialContactsCustomEndpoint");
 export let filestoreCustomEndpoint: string | undefined = __config.get("filestoreCustomEndpoint");
 export let firebaseCustomEndpoint: string | undefined = __config.get("firebaseCustomEndpoint");
 export let firestoreCustomEndpoint: string | undefined = __config.get("firestoreCustomEndpoint");

@@ -119,6 +119,11 @@ export class CryptoKey extends pulumi.CustomResource {
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
     public readonly rotationPeriod!: pulumi.Output<string | undefined>;
+    /**
+     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+     *
+     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+     */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
@@ -205,6 +210,11 @@ export interface CryptoKeyState {
      * letter `s` (seconds). It must be greater than a day (ie, 86400).
      */
     readonly rotationPeriod?: pulumi.Input<string>;
+    /**
+     * The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+     *
+     * @deprecated Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.
+     */
     readonly selfLink?: pulumi.Input<string>;
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions.

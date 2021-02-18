@@ -42,6 +42,21 @@ namespace Pulumi.Gcp.Compute
     ///             Type = "pd-ssd",
     ///             Zone = "us-central1-a",
     ///         });
+    ///         var dailyBackup = new Gcp.Compute.ResourcePolicy("dailyBackup", new Gcp.Compute.ResourcePolicyArgs
+    ///         {
+    ///             Region = "us-central1",
+    ///             SnapshotSchedulePolicy = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyArgs
+    ///             {
+    ///                 Schedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs
+    ///                 {
+    ///                     DailySchedule = new Gcp.Compute.Inputs.ResourcePolicySnapshotSchedulePolicyScheduleDailyScheduleArgs
+    ///                     {
+    ///                         DaysInCycle = 1,
+    ///                         StartTime = "04:00",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
     ///         var defaultInstanceTemplate = new Gcp.Compute.InstanceTemplate("defaultInstanceTemplate", new Gcp.Compute.InstanceTemplateArgs
     ///         {
     ///             Description = "This template is used to create app server instances.",
@@ -69,6 +84,10 @@ namespace Pulumi.Gcp.Compute
     ///                     SourceImage = "debian-cloud/debian-9",
     ///                     AutoDelete = true,
     ///                     Boot = true,
+    ///                     ResourcePolicies = 
+    ///                     {
+    ///                         dailyBackup.Id,
+    ///                     },
     ///                 },
     ///                 new Gcp.Compute.Inputs.InstanceTemplateDiskArgs
     ///                 {

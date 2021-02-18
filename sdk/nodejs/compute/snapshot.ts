@@ -165,6 +165,9 @@ export class Snapshot extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly sourceDiskEncryptionKey!: pulumi.Output<outputs.compute.SnapshotSourceDiskEncryptionKey | undefined>;
+    /**
+     * @deprecated Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.
+     */
     public /*out*/ readonly sourceDiskLink!: pulumi.Output<string>;
     /**
      * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot
@@ -310,6 +313,9 @@ export interface SnapshotState {
      * Structure is documented below.
      */
     readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.SnapshotSourceDiskEncryptionKey>;
+    /**
+     * @deprecated Deprecated in favor of source_disk, which contains a compatible value. This field will be removed in the next major release of the provider.
+     */
     readonly sourceDiskLink?: pulumi.Input<string>;
     /**
      * A size of the storage used by the snapshot. As snapshots share storage, this number is expected to change with snapshot

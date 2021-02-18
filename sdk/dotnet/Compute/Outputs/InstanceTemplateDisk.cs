@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, 
+        /// Specifies the disk interface to use for attaching this disk,
         /// which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
         /// and the request will fail if you attempt to attach a persistent disk in any other format
         /// than SCSI. Local SSDs can use either NVME or SCSI.
@@ -66,6 +66,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// read-write mode.
         /// </summary>
         public readonly string? Mode;
+        /// <summary>
+        /// -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+        /// </summary>
+        public readonly string? ResourcePolicies;
         /// <summary>
         /// The name (**not self_link**)
         /// of the disk (such as those managed by `gcp.compute.Disk`) to attach.
@@ -109,6 +113,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? mode,
 
+            string? resourcePolicies,
+
             string? source,
 
             string? sourceImage,
@@ -125,6 +131,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Interface = @interface;
             Labels = labels;
             Mode = mode;
+            ResourcePolicies = resourcePolicies;
             Source = source;
             SourceImage = sourceImage;
             Type = type;

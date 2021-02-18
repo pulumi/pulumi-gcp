@@ -168,6 +168,7 @@ class CryptoKey(pulumi.CustomResource):
                The first rotation will take place after the specified period. The rotation period has
                the format of a decimal number with up to 9 fractional digits, followed by the
                letter `s` (seconds). It must be greater than a day (ie, 86400).
+        :param pulumi.Input[str] self_link: The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
         :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
                You must use the `kms.KeyRingImportJob` resource to import the CryptoKeyVersion.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new crypto key versions.
@@ -238,6 +239,9 @@ class CryptoKey(pulumi.CustomResource):
     @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
+        """
+        The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+        """
         return pulumi.get(self, "self_link")
 
     @property

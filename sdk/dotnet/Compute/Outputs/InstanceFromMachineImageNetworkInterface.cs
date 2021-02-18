@@ -22,6 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly string? Name;
         public readonly string? Network;
         public readonly string? NetworkIp;
+        public readonly string? NicType;
         public readonly string? Subnetwork;
         public readonly string? SubnetworkProject;
 
@@ -37,6 +38,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string? networkIp,
 
+            string? nicType,
+
             string? subnetwork,
 
             string? subnetworkProject)
@@ -46,6 +49,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Name = name;
             Network = network;
             NetworkIp = networkIp;
+            NicType = nicType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

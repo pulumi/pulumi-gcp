@@ -12871,6 +12871,7 @@ type InstanceFromMachineImageNetworkInterface struct {
 	Name              *string `pulumi:"name"`
 	Network           *string `pulumi:"network"`
 	NetworkIp         *string `pulumi:"networkIp"`
+	NicType           *string `pulumi:"nicType"`
 	Subnetwork        *string `pulumi:"subnetwork"`
 	SubnetworkProject *string `pulumi:"subnetworkProject"`
 }
@@ -12894,6 +12895,7 @@ type InstanceFromMachineImageNetworkInterfaceArgs struct {
 	Name              pulumi.StringPtrInput `pulumi:"name"`
 	Network           pulumi.StringPtrInput `pulumi:"network"`
 	NetworkIp         pulumi.StringPtrInput `pulumi:"networkIp"`
+	NicType           pulumi.StringPtrInput `pulumi:"nicType"`
 	Subnetwork        pulumi.StringPtrInput `pulumi:"subnetwork"`
 	SubnetworkProject pulumi.StringPtrInput `pulumi:"subnetworkProject"`
 }
@@ -12973,6 +12975,10 @@ func (o InstanceFromMachineImageNetworkInterfaceOutput) Network() pulumi.StringP
 
 func (o InstanceFromMachineImageNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromMachineImageNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromMachineImageNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceFromMachineImageNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
@@ -14662,6 +14668,7 @@ type InstanceFromTemplateNetworkInterface struct {
 	Name              *string `pulumi:"name"`
 	Network           *string `pulumi:"network"`
 	NetworkIp         *string `pulumi:"networkIp"`
+	NicType           *string `pulumi:"nicType"`
 	Subnetwork        *string `pulumi:"subnetwork"`
 	SubnetworkProject *string `pulumi:"subnetworkProject"`
 }
@@ -14685,6 +14692,7 @@ type InstanceFromTemplateNetworkInterfaceArgs struct {
 	Name              pulumi.StringPtrInput `pulumi:"name"`
 	Network           pulumi.StringPtrInput `pulumi:"network"`
 	NetworkIp         pulumi.StringPtrInput `pulumi:"networkIp"`
+	NicType           pulumi.StringPtrInput `pulumi:"nicType"`
 	Subnetwork        pulumi.StringPtrInput `pulumi:"subnetwork"`
 	SubnetworkProject pulumi.StringPtrInput `pulumi:"subnetworkProject"`
 }
@@ -14764,6 +14772,10 @@ func (o InstanceFromTemplateNetworkInterfaceOutput) Network() pulumi.StringPtrOu
 
 func (o InstanceFromTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceFromTemplateNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceFromTemplateNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFromTemplateNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
 
 func (o InstanceFromTemplateNetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
@@ -17164,6 +17176,9 @@ type InstanceNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp *string `pulumi:"networkIp"`
+	// ) The type of vNIC to be used on this interface.
+	// Possible values: GVNIC, VIRTIO_NET.
+	NicType *string `pulumi:"nicType"`
 	// The name or selfLink of the subnetwork to attach this
 	// interface to. The subnetwork must exist in the same region this instance will be
 	// created in. If network isn't provided it will be inferred from the subnetwork.
@@ -17208,6 +17223,9 @@ type InstanceNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
+	// ) The type of vNIC to be used on this interface.
+	// Possible values: GVNIC, VIRTIO_NET.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
 	// The name or selfLink of the subnetwork to attach this
 	// interface to. The subnetwork must exist in the same region this instance will be
 	// created in. If network isn't provided it will be inferred from the subnetwork.
@@ -17304,6 +17322,12 @@ func (o InstanceNetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 // empty, the address will be automatically assigned.
 func (o InstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
+}
+
+// ) The type of vNIC to be used on this interface.
+// Possible values: GVNIC, VIRTIO_NET.
+func (o InstanceNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
 
 // The name or selfLink of the subnetwork to attach this
@@ -18572,6 +18596,8 @@ type InstanceTemplateDisk struct {
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
 	// read-write mode.
 	Mode *string `pulumi:"mode"`
+	// -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
@@ -18633,6 +18659,8 @@ type InstanceTemplateDiskArgs struct {
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
 	// read-write mode.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+	ResourcePolicies pulumi.StringPtrInput `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
@@ -18761,6 +18789,11 @@ func (o InstanceTemplateDiskOutput) Labels() pulumi.StringMapOutput {
 // read-write mode.
 func (o InstanceTemplateDiskOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+func (o InstanceTemplateDiskOutput) ResourcePolicies() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateDisk) *string { return v.ResourcePolicies }).(pulumi.StringPtrOutput)
 }
 
 // The name (**not self_link**)
@@ -19065,6 +19098,9 @@ type InstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp *string `pulumi:"networkIp"`
+	// ) The type of vNIC to be used on this interface.
+	// Possible values: GVNIC, VIRTIO_NET.
+	NicType *string `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -19107,6 +19143,9 @@ type InstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
+	// ) The type of vNIC to be used on this interface.
+	// Possible values: GVNIC, VIRTIO_NET.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -19205,6 +19244,12 @@ func (o InstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringPtrOutput
 // empty, the address will be automatically assigned.
 func (o InstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
+}
+
+// ) The type of vNIC to be used on this interface.
+// Possible values: GVNIC, VIRTIO_NET.
+func (o InstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
 
 // the name of the subnetwork to attach this interface
@@ -65262,6 +65307,7 @@ type GetInstanceNetworkInterface struct {
 	Network string `pulumi:"network"`
 	// The private IP address assigned to the instance.
 	NetworkIp string `pulumi:"networkIp"`
+	NicType   string `pulumi:"nicType"`
 	// The name or selfLink of the subnetwork attached to this interface.
 	Subnetwork string `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
@@ -65291,6 +65337,7 @@ type GetInstanceNetworkInterfaceArgs struct {
 	Network pulumi.StringInput `pulumi:"network"`
 	// The private IP address assigned to the instance.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	NicType   pulumi.StringInput `pulumi:"nicType"`
 	// The name or selfLink of the subnetwork attached to this interface.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 	// The project in which the subnetwork belongs.
@@ -65372,6 +65419,10 @@ func (o GetInstanceNetworkInterfaceOutput) Network() pulumi.StringOutput {
 // The private IP address assigned to the instance.
 func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
 
 // The name or selfLink of the subnetwork attached to this interface.
@@ -66312,7 +66363,8 @@ type GetInstanceTemplateDisk struct {
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
 	// read-write mode.
-	Mode string `pulumi:"mode"`
+	Mode             string   `pulumi:"mode"`
+	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
@@ -66373,7 +66425,8 @@ type GetInstanceTemplateDiskArgs struct {
 	// The mode in which to attach this disk, either READ_WRITE
 	// or READ_ONLY. If you are attaching or creating a boot disk, this must
 	// read-write mode.
-	Mode pulumi.StringInput `pulumi:"mode"`
+	Mode             pulumi.StringInput      `pulumi:"mode"`
+	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
 	// of the disk (such as those managed by `compute.Disk`) to attach.
 	// > **Note:** Either `source` or `sourceImage` is **required** in a disk block unless the disk type is `local-ssd`. Check the API [docs](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates/insert) for details.
@@ -66504,6 +66557,10 @@ func (o GetInstanceTemplateDiskOutput) Labels() pulumi.StringMapOutput {
 // read-write mode.
 func (o GetInstanceTemplateDiskOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateDiskOutput) ResourcePolicies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) []string { return v.ResourcePolicies }).(pulumi.StringArrayOutput)
 }
 
 // The name (**not self_link**)
@@ -66767,6 +66824,7 @@ type GetInstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
+	NicType   string `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -66802,6 +66860,7 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
+	NicType   pulumi.StringInput `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -66893,6 +66952,10 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringOutput
 // empty, the address will be automatically assigned.
 func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
 
 // the name of the subnetwork to attach this interface

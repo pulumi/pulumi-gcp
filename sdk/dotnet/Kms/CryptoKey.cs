@@ -131,6 +131,9 @@ namespace Pulumi.Gcp.Kms
         [Output("rotationPeriod")]
         public Output<string?> RotationPeriod { get; private set; } = null!;
 
+        /// <summary>
+        /// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+        /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
 
@@ -303,6 +306,9 @@ namespace Pulumi.Gcp.Kms
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
 
+        /// <summary>
+        /// The self link of the created KeyRing in the format projects/{project}/locations/{location}/keyRings/{name}.
+        /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
 

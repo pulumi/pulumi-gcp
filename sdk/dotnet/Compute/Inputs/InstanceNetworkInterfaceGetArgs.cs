@@ -65,6 +65,13 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<string>? NetworkIp { get; set; }
 
         /// <summary>
+        /// ) The type of vNIC to be used on this interface.
+        /// Possible values: GVNIC, VIRTIO_NET.
+        /// </summary>
+        [Input("nicType")]
+        public Input<string>? NicType { get; set; }
+
+        /// <summary>
         /// The name or self_link of the subnetwork to attach this
         /// interface to. The subnetwork must exist in the same region this instance will be
         /// created in. If network isn't provided it will be inferred from the subnetwork.

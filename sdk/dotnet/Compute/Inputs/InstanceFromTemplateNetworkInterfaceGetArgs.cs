@@ -41,6 +41,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("networkIp")]
         public Input<string>? NetworkIp { get; set; }
 
+        [Input("nicType")]
+        public Input<string>? NicType { get; set; }
+
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
 

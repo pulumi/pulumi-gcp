@@ -5958,6 +5958,330 @@ func (o JobQueryUserDefinedFunctionResourceArrayOutput) Index(i pulumi.IntInput)
 	}).(JobQueryUserDefinedFunctionResourceOutput)
 }
 
+type JobStatus struct {
+	ErrorResults []JobStatusErrorResult `pulumi:"errorResults"`
+	Errors       []JobStatusError       `pulumi:"errors"`
+	State        *string                `pulumi:"state"`
+}
+
+// JobStatusInput is an input type that accepts JobStatusArgs and JobStatusOutput values.
+// You can construct a concrete instance of `JobStatusInput` via:
+//
+//          JobStatusArgs{...}
+type JobStatusInput interface {
+	pulumi.Input
+
+	ToJobStatusOutput() JobStatusOutput
+	ToJobStatusOutputWithContext(context.Context) JobStatusOutput
+}
+
+type JobStatusArgs struct {
+	ErrorResults JobStatusErrorResultArrayInput `pulumi:"errorResults"`
+	Errors       JobStatusErrorArrayInput       `pulumi:"errors"`
+	State        pulumi.StringPtrInput          `pulumi:"state"`
+}
+
+func (JobStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatus)(nil)).Elem()
+}
+
+func (i JobStatusArgs) ToJobStatusOutput() JobStatusOutput {
+	return i.ToJobStatusOutputWithContext(context.Background())
+}
+
+func (i JobStatusArgs) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusOutput)
+}
+
+// JobStatusArrayInput is an input type that accepts JobStatusArray and JobStatusArrayOutput values.
+// You can construct a concrete instance of `JobStatusArrayInput` via:
+//
+//          JobStatusArray{ JobStatusArgs{...} }
+type JobStatusArrayInput interface {
+	pulumi.Input
+
+	ToJobStatusArrayOutput() JobStatusArrayOutput
+	ToJobStatusArrayOutputWithContext(context.Context) JobStatusArrayOutput
+}
+
+type JobStatusArray []JobStatusInput
+
+func (JobStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatus)(nil)).Elem()
+}
+
+func (i JobStatusArray) ToJobStatusArrayOutput() JobStatusArrayOutput {
+	return i.ToJobStatusArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatusArray) ToJobStatusArrayOutputWithContext(ctx context.Context) JobStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusArrayOutput)
+}
+
+type JobStatusOutput struct{ *pulumi.OutputState }
+
+func (JobStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatus)(nil)).Elem()
+}
+
+func (o JobStatusOutput) ToJobStatusOutput() JobStatusOutput {
+	return o
+}
+
+func (o JobStatusOutput) ToJobStatusOutputWithContext(ctx context.Context) JobStatusOutput {
+	return o
+}
+
+func (o JobStatusOutput) ErrorResults() JobStatusErrorResultArrayOutput {
+	return o.ApplyT(func(v JobStatus) []JobStatusErrorResult { return v.ErrorResults }).(JobStatusErrorResultArrayOutput)
+}
+
+func (o JobStatusOutput) Errors() JobStatusErrorArrayOutput {
+	return o.ApplyT(func(v JobStatus) []JobStatusError { return v.Errors }).(JobStatusErrorArrayOutput)
+}
+
+func (o JobStatusOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatus) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type JobStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatus)(nil)).Elem()
+}
+
+func (o JobStatusArrayOutput) ToJobStatusArrayOutput() JobStatusArrayOutput {
+	return o
+}
+
+func (o JobStatusArrayOutput) ToJobStatusArrayOutputWithContext(ctx context.Context) JobStatusArrayOutput {
+	return o
+}
+
+func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatus {
+		return vs[0].([]JobStatus)[vs[1].(int)]
+	}).(JobStatusOutput)
+}
+
+type JobStatusError struct {
+	// The geographic location of the job. The default value is US.
+	Location *string `pulumi:"location"`
+	Message  *string `pulumi:"message"`
+	Reason   *string `pulumi:"reason"`
+}
+
+// JobStatusErrorInput is an input type that accepts JobStatusErrorArgs and JobStatusErrorOutput values.
+// You can construct a concrete instance of `JobStatusErrorInput` via:
+//
+//          JobStatusErrorArgs{...}
+type JobStatusErrorInput interface {
+	pulumi.Input
+
+	ToJobStatusErrorOutput() JobStatusErrorOutput
+	ToJobStatusErrorOutputWithContext(context.Context) JobStatusErrorOutput
+}
+
+type JobStatusErrorArgs struct {
+	// The geographic location of the job. The default value is US.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	Message  pulumi.StringPtrInput `pulumi:"message"`
+	Reason   pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (JobStatusErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusError)(nil)).Elem()
+}
+
+func (i JobStatusErrorArgs) ToJobStatusErrorOutput() JobStatusErrorOutput {
+	return i.ToJobStatusErrorOutputWithContext(context.Background())
+}
+
+func (i JobStatusErrorArgs) ToJobStatusErrorOutputWithContext(ctx context.Context) JobStatusErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusErrorOutput)
+}
+
+// JobStatusErrorArrayInput is an input type that accepts JobStatusErrorArray and JobStatusErrorArrayOutput values.
+// You can construct a concrete instance of `JobStatusErrorArrayInput` via:
+//
+//          JobStatusErrorArray{ JobStatusErrorArgs{...} }
+type JobStatusErrorArrayInput interface {
+	pulumi.Input
+
+	ToJobStatusErrorArrayOutput() JobStatusErrorArrayOutput
+	ToJobStatusErrorArrayOutputWithContext(context.Context) JobStatusErrorArrayOutput
+}
+
+type JobStatusErrorArray []JobStatusErrorInput
+
+func (JobStatusErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatusError)(nil)).Elem()
+}
+
+func (i JobStatusErrorArray) ToJobStatusErrorArrayOutput() JobStatusErrorArrayOutput {
+	return i.ToJobStatusErrorArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatusErrorArray) ToJobStatusErrorArrayOutputWithContext(ctx context.Context) JobStatusErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusErrorArrayOutput)
+}
+
+type JobStatusErrorOutput struct{ *pulumi.OutputState }
+
+func (JobStatusErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusError)(nil)).Elem()
+}
+
+func (o JobStatusErrorOutput) ToJobStatusErrorOutput() JobStatusErrorOutput {
+	return o
+}
+
+func (o JobStatusErrorOutput) ToJobStatusErrorOutputWithContext(ctx context.Context) JobStatusErrorOutput {
+	return o
+}
+
+// The geographic location of the job. The default value is US.
+func (o JobStatusErrorOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusError) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+func (o JobStatusErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o JobStatusErrorOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusError) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type JobStatusErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatusErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatusError)(nil)).Elem()
+}
+
+func (o JobStatusErrorArrayOutput) ToJobStatusErrorArrayOutput() JobStatusErrorArrayOutput {
+	return o
+}
+
+func (o JobStatusErrorArrayOutput) ToJobStatusErrorArrayOutputWithContext(ctx context.Context) JobStatusErrorArrayOutput {
+	return o
+}
+
+func (o JobStatusErrorArrayOutput) Index(i pulumi.IntInput) JobStatusErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatusError {
+		return vs[0].([]JobStatusError)[vs[1].(int)]
+	}).(JobStatusErrorOutput)
+}
+
+type JobStatusErrorResult struct {
+	// The geographic location of the job. The default value is US.
+	Location *string `pulumi:"location"`
+	Message  *string `pulumi:"message"`
+	Reason   *string `pulumi:"reason"`
+}
+
+// JobStatusErrorResultInput is an input type that accepts JobStatusErrorResultArgs and JobStatusErrorResultOutput values.
+// You can construct a concrete instance of `JobStatusErrorResultInput` via:
+//
+//          JobStatusErrorResultArgs{...}
+type JobStatusErrorResultInput interface {
+	pulumi.Input
+
+	ToJobStatusErrorResultOutput() JobStatusErrorResultOutput
+	ToJobStatusErrorResultOutputWithContext(context.Context) JobStatusErrorResultOutput
+}
+
+type JobStatusErrorResultArgs struct {
+	// The geographic location of the job. The default value is US.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	Message  pulumi.StringPtrInput `pulumi:"message"`
+	Reason   pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (JobStatusErrorResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusErrorResult)(nil)).Elem()
+}
+
+func (i JobStatusErrorResultArgs) ToJobStatusErrorResultOutput() JobStatusErrorResultOutput {
+	return i.ToJobStatusErrorResultOutputWithContext(context.Background())
+}
+
+func (i JobStatusErrorResultArgs) ToJobStatusErrorResultOutputWithContext(ctx context.Context) JobStatusErrorResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusErrorResultOutput)
+}
+
+// JobStatusErrorResultArrayInput is an input type that accepts JobStatusErrorResultArray and JobStatusErrorResultArrayOutput values.
+// You can construct a concrete instance of `JobStatusErrorResultArrayInput` via:
+//
+//          JobStatusErrorResultArray{ JobStatusErrorResultArgs{...} }
+type JobStatusErrorResultArrayInput interface {
+	pulumi.Input
+
+	ToJobStatusErrorResultArrayOutput() JobStatusErrorResultArrayOutput
+	ToJobStatusErrorResultArrayOutputWithContext(context.Context) JobStatusErrorResultArrayOutput
+}
+
+type JobStatusErrorResultArray []JobStatusErrorResultInput
+
+func (JobStatusErrorResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatusErrorResult)(nil)).Elem()
+}
+
+func (i JobStatusErrorResultArray) ToJobStatusErrorResultArrayOutput() JobStatusErrorResultArrayOutput {
+	return i.ToJobStatusErrorResultArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatusErrorResultArray) ToJobStatusErrorResultArrayOutputWithContext(ctx context.Context) JobStatusErrorResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusErrorResultArrayOutput)
+}
+
+type JobStatusErrorResultOutput struct{ *pulumi.OutputState }
+
+func (JobStatusErrorResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusErrorResult)(nil)).Elem()
+}
+
+func (o JobStatusErrorResultOutput) ToJobStatusErrorResultOutput() JobStatusErrorResultOutput {
+	return o
+}
+
+func (o JobStatusErrorResultOutput) ToJobStatusErrorResultOutputWithContext(ctx context.Context) JobStatusErrorResultOutput {
+	return o
+}
+
+// The geographic location of the job. The default value is US.
+func (o JobStatusErrorResultOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusErrorResult) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+func (o JobStatusErrorResultOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusErrorResult) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+func (o JobStatusErrorResultOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobStatusErrorResult) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type JobStatusErrorResultArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatusErrorResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatusErrorResult)(nil)).Elem()
+}
+
+func (o JobStatusErrorResultArrayOutput) ToJobStatusErrorResultArrayOutput() JobStatusErrorResultArrayOutput {
+	return o
+}
+
+func (o JobStatusErrorResultArrayOutput) ToJobStatusErrorResultArrayOutputWithContext(ctx context.Context) JobStatusErrorResultArrayOutput {
+	return o
+}
+
+func (o JobStatusErrorResultArrayOutput) Index(i pulumi.IntInput) JobStatusErrorResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatusErrorResult {
+		return vs[0].([]JobStatusErrorResult)[vs[1].(int)]
+	}).(JobStatusErrorResultOutput)
+}
+
 type RoutineArgument struct {
 	// Defaults to FIXED_TYPE.
 	// Default value is `FIXED_TYPE`.
@@ -8251,6 +8575,12 @@ func init() {
 	pulumi.RegisterOutputType(JobQueryScriptOptionsPtrOutput{})
 	pulumi.RegisterOutputType(JobQueryUserDefinedFunctionResourceOutput{})
 	pulumi.RegisterOutputType(JobQueryUserDefinedFunctionResourceArrayOutput{})
+	pulumi.RegisterOutputType(JobStatusOutput{})
+	pulumi.RegisterOutputType(JobStatusArrayOutput{})
+	pulumi.RegisterOutputType(JobStatusErrorOutput{})
+	pulumi.RegisterOutputType(JobStatusErrorArrayOutput{})
+	pulumi.RegisterOutputType(JobStatusErrorResultOutput{})
+	pulumi.RegisterOutputType(JobStatusErrorResultArrayOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})

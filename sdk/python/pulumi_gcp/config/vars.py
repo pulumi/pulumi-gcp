@@ -54,6 +54,7 @@ __all__ = [
     'dialogflow_custom_endpoint',
     'dns_beta_custom_endpoint',
     'dns_custom_endpoint',
+    'essential_contacts_custom_endpoint',
     'filestore_custom_endpoint',
     'firebase_custom_endpoint',
     'firestore_custom_endpoint',
@@ -194,6 +195,8 @@ dialogflow_custom_endpoint = __config__.get('dialogflowCustomEndpoint')
 dns_beta_custom_endpoint = __config__.get('dnsBetaCustomEndpoint')
 
 dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
+
+essential_contacts_custom_endpoint = __config__.get('essentialContactsCustomEndpoint')
 
 filestore_custom_endpoint = __config__.get('filestoreCustomEndpoint')
 

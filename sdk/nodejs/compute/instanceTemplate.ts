@@ -31,6 +31,17 @@ import * as utilities from "../utilities";
  *     type: "pd-ssd",
  *     zone: "us-central1-a",
  * });
+ * const dailyBackup = new gcp.compute.ResourcePolicy("dailyBackup", {
+ *     region: "us-central1",
+ *     snapshotSchedulePolicy: {
+ *         schedule: {
+ *             dailySchedule: {
+ *                 daysInCycle: 1,
+ *                 startTime: "04:00",
+ *             },
+ *         },
+ *     },
+ * });
  * const defaultInstanceTemplate = new gcp.compute.InstanceTemplate("defaultInstanceTemplate", {
  *     description: "This template is used to create app server instances.",
  *     tags: [
@@ -52,6 +63,7 @@ import * as utilities from "../utilities";
  *             sourceImage: "debian-cloud/debian-9",
  *             autoDelete: true,
  *             boot: true,
+ *             resourcePolicies: [dailyBackup.id],
  *         },
  *         {
  *             source: foobar.name,

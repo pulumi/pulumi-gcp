@@ -306,6 +306,8 @@ type Job struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrOutput `pulumi:"query"`
+	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	Statuses JobStatusArrayOutput `pulumi:"statuses"`
 	// Email address of the user who ran the job.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
@@ -367,6 +369,8 @@ type jobState struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query *JobQuery `pulumi:"query"`
+	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	Statuses []JobStatus `pulumi:"statuses"`
 	// Email address of the user who ran the job.
 	UserEmail *string `pulumi:"userEmail"`
 }
@@ -397,6 +401,8 @@ type JobState struct {
 	// Configures a query job.
 	// Structure is documented below.
 	Query JobQueryPtrInput
+	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
+	Statuses JobStatusArrayInput
 	// Email address of the user who ran the job.
 	UserEmail pulumi.StringPtrInput
 }

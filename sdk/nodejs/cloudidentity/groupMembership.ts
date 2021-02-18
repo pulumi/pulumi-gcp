@@ -8,6 +8,12 @@ import * as utilities from "../utilities";
 /**
  * A Membership defines a relationship between a Group and an entity belonging to that Group, referred to as a "member".
  *
+ * To get more information about GroupMembership, see:
+ *
+ * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+ *
  * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
  * you must specify a `billingProject` and set `userProjectOverride` to true
  * in the provider configuration. Otherwise the Cloud Identity API will return a 403 error.

@@ -2216,6 +2216,30 @@ export namespace bigquery {
         resourceUri?: string;
     }
 
+    export interface JobStatus {
+        errorResults: outputs.bigquery.JobStatusErrorResult[];
+        errors: outputs.bigquery.JobStatusError[];
+        state: string;
+    }
+
+    export interface JobStatusError {
+        /**
+         * The geographic location of the job. The default value is US.
+         */
+        location?: string;
+        message?: string;
+        reason?: string;
+    }
+
+    export interface JobStatusErrorResult {
+        /**
+         * The geographic location of the job. The default value is US.
+         */
+        location?: string;
+        message?: string;
+        reason?: string;
+    }
+
     export interface RoutineArgument {
         /**
          * Defaults to FIXED_TYPE.
@@ -6597,6 +6621,7 @@ export namespace compute {
          * The private IP address assigned to the instance.
          */
         networkIp: string;
+        nicType: string;
         /**
          * The name or selfLink of the subnetwork attached to this interface.
          */
@@ -6727,7 +6752,7 @@ export namespace compute {
          */
         diskType: string;
         /**
-         * Specifies the disk interface to use for attaching this disk, 
+         * Specifies the disk interface to use for attaching this disk,
          * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
          * and the request will fail if you attempt to attach a persistent disk in any other format
          * than SCSI. Local SSDs can use either NVME or SCSI.
@@ -6744,6 +6769,7 @@ export namespace compute {
          * read-write mode.
          */
         mode: string;
+        resourcePolicies: string[];
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
@@ -6807,6 +6833,7 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp: string;
+        nicType: string;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
@@ -7569,6 +7596,7 @@ export namespace compute {
         name: string;
         network: string;
         networkIp: string;
+        nicType: string;
         subnetwork: string;
         subnetworkProject: string;
     }
@@ -7659,6 +7687,7 @@ export namespace compute {
         name: string;
         network: string;
         networkIp: string;
+        nicType: string;
         subnetwork: string;
         subnetworkProject: string;
     }
@@ -7883,6 +7912,11 @@ export namespace compute {
          */
         networkIp: string;
         /**
+         * ) The type of vNIC to be used on this interface.
+         * Possible values: GVNIC, VIRTIO_NET.
+         */
+        nicType?: string;
+        /**
          * The name or selfLink of the subnetwork to attach this
          * interface to. The subnetwork must exist in the same region this instance will be
          * created in. If network isn't provided it will be inferred from the subnetwork.
@@ -8066,7 +8100,7 @@ export namespace compute {
          */
         diskType: string;
         /**
-         * Specifies the disk interface to use for attaching this disk, 
+         * Specifies the disk interface to use for attaching this disk,
          * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
          * and the request will fail if you attempt to attach a persistent disk in any other format
          * than SCSI. Local SSDs can use either NVME or SCSI.
@@ -8083,6 +8117,10 @@ export namespace compute {
          * read-write mode.
          */
         mode: string;
+        /**
+         * -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies?: string;
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
@@ -8155,6 +8193,11 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp?: string;
+        /**
+         * ) The type of vNIC to be used on this interface.
+         * Possible values: GVNIC, VIRTIO_NET.
+         */
+        nicType?: string;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
@@ -11335,7 +11378,7 @@ export namespace compute {
          * When set to true, the `action` specified above is not enforced.
          * Stackdriver logs for requests that trigger a preview action are annotated as such.
          */
-        preview?: boolean;
+        preview: boolean;
         /**
          * An unique positive integer indicating the priority of evaluation for a rule.
          * Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.

@@ -2216,6 +2216,30 @@ export namespace bigquery {
         resourceUri?: pulumi.Input<string>;
     }
 
+    export interface JobStatus {
+        errorResults?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatusErrorResult>[]>;
+        errors?: pulumi.Input<pulumi.Input<inputs.bigquery.JobStatusError>[]>;
+        state?: pulumi.Input<string>;
+    }
+
+    export interface JobStatusError {
+        /**
+         * The geographic location of the job. The default value is US.
+         */
+        location?: pulumi.Input<string>;
+        message?: pulumi.Input<string>;
+        reason?: pulumi.Input<string>;
+    }
+
+    export interface JobStatusErrorResult {
+        /**
+         * The geographic location of the job. The default value is US.
+         */
+        location?: pulumi.Input<string>;
+        message?: pulumi.Input<string>;
+        reason?: pulumi.Input<string>;
+    }
+
     export interface RoutineArgument {
         /**
          * Defaults to FIXED_TYPE.
@@ -6594,6 +6618,7 @@ export namespace compute {
         name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
+        nicType?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
         subnetworkProject?: pulumi.Input<string>;
     }
@@ -6684,6 +6709,7 @@ export namespace compute {
         name?: pulumi.Input<string>;
         network?: pulumi.Input<string>;
         networkIp?: pulumi.Input<string>;
+        nicType?: pulumi.Input<string>;
         subnetwork?: pulumi.Input<string>;
         subnetworkProject?: pulumi.Input<string>;
     }
@@ -6908,6 +6934,11 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
+         * ) The type of vNIC to be used on this interface.
+         * Possible values: GVNIC, VIRTIO_NET.
+         */
+        nicType?: pulumi.Input<string>;
+        /**
          * The name or selfLink of the subnetwork to attach this
          * interface to. The subnetwork must exist in the same region this instance will be
          * created in. If network isn't provided it will be inferred from the subnetwork.
@@ -7091,7 +7122,7 @@ export namespace compute {
          */
         diskType?: pulumi.Input<string>;
         /**
-         * Specifies the disk interface to use for attaching this disk, 
+         * Specifies the disk interface to use for attaching this disk,
          * which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI
          * and the request will fail if you attempt to attach a persistent disk in any other format
          * than SCSI. Local SSDs can use either NVME or SCSI.
@@ -7108,6 +7139,10 @@ export namespace compute {
          * read-write mode.
          */
         mode?: pulumi.Input<string>;
+        /**
+         * -- A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
+         */
+        resourcePolicies?: pulumi.Input<string>;
         /**
          * The name (**not self_link**)
          * of the disk (such as those managed by `gcp.compute.Disk`) to attach.
@@ -7180,6 +7215,11 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp?: pulumi.Input<string>;
+        /**
+         * ) The type of vNIC to be used on this interface.
+         * Possible values: GVNIC, VIRTIO_NET.
+         */
+        nicType?: pulumi.Input<string>;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be

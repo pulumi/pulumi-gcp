@@ -39,6 +39,9 @@ __all__ = [
     'JobQueryDestinationTableArgs',
     'JobQueryScriptOptionsArgs',
     'JobQueryUserDefinedFunctionResourceArgs',
+    'JobStatusArgs',
+    'JobStatusErrorArgs',
+    'JobStatusErrorResultArgs',
     'RoutineArgumentArgs',
     'TableEncryptionConfigurationArgs',
     'TableExternalDataConfigurationArgs',
@@ -2339,6 +2342,141 @@ class JobQueryUserDefinedFunctionResourceArgs:
     @resource_uri.setter
     def resource_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_uri", value)
+
+
+@pulumi.input_type
+class JobStatusArgs:
+    def __init__(__self__, *,
+                 error_results: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]] = None,
+                 errors: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        if error_results is not None:
+            pulumi.set(__self__, "error_results", error_results)
+        if errors is not None:
+            pulumi.set(__self__, "errors", errors)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="errorResults")
+    def error_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]:
+        return pulumi.get(self, "error_results")
+
+    @error_results.setter
+    def error_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorResultArgs']]]]):
+        pulumi.set(self, "error_results", value)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]]:
+        return pulumi.get(self, "errors")
+
+    @errors.setter
+    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStatusErrorArgs']]]]):
+        pulumi.set(self, "errors", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class JobStatusErrorArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location of the job. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+
+@pulumi.input_type
+class JobStatusErrorResultArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: The geographic location of the job. The default value is US.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location of the job. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
 
 
 @pulumi.input_type

@@ -49,7 +49,7 @@ export function getInstanceTemplate(args: GetInstanceTemplateArgs, opts?: pulumi
  */
 export interface GetInstanceTemplateArgs {
     /**
-     * A filter to retrieve the instance templates. 
+     * A filter to retrieve the instance templates.
      * See [gcloud topic filters](https://cloud.google.com/sdk/gcloud/reference/topic/filters) for reference.
      * If multiple instance templates match, either adjust the filter or specify `mostRecent`. One of `name` or `filter` must be provided.
      */
