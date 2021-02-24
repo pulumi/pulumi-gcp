@@ -106,7 +106,9 @@ namespace Pulumi.Gcp.Redis
         public readonly string RedisVersion;
         public readonly string? Region;
         public readonly string ReservedIpRange;
+        public readonly ImmutableArray<Outputs.GetInstanceServerCaCertResult> ServerCaCerts;
         public readonly string Tier;
+        public readonly string TransitEncryptionMode;
 
         [OutputConstructor]
         private GetInstanceResult(
@@ -152,7 +154,11 @@ namespace Pulumi.Gcp.Redis
 
             string reservedIpRange,
 
-            string tier)
+            ImmutableArray<Outputs.GetInstanceServerCaCertResult> serverCaCerts,
+
+            string tier,
+
+            string transitEncryptionMode)
         {
             AlternativeLocationId = alternativeLocationId;
             AuthEnabled = authEnabled;
@@ -175,7 +181,9 @@ namespace Pulumi.Gcp.Redis
             RedisVersion = redisVersion;
             Region = region;
             ReservedIpRange = reservedIpRange;
+            ServerCaCerts = serverCaCerts;
             Tier = tier;
+            TransitEncryptionMode = transitEncryptionMode;
         }
     }
 }

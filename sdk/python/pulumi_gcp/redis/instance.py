@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union
 from .. import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
 __all__ = ['Instance']
 
@@ -31,6 +33,7 @@ class Instance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
+                 transit_encryption_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -140,6 +143,9 @@ class Instance(pulumi.CustomResource):
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
+        :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+               to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+               ["SERVER_AUTHENTICATION", "DISABLED"]
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -176,11 +182,13 @@ class Instance(pulumi.CustomResource):
             __props__['region'] = region
             __props__['reserved_ip_range'] = reserved_ip_range
             __props__['tier'] = tier
+            __props__['transit_encryption_mode'] = transit_encryption_mode
             __props__['create_time'] = None
             __props__['current_location_id'] = None
             __props__['host'] = None
             __props__['persistence_iam_identity'] = None
             __props__['port'] = None
+            __props__['server_ca_certs'] = None
         super(Instance, __self__).__init__(
             'gcp:redis/instance:Instance',
             resource_name,
@@ -211,7 +219,9 @@ class Instance(pulumi.CustomResource):
             redis_version: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             reserved_ip_range: Optional[pulumi.Input[str]] = None,
-            tier: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            server_ca_certs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]]] = None,
+            tier: Optional[pulumi.Input[str]] = None,
+            transit_encryption_mode: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -267,11 +277,15 @@ class Instance(pulumi.CustomResource):
                block, for example, 10.0.0.0/29 or 192.168.0.0/29. Ranges must be
                unique and non-overlapping with existing subnets in an authorized
                network.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceServerCaCertArgs']]]] server_ca_certs: List of server CA certificates for the instance.
         :param pulumi.Input[str] tier: The service tier of the instance. Must be one of these values:
                - BASIC: standalone instance
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
+        :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+               to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+               ["SERVER_AUTHENTICATION", "DISABLED"]
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -297,7 +311,9 @@ class Instance(pulumi.CustomResource):
         __props__["redis_version"] = redis_version
         __props__["region"] = region
         __props__["reserved_ip_range"] = reserved_ip_range
+        __props__["server_ca_certs"] = server_ca_certs
         __props__["tier"] = tier
+        __props__["transit_encryption_mode"] = transit_encryption_mode
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -489,6 +505,14 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "reserved_ip_range")
 
     @property
+    @pulumi.getter(name="serverCaCerts")
+    def server_ca_certs(self) -> pulumi.Output[Sequence['outputs.InstanceServerCaCert']]:
+        """
+        List of server CA certificates for the instance.
+        """
+        return pulumi.get(self, "server_ca_certs")
+
+    @property
     @pulumi.getter
     def tier(self) -> pulumi.Output[Optional[str]]:
         """
@@ -499,6 +523,16 @@ class Instance(pulumi.CustomResource):
         Possible values are `BASIC` and `STANDARD_HA`.
         """
         return pulumi.get(self, "tier")
+
+    @property
+    @pulumi.getter(name="transitEncryptionMode")
+    def transit_encryption_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+        to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+        ["SERVER_AUTHENTICATION", "DISABLED"]
+        """
+        return pulumi.get(self, "transit_encryption_mode")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -2733,8 +2733,10 @@ class JobReferenceArgs:
 @pulumi.input_type
 class JobSchedulingArgs:
     def __init__(__self__, *,
-                 max_failures_per_hour: pulumi.Input[int]):
+                 max_failures_per_hour: pulumi.Input[int],
+                 max_failures_total: pulumi.Input[int]):
         pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
+        pulumi.set(__self__, "max_failures_total", max_failures_total)
 
     @property
     @pulumi.getter(name="maxFailuresPerHour")
@@ -2744,6 +2746,15 @@ class JobSchedulingArgs:
     @max_failures_per_hour.setter
     def max_failures_per_hour(self, value: pulumi.Input[int]):
         pulumi.set(self, "max_failures_per_hour", value)
+
+    @property
+    @pulumi.getter(name="maxFailuresTotal")
+    def max_failures_total(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "max_failures_total")
+
+    @max_failures_total.setter
+    def max_failures_total(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_failures_total", value)
 
 
 @pulumi.input_type

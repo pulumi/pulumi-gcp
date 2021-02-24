@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         });
     ///         var foo = new Gcp.BigQuery.Table("foo", new Gcp.BigQuery.TableArgs
     ///         {
+    ///             DeletionProtection = false,
     ///             DatasetId = bar.DatasetId,
     ///             TableId = "job_query_table",
     ///         });
@@ -89,6 +90,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         });
     ///         var foo = new Gcp.BigQuery.Table("foo", new Gcp.BigQuery.TableArgs
     ///         {
+    ///             DeletionProtection = false,
     ///             DatasetId = bar.DatasetId,
     ///             TableId = "job_query_table",
     ///         });
@@ -141,6 +143,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         });
     ///         var foo = new Gcp.BigQuery.Table("foo", new Gcp.BigQuery.TableArgs
     ///         {
+    ///             DeletionProtection = false,
     ///             DatasetId = bar.DatasetId,
     ///             TableId = "job_load_table",
     ///         });
@@ -196,6 +199,7 @@ namespace Pulumi.Gcp.BigQuery
     ///         });
     ///         var source_oneTable = new Gcp.BigQuery.Table("source-oneTable", new Gcp.BigQuery.TableArgs
     ///         {
+    ///             DeletionProtection = false,
     ///             DatasetId = source_oneDataset.DatasetId,
     ///             TableId = "job_extract_table",
     ///             Schema = @"[

@@ -314,7 +314,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP protocol to which this rule applies. When the load balancing scheme is
-        /// INTERNAL_SELF_MANAGED, only TCP is valid.
+        /// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
+        /// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
+        /// and addressType of INTERNAL
         /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         /// </summary>
         [Output("ipProtocol")]
@@ -340,15 +342,12 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// This signifies what the GlobalForwardingRule will be used for.
-        /// The value of INTERNAL_SELF_MANAGED means that this will be used for
-        /// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        /// will be used for External Global Load Balancing (HTTP(S) LB,
-        /// External TCP/UDP LB, SSL Proxy)
-        /// NOTE: Currently global forwarding rules cannot be used for INTERNAL
-        /// load balancing.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will
+        /// be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load
+        /// Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set ""
+        /// if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL. Default value:
+        /// "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED"]
         /// </summary>
         [Output("loadBalancingScheme")]
         public Output<string?> LoadBalancingScheme { get; private set; } = null!;
@@ -425,10 +424,10 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        /// are valid.
+        /// The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to
+        /// the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a
+        /// purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
         /// </summary>
         [Output("target")]
         public Output<string> Target { get; private set; } = null!;
@@ -513,7 +512,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP protocol to which this rule applies. When the load balancing scheme is
-        /// INTERNAL_SELF_MANAGED, only TCP is valid.
+        /// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
+        /// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
+        /// and addressType of INTERNAL
         /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         /// </summary>
         [Input("ipProtocol")]
@@ -539,15 +540,12 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This signifies what the GlobalForwardingRule will be used for.
-        /// The value of INTERNAL_SELF_MANAGED means that this will be used for
-        /// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        /// will be used for External Global Load Balancing (HTTP(S) LB,
-        /// External TCP/UDP LB, SSL Proxy)
-        /// NOTE: Currently global forwarding rules cannot be used for INTERNAL
-        /// load balancing.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will
+        /// be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load
+        /// Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set ""
+        /// if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL. Default value:
+        /// "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED"]
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -624,10 +622,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        /// are valid.
+        /// The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to
+        /// the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a
+        /// purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
         /// </summary>
         [Input("target", required: true)]
         public Input<string> Target { get; set; } = null!;
@@ -673,7 +671,9 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// The IP protocol to which this rule applies. When the load balancing scheme is
-        /// INTERNAL_SELF_MANAGED, only TCP is valid.
+        /// INTERNAL_SELF_MANAGED, only TCP is valid. This field must not be set if the
+        /// global address is configured as a purpose of PRIVATE_SERVICE_CONNECT
+        /// and addressType of INTERNAL
         /// Possible values are `TCP`, `UDP`, `ESP`, `AH`, `SCTP`, and `ICMP`.
         /// </summary>
         [Input("ipProtocol")]
@@ -705,15 +705,12 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// This signifies what the GlobalForwardingRule will be used for.
-        /// The value of INTERNAL_SELF_MANAGED means that this will be used for
-        /// Internal Global HTTP(S) LB. The value of EXTERNAL means that this
-        /// will be used for External Global Load Balancing (HTTP(S) LB,
-        /// External TCP/UDP LB, SSL Proxy)
-        /// NOTE: Currently global forwarding rules cannot be used for INTERNAL
-        /// load balancing.
-        /// Default value is `EXTERNAL`.
-        /// Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
+        /// This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will
+        /// be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load
+        /// Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set ""
+        /// if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL. Default value:
+        /// "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED"]
         /// </summary>
         [Input("loadBalancingScheme")]
         public Input<string>? LoadBalancingScheme { get; set; }
@@ -796,10 +793,10 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// The URL of the target resource to receive the matched traffic.
-        /// The forwarded traffic must be of a type appropriate to the target object.
-        /// For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
-        /// are valid.
+        /// The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to
+        /// the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
+        /// ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a
+        /// purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }

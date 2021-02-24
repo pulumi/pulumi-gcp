@@ -146,8 +146,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate
-        /// connections between users and the load balancer. Currently, exactly
-        /// one SSL certificate must be specified.
+        /// connections between users and the load balancer. At least one
+        /// SSL certificate must be specified.
         /// </summary>
         [Output("sslCertificates")]
         public Output<string> SslCertificates { get; private set; } = null!;
@@ -248,8 +248,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate
-        /// connections between users and the load balancer. Currently, exactly
-        /// one SSL certificate must be specified.
+        /// connections between users and the load balancer. At least one
+        /// SSL certificate must be specified.
         /// </summary>
         [Input("sslCertificates", required: true)]
         public Input<string> SslCertificates { get; set; } = null!;
@@ -329,8 +329,8 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// A list of SslCertificate resources that are used to authenticate
-        /// connections between users and the load balancer. Currently, exactly
-        /// one SSL certificate must be specified.
+        /// connections between users and the load balancer. At least one
+        /// SSL certificate must be specified.
         /// </summary>
         [Input("sslCertificates")]
         public Input<string>? SslCertificates { get; set; }

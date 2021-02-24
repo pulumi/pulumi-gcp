@@ -10,6 +10,7 @@ export * from "./configIamBinding";
 export * from "./configIamMember";
 export * from "./configIamPolicy";
 export * from "./getConfig";
+export * from "./getVariable";
 export * from "./variable";
 
 // Import resources to register:

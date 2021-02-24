@@ -18,6 +18,7 @@ __all__ = [
     'DatabaseInstanceSettings',
     'DatabaseInstanceSettingsBackupConfiguration',
     'DatabaseInstanceSettingsDatabaseFlag',
+    'DatabaseInstanceSettingsInsightsConfig',
     'DatabaseInstanceSettingsIpConfiguration',
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork',
     'DatabaseInstanceSettingsLocationPreference',
@@ -31,6 +32,7 @@ __all__ = [
     'GetDatabaseInstanceSettingResult',
     'GetDatabaseInstanceSettingBackupConfigurationResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
+    'GetDatabaseInstanceSettingInsightsConfigResult',
     'GetDatabaseInstanceSettingIpConfigurationResult',
     'GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkResult',
     'GetDatabaseInstanceSettingLocationPreferenceResult',
@@ -375,6 +377,7 @@ class DatabaseInstanceSettings(dict):
                  disk_autoresize: Optional[bool] = None,
                  disk_size: Optional[int] = None,
                  disk_type: Optional[str] = None,
+                 insights_config: Optional['outputs.DatabaseInstanceSettingsInsightsConfig'] = None,
                  ip_configuration: Optional['outputs.DatabaseInstanceSettingsIpConfiguration'] = None,
                  location_preference: Optional['outputs.DatabaseInstanceSettingsLocationPreference'] = None,
                  maintenance_window: Optional['outputs.DatabaseInstanceSettingsMaintenanceWindow'] = None,
@@ -430,6 +433,8 @@ class DatabaseInstanceSettings(dict):
             pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if insights_config is not None:
+            pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
             pulumi.set(__self__, "ip_configuration", ip_configuration)
         if location_preference is not None:
@@ -531,6 +536,11 @@ class DatabaseInstanceSettings(dict):
         The type of data disk: PD_SSD or PD_HDD.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="insightsConfig")
+    def insights_config(self) -> Optional['outputs.DatabaseInstanceSettingsInsightsConfig']:
+        return pulumi.get(self, "insights_config")
 
     @property
     @pulumi.getter(name="ipConfiguration")
@@ -690,6 +700,46 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
         the whitelist to become active.
         """
         return pulumi.get(self, "value")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsInsightsConfig(dict):
+    def __init__(__self__, *,
+                 query_insights_enabled: Optional[bool] = None,
+                 query_string_length: Optional[int] = None,
+                 record_application_tags: Optional[bool] = None,
+                 record_client_address: Optional[bool] = None):
+        if query_insights_enabled is not None:
+            pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
+        if query_string_length is not None:
+            pulumi.set(__self__, "query_string_length", query_string_length)
+        if record_application_tags is not None:
+            pulumi.set(__self__, "record_application_tags", record_application_tags)
+        if record_client_address is not None:
+            pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @property
+    @pulumi.getter(name="queryInsightsEnabled")
+    def query_insights_enabled(self) -> Optional[bool]:
+        return pulumi.get(self, "query_insights_enabled")
+
+    @property
+    @pulumi.getter(name="queryStringLength")
+    def query_string_length(self) -> Optional[int]:
+        return pulumi.get(self, "query_string_length")
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> Optional[bool]:
+        return pulumi.get(self, "record_application_tags")
+
+    @property
+    @pulumi.getter(name="recordClientAddress")
+    def record_client_address(self) -> Optional[bool]:
+        return pulumi.get(self, "record_client_address")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1221,6 +1271,7 @@ class GetDatabaseInstanceSettingResult(dict):
                  disk_autoresize: bool,
                  disk_size: int,
                  disk_type: str,
+                 insights_configs: Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult'],
                  ip_configurations: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationResult'],
                  location_preferences: Sequence['outputs.GetDatabaseInstanceSettingLocationPreferenceResult'],
                  maintenance_windows: Sequence['outputs.GetDatabaseInstanceSettingMaintenanceWindowResult'],
@@ -1258,6 +1309,7 @@ class GetDatabaseInstanceSettingResult(dict):
         pulumi.set(__self__, "disk_autoresize", disk_autoresize)
         pulumi.set(__self__, "disk_size", disk_size)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "insights_configs", insights_configs)
         pulumi.set(__self__, "ip_configurations", ip_configurations)
         pulumi.set(__self__, "location_preferences", location_preferences)
         pulumi.set(__self__, "maintenance_windows", maintenance_windows)
@@ -1338,6 +1390,11 @@ class GetDatabaseInstanceSettingResult(dict):
         The type of data disk.
         """
         return pulumi.get(self, "disk_type")
+
+    @property
+    @pulumi.getter(name="insightsConfigs")
+    def insights_configs(self) -> Sequence['outputs.GetDatabaseInstanceSettingInsightsConfigResult']:
+        return pulumi.get(self, "insights_configs")
 
     @property
     @pulumi.getter(name="ipConfigurations")
@@ -1474,6 +1531,57 @@ class GetDatabaseInstanceSettingDatabaseFlagResult(dict):
         A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingInsightsConfigResult(dict):
+    def __init__(__self__, *,
+                 query_insights_enabled: bool,
+                 query_string_length: int,
+                 record_application_tags: bool,
+                 record_client_address: bool):
+        """
+        :param bool query_insights_enabled: True if Query Insights feature is enabled.
+        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
+        :param bool record_client_address: True if Query Insights will record client address when enabled.
+        """
+        pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
+        pulumi.set(__self__, "query_string_length", query_string_length)
+        pulumi.set(__self__, "record_application_tags", record_application_tags)
+        pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @property
+    @pulumi.getter(name="queryInsightsEnabled")
+    def query_insights_enabled(self) -> bool:
+        """
+        True if Query Insights feature is enabled.
+        """
+        return pulumi.get(self, "query_insights_enabled")
+
+    @property
+    @pulumi.getter(name="queryStringLength")
+    def query_string_length(self) -> int:
+        """
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        """
+        return pulumi.get(self, "query_string_length")
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> bool:
+        """
+        True if Query Insights will record application tags from query when enabled.
+        """
+        return pulumi.get(self, "record_application_tags")
+
+    @property
+    @pulumi.getter(name="recordClientAddress")
+    def record_client_address(self) -> bool:
+        """
+        True if Query Insights will record client address when enabled.
+        """
+        return pulumi.get(self, "record_client_address")
 
 
 @pulumi.output_type

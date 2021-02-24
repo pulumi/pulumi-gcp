@@ -43,8 +43,9 @@ import (
 // 			return err
 // 		}
 // 		foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
-// 			DatasetId: bar.DatasetId,
-// 			TableId:   pulumi.String("job_query_table"),
+// 			DeletionProtection: pulumi.Bool(false),
+// 			DatasetId:          bar.DatasetId,
+// 			TableId:            pulumi.String("job_query_table"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -97,8 +98,9 @@ import (
 // 			return err
 // 		}
 // 		foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
-// 			DatasetId: bar.DatasetId,
-// 			TableId:   pulumi.String("job_query_table"),
+// 			DeletionProtection: pulumi.Bool(false),
+// 			DatasetId:          bar.DatasetId,
+// 			TableId:            pulumi.String("job_query_table"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -152,8 +154,9 @@ import (
 // 			return err
 // 		}
 // 		foo, err := bigquery.NewTable(ctx, "foo", &bigquery.TableArgs{
-// 			DatasetId: bar.DatasetId,
-// 			TableId:   pulumi.String("job_load_table"),
+// 			DeletionProtection: pulumi.Bool(false),
+// 			DatasetId:          bar.DatasetId,
+// 			TableId:            pulumi.String("job_load_table"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -213,9 +216,10 @@ import (
 // 			return err
 // 		}
 // 		_, err = bigquery.NewTable(ctx, "source_oneTable", &bigquery.TableArgs{
-// 			DatasetId: source_oneDataset.DatasetId,
-// 			TableId:   pulumi.String("job_extract_table"),
-// 			Schema:    pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "[\n", "  {\n", "    \"name\": \"name\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"post_abbr\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"date\",\n", "    \"type\": \"DATE\",\n", "    \"mode\": \"NULLABLE\"\n", "  }\n", "]\n")),
+// 			DeletionProtection: pulumi.Bool(false),
+// 			DatasetId:          source_oneDataset.DatasetId,
+// 			TableId:            pulumi.String("job_extract_table"),
+// 			Schema:             pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "[\n", "  {\n", "    \"name\": \"name\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"post_abbr\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\"\n", "  },\n", "  {\n", "    \"name\": \"date\",\n", "    \"type\": \"DATE\",\n", "    \"mode\": \"NULLABLE\"\n", "  }\n", "]\n")),
 // 		})
 // 		if err != nil {
 // 			return err

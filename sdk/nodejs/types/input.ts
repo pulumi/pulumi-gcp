@@ -15573,6 +15573,7 @@ export namespace dataproc {
 
     export interface JobScheduling {
         maxFailuresPerHour: pulumi.Input<number>;
+        maxFailuresTotal: pulumi.Input<number>;
     }
 
     export interface JobSparkConfig {
@@ -20130,6 +20131,16 @@ export namespace pubsub {
     }
 }
 
+export namespace redis {
+    export interface InstanceServerCaCert {
+        cert?: pulumi.Input<string>;
+        createTime?: pulumi.Input<string>;
+        expireTime?: pulumi.Input<string>;
+        serialNumber?: pulumi.Input<string>;
+        sha1Fingerprint?: pulumi.Input<string>;
+    }
+}
+
 export namespace runtimeconfig {
     export interface ConfigIamBindingCondition {
         description?: pulumi.Input<string>;
@@ -20450,6 +20461,7 @@ export namespace sql {
          * The type of data disk: PD_SSD or PD_HDD.
          */
         diskType?: pulumi.Input<string>;
+        insightsConfig?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsInsightsConfig>;
         ipConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfiguration>;
         locationPreference?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsLocationPreference>;
         maintenanceWindow?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsMaintenanceWindow>;
@@ -20516,6 +20528,13 @@ export namespace sql {
          * the whitelist to become active.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface DatabaseInstanceSettingsInsightsConfig {
+        queryInsightsEnabled?: pulumi.Input<boolean>;
+        queryStringLength?: pulumi.Input<number>;
+        recordApplicationTags?: pulumi.Input<boolean>;
+        recordClientAddress?: pulumi.Input<boolean>;
     }
 
     export interface DatabaseInstanceSettingsIpConfiguration {

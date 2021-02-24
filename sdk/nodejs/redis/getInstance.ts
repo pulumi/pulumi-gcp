@@ -85,5 +85,7 @@ export interface GetInstanceResult {
     readonly redisVersion: string;
     readonly region?: string;
     readonly reservedIpRange: string;
+    readonly serverCaCerts: outputs.redis.GetInstanceServerCaCert[];
     readonly tier: string;
+    readonly transitEncryptionMode: string;
 }

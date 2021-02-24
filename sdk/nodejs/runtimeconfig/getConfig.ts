@@ -42,7 +42,7 @@ export function getConfig(args: GetConfigArgs, opts?: pulumi.InvokeOptions): Pro
  */
 export interface GetConfigArgs {
     /**
-     * The name of the Cloud Run Service.
+     * The name of the Runtime Configurator configuration.
      */
     readonly name: string;
     /**

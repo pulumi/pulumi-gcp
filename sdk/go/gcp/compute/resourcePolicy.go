@@ -133,7 +133,7 @@ import (
 type ResourcePolicy struct {
 	pulumi.CustomResourceState
 
-	// Policy for creating snapshots of persistent disks.
+	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrOutput `pulumi:"groupPlacementPolicy"`
 	// The name of the resource, provided by the client when initially creating
@@ -185,7 +185,7 @@ func GetResourcePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourcePolicy resources.
 type resourcePolicyState struct {
-	// Policy for creating snapshots of persistent disks.
+	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
 	// The name of the resource, provided by the client when initially creating
@@ -209,7 +209,7 @@ type resourcePolicyState struct {
 }
 
 type ResourcePolicyState struct {
-	// Policy for creating snapshots of persistent disks.
+	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
 	// The name of the resource, provided by the client when initially creating
@@ -237,7 +237,7 @@ func (ResourcePolicyState) ElementType() reflect.Type {
 }
 
 type resourcePolicyArgs struct {
-	// Policy for creating snapshots of persistent disks.
+	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicy `pulumi:"groupPlacementPolicy"`
 	// The name of the resource, provided by the client when initially creating
@@ -260,7 +260,7 @@ type resourcePolicyArgs struct {
 
 // The set of arguments for constructing a ResourcePolicy resource.
 type ResourcePolicyArgs struct {
-	// Policy for creating snapshots of persistent disks.
+	// Resource policy for instances used for placement configuration.
 	// Structure is documented below.
 	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyPtrInput
 	// The name of the resource, provided by the client when initially creating

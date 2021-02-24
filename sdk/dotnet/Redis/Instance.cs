@@ -244,6 +244,12 @@ namespace Pulumi.Gcp.Redis
         public Output<string> ReservedIpRange { get; private set; } = null!;
 
         /// <summary>
+        /// List of server CA certificates for the instance.
+        /// </summary>
+        [Output("serverCaCerts")]
+        public Output<ImmutableArray<Outputs.InstanceServerCaCert>> ServerCaCerts { get; private set; } = null!;
+
+        /// <summary>
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
         /// - STANDARD_HA: highly available primary/replica instances
@@ -252,6 +258,14 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("tier")]
         public Output<string?> Tier { get; private set; } = null!;
+
+        /// <summary>
+        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+        /// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+        /// ["SERVER_AUTHENTICATION", "DISABLED"]
+        /// </summary>
+        [Output("transitEncryptionMode")]
+        public Output<string?> TransitEncryptionMode { get; private set; } = null!;
 
 
         /// <summary>
@@ -435,6 +449,14 @@ namespace Pulumi.Gcp.Redis
         [Input("tier")]
         public Input<string>? Tier { get; set; }
 
+        /// <summary>
+        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+        /// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+        /// ["SERVER_AUTHENTICATION", "DISABLED"]
+        /// </summary>
+        [Input("transitEncryptionMode")]
+        public Input<string>? TransitEncryptionMode { get; set; }
+
         public InstanceArgs()
         {
         }
@@ -602,6 +624,18 @@ namespace Pulumi.Gcp.Redis
         [Input("reservedIpRange")]
         public Input<string>? ReservedIpRange { get; set; }
 
+        [Input("serverCaCerts")]
+        private InputList<Inputs.InstanceServerCaCertGetArgs>? _serverCaCerts;
+
+        /// <summary>
+        /// List of server CA certificates for the instance.
+        /// </summary>
+        public InputList<Inputs.InstanceServerCaCertGetArgs> ServerCaCerts
+        {
+            get => _serverCaCerts ?? (_serverCaCerts = new InputList<Inputs.InstanceServerCaCertGetArgs>());
+            set => _serverCaCerts = value;
+        }
+
         /// <summary>
         /// The service tier of the instance. Must be one of these values:
         /// - BASIC: standalone instance
@@ -611,6 +645,14 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }
+
+        /// <summary>
+        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+        /// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+        /// ["SERVER_AUTHENTICATION", "DISABLED"]
+        /// </summary>
+        [Input("transitEncryptionMode")]
+        public Input<string>? TransitEncryptionMode { get; set; }
 
         public InstanceState()
         {

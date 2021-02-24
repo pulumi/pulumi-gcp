@@ -10,83 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
-    /// Creates a table resource in a dataset for Google BigQuery. For more information see
-    /// [the official documentation](https://cloud.google.com/bigquery/docs/) and
-    /// [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var defaultDataset = new Gcp.BigQuery.Dataset("defaultDataset", new Gcp.BigQuery.DatasetArgs
-    ///         {
-    ///             DatasetId = "foo",
-    ///             FriendlyName = "test",
-    ///             Description = "This is a test description",
-    ///             Location = "EU",
-    ///             DefaultTableExpirationMs = 3600000,
-    ///             Labels = 
-    ///             {
-    ///                 { "env", "default" },
-    ///             },
-    ///         });
-    ///         var defaultTable = new Gcp.BigQuery.Table("defaultTable", new Gcp.BigQuery.TableArgs
-    ///         {
-    ///             DatasetId = defaultDataset.DatasetId,
-    ///             TableId = "bar",
-    ///             TimePartitioning = new Gcp.BigQuery.Inputs.TableTimePartitioningArgs
-    ///             {
-    ///                 Type = "DAY",
-    ///             },
-    ///             Labels = 
-    ///             {
-    ///                 { "env", "default" },
-    ///             },
-    ///             Schema = @"[
-    ///   {
-    ///     ""name"": ""permalink"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""The Permalink""
-    ///   },
-    ///   {
-    ///     ""name"": ""state"",
-    ///     ""type"": ""STRING"",
-    ///     ""mode"": ""NULLABLE"",
-    ///     ""description"": ""State where the head office is located""
-    ///   }
-    /// ]
-    /// ",
-    ///         });
-    ///         var sheet = new Gcp.BigQuery.Table("sheet", new Gcp.BigQuery.TableArgs
-    ///         {
-    ///             DatasetId = defaultDataset.DatasetId,
-    ///             TableId = "sheet",
-    ///             ExternalDataConfiguration = new Gcp.BigQuery.Inputs.TableExternalDataConfigurationArgs
-    ///             {
-    ///                 Autodetect = true,
-    ///                 SourceFormat = "GOOGLE_SHEETS",
-    ///                 GoogleSheetsOptions = new Gcp.BigQuery.Inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs
-    ///                 {
-    ///                     SkipLeadingRows = 1,
-    ///                 },
-    ///                 SourceUris = 
-    ///                 {
-    ///                     "https://docs.google.com/spreadsheets/d/123456789012345",
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
@@ -118,6 +41,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        /// terraform destroy or terraform apply that would delete the instance will fail.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// The field description.
@@ -338,6 +268,13 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        /// terraform destroy or terraform apply that would delete the instance will fail.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
+        /// <summary>
         /// The field description.
         /// </summary>
         [Input("description")]
@@ -478,6 +415,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
+
+        /// <summary>
+        /// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        /// terraform destroy or terraform apply that would delete the instance will fail.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The field description.

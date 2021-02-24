@@ -2275,13 +2275,20 @@ class JobReference(dict):
 @pulumi.output_type
 class JobScheduling(dict):
     def __init__(__self__, *,
-                 max_failures_per_hour: int):
+                 max_failures_per_hour: int,
+                 max_failures_total: int):
         pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
+        pulumi.set(__self__, "max_failures_total", max_failures_total)
 
     @property
     @pulumi.getter(name="maxFailuresPerHour")
     def max_failures_per_hour(self) -> int:
         return pulumi.get(self, "max_failures_per_hour")
+
+    @property
+    @pulumi.getter(name="maxFailuresTotal")
+    def max_failures_total(self) -> int:
+        return pulumi.get(self, "max_failures_total")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

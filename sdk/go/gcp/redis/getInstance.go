@@ -67,17 +67,19 @@ type LookupInstanceResult struct {
 	DisplayName           string `pulumi:"displayName"`
 	Host                  string `pulumi:"host"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                     string            `pulumi:"id"`
-	Labels                 map[string]string `pulumi:"labels"`
-	LocationId             string            `pulumi:"locationId"`
-	MemorySizeGb           int               `pulumi:"memorySizeGb"`
-	Name                   string            `pulumi:"name"`
-	PersistenceIamIdentity string            `pulumi:"persistenceIamIdentity"`
-	Port                   int               `pulumi:"port"`
-	Project                *string           `pulumi:"project"`
-	RedisConfigs           map[string]string `pulumi:"redisConfigs"`
-	RedisVersion           string            `pulumi:"redisVersion"`
-	Region                 *string           `pulumi:"region"`
-	ReservedIpRange        string            `pulumi:"reservedIpRange"`
-	Tier                   string            `pulumi:"tier"`
+	Id                     string                    `pulumi:"id"`
+	Labels                 map[string]string         `pulumi:"labels"`
+	LocationId             string                    `pulumi:"locationId"`
+	MemorySizeGb           int                       `pulumi:"memorySizeGb"`
+	Name                   string                    `pulumi:"name"`
+	PersistenceIamIdentity string                    `pulumi:"persistenceIamIdentity"`
+	Port                   int                       `pulumi:"port"`
+	Project                *string                   `pulumi:"project"`
+	RedisConfigs           map[string]string         `pulumi:"redisConfigs"`
+	RedisVersion           string                    `pulumi:"redisVersion"`
+	Region                 *string                   `pulumi:"region"`
+	ReservedIpRange        string                    `pulumi:"reservedIpRange"`
+	ServerCaCerts          []GetInstanceServerCaCert `pulumi:"serverCaCerts"`
+	Tier                   string                    `pulumi:"tier"`
+	TransitEncryptionMode  string                    `pulumi:"transitEncryptionMode"`
 }

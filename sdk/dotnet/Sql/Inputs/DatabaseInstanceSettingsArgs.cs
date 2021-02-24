@@ -83,6 +83,9 @@ namespace Pulumi.Gcp.Sql.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        [Input("insightsConfig")]
+        public Input<Inputs.DatabaseInstanceSettingsInsightsConfigArgs>? InsightsConfig { get; set; }
+
         [Input("ipConfiguration")]
         public Input<Inputs.DatabaseInstanceSettingsIpConfigurationArgs>? IpConfiguration { get; set; }
 

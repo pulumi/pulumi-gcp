@@ -52,6 +52,7 @@ class Job(pulumi.CustomResource):
             description="This is a test description",
             location="US")
         foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
             dataset_id=bar.dataset_id,
             table_id="job_query_table")
         job = gcp.bigquery.Job("job",
@@ -85,6 +86,7 @@ class Job(pulumi.CustomResource):
             description="This is a test description",
             location="US")
         foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
             dataset_id=bar.dataset_id,
             table_id="job_query_table")
         job = gcp.bigquery.Job("job",
@@ -119,6 +121,7 @@ class Job(pulumi.CustomResource):
             description="This is a test description",
             location="US")
         foo = gcp.bigquery.Table("foo",
+            deletion_protection=False,
             dataset_id=bar.dataset_id,
             table_id="job_load_table")
         job = gcp.bigquery.Job("job",
@@ -154,6 +157,7 @@ class Job(pulumi.CustomResource):
             description="This is a test description",
             location="US")
         source_one_table = gcp.bigquery.Table("source-oneTable",
+            deletion_protection=False,
             dataset_id=source_one_dataset.dataset_id,
             table_id="job_extract_table",
             schema=\"\"\"[

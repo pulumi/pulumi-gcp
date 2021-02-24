@@ -54,6 +54,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The type of data disk: PD_SSD or PD_HDD.
         /// </summary>
         public readonly string? DiskType;
+        public readonly Outputs.DatabaseInstanceSettingsInsightsConfig? InsightsConfig;
         public readonly Outputs.DatabaseInstanceSettingsIpConfiguration? IpConfiguration;
         public readonly Outputs.DatabaseInstanceSettingsLocationPreference? LocationPreference;
         public readonly Outputs.DatabaseInstanceSettingsMaintenanceWindow? MaintenanceWindow;
@@ -100,6 +101,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string? diskType,
 
+            Outputs.DatabaseInstanceSettingsInsightsConfig? insightsConfig,
+
             Outputs.DatabaseInstanceSettingsIpConfiguration? ipConfiguration,
 
             Outputs.DatabaseInstanceSettingsLocationPreference? locationPreference,
@@ -125,6 +128,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskAutoresize = diskAutoresize;
             DiskSize = diskSize;
             DiskType = diskType;
+            InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;
             LocationPreference = locationPreference;
             MaintenanceWindow = maintenanceWindow;

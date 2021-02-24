@@ -49,7 +49,7 @@ namespace Pulumi.Gcp.RuntimeConfig
     public sealed class GetConfigArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the Cloud Run Service.
+        /// The name of the Runtime Configurator configuration.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

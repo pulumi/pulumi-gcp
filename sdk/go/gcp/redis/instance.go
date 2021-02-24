@@ -173,12 +173,18 @@ type Instance struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange pulumi.StringOutput `pulumi:"reservedIpRange"`
+	// List of server CA certificates for the instance.
+	ServerCaCerts InstanceServerCaCertArrayOutput `pulumi:"serverCaCerts"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	TransitEncryptionMode pulumi.StringPtrOutput `pulumi:"transitEncryptionMode"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -281,12 +287,18 @@ type instanceState struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
+	// List of server CA certificates for the instance.
+	ServerCaCerts []InstanceServerCaCert `pulumi:"serverCaCerts"`
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 }
 
 type InstanceState struct {
@@ -358,12 +370,18 @@ type InstanceState struct {
 	// unique and non-overlapping with existing subnets in an authorized
 	// network.
 	ReservedIpRange pulumi.StringPtrInput
+	// List of server CA certificates for the instance.
+	ServerCaCerts InstanceServerCaCertArrayInput
 	// The service tier of the instance. Must be one of these values:
 	// - BASIC: standalone instance
 	// - STANDARD_HA: highly available primary/replica instances
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	TransitEncryptionMode pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -431,6 +449,10 @@ type instanceArgs struct {
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -495,6 +517,10 @@ type InstanceArgs struct {
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	TransitEncryptionMode pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

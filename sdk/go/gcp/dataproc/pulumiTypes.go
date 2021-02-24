@@ -7057,6 +7057,7 @@ func (o JobReferencePtrOutput) JobId() pulumi.StringPtrOutput {
 
 type JobScheduling struct {
 	MaxFailuresPerHour int `pulumi:"maxFailuresPerHour"`
+	MaxFailuresTotal   int `pulumi:"maxFailuresTotal"`
 }
 
 // JobSchedulingInput is an input type that accepts JobSchedulingArgs and JobSchedulingOutput values.
@@ -7072,6 +7073,7 @@ type JobSchedulingInput interface {
 
 type JobSchedulingArgs struct {
 	MaxFailuresPerHour pulumi.IntInput `pulumi:"maxFailuresPerHour"`
+	MaxFailuresTotal   pulumi.IntInput `pulumi:"maxFailuresTotal"`
 }
 
 func (JobSchedulingArgs) ElementType() reflect.Type {
@@ -7154,6 +7156,10 @@ func (o JobSchedulingOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobScheduling) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
 }
 
+func (o JobSchedulingOutput) MaxFailuresTotal() pulumi.IntOutput {
+	return o.ApplyT(func(v JobScheduling) int { return v.MaxFailuresTotal }).(pulumi.IntOutput)
+}
+
 type JobSchedulingPtrOutput struct{ *pulumi.OutputState }
 
 func (JobSchedulingPtrOutput) ElementType() reflect.Type {
@@ -7178,6 +7184,15 @@ func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 			return nil
 		}
 		return &v.MaxFailuresPerHour
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobScheduling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxFailuresTotal
 	}).(pulumi.IntPtrOutput)
 }
 

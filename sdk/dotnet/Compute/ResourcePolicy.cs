@@ -133,7 +133,7 @@ namespace Pulumi.Gcp.Compute
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.
+        /// Resource policy for instances used for placement configuration.
         /// Structure is documented below.
         /// </summary>
         [Output("groupPlacementPolicy")]
@@ -224,7 +224,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.
+        /// Resource policy for instances used for placement configuration.
         /// Structure is documented below.
         /// </summary>
         [Input("groupPlacementPolicy")]
@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.Compute
     public sealed class ResourcePolicyState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Policy for creating snapshots of persistent disks.
+        /// Resource policy for instances used for placement configuration.
         /// Structure is documented below.
         /// </summary>
         [Input("groupPlacementPolicy")]

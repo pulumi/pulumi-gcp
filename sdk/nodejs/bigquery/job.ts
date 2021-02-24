@@ -29,6 +29,7 @@ import * as utilities from "../utilities";
  *     location: "US",
  * });
  * const foo = new gcp.bigquery.Table("foo", {
+ *     deletionProtection: false,
  *     datasetId: bar.datasetId,
  *     tableId: "job_query_table",
  * });
@@ -65,6 +66,7 @@ import * as utilities from "../utilities";
  *     location: "US",
  * });
  * const foo = new gcp.bigquery.Table("foo", {
+ *     deletionProtection: false,
  *     datasetId: bar.datasetId,
  *     tableId: "job_query_table",
  * });
@@ -102,6 +104,7 @@ import * as utilities from "../utilities";
  *     location: "US",
  * });
  * const foo = new gcp.bigquery.Table("foo", {
+ *     deletionProtection: false,
  *     datasetId: bar.datasetId,
  *     tableId: "job_load_table",
  * });
@@ -140,6 +143,7 @@ import * as utilities from "../utilities";
  *     location: "US",
  * });
  * const source_oneTable = new gcp.bigquery.Table("source-oneTable", {
+ *     deletionProtection: false,
  *     datasetId: source_oneDataset.datasetId,
  *     tableId: "job_extract_table",
  *     schema: `[
