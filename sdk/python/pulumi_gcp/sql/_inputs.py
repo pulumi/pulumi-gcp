@@ -17,6 +17,7 @@ __all__ = [
     'DatabaseInstanceSettingsArgs',
     'DatabaseInstanceSettingsBackupConfigurationArgs',
     'DatabaseInstanceSettingsDatabaseFlagArgs',
+    'DatabaseInstanceSettingsInsightsConfigArgs',
     'DatabaseInstanceSettingsIpConfigurationArgs',
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs',
     'DatabaseInstanceSettingsLocationPreferenceArgs',
@@ -442,6 +443,7 @@ class DatabaseInstanceSettingsArgs:
                  disk_autoresize: Optional[pulumi.Input[bool]] = None,
                  disk_size: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 insights_config: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']] = None,
                  ip_configuration: Optional[pulumi.Input['DatabaseInstanceSettingsIpConfigurationArgs']] = None,
                  location_preference: Optional[pulumi.Input['DatabaseInstanceSettingsLocationPreferenceArgs']] = None,
                  maintenance_window: Optional[pulumi.Input['DatabaseInstanceSettingsMaintenanceWindowArgs']] = None,
@@ -503,6 +505,8 @@ class DatabaseInstanceSettingsArgs:
             pulumi.set(__self__, "disk_size", disk_size)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if insights_config is not None:
+            pulumi.set(__self__, "insights_config", insights_config)
         if ip_configuration is not None:
             pulumi.set(__self__, "ip_configuration", ip_configuration)
         if location_preference is not None:
@@ -647,6 +651,15 @@ class DatabaseInstanceSettingsArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="insightsConfig")
+    def insights_config(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']]:
+        return pulumi.get(self, "insights_config")
+
+    @insights_config.setter
+    def insights_config(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsInsightsConfigArgs']]):
+        pulumi.set(self, "insights_config", value)
 
     @property
     @pulumi.getter(name="ipConfiguration")
@@ -856,6 +869,59 @@ class DatabaseInstanceSettingsDatabaseFlagArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsInsightsConfigArgs:
+    def __init__(__self__, *,
+                 query_insights_enabled: Optional[pulumi.Input[bool]] = None,
+                 query_string_length: Optional[pulumi.Input[int]] = None,
+                 record_application_tags: Optional[pulumi.Input[bool]] = None,
+                 record_client_address: Optional[pulumi.Input[bool]] = None):
+        if query_insights_enabled is not None:
+            pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
+        if query_string_length is not None:
+            pulumi.set(__self__, "query_string_length", query_string_length)
+        if record_application_tags is not None:
+            pulumi.set(__self__, "record_application_tags", record_application_tags)
+        if record_client_address is not None:
+            pulumi.set(__self__, "record_client_address", record_client_address)
+
+    @property
+    @pulumi.getter(name="queryInsightsEnabled")
+    def query_insights_enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "query_insights_enabled")
+
+    @query_insights_enabled.setter
+    def query_insights_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "query_insights_enabled", value)
+
+    @property
+    @pulumi.getter(name="queryStringLength")
+    def query_string_length(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "query_string_length")
+
+    @query_string_length.setter
+    def query_string_length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "query_string_length", value)
+
+    @property
+    @pulumi.getter(name="recordApplicationTags")
+    def record_application_tags(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "record_application_tags")
+
+    @record_application_tags.setter
+    def record_application_tags(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "record_application_tags", value)
+
+    @property
+    @pulumi.getter(name="recordClientAddress")
+    def record_client_address(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "record_client_address")
+
+    @record_client_address.setter
+    def record_client_address(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "record_client_address", value)
 
 
 @pulumi.input_type

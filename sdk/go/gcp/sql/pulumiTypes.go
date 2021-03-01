@@ -952,6 +952,7 @@ type DatabaseInstanceSettings struct {
 	DiskSize *int `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
 	DiskType           *string                                     `pulumi:"diskType"`
+	InsightsConfig     *DatabaseInstanceSettingsInsightsConfig     `pulumi:"insightsConfig"`
 	IpConfiguration    *DatabaseInstanceSettingsIpConfiguration    `pulumi:"ipConfiguration"`
 	LocationPreference *DatabaseInstanceSettingsLocationPreference `pulumi:"locationPreference"`
 	MaintenanceWindow  *DatabaseInstanceSettingsMaintenanceWindow  `pulumi:"maintenanceWindow"`
@@ -1016,6 +1017,7 @@ type DatabaseInstanceSettingsArgs struct {
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
 	// The type of data disk: PD_SSD or PD_HDD.
 	DiskType           pulumi.StringPtrInput                              `pulumi:"diskType"`
+	InsightsConfig     DatabaseInstanceSettingsInsightsConfigPtrInput     `pulumi:"insightsConfig"`
 	IpConfiguration    DatabaseInstanceSettingsIpConfigurationPtrInput    `pulumi:"ipConfiguration"`
 	LocationPreference DatabaseInstanceSettingsLocationPreferencePtrInput `pulumi:"locationPreference"`
 	MaintenanceWindow  DatabaseInstanceSettingsMaintenanceWindowPtrInput  `pulumi:"maintenanceWindow"`
@@ -1172,6 +1174,10 @@ func (o DatabaseInstanceSettingsOutput) DiskSize() pulumi.IntPtrOutput {
 // The type of data disk: PD_SSD or PD_HDD.
 func (o DatabaseInstanceSettingsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettings) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsOutput) InsightsConfig() DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettings) *DatabaseInstanceSettingsInsightsConfig { return v.InsightsConfig }).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsOutput) IpConfiguration() DatabaseInstanceSettingsIpConfigurationPtrOutput {
@@ -1340,6 +1346,15 @@ func (o DatabaseInstanceSettingsPtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsPtrOutput) InsightsConfig() DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettings) *DatabaseInstanceSettingsInsightsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.InsightsConfig
+	}).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
 }
 
 func (o DatabaseInstanceSettingsPtrOutput) IpConfiguration() DatabaseInstanceSettingsIpConfigurationPtrOutput {
@@ -1756,6 +1771,177 @@ func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) Index(i pulumi.IntInput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsDatabaseFlag {
 		return vs[0].([]DatabaseInstanceSettingsDatabaseFlag)[vs[1].(int)]
 	}).(DatabaseInstanceSettingsDatabaseFlagOutput)
+}
+
+type DatabaseInstanceSettingsInsightsConfig struct {
+	QueryInsightsEnabled  *bool `pulumi:"queryInsightsEnabled"`
+	QueryStringLength     *int  `pulumi:"queryStringLength"`
+	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
+	RecordClientAddress   *bool `pulumi:"recordClientAddress"`
+}
+
+// DatabaseInstanceSettingsInsightsConfigInput is an input type that accepts DatabaseInstanceSettingsInsightsConfigArgs and DatabaseInstanceSettingsInsightsConfigOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsInsightsConfigInput` via:
+//
+//          DatabaseInstanceSettingsInsightsConfigArgs{...}
+type DatabaseInstanceSettingsInsightsConfigInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsInsightsConfigOutput() DatabaseInstanceSettingsInsightsConfigOutput
+	ToDatabaseInstanceSettingsInsightsConfigOutputWithContext(context.Context) DatabaseInstanceSettingsInsightsConfigOutput
+}
+
+type DatabaseInstanceSettingsInsightsConfigArgs struct {
+	QueryInsightsEnabled  pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
+	QueryStringLength     pulumi.IntPtrInput  `pulumi:"queryStringLength"`
+	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
+	RecordClientAddress   pulumi.BoolPtrInput `pulumi:"recordClientAddress"`
+}
+
+func (DatabaseInstanceSettingsInsightsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsInsightsConfig)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsInsightsConfigArgs) ToDatabaseInstanceSettingsInsightsConfigOutput() DatabaseInstanceSettingsInsightsConfigOutput {
+	return i.ToDatabaseInstanceSettingsInsightsConfigOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsInsightsConfigArgs) ToDatabaseInstanceSettingsInsightsConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsInsightsConfigOutput)
+}
+
+func (i DatabaseInstanceSettingsInsightsConfigArgs) ToDatabaseInstanceSettingsInsightsConfigPtrOutput() DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsInsightsConfigArgs) ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsInsightsConfigOutput).ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsInsightsConfigPtrInput is an input type that accepts DatabaseInstanceSettingsInsightsConfigArgs, DatabaseInstanceSettingsInsightsConfigPtr and DatabaseInstanceSettingsInsightsConfigPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsInsightsConfigPtrInput` via:
+//
+//          DatabaseInstanceSettingsInsightsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseInstanceSettingsInsightsConfigPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsInsightsConfigPtrOutput() DatabaseInstanceSettingsInsightsConfigPtrOutput
+	ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(context.Context) DatabaseInstanceSettingsInsightsConfigPtrOutput
+}
+
+type databaseInstanceSettingsInsightsConfigPtrType DatabaseInstanceSettingsInsightsConfigArgs
+
+func DatabaseInstanceSettingsInsightsConfigPtr(v *DatabaseInstanceSettingsInsightsConfigArgs) DatabaseInstanceSettingsInsightsConfigPtrInput {
+	return (*databaseInstanceSettingsInsightsConfigPtrType)(v)
+}
+
+func (*databaseInstanceSettingsInsightsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsInsightsConfig)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsInsightsConfigPtrType) ToDatabaseInstanceSettingsInsightsConfigPtrOutput() DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return i.ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsInsightsConfigPtrType) ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
+}
+
+type DatabaseInstanceSettingsInsightsConfigOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsInsightsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsInsightsConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettingsInsightsConfigOutput() DatabaseInstanceSettingsInsightsConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettingsInsightsConfigOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettingsInsightsConfigPtrOutput() DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return o.ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *DatabaseInstanceSettingsInsightsConfig {
+		return &v
+	}).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
+}
+func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.QueryInsightsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *int { return v.QueryStringLength }).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.RecordApplicationTags }).(pulumi.BoolPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigOutput) RecordClientAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.RecordClientAddress }).(pulumi.BoolPtrOutput)
+}
+
+type DatabaseInstanceSettingsInsightsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsInsightsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsInsightsConfig)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) ToDatabaseInstanceSettingsInsightsConfigPtrOutput() DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) ToDatabaseInstanceSettingsInsightsConfigPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsInsightsConfigPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) Elem() DatabaseInstanceSettingsInsightsConfigOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) DatabaseInstanceSettingsInsightsConfig { return *v }).(DatabaseInstanceSettingsInsightsConfigOutput)
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryInsightsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryStringLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringLength
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RecordApplicationTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordClientAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RecordClientAddress
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DatabaseInstanceSettingsIpConfiguration struct {
@@ -3205,6 +3391,7 @@ type GetDatabaseInstanceSetting struct {
 	DiskSize int `pulumi:"diskSize"`
 	// The type of data disk.
 	DiskType            string                                         `pulumi:"diskType"`
+	InsightsConfigs     []GetDatabaseInstanceSettingInsightsConfig     `pulumi:"insightsConfigs"`
 	IpConfigurations    []GetDatabaseInstanceSettingIpConfiguration    `pulumi:"ipConfigurations"`
 	LocationPreferences []GetDatabaseInstanceSettingLocationPreference `pulumi:"locationPreferences"`
 	MaintenanceWindows  []GetDatabaseInstanceSettingMaintenanceWindow  `pulumi:"maintenanceWindows"`
@@ -3254,6 +3441,7 @@ type GetDatabaseInstanceSettingArgs struct {
 	DiskSize pulumi.IntInput `pulumi:"diskSize"`
 	// The type of data disk.
 	DiskType            pulumi.StringInput                                     `pulumi:"diskType"`
+	InsightsConfigs     GetDatabaseInstanceSettingInsightsConfigArrayInput     `pulumi:"insightsConfigs"`
 	IpConfigurations    GetDatabaseInstanceSettingIpConfigurationArrayInput    `pulumi:"ipConfigurations"`
 	LocationPreferences GetDatabaseInstanceSettingLocationPreferenceArrayInput `pulumi:"locationPreferences"`
 	MaintenanceWindows  GetDatabaseInstanceSettingMaintenanceWindowArrayInput  `pulumi:"maintenanceWindows"`
@@ -3369,6 +3557,12 @@ func (o GetDatabaseInstanceSettingOutput) DiskSize() pulumi.IntOutput {
 // The type of data disk.
 func (o GetDatabaseInstanceSettingOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSetting) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetDatabaseInstanceSettingOutput) InsightsConfigs() GetDatabaseInstanceSettingInsightsConfigArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSetting) []GetDatabaseInstanceSettingInsightsConfig {
+		return v.InsightsConfigs
+	}).(GetDatabaseInstanceSettingInsightsConfigArrayOutput)
 }
 
 func (o GetDatabaseInstanceSettingOutput) IpConfigurations() GetDatabaseInstanceSettingIpConfigurationArrayOutput {
@@ -3665,6 +3859,130 @@ func (o GetDatabaseInstanceSettingDatabaseFlagArrayOutput) Index(i pulumi.IntInp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingDatabaseFlag {
 		return vs[0].([]GetDatabaseInstanceSettingDatabaseFlag)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingDatabaseFlagOutput)
+}
+
+type GetDatabaseInstanceSettingInsightsConfig struct {
+	// True if Query Insights feature is enabled.
+	QueryInsightsEnabled bool `pulumi:"queryInsightsEnabled"`
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	QueryStringLength int `pulumi:"queryStringLength"`
+	// True if Query Insights will record application tags from query when enabled.
+	RecordApplicationTags bool `pulumi:"recordApplicationTags"`
+	// True if Query Insights will record client address when enabled.
+	RecordClientAddress bool `pulumi:"recordClientAddress"`
+}
+
+// GetDatabaseInstanceSettingInsightsConfigInput is an input type that accepts GetDatabaseInstanceSettingInsightsConfigArgs and GetDatabaseInstanceSettingInsightsConfigOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingInsightsConfigInput` via:
+//
+//          GetDatabaseInstanceSettingInsightsConfigArgs{...}
+type GetDatabaseInstanceSettingInsightsConfigInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingInsightsConfigOutput() GetDatabaseInstanceSettingInsightsConfigOutput
+	ToGetDatabaseInstanceSettingInsightsConfigOutputWithContext(context.Context) GetDatabaseInstanceSettingInsightsConfigOutput
+}
+
+type GetDatabaseInstanceSettingInsightsConfigArgs struct {
+	// True if Query Insights feature is enabled.
+	QueryInsightsEnabled pulumi.BoolInput `pulumi:"queryInsightsEnabled"`
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	QueryStringLength pulumi.IntInput `pulumi:"queryStringLength"`
+	// True if Query Insights will record application tags from query when enabled.
+	RecordApplicationTags pulumi.BoolInput `pulumi:"recordApplicationTags"`
+	// True if Query Insights will record client address when enabled.
+	RecordClientAddress pulumi.BoolInput `pulumi:"recordClientAddress"`
+}
+
+func (GetDatabaseInstanceSettingInsightsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingInsightsConfigArgs) ToGetDatabaseInstanceSettingInsightsConfigOutput() GetDatabaseInstanceSettingInsightsConfigOutput {
+	return i.ToGetDatabaseInstanceSettingInsightsConfigOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingInsightsConfigArgs) ToGetDatabaseInstanceSettingInsightsConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingInsightsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingInsightsConfigOutput)
+}
+
+// GetDatabaseInstanceSettingInsightsConfigArrayInput is an input type that accepts GetDatabaseInstanceSettingInsightsConfigArray and GetDatabaseInstanceSettingInsightsConfigArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingInsightsConfigArrayInput` via:
+//
+//          GetDatabaseInstanceSettingInsightsConfigArray{ GetDatabaseInstanceSettingInsightsConfigArgs{...} }
+type GetDatabaseInstanceSettingInsightsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingInsightsConfigArrayOutput() GetDatabaseInstanceSettingInsightsConfigArrayOutput
+	ToGetDatabaseInstanceSettingInsightsConfigArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingInsightsConfigArrayOutput
+}
+
+type GetDatabaseInstanceSettingInsightsConfigArray []GetDatabaseInstanceSettingInsightsConfigInput
+
+func (GetDatabaseInstanceSettingInsightsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingInsightsConfigArray) ToGetDatabaseInstanceSettingInsightsConfigArrayOutput() GetDatabaseInstanceSettingInsightsConfigArrayOutput {
+	return i.ToGetDatabaseInstanceSettingInsightsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingInsightsConfigArray) ToGetDatabaseInstanceSettingInsightsConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingInsightsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingInsightsConfigArrayOutput)
+}
+
+type GetDatabaseInstanceSettingInsightsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingInsightsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToGetDatabaseInstanceSettingInsightsConfigOutput() GetDatabaseInstanceSettingInsightsConfigOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) ToGetDatabaseInstanceSettingInsightsConfigOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingInsightsConfigOutput {
+	return o
+}
+
+// True if Query Insights feature is enabled.
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.QueryInsightsEnabled }).(pulumi.BoolOutput)
+}
+
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) QueryStringLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) int { return v.QueryStringLength }).(pulumi.IntOutput)
+}
+
+// True if Query Insights will record application tags from query when enabled.
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) RecordApplicationTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.RecordApplicationTags }).(pulumi.BoolOutput)
+}
+
+// True if Query Insights will record client address when enabled.
+func (o GetDatabaseInstanceSettingInsightsConfigOutput) RecordClientAddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingInsightsConfig) bool { return v.RecordClientAddress }).(pulumi.BoolOutput)
+}
+
+type GetDatabaseInstanceSettingInsightsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingInsightsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingInsightsConfig)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) ToGetDatabaseInstanceSettingInsightsConfigArrayOutput() GetDatabaseInstanceSettingInsightsConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) ToGetDatabaseInstanceSettingInsightsConfigArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingInsightsConfigArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingInsightsConfigArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingInsightsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingInsightsConfig {
+		return vs[0].([]GetDatabaseInstanceSettingInsightsConfig)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingInsightsConfigOutput)
 }
 
 type GetDatabaseInstanceSettingIpConfiguration struct {
@@ -4146,6 +4464,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkOutput{})
@@ -4172,6 +4492,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkOutput{})

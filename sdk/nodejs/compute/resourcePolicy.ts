@@ -120,7 +120,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
     }
 
     /**
-     * Policy for creating snapshots of persistent disks.
+     * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
     public readonly groupPlacementPolicy!: pulumi.Output<outputs.compute.ResourcePolicyGroupPlacementPolicy | undefined>;
@@ -193,7 +193,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
  */
 export interface ResourcePolicyState {
     /**
-     * Policy for creating snapshots of persistent disks.
+     * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
     readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;
@@ -232,7 +232,7 @@ export interface ResourcePolicyState {
  */
 export interface ResourcePolicyArgs {
     /**
-     * Policy for creating snapshots of persistent disks.
+     * Resource policy for instances used for placement configuration.
      * Structure is documented below.
      */
     readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.ResourcePolicyGroupPlacementPolicy>;

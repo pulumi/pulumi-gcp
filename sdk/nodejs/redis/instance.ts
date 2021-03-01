@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -206,6 +207,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly reservedIpRange!: pulumi.Output<string>;
     /**
+     * List of server CA certificates for the instance.
+     */
+    public /*out*/ readonly serverCaCerts!: pulumi.Output<outputs.redis.InstanceServerCaCert[]>;
+    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -213,6 +218,12 @@ export class Instance extends pulumi.CustomResource {
      * Possible values are `BASIC` and `STANDARD_HA`.
      */
     public readonly tier!: pulumi.Output<string | undefined>;
+    /**
+     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+     * to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+     * ["SERVER_AUTHENTICATION", "DISABLED"]
+     */
+    public readonly transitEncryptionMode!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -247,7 +258,9 @@ export class Instance extends pulumi.CustomResource {
             inputs["redisVersion"] = state ? state.redisVersion : undefined;
             inputs["region"] = state ? state.region : undefined;
             inputs["reservedIpRange"] = state ? state.reservedIpRange : undefined;
+            inputs["serverCaCerts"] = state ? state.serverCaCerts : undefined;
             inputs["tier"] = state ? state.tier : undefined;
+            inputs["transitEncryptionMode"] = state ? state.transitEncryptionMode : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.memorySizeGb === undefined) && !opts.urn) {
@@ -269,11 +282,13 @@ export class Instance extends pulumi.CustomResource {
             inputs["region"] = args ? args.region : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
             inputs["tier"] = args ? args.tier : undefined;
+            inputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["currentLocationId"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
             inputs["persistenceIamIdentity"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["serverCaCerts"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -395,6 +410,10 @@ export interface InstanceState {
      */
     readonly reservedIpRange?: pulumi.Input<string>;
     /**
+     * List of server CA certificates for the instance.
+     */
+    readonly serverCaCerts?: pulumi.Input<pulumi.Input<inputs.redis.InstanceServerCaCert>[]>;
+    /**
      * The service tier of the instance. Must be one of these values:
      * - BASIC: standalone instance
      * - STANDARD_HA: highly available primary/replica instances
@@ -402,6 +421,12 @@ export interface InstanceState {
      * Possible values are `BASIC` and `STANDARD_HA`.
      */
     readonly tier?: pulumi.Input<string>;
+    /**
+     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+     * to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+     * ["SERVER_AUTHENTICATION", "DISABLED"]
+     */
+    readonly transitEncryptionMode?: pulumi.Input<string>;
 }
 
 /**
@@ -500,4 +525,10 @@ export interface InstanceArgs {
      * Possible values are `BASIC` and `STANDARD_HA`.
      */
     readonly tier?: pulumi.Input<string>;
+    /**
+     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
+     * to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
+     * ["SERVER_AUTHENTICATION", "DISABLED"]
+     */
+    readonly transitEncryptionMode?: pulumi.Input<string>;
 }

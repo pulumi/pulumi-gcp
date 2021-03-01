@@ -14,11 +14,16 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class JobScheduling
     {
         public readonly int MaxFailuresPerHour;
+        public readonly int MaxFailuresTotal;
 
         [OutputConstructor]
-        private JobScheduling(int maxFailuresPerHour)
+        private JobScheduling(
+            int maxFailuresPerHour,
+
+            int maxFailuresTotal)
         {
             MaxFailuresPerHour = maxFailuresPerHour;
+            MaxFailuresTotal = maxFailuresTotal;
         }
     }
 }

@@ -68,8 +68,8 @@ type TargetSSLProxy struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// connections between users and the load balancer. At least one
+	// SSL certificate must be specified.
 	SslCertificates pulumi.StringOutput `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
@@ -139,8 +139,8 @@ type targetSSLProxyState struct {
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// connections between users and the load balancer. At least one
+	// SSL certificate must be specified.
 	SslCertificates *string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
@@ -176,8 +176,8 @@ type TargetSSLProxyState struct {
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
 	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// connections between users and the load balancer. At least one
+	// SSL certificate must be specified.
 	SslCertificates pulumi.StringPtrInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
@@ -211,8 +211,8 @@ type targetSSLProxyArgs struct {
 	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader *string `pulumi:"proxyHeader"`
 	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// connections between users and the load balancer. At least one
+	// SSL certificate must be specified.
 	SslCertificates string `pulumi:"sslCertificates"`
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy
@@ -243,8 +243,8 @@ type TargetSSLProxyArgs struct {
 	// Possible values are `NONE` and `PROXY_V1`.
 	ProxyHeader pulumi.StringPtrInput
 	// A list of SslCertificate resources that are used to authenticate
-	// connections between users and the load balancer. Currently, exactly
-	// one SSL certificate must be specified.
+	// connections between users and the load balancer. At least one
+	// SSL certificate must be specified.
 	SslCertificates pulumi.StringInput
 	// A reference to the SslPolicy resource that will be associated with
 	// the TargetSslProxy resource. If not set, the TargetSslProxy

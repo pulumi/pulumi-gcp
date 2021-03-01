@@ -15,6 +15,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("maxFailuresPerHour", required: true)]
         public Input<int> MaxFailuresPerHour { get; set; } = null!;
 
+        [Input("maxFailuresTotal", required: true)]
+        public Input<int> MaxFailuresTotal { get; set; } = null!;
+
         public JobSchedulingGetArgs()
         {
         }

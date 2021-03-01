@@ -762,10 +762,17 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_subnetwork_iam.html.markdown",
 				},
 			},
-			"google_compute_target_http_proxy":   {Tok: gcpResource(gcpCompute, "TargetHttpProxy")},
-			"google_compute_target_https_proxy":  {Tok: gcpResource(gcpCompute, "TargetHttpsProxy")},
-			"google_compute_target_instance":     {Tok: gcpResource(gcpCompute, "TargetInstance")},
-			"google_compute_target_ssl_proxy":    {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
+			"google_compute_target_http_proxy":  {Tok: gcpResource(gcpCompute, "TargetHttpProxy")},
+			"google_compute_target_https_proxy": {Tok: gcpResource(gcpCompute, "TargetHttpsProxy")},
+			"google_compute_target_instance":    {Tok: gcpResource(gcpCompute, "TargetInstance")},
+			"google_compute_target_ssl_proxy": {
+				Tok: gcpResource(gcpCompute, "TargetSSLProxy"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"ssl_certificates": {
+						MaxItemsOne: tfbridge.True(),
+					},
+				},
+			},
 			"google_compute_target_tcp_proxy":    {Tok: gcpResource(gcpCompute, "TargetTCPProxy")},
 			"google_compute_target_pool":         {Tok: gcpResource(gcpCompute, "TargetPool")},
 			"google_compute_target_grpc_proxy":   {Tok: gcpResource(gcpCompute, "TargetGrpcProxy")},
@@ -2373,7 +2380,11 @@ func Provider() tfbridge.ProviderInfo {
 			"google_spanner_instance": {Tok: gcpDataSource(gcpSpanner, "getInstance")},
 
 			//runtime config
-			"google_runtimeconfig_config": {Tok: gcpDataSource(gcpRuntimeConfig, "getConfig")},
+			"google_runtimeconfig_config":   {Tok: gcpDataSource(gcpRuntimeConfig, "getConfig")},
+			"google_runtimeconfig_variable": {Tok: gcpDataSource(gcpRuntimeConfig, "getVariable")},
+
+			// IAP
+			"google_iap_client": {Tok: gcpDataSource(gcpIAP, "getClient")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

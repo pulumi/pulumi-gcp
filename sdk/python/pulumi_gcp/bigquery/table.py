@@ -19,6 +19,7 @@ class Table(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
@@ -36,62 +37,6 @@ class Table(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a table resource in a dataset for Google BigQuery. For more information see
-        [the official documentation](https://cloud.google.com/bigquery/docs/) and
-        [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        default_dataset = gcp.bigquery.Dataset("defaultDataset",
-            dataset_id="foo",
-            friendly_name="test",
-            description="This is a test description",
-            location="EU",
-            default_table_expiration_ms=3600000,
-            labels={
-                "env": "default",
-            })
-        default_table = gcp.bigquery.Table("defaultTable",
-            dataset_id=default_dataset.dataset_id,
-            table_id="bar",
-            time_partitioning=gcp.bigquery.TableTimePartitioningArgs(
-                type="DAY",
-            ),
-            labels={
-                "env": "default",
-            },
-            schema=\"\"\"[
-          {
-            "name": "permalink",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "The Permalink"
-          },
-          {
-            "name": "state",
-            "type": "STRING",
-            "mode": "NULLABLE",
-            "description": "State where the head office is located"
-          }
-        ]
-        \"\"\")
-        sheet = gcp.bigquery.Table("sheet",
-            dataset_id=default_dataset.dataset_id,
-            table_id="sheet",
-            external_data_configuration=gcp.bigquery.TableExternalDataConfigurationArgs(
-                autodetect=True,
-                source_format="GOOGLE_SHEETS",
-                google_sheets_options=gcp.bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs(
-                    skip_leading_rows=1,
-                ),
-                source_uris=["https://docs.google.com/spreadsheets/d/123456789012345"],
-            ))
-        ```
-
         ## Import
 
         BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
@@ -107,6 +52,8 @@ class Table(pulumi.CustomResource):
                descending priority order.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+               terraform destroy or terraform apply that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
         :param pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
@@ -166,6 +113,7 @@ class Table(pulumi.CustomResource):
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__['dataset_id'] = dataset_id
+            __props__['deletion_protection'] = deletion_protection
             __props__['description'] = description
             __props__['encryption_configuration'] = encryption_configuration
             __props__['expiration_time'] = expiration_time
@@ -203,6 +151,7 @@ class Table(pulumi.CustomResource):
             clusterings: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             creation_time: Optional[pulumi.Input[int]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             encryption_configuration: Optional[pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -237,6 +186,8 @@ class Table(pulumi.CustomResource):
         :param pulumi.Input[int] creation_time: The time when this table was created, in milliseconds since the epoch.
         :param pulumi.Input[str] dataset_id: The dataset ID to create the table in.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+               terraform destroy or terraform apply that would delete the instance will fail.
         :param pulumi.Input[str] description: The field description.
         :param pulumi.Input[pulumi.InputType['TableEncryptionConfigurationArgs']] encryption_configuration: Specifies how the table should be encrypted.
                If left blank, the table will be encrypted with a Google-managed key; that process
@@ -291,6 +242,7 @@ class Table(pulumi.CustomResource):
         __props__["clusterings"] = clusterings
         __props__["creation_time"] = creation_time
         __props__["dataset_id"] = dataset_id
+        __props__["deletion_protection"] = deletion_protection
         __props__["description"] = description
         __props__["encryption_configuration"] = encryption_configuration
         __props__["etag"] = etag
@@ -340,6 +292,15 @@ class Table(pulumi.CustomResource):
         Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "dataset_id")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
+        terraform destroy or terraform apply that would delete the instance will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter

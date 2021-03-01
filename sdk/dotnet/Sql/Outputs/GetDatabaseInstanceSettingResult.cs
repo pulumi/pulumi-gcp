@@ -49,6 +49,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The type of data disk.
         /// </summary>
         public readonly string DiskType;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingInsightsConfigResult> InsightsConfigs;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationResult> IpConfigurations;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingLocationPreferenceResult> LocationPreferences;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingMaintenanceWindowResult> MaintenanceWindows;
@@ -91,6 +92,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string diskType,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingInsightsConfigResult> insightsConfigs,
+
             ImmutableArray<Outputs.GetDatabaseInstanceSettingIpConfigurationResult> ipConfigurations,
 
             ImmutableArray<Outputs.GetDatabaseInstanceSettingLocationPreferenceResult> locationPreferences,
@@ -116,6 +119,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             DiskAutoresize = diskAutoresize;
             DiskSize = diskSize;
             DiskType = diskType;
+            InsightsConfigs = insightsConfigs;
             IpConfigurations = ipConfigurations;
             LocationPreferences = locationPreferences;
             MaintenanceWindows = maintenanceWindows;

@@ -110,7 +110,7 @@ class ResourcePolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Policy for creating snapshots of persistent disks.
+        :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -171,7 +171,7 @@ class ResourcePolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Policy for creating snapshots of persistent disks.
+        :param pulumi.Input[pulumi.InputType['ResourcePolicyGroupPlacementPolicyArgs']] group_placement_policy: Resource policy for instances used for placement configuration.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating
                the resource. The resource name must be 1-63 characters long, and comply
@@ -203,7 +203,7 @@ class ResourcePolicy(pulumi.CustomResource):
     @pulumi.getter(name="groupPlacementPolicy")
     def group_placement_policy(self) -> pulumi.Output[Optional['outputs.ResourcePolicyGroupPlacementPolicy']]:
         """
-        Policy for creating snapshots of persistent disks.
+        Resource policy for instances used for placement configuration.
         Structure is documented below.
         """
         return pulumi.get(self, "group_placement_policy")

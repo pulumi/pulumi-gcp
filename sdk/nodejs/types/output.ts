@@ -16898,6 +16898,7 @@ export namespace dataproc {
 
     export interface JobScheduling {
         maxFailuresPerHour: number;
+        maxFailuresTotal: number;
     }
 
     export interface JobSparkConfig {
@@ -21719,6 +21720,24 @@ export namespace pubsub {
     }
 }
 
+export namespace redis {
+    export interface GetInstanceServerCaCert {
+        cert: string;
+        createTime: string;
+        expireTime: string;
+        serialNumber: string;
+        sha1Fingerprint: string;
+    }
+
+    export interface InstanceServerCaCert {
+        cert: string;
+        createTime: string;
+        expireTime: string;
+        serialNumber: string;
+        sha1Fingerprint: string;
+    }
+}
+
 export namespace runtimeconfig {
     export interface ConfigIamBindingCondition {
         description?: string;
@@ -22039,6 +22058,7 @@ export namespace sql {
          * The type of data disk: PD_SSD or PD_HDD.
          */
         diskType: string;
+        insightsConfig?: outputs.sql.DatabaseInstanceSettingsInsightsConfig;
         ipConfiguration: outputs.sql.DatabaseInstanceSettingsIpConfiguration;
         locationPreference: outputs.sql.DatabaseInstanceSettingsLocationPreference;
         maintenanceWindow?: outputs.sql.DatabaseInstanceSettingsMaintenanceWindow;
@@ -22105,6 +22125,13 @@ export namespace sql {
          * the whitelist to become active.
          */
         value: string;
+    }
+
+    export interface DatabaseInstanceSettingsInsightsConfig {
+        queryInsightsEnabled?: boolean;
+        queryStringLength?: number;
+        recordApplicationTags?: boolean;
+        recordClientAddress?: boolean;
     }
 
     export interface DatabaseInstanceSettingsIpConfiguration {
@@ -22312,6 +22339,7 @@ export namespace sql {
          * The type of data disk.
          */
         diskType: string;
+        insightsConfigs: outputs.sql.GetDatabaseInstanceSettingInsightsConfig[];
         ipConfigurations: outputs.sql.GetDatabaseInstanceSettingIpConfiguration[];
         locationPreferences: outputs.sql.GetDatabaseInstanceSettingLocationPreference[];
         maintenanceWindows: outputs.sql.GetDatabaseInstanceSettingMaintenanceWindow[];
@@ -22361,6 +22389,25 @@ export namespace sql {
          * A CIDR notation IPv4 or IPv6 address that is allowed to access this instance.
          */
         value: string;
+    }
+
+    export interface GetDatabaseInstanceSettingInsightsConfig {
+        /**
+         * True if Query Insights feature is enabled.
+         */
+        queryInsightsEnabled: boolean;
+        /**
+         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         */
+        queryStringLength: number;
+        /**
+         * True if Query Insights will record application tags from query when enabled.
+         */
+        recordApplicationTags: boolean;
+        /**
+         * True if Query Insights will record client address when enabled.
+         */
+        recordClientAddress: boolean;
     }
 
     export interface GetDatabaseInstanceSettingIpConfiguration {

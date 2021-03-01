@@ -13,6 +13,7 @@ export * from "./appEngineVersionIamMember";
 export * from "./appEngineVersionIamPolicy";
 export * from "./brand";
 export * from "./client";
+export * from "./getClient";
 export * from "./tunnelIamBinding";
 export * from "./tunnelIamMember";
 export * from "./tunnelIamPolicy";

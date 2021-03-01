@@ -23,7 +23,7 @@ class Client(pulumi.CustomResource):
         """
         Contains the data that describes an Identity Aware Proxy owned client.
 
-        > **Note:** Only internal org clients can be created via declarative tools. Other types of clients must be
+        > **Note:** Only internal org clients can be created via declarative tools. External clients must be
         manually created via the GCP console. This restriction is due to the existing APIs and not lack of support
         in this tool.
 

@@ -94,8 +94,8 @@ class TargetSSLProxy(pulumi.CustomResource):
                Default value is `NONE`.
                Possible values are `NONE` and `PROXY_V1`.
         :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
-               connections between users and the load balancer. Currently, exactly
-               one SSL certificate must be specified.
+               connections between users and the load balancer. At least one
+               SSL certificate must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetSslProxy resource. If not set, the TargetSslProxy
                resource will not have any SSL policy configured.
@@ -177,8 +177,8 @@ class TargetSSLProxy(pulumi.CustomResource):
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] ssl_certificates: A list of SslCertificate resources that are used to authenticate
-               connections between users and the load balancer. Currently, exactly
-               one SSL certificate must be specified.
+               connections between users and the load balancer. At least one
+               SSL certificate must be specified.
         :param pulumi.Input[str] ssl_policy: A reference to the SslPolicy resource that will be associated with
                the TargetSslProxy resource. If not set, the TargetSslProxy
                resource will not have any SSL policy configured.
@@ -278,8 +278,8 @@ class TargetSSLProxy(pulumi.CustomResource):
     def ssl_certificates(self) -> pulumi.Output[str]:
         """
         A list of SslCertificate resources that are used to authenticate
-        connections between users and the load balancer. Currently, exactly
-        one SSL certificate must be specified.
+        connections between users and the load balancer. At least one
+        SSL certificate must be specified.
         """
         return pulumi.get(self, "ssl_certificates")
 

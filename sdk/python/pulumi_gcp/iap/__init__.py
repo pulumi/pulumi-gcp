@@ -11,6 +11,7 @@ from .app_engine_version_iam_member import *
 from .app_engine_version_iam_policy import *
 from .brand import *
 from .client import *
+from .get_client import *
 from .tunnel_iam_binding import *
 from .tunnel_iam_member import *
 from .tunnel_iam_policy import *
