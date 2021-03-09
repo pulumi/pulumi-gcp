@@ -39,7 +39,7 @@ import * as utilities from "../utilities";
  *     databaseVersion: "POSTGRES_9_6",
  *     settings: {
  *         tier: "db-f1-micro",
- *         datagbaseFlags: [{
+ *         databaseFlags: [{
  *             name: "cloudsql.iam_authentication",
  *             value: "on",
  *         }],

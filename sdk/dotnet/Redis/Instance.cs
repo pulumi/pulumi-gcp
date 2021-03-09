@@ -331,12 +331,6 @@ namespace Pulumi.Gcp.Redis
         public Input<bool>? AuthEnabled { get; set; }
 
         /// <summary>
-        /// AUTH String set on the instance. This field will only be populated if auth_enabled is true.
-        /// </summary>
-        [Input("authString")]
-        public Input<string>? AuthString { get; set; }
-
-        /// <summary>
         /// The full name of the Google Compute Engine network to which the
         /// instance is connected. If left unspecified, the default network
         /// will be used.

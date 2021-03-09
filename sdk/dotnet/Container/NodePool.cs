@@ -163,6 +163,9 @@ namespace Pulumi.Gcp.Container
         [Output("nodeLocations")]
         public Output<ImmutableArray<string>> NodeLocations { get; private set; } = null!;
 
+        [Output("operation")]
+        public Output<string> Operation { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the project in which to create the node pool. If blank,
         /// the provider-configured project will be used.
@@ -461,6 +464,9 @@ namespace Pulumi.Gcp.Container
             get => _nodeLocations ?? (_nodeLocations = new InputList<string>());
             set => _nodeLocations = value;
         }
+
+        [Input("operation")]
+        public Input<string>? Operation { get; set; }
 
         /// <summary>
         /// The ID of the project in which to create the node pool. If blank,

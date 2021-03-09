@@ -55,6 +55,7 @@ const (
 	gcpDiagflow             = "Diagflow"             // Diagflow resources
 	gcpEndPoints            = "Endpoints"            // End Point resources
 	gcpEssentialContacts    = "EssentialContacts"    // Essential Contacts resources
+	gcpEventarc             = "Eventarc"             // Eventarc
 	gcpFilestore            = "Filestore"            // Filestore resources
 	gcpFirebase             = "Firebase"             // Firebase resources
 	gcpFirestore            = "Firestore"            // Firestore resources
@@ -93,6 +94,7 @@ const (
 	gcpStorage              = "Storage"              // Storage resources
 	gcpTPU                  = "Tpu"                  // Tensor Processing Units
 	gcpVpcAccess            = "VpcAccess"            // VPC Access
+	gcpWorkflows            = "Workflows"            // Workflows
 )
 
 var namespaceMap = map[string]string{
@@ -918,6 +920,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_dataproc_autoscaling_policy": {Tok: gcpResource(gcpDataProc, "AutoscalingPolicy")},
+			"google_dataproc_metastore_service":  {Tok: gcpResource(gcpDataProc, "MetastoreService")},
 
 			// DataStore resources
 			"google_datastore_index": {Tok: gcpResource(gcpDatastore, "DataStoreIndex")},
@@ -1845,6 +1848,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// apigee
 			"google_apigee_organization": {Tok: gcpResource(gcpApigee, "Organization")},
+			"google_apigee_instance":     {Tok: gcpResource(gcpApigee, "Instance")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
@@ -1929,6 +1933,12 @@ func Provider() tfbridge.ProviderInfo {
 
 			// essential contacts
 			"google_essential_contacts_contact": {Tok: gcpResource(gcpEssentialContacts, "Contact")},
+
+			// workflows
+			"google_workflows_workflow": {Tok: gcpResource(gcpWorkflows, "Workflow")},
+
+			//eventarc
+			"google_eventarc_trigger": {Tok: gcpResource(gcpEventarc, "Trigger")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {

@@ -73,7 +73,7 @@ type OrganizationBucketConfig struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
 	Organization pulumi.StringOutput `pulumi:"organization"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
 }
 
@@ -127,7 +127,7 @@ type organizationBucketConfigState struct {
 	Name *string `pulumi:"name"`
 	// The parent resource that contains the logging bucket.
 	Organization *string `pulumi:"organization"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays *int `pulumi:"retentionDays"`
 }
 
@@ -144,7 +144,7 @@ type OrganizationBucketConfigState struct {
 	Name pulumi.StringPtrInput
 	// The parent resource that contains the logging bucket.
 	Organization pulumi.StringPtrInput
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays pulumi.IntPtrInput
 }
 
@@ -161,7 +161,7 @@ type organizationBucketConfigArgs struct {
 	Location string `pulumi:"location"`
 	// The parent resource that contains the logging bucket.
 	Organization string `pulumi:"organization"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays *int `pulumi:"retentionDays"`
 }
 
@@ -175,7 +175,7 @@ type OrganizationBucketConfigArgs struct {
 	Location pulumi.StringInput
 	// The parent resource that contains the logging bucket.
 	Organization pulumi.StringInput
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays pulumi.IntPtrInput
 }
 

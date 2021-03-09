@@ -162,6 +162,9 @@ namespace Pulumi.Gcp
         [Input("dataprocCustomEndpoint")]
         public Input<string>? DataprocCustomEndpoint { get; set; }
 
+        [Input("dataprocMetastoreCustomEndpoint")]
+        public Input<string>? DataprocMetastoreCustomEndpoint { get; set; }
+
         [Input("datastoreCustomEndpoint")]
         public Input<string>? DatastoreCustomEndpoint { get; set; }
 
@@ -179,6 +182,9 @@ namespace Pulumi.Gcp
 
         [Input("essentialContactsCustomEndpoint")]
         public Input<string>? EssentialContactsCustomEndpoint { get; set; }
+
+        [Input("eventarcCustomEndpoint")]
+        public Input<string>? EventarcCustomEndpoint { get; set; }
 
         [Input("filestoreCustomEndpoint")]
         public Input<string>? FilestoreCustomEndpoint { get; set; }

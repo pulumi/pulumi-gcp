@@ -86,6 +86,8 @@ namespace Pulumi.Gcp
 
         public static string? DataprocCustomEndpoint { get; set; } = __config.Get("dataprocCustomEndpoint");
 
+        public static string? DataprocMetastoreCustomEndpoint { get; set; } = __config.Get("dataprocMetastoreCustomEndpoint");
+
         public static string? DatastoreCustomEndpoint { get; set; } = __config.Get("datastoreCustomEndpoint");
 
         public static string? DeploymentManagerCustomEndpoint { get; set; } = __config.Get("deploymentManagerCustomEndpoint");
@@ -97,6 +99,8 @@ namespace Pulumi.Gcp
         public static string? DnsCustomEndpoint { get; set; } = __config.Get("dnsCustomEndpoint");
 
         public static string? EssentialContactsCustomEndpoint { get; set; } = __config.Get("essentialContactsCustomEndpoint");
+
+        public static string? EventarcCustomEndpoint { get; set; } = __config.Get("eventarcCustomEndpoint");
 
         public static string? FilestoreCustomEndpoint { get; set; } = __config.Get("filestoreCustomEndpoint");
 

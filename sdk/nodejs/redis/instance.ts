@@ -114,7 +114,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * AUTH String set on the instance. This field will only be populated if authEnabled is true.
      */
-    public readonly authString!: pulumi.Output<string>;
+    public /*out*/ readonly authString!: pulumi.Output<string>;
     /**
      * The full name of the Google Compute Engine network to which the
      * instance is connected. If left unspecified, the default network
@@ -268,7 +268,6 @@ export class Instance extends pulumi.CustomResource {
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
             inputs["authEnabled"] = args ? args.authEnabled : undefined;
-            inputs["authString"] = args ? args.authString : undefined;
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["connectMode"] = args ? args.connectMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -283,6 +282,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["transitEncryptionMode"] = args ? args.transitEncryptionMode : undefined;
+            inputs["authString"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["currentLocationId"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
@@ -446,10 +446,6 @@ export interface InstanceArgs {
      * Default value is "false" meaning AUTH is disabled.
      */
     readonly authEnabled?: pulumi.Input<boolean>;
-    /**
-     * AUTH String set on the instance. This field will only be populated if authEnabled is true.
-     */
-    readonly authString?: pulumi.Input<string>;
     /**
      * The full name of the Google Compute Engine network to which the
      * instance is connected. If left unspecified, the default network

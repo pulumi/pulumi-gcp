@@ -398,8 +398,6 @@ type instanceArgs struct {
 	// instance. If set to "true" AUTH is enabled on the instance.
 	// Default value is "false" meaning AUTH is disabled.
 	AuthEnabled *bool `pulumi:"authEnabled"`
-	// AUTH String set on the instance. This field will only be populated if authEnabled is true.
-	AuthString *string `pulumi:"authString"`
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
 	// will be used.
@@ -466,8 +464,6 @@ type InstanceArgs struct {
 	// instance. If set to "true" AUTH is enabled on the instance.
 	// Default value is "false" meaning AUTH is disabled.
 	AuthEnabled pulumi.BoolPtrInput
-	// AUTH String set on the instance. This field will only be populated if authEnabled is true.
-	AuthString pulumi.StringPtrInput
 	// The full name of the Google Compute Engine network to which the
 	// instance is connected. If left unspecified, the default network
 	// will be used.

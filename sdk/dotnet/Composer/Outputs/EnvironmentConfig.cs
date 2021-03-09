@@ -19,6 +19,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         public readonly Outputs.EnvironmentConfigDatabaseConfig? DatabaseConfig;
+        public readonly Outputs.EnvironmentConfigEncryptionConfig? EncryptionConfig;
         public readonly string? GkeCluster;
         /// <summary>
         /// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -54,6 +55,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             Outputs.EnvironmentConfigDatabaseConfig? databaseConfig,
 
+            Outputs.EnvironmentConfigEncryptionConfig? encryptionConfig,
+
             string? gkeCluster,
 
             Outputs.EnvironmentConfigNodeConfig? nodeConfig,
@@ -71,6 +74,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
             DatabaseConfig = databaseConfig;
+            EncryptionConfig = encryptionConfig;
             GkeCluster = gkeCluster;
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
