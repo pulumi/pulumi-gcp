@@ -191,7 +191,7 @@ class Autoscalar(pulumi.CustomResource):
                be a positive float value. If not defined, the default is 0.8.
         :param pulumi.Input[str] zone: URL of the zone where the instance group resides.
         """
-        pulumi.log.warn("Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler")
+        pulumi.log.warn("""Autoscalar is deprecated: gcp.compute.Autoscalar has been deprecated in favor of gcp.compute.Autoscaler""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

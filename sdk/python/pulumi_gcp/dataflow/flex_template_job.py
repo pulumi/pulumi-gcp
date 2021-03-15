@@ -106,7 +106,7 @@ class FlexTemplateJob(pulumi.CustomResource):
             __props__['container_spec_gcs_path'] = container_spec_gcs_path
             if labels is not None and not opts.urn:
                 warnings.warn("""Deprecated until the API supports this field""", DeprecationWarning)
-                pulumi.log.warn("labels is deprecated: Deprecated until the API supports this field")
+                pulumi.log.warn("""labels is deprecated: Deprecated until the API supports this field""")
             __props__['labels'] = labels
             __props__['name'] = name
             __props__['on_delete'] = on_delete

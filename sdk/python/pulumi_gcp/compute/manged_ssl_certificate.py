@@ -46,7 +46,7 @@ class MangedSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] type: Enum field whose value is always 'MANAGED' - used to signal to the API which type this is. Default value: "MANAGED"
                Possible values: ["MANAGED"]
         """
-        pulumi.log.warn("MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate")
+        pulumi.log.warn("""MangedSslCertificate is deprecated: gcp.compute.MangedSslCertificate has been deprecated in favor of gcp.compute.ManagedSslCertificate""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

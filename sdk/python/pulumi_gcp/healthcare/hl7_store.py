@@ -228,7 +228,7 @@ class Hl7Store(pulumi.CustomResource):
             __props__['name'] = name
             if notification_config is not None and not opts.urn:
                 warnings.warn("""This field has been replaced by notificationConfigs""", DeprecationWarning)
-                pulumi.log.warn("notification_config is deprecated: This field has been replaced by notificationConfigs")
+                pulumi.log.warn("""notification_config is deprecated: This field has been replaced by notificationConfigs""")
             __props__['notification_config'] = notification_config
             __props__['notification_configs'] = notification_configs
             __props__['parser_config'] = parser_config

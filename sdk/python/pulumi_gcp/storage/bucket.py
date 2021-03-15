@@ -155,7 +155,7 @@ class Bucket(pulumi.CustomResource):
 
             if bucket_policy_only is not None and not opts.urn:
                 warnings.warn("""Please use the uniform_bucket_level_access as this field has been renamed by Google.""", DeprecationWarning)
-                pulumi.log.warn("bucket_policy_only is deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.")
+                pulumi.log.warn("""bucket_policy_only is deprecated: Please use the uniform_bucket_level_access as this field has been renamed by Google.""")
             __props__['bucket_policy_only'] = bucket_policy_only
             __props__['cors'] = cors
             __props__['default_event_based_hold'] = default_event_based_hold
