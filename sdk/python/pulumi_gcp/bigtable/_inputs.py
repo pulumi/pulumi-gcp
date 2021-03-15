@@ -30,7 +30,7 @@ class GCPolicyMaxAgeArgs:
         """
         if days is not None:
             warnings.warn("""Deprecated in favor of duration""", DeprecationWarning)
-            pulumi.log.warn("days is deprecated: Deprecated in favor of duration")
+            pulumi.log.warn("""days is deprecated: Deprecated in favor of duration""")
         if days is not None:
             pulumi.set(__self__, "days", days)
         if duration is not None:

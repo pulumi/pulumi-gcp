@@ -61,7 +61,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
             __props__['notification_emails'] = notification_emails
             if project is not None and not opts.urn:
                 warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
-                pulumi.log.warn("project is deprecated: Deprecated in favor of `project_id`")
+                pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
             __props__['project'] = project
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")

@@ -123,7 +123,7 @@ def get_secret_version(project: Optional[str] = None,
     """
     Use this data source to access information about an existing resource.
     """
-    pulumi.log.warn("get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion")
+    pulumi.log.warn("""get_secret_version is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion""")
     __args__ = dict()
     __args__['project'] = project
     __args__['secret'] = secret

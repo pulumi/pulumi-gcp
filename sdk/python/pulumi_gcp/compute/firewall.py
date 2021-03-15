@@ -207,7 +207,7 @@ class Firewall(pulumi.CustomResource):
             __props__['disabled'] = disabled
             if enable_logging is not None and not opts.urn:
                 warnings.warn("""Deprecated in favor of log_config""", DeprecationWarning)
-                pulumi.log.warn("enable_logging is deprecated: Deprecated in favor of log_config")
+                pulumi.log.warn("""enable_logging is deprecated: Deprecated in favor of log_config""")
             __props__['enable_logging'] = enable_logging
             __props__['log_config'] = log_config
             __props__['name'] = name

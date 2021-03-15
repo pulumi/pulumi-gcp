@@ -147,7 +147,7 @@ class Registry(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] state_notification_config: A PubSub topic to publish device state updates.
                The structure is documented below.
         """
-        pulumi.log.warn("Registry is deprecated: gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry")
+        pulumi.log.warn("""Registry is deprecated: gcp.kms.Registry has been deprecated in favor of gcp.iot.Registry""")
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

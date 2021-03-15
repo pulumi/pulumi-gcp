@@ -986,7 +986,7 @@ class ServiceTemplateSpecArgs:
             pulumi.set(__self__, "service_account_name", service_account_name)
         if serving_state is not None:
             warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
-            pulumi.log.warn("serving_state is deprecated: Not supported by Cloud Run fully managed")
+            pulumi.log.warn("""serving_state is deprecated: Not supported by Cloud Run fully managed""")
         if serving_state is not None:
             pulumi.set(__self__, "serving_state", serving_state)
         if timeout_seconds is not None:
@@ -1130,7 +1130,7 @@ class ServiceTemplateSpecContainerArgs:
             pulumi.set(__self__, "commands", commands)
         if env_froms is not None:
             warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
-            pulumi.log.warn("env_froms is deprecated: Not supported by Cloud Run fully managed")
+            pulumi.log.warn("""env_froms is deprecated: Not supported by Cloud Run fully managed""")
         if env_froms is not None:
             pulumi.set(__self__, "env_froms", env_froms)
         if envs is not None:
@@ -1141,7 +1141,7 @@ class ServiceTemplateSpecContainerArgs:
             pulumi.set(__self__, "resources", resources)
         if working_dir is not None:
             warnings.warn("""Not supported by Cloud Run fully managed""", DeprecationWarning)
-            pulumi.log.warn("working_dir is deprecated: Not supported by Cloud Run fully managed")
+            pulumi.log.warn("""working_dir is deprecated: Not supported by Cloud Run fully managed""")
         if working_dir is not None:
             pulumi.set(__self__, "working_dir", working_dir)
 

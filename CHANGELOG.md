@@ -2,12 +2,13 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to pulumi-terraform-bridge v2.21.0
 
 ---
 
 ## 4.14.0 (2021-03-15)
 * Upgrade to v3.59.0 of the Google Beta Terraform Provider
+* Release macOS arm64 binary
 
 ## 4.13.0 (2021-03-01)
 * Upgrade to v3.58.0 of the Google Beta Terraform Provider

@@ -107,11 +107,11 @@ export class Provider extends pulumi.ProviderResource {
             inputs["osConfigCustomEndpoint"] = args ? args.osConfigCustomEndpoint : undefined;
             inputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
             inputs["privatecaCustomEndpoint"] = args ? args.privatecaCustomEndpoint : undefined;
-            inputs["project"] = (args ? args.project : undefined) || utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
+            inputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
             inputs["pubsubCustomEndpoint"] = args ? args.pubsubCustomEndpoint : undefined;
             inputs["pubsubLiteCustomEndpoint"] = args ? args.pubsubLiteCustomEndpoint : undefined;
             inputs["redisCustomEndpoint"] = args ? args.redisCustomEndpoint : undefined;
-            inputs["region"] = (args ? args.region : undefined) || utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
+            inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             inputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             inputs["resourceManagerCustomEndpoint"] = args ? args.resourceManagerCustomEndpoint : undefined;
             inputs["resourceManagerV2beta1CustomEndpoint"] = args ? args.resourceManagerV2beta1CustomEndpoint : undefined;
@@ -133,7 +133,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             inputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             inputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
-            inputs["zone"] = (args ? args.zone : undefined) || utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
+            inputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
