@@ -14,8 +14,9 @@ type EnvironmentConfig struct {
 	AirflowUri   *string `pulumi:"airflowUri"`
 	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
 	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
-	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
-	GkeCluster     *string                          `pulumi:"gkeCluster"`
+	DatabaseConfig   *EnvironmentConfigDatabaseConfig   `pulumi:"databaseConfig"`
+	EncryptionConfig *EnvironmentConfigEncryptionConfig `pulumi:"encryptionConfig"`
+	GkeCluster       *string                            `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig *EnvironmentConfigNodeConfig `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that
@@ -46,8 +47,9 @@ type EnvironmentConfigArgs struct {
 	AirflowUri   pulumi.StringPtrInput `pulumi:"airflowUri"`
 	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
 	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
-	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
-	GkeCluster     pulumi.StringPtrInput                   `pulumi:"gkeCluster"`
+	DatabaseConfig   EnvironmentConfigDatabaseConfigPtrInput   `pulumi:"databaseConfig"`
+	EncryptionConfig EnvironmentConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
+	GkeCluster       pulumi.StringPtrInput                     `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
 	NodeConfig EnvironmentConfigNodeConfigPtrInput `pulumi:"nodeConfig"`
 	// The number of nodes in the Kubernetes Engine cluster that
@@ -152,6 +154,10 @@ func (o EnvironmentConfigOutput) DatabaseConfig() EnvironmentConfigDatabaseConfi
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
+func (o EnvironmentConfigOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigEncryptionConfig { return v.EncryptionConfig }).(EnvironmentConfigEncryptionConfigPtrOutput)
+}
+
 func (o EnvironmentConfigOutput) GkeCluster() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *string { return v.GkeCluster }).(pulumi.StringPtrOutput)
 }
@@ -235,6 +241,15 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseCo
 		}
 		return v.DatabaseConfig
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigEncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfig
+	}).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) GkeCluster() pulumi.StringPtrOutput {
@@ -447,6 +462,145 @@ func (o EnvironmentConfigDatabaseConfigPtrOutput) MachineType() pulumi.StringPtr
 			return nil
 		}
 		return &v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentConfigEncryptionConfig struct {
+	// Customer-managed Encryption Key available through Google's Key Management Service. It must
+	// be the fully qualified resource name,
+	// i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// EnvironmentConfigEncryptionConfigInput is an input type that accepts EnvironmentConfigEncryptionConfigArgs and EnvironmentConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `EnvironmentConfigEncryptionConfigInput` via:
+//
+//          EnvironmentConfigEncryptionConfigArgs{...}
+type EnvironmentConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigEncryptionConfigOutput() EnvironmentConfigEncryptionConfigOutput
+	ToEnvironmentConfigEncryptionConfigOutputWithContext(context.Context) EnvironmentConfigEncryptionConfigOutput
+}
+
+type EnvironmentConfigEncryptionConfigArgs struct {
+	// Customer-managed Encryption Key available through Google's Key Management Service. It must
+	// be the fully qualified resource name,
+	// i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (EnvironmentConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i EnvironmentConfigEncryptionConfigArgs) ToEnvironmentConfigEncryptionConfigOutput() EnvironmentConfigEncryptionConfigOutput {
+	return i.ToEnvironmentConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigEncryptionConfigArgs) ToEnvironmentConfigEncryptionConfigOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigEncryptionConfigOutput)
+}
+
+func (i EnvironmentConfigEncryptionConfigArgs) ToEnvironmentConfigEncryptionConfigPtrOutput() EnvironmentConfigEncryptionConfigPtrOutput {
+	return i.ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigEncryptionConfigArgs) ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigEncryptionConfigOutput).ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigEncryptionConfigPtrInput is an input type that accepts EnvironmentConfigEncryptionConfigArgs, EnvironmentConfigEncryptionConfigPtr and EnvironmentConfigEncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigEncryptionConfigPtrInput` via:
+//
+//          EnvironmentConfigEncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EnvironmentConfigEncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigEncryptionConfigPtrOutput() EnvironmentConfigEncryptionConfigPtrOutput
+	ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(context.Context) EnvironmentConfigEncryptionConfigPtrOutput
+}
+
+type environmentConfigEncryptionConfigPtrType EnvironmentConfigEncryptionConfigArgs
+
+func EnvironmentConfigEncryptionConfigPtr(v *EnvironmentConfigEncryptionConfigArgs) EnvironmentConfigEncryptionConfigPtrInput {
+	return (*environmentConfigEncryptionConfigPtrType)(v)
+}
+
+func (*environmentConfigEncryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i *environmentConfigEncryptionConfigPtrType) ToEnvironmentConfigEncryptionConfigPtrOutput() EnvironmentConfigEncryptionConfigPtrOutput {
+	return i.ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigEncryptionConfigPtrType) ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigEncryptionConfigPtrOutput)
+}
+
+type EnvironmentConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionConfigOutput() EnvironmentConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionConfigOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionConfigPtrOutput() EnvironmentConfigEncryptionConfigPtrOutput {
+	return o.ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigEncryptionConfigOutput) ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigEncryptionConfig) *EnvironmentConfigEncryptionConfig {
+		return &v
+	}).(EnvironmentConfigEncryptionConfigPtrOutput)
+}
+
+// Customer-managed Encryption Key available through Google's Key Management Service. It must
+// be the fully qualified resource name,
+// i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+func (o EnvironmentConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v EnvironmentConfigEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type EnvironmentConfigEncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigEncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o EnvironmentConfigEncryptionConfigPtrOutput) ToEnvironmentConfigEncryptionConfigPtrOutput() EnvironmentConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigEncryptionConfigPtrOutput) ToEnvironmentConfigEncryptionConfigPtrOutputWithContext(ctx context.Context) EnvironmentConfigEncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigEncryptionConfigPtrOutput) Elem() EnvironmentConfigEncryptionConfigOutput {
+	return o.ApplyT(func(v *EnvironmentConfigEncryptionConfig) EnvironmentConfigEncryptionConfig { return *v }).(EnvironmentConfigEncryptionConfigOutput)
+}
+
+// Customer-managed Encryption Key available through Google's Key Management Service. It must
+// be the fully qualified resource name,
+// i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+func (o EnvironmentConfigEncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigEncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKeyName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2034,6 +2188,7 @@ type GetEnvironmentConfig struct {
 	AirflowUri                     string                                              `pulumi:"airflowUri"`
 	DagGcsPrefix                   string                                              `pulumi:"dagGcsPrefix"`
 	DatabaseConfigs                []GetEnvironmentConfigDatabaseConfig                `pulumi:"databaseConfigs"`
+	EncryptionConfigs              []GetEnvironmentConfigEncryptionConfig              `pulumi:"encryptionConfigs"`
 	GkeCluster                     string                                              `pulumi:"gkeCluster"`
 	NodeConfigs                    []GetEnvironmentConfigNodeConfig                    `pulumi:"nodeConfigs"`
 	NodeCount                      int                                                 `pulumi:"nodeCount"`
@@ -2058,6 +2213,7 @@ type GetEnvironmentConfigArgs struct {
 	AirflowUri                     pulumi.StringInput                                          `pulumi:"airflowUri"`
 	DagGcsPrefix                   pulumi.StringInput                                          `pulumi:"dagGcsPrefix"`
 	DatabaseConfigs                GetEnvironmentConfigDatabaseConfigArrayInput                `pulumi:"databaseConfigs"`
+	EncryptionConfigs              GetEnvironmentConfigEncryptionConfigArrayInput              `pulumi:"encryptionConfigs"`
 	GkeCluster                     pulumi.StringInput                                          `pulumi:"gkeCluster"`
 	NodeConfigs                    GetEnvironmentConfigNodeConfigArrayInput                    `pulumi:"nodeConfigs"`
 	NodeCount                      pulumi.IntInput                                             `pulumi:"nodeCount"`
@@ -2128,6 +2284,10 @@ func (o GetEnvironmentConfigOutput) DagGcsPrefix() pulumi.StringOutput {
 
 func (o GetEnvironmentConfigOutput) DatabaseConfigs() GetEnvironmentConfigDatabaseConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigDatabaseConfig { return v.DatabaseConfigs }).(GetEnvironmentConfigDatabaseConfigArrayOutput)
+}
+
+func (o GetEnvironmentConfigOutput) EncryptionConfigs() GetEnvironmentConfigEncryptionConfigArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigEncryptionConfig { return v.EncryptionConfigs }).(GetEnvironmentConfigEncryptionConfigArrayOutput)
 }
 
 func (o GetEnvironmentConfigOutput) GkeCluster() pulumi.StringOutput {
@@ -2274,6 +2434,100 @@ func (o GetEnvironmentConfigDatabaseConfigArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigDatabaseConfig {
 		return vs[0].([]GetEnvironmentConfigDatabaseConfig)[vs[1].(int)]
 	}).(GetEnvironmentConfigDatabaseConfigOutput)
+}
+
+type GetEnvironmentConfigEncryptionConfig struct {
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// GetEnvironmentConfigEncryptionConfigInput is an input type that accepts GetEnvironmentConfigEncryptionConfigArgs and GetEnvironmentConfigEncryptionConfigOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigEncryptionConfigInput` via:
+//
+//          GetEnvironmentConfigEncryptionConfigArgs{...}
+type GetEnvironmentConfigEncryptionConfigInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigEncryptionConfigOutput() GetEnvironmentConfigEncryptionConfigOutput
+	ToGetEnvironmentConfigEncryptionConfigOutputWithContext(context.Context) GetEnvironmentConfigEncryptionConfigOutput
+}
+
+type GetEnvironmentConfigEncryptionConfigArgs struct {
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+}
+
+func (GetEnvironmentConfigEncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigEncryptionConfigArgs) ToGetEnvironmentConfigEncryptionConfigOutput() GetEnvironmentConfigEncryptionConfigOutput {
+	return i.ToGetEnvironmentConfigEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigEncryptionConfigArgs) ToGetEnvironmentConfigEncryptionConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigEncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigEncryptionConfigOutput)
+}
+
+// GetEnvironmentConfigEncryptionConfigArrayInput is an input type that accepts GetEnvironmentConfigEncryptionConfigArray and GetEnvironmentConfigEncryptionConfigArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigEncryptionConfigArrayInput` via:
+//
+//          GetEnvironmentConfigEncryptionConfigArray{ GetEnvironmentConfigEncryptionConfigArgs{...} }
+type GetEnvironmentConfigEncryptionConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigEncryptionConfigArrayOutput() GetEnvironmentConfigEncryptionConfigArrayOutput
+	ToGetEnvironmentConfigEncryptionConfigArrayOutputWithContext(context.Context) GetEnvironmentConfigEncryptionConfigArrayOutput
+}
+
+type GetEnvironmentConfigEncryptionConfigArray []GetEnvironmentConfigEncryptionConfigInput
+
+func (GetEnvironmentConfigEncryptionConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigEncryptionConfigArray) ToGetEnvironmentConfigEncryptionConfigArrayOutput() GetEnvironmentConfigEncryptionConfigArrayOutput {
+	return i.ToGetEnvironmentConfigEncryptionConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigEncryptionConfigArray) ToGetEnvironmentConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigEncryptionConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigEncryptionConfigArrayOutput)
+}
+
+type GetEnvironmentConfigEncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigEncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigEncryptionConfigOutput) ToGetEnvironmentConfigEncryptionConfigOutput() GetEnvironmentConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigEncryptionConfigOutput) ToGetEnvironmentConfigEncryptionConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigEncryptionConfigOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigEncryptionConfigOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigEncryptionConfig) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+type GetEnvironmentConfigEncryptionConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigEncryptionConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigEncryptionConfig)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigEncryptionConfigArrayOutput) ToGetEnvironmentConfigEncryptionConfigArrayOutput() GetEnvironmentConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigEncryptionConfigArrayOutput) ToGetEnvironmentConfigEncryptionConfigArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigEncryptionConfigArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigEncryptionConfigArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigEncryptionConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigEncryptionConfig {
+		return vs[0].([]GetEnvironmentConfigEncryptionConfig)[vs[1].(int)]
+	}).(GetEnvironmentConfigEncryptionConfigOutput)
 }
 
 type GetEnvironmentConfigNodeConfig struct {
@@ -3169,6 +3423,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigDatabaseConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigDatabaseConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigEncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigNodeConfigIpAllocationPolicyOutput{})
@@ -3187,6 +3443,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigDatabaseConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigDatabaseConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigEncryptionConfigOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigEncryptionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigNodeConfigIpAllocationPolicyOutput{})

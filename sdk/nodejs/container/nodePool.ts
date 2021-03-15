@@ -183,6 +183,7 @@ export class NodePool extends pulumi.CustomResource {
      * `nodeLocations` will be used.
      */
     public readonly nodeLocations!: pulumi.Output<string[]>;
+    public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.
@@ -229,6 +230,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             inputs["nodeCount"] = state ? state.nodeCount : undefined;
             inputs["nodeLocations"] = state ? state.nodeLocations : undefined;
+            inputs["operation"] = state ? state.operation : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["upgradeSettings"] = state ? state.upgradeSettings : undefined;
             inputs["version"] = state ? state.version : undefined;
@@ -252,6 +254,7 @@ export class NodePool extends pulumi.CustomResource {
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["instanceGroupUrls"] = undefined /*out*/;
+            inputs["operation"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -331,6 +334,7 @@ export interface NodePoolState {
      * `nodeLocations` will be used.
      */
     readonly nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly operation?: pulumi.Input<string>;
     /**
      * The ID of the project in which to create the node pool. If blank,
      * the provider-configured project will be used.

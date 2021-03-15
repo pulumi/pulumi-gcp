@@ -11,6 +11,7 @@ from .. import _utilities, _tables
 __all__ = [
     'EnvironmentConfigArgs',
     'EnvironmentConfigDatabaseConfigArgs',
+    'EnvironmentConfigEncryptionConfigArgs',
     'EnvironmentConfigNodeConfigArgs',
     'EnvironmentConfigNodeConfigIpAllocationPolicyArgs',
     'EnvironmentConfigPrivateEnvironmentConfigArgs',
@@ -26,6 +27,7 @@ class EnvironmentConfigArgs:
                  airflow_uri: Optional[pulumi.Input[str]] = None,
                  dag_gcs_prefix: Optional[pulumi.Input[str]] = None,
                  database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']] = None,
+                 encryption_config: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']] = None,
                  gke_cluster: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['EnvironmentConfigNodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
@@ -49,6 +51,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
         if node_config is not None:
@@ -93,6 +97,15 @@ class EnvironmentConfigArgs:
     @database_config.setter
     def database_config(self, value: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']]):
         pulumi.set(self, "database_config", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']]:
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -203,6 +216,32 @@ class EnvironmentConfigDatabaseConfigArgs:
     @machine_type.setter
     def machine_type(self, value: pulumi.Input[str]):
         pulumi.set(self, "machine_type", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigEncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] kms_key_name: Customer-managed Encryption Key available through Google's Key Management Service. It must
+               be the fully qualified resource name,
+               i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Input[str]:
+        """
+        Customer-managed Encryption Key available through Google's Key Management Service. It must
+        be the fully qualified resource name,
+        i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 @pulumi.input_type

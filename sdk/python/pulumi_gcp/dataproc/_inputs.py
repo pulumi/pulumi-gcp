@@ -50,6 +50,10 @@ __all__ = [
     'JobSparksqlConfigArgs',
     'JobSparksqlConfigLoggingConfigArgs',
     'JobStatusArgs',
+    'MetastoreServiceHiveMetastoreConfigArgs',
+    'MetastoreServiceHiveMetastoreConfigKerberosConfigArgs',
+    'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs',
+    'MetastoreServiceMaintenanceWindowArgs',
 ]
 
 @pulumi.input_type
@@ -3074,5 +3078,180 @@ class JobStatusArgs:
     @substate.setter
     def substate(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "substate", value)
+
+
+@pulumi.input_type
+class MetastoreServiceHiveMetastoreConfigArgs:
+    def __init__(__self__, *,
+                 version: pulumi.Input[str],
+                 config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 kerberos_config: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs']] = None):
+        """
+        :param pulumi.Input[str] version: The Hive metastore schema version.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+               The mappings override system defaults (some keys cannot be overridden)
+        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "version", version)
+        if config_overrides is not None:
+            pulumi.set(__self__, "config_overrides", config_overrides)
+        if kerberos_config is not None:
+            pulumi.set(__self__, "kerberos_config", kerberos_config)
+
+    @property
+    @pulumi.getter
+    def version(self) -> pulumi.Input[str]:
+        """
+        The Hive metastore schema version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version", value)
+
+    @property
+    @pulumi.getter(name="configOverrides")
+    def config_overrides(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+        The mappings override system defaults (some keys cannot be overridden)
+        """
+        return pulumi.get(self, "config_overrides")
+
+    @config_overrides.setter
+    def config_overrides(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "config_overrides", value)
+
+    @property
+    @pulumi.getter(name="kerberosConfig")
+    def kerberos_config(self) -> Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs']]:
+        """
+        Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kerberos_config")
+
+    @kerberos_config.setter
+    def kerberos_config(self, value: Optional[pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigArgs']]):
+        pulumi.set(self, "kerberos_config", value)
+
+
+@pulumi.input_type
+class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs:
+    def __init__(__self__, *,
+                 keytab: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs'],
+                 krb5_config_gcs_uri: pulumi.Input[str],
+                 principal: pulumi.Input[str]):
+        """
+        :param pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs'] keytab: A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+               Structure is documented below.
+        :param pulumi.Input[str] krb5_config_gcs_uri: A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+        :param pulumi.Input[str] principal: A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+        """
+        pulumi.set(__self__, "keytab", keytab)
+        pulumi.set(__self__, "krb5_config_gcs_uri", krb5_config_gcs_uri)
+        pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter
+    def keytab(self) -> pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs']:
+        """
+        A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "keytab")
+
+    @keytab.setter
+    def keytab(self, value: pulumi.Input['MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs']):
+        pulumi.set(self, "keytab", value)
+
+    @property
+    @pulumi.getter(name="krb5ConfigGcsUri")
+    def krb5_config_gcs_uri(self) -> pulumi.Input[str]:
+        """
+        A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+        """
+        return pulumi.get(self, "krb5_config_gcs_uri")
+
+    @krb5_config_gcs_uri.setter
+    def krb5_config_gcs_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "krb5_config_gcs_uri", value)
+
+    @property
+    @pulumi.getter
+    def principal(self) -> pulumi.Input[str]:
+        """
+        A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+        """
+        return pulumi.get(self, "principal")
+
+    @principal.setter
+    def principal(self, value: pulumi.Input[str]):
+        pulumi.set(self, "principal", value)
+
+
+@pulumi.input_type
+class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs:
+    def __init__(__self__, *,
+                 cloud_secret: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] cloud_secret: The relative resource name of a Secret Manager secret version, in the following form:
+               "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+        """
+        pulumi.set(__self__, "cloud_secret", cloud_secret)
+
+    @property
+    @pulumi.getter(name="cloudSecret")
+    def cloud_secret(self) -> pulumi.Input[str]:
+        """
+        The relative resource name of a Secret Manager secret version, in the following form:
+        "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+        """
+        return pulumi.get(self, "cloud_secret")
+
+    @cloud_secret.setter
+    def cloud_secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cloud_secret", value)
+
+
+@pulumi.input_type
+class MetastoreServiceMaintenanceWindowArgs:
+    def __init__(__self__, *,
+                 day_of_week: pulumi.Input[str],
+                 hour_of_day: pulumi.Input[int]):
+        """
+        :param pulumi.Input[str] day_of_week: The day of week, when the window starts.
+               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        :param pulumi.Input[int] hour_of_day: The hour of day (0-23) when the window starts.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> pulumi.Input[str]:
+        """
+        The day of week, when the window starts.
+        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @day_of_week.setter
+    def day_of_week(self, value: pulumi.Input[str]):
+        pulumi.set(self, "day_of_week", value)
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> pulumi.Input[int]:
+        """
+        The hour of day (0-23) when the window starts.
+        """
+        return pulumi.get(self, "hour_of_day")
+
+    @hour_of_day.setter
+    def hour_of_day(self, value: pulumi.Input[int]):
+        pulumi.set(self, "hour_of_day", value)
 
 

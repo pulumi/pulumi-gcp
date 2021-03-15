@@ -155,6 +155,7 @@ class NodePool(pulumi.CustomResource):
             __props__['upgrade_settings'] = upgrade_settings
             __props__['version'] = version
             __props__['instance_group_urls'] = None
+            __props__['operation'] = None
         super(NodePool, __self__).__init__(
             'gcp:container/nodePool:NodePool',
             resource_name,
@@ -177,6 +178,7 @@ class NodePool(pulumi.CustomResource):
             node_config: Optional[pulumi.Input[pulumi.InputType['NodePoolNodeConfigArgs']]] = None,
             node_count: Optional[pulumi.Input[int]] = None,
             node_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            operation: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             upgrade_settings: Optional[pulumi.Input[pulumi.InputType['NodePoolUpgradeSettingsArgs']]] = None,
             version: Optional[pulumi.Input[str]] = None) -> 'NodePool':
@@ -246,6 +248,7 @@ class NodePool(pulumi.CustomResource):
         __props__["node_config"] = node_config
         __props__["node_count"] = node_count
         __props__["node_locations"] = node_locations
+        __props__["operation"] = operation
         __props__["project"] = project
         __props__["upgrade_settings"] = upgrade_settings
         __props__["version"] = version
@@ -365,6 +368,11 @@ class NodePool(pulumi.CustomResource):
         `node_locations` will be used.
         """
         return pulumi.get(self, "node_locations")
+
+    @property
+    @pulumi.getter
+    def operation(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "operation")
 
     @property
     @pulumi.getter

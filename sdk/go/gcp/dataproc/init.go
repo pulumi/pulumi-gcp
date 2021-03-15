@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewJobIAMMember(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
 		r, err = NewJobIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:dataproc/metastoreService:MetastoreService":
+		r, err = NewMetastoreService(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -94,6 +96,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/jobIAMPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/metastoreService",
 		&module{version},
 	)
 }

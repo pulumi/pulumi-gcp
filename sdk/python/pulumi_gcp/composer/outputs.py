@@ -12,6 +12,7 @@ from . import outputs
 __all__ = [
     'EnvironmentConfig',
     'EnvironmentConfigDatabaseConfig',
+    'EnvironmentConfigEncryptionConfig',
     'EnvironmentConfigNodeConfig',
     'EnvironmentConfigNodeConfigIpAllocationPolicy',
     'EnvironmentConfigPrivateEnvironmentConfig',
@@ -21,6 +22,7 @@ __all__ = [
     'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange',
     'GetEnvironmentConfigResult',
     'GetEnvironmentConfigDatabaseConfigResult',
+    'GetEnvironmentConfigEncryptionConfigResult',
     'GetEnvironmentConfigNodeConfigResult',
     'GetEnvironmentConfigNodeConfigIpAllocationPolicyResult',
     'GetEnvironmentConfigPrivateEnvironmentConfigResult',
@@ -37,6 +39,7 @@ class EnvironmentConfig(dict):
                  airflow_uri: Optional[str] = None,
                  dag_gcs_prefix: Optional[str] = None,
                  database_config: Optional['outputs.EnvironmentConfigDatabaseConfig'] = None,
+                 encryption_config: Optional['outputs.EnvironmentConfigEncryptionConfig'] = None,
                  gke_cluster: Optional[str] = None,
                  node_config: Optional['outputs.EnvironmentConfigNodeConfig'] = None,
                  node_count: Optional[int] = None,
@@ -60,6 +63,8 @@ class EnvironmentConfig(dict):
             pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if gke_cluster is not None:
             pulumi.set(__self__, "gke_cluster", gke_cluster)
         if node_config is not None:
@@ -92,6 +97,11 @@ class EnvironmentConfig(dict):
         The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         """
         return pulumi.get(self, "database_config")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional['outputs.EnvironmentConfigEncryptionConfig']:
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -173,6 +183,31 @@ class EnvironmentConfigDatabaseConfig(dict):
         manually changed to a non-standard values.
         """
         return pulumi.get(self, "machine_type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class EnvironmentConfigEncryptionConfig(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        """
+        :param str kms_key_name: Customer-managed Encryption Key available through Google's Key Management Service. It must
+               be the fully qualified resource name,
+               i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Customer-managed Encryption Key available through Google's Key Management Service. It must
+        be the fully qualified resource name,
+        i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -714,6 +749,7 @@ class GetEnvironmentConfigResult(dict):
                  airflow_uri: str,
                  dag_gcs_prefix: str,
                  database_configs: Sequence['outputs.GetEnvironmentConfigDatabaseConfigResult'],
+                 encryption_configs: Sequence['outputs.GetEnvironmentConfigEncryptionConfigResult'],
                  gke_cluster: str,
                  node_configs: Sequence['outputs.GetEnvironmentConfigNodeConfigResult'],
                  node_count: int,
@@ -724,6 +760,7 @@ class GetEnvironmentConfigResult(dict):
         pulumi.set(__self__, "airflow_uri", airflow_uri)
         pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
         pulumi.set(__self__, "database_configs", database_configs)
+        pulumi.set(__self__, "encryption_configs", encryption_configs)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
         pulumi.set(__self__, "node_configs", node_configs)
         pulumi.set(__self__, "node_count", node_count)
@@ -746,6 +783,11 @@ class GetEnvironmentConfigResult(dict):
     @pulumi.getter(name="databaseConfigs")
     def database_configs(self) -> Sequence['outputs.GetEnvironmentConfigDatabaseConfigResult']:
         return pulumi.get(self, "database_configs")
+
+    @property
+    @pulumi.getter(name="encryptionConfigs")
+    def encryption_configs(self) -> Sequence['outputs.GetEnvironmentConfigEncryptionConfigResult']:
+        return pulumi.get(self, "encryption_configs")
 
     @property
     @pulumi.getter(name="gkeCluster")
@@ -793,6 +835,18 @@ class GetEnvironmentConfigDatabaseConfigResult(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         return pulumi.get(self, "machine_type")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigEncryptionConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str):
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
 
 
 @pulumi.output_type

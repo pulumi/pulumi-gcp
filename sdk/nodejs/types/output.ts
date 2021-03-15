@@ -5014,6 +5014,7 @@ export namespace composer {
          * The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
          */
         databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
+        encryptionConfig: outputs.composer.EnvironmentConfigEncryptionConfig;
         gkeCluster: string;
         /**
          * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -5050,6 +5051,15 @@ export namespace composer {
          * manually changed to a non-standard values.
          */
         machineType: string;
+    }
+
+    export interface EnvironmentConfigEncryptionConfig {
+        /**
+         * Customer-managed Encryption Key available through Google's Key Management Service. It must
+         * be the fully qualified resource name,
+         * i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+         */
+        kmsKeyName: string;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -5255,6 +5265,7 @@ export namespace composer {
         airflowUri: string;
         dagGcsPrefix: string;
         databaseConfigs: outputs.composer.GetEnvironmentConfigDatabaseConfig[];
+        encryptionConfigs: outputs.composer.GetEnvironmentConfigEncryptionConfig[];
         gkeCluster: string;
         nodeConfigs: outputs.composer.GetEnvironmentConfigNodeConfig[];
         nodeCount: number;
@@ -5266,6 +5277,10 @@ export namespace composer {
 
     export interface GetEnvironmentConfigDatabaseConfig {
         machineType: string;
+    }
+
+    export interface GetEnvironmentConfigEncryptionConfig {
+        kmsKeyName: string;
     }
 
     export interface GetEnvironmentConfigNodeConfig {
@@ -16973,6 +16988,59 @@ export namespace dataproc {
         stateStartTime: string;
         substate: string;
     }
+
+    export interface MetastoreServiceHiveMetastoreConfig {
+        /**
+         * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+         * The mappings override system defaults (some keys cannot be overridden)
+         */
+        configOverrides: {[key: string]: string};
+        /**
+         * Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+         * Structure is documented below.
+         */
+        kerberosConfig?: outputs.dataproc.MetastoreServiceHiveMetastoreConfigKerberosConfig;
+        /**
+         * The Hive metastore schema version.
+         */
+        version: string;
+    }
+
+    export interface MetastoreServiceHiveMetastoreConfigKerberosConfig {
+        /**
+         * A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+         * Structure is documented below.
+         */
+        keytab: outputs.dataproc.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab;
+        /**
+         * A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+         */
+        krb5ConfigGcsUri: string;
+        /**
+         * A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+         */
+        principal: string;
+    }
+
+    export interface MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+        /**
+         * The relative resource name of a Secret Manager secret version, in the following form:
+         * "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+         */
+        cloudSecret: string;
+    }
+
+    export interface MetastoreServiceMaintenanceWindow {
+        /**
+         * The day of week, when the window starts.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeek: string;
+        /**
+         * The hour of day (0-23) when the window starts.
+         */
+        hourOfDay: number;
+    }
 }
 
 export namespace datastore {
@@ -17363,6 +17431,51 @@ export namespace endpoints {
         description?: string;
         expression: string;
         title: string;
+    }
+}
+
+export namespace eventarc {
+    export interface TriggerDestination {
+        /**
+         * Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+         * The `matchingCriteria` block supports:
+         */
+        cloudRunService?: outputs.eventarc.TriggerDestinationCloudRunService;
+    }
+
+    export interface TriggerDestinationCloudRunService {
+        /**
+         * Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+         */
+        path?: string;
+        /**
+         * Required. The region the Cloud Run service is deployed in.
+         */
+        region: string;
+        /**
+         * Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+         */
+        service: string;
+    }
+
+    export interface TriggerMatchingCriteria {
+        /**
+         * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+         */
+        attribute: string;
+        /**
+         * Required. The value for the attribute.
+         */
+        value: string;
+    }
+
+    export interface TriggerTransport {
+        pubsubs: outputs.eventarc.TriggerTransportPubsub[];
+    }
+
+    export interface TriggerTransportPubsub {
+        subscription: string;
+        topic: string;
     }
 }
 

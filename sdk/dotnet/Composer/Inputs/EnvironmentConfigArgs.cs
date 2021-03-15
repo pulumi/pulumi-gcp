@@ -24,6 +24,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("databaseConfig")]
         public Input<Inputs.EnvironmentConfigDatabaseConfigArgs>? DatabaseConfig { get; set; }
 
+        [Input("encryptionConfig")]
+        public Input<Inputs.EnvironmentConfigEncryptionConfigArgs>? EncryptionConfig { get; set; }
+
         [Input("gkeCluster")]
         public Input<string>? GkeCluster { get; set; }
 

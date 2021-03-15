@@ -82,12 +82,14 @@ type providerArgs struct {
 	DataflowCustomEndpoint               *string           `pulumi:"dataflowCustomEndpoint"`
 	DataprocBetaCustomEndpoint           *string           `pulumi:"dataprocBetaCustomEndpoint"`
 	DataprocCustomEndpoint               *string           `pulumi:"dataprocCustomEndpoint"`
+	DataprocMetastoreCustomEndpoint      *string           `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastoreCustomEndpoint              *string           `pulumi:"datastoreCustomEndpoint"`
 	DeploymentManagerCustomEndpoint      *string           `pulumi:"deploymentManagerCustomEndpoint"`
 	DialogflowCustomEndpoint             *string           `pulumi:"dialogflowCustomEndpoint"`
 	DnsBetaCustomEndpoint                *string           `pulumi:"dnsBetaCustomEndpoint"`
 	DnsCustomEndpoint                    *string           `pulumi:"dnsCustomEndpoint"`
 	EssentialContactsCustomEndpoint      *string           `pulumi:"essentialContactsCustomEndpoint"`
+	EventarcCustomEndpoint               *string           `pulumi:"eventarcCustomEndpoint"`
 	FilestoreCustomEndpoint              *string           `pulumi:"filestoreCustomEndpoint"`
 	FirebaseCustomEndpoint               *string           `pulumi:"firebaseCustomEndpoint"`
 	FirestoreCustomEndpoint              *string           `pulumi:"firestoreCustomEndpoint"`
@@ -180,12 +182,14 @@ type ProviderArgs struct {
 	DataflowCustomEndpoint               pulumi.StringPtrInput
 	DataprocBetaCustomEndpoint           pulumi.StringPtrInput
 	DataprocCustomEndpoint               pulumi.StringPtrInput
+	DataprocMetastoreCustomEndpoint      pulumi.StringPtrInput
 	DatastoreCustomEndpoint              pulumi.StringPtrInput
 	DeploymentManagerCustomEndpoint      pulumi.StringPtrInput
 	DialogflowCustomEndpoint             pulumi.StringPtrInput
 	DnsBetaCustomEndpoint                pulumi.StringPtrInput
 	DnsCustomEndpoint                    pulumi.StringPtrInput
 	EssentialContactsCustomEndpoint      pulumi.StringPtrInput
+	EventarcCustomEndpoint               pulumi.StringPtrInput
 	FilestoreCustomEndpoint              pulumi.StringPtrInput
 	FirebaseCustomEndpoint               pulumi.StringPtrInput
 	FirestoreCustomEndpoint              pulumi.StringPtrInput

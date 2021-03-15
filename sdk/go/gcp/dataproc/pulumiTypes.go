@@ -8050,6 +8050,653 @@ func (o JobStatusArrayOutput) Index(i pulumi.IntInput) JobStatusOutput {
 	}).(JobStatusOutput)
 }
 
+type MetastoreServiceHiveMetastoreConfig struct {
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+	// The mappings override system defaults (some keys cannot be overridden)
+	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+	// Structure is documented below.
+	KerberosConfig *MetastoreServiceHiveMetastoreConfigKerberosConfig `pulumi:"kerberosConfig"`
+	// The Hive metastore schema version.
+	Version string `pulumi:"version"`
+}
+
+// MetastoreServiceHiveMetastoreConfigInput is an input type that accepts MetastoreServiceHiveMetastoreConfigArgs and MetastoreServiceHiveMetastoreConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigInput` via:
+//
+//          MetastoreServiceHiveMetastoreConfigArgs{...}
+type MetastoreServiceHiveMetastoreConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigOutput() MetastoreServiceHiveMetastoreConfigOutput
+	ToMetastoreServiceHiveMetastoreConfigOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigOutput
+}
+
+type MetastoreServiceHiveMetastoreConfigArgs struct {
+	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+	// The mappings override system defaults (some keys cannot be overridden)
+	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+	// Structure is documented below.
+	KerberosConfig MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput `pulumi:"kerberosConfig"`
+	// The Hive metastore schema version.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (MetastoreServiceHiveMetastoreConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceHiveMetastoreConfigArgs) ToMetastoreServiceHiveMetastoreConfigOutput() MetastoreServiceHiveMetastoreConfigOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigArgs) ToMetastoreServiceHiveMetastoreConfigOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigOutput)
+}
+
+func (i MetastoreServiceHiveMetastoreConfigArgs) ToMetastoreServiceHiveMetastoreConfigPtrOutput() MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigArgs) ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigOutput).ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceHiveMetastoreConfigPtrInput is an input type that accepts MetastoreServiceHiveMetastoreConfigArgs, MetastoreServiceHiveMetastoreConfigPtr and MetastoreServiceHiveMetastoreConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigPtrInput` via:
+//
+//          MetastoreServiceHiveMetastoreConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreServiceHiveMetastoreConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigPtrOutput() MetastoreServiceHiveMetastoreConfigPtrOutput
+	ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigPtrOutput
+}
+
+type metastoreServiceHiveMetastoreConfigPtrType MetastoreServiceHiveMetastoreConfigArgs
+
+func MetastoreServiceHiveMetastoreConfigPtr(v *MetastoreServiceHiveMetastoreConfigArgs) MetastoreServiceHiveMetastoreConfigPtrInput {
+	return (*metastoreServiceHiveMetastoreConfigPtrType)(v)
+}
+
+func (*metastoreServiceHiveMetastoreConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceHiveMetastoreConfigPtrType) ToMetastoreServiceHiveMetastoreConfigPtrOutput() MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceHiveMetastoreConfigPtrType) ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigPtrOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetastoreConfigOutput() MetastoreServiceHiveMetastoreConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetastoreConfigOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetastoreConfigPtrOutput() MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return o.ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) *MetastoreServiceHiveMetastoreConfig {
+		return &v
+	}).(MetastoreServiceHiveMetastoreConfigPtrOutput)
+}
+
+// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+// The mappings override system defaults (some keys cannot be overridden)
+func (o MetastoreServiceHiveMetastoreConfigOutput) ConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
+}
+
+// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+// Structure is documented below.
+func (o MetastoreServiceHiveMetastoreConfigOutput) KerberosConfig() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) *MetastoreServiceHiveMetastoreConfigKerberosConfig {
+		return v.KerberosConfig
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
+}
+
+// The Hive metastore schema version.
+func (o MetastoreServiceHiveMetastoreConfigOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceHiveMetastoreConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ToMetastoreServiceHiveMetastoreConfigPtrOutput() MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ToMetastoreServiceHiveMetastoreConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) MetastoreServiceHiveMetastoreConfig { return *v }).(MetastoreServiceHiveMetastoreConfigOutput)
+}
+
+// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+// The mappings override system defaults (some keys cannot be overridden)
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigOverrides
+	}).(pulumi.StringMapOutput)
+}
+
+// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+// Structure is documented below.
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) KerberosConfig() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) *MetastoreServiceHiveMetastoreConfigKerberosConfig {
+		if v == nil {
+			return nil
+		}
+		return v.KerberosConfig
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
+}
+
+// The Hive metastore schema version.
+func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfig struct {
+	// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+	// Structure is documented below.
+	Keytab MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab `pulumi:"keytab"`
+	// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+	Krb5ConfigGcsUri string `pulumi:"krb5ConfigGcsUri"`
+	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+	Principal string `pulumi:"principal"`
+}
+
+// MetastoreServiceHiveMetastoreConfigKerberosConfigInput is an input type that accepts MetastoreServiceHiveMetastoreConfigKerberosConfigArgs and MetastoreServiceHiveMetastoreConfigKerberosConfigOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigKerberosConfigInput` via:
+//
+//          MetastoreServiceHiveMetastoreConfigKerberosConfigArgs{...}
+type MetastoreServiceHiveMetastoreConfigKerberosConfigInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigOutput
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigOutput
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfigArgs struct {
+	// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+	// Structure is documented below.
+	Keytab MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput `pulumi:"keytab"`
+	// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+	Krb5ConfigGcsUri pulumi.StringInput `pulumi:"krb5ConfigGcsUri"`
+	// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+	Principal pulumi.StringInput `pulumi:"principal"`
+}
+
+func (MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput)
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput).ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput is an input type that accepts MetastoreServiceHiveMetastoreConfigKerberosConfigArgs, MetastoreServiceHiveMetastoreConfigKerberosConfigPtr and MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput` via:
+//
+//          MetastoreServiceHiveMetastoreConfigKerberosConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput
+}
+
+type metastoreServiceHiveMetastoreConfigKerberosConfigPtrType MetastoreServiceHiveMetastoreConfigKerberosConfigArgs
+
+func MetastoreServiceHiveMetastoreConfigKerberosConfigPtr(v *MetastoreServiceHiveMetastoreConfigKerberosConfigArgs) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrInput {
+	return (*metastoreServiceHiveMetastoreConfigKerberosConfigPtrType)(v)
+}
+
+func (*metastoreServiceHiveMetastoreConfigKerberosConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (i *metastoreServiceHiveMetastoreConfigKerberosConfigPtrType) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceHiveMetastoreConfigKerberosConfigPtrType) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfigOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return o.ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfig) *MetastoreServiceHiveMetastoreConfigKerberosConfig {
+		return &v
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput)
+}
+
+// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+// Structure is documented below.
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) Keytab() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfig) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+		return v.Keytab
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput)
+}
+
+// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) Krb5ConfigGcsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfig) string { return v.Krb5ConfigGcsUri }).(pulumi.StringOutput)
+}
+
+// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigOutput) Principal() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfig) string { return v.Principal }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceHiveMetastoreConfigKerberosConfig)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigKerberosConfigOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfig) MetastoreServiceHiveMetastoreConfigKerberosConfig {
+		return *v
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput)
+}
+
+// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+// Structure is documented below.
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) Keytab() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfig) *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+		if v == nil {
+			return nil
+		}
+		return &v.Keytab
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput)
+}
+
+// A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) Krb5ConfigGcsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Krb5ConfigGcsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput) Principal() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Principal
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab struct {
+	// The relative resource name of a Secret Manager secret version, in the following form:
+	// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+	CloudSecret string `pulumi:"cloudSecret"`
+}
+
+// MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput is an input type that accepts MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs and MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput` via:
+//
+//          MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{...}
+type MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs struct {
+	// The relative resource name of a Secret Manager secret version, in the following form:
+	// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+	CloudSecret pulumi.StringInput `pulumi:"cloudSecret"`
+}
+
+func (MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput)
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput).ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrInput is an input type that accepts MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs, MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtr and MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrInput` via:
+//
+//          MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput
+	ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput
+}
+
+type metastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrType MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs
+
+func MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtr(v *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrInput {
+	return (*metastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrType)(v)
+}
+
+func (*metastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (i *metastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrType) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return i.ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrType) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return o.ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+		return &v
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput)
+}
+
+// The relative resource name of a Secret Manager secret version, in the following form:
+// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput) CloudSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) string { return v.CloudSecret }).(pulumi.StringOutput)
+}
+
+type MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab)(nil)).Elem()
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) ToMetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutputWithContext(ctx context.Context) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) Elem() MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+		return *v
+	}).(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput)
+}
+
+// The relative resource name of a Secret Manager secret version, in the following form:
+// "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+func (o MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput) CloudSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetastoreServiceMaintenanceWindow struct {
+	// The day of week, when the window starts.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// The hour of day (0-23) when the window starts.
+	HourOfDay int `pulumi:"hourOfDay"`
+}
+
+// MetastoreServiceMaintenanceWindowInput is an input type that accepts MetastoreServiceMaintenanceWindowArgs and MetastoreServiceMaintenanceWindowOutput values.
+// You can construct a concrete instance of `MetastoreServiceMaintenanceWindowInput` via:
+//
+//          MetastoreServiceMaintenanceWindowArgs{...}
+type MetastoreServiceMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceMaintenanceWindowOutput() MetastoreServiceMaintenanceWindowOutput
+	ToMetastoreServiceMaintenanceWindowOutputWithContext(context.Context) MetastoreServiceMaintenanceWindowOutput
+}
+
+type MetastoreServiceMaintenanceWindowArgs struct {
+	// The day of week, when the window starts.
+	// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// The hour of day (0-23) when the window starts.
+	HourOfDay pulumi.IntInput `pulumi:"hourOfDay"`
+}
+
+func (MetastoreServiceMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i MetastoreServiceMaintenanceWindowArgs) ToMetastoreServiceMaintenanceWindowOutput() MetastoreServiceMaintenanceWindowOutput {
+	return i.ToMetastoreServiceMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceMaintenanceWindowArgs) ToMetastoreServiceMaintenanceWindowOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMaintenanceWindowOutput)
+}
+
+func (i MetastoreServiceMaintenanceWindowArgs) ToMetastoreServiceMaintenanceWindowPtrOutput() MetastoreServiceMaintenanceWindowPtrOutput {
+	return i.ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i MetastoreServiceMaintenanceWindowArgs) ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMaintenanceWindowOutput).ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx)
+}
+
+// MetastoreServiceMaintenanceWindowPtrInput is an input type that accepts MetastoreServiceMaintenanceWindowArgs, MetastoreServiceMaintenanceWindowPtr and MetastoreServiceMaintenanceWindowPtrOutput values.
+// You can construct a concrete instance of `MetastoreServiceMaintenanceWindowPtrInput` via:
+//
+//          MetastoreServiceMaintenanceWindowArgs{...}
+//
+//  or:
+//
+//          nil
+type MetastoreServiceMaintenanceWindowPtrInput interface {
+	pulumi.Input
+
+	ToMetastoreServiceMaintenanceWindowPtrOutput() MetastoreServiceMaintenanceWindowPtrOutput
+	ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(context.Context) MetastoreServiceMaintenanceWindowPtrOutput
+}
+
+type metastoreServiceMaintenanceWindowPtrType MetastoreServiceMaintenanceWindowArgs
+
+func MetastoreServiceMaintenanceWindowPtr(v *MetastoreServiceMaintenanceWindowArgs) MetastoreServiceMaintenanceWindowPtrInput {
+	return (*metastoreServiceMaintenanceWindowPtrType)(v)
+}
+
+func (*metastoreServiceMaintenanceWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (i *metastoreServiceMaintenanceWindowPtrType) ToMetastoreServiceMaintenanceWindowPtrOutput() MetastoreServiceMaintenanceWindowPtrOutput {
+	return i.ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *metastoreServiceMaintenanceWindowPtrType) ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MetastoreServiceMaintenanceWindowPtrOutput)
+}
+
+type MetastoreServiceMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWindowOutput() MetastoreServiceMaintenanceWindowOutput {
+	return o
+}
+
+func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWindowOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowOutput {
+	return o
+}
+
+func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWindowPtrOutput() MetastoreServiceMaintenanceWindowPtrOutput {
+	return o.ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(context.Background())
+}
+
+func (o MetastoreServiceMaintenanceWindowOutput) ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceMaintenanceWindow) *MetastoreServiceMaintenanceWindow {
+		return &v
+	}).(MetastoreServiceMaintenanceWindowPtrOutput)
+}
+
+// The day of week, when the window starts.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o MetastoreServiceMaintenanceWindowOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreServiceMaintenanceWindow) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// The hour of day (0-23) when the window starts.
+func (o MetastoreServiceMaintenanceWindowOutput) HourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v MetastoreServiceMaintenanceWindow) int { return v.HourOfDay }).(pulumi.IntOutput)
+}
+
+type MetastoreServiceMaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (MetastoreServiceMaintenanceWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MetastoreServiceMaintenanceWindow)(nil)).Elem()
+}
+
+func (o MetastoreServiceMaintenanceWindowPtrOutput) ToMetastoreServiceMaintenanceWindowPtrOutput() MetastoreServiceMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceMaintenanceWindowPtrOutput) ToMetastoreServiceMaintenanceWindowPtrOutputWithContext(ctx context.Context) MetastoreServiceMaintenanceWindowPtrOutput {
+	return o
+}
+
+func (o MetastoreServiceMaintenanceWindowPtrOutput) Elem() MetastoreServiceMaintenanceWindowOutput {
+	return o.ApplyT(func(v *MetastoreServiceMaintenanceWindow) MetastoreServiceMaintenanceWindow { return *v }).(MetastoreServiceMaintenanceWindowOutput)
+}
+
+// The day of week, when the window starts.
+// Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+func (o MetastoreServiceMaintenanceWindowPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceMaintenanceWindow) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hour of day (0-23) when the window starts.
+func (o MetastoreServiceMaintenanceWindowPtrOutput) HourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceMaintenanceWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HourOfDay
+	}).(pulumi.IntPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmOutput{})
 	pulumi.RegisterOutputType(AutoscalingPolicyBasicAlgorithmPtrOutput{})
@@ -8133,4 +8780,12 @@ func init() {
 	pulumi.RegisterOutputType(JobSparksqlConfigLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobStatusOutput{})
 	pulumi.RegisterOutputType(JobStatusArrayOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabPtrOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(MetastoreServiceMaintenanceWindowPtrOutput{})
 }

@@ -43,6 +43,7 @@ from . import (
     dns,
     endpoints,
     essentialcontacts,
+    eventarc,
     filestore,
     firebase,
     firestore,

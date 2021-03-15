@@ -12,6 +12,7 @@ from .job import *
 from .job_iam_binding import *
 from .job_iam_member import *
 from .job_iam_policy import *
+from .metastore_service import *
 from ._inputs import *
 from . import outputs
 
@@ -45,6 +46,8 @@ def _register_module():
                 return JobIAMMember(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:dataproc/jobIAMPolicy:JobIAMPolicy":
                 return JobIAMPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:dataproc/metastoreService:MetastoreService":
+                return MetastoreService(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
@@ -59,5 +62,6 @@ def _register_module():
     pulumi.runtime.register_resource_module("gcp", "dataproc/jobIAMBinding", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "dataproc/jobIAMMember", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "dataproc/jobIAMPolicy", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "dataproc/metastoreService", _module_instance)
 
 _register_module()

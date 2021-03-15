@@ -89,7 +89,7 @@ export class BillingAccountBucketConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
     public readonly retentionDays!: pulumi.Output<number | undefined>;
 
@@ -168,7 +168,7 @@ export interface BillingAccountBucketConfigState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
     readonly retentionDays?: pulumi.Input<number>;
 }
@@ -194,7 +194,7 @@ export interface BillingAccountBucketConfigArgs {
      */
     readonly location: pulumi.Input<string>;
     /**
-     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+     * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
      */
     readonly retentionDays?: pulumi.Input<number>;
 }

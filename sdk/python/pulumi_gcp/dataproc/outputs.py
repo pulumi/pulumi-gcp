@@ -51,6 +51,10 @@ __all__ = [
     'JobSparksqlConfig',
     'JobSparksqlConfigLoggingConfig',
     'JobStatus',
+    'MetastoreServiceHiveMetastoreConfig',
+    'MetastoreServiceHiveMetastoreConfigKerberosConfig',
+    'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab',
+    'MetastoreServiceMaintenanceWindow',
 ]
 
 @pulumi.output_type
@@ -2543,6 +2547,157 @@ class JobStatus(dict):
     @pulumi.getter
     def substate(self) -> Optional[str]:
         return pulumi.get(self, "substate")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetastoreServiceHiveMetastoreConfig(dict):
+    def __init__(__self__, *,
+                 version: str,
+                 config_overrides: Optional[Mapping[str, str]] = None,
+                 kerberos_config: Optional['outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig'] = None):
+        """
+        :param str version: The Hive metastore schema version.
+        :param Mapping[str, str] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+               The mappings override system defaults (some keys cannot be overridden)
+        :param 'MetastoreServiceHiveMetastoreConfigKerberosConfigArgs' kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "version", version)
+        if config_overrides is not None:
+            pulumi.set(__self__, "config_overrides", config_overrides)
+        if kerberos_config is not None:
+            pulumi.set(__self__, "kerberos_config", kerberos_config)
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The Hive metastore schema version.
+        """
+        return pulumi.get(self, "version")
+
+    @property
+    @pulumi.getter(name="configOverrides")
+    def config_overrides(self) -> Optional[Mapping[str, str]]:
+        """
+        A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+        The mappings override system defaults (some keys cannot be overridden)
+        """
+        return pulumi.get(self, "config_overrides")
+
+    @property
+    @pulumi.getter(name="kerberosConfig")
+    def kerberos_config(self) -> Optional['outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig']:
+        """
+        Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "kerberos_config")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetastoreServiceHiveMetastoreConfigKerberosConfig(dict):
+    def __init__(__self__, *,
+                 keytab: 'outputs.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab',
+                 krb5_config_gcs_uri: str,
+                 principal: str):
+        """
+        :param 'MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs' keytab: A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+               Structure is documented below.
+        :param str krb5_config_gcs_uri: A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+        :param str principal: A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+        """
+        pulumi.set(__self__, "keytab", keytab)
+        pulumi.set(__self__, "krb5_config_gcs_uri", krb5_config_gcs_uri)
+        pulumi.set(__self__, "principal", principal)
+
+    @property
+    @pulumi.getter
+    def keytab(self) -> 'outputs.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab':
+        """
+        A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+        Structure is documented below.
+        """
+        return pulumi.get(self, "keytab")
+
+    @property
+    @pulumi.getter(name="krb5ConfigGcsUri")
+    def krb5_config_gcs_uri(self) -> str:
+        """
+        A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+        """
+        return pulumi.get(self, "krb5_config_gcs_uri")
+
+    @property
+    @pulumi.getter
+    def principal(self) -> str:
+        """
+        A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+        """
+        return pulumi.get(self, "principal")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab(dict):
+    def __init__(__self__, *,
+                 cloud_secret: str):
+        """
+        :param str cloud_secret: The relative resource name of a Secret Manager secret version, in the following form:
+               "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+        """
+        pulumi.set(__self__, "cloud_secret", cloud_secret)
+
+    @property
+    @pulumi.getter(name="cloudSecret")
+    def cloud_secret(self) -> str:
+        """
+        The relative resource name of a Secret Manager secret version, in the following form:
+        "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+        """
+        return pulumi.get(self, "cloud_secret")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class MetastoreServiceMaintenanceWindow(dict):
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 hour_of_day: int):
+        """
+        :param str day_of_week: The day of week, when the window starts.
+               Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        :param int hour_of_day: The hour of day (0-23) when the window starts.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "hour_of_day", hour_of_day)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        """
+        The day of week, when the window starts.
+        Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter(name="hourOfDay")
+    def hour_of_day(self) -> int:
+        """
+        The hour of day (0-23) when the window starts.
+        """
+        return pulumi.get(self, "hour_of_day")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

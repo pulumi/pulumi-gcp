@@ -68,12 +68,12 @@ namespace Pulumi.Gcp.Sql
     ///             Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
     ///             {
     ///                 Tier = "db-f1-micro",
-    ///                 DatagbaseFlags = 
+    ///                 DatabaseFlags = 
     ///                 {
-    ///                     
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsDatabaseFlagArgs
     ///                     {
-    ///                         { "name", "cloudsql.iam_authentication" },
-    ///                         { "value", "on" },
+    ///                         Name = "cloudsql.iam_authentication",
+    ///                         Value = "on",
     ///                     },
     ///                 },
     ///             },

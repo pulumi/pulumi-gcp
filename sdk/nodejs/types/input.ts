@@ -4784,6 +4784,7 @@ export namespace composer {
          * The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
          */
         databaseConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDatabaseConfig>;
+        encryptionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigEncryptionConfig>;
         gkeCluster?: pulumi.Input<string>;
         /**
          * The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -4820,6 +4821,15 @@ export namespace composer {
          * manually changed to a non-standard values.
          */
         machineType: pulumi.Input<string>;
+    }
+
+    export interface EnvironmentConfigEncryptionConfig {
+        /**
+         * Customer-managed Encryption Key available through Google's Key Management Service. It must
+         * be the fully qualified resource name,
+         * i.e. projects/project-id/locations/location/keyRings/keyring/cryptoKeys/key. Cannot be updated.
+         */
+        kmsKeyName: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigNodeConfig {
@@ -15648,6 +15658,59 @@ export namespace dataproc {
         stateStartTime?: pulumi.Input<string>;
         substate?: pulumi.Input<string>;
     }
+
+    export interface MetastoreServiceHiveMetastoreConfig {
+        /**
+         * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
+         * The mappings override system defaults (some keys cannot be overridden)
+         */
+        configOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
+         * Structure is documented below.
+         */
+        kerberosConfig?: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfigKerberosConfig>;
+        /**
+         * The Hive metastore schema version.
+         */
+        version: pulumi.Input<string>;
+    }
+
+    export interface MetastoreServiceHiveMetastoreConfigKerberosConfig {
+        /**
+         * A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
+         * Structure is documented below.
+         */
+        keytab: pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab>;
+        /**
+         * A Cloud Storage URI that specifies the path to a krb5.conf file. It is of the form gs://{bucket_name}/path/to/krb5.conf, although the file does not need to be named krb5.conf explicitly.
+         */
+        krb5ConfigGcsUri: pulumi.Input<string>;
+        /**
+         * A Kerberos principal that exists in the both the keytab the KDC to authenticate as. A typical principal is of the form "primary/instance@REALM", but there is no exact format.
+         */
+        principal: pulumi.Input<string>;
+    }
+
+    export interface MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
+        /**
+         * The relative resource name of a Secret Manager secret version, in the following form:
+         * "projects/{projectNumber}/secrets/{secret_id}/versions/{version_id}".
+         */
+        cloudSecret: pulumi.Input<string>;
+    }
+
+    export interface MetastoreServiceMaintenanceWindow {
+        /**
+         * The day of week, when the window starts.
+         * Possible values are `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, and `SUNDAY`.
+         */
+        dayOfWeek: pulumi.Input<string>;
+        /**
+         * The hour of day (0-23) when the window starts.
+         */
+        hourOfDay: pulumi.Input<number>;
+    }
 }
 
 export namespace datastore {
@@ -15934,6 +15997,51 @@ export namespace endpoints {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+}
+
+export namespace eventarc {
+    export interface TriggerDestination {
+        /**
+         * Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
+         * The `matchingCriteria` block supports:
+         */
+        cloudRunService?: pulumi.Input<inputs.eventarc.TriggerDestinationCloudRunService>;
+    }
+
+    export interface TriggerDestinationCloudRunService {
+        /**
+         * Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Required. The region the Cloud Run service is deployed in.
+         */
+        region?: pulumi.Input<string>;
+        /**
+         * Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+         */
+        service: pulumi.Input<string>;
+    }
+
+    export interface TriggerMatchingCriteria {
+        /**
+         * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+         */
+        attribute: pulumi.Input<string>;
+        /**
+         * Required. The value for the attribute.
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface TriggerTransport {
+        pubsubs?: pulumi.Input<pulumi.Input<inputs.eventarc.TriggerTransportPubsub>[]>;
+    }
+
+    export interface TriggerTransportPubsub {
+        subscription?: pulumi.Input<string>;
+        topic?: pulumi.Input<string>;
     }
 }
 

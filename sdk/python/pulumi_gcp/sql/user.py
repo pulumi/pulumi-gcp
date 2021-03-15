@@ -59,10 +59,10 @@ class User(pulumi.CustomResource):
             database_version="POSTGRES_9_6",
             settings=gcp.sql.DatabaseInstanceSettingsArgs(
                 tier="db-f1-micro",
-                datagbase_flags=[{
-                    "name": "cloudsql.iam_authentication",
-                    "value": "on",
-                }],
+                database_flags=[gcp.sql.DatabaseInstanceSettingsDatabaseFlagArgs(
+                    name="cloudsql.iam_authentication",
+                    value="on",
+                )],
             ))
         users = gcp.sql.User("users",
             instance=master.name,

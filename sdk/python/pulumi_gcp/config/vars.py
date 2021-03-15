@@ -49,12 +49,14 @@ __all__ = [
     'dataflow_custom_endpoint',
     'dataproc_beta_custom_endpoint',
     'dataproc_custom_endpoint',
+    'dataproc_metastore_custom_endpoint',
     'datastore_custom_endpoint',
     'deployment_manager_custom_endpoint',
     'dialogflow_custom_endpoint',
     'dns_beta_custom_endpoint',
     'dns_custom_endpoint',
     'essential_contacts_custom_endpoint',
+    'eventarc_custom_endpoint',
     'filestore_custom_endpoint',
     'firebase_custom_endpoint',
     'firestore_custom_endpoint',
@@ -186,6 +188,8 @@ dataproc_beta_custom_endpoint = __config__.get('dataprocBetaCustomEndpoint')
 
 dataproc_custom_endpoint = __config__.get('dataprocCustomEndpoint')
 
+dataproc_metastore_custom_endpoint = __config__.get('dataprocMetastoreCustomEndpoint')
+
 datastore_custom_endpoint = __config__.get('datastoreCustomEndpoint')
 
 deployment_manager_custom_endpoint = __config__.get('deploymentManagerCustomEndpoint')
@@ -197,6 +201,8 @@ dns_beta_custom_endpoint = __config__.get('dnsBetaCustomEndpoint')
 dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
 
 essential_contacts_custom_endpoint = __config__.get('essentialContactsCustomEndpoint')
+
+eventarc_custom_endpoint = __config__.get('eventarcCustomEndpoint')
 
 filestore_custom_endpoint = __config__.get('filestoreCustomEndpoint')
 

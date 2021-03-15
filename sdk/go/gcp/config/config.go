@@ -125,6 +125,9 @@ func GetDataprocBetaCustomEndpoint(ctx *pulumi.Context) string {
 func GetDataprocCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dataprocCustomEndpoint")
 }
+func GetDataprocMetastoreCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:dataprocMetastoreCustomEndpoint")
+}
 func GetDatastoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:datastoreCustomEndpoint")
 }
@@ -142,6 +145,9 @@ func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetEssentialContactsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:essentialContactsCustomEndpoint")
+}
+func GetEventarcCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:eventarcCustomEndpoint")
 }
 func GetFilestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:filestoreCustomEndpoint")

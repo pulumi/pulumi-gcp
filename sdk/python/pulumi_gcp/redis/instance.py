@@ -19,7 +19,6 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
-                 auth_string: Optional[pulumi.Input[str]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  connect_mode: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -106,7 +105,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the
                instance. If set to "true" AUTH is enabled on the instance.
                Default value is "false" meaning AUTH is disabled.
-        :param pulumi.Input[str] auth_string: AUTH String set on the instance. This field will only be populated if auth_enabled is true.
         :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine network to which the
                instance is connected. If left unspecified, the default network
                will be used.
@@ -166,7 +164,6 @@ class Instance(pulumi.CustomResource):
 
             __props__['alternative_location_id'] = alternative_location_id
             __props__['auth_enabled'] = auth_enabled
-            __props__['auth_string'] = auth_string
             __props__['authorized_network'] = authorized_network
             __props__['connect_mode'] = connect_mode
             __props__['display_name'] = display_name
@@ -183,6 +180,7 @@ class Instance(pulumi.CustomResource):
             __props__['reserved_ip_range'] = reserved_ip_range
             __props__['tier'] = tier
             __props__['transit_encryption_mode'] = transit_encryption_mode
+            __props__['auth_string'] = None
             __props__['create_time'] = None
             __props__['current_location_id'] = None
             __props__['host'] = None

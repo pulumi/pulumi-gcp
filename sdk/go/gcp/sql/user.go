@@ -78,10 +78,10 @@ import (
 // 			DatabaseVersion: pulumi.String("POSTGRES_9_6"),
 // 			Settings: &sql.DatabaseInstanceSettingsArgs{
 // 				Tier: pulumi.String("db-f1-micro"),
-// 				DatagbaseFlags: pulumi.StringMapArray{
-// 					pulumi.StringMap{
-// 						"name":  pulumi.String("cloudsql.iam_authentication"),
-// 						"value": pulumi.String("on"),
+// 				DatabaseFlags: sql.DatabaseInstanceSettingsDatabaseFlagArray{
+// 					&sql.DatabaseInstanceSettingsDatabaseFlagArgs{
+// 						Name:  pulumi.String("cloudsql.iam_authentication"),
+// 						Value: pulumi.String("on"),
 // 					},
 // 				},
 // 			},

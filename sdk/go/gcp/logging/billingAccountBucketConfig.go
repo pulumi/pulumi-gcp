@@ -73,7 +73,7 @@ type BillingAccountBucketConfig struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
 }
 
@@ -127,7 +127,7 @@ type billingAccountBucketConfigState struct {
 	Location *string `pulumi:"location"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name *string `pulumi:"name"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays *int `pulumi:"retentionDays"`
 }
 
@@ -144,7 +144,7 @@ type BillingAccountBucketConfigState struct {
 	Location pulumi.StringPtrInput
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
 	Name pulumi.StringPtrInput
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays pulumi.IntPtrInput
 }
 
@@ -161,7 +161,7 @@ type billingAccountBucketConfigArgs struct {
 	Description *string `pulumi:"description"`
 	// The location of the bucket.
 	Location string `pulumi:"location"`
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays *int `pulumi:"retentionDays"`
 }
 
@@ -175,7 +175,7 @@ type BillingAccountBucketConfigArgs struct {
 	Description pulumi.StringPtrInput
 	// The location of the bucket.
 	Location pulumi.StringInput
-	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
+	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
 	RetentionDays pulumi.IntPtrInput
 }
 
