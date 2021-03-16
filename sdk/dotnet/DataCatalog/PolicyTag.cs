@@ -10,6 +10,112 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DataCatalog
 {
     /// <summary>
+    /// Denotes one policy tag in a taxonomy.
+    /// 
+    /// To get more information about PolicyTag, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies.policyTags)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+    /// 
+    /// ## Example Usage
+    /// ### Data Catalog Taxonomies Policy Tag Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new Gcp.DataCatalog.TaxonomyArgs
+    ///         {
+    ///             Region = "us",
+    ///             DisplayName = "taxonomy_display_name",
+    ///             Description = "A collection of policy tags",
+    ///             ActivatedPolicyTypes = 
+    ///             {
+    ///                 "FINE_GRAINED_ACCESS_CONTROL",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var basicPolicyTag = new Gcp.DataCatalog.PolicyTag("basicPolicyTag", new Gcp.DataCatalog.PolicyTagArgs
+    ///         {
+    ///             Taxonomy = myTaxonomy.Id,
+    ///             DisplayName = "Low security",
+    ///             Description = "A policy tag normally associated with low security items",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Data Catalog Taxonomies Policy Tag Child Policies
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myTaxonomy = new Gcp.DataCatalog.Taxonomy("myTaxonomy", new Gcp.DataCatalog.TaxonomyArgs
+    ///         {
+    ///             Region = "us",
+    ///             DisplayName = "taxonomy_display_name",
+    ///             Description = "A collection of policy tags",
+    ///             ActivatedPolicyTypes = 
+    ///             {
+    ///                 "FINE_GRAINED_ACCESS_CONTROL",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var parentPolicy = new Gcp.DataCatalog.PolicyTag("parentPolicy", new Gcp.DataCatalog.PolicyTagArgs
+    ///         {
+    ///             Taxonomy = myTaxonomy.Id,
+    ///             DisplayName = "High",
+    ///             Description = "A policy tag category used for high security access",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var childPolicy = new Gcp.DataCatalog.PolicyTag("childPolicy", new Gcp.DataCatalog.PolicyTagArgs
+    ///         {
+    ///             Taxonomy = myTaxonomy.Id,
+    ///             DisplayName = "ssn",
+    ///             Description = "A hash of the users ssn",
+    ///             ParentPolicyTag = parentPolicy.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var childPolicy2 = new Gcp.DataCatalog.PolicyTag("childPolicy2", new Gcp.DataCatalog.PolicyTagArgs
+    ///         {
+    ///             Taxonomy = myTaxonomy.Id,
+    ///             DisplayName = "dob",
+    ///             Description = "The users date of birth",
+    ///             ParentPolicyTag = parentPolicy.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///             DependsOn = 
+    ///             {
+    ///                 childPolicy,
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// PolicyTag can be imported using any of these accepted formats

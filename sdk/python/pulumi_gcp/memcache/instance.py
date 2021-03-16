@@ -36,11 +36,39 @@ class Instance(pulumi.CustomResource):
 
         To get more information about Instance, see:
 
-        * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+        * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 
         ## Example Usage
+        ### Memcache Instance Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        memcache_network = gcp.compute.get_network(name="test-network")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=memcache_network.id,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=memcache_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        instance = gcp.memcache.Instance("instance",
+            authorized_network=private_service_connection.network,
+            node_config=gcp.memcache.InstanceNodeConfigArgs(
+                cpu_count=1,
+                memory_size_mb=1024,
+            ),
+            node_count=1,
+            memcache_version="MEMCACHE_1_5",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

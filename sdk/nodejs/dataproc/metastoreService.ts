@@ -6,6 +6,32 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * A managed metastore service that serves metadata queries.
+ *
+ * ## Example Usage
+ * ### Dataproc Metastore Service Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.dataproc.MetastoreService("default", {
+ *     serviceId: "metastore-srv",
+ *     location: "us-central1",
+ *     port: 9080,
+ *     tier: "DEVELOPER",
+ *     maintenanceWindow: {
+ *         hourOfDay: 2,
+ *         dayOfWeek: "SUNDAY",
+ *     },
+ *     hiveMetastoreConfig: {
+ *         version: "2.3.6",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Service can be imported using any of these accepted formats

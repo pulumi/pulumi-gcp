@@ -93,6 +93,10 @@ export class BucketObject extends pulumi.CustomResource {
     public /*out*/ readonly crc32c!: pulumi.Output<string>;
     public readonly detectMd5hash!: pulumi.Output<string | undefined>;
     /**
+     * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+     */
+    public readonly kmsKeyName!: pulumi.Output<string>;
+    /**
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
     public /*out*/ readonly md5hash!: pulumi.Output<string>;
@@ -151,6 +155,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentType"] = state ? state.contentType : undefined;
             inputs["crc32c"] = state ? state.crc32c : undefined;
             inputs["detectMd5hash"] = state ? state.detectMd5hash : undefined;
+            inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
             inputs["md5hash"] = state ? state.md5hash : undefined;
             inputs["mediaLink"] = state ? state.mediaLink : undefined;
             inputs["metadata"] = state ? state.metadata : undefined;
@@ -172,6 +177,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["contentLanguage"] = args ? args.contentLanguage : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["detectMd5hash"] = args ? args.detectMd5hash : undefined;
+            inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["source"] = args ? args.source : undefined;
@@ -227,6 +233,10 @@ export interface BucketObjectState {
      */
     readonly crc32c?: pulumi.Input<string>;
     readonly detectMd5hash?: pulumi.Input<string>;
+    /**
+     * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+     */
+    readonly kmsKeyName?: pulumi.Input<string>;
     /**
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */
@@ -299,6 +309,10 @@ export interface BucketObjectArgs {
      */
     readonly contentType?: pulumi.Input<string>;
     readonly detectMd5hash?: pulumi.Input<string>;
+    /**
+     * The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+     */
+    readonly kmsKeyName?: pulumi.Input<string>;
     /**
      * User-provided metadata, in key/value pairs.
      */

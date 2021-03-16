@@ -6,6 +6,98 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * A CertificateAuthority represents an individual Certificate Authority. A
+ * CertificateAuthority can be used to create Certificates.
+ *
+ * > **Warning:** Please remember that all resources created during preview (via this provider)
+ * will be deleted when CA service transitions to General Availability (GA). Relying on these
+ * certificate authorities for production traffic is discouraged.
+ *
+ * To get more information about CertificateAuthority, see:
+ *
+ * * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+ *
+ * ## Example Usage
+ * ### Privateca Certificate Authority Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.Authority("default", {
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *             },
+ *             commonName: "my-certificate-authority",
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         reusableConfig: {
+ *             reusableConfig: "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     disableOnDelete: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Privateca Certificate Authority Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.certificateauthority.Authority("default", {
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     tier: "DEVOPS",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 countryCode: "US",
+ *                 organization: "HashiCorp",
+ *                 organizationalUnit: "Terraform",
+ *                 locality: "San Francisco",
+ *                 province: "CA",
+ *                 streetAddress: "101 2nd St #700",
+ *                 postalCode: "94105",
+ *             },
+ *             commonName: "my-certificate-authority",
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *                 emailAddresses: ["email@example.com"],
+ *                 ipAddresses: ["127.0.0.1"],
+ *                 uris: ["http://www.ietf.org/rfc/rfc3986.txt"],
+ *             },
+ *         },
+ *         reusableConfig: {
+ *             reusableConfig: "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+ *         },
+ *     },
+ *     lifetime: "86400s",
+ *     issuingOptions: {
+ *         includeCaCertUrl: true,
+ *         includeCrlAccessUrl: false,
+ *     },
+ *     keySpec: {
+ *         algorithm: "EC_P256_SHA256",
+ *     },
+ *     disableOnDelete: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
  * ## Import
  *
  * CertificateAuthority can be imported using any of these accepted formats

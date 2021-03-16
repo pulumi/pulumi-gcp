@@ -14,11 +14,65 @@ namespace Pulumi.Gcp.Memcache
     /// 
     /// To get more information about Instance, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+    /// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
     /// 
     /// ## Example Usage
+    /// ### Memcache Instance Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var memcacheNetwork = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "test-network",
+    ///         }));
+    ///         var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = memcacheNetwork.Apply(memcacheNetwork =&gt; memcacheNetwork.Id),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = memcacheNetwork.Apply(memcacheNetwork =&gt; memcacheNetwork.Id),
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 serviceRange.Name,
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var instance = new Gcp.Memcache.Instance("instance", new Gcp.Memcache.InstanceArgs
+    ///         {
+    ///             AuthorizedNetwork = privateServiceConnection.Network,
+    ///             NodeConfig = new Gcp.Memcache.Inputs.InstanceNodeConfigArgs
+    ///             {
+    ///                 CpuCount = 1,
+    ///                 MemorySizeMb = 1024,
+    ///             },
+    ///             NodeCount = 1,
+    ///             MemcacheVersion = "MEMCACHE_1_5",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

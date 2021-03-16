@@ -2452,7 +2452,10 @@ type Hl7StoreParserConfig struct {
 	// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
 	// A base64-encoded string.
 	SegmentTerminator *string `pulumi:"segmentTerminator"`
-	Version           *string `pulumi:"version"`
+	// The version of the unschematized parser to be used when a custom `schema` is not set.
+	// Default value is `V1`.
+	// Possible values are `V1` and `V2`.
+	Version *string `pulumi:"version"`
 }
 
 // Hl7StoreParserConfigInput is an input type that accepts Hl7StoreParserConfigArgs and Hl7StoreParserConfigOutput values.
@@ -2475,7 +2478,10 @@ type Hl7StoreParserConfigArgs struct {
 	// Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
 	// A base64-encoded string.
 	SegmentTerminator pulumi.StringPtrInput `pulumi:"segmentTerminator"`
-	Version           pulumi.StringPtrInput `pulumi:"version"`
+	// The version of the unschematized parser to be used when a custom `schema` is not set.
+	// Default value is `V1`.
+	// Possible values are `V1` and `V2`.
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (Hl7StoreParserConfigArgs) ElementType() reflect.Type {
@@ -2572,6 +2578,9 @@ func (o Hl7StoreParserConfigOutput) SegmentTerminator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.SegmentTerminator }).(pulumi.StringPtrOutput)
 }
 
+// The version of the unschematized parser to be used when a custom `schema` is not set.
+// Default value is `V1`.
+// Possible values are `V1` and `V2`.
 func (o Hl7StoreParserConfigOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Hl7StoreParserConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2626,6 +2635,9 @@ func (o Hl7StoreParserConfigPtrOutput) SegmentTerminator() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The version of the unschematized parser to be used when a custom `schema` is not set.
+// Default value is `V1`.
+// Possible values are `V1` and `V2`.
 func (o Hl7StoreParserConfigPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Hl7StoreParserConfig) *string {
 		if v == nil {

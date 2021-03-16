@@ -113,8 +113,9 @@ type Disk struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrOutput `pulumi:"image"`
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	// Default value is `SCSI`.
+	// Possible values are `SCSI` and `NVME`.
 	Interface pulumi.StringPtrOutput `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
@@ -159,6 +160,10 @@ type Disk struct {
 	// If you specify this field along with `image` or `snapshot`,
 	// the value must not be less than the size of the image
 	// or the size of the snapshot.
+	// ~>**NOTE** If you change the size, the provider updates the disk size
+	// if upsizing is detected but recreates the disk if downsizing is requested.
+	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+	// and recreating.
 	Size pulumi.IntOutput `pulumi:"size"`
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
@@ -250,8 +255,9 @@ type diskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	// Default value is `SCSI`.
+	// Possible values are `SCSI` and `NVME`.
 	Interface *string `pulumi:"interface"`
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
@@ -296,6 +302,10 @@ type diskState struct {
 	// If you specify this field along with `image` or `snapshot`,
 	// the value must not be less than the size of the image
 	// or the size of the snapshot.
+	// ~>**NOTE** If you change the size, the provider updates the disk size
+	// if upsizing is detected but recreates the disk if downsizing is requested.
+	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+	// and recreating.
 	Size *int `pulumi:"size"`
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
@@ -359,8 +369,9 @@ type DiskState struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	// Default value is `SCSI`.
+	// Possible values are `SCSI` and `NVME`.
 	Interface pulumi.StringPtrInput
 	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
@@ -405,6 +416,10 @@ type DiskState struct {
 	// If you specify this field along with `image` or `snapshot`,
 	// the value must not be less than the size of the image
 	// or the size of the snapshot.
+	// ~>**NOTE** If you change the size, the provider updates the disk size
+	// if upsizing is detected but recreates the disk if downsizing is requested.
+	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+	// and recreating.
 	Size pulumi.IntPtrInput
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
@@ -470,8 +485,9 @@ type diskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image *string `pulumi:"image"`
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	// Default value is `SCSI`.
+	// Possible values are `SCSI` and `NVME`.
 	Interface *string `pulumi:"interface"`
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels map[string]string `pulumi:"labels"`
@@ -508,6 +524,10 @@ type diskArgs struct {
 	// If you specify this field along with `image` or `snapshot`,
 	// the value must not be less than the size of the image
 	// or the size of the snapshot.
+	// ~>**NOTE** If you change the size, the provider updates the disk size
+	// if upsizing is detected but recreates the disk if downsizing is requested.
+	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+	// and recreating.
 	Size *int `pulumi:"size"`
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another
@@ -560,8 +580,9 @@ type DiskArgs struct {
 	// For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
 	// These images can be referred by family name here.
 	Image pulumi.StringPtrInput
-	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-	// value: "SCSI" Possible values: ["SCSI", "NVME"]
+	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+	// Default value is `SCSI`.
+	// Possible values are `SCSI` and `NVME`.
 	Interface pulumi.StringPtrInput
 	// Labels to apply to this disk.  A list of key->value pairs.
 	Labels pulumi.StringMapInput
@@ -598,6 +619,10 @@ type DiskArgs struct {
 	// If you specify this field along with `image` or `snapshot`,
 	// the value must not be less than the size of the image
 	// or the size of the snapshot.
+	// ~>**NOTE** If you change the size, the provider updates the disk size
+	// if upsizing is detected but recreates the disk if downsizing is requested.
+	// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+	// and recreating.
 	Size pulumi.IntPtrInput
 	// The source snapshot used to create this disk. You can provide this as
 	// a partial or full URL to the resource. If the snapshot is in another

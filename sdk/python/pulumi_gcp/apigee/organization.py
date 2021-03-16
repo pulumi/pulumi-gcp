@@ -88,10 +88,10 @@ class Organization(pulumi.CustomResource):
         org = gcp.apigee.Organization("org",
             analytics_region="us-central1",
             display_name="apigee-org",
-            description="Terraform-provisioned Apigee Org.",
+            description="Auto-provisioned Apigee Org.",
             project_id=current.project,
             authorized_network=apigee_network.id,
-            runtime_database_encryption_key_name=google_kms_key["apigee_key"]["id"],
+            runtime_database_encryption_key_name=apigee_key.id,
             opts=pulumi.ResourceOptions(depends_on=[
                     apigee_vpc_connection,
                     apigee_sa_keyuser,

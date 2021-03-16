@@ -210,12 +210,15 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this global forwarding rule.
                Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will
-               be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load
-               Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set ""
-               if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL. Default value:
-               "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED"]
+        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
+               The value of INTERNAL_SELF_MANAGED means that this will be used for
+               Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+               will be used for External Global Load Balancing (HTTP(S) LB,
+               External TCP/UDP LB, SSL Proxy)
+               Note: This field must be set "" if the global address is
+               configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+               Default value is `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -256,10 +259,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
                * TargetVpnGateway: 500, 4500
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to
-               the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a
-               purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.
+               The forwarded traffic must be of a type appropriate to the target object.
+               For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+               are valid.
+               For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+               addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -356,12 +361,15 @@ class GlobalForwardingRule(pulumi.CustomResource):
                Possible values are `IPV4` and `IPV6`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this forwarding rule.  A list of key->value pairs.
-        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will
-               be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load
-               Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set ""
-               if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL. Default value:
-               "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED"]
+        :param pulumi.Input[str] load_balancing_scheme: This signifies what the GlobalForwardingRule will be used for.
+               The value of INTERNAL_SELF_MANAGED means that this will be used for
+               Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+               will be used for External Global Load Balancing (HTTP(S) LB,
+               External TCP/UDP LB, SSL Proxy)
+               Note: This field must be set "" if the global address is
+               configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+               Default value is `EXTERNAL`.
+               Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GlobalForwardingRuleMetadataFilterArgs']]]] metadata_filters: Opaque filter criteria used by Loadbalancer to restrict routing
                configuration to a limited set xDS compliant clients. In their xDS
                requests to Loadbalancer, xDS clients present node metadata. If a
@@ -403,10 +411,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to
-               the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
-               ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a
-               purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        :param pulumi.Input[str] target: The URL of the target resource to receive the matched traffic.
+               The forwarded traffic must be of a type appropriate to the target object.
+               For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+               are valid.
+               For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+               addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -505,12 +515,15 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> pulumi.Output[Optional[str]]:
         """
-        This signifies what the GlobalForwardingRule will be used for. The value of INTERNAL_SELF_MANAGED means that this will
-        be used for Internal Global HTTP(S) LB. The value of EXTERNAL means that this will be used for External Global Load
-        Balancing (HTTP(S) LB, External TCP/UDP LB, SSL Proxy)
-        ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) Note: This field must be set ""
-        if the global address is configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL. Default value:
-        "EXTERNAL" Possible values: ["EXTERNAL", "INTERNAL_SELF_MANAGED"]
+        This signifies what the GlobalForwardingRule will be used for.
+        The value of INTERNAL_SELF_MANAGED means that this will be used for
+        Internal Global HTTP(S) LB. The value of EXTERNAL means that this
+        will be used for External Global Load Balancing (HTTP(S) LB,
+        External TCP/UDP LB, SSL Proxy)
+        Note: This field must be set "" if the global address is
+        configured as a purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL.
+        Default value is `EXTERNAL`.
+        Possible values are `EXTERNAL` and `INTERNAL_SELF_MANAGED`.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -601,10 +614,12 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter
     def target(self) -> pulumi.Output[str]:
         """
-        The URL of the target resource to receive the matched traffic. The forwarded traffic must be of a type appropriate to
-        the target object. For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets are valid.
-        ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only) For global address with a
-        purpose of PRIVATE_SERVICE_CONNECT and addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
+        The URL of the target resource to receive the matched traffic.
+        The forwarded traffic must be of a type appropriate to the target object.
+        For INTERNAL_SELF_MANAGED load balancing, only HTTP and HTTPS targets
+        are valid.
+        For global address with a purpose of PRIVATE_SERVICE_CONNECT and
+        addressType of INTERNAL, only "all-apis" and "vpc-sc" are valid.
         """
         return pulumi.get(self, "target")
 

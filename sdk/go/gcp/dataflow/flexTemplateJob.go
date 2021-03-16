@@ -74,6 +74,14 @@ type FlexTemplateJob struct {
 	ContainerSpecGcsPath pulumi.StringOutput `pulumi:"containerSpecGcsPath"`
 	// The unique ID of this job.
 	JobId pulumi.StringOutput `pulumi:"jobId"`
+	// User labels to be specified for the job. Keys and values
+	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+	// page. **Note**: This field is marked as deprecated as the API does not currently
+	// support adding labels.
+	// **NOTE**: Google-provided Dataflow templates often provide default labels
+	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
+	// labels will be ignored to prevent diffs on re-apply.
+	//
 	// Deprecated: Deprecated until the API supports this field
 	Labels pulumi.MapOutput `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
@@ -131,6 +139,14 @@ type flexTemplateJobState struct {
 	ContainerSpecGcsPath *string `pulumi:"containerSpecGcsPath"`
 	// The unique ID of this job.
 	JobId *string `pulumi:"jobId"`
+	// User labels to be specified for the job. Keys and values
+	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+	// page. **Note**: This field is marked as deprecated as the API does not currently
+	// support adding labels.
+	// **NOTE**: Google-provided Dataflow templates often provide default labels
+	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
+	// labels will be ignored to prevent diffs on re-apply.
+	//
 	// Deprecated: Deprecated until the API supports this field
 	Labels map[string]interface{} `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
@@ -157,6 +173,14 @@ type FlexTemplateJobState struct {
 	ContainerSpecGcsPath pulumi.StringPtrInput
 	// The unique ID of this job.
 	JobId pulumi.StringPtrInput
+	// User labels to be specified for the job. Keys and values
+	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+	// page. **Note**: This field is marked as deprecated as the API does not currently
+	// support adding labels.
+	// **NOTE**: Google-provided Dataflow templates often provide default labels
+	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
+	// labels will be ignored to prevent diffs on re-apply.
+	//
 	// Deprecated: Deprecated until the API supports this field
 	Labels pulumi.MapInput
 	// A unique name for the resource, required by Dataflow.
@@ -185,6 +209,14 @@ type flexTemplateJobArgs struct {
 	// The GCS path to the Dataflow job Flex
 	// Template.
 	ContainerSpecGcsPath string `pulumi:"containerSpecGcsPath"`
+	// User labels to be specified for the job. Keys and values
+	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+	// page. **Note**: This field is marked as deprecated as the API does not currently
+	// support adding labels.
+	// **NOTE**: Google-provided Dataflow templates often provide default labels
+	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
+	// labels will be ignored to prevent diffs on re-apply.
+	//
 	// Deprecated: Deprecated until the API supports this field
 	Labels map[string]interface{} `pulumi:"labels"`
 	// A unique name for the resource, required by Dataflow.
@@ -208,6 +240,14 @@ type FlexTemplateJobArgs struct {
 	// The GCS path to the Dataflow job Flex
 	// Template.
 	ContainerSpecGcsPath pulumi.StringInput
+	// User labels to be specified for the job. Keys and values
+	// should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions)
+	// page. **Note**: This field is marked as deprecated as the API does not currently
+	// support adding labels.
+	// **NOTE**: Google-provided Dataflow templates often provide default labels
+	// that begin with `goog-dataflow-provided`. Unless explicitly set in config, these
+	// labels will be ignored to prevent diffs on re-apply.
+	//
 	// Deprecated: Deprecated until the API supports this field
 	Labels pulumi.MapInput
 	// A unique name for the resource, required by Dataflow.

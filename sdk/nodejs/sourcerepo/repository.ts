@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const test_account = new gcp.serviceAccount.Account("test-account", {
+ * const testAccount = new gcp.serviceAccount.Account("testAccount", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
  * });
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  * const my_repo = new gcp.sourcerepo.Repository("my-repo", {pubsubConfigs: [{
  *     topic: topic.id,
  *     messageFormat: "JSON",
- *     serviceAccountEmail: test_account.email,
+ *     serviceAccountEmail: testAccount.email,
  * }]});
  * ```
  *

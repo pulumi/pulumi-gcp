@@ -5,15 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export * from "./envGroup";
+export * from "./environment";
+export * from "./instance";
 export * from "./organization";
 
 // Import resources to register:
+import { EnvGroup } from "./envGroup";
+import { Environment } from "./environment";
+import { Instance } from "./instance";
 import { Organization } from "./organization";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:apigee/envGroup:EnvGroup":
+                return new EnvGroup(name, <any>undefined, { urn })
+            case "gcp:apigee/environment:Environment":
+                return new Environment(name, <any>undefined, { urn })
+            case "gcp:apigee/instance:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "gcp:apigee/organization:Organization":
                 return new Organization(name, <any>undefined, { urn })
             default:
@@ -21,4 +33,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "apigee/envGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/instance", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/organization", _module)

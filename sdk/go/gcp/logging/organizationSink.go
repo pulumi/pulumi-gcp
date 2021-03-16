@@ -11,12 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a organization-level logging sink. For more information see
-// [the official documentation](https://cloud.google.com/logging/docs/) and
-// [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
-//
-// Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-// granted to the credentials used with this provider.
+// Manages a organization-level logging sink. For more information see:
+// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.sinks)
+// * How-to Guides
+//     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 //
 // ## Example Usage
 //
@@ -73,7 +71,7 @@ type OrganizationSink struct {
 
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -92,19 +90,17 @@ type OrganizationSink struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions OrganizationSinkExclusionArrayOutput `pulumi:"exclusions"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrOutput `pulumi:"includeChildren"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The numeric ID of the organization to be exported to the sink.
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
@@ -150,7 +146,7 @@ func GetOrganizationSink(ctx *pulumi.Context,
 type organizationSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -169,19 +165,17 @@ type organizationSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []OrganizationSinkExclusion `pulumi:"exclusions"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
 	// The numeric ID of the organization to be exported to the sink.
 	OrgId *string `pulumi:"orgId"`
@@ -193,7 +187,7 @@ type organizationSinkState struct {
 type OrganizationSinkState struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -212,19 +206,17 @@ type OrganizationSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions OrganizationSinkExclusionArrayInput
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrInput
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
 	// The numeric ID of the organization to be exported to the sink.
 	OrgId pulumi.StringPtrInput
@@ -240,7 +232,7 @@ func (OrganizationSinkState) ElementType() reflect.Type {
 type organizationSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -259,19 +251,17 @@ type organizationSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []OrganizationSinkExclusion `pulumi:"exclusions"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren *bool `pulumi:"includeChildren"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
 	// The numeric ID of the organization to be exported to the sink.
 	OrgId string `pulumi:"orgId"`
@@ -281,7 +271,7 @@ type organizationSinkArgs struct {
 type OrganizationSinkArgs struct {
 	// Options that affect sinks exporting data to BigQuery. Structure documented below.
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -300,19 +290,17 @@ type OrganizationSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions OrganizationSinkExclusionArrayInput
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
 	// Whether or not to include children organizations in the sink export. If true, logs
 	// associated with child projects are also exported; otherwise only logs relating to the provided organization are included.
 	IncludeChildren pulumi.BoolPtrInput
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
 	// The numeric ID of the organization to be exported to the sink.
 	OrgId pulumi.StringInput

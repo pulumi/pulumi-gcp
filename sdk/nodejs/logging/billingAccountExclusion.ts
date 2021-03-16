@@ -5,27 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a billing account logging exclusion. For more information see
- * [the official documentation](https://cloud.google.com/logging/docs/) and
- * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
- *
- * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
- * granted to the credentials used with the provider.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_exclusion = new gcp.logging.BillingAccountExclusion("my-exclusion", {
- *     billingAccount: "ABCDEF-012345-GHIJKL",
- *     description: "Exclude GCE instance debug logs",
- *     // Exclude all DEBUG or lower severity messages relating to instances
- *     filter: "resource.type = gce_instance AND severity <= DEBUG",
- * });
- * ```
- *
  * ## Import
  *
  * Billing account logging exclusions can be imported using their URI, e.g.

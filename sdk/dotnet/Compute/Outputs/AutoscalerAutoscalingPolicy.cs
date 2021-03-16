@@ -74,6 +74,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AutoscalerAutoscalingPolicyScaleInControl? ScaleInControl;
+        /// <summary>
+        /// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AutoscalerAutoscalingPolicyScalingSchedule> ScalingSchedules;
 
         [OutputConstructor]

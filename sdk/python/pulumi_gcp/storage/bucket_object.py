@@ -23,6 +23,7 @@ class BucketObject(pulumi.CustomResource):
                  content_language: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  detect_md5hash: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
@@ -65,6 +66,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_encoding: [Content-Encoding](https://tools.ietf.org/html/rfc7231#section-3.1.2.2) of the object data.
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
+        :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] name: The name of the object. If you're interpolating the name of this object, see `output_name` instead.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] source: A path to the data you want to upload. Must be defined
@@ -100,6 +102,7 @@ class BucketObject(pulumi.CustomResource):
             __props__['content_language'] = content_language
             __props__['content_type'] = content_type
             __props__['detect_md5hash'] = detect_md5hash
+            __props__['kms_key_name'] = kms_key_name
             __props__['metadata'] = metadata
             __props__['name'] = name
             __props__['source'] = source
@@ -128,6 +131,7 @@ class BucketObject(pulumi.CustomResource):
             content_type: Optional[pulumi.Input[str]] = None,
             crc32c: Optional[pulumi.Input[str]] = None,
             detect_md5hash: Optional[pulumi.Input[str]] = None,
+            kms_key_name: Optional[pulumi.Input[str]] = None,
             md5hash: Optional[pulumi.Input[str]] = None,
             media_link: Optional[pulumi.Input[str]] = None,
             metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -152,6 +156,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_language: [Content-Language](https://tools.ietf.org/html/rfc7231#section-3.1.3.2) of the object data.
         :param pulumi.Input[str] content_type: [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
         :param pulumi.Input[str] crc32c: (Computed) Base 64 CRC32 hash of the uploaded data.
+        :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
         :param pulumi.Input[str] md5hash: (Computed) Base 64 MD5 hash of the uploaded data.
         :param pulumi.Input[str] media_link: (Computed) A url reference to download this object.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
@@ -178,6 +183,7 @@ class BucketObject(pulumi.CustomResource):
         __props__["content_type"] = content_type
         __props__["crc32c"] = crc32c
         __props__["detect_md5hash"] = detect_md5hash
+        __props__["kms_key_name"] = kms_key_name
         __props__["md5hash"] = md5hash
         __props__["media_link"] = media_link
         __props__["metadata"] = metadata
@@ -257,6 +263,14 @@ class BucketObject(pulumi.CustomResource):
     @pulumi.getter(name="detectMd5hash")
     def detect_md5hash(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "detect_md5hash")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[str]:
+        """
+        The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter

@@ -10,6 +10,202 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BigQuery
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for BigQuery Table. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.bigquery.IamPolicy`: Authoritative. Sets the IAM policy for the table and replaces any existing policy already attached.
+    /// * `gcp.bigquery.IamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the table are preserved.
+    /// * `gcp.bigquery.IamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the table are preserved.
+    /// 
+    /// &gt; **Note:** `gcp.bigquery.IamPolicy` **cannot** be used in conjunction with `gcp.bigquery.IamBinding` and `gcp.bigquery.IamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.bigquery.IamBinding` resources **can be** used in conjunction with `gcp.bigquery.IamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## google\_bigquery\_table\_iam\_policy
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/bigquery.dataOwner",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.BigQuery.IamPolicy("policy", new Gcp.BigQuery.IamPolicyArgs
+    ///         {
+    ///             Project = google_bigquery_table.Test.Project,
+    ///             DatasetId = google_bigquery_table.Test.Dataset_id,
+    ///             TableId = google_bigquery_table.Test.Table_id,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var admin = Output.Create(Gcp.Organizations.GetIAMPolicy.InvokeAsync(new Gcp.Organizations.GetIAMPolicyArgs
+    ///         {
+    ///             Bindings = 
+    ///             {
+    ///                 new Gcp.Organizations.Inputs.GetIAMPolicyBindingArgs
+    ///                 {
+    ///                     Role = "roles/bigquery.dataOwner",
+    ///                     Members = 
+    ///                     {
+    ///                         "user:jane@example.com",
+    ///                     },
+    ///                     Condition = new Gcp.Organizations.Inputs.GetIAMPolicyBindingConditionArgs
+    ///                     {
+    ///                         Title = "expires_after_2019_12_31",
+    ///                         Description = "Expiring at midnight of 2019-12-31",
+    ///                         Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         }));
+    ///         var policy = new Gcp.BigQuery.IamPolicy("policy", new Gcp.BigQuery.IamPolicyArgs
+    ///         {
+    ///             Project = google_bigquery_table.Test.Project,
+    ///             DatasetId = google_bigquery_table.Test.Dataset_id,
+    ///             TableId = google_bigquery_table.Test.Table_id,
+    ///             PolicyData = admin.Apply(admin =&gt; admin.PolicyData),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## google\_bigquery\_table\_iam\_binding
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.BigQuery.IamBinding("binding", new Gcp.BigQuery.IamBindingArgs
+    ///         {
+    ///             Project = google_bigquery_table.Test.Project,
+    ///             DatasetId = google_bigquery_table.Test.Dataset_id,
+    ///             TableId = google_bigquery_table.Test.Table_id,
+    ///             Role = "roles/bigquery.dataOwner",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var binding = new Gcp.BigQuery.IamBinding("binding", new Gcp.BigQuery.IamBindingArgs
+    ///         {
+    ///             Project = google_bigquery_table.Test.Project,
+    ///             DatasetId = google_bigquery_table.Test.Dataset_id,
+    ///             TableId = google_bigquery_table.Test.Table_id,
+    ///             Role = "roles/bigquery.dataOwner",
+    ///             Members = 
+    ///             {
+    ///                 "user:jane@example.com",
+    ///             },
+    ///             Condition = new Gcp.BigQuery.Inputs.IamBindingConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ## google\_bigquery\_table\_iam\_member
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.BigQuery.IamMember("member", new Gcp.BigQuery.IamMemberArgs
+    ///         {
+    ///             Project = google_bigquery_table.Test.Project,
+    ///             DatasetId = google_bigquery_table.Test.Dataset_id,
+    ///             TableId = google_bigquery_table.Test.Table_id,
+    ///             Role = "roles/bigquery.dataOwner",
+    ///             Member = "user:jane@example.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// With IAM Conditions:
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var member = new Gcp.BigQuery.IamMember("member", new Gcp.BigQuery.IamMemberArgs
+    ///         {
+    ///             Project = google_bigquery_table.Test.Project,
+    ///             DatasetId = google_bigquery_table.Test.Dataset_id,
+    ///             TableId = google_bigquery_table.Test.Table_id,
+    ///             Role = "roles/bigquery.dataOwner",
+    ///             Member = "user:jane@example.com",
+    ///             Condition = new Gcp.BigQuery.Inputs.IamMemberConditionArgs
+    ///             {
+    ///                 Title = "expires_after_2019_12_31",
+    ///                 Description = "Expiring at midnight of 2019-12-31",
+    ///                 Expression = "request.time &lt; timestamp(\"2020-01-01T00:00:00Z\")",
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}} * {{project}}/{{dataset_id}}/{{table_id}} * {{dataset_id}}/{{table_id}} * {{table_id}} Any variables not passed in the import command will be taken from the provider configuration. BigQuery table IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

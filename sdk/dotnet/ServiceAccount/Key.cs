@@ -10,10 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ServiceAccount
 {
     /// <summary>
-    /// Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
+    /// Creates and manages service account keys, which allow the use of a service account outside of Google Cloud.
+    /// 
+    /// * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
     /// 
     /// ## Example Usage
-    /// ### Creating A New Key Pair
+    /// ### Creating A New Key
     /// 
     /// ```csharp
     /// using Pulumi;
@@ -98,7 +102,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string?> PublicKeyType { get; private set; } = null!;
 
         /// <summary>
-        /// The Service account id of the Key Pair. This can be a string in the format
+        /// The Service account id of the Key. This can be a string in the format
         /// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
         /// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         /// </summary>
@@ -204,7 +208,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? PublicKeyType { get; set; }
 
         /// <summary>
-        /// The Service account id of the Key Pair. This can be a string in the format
+        /// The Service account id of the Key. This can be a string in the format
         /// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
         /// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         /// </summary>
@@ -277,7 +281,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string>? PublicKeyType { get; set; }
 
         /// <summary>
-        /// The Service account id of the Key Pair. This can be a string in the format
+        /// The Service account id of the Key. This can be a string in the format
         /// `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
         /// unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         /// </summary>

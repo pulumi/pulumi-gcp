@@ -19,7 +19,7 @@ class GetBucketObjectContentResult:
     """
     A collection of values returned by getBucketObjectContent.
     """
-    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, id=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
+    def __init__(__self__, bucket=None, cache_control=None, content=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, detect_md5hash=None, id=None, kms_key_name=None, md5hash=None, media_link=None, metadata=None, name=None, output_name=None, self_link=None, source=None, storage_class=None):
         if bucket and not isinstance(bucket, str):
             raise TypeError("Expected argument 'bucket' to be a str")
         pulumi.set(__self__, "bucket", bucket)
@@ -50,6 +50,9 @@ class GetBucketObjectContentResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if md5hash and not isinstance(md5hash, str):
             raise TypeError("Expected argument 'md5hash' to be a str")
         pulumi.set(__self__, "md5hash", md5hash)
@@ -132,6 +135,11 @@ class GetBucketObjectContentResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
     @pulumi.getter
     def md5hash(self) -> str:
         return pulumi.get(self, "md5hash")
@@ -188,6 +196,7 @@ class AwaitableGetBucketObjectContentResult(GetBucketObjectContentResult):
             crc32c=self.crc32c,
             detect_md5hash=self.detect_md5hash,
             id=self.id,
+            kms_key_name=self.kms_key_name,
             md5hash=self.md5hash,
             media_link=self.media_link,
             metadata=self.metadata,
@@ -249,6 +258,7 @@ def get_bucket_object_content(bucket: Optional[str] = None,
         crc32c=__ret__.crc32c,
         detect_md5hash=__ret__.detect_md5hash,
         id=__ret__.id,
+        kms_key_name=__ret__.kms_key_name,
         md5hash=__ret__.md5hash,
         media_link=__ret__.media_link,
         metadata=__ret__.metadata,

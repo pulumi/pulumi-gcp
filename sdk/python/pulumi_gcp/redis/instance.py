@@ -41,7 +41,7 @@ class Instance(pulumi.CustomResource):
 
         To get more information about Instance, see:
 
-        * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+        * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 
@@ -74,6 +74,33 @@ class Instance(pulumi.CustomResource):
                 "my_key": "my_val",
                 "other_key": "other_val",
             })
+        ```
+        ### Redis Instance Private Service
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        redis_network = gcp.compute.get_network(name="redis-test-network")
+        service_range = gcp.compute.GlobalAddress("serviceRange",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=16,
+            network=redis_network.id)
+        private_service_connection = gcp.servicenetworking.Connection("privateServiceConnection",
+            network=redis_network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[service_range.name])
+        cache = gcp.redis.Instance("cache",
+            tier="STANDARD_HA",
+            memory_size_gb=1,
+            location_id="us-central1-a",
+            alternative_location_id="us-central1-f",
+            authorized_network=redis_network.id,
+            connect_mode="PRIVATE_SERVICE_ACCESS",
+            redis_version="REDIS_4_0",
+            display_name="Test Instance",
+            opts=pulumi.ResourceOptions(depends_on=[private_service_connection]))
         ```
 
         ## Import
@@ -141,9 +168,10 @@ class Instance(pulumi.CustomResource):
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
-        :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-               to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-               ["SERVER_AUTHENTICATION", "DISABLED"]
+        :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+               Default value is `DISABLED`.
+               Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -281,9 +309,10 @@ class Instance(pulumi.CustomResource):
                - STANDARD_HA: highly available primary/replica instances
                Default value is `BASIC`.
                Possible values are `BASIC` and `STANDARD_HA`.
-        :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-               to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-               ["SERVER_AUTHENTICATION", "DISABLED"]
+        :param pulumi.Input[str] transit_encryption_mode: The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+               - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+               Default value is `DISABLED`.
+               Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -526,9 +555,10 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="transitEncryptionMode")
     def transit_encryption_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-        to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-        ["SERVER_AUTHENTICATION", "DISABLED"]
+        The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+        - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        Default value is `DISABLED`.
+        Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         """
         return pulumi.get(self, "transit_encryption_mode")
 

@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RegionAutoscalerAutoscalingPolicyCpuUtilizationGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+        /// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+        /// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        /// </summary>
+        [Input("predictiveMethod")]
+        public Input<string>? PredictiveMethod { get; set; }
+
+        /// <summary>
         /// Fraction of backend capacity utilization (set in HTTP(s) load
         /// balancing configuration) that autoscaler should maintain. Must
         /// be a positive float value. If not defined, the default is 0.8.

@@ -61,12 +61,11 @@ class BillingAccountSinkExclusionArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
-               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[str] name: The name of the logging sink.
-        :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
+        :param pulumi.Input[str] name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input[str] description: A description of this exclusion.
+        :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "name", name)
@@ -79,8 +78,7 @@ class BillingAccountSinkExclusionArgs:
     @pulumi.getter
     def filter(self) -> pulumi.Input[str]:
         """
-        The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         write a filter.
         """
         return pulumi.get(self, "filter")
@@ -93,7 +91,7 @@ class BillingAccountSinkExclusionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the logging sink.
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         return pulumi.get(self, "name")
 
@@ -105,7 +103,7 @@ class BillingAccountSinkExclusionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of this sink. The maximum length of the description is 8000 characters.
+        A description of this exclusion.
         """
         return pulumi.get(self, "description")
 
@@ -117,7 +115,7 @@ class BillingAccountSinkExclusionArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to True, then this sink is disabled and it does not export any log entries.
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
 
@@ -162,12 +160,11 @@ class FolderSinkExclusionArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
-               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[str] name: The name of the logging sink.
-        :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
+        :param pulumi.Input[str] name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input[str] description: A description of this exclusion.
+        :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "name", name)
@@ -180,8 +177,7 @@ class FolderSinkExclusionArgs:
     @pulumi.getter
     def filter(self) -> pulumi.Input[str]:
         """
-        The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         write a filter.
         """
         return pulumi.get(self, "filter")
@@ -194,7 +190,7 @@ class FolderSinkExclusionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the logging sink.
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         return pulumi.get(self, "name")
 
@@ -206,7 +202,7 @@ class FolderSinkExclusionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of this sink. The maximum length of the description is 8000 characters.
+        A description of this exclusion.
         """
         return pulumi.get(self, "description")
 
@@ -218,7 +214,7 @@ class FolderSinkExclusionArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to True, then this sink is disabled and it does not export any log entries.
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
 
@@ -631,12 +627,11 @@ class OrganizationSinkExclusionArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[str] filter: The filter to apply when exporting logs. Only log entries that match the filter are exported.
-               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        :param pulumi.Input[str] filter: An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
                write a filter.
-        :param pulumi.Input[str] name: The name of the logging sink.
-        :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
+        :param pulumi.Input[str] name: A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        :param pulumi.Input[str] description: A description of this exclusion.
+        :param pulumi.Input[bool] disabled: If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         pulumi.set(__self__, "filter", filter)
         pulumi.set(__self__, "name", name)
@@ -649,8 +644,7 @@ class OrganizationSinkExclusionArgs:
     @pulumi.getter
     def filter(self) -> pulumi.Input[str]:
         """
-        The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         write a filter.
         """
         return pulumi.get(self, "filter")
@@ -663,7 +657,7 @@ class OrganizationSinkExclusionArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The name of the logging sink.
+        A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         return pulumi.get(self, "name")
 
@@ -675,7 +669,7 @@ class OrganizationSinkExclusionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description of this sink. The maximum length of the description is 8000 characters.
+        A description of this exclusion.
         """
         return pulumi.get(self, "description")
 
@@ -687,7 +681,7 @@ class OrganizationSinkExclusionArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        If set to True, then this sink is disabled and it does not export any log entries.
+        If set to True, then this exclusion is disabled and it does not exclude any log entries.
         """
         return pulumi.get(self, "disabled")
 

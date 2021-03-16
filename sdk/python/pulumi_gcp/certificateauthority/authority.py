@@ -33,6 +33,94 @@ class Authority(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        A CertificateAuthority represents an individual Certificate Authority. A
+        CertificateAuthority can be used to create Certificates.
+
+        > **Warning:** Please remember that all resources created during preview (via this provider)
+        will be deleted when CA service transitions to General Availability (GA). Relying on these
+        certificate authorities for production traffic is discouraged.
+
+        To get more information about CertificateAuthority, see:
+
+        * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+
+        ## Example Usage
+        ### Privateca Certificate Authority Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                    ),
+                    common_name="my-certificate-authority",
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
+                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            disable_on_delete=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Privateca Certificate Authority Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.certificateauthority.Authority("default",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            tier="DEVOPS",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        country_code="US",
+                        organization="HashiCorp",
+                        organizational_unit="Terraform",
+                        locality="San Francisco",
+                        province="CA",
+                        street_address="101 2nd St #700",
+                        postal_code="94105",
+                    ),
+                    common_name="my-certificate-authority",
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                        email_addresses=["email@example.com"],
+                        ip_addresses=["127.0.0.1"],
+                        uris=["http://www.ietf.org/rfc/rfc3986.txt"],
+                    ),
+                ),
+                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
+                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                ),
+            ),
+            lifetime="86400s",
+            issuing_options=gcp.certificateauthority.AuthorityIssuingOptionsArgs(
+                include_ca_cert_url=True,
+                include_crl_access_url=False,
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="EC_P256_SHA256",
+            ),
+            disable_on_delete=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         CertificateAuthority can be imported using any of these accepted formats

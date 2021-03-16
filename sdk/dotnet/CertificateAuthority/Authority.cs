@@ -10,6 +10,144 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority
 {
     /// <summary>
+    /// A CertificateAuthority represents an individual Certificate Authority. A
+    /// CertificateAuthority can be used to create Certificates.
+    /// 
+    /// &gt; **Warning:** Please remember that all resources created during preview (via this provider)
+    /// will be deleted when CA service transitions to General Availability (GA). Relying on these
+    /// certificate authorities for production traffic is discouraged.
+    /// 
+    /// To get more information about CertificateAuthority, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+    /// 
+    /// ## Example Usage
+    /// ### Privateca Certificate Authority Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CertificateAuthority.Authority("default", new Gcp.CertificateAuthority.AuthorityArgs
+    ///         {
+    ///             CertificateAuthorityId = "my-certificate-authority",
+    ///             Location = "us-central1",
+    ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///             {
+    ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///                 {
+    ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                     {
+    ///                         Organization = "HashiCorp",
+    ///                     },
+    ///                     CommonName = "my-certificate-authority",
+    ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                     {
+    ///                         DnsNames = 
+    ///                         {
+    ///                             "hashicorp.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ReusableConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigReusableConfigArgs
+    ///                 {
+    ///                     ReusableConfig = "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+    ///                 },
+    ///             },
+    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///             {
+    ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///             },
+    ///             DisableOnDelete = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Privateca Certificate Authority Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CertificateAuthority.Authority("default", new Gcp.CertificateAuthority.AuthorityArgs
+    ///         {
+    ///             CertificateAuthorityId = "my-certificate-authority",
+    ///             Location = "us-central1",
+    ///             Tier = "DEVOPS",
+    ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///             {
+    ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///                 {
+    ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                     {
+    ///                         CountryCode = "US",
+    ///                         Organization = "HashiCorp",
+    ///                         OrganizationalUnit = "Terraform",
+    ///                         Locality = "San Francisco",
+    ///                         Province = "CA",
+    ///                         StreetAddress = "101 2nd St #700",
+    ///                         PostalCode = "94105",
+    ///                     },
+    ///                     CommonName = "my-certificate-authority",
+    ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                     {
+    ///                         DnsNames = 
+    ///                         {
+    ///                             "hashicorp.com",
+    ///                         },
+    ///                         EmailAddresses = 
+    ///                         {
+    ///                             "email@example.com",
+    ///                         },
+    ///                         IpAddresses = 
+    ///                         {
+    ///                             "127.0.0.1",
+    ///                         },
+    ///                         Uris = 
+    ///                         {
+    ///                             "http://www.ietf.org/rfc/rfc3986.txt",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ReusableConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigReusableConfigArgs
+    ///                 {
+    ///                     ReusableConfig = "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+    ///                 },
+    ///             },
+    ///             Lifetime = "86400s",
+    ///             IssuingOptions = new Gcp.CertificateAuthority.Inputs.AuthorityIssuingOptionsArgs
+    ///             {
+    ///                 IncludeCaCertUrl = true,
+    ///                 IncludeCrlAccessUrl = false,
+    ///             },
+    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///             {
+    ///                 Algorithm = "EC_P256_SHA256",
+    ///             },
+    ///             DisableOnDelete = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// CertificateAuthority can be imported using any of these accepted formats

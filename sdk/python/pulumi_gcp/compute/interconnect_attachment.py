@@ -23,6 +23,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
+                 mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -46,7 +47,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         foobar = gcp.compute.Router("foobar", network=google_compute_network["foobar"]["name"])
         on_prem = gcp.compute.InterconnectAttachment("onPrem",
             interconnect="my-interconnect-id",
-            router=foobar.id)
+            router=foobar.id,
+            mtu="1500")
         ```
 
         ## Import
@@ -96,6 +98,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
+        :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
+               this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
                name must be 1-63 characters long, and comply with RFC1035. Specifically, the
                name must be 1-63 characters long and match the regular expression
@@ -138,6 +142,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__['description'] = description
             __props__['edge_availability_domain'] = edge_availability_domain
             __props__['interconnect'] = interconnect
+            __props__['mtu'] = mtu
             __props__['name'] = name
             __props__['project'] = project
             __props__['region'] = region
@@ -175,6 +180,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             edge_availability_domain: Optional[pulumi.Input[str]] = None,
             google_reference_id: Optional[pulumi.Input[str]] = None,
             interconnect: Optional[pulumi.Input[str]] = None,
+            mtu: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pairing_key: Optional[pulumi.Input[str]] = None,
             partner_asn: Optional[pulumi.Input[str]] = None,
@@ -223,6 +229,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's
                traffic will traverse through. Required if type is DEDICATED, must not
                be set if type is PARTNER.
+        :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
+               this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
                name must be 1-63 characters long, and comply with RFC1035. Specifically, the
                name must be 1-63 characters long and match the regular expression
@@ -264,6 +272,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__["edge_availability_domain"] = edge_availability_domain
         __props__["google_reference_id"] = google_reference_id
         __props__["interconnect"] = interconnect
+        __props__["mtu"] = mtu
         __props__["name"] = name
         __props__["pairing_key"] = pairing_key
         __props__["partner_asn"] = partner_asn
@@ -376,6 +385,15 @@ class InterconnectAttachment(pulumi.CustomResource):
         be set if type is PARTNER.
         """
         return pulumi.get(self, "interconnect")
+
+    @property
+    @pulumi.getter
+    def mtu(self) -> pulumi.Output[str]:
+        """
+        Maximum Transmission Unit (MTU), in bytes, of packets passing through
+        this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        """
+        return pulumi.get(self, "mtu")
 
     @property
     @pulumi.getter

@@ -38,7 +38,10 @@
         "apigateway/gatewayIamMember.ts",
         "apigateway/gatewayIamPolicy.ts",
         "apigateway/index.ts",
+        "apigee/envGroup.ts",
+        "apigee/environment.ts",
         "apigee/index.ts",
+        "apigee/instance.ts",
         "apigee/organization.ts",
         "appengine/application.ts",
         "appengine/applicationUrlDispatchRules.ts",
@@ -641,6 +644,8 @@
         "utilities.ts",
         "utils.ts",
         "vpcaccess/connector.ts",
-        "vpcaccess/index.ts"
+        "vpcaccess/index.ts",
+        "workflows/index.ts",
+        "workflows/workflow.ts"
     ]
 }

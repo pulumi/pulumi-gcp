@@ -4436,6 +4436,8 @@ type ClusterNodeConfig struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	EphemeralStorageConfig *ClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators []ClusterNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -4452,8 +4454,7 @@ type ClusterNodeConfig struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig *ClusterNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
-	// The amount of local SSD disks that will be
-	// attached to each cluster node. Defaults to 0.
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -4524,6 +4525,8 @@ type ClusterNodeConfigArgs struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	EphemeralStorageConfig ClusterNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators ClusterNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -4540,8 +4543,7 @@ type ClusterNodeConfigArgs struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig ClusterNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
-	// The amount of local SSD disks that will be
-	// attached to each cluster node. Defaults to 0.
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -4686,6 +4688,11 @@ func (o ClusterNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+func (o ClusterNodeConfigOutput) EphemeralStorageConfig() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig { return v.EphemeralStorageConfig }).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
 func (o ClusterNodeConfigOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
@@ -4717,8 +4724,7 @@ func (o ClusterNodeConfigOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNodeCon
 	return o.ApplyT(func(v ClusterNodeConfig) *ClusterNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each cluster node. Defaults to 0.
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 func (o ClusterNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
@@ -4853,6 +4859,16 @@ func (o ClusterNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+func (o ClusterNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *ClusterNodeConfigEphemeralStorageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EphemeralStorageConfig
+	}).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
 func (o ClusterNodeConfigPtrOutput) GuestAccelerators() ClusterNodeConfigGuestAcceleratorArrayOutput {
@@ -4909,8 +4925,7 @@ func (o ClusterNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodeConfigLinuxNode
 	}).(ClusterNodeConfigLinuxNodeConfigPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each cluster node. Defaults to 0.
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 func (o ClusterNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *int {
 		if v == nil {
@@ -5053,6 +5068,137 @@ func (o ClusterNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNodeConfigWo
 		}
 		return v.WorkloadMetadataConfig
 	}).(ClusterNodeConfigWorkloadMetadataConfigPtrOutput)
+}
+
+type ClusterNodeConfigEphemeralStorageConfig struct {
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// ClusterNodeConfigEphemeralStorageConfigInput is an input type that accepts ClusterNodeConfigEphemeralStorageConfigArgs and ClusterNodeConfigEphemeralStorageConfigOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigEphemeralStorageConfigInput` via:
+//
+//          ClusterNodeConfigEphemeralStorageConfigArgs{...}
+type ClusterNodeConfigEphemeralStorageConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigEphemeralStorageConfigOutput() ClusterNodeConfigEphemeralStorageConfigOutput
+	ToClusterNodeConfigEphemeralStorageConfigOutputWithContext(context.Context) ClusterNodeConfigEphemeralStorageConfigOutput
+}
+
+type ClusterNodeConfigEphemeralStorageConfigArgs struct {
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (ClusterNodeConfigEphemeralStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i ClusterNodeConfigEphemeralStorageConfigArgs) ToClusterNodeConfigEphemeralStorageConfigOutput() ClusterNodeConfigEphemeralStorageConfigOutput {
+	return i.ToClusterNodeConfigEphemeralStorageConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigEphemeralStorageConfigArgs) ToClusterNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) ClusterNodeConfigEphemeralStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigEphemeralStorageConfigOutput)
+}
+
+func (i ClusterNodeConfigEphemeralStorageConfigArgs) ToClusterNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return i.ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodeConfigEphemeralStorageConfigArgs) ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigEphemeralStorageConfigOutput).ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodeConfigEphemeralStorageConfigPtrInput is an input type that accepts ClusterNodeConfigEphemeralStorageConfigArgs, ClusterNodeConfigEphemeralStorageConfigPtr and ClusterNodeConfigEphemeralStorageConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodeConfigEphemeralStorageConfigPtrInput` via:
+//
+//          ClusterNodeConfigEphemeralStorageConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodeConfigEphemeralStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodeConfigEphemeralStorageConfigPtrOutput
+	ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Context) ClusterNodeConfigEphemeralStorageConfigPtrOutput
+}
+
+type clusterNodeConfigEphemeralStorageConfigPtrType ClusterNodeConfigEphemeralStorageConfigArgs
+
+func ClusterNodeConfigEphemeralStorageConfigPtr(v *ClusterNodeConfigEphemeralStorageConfigArgs) ClusterNodeConfigEphemeralStorageConfigPtrInput {
+	return (*clusterNodeConfigEphemeralStorageConfigPtrType)(v)
+}
+
+func (*clusterNodeConfigEphemeralStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i *clusterNodeConfigEphemeralStorageConfigPtrType) ToClusterNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return i.ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodeConfigEphemeralStorageConfigPtrType) ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+type ClusterNodeConfigEphemeralStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigEphemeralStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigEphemeralStorageConfigOutput) ToClusterNodeConfigEphemeralStorageConfigOutput() ClusterNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEphemeralStorageConfigOutput) ToClusterNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) ClusterNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEphemeralStorageConfigOutput) ToClusterNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodeConfigEphemeralStorageConfigOutput) ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfigEphemeralStorageConfig) *ClusterNodeConfigEphemeralStorageConfig {
+		return &v
+	}).(ClusterNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+func (o ClusterNodeConfigEphemeralStorageConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodeConfigEphemeralStorageConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type ClusterNodeConfigEphemeralStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodeConfigEphemeralStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o ClusterNodeConfigEphemeralStorageConfigPtrOutput) ToClusterNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEphemeralStorageConfigPtrOutput) ToClusterNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodeConfigEphemeralStorageConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodeConfigEphemeralStorageConfigPtrOutput) Elem() ClusterNodeConfigEphemeralStorageConfigOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigEphemeralStorageConfig) ClusterNodeConfigEphemeralStorageConfig { return *v }).(ClusterNodeConfigEphemeralStorageConfigOutput)
+}
+
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+func (o ClusterNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfigEphemeralStorageConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodeConfigGuestAccelerator struct {
@@ -6552,6 +6698,8 @@ type ClusterNodePoolNodeConfig struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	EphemeralStorageConfig *ClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators []ClusterNodePoolNodeConfigGuestAccelerator `pulumi:"guestAccelerators"`
@@ -6568,8 +6716,7 @@ type ClusterNodePoolNodeConfig struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig *ClusterNodePoolNodeConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
-	// The amount of local SSD disks that will be
-	// attached to each cluster node. Defaults to 0.
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -6640,6 +6787,8 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Type of the disk attached to each node
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	EphemeralStorageConfig ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	// List of the type and count of accelerator cards attached to the instance.
 	// Structure documented below.
 	GuestAccelerators ClusterNodePoolNodeConfigGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
@@ -6656,8 +6805,7 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// Note that validations happen all server side. All attributes are optional.
 	// Structure is documented below.
 	LinuxNodeConfig ClusterNodePoolNodeConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
-	// The amount of local SSD disks that will be
-	// attached to each cluster node. Defaults to 0.
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// The name of a Google Compute Engine machine type.
 	// Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -6802,6 +6950,13 @@ func (o ClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+func (o ClusterNodePoolNodeConfigOutput) EphemeralStorageConfig() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
+		return v.EphemeralStorageConfig
+	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
 func (o ClusterNodePoolNodeConfigOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -6835,8 +6990,7 @@ func (o ClusterNodePoolNodeConfigOutput) LinuxNodeConfig() ClusterNodePoolNodeCo
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each cluster node. Defaults to 0.
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 func (o ClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
 }
@@ -6975,6 +7129,16 @@ func (o ClusterNodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+func (o ClusterNodePoolNodeConfigPtrOutput) EphemeralStorageConfig() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EphemeralStorageConfig
+	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
 // List of the type and count of accelerator cards attached to the instance.
 // Structure documented below.
 func (o ClusterNodePoolNodeConfigPtrOutput) GuestAccelerators() ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -7031,8 +7195,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) LinuxNodeConfig() ClusterNodePoolNod
 	}).(ClusterNodePoolNodeConfigLinuxNodeConfigPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each cluster node. Defaults to 0.
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
 func (o ClusterNodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *int {
 		if v == nil {
@@ -7175,6 +7338,139 @@ func (o ClusterNodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() ClusterNode
 		}
 		return v.WorkloadMetadataConfig
 	}).(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigEphemeralStorageConfig struct {
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// ClusterNodePoolNodeConfigEphemeralStorageConfigInput is an input type that accepts ClusterNodePoolNodeConfigEphemeralStorageConfigArgs and ClusterNodePoolNodeConfigEphemeralStorageConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigEphemeralStorageConfigInput` via:
+//
+//          ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{...}
+type ClusterNodePoolNodeConfigEphemeralStorageConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigEphemeralStorageConfigOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigOutput
+	ToClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigOutput
+}
+
+type ClusterNodePoolNodeConfigEphemeralStorageConfigArgs struct {
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (ClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ToClusterNodePoolNodeConfigEphemeralStorageConfigOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return i.ToClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ToClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput)
+}
+
+func (i ClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput).ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput is an input type that accepts ClusterNodePoolNodeConfigEphemeralStorageConfigArgs, ClusterNodePoolNodeConfigEphemeralStorageConfigPtr and ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput` via:
+//
+//          ClusterNodePoolNodeConfigEphemeralStorageConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput
+	ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput
+}
+
+type clusterNodePoolNodeConfigEphemeralStorageConfigPtrType ClusterNodePoolNodeConfigEphemeralStorageConfigArgs
+
+func ClusterNodePoolNodeConfigEphemeralStorageConfigPtr(v *ClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ClusterNodePoolNodeConfigEphemeralStorageConfigPtrInput {
+	return (*clusterNodePoolNodeConfigEphemeralStorageConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNodeConfigEphemeralStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNodeConfigEphemeralStorageConfigPtrType) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return i.ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNodeConfigEphemeralStorageConfigPtrType) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+type ClusterNodePoolNodeConfigEphemeralStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ToClusterNodePoolNodeConfigEphemeralStorageConfigOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ToClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigEphemeralStorageConfig) *ClusterNodePoolNodeConfigEphemeralStorageConfig {
+		return &v
+	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfigEphemeralStorageConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput() ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) ToClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) Elem() ClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigEphemeralStorageConfig) ClusterNodePoolNodeConfigEphemeralStorageConfig {
+		return *v
+	}).(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput)
+}
+
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+func (o ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfigEphemeralStorageConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterNodePoolNodeConfigGuestAccelerator struct {
@@ -8732,7 +9028,10 @@ type ClusterPrivateClusterConfig struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes       *bool                                                `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	// Controls cluster master global
+	// access settings. If unset, the provider will no longer manage this field and will
+	// not modify the previously-set value. Structure is documented below.
 	MasterGlobalAccessConfig *ClusterPrivateClusterConfigMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -8771,7 +9070,10 @@ type ClusterPrivateClusterConfigArgs struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes       pulumi.BoolPtrInput                                         `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	// Controls cluster master global
+	// access settings. If unset, the provider will no longer manage this field and will
+	// not modify the previously-set value. Structure is documented below.
 	MasterGlobalAccessConfig ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for
 	// the hosted master network. This range will be used for assigning private IP
@@ -8882,6 +9184,9 @@ func (o ClusterPrivateClusterConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOu
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+// Controls cluster master global
+// access settings. If unset, the provider will no longer manage this field and will
+// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		return v.MasterGlobalAccessConfig
@@ -8958,6 +9263,9 @@ func (o ClusterPrivateClusterConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Controls cluster master global
+// access settings. If unset, the provider will no longer manage this field and will
+// not modify the previously-set value. Structure is documented below.
 func (o ClusterPrivateClusterConfigPtrOutput) MasterGlobalAccessConfig() ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterPrivateClusterConfig) *ClusterPrivateClusterConfigMasterGlobalAccessConfig {
 		if v == nil {
@@ -10194,6 +10502,7 @@ type NodePoolNodeConfig struct {
 	BootDiskKmsKey         *string                                   `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb             *int                                      `pulumi:"diskSizeGb"`
 	DiskType               *string                                   `pulumi:"diskType"`
+	EphemeralStorageConfig *NodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
 	GuestAccelerators      []NodePoolNodeConfigGuestAccelerator      `pulumi:"guestAccelerators"`
 	ImageType              *string                                   `pulumi:"imageType"`
 	KubeletConfig          *NodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfig"`
@@ -10228,6 +10537,7 @@ type NodePoolNodeConfigArgs struct {
 	BootDiskKmsKey         pulumi.StringPtrInput                            `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb             pulumi.IntPtrInput                               `pulumi:"diskSizeGb"`
 	DiskType               pulumi.StringPtrInput                            `pulumi:"diskType"`
+	EphemeralStorageConfig NodePoolNodeConfigEphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
 	GuestAccelerators      NodePoolNodeConfigGuestAcceleratorArrayInput     `pulumi:"guestAccelerators"`
 	ImageType              pulumi.StringPtrInput                            `pulumi:"imageType"`
 	KubeletConfig          NodePoolNodeConfigKubeletConfigPtrInput          `pulumi:"kubeletConfig"`
@@ -10333,6 +10643,10 @@ func (o NodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 
 func (o NodePoolNodeConfigOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigOutput) EphemeralStorageConfig() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *NodePoolNodeConfigEphemeralStorageConfig { return v.EphemeralStorageConfig }).(NodePoolNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigOutput) GuestAccelerators() NodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -10446,6 +10760,15 @@ func (o NodePoolNodeConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 		}
 		return v.DiskType
 	}).(pulumi.StringPtrOutput)
+}
+
+func (o NodePoolNodeConfigPtrOutput) EphemeralStorageConfig() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *NodePoolNodeConfigEphemeralStorageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EphemeralStorageConfig
+	}).(NodePoolNodeConfigEphemeralStorageConfigPtrOutput)
 }
 
 func (o NodePoolNodeConfigPtrOutput) GuestAccelerators() NodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -10599,6 +10922,132 @@ func (o NodePoolNodeConfigPtrOutput) WorkloadMetadataConfig() NodePoolNodeConfig
 		}
 		return v.WorkloadMetadataConfig
 	}).(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput)
+}
+
+type NodePoolNodeConfigEphemeralStorageConfig struct {
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// NodePoolNodeConfigEphemeralStorageConfigInput is an input type that accepts NodePoolNodeConfigEphemeralStorageConfigArgs and NodePoolNodeConfigEphemeralStorageConfigOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigEphemeralStorageConfigInput` via:
+//
+//          NodePoolNodeConfigEphemeralStorageConfigArgs{...}
+type NodePoolNodeConfigEphemeralStorageConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigEphemeralStorageConfigOutput() NodePoolNodeConfigEphemeralStorageConfigOutput
+	ToNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(context.Context) NodePoolNodeConfigEphemeralStorageConfigOutput
+}
+
+type NodePoolNodeConfigEphemeralStorageConfigArgs struct {
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (NodePoolNodeConfigEphemeralStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i NodePoolNodeConfigEphemeralStorageConfigArgs) ToNodePoolNodeConfigEphemeralStorageConfigOutput() NodePoolNodeConfigEphemeralStorageConfigOutput {
+	return i.ToNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigEphemeralStorageConfigArgs) ToNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigEphemeralStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigEphemeralStorageConfigOutput)
+}
+
+func (i NodePoolNodeConfigEphemeralStorageConfigArgs) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutput() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return i.ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNodeConfigEphemeralStorageConfigArgs) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigEphemeralStorageConfigOutput).ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNodeConfigEphemeralStorageConfigPtrInput is an input type that accepts NodePoolNodeConfigEphemeralStorageConfigArgs, NodePoolNodeConfigEphemeralStorageConfigPtr and NodePoolNodeConfigEphemeralStorageConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNodeConfigEphemeralStorageConfigPtrInput` via:
+//
+//          NodePoolNodeConfigEphemeralStorageConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolNodeConfigEphemeralStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNodeConfigEphemeralStorageConfigPtrOutput() NodePoolNodeConfigEphemeralStorageConfigPtrOutput
+	ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Context) NodePoolNodeConfigEphemeralStorageConfigPtrOutput
+}
+
+type nodePoolNodeConfigEphemeralStorageConfigPtrType NodePoolNodeConfigEphemeralStorageConfigArgs
+
+func NodePoolNodeConfigEphemeralStorageConfigPtr(v *NodePoolNodeConfigEphemeralStorageConfigArgs) NodePoolNodeConfigEphemeralStorageConfigPtrInput {
+	return (*nodePoolNodeConfigEphemeralStorageConfigPtrType)(v)
+}
+
+func (*nodePoolNodeConfigEphemeralStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNodeConfigEphemeralStorageConfigPtrType) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutput() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return i.ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNodeConfigEphemeralStorageConfigPtrType) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+
+type NodePoolNodeConfigEphemeralStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigEphemeralStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigOutput) ToNodePoolNodeConfigEphemeralStorageConfigOutput() NodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigOutput) ToNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) NodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigOutput) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutput() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigOutput) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigEphemeralStorageConfig) *NodePoolNodeConfigEphemeralStorageConfig {
+		return &v
+	}).(NodePoolNodeConfigEphemeralStorageConfigPtrOutput)
+}
+func (o NodePoolNodeConfigEphemeralStorageConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NodePoolNodeConfigEphemeralStorageConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type NodePoolNodeConfigEphemeralStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNodeConfigEphemeralStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigPtrOutput) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutput() NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigPtrOutput) ToNodePoolNodeConfigEphemeralStorageConfigPtrOutputWithContext(ctx context.Context) NodePoolNodeConfigEphemeralStorageConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigPtrOutput) Elem() NodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigEphemeralStorageConfig) NodePoolNodeConfigEphemeralStorageConfig { return *v }).(NodePoolNodeConfigEphemeralStorageConfigOutput)
+}
+
+func (o NodePoolNodeConfigEphemeralStorageConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfigEphemeralStorageConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
 }
 
 type NodePoolNodeConfigGuestAccelerator struct {
@@ -14516,6 +14965,7 @@ type GetClusterNodeConfig struct {
 	BootDiskKmsKey          string                                       `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb              int                                          `pulumi:"diskSizeGb"`
 	DiskType                string                                       `pulumi:"diskType"`
+	EphemeralStorageConfigs []GetClusterNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
 	GuestAccelerators       []GetClusterNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
 	ImageType               string                                       `pulumi:"imageType"`
 	KubeletConfigs          []GetClusterNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
@@ -14550,6 +15000,7 @@ type GetClusterNodeConfigArgs struct {
 	BootDiskKmsKey          pulumi.StringInput                                   `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb              pulumi.IntInput                                      `pulumi:"diskSizeGb"`
 	DiskType                pulumi.StringInput                                   `pulumi:"diskType"`
+	EphemeralStorageConfigs GetClusterNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
 	GuestAccelerators       GetClusterNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
 	ImageType               pulumi.StringInput                                   `pulumi:"imageType"`
 	KubeletConfigs          GetClusterNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
@@ -14630,6 +15081,12 @@ func (o GetClusterNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
 
 func (o GetClusterNodeConfigOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodeConfigOutput) EphemeralStorageConfigs() GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) []GetClusterNodeConfigEphemeralStorageConfig {
+		return v.EphemeralStorageConfigs
+	}).(GetClusterNodeConfigEphemeralStorageConfigArrayOutput)
 }
 
 func (o GetClusterNodeConfigOutput) GuestAccelerators() GetClusterNodeConfigGuestAcceleratorArrayOutput {
@@ -14722,6 +15179,100 @@ func (o GetClusterNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNode
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfig {
 		return vs[0].([]GetClusterNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodeConfigOutput)
+}
+
+type GetClusterNodeConfigEphemeralStorageConfig struct {
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// GetClusterNodeConfigEphemeralStorageConfigInput is an input type that accepts GetClusterNodeConfigEphemeralStorageConfigArgs and GetClusterNodeConfigEphemeralStorageConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigEphemeralStorageConfigInput` via:
+//
+//          GetClusterNodeConfigEphemeralStorageConfigArgs{...}
+type GetClusterNodeConfigEphemeralStorageConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigEphemeralStorageConfigOutput() GetClusterNodeConfigEphemeralStorageConfigOutput
+	ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(context.Context) GetClusterNodeConfigEphemeralStorageConfigOutput
+}
+
+type GetClusterNodeConfigEphemeralStorageConfigArgs struct {
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (GetClusterNodeConfigEphemeralStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigEphemeralStorageConfigArgs) ToGetClusterNodeConfigEphemeralStorageConfigOutput() GetClusterNodeConfigEphemeralStorageConfigOutput {
+	return i.ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigEphemeralStorageConfigArgs) ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEphemeralStorageConfigOutput)
+}
+
+// GetClusterNodeConfigEphemeralStorageConfigArrayInput is an input type that accepts GetClusterNodeConfigEphemeralStorageConfigArray and GetClusterNodeConfigEphemeralStorageConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodeConfigEphemeralStorageConfigArrayInput` via:
+//
+//          GetClusterNodeConfigEphemeralStorageConfigArray{ GetClusterNodeConfigEphemeralStorageConfigArgs{...} }
+type GetClusterNodeConfigEphemeralStorageConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodeConfigEphemeralStorageConfigArrayOutput
+	ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(context.Context) GetClusterNodeConfigEphemeralStorageConfigArrayOutput
+}
+
+type GetClusterNodeConfigEphemeralStorageConfigArray []GetClusterNodeConfigEphemeralStorageConfigInput
+
+func (GetClusterNodeConfigEphemeralStorageConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodeConfigEphemeralStorageConfigArray) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
+	return i.ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodeConfigEphemeralStorageConfigArray) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodeConfigEphemeralStorageConfigArrayOutput)
+}
+
+type GetClusterNodeConfigEphemeralStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigEphemeralStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigEphemeralStorageConfigOutput) ToGetClusterNodeConfigEphemeralStorageConfigOutput() GetClusterNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEphemeralStorageConfigOutput) ToGetClusterNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEphemeralStorageConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodeConfigEphemeralStorageConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type GetClusterNodeConfigEphemeralStorageConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodeConfigEphemeralStorageConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) ToGetClusterNodeConfigEphemeralStorageConfigArrayOutputWithContext(ctx context.Context) GetClusterNodeConfigEphemeralStorageConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodeConfigEphemeralStorageConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodeConfigEphemeralStorageConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeConfigEphemeralStorageConfig {
+		return vs[0].([]GetClusterNodeConfigEphemeralStorageConfig)[vs[1].(int)]
+	}).(GetClusterNodeConfigEphemeralStorageConfigOutput)
 }
 
 type GetClusterNodeConfigGuestAccelerator struct {
@@ -15785,6 +16336,7 @@ type GetClusterNodePoolNodeConfig struct {
 	BootDiskKmsKey          string                                               `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb              int                                                  `pulumi:"diskSizeGb"`
 	DiskType                string                                               `pulumi:"diskType"`
+	EphemeralStorageConfigs []GetClusterNodePoolNodeConfigEphemeralStorageConfig `pulumi:"ephemeralStorageConfigs"`
 	GuestAccelerators       []GetClusterNodePoolNodeConfigGuestAccelerator       `pulumi:"guestAccelerators"`
 	ImageType               string                                               `pulumi:"imageType"`
 	KubeletConfigs          []GetClusterNodePoolNodeConfigKubeletConfig          `pulumi:"kubeletConfigs"`
@@ -15819,6 +16371,7 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	BootDiskKmsKey          pulumi.StringInput                                           `pulumi:"bootDiskKmsKey"`
 	DiskSizeGb              pulumi.IntInput                                              `pulumi:"diskSizeGb"`
 	DiskType                pulumi.StringInput                                           `pulumi:"diskType"`
+	EphemeralStorageConfigs GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput `pulumi:"ephemeralStorageConfigs"`
 	GuestAccelerators       GetClusterNodePoolNodeConfigGuestAcceleratorArrayInput       `pulumi:"guestAccelerators"`
 	ImageType               pulumi.StringInput                                           `pulumi:"imageType"`
 	KubeletConfigs          GetClusterNodePoolNodeConfigKubeletConfigArrayInput          `pulumi:"kubeletConfigs"`
@@ -15899,6 +16452,12 @@ func (o GetClusterNodePoolNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
 
 func (o GetClusterNodePoolNodeConfigOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.DiskType }).(pulumi.StringOutput)
+}
+
+func (o GetClusterNodePoolNodeConfigOutput) EphemeralStorageConfigs() GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) []GetClusterNodePoolNodeConfigEphemeralStorageConfig {
+		return v.EphemeralStorageConfigs
+	}).(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNodeConfigOutput) GuestAccelerators() GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput {
@@ -15999,6 +16558,100 @@ func (o GetClusterNodePoolNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfig {
 		return vs[0].([]GetClusterNodePoolNodeConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNodeConfigOutput)
+}
+
+type GetClusterNodePoolNodeConfigEphemeralStorageConfig struct {
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// GetClusterNodePoolNodeConfigEphemeralStorageConfigInput is an input type that accepts GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs and GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigEphemeralStorageConfigInput` via:
+//
+//          GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs{...}
+type GetClusterNodePoolNodeConfigEphemeralStorageConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigEphemeralStorageConfigOutput() GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput
+	ToGetClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(context.Context) GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput
+}
+
+type GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs struct {
+	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+}
+
+func (GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigOutput() GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return i.ToGetClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput)
+}
+
+// GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput is an input type that accepts GetClusterNodePoolNodeConfigEphemeralStorageConfigArray and GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput` via:
+//
+//          GetClusterNodePoolNodeConfigEphemeralStorageConfigArray{ GetClusterNodePoolNodeConfigEphemeralStorageConfigArgs{...} }
+type GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput
+	ToGetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput
+}
+
+type GetClusterNodePoolNodeConfigEphemeralStorageConfigArray []GetClusterNodePoolNodeConfigEphemeralStorageConfigInput
+
+func (GetClusterNodePoolNodeConfigEphemeralStorageConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNodeConfigEphemeralStorageConfigArray) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput {
+	return i.ToGetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNodeConfigEphemeralStorageConfigArray) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput)
+}
+
+type GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigOutput() GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfigEphemeralStorageConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+type GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNodeConfigEphemeralStorageConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput() GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput) ToGetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNodeConfigEphemeralStorageConfig {
+		return vs[0].([]GetClusterNodePoolNodeConfigEphemeralStorageConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput)
 }
 
 type GetClusterNodePoolNodeConfigGuestAccelerator struct {
@@ -17852,6 +18505,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNetworkPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodeConfigKubeletConfigOutput{})
@@ -17874,6 +18529,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigKubeletConfigOutput{})
@@ -17916,6 +18573,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolManagementPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNodeConfigEphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigKubeletConfigOutput{})
@@ -17990,6 +18649,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNetworkPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeConfigKubeletConfigOutput{})
@@ -18012,6 +18673,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolManagementArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigEphemeralStorageConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigGuestAcceleratorArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigKubeletConfigOutput{})

@@ -53,7 +53,9 @@ type AutoscalarAutoscalingPolicy struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl   *AutoscalarAutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
+	ScaleInControl *AutoscalarAutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+	// Structure is documented below.
 	ScalingSchedules []AutoscalarAutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
@@ -111,7 +113,9 @@ type AutoscalarAutoscalingPolicyArgs struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl   AutoscalarAutoscalingPolicyScaleInControlPtrInput    `pulumi:"scaleInControl"`
+	ScaleInControl AutoscalarAutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+	// Structure is documented below.
 	ScalingSchedules AutoscalarAutoscalingPolicyScalingScheduleArrayInput `pulumi:"scalingSchedules"`
 }
 
@@ -270,6 +274,8 @@ func (o AutoscalarAutoscalingPolicyOutput) ScaleInControl() AutoscalarAutoscalin
 	}).(AutoscalarAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyOutput) ScalingSchedules() AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
 	return o.ApplyT(func(v AutoscalarAutoscalingPolicy) []AutoscalarAutoscalingPolicyScalingSchedule {
 		return v.ScalingSchedules
@@ -409,6 +415,8 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) ScaleInControl() AutoscalarAutosca
 	}).(AutoscalarAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+// Structure is documented below.
 func (o AutoscalarAutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalarAutoscalingPolicyScalingScheduleArrayOutput {
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicy) []AutoscalarAutoscalingPolicyScalingSchedule {
 		if v == nil {
@@ -419,6 +427,10 @@ func (o AutoscalarAutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalarAutos
 }
 
 type AutoscalarAutoscalingPolicyCpuUtilization struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+	// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod *string `pulumi:"predictiveMethod"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
 	// be a positive float value. If not defined, the default is 0.8.
@@ -437,6 +449,10 @@ type AutoscalarAutoscalingPolicyCpuUtilizationInput interface {
 }
 
 type AutoscalarAutoscalingPolicyCpuUtilizationArgs struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+	// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod pulumi.StringPtrInput `pulumi:"predictiveMethod"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
 	// be a positive float value. If not defined, the default is 0.8.
@@ -520,6 +536,13 @@ func (o AutoscalarAutoscalingPolicyCpuUtilizationOutput) ToAutoscalarAutoscaling
 	}).(AutoscalarAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o AutoscalarAutoscalingPolicyCpuUtilizationOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalarAutoscalingPolicyCpuUtilization) *string { return v.PredictiveMethod }).(pulumi.StringPtrOutput)
+}
+
 // Fraction of backend capacity utilization (set in HTTP(s) load
 // balancing configuration) that autoscaler should maintain. Must
 // be a positive float value. If not defined, the default is 0.8.
@@ -545,6 +568,18 @@ func (o AutoscalarAutoscalingPolicyCpuUtilizationPtrOutput) Elem() AutoscalarAut
 	return o.ApplyT(func(v *AutoscalarAutoscalingPolicyCpuUtilization) AutoscalarAutoscalingPolicyCpuUtilization {
 		return *v
 	}).(AutoscalarAutoscalingPolicyCpuUtilizationOutput)
+}
+
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o AutoscalarAutoscalingPolicyCpuUtilizationPtrOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalarAutoscalingPolicyCpuUtilization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredictiveMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // Fraction of backend capacity utilization (set in HTTP(s) load
@@ -1800,7 +1835,9 @@ type AutoscalerAutoscalingPolicy struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl   *AutoscalerAutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
+	ScaleInControl *AutoscalerAutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+	// Structure is documented below.
 	ScalingSchedules []AutoscalerAutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
@@ -1858,7 +1895,9 @@ type AutoscalerAutoscalingPolicyArgs struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl   AutoscalerAutoscalingPolicyScaleInControlPtrInput    `pulumi:"scaleInControl"`
+	ScaleInControl AutoscalerAutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+	// Structure is documented below.
 	ScalingSchedules AutoscalerAutoscalingPolicyScalingScheduleArrayInput `pulumi:"scalingSchedules"`
 }
 
@@ -2017,6 +2056,8 @@ func (o AutoscalerAutoscalingPolicyOutput) ScaleInControl() AutoscalerAutoscalin
 	}).(AutoscalerAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyOutput) ScalingSchedules() AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
 	return o.ApplyT(func(v AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyScalingSchedule {
 		return v.ScalingSchedules
@@ -2156,6 +2197,8 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) ScaleInControl() AutoscalerAutosca
 	}).(AutoscalerAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+// Structure is documented below.
 func (o AutoscalerAutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicy) []AutoscalerAutoscalingPolicyScalingSchedule {
 		if v == nil {
@@ -2166,6 +2209,10 @@ func (o AutoscalerAutoscalingPolicyPtrOutput) ScalingSchedules() AutoscalerAutos
 }
 
 type AutoscalerAutoscalingPolicyCpuUtilization struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+	// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod *string `pulumi:"predictiveMethod"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
 	// be a positive float value. If not defined, the default is 0.8.
@@ -2184,6 +2231,10 @@ type AutoscalerAutoscalingPolicyCpuUtilizationInput interface {
 }
 
 type AutoscalerAutoscalingPolicyCpuUtilizationArgs struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+	// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod pulumi.StringPtrInput `pulumi:"predictiveMethod"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
 	// be a positive float value. If not defined, the default is 0.8.
@@ -2267,6 +2318,13 @@ func (o AutoscalerAutoscalingPolicyCpuUtilizationOutput) ToAutoscalerAutoscaling
 	}).(AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o AutoscalerAutoscalingPolicyCpuUtilizationOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoscalerAutoscalingPolicyCpuUtilization) *string { return v.PredictiveMethod }).(pulumi.StringPtrOutput)
+}
+
 // Fraction of backend capacity utilization (set in HTTP(s) load
 // balancing configuration) that autoscaler should maintain. Must
 // be a positive float value. If not defined, the default is 0.8.
@@ -2292,6 +2350,18 @@ func (o AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) Elem() AutoscalerAut
 	return o.ApplyT(func(v *AutoscalerAutoscalingPolicyCpuUtilization) AutoscalerAutoscalingPolicyCpuUtilization {
 		return *v
 	}).(AutoscalerAutoscalingPolicyCpuUtilizationOutput)
+}
+
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o AutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoscalerAutoscalingPolicyCpuUtilization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredictiveMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // Fraction of backend capacity utilization (set in HTTP(s) load
@@ -3505,13 +3575,25 @@ func (o AutoscalerAutoscalingPolicyScalingScheduleArrayOutput) Index(i pulumi.In
 }
 
 type BackendBucketCdnPolicy struct {
-	CacheMode               *string                                       `pulumi:"cacheMode"`
-	ClientTtl               *int                                          `pulumi:"clientTtl"`
-	DefaultTtl              *int                                          `pulumi:"defaultTtl"`
-	MaxTtl                  *int                                          `pulumi:"maxTtl"`
-	NegativeCaching         *bool                                         `pulumi:"negativeCaching"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+	// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+	CacheMode *string `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl *int `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl *int `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl *int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching *bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	// Structure is documented below.
 	NegativeCachingPolicies []BackendBucketCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         *int                                          `pulumi:"serveWhileStale"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will
 	// be considered fresh. After this time period,
 	// the response will be revalidated before being served.
@@ -3535,13 +3617,25 @@ type BackendBucketCdnPolicyInput interface {
 }
 
 type BackendBucketCdnPolicyArgs struct {
-	CacheMode               pulumi.StringPtrInput                                 `pulumi:"cacheMode"`
-	ClientTtl               pulumi.IntPtrInput                                    `pulumi:"clientTtl"`
-	DefaultTtl              pulumi.IntPtrInput                                    `pulumi:"defaultTtl"`
-	MaxTtl                  pulumi.IntPtrInput                                    `pulumi:"maxTtl"`
-	NegativeCaching         pulumi.BoolPtrInput                                   `pulumi:"negativeCaching"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+	// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching pulumi.BoolPtrInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	// Structure is documented below.
 	NegativeCachingPolicies BackendBucketCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         pulumi.IntPtrInput                                    `pulumi:"serveWhileStale"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request will
 	// be considered fresh. After this time period,
 	// the response will be revalidated before being served.
@@ -3629,32 +3723,45 @@ func (o BackendBucketCdnPolicyOutput) ToBackendBucketCdnPolicyPtrOutputWithConte
 		return &v
 	}).(BackendBucketCdnPolicyPtrOutput)
 }
+
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
 func (o BackendBucketCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendBucketCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o BackendBucketCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendBucketCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o BackendBucketCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+// Structure is documented below.
 func (o BackendBucketCdnPolicyOutput) NegativeCachingPolicies() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) []BackendBucketCdnPolicyNegativeCachingPolicy {
 		return v.NegativeCachingPolicies
 	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o BackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
 }
@@ -3689,6 +3796,9 @@ func (o BackendBucketCdnPolicyPtrOutput) Elem() BackendBucketCdnPolicyOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) BackendBucketCdnPolicy { return *v }).(BackendBucketCdnPolicyOutput)
 }
 
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
 func (o BackendBucketCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *string {
 		if v == nil {
@@ -3698,6 +3808,7 @@ func (o BackendBucketCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendBucketCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
 		if v == nil {
@@ -3707,6 +3818,8 @@ func (o BackendBucketCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o BackendBucketCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
 		if v == nil {
@@ -3716,6 +3829,7 @@ func (o BackendBucketCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendBucketCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
 		if v == nil {
@@ -3725,6 +3839,7 @@ func (o BackendBucketCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o BackendBucketCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *bool {
 		if v == nil {
@@ -3734,6 +3849,9 @@ func (o BackendBucketCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+// Structure is documented below.
 func (o BackendBucketCdnPolicyPtrOutput) NegativeCachingPolicies() BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) []BackendBucketCdnPolicyNegativeCachingPolicy {
 		if v == nil {
@@ -3743,6 +3861,7 @@ func (o BackendBucketCdnPolicyPtrOutput) NegativeCachingPolicies() BackendBucket
 	}).(BackendBucketCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o BackendBucketCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendBucketCdnPolicy) *int {
 		if v == nil {
@@ -3770,8 +3889,12 @@ func (o BackendBucketCdnPolicyPtrOutput) SignedUrlCacheMaxAgeSec() pulumi.IntPtr
 }
 
 type BackendBucketCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code *int `pulumi:"code"`
-	Ttl  *int `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl *int `pulumi:"ttl"`
 }
 
 // BackendBucketCdnPolicyNegativeCachingPolicyInput is an input type that accepts BackendBucketCdnPolicyNegativeCachingPolicyArgs and BackendBucketCdnPolicyNegativeCachingPolicyOutput values.
@@ -3786,8 +3909,12 @@ type BackendBucketCdnPolicyNegativeCachingPolicyInput interface {
 }
 
 type BackendBucketCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code pulumi.IntPtrInput `pulumi:"code"`
-	Ttl  pulumi.IntPtrInput `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
 }
 
 func (BackendBucketCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
@@ -3841,10 +3968,14 @@ func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) ToBackendBucketCdnPol
 	return o
 }
 
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+// can be specified as values, and you cannot specify a status code more than once.
 func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o BackendBucketCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendBucketCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
 }
@@ -4200,14 +4331,26 @@ func (o BackendServiceBackendArrayOutput) Index(i pulumi.IntInput) BackendServic
 type BackendServiceCdnPolicy struct {
 	// The CacheKeyPolicy for this CdnPolicy.
 	// Structure is documented below.
-	CacheKeyPolicy          *BackendServiceCdnPolicyCacheKeyPolicy         `pulumi:"cacheKeyPolicy"`
-	CacheMode               *string                                        `pulumi:"cacheMode"`
-	ClientTtl               *int                                           `pulumi:"clientTtl"`
-	DefaultTtl              *int                                           `pulumi:"defaultTtl"`
-	MaxTtl                  *int                                           `pulumi:"maxTtl"`
-	NegativeCaching         *bool                                          `pulumi:"negativeCaching"`
+	CacheKeyPolicy *BackendServiceCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicy"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+	// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+	CacheMode *string `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl *int `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl *int `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl *int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching *bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	// Structure is documented below.
 	NegativeCachingPolicies []BackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         *int                                           `pulumi:"serveWhileStale"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
 	// time period, the response will be revalidated before
@@ -4234,14 +4377,26 @@ type BackendServiceCdnPolicyInput interface {
 type BackendServiceCdnPolicyArgs struct {
 	// The CacheKeyPolicy for this CdnPolicy.
 	// Structure is documented below.
-	CacheKeyPolicy          BackendServiceCdnPolicyCacheKeyPolicyPtrInput          `pulumi:"cacheKeyPolicy"`
-	CacheMode               pulumi.StringPtrInput                                  `pulumi:"cacheMode"`
-	ClientTtl               pulumi.IntPtrInput                                     `pulumi:"clientTtl"`
-	DefaultTtl              pulumi.IntPtrInput                                     `pulumi:"defaultTtl"`
-	MaxTtl                  pulumi.IntPtrInput                                     `pulumi:"maxTtl"`
-	NegativeCaching         pulumi.BoolPtrInput                                    `pulumi:"negativeCaching"`
+	CacheKeyPolicy BackendServiceCdnPolicyCacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+	// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching pulumi.BoolPtrInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	// Structure is documented below.
 	NegativeCachingPolicies BackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         pulumi.IntPtrInput                                     `pulumi:"serveWhileStale"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
 	// time period, the response will be revalidated before
@@ -4337,32 +4492,44 @@ func (o BackendServiceCdnPolicyOutput) CacheKeyPolicy() BackendServiceCdnPolicyC
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *BackendServiceCdnPolicyCacheKeyPolicy { return v.CacheKeyPolicy }).(BackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
 }
 
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
 func (o BackendServiceCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o BackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o BackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+// Structure is documented below.
 func (o BackendServiceCdnPolicyOutput) NegativeCachingPolicies() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) []BackendServiceCdnPolicyNegativeCachingPolicy {
 		return v.NegativeCachingPolicies
 	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o BackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
 }
@@ -4409,6 +4576,9 @@ func (o BackendServiceCdnPolicyPtrOutput) CacheKeyPolicy() BackendServiceCdnPoli
 	}).(BackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
 }
 
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
 func (o BackendServiceCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *string {
 		if v == nil {
@@ -4418,6 +4588,7 @@ func (o BackendServiceCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -4427,6 +4598,8 @@ func (o BackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o BackendServiceCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -4436,6 +4609,7 @@ func (o BackendServiceCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o BackendServiceCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -4445,6 +4619,7 @@ func (o BackendServiceCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o BackendServiceCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *bool {
 		if v == nil {
@@ -4454,6 +4629,9 @@ func (o BackendServiceCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+// Structure is documented below.
 func (o BackendServiceCdnPolicyPtrOutput) NegativeCachingPolicies() BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) []BackendServiceCdnPolicyNegativeCachingPolicy {
 		if v == nil {
@@ -4463,6 +4641,7 @@ func (o BackendServiceCdnPolicyPtrOutput) NegativeCachingPolicies() BackendServi
 	}).(BackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o BackendServiceCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -4750,8 +4929,12 @@ func (o BackendServiceCdnPolicyCacheKeyPolicyPtrOutput) QueryStringWhitelists() 
 }
 
 type BackendServiceCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code *int `pulumi:"code"`
-	Ttl  *int `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl *int `pulumi:"ttl"`
 }
 
 // BackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts BackendServiceCdnPolicyNegativeCachingPolicyArgs and BackendServiceCdnPolicyNegativeCachingPolicyOutput values.
@@ -4766,8 +4949,12 @@ type BackendServiceCdnPolicyNegativeCachingPolicyInput interface {
 }
 
 type BackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code pulumi.IntPtrInput `pulumi:"code"`
-	Ttl  pulumi.IntPtrInput `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
 }
 
 func (BackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
@@ -4821,10 +5008,14 @@ func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) ToBackendServiceCdnP
 	return o
 }
 
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+// can be specified as values, and you cannot specify a status code more than once.
 func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o BackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
 }
@@ -5482,8 +5673,10 @@ type BackendServiceConsistentHashHttpCookie struct {
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
 	// Path to set for the cookie.
-	Path *string                                    `pulumi:"path"`
-	Ttl  *BackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
+	Path *string `pulumi:"path"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl *BackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
 }
 
 // BackendServiceConsistentHashHttpCookieInput is an input type that accepts BackendServiceConsistentHashHttpCookieArgs and BackendServiceConsistentHashHttpCookieOutput values.
@@ -5501,8 +5694,10 @@ type BackendServiceConsistentHashHttpCookieArgs struct {
 	// Name of the cookie.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to set for the cookie.
-	Path pulumi.StringPtrInput                             `pulumi:"path"`
-	Ttl  BackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl BackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
 }
 
 func (BackendServiceConsistentHashHttpCookieArgs) ElementType() reflect.Type {
@@ -5592,6 +5787,8 @@ func (o BackendServiceConsistentHashHttpCookieOutput) Path() pulumi.StringPtrOut
 	return o.ApplyT(func(v BackendServiceConsistentHashHttpCookie) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o BackendServiceConsistentHashHttpCookieOutput) Ttl() BackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v BackendServiceConsistentHashHttpCookie) *BackendServiceConsistentHashHttpCookieTtl {
 		return v.Ttl
@@ -5636,6 +5833,8 @@ func (o BackendServiceConsistentHashHttpCookiePtrOutput) Path() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o BackendServiceConsistentHashHttpCookiePtrOutput) Ttl() BackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v *BackendServiceConsistentHashHttpCookie) *BackendServiceConsistentHashHttpCookieTtl {
 		if v == nil {
@@ -16078,10 +16277,11 @@ type InstanceGroupManagerUpdatePolicy struct {
 	// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`.
 	MaxUnavailablePercent *int `pulumi:"maxUnavailablePercent"`
 	// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-	// ***
 	MinReadySec *int `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction     string  `pulumi:"minimalAction"`
+	MinimalAction string `pulumi:"minimalAction"`
+	// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	// ***
 	ReplacementMethod *string `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type string `pulumi:"type"`
@@ -16108,10 +16308,11 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`.
 	MaxUnavailablePercent pulumi.IntPtrInput `pulumi:"maxUnavailablePercent"`
 	// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-	// ***
 	MinReadySec pulumi.IntPtrInput `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction     pulumi.StringInput    `pulumi:"minimalAction"`
+	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	// ***
 	ReplacementMethod pulumi.StringPtrInput `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type pulumi.StringInput `pulumi:"type"`
@@ -16215,7 +16416,6 @@ func (o InstanceGroupManagerUpdatePolicyOutput) MaxUnavailablePercent() pulumi.I
 }
 
 // , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-// ***
 func (o InstanceGroupManagerUpdatePolicyOutput) MinReadySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *int { return v.MinReadySec }).(pulumi.IntPtrOutput)
 }
@@ -16225,6 +16425,8 @@ func (o InstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.StringOut
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
 
+// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+// ***
 func (o InstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *string { return v.ReplacementMethod }).(pulumi.StringPtrOutput)
 }
@@ -16293,7 +16495,6 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) MaxUnavailablePercent() pulum
 }
 
 // , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-// ***
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) MinReadySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *int {
 		if v == nil {
@@ -16313,6 +16514,8 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) MinimalAction() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+// ***
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) ReplacementMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *string {
 		if v == nil {
@@ -17176,8 +17379,7 @@ type InstanceNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp *string `pulumi:"networkIp"`
-	// ) The type of vNIC to be used on this interface.
-	// Possible values: GVNIC, VIRTIO_NET.
+	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
 	NicType *string `pulumi:"nicType"`
 	// The name or selfLink of the subnetwork to attach this
 	// interface to. The subnetwork must exist in the same region this instance will be
@@ -17223,8 +17425,7 @@ type InstanceNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
-	// ) The type of vNIC to be used on this interface.
-	// Possible values: GVNIC, VIRTIO_NET.
+	// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
 	NicType pulumi.StringPtrInput `pulumi:"nicType"`
 	// The name or selfLink of the subnetwork to attach this
 	// interface to. The subnetwork must exist in the same region this instance will be
@@ -17324,8 +17525,7 @@ func (o InstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
 }
 
-// ) The type of vNIC to be used on this interface.
-// Possible values: GVNIC, VIRTIO_NET.
+// The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
 func (o InstanceNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
@@ -19098,9 +19298,6 @@ type InstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp *string `pulumi:"networkIp"`
-	// ) The type of vNIC to be used on this interface.
-	// Possible values: GVNIC, VIRTIO_NET.
-	NicType *string `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -19143,9 +19340,6 @@ type InstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringPtrInput `pulumi:"networkIp"`
-	// ) The type of vNIC to be used on this interface.
-	// Possible values: GVNIC, VIRTIO_NET.
-	NicType pulumi.StringPtrInput `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -19244,12 +19438,6 @@ func (o InstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringPtrOutput
 // empty, the address will be automatically assigned.
 func (o InstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *string { return v.NetworkIp }).(pulumi.StringPtrOutput)
-}
-
-// ) The type of vNIC to be used on this interface.
-// Possible values: GVNIC, VIRTIO_NET.
-func (o InstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceTemplateNetworkInterface) *string { return v.NicType }).(pulumi.StringPtrOutput)
 }
 
 // the name of the subnetwork to attach this interface
@@ -23338,7 +23526,9 @@ type RegionAutoscalerAutoscalingPolicy struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl   *RegionAutoscalerAutoscalingPolicyScaleInControl   `pulumi:"scaleInControl"`
+	ScaleInControl *RegionAutoscalerAutoscalingPolicyScaleInControl `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+	// Structure is documented below.
 	ScalingSchedules []RegionAutoscalerAutoscalingPolicyScalingSchedule `pulumi:"scalingSchedules"`
 }
 
@@ -23396,7 +23586,9 @@ type RegionAutoscalerAutoscalingPolicyArgs struct {
 	// Defines scale in controls to reduce the risk of response latency
 	// and outages due to abrupt scale-in events
 	// Structure is documented below.
-	ScaleInControl   RegionAutoscalerAutoscalingPolicyScaleInControlPtrInput    `pulumi:"scaleInControl"`
+	ScaleInControl RegionAutoscalerAutoscalingPolicyScaleInControlPtrInput `pulumi:"scaleInControl"`
+	// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+	// Structure is documented below.
 	ScalingSchedules RegionAutoscalerAutoscalingPolicyScalingScheduleArrayInput `pulumi:"scalingSchedules"`
 }
 
@@ -23555,6 +23747,8 @@ func (o RegionAutoscalerAutoscalingPolicyOutput) ScaleInControl() RegionAutoscal
 	}).(RegionAutoscalerAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyOutput) ScalingSchedules() RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
 	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicy) []RegionAutoscalerAutoscalingPolicyScalingSchedule {
 		return v.ScalingSchedules
@@ -23694,6 +23888,8 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) ScaleInControl() RegionAutos
 	}).(RegionAutoscalerAutoscalingPolicyScaleInControlPtrOutput)
 }
 
+// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+// Structure is documented below.
 func (o RegionAutoscalerAutoscalingPolicyPtrOutput) ScalingSchedules() RegionAutoscalerAutoscalingPolicyScalingScheduleArrayOutput {
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicy) []RegionAutoscalerAutoscalingPolicyScalingSchedule {
 		if v == nil {
@@ -23704,6 +23900,10 @@ func (o RegionAutoscalerAutoscalingPolicyPtrOutput) ScalingSchedules() RegionAut
 }
 
 type RegionAutoscalerAutoscalingPolicyCpuUtilization struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+	// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod *string `pulumi:"predictiveMethod"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
 	// be a positive float value. If not defined, the default is 0.8.
@@ -23722,6 +23922,10 @@ type RegionAutoscalerAutoscalingPolicyCpuUtilizationInput interface {
 }
 
 type RegionAutoscalerAutoscalingPolicyCpuUtilizationArgs struct {
+	// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+	// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+	// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+	PredictiveMethod pulumi.StringPtrInput `pulumi:"predictiveMethod"`
 	// Fraction of backend capacity utilization (set in HTTP(s) load
 	// balancing configuration) that autoscaler should maintain. Must
 	// be a positive float value. If not defined, the default is 0.8.
@@ -23805,6 +24009,13 @@ func (o RegionAutoscalerAutoscalingPolicyCpuUtilizationOutput) ToRegionAutoscale
 	}).(RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput)
 }
 
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o RegionAutoscalerAutoscalingPolicyCpuUtilizationOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RegionAutoscalerAutoscalingPolicyCpuUtilization) *string { return v.PredictiveMethod }).(pulumi.StringPtrOutput)
+}
+
 // Fraction of backend capacity utilization (set in HTTP(s) load
 // balancing configuration) that autoscaler should maintain. Must
 // be a positive float value. If not defined, the default is 0.8.
@@ -23830,6 +24041,18 @@ func (o RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) Elem() RegionA
 	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyCpuUtilization) RegionAutoscalerAutoscalingPolicyCpuUtilization {
 		return *v
 	}).(RegionAutoscalerAutoscalingPolicyCpuUtilizationOutput)
+}
+
+// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+// - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+// - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+func (o RegionAutoscalerAutoscalingPolicyCpuUtilizationPtrOutput) PredictiveMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RegionAutoscalerAutoscalingPolicyCpuUtilization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredictiveMethod
+	}).(pulumi.StringPtrOutput)
 }
 
 // Fraction of backend capacity utilization (set in HTTP(s) load
@@ -25403,14 +25626,26 @@ func (o RegionBackendServiceBackendArrayOutput) Index(i pulumi.IntInput) RegionB
 type RegionBackendServiceCdnPolicy struct {
 	// The CacheKeyPolicy for this CdnPolicy.
 	// Structure is documented below.
-	CacheKeyPolicy          *RegionBackendServiceCdnPolicyCacheKeyPolicy         `pulumi:"cacheKeyPolicy"`
-	CacheMode               *string                                              `pulumi:"cacheMode"`
-	ClientTtl               *int                                                 `pulumi:"clientTtl"`
-	DefaultTtl              *int                                                 `pulumi:"defaultTtl"`
-	MaxTtl                  *int                                                 `pulumi:"maxTtl"`
-	NegativeCaching         *bool                                                `pulumi:"negativeCaching"`
+	CacheKeyPolicy *RegionBackendServiceCdnPolicyCacheKeyPolicy `pulumi:"cacheKeyPolicy"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+	// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+	CacheMode *string `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl *int `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl *int `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl *int `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching *bool `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	// Structure is documented below.
 	NegativeCachingPolicies []RegionBackendServiceCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         *int                                                 `pulumi:"serveWhileStale"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale *int `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
 	// time period, the response will be revalidated before
@@ -25437,14 +25672,26 @@ type RegionBackendServiceCdnPolicyInput interface {
 type RegionBackendServiceCdnPolicyArgs struct {
 	// The CacheKeyPolicy for this CdnPolicy.
 	// Structure is documented below.
-	CacheKeyPolicy          RegionBackendServiceCdnPolicyCacheKeyPolicyPtrInput          `pulumi:"cacheKeyPolicy"`
-	CacheMode               pulumi.StringPtrInput                                        `pulumi:"cacheMode"`
-	ClientTtl               pulumi.IntPtrInput                                           `pulumi:"clientTtl"`
-	DefaultTtl              pulumi.IntPtrInput                                           `pulumi:"defaultTtl"`
-	MaxTtl                  pulumi.IntPtrInput                                           `pulumi:"maxTtl"`
-	NegativeCaching         pulumi.BoolPtrInput                                          `pulumi:"negativeCaching"`
+	CacheKeyPolicy RegionBackendServiceCdnPolicyCacheKeyPolicyPtrInput `pulumi:"cacheKeyPolicy"`
+	// Specifies the cache setting for all responses from this backend.
+	// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+	// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+	CacheMode pulumi.StringPtrInput `pulumi:"cacheMode"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	ClientTtl pulumi.IntPtrInput `pulumi:"clientTtl"`
+	// Specifies the default TTL for cached content served by this origin for responses
+	// that do not have an existing valid TTL (max-age or s-max-age).
+	DefaultTtl pulumi.IntPtrInput `pulumi:"defaultTtl"`
+	// Specifies the maximum allowed TTL for cached content served by this origin.
+	MaxTtl pulumi.IntPtrInput `pulumi:"maxTtl"`
+	// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+	NegativeCaching pulumi.BoolPtrInput `pulumi:"negativeCaching"`
+	// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+	// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+	// Structure is documented below.
 	NegativeCachingPolicies RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
-	ServeWhileStale         pulumi.IntPtrInput                                           `pulumi:"serveWhileStale"`
+	// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+	ServeWhileStale pulumi.IntPtrInput `pulumi:"serveWhileStale"`
 	// Maximum number of seconds the response to a signed URL request
 	// will be considered fresh, defaults to 1hr (3600s). After this
 	// time period, the response will be revalidated before
@@ -25542,32 +25789,44 @@ func (o RegionBackendServiceCdnPolicyOutput) CacheKeyPolicy() RegionBackendServi
 	}).(RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
 }
 
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
 func (o RegionBackendServiceCdnPolicyOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *string { return v.CacheMode }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o RegionBackendServiceCdnPolicyOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.ClientTtl }).(pulumi.IntPtrOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o RegionBackendServiceCdnPolicyOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.DefaultTtl }).(pulumi.IntPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o RegionBackendServiceCdnPolicyOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.MaxTtl }).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o RegionBackendServiceCdnPolicyOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *bool { return v.NegativeCaching }).(pulumi.BoolPtrOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+// Structure is documented below.
 func (o RegionBackendServiceCdnPolicyOutput) NegativeCachingPolicies() RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) []RegionBackendServiceCdnPolicyNegativeCachingPolicy {
 		return v.NegativeCachingPolicies
 	}).(RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o RegionBackendServiceCdnPolicyOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicy) *int { return v.ServeWhileStale }).(pulumi.IntPtrOutput)
 }
@@ -25614,6 +25873,9 @@ func (o RegionBackendServiceCdnPolicyPtrOutput) CacheKeyPolicy() RegionBackendSe
 	}).(RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput)
 }
 
+// Specifies the cache setting for all responses from this backend.
+// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
 func (o RegionBackendServiceCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *string {
 		if v == nil {
@@ -25623,6 +25885,7 @@ func (o RegionBackendServiceCdnPolicyPtrOutput) CacheMode() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o RegionBackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -25632,6 +25895,8 @@ func (o RegionBackendServiceCdnPolicyPtrOutput) ClientTtl() pulumi.IntPtrOutput 
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies the default TTL for cached content served by this origin for responses
+// that do not have an existing valid TTL (max-age or s-max-age).
 func (o RegionBackendServiceCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -25641,6 +25906,7 @@ func (o RegionBackendServiceCdnPolicyPtrOutput) DefaultTtl() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
+// Specifies the maximum allowed TTL for cached content served by this origin.
 func (o RegionBackendServiceCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -25650,6 +25916,7 @@ func (o RegionBackendServiceCdnPolicyPtrOutput) MaxTtl() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
 func (o RegionBackendServiceCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *bool {
 		if v == nil {
@@ -25659,6 +25926,9 @@ func (o RegionBackendServiceCdnPolicyPtrOutput) NegativeCaching() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+// Structure is documented below.
 func (o RegionBackendServiceCdnPolicyPtrOutput) NegativeCachingPolicies() RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput {
 	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) []RegionBackendServiceCdnPolicyNegativeCachingPolicy {
 		if v == nil {
@@ -25668,6 +25938,7 @@ func (o RegionBackendServiceCdnPolicyPtrOutput) NegativeCachingPolicies() Region
 	}).(RegionBackendServiceCdnPolicyNegativeCachingPolicyArrayOutput)
 }
 
+// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
 func (o RegionBackendServiceCdnPolicyPtrOutput) ServeWhileStale() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceCdnPolicy) *int {
 		if v == nil {
@@ -25957,8 +26228,12 @@ func (o RegionBackendServiceCdnPolicyCacheKeyPolicyPtrOutput) QueryStringWhiteli
 }
 
 type RegionBackendServiceCdnPolicyNegativeCachingPolicy struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code *int `pulumi:"code"`
-	Ttl  *int `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl *int `pulumi:"ttl"`
 }
 
 // RegionBackendServiceCdnPolicyNegativeCachingPolicyInput is an input type that accepts RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs and RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput values.
@@ -25973,8 +26248,12 @@ type RegionBackendServiceCdnPolicyNegativeCachingPolicyInput interface {
 }
 
 type RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs struct {
+	// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+	// can be specified as values, and you cannot specify a status code more than once.
 	Code pulumi.IntPtrInput `pulumi:"code"`
-	Ttl  pulumi.IntPtrInput `pulumi:"ttl"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl pulumi.IntPtrInput `pulumi:"ttl"`
 }
 
 func (RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs) ElementType() reflect.Type {
@@ -26028,10 +26307,14 @@ func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) ToRegionBacken
 	return o
 }
 
+// The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+// can be specified as values, and you cannot specify a status code more than once.
 func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) Code() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Code }).(pulumi.IntPtrOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o RegionBackendServiceCdnPolicyNegativeCachingPolicyOutput) Ttl() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceCdnPolicyNegativeCachingPolicy) *int { return v.Ttl }).(pulumi.IntPtrOutput)
 }
@@ -26691,8 +26974,10 @@ type RegionBackendServiceConsistentHashHttpCookie struct {
 	// Name of the cookie.
 	Name *string `pulumi:"name"`
 	// Path to set for the cookie.
-	Path *string                                          `pulumi:"path"`
-	Ttl  *RegionBackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
+	Path *string `pulumi:"path"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl *RegionBackendServiceConsistentHashHttpCookieTtl `pulumi:"ttl"`
 }
 
 // RegionBackendServiceConsistentHashHttpCookieInput is an input type that accepts RegionBackendServiceConsistentHashHttpCookieArgs and RegionBackendServiceConsistentHashHttpCookieOutput values.
@@ -26710,8 +26995,10 @@ type RegionBackendServiceConsistentHashHttpCookieArgs struct {
 	// Name of the cookie.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Path to set for the cookie.
-	Path pulumi.StringPtrInput                                   `pulumi:"path"`
-	Ttl  RegionBackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+	// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+	Ttl RegionBackendServiceConsistentHashHttpCookieTtlPtrInput `pulumi:"ttl"`
 }
 
 func (RegionBackendServiceConsistentHashHttpCookieArgs) ElementType() reflect.Type {
@@ -26801,6 +27088,8 @@ func (o RegionBackendServiceConsistentHashHttpCookieOutput) Path() pulumi.String
 	return o.ApplyT(func(v RegionBackendServiceConsistentHashHttpCookie) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o RegionBackendServiceConsistentHashHttpCookieOutput) Ttl() RegionBackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v RegionBackendServiceConsistentHashHttpCookie) *RegionBackendServiceConsistentHashHttpCookieTtl {
 		return v.Ttl
@@ -26847,6 +27136,8 @@ func (o RegionBackendServiceConsistentHashHttpCookiePtrOutput) Path() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
+// The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+// (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
 func (o RegionBackendServiceConsistentHashHttpCookiePtrOutput) Ttl() RegionBackendServiceConsistentHashHttpCookieTtlPtrOutput {
 	return o.ApplyT(func(v *RegionBackendServiceConsistentHashHttpCookie) *RegionBackendServiceConsistentHashHttpCookieTtl {
 		if v == nil {
@@ -31239,10 +31530,11 @@ type RegionInstanceGroupManagerUpdatePolicy struct {
 	// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
 	MaxUnavailablePercent *int `pulumi:"maxUnavailablePercent"`
 	// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-	// ***
 	MinReadySec *int `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction     string  `pulumi:"minimalAction"`
+	MinimalAction string `pulumi:"minimalAction"`
+	// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	// ***
 	ReplacementMethod *string `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type string `pulumi:"type"`
@@ -31271,10 +31563,11 @@ type RegionInstanceGroupManagerUpdatePolicyArgs struct {
 	// , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `maxUnavailableFixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
 	MaxUnavailablePercent pulumi.IntPtrInput `pulumi:"maxUnavailablePercent"`
 	// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-	// ***
 	MinReadySec pulumi.IntPtrInput `pulumi:"minReadySec"`
 	// - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
-	MinimalAction     pulumi.StringInput    `pulumi:"minimalAction"`
+	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+	// ***
 	ReplacementMethod pulumi.StringPtrInput `pulumi:"replacementMethod"`
 	// - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
 	Type pulumi.StringInput `pulumi:"type"`
@@ -31383,7 +31676,6 @@ func (o RegionInstanceGroupManagerUpdatePolicyOutput) MaxUnavailablePercent() pu
 }
 
 // , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-// ***
 func (o RegionInstanceGroupManagerUpdatePolicyOutput) MinReadySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegionInstanceGroupManagerUpdatePolicy) *int { return v.MinReadySec }).(pulumi.IntPtrOutput)
 }
@@ -31393,6 +31685,8 @@ func (o RegionInstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.Str
 	return o.ApplyT(func(v RegionInstanceGroupManagerUpdatePolicy) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
 
+// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+// ***
 func (o RegionInstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegionInstanceGroupManagerUpdatePolicy) *string { return v.ReplacementMethod }).(pulumi.StringPtrOutput)
 }
@@ -31471,7 +31765,6 @@ func (o RegionInstanceGroupManagerUpdatePolicyPtrOutput) MaxUnavailablePercent()
 }
 
 // , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-// ***
 func (o RegionInstanceGroupManagerUpdatePolicyPtrOutput) MinReadySec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManagerUpdatePolicy) *int {
 		if v == nil {
@@ -31491,6 +31784,8 @@ func (o RegionInstanceGroupManagerUpdatePolicyPtrOutput) MinimalAction() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
+// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+// ***
 func (o RegionInstanceGroupManagerUpdatePolicyPtrOutput) ReplacementMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManagerUpdatePolicy) *string {
 		if v == nil {
@@ -66810,6 +67105,12 @@ func (o GetInstanceTemplateGuestAcceleratorArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetInstanceTemplateNetworkInterface struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running the prvovider can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs []GetInstanceTemplateNetworkInterfaceAccessConfig `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -66824,7 +67125,6 @@ type GetInstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	NicType   string `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -66846,6 +67146,12 @@ type GetInstanceTemplateNetworkInterfaceInput interface {
 }
 
 type GetInstanceTemplateNetworkInterfaceArgs struct {
+	// Access configurations, i.e. IPs via which this
+	// instance can be accessed via the Internet. Omit to ensure that the instance
+	// is not accessible from the Internet (this means that ssh provisioners will
+	// not work unless you are running the prvovider can send traffic to the instance's
+	// network (e.g. via tunnel or because it is running on another cloud instance
+	// on that network). This block can be repeated multiple times. Structure documented below.
 	AccessConfigs GetInstanceTemplateNetworkInterfaceAccessConfigArrayInput `pulumi:"accessConfigs"`
 	// An
 	// array of alias IP ranges for this network interface. Can only be specified for network
@@ -66860,7 +67166,6 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	NicType   pulumi.StringInput `pulumi:"nicType"`
 	// the name of the subnetwork to attach this interface
 	// to. The subnetwork must exist in the same `region` this instance will be
 	// created in. Either `network` or `subnetwork` must be provided.
@@ -66921,6 +67226,12 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) ToGetInstanceTemplateNetworkI
 	return o
 }
 
+// Access configurations, i.e. IPs via which this
+// instance can be accessed via the Internet. Omit to ensure that the instance
+// is not accessible from the Internet (this means that ssh provisioners will
+// not work unless you are running the prvovider can send traffic to the instance's
+// network (e.g. via tunnel or because it is running on another cloud instance
+// on that network). This block can be repeated multiple times. Structure documented below.
 func (o GetInstanceTemplateNetworkInterfaceOutput) AccessConfigs() GetInstanceTemplateNetworkInterfaceAccessConfigArrayOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) []GetInstanceTemplateNetworkInterfaceAccessConfig {
 		return v.AccessConfigs
@@ -66952,10 +67263,6 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) Network() pulumi.StringOutput
 // empty, the address will be automatically assigned.
 func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
-}
-
-func (o GetInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
 
 // the name of the subnetwork to attach this interface

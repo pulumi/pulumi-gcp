@@ -10,11 +10,47 @@ import * as utilities from "../utilities";
  *
  * To get more information about Instance, see:
  *
- * * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+ * * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
  *
  * ## Example Usage
+ * ### Memcache Instance Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const memcacheNetwork = gcp.compute.getNetwork({
+ *     name: "test-network",
+ * });
+ * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
+ *     network: memcacheNetwork.then(memcacheNetwork => memcacheNetwork.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [serviceRange.name],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const instance = new gcp.memcache.Instance("instance", {
+ *     authorizedNetwork: privateServiceConnection.network,
+ *     nodeConfig: {
+ *         cpuCount: 1,
+ *         memorySizeMb: 1024,
+ *     },
+ *     nodeCount: 1,
+ *     memcacheVersion: "MEMCACHE_1_5",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

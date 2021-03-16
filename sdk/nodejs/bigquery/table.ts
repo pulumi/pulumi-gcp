@@ -6,6 +6,69 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * Creates a table resource in a dataset for Google BigQuery. For more information see
+ * [the official documentation](https://cloud.google.com/bigquery/docs/) and
+ * [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+ *
+ * > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+ * (and run `pulumi update` to write the field to state) in order to destroy an instance.
+ * It is recommended to not set this field (or set it to true) until you're ready to destroy.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultDataset = new gcp.bigquery.Dataset("defaultDataset", {
+ *     datasetId: "foo",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "EU",
+ *     defaultTableExpirationMs: 3600000,
+ *     labels: {
+ *         env: "default",
+ *     },
+ * });
+ * const defaultTable = new gcp.bigquery.Table("defaultTable", {
+ *     datasetId: defaultDataset.datasetId,
+ *     tableId: "bar",
+ *     timePartitioning: {
+ *         type: "DAY",
+ *     },
+ *     labels: {
+ *         env: "default",
+ *     },
+ *     schema: `[
+ *   {
+ *     "name": "permalink",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "The Permalink"
+ *   },
+ *   {
+ *     "name": "state",
+ *     "type": "STRING",
+ *     "mode": "NULLABLE",
+ *     "description": "State where the head office is located"
+ *   }
+ * ]
+ * `,
+ * });
+ * const sheet = new gcp.bigquery.Table("sheet", {
+ *     datasetId: defaultDataset.datasetId,
+ *     tableId: "sheet",
+ *     externalDataConfiguration: {
+ *         autodetect: true,
+ *         sourceFormat: "GOOGLE_SHEETS",
+ *         googleSheetsOptions: {
+ *             skipLeadingRows: 1,
+ *         },
+ *         sourceUris: ["https://docs.google.com/spreadsheets/d/123456789012345"],
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
@@ -58,8 +121,8 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly datasetId!: pulumi.Output<string>;
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -271,8 +334,8 @@ export interface TableState {
      */
     readonly datasetId?: pulumi.Input<string>;
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -402,8 +465,8 @@ export interface TableArgs {
      */
     readonly datasetId: pulumi.Input<string>;
     /**
-     * Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-     * terraform destroy or terraform apply that would delete the instance will fail.
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `=destroy` or `=update` that would delete the instance will fail.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**

@@ -7,6 +7,31 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Get a IAM workload identity provider from Google Cloud by its id.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iam"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := iam.LookupWorkloadIdentityPoolProvider(ctx, &iam.LookupWorkloadIdentityPoolProviderArgs{
+// 			WorkloadIdentityPoolId:         "foo-pool",
+// 			WorkloadIdentityPoolProviderId: "bar-provider",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func LookupWorkloadIdentityPoolProvider(ctx *pulumi.Context, args *LookupWorkloadIdentityPoolProviderArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadIdentityPoolProviderResult, error) {
 	var rv LookupWorkloadIdentityPoolProviderResult
 	err := ctx.Invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args, &rv, opts...)

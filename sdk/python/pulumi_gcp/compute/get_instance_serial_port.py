@@ -123,7 +123,7 @@ def get_instance_serial_port(instance: Optional[str] = None,
         zone="us-central1-a",
         boot_disk=gcp.compute.InstanceBootDiskArgs(
             initialize_params=gcp.compute.InstanceBootDiskInitializeParamsArgs(
-                image="gce-uefi-images/windows-2019",
+                image="windows-cloud/windows-2019",
             ),
         ),
         network_interfaces=[gcp.compute.InstanceNetworkInterfaceArgs(

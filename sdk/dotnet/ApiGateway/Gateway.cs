@@ -10,6 +10,16 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ApiGateway
 {
     /// <summary>
+    /// A consumable API that can be used by multiple Gateways.
+    /// 
+    /// To get more information about Gateway, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+    /// 
+    /// ## Example Usage
+    /// 
     /// ## Import
     /// 
     /// Gateway can be imported using any of these accepted formats

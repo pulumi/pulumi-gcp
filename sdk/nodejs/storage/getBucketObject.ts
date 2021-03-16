@@ -90,6 +90,7 @@ export interface GetBucketObjectResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly kmsKeyName: string;
     /**
      * (Computed) Base 64 MD5 hash of the uploaded data.
      */

@@ -5,6 +5,38 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A contact that will receive notifications from Google Cloud.
+ *
+ * To get more information about Contact, see:
+ *
+ * * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1beta1/projects.contacts)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+ *
+ * > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+ * you must specify a `billingProject` and set `userProjectOverride` to true
+ * in the provider configuration. Otherwise the Essential Contacts API will return a 403 error.
+ * Your account must have the `serviceusage.services.use` permission on the
+ * `billingProject` you defined.
+ *
+ * ## Example Usage
+ * ### Essential Contact
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const contact = new gcp.essentialcontacts.Contact("contact", {
+ *     parent: project.then(project => project.id),
+ *     email: "foo@bar.com",
+ *     languageTag: "en-GB",
+ *     notificationCategorySubscriptions: ["ALL"],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Contact can be imported using any of these accepted formats
@@ -48,7 +80,7 @@ export class Contact extends pulumi.CustomResource {
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
      */
-    public readonly languageTag!: pulumi.Output<string | undefined>;
+    public readonly languageTag!: pulumi.Output<string>;
     /**
      * The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
      */
@@ -84,6 +116,9 @@ export class Contact extends pulumi.CustomResource {
             const args = argsOrState as ContactArgs | undefined;
             if ((!args || args.email === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'email'");
+            }
+            if ((!args || args.languageTag === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'languageTag'");
             }
             if ((!args || args.notificationCategorySubscriptions === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notificationCategorySubscriptions'");
@@ -141,7 +176,7 @@ export interface ContactArgs {
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
      */
-    readonly languageTag?: pulumi.Input<string>;
+    readonly languageTag: pulumi.Input<string>;
     /**
      * The categories of notifications that the contact will receive communications for.
      */

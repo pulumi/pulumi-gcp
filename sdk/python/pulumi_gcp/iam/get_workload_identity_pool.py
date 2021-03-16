@@ -109,7 +109,17 @@ def get_workload_identity_pool(project: Optional[str] = None,
                                workload_identity_pool_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkloadIdentityPoolResult:
     """
-    Use this data source to access information about an existing resource.
+    Get a IAM workload identity pool from Google Cloud by its id.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.iam.get_workload_identity_pool(workload_identity_pool_id="foo-pool")
+    ```
+
 
     :param str project: The project in which the resource belongs. If it
            is not provided, the provider project is used.

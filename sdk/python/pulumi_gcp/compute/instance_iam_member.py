@@ -27,6 +27,119 @@ class InstanceIAMMember(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        Three different resources help you manage your IAM policy for Compute Engine Instance. Each of these resources serves a different use case:
+
+        * `compute.InstanceIAMPolicy`: Authoritative. Sets the IAM policy for the instance and replaces any existing policy already attached.
+        * `compute.InstanceIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the instance are preserved.
+        * `compute.InstanceIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the instance are preserved.
+
+        > **Note:** `compute.InstanceIAMPolicy` **cannot** be used in conjunction with `compute.InstanceIAMBinding` and `compute.InstanceIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `compute.InstanceIAMBinding` resources **can be** used in conjunction with `compute.InstanceIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_compute\_instance\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"],
+        )])
+        policy = gcp.compute.InstanceIAMPolicy("policy",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ),
+        )])
+        policy = gcp.compute.InstanceIAMPolicy("policy",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            policy_data=admin.policy_data)
+        ```
+        ## google\_compute\_instance\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.InstanceIAMBinding("binding",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"])
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.compute.InstanceIAMBinding("binding",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            members=["user:jane@example.com"],
+            condition=gcp.compute.InstanceIAMBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ))
+        ```
+        ## google\_compute\_instance\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.InstanceIAMMember("member",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            member="user:jane@example.com")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.compute.InstanceIAMMember("member",
+            project=google_compute_instance["default"]["project"],
+            zone=google_compute_instance["default"]["zone"],
+            instance_name=google_compute_instance["default"]["name"],
+            role="roles/compute.osLogin",
+            member="user:jane@example.com",
+            condition=gcp.compute.InstanceIAMMemberConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ))
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/zones/{{zone}}/instances/{{name}} * {{project}}/{{zone}}/{{name}} * {{zone}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine instance IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

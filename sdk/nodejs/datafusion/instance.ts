@@ -177,7 +177,10 @@ export class Instance extends pulumi.CustomResource {
      * of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
      * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-     * Possible values are `BASIC` and `ENTERPRISE`.
+     * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+     * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+     * pipelines at low cost.
+     * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -330,7 +333,10 @@ export interface InstanceState {
      * of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
      * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-     * Possible values are `BASIC` and `ENTERPRISE`.
+     * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+     * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+     * pipelines at low cost.
+     * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
      */
     readonly type?: pulumi.Input<string>;
     /**
@@ -400,7 +406,10 @@ export interface InstanceArgs {
      * of concurrent pipelines, no support for streaming pipelines, etc.
      * - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
      * available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-     * Possible values are `BASIC` and `ENTERPRISE`.
+     * - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+     * with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+     * pipelines at low cost.
+     * Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
      */
     readonly type: pulumi.Input<string>;
     /**

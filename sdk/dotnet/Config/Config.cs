@@ -94,8 +94,6 @@ namespace Pulumi.Gcp
 
         public static string? DialogflowCustomEndpoint { get; set; } = __config.Get("dialogflowCustomEndpoint");
 
-        public static string? DnsBetaCustomEndpoint { get; set; } = __config.Get("dnsBetaCustomEndpoint");
-
         public static string? DnsCustomEndpoint { get; set; } = __config.Get("dnsCustomEndpoint");
 
         public static string? EssentialContactsCustomEndpoint { get; set; } = __config.Get("essentialContactsCustomEndpoint");
@@ -160,7 +158,7 @@ namespace Pulumi.Gcp
 
         public static string? ResourceManagerCustomEndpoint { get; set; } = __config.Get("resourceManagerCustomEndpoint");
 
-        public static string? ResourceManagerV2beta1CustomEndpoint { get; set; } = __config.Get("resourceManagerV2beta1CustomEndpoint");
+        public static string? ResourceManagerV2CustomEndpoint { get; set; } = __config.Get("resourceManagerV2CustomEndpoint");
 
         public static string? RuntimeConfigCustomEndpoint { get; set; } = __config.Get("runtimeConfigCustomEndpoint");
 
@@ -197,6 +195,8 @@ namespace Pulumi.Gcp
         public static bool? UserProjectOverride { get; set; } = __config.GetBoolean("userProjectOverride");
 
         public static string? VpcAccessCustomEndpoint { get; set; } = __config.Get("vpcAccessCustomEndpoint");
+
+        public static string? WorkflowsCustomEndpoint { get; set; } = __config.Get("workflowsCustomEndpoint");
 
         public static string? Zone { get; set; } = __config.Get("zone") ?? Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
 

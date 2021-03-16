@@ -59,7 +59,6 @@ class Provider(pulumi.ProviderResource):
                  datastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  deployment_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dialogflow_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 dns_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  essential_contacts_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  eventarc_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -92,7 +91,7 @@ class Provider(pulumi.ProviderResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_timeout: Optional[pulumi.Input[str]] = None,
                  resource_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
-                 resource_manager_v2beta1_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 resource_manager_v2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtime_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  runtimeconfig_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -111,6 +110,7 @@ class Provider(pulumi.ProviderResource):
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 workflows_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -184,7 +184,6 @@ class Provider(pulumi.ProviderResource):
             __props__['datastore_custom_endpoint'] = datastore_custom_endpoint
             __props__['deployment_manager_custom_endpoint'] = deployment_manager_custom_endpoint
             __props__['dialogflow_custom_endpoint'] = dialogflow_custom_endpoint
-            __props__['dns_beta_custom_endpoint'] = dns_beta_custom_endpoint
             __props__['dns_custom_endpoint'] = dns_custom_endpoint
             __props__['essential_contacts_custom_endpoint'] = essential_contacts_custom_endpoint
             __props__['eventarc_custom_endpoint'] = eventarc_custom_endpoint
@@ -221,7 +220,7 @@ class Provider(pulumi.ProviderResource):
             __props__['region'] = region
             __props__['request_timeout'] = request_timeout
             __props__['resource_manager_custom_endpoint'] = resource_manager_custom_endpoint
-            __props__['resource_manager_v2beta1_custom_endpoint'] = resource_manager_v2beta1_custom_endpoint
+            __props__['resource_manager_v2_custom_endpoint'] = resource_manager_v2_custom_endpoint
             __props__['runtime_config_custom_endpoint'] = runtime_config_custom_endpoint
             __props__['runtimeconfig_custom_endpoint'] = runtimeconfig_custom_endpoint
             __props__['scopes'] = pulumi.Output.from_input(scopes).apply(pulumi.runtime.to_json) if scopes is not None else None
@@ -240,6 +239,7 @@ class Provider(pulumi.ProviderResource):
             __props__['tpu_custom_endpoint'] = tpu_custom_endpoint
             __props__['user_project_override'] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__['vpc_access_custom_endpoint'] = vpc_access_custom_endpoint
+            __props__['workflows_custom_endpoint'] = workflows_custom_endpoint
             if zone is None:
                 zone = _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
             __props__['zone'] = zone

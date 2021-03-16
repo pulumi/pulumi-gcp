@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        /// <summary>
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// </summary>
+        [Input("ephemeralStorageConfig")]
+        public Input<Inputs.ClusterNodePoolNodeConfigEphemeralStorageConfigGetArgs>? EphemeralStorageConfig { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.ClusterNodePoolNodeConfigGuestAcceleratorGetArgs>? _guestAccelerators;
 
@@ -81,8 +87,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<Inputs.ClusterNodePoolNodeConfigLinuxNodeConfigGetArgs>? LinuxNodeConfig { get; set; }
 
         /// <summary>
-        /// The amount of local SSD disks that will be
-        /// attached to each cluster node. Defaults to 0.
+        /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         /// </summary>
         [Input("localSsdCount")]
         public Input<int>? LocalSsdCount { get; set; }

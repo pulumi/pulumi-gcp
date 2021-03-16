@@ -13,11 +13,18 @@ namespace Pulumi.Gcp.Monitoring.Inputs
     public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Availability based SLI, dervied from count of requests made to this service that return successfully.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("availability")]
+        public Input<Inputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs>? Availability { get; set; }
+
+        /// <summary>
         /// Parameters for a latency threshold SLI.
         /// Structure is documented below.
         /// </summary>
-        [Input("latency", required: true)]
-        public Input<Inputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs> Latency { get; set; } = null!;
+        [Input("latency")]
+        public Input<Inputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs>? Latency { get; set; }
 
         [Input("locations")]
         private InputList<string>? _locations;

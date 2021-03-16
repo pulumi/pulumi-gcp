@@ -10,6 +10,62 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
+    /// Represents a collection of external workload identities. You can define IAM policies to
+    /// grant these identities access to Google Cloud resources.
+    /// 
+    /// To get more information about WorkloadIdentityPool, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools)
+    /// * How-to Guides
+    ///     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+    /// 
+    /// ## Example Usage
+    /// ### Iam Workload Identity Pool Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Iam.WorkloadIdentityPool("example", new Gcp.Iam.WorkloadIdentityPoolArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = "example-pool",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Iam Workload Identity Pool Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new Gcp.Iam.WorkloadIdentityPool("example", new Gcp.Iam.WorkloadIdentityPoolArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = "example-pool",
+    ///             DisplayName = "Name of pool",
+    ///             Description = "Identity pool for automated test",
+    ///             Disabled = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WorkloadIdentityPool can be imported using any of these accepted formats

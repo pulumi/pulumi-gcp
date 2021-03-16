@@ -6,6 +6,121 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * A configuration for an external identity provider.
+ *
+ * To get more information about WorkloadIdentityPoolProvider, see:
+ *
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+ * * How-to Guides
+ *     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+ *
+ * ## Example Usage
+ * ### Iam Workload Identity Pool Provider Aws Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
+ *     provider: google_beta,
+ * });
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     aws: {
+ *         accountId: "999999999999",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Iam Workload Identity Pool Provider Aws Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
+ *     provider: google_beta,
+ * });
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     displayName: "Name of provider",
+ *     description: "AWS identity pool provider for automated test",
+ *     disabled: true,
+ *     attributeCondition: "attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\"",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.arn",
+ *         "attribute.aws_account": "assertion.account",
+ *         "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
+ *     },
+ *     aws: {
+ *         accountId: "999999999999",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Iam Workload Identity Pool Provider Oidc Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
+ *     provider: google_beta,
+ * });
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.sub",
+ *     },
+ *     oidc: {
+ *         issuerUri: "https://sts.windows.net/azure-tenant-id",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Iam Workload Identity Pool Provider Oidc Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"}, {
+ *     provider: google_beta,
+ * });
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     displayName: "Name of provider",
+ *     description: "OIDC identity pool provider for automated test",
+ *     disabled: true,
+ *     attributeCondition: "\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups",
+ *     attributeMapping: {
+ *         "google.subject": "\"azure::\" + assertion.tid + \"::\" + assertion.sub",
+ *         "attribute.tid": "assertion.tid",
+ *         "attribute.managed_identity_name": `      {
+ *         "8bb39bdb-1cc5-4447-b7db-a19e920eb111":"workload1",
+ *         "55d36609-9bcf-48e0-a366-a3cf19027d2a":"workload2"
+ *       }[assertion.oid]
+ * `,
+ *     },
+ *     oidc: {
+ *         allowedAudiences: [
+ *             "https://example.com/gcp-oidc-federation",
+ *             "example.com/gcp-oidc-federation",
+ *         ],
+ *         issuerUri: "https://sts.windows.net/azure-tenant-id",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
  * ## Import
  *
  * WorkloadIdentityPoolProvider can be imported using any of these accepted formats

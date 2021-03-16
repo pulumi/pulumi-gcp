@@ -16,6 +16,7 @@ __all__ = [
     'DatabaseInstanceServerCaCertArgs',
     'DatabaseInstanceSettingsArgs',
     'DatabaseInstanceSettingsBackupConfigurationArgs',
+    'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs',
     'DatabaseInstanceSettingsDatabaseFlagArgs',
     'DatabaseInstanceSettingsInsightsConfigArgs',
     'DatabaseInstanceSettingsIpConfigurationArgs',
@@ -740,12 +741,15 @@ class DatabaseInstanceSettingsArgs:
 @pulumi.input_type
 class DatabaseInstanceSettingsBackupConfigurationArgs:
     def __init__(__self__, *,
+                 backup_retention_settings: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']] = None,
                  binary_log_enabled: Optional[pulumi.Input[bool]] = None,
                  enabled: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  point_in_time_recovery_enabled: Optional[pulumi.Input[bool]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None):
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 transaction_log_retention_days: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs'] backup_retention_settings: Backup retention settings. The configuration is detailed below.
         :param pulumi.Input[bool] binary_log_enabled: True if binary logging is enabled. If
                `settings.backup_configuration.enabled` is false, this must be as well.
                Cannot be used with Postgres.
@@ -754,7 +758,10 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
         :param pulumi.Input[bool] point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
         :param pulumi.Input[str] start_time: `HH:MM` format time indicating when backup
                configuration starts.
+        :param pulumi.Input[int] transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
         """
+        if backup_retention_settings is not None:
+            pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         if binary_log_enabled is not None:
             pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         if enabled is not None:
@@ -765,6 +772,20 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
             pulumi.set(__self__, "point_in_time_recovery_enabled", point_in_time_recovery_enabled)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if transaction_log_retention_days is not None:
+            pulumi.set(__self__, "transaction_log_retention_days", transaction_log_retention_days)
+
+    @property
+    @pulumi.getter(name="backupRetentionSettings")
+    def backup_retention_settings(self) -> Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]:
+        """
+        Backup retention settings. The configuration is detailed below.
+        """
+        return pulumi.get(self, "backup_retention_settings")
+
+    @backup_retention_settings.setter
+    def backup_retention_settings(self, value: Optional[pulumi.Input['DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs']]):
+        pulumi.set(self, "backup_retention_settings", value)
 
     @property
     @pulumi.getter(name="binaryLogEnabled")
@@ -828,6 +849,58 @@ class DatabaseInstanceSettingsBackupConfigurationArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter(name="transactionLogRetentionDays")
+    def transaction_log_retention_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of days of transaction logs we retain for point in time restore, from 1-7.
+        """
+        return pulumi.get(self, "transaction_log_retention_days")
+
+    @transaction_log_retention_days.setter
+    def transaction_log_retention_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "transaction_log_retention_days", value)
+
+
+@pulumi.input_type
+class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs:
+    def __init__(__self__, *,
+                 retained_backups: pulumi.Input[int],
+                 retention_unit: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] retained_backups: Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+               is 'COUNT', we will retain this many backups.
+        :param pulumi.Input[str] retention_unit: The unit that 'retained_backups' represents. Defaults to `COUNT`.
+        """
+        pulumi.set(__self__, "retained_backups", retained_backups)
+        if retention_unit is not None:
+            pulumi.set(__self__, "retention_unit", retention_unit)
+
+    @property
+    @pulumi.getter(name="retainedBackups")
+    def retained_backups(self) -> pulumi.Input[int]:
+        """
+        Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+        is 'COUNT', we will retain this many backups.
+        """
+        return pulumi.get(self, "retained_backups")
+
+    @retained_backups.setter
+    def retained_backups(self, value: pulumi.Input[int]):
+        pulumi.set(self, "retained_backups", value)
+
+    @property
+    @pulumi.getter(name="retentionUnit")
+    def retention_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unit that 'retained_backups' represents. Defaults to `COUNT`.
+        """
+        return pulumi.get(self, "retention_unit")
+
+    @retention_unit.setter
+    def retention_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "retention_unit", value)
 
 
 @pulumi.input_type

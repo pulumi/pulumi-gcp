@@ -99,6 +99,12 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> DetectMd5hash { get; private set; } = null!;
 
         /// <summary>
+        /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+        /// </summary>
+        [Output("kmsKeyName")]
+        public Output<string> KmsKeyName { get; private set; } = null!;
+
+        /// <summary>
         /// (Computed) Base 64 MD5 hash of the uploaded data.
         /// </summary>
         [Output("md5hash")]
@@ -242,6 +248,12 @@ namespace Pulumi.Gcp.Storage
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
 
+        /// <summary>
+        /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
+
         [Input("metadata")]
         private InputMap<string>? _metadata;
 
@@ -333,6 +345,12 @@ namespace Pulumi.Gcp.Storage
 
         [Input("detectMd5hash")]
         public Input<string>? DetectMd5hash { get; set; }
+
+        /// <summary>
+        /// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+        /// </summary>
+        [Input("kmsKeyName")]
+        public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
         /// (Computed) Base 64 MD5 hash of the uploaded data.

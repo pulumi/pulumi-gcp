@@ -1441,6 +1441,8 @@ func (o DatabaseInstanceSettingsPtrOutput) Version() pulumi.IntPtrOutput {
 }
 
 type DatabaseInstanceSettingsBackupConfiguration struct {
+	// Backup retention settings. The configuration is detailed below.
+	BackupRetentionSettings *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings `pulumi:"backupRetentionSettings"`
 	// True if binary logging is enabled. If
 	// `settings.backup_configuration.enabled` is false, this must be as well.
 	// Cannot be used with Postgres.
@@ -1454,6 +1456,8 @@ type DatabaseInstanceSettingsBackupConfiguration struct {
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime *string `pulumi:"startTime"`
+	// The number of days of transaction logs we retain for point in time restore, from 1-7.
+	TransactionLogRetentionDays *int `pulumi:"transactionLogRetentionDays"`
 }
 
 // DatabaseInstanceSettingsBackupConfigurationInput is an input type that accepts DatabaseInstanceSettingsBackupConfigurationArgs and DatabaseInstanceSettingsBackupConfigurationOutput values.
@@ -1468,6 +1472,8 @@ type DatabaseInstanceSettingsBackupConfigurationInput interface {
 }
 
 type DatabaseInstanceSettingsBackupConfigurationArgs struct {
+	// Backup retention settings. The configuration is detailed below.
+	BackupRetentionSettings DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput `pulumi:"backupRetentionSettings"`
 	// True if binary logging is enabled. If
 	// `settings.backup_configuration.enabled` is false, this must be as well.
 	// Cannot be used with Postgres.
@@ -1481,6 +1487,8 @@ type DatabaseInstanceSettingsBackupConfigurationArgs struct {
 	// `HH:MM` format time indicating when backup
 	// configuration starts.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// The number of days of transaction logs we retain for point in time restore, from 1-7.
+	TransactionLogRetentionDays pulumi.IntPtrInput `pulumi:"transactionLogRetentionDays"`
 }
 
 func (DatabaseInstanceSettingsBackupConfigurationArgs) ElementType() reflect.Type {
@@ -1560,6 +1568,13 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) ToDatabaseInstanceSet
 	}).(DatabaseInstanceSettingsBackupConfigurationPtrOutput)
 }
 
+// Backup retention settings. The configuration is detailed below.
+func (o DatabaseInstanceSettingsBackupConfigurationOutput) BackupRetentionSettings() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
+		return v.BackupRetentionSettings
+	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
+}
+
 // True if binary logging is enabled. If
 // `settings.backup_configuration.enabled` is false, this must be as well.
 // Cannot be used with Postgres.
@@ -1588,6 +1603,11 @@ func (o DatabaseInstanceSettingsBackupConfigurationOutput) StartTime() pulumi.St
 	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
+// The number of days of transaction logs we retain for point in time restore, from 1-7.
+func (o DatabaseInstanceSettingsBackupConfigurationOutput) TransactionLogRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfiguration) *int { return v.TransactionLogRetentionDays }).(pulumi.IntPtrOutput)
+}
+
 type DatabaseInstanceSettingsBackupConfigurationPtrOutput struct{ *pulumi.OutputState }
 
 func (DatabaseInstanceSettingsBackupConfigurationPtrOutput) ElementType() reflect.Type {
@@ -1606,6 +1626,16 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) Elem() DatabaseIns
 	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) DatabaseInstanceSettingsBackupConfiguration {
 		return *v
 	}).(DatabaseInstanceSettingsBackupConfigurationOutput)
+}
+
+// Backup retention settings. The configuration is detailed below.
+func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) BackupRetentionSettings() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
+		if v == nil {
+			return nil
+		}
+		return v.BackupRetentionSettings
+	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
 }
 
 // True if binary logging is enabled. If
@@ -1658,6 +1688,176 @@ func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) StartTime() pulumi
 			return nil
 		}
 		return v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of days of transaction logs we retain for point in time restore, from 1-7.
+func (o DatabaseInstanceSettingsBackupConfigurationPtrOutput) TransactionLogRetentionDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfiguration) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TransactionLogRetentionDays
+	}).(pulumi.IntPtrOutput)
+}
+
+type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings struct {
+	// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
+	// is 'COUNT', we will retain this many backups.
+	RetainedBackups int `pulumi:"retainedBackups"`
+	// The unit that 'retained_backups' represents. Defaults to `COUNT`.
+	RetentionUnit *string `pulumi:"retentionUnit"`
+}
+
+// DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput is an input type that accepts DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs and DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput` via:
+//
+//          DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{...}
+type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput
+	ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutputWithContext(context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput
+}
+
+type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs struct {
+	// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
+	// is 'COUNT', we will retain this many backups.
+	RetainedBackups pulumi.IntInput `pulumi:"retainedBackups"`
+	// The unit that 'retained_backups' represents. Defaults to `COUNT`.
+	RetentionUnit pulumi.StringPtrInput `pulumi:"retentionUnit"`
+}
+
+func (DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput {
+	return i.ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput)
+}
+
+func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return i.ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput).ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput is an input type that accepts DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs, DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtr and DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput` via:
+//
+//          DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput
+	ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput
+}
+
+type databaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrType DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs
+
+func DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtr(v *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrInput {
+	return (*databaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrType)(v)
+}
+
+func (*databaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings)(nil)).Elem()
+}
+
+func (i *databaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrType) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return i.ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrType) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
+}
+
+type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return o.ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
+		return &v
+	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput)
+}
+
+// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
+// is 'COUNT', we will retain this many backups.
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) RetainedBackups() pulumi.IntOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) int {
+		return v.RetainedBackups
+	}).(pulumi.IntOutput)
+}
+
+// The unit that 'retained_backups' represents. Defaults to `COUNT`.
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput) RetentionUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) *string {
+		return v.RetentionUnit
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) ToDatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutputWithContext(ctx context.Context) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) Elem() DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
+		return *v
+	}).(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput)
+}
+
+// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
+// is 'COUNT', we will retain this many backups.
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) RetainedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RetainedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
+// The unit that 'retained_backups' represents. Defaults to `COUNT`.
+func (o DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput) RetentionUnit() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RetentionUnit
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3629,6 +3829,7 @@ func (o GetDatabaseInstanceSettingArrayOutput) Index(i pulumi.IntInput) GetDatab
 }
 
 type GetDatabaseInstanceSettingBackupConfiguration struct {
+	BackupRetentionSettings []GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting `pulumi:"backupRetentionSettings"`
 	// True if binary logging is enabled.
 	BinaryLogEnabled bool `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -3636,7 +3837,8 @@ type GetDatabaseInstanceSettingBackupConfiguration struct {
 	Location                   string `pulumi:"location"`
 	PointInTimeRecoveryEnabled bool   `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup configuration starts.
-	StartTime string `pulumi:"startTime"`
+	StartTime                   string `pulumi:"startTime"`
+	TransactionLogRetentionDays int    `pulumi:"transactionLogRetentionDays"`
 }
 
 // GetDatabaseInstanceSettingBackupConfigurationInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationArgs and GetDatabaseInstanceSettingBackupConfigurationOutput values.
@@ -3651,6 +3853,7 @@ type GetDatabaseInstanceSettingBackupConfigurationInput interface {
 }
 
 type GetDatabaseInstanceSettingBackupConfigurationArgs struct {
+	BackupRetentionSettings GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput `pulumi:"backupRetentionSettings"`
 	// True if binary logging is enabled.
 	BinaryLogEnabled pulumi.BoolInput `pulumi:"binaryLogEnabled"`
 	// True if backup configuration is enabled.
@@ -3658,7 +3861,8 @@ type GetDatabaseInstanceSettingBackupConfigurationArgs struct {
 	Location                   pulumi.StringInput `pulumi:"location"`
 	PointInTimeRecoveryEnabled pulumi.BoolInput   `pulumi:"pointInTimeRecoveryEnabled"`
 	// `HH:MM` format time indicating when backup configuration starts.
-	StartTime pulumi.StringInput `pulumi:"startTime"`
+	StartTime                   pulumi.StringInput `pulumi:"startTime"`
+	TransactionLogRetentionDays pulumi.IntInput    `pulumi:"transactionLogRetentionDays"`
 }
 
 func (GetDatabaseInstanceSettingBackupConfigurationArgs) ElementType() reflect.Type {
@@ -3712,6 +3916,12 @@ func (o GetDatabaseInstanceSettingBackupConfigurationOutput) ToGetDatabaseInstan
 	return o
 }
 
+func (o GetDatabaseInstanceSettingBackupConfigurationOutput) BackupRetentionSettings() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) []GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
+		return v.BackupRetentionSettings
+	}).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
+}
+
 // True if binary logging is enabled.
 func (o GetDatabaseInstanceSettingBackupConfigurationOutput) BinaryLogEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) bool { return v.BinaryLogEnabled }).(pulumi.BoolOutput)
@@ -3735,6 +3945,10 @@ func (o GetDatabaseInstanceSettingBackupConfigurationOutput) StartTime() pulumi.
 	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+func (o GetDatabaseInstanceSettingBackupConfigurationOutput) TransactionLogRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfiguration) int { return v.TransactionLogRetentionDays }).(pulumi.IntOutput)
+}
+
 type GetDatabaseInstanceSettingBackupConfigurationArrayOutput struct{ *pulumi.OutputState }
 
 func (GetDatabaseInstanceSettingBackupConfigurationArrayOutput) ElementType() reflect.Type {
@@ -3753,6 +3967,110 @@ func (o GetDatabaseInstanceSettingBackupConfigurationArrayOutput) Index(i pulumi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingBackupConfiguration {
 		return vs[0].([]GetDatabaseInstanceSettingBackupConfiguration)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingBackupConfigurationOutput)
+}
+
+type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting struct {
+	RetainedBackups int    `pulumi:"retainedBackups"`
+	RetentionUnit   string `pulumi:"retentionUnit"`
+}
+
+// GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs and GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput` via:
+//
+//          GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...}
+type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput
+	ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput
+}
+
+type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs struct {
+	RetainedBackups pulumi.IntInput    `pulumi:"retainedBackups"`
+	RetentionUnit   pulumi.StringInput `pulumi:"retentionUnit"`
+}
+
+func (GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return i.ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
+}
+
+// GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput is an input type that accepts GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray and GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput` via:
+//
+//          GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray{ GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArgs{...} }
+type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput
+	ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput
+}
+
+type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray []GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingInput
+
+func (GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return i.ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArray) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput)
+}
+
+type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) RetainedBackups() pulumi.IntOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting) int {
+		return v.RetainedBackups
+	}).(pulumi.IntOutput)
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput) RetentionUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting) string {
+		return v.RetentionUnit
+	}).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput() GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) ToGetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
+		return vs[0].([]GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput)
 }
 
 type GetDatabaseInstanceSettingDatabaseFlag struct {
@@ -4462,6 +4780,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsInsightsConfigOutput{})
@@ -4490,6 +4810,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingDatabaseFlagArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingInsightsConfigOutput{})

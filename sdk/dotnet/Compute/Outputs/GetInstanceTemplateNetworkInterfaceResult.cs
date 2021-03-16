@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.Compute.Outputs
     [OutputType]
     public sealed class GetInstanceTemplateNetworkInterfaceResult
     {
+        /// <summary>
+        /// Access configurations, i.e. IPs via which this
+        /// instance can be accessed via the Internet. Omit to ensure that the instance
+        /// is not accessible from the Internet (this means that ssh provisioners will
+        /// not work unless you are running the prvovider can send traffic to the instance's
+        /// network (e.g. via tunnel or because it is running on another cloud instance
+        /// on that network). This block can be repeated multiple times. Structure documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult> AccessConfigs;
         /// <summary>
         /// An
@@ -35,7 +43,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// empty, the address will be automatically assigned.
         /// </summary>
         public readonly string NetworkIp;
-        public readonly string NicType;
         /// <summary>
         /// the name of the subnetwork to attach this interface
         /// to. The subnetwork must exist in the same `region` this instance will be
@@ -60,8 +67,6 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             string networkIp,
 
-            string nicType,
-
             string subnetwork,
 
             string subnetworkProject)
@@ -71,7 +76,6 @@ namespace Pulumi.Gcp.Compute.Outputs
             Name = name;
             Network = network;
             NetworkIp = networkIp;
-            NicType = nicType;
             Subnetwork = subnetwork;
             SubnetworkProject = subnetworkProject;
         }

@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Sql.Inputs
     public sealed class DatabaseInstanceSettingsBackupConfigurationGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Backup retention settings. The configuration is detailed below.
+        /// </summary>
+        [Input("backupRetentionSettings")]
+        public Input<Inputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsGetArgs>? BackupRetentionSettings { get; set; }
+
+        /// <summary>
         /// True if binary logging is enabled. If
         /// `settings.backup_configuration.enabled` is false, this must be as well.
         /// Cannot be used with Postgres.
@@ -44,6 +50,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
+
+        /// <summary>
+        /// The number of days of transaction logs we retain for point in time restore, from 1-7.
+        /// </summary>
+        [Input("transactionLogRetentionDays")]
+        public Input<int>? TransactionLogRetentionDays { get; set; }
 
         public DatabaseInstanceSettingsBackupConfigurationGetArgs()
         {

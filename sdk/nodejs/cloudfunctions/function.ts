@@ -6,10 +6,11 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Creates a new Cloud Function. For more information see
- * [the official documentation](https://cloud.google.com/functions/docs/)
- * and
- * [API](https://cloud.google.com/functions/docs/apis).
+ * Creates a new Cloud Function. For more information see:
+ *
+ * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/functions/docs)
  *
  * > **Warning:** As of November 1, 2019, newly created Functions are
  * private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
@@ -31,7 +32,7 @@ import * as utilities from "../utilities";
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
- *     runtime: "nodejs10",
+ *     runtime: "nodejs12",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -60,7 +61,7 @@ import * as utilities from "../utilities";
  * });
  * const _function = new gcp.cloudfunctions.Function("function", {
  *     description: "My function",
- *     runtime: "nodejs10",
+ *     runtime: "nodejs12",
  *     availableMemoryMb: 128,
  *     sourceArchiveBucket: bucket.name,
  *     sourceArchiveObject: archive.name,
@@ -178,7 +179,7 @@ export class Function extends pulumi.CustomResource {
     public readonly region!: pulumi.Output<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
      */
     public readonly runtime!: pulumi.Output<string>;
     /**
@@ -343,7 +344,7 @@ export interface FunctionState {
     readonly region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
      */
     readonly runtime?: pulumi.Input<string>;
     /**
@@ -439,7 +440,7 @@ export interface FunctionArgs {
     readonly region?: pulumi.Input<string>;
     /**
      * The runtime in which the function is going to run.
-     * Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
+     * Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
      */
     readonly runtime: pulumi.Input<string>;
     /**

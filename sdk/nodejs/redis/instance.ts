@@ -10,7 +10,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Instance, see:
  *
- * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+ * * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
  *
@@ -47,6 +47,39 @@ import * as utilities from "../utilities";
  *         my_key: "my_val",
  *         other_key: "other_val",
  *     },
+ * });
+ * ```
+ * ### Redis Instance Private Service
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const redis-network = gcp.compute.getNetwork({
+ *     name: "redis-test-network",
+ * });
+ * const serviceRange = new gcp.compute.GlobalAddress("serviceRange", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: redis_network.then(redis_network => redis_network.id),
+ * });
+ * const privateServiceConnection = new gcp.servicenetworking.Connection("privateServiceConnection", {
+ *     network: redis_network.then(redis_network => redis_network.id),
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [serviceRange.name],
+ * });
+ * const cache = new gcp.redis.Instance("cache", {
+ *     tier: "STANDARD_HA",
+ *     memorySizeGb: 1,
+ *     locationId: "us-central1-a",
+ *     alternativeLocationId: "us-central1-f",
+ *     authorizedNetwork: redis_network.then(redis_network => redis_network.id),
+ *     connectMode: "PRIVATE_SERVICE_ACCESS",
+ *     redisVersion: "REDIS_4_0",
+ *     displayName: "Test Instance",
+ * }, {
+ *     dependsOn: [privateServiceConnection],
  * });
  * ```
  *
@@ -219,9 +252,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tier!: pulumi.Output<string | undefined>;
     /**
-     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-     * to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-     * ["SERVER_AUTHENTICATION", "DISABLED"]
+     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+     * Default value is `DISABLED`.
+     * Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
      */
     public readonly transitEncryptionMode!: pulumi.Output<string | undefined>;
 
@@ -422,9 +456,10 @@ export interface InstanceState {
      */
     readonly tier?: pulumi.Input<string>;
     /**
-     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-     * to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-     * ["SERVER_AUTHENTICATION", "DISABLED"]
+     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+     * Default value is `DISABLED`.
+     * Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
      */
     readonly transitEncryptionMode?: pulumi.Input<string>;
 }
@@ -522,9 +557,10 @@ export interface InstanceArgs {
      */
     readonly tier?: pulumi.Input<string>;
     /**
-     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-     * to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-     * ["SERVER_AUTHENTICATION", "DISABLED"]
+     * The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+     * - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+     * Default value is `DISABLED`.
+     * Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
      */
     readonly transitEncryptionMode?: pulumi.Input<string>;
 }

@@ -59,6 +59,46 @@ import (
 // 	})
 // }
 // ```
+// ### Region Consumer Quota Override
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceusage"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
+// 			ProjectId: pulumi.String("quota"),
+// 			OrgId:     pulumi.String("123456789"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceusage.NewConsumerQuotaOverride(ctx, "override", &serviceusage.ConsumerQuotaOverrideArgs{
+// 			Dimensions: pulumi.StringMap{
+// 				"region": pulumi.String("us-central1"),
+// 			},
+// 			Project:       myProject.ProjectId,
+// 			Service:       pulumi.String("compute.googleapis.com"),
+// 			Metric:        pulumi.String(fmt.Sprintf("%v%v%v", "compute.googleapis.com", "%", "2Fn2_cpus")),
+// 			Limit:         pulumi.String(fmt.Sprintf("%v%v%v%v", "%", "2Fproject", "%", "2Fregion")),
+// 			OverrideValue: pulumi.String("8"),
+// 			Force:         pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

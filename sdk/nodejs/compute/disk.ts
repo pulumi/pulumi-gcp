@@ -132,8 +132,9 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly image!: pulumi.Output<string | undefined>;
     /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * Default value is `SCSI`.
+     * Possible values are `SCSI` and `NVME`.
      */
     public readonly interface!: pulumi.Output<string | undefined>;
     /**
@@ -200,6 +201,10 @@ export class Disk extends pulumi.CustomResource {
      * If you specify this field along with `image` or `snapshot`,
      * the value must not be less than the size of the image
      * or the size of the snapshot.
+     * ~>**NOTE** If you change the size, the provider updates the disk size
+     * if upsizing is detected but recreates the disk if downsizing is requested.
+     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+     * and recreating.
      */
     public readonly size!: pulumi.Output<number>;
     /**
@@ -362,8 +367,9 @@ export interface DiskState {
      */
     readonly image?: pulumi.Input<string>;
     /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * Default value is `SCSI`.
+     * Possible values are `SCSI` and `NVME`.
      */
     readonly interface?: pulumi.Input<string>;
     /**
@@ -430,6 +436,10 @@ export interface DiskState {
      * If you specify this field along with `image` or `snapshot`,
      * the value must not be less than the size of the image
      * or the size of the snapshot.
+     * ~>**NOTE** If you change the size, the provider updates the disk size
+     * if upsizing is detected but recreates the disk if downsizing is requested.
+     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+     * and recreating.
      */
     readonly size?: pulumi.Input<number>;
     /**
@@ -518,8 +528,9 @@ export interface DiskArgs {
      */
     readonly image?: pulumi.Input<string>;
     /**
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-     * value: "SCSI" Possible values: ["SCSI", "NVME"]
+     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * Default value is `SCSI`.
+     * Possible values are `SCSI` and `NVME`.
      */
     readonly interface?: pulumi.Input<string>;
     /**
@@ -570,6 +581,10 @@ export interface DiskArgs {
      * If you specify this field along with `image` or `snapshot`,
      * the value must not be less than the size of the image
      * or the size of the snapshot.
+     * ~>**NOTE** If you change the size, the provider updates the disk size
+     * if upsizing is detected but recreates the disk if downsizing is requested.
+     * You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+     * and recreating.
      */
     readonly size?: pulumi.Input<number>;
     /**

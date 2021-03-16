@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// To get more information about Instance, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+    /// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
     /// 
@@ -65,6 +65,57 @@ namespace Pulumi.Gcp.Redis
     ///             {
     ///                 { "my_key", "my_val" },
     ///                 { "other_key", "other_val" },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Redis Instance Private Service
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var redis_network = Output.Create(Gcp.Compute.GetNetwork.InvokeAsync(new Gcp.Compute.GetNetworkArgs
+    ///         {
+    ///             Name = "redis-test-network",
+    ///         }));
+    ///         var serviceRange = new Gcp.Compute.GlobalAddress("serviceRange", new Gcp.Compute.GlobalAddressArgs
+    ///         {
+    ///             Purpose = "VPC_PEERING",
+    ///             AddressType = "INTERNAL",
+    ///             PrefixLength = 16,
+    ///             Network = redis_network.Apply(redis_network =&gt; redis_network.Id),
+    ///         });
+    ///         var privateServiceConnection = new Gcp.ServiceNetworking.Connection("privateServiceConnection", new Gcp.ServiceNetworking.ConnectionArgs
+    ///         {
+    ///             Network = redis_network.Apply(redis_network =&gt; redis_network.Id),
+    ///             Service = "servicenetworking.googleapis.com",
+    ///             ReservedPeeringRanges = 
+    ///             {
+    ///                 serviceRange.Name,
+    ///             },
+    ///         });
+    ///         var cache = new Gcp.Redis.Instance("cache", new Gcp.Redis.InstanceArgs
+    ///         {
+    ///             Tier = "STANDARD_HA",
+    ///             MemorySizeGb = 1,
+    ///             LocationId = "us-central1-a",
+    ///             AlternativeLocationId = "us-central1-f",
+    ///             AuthorizedNetwork = redis_network.Apply(redis_network =&gt; redis_network.Id),
+    ///             ConnectMode = "PRIVATE_SERVICE_ACCESS",
+    ///             RedisVersion = "REDIS_4_0",
+    ///             DisplayName = "Test Instance",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             DependsOn = 
+    ///             {
+    ///                 privateServiceConnection,
     ///             },
     ///         });
     ///     }
@@ -260,9 +311,10 @@ namespace Pulumi.Gcp.Redis
         public Output<string?> Tier { get; private set; } = null!;
 
         /// <summary>
-        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-        /// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-        /// ["SERVER_AUTHENTICATION", "DISABLED"]
+        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        /// Default value is `DISABLED`.
+        /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         /// </summary>
         [Output("transitEncryptionMode")]
         public Output<string?> TransitEncryptionMode { get; private set; } = null!;
@@ -444,9 +496,10 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Tier { get; set; }
 
         /// <summary>
-        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-        /// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-        /// ["SERVER_AUTHENTICATION", "DISABLED"]
+        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        /// Default value is `DISABLED`.
+        /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }
@@ -641,9 +694,10 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? Tier { get; set; }
 
         /// <summary>
-        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-        /// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-        /// ["SERVER_AUTHENTICATION", "DISABLED"]
+        /// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+        /// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+        /// Default value is `DISABLED`.
+        /// Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
         /// </summary>
         [Input("transitEncryptionMode")]
         public Input<string>? TransitEncryptionMode { get; set; }

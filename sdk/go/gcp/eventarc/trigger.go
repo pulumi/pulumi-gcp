@@ -11,6 +11,74 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// An event trigger sends messages to the event receiver service deployed on Cloud Run.
+//
+// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/cloudrun"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/eventarc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := cloudrun.NewService(ctx, "_default", &cloudrun.ServiceArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			Metadata: &cloudrun.ServiceMetadataArgs{
+// 				Namespace: pulumi.String("my-project"),
+// 			},
+// 			Template: &cloudrun.ServiceTemplateArgs{
+// 				Spec: &cloudrun.ServiceTemplateSpecArgs{
+// 					Containers: cloudrun.ServiceTemplateSpecContainerArray{
+// 						&cloudrun.ServiceTemplateSpecContainerArgs{
+// 							Image: pulumi.String("gcr.io/cloudrun/hello"),
+// 							Args: pulumi.StringArray{
+// 								pulumi.String("arrgs"),
+// 							},
+// 						},
+// 					},
+// 					ContainerConcurrency: pulumi.Int(50),
+// 				},
+// 			},
+// 			Traffics: cloudrun.ServiceTrafficArray{
+// 				&cloudrun.ServiceTrafficArgs{
+// 					Percent:        pulumi.Int(100),
+// 					LatestRevision: pulumi.Bool(true),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = eventarc.NewTrigger(ctx, "trigger", &eventarc.TriggerArgs{
+// 			Location: pulumi.String("us-central1"),
+// 			MatchingCriterias: eventarc.TriggerMatchingCriteriaArray{
+// 				&eventarc.TriggerMatchingCriteriaArgs{
+// 					Attribute: pulumi.String("type"),
+// 					Value:     pulumi.String("google.cloud.pubsub.topic.v1.messagePublished"),
+// 				},
+// 			},
+// 			Destination: &eventarc.TriggerDestinationArgs{
+// 				CloudRunService: &eventarc.TriggerDestinationCloudRunServiceArgs{
+// 					Service: _default.Name,
+// 					Region:  pulumi.String("us-central1"),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Trigger can be imported using any of these accepted formats

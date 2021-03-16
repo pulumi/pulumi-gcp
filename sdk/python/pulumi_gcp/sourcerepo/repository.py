@@ -47,7 +47,7 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test_account = gcp.service_account.Account("test-account",
+        test_account = gcp.service_account.Account("testAccount",
             account_id="my-account",
             display_name="Test Service Account")
         topic = gcp.pubsub.Topic("topic")

@@ -5,6 +5,76 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The Consent Management API is a tool for tracking user consents and the documentation associated with the consents.
+ *
+ * To get more information about ConsentStore, see:
+ *
+ * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+ * * How-to Guides
+ *     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+ *
+ * ## Example Usage
+ * ### Healthcare Consent Store Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id}, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Healthcare Consent Store Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {
+ *     dataset: dataset.id,
+ *     enableConsentCreateOnUpdate: true,
+ *     defaultConsentTtl: "90000s",
+ *     labels: {
+ *         label1: "labelvalue1",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Healthcare Consent Store Iam
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
+ *     provider: google_beta,
+ * });
+ * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id}, {
+ *     provider: google_beta,
+ * });
+ * const test_account = new gcp.serviceAccount.Account("test-account", {
+ *     accountId: "my-account",
+ *     displayName: "Test Service Account",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const test_iam = new gcp.healthcare.ConsentStoreIamMember("test-iam", {
+ *     dataset: dataset.id,
+ *     consentStoreId: my_consent.name,
+ *     role: "roles/editor",
+ *     member: pulumi.interpolate`serviceAccount:${test_account.email}`,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
  * ## Import
  *
  * ConsentStore can be imported using any of these accepted formats

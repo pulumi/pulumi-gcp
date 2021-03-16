@@ -10,6 +10,79 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CertificateAuthority
 {
     /// <summary>
+    /// A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+    /// 
+    /// &gt; **Note:** The Certificate Authority that is referenced by this resource **must** be
+    /// `tier = "ENTERPRISE"`
+    /// 
+    /// &gt; **Warning:** Please remember that all resources created during preview (via this provider)
+    /// will be deleted when CA service transitions to General Availability (GA). Relying on these
+    /// certificate authorities for production traffic is discouraged.
+    /// 
+    /// ## Example Usage
+    /// ### Privateca Certificate Csr
+    /// 
+    /// ```csharp
+    /// using System.IO;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var test_ca = new Gcp.CertificateAuthority.Authority("test-ca", new Gcp.CertificateAuthority.AuthorityArgs
+    ///         {
+    ///             CertificateAuthorityId = "my-certificate-authority",
+    ///             Location = "us-central1",
+    ///             Tier = "ENTERPRISE",
+    ///             Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigArgs
+    ///             {
+    ///                 SubjectConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigArgs
+    ///                 {
+    ///                     Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
+    ///                     {
+    ///                         Organization = "HashiCorp",
+    ///                     },
+    ///                     CommonName = "my-certificate-authority",
+    ///                     SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
+    ///                     {
+    ///                         DnsNames = 
+    ///                         {
+    ///                             "hashicorp.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 ReusableConfig = new Gcp.CertificateAuthority.Inputs.AuthorityConfigReusableConfigArgs
+    ///                 {
+    ///                     ReusableConfig = "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+    ///                 },
+    ///             },
+    ///             KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
+    ///             {
+    ///                 Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///             },
+    ///             DisableOnDelete = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @default = new Gcp.CertificateAuthority.Certificate("default", new Gcp.CertificateAuthority.CertificateArgs
+    ///         {
+    ///             Project = "my-project-name",
+    ///             Location = "us-central1",
+    ///             CertificateAuthority = test_ca.CertificateAuthorityId,
+    ///             Lifetime = "860s",
+    ///             PemCsr = File.ReadAllText("test-fixtures/rsa_csr.pem"),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Certificate can be imported using any of these accepted formats

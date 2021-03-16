@@ -97,6 +97,7 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Output("memberKey")]
         public Output<Outputs.GroupMembershipMemberKey> MemberKey { get; private set; } = null!;
@@ -189,6 +190,7 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyArgs>? MemberKey { get; set; }
@@ -235,6 +237,7 @@ namespace Pulumi.Gcp.CloudIdentity
 
         /// <summary>
         /// EntityKey of the member.
+        /// Structure is documented below.
         /// </summary>
         [Input("memberKey")]
         public Input<Inputs.GroupMembershipMemberKeyGetArgs>? MemberKey { get; set; }

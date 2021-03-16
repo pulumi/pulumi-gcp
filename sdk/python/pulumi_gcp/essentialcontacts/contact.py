@@ -23,6 +23,36 @@ class Contact(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        A contact that will receive notifications from Google Cloud.
+
+        To get more information about Contact, see:
+
+        * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1beta1/projects.contacts)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+
+        > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+        you must specify a `billing_project` and set `user_project_override` to true
+        in the provider configuration. Otherwise the Essential Contacts API will return a 403 error.
+        Your account must have the `serviceusage.services.use` permission on the
+        `billing_project` you defined.
+
+        ## Example Usage
+        ### Essential Contact
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        contact = gcp.essentialcontacts.Contact("contact",
+            parent=project.id,
+            email="foo@bar.com",
+            language_tag="en-GB",
+            notification_category_subscriptions=["ALL"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Contact can be imported using any of these accepted formats
@@ -58,6 +88,8 @@ class Contact(pulumi.CustomResource):
             if email is None and not opts.urn:
                 raise TypeError("Missing required property 'email'")
             __props__['email'] = email
+            if language_tag is None and not opts.urn:
+                raise TypeError("Missing required property 'language_tag'")
             __props__['language_tag'] = language_tag
             if notification_category_subscriptions is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_category_subscriptions'")
@@ -115,7 +147,7 @@ class Contact(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="languageTag")
-    def language_tag(self) -> pulumi.Output[Optional[str]]:
+    def language_tag(self) -> pulumi.Output[str]:
         """
         The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         """

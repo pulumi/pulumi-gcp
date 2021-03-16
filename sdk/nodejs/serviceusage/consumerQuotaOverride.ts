@@ -39,6 +39,32 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Region Consumer Quota Override
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const myProject = new gcp.organizations.Project("myProject", {
+ *     projectId: "quota",
+ *     orgId: "123456789",
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const override = new gcp.serviceusage.ConsumerQuotaOverride("override", {
+ *     dimensions: {
+ *         region: "us-central1",
+ *     },
+ *     project: myProject.projectId,
+ *     service: "compute.googleapis.com",
+ *     metric: `compute.googleapis.com%2Fn2_cpus`,
+ *     limit: `%2Fproject%2Fregion`,
+ *     overrideValue: "8",
+ *     force: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *

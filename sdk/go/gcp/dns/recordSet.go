@@ -263,7 +263,7 @@ type RecordSet struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas pulumi.StringArrayOutput `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
@@ -324,7 +324,7 @@ type recordSetState struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas []string `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl *int `pulumi:"ttl"`
@@ -342,7 +342,7 @@ type RecordSetState struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas pulumi.StringArrayInput
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntPtrInput
@@ -364,7 +364,7 @@ type recordSetArgs struct {
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas []string `pulumi:"rrdatas"`
 	// The time-to-live of this record set (seconds).
 	Ttl int `pulumi:"ttl"`
@@ -383,7 +383,7 @@ type RecordSetArgs struct {
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// The string data for the records in this record set
-	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\"\"` inside the provider configuration string (e.g. `"first255characters\"\"morecharacters"`).
+	// whose meaning depends on the DNS type. For TXT record, if the string data contains spaces, add surrounding `\"` if you don't want your string to get split on spaces. To specify a single record value longer than 255 characters such as a TXT record for DKIM, add `\" \"` inside the provider configuration string (e.g. `"first255characters\" \"morecharacters"`).
 	Rrdatas pulumi.StringArrayInput
 	// The time-to-live of this record set (seconds).
 	Ttl pulumi.IntInput

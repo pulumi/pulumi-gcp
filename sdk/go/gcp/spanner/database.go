@@ -83,8 +83,10 @@ type Database struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls               pulumi.StringArrayOutput `pulumi:"ddls"`
-	DeletionProtection pulumi.BoolPtrOutput     `pulumi:"deletionProtection"`
+	Ddls pulumi.StringArrayOutput `pulumi:"ddls"`
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The instance to create the database on.
 	Instance pulumi.StringOutput `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -133,8 +135,10 @@ type databaseState struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls               []string `pulumi:"ddls"`
-	DeletionProtection *bool    `pulumi:"deletionProtection"`
+	Ddls []string `pulumi:"ddls"`
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The instance to create the database on.
 	Instance *string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -152,7 +156,9 @@ type DatabaseState struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls               pulumi.StringArrayInput
+	Ddls pulumi.StringArrayInput
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The instance to create the database on.
 	Instance pulumi.StringPtrInput
@@ -175,8 +181,10 @@ type databaseArgs struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls               []string `pulumi:"ddls"`
-	DeletionProtection *bool    `pulumi:"deletionProtection"`
+	Ddls []string `pulumi:"ddls"`
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The instance to create the database on.
 	Instance string `pulumi:"instance"`
 	// A unique identifier for the database, which cannot be changed after
@@ -193,7 +201,9 @@ type DatabaseArgs struct {
 	// database. Statements can create tables, indexes, etc. These statements
 	// execute atomically with the creation of the database: if there is an
 	// error in any statement, the database is not created.
-	Ddls               pulumi.StringArrayInput
+	Ddls pulumi.StringArrayInput
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The instance to create the database on.
 	Instance pulumi.StringInput

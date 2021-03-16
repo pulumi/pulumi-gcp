@@ -24,12 +24,13 @@ class OrganizationExclusion(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages an organization-level logging exclusion. For more information see
-        [the official documentation](https://cloud.google.com/logging/docs/) and
-        [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
+        Manages an organization-level logging exclusion. For more information see:
 
-        Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
-        granted to the credentials used with this provider.
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations.exclusions)
+        * How-to Guides
+            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+
+        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.OrganizationSink`
 
         ## Example Usage
 

@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging
 {
     /// <summary>
-    /// Manages a billing account logging sink. For more information see
-    /// [the official documentation](https://cloud.google.com/logging/docs/) and
-    /// [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+    /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
+    /// * How-to Guides
+    ///     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
     /// 
     /// &gt; **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
     /// [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
@@ -75,7 +75,7 @@ namespace Pulumi.Gcp.Logging
         public Output<string> BillingAccount { get; private set; } = null!;
 
         /// <summary>
-        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// A description of this exclusion.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -100,28 +100,26 @@ namespace Pulumi.Gcp.Logging
         public Output<string> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// If set to True, then this exclusion is disabled and it does not exclude any log entries.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-        /// one of exclusion_filters it will not be exported.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         [Output("exclusions")]
         public Output<ImmutableArray<Outputs.BillingAccountSinkExclusion>> Exclusions { get; private set; } = null!;
 
         /// <summary>
-        /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
         /// </summary>
         [Output("filter")]
         public Output<string?> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the logging sink.
+        /// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -192,7 +190,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string> BillingAccount { get; set; } = null!;
 
         /// <summary>
-        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// A description of this exclusion.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -217,7 +215,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string> Destination { get; set; } = null!;
 
         /// <summary>
-        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// If set to True, then this exclusion is disabled and it does not exclude any log entries.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -226,8 +224,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.BillingAccountSinkExclusionArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-        /// one of exclusion_filters it will not be exported.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.BillingAccountSinkExclusionArgs> Exclusions
         {
@@ -236,15 +233,14 @@ namespace Pulumi.Gcp.Logging
         }
 
         /// <summary>
-        /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The name of the logging sink.
+        /// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -269,7 +265,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? BillingAccount { get; set; }
 
         /// <summary>
-        /// A description of this sink. The maximum length of the description is 8000 characters.
+        /// A description of this exclusion.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -294,7 +290,7 @@ namespace Pulumi.Gcp.Logging
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// If set to True, then this sink is disabled and it does not export any log entries.
+        /// If set to True, then this exclusion is disabled and it does not exclude any log entries.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -303,8 +299,7 @@ namespace Pulumi.Gcp.Logging
         private InputList<Inputs.BillingAccountSinkExclusionGetArgs>? _exclusions;
 
         /// <summary>
-        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-        /// one of exclusion_filters it will not be exported.
+        /// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
         /// </summary>
         public InputList<Inputs.BillingAccountSinkExclusionGetArgs> Exclusions
         {
@@ -313,15 +308,14 @@ namespace Pulumi.Gcp.Logging
         }
 
         /// <summary>
-        /// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-        /// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+        /// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
         /// write a filter.
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The name of the logging sink.
+        /// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

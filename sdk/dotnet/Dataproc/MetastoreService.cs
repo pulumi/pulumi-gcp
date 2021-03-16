@@ -10,6 +10,43 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Dataproc
 {
     /// <summary>
+    /// A managed metastore service that serves metadata queries.
+    /// 
+    /// ## Example Usage
+    /// ### Dataproc Metastore Service Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.Dataproc.MetastoreService("default", new Gcp.Dataproc.MetastoreServiceArgs
+    ///         {
+    ///             ServiceId = "metastore-srv",
+    ///             Location = "us-central1",
+    ///             Port = 9080,
+    ///             Tier = "DEVELOPER",
+    ///             MaintenanceWindow = new Gcp.Dataproc.Inputs.MetastoreServiceMaintenanceWindowArgs
+    ///             {
+    ///                 HourOfDay = 2,
+    ///                 DayOfWeek = "SUNDAY",
+    ///             },
+    ///             HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///             {
+    ///                 Version = "2.3.6",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Service can be imported using any of these accepted formats

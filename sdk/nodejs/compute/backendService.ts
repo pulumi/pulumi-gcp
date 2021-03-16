@@ -262,7 +262,8 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly customRequestHeaders!: pulumi.Output<string[] | undefined>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied responses.
+     * Headers that the HTTP/S load balancer should add to proxied
+     * responses.
      */
     public readonly customResponseHeaders!: pulumi.Output<string[] | undefined>;
     /**
@@ -511,7 +512,8 @@ export interface BackendServiceState {
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied responses.
+     * Headers that the HTTP/S load balancer should add to proxied
+     * responses.
      */
     readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -682,7 +684,8 @@ export interface BackendServiceArgs {
      */
     readonly customRequestHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Headers that the HTTP/S load balancer should add to proxied responses.
+     * Headers that the HTTP/S load balancer should add to proxied
+     * responses.
      */
     readonly customResponseHeaders?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -5,6 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Manages a VM instance resource within GCE. For more information see
+ * [the official documentation](https://cloud.google.com/compute/docs/instances)
+ * and
+ * [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+ *
+ * This resource is specifically to create a compute instance from a given
+ * `sourceMachineImage`. To create an instance without a machine image, use the
+ * `gcp.compute.Instance` resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const tpl = new gcp.compute.InstanceFromMachineImage("tpl", {
+ *     zone: "us-central1-a",
+ *     sourceMachineImage: "projects/PROJECT-ID/global/machineImages/NAME",
+ *     canIpForward: false,
+ *     labels: {
+ *         my_key: "my_value",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ */
 export class InstanceFromMachineImage extends pulumi.CustomResource {
     /**
      * Get an existing InstanceFromMachineImage resource's state with the given name, ID, and optional extra

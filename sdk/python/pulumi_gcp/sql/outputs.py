@@ -17,6 +17,7 @@ __all__ = [
     'DatabaseInstanceServerCaCert',
     'DatabaseInstanceSettings',
     'DatabaseInstanceSettingsBackupConfiguration',
+    'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings',
     'DatabaseInstanceSettingsDatabaseFlag',
     'DatabaseInstanceSettingsInsightsConfig',
     'DatabaseInstanceSettingsIpConfiguration',
@@ -31,6 +32,7 @@ __all__ = [
     'GetDatabaseInstanceServerCaCertResult',
     'GetDatabaseInstanceSettingResult',
     'GetDatabaseInstanceSettingBackupConfigurationResult',
+    'GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult',
     'GetDatabaseInstanceSettingDatabaseFlagResult',
     'GetDatabaseInstanceSettingInsightsConfigResult',
     'GetDatabaseInstanceSettingIpConfigurationResult',
@@ -596,12 +598,15 @@ class DatabaseInstanceSettings(dict):
 @pulumi.output_type
 class DatabaseInstanceSettingsBackupConfiguration(dict):
     def __init__(__self__, *,
+                 backup_retention_settings: Optional['outputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings'] = None,
                  binary_log_enabled: Optional[bool] = None,
                  enabled: Optional[bool] = None,
                  location: Optional[str] = None,
                  point_in_time_recovery_enabled: Optional[bool] = None,
-                 start_time: Optional[str] = None):
+                 start_time: Optional[str] = None,
+                 transaction_log_retention_days: Optional[int] = None):
         """
+        :param 'DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettingsArgs' backup_retention_settings: Backup retention settings. The configuration is detailed below.
         :param bool binary_log_enabled: True if binary logging is enabled. If
                `settings.backup_configuration.enabled` is false, this must be as well.
                Cannot be used with Postgres.
@@ -610,7 +615,10 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
         :param bool point_in_time_recovery_enabled: True if Point-in-time recovery is enabled. Will restart database if enabled after instance creation. Valid only for PostgreSQL instances.
         :param str start_time: `HH:MM` format time indicating when backup
                configuration starts.
+        :param int transaction_log_retention_days: The number of days of transaction logs we retain for point in time restore, from 1-7.
         """
+        if backup_retention_settings is not None:
+            pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         if binary_log_enabled is not None:
             pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         if enabled is not None:
@@ -621,6 +629,16 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
             pulumi.set(__self__, "point_in_time_recovery_enabled", point_in_time_recovery_enabled)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if transaction_log_retention_days is not None:
+            pulumi.set(__self__, "transaction_log_retention_days", transaction_log_retention_days)
+
+    @property
+    @pulumi.getter(name="backupRetentionSettings")
+    def backup_retention_settings(self) -> Optional['outputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings']:
+        """
+        Backup retention settings. The configuration is detailed below.
+        """
+        return pulumi.get(self, "backup_retention_settings")
 
     @property
     @pulumi.getter(name="binaryLogEnabled")
@@ -664,6 +682,49 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
         configuration starts.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="transactionLogRetentionDays")
+    def transaction_log_retention_days(self) -> Optional[int]:
+        """
+        The number of days of transaction logs we retain for point in time restore, from 1-7.
+        """
+        return pulumi.get(self, "transaction_log_retention_days")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
+    def __init__(__self__, *,
+                 retained_backups: int,
+                 retention_unit: Optional[str] = None):
+        """
+        :param int retained_backups: Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+               is 'COUNT', we will retain this many backups.
+        :param str retention_unit: The unit that 'retained_backups' represents. Defaults to `COUNT`.
+        """
+        pulumi.set(__self__, "retained_backups", retained_backups)
+        if retention_unit is not None:
+            pulumi.set(__self__, "retention_unit", retention_unit)
+
+    @property
+    @pulumi.getter(name="retainedBackups")
+    def retained_backups(self) -> int:
+        """
+        Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
+        is 'COUNT', we will retain this many backups.
+        """
+        return pulumi.get(self, "retained_backups")
+
+    @property
+    @pulumi.getter(name="retentionUnit")
+    def retention_unit(self) -> Optional[str]:
+        """
+        The unit that 'retained_backups' represents. Defaults to `COUNT`.
+        """
+        return pulumi.get(self, "retention_unit")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1453,21 +1514,30 @@ class GetDatabaseInstanceSettingResult(dict):
 @pulumi.output_type
 class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
     def __init__(__self__, *,
+                 backup_retention_settings: Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult'],
                  binary_log_enabled: bool,
                  enabled: bool,
                  location: str,
                  point_in_time_recovery_enabled: bool,
-                 start_time: str):
+                 start_time: str,
+                 transaction_log_retention_days: int):
         """
         :param bool binary_log_enabled: True if binary logging is enabled.
         :param bool enabled: True if backup configuration is enabled.
         :param str start_time: `HH:MM` format time indicating when backup configuration starts.
         """
+        pulumi.set(__self__, "backup_retention_settings", backup_retention_settings)
         pulumi.set(__self__, "binary_log_enabled", binary_log_enabled)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "point_in_time_recovery_enabled", point_in_time_recovery_enabled)
         pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "transaction_log_retention_days", transaction_log_retention_days)
+
+    @property
+    @pulumi.getter(name="backupRetentionSettings")
+    def backup_retention_settings(self) -> Sequence['outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult']:
+        return pulumi.get(self, "backup_retention_settings")
 
     @property
     @pulumi.getter(name="binaryLogEnabled")
@@ -1502,6 +1572,30 @@ class GetDatabaseInstanceSettingBackupConfigurationResult(dict):
         `HH:MM` format time indicating when backup configuration starts.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter(name="transactionLogRetentionDays")
+    def transaction_log_retention_days(self) -> int:
+        return pulumi.get(self, "transaction_log_retention_days")
+
+
+@pulumi.output_type
+class GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult(dict):
+    def __init__(__self__, *,
+                 retained_backups: int,
+                 retention_unit: str):
+        pulumi.set(__self__, "retained_backups", retained_backups)
+        pulumi.set(__self__, "retention_unit", retention_unit)
+
+    @property
+    @pulumi.getter(name="retainedBackups")
+    def retained_backups(self) -> int:
+        return pulumi.get(self, "retained_backups")
+
+    @property
+    @pulumi.getter(name="retentionUnit")
+    def retention_unit(self) -> str:
+        return pulumi.get(self, "retention_unit")
 
 
 @pulumi.output_type

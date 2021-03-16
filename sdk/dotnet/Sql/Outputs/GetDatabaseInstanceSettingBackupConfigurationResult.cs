@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Sql.Outputs
     [OutputType]
     public sealed class GetDatabaseInstanceSettingBackupConfigurationResult
     {
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult> BackupRetentionSettings;
         /// <summary>
         /// True if binary logging is enabled.
         /// </summary>
@@ -27,9 +28,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// `HH:MM` format time indicating when backup configuration starts.
         /// </summary>
         public readonly string StartTime;
+        public readonly int TransactionLogRetentionDays;
 
         [OutputConstructor]
         private GetDatabaseInstanceSettingBackupConfigurationResult(
+            ImmutableArray<Outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSettingResult> backupRetentionSettings,
+
             bool binaryLogEnabled,
 
             bool enabled,
@@ -38,13 +42,17 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             bool pointInTimeRecoveryEnabled,
 
-            string startTime)
+            string startTime,
+
+            int transactionLogRetentionDays)
         {
+            BackupRetentionSettings = backupRetentionSettings;
             BinaryLogEnabled = binaryLogEnabled;
             Enabled = enabled;
             Location = location;
             PointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
             StartTime = startTime;
+            TransactionLogRetentionDays = transactionLogRetentionDays;
         }
     }
 }

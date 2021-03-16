@@ -25,10 +25,14 @@ class Key(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates and manages service account key-pairs, which allow the user to establish identity of a service account outside of GCP. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys).
+        Creates and manages service account keys, which allow the use of a service account outside of Google Cloud.
+
+        * [API documentation](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys)
 
         ## Example Usage
-        ### Creating A New Key Pair
+        ### Creating A New Key
 
         ```python
         import pulumi
@@ -56,7 +60,7 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] private_key_type: The output format of the private key. TYPE_GOOGLE_CREDENTIALS_FILE is the default output format.
         :param pulumi.Input[str] public_key_data: Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
-        :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
+        :param pulumi.Input[str] service_account_id: The Service account id of the Key. This can be a string in the format
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
                unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         """
@@ -130,7 +134,7 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] public_key: The public key, base64 encoded
         :param pulumi.Input[str] public_key_data: Public key data to create a service account key for given service account. The expected format for this field is a base64 encoded X509_PEM and it conflicts with `public_key_type` and `private_key_type`.
         :param pulumi.Input[str] public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
-        :param pulumi.Input[str] service_account_id: The Service account id of the Key Pair. This can be a string in the format
+        :param pulumi.Input[str] service_account_id: The Service account id of the Key. This can be a string in the format
                `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
                unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         :param pulumi.Input[str] valid_after: The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -226,7 +230,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccountId")
     def service_account_id(self) -> pulumi.Output[str]:
         """
-        The Service account id of the Key Pair. This can be a string in the format
+        The Service account id of the Key. This can be a string in the format
         `{ACCOUNT}` or `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`, where `{ACCOUNT}` is the email address or
         unique id of the service account. If the `{ACCOUNT}` syntax is used, the project will be inferred from the account.
         """

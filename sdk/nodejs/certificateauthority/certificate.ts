@@ -6,6 +6,59 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+ *
+ * > **Note:** The Certificate Authority that is referenced by this resource **must** be
+ * `tier = "ENTERPRISE"`
+ *
+ * > **Warning:** Please remember that all resources created during preview (via this provider)
+ * will be deleted when CA service transitions to General Availability (GA). Relying on these
+ * certificate authorities for production traffic is discouraged.
+ *
+ * ## Example Usage
+ * ### Privateca Certificate Csr
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * from "fs";
+ *
+ * const test_ca = new gcp.certificateauthority.Authority("test-ca", {
+ *     certificateAuthorityId: "my-certificate-authority",
+ *     location: "us-central1",
+ *     tier: "ENTERPRISE",
+ *     config: {
+ *         subjectConfig: {
+ *             subject: {
+ *                 organization: "HashiCorp",
+ *             },
+ *             commonName: "my-certificate-authority",
+ *             subjectAltName: {
+ *                 dnsNames: ["hashicorp.com"],
+ *             },
+ *         },
+ *         reusableConfig: {
+ *             reusableConfig: "projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+ *         },
+ *     },
+ *     keySpec: {
+ *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *     },
+ *     disableOnDelete: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.certificateauthority.Certificate("default", {
+ *     project: "my-project-name",
+ *     location: "us-central1",
+ *     certificateAuthority: test_ca.certificateAuthorityId,
+ *     lifetime: "860s",
+ *     pemCsr: fs.readFileSync("test-fixtures/rsa_csr.pem"),
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Certificate can be imported using any of these accepted formats

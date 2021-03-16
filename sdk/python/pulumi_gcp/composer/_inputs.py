@@ -37,6 +37,7 @@ class EnvironmentConfigArgs:
                  web_server_network_access_control: Optional[pulumi.Input['EnvironmentConfigWebServerNetworkAccessControlArgs']] = None):
         """
         :param pulumi.Input['EnvironmentConfigDatabaseConfigArgs'] database_config: The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
+        :param pulumi.Input['EnvironmentConfigEncryptionConfigArgs'] encryption_config: The encryption options for the Cloud Composer environment and its dependencies.
         :param pulumi.Input['EnvironmentConfigNodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that
                will be used to run this environment.
@@ -101,6 +102,9 @@ class EnvironmentConfigArgs:
     @property
     @pulumi.getter(name="encryptionConfig")
     def encryption_config(self) -> Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']]:
+        """
+        The encryption options for the Cloud Composer environment and its dependencies.
+        """
         return pulumi.get(self, "encryption_config")
 
     @encryption_config.setter

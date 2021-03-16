@@ -5,6 +5,42 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a collection of external workload identities. You can define IAM policies to
+ * grant these identities access to Google Cloud resources.
+ *
+ * To get more information about WorkloadIdentityPool, see:
+ *
+ * * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools)
+ * * How-to Guides
+ *     * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+ *
+ * ## Example Usage
+ * ### Iam Workload Identity Pool Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.iam.WorkloadIdentityPool("example", {workloadIdentityPoolId: "example-pool"}, {
+ *     provider: google_beta,
+ * });
+ * ```
+ * ### Iam Workload Identity Pool Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.iam.WorkloadIdentityPool("example", {
+ *     workloadIdentityPoolId: "example-pool",
+ *     displayName: "Name of pool",
+ *     description: "Identity pool for automated test",
+ *     disabled: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
+ *
  * ## Import
  *
  * WorkloadIdentityPool can be imported using any of these accepted formats

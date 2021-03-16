@@ -29,6 +29,54 @@ class Certificate(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+
+        > **Note:** The Certificate Authority that is referenced by this resource **must** be
+        `tier = "ENTERPRISE"`
+
+        > **Warning:** Please remember that all resources created during preview (via this provider)
+        will be deleted when CA service transitions to General Availability (GA). Relying on these
+        certificate authorities for production traffic is discouraged.
+
+        ## Example Usage
+        ### Privateca Certificate Csr
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_ca = gcp.certificateauthority.Authority("test-ca",
+            certificate_authority_id="my-certificate-authority",
+            location="us-central1",
+            tier="ENTERPRISE",
+            config=gcp.certificateauthority.AuthorityConfigArgs(
+                subject_config=gcp.certificateauthority.AuthorityConfigSubjectConfigArgs(
+                    subject=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectArgs(
+                        organization="HashiCorp",
+                    ),
+                    common_name="my-certificate-authority",
+                    subject_alt_name=gcp.certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs(
+                        dns_names=["hashicorp.com"],
+                    ),
+                ),
+                reusable_config=gcp.certificateauthority.AuthorityConfigReusableConfigArgs(
+                    reusable_config="projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained",
+                ),
+            ),
+            key_spec=gcp.certificateauthority.AuthorityKeySpecArgs(
+                algorithm="RSA_PKCS1_4096_SHA256",
+            ),
+            disable_on_delete=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.certificateauthority.Certificate("default",
+            project="my-project-name",
+            location="us-central1",
+            certificate_authority=test_ca.certificate_authority_id,
+            lifetime="860s",
+            pem_csr=(lambda path: open(path).read())("test-fixtures/rsa_csr.pem"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Certificate can be imported using any of these accepted formats

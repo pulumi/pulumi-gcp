@@ -44,7 +44,7 @@ class Service(pulumi.CustomResource):
 
         To get more information about Service, see:
 
-        * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations.services)
+        * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/run/docs/)
 

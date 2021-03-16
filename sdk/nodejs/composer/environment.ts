@@ -12,7 +12,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Environments, see:
  *
- * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/)
+ * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/composer/docs)
  *     * [Configuring Shared VPC for Composer Environments](https://cloud.google.com/composer/docs/how-to/managing/configuring-shared-vpc)

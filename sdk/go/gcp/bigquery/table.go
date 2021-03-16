@@ -11,6 +11,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Creates a table resource in a dataset for Google BigQuery. For more information see
+// [the official documentation](https://cloud.google.com/bigquery/docs/) and
+// [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+//
+// > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+// (and run `pulumi update` to write the field to state) in order to destroy an instance.
+// It is recommended to not set this field (or set it to true) until you're ready to destroy.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		defaultDataset, err := bigquery.NewDataset(ctx, "defaultDataset", &bigquery.DatasetArgs{
+// 			DatasetId:                pulumi.String("foo"),
+// 			FriendlyName:             pulumi.String("test"),
+// 			Description:              pulumi.String("This is a test description"),
+// 			Location:                 pulumi.String("EU"),
+// 			DefaultTableExpirationMs: pulumi.Int(3600000),
+// 			Labels: pulumi.StringMap{
+// 				"env": pulumi.String("default"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewTable(ctx, "defaultTable", &bigquery.TableArgs{
+// 			DatasetId: defaultDataset.DatasetId,
+// 			TableId:   pulumi.String("bar"),
+// 			TimePartitioning: &bigquery.TableTimePartitioningArgs{
+// 				Type: pulumi.String("DAY"),
+// 			},
+// 			Labels: pulumi.StringMap{
+// 				"env": pulumi.String("default"),
+// 			},
+// 			Schema: pulumi.String(fmt.Sprintf("%v%v%v%v%v%v%v%v%v%v%v%v%v%v", "[\n", "  {\n", "    \"name\": \"permalink\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\",\n", "    \"description\": \"The Permalink\"\n", "  },\n", "  {\n", "    \"name\": \"state\",\n", "    \"type\": \"STRING\",\n", "    \"mode\": \"NULLABLE\",\n", "    \"description\": \"State where the head office is located\"\n", "  }\n", "]\n")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = bigquery.NewTable(ctx, "sheet", &bigquery.TableArgs{
+// 			DatasetId: defaultDataset.DatasetId,
+// 			TableId:   pulumi.String("sheet"),
+// 			ExternalDataConfiguration: &bigquery.TableExternalDataConfigurationArgs{
+// 				Autodetect:   pulumi.Bool(true),
+// 				SourceFormat: pulumi.String("GOOGLE_SHEETS"),
+// 				GoogleSheetsOptions: &bigquery.TableExternalDataConfigurationGoogleSheetsOptionsArgs{
+// 					SkipLeadingRows: pulumi.Int(1),
+// 				},
+// 				SourceUris: pulumi.StringArray{
+// 					pulumi.String("https://docs.google.com/spreadsheets/d/123456789012345"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // BigQuery tables can be imported using the `project`, `dataset_id`, and `table_id`, e.g.
@@ -30,8 +101,8 @@ type Table struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId pulumi.StringOutput `pulumi:"datasetId"`
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// terraform destroy or terraform apply that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The field description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -146,8 +217,8 @@ type tableState struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId *string `pulumi:"datasetId"`
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// terraform destroy or terraform apply that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The field description.
 	Description *string `pulumi:"description"`
@@ -228,8 +299,8 @@ type TableState struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId pulumi.StringPtrInput
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// terraform destroy or terraform apply that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The field description.
 	Description pulumi.StringPtrInput
@@ -312,8 +383,8 @@ type tableArgs struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId string `pulumi:"datasetId"`
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// terraform destroy or terraform apply that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The field description.
 	Description *string `pulumi:"description"`
@@ -376,8 +447,8 @@ type TableArgs struct {
 	// The dataset ID to create the table in.
 	// Changing this forces a new resource to be created.
 	DatasetId pulumi.StringInput
-	// Whether or not to allow Terraform to destroy the instance. Unless this field is set to false in Terraform state, a
-	// terraform destroy or terraform apply that would delete the instance will fail.
+	// Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+	// in state, a `=destroy` or `=update` that would delete the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The field description.
 	Description pulumi.StringPtrInput
