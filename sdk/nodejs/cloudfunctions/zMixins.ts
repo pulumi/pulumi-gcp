@@ -180,6 +180,14 @@ export class CallbackFunction extends pulumi.ComponentResource {
 
             role: utils.ifUndefined(args.iamRole, "roles/cloudfunctions.invoker"),
             member: utils.ifUndefined(args.iamMember, "allUsers")
+        }, {
+            ...parentOpts,
+            /**
+             * This alias exists to be backwards compatible for previous versions that did
+             * not set a parent on this resource.
+             * https://github.com/pulumi/pulumi-gcp/issues/543
+             */
+            aliases: [{ parent: undefined }],
         });
 
         this.registerOutputs();
