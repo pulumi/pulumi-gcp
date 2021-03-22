@@ -7,7 +7,10 @@ _(none)_
 ---
 
 ## 4.16.0 (2021-03-22)
-* Upgrade to v3.60.0 of the Google Beta Terraform Provider
+* Upgrade to v3.60.0 of the Google Beta Terraform Provider  
+  **PLEASE NOTE:**  
+  * `gcp.compute.InstanceTemplate` has had `nicType` removed to it not actually being used in the provider
+  * `gcp.config.ResourceManagerV2beta1CustomEndpoint` has been renamed to  `gcp.config.ResourceManagerV2CustomEndpoint` as it is now classed as GA.
 
 ## 4.15.0 (2021-03-15)
 * Upgrade to pulumi-terraform-bridge v2.21.0
