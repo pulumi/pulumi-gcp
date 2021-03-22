@@ -10,6 +10,50 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.EssentialContacts
 {
     /// <summary>
+    /// A contact that will receive notifications from Google Cloud.
+    /// 
+    /// To get more information about Contact, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1beta1/projects.contacts)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+    /// 
+    /// &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+    /// you must specify a `billing_project` and set `user_project_override` to true
+    /// in the provider configuration. Otherwise the Essential Contacts API will return a 403 error.
+    /// Your account must have the `serviceusage.services.use` permission on the
+    /// `billing_project` you defined.
+    /// 
+    /// ## Example Usage
+    /// ### Essential Contact
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var project = Output.Create(Gcp.Organizations.GetProject.InvokeAsync());
+    ///         var contact = new Gcp.EssentialContacts.Contact("contact", new Gcp.EssentialContacts.ContactArgs
+    ///         {
+    ///             Parent = project.Apply(project =&gt; project.Id),
+    ///             Email = "foo@bar.com",
+    ///             LanguageTag = "en-GB",
+    ///             NotificationCategorySubscriptions = 
+    ///             {
+    ///                 "ALL",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Contact can be imported using any of these accepted formats
@@ -31,7 +75,7 @@ namespace Pulumi.Gcp.EssentialContacts
         /// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         /// </summary>
         [Output("languageTag")]
-        public Output<string?> LanguageTag { get; private set; } = null!;
+        public Output<string> LanguageTag { get; private set; } = null!;
 
         /// <summary>
         /// The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
@@ -106,8 +150,8 @@ namespace Pulumi.Gcp.EssentialContacts
         /// <summary>
         /// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
         /// </summary>
-        [Input("languageTag")]
-        public Input<string>? LanguageTag { get; set; }
+        [Input("languageTag", required: true)]
+        public Input<string> LanguageTag { get; set; } = null!;
 
         [Input("notificationCategorySubscriptions", required: true)]
         private InputList<string>? _notificationCategorySubscriptions;

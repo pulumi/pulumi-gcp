@@ -3,6 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .env_group import *
+from .environment import *
+from .instance import *
 from .organization import *
 
 def _register_module():
@@ -17,13 +20,22 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp:apigee/organization:Organization":
+            if typ == "gcp:apigee/envGroup:EnvGroup":
+                return EnvGroup(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:apigee/environment:Environment":
+                return Environment(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:apigee/instance:Instance":
+                return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:apigee/organization:Organization":
                 return Organization(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("gcp", "apigee/envGroup", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "apigee/environment", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "apigee/instance", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "apigee/organization", _module_instance)
 
 _register_module()

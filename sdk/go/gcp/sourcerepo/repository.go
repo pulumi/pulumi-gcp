@@ -53,7 +53,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := serviceAccount.NewAccount(ctx, "test_account", &serviceAccount.AccountArgs{
+// 		testAccount, err := serviceAccount.NewAccount(ctx, "testAccount", &serviceAccount.AccountArgs{
 // 			AccountId:   pulumi.String("my-account"),
 // 			DisplayName: pulumi.String("Test Service Account"),
 // 		})
@@ -69,7 +69,7 @@ import (
 // 				&sourcerepo.RepositoryPubsubConfigArgs{
 // 					Topic:               topic.ID(),
 // 					MessageFormat:       pulumi.String("JSON"),
-// 					ServiceAccountEmail: test_account.Email,
+// 					ServiceAccountEmail: testAccount.Email,
 // 				},
 // 			},
 // 		})

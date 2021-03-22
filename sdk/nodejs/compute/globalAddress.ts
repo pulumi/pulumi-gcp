@@ -133,10 +133,11 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-     * PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-     * Private Service Connect networks This should only be set when using an Internal address. Possible values:
-     * ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+     * The purpose of the resource. For global internal addresses it can be
+     * * VPC_PEERING - for peer networks
+     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * This should only be set when using an Internal address.
+     * Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
      */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
@@ -262,10 +263,11 @@ export interface GlobalAddressState {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-     * PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-     * Private Service Connect networks This should only be set when using an Internal address. Possible values:
-     * ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+     * The purpose of the resource. For global internal addresses it can be
+     * * VPC_PEERING - for peer networks
+     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * This should only be set when using an Internal address.
+     * Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
      */
     readonly purpose?: pulumi.Input<string>;
     /**
@@ -335,10 +337,11 @@ export interface GlobalAddressArgs {
      */
     readonly project?: pulumi.Input<string>;
     /**
-     * The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-     * PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-     * Private Service Connect networks This should only be set when using an Internal address. Possible values:
-     * ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+     * The purpose of the resource. For global internal addresses it can be
+     * * VPC_PEERING - for peer networks
+     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * This should only be set when using an Internal address.
+     * Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
      */
     readonly purpose?: pulumi.Input<string>;
 }

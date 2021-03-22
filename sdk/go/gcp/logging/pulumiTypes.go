@@ -154,15 +154,14 @@ func (o BillingAccountSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulum
 }
 
 type BillingAccountSinkExclusion struct {
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description *string `pulumi:"description"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter string `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name string `pulumi:"name"`
 }
 
@@ -178,15 +177,14 @@ type BillingAccountSinkExclusionInput interface {
 }
 
 type BillingAccountSinkExclusionArgs struct {
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringInput `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -241,24 +239,23 @@ func (o BillingAccountSinkExclusionOutput) ToBillingAccountSinkExclusionOutputWi
 	return o
 }
 
-// A description of this sink. The maximum length of the description is 8000 characters.
+// A description of this exclusion.
 func (o BillingAccountSinkExclusionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// If set to True, then this sink is disabled and it does not export any log entries.
+// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 func (o BillingAccountSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o BillingAccountSinkExclusionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// The name of the logging sink.
+// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 func (o BillingAccountSinkExclusionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BillingAccountSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -427,15 +424,14 @@ func (o FolderSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.BoolPt
 }
 
 type FolderSinkExclusion struct {
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description *string `pulumi:"description"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter string `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name string `pulumi:"name"`
 }
 
@@ -451,15 +447,14 @@ type FolderSinkExclusionInput interface {
 }
 
 type FolderSinkExclusionArgs struct {
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringInput `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -514,24 +509,23 @@ func (o FolderSinkExclusionOutput) ToFolderSinkExclusionOutputWithContext(ctx co
 	return o
 }
 
-// A description of this sink. The maximum length of the description is 8000 characters.
+// A description of this exclusion.
 func (o FolderSinkExclusionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// If set to True, then this sink is disabled and it does not export any log entries.
+// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 func (o FolderSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o FolderSinkExclusionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// The name of the logging sink.
+// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 func (o FolderSinkExclusionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FolderSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1741,15 +1735,14 @@ func (o OrganizationSinkBigqueryOptionsPtrOutput) UsePartitionedTables() pulumi.
 }
 
 type OrganizationSinkExclusion struct {
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description *string `pulumi:"description"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter string `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name string `pulumi:"name"`
 }
 
@@ -1765,15 +1758,14 @@ type OrganizationSinkExclusionInput interface {
 }
 
 type OrganizationSinkExclusionArgs struct {
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringInput `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1828,24 +1820,23 @@ func (o OrganizationSinkExclusionOutput) ToOrganizationSinkExclusionOutputWithCo
 	return o
 }
 
-// A description of this sink. The maximum length of the description is 8000 characters.
+// A description of this exclusion.
 func (o OrganizationSinkExclusionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// If set to True, then this sink is disabled and it does not export any log entries.
+// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 func (o OrganizationSinkExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 // write a filter.
 func (o OrganizationSinkExclusionOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// The name of the logging sink.
+// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 func (o OrganizationSinkExclusionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v OrganizationSinkExclusion) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -10,6 +10,85 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Eventarc
 {
     /// <summary>
+    /// An event trigger sends messages to the event receiver service deployed on Cloud Run.
+    /// 
+    /// * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var @default = new Gcp.CloudRun.Service("default", new Gcp.CloudRun.ServiceArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
+    ///             {
+    ///                 Namespace = "my-project",
+    ///             },
+    ///             Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
+    ///             {
+    ///                 Spec = new Gcp.CloudRun.Inputs.ServiceTemplateSpecArgs
+    ///                 {
+    ///                     Containers = 
+    ///                     {
+    ///                         new Gcp.CloudRun.Inputs.ServiceTemplateSpecContainerArgs
+    ///                         {
+    ///                             Image = "gcr.io/cloudrun/hello",
+    ///                             Args = 
+    ///                             {
+    ///                                 "arrgs",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                     ContainerConcurrency = 50,
+    ///                 },
+    ///             },
+    ///             Traffics = 
+    ///             {
+    ///                 new Gcp.CloudRun.Inputs.ServiceTrafficArgs
+    ///                 {
+    ///                     Percent = 100,
+    ///                     LatestRevision = true,
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var trigger = new Gcp.Eventarc.Trigger("trigger", new Gcp.Eventarc.TriggerArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///             MatchingCriterias = 
+    ///             {
+    ///                 new Gcp.Eventarc.Inputs.TriggerMatchingCriteriaArgs
+    ///                 {
+    ///                     Attribute = "type",
+    ///                     Value = "google.cloud.pubsub.topic.v1.messagePublished",
+    ///                 },
+    ///             },
+    ///             Destination = new Gcp.Eventarc.Inputs.TriggerDestinationArgs
+    ///             {
+    ///                 CloudRunService = new Gcp.Eventarc.Inputs.TriggerDestinationCloudRunServiceArgs
+    ///                 {
+    ///                     Service = @default.Name,
+    ///                     Region = "us-central1",
+    ///                 },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Trigger can be imported using any of these accepted formats

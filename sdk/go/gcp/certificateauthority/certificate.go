@@ -11,6 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A Certificate corresponds to a signed X.509 certificate issued by a CertificateAuthority.
+//
+// > **Note:** The Certificate Authority that is referenced by this resource **must** be
+// `tier = "ENTERPRISE"`
+//
+// > **Warning:** Please remember that all resources created during preview (via this provider)
+// will be deleted when CA service transitions to General Availability (GA). Relying on these
+// certificate authorities for production traffic is discouraged.
+//
+// ## Example Usage
+//
 // ## Import
 //
 // Certificate can be imported using any of these accepted formats

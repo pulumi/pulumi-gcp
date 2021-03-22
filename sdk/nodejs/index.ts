@@ -82,6 +82,7 @@ import * as storage from "./storage";
 import * as tpu from "./tpu";
 import * as types from "./types";
 import * as vpcaccess from "./vpcaccess";
+import * as workflows from "./workflows";
 
 export {
     accesscontextmanager,
@@ -157,6 +158,7 @@ export {
     tpu,
     types,
     vpcaccess,
+    workflows,
 };
 
 import { Provider } from "./provider";

@@ -14,7 +14,8 @@ type EnvironmentConfig struct {
 	AirflowUri   *string `pulumi:"airflowUri"`
 	DagGcsPrefix *string `pulumi:"dagGcsPrefix"`
 	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
-	DatabaseConfig   *EnvironmentConfigDatabaseConfig   `pulumi:"databaseConfig"`
+	DatabaseConfig *EnvironmentConfigDatabaseConfig `pulumi:"databaseConfig"`
+	// The encryption options for the Cloud Composer environment and its dependencies.
 	EncryptionConfig *EnvironmentConfigEncryptionConfig `pulumi:"encryptionConfig"`
 	GkeCluster       *string                            `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -47,7 +48,8 @@ type EnvironmentConfigArgs struct {
 	AirflowUri   pulumi.StringPtrInput `pulumi:"airflowUri"`
 	DagGcsPrefix pulumi.StringPtrInput `pulumi:"dagGcsPrefix"`
 	// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
-	DatabaseConfig   EnvironmentConfigDatabaseConfigPtrInput   `pulumi:"databaseConfig"`
+	DatabaseConfig EnvironmentConfigDatabaseConfigPtrInput `pulumi:"databaseConfig"`
+	// The encryption options for the Cloud Composer environment and its dependencies.
 	EncryptionConfig EnvironmentConfigEncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	GkeCluster       pulumi.StringPtrInput                     `pulumi:"gkeCluster"`
 	// The configuration used for the Kubernetes Engine cluster.  Structure is documented below.
@@ -154,6 +156,7 @@ func (o EnvironmentConfigOutput) DatabaseConfig() EnvironmentConfigDatabaseConfi
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
+// The encryption options for the Cloud Composer environment and its dependencies.
 func (o EnvironmentConfigOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigEncryptionConfig { return v.EncryptionConfig }).(EnvironmentConfigEncryptionConfigPtrOutput)
 }
@@ -243,6 +246,7 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseCo
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
 }
 
+// The encryption options for the Cloud Composer environment and its dependencies.
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigEncryptionConfig {
 		if v == nil {

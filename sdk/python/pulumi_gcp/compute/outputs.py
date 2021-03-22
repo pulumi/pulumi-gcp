@@ -462,6 +462,8 @@ class AutoscalarAutoscalingPolicy(dict):
         :param 'AutoscalarAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param Sequence['AutoscalarAutoscalingPolicyScalingScheduleArgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -582,6 +584,10 @@ class AutoscalarAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scalingSchedules")
     def scaling_schedules(self) -> Optional[Sequence['outputs.AutoscalarAutoscalingPolicyScalingSchedule']]:
+        """
+        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        Structure is documented below.
+        """
         return pulumi.get(self, "scaling_schedules")
 
     def _translate_property(self, prop):
@@ -591,13 +597,19 @@ class AutoscalarAutoscalingPolicy(dict):
 @pulumi.output_type
 class AutoscalarAutoscalingPolicyCpuUtilization(dict):
     def __init__(__self__, *,
-                 target: float):
+                 target: float,
+                 predictive_method: Optional[str] = None):
         """
         :param float target: Fraction of backend capacity utilization (set in HTTP(s) load
                balancing configuration) that autoscaler should maintain. Must
                be a positive float value. If not defined, the default is 0.8.
+        :param str predictive_method: Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+               - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+               - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
         """
         pulumi.set(__self__, "target", target)
+        if predictive_method is not None:
+            pulumi.set(__self__, "predictive_method", predictive_method)
 
     @property
     @pulumi.getter
@@ -608,6 +620,16 @@ class AutoscalarAutoscalingPolicyCpuUtilization(dict):
         be a positive float value. If not defined, the default is 0.8.
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="predictiveMethod")
+    def predictive_method(self) -> Optional[str]:
+        """
+        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+        - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+        - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+        return pulumi.get(self, "predictive_method")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1083,6 +1105,8 @@ class AutoscalerAutoscalingPolicy(dict):
         :param 'AutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param Sequence['AutoscalerAutoscalingPolicyScalingScheduleArgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -1203,6 +1227,10 @@ class AutoscalerAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scalingSchedules")
     def scaling_schedules(self) -> Optional[Sequence['outputs.AutoscalerAutoscalingPolicyScalingSchedule']]:
+        """
+        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        Structure is documented below.
+        """
         return pulumi.get(self, "scaling_schedules")
 
     def _translate_property(self, prop):
@@ -1212,13 +1240,19 @@ class AutoscalerAutoscalingPolicy(dict):
 @pulumi.output_type
 class AutoscalerAutoscalingPolicyCpuUtilization(dict):
     def __init__(__self__, *,
-                 target: float):
+                 target: float,
+                 predictive_method: Optional[str] = None):
         """
         :param float target: Fraction of backend capacity utilization (set in HTTP(s) load
                balancing configuration) that autoscaler should maintain. Must
                be a positive float value. If not defined, the default is 0.8.
+        :param str predictive_method: Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+               - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+               - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
         """
         pulumi.set(__self__, "target", target)
+        if predictive_method is not None:
+            pulumi.set(__self__, "predictive_method", predictive_method)
 
     @property
     @pulumi.getter
@@ -1229,6 +1263,16 @@ class AutoscalerAutoscalingPolicyCpuUtilization(dict):
         be a positive float value. If not defined, the default is 0.8.
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="predictiveMethod")
+    def predictive_method(self) -> Optional[str]:
+        """
+        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+        - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+        - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+        return pulumi.get(self, "predictive_method")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -1668,6 +1712,18 @@ class BackendBucketCdnPolicy(dict):
                  serve_while_stale: Optional[int] = None,
                  signed_url_cache_max_age_sec: Optional[int] = None):
         """
+        :param str cache_mode: Specifies the cache setting for all responses from this backend.
+               The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+               Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        :param int client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param int default_ttl: Specifies the default TTL for cached content served by this origin for responses
+               that do not have an existing valid TTL (max-age or s-max-age).
+        :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        :param Sequence['BackendBucketCdnPolicyNegativeCachingPolicyArgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+               Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+               Structure is documented below.
+        :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will
                be considered fresh. After this time period,
                the response will be revalidated before being served.
@@ -1697,36 +1753,62 @@ class BackendBucketCdnPolicy(dict):
     @property
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[str]:
+        """
+        Specifies the cache setting for all responses from this backend.
+        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        """
         return pulumi.get(self, "cache_mode")
 
     @property
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> Optional[int]:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
         return pulumi.get(self, "client_ttl")
 
     @property
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[int]:
+        """
+        Specifies the default TTL for cached content served by this origin for responses
+        that do not have an existing valid TTL (max-age or s-max-age).
+        """
         return pulumi.get(self, "default_ttl")
 
     @property
     @pulumi.getter(name="maxTtl")
     def max_ttl(self) -> Optional[int]:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
         return pulumi.get(self, "max_ttl")
 
     @property
     @pulumi.getter(name="negativeCaching")
     def negative_caching(self) -> Optional[bool]:
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        """
         return pulumi.get(self, "negative_caching")
 
     @property
     @pulumi.getter(name="negativeCachingPolicies")
     def negative_caching_policies(self) -> Optional[Sequence['outputs.BackendBucketCdnPolicyNegativeCachingPolicy']]:
+        """
+        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        Structure is documented below.
+        """
         return pulumi.get(self, "negative_caching_policies")
 
     @property
     @pulumi.getter(name="serveWhileStale")
     def serve_while_stale(self) -> Optional[int]:
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        """
         return pulumi.get(self, "serve_while_stale")
 
     @property
@@ -1753,6 +1835,12 @@ class BackendBucketCdnPolicyNegativeCachingPolicy(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  ttl: Optional[int] = None):
+        """
+        :param int code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+               can be specified as values, and you cannot specify a status code more than once.
+        :param int ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+               (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         if code is not None:
             pulumi.set(__self__, "code", code)
         if ttl is not None:
@@ -1761,11 +1849,19 @@ class BackendBucketCdnPolicyNegativeCachingPolicy(dict):
     @property
     @pulumi.getter
     def code(self) -> Optional[int]:
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+        can be specified as values, and you cannot specify a status code more than once.
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
     def ttl(self) -> Optional[int]:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
@@ -2022,6 +2118,18 @@ class BackendServiceCdnPolicy(dict):
         """
         :param 'BackendServiceCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
+        :param str cache_mode: Specifies the cache setting for all responses from this backend.
+               The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+               Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        :param int client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param int default_ttl: Specifies the default TTL for cached content served by this origin for responses
+               that do not have an existing valid TTL (max-age or s-max-age).
+        :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        :param Sequence['BackendServiceCdnPolicyNegativeCachingPolicyArgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+               Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+               Structure is documented below.
+        :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request
                will be considered fresh, defaults to 1hr (3600s). After this
                time period, the response will be revalidated before
@@ -2063,36 +2171,62 @@ class BackendServiceCdnPolicy(dict):
     @property
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[str]:
+        """
+        Specifies the cache setting for all responses from this backend.
+        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        """
         return pulumi.get(self, "cache_mode")
 
     @property
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> Optional[int]:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
         return pulumi.get(self, "client_ttl")
 
     @property
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[int]:
+        """
+        Specifies the default TTL for cached content served by this origin for responses
+        that do not have an existing valid TTL (max-age or s-max-age).
+        """
         return pulumi.get(self, "default_ttl")
 
     @property
     @pulumi.getter(name="maxTtl")
     def max_ttl(self) -> Optional[int]:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
         return pulumi.get(self, "max_ttl")
 
     @property
     @pulumi.getter(name="negativeCaching")
     def negative_caching(self) -> Optional[bool]:
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        """
         return pulumi.get(self, "negative_caching")
 
     @property
     @pulumi.getter(name="negativeCachingPolicies")
     def negative_caching_policies(self) -> Optional[Sequence['outputs.BackendServiceCdnPolicyNegativeCachingPolicy']]:
+        """
+        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        Structure is documented below.
+        """
         return pulumi.get(self, "negative_caching_policies")
 
     @property
     @pulumi.getter(name="serveWhileStale")
     def serve_while_stale(self) -> Optional[int]:
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        """
         return pulumi.get(self, "serve_while_stale")
 
     @property
@@ -2216,6 +2350,12 @@ class BackendServiceCdnPolicyNegativeCachingPolicy(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  ttl: Optional[int] = None):
+        """
+        :param int code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+               can be specified as values, and you cannot specify a status code more than once.
+        :param int ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+               (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         if code is not None:
             pulumi.set(__self__, "code", code)
         if ttl is not None:
@@ -2224,11 +2364,19 @@ class BackendServiceCdnPolicyNegativeCachingPolicy(dict):
     @property
     @pulumi.getter
     def code(self) -> Optional[int]:
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+        can be specified as values, and you cannot specify a status code more than once.
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
     def ttl(self) -> Optional[int]:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
@@ -2445,6 +2593,8 @@ class BackendServiceConsistentHashHttpCookie(dict):
         """
         :param str name: Name of the cookie.
         :param str path: Path to set for the cookie.
+        :param 'BackendServiceConsistentHashHttpCookieTtlArgs' ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+               (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2472,6 +2622,10 @@ class BackendServiceConsistentHashHttpCookie(dict):
     @property
     @pulumi.getter
     def ttl(self) -> Optional['outputs.BackendServiceConsistentHashHttpCookieTtl']:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
@@ -5790,6 +5944,7 @@ class InstanceGroupManagerUpdatePolicy(dict):
         :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
         :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
         :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
         """
         pulumi.set(__self__, "minimal_action", minimal_action)
@@ -5860,13 +6015,16 @@ class InstanceGroupManagerUpdatePolicy(dict):
     def min_ready_sec(self) -> Optional[int]:
         """
         , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        - - -
         """
         return pulumi.get(self, "min_ready_sec")
 
     @property
     @pulumi.getter(name="replacementMethod")
     def replacement_method(self) -> Optional[str]:
+        """
+        , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        - - -
+        """
         return pulumi.get(self, "replacement_method")
 
     def _translate_property(self, prop):
@@ -6135,8 +6293,7 @@ class InstanceNetworkInterface(dict):
                Either `network` or `subnetwork` must be provided.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param str nic_type: ) The type of vNIC to be used on this interface.
-               Possible values: GVNIC, VIRTIO_NET.
+        :param str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
         :param str subnetwork: The name or self_link of the subnetwork to attach this
                interface to. The subnetwork must exist in the same region this instance will be
                created in. If network isn't provided it will be inferred from the subnetwork.
@@ -6217,8 +6374,7 @@ class InstanceNetworkInterface(dict):
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[str]:
         """
-        ) The type of vNIC to be used on this interface.
-        Possible values: GVNIC, VIRTIO_NET.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
         """
         return pulumi.get(self, "nic_type")
 
@@ -6898,7 +7054,6 @@ class InstanceTemplateNetworkInterface(dict):
                  name: Optional[str] = None,
                  network: Optional[str] = None,
                  network_ip: Optional[str] = None,
-                 nic_type: Optional[str] = None,
                  subnetwork: Optional[str] = None,
                  subnetwork_project: Optional[str] = None):
         """
@@ -6918,8 +7073,6 @@ class InstanceTemplateNetworkInterface(dict):
                `subnetwork` for custom subnetted networks.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param str nic_type: ) The type of vNIC to be used on this interface.
-               Possible values: GVNIC, VIRTIO_NET.
         :param str subnetwork: the name of the subnetwork to attach this interface
                to. The subnetwork must exist in the same `region` this instance will be
                created in. Either `network` or `subnetwork` must be provided.
@@ -6936,8 +7089,6 @@ class InstanceTemplateNetworkInterface(dict):
             pulumi.set(__self__, "network", network)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
-        if nic_type is not None:
-            pulumi.set(__self__, "nic_type", nic_type)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if subnetwork_project is not None:
@@ -6993,15 +7144,6 @@ class InstanceTemplateNetworkInterface(dict):
         empty, the address will be automatically assigned.
         """
         return pulumi.get(self, "network_ip")
-
-    @property
-    @pulumi.getter(name="nicType")
-    def nic_type(self) -> Optional[str]:
-        """
-        ) The type of vNIC to be used on this interface.
-        Possible values: GVNIC, VIRTIO_NET.
-        """
-        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter
@@ -8193,6 +8335,8 @@ class RegionAutoscalerAutoscalingPolicy(dict):
         :param 'RegionAutoscalerAutoscalingPolicyScaleInControlArgs' scale_in_control: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
                Structure is documented below.
+        :param Sequence['RegionAutoscalerAutoscalingPolicyScalingScheduleArgs'] scaling_schedules: Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+               Structure is documented below.
         """
         pulumi.set(__self__, "max_replicas", max_replicas)
         pulumi.set(__self__, "min_replicas", min_replicas)
@@ -8313,6 +8457,10 @@ class RegionAutoscalerAutoscalingPolicy(dict):
     @property
     @pulumi.getter(name="scalingSchedules")
     def scaling_schedules(self) -> Optional[Sequence['outputs.RegionAutoscalerAutoscalingPolicyScalingSchedule']]:
+        """
+        Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        Structure is documented below.
+        """
         return pulumi.get(self, "scaling_schedules")
 
     def _translate_property(self, prop):
@@ -8322,13 +8470,19 @@ class RegionAutoscalerAutoscalingPolicy(dict):
 @pulumi.output_type
 class RegionAutoscalerAutoscalingPolicyCpuUtilization(dict):
     def __init__(__self__, *,
-                 target: float):
+                 target: float,
+                 predictive_method: Optional[str] = None):
         """
         :param float target: Fraction of backend capacity utilization (set in HTTP(s) load
                balancing configuration) that autoscaler should maintain. Must
                be a positive float value. If not defined, the default is 0.8.
+        :param str predictive_method: Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+               - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+               - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
         """
         pulumi.set(__self__, "target", target)
+        if predictive_method is not None:
+            pulumi.set(__self__, "predictive_method", predictive_method)
 
     @property
     @pulumi.getter
@@ -8339,6 +8493,16 @@ class RegionAutoscalerAutoscalingPolicyCpuUtilization(dict):
         be a positive float value. If not defined, the default is 0.8.
         """
         return pulumi.get(self, "target")
+
+    @property
+    @pulumi.getter(name="predictiveMethod")
+    def predictive_method(self) -> Optional[str]:
+        """
+        Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+        - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+        - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+        """
+        return pulumi.get(self, "predictive_method")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -9042,6 +9206,18 @@ class RegionBackendServiceCdnPolicy(dict):
         """
         :param 'RegionBackendServiceCdnPolicyCacheKeyPolicyArgs' cache_key_policy: The CacheKeyPolicy for this CdnPolicy.
                Structure is documented below.
+        :param str cache_mode: Specifies the cache setting for all responses from this backend.
+               The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+               Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        :param int client_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param int default_ttl: Specifies the default TTL for cached content served by this origin for responses
+               that do not have an existing valid TTL (max-age or s-max-age).
+        :param int max_ttl: Specifies the maximum allowed TTL for cached content served by this origin.
+        :param bool negative_caching: Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        :param Sequence['RegionBackendServiceCdnPolicyNegativeCachingPolicyArgs'] negative_caching_policies: Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+               Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+               Structure is documented below.
+        :param int serve_while_stale: Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
         :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request
                will be considered fresh, defaults to 1hr (3600s). After this
                time period, the response will be revalidated before
@@ -9083,36 +9259,62 @@ class RegionBackendServiceCdnPolicy(dict):
     @property
     @pulumi.getter(name="cacheMode")
     def cache_mode(self) -> Optional[str]:
+        """
+        Specifies the cache setting for all responses from this backend.
+        The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        """
         return pulumi.get(self, "cache_mode")
 
     @property
     @pulumi.getter(name="clientTtl")
     def client_ttl(self) -> Optional[int]:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
         return pulumi.get(self, "client_ttl")
 
     @property
     @pulumi.getter(name="defaultTtl")
     def default_ttl(self) -> Optional[int]:
+        """
+        Specifies the default TTL for cached content served by this origin for responses
+        that do not have an existing valid TTL (max-age or s-max-age).
+        """
         return pulumi.get(self, "default_ttl")
 
     @property
     @pulumi.getter(name="maxTtl")
     def max_ttl(self) -> Optional[int]:
+        """
+        Specifies the maximum allowed TTL for cached content served by this origin.
+        """
         return pulumi.get(self, "max_ttl")
 
     @property
     @pulumi.getter(name="negativeCaching")
     def negative_caching(self) -> Optional[bool]:
+        """
+        Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        """
         return pulumi.get(self, "negative_caching")
 
     @property
     @pulumi.getter(name="negativeCachingPolicies")
     def negative_caching_policies(self) -> Optional[Sequence['outputs.RegionBackendServiceCdnPolicyNegativeCachingPolicy']]:
+        """
+        Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        Structure is documented below.
+        """
         return pulumi.get(self, "negative_caching_policies")
 
     @property
     @pulumi.getter(name="serveWhileStale")
     def serve_while_stale(self) -> Optional[int]:
+        """
+        Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        """
         return pulumi.get(self, "serve_while_stale")
 
     @property
@@ -9236,6 +9438,12 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
     def __init__(__self__, *,
                  code: Optional[int] = None,
                  ttl: Optional[int] = None):
+        """
+        :param int code: The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+               can be specified as values, and you cannot specify a status code more than once.
+        :param int ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+               (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         if code is not None:
             pulumi.set(__self__, "code", code)
         if ttl is not None:
@@ -9244,11 +9452,19 @@ class RegionBackendServiceCdnPolicyNegativeCachingPolicy(dict):
     @property
     @pulumi.getter
     def code(self) -> Optional[int]:
+        """
+        The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+        can be specified as values, and you cannot specify a status code more than once.
+        """
         return pulumi.get(self, "code")
 
     @property
     @pulumi.getter
     def ttl(self) -> Optional[int]:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
@@ -9465,6 +9681,8 @@ class RegionBackendServiceConsistentHashHttpCookie(dict):
         """
         :param str name: Name of the cookie.
         :param str path: Path to set for the cookie.
+        :param 'RegionBackendServiceConsistentHashHttpCookieTtlArgs' ttl: The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+               (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -9492,6 +9710,10 @@ class RegionBackendServiceConsistentHashHttpCookie(dict):
     @property
     @pulumi.getter
     def ttl(self) -> Optional['outputs.RegionBackendServiceConsistentHashHttpCookieTtl']:
+        """
+        The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+        (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+        """
         return pulumi.get(self, "ttl")
 
     def _translate_property(self, prop):
@@ -10991,6 +11213,7 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
         :param int max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
         :param int max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
         :param int min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param str replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
         """
         pulumi.set(__self__, "minimal_action", minimal_action)
@@ -11071,13 +11294,16 @@ class RegionInstanceGroupManagerUpdatePolicy(dict):
     def min_ready_sec(self) -> Optional[int]:
         """
         , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        - - -
         """
         return pulumi.get(self, "min_ready_sec")
 
     @property
     @pulumi.getter(name="replacementMethod")
     def replacement_method(self) -> Optional[str]:
+        """
+        , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        - - -
+        """
         return pulumi.get(self, "replacement_method")
 
     def _translate_property(self, prop):
@@ -23115,10 +23341,15 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
                  name: str,
                  network: str,
                  network_ip: str,
-                 nic_type: str,
                  subnetwork: str,
                  subnetwork_project: str):
         """
+        :param Sequence['GetInstanceTemplateNetworkInterfaceAccessConfigArgs'] access_configs: Access configurations, i.e. IPs via which this
+               instance can be accessed via the Internet. Omit to ensure that the instance
+               is not accessible from the Internet (this means that ssh provisioners will
+               not work unless you are running the prvovider can send traffic to the instance's
+               network (e.g. via tunnel or because it is running on another cloud instance
+               on that network). This block can be repeated multiple times. Structure documented below.
         :param Sequence['GetInstanceTemplateNetworkInterfaceAliasIpRangeArgs'] alias_ip_ranges: An
                array of alias IP ranges for this network interface. Can only be specified for network
                interfaces on subnet-mode networks. Structure documented below.
@@ -23139,13 +23370,20 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_ip", network_ip)
-        pulumi.set(__self__, "nic_type", nic_type)
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "subnetwork_project", subnetwork_project)
 
     @property
     @pulumi.getter(name="accessConfigs")
     def access_configs(self) -> Sequence['outputs.GetInstanceTemplateNetworkInterfaceAccessConfigResult']:
+        """
+        Access configurations, i.e. IPs via which this
+        instance can be accessed via the Internet. Omit to ensure that the instance
+        is not accessible from the Internet (this means that ssh provisioners will
+        not work unless you are running the prvovider can send traffic to the instance's
+        network (e.g. via tunnel or because it is running on another cloud instance
+        on that network). This block can be repeated multiple times. Structure documented below.
+        """
         return pulumi.get(self, "access_configs")
 
     @property
@@ -23184,11 +23422,6 @@ class GetInstanceTemplateNetworkInterfaceResult(dict):
         empty, the address will be automatically assigned.
         """
         return pulumi.get(self, "network_ip")
-
-    @property
-    @pulumi.getter(name="nicType")
-    def nic_type(self) -> str:
-        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter

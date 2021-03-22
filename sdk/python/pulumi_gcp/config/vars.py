@@ -53,7 +53,6 @@ __all__ = [
     'datastore_custom_endpoint',
     'deployment_manager_custom_endpoint',
     'dialogflow_custom_endpoint',
-    'dns_beta_custom_endpoint',
     'dns_custom_endpoint',
     'essential_contacts_custom_endpoint',
     'eventarc_custom_endpoint',
@@ -86,7 +85,7 @@ __all__ = [
     'region',
     'request_timeout',
     'resource_manager_custom_endpoint',
-    'resource_manager_v2beta1_custom_endpoint',
+    'resource_manager_v2_custom_endpoint',
     'runtime_config_custom_endpoint',
     'runtimeconfig_custom_endpoint',
     'scopes',
@@ -105,6 +104,7 @@ __all__ = [
     'tpu_custom_endpoint',
     'user_project_override',
     'vpc_access_custom_endpoint',
+    'workflows_custom_endpoint',
     'zone',
 ]
 
@@ -196,8 +196,6 @@ deployment_manager_custom_endpoint = __config__.get('deploymentManagerCustomEndp
 
 dialogflow_custom_endpoint = __config__.get('dialogflowCustomEndpoint')
 
-dns_beta_custom_endpoint = __config__.get('dnsBetaCustomEndpoint')
-
 dns_custom_endpoint = __config__.get('dnsCustomEndpoint')
 
 essential_contacts_custom_endpoint = __config__.get('essentialContactsCustomEndpoint')
@@ -262,7 +260,7 @@ request_timeout = __config__.get('requestTimeout')
 
 resource_manager_custom_endpoint = __config__.get('resourceManagerCustomEndpoint')
 
-resource_manager_v2beta1_custom_endpoint = __config__.get('resourceManagerV2beta1CustomEndpoint')
+resource_manager_v2_custom_endpoint = __config__.get('resourceManagerV2CustomEndpoint')
 
 runtime_config_custom_endpoint = __config__.get('runtimeConfigCustomEndpoint')
 
@@ -299,6 +297,8 @@ tpu_custom_endpoint = __config__.get('tpuCustomEndpoint')
 user_project_override = __config__.get('userProjectOverride')
 
 vpc_access_custom_endpoint = __config__.get('vpcAccessCustomEndpoint')
+
+workflows_custom_endpoint = __config__.get('workflowsCustomEndpoint')
 
 zone = __config__.get('zone') or _utilities.get_env('GOOGLE_ZONE', 'GCLOUD_ZONE', 'CLOUDSDK_COMPUTE_ZONE')
 

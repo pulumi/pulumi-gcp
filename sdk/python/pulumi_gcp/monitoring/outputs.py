@@ -36,6 +36,7 @@ __all__ = [
     'SloWindowsBasedSli',
     'SloWindowsBasedSliGoodTotalRatioThreshold',
     'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance',
+    'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability',
     'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency',
     'SloWindowsBasedSliGoodTotalRatioThresholdPerformance',
     'SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut',
@@ -2173,11 +2174,14 @@ class SloWindowsBasedSliGoodTotalRatioThreshold(dict):
 @pulumi.output_type
 class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
     def __init__(__self__, *,
-                 latency: 'outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency',
+                 availability: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability'] = None,
+                 latency: Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency'] = None,
                  locations: Optional[Sequence[str]] = None,
                  methods: Optional[Sequence[str]] = None,
                  versions: Optional[Sequence[str]] = None):
         """
+        :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs' availability: Availability based SLI, dervied from count of requests made to this service that return successfully.
+               Structure is documented below.
         :param 'SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyArgs' latency: Parameters for a latency threshold SLI.
                Structure is documented below.
         :param Sequence[str] locations: An optional set of locations to which this SLI is relevant.
@@ -2199,7 +2203,10 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
                that don't support breaking down by version, setting this
                field will result in an error.
         """
-        pulumi.set(__self__, "latency", latency)
+        if availability is not None:
+            pulumi.set(__self__, "availability", availability)
+        if latency is not None:
+            pulumi.set(__self__, "latency", latency)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if methods is not None:
@@ -2209,7 +2216,16 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
 
     @property
     @pulumi.getter
-    def latency(self) -> 'outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency':
+    def availability(self) -> Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability']:
+        """
+        Availability based SLI, dervied from count of requests made to this service that return successfully.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "availability")
+
+    @property
+    @pulumi.getter
+    def latency(self) -> Optional['outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency']:
         """
         Parameters for a latency threshold SLI.
         Structure is documented below.
@@ -2254,6 +2270,28 @@ class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(dict):
         field will result in an error.
         """
         return pulumi.get(self, "versions")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

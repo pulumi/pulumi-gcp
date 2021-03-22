@@ -361,7 +361,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableArray<string>> CustomRequestHeaders { get; private set; } = null!;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// Headers that the HTTP/S load balancer should add to proxied
+        /// responses.
         /// </summary>
         [Output("customResponseHeaders")]
         public Output<ImmutableArray<string>> CustomResponseHeaders { get; private set; } = null!;
@@ -637,7 +638,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _customResponseHeaders;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// Headers that the HTTP/S load balancer should add to proxied
+        /// responses.
         /// </summary>
         public InputList<string> CustomResponseHeaders
         {
@@ -871,7 +873,8 @@ namespace Pulumi.Gcp.Compute
         private InputList<string>? _customResponseHeaders;
 
         /// <summary>
-        /// Headers that the HTTP/S load balancer should add to proxied responses.
+        /// Headers that the HTTP/S load balancer should add to proxied
+        /// responses.
         /// </summary>
         public InputList<string> CustomResponseHeaders
         {

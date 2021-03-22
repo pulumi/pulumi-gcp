@@ -11,6 +11,128 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A CertificateAuthority represents an individual Certificate Authority. A
+// CertificateAuthority can be used to create Certificates.
+//
+// > **Warning:** Please remember that all resources created during preview (via this provider)
+// will be deleted when CA service transitions to General Availability (GA). Relying on these
+// certificate authorities for production traffic is discouraged.
+//
+// To get more information about CertificateAuthority, see:
+//
+// * [API documentation](https://cloud.google.com/certificate-authority-service/docs/reference/rest)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/certificate-authority-service)
+//
+// ## Example Usage
+// ### Privateca Certificate Authority Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
+// 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+// 			Location:               pulumi.String("us-central1"),
+// 			Config: &certificateauthority.AuthorityConfigArgs{
+// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+// 						Organization: pulumi.String("HashiCorp"),
+// 					},
+// 					CommonName: pulumi.String("my-certificate-authority"),
+// 					SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+// 						DnsNames: pulumi.StringArray{
+// 							pulumi.String("hashicorp.com"),
+// 						},
+// 					},
+// 				},
+// 				ReusableConfig: &certificateauthority.AuthorityConfigReusableConfigArgs{
+// 					ReusableConfig: pulumi.String("projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained"),
+// 				},
+// 			},
+// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+// 				Algorithm: pulumi.String("RSA_PKCS1_4096_SHA256"),
+// 			},
+// 			DisableOnDelete: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Privateca Certificate Authority Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/certificateauthority"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := certificateauthority.NewAuthority(ctx, "_default", &certificateauthority.AuthorityArgs{
+// 			CertificateAuthorityId: pulumi.String("my-certificate-authority"),
+// 			Location:               pulumi.String("us-central1"),
+// 			Tier:                   pulumi.String("DEVOPS"),
+// 			Config: &certificateauthority.AuthorityConfigArgs{
+// 				SubjectConfig: &certificateauthority.AuthorityConfigSubjectConfigArgs{
+// 					Subject: &certificateauthority.AuthorityConfigSubjectConfigSubjectArgs{
+// 						CountryCode:        pulumi.String("US"),
+// 						Organization:       pulumi.String("HashiCorp"),
+// 						OrganizationalUnit: pulumi.String("Terraform"),
+// 						Locality:           pulumi.String("San Francisco"),
+// 						Province:           pulumi.String("CA"),
+// 						StreetAddress:      pulumi.String("101 2nd St #700"),
+// 						PostalCode:         pulumi.String("94105"),
+// 					},
+// 					CommonName: pulumi.String("my-certificate-authority"),
+// 					SubjectAltName: &certificateauthority.AuthorityConfigSubjectConfigSubjectAltNameArgs{
+// 						DnsNames: pulumi.StringArray{
+// 							pulumi.String("hashicorp.com"),
+// 						},
+// 						EmailAddresses: pulumi.StringArray{
+// 							pulumi.String("email@example.com"),
+// 						},
+// 						IpAddresses: pulumi.StringArray{
+// 							pulumi.String("127.0.0.1"),
+// 						},
+// 						Uris: pulumi.StringArray{
+// 							pulumi.String("http://www.ietf.org/rfc/rfc3986.txt"),
+// 						},
+// 					},
+// 				},
+// 				ReusableConfig: &certificateauthority.AuthorityConfigReusableConfigArgs{
+// 					ReusableConfig: pulumi.String("projects/568668481468/locations/us-central1/reusableConfigs/root-unconstrained"),
+// 				},
+// 			},
+// 			Lifetime: pulumi.String("86400s"),
+// 			IssuingOptions: &certificateauthority.AuthorityIssuingOptionsArgs{
+// 				IncludeCaCertUrl:    pulumi.Bool(true),
+// 				IncludeCrlAccessUrl: pulumi.Bool(false),
+// 			},
+// 			KeySpec: &certificateauthority.AuthorityKeySpecArgs{
+// 				Algorithm: pulumi.String("EC_P256_SHA256"),
+// 			},
+// 			DisableOnDelete: pulumi.Bool(true),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // CertificateAuthority can be imported using any of these accepted formats

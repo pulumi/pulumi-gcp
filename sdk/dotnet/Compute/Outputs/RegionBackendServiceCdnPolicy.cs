@@ -18,12 +18,38 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RegionBackendServiceCdnPolicyCacheKeyPolicy? CacheKeyPolicy;
+        /// <summary>
+        /// Specifies the cache setting for all responses from this backend.
+        /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        /// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        /// </summary>
         public readonly string? CacheMode;
+        /// <summary>
+        /// Specifies the maximum allowed TTL for cached content served by this origin.
+        /// </summary>
         public readonly int? ClientTtl;
+        /// <summary>
+        /// Specifies the default TTL for cached content served by this origin for responses
+        /// that do not have an existing valid TTL (max-age or s-max-age).
+        /// </summary>
         public readonly int? DefaultTtl;
+        /// <summary>
+        /// Specifies the maximum allowed TTL for cached content served by this origin.
+        /// </summary>
         public readonly int? MaxTtl;
+        /// <summary>
+        /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        /// </summary>
         public readonly bool? NegativeCaching;
+        /// <summary>
+        /// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        /// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        /// Structure is documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.RegionBackendServiceCdnPolicyNegativeCachingPolicy> NegativeCachingPolicies;
+        /// <summary>
+        /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        /// </summary>
         public readonly int? ServeWhileStale;
         /// <summary>
         /// Maximum number of seconds the response to a signed URL request

@@ -5,12 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Manages a project-level logging exclusion. For more information see
- * [the official documentation](https://cloud.google.com/logging/docs/) and
- * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions).
+ * Manages a project-level logging exclusion. For more information see:
  *
- * Note that you must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
- * granted to the credentials used with this provider.
+ * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.exclusions)
+ * * How-to Guides
+ *     * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+ *
+ * > You can specify exclusions for log sinks created by the provider by using the exclusions field of `gcp.logging.ProjectSink`
  *
  * ## Example Usage
  *

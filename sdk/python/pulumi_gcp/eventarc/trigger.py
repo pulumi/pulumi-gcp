@@ -27,6 +27,50 @@ class Trigger(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        An event trigger sends messages to the event receiver service deployed on Cloud Run.
+
+        * [API documentation](https://cloud.google.com/eventarc/docs/reference/rest/v1/projects.locations.triggers)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrun.Service("default",
+            location="us-central1",
+            metadata=gcp.cloudrun.ServiceMetadataArgs(
+                namespace="my-project",
+            ),
+            template=gcp.cloudrun.ServiceTemplateArgs(
+                spec=gcp.cloudrun.ServiceTemplateSpecArgs(
+                    containers=[gcp.cloudrun.ServiceTemplateSpecContainerArgs(
+                        image="gcr.io/cloudrun/hello",
+                        args=["arrgs"],
+                    )],
+                    container_concurrency=50,
+                ),
+            ),
+            traffics=[gcp.cloudrun.ServiceTrafficArgs(
+                percent=100,
+                latest_revision=True,
+            )],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        trigger = gcp.eventarc.Trigger("trigger",
+            location="us-central1",
+            matching_criterias=[gcp.eventarc.TriggerMatchingCriteriaArgs(
+                attribute="type",
+                value="google.cloud.pubsub.topic.v1.messagePublished",
+            )],
+            destination=gcp.eventarc.TriggerDestinationArgs(
+                cloud_run_service=gcp.eventarc.TriggerDestinationCloudRunServiceArgs(
+                    service=default.name,
+                    region="us-central1",
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Trigger can be imported using any of these accepted formats

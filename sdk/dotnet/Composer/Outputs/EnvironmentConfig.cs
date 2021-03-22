@@ -19,6 +19,9 @@ namespace Pulumi.Gcp.Composer.Outputs
         /// The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
         /// </summary>
         public readonly Outputs.EnvironmentConfigDatabaseConfig? DatabaseConfig;
+        /// <summary>
+        /// The encryption options for the Cloud Composer environment and its dependencies.
+        /// </summary>
         public readonly Outputs.EnvironmentConfigEncryptionConfig? EncryptionConfig;
         public readonly string? GkeCluster;
         /// <summary>

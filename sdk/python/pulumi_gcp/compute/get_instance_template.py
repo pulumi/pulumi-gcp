@@ -239,6 +239,10 @@ class GetInstanceTemplateResult:
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
+        """
+        The name of the instance template. If you leave
+        this blank, the provider will auto-generate a unique name.
+        """
         return pulumi.get(self, "name")
 
     @property

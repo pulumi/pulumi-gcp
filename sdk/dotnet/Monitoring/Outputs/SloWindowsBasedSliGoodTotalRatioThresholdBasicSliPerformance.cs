@@ -14,10 +14,15 @@ namespace Pulumi.Gcp.Monitoring.Outputs
     public sealed class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance
     {
         /// <summary>
+        /// Availability based SLI, dervied from count of requests made to this service that return successfully.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability? Availability;
+        /// <summary>
         /// Parameters for a latency threshold SLI.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency Latency;
+        public readonly Outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency? Latency;
         /// <summary>
         /// An optional set of locations to which this SLI is relevant.
         /// Telemetry from other locations will not be used to calculate
@@ -48,7 +53,9 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
         [OutputConstructor]
         private SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance(
-            Outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency latency,
+            Outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability? availability,
+
+            Outputs.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency? latency,
 
             ImmutableArray<string> locations,
 
@@ -56,6 +63,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
 
             ImmutableArray<string> versions)
         {
+            Availability = availability;
             Latency = latency;
             Locations = locations;
             Methods = methods;

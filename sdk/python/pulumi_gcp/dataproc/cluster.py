@@ -27,8 +27,11 @@ class Cluster(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Manages a Cloud Dataproc cluster resource within GCP. For more information see
-        [the official dataproc documentation](https://cloud.google.com/dataproc/).
+        Manages a Cloud Dataproc cluster resource within GCP.
+
+        * [API documentation](https://cloud.google.com/dataproc/docs/reference/rest/v1/projects.regions.clusters)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/dataproc/docs)
 
         !> **Warning:** Due to limitations of the API, all arguments except
         `labels`,`cluster_config.worker_config.num_instances` and `cluster_config.preemptible_worker_config.num_instances` are non-updatable. Changing others will cause recreation of the

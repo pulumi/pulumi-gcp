@@ -46,7 +46,7 @@ namespace Pulumi.Gcp.SourceRepo
     /// {
     ///     public MyStack()
     ///     {
-    ///         var test_account = new Gcp.ServiceAccount.Account("test-account", new Gcp.ServiceAccount.AccountArgs
+    ///         var testAccount = new Gcp.ServiceAccount.Account("testAccount", new Gcp.ServiceAccount.AccountArgs
     ///         {
     ///             AccountId = "my-account",
     ///             DisplayName = "Test Service Account",
@@ -62,7 +62,7 @@ namespace Pulumi.Gcp.SourceRepo
     ///                 {
     ///                     Topic = topic.Id,
     ///                     MessageFormat = "JSON",
-    ///                     ServiceAccountEmail = test_account.Email,
+    ///                     ServiceAccountEmail = testAccount.Email,
     ///                 },
     ///             },
     ///         });

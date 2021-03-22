@@ -24,6 +24,25 @@ class Api(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        A consumable API that can be used by multiple Gateways.
+
+        To get more information about Api, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/quickstart)
+
+        ## Example Usage
+        ### Apigateway Api Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        api = gcp.apigateway.Api("api", api_id="api",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Api can be imported using any of these accepted formats

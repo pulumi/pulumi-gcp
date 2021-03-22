@@ -15,11 +15,66 @@ import (
 //
 // To get more information about Instance, see:
 //
-// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest)
+// * [API documentation](https://cloud.google.com/memorystore/docs/memcached/reference/rest/v1beta2/projects.locations.instances)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/memcache/docs/creating-instances)
 //
 // ## Example Usage
+// ### Memcache Instance Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/memcache"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		memcacheNetwork, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+// 			Name: "test-network",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      pulumi.String(memcacheNetwork.Id),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+// 			Network: pulumi.String(memcacheNetwork.Id),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				serviceRange.Name,
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = memcache.NewInstance(ctx, "instance", &memcache.InstanceArgs{
+// 			AuthorizedNetwork: privateServiceConnection.Network,
+// 			NodeConfig: &memcache.InstanceNodeConfigArgs{
+// 				CpuCount:     pulumi.Int(1),
+// 				MemorySizeMb: pulumi.Int(1024),
+// 			},
+// 			NodeCount:       pulumi.Int(1),
+// 			MemcacheVersion: pulumi.String("MEMCACHE_1_5"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //

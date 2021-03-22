@@ -6,9 +6,9 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Manages a billing account logging sink. For more information see
- * [the official documentation](https://cloud.google.com/logging/docs/) and
- * [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+ * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
+ * * How-to Guides
+ *     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
  *
  * > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
  * [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
@@ -78,7 +78,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly billingAccount!: pulumi.Output<string>;
     /**
-     * A description of this sink. The maximum length of the description is 8000 characters.
+     * A description of this exclusion.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -91,22 +91,20 @@ export class BillingAccountSink extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<string>;
     /**
-     * If set to True, then this sink is disabled and it does not export any log entries.
+     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
      */
     public readonly disabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-     * one of exclusion_filters it will not be exported.
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
     public readonly exclusions!: pulumi.Output<outputs.logging.BillingAccountSinkExclusion[] | undefined>;
     /**
-     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
     public readonly filter!: pulumi.Output<string | undefined>;
     /**
-     * The name of the logging sink.
+     * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -175,7 +173,7 @@ export interface BillingAccountSinkState {
      */
     readonly billingAccount?: pulumi.Input<string>;
     /**
-     * A description of this sink. The maximum length of the description is 8000 characters.
+     * A description of this exclusion.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -188,22 +186,20 @@ export interface BillingAccountSinkState {
      */
     readonly destination?: pulumi.Input<string>;
     /**
-     * If set to True, then this sink is disabled and it does not export any log entries.
+     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-     * one of exclusion_filters it will not be exported.
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
     readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountSinkExclusion>[]>;
     /**
-     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
     readonly filter?: pulumi.Input<string>;
     /**
-     * The name of the logging sink.
+     * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -226,7 +222,7 @@ export interface BillingAccountSinkArgs {
      */
     readonly billingAccount: pulumi.Input<string>;
     /**
-     * A description of this sink. The maximum length of the description is 8000 characters.
+     * A description of this exclusion.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -239,22 +235,20 @@ export interface BillingAccountSinkArgs {
      */
     readonly destination: pulumi.Input<string>;
     /**
-     * If set to True, then this sink is disabled and it does not export any log entries.
+     * If set to True, then this exclusion is disabled and it does not exclude any log entries.
      */
     readonly disabled?: pulumi.Input<boolean>;
     /**
-     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-     * one of exclusion_filters it will not be exported.
+     * Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
      */
     readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.BillingAccountSinkExclusion>[]>;
     /**
-     * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-     * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+     * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
      * write a filter.
      */
     readonly filter?: pulumi.Input<string>;
     /**
-     * The name of the logging sink.
+     * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
     readonly name?: pulumi.Input<string>;
 }

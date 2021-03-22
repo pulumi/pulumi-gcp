@@ -20,6 +20,7 @@ import * as utilities from "../utilities";
  * const onPrem = new gcp.compute.InterconnectAttachment("onPrem", {
  *     interconnect: "my-interconnect-id",
  *     router: foobar.id,
+ *     mtu: 1500,
  * });
  * ```
  *
@@ -132,6 +133,11 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly interconnect!: pulumi.Output<string | undefined>;
     /**
+     * Maximum Transmission Unit (MTU), in bytes, of packets passing through
+     * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+     */
+    public readonly mtu!: pulumi.Output<string>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
      * name must be 1-63 characters long and match the regular expression
@@ -214,6 +220,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["edgeAvailabilityDomain"] = state ? state.edgeAvailabilityDomain : undefined;
             inputs["googleReferenceId"] = state ? state.googleReferenceId : undefined;
             inputs["interconnect"] = state ? state.interconnect : undefined;
+            inputs["mtu"] = state ? state.mtu : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["pairingKey"] = state ? state.pairingKey : undefined;
             inputs["partnerAsn"] = state ? state.partnerAsn : undefined;
@@ -236,6 +243,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["edgeAvailabilityDomain"] = args ? args.edgeAvailabilityDomain : undefined;
             inputs["interconnect"] = args ? args.interconnect : undefined;
+            inputs["mtu"] = args ? args.mtu : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -323,6 +331,11 @@ export interface InterconnectAttachmentState {
      * be set if type is PARTNER.
      */
     readonly interconnect?: pulumi.Input<string>;
+    /**
+     * Maximum Transmission Unit (MTU), in bytes, of packets passing through
+     * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+     */
+    readonly mtu?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -431,6 +444,11 @@ export interface InterconnectAttachmentArgs {
      * be set if type is PARTNER.
      */
     readonly interconnect?: pulumi.Input<string>;
+    /**
+     * Maximum Transmission Unit (MTU), in bytes, of packets passing through
+     * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+     */
+    readonly mtu?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the

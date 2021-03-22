@@ -2518,11 +2518,11 @@ export namespace bigtable {
          *
          * @deprecated Deprecated in favor of duration
          */
-        days?: number;
+        days: number;
         /**
          * Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
          */
-        duration?: string;
+        duration: string;
     }
 
     export interface GCPolicyMaxVersion {
@@ -4163,6 +4163,14 @@ export namespace cloudidentity {
 
 export namespace cloudrun {
     export interface DomainMappingMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         */
         annotations: {[key: string]: string};
         /**
          * -
@@ -4384,6 +4392,14 @@ export namespace cloudrun {
     }
 
     export interface ServiceMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         */
         annotations: {[key: string]: string};
         /**
          * -
@@ -4457,6 +4473,14 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplateMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         */
         annotations: {[key: string]: string};
         /**
          * -
@@ -5014,6 +5038,9 @@ export namespace composer {
          * The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
          */
         databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
+        /**
+         * The encryption options for the Cloud Composer environment and its dependencies.
+         */
         encryptionConfig: outputs.composer.EnvironmentConfigEncryptionConfig;
         gkeCluster: string;
         /**
@@ -5406,10 +5433,20 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: outputs.compute.AutoscalarAutoscalingPolicyScaleInControl;
+        /**
+         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+         * Structure is documented below.
+         */
         scalingSchedules?: outputs.compute.AutoscalarAutoscalingPolicyScalingSchedule[];
     }
 
     export interface AutoscalarAutoscalingPolicyCpuUtilization {
+        /**
+         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+         */
+        predictiveMethod?: string;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
          * balancing configuration) that autoscaler should maintain. Must
@@ -5638,10 +5675,20 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: outputs.compute.AutoscalerAutoscalingPolicyScaleInControl;
+        /**
+         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+         * Structure is documented below.
+         */
         scalingSchedules?: outputs.compute.AutoscalerAutoscalingPolicyScalingSchedule[];
     }
 
     export interface AutoscalerAutoscalingPolicyCpuUtilization {
+        /**
+         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+         */
+        predictiveMethod?: string;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
          * balancing configuration) that autoscaler should maintain. Must
@@ -5809,12 +5856,38 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicy {
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         */
         cacheMode: string;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl?: number;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl?: number;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl?: number;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching: boolean;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         * Structure is documented below.
+         */
         negativeCachingPolicies?: outputs.compute.BackendBucketCdnPolicyNegativeCachingPolicy[];
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale?: number;
         /**
          * Maximum number of seconds the response to a signed URL request will
@@ -5830,7 +5903,15 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code?: number;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: number;
     }
 
@@ -5934,12 +6015,38 @@ export namespace compute {
          * Structure is documented below.
          */
         cacheKeyPolicy?: outputs.compute.BackendServiceCdnPolicyCacheKeyPolicy;
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         */
         cacheMode: string;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl?: number;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl?: number;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl?: number;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching: boolean;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         * Structure is documented below.
+         */
         negativeCachingPolicies?: outputs.compute.BackendServiceCdnPolicyNegativeCachingPolicy[];
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale?: number;
         /**
          * Maximum number of seconds the response to a signed URL request
@@ -5992,7 +6099,15 @@ export namespace compute {
     }
 
     export interface BackendServiceCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code?: number;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: number;
     }
 
@@ -6078,6 +6193,10 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: string;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: outputs.compute.BackendServiceConsistentHashHttpCookieTtl;
     }
 
@@ -6826,6 +6945,14 @@ export namespace compute {
     }
 
     export interface GetInstanceTemplateNetworkInterface {
+        /**
+         * Access configurations, i.e. IPs via which this
+         * instance can be accessed via the Internet. Omit to ensure that the instance
+         * is not accessible from the Internet (this means that ssh provisioners will
+         * not work unless you are running the prvovider can send traffic to the instance's
+         * network (e.g. via tunnel or because it is running on another cloud instance
+         * on that network). This block can be repeated multiple times. Structure documented below.
+         */
         accessConfigs: outputs.compute.GetInstanceTemplateNetworkInterfaceAccessConfig[];
         /**
          * An
@@ -6848,7 +6975,6 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp: string;
-        nicType: string;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
@@ -7801,13 +7927,16 @@ export namespace compute {
         maxUnavailablePercent?: number;
         /**
          * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-         * - - -
          */
         minReadySec?: number;
         /**
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: string;
+        /**
+         * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+         * - - -
+         */
         replacementMethod?: string;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -7927,8 +8056,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * ) The type of vNIC to be used on this interface.
-         * Possible values: GVNIC, VIRTIO_NET.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
          */
         nicType?: string;
         /**
@@ -8208,11 +8336,6 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp?: string;
-        /**
-         * ) The type of vNIC to be used on this interface.
-         * Possible values: GVNIC, VIRTIO_NET.
-         */
-        nicType?: string;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
@@ -8679,10 +8802,20 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: outputs.compute.RegionAutoscalerAutoscalingPolicyScaleInControl;
+        /**
+         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+         * Structure is documented below.
+         */
         scalingSchedules?: outputs.compute.RegionAutoscalerAutoscalingPolicyScalingSchedule[];
     }
 
     export interface RegionAutoscalerAutoscalingPolicyCpuUtilization {
+        /**
+         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+         */
+        predictiveMethod?: string;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
          * balancing configuration) that autoscaler should maintain. Must
@@ -8960,12 +9093,38 @@ export namespace compute {
          * Structure is documented below.
          */
         cacheKeyPolicy?: outputs.compute.RegionBackendServiceCdnPolicyCacheKeyPolicy;
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         */
         cacheMode: string;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl?: number;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl?: number;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl?: number;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching: boolean;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         * Structure is documented below.
+         */
         negativeCachingPolicies?: outputs.compute.RegionBackendServiceCdnPolicyNegativeCachingPolicy[];
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale?: number;
         /**
          * Maximum number of seconds the response to a signed URL request
@@ -9018,7 +9177,15 @@ export namespace compute {
     }
 
     export interface RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code?: number;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: number;
     }
 
@@ -9104,6 +9271,10 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: string;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: outputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl;
     }
 
@@ -9672,13 +9843,16 @@ export namespace compute {
         maxUnavailablePercent?: number;
         /**
          * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-         * - - -
          */
         minReadySec?: number;
         /**
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: string;
+        /**
+         * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+         * - - -
+         */
         replacementMethod?: string;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -13950,6 +14124,10 @@ export namespace container {
          */
         diskType: string;
         /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         */
+        ephemeralStorageConfig?: outputs.container.ClusterNodeConfigEphemeralStorageConfig;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -13976,8 +14154,7 @@ export namespace container {
          */
         linuxNodeConfig?: outputs.container.ClusterNodeConfigLinuxNodeConfig;
         /**
-         * The amount of local SSD disks that will be
-         * attached to each cluster node. Defaults to 0.
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
         /**
@@ -14049,6 +14226,13 @@ export namespace container {
          * Structure is documented below.
          */
         workloadMetadataConfig: outputs.container.ClusterNodeConfigWorkloadMetadataConfig;
+    }
+
+    export interface ClusterNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         */
+        localSsdCount: number;
     }
 
     export interface ClusterNodeConfigGuestAccelerator {
@@ -14208,6 +14392,10 @@ export namespace container {
          */
         diskType: string;
         /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         */
+        ephemeralStorageConfig?: outputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -14234,8 +14422,7 @@ export namespace container {
          */
         linuxNodeConfig?: outputs.container.ClusterNodePoolNodeConfigLinuxNodeConfig;
         /**
-         * The amount of local SSD disks that will be
-         * attached to each cluster node. Defaults to 0.
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount: number;
         /**
@@ -14307,6 +14494,13 @@ export namespace container {
          * Structure is documented below.
          */
         workloadMetadataConfig: outputs.container.ClusterNodePoolNodeConfigWorkloadMetadataConfig;
+    }
+
+    export interface ClusterNodePoolNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         */
+        localSsdCount: number;
     }
 
     export interface ClusterNodePoolNodeConfigGuestAccelerator {
@@ -14437,6 +14631,11 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes?: boolean;
+        /**
+         * Controls cluster master global
+         * access settings. If unset, the provider will no longer manage this field and will
+         * not modify the previously-set value. Structure is documented below.
+         */
         masterGlobalAccessConfig: outputs.container.ClusterPrivateClusterConfigMasterGlobalAccessConfig;
         /**
          * The IP range in CIDR notation to use for
@@ -14672,6 +14871,7 @@ export namespace container {
         bootDiskKmsKey: string;
         diskSizeGb: number;
         diskType: string;
+        ephemeralStorageConfigs: outputs.container.GetClusterNodeConfigEphemeralStorageConfig[];
         guestAccelerators: outputs.container.GetClusterNodeConfigGuestAccelerator[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodeConfigKubeletConfig[];
@@ -14689,6 +14889,10 @@ export namespace container {
         tags: string[];
         taints: outputs.container.GetClusterNodeConfigTaint[];
         workloadMetadataConfigs: outputs.container.GetClusterNodeConfigWorkloadMetadataConfig[];
+    }
+
+    export interface GetClusterNodeConfigEphemeralStorageConfig {
+        localSsdCount: number;
     }
 
     export interface GetClusterNodeConfigGuestAccelerator {
@@ -14757,6 +14961,7 @@ export namespace container {
         bootDiskKmsKey: string;
         diskSizeGb: number;
         diskType: string;
+        ephemeralStorageConfigs: outputs.container.GetClusterNodePoolNodeConfigEphemeralStorageConfig[];
         guestAccelerators: outputs.container.GetClusterNodePoolNodeConfigGuestAccelerator[];
         imageType: string;
         kubeletConfigs: outputs.container.GetClusterNodePoolNodeConfigKubeletConfig[];
@@ -14774,6 +14979,10 @@ export namespace container {
         tags: string[];
         taints: outputs.container.GetClusterNodePoolNodeConfigTaint[];
         workloadMetadataConfigs: outputs.container.GetClusterNodePoolNodeConfigWorkloadMetadataConfig[];
+    }
+
+    export interface GetClusterNodePoolNodeConfigEphemeralStorageConfig {
+        localSsdCount: number;
     }
 
     export interface GetClusterNodePoolNodeConfigGuestAccelerator {
@@ -14891,6 +15100,7 @@ export namespace container {
         bootDiskKmsKey?: string;
         diskSizeGb: number;
         diskType: string;
+        ephemeralStorageConfig?: outputs.container.NodePoolNodeConfigEphemeralStorageConfig;
         guestAccelerators: outputs.container.NodePoolNodeConfigGuestAccelerator[];
         imageType: string;
         kubeletConfig?: outputs.container.NodePoolNodeConfigKubeletConfig;
@@ -14908,6 +15118,10 @@ export namespace container {
         tags?: string[];
         taints: outputs.container.NodePoolNodeConfigTaint[];
         workloadMetadataConfig: outputs.container.NodePoolNodeConfigWorkloadMetadataConfig;
+    }
+
+    export interface NodePoolNodeConfigEphemeralStorageConfig {
+        localSsdCount: number;
     }
 
     export interface NodePoolNodeConfigGuestAccelerator {
@@ -17996,6 +18210,11 @@ export namespace healthcare {
          * A base64-encoded string.
          */
         segmentTerminator?: string;
+        /**
+         * The version of the unschematized parser to be used when a custom `schema` is not set.
+         * Default value is `V1`.
+         * Possible values are `V1` and `V2`.
+         */
         version?: string;
     }
 }
@@ -18637,21 +18856,20 @@ export namespace logging {
 
     export interface BillingAccountSinkExclusion {
         /**
-         * A description of this sink. The maximum length of the description is 8000 characters.
+         * A description of this exclusion.
          */
         description?: string;
         /**
-         * If set to True, then this sink is disabled and it does not export any log entries.
+         * If set to True, then this exclusion is disabled and it does not exclude any log entries.
          */
         disabled?: boolean;
         /**
-         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: string;
         /**
-         * The name of the logging sink.
+         * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: string;
     }
@@ -18668,21 +18886,20 @@ export namespace logging {
 
     export interface FolderSinkExclusion {
         /**
-         * A description of this sink. The maximum length of the description is 8000 characters.
+         * A description of this exclusion.
          */
         description?: string;
         /**
-         * If set to True, then this sink is disabled and it does not export any log entries.
+         * If set to True, then this exclusion is disabled and it does not exclude any log entries.
          */
         disabled?: boolean;
         /**
-         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: string;
         /**
-         * The name of the logging sink.
+         * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: string;
     }
@@ -18810,21 +19027,20 @@ export namespace logging {
 
     export interface OrganizationSinkExclusion {
         /**
-         * A description of this sink. The maximum length of the description is 8000 characters.
+         * A description of this exclusion.
          */
         description?: string;
         /**
-         * If set to True, then this sink is disabled and it does not export any log entries.
+         * If set to True, then this exclusion is disabled and it does not exclude any log entries.
          */
         disabled?: boolean;
         /**
-         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: string;
         /**
-         * The name of the logging sink.
+         * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: string;
     }
@@ -19802,10 +20018,15 @@ export namespace monitoring {
 
     export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
         /**
+         * Availability based SLI, dervied from count of requests made to this service that return successfully.
+         * Structure is documented below.
+         */
+        availability?: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability;
+        /**
          * Parameters for a latency threshold SLI.
          * Structure is documented below.
          */
-        latency: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency;
+        latency?: outputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency;
         /**
          * An optional set of locations to which this SLI is relevant.
          * Telemetry from other locations will not be used to calculate
@@ -19833,6 +20054,13 @@ export namespace monitoring {
          * field will result in an error.
          */
         versions?: string[];
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
+        /**
+         * Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+         */
+        enabled?: boolean;
     }
 
     export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
@@ -22203,6 +22431,10 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsBackupConfiguration {
         /**
+         * Backup retention settings. The configuration is detailed below.
+         */
+        backupRetentionSettings: outputs.sql.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings;
+        /**
          * True if binary logging is enabled. If
          * `settings.backup_configuration.enabled` is false, this must be as well.
          * Cannot be used with Postgres.
@@ -22225,6 +22457,22 @@ export namespace sql {
          * configuration starts.
          */
         startTime: string;
+        /**
+         * The number of days of transaction logs we retain for point in time restore, from 1-7.
+         */
+        transactionLogRetentionDays: number;
+    }
+
+    export interface DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
+        /**
+         * Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
+         * is 'COUNT', we will retain this many backups.
+         */
+        retainedBackups: number;
+        /**
+         * The unit that 'retained_backups' represents. Defaults to `COUNT`.
+         */
+        retentionUnit?: string;
     }
 
     export interface DatabaseInstanceSettingsDatabaseFlag {
@@ -22477,6 +22725,7 @@ export namespace sql {
     }
 
     export interface GetDatabaseInstanceSettingBackupConfiguration {
+        backupRetentionSettings: outputs.sql.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting[];
         /**
          * True if binary logging is enabled.
          */
@@ -22491,6 +22740,12 @@ export namespace sql {
          * `HH:MM` format time indicating when backup configuration starts.
          */
         startTime: string;
+        transactionLogRetentionDays: number;
+    }
+
+    export interface GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting {
+        retainedBackups: number;
+        retentionUnit: string;
     }
 
     export interface GetDatabaseInstanceSettingDatabaseFlag {

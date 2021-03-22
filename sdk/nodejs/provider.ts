@@ -81,7 +81,6 @@ export class Provider extends pulumi.ProviderResource {
             inputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
             inputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             inputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
-            inputs["dnsBetaCustomEndpoint"] = args ? args.dnsBetaCustomEndpoint : undefined;
             inputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             inputs["essentialContactsCustomEndpoint"] = args ? args.essentialContactsCustomEndpoint : undefined;
             inputs["eventarcCustomEndpoint"] = args ? args.eventarcCustomEndpoint : undefined;
@@ -114,7 +113,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["region"] = (args ? args.region : undefined) ?? utilities.getEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             inputs["requestTimeout"] = args ? args.requestTimeout : undefined;
             inputs["resourceManagerCustomEndpoint"] = args ? args.resourceManagerCustomEndpoint : undefined;
-            inputs["resourceManagerV2beta1CustomEndpoint"] = args ? args.resourceManagerV2beta1CustomEndpoint : undefined;
+            inputs["resourceManagerV2CustomEndpoint"] = args ? args.resourceManagerV2CustomEndpoint : undefined;
             inputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
             inputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
             inputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
@@ -133,6 +132,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             inputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             inputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
+            inputs["workflowsCustomEndpoint"] = args ? args.workflowsCustomEndpoint : undefined;
             inputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
         if (!opts.version) {
@@ -189,7 +189,6 @@ export interface ProviderArgs {
     readonly datastoreCustomEndpoint?: pulumi.Input<string>;
     readonly deploymentManagerCustomEndpoint?: pulumi.Input<string>;
     readonly dialogflowCustomEndpoint?: pulumi.Input<string>;
-    readonly dnsBetaCustomEndpoint?: pulumi.Input<string>;
     readonly dnsCustomEndpoint?: pulumi.Input<string>;
     readonly essentialContactsCustomEndpoint?: pulumi.Input<string>;
     readonly eventarcCustomEndpoint?: pulumi.Input<string>;
@@ -222,7 +221,7 @@ export interface ProviderArgs {
     readonly region?: pulumi.Input<string>;
     readonly requestTimeout?: pulumi.Input<string>;
     readonly resourceManagerCustomEndpoint?: pulumi.Input<string>;
-    readonly resourceManagerV2beta1CustomEndpoint?: pulumi.Input<string>;
+    readonly resourceManagerV2CustomEndpoint?: pulumi.Input<string>;
     readonly runtimeConfigCustomEndpoint?: pulumi.Input<string>;
     readonly runtimeconfigCustomEndpoint?: pulumi.Input<string>;
     readonly scopes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -241,5 +240,6 @@ export interface ProviderArgs {
     readonly tpuCustomEndpoint?: pulumi.Input<string>;
     readonly userProjectOverride?: pulumi.Input<boolean>;
     readonly vpcAccessCustomEndpoint?: pulumi.Input<string>;
+    readonly workflowsCustomEndpoint?: pulumi.Input<string>;
     readonly zone?: pulumi.Input<string>;
 }

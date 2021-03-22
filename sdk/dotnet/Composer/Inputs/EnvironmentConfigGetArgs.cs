@@ -24,6 +24,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("databaseConfig")]
         public Input<Inputs.EnvironmentConfigDatabaseConfigGetArgs>? DatabaseConfig { get; set; }
 
+        /// <summary>
+        /// The encryption options for the Cloud Composer environment and its dependencies.
+        /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.EnvironmentConfigEncryptionConfigGetArgs>? EncryptionConfig { get; set; }
 

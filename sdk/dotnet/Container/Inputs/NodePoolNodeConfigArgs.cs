@@ -21,6 +21,9 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
+        [Input("ephemeralStorageConfig")]
+        public Input<Inputs.NodePoolNodeConfigEphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
+
         [Input("guestAccelerators")]
         private InputList<Inputs.NodePoolNodeConfigGuestAcceleratorArgs>? _guestAccelerators;
         public InputList<Inputs.NodePoolNodeConfigGuestAcceleratorArgs> GuestAccelerators

@@ -145,7 +145,10 @@ type Instance struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+	//   pipelines at low cost.
+	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -229,7 +232,10 @@ type instanceState struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+	//   pipelines at low cost.
+	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
 	Type *string `pulumi:"type"`
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -282,7 +288,10 @@ type InstanceState struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+	//   pipelines at low cost.
+	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
 	Type pulumi.StringPtrInput
 	// The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	UpdateTime pulumi.StringPtrInput
@@ -327,7 +336,10 @@ type instanceArgs struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+	//   pipelines at low cost.
+	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
 	Type string `pulumi:"type"`
 	// Current version of the Data Fusion.
 	Version *string `pulumi:"version"`
@@ -367,7 +379,10 @@ type InstanceArgs struct {
 	//   of concurrent pipelines, no support for streaming pipelines, etc.
 	// - ENTERPRISE: Enterprise Data Fusion instance. In Enterprise type, the user will have more features
 	//   available, such as support for streaming pipelines, higher number of concurrent pipelines, etc.
-	//   Possible values are `BASIC` and `ENTERPRISE`.
+	// - DEVELOPER: Developer Data Fusion instance. In Developer type, the user will have all features available but
+	//   with restrictive capabilities. This is to help enterprises design and develop their data ingestion and integration
+	//   pipelines at low cost.
+	//   Possible values are `BASIC`, `ENTERPRISE`, and `DEVELOPER`.
 	Type pulumi.StringInput
 	// Current version of the Data Fusion.
 	Version pulumi.StringPtrInput

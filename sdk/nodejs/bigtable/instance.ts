@@ -6,9 +6,11 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
- * Creates a Google Bigtable instance. For more information see
- * [the official documentation](https://cloud.google.com/bigtable/) and
- * [API](https://cloud.google.com/bigtable/docs/go/reference).
+ * Creates a Google Bigtable instance. For more information see:
+ *
+ * * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.clusters)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/bigtable/docs)
  *
  * ## Example Usage
  * ### Production Instance

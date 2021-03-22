@@ -10,6 +10,181 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
+    /// A configuration for an external identity provider.
+    /// 
+    /// To get more information about WorkloadIdentityPoolProvider, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+    /// * How-to Guides
+    ///     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+    /// 
+    /// ## Example Usage
+    /// ### Iam Workload Identity Pool Provider Aws Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = "example-pool",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///             Aws = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderAwsArgs
+    ///             {
+    ///                 AccountId = "999999999999",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Iam Workload Identity Pool Provider Aws Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = "example-pool",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///             DisplayName = "Name of provider",
+    ///             Description = "AWS identity pool provider for automated test",
+    ///             Disabled = true,
+    ///             AttributeCondition = "attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\"",
+    ///             AttributeMapping = 
+    ///             {
+    ///                 { "google.subject", "assertion.arn" },
+    ///                 { "attribute.aws_account", "assertion.account" },
+    ///                 { "attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"" },
+    ///             },
+    ///             Aws = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderAwsArgs
+    ///             {
+    ///                 AccountId = "999999999999",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Iam Workload Identity Pool Provider Oidc Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = "example-pool",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///             AttributeMapping = 
+    ///             {
+    ///                 { "google.subject", "assertion.sub" },
+    ///             },
+    ///             Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+    ///             {
+    ///                 IssuerUri = "https://sts.windows.net/azure-tenant-id",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Iam Workload Identity Pool Provider Oidc Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new Gcp.Iam.WorkloadIdentityPoolArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = "example-pool",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new Gcp.Iam.WorkloadIdentityPoolProviderArgs
+    ///         {
+    ///             WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///             WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///             DisplayName = "Name of provider",
+    ///             Description = "OIDC identity pool provider for automated test",
+    ///             Disabled = true,
+    ///             AttributeCondition = "\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups",
+    ///             AttributeMapping = 
+    ///             {
+    ///                 { "google.subject", "\"azure::\" + assertion.tid + \"::\" + assertion.sub" },
+    ///                 { "attribute.tid", "assertion.tid" },
+    ///                 { "attribute.managed_identity_name", @"      {
+    ///         ""8bb39bdb-1cc5-4447-b7db-a19e920eb111"":""workload1"",
+    ///         ""55d36609-9bcf-48e0-a366-a3cf19027d2a"":""workload2""
+    ///       }[assertion.oid]
+    /// " },
+    ///             },
+    ///             Oidc = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderOidcArgs
+    ///             {
+    ///                 AllowedAudiences = 
+    ///                 {
+    ///                     "https://example.com/gcp-oidc-federation",
+    ///                     "example.com/gcp-oidc-federation",
+    ///                 },
+    ///                 IssuerUri = "https://sts.windows.net/azure-tenant-id",
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// WorkloadIdentityPoolProvider can be imported using any of these accepted formats

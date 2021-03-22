@@ -9,7 +9,7 @@ import (
 	"strings"
 	"unicode"
 
-	google "github.com/hashicorp/terraform-provider-google-beta/v3/google-beta"
+	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
@@ -146,16 +146,15 @@ func boolRef(b bool) *bool {
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(google.Provider())
 	prov := tfbridge.ProviderInfo{
-		P:                       p,
-		Name:                    "google-beta",
-		ResourcePrefix:          "google",
-		GitHubOrg:               "hashicorp",
-		Description:             "A Pulumi package for creating and managing Google Cloud Platform resources.",
-		Keywords:                []string{"pulumi", "gcp"},
-		License:                 "Apache-2.0",
-		Homepage:                "https://pulumi.io",
-		Repository:              "https://github.com/pulumi/pulumi-gcp",
-		TFProviderModuleVersion: "v3",
+		P:              p,
+		Name:           "google-beta",
+		ResourcePrefix: "google",
+		GitHubOrg:      "hashicorp",
+		Description:    "A Pulumi package for creating and managing Google Cloud Platform resources.",
+		Keywords:       []string{"pulumi", "gcp"},
+		License:        "Apache-2.0",
+		Homepage:       "https://pulumi.io",
+		Repository:     "https://github.com/pulumi/pulumi-gcp",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"project": {
 				Default: &tfbridge.DefaultInfo{
@@ -1849,6 +1848,8 @@ func Provider() tfbridge.ProviderInfo {
 			// apigee
 			"google_apigee_organization": {Tok: gcpResource(gcpApigee, "Organization")},
 			"google_apigee_instance":     {Tok: gcpResource(gcpApigee, "Instance")},
+			"google_apigee_envgroup":     {Tok: gcpResource(gcpApigee, "EnvGroup")},
+			"google_apigee_environment":  {Tok: gcpResource(gcpApigee, "Environment")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {

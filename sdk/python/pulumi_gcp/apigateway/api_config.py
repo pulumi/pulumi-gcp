@@ -29,6 +29,16 @@ class ApiConfig(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        An API Configuration is an association of an API Controller Config and a Gateway Config
+
+        To get more information about ApiConfig, see:
+
+        * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis.configs)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/api-gateway/docs/creating-api-config)
+
+        ## Example Usage
+
         ## Import
 
         ApiConfig can be imported using any of these accepted formats

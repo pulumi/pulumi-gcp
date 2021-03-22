@@ -38,7 +38,6 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-        /// - - -
         /// </summary>
         [Input("minReadySec")]
         public Input<int>? MinReadySec { get; set; }
@@ -49,6 +48,10 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("minimalAction", required: true)]
         public Input<string> MinimalAction { get; set; } = null!;
 
+        /// <summary>
+        /// , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
+        /// - - -
+        /// </summary>
         [Input("replacementMethod")]
         public Input<string>? ReplacementMethod { get; set; }
 

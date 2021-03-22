@@ -24,6 +24,39 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        Represents a collection of external workload identities. You can define IAM policies to
+        grant these identities access to Google Cloud resources.
+
+        To get more information about WorkloadIdentityPool, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools)
+        * How-to Guides
+            * [Managing workload identity pools](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#pools)
+
+        ## Example Usage
+        ### Iam Workload Identity Pool Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example", workload_identity_pool_id="example-pool",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Iam Workload Identity Pool Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.iam.WorkloadIdentityPool("example",
+            workload_identity_pool_id="example-pool",
+            display_name="Name of pool",
+            description="Identity pool for automated test",
+            disabled=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         WorkloadIdentityPool can be imported using any of these accepted formats

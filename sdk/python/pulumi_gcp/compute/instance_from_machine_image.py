@@ -45,7 +45,31 @@ class InstanceFromMachineImage(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Create a InstanceFromMachineImage resource with the given unique name, props, and options.
+        Manages a VM instance resource within GCE. For more information see
+        [the official documentation](https://cloud.google.com/compute/docs/instances)
+        and
+        [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+
+        This resource is specifically to create a compute instance from a given
+        `source_machine_image`. To create an instance without a machine image, use the
+        `compute.Instance` resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        tpl = gcp.compute.InstanceFromMachineImage("tpl",
+            zone="us-central1-a",
+            source_machine_image="projects/PROJECT-ID/global/machineImages/NAME",
+            can_ip_forward=False,
+            labels={
+                "my_key": "my_value",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_stopping_for_update: If true, allows Terraform to stop the instance to update its properties. If you try to update a property that requires

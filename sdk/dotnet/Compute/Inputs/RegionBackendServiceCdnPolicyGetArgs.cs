@@ -19,29 +19,56 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("cacheKeyPolicy")]
         public Input<Inputs.RegionBackendServiceCdnPolicyCacheKeyPolicyGetArgs>? CacheKeyPolicy { get; set; }
 
+        /// <summary>
+        /// Specifies the cache setting for all responses from this backend.
+        /// The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+        /// Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+        /// </summary>
         [Input("cacheMode")]
         public Input<string>? CacheMode { get; set; }
 
+        /// <summary>
+        /// Specifies the maximum allowed TTL for cached content served by this origin.
+        /// </summary>
         [Input("clientTtl")]
         public Input<int>? ClientTtl { get; set; }
 
+        /// <summary>
+        /// Specifies the default TTL for cached content served by this origin for responses
+        /// that do not have an existing valid TTL (max-age or s-max-age).
+        /// </summary>
         [Input("defaultTtl")]
         public Input<int>? DefaultTtl { get; set; }
 
+        /// <summary>
+        /// Specifies the maximum allowed TTL for cached content served by this origin.
+        /// </summary>
         [Input("maxTtl")]
         public Input<int>? MaxTtl { get; set; }
 
+        /// <summary>
+        /// Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+        /// </summary>
         [Input("negativeCaching")]
         public Input<bool>? NegativeCaching { get; set; }
 
         [Input("negativeCachingPolicies")]
         private InputList<Inputs.RegionBackendServiceCdnPolicyNegativeCachingPolicyGetArgs>? _negativeCachingPolicies;
+
+        /// <summary>
+        /// Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+        /// Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.RegionBackendServiceCdnPolicyNegativeCachingPolicyGetArgs> NegativeCachingPolicies
         {
             get => _negativeCachingPolicies ?? (_negativeCachingPolicies = new InputList<Inputs.RegionBackendServiceCdnPolicyNegativeCachingPolicyGetArgs>());
             set => _negativeCachingPolicies = value;
         }
 
+        /// <summary>
+        /// Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+        /// </summary>
         [Input("serveWhileStale")]
         public Input<int>? ServeWhileStale { get; set; }
 

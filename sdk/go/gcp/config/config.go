@@ -137,9 +137,6 @@ func GetDeploymentManagerCustomEndpoint(ctx *pulumi.Context) string {
 func GetDialogflowCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dialogflowCustomEndpoint")
 }
-func GetDnsBetaCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:dnsBetaCustomEndpoint")
-}
 func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dnsCustomEndpoint")
 }
@@ -244,8 +241,8 @@ func GetRequestTimeout(ctx *pulumi.Context) string {
 func GetResourceManagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:resourceManagerCustomEndpoint")
 }
-func GetResourceManagerV2beta1CustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "gcp:resourceManagerV2beta1CustomEndpoint")
+func GetResourceManagerV2CustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:resourceManagerV2CustomEndpoint")
 }
 func GetRuntimeConfigCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:runtimeConfigCustomEndpoint")
@@ -300,6 +297,9 @@ func GetUserProjectOverride(ctx *pulumi.Context) bool {
 }
 func GetVpcAccessCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vpcAccessCustomEndpoint")
+}
+func GetWorkflowsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:workflowsCustomEndpoint")
 }
 func GetZone(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "gcp:zone")

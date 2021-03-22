@@ -30,6 +30,30 @@ class MetastoreService(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        A managed metastore service that serves metadata queries.
+
+        ## Example Usage
+        ### Dataproc Metastore Service Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            port=9080,
+            tier="DEVELOPER",
+            maintenance_window=gcp.dataproc.MetastoreServiceMaintenanceWindowArgs(
+                hour_of_day=2,
+                day_of_week="SUNDAY",
+            ),
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="2.3.6",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Service can be imported using any of these accepted formats

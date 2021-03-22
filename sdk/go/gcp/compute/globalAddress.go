@@ -101,10 +101,11 @@ type GlobalAddress struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-	// PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-	// Private Service Connect networks This should only be set when using an Internal address. Possible values:
-	// ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+	// The purpose of the resource. For global internal addresses it can be
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+	//   This should only be set when using an Internal address.
+	//   Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
 	Purpose pulumi.StringPtrOutput `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -181,10 +182,11 @@ type globalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-	// PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-	// Private Service Connect networks This should only be set when using an Internal address. Possible values:
-	// ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+	// The purpose of the resource. For global internal addresses it can be
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+	//   This should only be set when using an Internal address.
+	//   Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
 	Purpose *string `pulumi:"purpose"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -233,10 +235,11 @@ type GlobalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-	// PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-	// Private Service Connect networks This should only be set when using an Internal address. Possible values:
-	// ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+	// The purpose of the resource. For global internal addresses it can be
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+	//   This should only be set when using an Internal address.
+	//   Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
 	Purpose pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -285,10 +288,11 @@ type globalAddressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-	// PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-	// Private Service Connect networks This should only be set when using an Internal address. Possible values:
-	// ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+	// The purpose of the resource. For global internal addresses it can be
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+	//   This should only be set when using an Internal address.
+	//   Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
 	Purpose *string `pulumi:"purpose"`
 }
 
@@ -332,10 +336,11 @@ type GlobalAddressArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The purpose of the resource. For global internal addresses it can be * VPC_PEERING - for peer networks *
-	// PRIVATE_SERVICE_CONNECT - for ([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html) only)
-	// Private Service Connect networks This should only be set when using an Internal address. Possible values:
-	// ["VPC_PEERING", "PRIVATE_SERVICE_CONNECT"]
+	// The purpose of the resource. For global internal addresses it can be
+	// * VPC_PEERING - for peer networks
+	// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+	//   This should only be set when using an Internal address.
+	//   Possible values are `VPC_PEERING` and `PRIVATE_SERVICE_CONNECT`.
 	Purpose pulumi.StringPtrInput
 }
 

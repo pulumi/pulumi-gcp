@@ -124,10 +124,10 @@ namespace Pulumi.Gcp.Apigee
     ///         {
     ///             AnalyticsRegion = "us-central1",
     ///             DisplayName = "apigee-org",
-    ///             Description = "Terraform-provisioned Apigee Org.",
+    ///             Description = "Auto-provisioned Apigee Org.",
     ///             ProjectId = current.Apply(current =&gt; current.Project),
     ///             AuthorizedNetwork = apigeeNetwork.Id,
-    ///             RuntimeDatabaseEncryptionKeyName = google_kms_key.Apigee_key.Id,
+    ///             RuntimeDatabaseEncryptionKeyName = apigeeKey.Id,
     ///         }, new CustomResourceOptions
     ///         {
     ///             DependsOn = 

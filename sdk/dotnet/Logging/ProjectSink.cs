@@ -10,16 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Logging
 {
     /// <summary>
-    /// Manages a project-level logging sink. For more information see
-    /// [the official documentation](https://cloud.google.com/logging/docs/),
-    /// [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs)
-    /// and
-    /// [API](https://cloud.google.com/logging/docs/reference/v2/rest/).
-    /// 
-    /// &gt; **Note:** You must have [granted the "Logs Configuration Writer"](https://cloud.google.com/logging/docs/access-control) IAM role (`roles/logging.configWriter`) to the credentials used with this provider.
-    /// 
-    /// &gt; **Note** You must [enable the Cloud Resource Manager API](https://console.cloud.google.com/apis/library/cloudresourcemanager.googleapis.com)
-    /// 
     /// ## Import
     /// 
     /// Project-level logging sinks can be imported using their URI, e.g.

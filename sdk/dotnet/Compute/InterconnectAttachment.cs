@@ -32,6 +32,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Interconnect = "my-interconnect-id",
     ///             Router = foobar.Id,
+    ///             Mtu = "1500",
     ///         });
     ///     }
     /// 
@@ -140,6 +141,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("interconnect")]
         public Output<string?> Interconnect { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum Transmission Unit (MTU), in bytes, of packets passing through
+        /// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        /// </summary>
+        [Output("mtu")]
+        public Output<string> Mtu { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The
@@ -330,6 +338,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Interconnect { get; set; }
 
         /// <summary>
+        /// Maximum Transmission Unit (MTU), in bytes, of packets passing through
+        /// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        /// </summary>
+        [Input("mtu")]
+        public Input<string>? Mtu { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The
         /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
         /// name must be 1-63 characters long and match the regular expression
@@ -469,6 +484,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("interconnect")]
         public Input<string>? Interconnect { get; set; }
+
+        /// <summary>
+        /// Maximum Transmission Unit (MTU), in bytes, of packets passing through
+        /// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
+        /// </summary>
+        [Input("mtu")]
+        public Input<string>? Mtu { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The

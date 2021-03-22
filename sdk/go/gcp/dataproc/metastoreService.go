@@ -11,6 +11,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A managed metastore service that serves metadata queries.
+//
+// ## Example Usage
+// ### Dataproc Metastore Service Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/dataproc"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dataproc.NewMetastoreService(ctx, "_default", &dataproc.MetastoreServiceArgs{
+// 			ServiceId: pulumi.String("metastore-srv"),
+// 			Location:  pulumi.String("us-central1"),
+// 			Port:      pulumi.Int(9080),
+// 			Tier:      pulumi.String("DEVELOPER"),
+// 			MaintenanceWindow: &dataproc.MetastoreServiceMaintenanceWindowArgs{
+// 				HourOfDay: pulumi.Int(2),
+// 				DayOfWeek: pulumi.String("SUNDAY"),
+// 			},
+// 			HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+// 				Version: pulumi.String("2.3.6"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Service can be imported using any of these accepted formats

@@ -99,6 +99,11 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         [Input("scalingSchedules")]
         private InputList<Inputs.AutoscalerAutoscalingPolicyScalingScheduleArgs>? _scalingSchedules;
+
+        /// <summary>
+        /// Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.AutoscalerAutoscalingPolicyScalingScheduleArgs> ScalingSchedules
         {
             get => _scalingSchedules ?? (_scalingSchedules = new InputList<Inputs.AutoscalerAutoscalingPolicyScalingScheduleArgs>());

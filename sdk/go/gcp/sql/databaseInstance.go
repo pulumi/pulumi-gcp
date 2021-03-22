@@ -10,6 +10,132 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+// or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+//
+// > **NOTE on `sql.DatabaseInstance`:** - First-generation instances have been
+// deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+// for more details.
+// To upgrade your First-generation instance, update your config that the instance has
+// * `settings.ip_configuration.ipv4_enabled=true`
+// * `settings.backup_configuration.enabled=true`
+// * `settings.backup_configuration.binary_log_enabled=true`.\
+//   Apply the config, then upgrade the instance in the console as described in the documentation.
+//   Once upgraded, update the following attributes in your config to the correct value according to
+//   the above documentation:
+// * `region`
+// * `databaseVersion` (if applicable)
+// * `tier`\
+//   Remove any fields that are not applicable to Second-generation instances:
+// * `settings.crash_safe_replication`
+// * `settings.replication_type`
+// * `settings.authorized_gae_applications`
+//   And change values to appropriate values for Second-generation instances for:
+// * `activationPolicy` ("ON_DEMAND" is no longer an option)
+// * `pricingPlan` ("PER_USE" is now the only valid option)
+//   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+//
+// > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
+// default 'root'@'%' user with no password. This user will be deleted by the provider on
+// instance creation. You should use `sql.User` to define a custom user with
+// a restricted host and strong password.
+//
+// > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+// (and run `pulumi update` to write the field to state) in order to destroy an instance.
+// It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
+//
+// ## Example Usage
+// ### SQL Second Generation Instance
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := sql.NewDatabaseInstance(ctx, "master", &sql.DatabaseInstanceArgs{
+// 			DatabaseVersion: pulumi.String("POSTGRES_11"),
+// 			Region:          pulumi.String("us-central1"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Private IP Instance
+// > **NOTE:** For private IP instance setup, note that the `sql.DatabaseInstance` does not actually interpolate values from `servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sql"
+// 	"github.com/pulumi/pulumi-random/sdk/v2/go/random"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		privateNetwork, err := compute.NewNetwork(ctx, "privateNetwork", nil, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateIpAddress, err := compute.NewGlobalAddress(ctx, "privateIpAddress", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      privateNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateVpcConnection, err := servicenetworking.NewConnection(ctx, "privateVpcConnection", &servicenetworking.ConnectionArgs{
+// 			Network: privateNetwork.ID(),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				privateIpAddress.Name,
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = random.NewRandomId(ctx, "dbNameSuffix", &random.RandomIdArgs{
+// 			ByteLength: pulumi.Int(4),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = sql.NewDatabaseInstance(ctx, "instance", &sql.DatabaseInstanceArgs{
+// 			Region: pulumi.String("us-central1"),
+// 			Settings: &sql.DatabaseInstanceSettingsArgs{
+// 				Tier: pulumi.String("db-f1-micro"),
+// 				IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+// 					Ipv4Enabled:    pulumi.Bool(false),
+// 					PrivateNetwork: privateNetwork.ID(),
+// 				},
+// 			},
+// 		}, pulumi.Provider(google_beta), pulumi.DependsOn([]pulumi.Resource{
+// 			privateVpcConnection,
+// 		}))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Database instances can be imported using one of any of these accepted formats
@@ -30,7 +156,9 @@ import (
 type DatabaseInstance struct {
 	pulumi.CustomResourceState
 
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrOutput `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -43,7 +171,8 @@ type DatabaseInstance struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrOutput `pulumi:"databaseVersion"`
-	// Used to block Terraform from deleting a SQL Instance.
+	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -78,7 +207,11 @@ type DatabaseInstance struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The configuration for replication. The
 	// configuration is detailed below.
-	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput    `pulumi:"replicaConfiguration"`
+	ReplicaConfiguration DatabaseInstanceReplicaConfigurationOutput `pulumi:"replicaConfiguration"`
+	// The context needed to restore the database to a backup run. This field will
+	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrOutput `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrOutput `pulumi:"rootPassword"`
@@ -122,7 +255,9 @@ func GetDatabaseInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DatabaseInstance resources.
 type databaseInstanceState struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -135,7 +270,8 @@ type databaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
-	// Used to block Terraform from deleting a SQL Instance.
+	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -171,6 +307,10 @@ type databaseInstanceState struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
+	// The context needed to restore the database to a backup run. This field will
+	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
@@ -186,7 +326,9 @@ type databaseInstanceState struct {
 }
 
 type DatabaseInstanceState struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrInput
 	// The connection name of the instance to be used in
 	// connection strings. For example, when connecting with [Cloud SQL Proxy](https://cloud.google.com/sql/docs/mysql/connect-admin-proxy).
@@ -199,7 +341,8 @@ type DatabaseInstanceState struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
-	// Used to block Terraform from deleting a SQL Instance.
+	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -235,6 +378,10 @@ type DatabaseInstanceState struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
+	// The context needed to restore the database to a backup run. This field will
+	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput
@@ -254,7 +401,9 @@ func (DatabaseInstanceState) ElementType() reflect.Type {
 }
 
 type databaseInstanceArgs struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone *DatabaseInstanceClone `pulumi:"clone"`
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
@@ -264,7 +413,8 @@ type databaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
-	// Used to block Terraform from deleting a SQL Instance.
+	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -293,6 +443,10 @@ type databaseInstanceArgs struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration *DatabaseInstanceReplicaConfiguration `pulumi:"replicaConfiguration"`
+	// The context needed to restore the database to a backup run. This field will
+	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext *DatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContext"`
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword *string `pulumi:"rootPassword"`
@@ -303,7 +457,9 @@ type databaseInstanceArgs struct {
 
 // The set of arguments for constructing a DatabaseInstance resource.
 type DatabaseInstanceArgs struct {
-	// Configuration for creating a new instance as a clone of another instance.
+	// The context needed to create this instance as a clone of another instance. When this field is set during
+	// resource creation, the provider will attempt to clone another instance as indicated in the context. The
+	// configuration is detailed below.
 	Clone DatabaseInstanceClonePtrInput
 	// The MySQL, PostgreSQL or
 	// SQL Server (beta) version to use. Supported values include `MYSQL_5_6`,
@@ -313,7 +469,8 @@ type DatabaseInstanceArgs struct {
 	// [Database Version Policies](https://cloud.google.com/sql/docs/db-versions)
 	// includes an up-to-date reference of supported versions.
 	DatabaseVersion pulumi.StringPtrInput
-	// Used to block Terraform from deleting a SQL Instance.
+	// Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+	// in state, a `destroy` or `update` command that deletes the instance will fail.
 	DeletionProtection pulumi.BoolPtrInput
 	// The full path to the encryption key used for the CMEK disk encryption.  Setting
 	// up disk encryption currently requires manual steps outside of this provider.
@@ -342,6 +499,10 @@ type DatabaseInstanceArgs struct {
 	// The configuration for replication. The
 	// configuration is detailed below.
 	ReplicaConfiguration DatabaseInstanceReplicaConfigurationPtrInput
+	// The context needed to restore the database to a backup run. This field will
+	// cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+	// **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+	// block during resource creation/update will trigger the restore action after the resource is created/updated.
 	RestoreBackupContext DatabaseInstanceRestoreBackupContextPtrInput
 	// Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
 	RootPassword pulumi.StringPtrInput

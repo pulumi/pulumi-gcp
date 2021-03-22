@@ -11,6 +11,54 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A contact that will receive notifications from Google Cloud.
+//
+// To get more information about Contact, see:
+//
+// * [API documentation](https://cloud.google.com/resource-manager/docs/reference/essentialcontacts/rest/v1beta1/projects.contacts)
+// * How-to Guides
+//     * [Official Documentation](https://cloud.google.com/resource-manager/docs/managing-notification-contacts)
+//
+// > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
+// you must specify a `billingProject` and set `userProjectOverride` to true
+// in the provider configuration. Otherwise the Essential Contacts API will return a 403 error.
+// Your account must have the `serviceusage.services.use` permission on the
+// `billingProject` you defined.
+//
+// ## Example Usage
+// ### Essential Contact
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/essentialcontacts"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		project, err := organizations.LookupProject(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = essentialcontacts.NewContact(ctx, "contact", &essentialcontacts.ContactArgs{
+// 			Parent:      pulumi.String(project.Id),
+// 			Email:       pulumi.String("foo@bar.com"),
+// 			LanguageTag: pulumi.String("en-GB"),
+// 			NotificationCategorySubscriptions: pulumi.StringArray{
+// 				pulumi.String("ALL"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Contact can be imported using any of these accepted formats
@@ -24,7 +72,7 @@ type Contact struct {
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
-	LanguageTag pulumi.StringPtrOutput `pulumi:"languageTag"`
+	LanguageTag pulumi.StringOutput `pulumi:"languageTag"`
 	// The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The categories of notifications that the contact will receive communications for.
@@ -42,6 +90,9 @@ func NewContact(ctx *pulumi.Context,
 
 	if args.Email == nil {
 		return nil, errors.New("invalid value for required argument 'Email'")
+	}
+	if args.LanguageTag == nil {
+		return nil, errors.New("invalid value for required argument 'LanguageTag'")
 	}
 	if args.NotificationCategorySubscriptions == nil {
 		return nil, errors.New("invalid value for required argument 'NotificationCategorySubscriptions'")
@@ -104,7 +155,7 @@ type contactArgs struct {
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
-	LanguageTag *string `pulumi:"languageTag"`
+	LanguageTag string `pulumi:"languageTag"`
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions []string `pulumi:"notificationCategorySubscriptions"`
 	// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
@@ -116,7 +167,7 @@ type ContactArgs struct {
 	// The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See Supported languages for a list of supported languages.
-	LanguageTag pulumi.StringPtrInput
+	LanguageTag pulumi.StringInput
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions pulumi.StringArrayInput
 	// The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}

@@ -91,6 +91,10 @@ export class Database extends pulumi.CustomResource {
      * error in any statement, the database is not created.
      */
     public readonly ddls!: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` that would delete the instance will fail.
+     */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The instance to create the database on.
@@ -160,6 +164,10 @@ export interface DatabaseState {
      * error in any statement, the database is not created.
      */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` that would delete the instance will fail.
+     */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The instance to create the database on.
@@ -192,6 +200,10 @@ export interface DatabaseArgs {
      * error in any statement, the database is not created.
      */
     readonly ddls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` that would delete the instance will fail.
+     */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
      * The instance to create the database on.

@@ -61,7 +61,7 @@ namespace Pulumi.Gcp.Compute
         ///             {
         ///                 InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
         ///                 {
-        ///                     Image = "gce-uefi-images/windows-2019",
+        ///                     Image = "windows-cloud/windows-2019",
         ///                 },
         ///             },
         ///             NetworkInterfaces = 

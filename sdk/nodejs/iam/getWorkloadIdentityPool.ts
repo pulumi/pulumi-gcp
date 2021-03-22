@@ -5,6 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
+/**
+ * Get a IAM workload identity pool from Google Cloud by its id.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = pulumi.output(gcp.iam.getWorkloadIdentityPool({
+ *     workloadIdentityPoolId: "foo-pool",
+ * }, { async: true }));
+ * ```
+ */
 export function getWorkloadIdentityPool(args: GetWorkloadIdentityPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkloadIdentityPoolResult> {
     if (!opts) {
         opts = {}

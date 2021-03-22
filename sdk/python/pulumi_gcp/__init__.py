@@ -81,6 +81,7 @@ from . import (
     storage,
     tpu,
     vpcaccess,
+    workflows,
 )
 
 def _register_module():

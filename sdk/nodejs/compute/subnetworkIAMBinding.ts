@@ -6,6 +6,129 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * Three different resources help you manage your IAM policy for Compute Engine Subnetwork. Each of these resources serves a different use case:
+ *
+ * * `gcp.compute.SubnetworkIAMPolicy`: Authoritative. Sets the IAM policy for the subnetwork and replaces any existing policy already attached.
+ * * `gcp.compute.SubnetworkIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the subnetwork are preserved.
+ * * `gcp.compute.SubnetworkIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the subnetwork are preserved.
+ *
+ * > **Note:** `gcp.compute.SubnetworkIAMPolicy` **cannot** be used in conjunction with `gcp.compute.SubnetworkIAMBinding` and `gcp.compute.SubnetworkIAMMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.compute.SubnetworkIAMBinding` resources **can be** used in conjunction with `gcp.compute.SubnetworkIAMMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## google\_compute\_subnetwork\_iam\_policy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.networkUser",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.compute.SubnetworkIAMPolicy("policy", {
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/compute.networkUser",
+ *         members: ["user:jane@example.com"],
+ *         condition: {
+ *             title: "expires_after_2019_12_31",
+ *             description: "Expiring at midnight of 2019-12-31",
+ *             expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *         },
+ *     }],
+ * });
+ * const policy = new gcp.compute.SubnetworkIAMPolicy("policy", {
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ * ## google\_compute\_subnetwork\_iam\_binding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.SubnetworkIAMBinding("binding", {
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     role: "roles/compute.networkUser",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.compute.SubnetworkIAMBinding("binding", {
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     role: "roles/compute.networkUser",
+ *     members: ["user:jane@example.com"],
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ * ## google\_compute\_subnetwork\_iam\_member
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.SubnetworkIAMMember("member", {
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     role: "roles/compute.networkUser",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * With IAM Conditions:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.compute.SubnetworkIAMMember("member", {
+ *     project: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].project,
+ *     region: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].region,
+ *     subnetwork: google_compute_subnetwork["network-with-private-secondary-ip-ranges"].name,
+ *     role: "roles/compute.networkUser",
+ *     member: "user:jane@example.com",
+ *     condition: {
+ *         title: "expires_after_2019_12_31",
+ *         description: "Expiring at midnight of 2019-12-31",
+ *         expression: "request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms* projects/{{project}}/regions/{{region}}/subnetworks/{{name}} * {{project}}/{{region}}/{{name}} * {{region}}/{{name}} * {{name}} Any variables not passed in the import command will be taken from the provider configuration. Compute Engine subnetwork IAM resources can be imported using the resource identifiers, role, and member. IAM member imports use space-delimited identifiersthe resource in question, the role, and the member identity, e.g.

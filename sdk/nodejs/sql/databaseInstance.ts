@@ -6,6 +6,99 @@ import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
+ * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+ * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
+ *
+ * > **NOTE on `gcp.sql.DatabaseInstance`:** - First-generation instances have been
+ * deprecated and should no longer be created, see [upgrade docs](https://cloud.google.com/sql/docs/mysql/upgrade-2nd-gen)
+ * for more details.
+ * To upgrade your First-generation instance, update your config that the instance has
+ * * `settings.ip_configuration.ipv4_enabled=true`
+ * * `settings.backup_configuration.enabled=true`
+ * * `settings.backup_configuration.binary_log_enabled=true`.\
+ *   Apply the config, then upgrade the instance in the console as described in the documentation.
+ *   Once upgraded, update the following attributes in your config to the correct value according to
+ *   the above documentation:
+ * * `region`
+ * * `databaseVersion` (if applicable)
+ * * `tier`\
+ *   Remove any fields that are not applicable to Second-generation instances:
+ * * `settings.crash_safe_replication`
+ * * `settings.replication_type`
+ * * `settings.authorized_gae_applications`
+ *   And change values to appropriate values for Second-generation instances for:
+ * * `activationPolicy` ("ON_DEMAND" is no longer an option)
+ * * `pricingPlan` ("PER_USE" is now the only valid option)
+ *   Change `settings.backup_configuration.enabled` attribute back to its desired value and apply as necessary.
+ *
+ * > **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a
+ * default 'root'@'%' user with no password. This user will be deleted by the provider on
+ * instance creation. You should use `gcp.sql.User` to define a custom user with
+ * a restricted host and strong password.
+ *
+ * > **Note**: On newer versions of the provider, you must explicitly set `deletion_protection=false`
+ * (and run `pulumi update` to write the field to state) in order to destroy an instance.
+ * It is recommended to not set this field (or set it to true) until you're ready to destroy the instance and its databases.
+ *
+ * ## Example Usage
+ * ### SQL Second Generation Instance
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const master = new gcp.sql.DatabaseInstance("master", {
+ *     databaseVersion: "POSTGRES_11",
+ *     region: "us-central1",
+ *     settings: {
+ *         // Second-generation instance tiers are based on the machine
+ *         // type. See argument reference below.
+ *         tier: "db-f1-micro",
+ *     },
+ * });
+ * ```
+ * ### Private IP Instance
+ * > **NOTE:** For private IP instance setup, note that the `gcp.sql.DatabaseInstance` does not actually interpolate values from `gcp.servicenetworking.Connection`. You must explicitly add a `dependsOn`reference as shown below.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ * import * as random from "@pulumi/random";
+ *
+ * const privateNetwork = new gcp.compute.Network("privateNetwork", {}, {
+ *     provider: google_beta,
+ * });
+ * const privateIpAddress = new gcp.compute.GlobalAddress("privateIpAddress", {
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 16,
+ *     network: privateNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const privateVpcConnection = new gcp.servicenetworking.Connection("privateVpcConnection", {
+ *     network: privateNetwork.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAddress.name],
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const dbNameSuffix = new random.RandomId("dbNameSuffix", {byteLength: 4});
+ * const instance = new gcp.sql.DatabaseInstance("instance", {
+ *     region: "us-central1",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             ipv4Enabled: false,
+ *             privateNetwork: privateNetwork.id,
+ *         },
+ *     },
+ * }, {
+ *     provider: google_beta,
+ *     dependsOn: [privateVpcConnection],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Database instances can be imported using one of any of these accepted formats
@@ -53,7 +146,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * Configuration for creating a new instance as a clone of another instance.
+     * The context needed to create this instance as a clone of another instance. When this field is set during 
+     * resource creation, the provider will attempt to clone another instance as indicated in the context. The
+     * configuration is detailed below.
      */
     public readonly clone!: pulumi.Output<outputs.sql.DatabaseInstanceClone | undefined>;
     /**
@@ -72,7 +167,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly databaseVersion!: pulumi.Output<string | undefined>;
     /**
-     * Used to block Terraform from deleting a SQL Instance.
+     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail.
      */
     public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
@@ -127,6 +223,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
      * configuration is detailed below.
      */
     public readonly replicaConfiguration!: pulumi.Output<outputs.sql.DatabaseInstanceReplicaConfiguration>;
+    /**
+     * The context needed to restore the database to a backup run. This field will
+     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
+     */
     public readonly restoreBackupContext!: pulumi.Output<outputs.sql.DatabaseInstanceRestoreBackupContext | undefined>;
     /**
      * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -216,7 +318,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
  */
 export interface DatabaseInstanceState {
     /**
-     * Configuration for creating a new instance as a clone of another instance.
+     * The context needed to create this instance as a clone of another instance. When this field is set during 
+     * resource creation, the provider will attempt to clone another instance as indicated in the context. The
+     * configuration is detailed below.
      */
     readonly clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
     /**
@@ -235,7 +339,8 @@ export interface DatabaseInstanceState {
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
-     * Used to block Terraform from deleting a SQL Instance.
+     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -290,6 +395,12 @@ export interface DatabaseInstanceState {
      * configuration is detailed below.
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    /**
+     * The context needed to restore the database to a backup run. This field will
+     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
+     */
     readonly restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
     /**
      * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.
@@ -317,7 +428,9 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * Configuration for creating a new instance as a clone of another instance.
+     * The context needed to create this instance as a clone of another instance. When this field is set during 
+     * resource creation, the provider will attempt to clone another instance as indicated in the context. The
+     * configuration is detailed below.
      */
     readonly clone?: pulumi.Input<inputs.sql.DatabaseInstanceClone>;
     /**
@@ -331,7 +444,8 @@ export interface DatabaseInstanceArgs {
      */
     readonly databaseVersion?: pulumi.Input<string>;
     /**
-     * Used to block Terraform from deleting a SQL Instance.
+     * Whether or not to allow he provider to destroy the instance. Unless this field is set to false
+     * in state, a `destroy` or `update` command that deletes the instance will fail.
      */
     readonly deletionProtection?: pulumi.Input<boolean>;
     /**
@@ -373,6 +487,12 @@ export interface DatabaseInstanceArgs {
      * configuration is detailed below.
      */
     readonly replicaConfiguration?: pulumi.Input<inputs.sql.DatabaseInstanceReplicaConfiguration>;
+    /**
+     * The context needed to restore the database to a backup run. This field will
+     * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
+     * **NOTE:** Restoring from a backup is an imperative action and not recommended via the provider. Adding or modifying this
+     * block during resource creation/update will trigger the restore action after the resource is created/updated.
+     */
     readonly restoreBackupContext?: pulumi.Input<inputs.sql.DatabaseInstanceRestoreBackupContext>;
     /**
      * Initial root password. Required for MS SQL Server, ignored by MySQL and PostgreSQL.

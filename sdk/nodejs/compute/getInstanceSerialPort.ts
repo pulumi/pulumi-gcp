@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  *     zone: "us-central1-a",
  *     bootDisk: {
  *         initializeParams: {
- *             image: "gce-uefi-images/windows-2019",
+ *             image: "windows-cloud/windows-2019",
  *         },
  *     },
  *     networkInterfaces: [{

@@ -55,6 +55,44 @@ namespace Pulumi.Gcp.ServiceUsage
     /// 
     /// }
     /// ```
+    /// ### Region Consumer Quota Override
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myProject = new Gcp.Organizations.Project("myProject", new Gcp.Organizations.ProjectArgs
+    ///         {
+    ///             ProjectId = "quota",
+    ///             OrgId = "123456789",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var @override = new Gcp.ServiceUsage.ConsumerQuotaOverride("override", new Gcp.ServiceUsage.ConsumerQuotaOverrideArgs
+    ///         {
+    ///             Dimensions = 
+    ///             {
+    ///                 { "region", "us-central1" },
+    ///             },
+    ///             Project = myProject.ProjectId,
+    ///             Service = "compute.googleapis.com",
+    ///             Metric = "compute.googleapis.com%2Fn2_cpus",
+    ///             Limit = "%2Fproject%2Fregion",
+    ///             OverrideValue = "8",
+    ///             Force = true,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 

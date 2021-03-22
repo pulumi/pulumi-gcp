@@ -735,6 +735,9 @@ class Hl7StoreParserConfigArgs:
                store if schematized parsing is desired.
         :param pulumi.Input[str] segment_terminator: Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
                A base64-encoded string.
+        :param pulumi.Input[str] version: The version of the unschematized parser to be used when a custom `schema` is not set.
+               Default value is `V1`.
+               Possible values are `V1` and `V2`.
         """
         if allow_null_header is not None:
             pulumi.set(__self__, "allow_null_header", allow_null_header)
@@ -786,6 +789,11 @@ class Hl7StoreParserConfigArgs:
     @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the unschematized parser to be used when a custom `schema` is not set.
+        Default value is `V1`.
+        Possible values are `V1` and `V2`.
+        """
         return pulumi.get(self, "version")
 
     @version.setter

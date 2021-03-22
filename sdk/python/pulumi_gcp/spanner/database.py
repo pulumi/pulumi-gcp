@@ -79,6 +79,8 @@ class Database(pulumi.CustomResource):
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
                error in any statement, the database is not created.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[str] instance: The instance to create the database on.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -137,6 +139,8 @@ class Database(pulumi.CustomResource):
                database. Statements can create tables, indexes, etc. These statements
                execute atomically with the creation of the database: if there is an
                error in any statement, the database is not created.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input[str] instance: The instance to create the database on.
         :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
                the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
@@ -170,6 +174,10 @@ class Database(pulumi.CustomResource):
     @property
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` that would delete the instance will fail.
+        """
         return pulumi.get(self, "deletion_protection")
 
     @property

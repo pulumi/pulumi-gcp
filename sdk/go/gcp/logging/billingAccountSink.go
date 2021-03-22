@@ -11,9 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a billing account logging sink. For more information see
-// [the official documentation](https://cloud.google.com/logging/docs/) and
-// [Exporting Logs in the API](https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/billingAccounts.sinks)
+// * How-to Guides
+//     * [Exporting Logs](https://cloud.google.com/logging/docs/export)
 //
 // > **Note** You must have the "Logs Configuration Writer" IAM role (`roles/logging.configWriter`)
 // [granted on the billing account](https://cloud.google.com/billing/reference/rest/v1/billingAccounts/getIamPolicy) to
@@ -78,7 +78,7 @@ type BillingAccountSink struct {
 	BigqueryOptions BillingAccountSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -97,16 +97,14 @@ type BillingAccountSink struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrOutput `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions BillingAccountSinkExclusionArrayOutput `pulumi:"exclusions"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrOutput `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -152,7 +150,7 @@ type billingAccountSinkState struct {
 	BigqueryOptions *BillingAccountSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount *string `pulumi:"billingAccount"`
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -171,16 +169,14 @@ type billingAccountSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []BillingAccountSinkExclusion `pulumi:"exclusions"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -192,7 +188,7 @@ type BillingAccountSinkState struct {
 	BigqueryOptions BillingAccountSinkBigqueryOptionsPtrInput
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringPtrInput
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -211,16 +207,14 @@ type BillingAccountSinkState struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions BillingAccountSinkExclusionArrayInput
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
 	// The identity associated with this sink. This identity must be granted write access to the
 	// configured `destination`.
@@ -236,7 +230,7 @@ type billingAccountSinkArgs struct {
 	BigqueryOptions *BillingAccountSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// The billing account exported to the sink.
 	BillingAccount string `pulumi:"billingAccount"`
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -255,16 +249,14 @@ type billingAccountSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled *bool `pulumi:"disabled"`
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions []BillingAccountSinkExclusion `pulumi:"exclusions"`
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter *string `pulumi:"filter"`
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name *string `pulumi:"name"`
 }
 
@@ -274,7 +266,7 @@ type BillingAccountSinkArgs struct {
 	BigqueryOptions BillingAccountSinkBigqueryOptionsPtrInput
 	// The billing account exported to the sink.
 	BillingAccount pulumi.StringInput
-	// A description of this sink. The maximum length of the description is 8000 characters.
+	// A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// The destination of the sink (or, in other words, where logs are written to). Can be a
 	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
@@ -293,16 +285,14 @@ type BillingAccountSinkArgs struct {
 	// ```
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
-	// If set to True, then this sink is disabled and it does not export any log entries.
+	// If set to True, then this exclusion is disabled and it does not exclude any log entries.
 	Disabled pulumi.BoolPtrInput
-	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and
-	// one of exclusion_filters it will not be exported.
+	// Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusionFilters it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
 	Exclusions BillingAccountSinkExclusionArrayInput
-	// The filter to apply when exporting logs. Only log entries that match the filter are exported.
-	// See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+	// An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
 	// write a filter.
 	Filter pulumi.StringPtrInput
-	// The name of the logging sink.
+	// A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringPtrInput
 }
 

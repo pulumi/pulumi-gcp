@@ -81,6 +81,7 @@ export interface GetBucketObjectContentResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly kmsKeyName: string;
     readonly md5hash: string;
     readonly mediaLink: string;
     readonly metadata: {[key: string]: string};

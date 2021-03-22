@@ -24,6 +24,65 @@ class ConsentStore(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        The Consent Management API is a tool for tracking user consents and the documentation associated with the consents.
+
+        To get more information about ConsentStore, see:
+
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+        * How-to Guides
+            * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+
+        ## Example Usage
+        ### Healthcare Consent Store Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Healthcare Consent Store Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        my_consent = gcp.healthcare.ConsentStore("my-consent",
+            dataset=dataset.id,
+            enable_consent_create_on_update=True,
+            default_consent_ttl="90000s",
+            labels={
+                "label1": "labelvalue1",
+            },
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Healthcare Consent Store Iam
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        test_account = gcp.service_account.Account("test-account",
+            account_id="my-account",
+            display_name="Test Service Account",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
+            dataset=dataset.id,
+            consent_store_id=my_consent.name,
+            role="roles/editor",
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         ConsentStore can be imported using any of these accepted formats

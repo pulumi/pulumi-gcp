@@ -15,7 +15,7 @@ import (
 //
 // To get more information about Instance, see:
 //
-// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/)
+// * [API documentation](https://cloud.google.com/memorystore/docs/redis/reference/rest/v1/projects.locations.instances)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/memorystore/docs/redis/)
 //
@@ -75,6 +75,64 @@ import (
 // 				"other_key": pulumi.String("other_val"),
 // 			},
 // 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Redis Instance Private Service
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/redis"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/servicenetworking"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		redis_network, err := compute.LookupNetwork(ctx, &compute.LookupNetworkArgs{
+// 			Name: "redis-test-network",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		serviceRange, err := compute.NewGlobalAddress(ctx, "serviceRange", &compute.GlobalAddressArgs{
+// 			Purpose:      pulumi.String("VPC_PEERING"),
+// 			AddressType:  pulumi.String("INTERNAL"),
+// 			PrefixLength: pulumi.Int(16),
+// 			Network:      pulumi.String(redis_network.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		privateServiceConnection, err := servicenetworking.NewConnection(ctx, "privateServiceConnection", &servicenetworking.ConnectionArgs{
+// 			Network: pulumi.String(redis_network.Id),
+// 			Service: pulumi.String("servicenetworking.googleapis.com"),
+// 			ReservedPeeringRanges: pulumi.StringArray{
+// 				serviceRange.Name,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = redis.NewInstance(ctx, "cache", &redis.InstanceArgs{
+// 			Tier:                  pulumi.String("STANDARD_HA"),
+// 			MemorySizeGb:          pulumi.Int(1),
+// 			LocationId:            pulumi.String("us-central1-a"),
+// 			AlternativeLocationId: pulumi.String("us-central1-f"),
+// 			AuthorizedNetwork:     pulumi.String(redis_network.Id),
+// 			ConnectMode:           pulumi.String("PRIVATE_SERVICE_ACCESS"),
+// 			RedisVersion:          pulumi.String("REDIS_4_0"),
+// 			DisplayName:           pulumi.String("Test Instance"),
+// 		}, pulumi.DependsOn([]pulumi.Resource{
+// 			privateServiceConnection,
+// 		}))
 // 		if err != nil {
 // 			return err
 // 		}
@@ -181,9 +239,10 @@ type Instance struct {
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrOutput `pulumi:"tier"`
-	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	//   Default value is `DISABLED`.
+	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrOutput `pulumi:"transitEncryptionMode"`
 }
 
@@ -295,9 +354,10 @@ type instanceState struct {
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
-	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	//   Default value is `DISABLED`.
+	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 }
 
@@ -378,9 +438,10 @@ type InstanceState struct {
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
-	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	//   Default value is `DISABLED`.
+	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrInput
 }
 
@@ -447,9 +508,10 @@ type instanceArgs struct {
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier *string `pulumi:"tier"`
-	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	//   Default value is `DISABLED`.
+	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 }
 
@@ -513,9 +575,10 @@ type InstanceArgs struct {
 	//   Default value is `BASIC`.
 	//   Possible values are `BASIC` and `STANDARD_HA`.
 	Tier pulumi.StringPtrInput
-	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance. - SERVER_AUTHENTICATION: Client
-	// to Server traffic encryption enabled with server authentcation Default value: "DISABLED" Possible values:
-	// ["SERVER_AUTHENTICATION", "DISABLED"]
+	// The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
+	// - SERVER_AUTHENTICATION: Client to Server traffic encryption enabled with server authentcation
+	//   Default value is `DISABLED`.
+	//   Possible values are `SERVER_AUTHENTICATION` and `DISABLED`.
 	TransitEncryptionMode pulumi.StringPtrInput
 }
 

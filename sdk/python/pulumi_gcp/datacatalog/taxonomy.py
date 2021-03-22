@@ -24,6 +24,29 @@ class Taxonomy(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
+        A collection of policy tags that classify data along a common axis.
+
+        To get more information about Taxonomy, see:
+
+        * [API documentation](https://cloud.google.com/data-catalog/docs/reference/rest/v1beta1/projects.locations.taxonomies)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/data-catalog/docs)
+
+        ## Example Usage
+        ### Data Catalog Taxonomy Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        basic_taxonomy = gcp.datacatalog.Taxonomy("basicTaxonomy",
+            region="us",
+            display_name="my_display_name",
+            description="A collection of policy tags",
+            activated_policy_types=["FINE_GRAINED_ACCESS_CONTROL"],
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
         ## Import
 
         Taxonomy can be imported using any of these accepted formats

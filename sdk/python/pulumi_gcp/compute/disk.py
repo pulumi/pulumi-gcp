@@ -122,8 +122,9 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-               value: "SCSI" Possible values: ["SCSI", "NVME"]
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               Default value is `SCSI`.
+               Possible values are `SCSI` and `NVME`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
@@ -153,6 +154,10 @@ class Disk(pulumi.CustomResource):
                If you specify this field along with `image` or `snapshot`,
                the value must not be less than the size of the image
                or the size of the snapshot.
+               ~>**NOTE** If you change the size, the provider updates the disk size
+               if upsizing is detected but recreates the disk if downsizing is requested.
+               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+               and recreating.
         :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
                a partial or full URL to the resource. If the snapshot is in another
                project than this disk, you must supply a full URL. For example, the
@@ -276,8 +281,9 @@ class Disk(pulumi.CustomResource):
                [compute.Image data source](https://www.terraform.io/docs/providers/google/d/compute_image.html).
                For instance, the image `centos-6-v20180104` includes its family name `centos-6`.
                These images can be referred by family name here.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-               value: "SCSI" Possible values: ["SCSI", "NVME"]
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+               Default value is `SCSI`.
+               Possible values are `SCSI` and `NVME`.
         :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk.  A list of key->value pairs.
         :param pulumi.Input[str] last_attach_timestamp: Last attach timestamp in RFC3339 text format.
@@ -311,6 +317,10 @@ class Disk(pulumi.CustomResource):
                If you specify this field along with `image` or `snapshot`,
                the value must not be less than the size of the image
                or the size of the snapshot.
+               ~>**NOTE** If you change the size, the provider updates the disk size
+               if upsizing is detected but recreates the disk if downsizing is requested.
+               You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+               and recreating.
         :param pulumi.Input[str] snapshot: The source snapshot used to create this disk. You can provide this as
                a partial or full URL to the resource. If the snapshot is in another
                project than this disk, you must supply a full URL. For example, the
@@ -421,8 +431,9 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter
     def interface(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        value: "SCSI" Possible values: ["SCSI", "NVME"]
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        Default value is `SCSI`.
+        Possible values are `SCSI` and `NVME`.
         """
         return pulumi.get(self, "interface")
 
@@ -533,6 +544,10 @@ class Disk(pulumi.CustomResource):
         If you specify this field along with `image` or `snapshot`,
         the value must not be less than the size of the image
         or the size of the snapshot.
+        ~>**NOTE** If you change the size, the provider updates the disk size
+        if upsizing is detected but recreates the disk if downsizing is requested.
+        You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        and recreating.
         """
         return pulumi.get(self, "size")
 

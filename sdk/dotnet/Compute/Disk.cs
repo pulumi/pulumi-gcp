@@ -128,8 +128,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Image { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// Default value is `SCSI`.
+        /// Possible values are `SCSI` and `NVME`.
         /// </summary>
         [Output("interface")]
         public Output<string?> Interface { get; private set; } = null!;
@@ -218,6 +219,10 @@ namespace Pulumi.Gcp.Compute
         /// If you specify this field along with `image` or `snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
+        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
+        /// if upsizing is detected but recreates the disk if downsizing is requested.
+        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        /// and recreating.
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
@@ -370,8 +375,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// Default value is `SCSI`.
+        /// Possible values are `SCSI` and `NVME`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -448,6 +454,10 @@ namespace Pulumi.Gcp.Compute
         /// If you specify this field along with `image` or `snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
+        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
+        /// if upsizing is detected but recreates the disk if downsizing is requested.
+        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        /// and recreating.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
@@ -545,8 +555,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Image { get; set; }
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Default
-        /// value: "SCSI" Possible values: ["SCSI", "NVME"]
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+        /// Default value is `SCSI`.
+        /// Possible values are `SCSI` and `NVME`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -647,6 +658,10 @@ namespace Pulumi.Gcp.Compute
         /// If you specify this field along with `image` or `snapshot`,
         /// the value must not be less than the size of the image
         /// or the size of the snapshot.
+        /// ~&gt;**NOTE** If you change the size, the provider updates the disk size
+        /// if upsizing is detected but recreates the disk if downsizing is requested.
+        /// You can add `lifecycle.prevent_destroy` in the config to prevent destroying
+        /// and recreating.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }

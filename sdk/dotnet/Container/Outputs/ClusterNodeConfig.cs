@@ -28,6 +28,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? DiskType;
         /// <summary>
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodeConfigEphemeralStorageConfig? EphemeralStorageConfig;
+        /// <summary>
         /// List of the type and count of accelerator cards attached to the instance.
         /// Structure documented below.
         /// </summary>
@@ -54,8 +58,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterNodeConfigLinuxNodeConfig? LinuxNodeConfig;
         /// <summary>
-        /// The amount of local SSD disks that will be
-        /// attached to each cluster node. Defaults to 0.
+        /// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         /// </summary>
         public readonly int? LocalSsdCount;
         /// <summary>
@@ -136,6 +139,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             string? diskType,
 
+            Outputs.ClusterNodeConfigEphemeralStorageConfig? ephemeralStorageConfig,
+
             ImmutableArray<Outputs.ClusterNodeConfigGuestAccelerator> guestAccelerators,
 
             string? imageType,
@@ -173,6 +178,7 @@ namespace Pulumi.Gcp.Container.Outputs
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EphemeralStorageConfig = ephemeralStorageConfig;
             GuestAccelerators = guestAccelerators;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;

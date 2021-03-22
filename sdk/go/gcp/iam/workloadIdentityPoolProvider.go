@@ -11,6 +11,171 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// A configuration for an external identity provider.
+//
+// To get more information about WorkloadIdentityPoolProvider, see:
+//
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v1beta/projects.locations.workloadIdentityPools.providers)
+// * How-to Guides
+//     * [Managing workload identity providers](https://cloud.google.com/iam/docs/manage-workload-identity-pools-providers#managing_workload_identity_providers)
+//
+// ## Example Usage
+// ### Iam Workload Identity Pool Provider Aws Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iam"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+// 			Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
+// 				AccountId: pulumi.String("999999999999"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Iam Workload Identity Pool Provider Aws Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iam"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+// 			DisplayName:                    pulumi.String("Name of provider"),
+// 			Description:                    pulumi.String("AWS identity pool provider for automated test"),
+// 			Disabled:                       pulumi.Bool(true),
+// 			AttributeCondition:             pulumi.String("attribute.aws_role==\"arn:aws:sts::999999999999:assumed-role/stack-eu-central-1-lambdaRole\""),
+// 			AttributeMapping: pulumi.StringMap{
+// 				"google.subject":        pulumi.String("assertion.arn"),
+// 				"attribute.aws_account": pulumi.String("assertion.account"),
+// 				"attribute.environment": pulumi.String("assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""),
+// 			},
+// 			Aws: &iam.WorkloadIdentityPoolProviderAwsArgs{
+// 				AccountId: pulumi.String("999999999999"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Iam Workload Identity Pool Provider Oidc Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iam"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+// 			AttributeMapping: pulumi.StringMap{
+// 				"google.subject": pulumi.String("assertion.sub"),
+// 			},
+// 			Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
+// 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Iam Workload Identity Pool Provider Oidc Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/iam"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+// 			WorkloadIdentityPoolId: pulumi.String("example-pool"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+// 			WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+// 			WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+// 			DisplayName:                    pulumi.String("Name of provider"),
+// 			Description:                    pulumi.String("OIDC identity pool provider for automated test"),
+// 			Disabled:                       pulumi.Bool(true),
+// 			AttributeCondition:             pulumi.String("\"e968c2ef-047c-498d-8d79-16ca1b61e77e\" in assertion.groups"),
+// 			AttributeMapping: pulumi.StringMap{
+// 				"google.subject":                  pulumi.String("\"azure::\" + assertion.tid + \"::\" + assertion.sub"),
+// 				"attribute.tid":                   pulumi.String("assertion.tid"),
+// 				"attribute.managed_identity_name": pulumi.String(fmt.Sprintf("%v%v%v%v", "      {\n", "        \"8bb39bdb-1cc5-4447-b7db-a19e920eb111\":\"workload1\",\n", "        \"55d36609-9bcf-48e0-a366-a3cf19027d2a\":\"workload2\"\n", "      }[assertion.oid]\n")),
+// 			},
+// 			Oidc: &iam.WorkloadIdentityPoolProviderOidcArgs{
+// 				AllowedAudiences: pulumi.StringArray{
+// 					pulumi.String("https://example.com/gcp-oidc-federation"),
+// 					pulumi.String("example.com/gcp-oidc-federation"),
+// 				},
+// 				IssuerUri: pulumi.String("https://sts.windows.net/azure-tenant-id"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // WorkloadIdentityPoolProvider can be imported using any of these accepted formats

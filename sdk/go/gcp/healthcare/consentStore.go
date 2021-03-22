@@ -11,6 +11,126 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
+// The Consent Management API is a tool for tracking user consents and the documentation associated with the consents.
+//
+// To get more information about ConsentStore, see:
+//
+// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+// * How-to Guides
+//     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+//
+// ## Example Usage
+// ### Healthcare Consent Store Basic
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
+// 			Dataset: dataset.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Healthcare Consent Store Full
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
+// 			Dataset:                     dataset.ID(),
+// 			EnableConsentCreateOnUpdate: pulumi.Bool(true),
+// 			DefaultConsentTtl:           pulumi.String("90000s"),
+// 			Labels: pulumi.StringMap{
+// 				"label1": pulumi.String("labelvalue1"),
+// 			},
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+// ### Healthcare Consent Store Iam
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/healthcare"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
+// 			Location: pulumi.String("us-central1"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
+// 			Dataset: dataset.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = serviceAccount.NewAccount(ctx, "test_account", &serviceAccount.AccountArgs{
+// 			AccountId:   pulumi.String("my-account"),
+// 			DisplayName: pulumi.String("Test Service Account"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = healthcare.NewConsentStoreIamMember(ctx, "test_iam", &healthcare.ConsentStoreIamMemberArgs{
+// 			Dataset:        dataset.ID(),
+// 			ConsentStoreId: my_consent.Name,
+// 			Role:           pulumi.String("roles/editor"),
+// 			Member: test_account.Email.ApplyT(func(email string) (string, error) {
+// 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
+// 			}).(pulumi.StringOutput),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // ConsentStore can be imported using any of these accepted formats

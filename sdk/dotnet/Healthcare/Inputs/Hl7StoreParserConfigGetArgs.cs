@@ -32,6 +32,11 @@ namespace Pulumi.Gcp.Healthcare.Inputs
         [Input("segmentTerminator")]
         public Input<string>? SegmentTerminator { get; set; }
 
+        /// <summary>
+        /// The version of the unschematized parser to be used when a custom `schema` is not set.
+        /// Default value is `V1`.
+        /// Possible values are `V1` and `V2`.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

@@ -68,6 +68,8 @@ type BucketObject struct {
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c        pulumi.StringOutput    `pulumi:"crc32c"`
 	DetectMd5hash pulumi.StringPtrOutput `pulumi:"detectMd5hash"`
+	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+	KmsKeyName pulumi.StringOutput `pulumi:"kmsKeyName"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringOutput `pulumi:"md5hash"`
 	// (Computed) A url reference to download this object.
@@ -140,6 +142,8 @@ type bucketObjectState struct {
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c        *string `pulumi:"crc32c"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash *string `pulumi:"md5hash"`
 	// (Computed) A url reference to download this object.
@@ -181,6 +185,8 @@ type BucketObjectState struct {
 	// (Computed) Base 64 CRC32 hash of the uploaded data.
 	Crc32c        pulumi.StringPtrInput
 	DetectMd5hash pulumi.StringPtrInput
+	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+	KmsKeyName pulumi.StringPtrInput
 	// (Computed) Base 64 MD5 hash of the uploaded data.
 	Md5hash pulumi.StringPtrInput
 	// (Computed) A url reference to download this object.
@@ -224,6 +230,8 @@ type bucketObjectArgs struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType   *string `pulumi:"contentType"`
 	DetectMd5hash *string `pulumi:"detectMd5hash"`
+	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// User-provided metadata, in key/value pairs.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.
@@ -255,6 +263,8 @@ type BucketObjectArgs struct {
 	// [Content-Type](https://tools.ietf.org/html/rfc7231#section-3.1.1.5) of the object data. Defaults to "application/octet-stream" or "text/plain; charset=utf-8".
 	ContentType   pulumi.StringPtrInput
 	DetectMd5hash pulumi.StringPtrInput
+	// The resource name of the Cloud KMS key that will be used to [encrypt](https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys) the object.
+	KmsKeyName pulumi.StringPtrInput
 	// User-provided metadata, in key/value pairs.
 	Metadata pulumi.StringMapInput
 	// The name of the object. If you're interpolating the name of this object, see `outputName` instead.

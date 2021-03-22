@@ -43,10 +43,11 @@ class Function(pulumi.CustomResource):
                  __name__=None,
                  __opts__=None):
         """
-        Creates a new Cloud Function. For more information see
-        [the official documentation](https://cloud.google.com/functions/docs/)
-        and
-        [API](https://cloud.google.com/functions/docs/apis).
+        Creates a new Cloud Function. For more information see:
+
+        * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v1/projects.locations.functions)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/functions/docs)
 
         > **Warning:** As of November 1, 2019, newly created Functions are
         private-by-default and will require [appropriate IAM permissions](https://cloud.google.com/functions/docs/reference/iam/roles)
@@ -67,7 +68,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs10",
+            runtime="nodejs12",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -93,7 +94,7 @@ class Function(pulumi.CustomResource):
             source=pulumi.FileAsset("./path/to/zip/file/which/contains/code"))
         function = gcp.cloudfunctions.Function("function",
             description="My function",
-            runtime="nodejs10",
+            runtime="nodejs12",
             available_memory_mb=128,
             source_archive_bucket=bucket.name,
             source_archive_object=archive.name,
@@ -143,7 +144,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
+               Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -248,7 +249,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input[str] project: Project of the function. If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region of function. Currently can be only "us-central1". If it is not provided, the provider region is used.
         :param pulumi.Input[str] runtime: The runtime in which the function is going to run.
-               Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
+               Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
         :param pulumi.Input[str] service_account_email: If provided, the self-provided service account to run the function with.
         :param pulumi.Input[str] source_archive_bucket: The GCS bucket containing the zip archive which contains the function.
         :param pulumi.Input[str] source_archive_object: The source archive object (file) in archive bucket.
@@ -396,7 +397,7 @@ class Function(pulumi.CustomResource):
     def runtime(self) -> pulumi.Output[str]:
         """
         The runtime in which the function is going to run.
-        Eg. `"nodejs8"`, `"nodejs10"`, `"python37"`, `"go111"`, `"go113"`.
+        Eg. `"nodejs8"`, `"nodejs10"`, `"nodejs12"`, `"python37"`, `"python38"`,`"go111"`, `"go113"`.
         """
         return pulumi.get(self, "runtime")
 

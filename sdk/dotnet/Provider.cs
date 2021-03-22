@@ -174,9 +174,6 @@ namespace Pulumi.Gcp
         [Input("dialogflowCustomEndpoint")]
         public Input<string>? DialogflowCustomEndpoint { get; set; }
 
-        [Input("dnsBetaCustomEndpoint")]
-        public Input<string>? DnsBetaCustomEndpoint { get; set; }
-
         [Input("dnsCustomEndpoint")]
         public Input<string>? DnsCustomEndpoint { get; set; }
 
@@ -278,8 +275,8 @@ namespace Pulumi.Gcp
         [Input("resourceManagerCustomEndpoint")]
         public Input<string>? ResourceManagerCustomEndpoint { get; set; }
 
-        [Input("resourceManagerV2beta1CustomEndpoint")]
-        public Input<string>? ResourceManagerV2beta1CustomEndpoint { get; set; }
+        [Input("resourceManagerV2CustomEndpoint")]
+        public Input<string>? ResourceManagerV2CustomEndpoint { get; set; }
 
         [Input("runtimeConfigCustomEndpoint")]
         public Input<string>? RuntimeConfigCustomEndpoint { get; set; }
@@ -339,6 +336,9 @@ namespace Pulumi.Gcp
 
         [Input("vpcAccessCustomEndpoint")]
         public Input<string>? VpcAccessCustomEndpoint { get; set; }
+
+        [Input("workflowsCustomEndpoint")]
+        public Input<string>? WorkflowsCustomEndpoint { get; set; }
 
         [Input("zone")]
         public Input<string>? Zone { get; set; }

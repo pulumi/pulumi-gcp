@@ -73,6 +73,7 @@ type GetBucketObjectContentResult struct {
 	DetectMd5hash      string  `pulumi:"detectMd5hash"`
 	// The provider-assigned unique ID for this managed resource.
 	Id           string            `pulumi:"id"`
+	KmsKeyName   string            `pulumi:"kmsKeyName"`
 	Md5hash      string            `pulumi:"md5hash"`
 	MediaLink    string            `pulumi:"mediaLink"`
 	Metadata     map[string]string `pulumi:"metadata"`

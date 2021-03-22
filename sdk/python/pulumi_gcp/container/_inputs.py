@@ -38,6 +38,7 @@ __all__ = [
     'ClusterMasterAuthorizedNetworksConfigCidrBlockArgs',
     'ClusterNetworkPolicyArgs',
     'ClusterNodeConfigArgs',
+    'ClusterNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodeConfigGuestAcceleratorArgs',
     'ClusterNodeConfigKubeletConfigArgs',
     'ClusterNodeConfigLinuxNodeConfigArgs',
@@ -49,6 +50,7 @@ __all__ = [
     'ClusterNodePoolAutoscalingArgs',
     'ClusterNodePoolManagementArgs',
     'ClusterNodePoolNodeConfigArgs',
+    'ClusterNodePoolNodeConfigEphemeralStorageConfigArgs',
     'ClusterNodePoolNodeConfigGuestAcceleratorArgs',
     'ClusterNodePoolNodeConfigKubeletConfigArgs',
     'ClusterNodePoolNodeConfigLinuxNodeConfigArgs',
@@ -70,6 +72,7 @@ __all__ = [
     'NodePoolAutoscalingArgs',
     'NodePoolManagementArgs',
     'NodePoolNodeConfigArgs',
+    'NodePoolNodeConfigEphemeralStorageConfigArgs',
     'NodePoolNodeConfigGuestAcceleratorArgs',
     'NodePoolNodeConfigKubeletConfigArgs',
     'NodePoolNodeConfigLinuxNodeConfigArgs',
@@ -1342,6 +1345,7 @@ class ClusterNodeConfigArgs:
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 ephemeral_storage_config: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['ClusterNodeConfigKubeletConfigArgs']] = None,
@@ -1365,6 +1369,7 @@ class ClusterNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
@@ -1376,8 +1381,7 @@ class ClusterNodeConfigArgs:
         :param pulumi.Input['ClusterNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
-        :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
-               attached to each cluster node. Defaults to 0.
+        :param pulumi.Input[int] local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
@@ -1421,6 +1425,8 @@ class ClusterNodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if ephemeral_storage_config is not None:
+            pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
@@ -1495,6 +1501,18 @@ class ClusterNodeConfigArgs:
         pulumi.set(self, "disk_type", value)
 
     @property
+    @pulumi.getter(name="ephemeralStorageConfig")
+    def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']]:
+        """
+        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_storage_config")
+
+    @ephemeral_storage_config.setter
+    def ephemeral_storage_config(self, value: Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']]):
+        pulumi.set(self, "ephemeral_storage_config", value)
+
+    @property
     @pulumi.getter(name="guestAccelerators")
     def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodeConfigGuestAcceleratorArgs']]]]:
         """
@@ -1564,8 +1582,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of local SSD disks that will be
-        attached to each cluster node. Defaults to 0.
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -1729,6 +1746,28 @@ class ClusterNodeConfigArgs:
     @workload_metadata_config.setter
     def workload_metadata_config(self, value: Optional[pulumi.Input['ClusterNodeConfigWorkloadMetadataConfigArgs']]):
         pulumi.set(self, "workload_metadata_config", value)
+
+
+@pulumi.input_type
+class ClusterNodeConfigEphemeralStorageConfigArgs:
+    def __init__(__self__, *,
+                 local_ssd_count: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> pulumi.Input[int]:
+        """
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "local_ssd_count", value)
 
 
 @pulumi.input_type
@@ -2268,6 +2307,7 @@ class ClusterNodePoolNodeConfigArgs:
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 ephemeral_storage_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['ClusterNodePoolNodeConfigKubeletConfigArgs']] = None,
@@ -2291,6 +2331,7 @@ class ClusterNodePoolNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]] guest_accelerators: List of the type and count of accelerator cards attached to the instance.
                Structure documented below.
         :param pulumi.Input[str] image_type: The image type to use for this node. Note that changing the image type
@@ -2302,8 +2343,7 @@ class ClusterNodePoolNodeConfigArgs:
         :param pulumi.Input['ClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_config: Linux node configuration, currently supported attributes can be found [here](https://cloud.google.com/sdk/gcloud/reference/beta/container/node-pools/create#--system-config-from-file).
                Note that validations happen all server side. All attributes are optional.
                Structure is documented below.
-        :param pulumi.Input[int] local_ssd_count: The amount of local SSD disks that will be
-               attached to each cluster node. Defaults to 0.
+        :param pulumi.Input[int] local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
                [here](https://cloud.google.com/compute/docs/reference/latest/instances#machineType).
@@ -2347,6 +2387,8 @@ class ClusterNodePoolNodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if ephemeral_storage_config is not None:
+            pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
@@ -2421,6 +2463,18 @@ class ClusterNodePoolNodeConfigArgs:
         pulumi.set(self, "disk_type", value)
 
     @property
+    @pulumi.getter(name="ephemeralStorageConfig")
+    def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']]:
+        """
+        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        """
+        return pulumi.get(self, "ephemeral_storage_config")
+
+    @ephemeral_storage_config.setter
+    def ephemeral_storage_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']]):
+        pulumi.set(self, "ephemeral_storage_config", value)
+
+    @property
     @pulumi.getter(name="guestAccelerators")
     def guest_accelerators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterNodePoolNodeConfigGuestAcceleratorArgs']]]]:
         """
@@ -2490,8 +2544,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="localSsdCount")
     def local_ssd_count(self) -> Optional[pulumi.Input[int]]:
         """
-        The amount of local SSD disks that will be
-        attached to each cluster node. Defaults to 0.
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
         """
         return pulumi.get(self, "local_ssd_count")
 
@@ -2655,6 +2708,28 @@ class ClusterNodePoolNodeConfigArgs:
     @workload_metadata_config.setter
     def workload_metadata_config(self, value: Optional[pulumi.Input['ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs']]):
         pulumi.set(self, "workload_metadata_config", value)
+
+
+@pulumi.input_type
+class ClusterNodePoolNodeConfigEphemeralStorageConfigArgs:
+    def __init__(__self__, *,
+                 local_ssd_count: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> pulumi.Input[int]:
+        """
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "local_ssd_count", value)
 
 
 @pulumi.input_type
@@ -3055,6 +3130,9 @@ class ClusterPrivateClusterConfigArgs:
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
+        :param pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs'] master_global_access_config: Controls cluster master global
+               access settings. If unset, the provider will no longer manage this field and will
+               not modify the previously-set value. Structure is documented below.
         :param pulumi.Input[str] master_ipv4_cidr_block: The IP range in CIDR notation to use for
                the hosted master network. This range will be used for assigning private IP
                addresses to the cluster master(s) and the ILB VIP. This range must not overlap
@@ -3113,6 +3191,11 @@ class ClusterPrivateClusterConfigArgs:
     @property
     @pulumi.getter(name="masterGlobalAccessConfig")
     def master_global_access_config(self) -> Optional[pulumi.Input['ClusterPrivateClusterConfigMasterGlobalAccessConfigArgs']]:
+        """
+        Controls cluster master global
+        access settings. If unset, the provider will no longer manage this field and will
+        not modify the previously-set value. Structure is documented below.
+        """
         return pulumi.get(self, "master_global_access_config")
 
     @master_global_access_config.setter
@@ -3440,6 +3523,7 @@ class NodePoolNodeConfigArgs:
                  boot_disk_kms_key: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 ephemeral_storage_config: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']] = None,
                  guest_accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolNodeConfigGuestAcceleratorArgs']]]] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['NodePoolNodeConfigKubeletConfigArgs']] = None,
@@ -3463,6 +3547,8 @@ class NodePoolNodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if ephemeral_storage_config is not None:
+            pulumi.set(__self__, "ephemeral_storage_config", ephemeral_storage_config)
         if guest_accelerators is not None:
             pulumi.set(__self__, "guest_accelerators", guest_accelerators)
         if image_type is not None:
@@ -3524,6 +3610,15 @@ class NodePoolNodeConfigArgs:
     @disk_type.setter
     def disk_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "disk_type", value)
+
+    @property
+    @pulumi.getter(name="ephemeralStorageConfig")
+    def ephemeral_storage_config(self) -> Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']]:
+        return pulumi.get(self, "ephemeral_storage_config")
+
+    @ephemeral_storage_config.setter
+    def ephemeral_storage_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigEphemeralStorageConfigArgs']]):
+        pulumi.set(self, "ephemeral_storage_config", value)
 
     @property
     @pulumi.getter(name="guestAccelerators")
@@ -3677,6 +3772,22 @@ class NodePoolNodeConfigArgs:
     @workload_metadata_config.setter
     def workload_metadata_config(self, value: Optional[pulumi.Input['NodePoolNodeConfigWorkloadMetadataConfigArgs']]):
         pulumi.set(self, "workload_metadata_config", value)
+
+
+@pulumi.input_type
+class NodePoolNodeConfigEphemeralStorageConfigArgs:
+    def __init__(__self__, *,
+                 local_ssd_count: pulumi.Input[int]):
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> pulumi.Input[int]:
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "local_ssd_count", value)
 
 
 @pulumi.input_type

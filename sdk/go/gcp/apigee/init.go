@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:apigee/envGroup:EnvGroup":
+		r, err = NewEnvGroup(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:apigee/environment:Environment":
+		r, err = NewEnvironment(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:apigee/instance:Instance":
+		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:apigee/organization:Organization":
 		r, err = NewOrganization(ctx, name, nil, pulumi.URN_(urn))
 	default:
@@ -35,6 +41,21 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/envGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/environment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/instance",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/organization",

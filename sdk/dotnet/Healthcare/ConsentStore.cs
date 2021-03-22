@@ -10,6 +10,124 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Healthcare
 {
     /// <summary>
+    /// The Consent Management API is a tool for tracking user consents and the documentation associated with the consents.
+    /// 
+    /// To get more information about ConsentStore, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+    /// * How-to Guides
+    ///     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
+    /// 
+    /// ## Example Usage
+    /// ### Healthcare Consent Store Basic
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
+    ///         {
+    ///             Dataset = dataset.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Healthcare Consent Store Full
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
+    ///         {
+    ///             Dataset = dataset.Id,
+    ///             EnableConsentCreateOnUpdate = true,
+    ///             DefaultConsentTtl = "90000s",
+    ///             Labels = 
+    ///             {
+    ///                 { "label1", "labelvalue1" },
+    ///             },
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// ### Healthcare Consent Store Iam
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
+    ///         {
+    ///             Location = "us-central1",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
+    ///         {
+    ///             Dataset = dataset.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var test_account = new Gcp.ServiceAccount.Account("test-account", new Gcp.ServiceAccount.AccountArgs
+    ///         {
+    ///             AccountId = "my-account",
+    ///             DisplayName = "Test Service Account",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var test_iam = new Gcp.Healthcare.ConsentStoreIamMember("test-iam", new Gcp.Healthcare.ConsentStoreIamMemberArgs
+    ///         {
+    ///             Dataset = dataset.Id,
+    ///             ConsentStoreId = my_consent.Name,
+    ///             Role = "roles/editor",
+    ///             Member = test_account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// ConsentStore can be imported using any of these accepted formats

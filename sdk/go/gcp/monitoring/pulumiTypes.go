@@ -5634,9 +5634,12 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput) Threshold() pulumi.F
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance struct {
+	// Availability based SLI, dervied from count of requests made to this service that return successfully.
+	// Structure is documented below.
+	Availability *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability `pulumi:"availability"`
 	// Parameters for a latency threshold SLI.
 	// Structure is documented below.
-	Latency SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency `pulumi:"latency"`
+	Latency *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
 	// performance for this SLI. If omitted, this SLI applies to all
@@ -5672,9 +5675,12 @@ type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceInput interface
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceArgs struct {
+	// Availability based SLI, dervied from count of requests made to this service that return successfully.
+	// Structure is documented below.
+	Availability SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput `pulumi:"availability"`
 	// Parameters for a latency threshold SLI.
 	// Structure is documented below.
-	Latency SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyInput `pulumi:"latency"`
+	Latency SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrInput `pulumi:"latency"`
 	// An optional set of locations to which this SLI is relevant.
 	// Telemetry from other locations will not be used to calculate
 	// performance for this SLI. If omitted, this SLI applies to all
@@ -5775,12 +5781,20 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) ToSl
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput)
 }
 
+// Availability based SLI, dervied from count of requests made to this service that return successfully.
+// Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Availability() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
+		return v.Availability
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput)
+}
+
 // Parameters for a latency threshold SLI.
 // Structure is documented below.
-func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Latency() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput {
-	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput) Latency() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
 		return v.Latency
-	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput)
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
 }
 
 // An optional set of locations to which this SLI is relevant.
@@ -5833,6 +5847,17 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) E
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput)
 }
 
+// Availability based SLI, dervied from count of requests made to this service that return successfully.
+// Structure is documented below.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Availability() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
+		if v == nil {
+			return nil
+		}
+		return v.Availability
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput)
+}
+
 // Parameters for a latency threshold SLI.
 // Structure is documented below.
 func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) Latency() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput {
@@ -5840,7 +5865,7 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) L
 		if v == nil {
 			return nil
 		}
-		return &v.Latency
+		return v.Latency
 	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput)
 }
 
@@ -5887,6 +5912,141 @@ func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput) V
 		}
 		return v.Versions
 	}).(pulumi.StringArrayOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability struct {
+	// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityInput` via:
+//
+//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs{...}
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs struct {
+	// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability)(nil)).Elem()
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput)
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput).ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx)
+}
+
+// SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput is an input type that accepts SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs, SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtr and SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput values.
+// You can construct a concrete instance of `SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput` via:
+//
+//          SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs{...}
+//
+//  or:
+//
+//          nil
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput interface {
+	pulumi.Input
+
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput
+	ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput
+}
+
+type sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrType SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs
+
+func SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtr(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityArgs) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrInput {
+	return (*sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrType)(v)
+}
+
+func (*sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability)(nil)).Elem()
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return i.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *sloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrType) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return o.ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
+		return &v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput)
+}
+
+// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) *bool {
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability)(nil)).Elem()
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) ToSloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutputWithContext(ctx context.Context) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput {
+	return o
+}
+
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) Elem() SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
+		return *v
+	}).(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput)
+}
+
+// Whether an availability SLI is enabled or not. Must be set to ` true. Defaults to  `true`.
+func (o SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency struct {
@@ -9150,6 +9310,8 @@ func init() {
 	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPtrOutput{})
 	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceOutput{})
 	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformancePtrOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityOutput{})
+	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailabilityPtrOutput{})
 	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyOutput{})
 	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatencyPtrOutput{})
 	pulumi.RegisterOutputType(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceOutput{})

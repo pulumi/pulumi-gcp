@@ -104,6 +104,7 @@ namespace Pulumi.Gcp.Storage
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly string KmsKeyName;
         /// <summary>
         /// (Computed) Base 64 MD5 hash of the uploaded data.
         /// </summary>
@@ -149,6 +150,8 @@ namespace Pulumi.Gcp.Storage
 
             string id,
 
+            string kmsKeyName,
+
             string md5hash,
 
             string mediaLink,
@@ -175,6 +178,7 @@ namespace Pulumi.Gcp.Storage
             Crc32c = crc32c;
             DetectMd5hash = detectMd5hash;
             Id = id;
+            KmsKeyName = kmsKeyName;
             Md5hash = md5hash;
             MediaLink = mediaLink;
             Metadata = metadata;

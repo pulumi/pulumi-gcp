@@ -56,6 +56,28 @@ class ConsumerQuotaOverride(pulumi.CustomResource):
             force=True,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Region Consumer Quota Override
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_project = gcp.organizations.Project("myProject",
+            project_id="quota",
+            org_id="123456789",
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        override = gcp.serviceusage.ConsumerQuotaOverride("override",
+            dimensions={
+                "region": "us-central1",
+            },
+            project=my_project.project_id,
+            service="compute.googleapis.com",
+            metric="compute.googleapis.com%2Fn2_cpus",
+            limit="%2Fproject%2Fregion",
+            override_value="8",
+            force=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 

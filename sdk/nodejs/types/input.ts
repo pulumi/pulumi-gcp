@@ -4054,6 +4054,14 @@ export namespace cloudidentity {
 
 export namespace cloudrun {
     export interface DomainMappingMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * -
@@ -4154,6 +4162,14 @@ export namespace cloudrun {
     }
 
     export interface ServiceMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * -
@@ -4227,6 +4243,14 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplateMetadata {
+        /**
+         * Annotations is a key value map stored with a resource that
+         * may be set by external tools to store and retrieve arbitrary metadata. More
+         * info: http://kubernetes.io/docs/user-guide/annotations
+         * **Note**: The Cloud Run API may add additional annotations that were not provided in your config.
+         * If the provider plan shows a diff where a server-side annotation is added, you can add it to your config
+         * or apply the lifecycle.ignore_changes rule to the metadata.0.annotations field.
+         */
         annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * -
@@ -4784,6 +4808,9 @@ export namespace composer {
          * The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
          */
         databaseConfig?: pulumi.Input<inputs.composer.EnvironmentConfigDatabaseConfig>;
+        /**
+         * The encryption options for the Cloud Composer environment and its dependencies.
+         */
         encryptionConfig?: pulumi.Input<inputs.composer.EnvironmentConfigEncryptionConfig>;
         gkeCluster?: pulumi.Input<string>;
         /**
@@ -5096,10 +5123,20 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScaleInControl>;
+        /**
+         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+         * Structure is documented below.
+         */
         scalingSchedules?: pulumi.Input<pulumi.Input<inputs.compute.AutoscalarAutoscalingPolicyScalingSchedule>[]>;
     }
 
     export interface AutoscalarAutoscalingPolicyCpuUtilization {
+        /**
+         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+         */
+        predictiveMethod?: pulumi.Input<string>;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
          * balancing configuration) that autoscaler should maintain. Must
@@ -5328,10 +5365,20 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyScaleInControl>;
+        /**
+         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+         * Structure is documented below.
+         */
         scalingSchedules?: pulumi.Input<pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyScalingSchedule>[]>;
     }
 
     export interface AutoscalerAutoscalingPolicyCpuUtilization {
+        /**
+         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+         */
+        predictiveMethod?: pulumi.Input<string>;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
          * balancing configuration) that autoscaler should maintain. Must
@@ -5499,12 +5546,38 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicy {
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         */
         cacheMode?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl?: pulumi.Input<number>;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl?: pulumi.Input<number>;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl?: pulumi.Input<number>;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching?: pulumi.Input<boolean>;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         * Structure is documented below.
+         */
         negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendBucketCdnPolicyNegativeCachingPolicy>[]>;
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale?: pulumi.Input<number>;
         /**
          * Maximum number of seconds the response to a signed URL request will
@@ -5520,7 +5593,15 @@ export namespace compute {
     }
 
     export interface BackendBucketCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code?: pulumi.Input<number>;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: pulumi.Input<number>;
     }
 
@@ -5624,12 +5705,38 @@ export namespace compute {
          * Structure is documented below.
          */
         cacheKeyPolicy?: pulumi.Input<inputs.compute.BackendServiceCdnPolicyCacheKeyPolicy>;
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         */
         cacheMode?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl?: pulumi.Input<number>;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl?: pulumi.Input<number>;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl?: pulumi.Input<number>;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching?: pulumi.Input<boolean>;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         * Structure is documented below.
+         */
         negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.BackendServiceCdnPolicyNegativeCachingPolicy>[]>;
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale?: pulumi.Input<number>;
         /**
          * Maximum number of seconds the response to a signed URL request
@@ -5682,7 +5789,15 @@ export namespace compute {
     }
 
     export interface BackendServiceCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code?: pulumi.Input<number>;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: pulumi.Input<number>;
     }
 
@@ -5768,6 +5883,10 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: pulumi.Input<string>;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: pulumi.Input<inputs.compute.BackendServiceConsistentHashHttpCookieTtl>;
     }
 
@@ -6818,13 +6937,16 @@ export namespace compute {
         maxUnavailablePercent?: pulumi.Input<number>;
         /**
          * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-         * - - -
          */
         minReadySec?: pulumi.Input<number>;
         /**
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
+        /**
+         * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+         * - - -
+         */
         replacementMethod?: pulumi.Input<string>;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -6944,8 +7066,7 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
-         * ) The type of vNIC to be used on this interface.
-         * Possible values: GVNIC, VIRTIO_NET.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
          */
         nicType?: pulumi.Input<string>;
         /**
@@ -7225,11 +7346,6 @@ export namespace compute {
          * empty, the address will be automatically assigned.
          */
         networkIp?: pulumi.Input<string>;
-        /**
-         * ) The type of vNIC to be used on this interface.
-         * Possible values: GVNIC, VIRTIO_NET.
-         */
-        nicType?: pulumi.Input<string>;
         /**
          * the name of the subnetwork to attach this interface
          * to. The subnetwork must exist in the same `region` this instance will be
@@ -7696,10 +7812,20 @@ export namespace compute {
          * Structure is documented below.
          */
         scaleInControl?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScaleInControl>;
+        /**
+         * Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler and they can overlap.
+         * Structure is documented below.
+         */
         scalingSchedules?: pulumi.Input<pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScalingSchedule>[]>;
     }
 
     export interface RegionAutoscalerAutoscalingPolicyCpuUtilization {
+        /**
+         * Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are:
+         * - NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics.
+         * - OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
+         */
+        predictiveMethod?: pulumi.Input<string>;
         /**
          * Fraction of backend capacity utilization (set in HTTP(s) load
          * balancing configuration) that autoscaler should maintain. Must
@@ -7977,12 +8103,38 @@ export namespace compute {
          * Structure is documented below.
          */
         cacheKeyPolicy?: pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicyCacheKeyPolicy>;
+        /**
+         * Specifies the cache setting for all responses from this backend.
+         * The possible values are: USE_ORIGIN_HEADERS, FORCE_CACHE_ALL and CACHE_ALL_STATIC
+         * Possible values are `USE_ORIGIN_HEADERS`, `FORCE_CACHE_ALL`, and `CACHE_ALL_STATIC`.
+         */
         cacheMode?: pulumi.Input<string>;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         clientTtl?: pulumi.Input<number>;
+        /**
+         * Specifies the default TTL for cached content served by this origin for responses
+         * that do not have an existing valid TTL (max-age or s-max-age).
+         */
         defaultTtl?: pulumi.Input<number>;
+        /**
+         * Specifies the maximum allowed TTL for cached content served by this origin.
+         */
         maxTtl?: pulumi.Input<number>;
+        /**
+         * Negative caching allows per-status code TTLs to be set, in order to apply fine-grained caching for common errors or redirects.
+         */
         negativeCaching?: pulumi.Input<boolean>;
+        /**
+         * Sets a cache TTL for the specified HTTP status code. negativeCaching must be enabled to configure negativeCachingPolicy.
+         * Omitting the policy and leaving negativeCaching enabled will use Cloud CDN's default cache TTLs.
+         * Structure is documented below.
+         */
         negativeCachingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.RegionBackendServiceCdnPolicyNegativeCachingPolicy>[]>;
+        /**
+         * Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
+         */
         serveWhileStale?: pulumi.Input<number>;
         /**
          * Maximum number of seconds the response to a signed URL request
@@ -8035,7 +8187,15 @@ export namespace compute {
     }
 
     export interface RegionBackendServiceCdnPolicyNegativeCachingPolicy {
+        /**
+         * The HTTP status code to define a TTL against. Only HTTP status codes 300, 301, 308, 404, 405, 410, 421, 451 and 501
+         * can be specified as values, and you cannot specify a status code more than once.
+         */
         code?: pulumi.Input<number>;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: pulumi.Input<number>;
     }
 
@@ -8121,6 +8281,10 @@ export namespace compute {
          * Path to set for the cookie.
          */
         path?: pulumi.Input<string>;
+        /**
+         * The TTL (in seconds) for which to cache responses with the corresponding status code. The maximum allowed value is 1800s
+         * (30 minutes), noting that infrequently accessed objects may be evicted from the cache before the defined TTL.
+         */
         ttl?: pulumi.Input<inputs.compute.RegionBackendServiceConsistentHashHttpCookieTtl>;
     }
 
@@ -8689,13 +8853,16 @@ export namespace compute {
         maxUnavailablePercent?: pulumi.Input<number>;
         /**
          * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
-         * - - -
          */
         minReadySec?: pulumi.Input<number>;
         /**
          * - Minimal action to be taken on an instance. You can specify either `RESTART` to restart existing instances or `REPLACE` to delete and create new instances from the target template. If you specify a `RESTART`, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
          */
         minimalAction: pulumi.Input<string>;
+        /**
+         * , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set maxUnavailableFixed or maxUnavailablePercent to be greater than 0.
+         * - - -
+         */
         replacementMethod?: pulumi.Input<string>;
         /**
          * - The type of update process. You can specify either `PROACTIVE` so that the instance group manager proactively executes actions in order to bring instances to their target versions or `OPPORTUNISTIC` so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -12963,6 +13130,10 @@ export namespace container {
          */
         diskType?: pulumi.Input<string>;
         /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         */
+        ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodeConfigEphemeralStorageConfig>;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -12989,8 +13160,7 @@ export namespace container {
          */
         linuxNodeConfig?: pulumi.Input<inputs.container.ClusterNodeConfigLinuxNodeConfig>;
         /**
-         * The amount of local SSD disks that will be
-         * attached to each cluster node. Defaults to 0.
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount?: pulumi.Input<number>;
         /**
@@ -13062,6 +13232,13 @@ export namespace container {
          * Structure is documented below.
          */
         workloadMetadataConfig?: pulumi.Input<inputs.container.ClusterNodeConfigWorkloadMetadataConfig>;
+    }
+
+    export interface ClusterNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         */
+        localSsdCount: pulumi.Input<number>;
     }
 
     export interface ClusterNodeConfigGuestAccelerator {
@@ -13221,6 +13398,10 @@ export namespace container {
          */
         diskType?: pulumi.Input<string>;
         /**
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         */
+        ephemeralStorageConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigEphemeralStorageConfig>;
+        /**
          * List of the type and count of accelerator cards attached to the instance.
          * Structure documented below.
          */
@@ -13247,8 +13428,7 @@ export namespace container {
          */
         linuxNodeConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigLinuxNodeConfig>;
         /**
-         * The amount of local SSD disks that will be
-         * attached to each cluster node. Defaults to 0.
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
          */
         localSsdCount?: pulumi.Input<number>;
         /**
@@ -13320,6 +13500,13 @@ export namespace container {
          * Structure is documented below.
          */
         workloadMetadataConfig?: pulumi.Input<inputs.container.ClusterNodePoolNodeConfigWorkloadMetadataConfig>;
+    }
+
+    export interface ClusterNodePoolNodeConfigEphemeralStorageConfig {
+        /**
+         * Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
+         */
+        localSsdCount: pulumi.Input<number>;
     }
 
     export interface ClusterNodePoolNodeConfigGuestAccelerator {
@@ -13450,6 +13637,11 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
+        /**
+         * Controls cluster master global
+         * access settings. If unset, the provider will no longer manage this field and will
+         * not modify the previously-set value. Structure is documented below.
+         */
         masterGlobalAccessConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfigMasterGlobalAccessConfig>;
         /**
          * The IP range in CIDR notation to use for
@@ -13561,6 +13753,7 @@ export namespace container {
         bootDiskKmsKey?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         diskType?: pulumi.Input<string>;
+        ephemeralStorageConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigEphemeralStorageConfig>;
         guestAccelerators?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigGuestAccelerator>[]>;
         imageType?: pulumi.Input<string>;
         kubeletConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigKubeletConfig>;
@@ -13578,6 +13771,10 @@ export namespace container {
         tags?: pulumi.Input<pulumi.Input<string>[]>;
         taints?: pulumi.Input<pulumi.Input<inputs.container.NodePoolNodeConfigTaint>[]>;
         workloadMetadataConfig?: pulumi.Input<inputs.container.NodePoolNodeConfigWorkloadMetadataConfig>;
+    }
+
+    export interface NodePoolNodeConfigEphemeralStorageConfig {
+        localSsdCount: pulumi.Input<number>;
     }
 
     export interface NodePoolNodeConfigGuestAccelerator {
@@ -16529,6 +16726,11 @@ export namespace healthcare {
          * A base64-encoded string.
          */
         segmentTerminator?: pulumi.Input<string>;
+        /**
+         * The version of the unschematized parser to be used when a custom `schema` is not set.
+         * Default value is `V1`.
+         * Possible values are `V1` and `V2`.
+         */
         version?: pulumi.Input<string>;
     }
 }
@@ -17122,21 +17324,20 @@ export namespace logging {
 
     export interface BillingAccountSinkExclusion {
         /**
-         * A description of this sink. The maximum length of the description is 8000 characters.
+         * A description of this exclusion.
          */
         description?: pulumi.Input<string>;
         /**
-         * If set to True, then this sink is disabled and it does not export any log entries.
+         * If set to True, then this exclusion is disabled and it does not exclude any log entries.
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: pulumi.Input<string>;
         /**
-         * The name of the logging sink.
+         * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: pulumi.Input<string>;
     }
@@ -17153,21 +17354,20 @@ export namespace logging {
 
     export interface FolderSinkExclusion {
         /**
-         * A description of this sink. The maximum length of the description is 8000 characters.
+         * A description of this exclusion.
          */
         description?: pulumi.Input<string>;
         /**
-         * If set to True, then this sink is disabled and it does not export any log entries.
+         * If set to True, then this exclusion is disabled and it does not exclude any log entries.
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: pulumi.Input<string>;
         /**
-         * The name of the logging sink.
+         * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: pulumi.Input<string>;
     }
@@ -17295,21 +17495,20 @@ export namespace logging {
 
     export interface OrganizationSinkExclusion {
         /**
-         * A description of this sink. The maximum length of the description is 8000 characters.
+         * A description of this exclusion.
          */
         description?: pulumi.Input<string>;
         /**
-         * If set to True, then this sink is disabled and it does not export any log entries.
+         * If set to True, then this exclusion is disabled and it does not exclude any log entries.
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * The filter to apply when exporting logs. Only log entries that match the filter are exported.
-         * See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
+         * An advanced logs filter that matches the log entries to be excluded. By using the sample function, you can exclude less than 100% of the matching log entries. See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced_filters) for information on how to
          * write a filter.
          */
         filter: pulumi.Input<string>;
         /**
-         * The name of the logging sink.
+         * A client-assigned identifier, such as `load-balancer-exclusion`. Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
          */
         name: pulumi.Input<string>;
     }
@@ -18250,10 +18449,15 @@ export namespace monitoring {
 
     export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance {
         /**
+         * Availability based SLI, dervied from count of requests made to this service that return successfully.
+         * Structure is documented below.
+         */
+        availability?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability>;
+        /**
          * Parameters for a latency threshold SLI.
          * Structure is documented below.
          */
-        latency: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency>;
+        latency?: pulumi.Input<inputs.monitoring.SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency>;
         /**
          * An optional set of locations to which this SLI is relevant.
          * Telemetry from other locations will not be used to calculate
@@ -18281,6 +18485,13 @@ export namespace monitoring {
          * field will result in an error.
          */
         versions?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceAvailability {
+        /**
+         * Whether an availability SLI is enabled or not. Must be set to `true. Defaults to `true`.
+         */
+        enabled?: pulumi.Input<boolean>;
     }
 
     export interface SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency {
@@ -20601,6 +20812,10 @@ export namespace sql {
 
     export interface DatabaseInstanceSettingsBackupConfiguration {
         /**
+         * Backup retention settings. The configuration is detailed below.
+         */
+        backupRetentionSettings?: pulumi.Input<inputs.sql.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings>;
+        /**
          * True if binary logging is enabled. If
          * `settings.backup_configuration.enabled` is false, this must be as well.
          * Cannot be used with Postgres.
@@ -20623,6 +20838,22 @@ export namespace sql {
          * configuration starts.
          */
         startTime?: pulumi.Input<string>;
+        /**
+         * The number of days of transaction logs we retain for point in time restore, from 1-7.
+         */
+        transactionLogRetentionDays?: pulumi.Input<number>;
+    }
+
+    export interface DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
+        /**
+         * Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retentionUnit
+         * is 'COUNT', we will retain this many backups.
+         */
+        retainedBackups: pulumi.Input<number>;
+        /**
+         * The unit that 'retained_backups' represents. Defaults to `COUNT`.
+         */
+        retentionUnit?: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceSettingsDatabaseFlag {
