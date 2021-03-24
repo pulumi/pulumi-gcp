@@ -190,7 +190,7 @@ jobs:
       uses: goreleaser/goreleaser-action@v2
       with:
         args: -p 3 release --rm-dist --timeout 60m0s
-        version: latest
+        version: v0.160.0
   publish_sdk:
     name: publish_sdk
     needs: publish
