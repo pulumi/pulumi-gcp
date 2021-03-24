@@ -15,7 +15,7 @@ import (
 //
 // To get more information about ConsentStore, see:
 //
-// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
 // * How-to Guides
 //     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 //
@@ -34,13 +34,13 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
 // 			Location: pulumi.String("us-central1"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
 // 			Dataset: dataset.ID(),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -62,7 +62,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
 // 			Location: pulumi.String("us-central1"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -73,7 +73,7 @@ import (
 // 			Labels: pulumi.StringMap{
 // 				"label1": pulumi.String("labelvalue1"),
 // 			},
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -98,20 +98,20 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		dataset, err := healthcare.NewDataset(ctx, "dataset", &healthcare.DatasetArgs{
 // 			Location: pulumi.String("us-central1"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = healthcare.NewConsentStore(ctx, "my_consent", &healthcare.ConsentStoreArgs{
 // 			Dataset: dataset.ID(),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = serviceAccount.NewAccount(ctx, "test_account", &serviceAccount.AccountArgs{
 // 			AccountId:   pulumi.String("my-account"),
 // 			DisplayName: pulumi.String("Test Service Account"),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -122,7 +122,7 @@ import (
 // 			Member: test_account.Email.ApplyT(func(email string) (string, error) {
 // 				return fmt.Sprintf("%v%v", "serviceAccount:", email), nil
 // 			}).(pulumi.StringOutput),
-// 		}, pulumi.Provider(google_beta))
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -138,14 +138,6 @@ import (
 // ```sh
 //  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
 // ```
-//
-// ```sh
-//  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/{{name}}
-// ```
-//
-// ```sh
-//  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{name}}
-// ```
 type ConsentStore struct {
 	pulumi.CustomResourceState
 
@@ -155,7 +147,7 @@ type ConsentStore struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl pulumi.StringPtrOutput `pulumi:"defaultConsentTtl"`
-	// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate pulumi.BoolPtrOutput `pulumi:"enableConsentCreateOnUpdate"`
 	// User-supplied key-value pairs used to organize Consent stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -209,7 +201,7 @@ type consentStoreState struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl *string `pulumi:"defaultConsentTtl"`
-	// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate *bool `pulumi:"enableConsentCreateOnUpdate"`
 	// User-supplied key-value pairs used to organize Consent stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -232,7 +224,7 @@ type ConsentStoreState struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl pulumi.StringPtrInput
-	// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate pulumi.BoolPtrInput
 	// User-supplied key-value pairs used to organize Consent stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -259,7 +251,7 @@ type consentStoreArgs struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl *string `pulumi:"defaultConsentTtl"`
-	// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate *bool `pulumi:"enableConsentCreateOnUpdate"`
 	// User-supplied key-value pairs used to organize Consent stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
@@ -283,7 +275,7 @@ type ConsentStoreArgs struct {
 	// Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	DefaultConsentTtl pulumi.StringPtrInput
-	// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+	// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
 	EnableConsentCreateOnUpdate pulumi.BoolPtrInput
 	// User-supplied key-value pairs used to organize Consent stores.
 	// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must

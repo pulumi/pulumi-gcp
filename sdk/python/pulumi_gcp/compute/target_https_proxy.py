@@ -18,6 +18,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proxy_bind: Optional[pulumi.Input[bool]] = None,
                  quic_override: Optional[pulumi.Input[str]] = None,
                  ssl_certificates: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
@@ -102,6 +103,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references
+               this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines
                whether the load balancer will attempt to negotiate QUIC with clients
                or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
@@ -138,6 +141,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['project'] = project
+            __props__['proxy_bind'] = proxy_bind
             __props__['quic_override'] = quic_override
             if ssl_certificates is None and not opts.urn:
                 raise TypeError("Missing required property 'ssl_certificates'")
@@ -163,6 +167,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            proxy_bind: Optional[pulumi.Input[bool]] = None,
             proxy_id: Optional[pulumi.Input[int]] = None,
             quic_override: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -187,6 +192,8 @@ class TargetHttpsProxy(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references
+               this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] quic_override: Specifies the QUIC override policy for this resource. This determines
                whether the load balancer will attempt to negotiate QUIC with clients
@@ -213,6 +220,7 @@ class TargetHttpsProxy(pulumi.CustomResource):
         __props__["description"] = description
         __props__["name"] = name
         __props__["project"] = project
+        __props__["proxy_bind"] = proxy_bind
         __props__["proxy_id"] = proxy_id
         __props__["quic_override"] = quic_override
         __props__["self_link"] = self_link
@@ -259,6 +267,15 @@ class TargetHttpsProxy(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="proxyBind")
+    def proxy_bind(self) -> pulumi.Output[bool]:
+        """
+        This field only applies when the forwarding rule that references
+        this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        """
+        return pulumi.get(self, "proxy_bind")
 
     @property
     @pulumi.getter(name="proxyId")

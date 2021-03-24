@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -43,6 +42,46 @@ import (
 // 	})
 // }
 // ```
+// ### VPC Access Connector Shared VPC
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/compute"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/vpcaccess"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		customTestNetwork, err := compute.NewNetwork(ctx, "customTestNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		customTestSubnetwork, err := compute.NewSubnetwork(ctx, "customTestSubnetwork", &compute.SubnetworkArgs{
+// 			IpCidrRange: pulumi.String("10.2.0.0/28"),
+// 			Region:      pulumi.String("us-central1"),
+// 			Network:     customTestNetwork.ID(),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = vpcaccess.NewConnector(ctx, "connector", &vpcaccess.ConnectorArgs{
+// 			Subnet: &vpcaccess.ConnectorSubnetArgs{
+// 				Name: customTestSubnetwork.Name,
+// 			},
+// 			MachineType: pulumi.String("e2-standard-4"),
+// 		}, pulumi.Provider(google_beta))
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 //
 // ## Import
 //
@@ -67,15 +106,21 @@ type Connector struct {
 	pulumi.CustomResourceState
 
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	IpCidrRange pulumi.StringPtrOutput `pulumi:"ipCidrRange"`
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType pulumi.StringPtrOutput `pulumi:"machineType"`
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances pulumi.IntOutput `pulumi:"maxInstances"`
 	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput pulumi.IntPtrOutput `pulumi:"maxThroughput"`
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances pulumi.IntOutput `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrOutput `pulumi:"minThroughput"`
 	// The name of the resource (Max 25 characters).
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Name of a VPC network.
-	Network pulumi.StringOutput `pulumi:"network"`
+	// Name of the VPC network. Required if `ipCidrRange` is set.
+	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -85,21 +130,17 @@ type Connector struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// State of the VPC access connector.
 	State pulumi.StringOutput `pulumi:"state"`
+	// The subnet in which to house the connector
+	Subnet ConnectorSubnetPtrOutput `pulumi:"subnet"`
 }
 
 // NewConnector registers a new resource with the given unique name, arguments, and options.
 func NewConnector(ctx *pulumi.Context,
 	name string, args *ConnectorArgs, opts ...pulumi.ResourceOption) (*Connector, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ConnectorArgs{}
 	}
 
-	if args.IpCidrRange == nil {
-		return nil, errors.New("invalid value for required argument 'IpCidrRange'")
-	}
-	if args.Network == nil {
-		return nil, errors.New("invalid value for required argument 'Network'")
-	}
 	var resource Connector
 	err := ctx.RegisterResource("gcp:vpcaccess/connector:Connector", name, args, &resource, opts...)
 	if err != nil {
@@ -124,13 +165,19 @@ func GetConnector(ctx *pulumi.Context,
 type connectorState struct {
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType *string `pulumi:"machineType"`
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances *int `pulumi:"maxInstances"`
 	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput *int `pulumi:"maxThroughput"`
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
 	// The name of the resource (Max 25 characters).
 	Name *string `pulumi:"name"`
-	// Name of a VPC network.
+	// Name of the VPC network. Required if `ipCidrRange` is set.
 	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -141,18 +188,26 @@ type connectorState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// State of the VPC access connector.
 	State *string `pulumi:"state"`
+	// The subnet in which to house the connector
+	Subnet *ConnectorSubnet `pulumi:"subnet"`
 }
 
 type ConnectorState struct {
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType pulumi.StringPtrInput
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances pulumi.IntPtrInput
 	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput pulumi.IntPtrInput
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
 	// The name of the resource (Max 25 characters).
 	Name pulumi.StringPtrInput
-	// Name of a VPC network.
+	// Name of the VPC network. Required if `ipCidrRange` is set.
 	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -163,6 +218,8 @@ type ConnectorState struct {
 	SelfLink pulumi.StringPtrInput
 	// State of the VPC access connector.
 	State pulumi.StringPtrInput
+	// The subnet in which to house the connector
+	Subnet ConnectorSubnetPtrInput
 }
 
 func (ConnectorState) ElementType() reflect.Type {
@@ -171,39 +228,55 @@ func (ConnectorState) ElementType() reflect.Type {
 
 type connectorArgs struct {
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-	IpCidrRange string `pulumi:"ipCidrRange"`
+	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType *string `pulumi:"machineType"`
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances *int `pulumi:"maxInstances"`
 	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput *int `pulumi:"maxThroughput"`
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
 	// The name of the resource (Max 25 characters).
 	Name *string `pulumi:"name"`
-	// Name of a VPC network.
-	Network string `pulumi:"network"`
+	// Name of the VPC network. Required if `ipCidrRange` is set.
+	Network *string `pulumi:"network"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The subnet in which to house the connector
+	Subnet *ConnectorSubnet `pulumi:"subnet"`
 }
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
-	IpCidrRange pulumi.StringInput
+	IpCidrRange pulumi.StringPtrInput
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType pulumi.StringPtrInput
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances pulumi.IntPtrInput
 	// Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
 	MaxThroughput pulumi.IntPtrInput
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
 	// The name of the resource (Max 25 characters).
 	Name pulumi.StringPtrInput
-	// Name of a VPC network.
-	Network pulumi.StringInput
+	// Name of the VPC network. Required if `ipCidrRange` is set.
+	Network pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Region where the VPC Access connector resides. If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
+	// The subnet in which to house the connector
+	Subnet ConnectorSubnetPtrInput
 }
 
 func (ConnectorArgs) ElementType() reflect.Type {

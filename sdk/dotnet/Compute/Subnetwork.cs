@@ -248,8 +248,7 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
         /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
         /// purpose defaults to PRIVATE.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-        /// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
+        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -403,8 +402,7 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
         /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
         /// purpose defaults to PRIVATE.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-        /// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
+        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -537,8 +535,7 @@ namespace Pulumi.Gcp.Compute
         /// INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
         /// reserved for Internal HTTP(S) Load Balancing. If unspecified, the
         /// purpose defaults to PRIVATE.
-        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-        /// Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
+        /// If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

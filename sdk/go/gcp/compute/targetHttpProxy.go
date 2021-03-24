@@ -155,6 +155,9 @@ type TargetHttpProxy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind pulumi.BoolOutput `pulumi:"proxyBind"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
 	// The URI of the created resource.
@@ -211,6 +214,9 @@ type targetHttpProxyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind *bool `pulumi:"proxyBind"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
 	// The URI of the created resource.
@@ -236,6 +242,9 @@ type TargetHttpProxyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind pulumi.BoolPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
 	// The URI of the created resource.
@@ -263,6 +272,9 @@ type targetHttpProxyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind *bool `pulumi:"proxyBind"`
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
 	UrlMap string `pulumi:"urlMap"`
@@ -283,6 +295,9 @@ type TargetHttpProxyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind pulumi.BoolPtrInput
 	// A reference to the UrlMap resource that defines the mapping from URL
 	// to the BackendService.
 	UrlMap pulumi.StringInput

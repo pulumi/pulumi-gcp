@@ -62,6 +62,7 @@ namespace Pulumi.Gcp.Dataflow
     ///         {
     ///             TemplateGcsPath = "gs://my-bucket/templates/template_file",
     ///             TempGcsLocation = "gs://my-bucket/tmp_dir",
+    ///             EnableStreamingEngine = true,
     ///             Parameters = 
     ///             {
     ///                 { "inputFilePattern", bucket1.Url.Apply(url =&gt; $"{url}/*.json") },
@@ -98,6 +99,12 @@ namespace Pulumi.Gcp.Dataflow
         /// </summary>
         [Output("additionalExperiments")]
         public Output<ImmutableArray<string>> AdditionalExperiments { get; private set; } = null!;
+
+        /// <summary>
+        /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
+        /// </summary>
+        [Output("enableStreamingEngine")]
+        public Output<bool?> EnableStreamingEngine { get; private set; } = null!;
 
         /// <summary>
         /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
@@ -281,6 +288,12 @@ namespace Pulumi.Gcp.Dataflow
         }
 
         /// <summary>
+        /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
+        /// </summary>
+        [Input("enableStreamingEngine")]
+        public Input<bool>? EnableStreamingEngine { get; set; }
+
+        /// <summary>
         /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         /// </summary>
         [Input("ipConfiguration")]
@@ -421,6 +434,12 @@ namespace Pulumi.Gcp.Dataflow
             get => _additionalExperiments ?? (_additionalExperiments = new InputList<string>());
             set => _additionalExperiments = value;
         }
+
+        /// <summary>
+        /// Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
+        /// </summary>
+        [Input("enableStreamingEngine")]
+        public Input<bool>? EnableStreamingEngine { get; set; }
 
         /// <summary>
         /// The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.

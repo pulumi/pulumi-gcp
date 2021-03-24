@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// To get more information about ConsentStore, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+    /// * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
     /// * How-to Guides
     ///     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
     /// 
@@ -32,16 +32,10 @@ namespace Pulumi.Gcp.Healthcare
     ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
     ///         {
     ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
     ///         {
     ///             Dataset = dataset.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -60,9 +54,6 @@ namespace Pulumi.Gcp.Healthcare
     ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
     ///         {
     ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
     ///         {
@@ -73,9 +64,6 @@ namespace Pulumi.Gcp.Healthcare
     ///             {
     ///                 { "label1", "labelvalue1" },
     ///             },
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -94,24 +82,15 @@ namespace Pulumi.Gcp.Healthcare
     ///         var dataset = new Gcp.Healthcare.Dataset("dataset", new Gcp.Healthcare.DatasetArgs
     ///         {
     ///             Location = "us-central1",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var my_consent = new Gcp.Healthcare.ConsentStore("my-consent", new Gcp.Healthcare.ConsentStoreArgs
     ///         {
     ///             Dataset = dataset.Id,
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var test_account = new Gcp.ServiceAccount.Account("test-account", new Gcp.ServiceAccount.AccountArgs
     ///         {
     ///             AccountId = "my-account",
     ///             DisplayName = "Test Service Account",
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///         var test_iam = new Gcp.Healthcare.ConsentStoreIamMember("test-iam", new Gcp.Healthcare.ConsentStoreIamMemberArgs
     ///         {
@@ -119,9 +98,6 @@ namespace Pulumi.Gcp.Healthcare
     ///             ConsentStoreId = my_consent.Name,
     ///             Role = "roles/editor",
     ///             Member = test_account.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         }, new CustomResourceOptions
-    ///         {
-    ///             Provider = google_beta,
     ///         });
     ///     }
     /// 
@@ -134,14 +110,6 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// ```sh
     ///  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/{{name}}
-    /// ```
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{name}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:healthcare/consentStore:ConsentStore")]
@@ -162,7 +130,7 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string?> DefaultConsentTtl { get; private set; } = null!;
 
         /// <summary>
-        /// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+        /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         /// </summary>
         [Output("enableConsentCreateOnUpdate")]
         public Output<bool?> EnableConsentCreateOnUpdate { get; private set; } = null!;
@@ -248,7 +216,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? DefaultConsentTtl { get; set; }
 
         /// <summary>
-        /// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+        /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         /// </summary>
         [Input("enableConsentCreateOnUpdate")]
         public Input<bool>? EnableConsentCreateOnUpdate { get; set; }
@@ -301,7 +269,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? DefaultConsentTtl { get; set; }
 
         /// <summary>
-        /// If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+        /// If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         /// </summary>
         [Input("enableConsentCreateOnUpdate")]
         public Input<bool>? EnableConsentCreateOnUpdate { get; set; }

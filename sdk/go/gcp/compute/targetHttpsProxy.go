@@ -55,6 +55,9 @@ type TargetHttpsProxy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind pulumi.BoolOutput `pulumi:"proxyBind"`
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntOutput `pulumi:"proxyId"`
 	// Specifies the QUIC override policy for this resource. This determines
@@ -130,6 +133,9 @@ type targetHttpsProxyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind *bool `pulumi:"proxyBind"`
 	// The unique identifier for the resource.
 	ProxyId *int `pulumi:"proxyId"`
 	// Specifies the QUIC override policy for this resource. This determines
@@ -171,6 +177,9 @@ type TargetHttpsProxyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind pulumi.BoolPtrInput
 	// The unique identifier for the resource.
 	ProxyId pulumi.IntPtrInput
 	// Specifies the QUIC override policy for this resource. This determines
@@ -214,6 +223,9 @@ type targetHttpsProxyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind *bool `pulumi:"proxyBind"`
 	// Specifies the QUIC override policy for this resource. This determines
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
@@ -250,6 +262,9 @@ type TargetHttpsProxyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field only applies when the forwarding rule that references
+	// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+	ProxyBind pulumi.BoolPtrInput
 	// Specifies the QUIC override policy for this resource. This determines
 	// whether the load balancer will attempt to negotiate QUIC with clients
 	// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is

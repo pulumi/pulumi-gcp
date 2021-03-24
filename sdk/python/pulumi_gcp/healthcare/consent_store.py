@@ -28,7 +28,7 @@ class ConsentStore(pulumi.CustomResource):
 
         To get more information about ConsentStore, see:
 
-        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+        * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
         * How-to Guides
             * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
 
@@ -39,10 +39,8 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
         ```
         ### Healthcare Consent Store Full
 
@@ -50,16 +48,14 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
         my_consent = gcp.healthcare.ConsentStore("my-consent",
             dataset=dataset.id,
             enable_consent_create_on_update=True,
             default_consent_ttl="90000s",
             labels={
                 "label1": "labelvalue1",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         ```
         ### Healthcare Consent Store Iam
 
@@ -67,20 +63,16 @@ class ConsentStore(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        dataset = gcp.healthcare.Dataset("dataset", location="us-central1",
-        opts=pulumi.ResourceOptions(provider=google_beta))
-        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id,
-        opts=pulumi.ResourceOptions(provider=google_beta))
+        dataset = gcp.healthcare.Dataset("dataset", location="us-central1")
+        my_consent = gcp.healthcare.ConsentStore("my-consent", dataset=dataset.id)
         test_account = gcp.service_account.Account("test-account",
             account_id="my-account",
-            display_name="Test Service Account",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            display_name="Test Service Account")
         test_iam = gcp.healthcare.ConsentStoreIamMember("test-iam",
             dataset=dataset.id,
             consent_store_id=my_consent.name,
             role="roles/editor",
-            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            member=test_account.email.apply(lambda email: f"serviceAccount:{email}"))
         ```
 
         ## Import
@@ -91,21 +83,13 @@ class ConsentStore(pulumi.CustomResource):
          $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
         ```
 
-        ```sh
-         $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/{{name}}
-        ```
-
-        ```sh
-         $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{name}}
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] dataset: Identifies the dataset addressed by this request. Must be in the format
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+        :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize Consent stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
                conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}`
@@ -167,7 +151,7 @@ class ConsentStore(pulumi.CustomResource):
                'projects/{project}/locations/{location}/datasets/{dataset}'
         :param pulumi.Input[str] default_consent_ttl: Default time to live for consents in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-        :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+        :param pulumi.Input[bool] enable_consent_create_on_update: If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize Consent stores.
                Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must
                conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}`
@@ -212,7 +196,7 @@ class ConsentStore(pulumi.CustomResource):
     @pulumi.getter(name="enableConsentCreateOnUpdate")
     def enable_consent_create_on_update(self) -> pulumi.Output[Optional[bool]]:
         """
-        If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+        If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
         """
         return pulumi.get(self, "enable_consent_create_on_update")
 

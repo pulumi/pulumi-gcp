@@ -3249,6 +3249,7 @@ class DiskSourceImageEncryptionKey(dict):
 class DiskSourceSnapshotEncryptionKey(dict):
     def __init__(__self__, *,
                  kms_key_self_link: Optional[str] = None,
+                 kms_key_service_account: Optional[str] = None,
                  raw_key: Optional[str] = None,
                  sha256: Optional[str] = None):
         """
@@ -3257,6 +3258,8 @@ class DiskSourceSnapshotEncryptionKey(dict):
                (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        :param str kms_key_service_account: The service account used for the encryption request for the given KMS key.
+               If absent, the Compute Engine Service Agent service account is used.
         :param str raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
         :param str sha256: -
@@ -3265,6 +3268,8 @@ class DiskSourceSnapshotEncryptionKey(dict):
         """
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
         if sha256 is not None:
@@ -3281,6 +3286,15 @@ class DiskSourceSnapshotEncryptionKey(dict):
         See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
         """
         return pulumi.get(self, "kms_key_self_link")
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[str]:
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
 
     @property
     @pulumi.getter(name="rawKey")

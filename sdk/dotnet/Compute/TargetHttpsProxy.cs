@@ -151,6 +151,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// This field only applies when the forwarding rule that references
+        /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Output("proxyBind")]
+        public Output<bool> ProxyBind { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier for the resource.
         /// </summary>
         [Output("proxyId")]
@@ -269,6 +276,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// This field only applies when the forwarding rule that references
+        /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Input("proxyBind")]
+        public Input<bool>? ProxyBind { get; set; }
+
+        /// <summary>
         /// Specifies the QUIC override policy for this resource. This determines
         /// whether the load balancer will attempt to negotiate QUIC with clients
         /// or not. Can specify one of NONE, ENABLE, or DISABLE. If NONE is
@@ -346,6 +360,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// This field only applies when the forwarding rule that references
+        /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Input("proxyBind")]
+        public Input<bool>? ProxyBind { get; set; }
 
         /// <summary>
         /// The unique identifier for the resource.

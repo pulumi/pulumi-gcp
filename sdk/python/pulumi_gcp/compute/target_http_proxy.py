@@ -18,6 +18,7 @@ class TargetHttpProxy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proxy_bind: Optional[pulumi.Input[bool]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -105,6 +106,8 @@ class TargetHttpProxy(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references
+               this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
                to the BackendService.
         """
@@ -128,6 +131,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['project'] = project
+            __props__['proxy_bind'] = proxy_bind
             if url_map is None and not opts.urn:
                 raise TypeError("Missing required property 'url_map'")
             __props__['url_map'] = url_map
@@ -148,6 +152,7 @@ class TargetHttpProxy(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            proxy_bind: Optional[pulumi.Input[bool]] = None,
             proxy_id: Optional[pulumi.Input[int]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             url_map: Optional[pulumi.Input[str]] = None) -> 'TargetHttpProxy':
@@ -169,6 +174,8 @@ class TargetHttpProxy(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references
+               this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[int] proxy_id: The unique identifier for the resource.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] url_map: A reference to the UrlMap resource that defines the mapping from URL
@@ -182,6 +189,7 @@ class TargetHttpProxy(pulumi.CustomResource):
         __props__["description"] = description
         __props__["name"] = name
         __props__["project"] = project
+        __props__["proxy_bind"] = proxy_bind
         __props__["proxy_id"] = proxy_id
         __props__["self_link"] = self_link
         __props__["url_map"] = url_map
@@ -225,6 +233,15 @@ class TargetHttpProxy(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="proxyBind")
+    def proxy_bind(self) -> pulumi.Output[bool]:
+        """
+        This field only applies when the forwarding rule that references
+        this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        """
+        return pulumi.get(self, "proxy_bind")
 
     @property
     @pulumi.getter(name="proxyId")

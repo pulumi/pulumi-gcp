@@ -16,6 +16,7 @@ class Job(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
                  ip_configuration: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
@@ -66,6 +67,7 @@ class Job(pulumi.CustomResource):
         pubsub_stream = gcp.dataflow.Job("pubsubStream",
             template_gcs_path="gs://my-bucket/templates/template_file",
             temp_gcs_location="gs://my-bucket/tmp_dir",
+            enable_streaming_engine=True,
             parameters={
                 "inputFilePattern": bucket1.url.apply(lambda url: f"{url}/*.json"),
                 "outputTopic": topic.id,
@@ -91,6 +93,7 @@ class Job(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[bool] enable_streaming_engine: Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
         :param pulumi.Input[Mapping[str, Any]] labels: User labels to be specified for the job. Keys and values should follow the restrictions
@@ -130,6 +133,7 @@ class Job(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['additional_experiments'] = additional_experiments
+            __props__['enable_streaming_engine'] = enable_streaming_engine
             __props__['ip_configuration'] = ip_configuration
             __props__['kms_key_name'] = kms_key_name
             __props__['labels'] = labels
@@ -165,6 +169,7 @@ class Job(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            enable_streaming_engine: Optional[pulumi.Input[bool]] = None,
             ip_configuration: Optional[pulumi.Input[str]] = None,
             job_id: Optional[pulumi.Input[str]] = None,
             kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -193,6 +198,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
+        :param pulumi.Input[bool] enable_streaming_engine: Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
         :param pulumi.Input[str] ip_configuration: The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
         :param pulumi.Input[str] job_id: The unique ID of this job.
         :param pulumi.Input[str] kms_key_name: The name for the Cloud KMS key for the job. Key format is: `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`
@@ -222,6 +228,7 @@ class Job(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["additional_experiments"] = additional_experiments
+        __props__["enable_streaming_engine"] = enable_streaming_engine
         __props__["ip_configuration"] = ip_configuration
         __props__["job_id"] = job_id
         __props__["kms_key_name"] = kms_key_name
@@ -251,6 +258,14 @@ class Job(pulumi.CustomResource):
         List of experiments that should be used by the job. An example value is `["enable_stackdriver_agent_metrics"]`.
         """
         return pulumi.get(self, "additional_experiments")
+
+    @property
+    @pulumi.getter(name="enableStreamingEngine")
+    def enable_streaming_engine(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
+        """
+        return pulumi.get(self, "enable_streaming_engine")
 
     @property
     @pulumi.getter(name="ipConfiguration")

@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about ConsentStore, see:
  *
- * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1beta1/projects.locations.datasets.consentStores)
+ * * [API documentation](https://cloud.google.com/healthcare/docs/reference/rest/v1/projects.locations.datasets.consentStores)
  * * How-to Guides
  *     * [Creating a Consent store](https://cloud.google.com/healthcare/docs/how-tos/consent)
  *
@@ -20,12 +20,8 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
- *     provider: google_beta,
- * });
- * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id}, {
- *     provider: google_beta,
- * });
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id});
  * ```
  * ### Healthcare Consent Store Full
  *
@@ -33,9 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
- *     provider: google_beta,
- * });
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
  * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {
  *     dataset: dataset.id,
  *     enableConsentCreateOnUpdate: true,
@@ -43,8 +37,6 @@ import * as utilities from "../utilities";
  *     labels: {
  *         label1: "labelvalue1",
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Healthcare Consent Store Iam
@@ -53,25 +45,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"}, {
- *     provider: google_beta,
- * });
- * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id}, {
- *     provider: google_beta,
- * });
+ * const dataset = new gcp.healthcare.Dataset("dataset", {location: "us-central1"});
+ * const my_consent = new gcp.healthcare.ConsentStore("my-consent", {dataset: dataset.id});
  * const test_account = new gcp.serviceAccount.Account("test-account", {
  *     accountId: "my-account",
  *     displayName: "Test Service Account",
- * }, {
- *     provider: google_beta,
  * });
  * const test_iam = new gcp.healthcare.ConsentStoreIamMember("test-iam", {
  *     dataset: dataset.id,
  *     consentStoreId: my_consent.name,
  *     role: "roles/editor",
  *     member: pulumi.interpolate`serviceAccount:${test_account.email}`,
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *
@@ -81,14 +65,6 @@ import * as utilities from "../utilities";
  *
  * ```sh
  *  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/consentStores/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{dataset}}/{{name}}
- * ```
- *
- * ```sh
- *  $ pulumi import gcp:healthcare/consentStore:ConsentStore default {{name}}
  * ```
  */
 export class ConsentStore extends pulumi.CustomResource {
@@ -130,7 +106,7 @@ export class ConsentStore extends pulumi.CustomResource {
      */
     public readonly defaultConsentTtl!: pulumi.Output<string | undefined>;
     /**
-     * If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+     * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
     public readonly enableConsentCreateOnUpdate!: pulumi.Output<boolean | undefined>;
     /**
@@ -201,7 +177,7 @@ export interface ConsentStoreState {
      */
     readonly defaultConsentTtl?: pulumi.Input<string>;
     /**
-     * If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+     * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
     readonly enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
     /**
@@ -237,7 +213,7 @@ export interface ConsentStoreArgs {
      */
     readonly defaultConsentTtl?: pulumi.Input<string>;
     /**
-     * If true, [consents.patch] [google.cloud.healthcare.v1beta1.consent.UpdateConsent] creates the consent if it does not already exist.
+     * If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
      */
     readonly enableConsentCreateOnUpdate?: pulumi.Input<boolean>;
     /**
