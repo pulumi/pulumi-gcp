@@ -130,6 +130,11 @@ export class TargetHttpProxy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    public readonly proxyBind!: pulumi.Output<boolean>;
+    /**
      * The unique identifier for the resource.
      */
     public /*out*/ readonly proxyId!: pulumi.Output<number>;
@@ -160,6 +165,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["proxyBind"] = state ? state.proxyBind : undefined;
             inputs["proxyId"] = state ? state.proxyId : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["urlMap"] = state ? state.urlMap : undefined;
@@ -171,6 +177,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["proxyId"] = undefined /*out*/;
@@ -211,6 +218,11 @@ export interface TargetHttpProxyState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    readonly proxyBind?: pulumi.Input<boolean>;
+    /**
      * The unique identifier for the resource.
      */
     readonly proxyId?: pulumi.Input<number>;
@@ -248,6 +260,11 @@ export interface TargetHttpProxyArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    readonly proxyBind?: pulumi.Input<boolean>;
     /**
      * A reference to the UrlMap resource that defines the mapping from URL
      * to the BackendService.

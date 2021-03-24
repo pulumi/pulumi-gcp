@@ -109,6 +109,11 @@ export class TargetTCPProxy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    public readonly proxyBind!: pulumi.Output<boolean>;
+    /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
@@ -142,6 +147,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["proxyBind"] = state ? state.proxyBind : undefined;
             inputs["proxyHeader"] = state ? state.proxyHeader : undefined;
             inputs["proxyId"] = state ? state.proxyId : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -154,6 +160,7 @@ export class TargetTCPProxy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["proxyId"] = undefined /*out*/;
@@ -198,6 +205,11 @@ export interface TargetTCPProxyState {
      */
     readonly project?: pulumi.Input<string>;
     /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    readonly proxyBind?: pulumi.Input<boolean>;
+    /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.
      * Default value is `NONE`.
@@ -241,6 +253,11 @@ export interface TargetTCPProxyArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    readonly proxyBind?: pulumi.Input<boolean>;
     /**
      * Specifies the type of proxy header to append before sending data to
      * the backend.

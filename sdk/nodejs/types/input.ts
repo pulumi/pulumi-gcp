@@ -6115,6 +6115,11 @@ export namespace compute {
          */
         kmsKeySelfLink?: pulumi.Input<string>;
         /**
+         * The service account used for the encryption request for the given KMS key.
+         * If absent, the Compute Engine Service Agent service account is used.
+         */
+        kmsKeyServiceAccount?: pulumi.Input<string>;
+        /**
          * Specifies a 256-bit customer-supplied encryption key, encoded in
          * RFC 4648 base64 to either encrypt or decrypt this resource.
          */
@@ -21296,5 +21301,12 @@ export namespace tpu {
          * Defines whether the TPU instance is preemptible.
          */
         preemptible: pulumi.Input<boolean>;
+    }
+}
+
+export namespace vpcaccess {
+    export interface ConnectorSubnet {
+        name?: pulumi.Input<string>;
+        projectId?: pulumi.Input<string>;
     }
 }

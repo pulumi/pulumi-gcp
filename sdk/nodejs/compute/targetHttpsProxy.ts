@@ -127,6 +127,11 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    public readonly proxyBind!: pulumi.Output<boolean>;
+    /**
      * The unique identifier for the resource.
      */
     public /*out*/ readonly proxyId!: pulumi.Output<number>;
@@ -179,6 +184,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["description"] = state ? state.description : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["project"] = state ? state.project : undefined;
+            inputs["proxyBind"] = state ? state.proxyBind : undefined;
             inputs["proxyId"] = state ? state.proxyId : undefined;
             inputs["quicOverride"] = state ? state.quicOverride : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
@@ -196,6 +202,7 @@ export class TargetHttpsProxy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["quicOverride"] = args ? args.quicOverride : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
@@ -238,6 +245,11 @@ export interface TargetHttpsProxyState {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    readonly proxyBind?: pulumi.Input<boolean>;
     /**
      * The unique identifier for the resource.
      */
@@ -298,6 +310,11 @@ export interface TargetHttpsProxyArgs {
      * If it is not provided, the provider project is used.
      */
     readonly project?: pulumi.Input<string>;
+    /**
+     * This field only applies when the forwarding rule that references
+     * this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+     */
+    readonly proxyBind?: pulumi.Input<boolean>;
     /**
      * Specifies the QUIC override policy for this resource. This determines
      * whether the load balancer will attempt to negotiate QUIC with clients

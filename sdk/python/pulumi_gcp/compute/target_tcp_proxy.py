@@ -19,6 +19,7 @@ class TargetTCPProxy(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proxy_bind: Optional[pulumi.Input[bool]] = None,
                  proxy_header: Optional[pulumi.Input[str]] = None,
                  __props__=None,
                  __name__=None,
@@ -83,6 +84,8 @@ class TargetTCPProxy(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references
+               this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
@@ -111,6 +114,7 @@ class TargetTCPProxy(pulumi.CustomResource):
             __props__['description'] = description
             __props__['name'] = name
             __props__['project'] = project
+            __props__['proxy_bind'] = proxy_bind
             __props__['proxy_header'] = proxy_header
             __props__['creation_timestamp'] = None
             __props__['proxy_id'] = None
@@ -130,6 +134,7 @@ class TargetTCPProxy(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            proxy_bind: Optional[pulumi.Input[bool]] = None,
             proxy_header: Optional[pulumi.Input[str]] = None,
             proxy_id: Optional[pulumi.Input[int]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'TargetTCPProxy':
@@ -152,6 +157,8 @@ class TargetTCPProxy(pulumi.CustomResource):
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] proxy_bind: This field only applies when the forwarding rule that references
+               this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] proxy_header: Specifies the type of proxy header to append before sending data to
                the backend.
                Default value is `NONE`.
@@ -168,6 +175,7 @@ class TargetTCPProxy(pulumi.CustomResource):
         __props__["description"] = description
         __props__["name"] = name
         __props__["project"] = project
+        __props__["proxy_bind"] = proxy_bind
         __props__["proxy_header"] = proxy_header
         __props__["proxy_id"] = proxy_id
         __props__["self_link"] = self_link
@@ -219,6 +227,15 @@ class TargetTCPProxy(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="proxyBind")
+    def proxy_bind(self) -> pulumi.Output[bool]:
+        """
+        This field only applies when the forwarding rule that references
+        this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        """
+        return pulumi.get(self, "proxy_bind")
 
     @property
     @pulumi.getter(name="proxyHeader")

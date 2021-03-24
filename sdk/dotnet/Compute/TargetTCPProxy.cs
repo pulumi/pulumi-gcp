@@ -115,6 +115,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// This field only applies when the forwarding rule that references
+        /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Output("proxyBind")]
+        public Output<bool> ProxyBind { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies the type of proxy header to append before sending data to
         /// the backend.
         /// Default value is `NONE`.
@@ -213,6 +220,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// This field only applies when the forwarding rule that references
+        /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Input("proxyBind")]
+        public Input<bool>? ProxyBind { get; set; }
+
+        /// <summary>
         /// Specifies the type of proxy header to append before sending data to
         /// the backend.
         /// Default value is `NONE`.
@@ -264,6 +278,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// This field only applies when the forwarding rule that references
+        /// this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
+        /// </summary>
+        [Input("proxyBind")]
+        public Input<bool>? ProxyBind { get; set; }
 
         /// <summary>
         /// Specifies the type of proxy header to append before sending data to

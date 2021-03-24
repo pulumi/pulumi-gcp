@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../types";
 import * as utilities from "../utilities";
 
 /**
@@ -23,6 +24,31 @@ import * as utilities from "../utilities";
  * const connector = new gcp.vpcaccess.Connector("connector", {
  *     ipCidrRange: "10.8.0.0/28",
  *     network: "default",
+ * });
+ * ```
+ * ### VPC Access Connector Shared VPC
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const customTestNetwork = new gcp.compute.Network("customTestNetwork", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const customTestSubnetwork = new gcp.compute.Subnetwork("customTestSubnetwork", {
+ *     ipCidrRange: "10.2.0.0/28",
+ *     region: "us-central1",
+ *     network: customTestNetwork.id,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const connector = new gcp.vpcaccess.Connector("connector", {
+ *     subnet: {
+ *         name: customTestSubnetwork.name,
+ *     },
+ *     machineType: "e2-standard-4",
+ * }, {
+ *     provider: google_beta,
  * });
  * ```
  *
@@ -77,11 +103,23 @@ export class Connector extends pulumi.CustomResource {
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    public readonly ipCidrRange!: pulumi.Output<string>;
+    public readonly ipCidrRange!: pulumi.Output<string | undefined>;
+    /**
+     * Machine type of VM Instance underlying connector. Default is e2-micro
+     */
+    public readonly machineType!: pulumi.Output<string | undefined>;
+    /**
+     * Maximum value of instances in autoscaling group underlying the connector.
+     */
+    public readonly maxInstances!: pulumi.Output<number>;
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
     public readonly maxThroughput!: pulumi.Output<number | undefined>;
+    /**
+     * Minimum value of instances in autoscaling group underlying the connector.
+     */
+    public readonly minInstances!: pulumi.Output<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
@@ -91,9 +129,9 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Name of a VPC network.
+     * Name of the VPC network. Required if `ipCidrRange` is set.
      */
-    public readonly network!: pulumi.Output<string>;
+    public readonly network!: pulumi.Output<string | undefined>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -111,6 +149,10 @@ export class Connector extends pulumi.CustomResource {
      * State of the VPC access connector.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The subnet in which to house the connector
+     */
+    public readonly subnet!: pulumi.Output<outputs.vpcaccess.ConnectorSubnet | undefined>;
 
     /**
      * Create a Connector resource with the given unique name, arguments, and options.
@@ -119,14 +161,17 @@ export class Connector extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ConnectorArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ConnectorArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConnectorArgs | ConnectorState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectorState | undefined;
             inputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
+            inputs["machineType"] = state ? state.machineType : undefined;
+            inputs["maxInstances"] = state ? state.maxInstances : undefined;
             inputs["maxThroughput"] = state ? state.maxThroughput : undefined;
+            inputs["minInstances"] = state ? state.minInstances : undefined;
             inputs["minThroughput"] = state ? state.minThroughput : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["network"] = state ? state.network : undefined;
@@ -134,21 +179,20 @@ export class Connector extends pulumi.CustomResource {
             inputs["region"] = state ? state.region : undefined;
             inputs["selfLink"] = state ? state.selfLink : undefined;
             inputs["state"] = state ? state.state : undefined;
+            inputs["subnet"] = state ? state.subnet : undefined;
         } else {
             const args = argsOrState as ConnectorArgs | undefined;
-            if ((!args || args.ipCidrRange === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ipCidrRange'");
-            }
-            if ((!args || args.network === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'network'");
-            }
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            inputs["machineType"] = args ? args.machineType : undefined;
+            inputs["maxInstances"] = args ? args.maxInstances : undefined;
             inputs["maxThroughput"] = args ? args.maxThroughput : undefined;
+            inputs["minInstances"] = args ? args.minInstances : undefined;
             inputs["minThroughput"] = args ? args.minThroughput : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["subnet"] = args ? args.subnet : undefined;
             inputs["selfLink"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
@@ -168,9 +212,21 @@ export interface ConnectorState {
      */
     readonly ipCidrRange?: pulumi.Input<string>;
     /**
+     * Machine type of VM Instance underlying connector. Default is e2-micro
+     */
+    readonly machineType?: pulumi.Input<string>;
+    /**
+     * Maximum value of instances in autoscaling group underlying the connector.
+     */
+    readonly maxInstances?: pulumi.Input<number>;
+    /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
     readonly maxThroughput?: pulumi.Input<number>;
+    /**
+     * Minimum value of instances in autoscaling group underlying the connector.
+     */
+    readonly minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
@@ -180,7 +236,7 @@ export interface ConnectorState {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Name of a VPC network.
+     * Name of the VPC network. Required if `ipCidrRange` is set.
      */
     readonly network?: pulumi.Input<string>;
     /**
@@ -200,6 +256,10 @@ export interface ConnectorState {
      * State of the VPC access connector.
      */
     readonly state?: pulumi.Input<string>;
+    /**
+     * The subnet in which to house the connector
+     */
+    readonly subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
 }
 
 /**
@@ -209,11 +269,23 @@ export interface ConnectorArgs {
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
-    readonly ipCidrRange: pulumi.Input<string>;
+    readonly ipCidrRange?: pulumi.Input<string>;
+    /**
+     * Machine type of VM Instance underlying connector. Default is e2-micro
+     */
+    readonly machineType?: pulumi.Input<string>;
+    /**
+     * Maximum value of instances in autoscaling group underlying the connector.
+     */
+    readonly maxInstances?: pulumi.Input<number>;
     /**
      * Maximum throughput of the connector in Mbps, must be greater than `minThroughput`. Default is 1000.
      */
     readonly maxThroughput?: pulumi.Input<number>;
+    /**
+     * Minimum value of instances in autoscaling group underlying the connector.
+     */
+    readonly minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
@@ -223,9 +295,9 @@ export interface ConnectorArgs {
      */
     readonly name?: pulumi.Input<string>;
     /**
-     * Name of a VPC network.
+     * Name of the VPC network. Required if `ipCidrRange` is set.
      */
-    readonly network: pulumi.Input<string>;
+    readonly network?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -235,4 +307,8 @@ export interface ConnectorArgs {
      * Region where the VPC Access connector resides. If it is not provided, the provider region is used.
      */
     readonly region?: pulumi.Input<string>;
+    /**
+     * The subnet in which to house the connector
+     */
+    readonly subnet?: pulumi.Input<inputs.vpcaccess.ConnectorSubnet>;
 }

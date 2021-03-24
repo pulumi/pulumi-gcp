@@ -3689,6 +3689,7 @@ class DiskSourceImageEncryptionKeyArgs:
 class DiskSourceSnapshotEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_self_link: Optional[pulumi.Input[str]] = None,
+                 kms_key_service_account: Optional[pulumi.Input[str]] = None,
                  raw_key: Optional[pulumi.Input[str]] = None,
                  sha256: Optional[pulumi.Input[str]] = None):
         """
@@ -3697,6 +3698,8 @@ class DiskSourceSnapshotEncryptionKeyArgs:
                (`service-{{PROJECT_NUMBER}}@compute-system.iam.gserviceaccount.com`) must have
                `roles/cloudkms.cryptoKeyEncrypterDecrypter` to use this feature.
                See https://cloud.google.com/compute/docs/disks/customer-managed-encryption#encrypt_a_new_persistent_disk_with_your_own_keys
+        :param pulumi.Input[str] kms_key_service_account: The service account used for the encryption request for the given KMS key.
+               If absent, the Compute Engine Service Agent service account is used.
         :param pulumi.Input[str] raw_key: Specifies a 256-bit customer-supplied encryption key, encoded in
                RFC 4648 base64 to either encrypt or decrypt this resource.
         :param pulumi.Input[str] sha256: -
@@ -3705,6 +3708,8 @@ class DiskSourceSnapshotEncryptionKeyArgs:
         """
         if kms_key_self_link is not None:
             pulumi.set(__self__, "kms_key_self_link", kms_key_self_link)
+        if kms_key_service_account is not None:
+            pulumi.set(__self__, "kms_key_service_account", kms_key_service_account)
         if raw_key is not None:
             pulumi.set(__self__, "raw_key", raw_key)
         if sha256 is not None:
@@ -3725,6 +3730,19 @@ class DiskSourceSnapshotEncryptionKeyArgs:
     @kms_key_self_link.setter
     def kms_key_self_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_self_link", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyServiceAccount")
+    def kms_key_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account used for the encryption request for the given KMS key.
+        If absent, the Compute Engine Service Agent service account is used.
+        """
+        return pulumi.get(self, "kms_key_service_account")
+
+    @kms_key_service_account.setter
+    def kms_key_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_service_account", value)
 
     @property
     @pulumi.getter(name="rawKey")

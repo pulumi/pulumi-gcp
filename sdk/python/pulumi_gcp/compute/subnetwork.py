@@ -166,8 +166,7 @@ class Subnetwork(pulumi.CustomResource):
                INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
                reserved for Internal HTTP(S) Load Balancing. If unspecified, the
                purpose defaults to PRIVATE.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-               Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -283,8 +282,7 @@ class Subnetwork(pulumi.CustomResource):
                INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
                reserved for Internal HTTP(S) Load Balancing. If unspecified, the
                purpose defaults to PRIVATE.
-               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-               Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
+               If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
         :param pulumi.Input[str] region: The GCP region for this subnetwork.
         :param pulumi.Input[str] role: The role of subnetwork. Currently, this field is only used when
                purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE
@@ -434,8 +432,7 @@ class Subnetwork(pulumi.CustomResource):
         INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is
         reserved for Internal HTTP(S) Load Balancing. If unspecified, the
         purpose defaults to PRIVATE.
-        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set the role.
-        Possible values are `INTERNAL_HTTPS_LOAD_BALANCER` and `PRIVATE`.
+        If set to INTERNAL_HTTPS_LOAD_BALANCER you must also set `role`.
         """
         return pulumi.get(self, "purpose")
 

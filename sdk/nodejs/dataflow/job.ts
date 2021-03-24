@@ -35,6 +35,7 @@ import * as utilities from "../utilities";
  * const pubsubStream = new gcp.dataflow.Job("pubsubStream", {
  *     templateGcsPath: "gs://my-bucket/templates/template_file",
  *     tempGcsLocation: "gs://my-bucket/tmp_dir",
+ *     enableStreamingEngine: true,
  *     parameters: {
  *         inputFilePattern: pulumi.interpolate`${bucket1.url}/*.json`,
  *         outputTopic: topic.id,
@@ -90,6 +91,10 @@ export class Job extends pulumi.CustomResource {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     public readonly additionalExperiments!: pulumi.Output<string[] | undefined>;
+    /**
+     * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
+     */
+    public readonly enableStreamingEngine!: pulumi.Output<boolean | undefined>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
@@ -188,6 +193,7 @@ export class Job extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as JobState | undefined;
             inputs["additionalExperiments"] = state ? state.additionalExperiments : undefined;
+            inputs["enableStreamingEngine"] = state ? state.enableStreamingEngine : undefined;
             inputs["ipConfiguration"] = state ? state.ipConfiguration : undefined;
             inputs["jobId"] = state ? state.jobId : undefined;
             inputs["kmsKeyName"] = state ? state.kmsKeyName : undefined;
@@ -217,6 +223,7 @@ export class Job extends pulumi.CustomResource {
                 throw new Error("Missing required property 'templateGcsPath'");
             }
             inputs["additionalExperiments"] = args ? args.additionalExperiments : undefined;
+            inputs["enableStreamingEngine"] = args ? args.enableStreamingEngine : undefined;
             inputs["ipConfiguration"] = args ? args.ipConfiguration : undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -253,6 +260,10 @@ export interface JobState {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     readonly additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
+     */
+    readonly enableStreamingEngine?: pulumi.Input<boolean>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */
@@ -346,6 +357,10 @@ export interface JobArgs {
      * List of experiments that should be used by the job. An example value is `["enableStackdriverAgentMetrics"]`.
      */
     readonly additionalExperiments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable/disable the use of [Streaming Engine](https://cloud.google.com/dataflow/docs/guides/deploying-a-pipeline#streaming-engine) for the job. Note that Streaming Engine is enabled by default for pipelines developed against the Beam SDK for Python v2.21.0 or later when using Python 3.
+     */
+    readonly enableStreamingEngine?: pulumi.Input<boolean>;
     /**
      * The configuration for VM IPs.  Options are `"WORKER_IP_PUBLIC"` or `"WORKER_IP_PRIVATE"`.
      */

@@ -38,6 +38,47 @@ namespace Pulumi.Gcp.VpcAccess
     /// 
     /// }
     /// ```
+    /// ### VPC Access Connector Shared VPC
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var customTestNetwork = new Gcp.Compute.Network("customTestNetwork", new Gcp.Compute.NetworkArgs
+    ///         {
+    ///             AutoCreateSubnetworks = false,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var customTestSubnetwork = new Gcp.Compute.Subnetwork("customTestSubnetwork", new Gcp.Compute.SubnetworkArgs
+    ///         {
+    ///             IpCidrRange = "10.2.0.0/28",
+    ///             Region = "us-central1",
+    ///             Network = customTestNetwork.Id,
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///         var connector = new Gcp.VpcAccess.Connector("connector", new Gcp.VpcAccess.ConnectorArgs
+    ///         {
+    ///             Subnet = new Gcp.VpcAccess.Inputs.ConnectorSubnetArgs
+    ///             {
+    ///                 Name = customTestSubnetwork.Name,
+    ///             },
+    ///             MachineType = "e2-standard-4",
+    ///         }, new CustomResourceOptions
+    ///         {
+    ///             Provider = google_beta,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -66,13 +107,31 @@ namespace Pulumi.Gcp.VpcAccess
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
         [Output("ipCidrRange")]
-        public Output<string> IpCidrRange { get; private set; } = null!;
+        public Output<string?> IpCidrRange { get; private set; } = null!;
+
+        /// <summary>
+        /// Machine type of VM Instance underlying connector. Default is e2-micro
+        /// </summary>
+        [Output("machineType")]
+        public Output<string?> MachineType { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Output("maxInstances")]
+        public Output<int> MaxInstances { get; private set; } = null!;
 
         /// <summary>
         /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         /// </summary>
         [Output("maxThroughput")]
         public Output<int?> MaxThroughput { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Output("minInstances")]
+        public Output<int> MinInstances { get; private set; } = null!;
 
         /// <summary>
         /// Minimum throughput of the connector in Mbps. Default and min is 200.
@@ -87,10 +146,10 @@ namespace Pulumi.Gcp.VpcAccess
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Name of a VPC network.
+        /// Name of the VPC network. Required if `ip_cidr_range` is set.
         /// </summary>
         [Output("network")]
-        public Output<string> Network { get; private set; } = null!;
+        public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -117,6 +176,12 @@ namespace Pulumi.Gcp.VpcAccess
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The subnet in which to house the connector
+        /// </summary>
+        [Output("subnet")]
+        public Output<Outputs.ConnectorSubnet?> Subnet { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Connector resource with the given unique name, arguments, and options.
@@ -125,7 +190,7 @@ namespace Pulumi.Gcp.VpcAccess
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Connector(string name, ConnectorArgs args, CustomResourceOptions? options = null)
+        public Connector(string name, ConnectorArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:vpcaccess/connector:Connector", name, args ?? new ConnectorArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -166,14 +231,32 @@ namespace Pulumi.Gcp.VpcAccess
         /// <summary>
         /// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
         /// </summary>
-        [Input("ipCidrRange", required: true)]
-        public Input<string> IpCidrRange { get; set; } = null!;
+        [Input("ipCidrRange")]
+        public Input<string>? IpCidrRange { get; set; }
+
+        /// <summary>
+        /// Machine type of VM Instance underlying connector. Default is e2-micro
+        /// </summary>
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        /// <summary>
+        /// Maximum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Input("maxInstances")]
+        public Input<int>? MaxInstances { get; set; }
 
         /// <summary>
         /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }
+
+        /// <summary>
+        /// Minimum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Input("minInstances")]
+        public Input<int>? MinInstances { get; set; }
 
         /// <summary>
         /// Minimum throughput of the connector in Mbps. Default and min is 200.
@@ -188,10 +271,10 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of a VPC network.
+        /// Name of the VPC network. Required if `ip_cidr_range` is set.
         /// </summary>
-        [Input("network", required: true)]
-        public Input<string> Network { get; set; } = null!;
+        [Input("network")]
+        public Input<string>? Network { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -205,6 +288,12 @@ namespace Pulumi.Gcp.VpcAccess
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The subnet in which to house the connector
+        /// </summary>
+        [Input("subnet")]
+        public Input<Inputs.ConnectorSubnetArgs>? Subnet { get; set; }
 
         public ConnectorArgs()
         {
@@ -220,10 +309,28 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<string>? IpCidrRange { get; set; }
 
         /// <summary>
+        /// Machine type of VM Instance underlying connector. Default is e2-micro
+        /// </summary>
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        /// <summary>
+        /// Maximum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Input("maxInstances")]
+        public Input<int>? MaxInstances { get; set; }
+
+        /// <summary>
         /// Maximum throughput of the connector in Mbps, must be greater than `min_throughput`. Default is 1000.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }
+
+        /// <summary>
+        /// Minimum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Input("minInstances")]
+        public Input<int>? MinInstances { get; set; }
 
         /// <summary>
         /// Minimum throughput of the connector in Mbps. Default and min is 200.
@@ -238,7 +345,7 @@ namespace Pulumi.Gcp.VpcAccess
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Name of a VPC network.
+        /// Name of the VPC network. Required if `ip_cidr_range` is set.
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -267,6 +374,12 @@ namespace Pulumi.Gcp.VpcAccess
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The subnet in which to house the connector
+        /// </summary>
+        [Input("subnet")]
+        public Input<Inputs.ConnectorSubnetGetArgs>? Subnet { get; set; }
 
         public ConnectorState()
         {
