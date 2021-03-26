@@ -4,7 +4,7 @@
 package serviceaccount
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // This data source provides a google `oauth2` `accessToken` for a different service account than the one initially running the script.

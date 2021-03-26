@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // A repository (or repo) is a Git repository storing versioned source content.
@@ -25,8 +25,8 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sourcerepo"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/sourcerepo"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -45,10 +45,10 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/pubsub"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/serviceAccount"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/sourcerepo"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/pubsub"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/serviceAccount"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/sourcerepo"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {

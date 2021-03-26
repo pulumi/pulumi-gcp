@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
@@ -24,9 +24,9 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -64,9 +64,9 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigquery"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/bigtable"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/bigquery"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/bigtable"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
