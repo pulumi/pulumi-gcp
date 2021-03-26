@@ -1,11 +1,11 @@
-module github.com/pulumi/pulumi-gcp/provider/v4
+module github.com/pulumi/pulumi-gcp/provider/v5
 
 go 1.16
 
 require (
 	github.com/hashicorp/terraform-provider-google-beta v1.20.1-0.20210315160117-642085ce9b99
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.22.1
-	github.com/pulumi/pulumi/sdk/v2 v2.22.1-0.20210310211618-1f16423ede4c
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.0.0-20210325101119-03683ad99004
+	github.com/pulumi/pulumi/sdk/v3 v3.0.0-20210324220902-b543e235f01d
 )
 
 replace (
