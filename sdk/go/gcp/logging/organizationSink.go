@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a organization-level logging sink. For more information see:
@@ -24,10 +24,10 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -79,7 +79,7 @@ type OrganizationSink struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -154,7 +154,7 @@ type organizationSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -195,7 +195,7 @@ type OrganizationSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -240,7 +240,7 @@ type organizationSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -279,7 +279,7 @@ type OrganizationSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {

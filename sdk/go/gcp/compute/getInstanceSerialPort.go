@@ -4,7 +4,7 @@
 package compute
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get the serial port output from a Compute Instance. For more information see

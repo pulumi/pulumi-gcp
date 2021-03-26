@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // ## Import
@@ -31,7 +31,7 @@ type ProjectSink struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -106,7 +106,7 @@ type projectSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -150,7 +150,7 @@ type ProjectSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -198,7 +198,7 @@ type projectSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -240,7 +240,7 @@ type ProjectSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {

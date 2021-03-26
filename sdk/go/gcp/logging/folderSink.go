@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a folder-level logging sink. For more information see:
@@ -24,11 +24,11 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/logging"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/organizations"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/projects"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/storage"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/logging"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/organizations"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/projects"
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/storage"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
 // func main() {
@@ -89,7 +89,7 @@ type FolderSink struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -165,7 +165,7 @@ type folderSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -207,7 +207,7 @@ type FolderSinkState struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -253,7 +253,7 @@ type folderSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
@@ -293,7 +293,7 @@ type FolderSinkArgs struct {
 	// package main
 	//
 	// import (
-	// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	// )
 	//
 	// func main() {
