@@ -4,16 +4,16 @@ package gcp
 
 import (
 	"fmt"
-	"github.com/pulumi/pulumi-gcp/provider/v4/pkg/version"
 	"path/filepath"
 	"strings"
 	"unicode"
 
 	google "github.com/hashicorp/terraform-provider-google-beta/google-beta"
-	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
-	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
+	"github.com/pulumi/pulumi-gcp/provider/v5/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
 // all of the Google Cloud Platform token components used below.
