@@ -4,7 +4,7 @@
 package sql
 
 import (
-	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
