@@ -14,6 +14,9 @@ from .policy_tag_iam_member import *
 from .policy_tag_iam_policy import *
 from .tag import *
 from .tag_template import *
+from .tag_template_iam_binding import *
+from .tag_template_iam_member import *
+from .tag_template_iam_policy import *
 from .taxonomy import *
 from .taxonomy_iam_binding import *
 from .taxonomy_iam_member import *
@@ -55,6 +58,12 @@ def _register_module():
                 return Tag(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:datacatalog/tagTemplate:TagTemplate":
                 return TagTemplate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding":
+                return TagTemplateIamBinding(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember":
+                return TagTemplateIamMember(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy":
+                return TagTemplateIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:datacatalog/taxonomy:Taxonomy":
                 return Taxonomy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding":
@@ -79,6 +88,9 @@ def _register_module():
     pulumi.runtime.register_resource_module("gcp", "datacatalog/policyTagIamPolicy", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "datacatalog/tag", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "datacatalog/tagTemplate", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "datacatalog/tagTemplateIamBinding", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "datacatalog/tagTemplateIamMember", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "datacatalog/tagTemplateIamPolicy", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "datacatalog/taxonomy", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "datacatalog/taxonomyIamBinding", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "datacatalog/taxonomyIamMember", _module_instance)

@@ -2746,9 +2746,13 @@ type ServicePerimeterSpec struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies []ServicePerimeterSpecEgressPolicy `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies []ServicePerimeterSpecIngressPolicy `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -2784,9 +2788,13 @@ type ServicePerimeterSpecArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies ServicePerimeterSpecEgressPolicyArrayInput `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies ServicePerimeterSpecIngressPolicyArrayInput `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -2890,9 +2898,19 @@ func (o ServicePerimeterSpecOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterSpecOutput) EgressPolicies() ServicePerimeterSpecEgressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []ServicePerimeterSpecEgressPolicy { return v.EgressPolicies }).(ServicePerimeterSpecEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterSpecOutput) IngressPolicies() ServicePerimeterSpecIngressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpec) []ServicePerimeterSpecIngressPolicy { return v.IngressPolicies }).(ServicePerimeterSpecIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -2951,9 +2969,29 @@ func (o ServicePerimeterSpecPtrOutput) AccessLevels() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterSpecPtrOutput) EgressPolicies() ServicePerimeterSpecEgressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpec) []ServicePerimeterSpecEgressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.EgressPolicies
+	}).(ServicePerimeterSpecEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterSpecPtrOutput) IngressPolicies() ServicePerimeterSpecIngressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpec) []ServicePerimeterSpecIngressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.IngressPolicies
+	}).(ServicePerimeterSpecIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterSpec) []string {
 		if v == nil {
@@ -2987,6 +3025,1427 @@ func (o ServicePerimeterSpecPtrOutput) VpcAccessibleServices() ServicePerimeterS
 		}
 		return v.VpcAccessibleServices
 	}).(ServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicy struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom *ServicePerimeterSpecEgressPolicyEgressFrom `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo *ServicePerimeterSpecEgressPolicyEgressTo `pulumi:"egressTo"`
+}
+
+// ServicePerimeterSpecEgressPolicyInput is an input type that accepts ServicePerimeterSpecEgressPolicyArgs and ServicePerimeterSpecEgressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyArgs{...}
+type ServicePerimeterSpecEgressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyOutput() ServicePerimeterSpecEgressPolicyOutput
+	ToServicePerimeterSpecEgressPolicyOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyOutput
+}
+
+type ServicePerimeterSpecEgressPolicyArgs struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom ServicePerimeterSpecEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo ServicePerimeterSpecEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+}
+
+func (ServicePerimeterSpecEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyArgs) ToServicePerimeterSpecEgressPolicyOutput() ServicePerimeterSpecEgressPolicyOutput {
+	return i.ToServicePerimeterSpecEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyArgs) ToServicePerimeterSpecEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyOutput)
+}
+
+// ServicePerimeterSpecEgressPolicyArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyArray and ServicePerimeterSpecEgressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyArrayInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyArray{ ServicePerimeterSpecEgressPolicyArgs{...} }
+type ServicePerimeterSpecEgressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyArrayOutput() ServicePerimeterSpecEgressPolicyArrayOutput
+	ToServicePerimeterSpecEgressPolicyArrayOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyArrayOutput
+}
+
+type ServicePerimeterSpecEgressPolicyArray []ServicePerimeterSpecEgressPolicyInput
+
+func (ServicePerimeterSpecEgressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyArray) ToServicePerimeterSpecEgressPolicyArrayOutput() ServicePerimeterSpecEgressPolicyArrayOutput {
+	return i.ToServicePerimeterSpecEgressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyArray) ToServicePerimeterSpecEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyArrayOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyOutput) ToServicePerimeterSpecEgressPolicyOutput() ServicePerimeterSpecEgressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyOutput) ToServicePerimeterSpecEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyOutput {
+	return o
+}
+
+// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyOutput) EgressFrom() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicy) *ServicePerimeterSpecEgressPolicyEgressFrom {
+		return v.EgressFrom
+	}).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyOutput) EgressTo() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicy) *ServicePerimeterSpecEgressPolicyEgressTo { return v.EgressTo }).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyArrayOutput) ToServicePerimeterSpecEgressPolicyArrayOutput() ServicePerimeterSpecEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyArrayOutput) ToServicePerimeterSpecEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecEgressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecEgressPolicy {
+		return vs[0].([]ServicePerimeterSpecEgressPolicy)[vs[1].(int)]
+	}).(ServicePerimeterSpecEgressPolicyOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// ServicePerimeterSpecEgressPolicyEgressFromInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromArgs and ServicePerimeterSpecEgressPolicyEgressFromOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+type ServicePerimeterSpecEgressPolicyEgressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressFromOutput() ServicePerimeterSpecEgressPolicyEgressFromOutput
+	ToServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressFromOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (ServicePerimeterSpecEgressPolicyEgressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEgressPolicyEgressFromOutput() ServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromOutput)
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromOutput).ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressFromArgs, ServicePerimeterSpecEgressPolicyEgressFromPtr and ServicePerimeterSpecEgressPolicyEgressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressFromPtrInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterSpecEgressPolicyEgressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput
+	ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressFromPtrOutput
+}
+
+type servicePerimeterSpecEgressPolicyEgressFromPtrType ServicePerimeterSpecEgressPolicyEgressFromArgs
+
+func ServicePerimeterSpecEgressPolicyEgressFromPtr(v *ServicePerimeterSpecEgressPolicyEgressFromArgs) ServicePerimeterSpecEgressPolicyEgressFromPtrInput {
+	return (*servicePerimeterSpecEgressPolicyEgressFromPtrType)(v)
+}
+
+func (*servicePerimeterSpecEgressPolicyEgressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecEgressPolicyEgressFromPtrType) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecEgressPolicyEgressFromPtrType) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpecEgressPolicyEgressFromOutput() ServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o.ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) *ServicePerimeterSpecEgressPolicyEgressFrom {
+		return &v
+	}).(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterSpecEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) ServicePerimeterSpecEgressPolicyEgressFrom {
+		return *v
+	}).(ServicePerimeterSpecEgressPolicyEgressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimeterSpecEgressPolicyEgressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimeterSpecEgressPolicyEgressToInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToArgs and ServicePerimeterSpecEgressPolicyEgressToOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressToArgs{...}
+type ServicePerimeterSpecEgressPolicyEgressToInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressToOutput() ServicePerimeterSpecEgressPolicyEgressToOutput
+	ToServicePerimeterSpecEgressPolicyEgressToOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressToOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimeterSpecEgressPolicyEgressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimeterSpecEgressPolicyEgressToOutput() ServicePerimeterSpecEgressPolicyEgressToOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimeterSpecEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOutput)
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOutput).ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToArgs, ServicePerimeterSpecEgressPolicyEgressToPtr and ServicePerimeterSpecEgressPolicyEgressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToPtrInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterSpecEgressPolicyEgressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimeterSpecEgressPolicyEgressToPtrOutput
+	ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressToPtrOutput
+}
+
+type servicePerimeterSpecEgressPolicyEgressToPtrType ServicePerimeterSpecEgressPolicyEgressToArgs
+
+func ServicePerimeterSpecEgressPolicyEgressToPtr(v *ServicePerimeterSpecEgressPolicyEgressToArgs) ServicePerimeterSpecEgressPolicyEgressToPtrInput {
+	return (*servicePerimeterSpecEgressPolicyEgressToPtrType)(v)
+}
+
+func (*servicePerimeterSpecEgressPolicyEgressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecEgressPolicyEgressToPtrType) ToServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecEgressPolicyEgressToPtrType) ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEgressPolicyEgressToOutput() ServicePerimeterSpecEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o.ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimeterSpecEgressPolicyEgressTo {
+		return &v
+	}).(ServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Operations() ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimeterSpecEgressPolicyEgressToOperation {
+		return v.Operations
+	}).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterSpecEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimeterSpecEgressPolicyEgressToOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) ServicePerimeterSpecEgressPolicyEgressTo { return *v }).(ServicePerimeterSpecEgressPolicyEgressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Operations() ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimeterSpecEgressPolicyEgressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterSpecEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimeterSpecEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationArgs and ServicePerimeterSpecEgressPolicyEgressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressToOperationArgs{...}
+type ServicePerimeterSpecEgressPolicyEgressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressToOperationOutput() ServicePerimeterSpecEgressPolicyEgressToOperationOutput
+	ToServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToServicePerimeterSpecEgressPolicyEgressToOperationOutput() ServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationOutput)
+}
+
+// ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationArray and ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressToOperationArray{ ServicePerimeterSpecEgressPolicyEgressToOperationArgs{...} }
+type ServicePerimeterSpecEgressPolicyEgressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput() ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput
+	ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationArray []ServicePerimeterSpecEgressPolicyEgressToOperationInput
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationArray) ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput() ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationArray) ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationOutput() ServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperation) []ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput() ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecEgressPolicyEgressToOperation {
+		return vs[0].([]ServicePerimeterSpecEgressPolicyEgressToOperation)[vs[1].(int)]
+	}).(ServicePerimeterSpecEgressPolicyEgressToOperationOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...}
+type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput
+	ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput
+	ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray []ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
+		return vs[0].([]ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+type ServicePerimeterSpecIngressPolicy struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom *ServicePerimeterSpecIngressPolicyIngressFrom `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo *ServicePerimeterSpecIngressPolicyIngressTo `pulumi:"ingressTo"`
+}
+
+// ServicePerimeterSpecIngressPolicyInput is an input type that accepts ServicePerimeterSpecIngressPolicyArgs and ServicePerimeterSpecIngressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyArgs{...}
+type ServicePerimeterSpecIngressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyOutput() ServicePerimeterSpecIngressPolicyOutput
+	ToServicePerimeterSpecIngressPolicyOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyOutput
+}
+
+type ServicePerimeterSpecIngressPolicyArgs struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom ServicePerimeterSpecIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo ServicePerimeterSpecIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+}
+
+func (ServicePerimeterSpecIngressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyArgs) ToServicePerimeterSpecIngressPolicyOutput() ServicePerimeterSpecIngressPolicyOutput {
+	return i.ToServicePerimeterSpecIngressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyArgs) ToServicePerimeterSpecIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyOutput)
+}
+
+// ServicePerimeterSpecIngressPolicyArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyArray and ServicePerimeterSpecIngressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyArrayInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyArray{ ServicePerimeterSpecIngressPolicyArgs{...} }
+type ServicePerimeterSpecIngressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyArrayOutput() ServicePerimeterSpecIngressPolicyArrayOutput
+	ToServicePerimeterSpecIngressPolicyArrayOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyArrayOutput
+}
+
+type ServicePerimeterSpecIngressPolicyArray []ServicePerimeterSpecIngressPolicyInput
+
+func (ServicePerimeterSpecIngressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyArray) ToServicePerimeterSpecIngressPolicyArrayOutput() ServicePerimeterSpecIngressPolicyArrayOutput {
+	return i.ToServicePerimeterSpecIngressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyArray) ToServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyOutput) ToServicePerimeterSpecIngressPolicyOutput() ServicePerimeterSpecIngressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyOutput) ToServicePerimeterSpecIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyOutput {
+	return o
+}
+
+// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyOutput) IngressFrom() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicy) *ServicePerimeterSpecIngressPolicyIngressFrom {
+		return v.IngressFrom
+	}).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyOutput) IngressTo() ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicy) *ServicePerimeterSpecIngressPolicyIngressTo {
+		return v.IngressTo
+	}).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyArrayOutput) ToServicePerimeterSpecIngressPolicyArrayOutput() ServicePerimeterSpecIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyArrayOutput) ToServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecIngressPolicy {
+		return vs[0].([]ServicePerimeterSpecIngressPolicy)[vs[1].(int)]
+	}).(ServicePerimeterSpecIngressPolicyOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimeterSpecIngressPolicyIngressFromSource `pulumi:"sources"`
+}
+
+// ServicePerimeterSpecIngressPolicyIngressFromInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromArgs and ServicePerimeterSpecIngressPolicyIngressFromOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+type ServicePerimeterSpecIngressPolicyIngressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressFromOutput() ServicePerimeterSpecIngressPolicyIngressFromOutput
+	ToServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressFromOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
+}
+
+func (ServicePerimeterSpecIngressPolicyIngressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimeterSpecIngressPolicyIngressFromOutput() ServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromOutput)
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromOutput).ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromArgs, ServicePerimeterSpecIngressPolicyIngressFromPtr and ServicePerimeterSpecIngressPolicyIngressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromPtrInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterSpecIngressPolicyIngressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput
+	ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressFromPtrOutput
+}
+
+type servicePerimeterSpecIngressPolicyIngressFromPtrType ServicePerimeterSpecIngressPolicyIngressFromArgs
+
+func ServicePerimeterSpecIngressPolicyIngressFromPtr(v *ServicePerimeterSpecIngressPolicyIngressFromArgs) ServicePerimeterSpecIngressPolicyIngressFromPtrInput {
+	return (*servicePerimeterSpecIngressPolicyIngressFromPtrType)(v)
+}
+
+func (*servicePerimeterSpecIngressPolicyIngressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecIngressPolicyIngressFromPtrType) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecIngressPolicyIngressFromPtrType) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSpecIngressPolicyIngressFromOutput() ServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o.ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimeterSpecIngressPolicyIngressFrom {
+		return &v
+	}).(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyIngressFromOutput) Sources() ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimeterSpecIngressPolicyIngressFromSource {
+		return v.Sources
+	}).(ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) ServicePerimeterSpecIngressPolicyIngressFrom {
+		return *v
+	}).(ServicePerimeterSpecIngressPolicyIngressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimeterSpecIngressPolicyIngressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSource struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
+}
+
+// ServicePerimeterSpecIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromSourceArgs and ServicePerimeterSpecIngressPolicyIngressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromSourceInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...}
+type ServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressFromSourceOutput() ServicePerimeterSpecIngressPolicyIngressFromSourceOutput
+	ToServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimeterSpecIngressPolicyIngressFromSourceOutput() ServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
+}
+
+// ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressFromSourceArray and ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressFromSourceArray{ ServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...} }
+type ServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput() ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput
+	ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourceArray []ServicePerimeterSpecIngressPolicyIngressFromSourceInput
+
+func (ServicePerimeterSpecIngressPolicyIngressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArray) ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput() ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressFromSourceArray) ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourceOutput() ServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput() ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecIngressPolicyIngressFromSource {
+		return vs[0].([]ServicePerimeterSpecIngressPolicyIngressFromSource)[vs[1].(int)]
+	}).(ServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimeterSpecIngressPolicyIngressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimeterSpecIngressPolicyIngressToInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToArgs and ServicePerimeterSpecIngressPolicyIngressToOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressToArgs{...}
+type ServicePerimeterSpecIngressPolicyIngressToInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressToOutput() ServicePerimeterSpecIngressPolicyIngressToOutput
+	ToServicePerimeterSpecIngressPolicyIngressToOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressToOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimeterSpecIngressPolicyIngressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimeterSpecIngressPolicyIngressToOutput() ServicePerimeterSpecIngressPolicyIngressToOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimeterSpecIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOutput)
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOutput).ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterSpecIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToArgs, ServicePerimeterSpecIngressPolicyIngressToPtr and ServicePerimeterSpecIngressPolicyIngressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToPtrInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterSpecIngressPolicyIngressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimeterSpecIngressPolicyIngressToPtrOutput
+	ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressToPtrOutput
+}
+
+type servicePerimeterSpecIngressPolicyIngressToPtrType ServicePerimeterSpecIngressPolicyIngressToArgs
+
+func ServicePerimeterSpecIngressPolicyIngressToPtr(v *ServicePerimeterSpecIngressPolicyIngressToArgs) ServicePerimeterSpecIngressPolicyIngressToPtrInput {
+	return (*servicePerimeterSpecIngressPolicyIngressToPtrType)(v)
+}
+
+func (*servicePerimeterSpecIngressPolicyIngressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i *servicePerimeterSpecIngressPolicyIngressToPtrType) ToServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterSpecIngressPolicyIngressToPtrType) ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpecIngressPolicyIngressToOutput() ServicePerimeterSpecIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpecIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o.ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimeterSpecIngressPolicyIngressTo {
+		return &v
+	}).(ServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Operations() ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimeterSpecIngressPolicyIngressToOperation {
+		return v.Operations
+	}).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterSpecIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Elem() ServicePerimeterSpecIngressPolicyIngressToOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressTo) ServicePerimeterSpecIngressPolicyIngressTo {
+		return *v
+	}).(ServicePerimeterSpecIngressPolicyIngressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Operations() ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimeterSpecIngressPolicyIngressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterSpecIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterSpecIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimeterSpecIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationArgs and ServicePerimeterSpecIngressPolicyIngressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressToOperationArgs{...}
+type ServicePerimeterSpecIngressPolicyIngressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressToOperationOutput() ServicePerimeterSpecIngressPolicyIngressToOperationOutput
+	ToServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToServicePerimeterSpecIngressPolicyIngressToOperationOutput() ServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationOutput)
+}
+
+// ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationArray and ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressToOperationArray{ ServicePerimeterSpecIngressPolicyIngressToOperationArgs{...} }
+type ServicePerimeterSpecIngressPolicyIngressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput() ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput
+	ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationArray []ServicePerimeterSpecIngressPolicyIngressToOperationInput
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationArray) ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput() ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationArray) ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationOutput() ServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperation) []ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput() ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecIngressPolicyIngressToOperation {
+		return vs[0].([]ServicePerimeterSpecIngressPolicyIngressToOperation)[vs[1].(int)]
+	}).(ServicePerimeterSpecIngressPolicyIngressToOperationOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...}
+type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput
+	ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput
+	ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray []ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
+		return vs[0].([]ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
 type ServicePerimeterSpecVpcAccessibleServices struct {
@@ -3160,9 +4619,13 @@ type ServicePerimeterStatus struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies []ServicePerimeterStatusEgressPolicy `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies []ServicePerimeterStatusIngressPolicy `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -3198,9 +4661,13 @@ type ServicePerimeterStatusArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies ServicePerimeterStatusEgressPolicyArrayInput `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies ServicePerimeterStatusIngressPolicyArrayInput `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -3304,9 +4771,19 @@ func (o ServicePerimeterStatusOutput) AccessLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterStatusOutput) EgressPolicies() ServicePerimeterStatusEgressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatus) []ServicePerimeterStatusEgressPolicy { return v.EgressPolicies }).(ServicePerimeterStatusEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterStatusOutput) IngressPolicies() ServicePerimeterStatusIngressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatus) []ServicePerimeterStatusIngressPolicy { return v.IngressPolicies }).(ServicePerimeterStatusIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -3365,9 +4842,29 @@ func (o ServicePerimeterStatusPtrOutput) AccessLevels() pulumi.StringArrayOutput
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterStatusPtrOutput) EgressPolicies() ServicePerimeterStatusEgressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatus) []ServicePerimeterStatusEgressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.EgressPolicies
+	}).(ServicePerimeterStatusEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimeterStatusPtrOutput) IngressPolicies() ServicePerimeterStatusIngressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatus) []ServicePerimeterStatusIngressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.IngressPolicies
+	}).(ServicePerimeterStatusIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterStatus) []string {
 		if v == nil {
@@ -3401,6 +4898,1433 @@ func (o ServicePerimeterStatusPtrOutput) VpcAccessibleServices() ServicePerimete
 		}
 		return v.VpcAccessibleServices
 	}).(ServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicy struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom *ServicePerimeterStatusEgressPolicyEgressFrom `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo *ServicePerimeterStatusEgressPolicyEgressTo `pulumi:"egressTo"`
+}
+
+// ServicePerimeterStatusEgressPolicyInput is an input type that accepts ServicePerimeterStatusEgressPolicyArgs and ServicePerimeterStatusEgressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyArgs{...}
+type ServicePerimeterStatusEgressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyOutput() ServicePerimeterStatusEgressPolicyOutput
+	ToServicePerimeterStatusEgressPolicyOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyOutput
+}
+
+type ServicePerimeterStatusEgressPolicyArgs struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom ServicePerimeterStatusEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo ServicePerimeterStatusEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+}
+
+func (ServicePerimeterStatusEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyArgs) ToServicePerimeterStatusEgressPolicyOutput() ServicePerimeterStatusEgressPolicyOutput {
+	return i.ToServicePerimeterStatusEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyArgs) ToServicePerimeterStatusEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyOutput)
+}
+
+// ServicePerimeterStatusEgressPolicyArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyArray and ServicePerimeterStatusEgressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyArrayInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyArray{ ServicePerimeterStatusEgressPolicyArgs{...} }
+type ServicePerimeterStatusEgressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyArrayOutput() ServicePerimeterStatusEgressPolicyArrayOutput
+	ToServicePerimeterStatusEgressPolicyArrayOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyArrayOutput
+}
+
+type ServicePerimeterStatusEgressPolicyArray []ServicePerimeterStatusEgressPolicyInput
+
+func (ServicePerimeterStatusEgressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyArray) ToServicePerimeterStatusEgressPolicyArrayOutput() ServicePerimeterStatusEgressPolicyArrayOutput {
+	return i.ToServicePerimeterStatusEgressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyArray) ToServicePerimeterStatusEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyArrayOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyOutput) ToServicePerimeterStatusEgressPolicyOutput() ServicePerimeterStatusEgressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyOutput) ToServicePerimeterStatusEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyOutput {
+	return o
+}
+
+// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyOutput) EgressFrom() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicy) *ServicePerimeterStatusEgressPolicyEgressFrom {
+		return v.EgressFrom
+	}).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyOutput) EgressTo() ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicy) *ServicePerimeterStatusEgressPolicyEgressTo {
+		return v.EgressTo
+	}).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyArrayOutput) ToServicePerimeterStatusEgressPolicyArrayOutput() ServicePerimeterStatusEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyArrayOutput) ToServicePerimeterStatusEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusEgressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusEgressPolicy {
+		return vs[0].([]ServicePerimeterStatusEgressPolicy)[vs[1].(int)]
+	}).(ServicePerimeterStatusEgressPolicyOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// ServicePerimeterStatusEgressPolicyEgressFromInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromArgs and ServicePerimeterStatusEgressPolicyEgressFromOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+type ServicePerimeterStatusEgressPolicyEgressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressFromOutput() ServicePerimeterStatusEgressPolicyEgressFromOutput
+	ToServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressFromOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (ServicePerimeterStatusEgressPolicyEgressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStatusEgressPolicyEgressFromOutput() ServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromOutput)
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromOutput).ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterStatusEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressFromArgs, ServicePerimeterStatusEgressPolicyEgressFromPtr and ServicePerimeterStatusEgressPolicyEgressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressFromPtrInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterStatusEgressPolicyEgressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput
+	ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressFromPtrOutput
+}
+
+type servicePerimeterStatusEgressPolicyEgressFromPtrType ServicePerimeterStatusEgressPolicyEgressFromArgs
+
+func ServicePerimeterStatusEgressPolicyEgressFromPtr(v *ServicePerimeterStatusEgressPolicyEgressFromArgs) ServicePerimeterStatusEgressPolicyEgressFromPtrInput {
+	return (*servicePerimeterStatusEgressPolicyEgressFromPtrType)(v)
+}
+
+func (*servicePerimeterStatusEgressPolicyEgressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusEgressPolicyEgressFromPtrType) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusEgressPolicyEgressFromPtrType) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterStatusEgressPolicyEgressFromOutput() ServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o.ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) *ServicePerimeterStatusEgressPolicyEgressFrom {
+		return &v
+	}).(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterStatusEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) ServicePerimeterStatusEgressPolicyEgressFrom {
+		return *v
+	}).(ServicePerimeterStatusEgressPolicyEgressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimeterStatusEgressPolicyEgressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimeterStatusEgressPolicyEgressToInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToArgs and ServicePerimeterStatusEgressPolicyEgressToOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressToArgs{...}
+type ServicePerimeterStatusEgressPolicyEgressToInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressToOutput() ServicePerimeterStatusEgressPolicyEgressToOutput
+	ToServicePerimeterStatusEgressPolicyEgressToOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressToOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimeterStatusEgressPolicyEgressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimeterStatusEgressPolicyEgressToOutput() ServicePerimeterStatusEgressPolicyEgressToOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimeterStatusEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOutput)
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOutput).ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterStatusEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToArgs, ServicePerimeterStatusEgressPolicyEgressToPtr and ServicePerimeterStatusEgressPolicyEgressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToPtrInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterStatusEgressPolicyEgressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimeterStatusEgressPolicyEgressToPtrOutput
+	ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressToPtrOutput
+}
+
+type servicePerimeterStatusEgressPolicyEgressToPtrType ServicePerimeterStatusEgressPolicyEgressToArgs
+
+func ServicePerimeterStatusEgressPolicyEgressToPtr(v *ServicePerimeterStatusEgressPolicyEgressToArgs) ServicePerimeterStatusEgressPolicyEgressToPtrInput {
+	return (*servicePerimeterStatusEgressPolicyEgressToPtrType)(v)
+}
+
+func (*servicePerimeterStatusEgressPolicyEgressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusEgressPolicyEgressToPtrType) ToServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusEgressPolicyEgressToPtrType) ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStatusEgressPolicyEgressToOutput() ServicePerimeterStatusEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStatusEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o.ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimeterStatusEgressPolicyEgressTo {
+		return &v
+	}).(ServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Operations() ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimeterStatusEgressPolicyEgressToOperation {
+		return v.Operations
+	}).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterStatusEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerimeterStatusEgressPolicyEgressToOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) ServicePerimeterStatusEgressPolicyEgressTo {
+		return *v
+	}).(ServicePerimeterStatusEgressPolicyEgressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Operations() ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimeterStatusEgressPolicyEgressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterStatusEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimeterStatusEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationArgs and ServicePerimeterStatusEgressPolicyEgressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressToOperationArgs{...}
+type ServicePerimeterStatusEgressPolicyEgressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressToOperationOutput() ServicePerimeterStatusEgressPolicyEgressToOperationOutput
+	ToServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToServicePerimeterStatusEgressPolicyEgressToOperationOutput() ServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationOutput)
+}
+
+// ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationArray and ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressToOperationArray{ ServicePerimeterStatusEgressPolicyEgressToOperationArgs{...} }
+type ServicePerimeterStatusEgressPolicyEgressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput() ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput
+	ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationArray []ServicePerimeterStatusEgressPolicyEgressToOperationInput
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationArray) ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput() ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationArray) ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationOutput() ServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperation) []ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput() ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusEgressPolicyEgressToOperation {
+		return vs[0].([]ServicePerimeterStatusEgressPolicyEgressToOperation)[vs[1].(int)]
+	}).(ServicePerimeterStatusEgressPolicyEgressToOperationOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...}
+type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput
+	ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput
+	ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray []ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string { return v.Permission }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
+		return vs[0].([]ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+type ServicePerimeterStatusIngressPolicy struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom *ServicePerimeterStatusIngressPolicyIngressFrom `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo *ServicePerimeterStatusIngressPolicyIngressTo `pulumi:"ingressTo"`
+}
+
+// ServicePerimeterStatusIngressPolicyInput is an input type that accepts ServicePerimeterStatusIngressPolicyArgs and ServicePerimeterStatusIngressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyArgs{...}
+type ServicePerimeterStatusIngressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyOutput() ServicePerimeterStatusIngressPolicyOutput
+	ToServicePerimeterStatusIngressPolicyOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyOutput
+}
+
+type ServicePerimeterStatusIngressPolicyArgs struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom ServicePerimeterStatusIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo ServicePerimeterStatusIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+}
+
+func (ServicePerimeterStatusIngressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyArgs) ToServicePerimeterStatusIngressPolicyOutput() ServicePerimeterStatusIngressPolicyOutput {
+	return i.ToServicePerimeterStatusIngressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyArgs) ToServicePerimeterStatusIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyOutput)
+}
+
+// ServicePerimeterStatusIngressPolicyArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyArray and ServicePerimeterStatusIngressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyArrayInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyArray{ ServicePerimeterStatusIngressPolicyArgs{...} }
+type ServicePerimeterStatusIngressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyArrayOutput() ServicePerimeterStatusIngressPolicyArrayOutput
+	ToServicePerimeterStatusIngressPolicyArrayOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyArrayOutput
+}
+
+type ServicePerimeterStatusIngressPolicyArray []ServicePerimeterStatusIngressPolicyInput
+
+func (ServicePerimeterStatusIngressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyArray) ToServicePerimeterStatusIngressPolicyArrayOutput() ServicePerimeterStatusIngressPolicyArrayOutput {
+	return i.ToServicePerimeterStatusIngressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyArray) ToServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyOutput) ToServicePerimeterStatusIngressPolicyOutput() ServicePerimeterStatusIngressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyOutput) ToServicePerimeterStatusIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyOutput {
+	return o
+}
+
+// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyOutput) IngressFrom() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicy) *ServicePerimeterStatusIngressPolicyIngressFrom {
+		return v.IngressFrom
+	}).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyOutput) IngressTo() ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicy) *ServicePerimeterStatusIngressPolicyIngressTo {
+		return v.IngressTo
+	}).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyArrayOutput) ToServicePerimeterStatusIngressPolicyArrayOutput() ServicePerimeterStatusIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyArrayOutput) ToServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusIngressPolicy {
+		return vs[0].([]ServicePerimeterStatusIngressPolicy)[vs[1].(int)]
+	}).(ServicePerimeterStatusIngressPolicyOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimeterStatusIngressPolicyIngressFromSource `pulumi:"sources"`
+}
+
+// ServicePerimeterStatusIngressPolicyIngressFromInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromArgs and ServicePerimeterStatusIngressPolicyIngressFromOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+type ServicePerimeterStatusIngressPolicyIngressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressFromOutput() ServicePerimeterStatusIngressPolicyIngressFromOutput
+	ToServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressFromOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
+}
+
+func (ServicePerimeterStatusIngressPolicyIngressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimeterStatusIngressPolicyIngressFromOutput() ServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromOutput)
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromOutput).ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterStatusIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromArgs, ServicePerimeterStatusIngressPolicyIngressFromPtr and ServicePerimeterStatusIngressPolicyIngressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromPtrInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterStatusIngressPolicyIngressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput
+	ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressFromPtrOutput
+}
+
+type servicePerimeterStatusIngressPolicyIngressFromPtrType ServicePerimeterStatusIngressPolicyIngressFromArgs
+
+func ServicePerimeterStatusIngressPolicyIngressFromPtr(v *ServicePerimeterStatusIngressPolicyIngressFromArgs) ServicePerimeterStatusIngressPolicyIngressFromPtrInput {
+	return (*servicePerimeterStatusIngressPolicyIngressFromPtrType)(v)
+}
+
+func (*servicePerimeterStatusIngressPolicyIngressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusIngressPolicyIngressFromPtrType) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusIngressPolicyIngressFromPtrType) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeterStatusIngressPolicyIngressFromOutput() ServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o.ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimeterStatusIngressPolicyIngressFrom {
+		return &v
+	}).(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyIngressFromOutput) Sources() ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimeterStatusIngressPolicyIngressFromSource {
+		return v.Sources
+	}).(ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) ServicePerimeterStatusIngressPolicyIngressFrom {
+		return *v
+	}).(ServicePerimeterStatusIngressPolicyIngressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimeterStatusIngressPolicyIngressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSource struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
+}
+
+// ServicePerimeterStatusIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromSourceArgs and ServicePerimeterStatusIngressPolicyIngressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromSourceInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...}
+type ServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressFromSourceOutput() ServicePerimeterStatusIngressPolicyIngressFromSourceOutput
+	ToServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerimeterStatusIngressPolicyIngressFromSourceOutput() ServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
+}
+
+// ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressFromSourceArray and ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressFromSourceArray{ ServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...} }
+type ServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput() ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput
+	ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourceArray []ServicePerimeterStatusIngressPolicyIngressFromSourceInput
+
+func (ServicePerimeterStatusIngressPolicyIngressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArray) ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput() ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressFromSourceArray) ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourceOutput() ServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
+}
+
+// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput() ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusIngressPolicyIngressFromSource {
+		return vs[0].([]ServicePerimeterStatusIngressPolicyIngressFromSource)[vs[1].(int)]
+	}).(ServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimeterStatusIngressPolicyIngressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimeterStatusIngressPolicyIngressToInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToArgs and ServicePerimeterStatusIngressPolicyIngressToOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressToArgs{...}
+type ServicePerimeterStatusIngressPolicyIngressToInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressToOutput() ServicePerimeterStatusIngressPolicyIngressToOutput
+	ToServicePerimeterStatusIngressPolicyIngressToOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressToOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimeterStatusIngressPolicyIngressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimeterStatusIngressPolicyIngressToOutput() ServicePerimeterStatusIngressPolicyIngressToOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimeterStatusIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOutput)
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOutput).ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimeterStatusIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToArgs, ServicePerimeterStatusIngressPolicyIngressToPtr and ServicePerimeterStatusIngressPolicyIngressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToPtrInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimeterStatusIngressPolicyIngressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimeterStatusIngressPolicyIngressToPtrOutput
+	ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressToPtrOutput
+}
+
+type servicePerimeterStatusIngressPolicyIngressToPtrType ServicePerimeterStatusIngressPolicyIngressToArgs
+
+func ServicePerimeterStatusIngressPolicyIngressToPtr(v *ServicePerimeterStatusIngressPolicyIngressToArgs) ServicePerimeterStatusIngressPolicyIngressToPtrInput {
+	return (*servicePerimeterStatusIngressPolicyIngressToPtrType)(v)
+}
+
+func (*servicePerimeterStatusIngressPolicyIngressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i *servicePerimeterStatusIngressPolicyIngressToPtrType) ToServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimeterStatusIngressPolicyIngressToPtrType) ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterStatusIngressPolicyIngressToOutput() ServicePerimeterStatusIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterStatusIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o.ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimeterStatusIngressPolicyIngressTo {
+		return &v
+	}).(ServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Operations() ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimeterStatusIngressPolicyIngressToOperation {
+		return v.Operations
+	}).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterStatusIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Elem() ServicePerimeterStatusIngressPolicyIngressToOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressTo) ServicePerimeterStatusIngressPolicyIngressTo {
+		return *v
+	}).(ServicePerimeterStatusIngressPolicyIngressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Operations() ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimeterStatusIngressPolicyIngressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimeterStatusIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimeterStatusIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimeterStatusIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationArgs and ServicePerimeterStatusIngressPolicyIngressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressToOperationArgs{...}
+type ServicePerimeterStatusIngressPolicyIngressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressToOperationOutput() ServicePerimeterStatusIngressPolicyIngressToOperationOutput
+	ToServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToServicePerimeterStatusIngressPolicyIngressToOperationOutput() ServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationOutput)
+}
+
+// ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationArray and ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressToOperationArray{ ServicePerimeterStatusIngressPolicyIngressToOperationArgs{...} }
+type ServicePerimeterStatusIngressPolicyIngressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput() ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput
+	ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationArray []ServicePerimeterStatusIngressPolicyIngressToOperationInput
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationArray) ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput() ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationArray) ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationOutput() ServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperation) []ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperation) *string { return v.ServiceName }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput() ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusIngressPolicyIngressToOperation {
+		return vs[0].([]ServicePerimeterStatusIngressPolicyIngressToOperation)[vs[1].(int)]
+	}).(ServicePerimeterStatusIngressPolicyIngressToOperationOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...}
+type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput
+	ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput
+	ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray []ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string { return v.Method }).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string {
+		return v.Permission
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
+		return vs[0].([]ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
 type ServicePerimeterStatusVpcAccessibleServices struct {
@@ -3848,9 +6772,13 @@ type ServicePerimetersServicePerimeterSpec struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies []ServicePerimetersServicePerimeterSpecEgressPolicy `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies []ServicePerimetersServicePerimeterSpecIngressPolicy `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -3886,9 +6814,13 @@ type ServicePerimetersServicePerimeterSpecArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -3992,9 +6924,23 @@ func (o ServicePerimetersServicePerimeterSpecOutput) AccessLevels() pulumi.Strin
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecOutput) EgressPolicies() ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecEgressPolicy {
+		return v.EgressPolicies
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecOutput) IngressPolicies() ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecIngressPolicy {
+		return v.IngressPolicies
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimetersServicePerimeterSpecOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpec) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -4053,9 +6999,29 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) AccessLevels() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) EgressPolicies() ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecEgressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.EgressPolicies
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecPtrOutput) IngressPolicies() ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []ServicePerimetersServicePerimeterSpecIngressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.IngressPolicies
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimetersServicePerimeterSpecPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpec) []string {
 		if v == nil {
@@ -4089,6 +7055,1445 @@ func (o ServicePerimetersServicePerimeterSpecPtrOutput) VpcAccessibleServices() 
 		}
 		return v.VpcAccessibleServices
 	}).(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicy struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo `pulumi:"egressTo"`
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyArgs and ServicePerimetersServicePerimeterSpecEgressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyArgs{...}
+type ServicePerimetersServicePerimeterSpecEgressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyOutput() ServicePerimetersServicePerimeterSpecEgressPolicyOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyArgs struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+}
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyOutput() ServicePerimetersServicePerimeterSpecEgressPolicyOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyArray and ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyArray{ ServicePerimetersServicePerimeterSpecEgressPolicyArgs{...} }
+type ServicePerimetersServicePerimeterSpecEgressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyArray []ServicePerimetersServicePerimeterSpecEgressPolicyInput
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyArray) ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyArray) ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyOutput() ServicePerimetersServicePerimeterSpecEgressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyOutput {
+	return o
+}
+
+// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) EgressFrom() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicy) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
+		return v.EgressFrom
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyOutput) EgressTo() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicy) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
+		return v.EgressTo
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecEgressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecEgressPolicy {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecEgressPolicy)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput).ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs, ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtr and ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrType ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs
+
+func ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtr(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrInput {
+	return (*servicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrType) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrType) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Elem() ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
+		return *v
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{...}
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput).ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs, ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtr and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrType ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs
+
+func ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtr(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressToArgs) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrInput {
+	return (*servicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrType) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrType) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Operations() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Elem() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
+		return *v
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Operations() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{...}
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray{ ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArgs{...} }
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationInput
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArray) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation) []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation) *string {
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...}
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput
+	ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray []ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorInput
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string {
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector) *string {
+		return v.Permission
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicy struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo `pulumi:"ingressTo"`
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyArgs and ServicePerimetersServicePerimeterSpecIngressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyArgs{...}
+type ServicePerimetersServicePerimeterSpecIngressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyOutput() ServicePerimetersServicePerimeterSpecIngressPolicyOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyArgs struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+}
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyOutput() ServicePerimetersServicePerimeterSpecIngressPolicyOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyArray and ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyArray{ ServicePerimetersServicePerimeterSpecIngressPolicyArgs{...} }
+type ServicePerimetersServicePerimeterSpecIngressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyArray []ServicePerimetersServicePerimeterSpecIngressPolicyInput
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyArray) ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyArray) ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyOutput() ServicePerimetersServicePerimeterSpecIngressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyOutput {
+	return o
+}
+
+// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) IngressFrom() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicy) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
+		return v.IngressFrom
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyOutput) IngressTo() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicy) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
+		return v.IngressTo
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecIngressPolicy {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecIngressPolicy)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource `pulumi:"sources"`
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
+}
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput).ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs, ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtr and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrType ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs
+
+func ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtr(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromArgs) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrInput {
+	return (*servicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrType) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrType) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput) Sources() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Elem() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
+		return *v
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput) Sources() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...}
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArgs{...} }
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray []ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceInput
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArray) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource) *string {
+		return v.AccessLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{...}
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput)
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput).ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs, ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtr and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput
+}
+
+type servicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrType ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs
+
+func ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtr(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressToArgs) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrInput {
+	return (*servicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrType) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrType) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
+		return &v
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Operations() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Elem() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
+		return *v
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Operations() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs{...}
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArgs{...} }
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationInput
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArray) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation) []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation) *string {
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...}
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput
+	ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray []ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorInput
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string {
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector) *string {
+		return v.Permission
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
+		return vs[0].([]ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
 type ServicePerimetersServicePerimeterSpecVpcAccessibleServices struct {
@@ -4262,9 +8667,13 @@ type ServicePerimetersServicePerimeterStatus struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels []string `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies []ServicePerimetersServicePerimeterStatusEgressPolicy `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies []ServicePerimetersServicePerimeterStatusIngressPolicy `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources []string `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -4300,9 +8709,13 @@ type ServicePerimetersServicePerimeterStatusArgs struct {
 	// be empty.
 	// Format: accessPolicies/{policy_id}/accessLevels/{access_level_name}
 	AccessLevels pulumi.StringArrayInput `pulumi:"accessLevels"`
-	// A list of GCP resources that are inside of the service perimeter.
-	// Currently only projects are allowed.
-	// Format: projects/{project_number}
+	// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	EgressPolicies ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput `pulumi:"egressPolicies"`
+	// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+	// Structure is documented below.
+	IngressPolicies ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput `pulumi:"ingressPolicies"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// GCP services that are subject to the Service Perimeter
 	// restrictions. Must contain a list of services. For example, if
@@ -4406,9 +8819,23 @@ func (o ServicePerimetersServicePerimeterStatusOutput) AccessLevels() pulumi.Str
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.AccessLevels }).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusOutput) EgressPolicies() ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusEgressPolicy {
+		return v.EgressPolicies
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusOutput) IngressPolicies() ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusIngressPolicy {
+		return v.IngressPolicies
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimetersServicePerimeterStatusOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatus) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -4467,9 +8894,29 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) AccessLevels() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of GCP resources that are inside of the service perimeter.
-// Currently only projects are allowed.
-// Format: projects/{project_number}
+// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) EgressPolicies() ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusEgressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.EgressPolicies
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput)
+}
+
+// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusPtrOutput) IngressPolicies() ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []ServicePerimetersServicePerimeterStatusIngressPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.IngressPolicies
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
 func (o ServicePerimetersServicePerimeterStatusPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatus) []string {
 		if v == nil {
@@ -4503,6 +8950,1447 @@ func (o ServicePerimetersServicePerimeterStatusPtrOutput) VpcAccessibleServices(
 		}
 		return v.VpcAccessibleServices
 	}).(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicy struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo `pulumi:"egressTo"`
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyArgs and ServicePerimetersServicePerimeterStatusEgressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyArgs{...}
+type ServicePerimetersServicePerimeterStatusEgressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyOutput() ServicePerimetersServicePerimeterStatusEgressPolicyOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyArgs struct {
+	// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressFrom ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput `pulumi:"egressFrom"`
+	// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+	// Structure is documented below.
+	EgressTo ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput `pulumi:"egressTo"`
+}
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyOutput() ServicePerimetersServicePerimeterStatusEgressPolicyOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyArray and ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyArray{ ServicePerimetersServicePerimeterStatusEgressPolicyArgs{...} }
+type ServicePerimetersServicePerimeterStatusEgressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyArray []ServicePerimetersServicePerimeterStatusEgressPolicyInput
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyArray) ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyArray) ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyOutput() ServicePerimetersServicePerimeterStatusEgressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyOutput {
+	return o
+}
+
+// / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) EgressFrom() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicy) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
+		return v.EgressFrom
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyOutput) EgressTo() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicy) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
+		return v.EgressTo
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusEgressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusEgressPolicy {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusEgressPolicy)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+}
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput).ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs, ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtr and ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrType ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs
+
+func ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtr(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrInput {
+	return (*servicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrType) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrType) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Elem() ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
+		return *v
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{...}
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput).ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs, ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtr and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrType ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs
+
+func ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtr(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressToArgs) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrInput {
+	return (*servicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrType) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrType) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Operations() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Elem() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
+		return *v
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Operations() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{...}
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray{ ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArgs{...} }
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationInput
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArray) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation) []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation) *string {
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...}
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArgs{...} }
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput
+	ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray []ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorInput
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string {
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector) *string {
+		return v.Permission
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicy struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo `pulumi:"ingressTo"`
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyArgs and ServicePerimetersServicePerimeterStatusIngressPolicyOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyArgs{...}
+type ServicePerimetersServicePerimeterStatusIngressPolicyInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyOutput() ServicePerimetersServicePerimeterStatusIngressPolicyOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyArgs struct {
+	// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressFrom ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput `pulumi:"ingressFrom"`
+	// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+	// Structure is documented below.
+	IngressTo ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput `pulumi:"ingressTo"`
+}
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyOutput() ServicePerimetersServicePerimeterStatusIngressPolicyOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyArray and ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyArray{ ServicePerimetersServicePerimeterStatusIngressPolicyArgs{...} }
+type ServicePerimetersServicePerimeterStatusIngressPolicyArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyArray []ServicePerimetersServicePerimeterStatusIngressPolicyInput
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyArray) ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyArray) ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyOutput() ServicePerimetersServicePerimeterStatusIngressPolicyOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyOutput {
+	return o
+}
+
+// / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) IngressFrom() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicy) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
+		return v.IngressFrom
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
+}
+
+// / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyOutput) IngressTo() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicy) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
+		return v.IngressTo
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicy)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusIngressPolicy {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusIngressPolicy)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities []string `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType *string `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources []ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource `pulumi:"sources"`
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs struct {
+	// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+	Identities pulumi.StringArrayInput `pulumi:"identities"`
+	// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+	// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+	IdentityType pulumi.StringPtrInput `pulumi:"identityType"`
+	// / Sources that this `IngressPolicy` authorizes access from.
+	// Structure is documented below.
+	Sources ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput `pulumi:"sources"`
+}
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput).ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs, ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtr and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrType ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs
+
+func ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtr(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromArgs) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrInput {
+	return (*servicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrType) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrType) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *string { return v.IdentityType }).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput) Sources() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Elem() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
+		return *v
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput)
+}
+
+// / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Identities
+	}).(pulumi.StringArrayOutput)
+}
+
+// / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+// Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdentityType
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Sources that this `IngressPolicy` authorizes access from.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput) Sources() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
+		if v == nil {
+			return nil
+		}
+		return v.Sources
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel *string `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource *string `pulumi:"resource"`
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...}
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs struct {
+	// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
+	// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
+}
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArgs{...} }
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray []ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceInput
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArray) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return o
+}
+
+// / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) AccessLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource) *string {
+		return v.AccessLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource) *string {
+		return v.Resource
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources []string `pulumi:"resources"`
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{...}
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs struct {
+	// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// Structure is documented below.
+	Operations ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput `pulumi:"operations"`
+	// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput)
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput).ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx)
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs, ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtr and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput
+}
+
+type servicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrType ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs
+
+func ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtr(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressToArgs) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrInput {
+	return (*servicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrType)(v)
+}
+
+func (*servicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrType) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrType) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
+		return &v
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Operations() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Elem() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
+		return *v
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput)
+}
+
+// / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Operations() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
+		if v == nil {
+			return nil
+		}
+		return v.Operations
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
+}
+
+// / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Resources
+	}).(pulumi.StringArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName *string `pulumi:"serviceName"`
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs{...}
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs struct {
+	// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+	// Structure is documented below.
+	MethodSelectors ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput `pulumi:"methodSelectors"`
+	// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+	ServiceName pulumi.StringPtrInput `pulumi:"serviceName"`
+}
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArgs{...} }
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationInput
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArray) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return o
+}
+
+// / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+// Structure is documented below.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) MethodSelectors() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation) []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
+		return v.MethodSelectors
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+// / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput) ServiceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation) *string {
+		return v.ServiceName
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method *string `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission *string `pulumi:"permission"`
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...}
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs struct {
+	// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+	Method pulumi.StringPtrInput `pulumi:"method"`
+	// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+	Permission pulumi.StringPtrInput `pulumi:"permission"`
+}
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput)
+}
+
+// ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput is an input type that accepts ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray and ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput values.
+// You can construct a concrete instance of `ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput` via:
+//
+//          ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray{ ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs{...} }
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayInput interface {
+	pulumi.Input
+
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput
+	ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray []ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorInput
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return i.ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArray) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return o
+}
+
+// / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Method() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string {
+		return v.Method
+	}).(pulumi.StringPtrOutput)
+}
+
+// / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput) Permission() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector) *string {
+		return v.Permission
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)(nil)).Elem()
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput() ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) ToServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutputWithContext(ctx context.Context) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput {
+	return o
+}
+
+func (o ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput) Index(i pulumi.IntInput) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
+		return vs[0].([]ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector)[vs[1].(int)]
+	}).(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput)
 }
 
 type ServicePerimetersServicePerimeterStatusVpcAccessibleServices struct {
@@ -4700,20 +10588,108 @@ func init() {
 	pulumi.RegisterOutputType(AccessLevelsAccessLevelCustomExprPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterSpecVpcAccessibleServicesPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelectorArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterSpecVpcAccessibleServicesPtrOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelectorArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSourceArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToPtrOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationArrayOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorOutput{})
+	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArrayOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesOutput{})
 	pulumi.RegisterOutputType(ServicePerimetersServicePerimeterStatusVpcAccessibleServicesPtrOutput{})
 }

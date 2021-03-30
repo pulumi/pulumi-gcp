@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// To get more information about Repository, see:
     /// 
-    /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+    /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
     /// * How-to Guides
     ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
     /// 
@@ -148,7 +148,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The format of packages that are stored in the repository.
-        /// Possible values are `DOCKER`.
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -258,7 +257,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The format of packages that are stored in the repository.
-        /// Possible values are `DOCKER`.
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -329,7 +327,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
         /// <summary>
         /// The format of packages that are stored in the repository.
-        /// Possible values are `DOCKER`.
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }

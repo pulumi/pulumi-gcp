@@ -55,25 +55,16 @@ class GetBackendBucketResult:
     @property
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
-        """
-        Cloud Storage bucket name.
-        """
         return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter(name="cdnPolicies")
     def cdn_policies(self) -> Sequence['outputs.GetBackendBucketCdnPolicyResult']:
-        """
-        Cloud CDN configuration for this Backend Bucket. Structure is documented below.
-        """
         return pulumi.get(self, "cdn_policies")
 
     @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
-        """
-        Creation timestamp in RFC3339 text format.
-        """
         return pulumi.get(self, "creation_timestamp")
 
     @property
@@ -84,17 +75,11 @@ class GetBackendBucketResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        An optional textual description of the resource; provided by the client when the resource is created.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="enableCdn")
     def enable_cdn(self) -> bool:
-        """
-        Whether Cloud CDN is enabled for this BackendBucket.
-        """
         return pulumi.get(self, "enable_cdn")
 
     @property
@@ -118,9 +103,6 @@ class GetBackendBucketResult:
     @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
-        """
-        The URI of the created resource.
-        """
         return pulumi.get(self, "self_link")
 
 

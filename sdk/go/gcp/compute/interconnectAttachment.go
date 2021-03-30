@@ -36,7 +36,7 @@ import (
 // 		_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
 // 			Interconnect: pulumi.String("my-interconnect-id"),
 // 			Router:       foobar.ID(),
-// 			Mtu:          pulumi.String("1500"),
+// 			Mtu:          pulumi.Int(1500),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -110,7 +110,7 @@ type InterconnectAttachment struct {
 	Interconnect pulumi.StringPtrOutput `pulumi:"interconnect"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu pulumi.StringOutput `pulumi:"mtu"`
+	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -224,7 +224,7 @@ type interconnectAttachmentState struct {
 	Interconnect *string `pulumi:"interconnect"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu *string `pulumi:"mtu"`
+	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -307,7 +307,7 @@ type InterconnectAttachmentState struct {
 	Interconnect pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu pulumi.StringPtrInput
+	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -385,7 +385,7 @@ type interconnectAttachmentArgs struct {
 	Interconnect *string `pulumi:"interconnect"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu *string `pulumi:"mtu"`
+	Mtu *int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -447,7 +447,7 @@ type InterconnectAttachmentArgs struct {
 	Interconnect pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu pulumi.StringPtrInput
+	Mtu pulumi.IntPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression

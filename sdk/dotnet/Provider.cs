@@ -195,6 +195,9 @@ namespace Pulumi.Gcp
         [Input("gameServicesCustomEndpoint")]
         public Input<string>? GameServicesCustomEndpoint { get; set; }
 
+        [Input("gkeHubCustomEndpoint")]
+        public Input<string>? GkeHubCustomEndpoint { get; set; }
+
         [Input("healthcareCustomEndpoint")]
         public Input<string>? HealthcareCustomEndpoint { get; set; }
 
@@ -327,6 +330,9 @@ namespace Pulumi.Gcp
 
         [Input("storageTransferCustomEndpoint")]
         public Input<string>? StorageTransferCustomEndpoint { get; set; }
+
+        [Input("tagsCustomEndpoint")]
+        public Input<string>? TagsCustomEndpoint { get; set; }
 
         [Input("tpuCustomEndpoint")]
         public Input<string>? TpuCustomEndpoint { get; set; }

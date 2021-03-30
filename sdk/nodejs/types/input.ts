@@ -395,9 +395,17 @@ export namespace accesscontextmanager {
          */
         accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        egressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecEgressPolicy>[]>;
+        /**
+         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        ingressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecIngressPolicy>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -414,6 +422,142 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecVpcAccessibleServices>;
+    }
+
+    export interface ServicePerimeterSpecEgressPolicy {
+        /**
+         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressTo>;
+    }
+
+    export interface ServicePerimeterSpecEgressPolicyEgressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterSpecEgressPolicyEgressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimeterSpecEgressPolicyEgressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterSpecIngressPolicy {
+        /**
+         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressTo>;
+    }
+
+    export interface ServicePerimeterSpecIngressPolicyIngressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+        /**
+         * / Sources that this `IngressPolicy` authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressFromSource>[]>;
+    }
+
+    export interface ServicePerimeterSpecIngressPolicyIngressFromSource {
+        /**
+         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         */
+        accessLevel?: pulumi.Input<string>;
+        /**
+         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterSpecIngressPolicyIngressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimeterSpecIngressPolicyIngressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterSpecVpcAccessibleServices {
@@ -443,9 +587,17 @@ export namespace accesscontextmanager {
          */
         accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        egressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusEgressPolicy>[]>;
+        /**
+         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        ingressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusIngressPolicy>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -462,6 +614,142 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServices>;
+    }
+
+    export interface ServicePerimeterStatusEgressPolicy {
+        /**
+         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressTo>;
+    }
+
+    export interface ServicePerimeterStatusEgressPolicyEgressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterStatusEgressPolicyEgressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimeterStatusEgressPolicyEgressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterStatusIngressPolicy {
+        /**
+         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressTo>;
+    }
+
+    export interface ServicePerimeterStatusIngressPolicyIngressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+        /**
+         * / Sources that this `IngressPolicy` authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSource>[]>;
+    }
+
+    export interface ServicePerimeterStatusIngressPolicyIngressFromSource {
+        /**
+         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         */
+        accessLevel?: pulumi.Input<string>;
+        /**
+         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterStatusIngressPolicyIngressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimeterStatusIngressPolicyIngressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
     }
 
     export interface ServicePerimeterStatusVpcAccessibleServices {
@@ -565,9 +853,17 @@ export namespace accesscontextmanager {
          */
         accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        egressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicy>[]>;
+        /**
+         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        ingressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicy>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -584,6 +880,142 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecVpcAccessibleServices>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecEgressPolicy {
+        /**
+         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecIngressPolicy {
+        /**
+         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+        /**
+         * / Sources that this `IngressPolicy` authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressFromSource {
+        /**
+         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         */
+        accessLevel?: pulumi.Input<string>;
+        /**
+         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterSpecIngressPolicyIngressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterSpecVpcAccessibleServices {
@@ -613,9 +1045,17 @@ export namespace accesscontextmanager {
          */
         accessLevels?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * A list of GCP resources that are inside of the service perimeter.
-         * Currently only projects are allowed.
-         * Format: projects/{project_number}
+         * / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        egressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicy>[]>;
+        /**
+         * / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+         * Structure is documented below.
+         */
+        ingressPolicies?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicy>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
          */
         resources?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -632,6 +1072,142 @@ export namespace accesscontextmanager {
          * Structure is documented below.
          */
         vpcAccessibleServices?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusVpcAccessibleServices>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusEgressPolicy {
+        /**
+         * / Defines conditions on the source of a request causing this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and destination resources that cause this `EgressPolicy` to apply.
+         * Structure is documented below.
+         */
+        egressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusIngressPolicy {
+        /**
+         * / Defines the conditions on the source of a request causing this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressFrom?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom>;
+        /**
+         * / Defines the conditions on the `ApiOperation` and request destination that cause this `IngressPolicy` to apply.
+         * Structure is documented below.
+         */
+        ingressTo?: pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFrom {
+        /**
+         * / A list of identities that are allowed access through this `EgressPolicy`. Should be in the format of email address. The email address should represent individual user or service account only.
+         */
+        identities?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * / Specifies the type of identities that are allowed access to outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
+         * Possible values are `IDENTITY_TYPE_UNSPECIFIED`, `ANY_IDENTITY`, `ANY_USER_ACCOUNT`, and `ANY_SERVICE_ACCOUNT`.
+         */
+        identityType?: pulumi.Input<string>;
+        /**
+         * / Sources that this `IngressPolicy` authorizes access from.
+         * Structure is documented below.
+         */
+        sources?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressFromSource {
+        /**
+         * / An `AccessLevel` resource name that allow resources within the `ServicePerimeters` to be accessed from the internet. `AccessLevels` listed must be in the same policy as this `ServicePerimeter`. Referencing a nonexistent `AccessLevel` will cause an error. If no `AccessLevel` names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL.` If * is specified, then all IngressSources will be allowed.
+         */
+        accessLevel?: pulumi.Input<string>;
+        /**
+         * / A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+         */
+        resource?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
+        /**
+         * / A list of `ApiOperations` that this egress rule applies to. A request matches if it contains an operation/service in this list.
+         * Structure is documented below.
+         */
+        operations?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation>[]>;
+        /**
+         * / A list of resources, currently only projects in the form `projects/<projectnumber>`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
+         */
+        resources?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperation {
+        /**
+         * / API methods or permissions to allow. Method or permission must belong to the service specified by `serviceName` field. A single MethodSelector entry with `*` specified for the `method` field will allow all methods AND permissions for the service specified in `serviceName`.
+         * Structure is documented below.
+         */
+        methodSelectors?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector>[]>;
+        /**
+         * / The name of the API whose methods or permissions the `IngressPolicy` or `EgressPolicy` want to allow. A single `ApiOperation` with serviceName field set to `*` will allow all methods AND permissions for all services.
+         */
+        serviceName?: pulumi.Input<string>;
+    }
+
+    export interface ServicePerimetersServicePerimeterStatusIngressPolicyIngressToOperationMethodSelector {
+        /**
+         * / Value for `method` should be a valid method name for the corresponding `serviceName` in `ApiOperation`. If `*` used as value for method, then ALL methods and permissions are allowed.
+         */
+        method?: pulumi.Input<string>;
+        /**
+         * / Value for permission should be a valid Cloud IAM permission for the corresponding `serviceName` in `ApiOperation`.
+         */
+        permission?: pulumi.Input<string>;
     }
 
     export interface ServicePerimetersServicePerimeterStatusVpcAccessibleServices {
@@ -14097,6 +14673,18 @@ export namespace datacatalog {
         displayName: pulumi.Input<string>;
     }
 
+    export interface TagTemplateIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface TagTemplateIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface TaxonomyIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -16545,6 +17133,28 @@ export namespace gameservices {
         realms?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+}
+
+export namespace gkehub {
+    export interface MembershipAuthority {
+        /**
+         * A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and // be a valid
+         * with length <2000 characters.
+         */
+        issuer: pulumi.Input<string>;
+    }
+
+    export interface MembershipEndpoint {
+        /**
+         * If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
+         * Structure is documented below.
+         */
+        gkeCluster?: pulumi.Input<inputs.gkehub.MembershipEndpointGkeCluster>;
+    }
+
+    export interface MembershipEndpointGkeCluster {
+        resourceLink: pulumi.Input<string>;
+    }
 }
 
 export namespace healthcare {

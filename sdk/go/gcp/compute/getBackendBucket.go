@@ -51,21 +51,15 @@ type LookupBackendBucketArgs struct {
 
 // A collection of values returned by getBackendBucket.
 type LookupBackendBucketResult struct {
-	// Cloud Storage bucket name.
-	BucketName string `pulumi:"bucketName"`
-	// Cloud CDN configuration for this Backend Bucket. Structure is documented below.
-	CdnPolicies []GetBackendBucketCdnPolicy `pulumi:"cdnPolicies"`
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp     string   `pulumi:"creationTimestamp"`
-	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
-	// An optional textual description of the resource; provided by the client when the resource is created.
-	Description string `pulumi:"description"`
-	// Whether Cloud CDN is enabled for this BackendBucket.
-	EnableCdn bool `pulumi:"enableCdn"`
+	BucketName            string                      `pulumi:"bucketName"`
+	CdnPolicies           []GetBackendBucketCdnPolicy `pulumi:"cdnPolicies"`
+	CreationTimestamp     string                      `pulumi:"creationTimestamp"`
+	CustomResponseHeaders []string                    `pulumi:"customResponseHeaders"`
+	Description           string                      `pulumi:"description"`
+	EnableCdn             bool                        `pulumi:"enableCdn"`
 	// The provider-assigned unique ID for this managed resource.
-	Id      string  `pulumi:"id"`
-	Name    string  `pulumi:"name"`
-	Project *string `pulumi:"project"`
-	// The URI of the created resource.
-	SelfLink string `pulumi:"selfLink"`
+	Id       string  `pulumi:"id"`
+	Name     string  `pulumi:"name"`
+	Project  *string `pulumi:"project"`
+	SelfLink string  `pulumi:"selfLink"`
 }

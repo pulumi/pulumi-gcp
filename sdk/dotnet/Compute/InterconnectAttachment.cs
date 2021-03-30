@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Compute
     ///         {
     ///             Interconnect = "my-interconnect-id",
     ///             Router = foobar.Id,
-    ///             Mtu = "1500",
+    ///             Mtu = 1500,
     ///         });
     ///     }
     /// 
@@ -147,7 +147,7 @@ namespace Pulumi.Gcp.Compute
         /// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         /// </summary>
         [Output("mtu")]
-        public Output<string> Mtu { get; private set; } = null!;
+        public Output<int> Mtu { get; private set; } = null!;
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The
@@ -342,7 +342,7 @@ namespace Pulumi.Gcp.Compute
         /// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         /// </summary>
         [Input("mtu")]
-        public Input<string>? Mtu { get; set; }
+        public Input<int>? Mtu { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The
@@ -490,7 +490,7 @@ namespace Pulumi.Gcp.Compute
         /// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         /// </summary>
         [Input("mtu")]
-        public Input<string>? Mtu { get; set; }
+        public Input<int>? Mtu { get; set; }
 
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The

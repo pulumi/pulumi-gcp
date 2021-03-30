@@ -27,6 +27,7 @@ from .get_default_service_account import *
 from .get_forwarding_rule import *
 from .get_global_address import *
 from .get_global_forwarding_rule import *
+from .get_health_check import *
 from .get_image import *
 from .get_instance import *
 from .get_instance_group import *

@@ -108,6 +108,8 @@ namespace Pulumi.Gcp
 
         public static string? GameServicesCustomEndpoint { get; set; } = __config.Get("gameServicesCustomEndpoint");
 
+        public static string? GkeHubCustomEndpoint { get; set; } = __config.Get("gkeHubCustomEndpoint");
+
         public static string? HealthcareCustomEndpoint { get; set; } = __config.Get("healthcareCustomEndpoint");
 
         public static string? IamBetaCustomEndpoint { get; set; } = __config.Get("iamBetaCustomEndpoint");
@@ -189,6 +191,8 @@ namespace Pulumi.Gcp
         public static string? StorageCustomEndpoint { get; set; } = __config.Get("storageCustomEndpoint");
 
         public static string? StorageTransferCustomEndpoint { get; set; } = __config.Get("storageTransferCustomEndpoint");
+
+        public static string? TagsCustomEndpoint { get; set; } = __config.Get("tagsCustomEndpoint");
 
         public static string? TpuCustomEndpoint { get; set; } = __config.Get("tpuCustomEndpoint");
 

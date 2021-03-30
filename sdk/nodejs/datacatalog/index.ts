@@ -16,6 +16,9 @@ export * from "./policyTagIamMember";
 export * from "./policyTagIamPolicy";
 export * from "./tag";
 export * from "./tagTemplate";
+export * from "./tagTemplateIamBinding";
+export * from "./tagTemplateIamMember";
+export * from "./tagTemplateIamPolicy";
 export * from "./taxonomy";
 export * from "./taxonomyIamBinding";
 export * from "./taxonomyIamMember";
@@ -33,6 +36,9 @@ import { PolicyTagIamMember } from "./policyTagIamMember";
 import { PolicyTagIamPolicy } from "./policyTagIamPolicy";
 import { Tag } from "./tag";
 import { TagTemplate } from "./tagTemplate";
+import { TagTemplateIamBinding } from "./tagTemplateIamBinding";
+import { TagTemplateIamMember } from "./tagTemplateIamMember";
+import { TagTemplateIamPolicy } from "./tagTemplateIamPolicy";
 import { Taxonomy } from "./taxonomy";
 import { TaxonomyIamBinding } from "./taxonomyIamBinding";
 import { TaxonomyIamMember } from "./taxonomyIamMember";
@@ -64,6 +70,12 @@ const _module = {
                 return new Tag(name, <any>undefined, { urn })
             case "gcp:datacatalog/tagTemplate:TagTemplate":
                 return new TagTemplate(name, <any>undefined, { urn })
+            case "gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding":
+                return new TagTemplateIamBinding(name, <any>undefined, { urn })
+            case "gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember":
+                return new TagTemplateIamMember(name, <any>undefined, { urn })
+            case "gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy":
+                return new TagTemplateIamPolicy(name, <any>undefined, { urn })
             case "gcp:datacatalog/taxonomy:Taxonomy":
                 return new Taxonomy(name, <any>undefined, { urn })
             case "gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding":
@@ -88,6 +100,9 @@ pulumi.runtime.registerResourceModule("gcp", "datacatalog/policyTagIamMember", _
 pulumi.runtime.registerResourceModule("gcp", "datacatalog/policyTagIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "datacatalog/tag", _module)
 pulumi.runtime.registerResourceModule("gcp", "datacatalog/tagTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "datacatalog/tagTemplateIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "datacatalog/tagTemplateIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "datacatalog/tagTemplateIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "datacatalog/taxonomy", _module)
 pulumi.runtime.registerResourceModule("gcp", "datacatalog/taxonomyIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "datacatalog/taxonomyIamMember", _module)

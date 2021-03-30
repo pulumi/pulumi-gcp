@@ -93,6 +93,7 @@ type providerArgs struct {
 	FirebaseCustomEndpoint             *string           `pulumi:"firebaseCustomEndpoint"`
 	FirestoreCustomEndpoint            *string           `pulumi:"firestoreCustomEndpoint"`
 	GameServicesCustomEndpoint         *string           `pulumi:"gameServicesCustomEndpoint"`
+	GkeHubCustomEndpoint               *string           `pulumi:"gkeHubCustomEndpoint"`
 	HealthcareCustomEndpoint           *string           `pulumi:"healthcareCustomEndpoint"`
 	IamBetaCustomEndpoint              *string           `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint       *string           `pulumi:"iamCredentialsCustomEndpoint"`
@@ -134,6 +135,7 @@ type providerArgs struct {
 	SqlCustomEndpoint                  *string           `pulumi:"sqlCustomEndpoint"`
 	StorageCustomEndpoint              *string           `pulumi:"storageCustomEndpoint"`
 	StorageTransferCustomEndpoint      *string           `pulumi:"storageTransferCustomEndpoint"`
+	TagsCustomEndpoint                 *string           `pulumi:"tagsCustomEndpoint"`
 	TpuCustomEndpoint                  *string           `pulumi:"tpuCustomEndpoint"`
 	UserProjectOverride                *bool             `pulumi:"userProjectOverride"`
 	VpcAccessCustomEndpoint            *string           `pulumi:"vpcAccessCustomEndpoint"`
@@ -193,6 +195,7 @@ type ProviderArgs struct {
 	FirebaseCustomEndpoint             pulumi.StringPtrInput
 	FirestoreCustomEndpoint            pulumi.StringPtrInput
 	GameServicesCustomEndpoint         pulumi.StringPtrInput
+	GkeHubCustomEndpoint               pulumi.StringPtrInput
 	HealthcareCustomEndpoint           pulumi.StringPtrInput
 	IamBetaCustomEndpoint              pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint       pulumi.StringPtrInput
@@ -234,6 +237,7 @@ type ProviderArgs struct {
 	SqlCustomEndpoint                  pulumi.StringPtrInput
 	StorageCustomEndpoint              pulumi.StringPtrInput
 	StorageTransferCustomEndpoint      pulumi.StringPtrInput
+	TagsCustomEndpoint                 pulumi.StringPtrInput
 	TpuCustomEndpoint                  pulumi.StringPtrInput
 	UserProjectOverride                pulumi.BoolPtrInput
 	VpcAccessCustomEndpoint            pulumi.StringPtrInput

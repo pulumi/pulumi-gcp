@@ -26,9 +26,17 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AccessLevels;
         /// <summary>
-        /// A list of GCP resources that are inside of the service perimeter.
-        /// Currently only projects are allowed.
-        /// Format: projects/{project_number}
+        /// / List of EgressPolicies to apply to the perimeter. A perimeter may have multiple EgressPolicies, each of which is evaluated separately. Access is granted if any EgressPolicy grants it. Must be empty for a perimeter bridge.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServicePerimeterStatusEgressPolicy> EgressPolicies;
+        /// <summary>
+        /// / List of `IngressPolicies` to apply to the perimeter. A perimeter may have multiple `IngressPolicies`, each of which is evaluated separately. Access is granted if any `Ingress Policy` grants it. Must be empty for a perimeter bridge.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ServicePerimeterStatusIngressPolicy> IngressPolicies;
+        /// <summary>
+        /// / A list of resources, currently only projects in the form `projects/&lt;projectnumber&gt;`, that match this to stanza. A request matches if it contains a resource in this list. If * is specified for resources, then this `EgressTo` rule will authorize access to all resources outside the perimeter.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
         /// <summary>
@@ -50,6 +58,10 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         private ServicePerimeterStatus(
             ImmutableArray<string> accessLevels,
 
+            ImmutableArray<Outputs.ServicePerimeterStatusEgressPolicy> egressPolicies,
+
+            ImmutableArray<Outputs.ServicePerimeterStatusIngressPolicy> ingressPolicies,
+
             ImmutableArray<string> resources,
 
             ImmutableArray<string> restrictedServices,
@@ -57,6 +69,8 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
             Outputs.ServicePerimeterStatusVpcAccessibleServices? vpcAccessibleServices)
         {
             AccessLevels = accessLevels;
+            EgressPolicies = egressPolicies;
+            IngressPolicies = ingressPolicies;
             Resources = resources;
             RestrictedServices = restrictedServices;
             VpcAccessibleServices = vpcAccessibleServices;

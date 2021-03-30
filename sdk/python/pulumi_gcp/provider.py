@@ -66,6 +66,7 @@ class Provider(pulumi.ProviderResource):
                  firebase_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  firestore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  game_services_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 gke_hub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -107,6 +108,7 @@ class Provider(pulumi.ProviderResource):
                  sql_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  storage_transfer_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 tags_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  tpu_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  user_project_override: Optional[pulumi.Input[bool]] = None,
                  vpc_access_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -191,6 +193,7 @@ class Provider(pulumi.ProviderResource):
             __props__['firebase_custom_endpoint'] = firebase_custom_endpoint
             __props__['firestore_custom_endpoint'] = firestore_custom_endpoint
             __props__['game_services_custom_endpoint'] = game_services_custom_endpoint
+            __props__['gke_hub_custom_endpoint'] = gke_hub_custom_endpoint
             __props__['healthcare_custom_endpoint'] = healthcare_custom_endpoint
             __props__['iam_beta_custom_endpoint'] = iam_beta_custom_endpoint
             __props__['iam_credentials_custom_endpoint'] = iam_credentials_custom_endpoint
@@ -236,6 +239,7 @@ class Provider(pulumi.ProviderResource):
             __props__['sql_custom_endpoint'] = sql_custom_endpoint
             __props__['storage_custom_endpoint'] = storage_custom_endpoint
             __props__['storage_transfer_custom_endpoint'] = storage_transfer_custom_endpoint
+            __props__['tags_custom_endpoint'] = tags_custom_endpoint
             __props__['tpu_custom_endpoint'] = tpu_custom_endpoint
             __props__['user_project_override'] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
             __props__['vpc_access_custom_endpoint'] = vpc_access_custom_endpoint
