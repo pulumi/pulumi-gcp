@@ -49,6 +49,7 @@ import * as firebase from "./firebase";
 import * as firestore from "./firestore";
 import * as folder from "./folder";
 import * as gameservices from "./gameservices";
+import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as iap from "./iap";
@@ -79,6 +80,7 @@ import * as sourcerepo from "./sourcerepo";
 import * as spanner from "./spanner";
 import * as sql from "./sql";
 import * as storage from "./storage";
+import * as tags from "./tags";
 import * as tpu from "./tpu";
 import * as types from "./types";
 import * as vpcaccess from "./vpcaccess";
@@ -125,6 +127,7 @@ export {
     firestore,
     folder,
     gameservices,
+    gkehub,
     healthcare,
     iam,
     iap,
@@ -155,6 +158,7 @@ export {
     spanner,
     sql,
     storage,
+    tags,
     tpu,
     types,
     vpcaccess,

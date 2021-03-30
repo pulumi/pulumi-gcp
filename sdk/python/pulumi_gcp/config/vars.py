@@ -60,6 +60,7 @@ __all__ = [
     'firebase_custom_endpoint',
     'firestore_custom_endpoint',
     'game_services_custom_endpoint',
+    'gke_hub_custom_endpoint',
     'healthcare_custom_endpoint',
     'iam_beta_custom_endpoint',
     'iam_credentials_custom_endpoint',
@@ -101,6 +102,7 @@ __all__ = [
     'sql_custom_endpoint',
     'storage_custom_endpoint',
     'storage_transfer_custom_endpoint',
+    'tags_custom_endpoint',
     'tpu_custom_endpoint',
     'user_project_override',
     'vpc_access_custom_endpoint',
@@ -210,6 +212,8 @@ firestore_custom_endpoint = __config__.get('firestoreCustomEndpoint')
 
 game_services_custom_endpoint = __config__.get('gameServicesCustomEndpoint')
 
+gke_hub_custom_endpoint = __config__.get('gkeHubCustomEndpoint')
+
 healthcare_custom_endpoint = __config__.get('healthcareCustomEndpoint')
 
 iam_beta_custom_endpoint = __config__.get('iamBetaCustomEndpoint')
@@ -291,6 +295,8 @@ sql_custom_endpoint = __config__.get('sqlCustomEndpoint')
 storage_custom_endpoint = __config__.get('storageCustomEndpoint')
 
 storage_transfer_custom_endpoint = __config__.get('storageTransferCustomEndpoint')
+
+tags_custom_endpoint = __config__.get('tagsCustomEndpoint')
 
 tpu_custom_endpoint = __config__.get('tpuCustomEndpoint')
 

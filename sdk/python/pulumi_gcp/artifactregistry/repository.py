@@ -30,7 +30,7 @@ class Repository(pulumi.CustomResource):
 
         To get more information about Repository, see:
 
-        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+        * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
         * How-to Guides
             * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 
@@ -110,7 +110,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository.
-               Possible values are `DOCKER`.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -187,7 +186,6 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository.
-               Possible values are `DOCKER`.
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -242,7 +240,6 @@ class Repository(pulumi.CustomResource):
     def format(self) -> pulumi.Output[str]:
         """
         The format of packages that are stored in the repository.
-        Possible values are `DOCKER`.
         """
         return pulumi.get(self, "format")
 

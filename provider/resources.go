@@ -61,6 +61,7 @@ const (
 	gcpFirestore            = "Firestore"            // Firestore resources
 	gcpFolder               = "Folder"               // Folder resources
 	gcpGameServices         = "GameServices"         // Game Services resources
+	gcpGkeHub               = "GkeHub"               // Gke Hub resources
 	gcpHealthcare           = "Healthcare"           // Healthcare resources
 	gcpIAM                  = "Iam"                  // IAM resources
 	gcpIAP                  = "Iap"                  // IAP resources
@@ -92,6 +93,7 @@ const (
 	gcpSourceRepo           = "SourceRepo"           // Source Repo resources
 	gcpSpanner              = "Spanner"              // Spanner Resources
 	gcpStorage              = "Storage"              // Storage resources
+	gcpTags                 = "Tags"                 // Tags
 	gcpTPU                  = "Tpu"                  // Tensor Processing Units
 	gcpVpcAccess            = "VpcAccess"            // VPC Access
 	gcpWorkflows            = "Workflows"            // Workflows
@@ -1769,6 +1771,24 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "data_catalog_entry_group_iam.html.markdown",
 				},
 			},
+			"google_data_catalog_tag_template_iam_binding": {
+				Tok: gcpResource(gcpDataCatalog, "TagTemplateIamBinding"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_tag_template_iam.html.markdown ",
+				},
+			},
+			"google_data_catalog_tag_template_iam_member": {
+				Tok: gcpResource(gcpDataCatalog, "TagTemplateIamMember"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_tag_template_iam.html.markdown ",
+				},
+			},
+			"google_data_catalog_tag_template_iam_policy": {
+				Tok: gcpResource(gcpDataCatalog, "TagTemplateIamPolicy"),
+				Docs: &tfbridge.DocInfo{
+					Source: "data_catalog_tag_template_iam.html.markdown ",
+				},
+			},
 
 			// Memcache
 			"google_memcache_instance": {Tok: gcpResource(gcpMemcache, "Instance")},
@@ -1940,6 +1960,12 @@ func Provider() tfbridge.ProviderInfo {
 
 			//eventarc
 			"google_eventarc_trigger": {Tok: gcpResource(gcpEventarc, "Trigger")},
+
+			// gke hub
+			"google_gke_hub_membership": {Tok: gcpResource(gcpGkeHub, "Membership")},
+
+			// tags
+			"google_tags_tag_key": {Tok: gcpResource(gcpTags, "TagKey")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -2138,6 +2164,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_resource_policy": {
 				Tok: gcpDataSource(gcpCompute, "getResourcePolicy"),
 			},
+			"google_compute_health_check": {Tok: gcpDataSource(gcpCompute, "getHealthCheck")},
 
 			"google_container_cluster": {
 				Tok: gcpDataSource(gcpKubernetes, "getCluster"),
@@ -2218,6 +2245,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_kms_crypto_key_version": {Tok: gcpDataSource(gcpKMS, "getKMSCryptoKeyVersion")},
+			"google_kms_secret_asymmetric":  {Tok: gcpDataSource(gcpKMS, "getKMSSecretAsymmetric")},
 			"google_kms_secret_ciphertext":  {Tok: gcpDataSource(gcpKMS, "getKMSSecretCiphertext")},
 			"google_organization": {
 				Tok: gcpDataSource(gcpOrganization, "getOrganization"),

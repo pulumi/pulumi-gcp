@@ -95,6 +95,189 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// }
     /// ```
+    /// ### Access Context Manager Service Perimeter Secure Data Exchange
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new Gcp.AccessContextManager.AccessPolicyArgs
+    ///         {
+    ///             Parent = "organizations/123456789",
+    ///             Title = "my policy",
+    ///         });
+    ///         var secure_data_exchange = new Gcp.AccessContextManager.ServicePerimeters("secure-data-exchange", new Gcp.AccessContextManager.ServicePerimetersArgs
+    ///         {
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             ServicePerimeters = 
+    ///             {
+    ///                 new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
+    ///                 {
+    ///                     Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/"),
+    ///                     Title = "",
+    ///                     Status = new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterStatusArgs
+    ///                     {
+    ///                         RestrictedServices = 
+    ///                         {
+    ///                             "storage.googleapis.com",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterArgs
+    ///                 {
+    ///                     Name = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}/servicePerimeters/"),
+    ///                     Title = "",
+    ///                     Status = new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterStatusArgs
+    ///                     {
+    ///                         RestrictedServices = 
+    ///                         {
+    ///                             "bigtable.googleapis.com",
+    ///                         },
+    ///                         VpcAccessibleServices = new Gcp.AccessContextManager.Inputs.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs
+    ///                         {
+    ///                             EnableRestriction = true,
+    ///                             AllowedServices = 
+    ///                             {
+    ///                                 "bigquery.googleapis.com",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var access_level = new Gcp.AccessContextManager.AccessLevel("access-level", new Gcp.AccessContextManager.AccessLevelArgs
+    ///         {
+    ///             Parent = access_policy.Name.Apply(name =&gt; $"accessPolicies/{name}"),
+    ///             Title = "secure_data_exchange",
+    ///             Basic = new Gcp.AccessContextManager.Inputs.AccessLevelBasicArgs
+    ///             {
+    ///                 Conditions = 
+    ///                 {
+    ///                     new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionArgs
+    ///                     {
+    ///                         DevicePolicy = new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyArgs
+    ///                         {
+    ///                             RequireScreenLock = false,
+    ///                             OsConstraints = 
+    ///                             {
+    ///                                 new Gcp.AccessContextManager.Inputs.AccessLevelBasicConditionDevicePolicyOsConstraintArgs
+    ///                                 {
+    ///                                     OsType = "DESKTOP_CHROME_OS",
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                         Regions = 
+    ///                         {
+    ///                             "CH",
+    ///                             "IT",
+    ///                             "US",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///         var test_access = new Gcp.AccessContextManager.ServicePerimeter("test-access", new Gcp.AccessContextManager.ServicePerimeterArgs
+    ///         {
+    ///             Parent = $"accessPolicies/{google_access_context_manager_access_policy.Test_access.Name}",
+    ///             Title = "%s",
+    ///             PerimeterType = "PERIMETER_TYPE_REGULAR",
+    ///             Status = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusArgs
+    ///             {
+    ///                 RestrictedServices = 
+    ///                 {
+    ///                     "bigquery.googleapis.com",
+    ///                     "storage.googleapis.com",
+    ///                 },
+    ///                 AccessLevels = 
+    ///                 {
+    ///                     access_level.Name,
+    ///                 },
+    ///                 VpcAccessibleServices = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusVpcAccessibleServicesArgs
+    ///                 {
+    ///                     EnableRestriction = true,
+    ///                     AllowedServices = 
+    ///                     {
+    ///                         "bigquery.googleapis.com",
+    ///                         "storage.googleapis.com",
+    ///                     },
+    ///                 },
+    ///                 IngressPolicies = 
+    ///                 {
+    ///                     new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyArgs
+    ///                     {
+    ///                         IngressFrom = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressFromArgs
+    ///                         {
+    ///                             Sources = 
+    ///                             {
+    ///                                 new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs
+    ///                                 {
+    ///                                     AccessLevel = google_access_context_manager_access_level.Test_access.Name,
+    ///                                 },
+    ///                             },
+    ///                             IdentityType = "ANY_IDENTITY",
+    ///                         },
+    ///                         IngressTo = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressToArgs
+    ///                         {
+    ///                             Resources = 
+    ///                             {
+    ///                                 "*",
+    ///                             },
+    ///                             Operations = 
+    ///                             {
+    ///                                 new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressToOperationArgs
+    ///                                 {
+    ///                                     ServiceName = "bigquery.googleapis.com",
+    ///                                     MethodSelectors = 
+    ///                                     {
+    ///                                         new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs
+    ///                                         {
+    ///                                             Method = "BigQueryStorage.ReadRows",
+    ///                                         },
+    ///                                         new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs
+    ///                                         {
+    ///                                             Method = "TableService.ListTables",
+    ///                                         },
+    ///                                         new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs
+    ///                                         {
+    ///                                             Permission = "bigquery.jobs.get",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                                 new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressToOperationArgs
+    ///                                 {
+    ///                                     ServiceName = "storage.googleapis.com",
+    ///                                     MethodSelectors = 
+    ///                                     {
+    ///                                         new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs
+    ///                                         {
+    ///                                             Method = "google.storage.objects.create",
+    ///                                         },
+    ///                                     },
+    ///                                 },
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 EgressPolicies = 
+    ///                 {
+    ///                     new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusEgressPolicyArgs
+    ///                     {
+    ///                         EgressFrom = new Gcp.AccessContextManager.Inputs.ServicePerimeterStatusEgressPolicyEgressFromArgs
+    ///                         {
+    ///                             IdentityType = "ANY_USER_ACCOUNT",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// ### Access Context Manager Service Perimeter Dry Run
     /// 
     /// ```csharp

@@ -1996,6 +1996,318 @@ func (o TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput) Index(i pulumi.IntI
 	}).(TagTemplateFieldTypeEnumTypeAllowedValueOutput)
 }
 
+type TagTemplateIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TagTemplateIamBindingConditionInput is an input type that accepts TagTemplateIamBindingConditionArgs and TagTemplateIamBindingConditionOutput values.
+// You can construct a concrete instance of `TagTemplateIamBindingConditionInput` via:
+//
+//          TagTemplateIamBindingConditionArgs{...}
+type TagTemplateIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToTagTemplateIamBindingConditionOutput() TagTemplateIamBindingConditionOutput
+	ToTagTemplateIamBindingConditionOutputWithContext(context.Context) TagTemplateIamBindingConditionOutput
+}
+
+type TagTemplateIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TagTemplateIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (i TagTemplateIamBindingConditionArgs) ToTagTemplateIamBindingConditionOutput() TagTemplateIamBindingConditionOutput {
+	return i.ToTagTemplateIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i TagTemplateIamBindingConditionArgs) ToTagTemplateIamBindingConditionOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamBindingConditionOutput)
+}
+
+func (i TagTemplateIamBindingConditionArgs) ToTagTemplateIamBindingConditionPtrOutput() TagTemplateIamBindingConditionPtrOutput {
+	return i.ToTagTemplateIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TagTemplateIamBindingConditionArgs) ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamBindingConditionOutput).ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// TagTemplateIamBindingConditionPtrInput is an input type that accepts TagTemplateIamBindingConditionArgs, TagTemplateIamBindingConditionPtr and TagTemplateIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `TagTemplateIamBindingConditionPtrInput` via:
+//
+//          TagTemplateIamBindingConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type TagTemplateIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToTagTemplateIamBindingConditionPtrOutput() TagTemplateIamBindingConditionPtrOutput
+	ToTagTemplateIamBindingConditionPtrOutputWithContext(context.Context) TagTemplateIamBindingConditionPtrOutput
+}
+
+type tagTemplateIamBindingConditionPtrType TagTemplateIamBindingConditionArgs
+
+func TagTemplateIamBindingConditionPtr(v *TagTemplateIamBindingConditionArgs) TagTemplateIamBindingConditionPtrInput {
+	return (*tagTemplateIamBindingConditionPtrType)(v)
+}
+
+func (*tagTemplateIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (i *tagTemplateIamBindingConditionPtrType) ToTagTemplateIamBindingConditionPtrOutput() TagTemplateIamBindingConditionPtrOutput {
+	return i.ToTagTemplateIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *tagTemplateIamBindingConditionPtrType) ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamBindingConditionPtrOutput)
+}
+
+type TagTemplateIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (o TagTemplateIamBindingConditionOutput) ToTagTemplateIamBindingConditionOutput() TagTemplateIamBindingConditionOutput {
+	return o
+}
+
+func (o TagTemplateIamBindingConditionOutput) ToTagTemplateIamBindingConditionOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionOutput {
+	return o
+}
+
+func (o TagTemplateIamBindingConditionOutput) ToTagTemplateIamBindingConditionPtrOutput() TagTemplateIamBindingConditionPtrOutput {
+	return o.ToTagTemplateIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TagTemplateIamBindingConditionOutput) ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionPtrOutput {
+	return o.ApplyT(func(v TagTemplateIamBindingCondition) *TagTemplateIamBindingCondition {
+		return &v
+	}).(TagTemplateIamBindingConditionPtrOutput)
+}
+func (o TagTemplateIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagTemplateIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TagTemplateIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TagTemplateIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TagTemplateIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TagTemplateIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TagTemplateIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplateIamBindingCondition)(nil)).Elem()
+}
+
+func (o TagTemplateIamBindingConditionPtrOutput) ToTagTemplateIamBindingConditionPtrOutput() TagTemplateIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TagTemplateIamBindingConditionPtrOutput) ToTagTemplateIamBindingConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o TagTemplateIamBindingConditionPtrOutput) Elem() TagTemplateIamBindingConditionOutput {
+	return o.ApplyT(func(v *TagTemplateIamBindingCondition) TagTemplateIamBindingCondition { return *v }).(TagTemplateIamBindingConditionOutput)
+}
+
+func (o TagTemplateIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagTemplateIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TagTemplateIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagTemplateIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TagTemplateIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagTemplateIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type TagTemplateIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// TagTemplateIamMemberConditionInput is an input type that accepts TagTemplateIamMemberConditionArgs and TagTemplateIamMemberConditionOutput values.
+// You can construct a concrete instance of `TagTemplateIamMemberConditionInput` via:
+//
+//          TagTemplateIamMemberConditionArgs{...}
+type TagTemplateIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToTagTemplateIamMemberConditionOutput() TagTemplateIamMemberConditionOutput
+	ToTagTemplateIamMemberConditionOutputWithContext(context.Context) TagTemplateIamMemberConditionOutput
+}
+
+type TagTemplateIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (TagTemplateIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (i TagTemplateIamMemberConditionArgs) ToTagTemplateIamMemberConditionOutput() TagTemplateIamMemberConditionOutput {
+	return i.ToTagTemplateIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i TagTemplateIamMemberConditionArgs) ToTagTemplateIamMemberConditionOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberConditionOutput)
+}
+
+func (i TagTemplateIamMemberConditionArgs) ToTagTemplateIamMemberConditionPtrOutput() TagTemplateIamMemberConditionPtrOutput {
+	return i.ToTagTemplateIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i TagTemplateIamMemberConditionArgs) ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberConditionOutput).ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// TagTemplateIamMemberConditionPtrInput is an input type that accepts TagTemplateIamMemberConditionArgs, TagTemplateIamMemberConditionPtr and TagTemplateIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `TagTemplateIamMemberConditionPtrInput` via:
+//
+//          TagTemplateIamMemberConditionArgs{...}
+//
+//  or:
+//
+//          nil
+type TagTemplateIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToTagTemplateIamMemberConditionPtrOutput() TagTemplateIamMemberConditionPtrOutput
+	ToTagTemplateIamMemberConditionPtrOutputWithContext(context.Context) TagTemplateIamMemberConditionPtrOutput
+}
+
+type tagTemplateIamMemberConditionPtrType TagTemplateIamMemberConditionArgs
+
+func TagTemplateIamMemberConditionPtr(v *TagTemplateIamMemberConditionArgs) TagTemplateIamMemberConditionPtrInput {
+	return (*tagTemplateIamMemberConditionPtrType)(v)
+}
+
+func (*tagTemplateIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (i *tagTemplateIamMemberConditionPtrType) ToTagTemplateIamMemberConditionPtrOutput() TagTemplateIamMemberConditionPtrOutput {
+	return i.ToTagTemplateIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *tagTemplateIamMemberConditionPtrType) ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagTemplateIamMemberConditionPtrOutput)
+}
+
+type TagTemplateIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (o TagTemplateIamMemberConditionOutput) ToTagTemplateIamMemberConditionOutput() TagTemplateIamMemberConditionOutput {
+	return o
+}
+
+func (o TagTemplateIamMemberConditionOutput) ToTagTemplateIamMemberConditionOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionOutput {
+	return o
+}
+
+func (o TagTemplateIamMemberConditionOutput) ToTagTemplateIamMemberConditionPtrOutput() TagTemplateIamMemberConditionPtrOutput {
+	return o.ToTagTemplateIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o TagTemplateIamMemberConditionOutput) ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionPtrOutput {
+	return o.ApplyT(func(v TagTemplateIamMemberCondition) *TagTemplateIamMemberCondition {
+		return &v
+	}).(TagTemplateIamMemberConditionPtrOutput)
+}
+func (o TagTemplateIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TagTemplateIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o TagTemplateIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v TagTemplateIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o TagTemplateIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v TagTemplateIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type TagTemplateIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (TagTemplateIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TagTemplateIamMemberCondition)(nil)).Elem()
+}
+
+func (o TagTemplateIamMemberConditionPtrOutput) ToTagTemplateIamMemberConditionPtrOutput() TagTemplateIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TagTemplateIamMemberConditionPtrOutput) ToTagTemplateIamMemberConditionPtrOutputWithContext(ctx context.Context) TagTemplateIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o TagTemplateIamMemberConditionPtrOutput) Elem() TagTemplateIamMemberConditionOutput {
+	return o.ApplyT(func(v *TagTemplateIamMemberCondition) TagTemplateIamMemberCondition { return *v }).(TagTemplateIamMemberConditionOutput)
+}
+
+func (o TagTemplateIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagTemplateIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TagTemplateIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagTemplateIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TagTemplateIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TagTemplateIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type TaxonomyIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -2338,6 +2650,10 @@ func init() {
 	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypePtrOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypeAllowedValueOutput{})
 	pulumi.RegisterOutputType(TagTemplateFieldTypeEnumTypeAllowedValueArrayOutput{})
+	pulumi.RegisterOutputType(TagTemplateIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(TagTemplateIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(TagTemplateIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(TagTemplateIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(TaxonomyIamMemberConditionOutput{})

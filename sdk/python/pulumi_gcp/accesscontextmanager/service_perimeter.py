@@ -86,6 +86,112 @@ class ServicePerimeter(pulumi.CustomResource):
             parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
             title="chromeos_no_lock")
         ```
+        ### Access Context Manager Service Perimeter Secure Data Exchange
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        secure_data_exchange = gcp.accesscontextmanager.ServicePerimeters("secure-data-exchange",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            service_perimeters=[
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    title="",
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["storage.googleapis.com"],
+                    ),
+                ),
+                gcp.accesscontextmanager.ServicePerimetersServicePerimeterArgs(
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/servicePerimeters/"),
+                    title="",
+                    status=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusArgs(
+                        restricted_services=["bigtable.googleapis.com"],
+                        vpc_accessible_services=gcp.accesscontextmanager.ServicePerimetersServicePerimeterStatusVpcAccessibleServicesArgs(
+                            enable_restriction=True,
+                            allowed_services=["bigquery.googleapis.com"],
+                        ),
+                    ),
+                ),
+            ])
+        access_level = gcp.accesscontextmanager.AccessLevel("access-level",
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"),
+            title="secure_data_exchange",
+            basic=gcp.accesscontextmanager.AccessLevelBasicArgs(
+                conditions=[gcp.accesscontextmanager.AccessLevelBasicConditionArgs(
+                    device_policy={
+                        "requireScreenLock": False,
+                        "osConstraints": [{
+                            "osType": "DESKTOP_CHROME_OS",
+                        }],
+                    },
+                    regions=[
+                        "CH",
+                        "IT",
+                        "US",
+                    ],
+                )],
+            ))
+        test_access = gcp.accesscontextmanager.ServicePerimeter("test-access",
+            parent=f"accessPolicies/{google_access_context_manager_access_policy['test-access']['name']}",
+            title="%s",
+            perimeter_type="PERIMETER_TYPE_REGULAR",
+            status=gcp.accesscontextmanager.ServicePerimeterStatusArgs(
+                restricted_services=[
+                    "bigquery.googleapis.com",
+                    "storage.googleapis.com",
+                ],
+                access_levels=[access_level.name],
+                vpc_accessible_services=gcp.accesscontextmanager.ServicePerimeterStatusVpcAccessibleServicesArgs(
+                    enable_restriction=True,
+                    allowed_services=[
+                        "bigquery.googleapis.com",
+                        "storage.googleapis.com",
+                    ],
+                ),
+                ingress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyArgs(
+                    ingress_from=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromArgs(
+                        sources=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressFromSourceArgs(
+                            access_level=google_access_context_manager_access_level["test-access"]["name"],
+                        )],
+                        identity_type="ANY_IDENTITY",
+                    ),
+                    ingress_to=gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToArgs(
+                        resources=["*"],
+                        operations=[
+                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArgs(
+                                service_name="bigquery.googleapis.com",
+                                method_selectors=[
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                        method="BigQueryStorage.ReadRows",
+                                    ),
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                        method="TableService.ListTables",
+                                    ),
+                                    gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                        permission="bigquery.jobs.get",
+                                    ),
+                                ],
+                            ),
+                            gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationArgs(
+                                service_name="storage.googleapis.com",
+                                method_selectors=[gcp.accesscontextmanager.ServicePerimeterStatusIngressPolicyIngressToOperationMethodSelectorArgs(
+                                    method="google.storage.objects.create",
+                                )],
+                            ),
+                        ],
+                    ),
+                )],
+                egress_policies=[gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyArgs(
+                    egress_from=gcp.accesscontextmanager.ServicePerimeterStatusEgressPolicyEgressFromArgs(
+                        identity_type="ANY_USER_ACCOUNT",
+                    ),
+                )],
+            ))
+        ```
         ### Access Context Manager Service Perimeter Dry Run
 
         ```python

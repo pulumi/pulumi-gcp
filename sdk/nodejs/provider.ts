@@ -88,6 +88,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["firebaseCustomEndpoint"] = args ? args.firebaseCustomEndpoint : undefined;
             inputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
             inputs["gameServicesCustomEndpoint"] = args ? args.gameServicesCustomEndpoint : undefined;
+            inputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
             inputs["healthcareCustomEndpoint"] = args ? args.healthcareCustomEndpoint : undefined;
             inputs["iamBetaCustomEndpoint"] = args ? args.iamBetaCustomEndpoint : undefined;
             inputs["iamCredentialsCustomEndpoint"] = args ? args.iamCredentialsCustomEndpoint : undefined;
@@ -129,6 +130,7 @@ export class Provider extends pulumi.ProviderResource {
             inputs["sqlCustomEndpoint"] = args ? args.sqlCustomEndpoint : undefined;
             inputs["storageCustomEndpoint"] = args ? args.storageCustomEndpoint : undefined;
             inputs["storageTransferCustomEndpoint"] = args ? args.storageTransferCustomEndpoint : undefined;
+            inputs["tagsCustomEndpoint"] = args ? args.tagsCustomEndpoint : undefined;
             inputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             inputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
             inputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
@@ -196,6 +198,7 @@ export interface ProviderArgs {
     readonly firebaseCustomEndpoint?: pulumi.Input<string>;
     readonly firestoreCustomEndpoint?: pulumi.Input<string>;
     readonly gameServicesCustomEndpoint?: pulumi.Input<string>;
+    readonly gkeHubCustomEndpoint?: pulumi.Input<string>;
     readonly healthcareCustomEndpoint?: pulumi.Input<string>;
     readonly iamBetaCustomEndpoint?: pulumi.Input<string>;
     readonly iamCredentialsCustomEndpoint?: pulumi.Input<string>;
@@ -237,6 +240,7 @@ export interface ProviderArgs {
     readonly sqlCustomEndpoint?: pulumi.Input<string>;
     readonly storageCustomEndpoint?: pulumi.Input<string>;
     readonly storageTransferCustomEndpoint?: pulumi.Input<string>;
+    readonly tagsCustomEndpoint?: pulumi.Input<string>;
     readonly tpuCustomEndpoint?: pulumi.Input<string>;
     readonly userProjectOverride?: pulumi.Input<boolean>;
     readonly vpcAccessCustomEndpoint?: pulumi.Input<string>;

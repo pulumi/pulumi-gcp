@@ -62825,8 +62825,7 @@ type GetBackendBucketCdnPolicy struct {
 	NegativeCaching         bool                                             `pulumi:"negativeCaching"`
 	NegativeCachingPolicies []GetBackendBucketCdnPolicyNegativeCachingPolicy `pulumi:"negativeCachingPolicies"`
 	ServeWhileStale         int                                              `pulumi:"serveWhileStale"`
-	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-	SignedUrlCacheMaxAgeSec int `pulumi:"signedUrlCacheMaxAgeSec"`
+	SignedUrlCacheMaxAgeSec int                                              `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 // GetBackendBucketCdnPolicyInput is an input type that accepts GetBackendBucketCdnPolicyArgs and GetBackendBucketCdnPolicyOutput values.
@@ -62848,8 +62847,7 @@ type GetBackendBucketCdnPolicyArgs struct {
 	NegativeCaching         pulumi.BoolInput                                         `pulumi:"negativeCaching"`
 	NegativeCachingPolicies GetBackendBucketCdnPolicyNegativeCachingPolicyArrayInput `pulumi:"negativeCachingPolicies"`
 	ServeWhileStale         pulumi.IntInput                                          `pulumi:"serveWhileStale"`
-	// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-	SignedUrlCacheMaxAgeSec pulumi.IntInput `pulumi:"signedUrlCacheMaxAgeSec"`
+	SignedUrlCacheMaxAgeSec pulumi.IntInput                                          `pulumi:"signedUrlCacheMaxAgeSec"`
 }
 
 func (GetBackendBucketCdnPolicyArgs) ElementType() reflect.Type {
@@ -62933,7 +62931,6 @@ func (o GetBackendBucketCdnPolicyOutput) ServeWhileStale() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.ServeWhileStale }).(pulumi.IntOutput)
 }
 
-// Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
 func (o GetBackendBucketCdnPolicyOutput) SignedUrlCacheMaxAgeSec() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackendBucketCdnPolicy) int { return v.SignedUrlCacheMaxAgeSec }).(pulumi.IntOutput)
 }
@@ -64891,6 +64888,850 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilterFilterLabel {
 		return vs[0].([]GetGlobalForwardingRuleMetadataFilterFilterLabel)[vs[1].(int)]
 	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
+type GetHealthCheckGrpcHealthCheck struct {
+	GrpcServiceName   string `pulumi:"grpcServiceName"`
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+}
+
+// GetHealthCheckGrpcHealthCheckInput is an input type that accepts GetHealthCheckGrpcHealthCheckArgs and GetHealthCheckGrpcHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcHealthCheckInput` via:
+//
+//          GetHealthCheckGrpcHealthCheckArgs{...}
+type GetHealthCheckGrpcHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput
+	ToGetHealthCheckGrpcHealthCheckOutputWithContext(context.Context) GetHealthCheckGrpcHealthCheckOutput
+}
+
+type GetHealthCheckGrpcHealthCheckArgs struct {
+	GrpcServiceName   pulumi.StringInput `pulumi:"grpcServiceName"`
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+}
+
+func (GetHealthCheckGrpcHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcHealthCheckArgs) ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput {
+	return i.ToGetHealthCheckGrpcHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcHealthCheckArgs) ToGetHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcHealthCheckOutput)
+}
+
+// GetHealthCheckGrpcHealthCheckArrayInput is an input type that accepts GetHealthCheckGrpcHealthCheckArray and GetHealthCheckGrpcHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckGrpcHealthCheckArrayInput` via:
+//
+//          GetHealthCheckGrpcHealthCheckArray{ GetHealthCheckGrpcHealthCheckArgs{...} }
+type GetHealthCheckGrpcHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput
+	ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckGrpcHealthCheckArrayOutput
+}
+
+type GetHealthCheckGrpcHealthCheckArray []GetHealthCheckGrpcHealthCheckInput
+
+func (GetHealthCheckGrpcHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckGrpcHealthCheckArray) ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput {
+	return i.ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckGrpcHealthCheckArray) ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckGrpcHealthCheckArrayOutput)
+}
+
+type GetHealthCheckGrpcHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) ToGetHealthCheckGrpcHealthCheckOutput() GetHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) ToGetHealthCheckGrpcHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) GrpcServiceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.GrpcServiceName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckGrpcHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckGrpcHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckGrpcHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckGrpcHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckGrpcHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) ToGetHealthCheckGrpcHealthCheckArrayOutput() GetHealthCheckGrpcHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) ToGetHealthCheckGrpcHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckGrpcHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckGrpcHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckGrpcHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckGrpcHealthCheck {
+		return vs[0].([]GetHealthCheckGrpcHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckGrpcHealthCheckOutput)
+}
+
+type GetHealthCheckHttp2HealthCheck struct {
+	Host              string `pulumi:"host"`
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	RequestPath       string `pulumi:"requestPath"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckHttp2HealthCheckInput is an input type that accepts GetHealthCheckHttp2HealthCheckArgs and GetHealthCheckHttp2HealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttp2HealthCheckInput` via:
+//
+//          GetHealthCheckHttp2HealthCheckArgs{...}
+type GetHealthCheckHttp2HealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput
+	ToGetHealthCheckHttp2HealthCheckOutputWithContext(context.Context) GetHealthCheckHttp2HealthCheckOutput
+}
+
+type GetHealthCheckHttp2HealthCheckArgs struct {
+	Host              pulumi.StringInput `pulumi:"host"`
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	RequestPath       pulumi.StringInput `pulumi:"requestPath"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckHttp2HealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttp2HealthCheckArgs) ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput {
+	return i.ToGetHealthCheckHttp2HealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttp2HealthCheckArgs) ToGetHealthCheckHttp2HealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttp2HealthCheckOutput)
+}
+
+// GetHealthCheckHttp2HealthCheckArrayInput is an input type that accepts GetHealthCheckHttp2HealthCheckArray and GetHealthCheckHttp2HealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttp2HealthCheckArrayInput` via:
+//
+//          GetHealthCheckHttp2HealthCheckArray{ GetHealthCheckHttp2HealthCheckArgs{...} }
+type GetHealthCheckHttp2HealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput
+	ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(context.Context) GetHealthCheckHttp2HealthCheckArrayOutput
+}
+
+type GetHealthCheckHttp2HealthCheckArray []GetHealthCheckHttp2HealthCheckInput
+
+func (GetHealthCheckHttp2HealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttp2HealthCheckArray) ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput {
+	return i.ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttp2HealthCheckArray) ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttp2HealthCheckArrayOutput)
+}
+
+type GetHealthCheckHttp2HealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttp2HealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ToGetHealthCheckHttp2HealthCheckOutput() GetHealthCheckHttp2HealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ToGetHealthCheckHttp2HealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttp2HealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttp2HealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckHttp2HealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttp2HealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttp2HealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) ToGetHealthCheckHttp2HealthCheckArrayOutput() GetHealthCheckHttp2HealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) ToGetHealthCheckHttp2HealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttp2HealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttp2HealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckHttp2HealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckHttp2HealthCheck {
+		return vs[0].([]GetHealthCheckHttp2HealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckHttp2HealthCheckOutput)
+}
+
+type GetHealthCheckHttpHealthCheck struct {
+	Host              string `pulumi:"host"`
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	RequestPath       string `pulumi:"requestPath"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckHttpHealthCheckInput is an input type that accepts GetHealthCheckHttpHealthCheckArgs and GetHealthCheckHttpHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpHealthCheckInput` via:
+//
+//          GetHealthCheckHttpHealthCheckArgs{...}
+type GetHealthCheckHttpHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpHealthCheckOutput() GetHealthCheckHttpHealthCheckOutput
+	ToGetHealthCheckHttpHealthCheckOutputWithContext(context.Context) GetHealthCheckHttpHealthCheckOutput
+}
+
+type GetHealthCheckHttpHealthCheckArgs struct {
+	Host              pulumi.StringInput `pulumi:"host"`
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	RequestPath       pulumi.StringInput `pulumi:"requestPath"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckHttpHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpHealthCheckArgs) ToGetHealthCheckHttpHealthCheckOutput() GetHealthCheckHttpHealthCheckOutput {
+	return i.ToGetHealthCheckHttpHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpHealthCheckArgs) ToGetHealthCheckHttpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpHealthCheckOutput)
+}
+
+// GetHealthCheckHttpHealthCheckArrayInput is an input type that accepts GetHealthCheckHttpHealthCheckArray and GetHealthCheckHttpHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpHealthCheckArrayInput` via:
+//
+//          GetHealthCheckHttpHealthCheckArray{ GetHealthCheckHttpHealthCheckArgs{...} }
+type GetHealthCheckHttpHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpHealthCheckArrayOutput() GetHealthCheckHttpHealthCheckArrayOutput
+	ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckHttpHealthCheckArrayOutput
+}
+
+type GetHealthCheckHttpHealthCheckArray []GetHealthCheckHttpHealthCheckInput
+
+func (GetHealthCheckHttpHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpHealthCheckArray) ToGetHealthCheckHttpHealthCheckArrayOutput() GetHealthCheckHttpHealthCheckArrayOutput {
+	return i.ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpHealthCheckArray) ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpHealthCheckArrayOutput)
+}
+
+type GetHealthCheckHttpHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) ToGetHealthCheckHttpHealthCheckOutput() GetHealthCheckHttpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) ToGetHealthCheckHttpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckHttpHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpHealthCheckArrayOutput) ToGetHealthCheckHttpHealthCheckArrayOutput() GetHealthCheckHttpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpHealthCheckArrayOutput) ToGetHealthCheckHttpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckHttpHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckHttpHealthCheck {
+		return vs[0].([]GetHealthCheckHttpHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckHttpHealthCheckOutput)
+}
+
+type GetHealthCheckHttpsHealthCheck struct {
+	Host              string `pulumi:"host"`
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	RequestPath       string `pulumi:"requestPath"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckHttpsHealthCheckInput is an input type that accepts GetHealthCheckHttpsHealthCheckArgs and GetHealthCheckHttpsHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpsHealthCheckInput` via:
+//
+//          GetHealthCheckHttpsHealthCheckArgs{...}
+type GetHealthCheckHttpsHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpsHealthCheckOutput() GetHealthCheckHttpsHealthCheckOutput
+	ToGetHealthCheckHttpsHealthCheckOutputWithContext(context.Context) GetHealthCheckHttpsHealthCheckOutput
+}
+
+type GetHealthCheckHttpsHealthCheckArgs struct {
+	Host              pulumi.StringInput `pulumi:"host"`
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	RequestPath       pulumi.StringInput `pulumi:"requestPath"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckHttpsHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpsHealthCheckArgs) ToGetHealthCheckHttpsHealthCheckOutput() GetHealthCheckHttpsHealthCheckOutput {
+	return i.ToGetHealthCheckHttpsHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpsHealthCheckArgs) ToGetHealthCheckHttpsHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpsHealthCheckOutput)
+}
+
+// GetHealthCheckHttpsHealthCheckArrayInput is an input type that accepts GetHealthCheckHttpsHealthCheckArray and GetHealthCheckHttpsHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckHttpsHealthCheckArrayInput` via:
+//
+//          GetHealthCheckHttpsHealthCheckArray{ GetHealthCheckHttpsHealthCheckArgs{...} }
+type GetHealthCheckHttpsHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckHttpsHealthCheckArrayOutput() GetHealthCheckHttpsHealthCheckArrayOutput
+	ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckHttpsHealthCheckArrayOutput
+}
+
+type GetHealthCheckHttpsHealthCheckArray []GetHealthCheckHttpsHealthCheckInput
+
+func (GetHealthCheckHttpsHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckHttpsHealthCheckArray) ToGetHealthCheckHttpsHealthCheckArrayOutput() GetHealthCheckHttpsHealthCheckArrayOutput {
+	return i.ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckHttpsHealthCheckArray) ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckHttpsHealthCheckArrayOutput)
+}
+
+type GetHealthCheckHttpsHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpsHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) ToGetHealthCheckHttpsHealthCheckOutput() GetHealthCheckHttpsHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) ToGetHealthCheckHttpsHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.Host }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) RequestPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.RequestPath }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckHttpsHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckHttpsHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckHttpsHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckHttpsHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckHttpsHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckHttpsHealthCheckArrayOutput) ToGetHealthCheckHttpsHealthCheckArrayOutput() GetHealthCheckHttpsHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpsHealthCheckArrayOutput) ToGetHealthCheckHttpsHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckHttpsHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckHttpsHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckHttpsHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckHttpsHealthCheck {
+		return vs[0].([]GetHealthCheckHttpsHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckHttpsHealthCheckOutput)
+}
+
+type GetHealthCheckLogConfig struct {
+	Enable bool `pulumi:"enable"`
+}
+
+// GetHealthCheckLogConfigInput is an input type that accepts GetHealthCheckLogConfigArgs and GetHealthCheckLogConfigOutput values.
+// You can construct a concrete instance of `GetHealthCheckLogConfigInput` via:
+//
+//          GetHealthCheckLogConfigArgs{...}
+type GetHealthCheckLogConfigInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput
+	ToGetHealthCheckLogConfigOutputWithContext(context.Context) GetHealthCheckLogConfigOutput
+}
+
+type GetHealthCheckLogConfigArgs struct {
+	Enable pulumi.BoolInput `pulumi:"enable"`
+}
+
+func (GetHealthCheckLogConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i GetHealthCheckLogConfigArgs) ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput {
+	return i.ToGetHealthCheckLogConfigOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckLogConfigArgs) ToGetHealthCheckLogConfigOutputWithContext(ctx context.Context) GetHealthCheckLogConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckLogConfigOutput)
+}
+
+// GetHealthCheckLogConfigArrayInput is an input type that accepts GetHealthCheckLogConfigArray and GetHealthCheckLogConfigArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckLogConfigArrayInput` via:
+//
+//          GetHealthCheckLogConfigArray{ GetHealthCheckLogConfigArgs{...} }
+type GetHealthCheckLogConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput
+	ToGetHealthCheckLogConfigArrayOutputWithContext(context.Context) GetHealthCheckLogConfigArrayOutput
+}
+
+type GetHealthCheckLogConfigArray []GetHealthCheckLogConfigInput
+
+func (GetHealthCheckLogConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (i GetHealthCheckLogConfigArray) ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput {
+	return i.ToGetHealthCheckLogConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckLogConfigArray) ToGetHealthCheckLogConfigArrayOutputWithContext(ctx context.Context) GetHealthCheckLogConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckLogConfigArrayOutput)
+}
+
+type GetHealthCheckLogConfigOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckLogConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o GetHealthCheckLogConfigOutput) ToGetHealthCheckLogConfigOutput() GetHealthCheckLogConfigOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigOutput) ToGetHealthCheckLogConfigOutputWithContext(ctx context.Context) GetHealthCheckLogConfigOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigOutput) Enable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetHealthCheckLogConfig) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+type GetHealthCheckLogConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckLogConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckLogConfig)(nil)).Elem()
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) ToGetHealthCheckLogConfigArrayOutput() GetHealthCheckLogConfigArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) ToGetHealthCheckLogConfigArrayOutputWithContext(ctx context.Context) GetHealthCheckLogConfigArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckLogConfigArrayOutput) Index(i pulumi.IntInput) GetHealthCheckLogConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckLogConfig {
+		return vs[0].([]GetHealthCheckLogConfig)[vs[1].(int)]
+	}).(GetHealthCheckLogConfigOutput)
+}
+
+type GetHealthCheckSslHealthCheck struct {
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	Request           string `pulumi:"request"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckSslHealthCheckInput is an input type that accepts GetHealthCheckSslHealthCheckArgs and GetHealthCheckSslHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckSslHealthCheckInput` via:
+//
+//          GetHealthCheckSslHealthCheckArgs{...}
+type GetHealthCheckSslHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput
+	ToGetHealthCheckSslHealthCheckOutputWithContext(context.Context) GetHealthCheckSslHealthCheckOutput
+}
+
+type GetHealthCheckSslHealthCheckArgs struct {
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	Request           pulumi.StringInput `pulumi:"request"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckSslHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckSslHealthCheckArgs) ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput {
+	return i.ToGetHealthCheckSslHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckSslHealthCheckArgs) ToGetHealthCheckSslHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckSslHealthCheckOutput)
+}
+
+// GetHealthCheckSslHealthCheckArrayInput is an input type that accepts GetHealthCheckSslHealthCheckArray and GetHealthCheckSslHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckSslHealthCheckArrayInput` via:
+//
+//          GetHealthCheckSslHealthCheckArray{ GetHealthCheckSslHealthCheckArgs{...} }
+type GetHealthCheckSslHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput
+	ToGetHealthCheckSslHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckSslHealthCheckArrayOutput
+}
+
+type GetHealthCheckSslHealthCheckArray []GetHealthCheckSslHealthCheckInput
+
+func (GetHealthCheckSslHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckSslHealthCheckArray) ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput {
+	return i.ToGetHealthCheckSslHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckSslHealthCheckArray) ToGetHealthCheckSslHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckSslHealthCheckArrayOutput)
+}
+
+type GetHealthCheckSslHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckSslHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ToGetHealthCheckSslHealthCheckOutput() GetHealthCheckSslHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ToGetHealthCheckSslHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) Request() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Request }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckSslHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckSslHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckSslHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckSslHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckSslHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) ToGetHealthCheckSslHealthCheckArrayOutput() GetHealthCheckSslHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) ToGetHealthCheckSslHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckSslHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckSslHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckSslHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckSslHealthCheck {
+		return vs[0].([]GetHealthCheckSslHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckSslHealthCheckOutput)
+}
+
+type GetHealthCheckTcpHealthCheck struct {
+	Port              int    `pulumi:"port"`
+	PortName          string `pulumi:"portName"`
+	PortSpecification string `pulumi:"portSpecification"`
+	ProxyHeader       string `pulumi:"proxyHeader"`
+	Request           string `pulumi:"request"`
+	Response          string `pulumi:"response"`
+}
+
+// GetHealthCheckTcpHealthCheckInput is an input type that accepts GetHealthCheckTcpHealthCheckArgs and GetHealthCheckTcpHealthCheckOutput values.
+// You can construct a concrete instance of `GetHealthCheckTcpHealthCheckInput` via:
+//
+//          GetHealthCheckTcpHealthCheckArgs{...}
+type GetHealthCheckTcpHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput
+	ToGetHealthCheckTcpHealthCheckOutputWithContext(context.Context) GetHealthCheckTcpHealthCheckOutput
+}
+
+type GetHealthCheckTcpHealthCheckArgs struct {
+	Port              pulumi.IntInput    `pulumi:"port"`
+	PortName          pulumi.StringInput `pulumi:"portName"`
+	PortSpecification pulumi.StringInput `pulumi:"portSpecification"`
+	ProxyHeader       pulumi.StringInput `pulumi:"proxyHeader"`
+	Request           pulumi.StringInput `pulumi:"request"`
+	Response          pulumi.StringInput `pulumi:"response"`
+}
+
+func (GetHealthCheckTcpHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckTcpHealthCheckArgs) ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput {
+	return i.ToGetHealthCheckTcpHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTcpHealthCheckArgs) ToGetHealthCheckTcpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTcpHealthCheckOutput)
+}
+
+// GetHealthCheckTcpHealthCheckArrayInput is an input type that accepts GetHealthCheckTcpHealthCheckArray and GetHealthCheckTcpHealthCheckArrayOutput values.
+// You can construct a concrete instance of `GetHealthCheckTcpHealthCheckArrayInput` via:
+//
+//          GetHealthCheckTcpHealthCheckArray{ GetHealthCheckTcpHealthCheckArgs{...} }
+type GetHealthCheckTcpHealthCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput
+	ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(context.Context) GetHealthCheckTcpHealthCheckArrayOutput
+}
+
+type GetHealthCheckTcpHealthCheckArray []GetHealthCheckTcpHealthCheckInput
+
+func (GetHealthCheckTcpHealthCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (i GetHealthCheckTcpHealthCheckArray) ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput {
+	return i.ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetHealthCheckTcpHealthCheckArray) ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHealthCheckTcpHealthCheckArrayOutput)
+}
+
+type GetHealthCheckTcpHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTcpHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ToGetHealthCheckTcpHealthCheckOutput() GetHealthCheckTcpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ToGetHealthCheckTcpHealthCheckOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) int { return v.Port }).(pulumi.IntOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) PortName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortName }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) PortSpecification() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.PortSpecification }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) ProxyHeader() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.ProxyHeader }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) Request() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Request }).(pulumi.StringOutput)
+}
+
+func (o GetHealthCheckTcpHealthCheckOutput) Response() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHealthCheckTcpHealthCheck) string { return v.Response }).(pulumi.StringOutput)
+}
+
+type GetHealthCheckTcpHealthCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHealthCheckTcpHealthCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHealthCheckTcpHealthCheck)(nil)).Elem()
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) ToGetHealthCheckTcpHealthCheckArrayOutput() GetHealthCheckTcpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) ToGetHealthCheckTcpHealthCheckArrayOutputWithContext(ctx context.Context) GetHealthCheckTcpHealthCheckArrayOutput {
+	return o
+}
+
+func (o GetHealthCheckTcpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHealthCheckTcpHealthCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHealthCheckTcpHealthCheck {
+		return vs[0].([]GetHealthCheckTcpHealthCheck)[vs[1].(int)]
+	}).(GetHealthCheckTcpHealthCheckOutput)
 }
 
 type GetInstanceAttachedDisk struct {
@@ -70266,6 +71107,20 @@ func init() {
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttp2HealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttp2HealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpsHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckHttpsHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckLogConfigOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckLogConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckSslHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckSslHealthCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetHealthCheckTcpHealthCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachedDiskOutput{})
 	pulumi.RegisterOutputType(GetInstanceAttachedDiskArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceBootDiskOutput{})

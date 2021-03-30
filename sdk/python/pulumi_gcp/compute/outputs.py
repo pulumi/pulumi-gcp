@@ -373,6 +373,13 @@ __all__ = [
     'GetBackendServiceOutlierDetectionIntervalResult',
     'GetGlobalForwardingRuleMetadataFilterResult',
     'GetGlobalForwardingRuleMetadataFilterFilterLabelResult',
+    'GetHealthCheckGrpcHealthCheckResult',
+    'GetHealthCheckHttp2HealthCheckResult',
+    'GetHealthCheckHttpHealthCheckResult',
+    'GetHealthCheckHttpsHealthCheckResult',
+    'GetHealthCheckLogConfigResult',
+    'GetHealthCheckSslHealthCheckResult',
+    'GetHealthCheckTcpHealthCheckResult',
     'GetInstanceAttachedDiskResult',
     'GetInstanceBootDiskResult',
     'GetInstanceBootDiskInitializeParamResult',
@@ -21853,9 +21860,6 @@ class GetBackendBucketCdnPolicyResult(dict):
                  negative_caching_policies: Sequence['outputs.GetBackendBucketCdnPolicyNegativeCachingPolicyResult'],
                  serve_while_stale: int,
                  signed_url_cache_max_age_sec: int):
-        """
-        :param int signed_url_cache_max_age_sec: Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-        """
         pulumi.set(__self__, "cache_mode", cache_mode)
         pulumi.set(__self__, "client_ttl", client_ttl)
         pulumi.set(__self__, "default_ttl", default_ttl)
@@ -21903,9 +21907,6 @@ class GetBackendBucketCdnPolicyResult(dict):
     @property
     @pulumi.getter(name="signedUrlCacheMaxAgeSec")
     def signed_url_cache_max_age_sec(self) -> int:
-        """
-        Maximum number of seconds the response to a signed URL request will be considered fresh. After this time period, the response will be revalidated before being served. When serving responses to signed URL requests, Cloud CDN will internally behave as though all responses from this backend had a "Cache-Control: public, max-age=[TTL]" header, regardless of any existing Cache-Control header. The actual headers served in responses will not be altered.
-        """
         return pulumi.get(self, "signed_url_cache_max_age_sec")
 
 
@@ -22493,6 +22494,307 @@ class GetGlobalForwardingRuleMetadataFilterFilterLabelResult(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetHealthCheckGrpcHealthCheckResult(dict):
+    def __init__(__self__, *,
+                 grpc_service_name: str,
+                 port: int,
+                 port_name: str,
+                 port_specification: str):
+        pulumi.set(__self__, "grpc_service_name", grpc_service_name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "port_name", port_name)
+        pulumi.set(__self__, "port_specification", port_specification)
+
+    @property
+    @pulumi.getter(name="grpcServiceName")
+    def grpc_service_name(self) -> str:
+        return pulumi.get(self, "grpc_service_name")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> str:
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> str:
+        return pulumi.get(self, "port_specification")
+
+
+@pulumi.output_type
+class GetHealthCheckHttp2HealthCheckResult(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 port: int,
+                 port_name: str,
+                 port_specification: str,
+                 proxy_header: str,
+                 request_path: str,
+                 response: str):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "port_name", port_name)
+        pulumi.set(__self__, "port_specification", port_specification)
+        pulumi.set(__self__, "proxy_header", proxy_header)
+        pulumi.set(__self__, "request_path", request_path)
+        pulumi.set(__self__, "response", response)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> str:
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> str:
+        return pulumi.get(self, "port_specification")
+
+    @property
+    @pulumi.getter(name="proxyHeader")
+    def proxy_header(self) -> str:
+        return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter(name="requestPath")
+    def request_path(self) -> str:
+        return pulumi.get(self, "request_path")
+
+    @property
+    @pulumi.getter
+    def response(self) -> str:
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class GetHealthCheckHttpHealthCheckResult(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 port: int,
+                 port_name: str,
+                 port_specification: str,
+                 proxy_header: str,
+                 request_path: str,
+                 response: str):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "port_name", port_name)
+        pulumi.set(__self__, "port_specification", port_specification)
+        pulumi.set(__self__, "proxy_header", proxy_header)
+        pulumi.set(__self__, "request_path", request_path)
+        pulumi.set(__self__, "response", response)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> str:
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> str:
+        return pulumi.get(self, "port_specification")
+
+    @property
+    @pulumi.getter(name="proxyHeader")
+    def proxy_header(self) -> str:
+        return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter(name="requestPath")
+    def request_path(self) -> str:
+        return pulumi.get(self, "request_path")
+
+    @property
+    @pulumi.getter
+    def response(self) -> str:
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class GetHealthCheckHttpsHealthCheckResult(dict):
+    def __init__(__self__, *,
+                 host: str,
+                 port: int,
+                 port_name: str,
+                 port_specification: str,
+                 proxy_header: str,
+                 request_path: str,
+                 response: str):
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "port_name", port_name)
+        pulumi.set(__self__, "port_specification", port_specification)
+        pulumi.set(__self__, "proxy_header", proxy_header)
+        pulumi.set(__self__, "request_path", request_path)
+        pulumi.set(__self__, "response", response)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> str:
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> str:
+        return pulumi.get(self, "port_specification")
+
+    @property
+    @pulumi.getter(name="proxyHeader")
+    def proxy_header(self) -> str:
+        return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter(name="requestPath")
+    def request_path(self) -> str:
+        return pulumi.get(self, "request_path")
+
+    @property
+    @pulumi.getter
+    def response(self) -> str:
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class GetHealthCheckLogConfigResult(dict):
+    def __init__(__self__, *,
+                 enable: bool):
+        pulumi.set(__self__, "enable", enable)
+
+    @property
+    @pulumi.getter
+    def enable(self) -> bool:
+        return pulumi.get(self, "enable")
+
+
+@pulumi.output_type
+class GetHealthCheckSslHealthCheckResult(dict):
+    def __init__(__self__, *,
+                 port: int,
+                 port_name: str,
+                 port_specification: str,
+                 proxy_header: str,
+                 request: str,
+                 response: str):
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "port_name", port_name)
+        pulumi.set(__self__, "port_specification", port_specification)
+        pulumi.set(__self__, "proxy_header", proxy_header)
+        pulumi.set(__self__, "request", request)
+        pulumi.set(__self__, "response", response)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> str:
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> str:
+        return pulumi.get(self, "port_specification")
+
+    @property
+    @pulumi.getter(name="proxyHeader")
+    def proxy_header(self) -> str:
+        return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter
+    def request(self) -> str:
+        return pulumi.get(self, "request")
+
+    @property
+    @pulumi.getter
+    def response(self) -> str:
+        return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class GetHealthCheckTcpHealthCheckResult(dict):
+    def __init__(__self__, *,
+                 port: int,
+                 port_name: str,
+                 port_specification: str,
+                 proxy_header: str,
+                 request: str,
+                 response: str):
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "port_name", port_name)
+        pulumi.set(__self__, "port_specification", port_specification)
+        pulumi.set(__self__, "proxy_header", proxy_header)
+        pulumi.set(__self__, "request", request)
+        pulumi.set(__self__, "response", response)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="portName")
+    def port_name(self) -> str:
+        return pulumi.get(self, "port_name")
+
+    @property
+    @pulumi.getter(name="portSpecification")
+    def port_specification(self) -> str:
+        return pulumi.get(self, "port_specification")
+
+    @property
+    @pulumi.getter(name="proxyHeader")
+    def proxy_header(self) -> str:
+        return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter
+    def request(self) -> str:
+        return pulumi.get(self, "request")
+
+    @property
+    @pulumi.getter
+    def response(self) -> str:
+        return pulumi.get(self, "response")
 
 
 @pulumi.output_type

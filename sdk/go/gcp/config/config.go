@@ -158,6 +158,9 @@ func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 func GetGameServicesCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gameServicesCustomEndpoint")
 }
+func GetGkeHubCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:gkeHubCustomEndpoint")
+}
 func GetHealthcareCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:healthcareCustomEndpoint")
 }
@@ -288,6 +291,9 @@ func GetStorageCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetStorageTransferCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:storageTransferCustomEndpoint")
+}
+func GetTagsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:tagsCustomEndpoint")
 }
 func GetTpuCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:tpuCustomEndpoint")

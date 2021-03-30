@@ -15,7 +15,7 @@ import (
 //
 // To get more information about Repository, see:
 //
-// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
 // * How-to Guides
 //     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
 //
@@ -145,7 +145,6 @@ type Repository struct {
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The format of packages that are stored in the repository.
-	// Possible values are `DOCKER`.
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -212,7 +211,6 @@ type repositoryState struct {
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
 	// The format of packages that are stored in the repository.
-	// Possible values are `DOCKER`.
 	Format *string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -245,7 +243,6 @@ type RepositoryState struct {
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
 	// The format of packages that are stored in the repository.
-	// Possible values are `DOCKER`.
 	Format pulumi.StringPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -280,7 +277,6 @@ type repositoryArgs struct {
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
 	// The format of packages that are stored in the repository.
-	// Possible values are `DOCKER`.
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -308,7 +304,6 @@ type RepositoryArgs struct {
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
 	// The format of packages that are stored in the repository.
-	// Possible values are `DOCKER`.
 	Format pulumi.StringInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:

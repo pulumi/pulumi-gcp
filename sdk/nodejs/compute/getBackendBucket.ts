@@ -52,26 +52,11 @@ export interface GetBackendBucketArgs {
  * A collection of values returned by getBackendBucket.
  */
 export interface GetBackendBucketResult {
-    /**
-     * Cloud Storage bucket name.
-     */
     readonly bucketName: string;
-    /**
-     * Cloud CDN configuration for this Backend Bucket. Structure is documented below.
-     */
     readonly cdnPolicies: outputs.compute.GetBackendBucketCdnPolicy[];
-    /**
-     * Creation timestamp in RFC3339 text format.
-     */
     readonly creationTimestamp: string;
     readonly customResponseHeaders: string[];
-    /**
-     * An optional textual description of the resource; provided by the client when the resource is created.
-     */
     readonly description: string;
-    /**
-     * Whether Cloud CDN is enabled for this BackendBucket.
-     */
     readonly enableCdn: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
@@ -79,8 +64,5 @@ export interface GetBackendBucketResult {
     readonly id: string;
     readonly name: string;
     readonly project?: string;
-    /**
-     * The URI of the created resource.
-     */
     readonly selfLink: string;
 }

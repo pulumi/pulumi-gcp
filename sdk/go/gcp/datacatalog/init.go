@@ -43,6 +43,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewTag(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:datacatalog/tagTemplate:TagTemplate":
 		r, err = NewTagTemplate(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding":
+		r, err = NewTagTemplateIamBinding(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember":
+		r, err = NewTagTemplateIamMember(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy":
+		r, err = NewTagTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:datacatalog/taxonomy:Taxonomy":
 		r, err = NewTaxonomy(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding":
@@ -116,6 +122,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"datacatalog/tagTemplate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"datacatalog/tagTemplateIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"datacatalog/tagTemplateIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"datacatalog/tagTemplateIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

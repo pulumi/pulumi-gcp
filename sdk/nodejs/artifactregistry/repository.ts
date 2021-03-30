@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
  *
  * To get more information about Repository, see:
  *
- * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/)
+ * * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1beta2/projects.locations.repositories)
  * * How-to Guides
  *     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
  *
@@ -133,7 +133,6 @@ export class Repository extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The format of packages that are stored in the repository.
-     * Possible values are `DOCKER`.
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -237,7 +236,6 @@ export interface RepositoryState {
     readonly description?: pulumi.Input<string>;
     /**
      * The format of packages that are stored in the repository.
-     * Possible values are `DOCKER`.
      */
     readonly format?: pulumi.Input<string>;
     /**
@@ -289,7 +287,6 @@ export interface RepositoryArgs {
     readonly description?: pulumi.Input<string>;
     /**
      * The format of packages that are stored in the repository.
-     * Possible values are `DOCKER`.
      */
     readonly format: pulumi.Input<string>;
     /**

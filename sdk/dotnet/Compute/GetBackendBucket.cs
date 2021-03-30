@@ -66,26 +66,11 @@ namespace Pulumi.Gcp.Compute
     [OutputType]
     public sealed class GetBackendBucketResult
     {
-        /// <summary>
-        /// Cloud Storage bucket name.
-        /// </summary>
         public readonly string BucketName;
-        /// <summary>
-        /// Cloud CDN configuration for this Backend Bucket. Structure is documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetBackendBucketCdnPolicyResult> CdnPolicies;
-        /// <summary>
-        /// Creation timestamp in RFC3339 text format.
-        /// </summary>
         public readonly string CreationTimestamp;
         public readonly ImmutableArray<string> CustomResponseHeaders;
-        /// <summary>
-        /// An optional textual description of the resource; provided by the client when the resource is created.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// Whether Cloud CDN is enabled for this BackendBucket.
-        /// </summary>
         public readonly bool EnableCdn;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -93,9 +78,6 @@ namespace Pulumi.Gcp.Compute
         public readonly string Id;
         public readonly string Name;
         public readonly string? Project;
-        /// <summary>
-        /// The URI of the created resource.
-        /// </summary>
         public readonly string SelfLink;
 
         [OutputConstructor]
