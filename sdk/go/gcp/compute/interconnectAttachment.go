@@ -27,16 +27,26 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		foobar, err := compute.NewRouter(ctx, "foobar", &compute.RouterArgs{
-// 			Network: pulumi.Any(google_compute_network.Foobar.Name),
+// 		foobarNetwork, err := compute.NewNetwork(ctx, "foobarNetwork", &compute.NetworkArgs{
+// 			AutoCreateSubnetworks: pulumi.Bool(false),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		foobarRouter, err := compute.NewRouter(ctx, "foobarRouter", &compute.RouterArgs{
+// 			Network: foobarNetwork.Name,
+// 			Bgp: &compute.RouterBgpArgs{
+// 				Asn: pulumi.Int(16550),
+// 			},
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = compute.NewInterconnectAttachment(ctx, "onPrem", &compute.InterconnectAttachmentArgs{
-// 			Interconnect: pulumi.String("my-interconnect-id"),
-// 			Router:       foobar.ID(),
-// 			Mtu:          pulumi.Int(1500),
+// 			EdgeAvailabilityDomain: pulumi.String("AVAILABILITY_DOMAIN_1"),
+// 			Type:                   pulumi.String("PARTNER"),
+// 			Router:                 foobarRouter.ID(),
+// 			Mtu:                    pulumi.String("1500"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -110,7 +120,7 @@ type InterconnectAttachment struct {
 	Interconnect pulumi.StringPtrOutput `pulumi:"interconnect"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu pulumi.IntOutput `pulumi:"mtu"`
+	Mtu pulumi.StringOutput `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -224,7 +234,7 @@ type interconnectAttachmentState struct {
 	Interconnect *string `pulumi:"interconnect"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu *int `pulumi:"mtu"`
+	Mtu *string `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -307,7 +317,7 @@ type InterconnectAttachmentState struct {
 	Interconnect pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu pulumi.IntPtrInput
+	Mtu pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -385,7 +395,7 @@ type interconnectAttachmentArgs struct {
 	Interconnect *string `pulumi:"interconnect"`
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu *int `pulumi:"mtu"`
+	Mtu *string `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression
@@ -447,7 +457,7 @@ type InterconnectAttachmentArgs struct {
 	Interconnect pulumi.StringPtrInput
 	// Maximum Transmission Unit (MTU), in bytes, of packets passing through
 	// this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
-	Mtu pulumi.IntPtrInput
+	Mtu pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The
 	// name must be 1-63 characters long, and comply with RFC1035. Specifically, the
 	// name must be 1-63 characters long and match the regular expression

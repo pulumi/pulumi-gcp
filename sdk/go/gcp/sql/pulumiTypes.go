@@ -1974,10 +1974,14 @@ func (o DatabaseInstanceSettingsDatabaseFlagArrayOutput) Index(i pulumi.IntInput
 }
 
 type DatabaseInstanceSettingsInsightsConfig struct {
-	QueryInsightsEnabled  *bool `pulumi:"queryInsightsEnabled"`
-	QueryStringLength     *int  `pulumi:"queryStringLength"`
+	// True if Query Insights feature is enabled.
+	QueryInsightsEnabled *bool `pulumi:"queryInsightsEnabled"`
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	QueryStringLength *int `pulumi:"queryStringLength"`
+	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags *bool `pulumi:"recordApplicationTags"`
-	RecordClientAddress   *bool `pulumi:"recordClientAddress"`
+	// True if Query Insights will record client address when enabled.
+	RecordClientAddress *bool `pulumi:"recordClientAddress"`
 }
 
 // DatabaseInstanceSettingsInsightsConfigInput is an input type that accepts DatabaseInstanceSettingsInsightsConfigArgs and DatabaseInstanceSettingsInsightsConfigOutput values.
@@ -1992,10 +1996,14 @@ type DatabaseInstanceSettingsInsightsConfigInput interface {
 }
 
 type DatabaseInstanceSettingsInsightsConfigArgs struct {
-	QueryInsightsEnabled  pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
-	QueryStringLength     pulumi.IntPtrInput  `pulumi:"queryStringLength"`
+	// True if Query Insights feature is enabled.
+	QueryInsightsEnabled pulumi.BoolPtrInput `pulumi:"queryInsightsEnabled"`
+	// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+	QueryStringLength pulumi.IntPtrInput `pulumi:"queryStringLength"`
+	// True if Query Insights will record application tags from query when enabled.
 	RecordApplicationTags pulumi.BoolPtrInput `pulumi:"recordApplicationTags"`
-	RecordClientAddress   pulumi.BoolPtrInput `pulumi:"recordClientAddress"`
+	// True if Query Insights will record client address when enabled.
+	RecordClientAddress pulumi.BoolPtrInput `pulumi:"recordClientAddress"`
 }
 
 func (DatabaseInstanceSettingsInsightsConfigArgs) ElementType() reflect.Type {
@@ -2074,18 +2082,23 @@ func (o DatabaseInstanceSettingsInsightsConfigOutput) ToDatabaseInstanceSettings
 		return &v
 	}).(DatabaseInstanceSettingsInsightsConfigPtrOutput)
 }
+
+// True if Query Insights feature is enabled.
 func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.QueryInsightsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
 func (o DatabaseInstanceSettingsInsightsConfigOutput) QueryStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *int { return v.QueryStringLength }).(pulumi.IntPtrOutput)
 }
 
+// True if Query Insights will record application tags from query when enabled.
 func (o DatabaseInstanceSettingsInsightsConfigOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.RecordApplicationTags }).(pulumi.BoolPtrOutput)
 }
 
+// True if Query Insights will record client address when enabled.
 func (o DatabaseInstanceSettingsInsightsConfigOutput) RecordClientAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsInsightsConfig) *bool { return v.RecordClientAddress }).(pulumi.BoolPtrOutput)
 }
@@ -2108,6 +2121,7 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) Elem() DatabaseInstance
 	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) DatabaseInstanceSettingsInsightsConfig { return *v }).(DatabaseInstanceSettingsInsightsConfigOutput)
 }
 
+// True if Query Insights feature is enabled.
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryInsightsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *bool {
 		if v == nil {
@@ -2117,6 +2131,7 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryInsightsEnabled() 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryStringLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *int {
 		if v == nil {
@@ -2126,6 +2141,7 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) QueryStringLength() pul
 	}).(pulumi.IntPtrOutput)
 }
 
+// True if Query Insights will record application tags from query when enabled.
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordApplicationTags() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *bool {
 		if v == nil {
@@ -2135,6 +2151,7 @@ func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordApplicationTags()
 	}).(pulumi.BoolPtrOutput)
 }
 
+// True if Query Insights will record client address when enabled.
 func (o DatabaseInstanceSettingsInsightsConfigPtrOutput) RecordClientAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *DatabaseInstanceSettingsInsightsConfig) *bool {
 		if v == nil {

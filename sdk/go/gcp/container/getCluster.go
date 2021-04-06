@@ -74,9 +74,11 @@ type LookupClusterResult struct {
 	DefaultMaxPodsPerNode      int                                   `pulumi:"defaultMaxPodsPerNode"`
 	DefaultSnatStatuses        []GetClusterDefaultSnatStatus         `pulumi:"defaultSnatStatuses"`
 	Description                string                                `pulumi:"description"`
+	EnableAutopilot            bool                                  `pulumi:"enableAutopilot"`
 	EnableBinaryAuthorization  bool                                  `pulumi:"enableBinaryAuthorization"`
 	EnableIntranodeVisibility  bool                                  `pulumi:"enableIntranodeVisibility"`
 	EnableKubernetesAlpha      bool                                  `pulumi:"enableKubernetesAlpha"`
+	EnableL4IlbSubsetting      bool                                  `pulumi:"enableL4IlbSubsetting"`
 	EnableLegacyAbac           bool                                  `pulumi:"enableLegacyAbac"`
 	EnableShieldedNodes        bool                                  `pulumi:"enableShieldedNodes"`
 	EnableTpu                  bool                                  `pulumi:"enableTpu"`
@@ -107,6 +109,7 @@ type LookupClusterResult struct {
 	Operation                       string                                     `pulumi:"operation"`
 	PodSecurityPolicyConfigs        []GetClusterPodSecurityPolicyConfig        `pulumi:"podSecurityPolicyConfigs"`
 	PrivateClusterConfigs           []GetClusterPrivateClusterConfig           `pulumi:"privateClusterConfigs"`
+	PrivateIpv6GoogleAccess         string                                     `pulumi:"privateIpv6GoogleAccess"`
 	Project                         *string                                    `pulumi:"project"`
 	ReleaseChannels                 []GetClusterReleaseChannel                 `pulumi:"releaseChannels"`
 	RemoveDefaultNodePool           bool                                       `pulumi:"removeDefaultNodePool"`

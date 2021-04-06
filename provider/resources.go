@@ -1866,10 +1866,11 @@ func Provider() tfbridge.ProviderInfo {
 			"google_iam_workload_identity_pool_provider": {Tok: gcpResource(gcpIAM, "WorkloadIdentityPoolProvider")},
 
 			// apigee
-			"google_apigee_organization": {Tok: gcpResource(gcpApigee, "Organization")},
-			"google_apigee_instance":     {Tok: gcpResource(gcpApigee, "Instance")},
-			"google_apigee_envgroup":     {Tok: gcpResource(gcpApigee, "EnvGroup")},
-			"google_apigee_environment":  {Tok: gcpResource(gcpApigee, "Environment")},
+			"google_apigee_organization":        {Tok: gcpResource(gcpApigee, "Organization")},
+			"google_apigee_instance":            {Tok: gcpResource(gcpApigee, "Instance")},
+			"google_apigee_envgroup":            {Tok: gcpResource(gcpApigee, "EnvGroup")},
+			"google_apigee_environment":         {Tok: gcpResource(gcpApigee, "Environment")},
+			"google_apigee_instance_attachment": {Tok: gcpResource(gcpApigee, "InstanceAttachment")},
 
 			// API Gateway
 			"google_api_gateway_api_config_iam_binding": {
@@ -1965,7 +1966,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_gke_hub_membership": {Tok: gcpResource(gcpGkeHub, "Membership")},
 
 			// tags
-			"google_tags_tag_key": {Tok: gcpResource(gcpTags, "TagKey")},
+			"google_tags_tag_key":   {Tok: gcpResource(gcpTags, "TagKey")},
+			"google_tags_tag_value": {Tok: gcpResource(gcpTags, "TagValue")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"google_billing_account": {
@@ -2366,8 +2368,9 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "datasource_monitoring_app_engine_service.html.markdown",
 				},
 			},
-			"google_monitoring_cluster_istio_service": {Tok: gcpDataSource(gcpMonitoring, "getClusterIstioService")},
-			"google_monitoring_mesh_istio_service":    {Tok: gcpDataSource(gcpMonitoring, "getMeshIstioService")},
+			"google_monitoring_cluster_istio_service":   {Tok: gcpDataSource(gcpMonitoring, "getClusterIstioService")},
+			"google_monitoring_mesh_istio_service":      {Tok: gcpDataSource(gcpMonitoring, "getMeshIstioService")},
+			"google_monitoring_istio_canonical_service": {Tok: gcpDataSource(gcpMonitoring, "getIstioCanonicalService")},
 
 			// Firebase
 			"google_firebase_web_app_config": {

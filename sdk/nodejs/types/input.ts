@@ -21485,9 +21485,21 @@ export namespace sql {
     }
 
     export interface DatabaseInstanceSettingsInsightsConfig {
+        /**
+         * True if Query Insights feature is enabled.
+         */
         queryInsightsEnabled?: pulumi.Input<boolean>;
+        /**
+         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         */
         queryStringLength?: pulumi.Input<number>;
+        /**
+         * True if Query Insights will record application tags from query when enabled.
+         */
         recordApplicationTags?: pulumi.Input<boolean>;
+        /**
+         * True if Query Insights will record client address when enabled.
+         */
         recordClientAddress?: pulumi.Input<boolean>;
     }
 

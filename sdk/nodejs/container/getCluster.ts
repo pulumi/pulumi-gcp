@@ -77,9 +77,11 @@ export interface GetClusterResult {
     readonly defaultMaxPodsPerNode: number;
     readonly defaultSnatStatuses: outputs.container.GetClusterDefaultSnatStatus[];
     readonly description: string;
+    readonly enableAutopilot: boolean;
     readonly enableBinaryAuthorization: boolean;
     readonly enableIntranodeVisibility: boolean;
     readonly enableKubernetesAlpha: boolean;
+    readonly enableL4IlbSubsetting: boolean;
     readonly enableLegacyAbac: boolean;
     readonly enableShieldedNodes: boolean;
     readonly enableTpu: boolean;
@@ -112,6 +114,7 @@ export interface GetClusterResult {
     readonly operation: string;
     readonly podSecurityPolicyConfigs: outputs.container.GetClusterPodSecurityPolicyConfig[];
     readonly privateClusterConfigs: outputs.container.GetClusterPrivateClusterConfig[];
+    readonly privateIpv6GoogleAccess: string;
     readonly project?: string;
     readonly releaseChannels: outputs.container.GetClusterReleaseChannel[];
     readonly removeDefaultNodePool: boolean;

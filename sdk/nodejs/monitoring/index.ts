@@ -10,6 +10,7 @@ export * from "./customService";
 export * from "./dashboard";
 export * from "./getAppEngineService";
 export * from "./getClusterIstioService";
+export * from "./getIstioCanonicalService";
 export * from "./getMeshIstioService";
 export * from "./getNotificationChannel";
 export * from "./getSecretVersion";

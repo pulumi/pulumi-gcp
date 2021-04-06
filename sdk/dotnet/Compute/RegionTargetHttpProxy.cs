@@ -43,6 +43,7 @@ namespace Pulumi.Gcp.Compute
     ///             Region = "us-central1",
     ///             Protocol = "HTTP",
     ///             TimeoutSec = 10,
+    ///             LoadBalancingScheme = "INTERNAL_MANAGED",
     ///             HealthChecks = 
     ///             {
     ///                 defaultRegionHealthCheck.Id,

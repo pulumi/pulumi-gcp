@@ -75,7 +75,7 @@ type SecretVersion struct {
 	Secret pulumi.StringOutput `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData pulumi.StringPtrOutput `pulumi:"secretData"`
+	SecretData pulumi.StringOutput `pulumi:"secretData"`
 }
 
 // NewSecretVersion registers a new resource with the given unique name, arguments, and options.
@@ -87,6 +87,9 @@ func NewSecretVersion(ctx *pulumi.Context,
 
 	if args.Secret == nil {
 		return nil, errors.New("invalid value for required argument 'Secret'")
+	}
+	if args.SecretData == nil {
+		return nil, errors.New("invalid value for required argument 'SecretData'")
 	}
 	var resource SecretVersion
 	err := ctx.RegisterResource("gcp:secretmanager/secretVersion:SecretVersion", name, args, &resource, opts...)
@@ -152,7 +155,7 @@ type secretVersionArgs struct {
 	Secret string `pulumi:"secret"`
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData *string `pulumi:"secretData"`
+	SecretData string `pulumi:"secretData"`
 }
 
 // The set of arguments for constructing a SecretVersion resource.
@@ -163,7 +166,7 @@ type SecretVersionArgs struct {
 	Secret pulumi.StringInput
 	// The secret data. Must be no larger than 64KiB.
 	// **Note**: This property is sensitive and will not be displayed in the plan.
-	SecretData pulumi.StringPtrInput
+	SecretData pulumi.StringInput
 }
 
 func (SecretVersionArgs) ElementType() reflect.Type {

@@ -6,9 +6,11 @@ import * as utilities from "../utilities";
 
 // Export members:
 export * from "./tagKey";
+export * from "./tagValue";
 
 // Import resources to register:
 import { TagKey } from "./tagKey";
+import { TagValue } from "./tagValue";
 
 const _module = {
     version: utilities.getVersion(),
@@ -16,9 +18,12 @@ const _module = {
         switch (type) {
             case "gcp:tags/tagKey:TagKey":
                 return new TagKey(name, <any>undefined, { urn })
+            case "gcp:tags/tagValue:TagValue":
+                return new TagValue(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "tags/tagKey", _module)
+pulumi.runtime.registerResourceModule("gcp", "tags/tagValue", _module)

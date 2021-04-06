@@ -223,7 +223,7 @@ export class Instance extends pulumi.CustomResource {
      * Labels to apply to this instance. These can be later modified by the setLabels method.
      * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A reference to the zone where the machine resides.
      */

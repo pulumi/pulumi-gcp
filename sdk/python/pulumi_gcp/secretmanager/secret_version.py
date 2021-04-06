@@ -83,6 +83,8 @@ class SecretVersion(pulumi.CustomResource):
             if secret is None and not opts.urn:
                 raise TypeError("Missing required property 'secret'")
             __props__['secret'] = secret
+            if secret_data is None and not opts.urn:
+                raise TypeError("Missing required property 'secret_data'")
             __props__['secret_data'] = secret_data
             __props__['create_time'] = None
             __props__['destroy_time'] = None
@@ -172,7 +174,7 @@ class SecretVersion(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="secretData")
-    def secret_data(self) -> pulumi.Output[Optional[str]]:
+    def secret_data(self) -> pulumi.Output[str]:
         """
         The secret data. Must be no larger than 64KiB.
         **Note**: This property is sensitive and will not be displayed in the plan.

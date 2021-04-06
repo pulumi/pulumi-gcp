@@ -165,6 +165,15 @@ namespace Pulumi.Gcp.Container
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Enable Autopilot for this cluster. Defaults to `false`.
+        /// Note that when this option is enabled, certain features of Standard GKE are not available.
+        /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+        /// for available features.
+        /// </summary>
+        [Output("enableAutopilot")]
+        public Output<bool?> EnableAutopilot { get; private set; } = null!;
+
+        /// <summary>
         /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
         /// </summary>
@@ -175,7 +184,7 @@ namespace Pulumi.Gcp.Container
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         [Output("enableIntranodeVisibility")]
-        public Output<bool?> EnableIntranodeVisibility { get; private set; } = null!;
+        public Output<bool> EnableIntranodeVisibility { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable Kubernetes Alpha features for
@@ -184,6 +193,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("enableKubernetesAlpha")]
         public Output<bool?> EnableKubernetesAlpha { get; private set; } = null!;
+
+        /// <summary>
+        /// )
+        /// Whether L4ILB Subsetting is enabled for this cluster.
+        /// </summary>
+        [Output("enableL4IlbSubsetting")]
+        public Output<bool?> EnableL4IlbSubsetting { get; private set; } = null!;
 
         /// <summary>
         /// Whether the ABAC authorizer is enabled for this cluster.
@@ -198,7 +214,7 @@ namespace Pulumi.Gcp.Container
         /// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         /// </summary>
         [Output("enableShieldedNodes")]
-        public Output<bool?> EnableShieldedNodes { get; private set; } = null!;
+        public Output<bool> EnableShieldedNodes { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable Cloud TPU resources in this cluster.
@@ -238,7 +254,7 @@ namespace Pulumi.Gcp.Container
         /// below.
         /// </summary>
         [Output("ipAllocationPolicy")]
-        public Output<Outputs.ClusterIpAllocationPolicy?> IpAllocationPolicy { get; private set; } = null!;
+        public Output<Outputs.ClusterIpAllocationPolicy> IpAllocationPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The fingerprint of the set of labels for this cluster.
@@ -424,6 +440,12 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterPrivateClusterConfig> PrivateClusterConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+        /// </summary>
+        [Output("privateIpv6GoogleAccess")]
+        public Output<string> PrivateIpv6GoogleAccess { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -510,7 +532,7 @@ namespace Pulumi.Gcp.Container
         /// Structure is documented below.
         /// </summary>
         [Output("workloadIdentityConfig")]
-        public Output<Outputs.ClusterWorkloadIdentityConfig?> WorkloadIdentityConfig { get; private set; } = null!;
+        public Output<Outputs.ClusterWorkloadIdentityConfig> WorkloadIdentityConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -641,6 +663,15 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable Autopilot for this cluster. Defaults to `false`.
+        /// Note that when this option is enabled, certain features of Standard GKE are not available.
+        /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+        /// for available features.
+        /// </summary>
+        [Input("enableAutopilot")]
+        public Input<bool>? EnableAutopilot { get; set; }
+
+        /// <summary>
         /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
         /// </summary>
@@ -660,6 +691,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableKubernetesAlpha")]
         public Input<bool>? EnableKubernetesAlpha { get; set; }
+
+        /// <summary>
+        /// )
+        /// Whether L4ILB Subsetting is enabled for this cluster.
+        /// </summary>
+        [Input("enableL4IlbSubsetting")]
+        public Input<bool>? EnableL4IlbSubsetting { get; set; }
 
         /// <summary>
         /// Whether the ABAC authorizer is enabled for this cluster.
@@ -882,6 +920,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterPrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
         /// <summary>
+        /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+        /// </summary>
+        [Input("privateIpv6GoogleAccess")]
+        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -1043,6 +1087,15 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Enable Autopilot for this cluster. Defaults to `false`.
+        /// Note that when this option is enabled, certain features of Standard GKE are not available.
+        /// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+        /// for available features.
+        /// </summary>
+        [Input("enableAutopilot")]
+        public Input<bool>? EnableAutopilot { get; set; }
+
+        /// <summary>
         /// Enable Binary Authorization for this cluster.
         /// If enabled, all container images will be validated by Google Binary Authorization.
         /// </summary>
@@ -1062,6 +1115,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableKubernetesAlpha")]
         public Input<bool>? EnableKubernetesAlpha { get; set; }
+
+        /// <summary>
+        /// )
+        /// Whether L4ILB Subsetting is enabled for this cluster.
+        /// </summary>
+        [Input("enableL4IlbSubsetting")]
+        public Input<bool>? EnableL4IlbSubsetting { get; set; }
 
         /// <summary>
         /// Whether the ABAC authorizer is enabled for this cluster.
@@ -1318,6 +1378,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("privateClusterConfig")]
         public Input<Inputs.ClusterPrivateClusterConfigGetArgs>? PrivateClusterConfig { get; set; }
+
+        /// <summary>
+        /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+        /// </summary>
+        [Input("privateIpv6GoogleAccess")]
+        public Input<string>? PrivateIpv6GoogleAccess { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it

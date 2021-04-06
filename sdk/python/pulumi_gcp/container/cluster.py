@@ -28,9 +28,11 @@ class Cluster(pulumi.CustomResource):
                  default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
                  default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 enable_autopilot: Optional[pulumi.Input[bool]] = None,
                  enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
                  enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+                 enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
                  enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
@@ -54,6 +56,7 @@ class Cluster(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['ClusterNotificationConfigArgs']]] = None,
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']]] = None,
+                 private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']]] = None,
                  remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
@@ -147,12 +150,18 @@ class Cluster(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
+               Note that when this option is enabled, certain features of Standard GKE are not available.
+               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+               for available features.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
+        :param pulumi.Input[bool] enable_l4_ilb_subsetting: )
+               Whether L4ILB Subsetting is enabled for this cluster.
         :param pulumi.Input[bool] enable_legacy_abac: Whether the ABAC authorizer is enabled for this cluster.
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -246,6 +255,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
+        :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -301,9 +311,11 @@ class Cluster(pulumi.CustomResource):
             __props__['default_max_pods_per_node'] = default_max_pods_per_node
             __props__['default_snat_status'] = default_snat_status
             __props__['description'] = description
+            __props__['enable_autopilot'] = enable_autopilot
             __props__['enable_binary_authorization'] = enable_binary_authorization
             __props__['enable_intranode_visibility'] = enable_intranode_visibility
             __props__['enable_kubernetes_alpha'] = enable_kubernetes_alpha
+            __props__['enable_l4_ilb_subsetting'] = enable_l4_ilb_subsetting
             __props__['enable_legacy_abac'] = enable_legacy_abac
             __props__['enable_shielded_nodes'] = enable_shielded_nodes
             __props__['enable_tpu'] = enable_tpu
@@ -327,6 +339,7 @@ class Cluster(pulumi.CustomResource):
             __props__['notification_config'] = notification_config
             __props__['pod_security_policy_config'] = pod_security_policy_config
             __props__['private_cluster_config'] = private_cluster_config
+            __props__['private_ipv6_google_access'] = private_ipv6_google_access
             __props__['project'] = project
             __props__['release_channel'] = release_channel
             __props__['remove_default_node_pool'] = remove_default_node_pool
@@ -364,9 +377,11 @@ class Cluster(pulumi.CustomResource):
             default_max_pods_per_node: Optional[pulumi.Input[int]] = None,
             default_snat_status: Optional[pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            enable_autopilot: Optional[pulumi.Input[bool]] = None,
             enable_binary_authorization: Optional[pulumi.Input[bool]] = None,
             enable_intranode_visibility: Optional[pulumi.Input[bool]] = None,
             enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
+            enable_l4_ilb_subsetting: Optional[pulumi.Input[bool]] = None,
             enable_legacy_abac: Optional[pulumi.Input[bool]] = None,
             enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
             enable_tpu: Optional[pulumi.Input[bool]] = None,
@@ -395,6 +410,7 @@ class Cluster(pulumi.CustomResource):
             operation: Optional[pulumi.Input[str]] = None,
             pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['ClusterPodSecurityPolicyConfigArgs']]] = None,
             private_cluster_config: Optional[pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']]] = None,
+            private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             release_channel: Optional[pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']]] = None,
             remove_default_node_pool: Optional[pulumi.Input[bool]] = None,
@@ -440,12 +456,18 @@ class Cluster(pulumi.CustomResource):
                for more information.
         :param pulumi.Input[pulumi.InputType['ClusterDefaultSnatStatusArgs']] default_snat_status: [GKE SNAT](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-masquerade-agent#how_ipmasq_works) DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster, [API doc](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#networkconfig).
         :param pulumi.Input[str] description: Description of the cluster.
+        :param pulumi.Input[bool] enable_autopilot: Enable Autopilot for this cluster. Defaults to `false`.
+               Note that when this option is enabled, certain features of Standard GKE are not available.
+               See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+               for available features.
         :param pulumi.Input[bool] enable_binary_authorization: Enable Binary Authorization for this cluster.
                If enabled, all container images will be validated by Google Binary Authorization.
         :param pulumi.Input[bool] enable_intranode_visibility: Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         :param pulumi.Input[bool] enable_kubernetes_alpha: Whether to enable Kubernetes Alpha features for
                this cluster. Note that when this option is enabled, the cluster cannot be upgraded
                and will be automatically deleted after 30 days.
+        :param pulumi.Input[bool] enable_l4_ilb_subsetting: )
+               Whether L4ILB Subsetting is enabled for this cluster.
         :param pulumi.Input[bool] enable_legacy_abac: Whether the ABAC authorizer is enabled for this cluster.
                When enabled, identities in the system, including service accounts, nodes, and controllers,
                will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -546,6 +568,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterPrivateClusterConfigArgs']] private_cluster_config: Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
                clusters with private nodes. Structure is documented below.
+        :param pulumi.Input[str] private_ipv6_google_access: The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[pulumi.InputType['ClusterReleaseChannelArgs']] release_channel: Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -596,9 +619,11 @@ class Cluster(pulumi.CustomResource):
         __props__["default_max_pods_per_node"] = default_max_pods_per_node
         __props__["default_snat_status"] = default_snat_status
         __props__["description"] = description
+        __props__["enable_autopilot"] = enable_autopilot
         __props__["enable_binary_authorization"] = enable_binary_authorization
         __props__["enable_intranode_visibility"] = enable_intranode_visibility
         __props__["enable_kubernetes_alpha"] = enable_kubernetes_alpha
+        __props__["enable_l4_ilb_subsetting"] = enable_l4_ilb_subsetting
         __props__["enable_legacy_abac"] = enable_legacy_abac
         __props__["enable_shielded_nodes"] = enable_shielded_nodes
         __props__["enable_tpu"] = enable_tpu
@@ -627,6 +652,7 @@ class Cluster(pulumi.CustomResource):
         __props__["operation"] = operation
         __props__["pod_security_policy_config"] = pod_security_policy_config
         __props__["private_cluster_config"] = private_cluster_config
+        __props__["private_ipv6_google_access"] = private_ipv6_google_access
         __props__["project"] = project
         __props__["release_channel"] = release_channel
         __props__["remove_default_node_pool"] = remove_default_node_pool
@@ -745,6 +771,17 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableAutopilot")
+    def enable_autopilot(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Enable Autopilot for this cluster. Defaults to `false`.
+        Note that when this option is enabled, certain features of Standard GKE are not available.
+        See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+        for available features.
+        """
+        return pulumi.get(self, "enable_autopilot")
+
+    @property
     @pulumi.getter(name="enableBinaryAuthorization")
     def enable_binary_authorization(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -755,7 +792,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableIntranodeVisibility")
-    def enable_intranode_visibility(self) -> pulumi.Output[Optional[bool]]:
+    def enable_intranode_visibility(self) -> pulumi.Output[bool]:
         """
         Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         """
@@ -772,6 +809,15 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "enable_kubernetes_alpha")
 
     @property
+    @pulumi.getter(name="enableL4IlbSubsetting")
+    def enable_l4_ilb_subsetting(self) -> pulumi.Output[Optional[bool]]:
+        """
+        )
+        Whether L4ILB Subsetting is enabled for this cluster.
+        """
+        return pulumi.get(self, "enable_l4_ilb_subsetting")
+
+    @property
     @pulumi.getter(name="enableLegacyAbac")
     def enable_legacy_abac(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -784,7 +830,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enableShieldedNodes")
-    def enable_shielded_nodes(self) -> pulumi.Output[Optional[bool]]:
+    def enable_shielded_nodes(self) -> pulumi.Output[bool]:
         """
         Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
         """
@@ -831,7 +877,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipAllocationPolicy")
-    def ip_allocation_policy(self) -> pulumi.Output[Optional['outputs.ClusterIpAllocationPolicy']]:
+    def ip_allocation_policy(self) -> pulumi.Output['outputs.ClusterIpAllocationPolicy']:
         """
         Configuration of cluster IP allocation for
         VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
@@ -1066,6 +1112,14 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "private_cluster_config")
 
     @property
+    @pulumi.getter(name="privateIpv6GoogleAccess")
+    def private_ipv6_google_access(self) -> pulumi.Output[str]:
+        """
+        The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+        """
+        return pulumi.get(self, "private_ipv6_google_access")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
@@ -1168,7 +1222,7 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="workloadIdentityConfig")
-    def workload_identity_config(self) -> pulumi.Output[Optional['outputs.ClusterWorkloadIdentityConfig']]:
+    def workload_identity_config(self) -> pulumi.Output['outputs.ClusterWorkloadIdentityConfig']:
         """
         Workload Identity allows Kubernetes service accounts to act as a user-managed
         [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).

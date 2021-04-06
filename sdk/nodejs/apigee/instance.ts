@@ -89,7 +89,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly orgId!: pulumi.Output<string>;
     /**
      * The size of the CIDR block range that will be reserved by the instance.
-     * Default value is `SLASH_16`.
      * Possible values are `SLASH_16` and `SLASH_20`.
      */
     public readonly peeringCidrRange!: pulumi.Output<string | undefined>;
@@ -183,7 +182,6 @@ export interface InstanceState {
     readonly orgId?: pulumi.Input<string>;
     /**
      * The size of the CIDR block range that will be reserved by the instance.
-     * Default value is `SLASH_16`.
      * Possible values are `SLASH_16` and `SLASH_20`.
      */
     readonly peeringCidrRange?: pulumi.Input<string>;
@@ -227,7 +225,6 @@ export interface InstanceArgs {
     readonly orgId: pulumi.Input<string>;
     /**
      * The size of the CIDR block range that will be reserved by the instance.
-     * Default value is `SLASH_16`.
      * Possible values are `SLASH_16` and `SLASH_20`.
      */
     readonly peeringCidrRange?: pulumi.Input<string>;

@@ -20,7 +20,7 @@ class GetClusterResult:
     """
     A collection of values returned by getCluster.
     """
-    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
+    def __init__(__self__, addons_configs=None, authenticator_groups_configs=None, cluster_autoscalings=None, cluster_ipv4_cidr=None, cluster_telemetries=None, confidential_nodes=None, database_encryptions=None, datapath_provider=None, default_max_pods_per_node=None, default_snat_statuses=None, description=None, enable_autopilot=None, enable_binary_authorization=None, enable_intranode_visibility=None, enable_kubernetes_alpha=None, enable_l4_ilb_subsetting=None, enable_legacy_abac=None, enable_shielded_nodes=None, enable_tpu=None, endpoint=None, id=None, initial_node_count=None, instance_group_urls=None, ip_allocation_policies=None, label_fingerprint=None, location=None, logging_service=None, maintenance_policies=None, master_authorized_networks_configs=None, master_auths=None, master_version=None, min_master_version=None, monitoring_service=None, name=None, network=None, network_policies=None, networking_mode=None, node_configs=None, node_locations=None, node_pools=None, node_version=None, notification_configs=None, operation=None, pod_security_policy_configs=None, private_cluster_configs=None, private_ipv6_google_access=None, project=None, release_channels=None, remove_default_node_pool=None, resource_labels=None, resource_usage_export_configs=None, self_link=None, services_ipv4_cidr=None, subnetwork=None, tpu_ipv4_cidr_block=None, vertical_pod_autoscalings=None, workload_identity_configs=None):
         if addons_configs and not isinstance(addons_configs, list):
             raise TypeError("Expected argument 'addons_configs' to be a list")
         pulumi.set(__self__, "addons_configs", addons_configs)
@@ -54,6 +54,9 @@ class GetClusterResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if enable_autopilot and not isinstance(enable_autopilot, bool):
+            raise TypeError("Expected argument 'enable_autopilot' to be a bool")
+        pulumi.set(__self__, "enable_autopilot", enable_autopilot)
         if enable_binary_authorization and not isinstance(enable_binary_authorization, bool):
             raise TypeError("Expected argument 'enable_binary_authorization' to be a bool")
         pulumi.set(__self__, "enable_binary_authorization", enable_binary_authorization)
@@ -63,6 +66,9 @@ class GetClusterResult:
         if enable_kubernetes_alpha and not isinstance(enable_kubernetes_alpha, bool):
             raise TypeError("Expected argument 'enable_kubernetes_alpha' to be a bool")
         pulumi.set(__self__, "enable_kubernetes_alpha", enable_kubernetes_alpha)
+        if enable_l4_ilb_subsetting and not isinstance(enable_l4_ilb_subsetting, bool):
+            raise TypeError("Expected argument 'enable_l4_ilb_subsetting' to be a bool")
+        pulumi.set(__self__, "enable_l4_ilb_subsetting", enable_l4_ilb_subsetting)
         if enable_legacy_abac and not isinstance(enable_legacy_abac, bool):
             raise TypeError("Expected argument 'enable_legacy_abac' to be a bool")
         pulumi.set(__self__, "enable_legacy_abac", enable_legacy_abac)
@@ -150,6 +156,9 @@ class GetClusterResult:
         if private_cluster_configs and not isinstance(private_cluster_configs, list):
             raise TypeError("Expected argument 'private_cluster_configs' to be a list")
         pulumi.set(__self__, "private_cluster_configs", private_cluster_configs)
+        if private_ipv6_google_access and not isinstance(private_ipv6_google_access, str):
+            raise TypeError("Expected argument 'private_ipv6_google_access' to be a str")
+        pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -240,6 +249,11 @@ class GetClusterResult:
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="enableAutopilot")
+    def enable_autopilot(self) -> bool:
+        return pulumi.get(self, "enable_autopilot")
+
+    @property
     @pulumi.getter(name="enableBinaryAuthorization")
     def enable_binary_authorization(self) -> bool:
         return pulumi.get(self, "enable_binary_authorization")
@@ -253,6 +267,11 @@ class GetClusterResult:
     @pulumi.getter(name="enableKubernetesAlpha")
     def enable_kubernetes_alpha(self) -> bool:
         return pulumi.get(self, "enable_kubernetes_alpha")
+
+    @property
+    @pulumi.getter(name="enableL4IlbSubsetting")
+    def enable_l4_ilb_subsetting(self) -> bool:
+        return pulumi.get(self, "enable_l4_ilb_subsetting")
 
     @property
     @pulumi.getter(name="enableLegacyAbac")
@@ -403,6 +422,11 @@ class GetClusterResult:
         return pulumi.get(self, "private_cluster_configs")
 
     @property
+    @pulumi.getter(name="privateIpv6GoogleAccess")
+    def private_ipv6_google_access(self) -> str:
+        return pulumi.get(self, "private_ipv6_google_access")
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
@@ -475,9 +499,11 @@ class AwaitableGetClusterResult(GetClusterResult):
             default_max_pods_per_node=self.default_max_pods_per_node,
             default_snat_statuses=self.default_snat_statuses,
             description=self.description,
+            enable_autopilot=self.enable_autopilot,
             enable_binary_authorization=self.enable_binary_authorization,
             enable_intranode_visibility=self.enable_intranode_visibility,
             enable_kubernetes_alpha=self.enable_kubernetes_alpha,
+            enable_l4_ilb_subsetting=self.enable_l4_ilb_subsetting,
             enable_legacy_abac=self.enable_legacy_abac,
             enable_shielded_nodes=self.enable_shielded_nodes,
             enable_tpu=self.enable_tpu,
@@ -507,6 +533,7 @@ class AwaitableGetClusterResult(GetClusterResult):
             operation=self.operation,
             pod_security_policy_configs=self.pod_security_policy_configs,
             private_cluster_configs=self.private_cluster_configs,
+            private_ipv6_google_access=self.private_ipv6_google_access,
             project=self.project,
             release_channels=self.release_channels,
             remove_default_node_pool=self.remove_default_node_pool,
@@ -573,9 +600,11 @@ def get_cluster(location: Optional[str] = None,
         default_max_pods_per_node=__ret__.default_max_pods_per_node,
         default_snat_statuses=__ret__.default_snat_statuses,
         description=__ret__.description,
+        enable_autopilot=__ret__.enable_autopilot,
         enable_binary_authorization=__ret__.enable_binary_authorization,
         enable_intranode_visibility=__ret__.enable_intranode_visibility,
         enable_kubernetes_alpha=__ret__.enable_kubernetes_alpha,
+        enable_l4_ilb_subsetting=__ret__.enable_l4_ilb_subsetting,
         enable_legacy_abac=__ret__.enable_legacy_abac,
         enable_shielded_nodes=__ret__.enable_shielded_nodes,
         enable_tpu=__ret__.enable_tpu,
@@ -605,6 +634,7 @@ def get_cluster(location: Optional[str] = None,
         operation=__ret__.operation,
         pod_security_policy_configs=__ret__.pod_security_policy_configs,
         private_cluster_configs=__ret__.private_cluster_configs,
+        private_ipv6_google_access=__ret__.private_ipv6_google_access,
         project=__ret__.project,
         release_channels=__ret__.release_channels,
         remove_default_node_pool=__ret__.remove_default_node_pool,

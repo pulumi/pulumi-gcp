@@ -126,22 +126,30 @@ type Cluster struct {
 	DefaultSnatStatus ClusterDefaultSnatStatusOutput `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// Enable Autopilot for this cluster. Defaults to `false`.
+	// Note that when this option is enabled, certain features of Standard GKE are not available.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+	// for available features.
+	EnableAutopilot pulumi.BoolPtrOutput `pulumi:"enableAutopilot"`
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrOutput `pulumi:"enableBinaryAuthorization"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
-	EnableIntranodeVisibility pulumi.BoolPtrOutput `pulumi:"enableIntranodeVisibility"`
+	EnableIntranodeVisibility pulumi.BoolOutput `pulumi:"enableIntranodeVisibility"`
 	// Whether to enable Kubernetes Alpha features for
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
 	EnableKubernetesAlpha pulumi.BoolPtrOutput `pulumi:"enableKubernetesAlpha"`
+	// )
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4IlbSubsetting pulumi.BoolPtrOutput `pulumi:"enableL4IlbSubsetting"`
 	// Whether the ABAC authorizer is enabled for this cluster.
 	// When enabled, identities in the system, including service accounts, nodes, and controllers,
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrOutput `pulumi:"enableLegacyAbac"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
-	EnableShieldedNodes pulumi.BoolPtrOutput `pulumi:"enableShieldedNodes"`
+	EnableShieldedNodes pulumi.BoolOutput `pulumi:"enableShieldedNodes"`
 	// Whether to enable Cloud TPU resources in this cluster.
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu pulumi.BoolPtrOutput `pulumi:"enableTpu"`
@@ -161,7 +169,7 @@ type Cluster struct {
 	// VPC-native clusters. Adding this block enables [IP aliasing](https://cloud.google.com/kubernetes-engine/docs/how-to/ip-aliases),
 	// making the cluster VPC-native instead of routes-based. Structure is documented
 	// below.
-	IpAllocationPolicy ClusterIpAllocationPolicyPtrOutput `pulumi:"ipAllocationPolicy"`
+	IpAllocationPolicy ClusterIpAllocationPolicyOutput `pulumi:"ipAllocationPolicy"`
 	// The fingerprint of the set of labels for this cluster.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// The location (region or zone) in which the cluster
@@ -263,6 +271,8 @@ type Cluster struct {
 	// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
 	// clusters with private nodes. Structure is documented below.
 	PrivateClusterConfig ClusterPrivateClusterConfigOutput `pulumi:"privateClusterConfig"`
+	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+	PrivateIpv6GoogleAccess pulumi.StringOutput `pulumi:"privateIpv6GoogleAccess"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -307,7 +317,7 @@ type Cluster struct {
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
-	WorkloadIdentityConfig ClusterWorkloadIdentityConfigPtrOutput `pulumi:"workloadIdentityConfig"`
+	WorkloadIdentityConfig ClusterWorkloadIdentityConfigOutput `pulumi:"workloadIdentityConfig"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -377,6 +387,11 @@ type clusterState struct {
 	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// Enable Autopilot for this cluster. Defaults to `false`.
+	// Note that when this option is enabled, certain features of Standard GKE are not available.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+	// for available features.
+	EnableAutopilot *bool `pulumi:"enableAutopilot"`
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
@@ -386,6 +401,9 @@ type clusterState struct {
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
 	EnableKubernetesAlpha *bool `pulumi:"enableKubernetesAlpha"`
+	// )
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4IlbSubsetting *bool `pulumi:"enableL4IlbSubsetting"`
 	// Whether the ABAC authorizer is enabled for this cluster.
 	// When enabled, identities in the system, including service accounts, nodes, and controllers,
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -514,6 +532,8 @@ type clusterState struct {
 	// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
 	// clusters with private nodes. Structure is documented below.
 	PrivateClusterConfig *ClusterPrivateClusterConfig `pulumi:"privateClusterConfig"`
+	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -600,6 +620,11 @@ type ClusterState struct {
 	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// Enable Autopilot for this cluster. Defaults to `false`.
+	// Note that when this option is enabled, certain features of Standard GKE are not available.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+	// for available features.
+	EnableAutopilot pulumi.BoolPtrInput
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrInput
@@ -609,6 +634,9 @@ type ClusterState struct {
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
 	EnableKubernetesAlpha pulumi.BoolPtrInput
+	// )
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4IlbSubsetting pulumi.BoolPtrInput
 	// Whether the ABAC authorizer is enabled for this cluster.
 	// When enabled, identities in the system, including service accounts, nodes, and controllers,
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -737,6 +765,8 @@ type ClusterState struct {
 	// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
 	// clusters with private nodes. Structure is documented below.
 	PrivateClusterConfig ClusterPrivateClusterConfigPtrInput
+	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -827,6 +857,11 @@ type clusterArgs struct {
 	DefaultSnatStatus *ClusterDefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// Description of the cluster.
 	Description *string `pulumi:"description"`
+	// Enable Autopilot for this cluster. Defaults to `false`.
+	// Note that when this option is enabled, certain features of Standard GKE are not available.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+	// for available features.
+	EnableAutopilot *bool `pulumi:"enableAutopilot"`
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization *bool `pulumi:"enableBinaryAuthorization"`
@@ -836,6 +871,9 @@ type clusterArgs struct {
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
 	EnableKubernetesAlpha *bool `pulumi:"enableKubernetesAlpha"`
+	// )
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4IlbSubsetting *bool `pulumi:"enableL4IlbSubsetting"`
 	// Whether the ABAC authorizer is enabled for this cluster.
 	// When enabled, identities in the system, including service accounts, nodes, and controllers,
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -952,6 +990,8 @@ type clusterArgs struct {
 	// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
 	// clusters with private nodes. Structure is documented below.
 	PrivateClusterConfig *ClusterPrivateClusterConfig `pulumi:"privateClusterConfig"`
+	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -1028,6 +1068,11 @@ type ClusterArgs struct {
 	DefaultSnatStatus ClusterDefaultSnatStatusPtrInput
 	// Description of the cluster.
 	Description pulumi.StringPtrInput
+	// Enable Autopilot for this cluster. Defaults to `false`.
+	// Note that when this option is enabled, certain features of Standard GKE are not available.
+	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+	// for available features.
+	EnableAutopilot pulumi.BoolPtrInput
 	// Enable Binary Authorization for this cluster.
 	// If enabled, all container images will be validated by Google Binary Authorization.
 	EnableBinaryAuthorization pulumi.BoolPtrInput
@@ -1037,6 +1082,9 @@ type ClusterArgs struct {
 	// this cluster. Note that when this option is enabled, the cluster cannot be upgraded
 	// and will be automatically deleted after 30 days.
 	EnableKubernetesAlpha pulumi.BoolPtrInput
+	// )
+	// Whether L4ILB Subsetting is enabled for this cluster.
+	EnableL4IlbSubsetting pulumi.BoolPtrInput
 	// Whether the ABAC authorizer is enabled for this cluster.
 	// When enabled, identities in the system, including service accounts, nodes, and controllers,
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -1153,6 +1201,8 @@ type ClusterArgs struct {
 	// Configuration for [private clusters](https://cloud.google.com/kubernetes-engine/docs/how-to/private-clusters),
 	// clusters with private nodes. Structure is documented below.
 	PrivateClusterConfig ClusterPrivateClusterConfigPtrInput
+	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput

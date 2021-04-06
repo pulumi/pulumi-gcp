@@ -6,6 +6,7 @@
 from .env_group import *
 from .environment import *
 from .instance import *
+from .instance_attachment import *
 from .organization import *
 
 def _register_module():
@@ -26,6 +27,8 @@ def _register_module():
                 return Environment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:apigee/instance:Instance":
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:apigee/instanceAttachment:InstanceAttachment":
+                return InstanceAttachment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp:apigee/organization:Organization":
                 return Organization(name, pulumi.ResourceOptions(urn=urn))
             else:
@@ -36,6 +39,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("gcp", "apigee/envGroup", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "apigee/environment", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "apigee/instance", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "apigee/instanceAttachment", _module_instance)
     pulumi.runtime.register_resource_module("gcp", "apigee/organization", _module_instance)
 
 _register_module()

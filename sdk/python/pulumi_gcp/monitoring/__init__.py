@@ -8,6 +8,7 @@ from .custom_service import *
 from .dashboard import *
 from .get_app_engine_service import *
 from .get_cluster_istio_service import *
+from .get_istio_canonical_service import *
 from .get_mesh_istio_service import *
 from .get_notification_channel import *
 from .get_secret_version import *

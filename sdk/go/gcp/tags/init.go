@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:tags/tagKey:TagKey":
 		r, err = NewTagKey(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:tags/tagValue:TagValue":
+		r, err = NewTagValue(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,6 +40,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"tags/tagKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tags/tagValue",
 		&module{version},
 	)
 }

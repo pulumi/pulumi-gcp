@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.SecretManager
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
         [Output("secretData")]
-        public Output<string?> SecretData { get; private set; } = null!;
+        public Output<string> SecretData { get; private set; } = null!;
 
 
         /// <summary>
@@ -158,8 +158,8 @@ namespace Pulumi.Gcp.SecretManager
         /// The secret data. Must be no larger than 64KiB.
         /// **Note**: This property is sensitive and will not be displayed in the plan.
         /// </summary>
-        [Input("secretData")]
-        public Input<string>? SecretData { get; set; }
+        [Input("secretData", required: true)]
+        public Input<string> SecretData { get; set; } = null!;
 
         public SecretVersionArgs()
         {

@@ -83,7 +83,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The size of the CIDR block range that will be reserved by the instance.
-        /// Default value is `SLASH_16`.
         /// Possible values are `SLASH_16` and `SLASH_20`.
         /// </summary>
         [Output("peeringCidrRange")]
@@ -183,7 +182,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The size of the CIDR block range that will be reserved by the instance.
-        /// Default value is `SLASH_16`.
         /// Possible values are `SLASH_16` and `SLASH_20`.
         /// </summary>
         [Input("peeringCidrRange")]
@@ -244,7 +242,6 @@ namespace Pulumi.Gcp.Apigee
 
         /// <summary>
         /// The size of the CIDR block range that will be reserved by the instance.
-        /// Default value is `SLASH_16`.
         /// Possible values are `SLASH_16` and `SLASH_20`.
         /// </summary>
         [Input("peeringCidrRange")]

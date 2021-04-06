@@ -49,13 +49,18 @@ import (
 // package main
 //
 // import (
+// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/datafusion"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
+// 		_default, err := appengine.GetDefaultServiceAccount(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = datafusion.NewInstance(ctx, "extendedInstance", &datafusion.InstanceArgs{
 // 			Description:                 pulumi.String("My Data Fusion instance"),
 // 			Region:                      pulumi.String("us-central1"),
 // 			Type:                        pulumi.String("BASIC"),
@@ -69,7 +74,8 @@ import (
 // 				Network:      pulumi.String("default"),
 // 				IpAllocation: pulumi.String("10.89.48.0/22"),
 // 			},
-// 			Version: pulumi.String("6.1.1"),
+// 			Version:                pulumi.String("6.3.0"),
+// 			DataprocServiceAccount: pulumi.String(_default.Email),
 // 		}, pulumi.Provider(google_beta))
 // 		if err != nil {
 // 			return err
@@ -103,6 +109,8 @@ type Instance struct {
 
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+	DataprocServiceAccount pulumi.StringPtrOutput `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Option to enable Stackdriver Logging.
@@ -190,6 +198,8 @@ func GetInstance(ctx *pulumi.Context,
 type instanceState struct {
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime *string `pulumi:"createTime"`
+	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description *string `pulumi:"description"`
 	// Option to enable Stackdriver Logging.
@@ -246,6 +256,8 @@ type instanceState struct {
 type InstanceState struct {
 	// The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
 	CreateTime pulumi.StringPtrInput
+	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
 	Description pulumi.StringPtrInput
 	// Option to enable Stackdriver Logging.
@@ -304,6 +316,8 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// An optional description of the instance.
 	Description *string `pulumi:"description"`
 	// Option to enable Stackdriver Logging.
@@ -347,6 +361,8 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+	DataprocServiceAccount pulumi.StringPtrInput
 	// An optional description of the instance.
 	Description pulumi.StringPtrInput
 	// Option to enable Stackdriver Logging.
