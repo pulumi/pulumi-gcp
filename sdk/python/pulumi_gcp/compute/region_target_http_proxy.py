@@ -49,6 +49,7 @@ class RegionTargetHttpProxy(pulumi.CustomResource):
             region="us-central1",
             protocol="HTTP",
             timeout_sec=10,
+            load_balancing_scheme="INTERNAL_MANAGED",
             health_checks=[default_region_health_check.id])
         default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
             region="us-central1",

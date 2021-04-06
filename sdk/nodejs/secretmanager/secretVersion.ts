@@ -92,7 +92,7 @@ export class SecretVersion extends pulumi.CustomResource {
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    public readonly secretData!: pulumi.Output<string | undefined>;
+    public readonly secretData!: pulumi.Output<string>;
 
     /**
      * Create a SecretVersion resource with the given unique name, arguments, and options.
@@ -117,6 +117,9 @@ export class SecretVersion extends pulumi.CustomResource {
             const args = argsOrState as SecretVersionArgs | undefined;
             if ((!args || args.secret === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secret'");
+            }
+            if ((!args || args.secretData === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'secretData'");
             }
             inputs["enabled"] = args ? args.enabled : undefined;
             inputs["secret"] = args ? args.secret : undefined;
@@ -179,5 +182,5 @@ export interface SecretVersionArgs {
      * The secret data. Must be no larger than 64KiB.
      * **Note**: This property is sensitive and will not be displayed in the plan.
      */
-    readonly secretData?: pulumi.Input<string>;
+    readonly secretData: pulumi.Input<string>;
 }

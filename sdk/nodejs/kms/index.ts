@@ -13,7 +13,6 @@ export * from "./getKMSCryptoKey";
 export * from "./getKMSCryptoKeyVersion";
 export * from "./getKMSKeyRing";
 export * from "./getKMSSecret";
-export * from "./getKMSSecretAsymmetric";
 export * from "./getKMSSecretCiphertext";
 export * from "./keyRing";
 export * from "./keyRingIAMBinding";

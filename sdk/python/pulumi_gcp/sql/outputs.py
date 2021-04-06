@@ -773,6 +773,12 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
                  query_string_length: Optional[int] = None,
                  record_application_tags: Optional[bool] = None,
                  record_client_address: Optional[bool] = None):
+        """
+        :param bool query_insights_enabled: True if Query Insights feature is enabled.
+        :param int query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        :param bool record_application_tags: True if Query Insights will record application tags from query when enabled.
+        :param bool record_client_address: True if Query Insights will record client address when enabled.
+        """
         if query_insights_enabled is not None:
             pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         if query_string_length is not None:
@@ -785,21 +791,33 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
     @property
     @pulumi.getter(name="queryInsightsEnabled")
     def query_insights_enabled(self) -> Optional[bool]:
+        """
+        True if Query Insights feature is enabled.
+        """
         return pulumi.get(self, "query_insights_enabled")
 
     @property
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> Optional[int]:
+        """
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        """
         return pulumi.get(self, "query_string_length")
 
     @property
     @pulumi.getter(name="recordApplicationTags")
     def record_application_tags(self) -> Optional[bool]:
+        """
+        True if Query Insights will record application tags from query when enabled.
+        """
         return pulumi.get(self, "record_application_tags")
 
     @property
     @pulumi.getter(name="recordClientAddress")
     def record_client_address(self) -> Optional[bool]:
+        """
+        True if Query Insights will record client address when enabled.
+        """
         return pulumi.get(self, "record_client_address")
 
     def _translate_property(self, prop):

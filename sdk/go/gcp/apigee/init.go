@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewEnvironment(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:apigee/instance:Instance":
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp:apigee/instanceAttachment:InstanceAttachment":
+		r, err = NewInstanceAttachment(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp:apigee/organization:Organization":
 		r, err = NewOrganization(ctx, name, nil, pulumi.URN_(urn))
 	default:
@@ -54,6 +56,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"apigee/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"apigee/instanceAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

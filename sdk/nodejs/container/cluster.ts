@@ -180,6 +180,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * Enable Autopilot for this cluster. Defaults to `false`.
+     * Note that when this option is enabled, certain features of Standard GKE are not available.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+     * for available features.
+     */
+    public readonly enableAutopilot!: pulumi.Output<boolean | undefined>;
+    /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
@@ -187,13 +194,18 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
      */
-    public readonly enableIntranodeVisibility!: pulumi.Output<boolean | undefined>;
+    public readonly enableIntranodeVisibility!: pulumi.Output<boolean>;
     /**
      * Whether to enable Kubernetes Alpha features for
      * this cluster. Note that when this option is enabled, the cluster cannot be upgraded
      * and will be automatically deleted after 30 days.
      */
     public readonly enableKubernetesAlpha!: pulumi.Output<boolean | undefined>;
+    /**
+     * )
+     * Whether L4ILB Subsetting is enabled for this cluster.
+     */
+    public readonly enableL4IlbSubsetting!: pulumi.Output<boolean | undefined>;
     /**
      * Whether the ABAC authorizer is enabled for this cluster.
      * When enabled, identities in the system, including service accounts, nodes, and controllers,
@@ -204,7 +216,7 @@ export class Cluster extends pulumi.CustomResource {
     /**
      * Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `false`.
      */
-    public readonly enableShieldedNodes!: pulumi.Output<boolean | undefined>;
+    public readonly enableShieldedNodes!: pulumi.Output<boolean>;
     /**
      * Whether to enable Cloud TPU resources in this cluster.
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
@@ -234,7 +246,7 @@ export class Cluster extends pulumi.CustomResource {
      * making the cluster VPC-native instead of routes-based. Structure is documented
      * below.
      */
-    public readonly ipAllocationPolicy!: pulumi.Output<outputs.container.ClusterIpAllocationPolicy | undefined>;
+    public readonly ipAllocationPolicy!: pulumi.Output<outputs.container.ClusterIpAllocationPolicy>;
     /**
      * The fingerprint of the set of labels for this cluster.
      */
@@ -377,6 +389,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly privateClusterConfig!: pulumi.Output<outputs.container.ClusterPrivateClusterConfig>;
     /**
+     * The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+     */
+    public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -442,7 +458,7 @@ export class Cluster extends pulumi.CustomResource {
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
      */
-    public readonly workloadIdentityConfig!: pulumi.Output<outputs.container.ClusterWorkloadIdentityConfig | undefined>;
+    public readonly workloadIdentityConfig!: pulumi.Output<outputs.container.ClusterWorkloadIdentityConfig>;
 
     /**
      * Create a Cluster resource with the given unique name, arguments, and options.
@@ -468,9 +484,11 @@ export class Cluster extends pulumi.CustomResource {
             inputs["defaultMaxPodsPerNode"] = state ? state.defaultMaxPodsPerNode : undefined;
             inputs["defaultSnatStatus"] = state ? state.defaultSnatStatus : undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["enableAutopilot"] = state ? state.enableAutopilot : undefined;
             inputs["enableBinaryAuthorization"] = state ? state.enableBinaryAuthorization : undefined;
             inputs["enableIntranodeVisibility"] = state ? state.enableIntranodeVisibility : undefined;
             inputs["enableKubernetesAlpha"] = state ? state.enableKubernetesAlpha : undefined;
+            inputs["enableL4IlbSubsetting"] = state ? state.enableL4IlbSubsetting : undefined;
             inputs["enableLegacyAbac"] = state ? state.enableLegacyAbac : undefined;
             inputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
             inputs["enableTpu"] = state ? state.enableTpu : undefined;
@@ -499,6 +517,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["operation"] = state ? state.operation : undefined;
             inputs["podSecurityPolicyConfig"] = state ? state.podSecurityPolicyConfig : undefined;
             inputs["privateClusterConfig"] = state ? state.privateClusterConfig : undefined;
+            inputs["privateIpv6GoogleAccess"] = state ? state.privateIpv6GoogleAccess : undefined;
             inputs["project"] = state ? state.project : undefined;
             inputs["releaseChannel"] = state ? state.releaseChannel : undefined;
             inputs["removeDefaultNodePool"] = state ? state.removeDefaultNodePool : undefined;
@@ -523,9 +542,11 @@ export class Cluster extends pulumi.CustomResource {
             inputs["defaultMaxPodsPerNode"] = args ? args.defaultMaxPodsPerNode : undefined;
             inputs["defaultSnatStatus"] = args ? args.defaultSnatStatus : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["enableAutopilot"] = args ? args.enableAutopilot : undefined;
             inputs["enableBinaryAuthorization"] = args ? args.enableBinaryAuthorization : undefined;
             inputs["enableIntranodeVisibility"] = args ? args.enableIntranodeVisibility : undefined;
             inputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
+            inputs["enableL4IlbSubsetting"] = args ? args.enableL4IlbSubsetting : undefined;
             inputs["enableLegacyAbac"] = args ? args.enableLegacyAbac : undefined;
             inputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
             inputs["enableTpu"] = args ? args.enableTpu : undefined;
@@ -549,6 +570,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
             inputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
+            inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["removeDefaultNodePool"] = args ? args.removeDefaultNodePool : undefined;
@@ -638,6 +660,13 @@ export interface ClusterState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Enable Autopilot for this cluster. Defaults to `false`.
+     * Note that when this option is enabled, certain features of Standard GKE are not available.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+     * for available features.
+     */
+    readonly enableAutopilot?: pulumi.Input<boolean>;
+    /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
@@ -652,6 +681,11 @@ export interface ClusterState {
      * and will be automatically deleted after 30 days.
      */
     readonly enableKubernetesAlpha?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether L4ILB Subsetting is enabled for this cluster.
+     */
+    readonly enableL4IlbSubsetting?: pulumi.Input<boolean>;
     /**
      * Whether the ABAC authorizer is enabled for this cluster.
      * When enabled, identities in the system, including service accounts, nodes, and controllers,
@@ -835,6 +869,10 @@ export interface ClusterState {
      */
     readonly privateClusterConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfig>;
     /**
+     * The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+     */
+    readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      */
@@ -968,6 +1006,13 @@ export interface ClusterArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * Enable Autopilot for this cluster. Defaults to `false`.
+     * Note that when this option is enabled, certain features of Standard GKE are not available.
+     * See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
+     * for available features.
+     */
+    readonly enableAutopilot?: pulumi.Input<boolean>;
+    /**
      * Enable Binary Authorization for this cluster.
      * If enabled, all container images will be validated by Google Binary Authorization.
      */
@@ -982,6 +1027,11 @@ export interface ClusterArgs {
      * and will be automatically deleted after 30 days.
      */
     readonly enableKubernetesAlpha?: pulumi.Input<boolean>;
+    /**
+     * )
+     * Whether L4ILB Subsetting is enabled for this cluster.
+     */
+    readonly enableL4IlbSubsetting?: pulumi.Input<boolean>;
     /**
      * Whether the ABAC authorizer is enabled for this cluster.
      * When enabled, identities in the system, including service accounts, nodes, and controllers,
@@ -1144,6 +1194,10 @@ export interface ClusterArgs {
      * clusters with private nodes. Structure is documented below.
      */
     readonly privateClusterConfig?: pulumi.Input<inputs.container.ClusterPrivateClusterConfig>;
+    /**
+     * The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4).
+     */
+    readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

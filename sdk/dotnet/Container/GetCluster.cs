@@ -104,9 +104,11 @@ namespace Pulumi.Gcp.Container
         public readonly int DefaultMaxPodsPerNode;
         public readonly ImmutableArray<Outputs.GetClusterDefaultSnatStatusResult> DefaultSnatStatuses;
         public readonly string Description;
+        public readonly bool EnableAutopilot;
         public readonly bool EnableBinaryAuthorization;
         public readonly bool EnableIntranodeVisibility;
         public readonly bool EnableKubernetesAlpha;
+        public readonly bool EnableL4IlbSubsetting;
         public readonly bool EnableLegacyAbac;
         public readonly bool EnableShieldedNodes;
         public readonly bool EnableTpu;
@@ -139,6 +141,7 @@ namespace Pulumi.Gcp.Container
         public readonly string Operation;
         public readonly ImmutableArray<Outputs.GetClusterPodSecurityPolicyConfigResult> PodSecurityPolicyConfigs;
         public readonly ImmutableArray<Outputs.GetClusterPrivateClusterConfigResult> PrivateClusterConfigs;
+        public readonly string PrivateIpv6GoogleAccess;
         public readonly string? Project;
         public readonly ImmutableArray<Outputs.GetClusterReleaseChannelResult> ReleaseChannels;
         public readonly bool RemoveDefaultNodePool;
@@ -175,11 +178,15 @@ namespace Pulumi.Gcp.Container
 
             string description,
 
+            bool enableAutopilot,
+
             bool enableBinaryAuthorization,
 
             bool enableIntranodeVisibility,
 
             bool enableKubernetesAlpha,
+
+            bool enableL4IlbSubsetting,
 
             bool enableLegacyAbac,
 
@@ -239,6 +246,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterPrivateClusterConfigResult> privateClusterConfigs,
 
+            string privateIpv6GoogleAccess,
+
             string? project,
 
             ImmutableArray<Outputs.GetClusterReleaseChannelResult> releaseChannels,
@@ -272,9 +281,11 @@ namespace Pulumi.Gcp.Container
             DefaultMaxPodsPerNode = defaultMaxPodsPerNode;
             DefaultSnatStatuses = defaultSnatStatuses;
             Description = description;
+            EnableAutopilot = enableAutopilot;
             EnableBinaryAuthorization = enableBinaryAuthorization;
             EnableIntranodeVisibility = enableIntranodeVisibility;
             EnableKubernetesAlpha = enableKubernetesAlpha;
+            EnableL4IlbSubsetting = enableL4IlbSubsetting;
             EnableLegacyAbac = enableLegacyAbac;
             EnableShieldedNodes = enableShieldedNodes;
             EnableTpu = enableTpu;
@@ -304,6 +315,7 @@ namespace Pulumi.Gcp.Container
             Operation = operation;
             PodSecurityPolicyConfigs = podSecurityPolicyConfigs;
             PrivateClusterConfigs = privateClusterConfigs;
+            PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             Project = project;
             ReleaseChannels = releaseChannels;
             RemoveDefaultNodePool = removeDefaultNodePool;

@@ -11,7 +11,6 @@ from .get_kms_crypto_key import *
 from .get_kms_crypto_key_version import *
 from .get_kms_key_ring import *
 from .get_kms_secret import *
-from .get_kms_secret_asymmetric import *
 from .get_kms_secret_ciphertext import *
 from .key_ring import *
 from .key_ring_iam_binding import *

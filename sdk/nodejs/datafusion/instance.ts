@@ -34,6 +34,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
+ * const default = gcp.appengine.getDefaultServiceAccount({});
  * const extendedInstance = new gcp.datafusion.Instance("extendedInstance", {
  *     description: "My Data Fusion instance",
  *     region: "us-central1",
@@ -48,7 +49,8 @@ import * as utilities from "../utilities";
  *         network: "default",
  *         ipAllocation: "10.89.48.0/22",
  *     },
- *     version: "6.1.1",
+ *     version: "6.3.0",
+ *     dataprocServiceAccount: _default.then(_default => _default.email),
  * }, {
  *     provider: google_beta,
  * });
@@ -106,6 +108,10 @@ export class Instance extends pulumi.CustomResource {
      * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+     */
+    public readonly dataprocServiceAccount!: pulumi.Output<string | undefined>;
     /**
      * An optional description of the instance.
      */
@@ -206,6 +212,7 @@ export class Instance extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as InstanceState | undefined;
             inputs["createTime"] = state ? state.createTime : undefined;
+            inputs["dataprocServiceAccount"] = state ? state.dataprocServiceAccount : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["enableStackdriverLogging"] = state ? state.enableStackdriverLogging : undefined;
             inputs["enableStackdriverMonitoring"] = state ? state.enableStackdriverMonitoring : undefined;
@@ -228,6 +235,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            inputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             inputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
@@ -262,6 +270,10 @@ export interface InstanceState {
      * The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
      */
     readonly createTime?: pulumi.Input<string>;
+    /**
+     * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+     */
+    readonly dataprocServiceAccount?: pulumi.Input<string>;
     /**
      * An optional description of the instance.
      */
@@ -353,6 +365,10 @@ export interface InstanceState {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    /**
+     * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+     */
+    readonly dataprocServiceAccount?: pulumi.Input<string>;
     /**
      * An optional description of the instance.
      */

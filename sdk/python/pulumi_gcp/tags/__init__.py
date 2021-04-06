@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .tag_key import *
+from .tag_value import *
 
 def _register_module():
     import pulumi
@@ -19,11 +20,14 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "gcp:tags/tagKey:TagKey":
                 return TagKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp:tags/tagValue:TagValue":
+                return TagValue(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("gcp", "tags/tagKey", _module_instance)
+    pulumi.runtime.register_resource_module("gcp", "tags/tagValue", _module_instance)
 
 _register_module()

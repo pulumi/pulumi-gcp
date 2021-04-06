@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.DataFusion
     /// {
     ///     public MyStack()
     ///     {
+    ///         var @default = Output.Create(Gcp.AppEngine.GetDefaultServiceAccount.InvokeAsync());
     ///         var extendedInstance = new Gcp.DataFusion.Instance("extendedInstance", new Gcp.DataFusion.InstanceArgs
     ///         {
     ///             Description = "My Data Fusion instance",
@@ -68,7 +69,8 @@ namespace Pulumi.Gcp.DataFusion
     ///                 Network = "default",
     ///                 IpAllocation = "10.89.48.0/22",
     ///             },
-    ///             Version = "6.1.1",
+    ///             Version = "6.3.0",
+    ///             DataprocServiceAccount = @default.Apply(@default =&gt; @default.Email),
     ///         }, new CustomResourceOptions
     ///         {
     ///             Provider = google_beta,
@@ -106,6 +108,12 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        /// </summary>
+        [Output("dataprocServiceAccount")]
+        public Output<string?> DataprocServiceAccount { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of the instance.
@@ -273,6 +281,12 @@ namespace Pulumi.Gcp.DataFusion
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        /// </summary>
+        [Input("dataprocServiceAccount")]
+        public Input<string>? DataprocServiceAccount { get; set; }
+
+        /// <summary>
         /// An optional description of the instance.
         /// </summary>
         [Input("description")]
@@ -383,6 +397,12 @@ namespace Pulumi.Gcp.DataFusion
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        /// </summary>
+        [Input("dataprocServiceAccount")]
+        public Input<string>? DataprocServiceAccount { get; set; }
 
         /// <summary>
         /// An optional description of the instance.

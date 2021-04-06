@@ -20402,6 +20402,10 @@ export namespace monitoring {
         resourceName: string;
     }
 
+    export interface GetIstioCanonicalServiceTelemetry {
+        resourceName: string;
+    }
+
     export interface GetMeshIstioServiceTelemetry {
         resourceName: string;
     }
@@ -23160,9 +23164,21 @@ export namespace sql {
     }
 
     export interface DatabaseInstanceSettingsInsightsConfig {
+        /**
+         * True if Query Insights feature is enabled.
+         */
         queryInsightsEnabled?: boolean;
+        /**
+         * Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+         */
         queryStringLength?: number;
+        /**
+         * True if Query Insights will record application tags from query when enabled.
+         */
         recordApplicationTags?: boolean;
+        /**
+         * True if Query Insights will record client address when enabled.
+         */
         recordClientAddress?: boolean;
     }
 

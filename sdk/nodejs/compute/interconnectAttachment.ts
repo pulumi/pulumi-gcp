@@ -16,10 +16,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const foobar = new gcp.compute.Router("foobar", {network: google_compute_network.foobar.name});
+ * const foobarNetwork = new gcp.compute.Network("foobarNetwork", {autoCreateSubnetworks: false});
+ * const foobarRouter = new gcp.compute.Router("foobarRouter", {
+ *     network: foobarNetwork.name,
+ *     bgp: {
+ *         asn: 16550,
+ *     },
+ * });
  * const onPrem = new gcp.compute.InterconnectAttachment("onPrem", {
- *     interconnect: "my-interconnect-id",
- *     router: foobar.id,
+ *     edgeAvailabilityDomain: "AVAILABILITY_DOMAIN_1",
+ *     type: "PARTNER",
+ *     router: foobarRouter.id,
  *     mtu: 1500,
  * });
  * ```
@@ -136,7 +143,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through
      * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
      */
-    public readonly mtu!: pulumi.Output<number>;
+    public readonly mtu!: pulumi.Output<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -335,7 +342,7 @@ export interface InterconnectAttachmentState {
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through
      * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
      */
-    readonly mtu?: pulumi.Input<number>;
+    readonly mtu?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the
@@ -448,7 +455,7 @@ export interface InterconnectAttachmentArgs {
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through
      * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
      */
-    readonly mtu?: pulumi.Input<number>;
+    readonly mtu?: pulumi.Input<string>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The
      * name must be 1-63 characters long, and comply with RFC1035. Specifically, the

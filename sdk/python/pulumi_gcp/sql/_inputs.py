@@ -951,6 +951,12 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
                  query_string_length: Optional[pulumi.Input[int]] = None,
                  record_application_tags: Optional[pulumi.Input[bool]] = None,
                  record_client_address: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] query_insights_enabled: True if Query Insights feature is enabled.
+        :param pulumi.Input[int] query_string_length: Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        :param pulumi.Input[bool] record_application_tags: True if Query Insights will record application tags from query when enabled.
+        :param pulumi.Input[bool] record_client_address: True if Query Insights will record client address when enabled.
+        """
         if query_insights_enabled is not None:
             pulumi.set(__self__, "query_insights_enabled", query_insights_enabled)
         if query_string_length is not None:
@@ -963,6 +969,9 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
     @property
     @pulumi.getter(name="queryInsightsEnabled")
     def query_insights_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Query Insights feature is enabled.
+        """
         return pulumi.get(self, "query_insights_enabled")
 
     @query_insights_enabled.setter
@@ -972,6 +981,9 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
     @property
     @pulumi.getter(name="queryStringLength")
     def query_string_length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum query length stored in bytes. Between 256 and 4500. Default to 1024.
+        """
         return pulumi.get(self, "query_string_length")
 
     @query_string_length.setter
@@ -981,6 +993,9 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
     @property
     @pulumi.getter(name="recordApplicationTags")
     def record_application_tags(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Query Insights will record application tags from query when enabled.
+        """
         return pulumi.get(self, "record_application_tags")
 
     @record_application_tags.setter
@@ -990,6 +1005,9 @@ class DatabaseInstanceSettingsInsightsConfigArgs:
     @property
     @pulumi.getter(name="recordClientAddress")
     def record_client_address(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if Query Insights will record client address when enabled.
+        """
         return pulumi.get(self, "record_client_address")
 
     @record_client_address.setter

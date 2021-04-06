@@ -17,6 +17,7 @@ class Instance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
@@ -59,6 +60,7 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
+        default = gcp.appengine.get_default_service_account()
         extended_instance = gcp.datafusion.Instance("extendedInstance",
             description="My Data Fusion instance",
             region="us-central1",
@@ -73,7 +75,8 @@ class Instance(pulumi.CustomResource):
                 network="default",
                 ip_allocation="10.89.48.0/22",
             ),
-            version="6.1.1",
+            version="6.3.0",
+            dataproc_service_account=default.email,
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
 
@@ -99,6 +102,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
@@ -144,6 +148,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['dataproc_service_account'] = dataproc_service_account
             __props__['description'] = description
             __props__['enable_stackdriver_logging'] = enable_stackdriver_logging
             __props__['enable_stackdriver_monitoring'] = enable_stackdriver_monitoring
@@ -175,6 +180,7 @@ class Instance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            dataproc_service_account: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
             enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
@@ -200,6 +206,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
+        :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
         :param pulumi.Input[str] description: An optional description of the instance.
         :param pulumi.Input[bool] enable_stackdriver_logging: Option to enable Stackdriver Logging.
         :param pulumi.Input[bool] enable_stackdriver_monitoring: Option to enable Stackdriver Monitoring.
@@ -240,6 +247,7 @@ class Instance(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["create_time"] = create_time
+        __props__["dataproc_service_account"] = dataproc_service_account
         __props__["description"] = description
         __props__["enable_stackdriver_logging"] = enable_stackdriver_logging
         __props__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
@@ -266,6 +274,14 @@ class Instance(pulumi.CustomResource):
         The time the instance was created in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dataprocServiceAccount")
+    def dataproc_service_account(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines.
+        """
+        return pulumi.get(self, "dataproc_service_account")
 
     @property
     @pulumi.getter

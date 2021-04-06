@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  *     region: "us-central1",
  *     protocol: "HTTP",
  *     timeoutSec: 10,
+ *     loadBalancingScheme: "INTERNAL_MANAGED",
  *     healthChecks: [defaultRegionHealthCheck.id],
  * });
  * const defaultRegionUrlMap = new gcp.compute.RegionUrlMap("defaultRegionUrlMap", {
