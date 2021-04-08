@@ -22,31 +22,32 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:projects/accessApprovalSettings:AccessApprovalSettings":
-		r, err = NewAccessApprovalSettings(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessApprovalSettings{}
 	case "gcp:projects/defaultServiceAccounts:DefaultServiceAccounts":
-		r, err = NewDefaultServiceAccounts(ctx, name, nil, pulumi.URN_(urn))
+		r = &DefaultServiceAccounts{}
 	case "gcp:projects/iAMAuditConfig:IAMAuditConfig":
-		r, err = NewIAMAuditConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMAuditConfig{}
 	case "gcp:projects/iAMBinding:IAMBinding":
-		r, err = NewIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMBinding{}
 	case "gcp:projects/iAMCustomRole:IAMCustomRole":
-		r, err = NewIAMCustomRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMCustomRole{}
 	case "gcp:projects/iAMMember:IAMMember":
-		r, err = NewIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMMember{}
 	case "gcp:projects/iAMPolicy:IAMPolicy":
-		r, err = NewIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &IAMPolicy{}
 	case "gcp:projects/organizationPolicy:OrganizationPolicy":
-		r, err = NewOrganizationPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationPolicy{}
 	case "gcp:projects/service:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "gcp:projects/serviceIdentity:ServiceIdentity":
-		r, err = NewServiceIdentity(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIdentity{}
 	case "gcp:projects/usageExportBucket:UsageExportBucket":
-		r, err = NewUsageExportBucket(ctx, name, nil, pulumi.URN_(urn))
+		r = &UsageExportBucket{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

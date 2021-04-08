@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -24,6 +24,23 @@ __all__ = [
 
 @pulumi.output_type
 class ApiConfigGatewayConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendConfig":
+            suggest = "backend_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiConfigGatewayConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiConfigGatewayConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiConfigGatewayConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backend_config: 'outputs.ApiConfigGatewayConfigBackendConfig'):
         """
@@ -41,12 +58,26 @@ class ApiConfigGatewayConfig(dict):
         """
         return pulumi.get(self, "backend_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiConfigGatewayConfigBackendConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "googleServiceAccount":
+            suggest = "google_service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiConfigGatewayConfigBackendConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiConfigGatewayConfigBackendConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiConfigGatewayConfigBackendConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  google_service_account: str):
         """
@@ -63,9 +94,6 @@ class ApiConfigGatewayConfigBackendConfig(dict):
         (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend).
         """
         return pulumi.get(self, "google_service_account")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -94,9 +122,6 @@ class ApiConfigIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiConfigIamMemberCondition(dict):
@@ -124,9 +149,6 @@ class ApiConfigIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiConfigOpenapiDocument(dict):
@@ -146,9 +168,6 @@ class ApiConfigOpenapiDocument(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "document")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -179,9 +198,6 @@ class ApiConfigOpenapiDocumentDocument(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiIamBindingCondition(dict):
@@ -208,9 +224,6 @@ class ApiIamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -239,9 +252,6 @@ class ApiIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GatewayIamBindingCondition(dict):
@@ -269,9 +279,6 @@ class GatewayIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GatewayIamMemberCondition(dict):
@@ -298,8 +305,5 @@ class GatewayIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

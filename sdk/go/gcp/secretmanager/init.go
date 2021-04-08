@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:secretmanager/secret:Secret":
-		r, err = NewSecret(ctx, name, nil, pulumi.URN_(urn))
+		r = &Secret{}
 	case "gcp:secretmanager/secretIamBinding:SecretIamBinding":
-		r, err = NewSecretIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecretIamBinding{}
 	case "gcp:secretmanager/secretIamMember:SecretIamMember":
-		r, err = NewSecretIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecretIamMember{}
 	case "gcp:secretmanager/secretIamPolicy:SecretIamPolicy":
-		r, err = NewSecretIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecretIamPolicy{}
 	case "gcp:secretmanager/secretVersion:SecretVersion":
-		r, err = NewSecretVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecretVersion{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

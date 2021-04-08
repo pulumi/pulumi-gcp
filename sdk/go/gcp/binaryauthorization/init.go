@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:binaryauthorization/attestor:Attestor":
-		r, err = NewAttestor(ctx, name, nil, pulumi.URN_(urn))
+		r = &Attestor{}
 	case "gcp:binaryauthorization/attestorIamBinding:AttestorIamBinding":
-		r, err = NewAttestorIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &AttestorIamBinding{}
 	case "gcp:binaryauthorization/attestorIamMember:AttestorIamMember":
-		r, err = NewAttestorIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &AttestorIamMember{}
 	case "gcp:binaryauthorization/attestorIamPolicy:AttestorIamPolicy":
-		r, err = NewAttestorIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AttestorIamPolicy{}
 	case "gcp:binaryauthorization/policy:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

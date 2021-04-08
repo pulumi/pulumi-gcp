@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
 __all__ = [
     'EntityTypeEntity',
@@ -57,12 +57,28 @@ class EntityTypeEntity(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IntentFollowupIntentInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "followupIntentName":
+            suggest = "followup_intent_name"
+        elif key == "parentFollowupIntentName":
+            suggest = "parent_followup_intent_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntentFollowupIntentInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntentFollowupIntentInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntentFollowupIntentInfo.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  followup_intent_name: Optional[str] = None,
                  parent_followup_intent_name: Optional[str] = None):
@@ -88,8 +104,5 @@ class IntentFollowupIntentInfo(dict):
         Format: projects/<Project ID>/agent/intents/<Intent ID>.
         """
         return pulumi.get(self, "parent_followup_intent_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

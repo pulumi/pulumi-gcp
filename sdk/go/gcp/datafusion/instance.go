@@ -49,14 +49,9 @@ import (
 // package main
 //
 // import (
-<<<<<<< HEAD
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/appengine"
-// 	"github.com/pulumi/pulumi-gcp/sdk/v4/go/gcp/datafusion"
-// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
-=======
+// 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/appengine"
 // 	"github.com/pulumi/pulumi-gcp/sdk/v5/go/gcp/datafusion"
 // 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
->>>>>>> 69dbe4ea4 (Regenerate SDK)
 // )
 //
 // func main() {

@@ -22,25 +22,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:accesscontextmanager/accessLevel:AccessLevel":
-		r, err = NewAccessLevel(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessLevel{}
 	case "gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition":
-		r, err = NewAccessLevelCondition(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessLevelCondition{}
 	case "gcp:accesscontextmanager/accessLevels:AccessLevels":
-		r, err = NewAccessLevels(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessLevels{}
 	case "gcp:accesscontextmanager/accessPolicy:AccessPolicy":
-		r, err = NewAccessPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessPolicy{}
 	case "gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding":
-		r, err = NewGcpUserAccessBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &GcpUserAccessBinding{}
 	case "gcp:accesscontextmanager/servicePerimeter:ServicePerimeter":
-		r, err = NewServicePerimeter(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServicePerimeter{}
 	case "gcp:accesscontextmanager/servicePerimeterResource:ServicePerimeterResource":
-		r, err = NewServicePerimeterResource(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServicePerimeterResource{}
 	case "gcp:accesscontextmanager/servicePerimeters:ServicePerimeters":
-		r, err = NewServicePerimeters(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServicePerimeters{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

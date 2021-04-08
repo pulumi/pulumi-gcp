@@ -5,15 +5,431 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionUrlMap']
+__all__ = ['RegionUrlMapArgs', 'RegionUrlMap']
+
+@pulumi.input_type
+class RegionUrlMapArgs:
+    def __init__(__self__, *,
+                 default_service: Optional[pulumi.Input[str]] = None,
+                 default_url_redirect: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]] = None):
+        """
+        The set of arguments for constructing a RegionUrlMap resource.
+        :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
+               none of the pathRules defined by this PathMatcher is matched by
+               the URL's path portion.
+        :param pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+               by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+               defaultRouteAction must not be set.
+               Structure is documented below.
+        :param pulumi.Input[str] description: Description of this test case.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]] host_rules: The list of HostRules to use against the URL.
+               Structure is documented below.
+        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
+               request, in the absence of which the request match fails.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]] path_matchers: The name of the PathMatcher to use to match the path portion of
+               the URL if the hostRule matches the URL's host portion.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Region in which the url map should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]] tests: The list of expected URL mappings. Requests to update this UrlMap will
+               succeed only if all of the test cases pass.
+               Structure is documented below.
+        """
+        if default_service is not None:
+            pulumi.set(__self__, "default_service", default_service)
+        if default_url_redirect is not None:
+            pulumi.set(__self__, "default_url_redirect", default_url_redirect)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if host_rules is not None:
+            pulumi.set(__self__, "host_rules", host_rules)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path_matchers is not None:
+            pulumi.set(__self__, "path_matchers", path_matchers)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tests is not None:
+            pulumi.set(__self__, "tests", tests)
+
+    @property
+    @pulumi.getter(name="defaultService")
+    def default_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a RegionBackendService resource. This will be used if
+        none of the pathRules defined by this PathMatcher is matched by
+        the URL's path portion.
+        """
+        return pulumi.get(self, "default_service")
+
+    @default_service.setter
+    def default_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_service", value)
+
+    @property
+    @pulumi.getter(name="defaultUrlRedirect")
+    def default_url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']]:
+        """
+        When none of the specified hostRules match, the request is redirected to a URL specified
+        by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        defaultRouteAction must not be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_url_redirect")
+
+    @default_url_redirect.setter
+    def default_url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']]):
+        pulumi.set(self, "default_url_redirect", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of this test case.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="hostRules")
+    def host_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]]:
+        """
+        The list of HostRules to use against the URL.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "host_rules")
+
+    @host_rules.setter
+    def host_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]]):
+        pulumi.set(self, "host_rules", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the query parameter to match. The query parameter must exist in the
+        request, in the absence of which the request match fails.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pathMatchers")
+    def path_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]]]:
+        """
+        The name of the PathMatcher to use to match the path portion of
+        the URL if the hostRule matches the URL's host portion.
+        """
+        return pulumi.get(self, "path_matchers")
+
+    @path_matchers.setter
+    def path_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]]]):
+        pulumi.set(self, "path_matchers", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region in which the url map should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def tests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]]:
+        """
+        The list of expected URL mappings. Requests to update this UrlMap will
+        succeed only if all of the test cases pass.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tests")
+
+    @tests.setter
+    def tests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]]):
+        pulumi.set(self, "tests", value)
+
+
+@pulumi.input_type
+class _RegionUrlMapState:
+    def __init__(__self__, *,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 default_service: Optional[pulumi.Input[str]] = None,
+                 default_url_redirect: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]] = None,
+                 map_id: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]] = None):
+        """
+        Input properties used for looking up and filtering RegionUrlMap resources.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] default_service: A reference to a RegionBackendService resource. This will be used if
+               none of the pathRules defined by this PathMatcher is matched by
+               the URL's path portion.
+        :param pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs'] default_url_redirect: When none of the specified hostRules match, the request is redirected to a URL specified
+               by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+               defaultRouteAction must not be set.
+               Structure is documented below.
+        :param pulumi.Input[str] description: Description of this test case.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. This field is used internally during updates of this resource.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]] host_rules: The list of HostRules to use against the URL.
+               Structure is documented below.
+        :param pulumi.Input[int] map_id: The unique identifier for the resource.
+        :param pulumi.Input[str] name: The name of the query parameter to match. The query parameter must exist in the
+               request, in the absence of which the request match fails.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]] path_matchers: The name of the PathMatcher to use to match the path portion of
+               the URL if the hostRule matches the URL's host portion.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Region in which the url map should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]] tests: The list of expected URL mappings. Requests to update this UrlMap will
+               succeed only if all of the test cases pass.
+               Structure is documented below.
+        """
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if default_service is not None:
+            pulumi.set(__self__, "default_service", default_service)
+        if default_url_redirect is not None:
+            pulumi.set(__self__, "default_url_redirect", default_url_redirect)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if host_rules is not None:
+            pulumi.set(__self__, "host_rules", host_rules)
+        if map_id is not None:
+            pulumi.set(__self__, "map_id", map_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path_matchers is not None:
+            pulumi.set(__self__, "path_matchers", path_matchers)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if tests is not None:
+            pulumi.set(__self__, "tests", tests)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter(name="defaultService")
+    def default_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a RegionBackendService resource. This will be used if
+        none of the pathRules defined by this PathMatcher is matched by
+        the URL's path portion.
+        """
+        return pulumi.get(self, "default_service")
+
+    @default_service.setter
+    def default_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_service", value)
+
+    @property
+    @pulumi.getter(name="defaultUrlRedirect")
+    def default_url_redirect(self) -> Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']]:
+        """
+        When none of the specified hostRules match, the request is redirected to a URL specified
+        by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or
+        defaultRouteAction must not be set.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_url_redirect")
+
+    @default_url_redirect.setter
+    def default_url_redirect(self, value: Optional[pulumi.Input['RegionUrlMapDefaultUrlRedirectArgs']]):
+        pulumi.set(self, "default_url_redirect", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of this test case.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of this resource. This field is used internally during updates of this resource.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="hostRules")
+    def host_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]]:
+        """
+        The list of HostRules to use against the URL.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "host_rules")
+
+    @host_rules.setter
+    def host_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapHostRuleArgs']]]]):
+        pulumi.set(self, "host_rules", value)
+
+    @property
+    @pulumi.getter(name="mapId")
+    def map_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier for the resource.
+        """
+        return pulumi.get(self, "map_id")
+
+    @map_id.setter
+    def map_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "map_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the query parameter to match. The query parameter must exist in the
+        request, in the absence of which the request match fails.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pathMatchers")
+    def path_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]]]:
+        """
+        The name of the PathMatcher to use to match the path portion of
+        the URL if the hostRule matches the URL's host portion.
+        """
+        return pulumi.get(self, "path_matchers")
+
+    @path_matchers.setter
+    def path_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapPathMatcherArgs']]]]):
+        pulumi.set(self, "path_matchers", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region in which the url map should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def tests(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]]:
+        """
+        The list of expected URL mappings. Requests to update this UrlMap will
+        succeed only if all of the test cases pass.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tests")
+
+    @tests.setter
+    def tests(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RegionUrlMapTestArgs']]]]):
+        pulumi.set(self, "tests", value)
 
 
 class RegionUrlMap(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -418,6 +834,404 @@ class RegionUrlMap(pulumi.CustomResource):
                succeed only if all of the test cases pass.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[RegionUrlMapArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        UrlMaps are used to route requests to a backend service based on rules
+        that you define for the host and path of an incoming URL.
+
+        ## Example Usage
+        ### Region Url Map Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default",
+            region="us-central1",
+            check_interval_sec=1,
+            timeout_sec=1,
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+                request_path="/",
+            ))
+        login = gcp.compute.RegionBackendService("login",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id])
+        home = gcp.compute.RegionBackendService("home",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id])
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            region="us-central1",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                path_rules=[
+                    gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                        paths=["/home"],
+                        service=home.id,
+                    ),
+                    gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                        paths=["/login"],
+                        service=login.id,
+                    ),
+                ],
+            )],
+            tests=[gcp.compute.RegionUrlMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Region Url Map L7 Ilb Path
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/home"],
+                    route_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionArgs(
+                        cors_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicyArgs(
+                            allow_credentials=True,
+                            allow_headers=["Allowed content"],
+                            allow_methods=["GET"],
+                            allow_origins=["Allowed origin"],
+                            expose_headers=["Exposed header"],
+                            max_age=30,
+                            disabled=False,
+                        ),
+                        fault_injection_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyArgs(
+                            abort=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs(
+                                http_status=234,
+                                percentage=5.6,
+                            ),
+                            delay=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayArgs(
+                                fixed_delay=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs(
+                                    seconds="0",
+                                    nanos=50000,
+                                ),
+                                percentage=7.8,
+                            ),
+                        ),
+                        request_mirror_policy=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicyArgs(
+                            backend_service=home.id,
+                        ),
+                        retry_policy={
+                            "numRetries": 4,
+                            "perTryTimeout": {
+                                "seconds": 30,
+                            },
+                            "retryConditions": [
+                                "5xx",
+                                "deadline-exceeded",
+                            ],
+                        },
+                        timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs(
+                            seconds="20",
+                            nanos=750000000,
+                        ),
+                        url_rewrite=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs(
+                            host_rewrite="A replacement header",
+                            path_prefix_rewrite="A replacement path",
+                        ),
+                        weighted_backend_services=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
+                            backend_service=home.id,
+                            weight=400,
+                            header_action={
+                                "requestHeadersToRemoves": ["RemoveMe"],
+                                "requestHeadersToAdds": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": True,
+                                }],
+                                "responseHeadersToRemoves": ["RemoveMe"],
+                                "responseHeadersToAdds": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": False,
+                                }],
+                            },
+                        )],
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.RegionUrlMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Region Url Map L7 Ilb Path Partial
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/home"],
+                    route_action=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionArgs(
+                        retry_policy={
+                            "numRetries": 4,
+                            "perTryTimeout": {
+                                "seconds": 30,
+                            },
+                            "retryConditions": [
+                                "5xx",
+                                "deadline-exceeded",
+                            ],
+                        },
+                        timeout=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionTimeoutArgs(
+                            seconds="20",
+                            nanos=750000000,
+                        ),
+                        url_rewrite=gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionUrlRewriteArgs(
+                            host_rewrite="A replacement header",
+                            path_prefix_rewrite="A replacement path",
+                        ),
+                        weighted_backend_services=[gcp.compute.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs(
+                            backend_service=home.id,
+                            weight=400,
+                            header_action={
+                                "responseHeadersToAdds": [{
+                                    "headerName": "AddMe",
+                                    "headerValue": "MyValue",
+                                    "replace": False,
+                                }],
+                            },
+                        )],
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.RegionUrlMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Region Url Map L7 Ilb Route
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                route_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    header_action={
+                        "requestHeadersToRemoves": ["RemoveMe2"],
+                        "requestHeadersToAdds": [{
+                            "headerName": "AddSomethingElse",
+                            "headerValue": "MyOtherValue",
+                            "replace": True,
+                        }],
+                        "responseHeadersToRemoves": ["RemoveMe3"],
+                        "responseHeadersToAdds": [{
+                            "headerName": "AddMe",
+                            "headerValue": "MyValue",
+                            "replace": False,
+                        }],
+                    },
+                    match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
+                        full_path_match="a full path",
+                        header_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                            header_name="someheader",
+                            exact_match="match this exactly",
+                            invert_match=True,
+                        )],
+                        ignore_case=True,
+                        metadata_filters=[{
+                            "filterMatchCriteria": "MATCH_ANY",
+                            "filterLabels": [{
+                                "name": "PLANET",
+                                "value": "MARS",
+                            }],
+                        }],
+                        query_parameter_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                            name="a query parameter",
+                            present_match=True,
+                        )],
+                    )],
+                    url_redirect=gcp.compute.RegionUrlMapPathMatcherRouteRuleUrlRedirectArgs(
+                        host_redirect="A host",
+                        https_redirect=False,
+                        path_redirect="some/path",
+                        redirect_response_code="TEMPORARY_REDIRECT",
+                        strip_query=True,
+                    ),
+                )],
+            )],
+            tests=[gcp.compute.RegionUrlMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+        ### Region Url Map L7 Ilb Route Partial
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionHealthCheck("default", http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+            port=80,
+        ))
+        home = gcp.compute.RegionBackendService("home",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default.id],
+            load_balancing_scheme="INTERNAL_MANAGED")
+        regionurlmap = gcp.compute.RegionUrlMap("regionurlmap",
+            description="a description",
+            default_service=home.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=home.id,
+                route_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleArgs(
+                    priority=1,
+                    service=home.id,
+                    header_action={
+                        "requestHeadersToRemoves": ["RemoveMe2"],
+                    },
+                    match_rules=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleArgs(
+                        full_path_match="a full path",
+                        header_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs(
+                            header_name="someheader",
+                            exact_match="match this exactly",
+                            invert_match=True,
+                        )],
+                        query_parameter_matches=[gcp.compute.RegionUrlMapPathMatcherRouteRuleMatchRuleQueryParameterMatchArgs(
+                            name="a query parameter",
+                            present_match=True,
+                        )],
+                    )],
+                )],
+            )],
+            tests=[gcp.compute.RegionUrlMapTestArgs(
+                service=home.id,
+                host="hi.com",
+                path="/home",
+            )])
+        ```
+
+        ## Import
+
+        RegionUrlMap can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RegionUrlMapArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegionUrlMapArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 default_service: Optional[pulumi.Input[str]] = None,
+                 default_url_redirect: Optional[pulumi.Input[pulumi.InputType['RegionUrlMapDefaultUrlRedirectArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 host_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapHostRuleArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapPathMatcherArgs']]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RegionUrlMapTestArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -433,21 +1247,21 @@ class RegionUrlMap(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegionUrlMapArgs.__new__(RegionUrlMapArgs)
 
-            __props__['default_service'] = default_service
-            __props__['default_url_redirect'] = default_url_redirect
-            __props__['description'] = description
-            __props__['host_rules'] = host_rules
-            __props__['name'] = name
-            __props__['path_matchers'] = path_matchers
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['tests'] = tests
-            __props__['creation_timestamp'] = None
-            __props__['fingerprint'] = None
-            __props__['map_id'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["default_service"] = default_service
+            __props__.__dict__["default_url_redirect"] = default_url_redirect
+            __props__.__dict__["description"] = description
+            __props__.__dict__["host_rules"] = host_rules
+            __props__.__dict__["name"] = name
+            __props__.__dict__["path_matchers"] = path_matchers
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["tests"] = tests
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["map_id"] = None
+            __props__.__dict__["self_link"] = None
         super(RegionUrlMap, __self__).__init__(
             'gcp:compute/regionUrlMap:RegionUrlMap',
             resource_name,
@@ -506,21 +1320,21 @@ class RegionUrlMap(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RegionUrlMapState.__new__(_RegionUrlMapState)
 
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["default_service"] = default_service
-        __props__["default_url_redirect"] = default_url_redirect
-        __props__["description"] = description
-        __props__["fingerprint"] = fingerprint
-        __props__["host_rules"] = host_rules
-        __props__["map_id"] = map_id
-        __props__["name"] = name
-        __props__["path_matchers"] = path_matchers
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["self_link"] = self_link
-        __props__["tests"] = tests
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["default_service"] = default_service
+        __props__.__dict__["default_url_redirect"] = default_url_redirect
+        __props__.__dict__["description"] = description
+        __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["host_rules"] = host_rules
+        __props__.__dict__["map_id"] = map_id
+        __props__.__dict__["name"] = name
+        __props__.__dict__["path_matchers"] = path_matchers
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["tests"] = tests
         return RegionUrlMap(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -638,10 +1452,4 @@ class RegionUrlMap(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "tests")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

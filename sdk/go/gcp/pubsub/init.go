@@ -22,29 +22,30 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:pubsub/liteSubscription:LiteSubscription":
-		r, err = NewLiteSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &LiteSubscription{}
 	case "gcp:pubsub/liteTopic:LiteTopic":
-		r, err = NewLiteTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &LiteTopic{}
 	case "gcp:pubsub/subscription:Subscription":
-		r, err = NewSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subscription{}
 	case "gcp:pubsub/subscriptionIAMBinding:SubscriptionIAMBinding":
-		r, err = NewSubscriptionIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubscriptionIAMBinding{}
 	case "gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember":
-		r, err = NewSubscriptionIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubscriptionIAMMember{}
 	case "gcp:pubsub/subscriptionIAMPolicy:SubscriptionIAMPolicy":
-		r, err = NewSubscriptionIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubscriptionIAMPolicy{}
 	case "gcp:pubsub/topic:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &Topic{}
 	case "gcp:pubsub/topicIAMBinding:TopicIAMBinding":
-		r, err = NewTopicIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &TopicIAMBinding{}
 	case "gcp:pubsub/topicIAMMember:TopicIAMMember":
-		r, err = NewTopicIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &TopicIAMMember{}
 	case "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy":
-		r, err = NewTopicIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TopicIAMPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

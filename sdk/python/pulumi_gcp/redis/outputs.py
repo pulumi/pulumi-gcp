@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
 __all__ = [
     'InstanceServerCaCert',
@@ -15,6 +15,29 @@ __all__ = [
 
 @pulumi.output_type
 class InstanceServerCaCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "expireTime":
+            suggest = "expire_time"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "sha1Fingerprint":
+            suggest = "sha1_fingerprint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceServerCaCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceServerCaCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceServerCaCert.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert: Optional[str] = None,
                  create_time: Optional[str] = None,
@@ -56,9 +79,6 @@ class InstanceServerCaCert(dict):
     @pulumi.getter(name="sha1Fingerprint")
     def sha1_fingerprint(self) -> Optional[str]:
         return pulumi.get(self, "sha1_fingerprint")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

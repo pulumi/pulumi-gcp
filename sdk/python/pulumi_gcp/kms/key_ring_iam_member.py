@@ -5,15 +5,188 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KeyRingIAMMember']
+__all__ = ['KeyRingIAMMemberArgs', 'KeyRingIAMMember']
+
+@pulumi.input_type
+class KeyRingIAMMemberArgs:
+    def __init__(__self__, *,
+                 key_ring_id: pulumi.Input[str],
+                 member: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 condition: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']] = None):
+        """
+        The set of arguments for constructing a KeyRingIAMMember resource.
+        :param pulumi.Input[str] key_ring_id: The key ring ID, in the form
+               `{project_id}/{location_name}/{key_ring_name}` or
+               `{location_name}/{key_ring_name}`. In the second form, the provider's
+               project setting will be used as a fallback.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        :param pulumi.Input['KeyRingIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+
+    @property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Input[str]:
+        """
+        The key ring ID, in the form
+        `{project_id}/{location_name}/{key_ring_name}` or
+        `{location_name}/{key_ring_name}`. In the second form, the provider's
+        project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "key_ring_id")
+
+    @key_ring_id.setter
+    def key_ring_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_ring_id", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: pulumi.Input[str]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        """
+        The role that should be applied. Only one
+        `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+
+@pulumi.input_type
+class _KeyRingIAMMemberState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering KeyRingIAMMember resources.
+        :param pulumi.Input['KeyRingIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+               Structure is documented below.
+        :param pulumi.Input[str] etag: (Computed) The etag of the key ring's IAM policy.
+        :param pulumi.Input[str] key_ring_id: The key ring ID, in the form
+               `{project_id}/{location_name}/{key_ring_name}` or
+               `{location_name}/{key_ring_name}`. In the second form, the provider's
+               project setting will be used as a fallback.
+        :param pulumi.Input[str] role: The role that should be applied. Only one
+               `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+               `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if key_ring_id is not None:
+            pulumi.set(__self__, "key_ring_id", key_ring_id)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]:
+        """
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['KeyRingIAMMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Computed) The etag of the key ring's IAM policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The key ring ID, in the form
+        `{project_id}/{location_name}/{key_ring_name}` or
+        `{location_name}/{key_ring_name}`. In the second form, the provider's
+        project setting will be used as a fallback.
+        """
+        return pulumi.get(self, "key_ring_id")
+
+    @key_ring_id.setter
+    def key_ring_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_ring_id", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role that should be applied. Only one
+        `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
+        `[projects|organizations]/{parent-name}/roles/{role-name}`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
 
 
 class KeyRingIAMMember(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -168,6 +341,166 @@ class KeyRingIAMMember(pulumi.CustomResource):
                `kms.KeyRingIAMBinding` can be used per role. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyRingIAMMemberArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Three different resources help you manage your IAM policy for KMS key ring. Each of these resources serves a different use case:
+
+        * `kms.KeyRingIAMPolicy`: Authoritative. Sets the IAM policy for the key ring and replaces any existing policy already attached.
+        * `kms.KeyRingIAMBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the key ring are preserved.
+        * `kms.KeyRingIAMMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the key ring are preserved.
+
+        > **Note:** `kms.KeyRingIAMPolicy` **cannot** be used in conjunction with `kms.KeyRingIAMBinding` and `kms.KeyRingIAMMember` or they will fight over what your policy should be.
+
+        > **Note:** `kms.KeyRingIAMBinding` resources **can be** used in conjunction with `kms.KeyRingIAMMember` resources **only if** they do not grant privilege to the same role.
+
+        ## google\_kms\_key\_ring\_iam\_policy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+        )])
+        key_ring = gcp.kms.KeyRingIAMPolicy("keyRing",
+            key_ring_id=keyring.id,
+            policy_data=admin.policy_data)
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        keyring = gcp.kms.KeyRing("keyring", location="global")
+        admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
+            role="roles/editor",
+            members=["user:jane@example.com"],
+            condition=gcp.organizations.GetIAMPolicyBindingConditionArgs(
+                title="expires_after_2019_12_31",
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+            ),
+        )])
+        key_ring = gcp.kms.KeyRingIAMPolicy("keyRing",
+            key_ring_id=keyring.id,
+            policy_data=admin.policy_data)
+        ```
+
+        ## google\_kms\_key\_ring\_iam\_binding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMBinding("keyRing",
+            key_ring_id="your-key-ring-id",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMBinding("keyRing",
+            condition=gcp.kms.KeyRingIAMBindingConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+                title="expires_after_2019_12_31",
+            ),
+            key_ring_id="your-key-ring-id",
+            members=["user:jane@example.com"],
+            role="roles/editor")
+        ```
+
+        ## google\_kms\_key\_ring\_iam\_member
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMMember("keyRing",
+            key_ring_id="your-key-ring-id",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
+        With IAM Conditions:
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRingIAMMember("keyRing",
+            condition=gcp.kms.KeyRingIAMMemberConditionArgs(
+                description="Expiring at midnight of 2019-12-31",
+                expression="request.time < timestamp(\"2020-01-01T00:00:00Z\")",
+                title="expires_after_2019_12_31",
+            ),
+            key_ring_id="your-key-ring-id",
+            member="user:jane@example.com",
+            role="roles/editor")
+        ```
+
+        ## Import
+
+        IAM member imports use space-delimited identifiers; the resource in question, the role, and the account.
+
+        This member resource can be imported using the `key_ring_id`, role, and account e.g.
+
+        ```sh
+         $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer user:foo@example.com"
+        ```
+
+         IAM binding imports use space-delimited identifiers; the resource in question and the role.
+
+        This binding resource can be imported using the `key_ring_id` and role, e.g.
+
+        ```sh
+         $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam "your-project-id/location-name/key-ring-name roles/viewer"
+        ```
+
+         IAM policy imports use the identifier of the resource in question.
+
+        This policy resource can be imported using the `key_ring_id`, e.g.
+
+        ```sh
+         $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember key_ring_iam your-project-id/location-name/key-ring-name
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param KeyRingIAMMemberArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingIAMMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['KeyRingIAMMemberConditionArgs']]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -183,19 +516,19 @@ class KeyRingIAMMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyRingIAMMemberArgs.__new__(KeyRingIAMMemberArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if key_ring_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring_id'")
-            __props__['key_ring_id'] = key_ring_id
+            __props__.__dict__["key_ring_id"] = key_ring_id
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
+            __props__.__dict__["member"] = member
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
-            __props__['etag'] = None
+            __props__.__dict__["role"] = role
+            __props__.__dict__["etag"] = None
         super(KeyRingIAMMember, __self__).__init__(
             'gcp:kms/keyRingIAMMember:KeyRingIAMMember',
             resource_name,
@@ -231,13 +564,13 @@ class KeyRingIAMMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _KeyRingIAMMemberState.__new__(_KeyRingIAMMemberState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["key_ring_id"] = key_ring_id
-        __props__["member"] = member
-        __props__["role"] = role
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["key_ring_id"] = key_ring_id
+        __props__.__dict__["member"] = member
+        __props__.__dict__["role"] = role
         return KeyRingIAMMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -282,10 +615,4 @@ class KeyRingIAMMember(pulumi.CustomResource):
         `[projects|organizations]/{parent-name}/roles/{role-name}`.
         """
         return pulumi.get(self, "role")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

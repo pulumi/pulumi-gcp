@@ -5,15 +5,203 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SecurityPolicy']
+__all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
+
+@pulumi.input_type
+class SecurityPolicyArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None):
+        """
+        The set of arguments for constructing a SecurityPolicy resource.
+        :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
+        :param pulumi.Input[str] name: The name of the security policy.
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
+               rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+               security policy, a default rule with action "allow" will be added. Structure is documented below.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this rule. Max size is 64.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
+        """
+        The set of rules that belong to this policy. There must always be a default
+        rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+        security policy, a default rule with action "allow" will be added. Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class _SecurityPolicyState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering SecurityPolicy resources.
+        :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource.
+        :param pulumi.Input[str] name: The name of the security policy.
+        :param pulumi.Input[str] project: The project in which the resource belongs. If it
+               is not provided, the provider project is used.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: The set of rules that belong to this policy. There must always be a default
+               rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+               security policy, a default rule with action "allow" will be added. Structure is documented below.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this rule. Max size is 64.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of this resource.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the security policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project in which the resource belongs. If it
+        is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]:
+        """
+        The set of rules that belong to this policy. There must always be a default
+        rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
+        security policy, a default rule with action "allow" will be added. Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
 
 
 class SecurityPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -87,6 +275,87 @@ class SecurityPolicy(pulumi.CustomResource):
                rule (rule with priority 2147483647 and match "\*"). If no rules are provided when creating a
                security policy, a default rule with action "allow" will be added. Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[SecurityPolicyArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Security Policy defines an IP blacklist or whitelist that protects load balanced Google Cloud services by denying or permitting traffic from specified IP ranges. For more information
+        see the [official documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+        and the [API](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        policy = gcp.compute.SecurityPolicy("policy", rules=[
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="deny(403)",
+                description="Deny access to IPs in 9.9.9.0/24",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["9.9.9.0/24"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=1000,
+            ),
+            gcp.compute.SecurityPolicyRuleArgs(
+                action="allow",
+                description="default rule",
+                match=gcp.compute.SecurityPolicyRuleMatchArgs(
+                    config=gcp.compute.SecurityPolicyRuleMatchConfigArgs(
+                        src_ip_ranges=["*"],
+                    ),
+                    versioned_expr="SRC_IPS_V1",
+                ),
+                priority=2147483647,
+            ),
+        ])
+        ```
+
+        ## Import
+
+        Security policies can be imported using any of the following formats
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy projects/{{project}}/global/securityPolicies/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/securityPolicy:SecurityPolicy policy {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SecurityPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecurityPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecurityPolicyRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -102,14 +371,14 @@ class SecurityPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SecurityPolicyArgs.__new__(SecurityPolicyArgs)
 
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['rules'] = rules
-            __props__['fingerprint'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["rules"] = rules
+            __props__.__dict__["fingerprint"] = None
+            __props__.__dict__["self_link"] = None
         super(SecurityPolicy, __self__).__init__(
             'gcp:compute/securityPolicy:SecurityPolicy',
             resource_name,
@@ -145,14 +414,14 @@ class SecurityPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SecurityPolicyState.__new__(_SecurityPolicyState)
 
-        __props__["description"] = description
-        __props__["fingerprint"] = fingerprint
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["rules"] = rules
-        __props__["self_link"] = self_link
+        __props__.__dict__["description"] = description
+        __props__.__dict__["fingerprint"] = fingerprint
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["rules"] = rules
+        __props__.__dict__["self_link"] = self_link
         return SecurityPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -205,10 +474,4 @@ class SecurityPolicy(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

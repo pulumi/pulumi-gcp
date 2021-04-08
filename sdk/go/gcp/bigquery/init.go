@@ -22,39 +22,40 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:bigquery/appProfile:AppProfile":
-		r, err = NewAppProfile(ctx, name, nil, pulumi.URN_(urn))
+		r = &AppProfile{}
 	case "gcp:bigquery/connection:Connection":
-		r, err = NewConnection(ctx, name, nil, pulumi.URN_(urn))
+		r = &Connection{}
 	case "gcp:bigquery/dataTransferConfig:DataTransferConfig":
-		r, err = NewDataTransferConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &DataTransferConfig{}
 	case "gcp:bigquery/dataset:Dataset":
-		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dataset{}
 	case "gcp:bigquery/datasetAccess:DatasetAccess":
-		r, err = NewDatasetAccess(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetAccess{}
 	case "gcp:bigquery/datasetIamBinding:DatasetIamBinding":
-		r, err = NewDatasetIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetIamBinding{}
 	case "gcp:bigquery/datasetIamMember:DatasetIamMember":
-		r, err = NewDatasetIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetIamMember{}
 	case "gcp:bigquery/datasetIamPolicy:DatasetIamPolicy":
-		r, err = NewDatasetIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetIamPolicy{}
 	case "gcp:bigquery/iamBinding:IamBinding":
-		r, err = NewIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamBinding{}
 	case "gcp:bigquery/iamMember:IamMember":
-		r, err = NewIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamMember{}
 	case "gcp:bigquery/iamPolicy:IamPolicy":
-		r, err = NewIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &IamPolicy{}
 	case "gcp:bigquery/job:Job":
-		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &Job{}
 	case "gcp:bigquery/reservation:Reservation":
-		r, err = NewReservation(ctx, name, nil, pulumi.URN_(urn))
+		r = &Reservation{}
 	case "gcp:bigquery/routine:Routine":
-		r, err = NewRoutine(ctx, name, nil, pulumi.URN_(urn))
+		r = &Routine{}
 	case "gcp:bigquery/table:Table":
-		r, err = NewTable(ctx, name, nil, pulumi.URN_(urn))
+		r = &Table{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

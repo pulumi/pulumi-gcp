@@ -5,15 +5,665 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Subscription']
+__all__ = ['SubscriptionArgs', 'Subscription']
+
+@pulumi.input_type
+class SubscriptionArgs:
+    def __init__(__self__, *,
+                 topic: pulumi.Input[str],
+                 ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
+                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
+                 enable_message_ordering: Optional[pulumi.Input[bool]] = None,
+                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_retention_duration: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
+                 retain_acked_messages: Optional[pulumi.Input[bool]] = None,
+                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None):
+        """
+        The set of arguments for constructing a Subscription resource.
+        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
+               before the subscriber should acknowledge the message. After message
+               delivery but before the ack deadline expires and before the message is
+               acknowledged, it is an outstanding message and will not be delivered
+               again during that time (on a best-effort basis).
+               For pull subscriptions, this value is used as the initial value for
+               the ack deadline. To override this value for a given message, call
+               subscriptions.modifyAckDeadline with the corresponding ackId if using
+               pull. The minimum custom deadline you can specify is 10 seconds. The
+               maximum custom deadline you can specify is 600 seconds (10 minutes).
+               If this parameter is 0, a default value of 10 seconds is used.
+               For push delivery, this value is also used to set the request timeout
+               for the call to the push endpoint.
+               If the subscriber never acknowledges the message, the Pub/Sub system
+               will eventually redeliver the message.
+        :param pulumi.Input['SubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
+               this subscription. If dead_letter_policy is not set, dead lettering
+               is disabled.
+               The Cloud Pub/Sub service account associated with this subscription's
+               parent project (i.e.,
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               permission to Acknowledge() messages on this subscription.
+               Structure is documented below.
+        :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+               the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+               may be delivered in any order.
+        :param pulumi.Input['SubscriptionExpirationPolicyArgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
+               A subscription is considered active as long as any connected subscriber
+               is successfully consuming messages from the subscription or is issuing
+               operations on the subscription. If expirationPolicy is not set, a default
+               policy with ttl of 31 days will be used.  If it is set but ttl is "", the
+               resource never expires.  The minimum allowed value for expirationPolicy.ttl
+               is 1 day.
+               Structure is documented below.
+        :param pulumi.Input[str] filter: The subscription only delivers the messages that match the filter.
+               Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+               by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+               you can't modify the filter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
+        :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
+               backlog, from the moment a message is published. If
+               retainAckedMessages is true, then this also configures the retention
+               of acknowledged messages, and thus configures how far back in time a
+               subscriptions.seek can be done. Defaults to 7 days. Cannot be more
+               than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+               A duration in seconds with up to nine fractional digits, terminated
+               by 's'. Example: `"600.5s"`.
+        :param pulumi.Input[str] name: Name of the subscription.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
+               configure it. An empty pushConfig signifies that the subscriber will
+               pull and ack messages using API methods.
+               Structure is documented below.
+        :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If `true`, then
+               messages are not expunged from the subscription's backlog, even if
+               they are acknowledged, until they fall out of the
+               messageRetentionDuration window.
+        :param pulumi.Input['SubscriptionRetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+               If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+               RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "topic", topic)
+        if ack_deadline_seconds is not None:
+            pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
+        if dead_letter_policy is not None:
+            pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if enable_message_ordering is not None:
+            pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
+        if expiration_policy is not None:
+            pulumi.set(__self__, "expiration_policy", expiration_policy)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if message_retention_duration is not None:
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if push_config is not None:
+            pulumi.set(__self__, "push_config", push_config)
+        if retain_acked_messages is not None:
+            pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        A reference to a Topic resource.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter(name="ackDeadlineSeconds")
+    def ack_deadline_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        This value is the maximum time after a subscriber receives a message
+        before the subscriber should acknowledge the message. After message
+        delivery but before the ack deadline expires and before the message is
+        acknowledged, it is an outstanding message and will not be delivered
+        again during that time (on a best-effort basis).
+        For pull subscriptions, this value is used as the initial value for
+        the ack deadline. To override this value for a given message, call
+        subscriptions.modifyAckDeadline with the corresponding ackId if using
+        pull. The minimum custom deadline you can specify is 10 seconds. The
+        maximum custom deadline you can specify is 600 seconds (10 minutes).
+        If this parameter is 0, a default value of 10 seconds is used.
+        For push delivery, this value is also used to set the request timeout
+        for the call to the push endpoint.
+        If the subscriber never acknowledges the message, the Pub/Sub system
+        will eventually redeliver the message.
+        """
+        return pulumi.get(self, "ack_deadline_seconds")
+
+    @ack_deadline_seconds.setter
+    def ack_deadline_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ack_deadline_seconds", value)
+
+    @property
+    @pulumi.getter(name="deadLetterPolicy")
+    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]:
+        """
+        A policy that specifies the conditions for dead lettering messages in
+        this subscription. If dead_letter_policy is not set, dead lettering
+        is disabled.
+        The Cloud Pub/Sub service account associated with this subscription's
+        parent project (i.e.,
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        permission to Acknowledge() messages on this subscription.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dead_letter_policy")
+
+    @dead_letter_policy.setter
+    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]):
+        pulumi.set(self, "dead_letter_policy", value)
+
+    @property
+    @pulumi.getter(name="enableMessageOrdering")
+    def enable_message_ordering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+        may be delivered in any order.
+        """
+        return pulumi.get(self, "enable_message_ordering")
+
+    @enable_message_ordering.setter
+    def enable_message_ordering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_message_ordering", value)
+
+    @property
+    @pulumi.getter(name="expirationPolicy")
+    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]:
+        """
+        A policy that specifies the conditions for this subscription's expiration.
+        A subscription is considered active as long as any connected subscriber
+        is successfully consuming messages from the subscription or is issuing
+        operations on the subscription. If expirationPolicy is not set, a default
+        policy with ttl of 31 days will be used.  If it is set but ttl is "", the
+        resource never expires.  The minimum allowed value for expirationPolicy.ttl
+        is 1 day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expiration_policy")
+
+    @expiration_policy.setter
+    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]):
+        pulumi.set(self, "expiration_policy", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subscription only delivers the messages that match the filter.
+        Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+        by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+        you can't modify the filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to this Subscription.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="messageRetentionDuration")
+    def message_retention_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to retain unacknowledged messages in the subscription's
+        backlog, from the moment a message is published. If
+        retainAckedMessages is true, then this also configures the retention
+        of acknowledged messages, and thus configures how far back in time a
+        subscriptions.seek can be done. Defaults to 7 days. Cannot be more
+        than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+        A duration in seconds with up to nine fractional digits, terminated
+        by 's'. Example: `"600.5s"`.
+        """
+        return pulumi.get(self, "message_retention_duration")
+
+    @message_retention_duration.setter
+    def message_retention_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_retention_duration", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the subscription.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pushConfig")
+    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArgs']]:
+        """
+        If push delivery is used with this subscription, this field is used to
+        configure it. An empty pushConfig signifies that the subscriber will
+        pull and ack messages using API methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "push_config")
+
+    @push_config.setter
+    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArgs']]):
+        pulumi.set(self, "push_config", value)
+
+    @property
+    @pulumi.getter(name="retainAckedMessages")
+    def retain_acked_messages(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to retain acknowledged messages. If `true`, then
+        messages are not expunged from the subscription's backlog, even if
+        they are acknowledged, until they fall out of the
+        messageRetentionDuration window.
+        """
+        return pulumi.get(self, "retain_acked_messages")
+
+    @retain_acked_messages.setter
+    def retain_acked_messages(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "retain_acked_messages", value)
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]:
+        """
+        A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+        RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+
+@pulumi.input_type
+class _SubscriptionState:
+    def __init__(__self__, *,
+                 ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
+                 dead_letter_policy: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']] = None,
+                 enable_message_ordering: Optional[pulumi.Input[bool]] = None,
+                 expiration_policy: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_retention_duration: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 path: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_config: Optional[pulumi.Input['SubscriptionPushConfigArgs']] = None,
+                 retain_acked_messages: Optional[pulumi.Input[bool]] = None,
+                 retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Subscription resources.
+        :param pulumi.Input[int] ack_deadline_seconds: This value is the maximum time after a subscriber receives a message
+               before the subscriber should acknowledge the message. After message
+               delivery but before the ack deadline expires and before the message is
+               acknowledged, it is an outstanding message and will not be delivered
+               again during that time (on a best-effort basis).
+               For pull subscriptions, this value is used as the initial value for
+               the ack deadline. To override this value for a given message, call
+               subscriptions.modifyAckDeadline with the corresponding ackId if using
+               pull. The minimum custom deadline you can specify is 10 seconds. The
+               maximum custom deadline you can specify is 600 seconds (10 minutes).
+               If this parameter is 0, a default value of 10 seconds is used.
+               For push delivery, this value is also used to set the request timeout
+               for the call to the push endpoint.
+               If the subscriber never acknowledges the message, the Pub/Sub system
+               will eventually redeliver the message.
+        :param pulumi.Input['SubscriptionDeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in
+               this subscription. If dead_letter_policy is not set, dead lettering
+               is disabled.
+               The Cloud Pub/Sub service account associated with this subscription's
+               parent project (i.e.,
+               service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+               permission to Acknowledge() messages on this subscription.
+               Structure is documented below.
+        :param pulumi.Input[bool] enable_message_ordering: If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+               the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+               may be delivered in any order.
+        :param pulumi.Input['SubscriptionExpirationPolicyArgs'] expiration_policy: A policy that specifies the conditions for this subscription's expiration.
+               A subscription is considered active as long as any connected subscriber
+               is successfully consuming messages from the subscription or is issuing
+               operations on the subscription. If expirationPolicy is not set, a default
+               policy with ttl of 31 days will be used.  If it is set but ttl is "", the
+               resource never expires.  The minimum allowed value for expirationPolicy.ttl
+               is 1 day.
+               Structure is documented below.
+        :param pulumi.Input[str] filter: The subscription only delivers the messages that match the filter.
+               Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+               by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+               you can't modify the filter.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Subscription.
+        :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's
+               backlog, from the moment a message is published. If
+               retainAckedMessages is true, then this also configures the retention
+               of acknowledged messages, and thus configures how far back in time a
+               subscriptions.seek can be done. Defaults to 7 days. Cannot be more
+               than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+               A duration in seconds with up to nine fractional digits, terminated
+               by 's'. Example: `"600.5s"`.
+        :param pulumi.Input[str] name: Name of the subscription.
+        :param pulumi.Input[str] path: Path of the subscription in the format projects/{project}/subscriptions/{name}
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['SubscriptionPushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to
+               configure it. An empty pushConfig signifies that the subscriber will
+               pull and ack messages using API methods.
+               Structure is documented below.
+        :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If `true`, then
+               messages are not expunged from the subscription's backlog, even if
+               they are acknowledged, until they fall out of the
+               messageRetentionDuration window.
+        :param pulumi.Input['SubscriptionRetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription.
+               If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+               RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+               Structure is documented below.
+        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        """
+        if ack_deadline_seconds is not None:
+            pulumi.set(__self__, "ack_deadline_seconds", ack_deadline_seconds)
+        if dead_letter_policy is not None:
+            pulumi.set(__self__, "dead_letter_policy", dead_letter_policy)
+        if enable_message_ordering is not None:
+            pulumi.set(__self__, "enable_message_ordering", enable_message_ordering)
+        if expiration_policy is not None:
+            pulumi.set(__self__, "expiration_policy", expiration_policy)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if message_retention_duration is not None:
+            pulumi.set(__self__, "message_retention_duration", message_retention_duration)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if path is not None:
+            warnings.warn("""Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""", DeprecationWarning)
+            pulumi.log.warn("""path is deprecated: Deprecated in favor of id, which contains an identical value. This field will be removed in the next major release of the provider.""")
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if push_config is not None:
+            pulumi.set(__self__, "push_config", push_config)
+        if retain_acked_messages is not None:
+            pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
+        if retry_policy is not None:
+            pulumi.set(__self__, "retry_policy", retry_policy)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="ackDeadlineSeconds")
+    def ack_deadline_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        This value is the maximum time after a subscriber receives a message
+        before the subscriber should acknowledge the message. After message
+        delivery but before the ack deadline expires and before the message is
+        acknowledged, it is an outstanding message and will not be delivered
+        again during that time (on a best-effort basis).
+        For pull subscriptions, this value is used as the initial value for
+        the ack deadline. To override this value for a given message, call
+        subscriptions.modifyAckDeadline with the corresponding ackId if using
+        pull. The minimum custom deadline you can specify is 10 seconds. The
+        maximum custom deadline you can specify is 600 seconds (10 minutes).
+        If this parameter is 0, a default value of 10 seconds is used.
+        For push delivery, this value is also used to set the request timeout
+        for the call to the push endpoint.
+        If the subscriber never acknowledges the message, the Pub/Sub system
+        will eventually redeliver the message.
+        """
+        return pulumi.get(self, "ack_deadline_seconds")
+
+    @ack_deadline_seconds.setter
+    def ack_deadline_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ack_deadline_seconds", value)
+
+    @property
+    @pulumi.getter(name="deadLetterPolicy")
+    def dead_letter_policy(self) -> Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]:
+        """
+        A policy that specifies the conditions for dead lettering messages in
+        this subscription. If dead_letter_policy is not set, dead lettering
+        is disabled.
+        The Cloud Pub/Sub service account associated with this subscription's
+        parent project (i.e.,
+        service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+        permission to Acknowledge() messages on this subscription.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dead_letter_policy")
+
+    @dead_letter_policy.setter
+    def dead_letter_policy(self, value: Optional[pulumi.Input['SubscriptionDeadLetterPolicyArgs']]):
+        pulumi.set(self, "dead_letter_policy", value)
+
+    @property
+    @pulumi.getter(name="enableMessageOrdering")
+    def enable_message_ordering(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, messages published with the same orderingKey in PubsubMessage will be delivered to
+        the subscribers in the order in which they are received by the Pub/Sub system. Otherwise, they
+        may be delivered in any order.
+        """
+        return pulumi.get(self, "enable_message_ordering")
+
+    @enable_message_ordering.setter
+    def enable_message_ordering(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_message_ordering", value)
+
+    @property
+    @pulumi.getter(name="expirationPolicy")
+    def expiration_policy(self) -> Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]:
+        """
+        A policy that specifies the conditions for this subscription's expiration.
+        A subscription is considered active as long as any connected subscriber
+        is successfully consuming messages from the subscription or is issuing
+        operations on the subscription. If expirationPolicy is not set, a default
+        policy with ttl of 31 days will be used.  If it is set but ttl is "", the
+        resource never expires.  The minimum allowed value for expirationPolicy.ttl
+        is 1 day.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expiration_policy")
+
+    @expiration_policy.setter
+    def expiration_policy(self, value: Optional[pulumi.Input['SubscriptionExpirationPolicyArgs']]):
+        pulumi.set(self, "expiration_policy", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subscription only delivers the messages that match the filter.
+        Pub/Sub automatically acknowledges the messages that don't match the filter. You can filter messages
+        by their attributes. The maximum length of a filter is 256 bytes. After creating the subscription,
+        you can't modify the filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to this Subscription.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="messageRetentionDuration")
+    def message_retention_duration(self) -> Optional[pulumi.Input[str]]:
+        """
+        How long to retain unacknowledged messages in the subscription's
+        backlog, from the moment a message is published. If
+        retainAckedMessages is true, then this also configures the retention
+        of acknowledged messages, and thus configures how far back in time a
+        subscriptions.seek can be done. Defaults to 7 days. Cannot be more
+        than 7 days (`"604800s"`) or less than 10 minutes (`"600s"`).
+        A duration in seconds with up to nine fractional digits, terminated
+        by 's'. Example: `"600.5s"`.
+        """
+        return pulumi.get(self, "message_retention_duration")
+
+    @message_retention_duration.setter
+    def message_retention_duration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message_retention_duration", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the subscription.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Path of the subscription in the format projects/{project}/subscriptions/{name}
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pushConfig")
+    def push_config(self) -> Optional[pulumi.Input['SubscriptionPushConfigArgs']]:
+        """
+        If push delivery is used with this subscription, this field is used to
+        configure it. An empty pushConfig signifies that the subscriber will
+        pull and ack messages using API methods.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "push_config")
+
+    @push_config.setter
+    def push_config(self, value: Optional[pulumi.Input['SubscriptionPushConfigArgs']]):
+        pulumi.set(self, "push_config", value)
+
+    @property
+    @pulumi.getter(name="retainAckedMessages")
+    def retain_acked_messages(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether to retain acknowledged messages. If `true`, then
+        messages are not expunged from the subscription's backlog, even if
+        they are acknowledged, until they fall out of the
+        messageRetentionDuration window.
+        """
+        return pulumi.get(self, "retain_acked_messages")
+
+    @retain_acked_messages.setter
+    def retain_acked_messages(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "retain_acked_messages", value)
+
+    @property
+    @pulumi.getter(name="retryPolicy")
+    def retry_policy(self) -> Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]:
+        """
+        A policy that specifies how Pub/Sub retries message delivery for this subscription.
+        If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
+        RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
+        Structure is documented below.
+        """
+        return pulumi.get(self, "retry_policy")
+
+    @retry_policy.setter
+    def retry_policy(self, value: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']]):
+        pulumi.set(self, "retry_policy", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Topic resource.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 class Subscription(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -199,6 +849,143 @@ class Subscription(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] topic: A reference to a Topic resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SubscriptionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A named resource representing the stream of messages from a single,
+        specific topic, to be delivered to the subscribing application.
+
+        To get more information about Subscription, see:
+
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
+        * How-to Guides
+            * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+
+        > **Note:** You can retrieve the email of the Google Managed Pub/Sub Service Account used for forwarding
+        by using the `projects.ServiceIdentity` resource.
+
+        ## Example Usage
+        ### Pubsub Subscription Push
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            ack_deadline_seconds=20,
+            labels={
+                "foo": "bar",
+            },
+            push_config=gcp.pubsub.SubscriptionPushConfigArgs(
+                push_endpoint="https://example.com/push",
+                attributes={
+                    "x-goog-version": "v1",
+                },
+            ))
+        ```
+        ### Pubsub Subscription Pull
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            labels={
+                "foo": "bar",
+            },
+            message_retention_duration="1200s",
+            retain_acked_messages=True,
+            ack_deadline_seconds=20,
+            expiration_policy=gcp.pubsub.SubscriptionExpirationPolicyArgs(
+                ttl="300000.5s",
+            ),
+            retry_policy=gcp.pubsub.SubscriptionRetryPolicyArgs(
+                minimum_backoff="10s",
+            ),
+            enable_message_ordering=False)
+        ```
+        ### Pubsub Subscription Different Project
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic", project="topic-project")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            project="subscription-project",
+            topic=example_topic.name)
+        ```
+        ### Pubsub Subscription Dead Letter
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_topic = gcp.pubsub.Topic("exampleTopic")
+        example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
+        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
+            topic=example_topic.name,
+            dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
+                dead_letter_topic=example_dead_letter.id,
+                max_delivery_attempts=10,
+            ))
+        ```
+
+        ## Import
+
+        Subscription can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:pubsub/subscription:Subscription default projects/{{project}}/subscriptions/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/subscription:Subscription default {{project}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/subscription:Subscription default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param SubscriptionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SubscriptionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ack_deadline_seconds: Optional[pulumi.Input[int]] = None,
+                 dead_letter_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionDeadLetterPolicyArgs']]] = None,
+                 enable_message_ordering: Optional[pulumi.Input[bool]] = None,
+                 expiration_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionExpirationPolicyArgs']]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 message_retention_duration: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 push_config: Optional[pulumi.Input[pulumi.InputType['SubscriptionPushConfigArgs']]] = None,
+                 retain_acked_messages: Optional[pulumi.Input[bool]] = None,
+                 retry_policy: Optional[pulumi.Input[pulumi.InputType['SubscriptionRetryPolicyArgs']]] = None,
+                 topic: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -214,24 +1001,24 @@ class Subscription(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
-            __props__['ack_deadline_seconds'] = ack_deadline_seconds
-            __props__['dead_letter_policy'] = dead_letter_policy
-            __props__['enable_message_ordering'] = enable_message_ordering
-            __props__['expiration_policy'] = expiration_policy
-            __props__['filter'] = filter
-            __props__['labels'] = labels
-            __props__['message_retention_duration'] = message_retention_duration
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['push_config'] = push_config
-            __props__['retain_acked_messages'] = retain_acked_messages
-            __props__['retry_policy'] = retry_policy
+            __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
+            __props__.__dict__["dead_letter_policy"] = dead_letter_policy
+            __props__.__dict__["enable_message_ordering"] = enable_message_ordering
+            __props__.__dict__["expiration_policy"] = expiration_policy
+            __props__.__dict__["filter"] = filter
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["message_retention_duration"] = message_retention_duration
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["push_config"] = push_config
+            __props__.__dict__["retain_acked_messages"] = retain_acked_messages
+            __props__.__dict__["retry_policy"] = retry_policy
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
-            __props__['topic'] = topic
-            __props__['path'] = None
+            __props__.__dict__["topic"] = topic
+            __props__.__dict__["path"] = None
         super(Subscription, __self__).__init__(
             'gcp:pubsub/subscription:Subscription',
             resource_name,
@@ -330,22 +1117,22 @@ class Subscription(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _SubscriptionState.__new__(_SubscriptionState)
 
-        __props__["ack_deadline_seconds"] = ack_deadline_seconds
-        __props__["dead_letter_policy"] = dead_letter_policy
-        __props__["enable_message_ordering"] = enable_message_ordering
-        __props__["expiration_policy"] = expiration_policy
-        __props__["filter"] = filter
-        __props__["labels"] = labels
-        __props__["message_retention_duration"] = message_retention_duration
-        __props__["name"] = name
-        __props__["path"] = path
-        __props__["project"] = project
-        __props__["push_config"] = push_config
-        __props__["retain_acked_messages"] = retain_acked_messages
-        __props__["retry_policy"] = retry_policy
-        __props__["topic"] = topic
+        __props__.__dict__["ack_deadline_seconds"] = ack_deadline_seconds
+        __props__.__dict__["dead_letter_policy"] = dead_letter_policy
+        __props__.__dict__["enable_message_ordering"] = enable_message_ordering
+        __props__.__dict__["expiration_policy"] = expiration_policy
+        __props__.__dict__["filter"] = filter
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["message_retention_duration"] = message_retention_duration
+        __props__.__dict__["name"] = name
+        __props__.__dict__["path"] = path
+        __props__.__dict__["project"] = project
+        __props__.__dict__["push_config"] = push_config
+        __props__.__dict__["retain_acked_messages"] = retain_acked_messages
+        __props__.__dict__["retry_policy"] = retry_policy
+        __props__.__dict__["topic"] = topic
         return Subscription(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -509,10 +1296,4 @@ class Subscription(pulumi.CustomResource):
         A reference to a Topic resource.
         """
         return pulumi.get(self, "topic")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

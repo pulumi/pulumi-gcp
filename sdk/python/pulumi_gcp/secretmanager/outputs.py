@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -43,9 +43,6 @@ class SecretIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretIamMemberCondition(dict):
@@ -73,12 +70,26 @@ class SecretIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretReplication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userManaged":
+            suggest = "user_managed"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretReplication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretReplication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretReplication.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  automatic: Optional[bool] = None,
                  user_managed: Optional['outputs.SecretReplicationUserManaged'] = None):
@@ -109,9 +120,6 @@ class SecretReplication(dict):
         """
         return pulumi.get(self, "user_managed")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretReplicationUserManaged(dict):
@@ -132,9 +140,6 @@ class SecretReplicationUserManaged(dict):
         """
         return pulumi.get(self, "replicas")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretReplicationUserManagedReplica(dict):
@@ -152,8 +157,5 @@ class SecretReplicationUserManagedReplica(dict):
         The canonical IDs of the location to replicate data. For example: "us-east1".
         """
         return pulumi.get(self, "location")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

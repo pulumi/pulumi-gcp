@@ -22,215 +22,216 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:compute/address:Address":
-		r, err = NewAddress(ctx, name, nil, pulumi.URN_(urn))
+		r = &Address{}
 	case "gcp:compute/attachedDisk:AttachedDisk":
-		r, err = NewAttachedDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &AttachedDisk{}
 	case "gcp:compute/autoscalar:Autoscalar":
-		r, err = NewAutoscalar(ctx, name, nil, pulumi.URN_(urn))
+		r = &Autoscalar{}
 	case "gcp:compute/autoscaler:Autoscaler":
-		r, err = NewAutoscaler(ctx, name, nil, pulumi.URN_(urn))
+		r = &Autoscaler{}
 	case "gcp:compute/backendBucket:BackendBucket":
-		r, err = NewBackendBucket(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendBucket{}
 	case "gcp:compute/backendBucketSignedUrlKey:BackendBucketSignedUrlKey":
-		r, err = NewBackendBucketSignedUrlKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendBucketSignedUrlKey{}
 	case "gcp:compute/backendService:BackendService":
-		r, err = NewBackendService(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendService{}
 	case "gcp:compute/backendServiceSignedUrlKey:BackendServiceSignedUrlKey":
-		r, err = NewBackendServiceSignedUrlKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendServiceSignedUrlKey{}
 	case "gcp:compute/disk:Disk":
-		r, err = NewDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &Disk{}
 	case "gcp:compute/diskIamBinding:DiskIamBinding":
-		r, err = NewDiskIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskIamBinding{}
 	case "gcp:compute/diskIamMember:DiskIamMember":
-		r, err = NewDiskIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskIamMember{}
 	case "gcp:compute/diskIamPolicy:DiskIamPolicy":
-		r, err = NewDiskIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskIamPolicy{}
 	case "gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment":
-		r, err = NewDiskResourcePolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskResourcePolicyAttachment{}
 	case "gcp:compute/externalVpnGateway:ExternalVpnGateway":
-		r, err = NewExternalVpnGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &ExternalVpnGateway{}
 	case "gcp:compute/firewall:Firewall":
-		r, err = NewFirewall(ctx, name, nil, pulumi.URN_(urn))
+		r = &Firewall{}
 	case "gcp:compute/forwardingRule:ForwardingRule":
-		r, err = NewForwardingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ForwardingRule{}
 	case "gcp:compute/globalAddress:GlobalAddress":
-		r, err = NewGlobalAddress(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalAddress{}
 	case "gcp:compute/globalForwardingRule:GlobalForwardingRule":
-		r, err = NewGlobalForwardingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalForwardingRule{}
 	case "gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint":
-		r, err = NewGlobalNetworkEndpoint(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalNetworkEndpoint{}
 	case "gcp:compute/globalNetworkEndpointGroup:GlobalNetworkEndpointGroup":
-		r, err = NewGlobalNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalNetworkEndpointGroup{}
 	case "gcp:compute/haVpnGateway:HaVpnGateway":
-		r, err = NewHaVpnGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &HaVpnGateway{}
 	case "gcp:compute/healthCheck:HealthCheck":
-		r, err = NewHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &HealthCheck{}
 	case "gcp:compute/httpHealthCheck:HttpHealthCheck":
-		r, err = NewHttpHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &HttpHealthCheck{}
 	case "gcp:compute/httpsHealthCheck:HttpsHealthCheck":
-		r, err = NewHttpsHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &HttpsHealthCheck{}
 	case "gcp:compute/image:Image":
-		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &Image{}
 	case "gcp:compute/imageIamBinding:ImageIamBinding":
-		r, err = NewImageIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageIamBinding{}
 	case "gcp:compute/imageIamMember:ImageIamMember":
-		r, err = NewImageIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageIamMember{}
 	case "gcp:compute/imageIamPolicy:ImageIamPolicy":
-		r, err = NewImageIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageIamPolicy{}
 	case "gcp:compute/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp:compute/instanceFromMachineImage:InstanceFromMachineImage":
-		r, err = NewInstanceFromMachineImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceFromMachineImage{}
 	case "gcp:compute/instanceFromTemplate:InstanceFromTemplate":
-		r, err = NewInstanceFromTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceFromTemplate{}
 	case "gcp:compute/instanceGroup:InstanceGroup":
-		r, err = NewInstanceGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceGroup{}
 	case "gcp:compute/instanceGroupManager:InstanceGroupManager":
-		r, err = NewInstanceGroupManager(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceGroupManager{}
 	case "gcp:compute/instanceGroupNamedPort:InstanceGroupNamedPort":
-		r, err = NewInstanceGroupNamedPort(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceGroupNamedPort{}
 	case "gcp:compute/instanceIAMBinding:InstanceIAMBinding":
-		r, err = NewInstanceIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIAMBinding{}
 	case "gcp:compute/instanceIAMMember:InstanceIAMMember":
-		r, err = NewInstanceIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIAMMember{}
 	case "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy":
-		r, err = NewInstanceIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIAMPolicy{}
 	case "gcp:compute/instanceTemplate:InstanceTemplate":
-		r, err = NewInstanceTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceTemplate{}
 	case "gcp:compute/interconnectAttachment:InterconnectAttachment":
-		r, err = NewInterconnectAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &InterconnectAttachment{}
 	case "gcp:compute/machineImage:MachineImage":
-		r, err = NewMachineImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &MachineImage{}
 	case "gcp:compute/machineImageIamBinding:MachineImageIamBinding":
-		r, err = NewMachineImageIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &MachineImageIamBinding{}
 	case "gcp:compute/machineImageIamMember:MachineImageIamMember":
-		r, err = NewMachineImageIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &MachineImageIamMember{}
 	case "gcp:compute/machineImageIamPolicy:MachineImageIamPolicy":
-		r, err = NewMachineImageIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &MachineImageIamPolicy{}
 	case "gcp:compute/managedSslCertificate:ManagedSslCertificate":
-		r, err = NewManagedSslCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagedSslCertificate{}
 	case "gcp:compute/mangedSslCertificate:MangedSslCertificate":
-		r, err = NewMangedSslCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &MangedSslCertificate{}
 	case "gcp:compute/network:Network":
-		r, err = NewNetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &Network{}
 	case "gcp:compute/networkEndpoint:NetworkEndpoint":
-		r, err = NewNetworkEndpoint(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkEndpoint{}
 	case "gcp:compute/networkEndpointGroup:NetworkEndpointGroup":
-		r, err = NewNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkEndpointGroup{}
 	case "gcp:compute/networkPeering:NetworkPeering":
-		r, err = NewNetworkPeering(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkPeering{}
 	case "gcp:compute/networkPeeringRoutesConfig:NetworkPeeringRoutesConfig":
-		r, err = NewNetworkPeeringRoutesConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkPeeringRoutesConfig{}
 	case "gcp:compute/nodeGroup:NodeGroup":
-		r, err = NewNodeGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeGroup{}
 	case "gcp:compute/nodeTemplate:NodeTemplate":
-		r, err = NewNodeTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeTemplate{}
 	case "gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy":
-		r, err = NewOrganizationSecurityPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationSecurityPolicy{}
 	case "gcp:compute/organizationSecurityPolicyAssociation:OrganizationSecurityPolicyAssociation":
-		r, err = NewOrganizationSecurityPolicyAssociation(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationSecurityPolicyAssociation{}
 	case "gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule":
-		r, err = NewOrganizationSecurityPolicyRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationSecurityPolicyRule{}
 	case "gcp:compute/packetMirroring:PacketMirroring":
-		r, err = NewPacketMirroring(ctx, name, nil, pulumi.URN_(urn))
+		r = &PacketMirroring{}
 	case "gcp:compute/perInstanceConfig:PerInstanceConfig":
-		r, err = NewPerInstanceConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &PerInstanceConfig{}
 	case "gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier":
-		r, err = NewProjectDefaultNetworkTier(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectDefaultNetworkTier{}
 	case "gcp:compute/projectMetadata:ProjectMetadata":
-		r, err = NewProjectMetadata(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectMetadata{}
 	case "gcp:compute/projectMetadataItem:ProjectMetadataItem":
-		r, err = NewProjectMetadataItem(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectMetadataItem{}
 	case "gcp:compute/regionAutoscaler:RegionAutoscaler":
-		r, err = NewRegionAutoscaler(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionAutoscaler{}
 	case "gcp:compute/regionBackendService:RegionBackendService":
-		r, err = NewRegionBackendService(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionBackendService{}
 	case "gcp:compute/regionDisk:RegionDisk":
-		r, err = NewRegionDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionDisk{}
 	case "gcp:compute/regionDiskIamBinding:RegionDiskIamBinding":
-		r, err = NewRegionDiskIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionDiskIamBinding{}
 	case "gcp:compute/regionDiskIamMember:RegionDiskIamMember":
-		r, err = NewRegionDiskIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionDiskIamMember{}
 	case "gcp:compute/regionDiskIamPolicy:RegionDiskIamPolicy":
-		r, err = NewRegionDiskIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionDiskIamPolicy{}
 	case "gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment":
-		r, err = NewRegionDiskResourcePolicyAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionDiskResourcePolicyAttachment{}
 	case "gcp:compute/regionHealthCheck:RegionHealthCheck":
-		r, err = NewRegionHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionHealthCheck{}
 	case "gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager":
-		r, err = NewRegionInstanceGroupManager(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionInstanceGroupManager{}
 	case "gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup":
-		r, err = NewRegionNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionNetworkEndpointGroup{}
 	case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
-		r, err = NewRegionPerInstanceConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionPerInstanceConfig{}
 	case "gcp:compute/regionSslCertificate:RegionSslCertificate":
-		r, err = NewRegionSslCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionSslCertificate{}
 	case "gcp:compute/regionTargetHttpProxy:RegionTargetHttpProxy":
-		r, err = NewRegionTargetHttpProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionTargetHttpProxy{}
 	case "gcp:compute/regionTargetHttpsProxy:RegionTargetHttpsProxy":
-		r, err = NewRegionTargetHttpsProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionTargetHttpsProxy{}
 	case "gcp:compute/regionUrlMap:RegionUrlMap":
-		r, err = NewRegionUrlMap(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionUrlMap{}
 	case "gcp:compute/reservation:Reservation":
-		r, err = NewReservation(ctx, name, nil, pulumi.URN_(urn))
+		r = &Reservation{}
 	case "gcp:compute/resourcePolicy:ResourcePolicy":
-		r, err = NewResourcePolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourcePolicy{}
 	case "gcp:compute/route:Route":
-		r, err = NewRoute(ctx, name, nil, pulumi.URN_(urn))
+		r = &Route{}
 	case "gcp:compute/router:Router":
-		r, err = NewRouter(ctx, name, nil, pulumi.URN_(urn))
+		r = &Router{}
 	case "gcp:compute/routerInterface:RouterInterface":
-		r, err = NewRouterInterface(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouterInterface{}
 	case "gcp:compute/routerNat:RouterNat":
-		r, err = NewRouterNat(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouterNat{}
 	case "gcp:compute/routerPeer:RouterPeer":
-		r, err = NewRouterPeer(ctx, name, nil, pulumi.URN_(urn))
+		r = &RouterPeer{}
 	case "gcp:compute/sSLCertificate:SSLCertificate":
-		r, err = NewSSLCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &SSLCertificate{}
 	case "gcp:compute/sSLPolicy:SSLPolicy":
-		r, err = NewSSLPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SSLPolicy{}
 	case "gcp:compute/securityPolicy:SecurityPolicy":
-		r, err = NewSecurityPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecurityPolicy{}
 	case "gcp:compute/securityScanConfig:SecurityScanConfig":
-		r, err = NewSecurityScanConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecurityScanConfig{}
 	case "gcp:compute/sharedVPCHostProject:SharedVPCHostProject":
-		r, err = NewSharedVPCHostProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &SharedVPCHostProject{}
 	case "gcp:compute/sharedVPCServiceProject:SharedVPCServiceProject":
-		r, err = NewSharedVPCServiceProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &SharedVPCServiceProject{}
 	case "gcp:compute/snapshot:Snapshot":
-		r, err = NewSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &Snapshot{}
 	case "gcp:compute/subnetwork:Subnetwork":
-		r, err = NewSubnetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subnetwork{}
 	case "gcp:compute/subnetworkIAMBinding:SubnetworkIAMBinding":
-		r, err = NewSubnetworkIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubnetworkIAMBinding{}
 	case "gcp:compute/subnetworkIAMMember:SubnetworkIAMMember":
-		r, err = NewSubnetworkIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubnetworkIAMMember{}
 	case "gcp:compute/subnetworkIAMPolicy:SubnetworkIAMPolicy":
-		r, err = NewSubnetworkIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubnetworkIAMPolicy{}
 	case "gcp:compute/targetGrpcProxy:TargetGrpcProxy":
-		r, err = NewTargetGrpcProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetGrpcProxy{}
 	case "gcp:compute/targetHttpProxy:TargetHttpProxy":
-		r, err = NewTargetHttpProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetHttpProxy{}
 	case "gcp:compute/targetHttpsProxy:TargetHttpsProxy":
-		r, err = NewTargetHttpsProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetHttpsProxy{}
 	case "gcp:compute/targetInstance:TargetInstance":
-		r, err = NewTargetInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetInstance{}
 	case "gcp:compute/targetPool:TargetPool":
-		r, err = NewTargetPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetPool{}
 	case "gcp:compute/targetSSLProxy:TargetSSLProxy":
-		r, err = NewTargetSSLProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetSSLProxy{}
 	case "gcp:compute/targetTCPProxy:TargetTCPProxy":
-		r, err = NewTargetTCPProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetTCPProxy{}
 	case "gcp:compute/uRLMap:URLMap":
-		r, err = NewURLMap(ctx, name, nil, pulumi.URN_(urn))
+		r = &URLMap{}
 	case "gcp:compute/vPNGateway:VPNGateway":
-		r, err = NewVPNGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &VPNGateway{}
 	case "gcp:compute/vPNTunnel:VPNTunnel":
-		r, err = NewVPNTunnel(ctx, name, nil, pulumi.URN_(urn))
+		r = &VPNTunnel{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

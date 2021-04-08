@@ -5,13 +5,100 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['Dashboard']
+__all__ = ['DashboardArgs', 'Dashboard']
+
+@pulumi.input_type
+class DashboardArgs:
+    def __init__(__self__, *,
+                 dashboard_json: pulumi.Input[str],
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Dashboard resource.
+        :param pulumi.Input[str] dashboard_json: The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+               The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "dashboard_json", dashboard_json)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="dashboardJson")
+    def dashboard_json(self) -> pulumi.Input[str]:
+        """
+        The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+        """
+        return pulumi.get(self, "dashboard_json")
+
+    @dashboard_json.setter
+    def dashboard_json(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dashboard_json", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class _DashboardState:
+    def __init__(__self__, *,
+                 dashboard_json: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Dashboard resources.
+        :param pulumi.Input[str] dashboard_json: The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+               The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if dashboard_json is not None:
+            pulumi.set(__self__, "dashboard_json", dashboard_json)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="dashboardJson")
+    def dashboard_json(self) -> Optional[pulumi.Input[str]]:
+        """
+        The JSON representation of a dashboard, following the format at https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards.
+        The representation of an existing dashboard can be found by using the [API Explorer](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards/get)
+        """
+        return pulumi.get(self, "dashboard_json")
+
+    @dashboard_json.setter
+    def dashboard_json(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dashboard_json", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Dashboard(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -138,6 +225,143 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DashboardArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Google Stackdriver dashboard. Dashboards define the content and layout of pages in the Stackdriver web application.
+
+        To get more information about Dashboards, see:
+
+        * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v1/projects.dashboards)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/monitoring/dashboards)
+
+        ## Example Usage
+        ### Monitoring Dashboard Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dashboard = gcp.monitoring.Dashboard("dashboard", dashboard_json=\"\"\"{
+          "displayName": "Demo Dashboard",
+          "gridLayout": {
+            "widgets": [
+              {
+                "blank": {}
+              }
+            ]
+          }
+        }
+
+
+        \"\"\")
+        ```
+        ### Monitoring Dashboard GridLayout
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dashboard = gcp.monitoring.Dashboard("dashboard", dashboard_json=\"\"\"{
+          "displayName": "Grid Layout Example",
+          "gridLayout": {
+            "columns": "2",
+            "widgets": [
+              {
+                "title": "Widget 1",
+                "xyChart": {
+                  "dataSets": [{
+                    "timeSeriesQuery": {
+                      "timeSeriesFilter": {
+                        "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+                        "aggregation": {
+                          "perSeriesAligner": "ALIGN_RATE"
+                        }
+                      },
+                      "unitOverride": "1"
+                    },
+                    "plotType": "LINE"
+                  }],
+                  "timeshiftDuration": "0s",
+                  "yAxis": {
+                    "label": "y1Axis",
+                    "scale": "LINEAR"
+                  }
+                }
+              },
+              {
+                "text": {
+                  "content": "Widget 2",
+                  "format": "MARKDOWN"
+                }
+              },
+              {
+                "title": "Widget 3",
+                "xyChart": {
+                  "dataSets": [{
+                    "timeSeriesQuery": {
+                      "timeSeriesFilter": {
+                        "filter": "metric.type=\"agent.googleapis.com/nginx/connections/accepted_count\"",
+                        "aggregation": {
+                          "perSeriesAligner": "ALIGN_RATE"
+                        }
+                      },
+                      "unitOverride": "1"
+                    },
+                    "plotType": "STACKED_BAR"
+                  }],
+                  "timeshiftDuration": "0s",
+                  "yAxis": {
+                    "label": "y1Axis",
+                    "scale": "LINEAR"
+                  }
+                }
+              }
+            ]
+          }
+        }
+
+
+        \"\"\")
+        ```
+
+        ## Import
+
+        Dashboard can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:monitoring/dashboard:Dashboard default project/{{project}}/dashboards/{{dashboard_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:monitoring/dashboard:Dashboard default {{dashboard_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DashboardArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DashboardArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dashboard_json: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -153,12 +377,12 @@ class Dashboard(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DashboardArgs.__new__(DashboardArgs)
 
             if dashboard_json is None and not opts.urn:
                 raise TypeError("Missing required property 'dashboard_json'")
-            __props__['dashboard_json'] = dashboard_json
-            __props__['project'] = project
+            __props__.__dict__["dashboard_json"] = dashboard_json
+            __props__.__dict__["project"] = project
         super(Dashboard, __self__).__init__(
             'gcp:monitoring/dashboard:Dashboard',
             resource_name,
@@ -185,10 +409,10 @@ class Dashboard(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DashboardState.__new__(_DashboardState)
 
-        __props__["dashboard_json"] = dashboard_json
-        __props__["project"] = project
+        __props__.__dict__["dashboard_json"] = dashboard_json
+        __props__.__dict__["project"] = project
         return Dashboard(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -208,10 +432,4 @@ class Dashboard(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

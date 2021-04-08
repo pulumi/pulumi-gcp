@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -33,6 +33,25 @@ __all__ = [
 
 @pulumi.output_type
 class EntryBigqueryDateShardedSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shardCount":
+            suggest = "shard_count"
+        elif key == "tablePrefix":
+            suggest = "table_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntryBigqueryDateShardedSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntryBigqueryDateShardedSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntryBigqueryDateShardedSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset: Optional[str] = None,
                  shard_count: Optional[int] = None,
@@ -59,12 +78,30 @@ class EntryBigqueryDateShardedSpec(dict):
     def table_prefix(self) -> Optional[str]:
         return pulumi.get(self, "table_prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntryBigqueryTableSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableSourceType":
+            suggest = "table_source_type"
+        elif key == "tableSpecs":
+            suggest = "table_specs"
+        elif key == "viewSpecs":
+            suggest = "view_specs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntryBigqueryTableSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntryBigqueryTableSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntryBigqueryTableSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  table_source_type: Optional[str] = None,
                  table_specs: Optional[Sequence['outputs.EntryBigqueryTableSpecTableSpec']] = None,
@@ -91,12 +128,26 @@ class EntryBigqueryTableSpec(dict):
     def view_specs(self) -> Optional[Sequence['outputs.EntryBigqueryTableSpecViewSpec']]:
         return pulumi.get(self, "view_specs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntryBigqueryTableSpecTableSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupedEntry":
+            suggest = "grouped_entry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntryBigqueryTableSpecTableSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntryBigqueryTableSpecTableSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntryBigqueryTableSpecTableSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  grouped_entry: Optional[str] = None):
         if grouped_entry is not None:
@@ -107,12 +158,26 @@ class EntryBigqueryTableSpecTableSpec(dict):
     def grouped_entry(self) -> Optional[str]:
         return pulumi.get(self, "grouped_entry")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntryBigqueryTableSpecViewSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "viewQuery":
+            suggest = "view_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntryBigqueryTableSpecViewSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntryBigqueryTableSpecViewSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntryBigqueryTableSpecViewSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  view_query: Optional[str] = None):
         if view_query is not None:
@@ -123,12 +188,28 @@ class EntryBigqueryTableSpecViewSpec(dict):
     def view_query(self) -> Optional[str]:
         return pulumi.get(self, "view_query")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntryGcsFilesetSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePatterns":
+            suggest = "file_patterns"
+        elif key == "sampleGcsFileSpecs":
+            suggest = "sample_gcs_file_specs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntryGcsFilesetSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntryGcsFilesetSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntryGcsFilesetSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_patterns: Sequence[str],
                  sample_gcs_file_specs: Optional[Sequence['outputs.EntryGcsFilesetSpecSampleGcsFileSpec']] = None):
@@ -180,12 +261,28 @@ class EntryGcsFilesetSpec(dict):
         """
         return pulumi.get(self, "sample_gcs_file_specs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePath":
+            suggest = "file_path"
+        elif key == "sizeBytes":
+            suggest = "size_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EntryGcsFilesetSpecSampleGcsFileSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EntryGcsFilesetSpecSampleGcsFileSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EntryGcsFilesetSpecSampleGcsFileSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_path: Optional[str] = None,
                  size_bytes: Optional[int] = None):
@@ -218,9 +315,6 @@ class EntryGcsFilesetSpecSampleGcsFileSpec(dict):
         """
         return pulumi.get(self, "size_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntryGroupIamBindingCondition(dict):
@@ -247,9 +341,6 @@ class EntryGroupIamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -278,9 +369,6 @@ class EntryGroupIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyTagIamBindingCondition(dict):
@@ -307,9 +395,6 @@ class PolicyTagIamBindingCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -338,12 +423,38 @@ class PolicyTagIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TagField(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldName":
+            suggest = "field_name"
+        elif key == "boolValue":
+            suggest = "bool_value"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "doubleValue":
+            suggest = "double_value"
+        elif key == "enumValue":
+            suggest = "enum_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TagField. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TagField.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TagField.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  field_name: str,
                  bool_value: Optional[bool] = None,
@@ -453,12 +564,30 @@ class TagField(dict):
         """
         return pulumi.get(self, "timestamp_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TagTemplateField(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldId":
+            suggest = "field_id"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "isRequired":
+            suggest = "is_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TagTemplateField. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TagTemplateField.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TagTemplateField.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  field_id: str,
                  type: 'outputs.TagTemplateFieldType',
@@ -541,12 +670,28 @@ class TagTemplateField(dict):
         """
         return pulumi.get(self, "order")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TagTemplateFieldType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enumType":
+            suggest = "enum_type"
+        elif key == "primitiveType":
+            suggest = "primitive_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TagTemplateFieldType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TagTemplateFieldType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TagTemplateFieldType.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enum_type: Optional['outputs.TagTemplateFieldTypeEnumType'] = None,
                  primitive_type: Optional[str] = None):
@@ -583,12 +728,26 @@ class TagTemplateFieldType(dict):
         """
         return pulumi.get(self, "primitive_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TagTemplateFieldTypeEnumType(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedValues":
+            suggest = "allowed_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TagTemplateFieldTypeEnumType. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TagTemplateFieldTypeEnumType.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TagTemplateFieldTypeEnumType.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_values: Sequence['outputs.TagTemplateFieldTypeEnumTypeAllowedValue']):
         """
@@ -614,12 +773,26 @@ class TagTemplateFieldTypeEnumType(dict):
         """
         return pulumi.get(self, "allowed_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TagTemplateFieldTypeEnumTypeAllowedValue(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TagTemplateFieldTypeEnumTypeAllowedValue. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TagTemplateFieldTypeEnumTypeAllowedValue.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TagTemplateFieldTypeEnumTypeAllowedValue.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_name: str):
         """
@@ -634,9 +807,6 @@ class TagTemplateFieldTypeEnumTypeAllowedValue(dict):
         The display name for this template.
         """
         return pulumi.get(self, "display_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -665,9 +835,6 @@ class TagTemplateIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TagTemplateIamMemberCondition(dict):
@@ -694,9 +861,6 @@ class TagTemplateIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -725,9 +889,6 @@ class TaxonomyIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TaxonomyIamMemberCondition(dict):
@@ -754,8 +915,5 @@ class TaxonomyIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

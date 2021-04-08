@@ -5,15 +5,276 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Connection']
+__all__ = ['ConnectionArgs', 'Connection']
+
+@pulumi.input_type
+class ConnectionArgs:
+    def __init__(__self__, *,
+                 cloud_sql: pulumi.Input['ConnectionCloudSqlArgs'],
+                 connection_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Connection resource.
+        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Cloud SQL properties.
+               Structure is documented below.
+        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
+        :param pulumi.Input[str] description: A descriptive description for the connection
+        :param pulumi.Input[str] friendly_name: A descriptive name for the connection
+        :param pulumi.Input[str] location: The geographic location where the connection should reside.
+               Cloud SQL instance must be in the same location as the connection
+               with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
+               Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "cloud_sql", cloud_sql)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="cloudSql")
+    def cloud_sql(self) -> pulumi.Input['ConnectionCloudSqlArgs']:
+        """
+        Cloud SQL properties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_sql")
+
+    @cloud_sql.setter
+    def cloud_sql(self, value: pulumi.Input['ConnectionCloudSqlArgs']):
+        pulumi.set(self, "cloud_sql", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional connection id that should be assigned to the created connection.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A descriptive description for the connection
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A descriptive name for the connection
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @friendly_name.setter
+    def friendly_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location where the connection should reside.
+        Cloud SQL instance must be in the same location as the connection
+        with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
+        Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class _ConnectionState:
+    def __init__(__self__, *,
+                 cloud_sql: Optional[pulumi.Input['ConnectionCloudSqlArgs']] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 has_credential: Optional[pulumi.Input[bool]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input['ConnectionCloudSqlArgs'] cloud_sql: Cloud SQL properties.
+               Structure is documented below.
+        :param pulumi.Input[str] connection_id: Optional connection id that should be assigned to the created connection.
+        :param pulumi.Input[str] description: A descriptive description for the connection
+        :param pulumi.Input[str] friendly_name: A descriptive name for the connection
+        :param pulumi.Input[bool] has_credential: True if the connection has credential assigned.
+        :param pulumi.Input[str] location: The geographic location where the connection should reside.
+               Cloud SQL instance must be in the same location as the connection
+               with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
+               Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+        :param pulumi.Input[str] name: The resource name of the connection in the form of:
+               "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        if cloud_sql is not None:
+            pulumi.set(__self__, "cloud_sql", cloud_sql)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if has_credential is not None:
+            pulumi.set(__self__, "has_credential", has_credential)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="cloudSql")
+    def cloud_sql(self) -> Optional[pulumi.Input['ConnectionCloudSqlArgs']]:
+        """
+        Cloud SQL properties.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "cloud_sql")
+
+    @cloud_sql.setter
+    def cloud_sql(self, value: Optional[pulumi.Input['ConnectionCloudSqlArgs']]):
+        pulumi.set(self, "cloud_sql", value)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional connection id that should be assigned to the created connection.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A descriptive description for the connection
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A descriptive name for the connection
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @friendly_name.setter
+    def friendly_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter(name="hasCredential")
+    def has_credential(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the connection has credential assigned.
+        """
+        return pulumi.get(self, "has_credential")
+
+    @has_credential.setter
+    def has_credential(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "has_credential", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location where the connection should reside.
+        Cloud SQL instance must be in the same location as the connection
+        with following exceptions: Cloud SQL us-central1 maps to BigQuery US, Cloud SQL europe-west1 maps to BigQuery EU.
+        Examples: US, EU, asia-northeast1, us-central1, europe-west1. The default value is US.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the connection in the form of:
+        "projects/{project_id}/locations/{location_id}/connections/{connectionId}"
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
 
 class Connection(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -148,6 +409,144 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A connection allows BigQuery connections to external data sources..
+
+        To get more information about Connection, see:
+
+        * [API documentation](https://cloud.google.com/bigquery/docs/reference/bigqueryconnection/rest/v1beta1/projects.locations.connections/create)
+        * How-to Guides
+            * [Cloud SQL federated queries](https://cloud.google.com/bigquery/docs/cloud-sql-federated-queries)
+
+        > **Warning:** All arguments including `cloud_sql.credential.password` will be stored in the raw
+        state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/docs/state/sensitive-data.html).
+
+        ## Example Usage
+        ### Bigquery Connection Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        db = gcp.sql.Database("db", instance=instance.name,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        connection = gcp.bigquery.Connection("connection",
+            friendly_name="👋",
+            description="a riveting description",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Bigquery Connection Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_random as random
+
+        instance = gcp.sql.DatabaseInstance("instance",
+            database_version="POSTGRES_11",
+            region="us-central1",
+            settings=gcp.sql.DatabaseInstanceSettingsArgs(
+                tier="db-f1-micro",
+            ),
+            deletion_protection=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        db = gcp.sql.Database("db", instance=instance.name,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        pwd = random.RandomPassword("pwd",
+            length=16,
+            special=False)
+        user = gcp.sql.User("user",
+            instance=instance.name,
+            password=pwd.result,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        connection = gcp.bigquery.Connection("connection",
+            connection_id="my-connection",
+            location="US",
+            friendly_name="👋",
+            description="a riveting description",
+            cloud_sql=gcp.bigquery.ConnectionCloudSqlArgs(
+                instance_id=instance.connection_name,
+                database=db.name,
+                type="POSTGRES",
+                credential=gcp.bigquery.ConnectionCloudSqlCredentialArgs(
+                    username=user.name,
+                    password=user.password,
+                ),
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+
+        ## Import
+
+        Connection can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigquery/connection:Connection default projects/{{project}}/locations/{{location}}/connections/{{connection_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/connection:Connection default {{project}}/{{location}}/{{connection_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/connection:Connection default {{location}}/{{connection_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ConnectionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cloud_sql: Optional[pulumi.Input[pulumi.InputType['ConnectionCloudSqlArgs']]] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -163,18 +562,18 @@ class Connection(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
             if cloud_sql is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_sql'")
-            __props__['cloud_sql'] = cloud_sql
-            __props__['connection_id'] = connection_id
-            __props__['description'] = description
-            __props__['friendly_name'] = friendly_name
-            __props__['location'] = location
-            __props__['project'] = project
-            __props__['has_credential'] = None
-            __props__['name'] = None
+            __props__.__dict__["cloud_sql"] = cloud_sql
+            __props__.__dict__["connection_id"] = connection_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["friendly_name"] = friendly_name
+            __props__.__dict__["location"] = location
+            __props__.__dict__["project"] = project
+            __props__.__dict__["has_credential"] = None
+            __props__.__dict__["name"] = None
         super(Connection, __self__).__init__(
             'gcp:bigquery/connection:Connection',
             resource_name,
@@ -217,16 +616,16 @@ class Connection(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ConnectionState.__new__(_ConnectionState)
 
-        __props__["cloud_sql"] = cloud_sql
-        __props__["connection_id"] = connection_id
-        __props__["description"] = description
-        __props__["friendly_name"] = friendly_name
-        __props__["has_credential"] = has_credential
-        __props__["location"] = location
-        __props__["name"] = name
-        __props__["project"] = project
+        __props__.__dict__["cloud_sql"] = cloud_sql
+        __props__.__dict__["connection_id"] = connection_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["friendly_name"] = friendly_name
+        __props__.__dict__["has_credential"] = has_credential
+        __props__.__dict__["location"] = location
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
         return Connection(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -298,10 +697,4 @@ class Connection(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

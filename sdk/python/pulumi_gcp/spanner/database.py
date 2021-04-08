@@ -5,13 +5,228 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['Database']
+__all__ = ['DatabaseArgs', 'Database']
+
+@pulumi.input_type
+class DatabaseArgs:
+    def __init__(__self__, *,
+                 instance: pulumi.Input[str],
+                 ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Database resource.
+        :param pulumi.Input[str] instance: The instance to create the database on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
+               database. Statements can create tables, indexes, etc. These statements
+               execute atomically with the creation of the database: if there is an
+               error in any statement, the database is not created.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
+               the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        """
+        pulumi.set(__self__, "instance", instance)
+        if ddls is not None:
+            pulumi.set(__self__, "ddls", ddls)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Input[str]:
+        """
+        The instance to create the database on.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def ddls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An optional list of DDL statements to run inside the newly created
+        database. Statements can create tables, indexes, etc. These statements
+        execute atomically with the creation of the database: if there is an
+        error in any statement, the database is not created.
+        """
+        return pulumi.get(self, "ddls")
+
+    @ddls.setter
+    def ddls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ddls", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` that would delete the instance will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier for the database, which cannot be changed after
+        the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class _DatabaseState:
+    def __init__(__self__, *,
+                 ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Database resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ddls: An optional list of DDL statements to run inside the newly created
+               database. Statements can create tables, indexes, etc. These statements
+               execute atomically with the creation of the database: if there is an
+               error in any statement, the database is not created.
+        :param pulumi.Input[bool] deletion_protection: Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+               in state, a `destroy` or `update` that would delete the instance will fail.
+        :param pulumi.Input[str] instance: The instance to create the database on.
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
+               the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] state: An explanation of the status of the database.
+        """
+        if ddls is not None:
+            pulumi.set(__self__, "ddls", ddls)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def ddls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An optional list of DDL statements to run inside the newly created
+        database. Statements can create tables, indexes, etc. These statements
+        execute atomically with the creation of the database: if there is an
+        error in any statement, the database is not created.
+        """
+        return pulumi.get(self, "ddls")
+
+    @ddls.setter
+    def ddls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ddls", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not to allow the provider to destroy the instance. Unless this field is set to false
+        in state, a `destroy` or `update` that would delete the instance will fail.
+        """
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance to create the database on.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier for the database, which cannot be changed after
+        the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        An explanation of the status of the database.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class Database(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -87,6 +302,85 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A Cloud Spanner Database which is hosted on a Spanner instance.
+
+        To get more information about Database, see:
+
+        * [API documentation](https://cloud.google.com/spanner/docs/reference/rest/v1/projects.instances.databases)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/spanner/)
+
+        > **Warning:** It is strongly recommended to set `lifecycle { prevent_destroy = true }` on databases in order to prevent accidental data loss.
+
+        ## Example Usage
+        ### Spanner Database Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.spanner.Instance("main",
+            config="regional-europe-west1",
+            display_name="main-instance")
+        database = gcp.spanner.Database("database",
+            instance=main.name,
+            ddls=[
+                "CREATE TABLE t1 (t1 INT64 NOT NULL,) PRIMARY KEY(t1)",
+                "CREATE TABLE t2 (t2 INT64 NOT NULL,) PRIMARY KEY(t2)",
+            ],
+            deletion_protection=False)
+        ```
+
+        ## Import
+
+        Database can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:spanner/database:Database default projects/{{project}}/instances/{{instance}}/databases/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:spanner/database:Database default instances/{{instance}}/databases/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:spanner/database:Database default {{project}}/{{instance}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:spanner/database:Database default {{instance}}/{{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ddls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -102,16 +396,16 @@ class Database(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
-            __props__['ddls'] = ddls
-            __props__['deletion_protection'] = deletion_protection
+            __props__.__dict__["ddls"] = ddls
+            __props__.__dict__["deletion_protection"] = deletion_protection
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
-            __props__['instance'] = instance
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['state'] = None
+            __props__.__dict__["instance"] = instance
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["state"] = None
         super(Database, __self__).__init__(
             'gcp:spanner/database:Database',
             resource_name,
@@ -150,14 +444,14 @@ class Database(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _DatabaseState.__new__(_DatabaseState)
 
-        __props__["ddls"] = ddls
-        __props__["deletion_protection"] = deletion_protection
-        __props__["instance"] = instance
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["state"] = state
+        __props__.__dict__["ddls"] = ddls
+        __props__.__dict__["deletion_protection"] = deletion_protection
+        __props__.__dict__["instance"] = instance
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["state"] = state
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -213,10 +507,4 @@ class Database(pulumi.CustomResource):
         An explanation of the status of the database.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -22,45 +22,46 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:datacatalog/entry:Entry":
-		r, err = NewEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &Entry{}
 	case "gcp:datacatalog/entryGroup:EntryGroup":
-		r, err = NewEntryGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntryGroup{}
 	case "gcp:datacatalog/entryGroupIamBinding:EntryGroupIamBinding":
-		r, err = NewEntryGroupIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntryGroupIamBinding{}
 	case "gcp:datacatalog/entryGroupIamMember:EntryGroupIamMember":
-		r, err = NewEntryGroupIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntryGroupIamMember{}
 	case "gcp:datacatalog/entryGroupIamPolicy:EntryGroupIamPolicy":
-		r, err = NewEntryGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntryGroupIamPolicy{}
 	case "gcp:datacatalog/policyTag:PolicyTag":
-		r, err = NewPolicyTag(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyTag{}
 	case "gcp:datacatalog/policyTagIamBinding:PolicyTagIamBinding":
-		r, err = NewPolicyTagIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyTagIamBinding{}
 	case "gcp:datacatalog/policyTagIamMember:PolicyTagIamMember":
-		r, err = NewPolicyTagIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyTagIamMember{}
 	case "gcp:datacatalog/policyTagIamPolicy:PolicyTagIamPolicy":
-		r, err = NewPolicyTagIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyTagIamPolicy{}
 	case "gcp:datacatalog/tag:Tag":
-		r, err = NewTag(ctx, name, nil, pulumi.URN_(urn))
+		r = &Tag{}
 	case "gcp:datacatalog/tagTemplate:TagTemplate":
-		r, err = NewTagTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagTemplate{}
 	case "gcp:datacatalog/tagTemplateIamBinding:TagTemplateIamBinding":
-		r, err = NewTagTemplateIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagTemplateIamBinding{}
 	case "gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember":
-		r, err = NewTagTemplateIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagTemplateIamMember{}
 	case "gcp:datacatalog/tagTemplateIamPolicy:TagTemplateIamPolicy":
-		r, err = NewTagTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagTemplateIamPolicy{}
 	case "gcp:datacatalog/taxonomy:Taxonomy":
-		r, err = NewTaxonomy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Taxonomy{}
 	case "gcp:datacatalog/taxonomyIamBinding:TaxonomyIamBinding":
-		r, err = NewTaxonomyIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &TaxonomyIamBinding{}
 	case "gcp:datacatalog/taxonomyIamMember:TaxonomyIamMember":
-		r, err = NewTaxonomyIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &TaxonomyIamMember{}
 	case "gcp:datacatalog/taxonomyIamPolicy:TaxonomyIamPolicy":
-		r, err = NewTaxonomyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TaxonomyIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

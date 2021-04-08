@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:appengine/application:Application":
-		r, err = NewApplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &Application{}
 	case "gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules":
-		r, err = NewApplicationUrlDispatchRules(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApplicationUrlDispatchRules{}
 	case "gcp:appengine/domainMapping:DomainMapping":
-		r, err = NewDomainMapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &DomainMapping{}
 	case "gcp:appengine/engineSplitTraffic:EngineSplitTraffic":
-		r, err = NewEngineSplitTraffic(ctx, name, nil, pulumi.URN_(urn))
+		r = &EngineSplitTraffic{}
 	case "gcp:appengine/firewallRule:FirewallRule":
-		r, err = NewFirewallRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &FirewallRule{}
 	case "gcp:appengine/flexibleAppVersion:FlexibleAppVersion":
-		r, err = NewFlexibleAppVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &FlexibleAppVersion{}
 	case "gcp:appengine/standardAppVersion:StandardAppVersion":
-		r, err = NewStandardAppVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &StandardAppVersion{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

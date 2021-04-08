@@ -5,15 +5,217 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessApprovalSettings']
+__all__ = ['AccessApprovalSettingsArgs', 'AccessApprovalSettings']
+
+@pulumi.input_type
+class AccessApprovalSettingsArgs:
+    def __init__(__self__, *,
+                 enrolled_services: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]],
+                 project_id: pulumi.Input[str],
+                 notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccessApprovalSettings resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+               resource given by name against any of these services contained here will be required to have explicit approval.
+               Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
+               expanded as the set of supported services is expanded.
+        :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+               a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+               addresses are allowed.
+        :param pulumi.Input[str] project: Deprecated in favor of 'project_id'
+        """
+        pulumi.set(__self__, "enrolled_services", enrolled_services)
+        pulumi.set(__self__, "project_id", project_id)
+        if notification_emails is not None:
+            pulumi.set(__self__, "notification_emails", notification_emails)
+        if project is not None:
+            warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="enrolledServices")
+    def enrolled_services(self) -> pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]:
+        """
+        A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+        resource given by name against any of these services contained here will be required to have explicit approval.
+        Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
+        expanded as the set of supported services is expanded.
+        """
+        return pulumi.get(self, "enrolled_services")
+
+    @enrolled_services.setter
+    def enrolled_services(self, value: pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]):
+        pulumi.set(self, "enrolled_services", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        ID of the project of the access approval settings.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="notificationEmails")
+    def notification_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+        addresses are allowed.
+        """
+        return pulumi.get(self, "notification_emails")
+
+    @notification_emails.setter
+    def notification_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_emails", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated in favor of 'project_id'
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+
+@pulumi.input_type
+class _AccessApprovalSettingsState:
+    def __init__(__self__, *,
+                 enrolled_ancestor: Optional[pulumi.Input[bool]] = None,
+                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessApprovalSettings resources.
+        :param pulumi.Input[bool] enrolled_ancestor: If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
+               of the Project.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]] enrolled_services: A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+               resource given by name against any of these services contained here will be required to have explicit approval.
+               Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
+               expanded as the set of supported services is expanded.
+        :param pulumi.Input[str] name: The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_emails: A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+               a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+               addresses are allowed.
+        :param pulumi.Input[str] project: Deprecated in favor of 'project_id'
+        :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
+        """
+        if enrolled_ancestor is not None:
+            pulumi.set(__self__, "enrolled_ancestor", enrolled_ancestor)
+        if enrolled_services is not None:
+            pulumi.set(__self__, "enrolled_services", enrolled_services)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if notification_emails is not None:
+            pulumi.set(__self__, "notification_emails", notification_emails)
+        if project is not None:
+            warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
+            pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter(name="enrolledAncestor")
+    def enrolled_ancestor(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If the field is true, that indicates that at least one service is enrolled for Access Approval in one or more ancestors
+        of the Project.
+        """
+        return pulumi.get(self, "enrolled_ancestor")
+
+    @enrolled_ancestor.setter
+    def enrolled_ancestor(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enrolled_ancestor", value)
+
+    @property
+    @pulumi.getter(name="enrolledServices")
+    def enrolled_services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]]:
+        """
+        A list of Google Cloud Services for which the given resource has Access Approval enrolled. Access requests for the
+        resource given by name against any of these services contained here will be required to have explicit approval.
+        Enrollment can only be done on an all or nothing basis. A maximum of 10 enrolled services will be enforced, to be
+        expanded as the set of supported services is expanded.
+        """
+        return pulumi.get(self, "enrolled_services")
+
+    @enrolled_services.setter
+    def enrolled_services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessApprovalSettingsEnrolledServiceArgs']]]]):
+        pulumi.set(self, "enrolled_services", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the settings. Format is "projects/{project_id}/accessApprovalSettings"
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="notificationEmails")
+    def notification_emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of email addresses to which notifications relating to approval requests should be sent. Notifications relating to
+        a resource will be sent to all emails in the settings of ancestor resources of that resource. A maximum of 50 email
+        addresses are allowed.
+        """
+        return pulumi.get(self, "notification_emails")
+
+    @notification_emails.setter
+    def notification_emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_emails", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deprecated in favor of 'project_id'
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the project of the access approval settings.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
 
 class AccessApprovalSettings(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +240,36 @@ class AccessApprovalSettings(pulumi.CustomResource):
         :param pulumi.Input[str] project: Deprecated in favor of 'project_id'
         :param pulumi.Input[str] project_id: ID of the project of the access approval settings.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccessApprovalSettingsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a AccessApprovalSettings resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param AccessApprovalSettingsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessApprovalSettingsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 enrolled_services: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessApprovalSettingsEnrolledServiceArgs']]]]] = None,
+                 notification_emails: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -53,21 +285,21 @@ class AccessApprovalSettings(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessApprovalSettingsArgs.__new__(AccessApprovalSettingsArgs)
 
             if enrolled_services is None and not opts.urn:
                 raise TypeError("Missing required property 'enrolled_services'")
-            __props__['enrolled_services'] = enrolled_services
-            __props__['notification_emails'] = notification_emails
+            __props__.__dict__["enrolled_services"] = enrolled_services
+            __props__.__dict__["notification_emails"] = notification_emails
             if project is not None and not opts.urn:
                 warnings.warn("""Deprecated in favor of `project_id`""", DeprecationWarning)
                 pulumi.log.warn("""project is deprecated: Deprecated in favor of `project_id`""")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
-            __props__['enrolled_ancestor'] = None
-            __props__['name'] = None
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["enrolled_ancestor"] = None
+            __props__.__dict__["name"] = None
         super(AccessApprovalSettings, __self__).__init__(
             'gcp:projects/accessApprovalSettings:AccessApprovalSettings',
             resource_name,
@@ -106,14 +338,14 @@ class AccessApprovalSettings(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessApprovalSettingsState.__new__(_AccessApprovalSettingsState)
 
-        __props__["enrolled_ancestor"] = enrolled_ancestor
-        __props__["enrolled_services"] = enrolled_services
-        __props__["name"] = name
-        __props__["notification_emails"] = notification_emails
-        __props__["project"] = project
-        __props__["project_id"] = project_id
+        __props__.__dict__["enrolled_ancestor"] = enrolled_ancestor
+        __props__.__dict__["enrolled_services"] = enrolled_services
+        __props__.__dict__["name"] = name
+        __props__.__dict__["notification_emails"] = notification_emails
+        __props__.__dict__["project"] = project
+        __props__.__dict__["project_id"] = project_id
         return AccessApprovalSettings(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -169,10 +401,4 @@ class AccessApprovalSettings(pulumi.CustomResource):
         ID of the project of the access approval settings.
         """
         return pulumi.get(self, "project_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

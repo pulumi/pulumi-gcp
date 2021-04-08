@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,27 @@ __all__ = [
 
 @pulumi.output_type
 class DeviceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "binaryData":
+            suggest = "binary_data"
+        elif key == "cloudUpdateTime":
+            suggest = "cloud_update_time"
+        elif key == "deviceAckTime":
+            suggest = "device_ack_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  binary_data: Optional[str] = None,
                  cloud_update_time: Optional[str] = None,
@@ -56,12 +77,28 @@ class DeviceConfig(dict):
     def version(self) -> Optional[str]:
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeviceCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+        elif key == "expirationTime":
+            suggest = "expiration_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceCredential.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key: 'outputs.DeviceCredentialPublicKey',
                  expiration_time: Optional[str] = None):
@@ -90,9 +127,6 @@ class DeviceCredential(dict):
         The time at which this credential becomes invalid.
         """
         return pulumi.get(self, "expiration_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -125,12 +159,32 @@ class DeviceCredentialPublicKey(dict):
         """
         return pulumi.get(self, "key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeviceGatewayConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayAuthMethod":
+            suggest = "gateway_auth_method"
+        elif key == "gatewayType":
+            suggest = "gateway_type"
+        elif key == "lastAccessedGatewayId":
+            suggest = "last_accessed_gateway_id"
+        elif key == "lastAccessedGatewayTime":
+            suggest = "last_accessed_gateway_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceGatewayConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceGatewayConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceGatewayConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gateway_auth_method: Optional[str] = None,
                  gateway_type: Optional[str] = None,
@@ -193,9 +247,6 @@ class DeviceGatewayConfig(dict):
         """
         return pulumi.get(self, "last_accessed_gateway_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeviceLastErrorStatus(dict):
@@ -225,12 +276,28 @@ class DeviceLastErrorStatus(dict):
     def number(self) -> Optional[int]:
         return pulumi.get(self, "number")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeviceState(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "binaryData":
+            suggest = "binary_data"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceState. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceState.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceState.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  binary_data: Optional[str] = None,
                  update_time: Optional[str] = None):
@@ -249,12 +316,26 @@ class DeviceState(dict):
     def update_time(self) -> Optional[str]:
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistryCredential(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeyCertificate":
+            suggest = "public_key_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistryCredential. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistryCredential.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistryCredential.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key_certificate: Mapping[str, Any]):
         """
@@ -270,12 +351,28 @@ class RegistryCredential(dict):
         """
         return pulumi.get(self, "public_key_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistryEventNotificationConfigItem(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopicName":
+            suggest = "pubsub_topic_name"
+        elif key == "subfolderMatches":
+            suggest = "subfolder_matches"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistryEventNotificationConfigItem. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistryEventNotificationConfigItem.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistryEventNotificationConfigItem.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic_name: str,
                  subfolder_matches: Optional[str] = None):
@@ -310,8 +407,5 @@ class RegistryEventNotificationConfigItem(dict):
         item.
         """
         return pulumi.get(self, "subfolder_matches")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

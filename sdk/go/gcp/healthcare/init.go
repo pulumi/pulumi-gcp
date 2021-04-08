@@ -22,49 +22,50 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:healthcare/consentStore:ConsentStore":
-		r, err = NewConsentStore(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConsentStore{}
 	case "gcp:healthcare/consentStoreIamBinding:ConsentStoreIamBinding":
-		r, err = NewConsentStoreIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConsentStoreIamBinding{}
 	case "gcp:healthcare/consentStoreIamMember:ConsentStoreIamMember":
-		r, err = NewConsentStoreIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConsentStoreIamMember{}
 	case "gcp:healthcare/consentStoreIamPolicy:ConsentStoreIamPolicy":
-		r, err = NewConsentStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConsentStoreIamPolicy{}
 	case "gcp:healthcare/dataset:Dataset":
-		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dataset{}
 	case "gcp:healthcare/datasetIamBinding:DatasetIamBinding":
-		r, err = NewDatasetIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetIamBinding{}
 	case "gcp:healthcare/datasetIamMember:DatasetIamMember":
-		r, err = NewDatasetIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetIamMember{}
 	case "gcp:healthcare/datasetIamPolicy:DatasetIamPolicy":
-		r, err = NewDatasetIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetIamPolicy{}
 	case "gcp:healthcare/dicomStore:DicomStore":
-		r, err = NewDicomStore(ctx, name, nil, pulumi.URN_(urn))
+		r = &DicomStore{}
 	case "gcp:healthcare/dicomStoreIamBinding:DicomStoreIamBinding":
-		r, err = NewDicomStoreIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &DicomStoreIamBinding{}
 	case "gcp:healthcare/dicomStoreIamMember:DicomStoreIamMember":
-		r, err = NewDicomStoreIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &DicomStoreIamMember{}
 	case "gcp:healthcare/dicomStoreIamPolicy:DicomStoreIamPolicy":
-		r, err = NewDicomStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DicomStoreIamPolicy{}
 	case "gcp:healthcare/fhirStore:FhirStore":
-		r, err = NewFhirStore(ctx, name, nil, pulumi.URN_(urn))
+		r = &FhirStore{}
 	case "gcp:healthcare/fhirStoreIamBinding:FhirStoreIamBinding":
-		r, err = NewFhirStoreIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &FhirStoreIamBinding{}
 	case "gcp:healthcare/fhirStoreIamMember:FhirStoreIamMember":
-		r, err = NewFhirStoreIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &FhirStoreIamMember{}
 	case "gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy":
-		r, err = NewFhirStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &FhirStoreIamPolicy{}
 	case "gcp:healthcare/hl7Store:Hl7Store":
-		r, err = NewHl7Store(ctx, name, nil, pulumi.URN_(urn))
+		r = &Hl7Store{}
 	case "gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding":
-		r, err = NewHl7StoreIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &Hl7StoreIamBinding{}
 	case "gcp:healthcare/hl7StoreIamMember:Hl7StoreIamMember":
-		r, err = NewHl7StoreIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &Hl7StoreIamMember{}
 	case "gcp:healthcare/hl7StoreIamPolicy:Hl7StoreIamPolicy":
-		r, err = NewHl7StoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Hl7StoreIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

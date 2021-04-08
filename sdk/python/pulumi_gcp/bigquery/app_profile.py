@@ -5,15 +5,288 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AppProfile']
+__all__ = ['AppProfileArgs', 'AppProfile']
+
+@pulumi.input_type
+class AppProfileArgs:
+    def __init__(__self__, *,
+                 app_profile_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[bool]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None):
+        """
+        The set of arguments for constructing a AppProfile resource.
+        :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+        :param pulumi.Input[str] description: Long form description of the use case for this app profile.
+        :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
+        :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+               in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+               consistency to improve availability.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "app_profile_id", app_profile_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ignore_warnings is not None:
+            pulumi.set(__self__, "ignore_warnings", ignore_warnings)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if multi_cluster_routing_use_any is not None:
+            pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if single_cluster_routing is not None:
+            pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+
+    @property
+    @pulumi.getter(name="appProfileId")
+    def app_profile_id(self) -> pulumi.Input[str]:
+        """
+        The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+        """
+        return pulumi.get(self, "app_profile_id")
+
+    @app_profile_id.setter
+    def app_profile_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_profile_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Long form description of the use case for this app profile.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ignoreWarnings")
+    def ignore_warnings(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, ignore safety checks when deleting/updating the app profile.
+        """
+        return pulumi.get(self, "ignore_warnings")
+
+    @ignore_warnings.setter
+    def ignore_warnings(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_warnings", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance to create the app profile within.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter(name="multiClusterRoutingUseAny")
+    def multi_cluster_routing_use_any(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+        in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+        consistency to improve availability.
+        """
+        return pulumi.get(self, "multi_cluster_routing_use_any")
+
+    @multi_cluster_routing_use_any.setter
+    def multi_cluster_routing_use_any(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_cluster_routing_use_any", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="singleClusterRouting")
+    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]:
+        """
+        Use a single-cluster routing policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "single_cluster_routing")
+
+    @single_cluster_routing.setter
+    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
+        pulumi.set(self, "single_cluster_routing", value)
+
+
+@pulumi.input_type
+class _AppProfileState:
+    def __init__(__self__, *,
+                 app_profile_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[bool]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 single_cluster_routing: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']] = None):
+        """
+        Input properties used for looking up and filtering AppProfile resources.
+        :param pulumi.Input[str] app_profile_id: The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+        :param pulumi.Input[str] description: Long form description of the use case for this app profile.
+        :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when deleting/updating the app profile.
+        :param pulumi.Input[str] instance: The name of the instance to create the app profile within.
+        :param pulumi.Input[bool] multi_cluster_routing_use_any: If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+               in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+               consistency to improve availability.
+        :param pulumi.Input[str] name: The unique name of the requested app profile. Values are of the form
+               'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input['AppProfileSingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
+               Structure is documented below.
+        """
+        if app_profile_id is not None:
+            pulumi.set(__self__, "app_profile_id", app_profile_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if ignore_warnings is not None:
+            pulumi.set(__self__, "ignore_warnings", ignore_warnings)
+        if instance is not None:
+            pulumi.set(__self__, "instance", instance)
+        if multi_cluster_routing_use_any is not None:
+            pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if single_cluster_routing is not None:
+            pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+
+    @property
+    @pulumi.getter(name="appProfileId")
+    def app_profile_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique name of the app profile in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
+        """
+        return pulumi.get(self, "app_profile_id")
+
+    @app_profile_id.setter
+    def app_profile_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_profile_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Long form description of the use case for this app profile.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="ignoreWarnings")
+    def ignore_warnings(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, ignore safety checks when deleting/updating the app profile.
+        """
+        return pulumi.get(self, "ignore_warnings")
+
+    @ignore_warnings.setter
+    def ignore_warnings(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_warnings", value)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the instance to create the app profile within.
+        """
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter(name="multiClusterRoutingUseAny")
+    def multi_cluster_routing_use_any(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, read/write requests are routed to the nearest cluster in the instance, and will fail over to the nearest cluster that is available
+        in the event of transient errors or delays. Clusters in a region are considered equidistant. Choosing this option sacrifices read-your-writes
+        consistency to improve availability.
+        """
+        return pulumi.get(self, "multi_cluster_routing_use_any")
+
+    @multi_cluster_routing_use_any.setter
+    def multi_cluster_routing_use_any(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "multi_cluster_routing_use_any", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique name of the requested app profile. Values are of the form
+        'projects/<project>/instances/<instance>/appProfiles/<appProfileId>'.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="singleClusterRouting")
+    def single_cluster_routing(self) -> Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]:
+        """
+        Use a single-cluster routing policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "single_cluster_routing")
+
+    @single_cluster_routing.setter
+    def single_cluster_routing(self, value: Optional[pulumi.Input['AppProfileSingleClusterRoutingArgs']]):
+        pulumi.set(self, "single_cluster_routing", value)
 
 
 class AppProfile(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -109,6 +382,105 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
                Structure is documented below.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AppProfileArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        App profile is a configuration object describing how Cloud Bigtable should treat traffic from a particular end user application.
+
+        To get more information about AppProfile, see:
+
+        * [API documentation](https://cloud.google.com/bigtable/docs/reference/admin/rest/v2/projects.instances.appProfiles)
+
+        ## Example Usage
+        ### Bigtable App Profile Multicluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="bt-instance",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            multi_cluster_routing_use_any=True,
+            ignore_warnings=True)
+        ```
+        ### Bigtable App Profile Singlecluster
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        instance = gcp.bigtable.Instance("instance",
+            clusters=[gcp.bigtable.InstanceClusterArgs(
+                cluster_id="bt-instance",
+                zone="us-central1-b",
+                num_nodes=3,
+                storage_type="HDD",
+            )],
+            deletion_protection=True)
+        ap = gcp.bigquery.AppProfile("ap",
+            instance=instance.name,
+            app_profile_id="bt-profile",
+            single_cluster_routing=gcp.bigquery.AppProfileSingleClusterRoutingArgs(
+                cluster_id="bt-instance",
+                allow_transactional_writes=True,
+            ),
+            ignore_warnings=True)
+        ```
+
+        ## Import
+
+        AppProfile can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:bigquery/appProfile:AppProfile default projects/{{project}}/instances/{{instance}}/appProfiles/{{app_profile_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{project}}/{{instance}}/{{app_profile_id}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:bigquery/appProfile:AppProfile default {{instance}}/{{app_profile_id}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AppProfileArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AppProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_profile_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[bool]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 multi_cluster_routing_use_any: Optional[pulumi.Input[bool]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 single_cluster_routing: Optional[pulumi.Input[pulumi.InputType['AppProfileSingleClusterRoutingArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -124,18 +496,18 @@ class AppProfile(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AppProfileArgs.__new__(AppProfileArgs)
 
             if app_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_profile_id'")
-            __props__['app_profile_id'] = app_profile_id
-            __props__['description'] = description
-            __props__['ignore_warnings'] = ignore_warnings
-            __props__['instance'] = instance
-            __props__['multi_cluster_routing_use_any'] = multi_cluster_routing_use_any
-            __props__['project'] = project
-            __props__['single_cluster_routing'] = single_cluster_routing
-            __props__['name'] = None
+            __props__.__dict__["app_profile_id"] = app_profile_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["ignore_warnings"] = ignore_warnings
+            __props__.__dict__["instance"] = instance
+            __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
+            __props__.__dict__["project"] = project
+            __props__.__dict__["single_cluster_routing"] = single_cluster_routing
+            __props__.__dict__["name"] = None
         super(AppProfile, __self__).__init__(
             'gcp:bigquery/appProfile:AppProfile',
             resource_name,
@@ -177,16 +549,16 @@ class AppProfile(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AppProfileState.__new__(_AppProfileState)
 
-        __props__["app_profile_id"] = app_profile_id
-        __props__["description"] = description
-        __props__["ignore_warnings"] = ignore_warnings
-        __props__["instance"] = instance
-        __props__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["single_cluster_routing"] = single_cluster_routing
+        __props__.__dict__["app_profile_id"] = app_profile_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["ignore_warnings"] = ignore_warnings
+        __props__.__dict__["instance"] = instance
+        __props__.__dict__["multi_cluster_routing_use_any"] = multi_cluster_routing_use_any
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["single_cluster_routing"] = single_cluster_routing
         return AppProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -257,10 +629,4 @@ class AppProfile(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "single_cluster_routing")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

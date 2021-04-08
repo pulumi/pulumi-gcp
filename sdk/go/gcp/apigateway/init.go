@@ -22,33 +22,34 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:apigateway/api:Api":
-		r, err = NewApi(ctx, name, nil, pulumi.URN_(urn))
+		r = &Api{}
 	case "gcp:apigateway/apiConfig:ApiConfig":
-		r, err = NewApiConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiConfig{}
 	case "gcp:apigateway/apiConfigIamBinding:ApiConfigIamBinding":
-		r, err = NewApiConfigIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiConfigIamBinding{}
 	case "gcp:apigateway/apiConfigIamMember:ApiConfigIamMember":
-		r, err = NewApiConfigIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiConfigIamMember{}
 	case "gcp:apigateway/apiConfigIamPolicy:ApiConfigIamPolicy":
-		r, err = NewApiConfigIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiConfigIamPolicy{}
 	case "gcp:apigateway/apiIamBinding:ApiIamBinding":
-		r, err = NewApiIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiIamBinding{}
 	case "gcp:apigateway/apiIamMember:ApiIamMember":
-		r, err = NewApiIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiIamMember{}
 	case "gcp:apigateway/apiIamPolicy:ApiIamPolicy":
-		r, err = NewApiIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiIamPolicy{}
 	case "gcp:apigateway/gateway:Gateway":
-		r, err = NewGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &Gateway{}
 	case "gcp:apigateway/gatewayIamBinding:GatewayIamBinding":
-		r, err = NewGatewayIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &GatewayIamBinding{}
 	case "gcp:apigateway/gatewayIamMember:GatewayIamMember":
-		r, err = NewGatewayIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &GatewayIamMember{}
 	case "gcp:apigateway/gatewayIamPolicy:GatewayIamPolicy":
-		r, err = NewGatewayIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &GatewayIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

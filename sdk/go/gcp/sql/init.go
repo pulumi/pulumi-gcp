@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:sql/database:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "gcp:sql/databaseInstance:DatabaseInstance":
-		r, err = NewDatabaseInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseInstance{}
 	case "gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance":
-		r, err = NewSourceRepresentationInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &SourceRepresentationInstance{}
 	case "gcp:sql/sslCert:SslCert":
-		r, err = NewSslCert(ctx, name, nil, pulumi.URN_(urn))
+		r = &SslCert{}
 	case "gcp:sql/user:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
+		r = &User{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

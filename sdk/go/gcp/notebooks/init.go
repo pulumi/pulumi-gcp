@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:notebooks/environment:Environment":
-		r, err = NewEnvironment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Environment{}
 	case "gcp:notebooks/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp:notebooks/instanceIamBinding:InstanceIamBinding":
-		r, err = NewInstanceIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamBinding{}
 	case "gcp:notebooks/instanceIamMember:InstanceIamMember":
-		r, err = NewInstanceIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamMember{}
 	case "gcp:notebooks/instanceIamPolicy:InstanceIamPolicy":
-		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamPolicy{}
 	case "gcp:notebooks/location:Location":
-		r, err = NewLocation(ctx, name, nil, pulumi.URN_(urn))
+		r = &Location{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

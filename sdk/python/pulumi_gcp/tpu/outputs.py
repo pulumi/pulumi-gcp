@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
 __all__ = [
     'NodeNetworkEndpoint',
@@ -15,6 +15,23 @@ __all__ = [
 
 @pulumi.output_type
 class NodeNetworkEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeNetworkEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeNetworkEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeNetworkEndpoint.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address: Optional[str] = None,
                  port: Optional[int] = None):
@@ -33,9 +50,6 @@ class NodeNetworkEndpoint(dict):
     def port(self) -> Optional[int]:
         return pulumi.get(self, "port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeSchedulingConfig(dict):
@@ -53,8 +67,5 @@ class NodeSchedulingConfig(dict):
         Defines whether the TPU instance is preemptible.
         """
         return pulumi.get(self, "preemptible")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

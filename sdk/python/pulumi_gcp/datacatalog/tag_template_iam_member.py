@@ -5,15 +5,184 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['TagTemplateIamMember']
+__all__ = ['TagTemplateIamMemberArgs', 'TagTemplateIamMember']
+
+@pulumi.input_type
+class TagTemplateIamMemberArgs:
+    def __init__(__self__, *,
+                 member: pulumi.Input[str],
+                 role: pulumi.Input[str],
+                 tag_template: pulumi.Input[str],
+                 condition: Optional[pulumi.Input['TagTemplateIamMemberConditionArgs']] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a TagTemplateIamMember resource.
+        """
+        pulumi.set(__self__, "member", member)
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "tag_template", tag_template)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def member(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: pulumi.Input[str]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[str]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="tagTemplate")
+    def tag_template(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag_template")
+
+    @tag_template.setter
+    def tag_template(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_template", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['TagTemplateIamMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['TagTemplateIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _TagTemplateIamMemberState:
+    def __init__(__self__, *,
+                 condition: Optional[pulumi.Input['TagTemplateIamMemberConditionArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 tag_template: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering TagTemplateIamMember resources.
+        """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if member is not None:
+            pulumi.set(__self__, "member", member)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if tag_template is not None:
+            pulumi.set(__self__, "tag_template", tag_template)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['TagTemplateIamMemberConditionArgs']]:
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['TagTemplateIamMemberConditionArgs']]):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def member(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "member")
+
+    @member.setter
+    def member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter(name="tagTemplate")
+    def tag_template(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag_template")
+
+    @tag_template.setter
+    def tag_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_template", value)
 
 
 class TagTemplateIamMember(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,6 +200,38 @@ class TagTemplateIamMember(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TagTemplateIamMemberArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a TagTemplateIamMember resource with the given unique name, props, and options.
+        :param str resource_name: The name of the resource.
+        :param TagTemplateIamMemberArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TagTemplateIamMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 condition: Optional[pulumi.Input[pulumi.InputType['TagTemplateIamMemberConditionArgs']]] = None,
+                 member: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 tag_template: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -46,21 +247,21 @@ class TagTemplateIamMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TagTemplateIamMemberArgs.__new__(TagTemplateIamMemberArgs)
 
-            __props__['condition'] = condition
+            __props__.__dict__["condition"] = condition
             if member is None and not opts.urn:
                 raise TypeError("Missing required property 'member'")
-            __props__['member'] = member
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["member"] = member
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             if role is None and not opts.urn:
                 raise TypeError("Missing required property 'role'")
-            __props__['role'] = role
+            __props__.__dict__["role"] = role
             if tag_template is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_template'")
-            __props__['tag_template'] = tag_template
-            __props__['etag'] = None
+            __props__.__dict__["tag_template"] = tag_template
+            __props__.__dict__["etag"] = None
         super(TagTemplateIamMember, __self__).__init__(
             'gcp:datacatalog/tagTemplateIamMember:TagTemplateIamMember',
             resource_name,
@@ -88,15 +289,15 @@ class TagTemplateIamMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _TagTemplateIamMemberState.__new__(_TagTemplateIamMemberState)
 
-        __props__["condition"] = condition
-        __props__["etag"] = etag
-        __props__["member"] = member
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["role"] = role
-        __props__["tag_template"] = tag_template
+        __props__.__dict__["condition"] = condition
+        __props__.__dict__["etag"] = etag
+        __props__.__dict__["member"] = member
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["role"] = role
+        __props__.__dict__["tag_template"] = tag_template
         return TagTemplateIamMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -133,10 +334,4 @@ class TagTemplateIamMember(pulumi.CustomResource):
     @pulumi.getter(name="tagTemplate")
     def tag_template(self) -> pulumi.Output[str]:
         return pulumi.get(self, "tag_template")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

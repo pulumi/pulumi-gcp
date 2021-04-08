@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:osconfig/guestPolicies:GuestPolicies":
-		r, err = NewGuestPolicies(ctx, name, nil, pulumi.URN_(urn))
+		r = &GuestPolicies{}
 	case "gcp:osconfig/patchDeployment:PatchDeployment":
-		r, err = NewPatchDeployment(ctx, name, nil, pulumi.URN_(urn))
+		r = &PatchDeployment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

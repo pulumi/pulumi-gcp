@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -31,6 +31,25 @@ __all__ = [
 
 @pulumi.output_type
 class ManagedZoneDnssecConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultKeySpecs":
+            suggest = "default_key_specs"
+        elif key == "nonExistence":
+            suggest = "non_existence"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZoneDnssecConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZoneDnssecConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZoneDnssecConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_key_specs: Optional[Sequence['outputs.ManagedZoneDnssecConfigDefaultKeySpec']] = None,
                  kind: Optional[str] = None,
@@ -97,12 +116,28 @@ class ManagedZoneDnssecConfig(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedZoneDnssecConfigDefaultKeySpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyLength":
+            suggest = "key_length"
+        elif key == "keyType":
+            suggest = "key_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZoneDnssecConfigDefaultKeySpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZoneDnssecConfigDefaultKeySpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZoneDnssecConfigDefaultKeySpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: Optional[str] = None,
                  key_length: Optional[int] = None,
@@ -169,12 +204,26 @@ class ManagedZoneDnssecConfigDefaultKeySpec(dict):
         """
         return pulumi.get(self, "kind")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedZoneForwardingConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNameServers":
+            suggest = "target_name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZoneForwardingConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZoneForwardingConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZoneForwardingConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_name_servers: Sequence['outputs.ManagedZoneForwardingConfigTargetNameServer']):
         """
@@ -196,12 +245,28 @@ class ManagedZoneForwardingConfig(dict):
         """
         return pulumi.get(self, "target_name_servers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedZoneForwardingConfigTargetNameServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipv4Address":
+            suggest = "ipv4_address"
+        elif key == "forwardingPath":
+            suggest = "forwarding_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZoneForwardingConfigTargetNameServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZoneForwardingConfigTargetNameServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZoneForwardingConfigTargetNameServer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ipv4_address: str,
                  forwarding_path: Optional[str] = None):
@@ -235,12 +300,26 @@ class ManagedZoneForwardingConfigTargetNameServer(dict):
         """
         return pulumi.get(self, "forwarding_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedZonePeeringConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNetwork":
+            suggest = "target_network"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZonePeeringConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZonePeeringConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZonePeeringConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_network: 'outputs.ManagedZonePeeringConfigTargetNetwork'):
         """
@@ -258,12 +337,26 @@ class ManagedZonePeeringConfig(dict):
         """
         return pulumi.get(self, "target_network")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedZonePeeringConfigTargetNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkUrl":
+            suggest = "network_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZonePeeringConfigTargetNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZonePeeringConfigTargetNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZonePeeringConfigTargetNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network_url: str):
         """
@@ -282,9 +375,6 @@ class ManagedZonePeeringConfigTargetNetwork(dict):
         `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         return pulumi.get(self, "network_url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -304,12 +394,26 @@ class ManagedZonePrivateVisibilityConfig(dict):
         """
         return pulumi.get(self, "networks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedZonePrivateVisibilityConfigNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkUrl":
+            suggest = "network_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZonePrivateVisibilityConfigNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZonePrivateVisibilityConfigNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZonePrivateVisibilityConfigNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network_url: str):
         """
@@ -328,9 +432,6 @@ class ManagedZonePrivateVisibilityConfigNetwork(dict):
         `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         return pulumi.get(self, "network_url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -352,12 +453,26 @@ class ManagedZoneServiceDirectoryConfig(dict):
         """
         return pulumi.get(self, "namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedZoneServiceDirectoryConfigNamespace(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceUrl":
+            suggest = "namespace_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZoneServiceDirectoryConfigNamespace. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZoneServiceDirectoryConfigNamespace.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZoneServiceDirectoryConfigNamespace.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  namespace_url: str):
         """
@@ -381,12 +496,26 @@ class ManagedZoneServiceDirectoryConfigNamespace(dict):
         """
         return pulumi.get(self, "namespace_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyAlternativeNameServerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetNameServers":
+            suggest = "target_name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAlternativeNameServerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAlternativeNameServerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAlternativeNameServerConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_name_servers: Sequence['outputs.PolicyAlternativeNameServerConfigTargetNameServer']):
         """
@@ -408,12 +537,28 @@ class PolicyAlternativeNameServerConfig(dict):
         """
         return pulumi.get(self, "target_name_servers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyAlternativeNameServerConfigTargetNameServer(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipv4Address":
+            suggest = "ipv4_address"
+        elif key == "forwardingPath":
+            suggest = "forwarding_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyAlternativeNameServerConfigTargetNameServer. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyAlternativeNameServerConfigTargetNameServer.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyAlternativeNameServerConfigTargetNameServer.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ipv4_address: str,
                  forwarding_path: Optional[str] = None):
@@ -447,12 +592,26 @@ class PolicyAlternativeNameServerConfigTargetNameServer(dict):
         """
         return pulumi.get(self, "forwarding_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PolicyNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkUrl":
+            suggest = "network_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PolicyNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PolicyNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PolicyNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  network_url: str):
         """
@@ -471,9 +630,6 @@ class PolicyNetwork(dict):
         `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
         """
         return pulumi.get(self, "network_url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

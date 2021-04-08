@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:billing/accountIamBinding:AccountIamBinding":
-		r, err = NewAccountIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountIamBinding{}
 	case "gcp:billing/accountIamMember:AccountIamMember":
-		r, err = NewAccountIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountIamMember{}
 	case "gcp:billing/accountIamPolicy:AccountIamPolicy":
-		r, err = NewAccountIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountIamPolicy{}
 	case "gcp:billing/budget:Budget":
-		r, err = NewBudget(ctx, name, nil, pulumi.URN_(urn))
+		r = &Budget{}
 	case "gcp:billing/subAccount:SubAccount":
-		r, err = NewSubAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubAccount{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

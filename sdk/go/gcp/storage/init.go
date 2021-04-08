@@ -22,37 +22,38 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:storage/bucket:Bucket":
-		r, err = NewBucket(ctx, name, nil, pulumi.URN_(urn))
+		r = &Bucket{}
 	case "gcp:storage/bucketACL:BucketACL":
-		r, err = NewBucketACL(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketACL{}
 	case "gcp:storage/bucketAccessControl:BucketAccessControl":
-		r, err = NewBucketAccessControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketAccessControl{}
 	case "gcp:storage/bucketIAMBinding:BucketIAMBinding":
-		r, err = NewBucketIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketIAMBinding{}
 	case "gcp:storage/bucketIAMMember:BucketIAMMember":
-		r, err = NewBucketIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketIAMMember{}
 	case "gcp:storage/bucketIAMPolicy:BucketIAMPolicy":
-		r, err = NewBucketIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketIAMPolicy{}
 	case "gcp:storage/bucketObject:BucketObject":
-		r, err = NewBucketObject(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketObject{}
 	case "gcp:storage/defaultObjectACL:DefaultObjectACL":
-		r, err = NewDefaultObjectACL(ctx, name, nil, pulumi.URN_(urn))
+		r = &DefaultObjectACL{}
 	case "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl":
-		r, err = NewDefaultObjectAccessControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &DefaultObjectAccessControl{}
 	case "gcp:storage/hmacKey:HmacKey":
-		r, err = NewHmacKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &HmacKey{}
 	case "gcp:storage/notification:Notification":
-		r, err = NewNotification(ctx, name, nil, pulumi.URN_(urn))
+		r = &Notification{}
 	case "gcp:storage/objectACL:ObjectACL":
-		r, err = NewObjectACL(ctx, name, nil, pulumi.URN_(urn))
+		r = &ObjectACL{}
 	case "gcp:storage/objectAccessControl:ObjectAccessControl":
-		r, err = NewObjectAccessControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &ObjectAccessControl{}
 	case "gcp:storage/transferJob:TransferJob":
-		r, err = NewTransferJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &TransferJob{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,15 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessLevels']
+__all__ = ['AccessLevelsArgs', 'AccessLevels']
+
+@pulumi.input_type
+class AccessLevelsArgs:
+    def __init__(__self__, *,
+                 parent: pulumi.Input[str],
+                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None):
+        """
+        The set of arguments for constructing a AccessLevels resource.
+        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
+               Format: accessPolicies/{policy_id}
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "parent", parent)
+        if access_levels is not None:
+            pulumi.set(__self__, "access_levels", access_levels)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The AccessPolicy this AccessLevel lives in.
+        Format: accessPolicies/{policy_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]]:
+        """
+        The desired Access Levels that should replace all existing Access Levels in the Access Policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_levels")
+
+    @access_levels.setter
+    def access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]]):
+        pulumi.set(self, "access_levels", value)
+
+
+@pulumi.input_type
+class _AccessLevelsState:
+    def __init__(__self__, *,
+                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]] = None,
+                 parent: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering AccessLevels resources.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]] access_levels: The desired Access Levels that should replace all existing Access Levels in the Access Policy.
+               Structure is documented below.
+        :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
+               Format: accessPolicies/{policy_id}
+        """
+        if access_levels is not None:
+            pulumi.set(__self__, "access_levels", access_levels)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]]:
+        """
+        The desired Access Levels that should replace all existing Access Levels in the Access Policy.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "access_levels")
+
+    @access_levels.setter
+    def access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessLevelsAccessLevelArgs']]]]):
+        pulumi.set(self, "access_levels", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        The AccessPolicy this AccessLevel lives in.
+        Format: accessPolicies/{policy_id}
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
 
 
 class AccessLevels(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -106,6 +193,109 @@ class AccessLevels(pulumi.CustomResource):
         :param pulumi.Input[str] parent: The AccessPolicy this AccessLevel lives in.
                Format: accessPolicies/{policy_id}
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccessLevelsArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Replace all existing Access Levels in an Access Policy with the Access Levels provided. This is done atomically.
+        This is a bulk edit of all Access Levels and may override existing Access Levels created by `accesscontextmanager.AccessLevel`,
+        thus causing a permadiff if used alongside `accesscontextmanager.AccessLevel` on the same parent.
+
+        To get more information about AccessLevels, see:
+
+        * [API documentation](https://cloud.google.com/access-context-manager/docs/reference/rest/v1/accessPolicies.accessLevels)
+        * How-to Guides
+            * [Access Policy Quickstart](https://cloud.google.com/access-context-manager/docs/quickstart)
+
+        ## Example Usage
+        ### Access Context Manager Access Levels Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        access_policy = gcp.accesscontextmanager.AccessPolicy("access-policy",
+            parent="organizations/123456789",
+            title="my policy")
+        access_levels = gcp.accesscontextmanager.AccessLevels("access-levels",
+            access_levels=[
+                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
+                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
+                            device_policy={
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_CHROME_OS",
+                                }],
+                                "requireScreenLock": True,
+                            },
+                            regions=[
+                                "CH",
+                                "IT",
+                                "US",
+                            ],
+                        )],
+                    ),
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/chromeos_no_lock"),
+                    title="chromeos_no_lock",
+                ),
+                gcp.accesscontextmanager.AccessLevelsAccessLevelArgs(
+                    basic=gcp.accesscontextmanager.AccessLevelsAccessLevelBasicArgs(
+                        conditions=[gcp.accesscontextmanager.AccessLevelsAccessLevelBasicConditionArgs(
+                            device_policy={
+                                "osConstraints": [{
+                                    "osType": "DESKTOP_MAC",
+                                }],
+                                "requireScreenLock": True,
+                            },
+                            regions=[
+                                "CH",
+                                "IT",
+                                "US",
+                            ],
+                        )],
+                    ),
+                    name=access_policy.name.apply(lambda name: f"accessPolicies/{name}/accessLevels/mac_no_lock"),
+                    title="mac_no_lock",
+                ),
+            ],
+            parent=access_policy.name.apply(lambda name: f"accessPolicies/{name}"))
+        ```
+
+        ## Import
+
+        AccessLevels can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}/accessLevels
+        ```
+
+        ```sh
+         $ pulumi import gcp:accesscontextmanager/accessLevels:AccessLevels default {{parent}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param AccessLevelsArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessLevelsArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessLevelsAccessLevelArgs']]]]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -121,12 +311,12 @@ class AccessLevels(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessLevelsArgs.__new__(AccessLevelsArgs)
 
-            __props__['access_levels'] = access_levels
+            __props__.__dict__["access_levels"] = access_levels
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
-            __props__['parent'] = parent
+            __props__.__dict__["parent"] = parent
         super(AccessLevels, __self__).__init__(
             'gcp:accesscontextmanager/accessLevels:AccessLevels',
             resource_name,
@@ -153,10 +343,10 @@ class AccessLevels(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _AccessLevelsState.__new__(_AccessLevelsState)
 
-        __props__["access_levels"] = access_levels
-        __props__["parent"] = parent
+        __props__.__dict__["access_levels"] = access_levels
+        __props__.__dict__["parent"] = parent
         return AccessLevels(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -176,10 +366,4 @@ class AccessLevels(pulumi.CustomResource):
         Format: accessPolicies/{policy_id}
         """
         return pulumi.get(self, "parent")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

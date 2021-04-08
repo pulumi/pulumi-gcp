@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -19,6 +19,23 @@ __all__ = [
 
 @pulumi.output_type
 class TriggerDestination(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudRunService":
+            suggest = "cloud_run_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerDestination. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerDestination.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerDestination.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_run_service: Optional['outputs.TriggerDestinationCloudRunService'] = None):
         """
@@ -36,9 +53,6 @@ class TriggerDestination(dict):
         The `matching_criteria` block supports:
         """
         return pulumi.get(self, "cloud_run_service")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -82,9 +96,6 @@ class TriggerDestinationCloudRunService(dict):
         """
         return pulumi.get(self, "region")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerMatchingCriteria(dict):
@@ -114,9 +125,6 @@ class TriggerMatchingCriteria(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerTransport(dict):
@@ -129,9 +137,6 @@ class TriggerTransport(dict):
     @pulumi.getter
     def pubsubs(self) -> Optional[Sequence['outputs.TriggerTransportPubsub']]:
         return pulumi.get(self, "pubsubs")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -153,8 +158,5 @@ class TriggerTransportPubsub(dict):
     @pulumi.getter
     def topic(self) -> Optional[str]:
         return pulumi.get(self, "topic")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -22,27 +22,28 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:bigtable/gCPolicy:GCPolicy":
-		r, err = NewGCPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &GCPolicy{}
 	case "gcp:bigtable/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp:bigtable/instanceIamBinding:InstanceIamBinding":
-		r, err = NewInstanceIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamBinding{}
 	case "gcp:bigtable/instanceIamMember:InstanceIamMember":
-		r, err = NewInstanceIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamMember{}
 	case "gcp:bigtable/instanceIamPolicy:InstanceIamPolicy":
-		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamPolicy{}
 	case "gcp:bigtable/table:Table":
-		r, err = NewTable(ctx, name, nil, pulumi.URN_(urn))
+		r = &Table{}
 	case "gcp:bigtable/tableIamBinding:TableIamBinding":
-		r, err = NewTableIamBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &TableIamBinding{}
 	case "gcp:bigtable/tableIamMember:TableIamMember":
-		r, err = NewTableIamMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &TableIamMember{}
 	case "gcp:bigtable/tableIamPolicy:TableIamPolicy":
-		r, err = NewTableIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TableIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

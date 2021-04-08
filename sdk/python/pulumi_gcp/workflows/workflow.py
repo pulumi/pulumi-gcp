@@ -5,13 +5,369 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['Workflow']
+__all__ = ['WorkflowArgs', 'Workflow']
+
+@pulumi.input_type
+class WorkflowArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 source_contents: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Workflow resource.
+        :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
+        :param pulumi.Input[str] name: Name of the Workflow.
+        :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
+               specified prefix. If this and name are unspecified, a random value is chosen for the name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of the workflow.
+        :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
+               account represents the identity of the workflow and determines what permissions the workflow has.
+               Format: projects/{project}/serviceAccounts/{account}.
+        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if source_contents is not None:
+            pulumi.set(__self__, "source_contents", source_contents)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to this Workflow.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Workflow.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name beginning with the
+        specified prefix. If this and name are unspecified, a random value is chosen for the name.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the workflow.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service account associated with the latest workflow version. This service
+        account represents the identity of the workflow and determines what permissions the workflow has.
+        Format: projects/{project}/serviceAccounts/{account}.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="sourceContents")
+    def source_contents(self) -> Optional[pulumi.Input[str]]:
+        """
+        Workflow code to be executed. The size limit is 32KB.
+        """
+        return pulumi.get(self, "source_contents")
+
+    @source_contents.setter
+    def source_contents(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_contents", value)
+
+
+@pulumi.input_type
+class _WorkflowState:
+    def __init__(__self__, *,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 source_contents: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Workflow resources.
+        :param pulumi.Input[str] create_time: The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+               fractional digits.
+        :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A set of key/value label pairs to assign to this Workflow.
+        :param pulumi.Input[str] name: Name of the Workflow.
+        :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
+               specified prefix. If this and name are unspecified, a random value is chosen for the name.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of the workflow.
+        :param pulumi.Input[str] revision_id: The revision of the workflow. A new one is generated if the service account or source contents is changed.
+        :param pulumi.Input[str] service_account: Name of the service account associated with the latest workflow version. This service
+               account represents the identity of the workflow and determines what permissions the workflow has.
+               Format: projects/{project}/serviceAccounts/{account}.
+        :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
+        :param pulumi.Input[str] state: State of the workflow deployment.
+        :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+               nine fractional digits.
+        """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if revision_id is not None:
+            pulumi.set(__self__, "revision_id", revision_id)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if source_contents is not None:
+            pulumi.set(__self__, "source_contents", source_contents)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of when the workflow was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine
+        fractional digits.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value label pairs to assign to this Workflow.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Workflow.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name beginning with the
+        specified prefix. If this and name are unspecified, a random value is chosen for the name.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the workflow.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The revision of the workflow. A new one is generated if the service account or source contents is changed.
+        """
+        return pulumi.get(self, "revision_id")
+
+    @revision_id.setter
+    def revision_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "revision_id", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the service account associated with the latest workflow version. This service
+        account represents the identity of the workflow and determines what permissions the workflow has.
+        Format: projects/{project}/serviceAccounts/{account}.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="sourceContents")
+    def source_contents(self) -> Optional[pulumi.Input[str]]:
+        """
+        Workflow code to be executed. The size limit is 32KB.
+        """
+        return pulumi.get(self, "source_contents")
+
+    @source_contents.setter
+    def source_contents(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_contents", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the workflow deployment.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to
+        nine fractional digits.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class Workflow(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -96,6 +452,93 @@ class Workflow(pulumi.CustomResource):
                Format: projects/{project}/serviceAccounts/{account}.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[WorkflowArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Workflow program to be executed by Workflows.
+
+        To get more information about Workflow, see:
+
+        * [API documentation](https://cloud.google.com/workflows/docs/reference/rest/v1/projects.locations.workflows)
+        * How-to Guides
+            * [Managing Workflows](https://cloud.google.com/workflows/docs/creating-updating-workflow)
+
+        ## Example Usage
+        ### Workflow Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_account = gcp.service_account.Account("testAccount",
+            account_id="my-account",
+            display_name="Test Service Account")
+        example = gcp.workflows.Workflow("example",
+            region="us-central1",
+            description="Magic",
+            service_account=test_account.id,
+            source_contents=f\"\"\"# This is a sample workflow, feel free to replace it with your source code
+        #
+        # This workflow does the following:
+        # - reads current time and date information from an external API and stores
+        #   the response in CurrentDateTime variable
+        # - retrieves a list of Wikipedia articles related to the day of the week
+        #   from CurrentDateTime
+        # - returns the list of articles as an output of the workflow
+        # FYI, In terraform you need to escape the $$ or it will cause errors.
+
+        - getCurrentTime:
+            call: http.get
+            args:
+                url: https://us-central1-workflowsample.cloudfunctions.net/datetime
+            result: CurrentDateTime
+        - readWikipedia:
+            call: http.get
+            args:
+                url: https://en.wikipedia.org/w/api.php
+                query:
+                    action: opensearch
+                    search: {current_date_time["body"]["dayOfTheWeek"]}
+            result: WikiResult
+        - returnOutput:
+            return: {wiki_result["body"]}
+        \"\"\")
+        ```
+
+        ## Import
+
+        This resource does not support import.
+
+        :param str resource_name: The name of the resource.
+        :param WorkflowArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkflowArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 source_contents: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -111,20 +554,20 @@ class Workflow(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
-            __props__['description'] = description
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['service_account'] = service_account
-            __props__['source_contents'] = source_contents
-            __props__['create_time'] = None
-            __props__['revision_id'] = None
-            __props__['state'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["name_prefix"] = name_prefix
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["source_contents"] = source_contents
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["revision_id"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["update_time"] = None
         super(Workflow, __self__).__init__(
             'gcp:workflows/workflow:Workflow',
             resource_name,
@@ -175,20 +618,20 @@ class Workflow(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _WorkflowState.__new__(_WorkflowState)
 
-        __props__["create_time"] = create_time
-        __props__["description"] = description
-        __props__["labels"] = labels
-        __props__["name"] = name
-        __props__["name_prefix"] = name_prefix
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["revision_id"] = revision_id
-        __props__["service_account"] = service_account
-        __props__["source_contents"] = source_contents
-        __props__["state"] = state
-        __props__["update_time"] = update_time
+        __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["description"] = description
+        __props__.__dict__["labels"] = labels
+        __props__.__dict__["name"] = name
+        __props__.__dict__["name_prefix"] = name_prefix
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["revision_id"] = revision_id
+        __props__.__dict__["service_account"] = service_account
+        __props__.__dict__["source_contents"] = source_contents
+        __props__.__dict__["state"] = state
+        __props__.__dict__["update_time"] = update_time
         return Workflow(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -292,10 +735,4 @@ class Workflow(pulumi.CustomResource):
         nine fractional digits.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

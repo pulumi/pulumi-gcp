@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -21,6 +21,27 @@ __all__ = [
 
 @pulumi.output_type
 class JobAppEngineHttpTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "relativeUri":
+            suggest = "relative_uri"
+        elif key == "appEngineRouting":
+            suggest = "app_engine_routing"
+        elif key == "httpMethod":
+            suggest = "http_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobAppEngineHttpTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobAppEngineHttpTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobAppEngineHttpTarget.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  relative_uri: str,
                  app_engine_routing: Optional['outputs.JobAppEngineHttpTargetAppEngineRouting'] = None,
@@ -102,9 +123,6 @@ class JobAppEngineHttpTarget(dict):
         """
         return pulumi.get(self, "http_method")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobAppEngineHttpTargetAppEngineRouting(dict):
@@ -154,12 +172,30 @@ class JobAppEngineHttpTargetAppEngineRouting(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobHttpTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpMethod":
+            suggest = "http_method"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobHttpTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobHttpTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobHttpTarget.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  uri: str,
                  body: Optional[str] = None,
@@ -251,12 +287,26 @@ class JobHttpTarget(dict):
         """
         return pulumi.get(self, "oidc_token")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobHttpTargetOauthToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobHttpTargetOauthToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobHttpTargetOauthToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobHttpTargetOauthToken.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service_account_email: str,
                  scope: Optional[str] = None):
@@ -288,12 +338,26 @@ class JobHttpTargetOauthToken(dict):
         """
         return pulumi.get(self, "scope")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobHttpTargetOidcToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobHttpTargetOidcToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobHttpTargetOidcToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobHttpTargetOidcToken.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service_account_email: str,
                  audience: Optional[str] = None):
@@ -325,12 +389,26 @@ class JobHttpTargetOidcToken(dict):
         """
         return pulumi.get(self, "audience")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobPubsubTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "topicName":
+            suggest = "topic_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobPubsubTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobPubsubTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobPubsubTarget.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  topic_name: str,
                  attributes: Optional[Mapping[str, str]] = None,
@@ -382,12 +460,34 @@ class JobPubsubTarget(dict):
         """
         return pulumi.get(self, "data")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobRetryConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBackoffDuration":
+            suggest = "max_backoff_duration"
+        elif key == "maxDoublings":
+            suggest = "max_doublings"
+        elif key == "maxRetryDuration":
+            suggest = "max_retry_duration"
+        elif key == "minBackoffDuration":
+            suggest = "min_backoff_duration"
+        elif key == "retryCount":
+            suggest = "retry_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobRetryConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobRetryConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobRetryConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_backoff_duration: Optional[str] = None,
                  max_doublings: Optional[int] = None,
@@ -469,8 +569,5 @@ class JobRetryConfig(dict):
         Values greater than 5 and negative values are not allowed.
         """
         return pulumi.get(self, "retry_count")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

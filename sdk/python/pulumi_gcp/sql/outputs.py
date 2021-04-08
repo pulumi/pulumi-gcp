@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -43,6 +43,25 @@ __all__ = [
 
 @pulumi.output_type
 class DatabaseInstanceClone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pointInTime":
+            suggest = "point_in_time"
+        elif key == "sourceInstanceName":
+            suggest = "source_instance_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceClone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceClone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceClone.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  point_in_time: str,
                  source_instance_name: str):
@@ -69,12 +88,28 @@ class DatabaseInstanceClone(dict):
         """
         return pulumi.get(self, "source_instance_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceIpAddress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "timeToRetire":
+            suggest = "time_to_retire"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceIpAddress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceIpAddress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceIpAddress.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address: Optional[str] = None,
                  time_to_retire: Optional[str] = None,
@@ -101,12 +136,42 @@ class DatabaseInstanceIpAddress(dict):
     def type(self) -> Optional[str]:
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceReplicaConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "connectRetryInterval":
+            suggest = "connect_retry_interval"
+        elif key == "dumpFilePath":
+            suggest = "dump_file_path"
+        elif key == "failoverTarget":
+            suggest = "failover_target"
+        elif key == "masterHeartbeatPeriod":
+            suggest = "master_heartbeat_period"
+        elif key == "sslCipher":
+            suggest = "ssl_cipher"
+        elif key == "verifyServerCertificate":
+            suggest = "verify_server_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceReplicaConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceReplicaConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceReplicaConfiguration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ca_certificate: Optional[str] = None,
                  client_certificate: Optional[str] = None,
@@ -259,12 +324,28 @@ class DatabaseInstanceReplicaConfiguration(dict):
         """
         return pulumi.get(self, "verify_server_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceRestoreBackupContext(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupRunId":
+            suggest = "backup_run_id"
+        elif key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceRestoreBackupContext. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceRestoreBackupContext.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceRestoreBackupContext.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backup_run_id: int,
                  instance_id: Optional[str] = None,
@@ -306,12 +387,32 @@ class DatabaseInstanceRestoreBackupContext(dict):
         """
         return pulumi.get(self, "project")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceServerCaCert(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commonName":
+            suggest = "common_name"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "expirationTime":
+            suggest = "expiration_time"
+        elif key == "sha1Fingerprint":
+            suggest = "sha1_fingerprint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceServerCaCert. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceServerCaCert.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceServerCaCert.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert: Optional[str] = None,
                  common_name: Optional[str] = None,
@@ -362,12 +463,56 @@ class DatabaseInstanceServerCaCert(dict):
     def sha1_fingerprint(self) -> Optional[str]:
         return pulumi.get(self, "sha1_fingerprint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activationPolicy":
+            suggest = "activation_policy"
+        elif key == "authorizedGaeApplications":
+            suggest = "authorized_gae_applications"
+        elif key == "availabilityType":
+            suggest = "availability_type"
+        elif key == "backupConfiguration":
+            suggest = "backup_configuration"
+        elif key == "crashSafeReplication":
+            suggest = "crash_safe_replication"
+        elif key == "databaseFlags":
+            suggest = "database_flags"
+        elif key == "diskAutoresize":
+            suggest = "disk_autoresize"
+        elif key == "diskSize":
+            suggest = "disk_size"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "insightsConfig":
+            suggest = "insights_config"
+        elif key == "ipConfiguration":
+            suggest = "ip_configuration"
+        elif key == "locationPreference":
+            suggest = "location_preference"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "pricingPlan":
+            suggest = "pricing_plan"
+        elif key == "replicationType":
+            suggest = "replication_type"
+        elif key == "userLabels":
+            suggest = "user_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  tier: str,
                  activation_policy: Optional[str] = None,
@@ -591,12 +736,34 @@ class DatabaseInstanceSettings(dict):
     def version(self) -> Optional[int]:
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettingsBackupConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupRetentionSettings":
+            suggest = "backup_retention_settings"
+        elif key == "binaryLogEnabled":
+            suggest = "binary_log_enabled"
+        elif key == "pointInTimeRecoveryEnabled":
+            suggest = "point_in_time_recovery_enabled"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "transactionLogRetentionDays":
+            suggest = "transaction_log_retention_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsBackupConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsBackupConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsBackupConfiguration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backup_retention_settings: Optional['outputs.DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings'] = None,
                  binary_log_enabled: Optional[bool] = None,
@@ -691,12 +858,28 @@ class DatabaseInstanceSettingsBackupConfiguration(dict):
         """
         return pulumi.get(self, "transaction_log_retention_days")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retainedBackups":
+            suggest = "retained_backups"
+        elif key == "retentionUnit":
+            suggest = "retention_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  retained_backups: int,
                  retention_unit: Optional[str] = None):
@@ -725,9 +908,6 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings(dict):
         The unit that 'retained_backups' represents. Defaults to `COUNT`.
         """
         return pulumi.get(self, "retention_unit")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -762,12 +942,32 @@ class DatabaseInstanceSettingsDatabaseFlag(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettingsInsightsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryInsightsEnabled":
+            suggest = "query_insights_enabled"
+        elif key == "queryStringLength":
+            suggest = "query_string_length"
+        elif key == "recordApplicationTags":
+            suggest = "record_application_tags"
+        elif key == "recordClientAddress":
+            suggest = "record_client_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsInsightsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsInsightsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsInsightsConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  query_insights_enabled: Optional[bool] = None,
                  query_string_length: Optional[int] = None,
@@ -820,12 +1020,32 @@ class DatabaseInstanceSettingsInsightsConfig(dict):
         """
         return pulumi.get(self, "record_client_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettingsIpConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedNetworks":
+            suggest = "authorized_networks"
+        elif key == "ipv4Enabled":
+            suggest = "ipv4_enabled"
+        elif key == "privateNetwork":
+            suggest = "private_network"
+        elif key == "requireSsl":
+            suggest = "require_ssl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsIpConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsIpConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsIpConfiguration.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorized_networks: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork']] = None,
                  ipv4_enabled: Optional[bool] = None,
@@ -886,12 +1106,26 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
         """
         return pulumi.get(self, "require_ssl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationTime":
+            suggest = "expiration_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  value: str,
                  expiration_time: Optional[str] = None,
@@ -937,12 +1171,26 @@ class DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettingsLocationPreference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "followGaeApplication":
+            suggest = "follow_gae_application"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsLocationPreference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsLocationPreference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsLocationPreference.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  follow_gae_application: Optional[str] = None,
                  zone: Optional[str] = None):
@@ -975,12 +1223,26 @@ class DatabaseInstanceSettingsLocationPreference(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseInstanceSettingsMaintenanceWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTrack":
+            suggest = "update_track"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceSettingsMaintenanceWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceSettingsMaintenanceWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceSettingsMaintenanceWindow.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day: Optional[int] = None,
                  hour: Optional[int] = None,
@@ -1022,9 +1284,6 @@ class DatabaseInstanceSettingsMaintenanceWindow(dict):
         (`stable`)
         """
         return pulumi.get(self, "update_track")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type

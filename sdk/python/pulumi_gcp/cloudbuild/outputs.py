@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -30,6 +30,25 @@ __all__ = [
 
 @pulumi.output_type
 class TriggerBuild(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logsBucket":
+            suggest = "logs_bucket"
+        elif key == "queueTtl":
+            suggest = "queue_ttl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuild. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuild.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuild.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  steps: Sequence['outputs.TriggerBuildStep'],
                  artifacts: Optional['outputs.TriggerBuildArtifacts'] = None,
@@ -197,9 +216,6 @@ class TriggerBuild(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildArtifacts(dict):
@@ -246,9 +262,6 @@ class TriggerBuildArtifacts(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "objects")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -301,12 +314,28 @@ class TriggerBuildArtifactsObjects(dict):
         """
         return pulumi.get(self, "timings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildArtifactsObjectsTiming(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildArtifactsObjectsTiming. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildArtifactsObjectsTiming.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildArtifactsObjectsTiming.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: Optional[str] = None,
                  start_time: Optional[str] = None):
@@ -343,12 +372,42 @@ class TriggerBuildArtifactsObjectsTiming(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "dynamicSubstitutions":
+            suggest = "dynamic_substitutions"
+        elif key == "logStreamingOption":
+            suggest = "log_streaming_option"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "requestedVerifyOption":
+            suggest = "requested_verify_option"
+        elif key == "secretEnvs":
+            suggest = "secret_envs"
+        elif key == "sourceProvenanceHashes":
+            suggest = "source_provenance_hashes"
+        elif key == "substitutionOption":
+            suggest = "substitution_option"
+        elif key == "workerPool":
+            suggest = "worker_pool"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_size_gb: Optional[int] = None,
                  dynamic_substitutions: Optional[bool] = None,
@@ -547,9 +606,6 @@ class TriggerBuildOptions(dict):
         """
         return pulumi.get(self, "worker_pool")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildOptionsVolume(dict):
@@ -589,12 +645,28 @@ class TriggerBuildOptionsVolume(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildSecret(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+        elif key == "secretEnv":
+            suggest = "secret_env"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildSecret. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildSecret.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildSecret.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kms_key_name: str,
                  secret_env: Optional[Mapping[str, str]] = None):
@@ -626,12 +698,28 @@ class TriggerBuildSecret(dict):
         """
         return pulumi.get(self, "secret_env")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoSource":
+            suggest = "repo_source"
+        elif key == "storageSource":
+            suggest = "storage_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  repo_source: Optional['outputs.TriggerBuildSourceRepoSource'] = None,
                  storage_source: Optional['outputs.TriggerBuildSourceStorageSource'] = None):
@@ -664,12 +752,36 @@ class TriggerBuildSource(dict):
         """
         return pulumi.get(self, "storage_source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildSourceRepoSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repoName":
+            suggest = "repo_name"
+        elif key == "branchName":
+            suggest = "branch_name"
+        elif key == "commitSha":
+            suggest = "commit_sha"
+        elif key == "invertRegex":
+            suggest = "invert_regex"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tagName":
+            suggest = "tag_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildSourceRepoSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildSourceRepoSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildSourceRepoSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  repo_name: str,
                  branch_name: Optional[str] = None,
@@ -795,9 +907,6 @@ class TriggerBuildSourceRepoSource(dict):
         """
         return pulumi.get(self, "tag_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildSourceStorageSource(dict):
@@ -843,12 +952,28 @@ class TriggerBuildSourceStorageSource(dict):
         """
         return pulumi.get(self, "generation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildStep(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secretEnvs":
+            suggest = "secret_envs"
+        elif key == "waitFors":
+            suggest = "wait_fors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildStep. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildStep.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildStep.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  args: Optional[Sequence[str]] = None,
@@ -1058,9 +1183,6 @@ class TriggerBuildStep(dict):
         """
         return pulumi.get(self, "wait_fors")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerBuildStepVolume(dict):
@@ -1098,12 +1220,26 @@ class TriggerBuildStepVolume(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerGithub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pullRequest":
+            suggest = "pull_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerGithub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerGithub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerGithub.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  owner: Optional[str] = None,
@@ -1166,12 +1302,28 @@ class TriggerGithub(dict):
         """
         return pulumi.get(self, "push")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerGithubPullRequest(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commentControl":
+            suggest = "comment_control"
+        elif key == "invertRegex":
+            suggest = "invert_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerGithubPullRequest. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerGithubPullRequest.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerGithubPullRequest.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: str,
                  comment_control: Optional[str] = None,
@@ -1213,12 +1365,26 @@ class TriggerGithubPullRequest(dict):
         """
         return pulumi.get(self, "invert_regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerGithubPush(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "invertRegex":
+            suggest = "invert_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerGithubPush. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerGithubPush.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerGithubPush.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch: Optional[str] = None,
                  invert_regex: Optional[bool] = None,
@@ -1259,12 +1425,36 @@ class TriggerGithubPush(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerTriggerTemplate(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchName":
+            suggest = "branch_name"
+        elif key == "commitSha":
+            suggest = "commit_sha"
+        elif key == "invertRegex":
+            suggest = "invert_regex"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "tagName":
+            suggest = "tag_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerTriggerTemplate. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerTriggerTemplate.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerTriggerTemplate.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch_name: Optional[str] = None,
                  commit_sha: Optional[str] = None,
@@ -1378,8 +1568,5 @@ class TriggerTriggerTemplate(dict):
         described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "tag_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

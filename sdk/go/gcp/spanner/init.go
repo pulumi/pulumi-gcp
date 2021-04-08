@@ -22,25 +22,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp:spanner/database:Database":
-		r, err = NewDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &Database{}
 	case "gcp:spanner/databaseIAMBinding:DatabaseIAMBinding":
-		r, err = NewDatabaseIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseIAMBinding{}
 	case "gcp:spanner/databaseIAMMember:DatabaseIAMMember":
-		r, err = NewDatabaseIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseIAMMember{}
 	case "gcp:spanner/databaseIAMPolicy:DatabaseIAMPolicy":
-		r, err = NewDatabaseIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatabaseIAMPolicy{}
 	case "gcp:spanner/instance:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp:spanner/instanceIAMBinding:InstanceIAMBinding":
-		r, err = NewInstanceIAMBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIAMBinding{}
 	case "gcp:spanner/instanceIAMMember:InstanceIAMMember":
-		r, err = NewInstanceIAMMember(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIAMMember{}
 	case "gcp:spanner/instanceIAMPolicy:InstanceIAMPolicy":
-		r, err = NewInstanceIAMPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIAMPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

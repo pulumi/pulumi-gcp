@@ -5,13 +5,351 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['RegionSslCertificate']
+__all__ = ['RegionSslCertificateArgs', 'RegionSslCertificate']
+
+@pulumi.input_type
+class RegionSslCertificateArgs:
+    def __init__(__self__, *,
+                 certificate: pulumi.Input[str],
+                 private_key: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RegionSslCertificate resource.
+        :param pulumi.Input[str] certificate: The certificate in PEM format.
+               The certificate chain must be no greater than 5 certs long.
+               The chain must include at least one intermediate cert.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] private_key: The write-only private key in PEM format.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
+               specified prefix. Conflicts with `name`.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Region in which the created regional ssl certificate should reside.
+               If it is not provided, the provider region is used.
+        """
+        pulumi.set(__self__, "certificate", certificate)
+        pulumi.set(__self__, "private_key", private_key)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> pulumi.Input[str]:
+        """
+        The certificate in PEM format.
+        The certificate chain must be no greater than 5 certs long.
+        The chain must include at least one intermediate cert.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> pulumi.Input[str]:
+        """
+        The write-only private key in PEM format.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name beginning with the
+        specified prefix. Conflicts with `name`.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region in which the created regional ssl certificate should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+
+@pulumi.input_type
+class _RegionSslCertificateState:
+    def __init__(__self__, *,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 certificate_id: Optional[pulumi.Input[int]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering RegionSslCertificate resources.
+        :param pulumi.Input[str] certificate: The certificate in PEM format.
+               The certificate chain must be no greater than 5 certs long.
+               The chain must include at least one intermediate cert.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[int] certificate_id: The unique identifier for the resource.
+        :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource.
+        :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is
+               created. The name must be 1-63 characters long, and comply with
+               RFC1035. Specifically, the name must be 1-63 characters long and match
+               the regular expression `a-z?` which means the
+               first character must be a lowercase letter, and all following
+               characters must be a dash, lowercase letter, or digit, except the last
+               character, which cannot be a dash.
+        :param pulumi.Input[str] name_prefix: Creates a unique name beginning with the
+               specified prefix. Conflicts with `name`.
+        :param pulumi.Input[str] private_key: The write-only private key in PEM format.
+               **Note**: This property is sensitive and will not be displayed in the plan.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The Region in which the created regional ssl certificate should reside.
+               If it is not provided, the provider region is used.
+        :param pulumi.Input[str] self_link: The URI of the created resource.
+        """
+        if certificate is not None:
+            pulumi.set(__self__, "certificate", certificate)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if name_prefix is not None:
+            pulumi.set(__self__, "name_prefix", name_prefix)
+        if private_key is not None:
+            pulumi.set(__self__, "private_key", private_key)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter
+    def certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        The certificate in PEM format.
+        The certificate chain must be no greater than 5 certs long.
+        The chain must include at least one intermediate cert.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "certificate")
+
+    @certificate.setter
+    def certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate", value)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier for the resource.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "certificate_id", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. Provided by the client when the resource is
+        created. The name must be 1-63 characters long, and comply with
+        RFC1035. Specifically, the name must be 1-63 characters long and match
+        the regular expression `a-z?` which means the
+        first character must be a lowercase letter, and all following
+        characters must be a dash, lowercase letter, or digit, except the last
+        character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="namePrefix")
+    def name_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Creates a unique name beginning with the
+        specified prefix. Conflicts with `name`.
+        """
+        return pulumi.get(self, "name_prefix")
+
+    @name_prefix.setter
+    def name_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The write-only private key in PEM format.
+        **Note**: This property is sensitive and will not be displayed in the plan.
+        """
+        return pulumi.get(self, "private_key")
+
+    @private_key.setter
+    def private_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Region in which the created regional ssl certificate should reside.
+        If it is not provided, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URI of the created resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
 
 
 class RegionSslCertificate(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -148,6 +486,137 @@ class RegionSslCertificate(pulumi.CustomResource):
         :param pulumi.Input[str] region: The Region in which the created regional ssl certificate should reside.
                If it is not provided, the provider region is used.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegionSslCertificateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A RegionSslCertificate resource, used for HTTPS load balancing. This resource
+        provides a mechanism to upload an SSL key and certificate to
+        the load balancer to serve secure connections from the user.
+
+        To get more information about RegionSslCertificate, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/regionSslCertificates)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/load-balancing/docs/ssl-certificates)
+
+        > **Warning:** All arguments including `certificate` and `private_key` will be stored in the raw
+        state as plain-text. [Read more about secrets in state](https://www.pulumi.com/docs/intro/concepts/programming-model/#secrets).
+
+        ## Example Usage
+        ### Region Ssl Certificate Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.RegionSslCertificate("default",
+            region="us-central1",
+            name_prefix="my-certificate-",
+            description="a description",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        ```
+        ### Region Ssl Certificate Target Https Proxies
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Using with Region Target HTTPS Proxies
+        #
+        # SSL certificates cannot be updated after creation. In order to apply
+        # the specified configuration, the provider will destroy the existing
+        # resource and create a replacement. To effectively use an SSL
+        # certificate resource with a Target HTTPS Proxy resource, it's
+        # recommended to specify create_before_destroy in a lifecycle block.
+        # Either omit the Instance Template name attribute, specify a partial
+        # name with name_prefix, or use random_id resource. Example:
+        default_region_ssl_certificate = gcp.compute.RegionSslCertificate("defaultRegionSslCertificate",
+            region="us-central1",
+            name_prefix="my-certificate-",
+            private_key=(lambda path: open(path).read())("path/to/private.key"),
+            certificate=(lambda path: open(path).read())("path/to/certificate.crt"))
+        default_region_health_check = gcp.compute.RegionHealthCheck("defaultRegionHealthCheck",
+            region="us-central1",
+            http_health_check=gcp.compute.RegionHealthCheckHttpHealthCheckArgs(
+                port=80,
+            ))
+        default_region_backend_service = gcp.compute.RegionBackendService("defaultRegionBackendService",
+            region="us-central1",
+            protocol="HTTP",
+            timeout_sec=10,
+            health_checks=[default_region_health_check.id])
+        default_region_url_map = gcp.compute.RegionUrlMap("defaultRegionUrlMap",
+            region="us-central1",
+            description="a description",
+            default_service=default_region_backend_service.id,
+            host_rules=[gcp.compute.RegionUrlMapHostRuleArgs(
+                hosts=["mysite.com"],
+                path_matcher="allpaths",
+            )],
+            path_matchers=[gcp.compute.RegionUrlMapPathMatcherArgs(
+                name="allpaths",
+                default_service=default_region_backend_service.id,
+                path_rules=[gcp.compute.RegionUrlMapPathMatcherPathRuleArgs(
+                    paths=["/*"],
+                    service=default_region_backend_service.id,
+                )],
+            )])
+        default_region_target_https_proxy = gcp.compute.RegionTargetHttpsProxy("defaultRegionTargetHttpsProxy",
+            region="us-central1",
+            url_map=default_region_url_map.id,
+            ssl_certificates=[default_region_ssl_certificate.id])
+        ```
+
+        ## Import
+
+        RegionSslCertificate can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default projects/{{project}}/regions/{{region}}/sslCertificates/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{project}}/{{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{region}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:compute/regionSslCertificate:RegionSslCertificate default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param RegionSslCertificateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegionSslCertificateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 name_prefix: Optional[pulumi.Input[str]] = None,
+                 private_key: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -163,22 +632,22 @@ class RegionSslCertificate(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegionSslCertificateArgs.__new__(RegionSslCertificateArgs)
 
             if certificate is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate'")
-            __props__['certificate'] = certificate
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['name_prefix'] = name_prefix
+            __props__.__dict__["certificate"] = certificate
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["name_prefix"] = name_prefix
             if private_key is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key'")
-            __props__['private_key'] = private_key
-            __props__['project'] = project
-            __props__['region'] = region
-            __props__['certificate_id'] = None
-            __props__['creation_timestamp'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["private_key"] = private_key
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
+            __props__.__dict__["certificate_id"] = None
+            __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["self_link"] = None
         super(RegionSslCertificate, __self__).__init__(
             'gcp:compute/regionSslCertificate:RegionSslCertificate',
             resource_name,
@@ -232,18 +701,18 @@ class RegionSslCertificate(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RegionSslCertificateState.__new__(_RegionSslCertificateState)
 
-        __props__["certificate"] = certificate
-        __props__["certificate_id"] = certificate_id
-        __props__["creation_timestamp"] = creation_timestamp
-        __props__["description"] = description
-        __props__["name"] = name
-        __props__["name_prefix"] = name_prefix
-        __props__["private_key"] = private_key
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["self_link"] = self_link
+        __props__.__dict__["certificate"] = certificate
+        __props__.__dict__["certificate_id"] = certificate_id
+        __props__.__dict__["creation_timestamp"] = creation_timestamp
+        __props__.__dict__["description"] = description
+        __props__.__dict__["name"] = name
+        __props__.__dict__["name_prefix"] = name_prefix
+        __props__.__dict__["private_key"] = private_key
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["self_link"] = self_link
         return RegionSslCertificate(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -338,10 +807,4 @@ class RegionSslCertificate(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

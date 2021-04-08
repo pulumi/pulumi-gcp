@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -45,9 +45,6 @@ class AccountIamBindingCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccountIamMemberCondition(dict):
@@ -75,12 +72,32 @@ class AccountIamMemberCondition(dict):
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BudgetAllUpdatesRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableDefaultIamRecipients":
+            suggest = "disable_default_iam_recipients"
+        elif key == "monitoringNotificationChannels":
+            suggest = "monitoring_notification_channels"
+        elif key == "pubsubTopic":
+            suggest = "pubsub_topic"
+        elif key == "schemaVersion":
+            suggest = "schema_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetAllUpdatesRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetAllUpdatesRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetAllUpdatesRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable_default_iam_recipients: Optional[bool] = None,
                  monitoring_notification_channels: Optional[Sequence[str]] = None,
@@ -155,12 +172,28 @@ class BudgetAllUpdatesRule(dict):
         """
         return pulumi.get(self, "schema_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BudgetAmount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastPeriodAmount":
+            suggest = "last_period_amount"
+        elif key == "specifiedAmount":
+            suggest = "specified_amount"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetAmount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetAmount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetAmount.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_period_amount: Optional[bool] = None,
                  specified_amount: Optional['outputs.BudgetAmountSpecifiedAmount'] = None):
@@ -201,12 +234,26 @@ class BudgetAmount(dict):
         """
         return pulumi.get(self, "specified_amount")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BudgetAmountSpecifiedAmount(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currencyCode":
+            suggest = "currency_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetAmountSpecifiedAmount. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetAmountSpecifiedAmount.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetAmountSpecifiedAmount.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  currency_code: Optional[str] = None,
                  nanos: Optional[int] = None,
@@ -261,12 +308,28 @@ class BudgetAmountSpecifiedAmount(dict):
         """
         return pulumi.get(self, "units")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BudgetBudgetFilter(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "creditTypes":
+            suggest = "credit_types"
+        elif key == "creditTypesTreatment":
+            suggest = "credit_types_treatment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetBudgetFilter. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetBudgetFilter.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetBudgetFilter.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  credit_types: Optional[Sequence[str]] = None,
                  credit_types_treatment: Optional[str] = None,
@@ -389,12 +452,28 @@ class BudgetBudgetFilter(dict):
         """
         return pulumi.get(self, "subaccounts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BudgetThresholdRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "thresholdPercent":
+            suggest = "threshold_percent"
+        elif key == "spendBasis":
+            suggest = "spend_basis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BudgetThresholdRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BudgetThresholdRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BudgetThresholdRule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  threshold_percent: float,
                  spend_basis: Optional[str] = None):
@@ -429,8 +508,5 @@ class BudgetThresholdRule(dict):
         Possible values are `CURRENT_SPEND` and `FORECASTED_SPEND`.
         """
         return pulumi.get(self, "spend_basis")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

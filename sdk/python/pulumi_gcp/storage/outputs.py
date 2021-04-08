@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 
 __all__ = [
@@ -39,6 +39,25 @@ __all__ = [
 
 @pulumi.output_type
 class BucketCor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAgeSeconds":
+            suggest = "max_age_seconds"
+        elif key == "responseHeaders":
+            suggest = "response_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketCor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketCor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketCor.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_age_seconds: Optional[int] = None,
                  methods: Optional[Sequence[str]] = None,
@@ -91,12 +110,26 @@ class BucketCor(dict):
         """
         return pulumi.get(self, "response_headers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketEncryption(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultKmsKeyName":
+            suggest = "default_kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketEncryption. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketEncryption.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketEncryption.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_kms_key_name: str):
         pulumi.set(__self__, "default_kms_key_name", default_kms_key_name)
@@ -105,9 +138,6 @@ class BucketEncryption(dict):
     @pulumi.getter(name="defaultKmsKeyName")
     def default_kms_key_name(self) -> str:
         return pulumi.get(self, "default_kms_key_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -150,9 +180,6 @@ class BucketIAMBindingCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketIAMMemberCondition(dict):
@@ -194,9 +221,6 @@ class BucketIAMMemberCondition(dict):
         """
         return pulumi.get(self, "description")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketLifecycleRule(dict):
@@ -226,12 +250,26 @@ class BucketLifecycleRule(dict):
         """
         return pulumi.get(self, "condition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketLifecycleRuleAction(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "storageClass":
+            suggest = "storage_class"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketLifecycleRuleAction. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketLifecycleRuleAction.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketLifecycleRuleAction.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type: str,
                  storage_class: Optional[str] = None):
@@ -259,12 +297,40 @@ class BucketLifecycleRuleAction(dict):
         """
         return pulumi.get(self, "storage_class")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketLifecycleRuleCondition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdBefore":
+            suggest = "created_before"
+        elif key == "customTimeBefore":
+            suggest = "custom_time_before"
+        elif key == "daysSinceCustomTime":
+            suggest = "days_since_custom_time"
+        elif key == "daysSinceNoncurrentTime":
+            suggest = "days_since_noncurrent_time"
+        elif key == "matchesStorageClasses":
+            suggest = "matches_storage_classes"
+        elif key == "noncurrentTimeBefore":
+            suggest = "noncurrent_time_before"
+        elif key == "numNewerVersions":
+            suggest = "num_newer_versions"
+        elif key == "withState":
+            suggest = "with_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketLifecycleRuleCondition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketLifecycleRuleCondition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketLifecycleRuleCondition.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  age: Optional[int] = None,
                  created_before: Optional[str] = None,
@@ -377,12 +443,28 @@ class BucketLifecycleRuleCondition(dict):
         """
         return pulumi.get(self, "with_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketLogging(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logBucket":
+            suggest = "log_bucket"
+        elif key == "logObjectPrefix":
+            suggest = "log_object_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketLogging. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketLogging.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketLogging.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_bucket: str,
                  log_object_prefix: Optional[str] = None):
@@ -412,12 +494,28 @@ class BucketLogging(dict):
         """
         return pulumi.get(self, "log_object_prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketRetentionPolicy(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionPeriod":
+            suggest = "retention_period"
+        elif key == "isLocked":
+            suggest = "is_locked"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketRetentionPolicy. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketRetentionPolicy.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketRetentionPolicy.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  retention_period: int,
                  is_locked: Optional[bool] = None):
@@ -445,9 +543,6 @@ class BucketRetentionPolicy(dict):
         """
         return pulumi.get(self, "is_locked")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketVersioning(dict):
@@ -466,12 +561,28 @@ class BucketVersioning(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketWebsite(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mainPageSuffix":
+            suggest = "main_page_suffix"
+        elif key == "notFoundPage":
+            suggest = "not_found_page"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketWebsite. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketWebsite.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketWebsite.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  main_page_suffix: Optional[str] = None,
                  not_found_page: Optional[str] = None):
@@ -504,12 +615,26 @@ class BucketWebsite(dict):
         """
         return pulumi.get(self, "not_found_page")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DefaultObjectAccessControlProjectTeam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectNumber":
+            suggest = "project_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DefaultObjectAccessControlProjectTeam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DefaultObjectAccessControlProjectTeam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DefaultObjectAccessControlProjectTeam.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project_number: Optional[str] = None,
                  team: Optional[str] = None):
@@ -527,13 +652,27 @@ class DefaultObjectAccessControlProjectTeam(dict):
     @pulumi.getter
     def team(self) -> Optional[str]:
         return pulumi.get(self, "team")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class ObjectAccessControlProjectTeam(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectNumber":
+            suggest = "project_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectAccessControlProjectTeam. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectAccessControlProjectTeam.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectAccessControlProjectTeam.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project_number: Optional[str] = None,
                  team: Optional[str] = None):
@@ -552,12 +691,30 @@ class ObjectAccessControlProjectTeam(dict):
     def team(self) -> Optional[str]:
         return pulumi.get(self, "team")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scheduleStartDate":
+            suggest = "schedule_start_date"
+        elif key == "scheduleEndDate":
+            suggest = "schedule_end_date"
+        elif key == "startTimeOfDay":
+            suggest = "start_time_of_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobSchedule.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  schedule_start_date: 'outputs.TransferJobScheduleScheduleStartDate',
                  schedule_end_date: Optional['outputs.TransferJobScheduleScheduleEndDate'] = None,
@@ -596,9 +753,6 @@ class TransferJobSchedule(dict):
         The time in UTC at which the transfer will be scheduled to start in a day. Transfers may start later than this time. If not specified, recurring and one-time transfers that are scheduled to run today will run immediately; recurring transfers that are scheduled to run on a future date will start at approximately midnight UTC on that date. Note that when configuring a transfer with the Cloud Platform Console, the transfer's start time in a day is specified in your local timezone. Structure documented below.
         """
         return pulumi.get(self, "start_time_of_day")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -640,9 +794,6 @@ class TransferJobScheduleScheduleEndDate(dict):
         """
         return pulumi.get(self, "year")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobScheduleScheduleStartDate(dict):
@@ -682,9 +833,6 @@ class TransferJobScheduleScheduleStartDate(dict):
         Year of date. Must be from 1 to 9999.
         """
         return pulumi.get(self, "year")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -737,12 +885,36 @@ class TransferJobScheduleStartTimeOfDay(dict):
         """
         return pulumi.get(self, "seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobTransferSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsS3DataSource":
+            suggest = "aws_s3_data_source"
+        elif key == "gcsDataSink":
+            suggest = "gcs_data_sink"
+        elif key == "gcsDataSource":
+            suggest = "gcs_data_source"
+        elif key == "httpDataSource":
+            suggest = "http_data_source"
+        elif key == "objectConditions":
+            suggest = "object_conditions"
+        elif key == "transferOptions":
+            suggest = "transfer_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpec.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aws_s3_data_source: Optional['outputs.TransferJobTransferSpecAwsS3DataSource'] = None,
                  gcs_data_sink: Optional['outputs.TransferJobTransferSpecGcsDataSink'] = None,
@@ -819,12 +991,28 @@ class TransferJobTransferSpec(dict):
         """
         return pulumi.get(self, "transfer_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobTransferSpecAwsS3DataSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsAccessKey":
+            suggest = "aws_access_key"
+        elif key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAwsS3DataSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecAwsS3DataSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecAwsS3DataSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aws_access_key: 'outputs.TransferJobTransferSpecAwsS3DataSourceAwsAccessKey',
                  bucket_name: str):
@@ -851,12 +1039,28 @@ class TransferJobTransferSpecAwsS3DataSource(dict):
         """
         return pulumi.get(self, "bucket_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecAwsS3DataSourceAwsAccessKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecAwsS3DataSourceAwsAccessKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecAwsS3DataSourceAwsAccessKey.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_key_id: str,
                  secret_access_key: str):
@@ -883,12 +1087,26 @@ class TransferJobTransferSpecAwsS3DataSourceAwsAccessKey(dict):
         """
         return pulumi.get(self, "secret_access_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobTransferSpecGcsDataSink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecGcsDataSink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecGcsDataSink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecGcsDataSink.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: str):
         """
@@ -903,13 +1121,27 @@ class TransferJobTransferSpecGcsDataSink(dict):
         S3 Bucket name.
         """
         return pulumi.get(self, "bucket_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class TransferJobTransferSpecGcsDataSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecGcsDataSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecGcsDataSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecGcsDataSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: str):
         """
@@ -925,12 +1157,26 @@ class TransferJobTransferSpecGcsDataSource(dict):
         """
         return pulumi.get(self, "bucket_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobTransferSpecHttpDataSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "listUrl":
+            suggest = "list_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecHttpDataSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecHttpDataSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecHttpDataSource.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  list_url: str):
         """
@@ -946,12 +1192,32 @@ class TransferJobTransferSpecHttpDataSource(dict):
         """
         return pulumi.get(self, "list_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobTransferSpecObjectConditions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludePrefixes":
+            suggest = "exclude_prefixes"
+        elif key == "includePrefixes":
+            suggest = "include_prefixes"
+        elif key == "maxTimeElapsedSinceLastModification":
+            suggest = "max_time_elapsed_since_last_modification"
+        elif key == "minTimeElapsedSinceLastModification":
+            suggest = "min_time_elapsed_since_last_modification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecObjectConditions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecObjectConditions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecObjectConditions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exclude_prefixes: Optional[Sequence[str]] = None,
                  include_prefixes: Optional[Sequence[str]] = None,
@@ -1004,12 +1270,30 @@ class TransferJobTransferSpecObjectConditions(dict):
         """
         return pulumi.get(self, "min_time_elapsed_since_last_modification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferJobTransferSpecTransferOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteObjectsFromSourceAfterTransfer":
+            suggest = "delete_objects_from_source_after_transfer"
+        elif key == "deleteObjectsUniqueInSink":
+            suggest = "delete_objects_unique_in_sink"
+        elif key == "overwriteObjectsAlreadyExistingInSink":
+            suggest = "overwrite_objects_already_existing_in_sink"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobTransferSpecTransferOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobTransferSpecTransferOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobTransferSpecTransferOptions.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delete_objects_from_source_after_transfer: Optional[bool] = None,
                  delete_objects_unique_in_sink: Optional[bool] = None,
@@ -1051,8 +1335,5 @@ class TransferJobTransferSpecTransferOptions(dict):
         Whether overwriting objects that already exist in the sink is allowed.
         """
         return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

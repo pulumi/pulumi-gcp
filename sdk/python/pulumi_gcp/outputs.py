@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from . import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from . import _utilities
 
 __all__ = [
     'ProviderBatching',
@@ -14,6 +14,25 @@ __all__ = [
 
 @pulumi.output_type
 class ProviderBatching(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableBatching":
+            suggest = "enable_batching"
+        elif key == "sendAfter":
+            suggest = "send_after"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProviderBatching. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProviderBatching.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProviderBatching.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_batching: Optional[bool] = None,
                  send_after: Optional[str] = None):
@@ -31,8 +50,5 @@ class ProviderBatching(dict):
     @pulumi.getter(name="sendAfter")
     def send_after(self) -> Optional[str]:
         return pulumi.get(self, "send_after")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

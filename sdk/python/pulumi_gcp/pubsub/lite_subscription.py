@@ -5,15 +5,230 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['LiteSubscription']
+__all__ = ['LiteSubscriptionArgs', 'LiteSubscription']
+
+@pulumi.input_type
+class LiteSubscriptionArgs:
+    def __init__(__self__, *,
+                 topic: pulumi.Input[str],
+                 delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a LiteSubscription resource.
+        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
+               Structure is documented below.
+        :param pulumi.Input[str] name: Name of the subscription.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of the pubsub lite topic.
+        :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
+        """
+        pulumi.set(__self__, "topic", topic)
+        if delivery_config is not None:
+            pulumi.set(__self__, "delivery_config", delivery_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> pulumi.Input[str]:
+        """
+        A reference to a Topic resource.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter(name="deliveryConfig")
+    def delivery_config(self) -> Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]:
+        """
+        The settings for this subscription's message delivery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delivery_config")
+
+    @delivery_config.setter
+    def delivery_config(self, value: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]):
+        pulumi.set(self, "delivery_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the subscription.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the pubsub lite topic.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone of the pubsub lite topic.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
+
+@pulumi.input_type
+class _LiteSubscriptionState:
+    def __init__(__self__, *,
+                 delivery_config: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering LiteSubscription resources.
+        :param pulumi.Input['LiteSubscriptionDeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
+               Structure is documented below.
+        :param pulumi.Input[str] name: Name of the subscription.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of the pubsub lite topic.
+        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
+        """
+        if delivery_config is not None:
+            pulumi.set(__self__, "delivery_config", delivery_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="deliveryConfig")
+    def delivery_config(self) -> Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]:
+        """
+        The settings for this subscription's message delivery.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "delivery_config")
+
+    @delivery_config.setter
+    def delivery_config(self, value: Optional[pulumi.Input['LiteSubscriptionDeliveryConfigArgs']]):
+        pulumi.set(self, "delivery_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the subscription.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region of the pubsub lite topic.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        A reference to a Topic resource.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The zone of the pubsub lite topic.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 class LiteSubscription(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -94,6 +309,93 @@ class LiteSubscription(pulumi.CustomResource):
         :param pulumi.Input[str] topic: A reference to a Topic resource.
         :param pulumi.Input[str] zone: The zone of the pubsub lite topic.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LiteSubscriptionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        A named resource representing the stream of messages from a single,
+        specific topic, to be delivered to the subscribing application.
+
+        To get more information about Subscription, see:
+
+        * [API documentation](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.subscriptions)
+        * How-to Guides
+            * [Managing Subscriptions](https://cloud.google.com/pubsub/docs/admin#managing_subscriptions)
+
+        ## Example Usage
+        ### Pubsub Lite Subscription Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_lite_topic = gcp.pubsub.LiteTopic("exampleLiteTopic",
+            project=project.number,
+            partition_config=gcp.pubsub.LiteTopicPartitionConfigArgs(
+                count=1,
+                capacity=gcp.pubsub.LiteTopicPartitionConfigCapacityArgs(
+                    publish_mib_per_sec=4,
+                    subscribe_mib_per_sec=8,
+                ),
+            ),
+            retention_config=gcp.pubsub.LiteTopicRetentionConfigArgs(
+                per_partition_bytes="32212254720",
+            ))
+        example_lite_subscription = gcp.pubsub.LiteSubscription("exampleLiteSubscription",
+            topic=example_lite_topic.name,
+            delivery_config=gcp.pubsub.LiteSubscriptionDeliveryConfigArgs(
+                delivery_requirement="DELIVER_AFTER_STORED",
+            ))
+        ```
+
+        ## Import
+
+        Subscription can be imported using any of these accepted formats
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default projects/{{project}}/locations/{{zone}}/subscriptions/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{project}}/{{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{zone}}/{{name}}
+        ```
+
+        ```sh
+         $ pulumi import gcp:pubsub/liteSubscription:LiteSubscription default {{name}}
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param LiteSubscriptionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LiteSubscriptionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 delivery_config: Optional[pulumi.Input[pulumi.InputType['LiteSubscriptionDeliveryConfigArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -109,16 +411,16 @@ class LiteSubscription(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LiteSubscriptionArgs.__new__(LiteSubscriptionArgs)
 
-            __props__['delivery_config'] = delivery_config
-            __props__['name'] = name
-            __props__['project'] = project
-            __props__['region'] = region
+            __props__.__dict__["delivery_config"] = delivery_config
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project"] = project
+            __props__.__dict__["region"] = region
             if topic is None and not opts.urn:
                 raise TypeError("Missing required property 'topic'")
-            __props__['topic'] = topic
-            __props__['zone'] = zone
+            __props__.__dict__["topic"] = topic
+            __props__.__dict__["zone"] = zone
         super(LiteSubscription, __self__).__init__(
             'gcp:pubsub/liteSubscription:LiteSubscription',
             resource_name,
@@ -153,14 +455,14 @@ class LiteSubscription(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _LiteSubscriptionState.__new__(_LiteSubscriptionState)
 
-        __props__["delivery_config"] = delivery_config
-        __props__["name"] = name
-        __props__["project"] = project
-        __props__["region"] = region
-        __props__["topic"] = topic
-        __props__["zone"] = zone
+        __props__.__dict__["delivery_config"] = delivery_config
+        __props__.__dict__["name"] = name
+        __props__.__dict__["project"] = project
+        __props__.__dict__["region"] = region
+        __props__.__dict__["topic"] = topic
+        __props__.__dict__["zone"] = zone
         return LiteSubscription(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -212,10 +514,4 @@ class LiteSubscription(pulumi.CustomResource):
         The zone of the pubsub lite topic.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,13 +5,203 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from .. import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from .. import _utilities
 
-__all__ = ['FolderExclusion']
+__all__ = ['FolderExclusionArgs', 'FolderExclusion']
+
+@pulumi.input_type
+class FolderExclusionArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str],
+                 folder: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a FolderExclusion resource.
+        :param pulumi.Input[str] filter: The filter to apply when excluding logs. Only log entries that match the filter are excluded.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] folder: The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+               accepted.
+        :param pulumi.Input[str] description: A human-readable description.
+        :param pulumi.Input[bool] disabled: Whether this exclusion rule should be disabled or not. This defaults to
+               false.
+        :param pulumi.Input[str] name: The name of the logging exclusion.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "folder", folder)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        The filter to apply when excluding logs. Only log entries that match the filter are excluded.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> pulumi.Input[str]:
+        """
+        The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+        accepted.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: pulumi.Input[str]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this exclusion rule should be disabled or not. This defaults to
+        false.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the logging exclusion.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class _FolderExclusionState:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering FolderExclusion resources.
+        :param pulumi.Input[str] description: A human-readable description.
+        :param pulumi.Input[bool] disabled: Whether this exclusion rule should be disabled or not. This defaults to
+               false.
+        :param pulumi.Input[str] filter: The filter to apply when excluding logs. Only log entries that match the filter are excluded.
+               See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
+               write a filter.
+        :param pulumi.Input[str] folder: The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+               accepted.
+        :param pulumi.Input[str] name: The name of the logging exclusion.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A human-readable description.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this exclusion rule should be disabled or not. This defaults to
+        false.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The filter to apply when excluding logs. Only log entries that match the filter are excluded.
+        See [Advanced Log Filters](https://cloud.google.com/logging/docs/view/advanced-filters) for information on how to
+        write a filter.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        The folder to be exported to the sink. Note that either [FOLDER_ID] or "folders/[FOLDER_ID]" is
+        accepted.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the logging exclusion.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class FolderExclusion(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -67,6 +257,67 @@ class FolderExclusion(pulumi.CustomResource):
                accepted.
         :param pulumi.Input[str] name: The name of the logging exclusion.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FolderExclusionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a folder-level logging exclusion. For more information see:
+
+        * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders.exclusions)
+        * How-to Guides
+            * [Excluding Logs](https://cloud.google.com/logging/docs/exclusions)
+
+        > You can specify exclusions for log sinks created by the provider by using the exclusions field of `logging.FolderSink`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_folder = gcp.organizations.Folder("my-folder",
+            display_name="My folder",
+            parent="organizations/123456")
+        my_exclusion = gcp.logging.FolderExclusion("my-exclusion",
+            folder=my_folder.name,
+            description="Exclude GCE instance debug logs",
+            filter="resource.type = gce_instance AND severity <= DEBUG")
+        ```
+
+        ## Import
+
+        Folder-level logging exclusions can be imported using their URI, e.g.
+
+        ```sh
+         $ pulumi import gcp:logging/folderExclusion:FolderExclusion my_exclusion folders/my-folder/exclusions/my-exclusion
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param FolderExclusionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FolderExclusionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -82,17 +333,17 @@ class FolderExclusion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FolderExclusionArgs.__new__(FolderExclusionArgs)
 
-            __props__['description'] = description
-            __props__['disabled'] = disabled
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disabled"] = disabled
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
-            __props__['filter'] = filter
+            __props__.__dict__["filter"] = filter
             if folder is None and not opts.urn:
                 raise TypeError("Missing required property 'folder'")
-            __props__['folder'] = folder
-            __props__['name'] = name
+            __props__.__dict__["folder"] = folder
+            __props__.__dict__["name"] = name
         super(FolderExclusion, __self__).__init__(
             'gcp:logging/folderExclusion:FolderExclusion',
             resource_name,
@@ -127,13 +378,13 @@ class FolderExclusion(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _FolderExclusionState.__new__(_FolderExclusionState)
 
-        __props__["description"] = description
-        __props__["disabled"] = disabled
-        __props__["filter"] = filter
-        __props__["folder"] = folder
-        __props__["name"] = name
+        __props__.__dict__["description"] = description
+        __props__.__dict__["disabled"] = disabled
+        __props__.__dict__["filter"] = filter
+        __props__.__dict__["folder"] = folder
+        __props__.__dict__["name"] = name
         return FolderExclusion(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -179,10 +430,4 @@ class FolderExclusion(pulumi.CustomResource):
         The name of the logging exclusion.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
